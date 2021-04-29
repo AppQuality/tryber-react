@@ -35,6 +35,8 @@ $utilities: (
 	),
 );
 
+@import "bootstrap/scss/card";
+@import "_card";
 @import "~bootstrap/scss/bootstrap-utilities";
 
 @mixin overflow-ellipsis {
