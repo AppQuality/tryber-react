@@ -11,11 +11,19 @@ export interface LayoutProps {
    * size
    */
   size?: number
+  /**
+   * gutter
+   */
+  gutter?: number
 }
 
-export const Grid = ({children}:LayoutProps) => {
+export const Grid = ({children,gutter}:LayoutProps) => {
+  let className = 'row'
+  if (typeof gutter != 'undefined') {
+    className += ` g-${gutter}`
+  }
   return (
-    <div className="row">
+    <div className={className}>
       {children}
     </div>
   )

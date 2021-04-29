@@ -17,8 +17,8 @@ export default function GettingStarted({location}:PageInterface) {
 			<Grid>
 				<Col size={8}>
         <Card>
-					<Grid>
-						<Col size={6}>
+					<Grid gutter={0}>
+						<Col size={5}>
 							<Form>
 								<Field type="text" name={I18n.getTranslation(location,"name")} />
 								<Field type="text" name={I18n.getTranslation(location,"surname")} />
@@ -30,7 +30,9 @@ export default function GettingStarted({location}:PageInterface) {
 								<p><I18n t="clicking-button-you-accept-tos" /></p>
 							</Form>
 						</Col>
-						<Col size={6}>
+						<Col size={1}>
+            </Col>
+						<Col size={5}>
 							<p><I18n t="signup-with-social" /></p>
 							<p><I18n t="signup-with-social-description" /></p>
 							<Button type="primary" flat={true}><I18n t="facebook" /></Button>
