@@ -15,15 +15,15 @@ export interface LayoutProps {
 
 export const Grid = ({children}:LayoutProps) => {
   return (
-    <div>
+    <div className="row">
       {children}
     </div>
   )
 }
 
-export const Col = ({children}:LayoutProps) => {
+export const Col = ({children,size}:LayoutProps) => {
   return (
-    <div>
+    <div className={`col-${size}`}>
       {children}
     </div>
   )
@@ -31,7 +31,7 @@ export const Col = ({children}:LayoutProps) => {
 
 export const Container = ({children}:LayoutProps) => {
   return (
-    <div>
+    <div className="container">
       {children}
     </div>
   )
