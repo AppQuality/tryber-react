@@ -30,13 +30,12 @@ export default function GettingStarted({location}:PageInterface) {
 								<p><I18n t="clicking-button-you-accept-tos" /></p>
 							</Form>
 						</Col>
-						<Col size={1}>
-            </Col>
+						<Col size={1}></Col>
 						<Col size={5}>
 							<p><I18n t="signup-with-social" /></p>
 							<p><I18n t="signup-with-social-description" /></p>
-							<Button type="primary" flat={true}><I18n t="facebook" /></Button>
-							<Button type="secondary" flat={true}><I18n t="linkedin" /></Button>
+							<Button type="primary" size="block" ><I18n t="facebook" /></Button>
+							<Button type="secondary" size="block" flat={true}><I18n t="linkedin" /></Button>
 						</Col>
 					</Grid>
           </Card>

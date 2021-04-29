@@ -10,7 +10,7 @@ export interface ButtonProps {
   /**
    * How large should the button be?
    */
-  size?: "sm" | "medium" |"lg"
+  size?: "sm" | "medium" |"lg" | "block"
   /**
    * Forms contents
    */
@@ -28,11 +28,15 @@ export interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({htmlType = 'button', type = 'primary', size = 'medium', children, ...props }: ButtonProps) => {
+export const Button = ({htmlType = 'button', type = 'primary', size = 'medium', flat=false, children, ...props }: ButtonProps) => {
+  let className = ["btn", `btn-${size}`, `btn-${type}`]
+  if (flat) {
+    className.push('btn-flat')
+  }
   return (
     <button
       type={htmlType}
-      className={["btn", `btn-${size}`, `btn-${type}`].join(" ")}
+      className={className.join(" ")}
       {...props}
     >
       {children}

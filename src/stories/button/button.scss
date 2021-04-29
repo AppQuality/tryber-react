@@ -38,3 +38,85 @@ $btn-icon-padding-x-lg: 0;
 }
 
 @import "~bootstrap/scss/buttons";
+.btn {
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
+
+  // icon buttons
+  .bi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $btn-icon-padding-y $btn-icon-padding-x;
+  }
+}
+.btn-sm {
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+
+  .bi {
+    padding: $btn-icon-padding-y-sm $btn-icon-padding-x-sm;
+  }
+}
+.btn-lg {
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
+  .bi {
+    padding: $btn-icon-padding-y-lg $btn-icon-padding-x-lg;
+  }
+}
+.btn-block
+{
+  width: 100%;
+}
+
+
+.btn
+{
+  @include button-variant(
+  $body-color,
+  transparent,
+  $disabled-border: $disabled,
+  $disabled-background: $disabled,
+  $disabled-color: $disabled-dark
+  );
+
+
+}
+@each $color, $value in $theme-colors
+{
+  .btn.btn-#{$color}
+  {
+    @include button-variant(
+			$value,
+			$value,
+			$disabled-border: $disabled,
+			$disabled-background: $disabled,
+			$disabled-color: $disabled-dark
+		);
+  }
+}
+
+
+.btn.btn-flat
+{
+  @include button-outline-variant($body-color);
+  background: white;
+  &:disabled,
+  &.disabled {
+    border-color: $disabled-dark;
+    color: $disabled-dark;
+  }
+}
+@each $color, $value in $theme-colors
+{
+  .btn.btn-flat.btn-#{$color}
+  {
+    @include button-outline-variant($value);
+	 	background: white;
+
+
+    &:disabled,
+    &.disabled {
+	    border-color: $disabled-dark;
+	    color: $disabled-dark;
+	  }
+  }
+}
