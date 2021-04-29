@@ -25,7 +25,7 @@ export const Header = ({ user, logo, showLogin }: HeaderProps) => {
   const UserInfo = ({user}: UserInfoProps) => (
     <div className='user-info'>
       <div className="user-avatar">
-        <img src={user.image} />
+        <img alt={user.name + ' ' + user.surname} src={user.image} />
       </div>
       <div className="user-name">
         {user.name} {user.surname} <span className="user-id">(T{user.id})</span>
@@ -39,7 +39,7 @@ export const Header = ({ user, logo, showLogin }: HeaderProps) => {
       <div className='brand-logo'>
         {(logo)
           ? {logo}
-          : <img src='https://crowd.app-quality.com/wp-content/themes/crowdappquality/img/aq_vector_logo_light_crowd.svg' />
+          : <img alt='logo' src='https://crowd.app-quality.com/wp-content/themes/crowdappquality/img/aq_vector_logo_light_crowd.svg' />
         }
       </div>
       <div className='header-menu'>

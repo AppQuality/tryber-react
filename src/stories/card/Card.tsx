@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, ReactNode} from 'react'
+import React, { ReactNode} from 'react'
 import './card.scss'
 
 export interface CardProps {

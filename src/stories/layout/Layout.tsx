@@ -1,5 +1,4 @@
-import React, {MouseEventHandler, ReactNode} from 'react'
-import {Button} from '../button/Button'
+import React, {ReactNode} from 'react'
 import './layout.scss'
 
 export interface LayoutProps {
