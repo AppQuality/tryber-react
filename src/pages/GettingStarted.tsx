@@ -24,8 +24,12 @@ export default function GettingStarted({location}: PageInterface) {
 						<Col size={5}>
 							<p><I18n t="signup-with-social" /></p>
 							<p><I18n t="signup-with-social-description" /></p>
+              <div className="mb-2">
 							<Button type="primary" size="block" ><I18n t="facebook" /></Button>
+              </div>
+              <div className="mb-2">
 							<Button type="secondary" size="block" flat={true}><I18n t="linkedin" /></Button>
+              </div>
 						</Col>
 					</Grid>
           </Card>

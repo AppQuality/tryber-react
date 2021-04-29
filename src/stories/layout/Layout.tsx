@@ -38,7 +38,7 @@ export const Col = ({children,size}:LayoutProps) => {
 
 export const Container = ({children}:LayoutProps) => {
   return (
-    <div className="container">
+    <div className="container pt-2">
       {children}
     </div>
   )
