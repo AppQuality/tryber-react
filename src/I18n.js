@@ -15,6 +15,7 @@ const translations = {
 const I18n = createI18n(
   locales,
   translations,
+  "__no_translation__"
 );
 
 export default I18n;
