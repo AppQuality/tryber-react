@@ -1,6 +1,7 @@
 import React from 'react'
 import {Button} from '../button/Button'
 import './header.scss'
+import { useHistory } from "react-router-dom"
 
 export interface User {
   id: number
@@ -14,14 +15,16 @@ export interface User {
 export interface HeaderProps {
   user?: User
   logo?: React.ReactNode,
-  showLogin: boolean
+  showLogin?: boolean
 };
 
 export interface UserInfoProps {
   user: User
 };
 
-export const Header = ({ user, logo, showLogin }: HeaderProps) => {
+export const Header = ({ user, logo, showLogin = true }: HeaderProps) => {
+  let history = useHistory();
+
   const UserInfo = ({user}: UserInfoProps) => (
     <div className='user-info'>
       <div className="user-avatar">
@@ -30,10 +33,13 @@ export const Header = ({ user, logo, showLogin }: HeaderProps) => {
       <div className="user-name">
         {user.name} {user.surname} <span className="user-id">(T{user.id})</span>
       </div>
-      <Button size='sm' type='link'>login</Button>
+      <Button size='sm' type='link'>logout</Button>
     </div>
   )
 
+  const handleLoginClick = () => {
+    history.push("/getting-started");
+  }
   return (
     <div className='site-header'>
       <div className='brand-logo'>
@@ -47,7 +53,7 @@ export const Header = ({ user, logo, showLogin }: HeaderProps) => {
       <div className="header-actions">
         {(user)
           ? <UserInfo user={user}/>
-          : (showLogin) ? <Button size='sm' type='link'>login</Button> : ''
+          : (showLogin) ? <Button size='sm' type='link' onClick={handleLoginClick}>login</Button> : ''
         }
       </div>
     </div>

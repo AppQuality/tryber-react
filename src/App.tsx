@@ -1,6 +1,7 @@
 import "./App.scss";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { GettingStarted } from "./pages";
+import { GettingStarted} from "./pages";
+import SignIn from "./pages/SignIn";
 import {Header} from "./stories/header/Header";
 import React from "react";
 import './i18n';
@@ -11,10 +12,11 @@ function App() {
 
   return (
     <>
-      <Header showLogin={false}/>
       <BrowserRouter>
+        <Header/>
         <Switch>
           <Route path={`${base}/getting-started`} component={GettingStarted} />
+          <Route path={`${base}/login`} component={SignIn} />
         </Switch>
       </BrowserRouter>
     </>

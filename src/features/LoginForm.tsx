@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import API from '../utils/api'
 import {Button} from '../stories/button/Button';
 import {Field} from '../stories/form/Form';
+import {Formik, Form} from "formik";
 
 
 // @ts-ignore
@@ -27,7 +28,14 @@ export default function LoginForm({setToken}) {
         return;
     };
     return (
-        <form onSubmit={handleSubmit}>
+      <Formik
+      initialValues={{
+        username: '',
+        password: ''
+      }}
+      onSubmit={values => {console.log(values)}}
+      >
+        <Form onSubmit={handleSubmit}>
             {error ? <p>{error}</p> : ""}
 
 
@@ -45,7 +53,8 @@ export default function LoginForm({setToken}) {
             <div>
                 <Button htmlType={"submit"} size={'sm'} data-testid="loginbtn">Submit</Button>
             </div>
-        </form>
+        </Form>
+      </Formik>
     );
 }
 

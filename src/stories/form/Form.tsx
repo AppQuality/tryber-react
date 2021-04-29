@@ -20,13 +20,15 @@ export const Field = ({type = 'text', placeholder, name, onChange, label, ...pro
           field, // { name, value, onChange, onBlur }
           form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
           meta,
-        }: FieldProps) => (
+        }: FieldProps) => {
+        return (
           <div className="form-group">
             {(label) && <label className="form-label">{label}</label>}
-            <input type={type} placeholder={placeholder} onChange={onChange} {...props} className="form-control"/>
+            <input type={type} placeholder={placeholder} onChange={field.onChange} onBlur={field.onBlur} className="form-control" value={field.value} />
             {meta.touched && meta.error && <div className="invalid-feedback">{meta.error}</div>}
           </div>
-        )}
+        )
+      }}
     </FormikField>
   )
 };
