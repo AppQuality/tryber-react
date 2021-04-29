@@ -1,0 +1,35 @@
+@import '../styles/aq-bootstrap';
+@import "../styles/mixins/typography";
+$headerHeight: 54px;
+$ContentHeight: 30px;
+
+.site-header {
+  width: 100%;
+  height: $headerHeight;
+  padding: ($headerHeight - $ContentHeight) /2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .brand-logo {
+    flex: 0 1 150px;
+    max-height: $ContentHeight;
+  }
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  .user-name {
+    @include paragraph;
+    margin-right: 10px;
+  }
+  .user-id {
+    @include small-paragraph;
+    color: $grey-600;
+  }
+  .user-avatar img {
+    max-height: $ContentHeight;
+    max-width: $ContentHeight;
+    margin-right: 10px;
+  }
+}
