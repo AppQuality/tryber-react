@@ -1,12 +1,4 @@
-@import "../styles/variables";
-@import "~bootstrap/scss/functions"; // Required
-@import "~bootstrap/scss/variables"; // Required
-@import "../styles/overrides";
-
-@import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/utilities";
-@import "../styles/mixins/disabled";
-@import "../styles/mixins/overflow-ellipsis";
+@import '../styles/aq-bootstrap';
 
 $input-border-color: $grey-100;
 $input-disabled-bg: $grey-100;

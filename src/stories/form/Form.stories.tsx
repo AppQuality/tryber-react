@@ -1,13 +1,13 @@
 import React from "react";
-import { Input, InputInterface } from "./Form";
+import { Field, FieldInterface } from "./Form";
 import {Story, Meta} from "@storybook/react";
 
 export default {
   title: "Forms",
-  component: Input,
+  component: Field,
 } as Meta;
 
-const Template: Story<InputInterface> = (args) => <Input {...args} />;
+const Template: Story<FieldInterface> = (args) => <Field {...args} />;
 
 export const Text = Template.bind({});
 Text.args = {
