@@ -1,34 +1,50 @@
-import React, {ChangeEventHandler, ReactNode} from "react";
+import React, {ChangeEventHandler} from "react";
+import {Field as FormikField, FieldProps} from "formik";
 import "./form.scss";
 
-export interface FormProps {
-  /**
-   * Forms contents
-   */
-  children?: ReactNode
-}
-
-/**
- * Primary UI component for user interaction
- */
-export const Form = ({children}: FormProps) => {
-  return (
-    <form>{children}</form>
-  )
-};
-
-export interface FieldInterface{
+interface GenericFieldInterface {
   name: string
-  type?: string
-  placeholder?: string
+  label?: string
   onChange?: ChangeEventHandler
 }
-export const Field = ({type = 'text', placeholder, name, onChange, ...props}: FieldInterface) => {
+
+export interface FieldInterface extends GenericFieldInterface {
+  type?: 'text' | 'email' | 'password' | 'number' | 'url' | 'tel'
+  placeholder?: string
+}
+
+export const Field = ({type = 'text', placeholder, name, onChange, label, ...props}: FieldInterface) => {
   return (
-    <div className="mb-3 form-group">
-      <label className="form-label">{name}</label>
-      <input type={type} placeholder={placeholder} onChange={onChange} {...props} className="form-control"/>
-      <div className="error">error</div>
-    </div>
+    <FormikField name={name}>
+      {({
+          field, // { name, value, onChange, onBlur }
+          form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+          meta,
+        }: FieldProps) => (
+          <div className="form-group">
+            {(label) && <label className="form-label">{label}</label>}
+            <input type={type} placeholder={placeholder} onChange={onChange} {...props} className="form-control"/>
+            {meta.touched && meta.error && <div className="invalid-feedback">{meta.error}</div>}
+          </div>
+        )}
+    </FormikField>
   )
 };
+
+export const Checkbox = ({name, onChange, label, ...props}: GenericFieldInterface) => {
+  return (
+    <FormikField name={name}>
+      {({
+          field, // { name, value, onChange, onBlur }
+          form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+          meta,
+        }: FieldProps) => (
+        <div className="form-check">
+          {(label) && <label className="form-check-label">{label}</label>}
+          <input type='checkbox' onChange={onChange} {...props} className="form-check-input"/>
+          {meta.touched && meta.error && <div className="invalid-feedback">{meta.error}</div>}
+        </div>
+      )}
+    </FormikField>
+  )
+}

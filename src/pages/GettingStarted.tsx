@@ -1,16 +1,15 @@
-import React from "react";
-import {Container,Grid,Col} from '../stories/layout/Layout';
-import {Card} from '../stories/card/Card';
-import {Form,Field} from '../stories/form/Form';
-import {Button} from '../stories/button/Button';
-import I18n from '../I18n';
+import React from "react"
+import { Container, Grid, Col } from '../stories/layout/Layout'
+import { Card } from '../stories/card/Card'
+import { Button } from '../stories/button/Button'
+import { SignupForm } from "../features/SignupForm";
+import I18n from '../I18n'
 
 export interface PageInterface {
   location: string
 }
 
-
-export default function GettingStarted({location}:PageInterface) {
+export default function GettingStarted({location}: PageInterface) {
   return (
 		<Container>
       <h2><I18n t="become-a-tester" /></h2>
@@ -19,16 +18,7 @@ export default function GettingStarted({location}:PageInterface) {
         <Card>
 					<Grid gutter={0}>
 						<Col size={5}>
-							<Form>
-								<Field type="text" name={I18n.getTranslation(location,"name")} />
-								<Field type="text" name={I18n.getTranslation(location,"surname")} />
-								<Field type="email" name={I18n.getTranslation(location,"email")} />
-								<Field type="password" name={I18n.getTranslation(location,"password")} />
-								<p><I18n t="password-requirements" /></p>
-								<Field type="checkbox" name={I18n.getTranslation(location,"accept-to-receive-email")} />
-								<Field type="submit" name={I18n.getTranslation(location,"signup-now")} />
-								<p><I18n t="clicking-button-you-accept-tos" /></p>
-							</Form>
+							<SignupForm location={location}/>
 						</Col>
 						<Col size={1}></Col>
 						<Col size={5}>
