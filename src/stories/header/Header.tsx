@@ -13,14 +13,15 @@ export interface User {
 
 export interface HeaderProps {
   user?: User
-  logo?: React.ReactNode
+  logo?: React.ReactNode,
+  showLogin: boolean
 };
 
 export interface UserInfoProps {
   user: User
 };
 
-export const Header = ({ user, logo }: HeaderProps) => {
+export const Header = ({ user, logo, showLogin }: HeaderProps) => {
   const UserInfo = ({user}: UserInfoProps) => (
     <div className='user-info'>
       <div className="user-avatar">
@@ -46,7 +47,7 @@ export const Header = ({ user, logo }: HeaderProps) => {
       <div className="header-actions">
         {(user)
           ? <UserInfo user={user}/>
-          : <Button size='sm' type='link'>login</Button>
+          : (showLogin) ? <Button size='sm' type='link'>login</Button> : ''
         }
       </div>
     </div>

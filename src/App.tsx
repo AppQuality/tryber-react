@@ -13,14 +13,14 @@ function App() {
   const { token, setToken } = useToken();
 
   return (
-    <div className="App">
-      <Header />
+    <>
+      <Header showLogin={false}/>
       <BrowserRouter>
         <Switch>
           <Route path={`${base}/getting-started`} component={GettingStarted} />
         </Switch>
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 
