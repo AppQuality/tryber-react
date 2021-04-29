@@ -16,6 +16,10 @@ export interface ButtonProps {
    */
   children?: ReactNode
   /**
+   * Is flat?
+   */
+  flat?: boolean
+  /**
    * Optional click handler
    */
   onClick?: MouseEventHandler

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import PropTypes from "prop-types";
 import API from '../utils/api'
 import {Button} from '../stories/button/Button';
-import {Input} from '../stories/form/Form';
+import {Field} from '../stories/form/Form';
 
 
 // @ts-ignore
@@ -31,16 +31,16 @@ export default function LoginForm({setToken}) {
             {error ? <p>{error}</p> : ""}
 
 
-            <Input type="text" name={'username'} onChange={e => {
+            <Field type="text" name={'username'} onChange={e => {
                 // @ts-ignore
                 setUserName(e.target.value)
             }
-            } data-testid="user"></Input>
+            } data-testid="user"></Field>
 
-            <Input name={'password'} type="password" onChange={e => {
+            <Field name={'password'} type="password" onChange={e => {
                 // @ts-ignore
                 setPassword(e.target.value)
-            }} data-testid="pass"></Input>
+            }} data-testid="pass"></Field>
 
             <div>
                 <Button htmlType={"submit"} size={'sm'} data-testid="loginbtn">Submit</Button>

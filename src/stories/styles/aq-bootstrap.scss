@@ -10,3 +10,12 @@
 
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/utilities";
+
+@mixin overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@mixin disabled-hover-behaviour {
+  cursor: not-allowed;
+}

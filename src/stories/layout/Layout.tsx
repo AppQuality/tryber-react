@@ -7,6 +7,10 @@ export interface LayoutProps {
    * contents
    */
   children?: ReactNode
+  /**
+   * size
+   */
+  size?: number
 }
 
 export const Grid = ({children}:LayoutProps) => {
