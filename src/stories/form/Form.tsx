@@ -1,32 +1,19 @@
 import React, {ChangeEventHandler, MouseEventHandler, ReactNode} from "react";
 import "./form.scss";
 
-export interface ButtonProps {
-  htmlType?: 'button' | 'submit' | 'reset'
-  /**
-   * Is this the principal call to action on the page?
-   */
-  type?: "primary" | "secondary" | "link"
-  /**
-   * How large should the button be?
-   */
-  size?: "sm" | "medium" | "lg"
+export interface FormProps {
   /**
    * Forms contents
    */
   children?: ReactNode
-  /**
-   * Optional click handler
-   */
-  onClick?: MouseEventHandler
 }
 
 /**
  * Primary UI component for user interaction
  */
-export const Form = () => {
+export const Form = ({children}: FormProps) => {
   return (
-    <form></form>
+    <form>{children}</form>
   )
 };
 
