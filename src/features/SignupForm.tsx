@@ -1,12 +1,14 @@
 import React from 'react'
 import {Checkbox, Field} from "../stories/form/Form"
-import I18n from "../I18n"
 import {Button} from "../stories/button/Button"
 import {Formik, Form} from "formik"
 import * as yup from 'yup'
 import {PageInterface} from "../pages/GettingStarted";
 
+import { useTranslation } from 'react-i18next';
+
 export const SignupForm = ({location}:PageInterface) => {
+  const { t } = useTranslation();
   const validationSchema = {
     name: '',
     surname: '',
@@ -30,16 +32,16 @@ export const SignupForm = ({location}:PageInterface) => {
       initialValues={initialValues}
     >
       <Form>
-        <Field type="text" name='name' label={I18n.getTranslation(location,"name")} />
-        <Field type="text" name='surname' label={I18n.getTranslation(location,"surname")} />
-        <Field type="email" name='email' label={I18n.getTranslation(location,"email")} />
-        <Field type="password" name='password' label={I18n.getTranslation(location,"password")} />
-        <p><I18n t="password-requirements" /></p>
-        <Checkbox name='subscribe' label={I18n.getTranslation(location,"accept-to-receive-email")} />
+        <Field type="text" name='name' label={t("name")} />
+        <Field type="text" name='surname' label={t("surname")} />
+        <Field type="email" name='email' label={t("email")} />
+        <Field type="password" name='password' label={t("password")} />
+        <p>{t("password-requirements")}</p>
+        <Checkbox name='subscribe' label={t("accept-to-receive-email")} />
         <Button htmlType='submit'>
-          {I18n.getTranslation(location,"signup-now")}
+          {t("signup-now")}
         </Button>
-        <p><I18n t="clicking-button-you-accept-tos" /></p>
+        <p>{t("clicking-button-you-accept-tos")}</p>
       </Form>
     </Formik>
   )

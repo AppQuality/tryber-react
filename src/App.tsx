@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { GettingStarted } from "./pages";
 import {Header} from "./stories/header/Header";
 import React from "react";
+import './i18n';
 
 const base = '/:locale(en|it)?';
 
