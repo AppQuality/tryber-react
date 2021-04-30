@@ -2,8 +2,8 @@ import React from "react"
 import { Container, Grid, Col } from '../stories/layout/Layout'
 import { Card } from '../stories/card/Card'
 import { Button } from '../stories/button/Button'
-import { SignupForm } from "../features/SignupForm";
-import { useTranslation } from 'react-i18next';
+import { SignupForm } from "../features/SignupForm"
+import { useTranslation } from 'react-i18next'
 
 export interface PageInterface {
   location: string
@@ -11,6 +11,7 @@ export interface PageInterface {
 
 export default function GettingStarted({location}: PageInterface) {
   const { t } = useTranslation();
+  // API.me(token).then(redirect).catch(render page)
   return (
 		<Container>
       <h2>{t("become-a-tester")}</h2>
@@ -19,7 +20,7 @@ export default function GettingStarted({location}: PageInterface) {
         <Card>
 					<Grid gutter={0}>
 						<Col size={5}>
-							<SignupForm location={location}/>
+							<SignupForm location={location} />
 						</Col>
 						<Col size={1}></Col>
 						<Col size={5}>

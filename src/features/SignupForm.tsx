@@ -9,14 +9,14 @@ import { useTranslation } from 'react-i18next';
 
 export const SignupForm = ({location}:PageInterface) => {
   const { t } = useTranslation();
-  const validationSchema = {
+  const initialValues = {
     name: '',
     surname: '',
     email: '',
     password: '',
     subscribe: ''
   };
-  const initialValues = {
+  const validationSchema = {
     name: yup.string().required(),
     surname: yup.string().required(),
     email: yup.string().email().required(),
@@ -27,6 +27,8 @@ export const SignupForm = ({location}:PageInterface) => {
     <Formik
       onSubmit={values => {
         alert(JSON.stringify(values, null, 2));
+        const data = values;
+        // API.signup(data).then(redirect).catch(e => showerror)
       }}
       validationSchema={validationSchema}
       initialValues={initialValues}

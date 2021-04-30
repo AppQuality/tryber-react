@@ -1,3 +1,6 @@
+// interface SignupData {
+// 	name: string
+// }
 const API = {
 	login: (credentials) => {
 		return fetch("https://api.app-quality.com/authenticate", {
