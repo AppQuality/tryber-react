@@ -4,11 +4,13 @@ import {Button} from "../stories/button/Button"
 import {Formik, Form} from "formik"
 import * as yup from 'yup'
 import {PageInterface} from "../pages/GettingStarted";
-
 import { useTranslation } from 'react-i18next';
+import API from '../utils/api'
+import {useHistory} from "react-router-dom";
 
 export const SignupForm = ({location}:PageInterface) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  let history = useHistory();
   const initialValues = {
     name: '',
     surname: '',
@@ -25,10 +27,21 @@ export const SignupForm = ({location}:PageInterface) => {
   }
   return (
     <Formik
-      onSubmit={values => {
+      onSubmit={async values => {
         alert(JSON.stringify(values, null, 2));
-        const data = values;
-        // API.signup(data).then(redirect).catch(e => showerror)
+        const data = {
+          name: values.name,
+          surname: values.surname,
+          password: values.password,
+          email: values.email
+        };
+        try {
+          const res = API.signup(data);
+          if (i18n.language === 'en') window.location.assign('https://crowd.app-quality.com/my-dashboard/')
+          if (i18n.language === 'it') window.location.assign('https://crowd.app-quality.com/it/la-mia-dashboard/')
+        } catch (e) {
+          alert(e.message);
+        }
       }}
       validationSchema={yup.object(validationSchema)}
       initialValues={initialValues}
