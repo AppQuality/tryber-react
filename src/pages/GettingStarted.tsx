@@ -20,7 +20,7 @@ export default function GettingStarted({location}: PageInterface) {
         <Card>
 					<Grid gutter={0}>
 						<Col size={5}>
-							<SignupForm location={location} />
+							<SignupForm />
 						</Col>
 						<Col size={1}></Col>
 						<Col size={5}>

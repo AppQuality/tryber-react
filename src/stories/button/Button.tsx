@@ -20,6 +20,10 @@ export interface ButtonProps {
    */
   flat?: boolean
   /**
+   * Optional is disabled?
+   */
+  disabled?: boolean
+  /**
    * Optional click handler
    */
   onClick?: MouseEventHandler
