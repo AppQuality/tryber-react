@@ -13,7 +13,6 @@ export interface ParagraphProps extends TypographyProps {
  */
 export const Paragraph = styled.p(({theme, small}: ParagraphProps) => {
   const {palette, typography} = theme;
-  debugger;
   return css`
   color: ${palette.primary};
   font-family: ${typography.fontFamily.base}
