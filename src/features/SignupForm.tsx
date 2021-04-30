@@ -51,12 +51,12 @@ export const SignupForm = () => {
         <Field type="text" name='surname' label={t("surname")} />
         <Field type="email" name='email' label={t("email")} />
         <Field type="password" name='password' label={t("password")} />
-        <Paragraph>{t("password-requirements")}</Paragraph>
+        <Paragraph small>{t("password-requirements")}</Paragraph>
         <Checkbox name='subscribe' label={t("accept-to-receive-email")} />
         <Button htmlType='submit' disabled={isSubmitting}>
           {(isSubmitting) ? '...wait' : t("signup-now")}
         </Button>
-        <Paragraph>{t("clicking-button-you-accept-tos")}</Paragraph>
+        <Paragraph small>{t("clicking-button-you-accept-tos")}</Paragraph>
       </Form>
     </Formik>
   )
