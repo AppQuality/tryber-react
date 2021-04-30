@@ -9,7 +9,7 @@ export interface LayoutProps {
   /**
    * size
    */
-  size?: number
+  size?: string
   /**
    * gutter
    */
