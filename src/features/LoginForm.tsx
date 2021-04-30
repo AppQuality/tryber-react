@@ -8,8 +8,8 @@ import {Formik, Form} from "formik";
 
 // @ts-ignore
 export default function LoginForm({setToken}) {
-    const [username, setUserName] = useState();
-    const [password, setPassword] = useState();
+    const [username, setUserName] = useState('');
+    const [password, setPassword] = useState('');
     const [error, setError] = useState();
 // @ts-ignore
     const handleSubmit = async (e) => {
@@ -30,8 +30,8 @@ export default function LoginForm({setToken}) {
     return (
       <Formik
       initialValues={{
-        username: '',
-        password: ''
+        username: username,
+        password: password
       }}
       onSubmit={values => {console.log(values)}}
       >
