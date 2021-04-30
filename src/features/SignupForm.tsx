@@ -21,7 +21,7 @@ export const SignupForm = ({location}:PageInterface) => {
     surname: yup.string().required(),
     email: yup.string().email().required(),
     password: yup.string().min(8, 'password must be at least 8 character').required(),
-    subscribe: yup.boolean()
+    subscribe: yup.boolean().oneOf([true], 'Must Accept Terms and Conditions')
   }
   return (
     <Formik
@@ -30,7 +30,7 @@ export const SignupForm = ({location}:PageInterface) => {
         const data = values;
         // API.signup(data).then(redirect).catch(e => showerror)
       }}
-      validationSchema={validationSchema}
+      validationSchema={yup.object(validationSchema)}
       initialValues={initialValues}
     >
       <Form>
