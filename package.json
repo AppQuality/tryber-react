@@ -41,6 +41,7 @@
     ]
   },
   "scripts": {
+    "generate-schema": "APIURL=$(node -p -e \"require('./src/config.json').api\"); npx openapi-typescript $APIURL/reference/ --output src/utils/schema.ts ",
     "eslint": "npx eslint src/",
     "start": "react-scripts start",
     "build": "react-scripts build",
