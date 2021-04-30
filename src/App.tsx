@@ -1,9 +1,11 @@
+import React from "react";
+import {ThemeProvider} from "styled-components";
+import {aqBootstrapTheme} from "./stories/theme/defaultTheme";
 import "./App.scss";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { GettingStarted} from "./pages";
 import SignIn from "./pages/SignIn";
 import {Header} from "./stories/header/Header";
-import React from "react";
 import './i18n';
 
 const base = '/:locale(en|it)?';
@@ -11,7 +13,7 @@ const base = '/:locale(en|it)?';
 function App() {
 
   return (
-    <>
+    <ThemeProvider theme={aqBootstrapTheme}>
       <BrowserRouter>
         <Header showLogin={false}/>
         <Switch>
@@ -19,7 +21,7 @@ function App() {
           <Route path={`${base}/login`} component={SignIn} />
         </Switch>
       </BrowserRouter>
-    </>
+    </ThemeProvider>
   );
 }
 
