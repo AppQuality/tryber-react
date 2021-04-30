@@ -21,7 +21,7 @@ export const SignupForm = () => {
     surname: yup.string().required(),
     email: yup.string().email().required(),
     password: yup.string().min(8, 'password must be at least 8 character').required(),
-    subscribe: yup.boolean().oneOf([true], 'Must Accept Terms and Conditions')
+    subscribe: yup.boolean().oneOf([true], 'Must Accept Terms and Conditions').required()
   }
   return (
     <Formik
