@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header/>
+        <Header showLogin={false}/>
         <Switch>
           <Route path={`${base}/getting-started`} component={GettingStarted} />
           <Route path={`${base}/login`} component={SignIn} />
