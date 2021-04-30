@@ -23,8 +23,7 @@ const gridStyle = {
 	gridColumnGap: '50px'
 }
 
-const CardBody = styled.div(({theme: {grid}}) => {
-	return`
+const CardBody = styled.div(({theme: {grid}}) => (`
 	@media (min-width: ${grid.breakpoints.md}) {
 		display: grid;
 		grid-template-areas: 
@@ -35,8 +34,13 @@ const CardBody = styled.div(({theme: {grid}}) => {
 		grid-row-gap: 30px;
 		grid-column-gap: 50px;
 	}
-`
-});
+`));
+
+const CardSignupColumn = styled.div(({theme: {grid}}) => (`
+	@media (min-width: ${grid.breakpoints.md}) {
+		max-width: 280px;
+	}
+`));
 
 export default function GettingStarted({location}: PageInterface) {
   const { t } = useTranslation();
@@ -75,7 +79,7 @@ export default function GettingStarted({location}: PageInterface) {
 								<div style={{gridArea: 'a'}}>
 									<SignupForm />
 								</div>
-								<div style={{gridArea: 'b'}}>
+								<CardSignupColumn>
 									<p>{t("signup-with-social")}</p>
 									<p>{t("signup-with-social-description")}</p>
 									<div className="mb-2">
@@ -84,7 +88,7 @@ export default function GettingStarted({location}: PageInterface) {
 									<div className="mb-2">
 										<Button type="secondary" size="block" flat={true}>{t("linkedin")}</Button>
 									</div>
-								</div>
+								</CardSignupColumn>
 								<div style={{gridArea: 'c'}}>
 									<img src={signupImage} />
 								</div>
@@ -97,7 +101,7 @@ export default function GettingStarted({location}: PageInterface) {
 								<div style={{gridArea: 'a'}}>
 									<SignupForm />
 								</div>
-								<div style={{gridArea: 'b'}}>
+								<div style={{gridArea: 'b', maxWidth: '280px'}}>
 									<p>{t("signup-with-social")}</p>
 									<p>{t("signup-with-social-description")}</p>
 									<div className="mb-2">
