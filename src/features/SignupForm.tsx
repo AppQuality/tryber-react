@@ -5,6 +5,7 @@ import {Formik, Form} from "formik"
 import * as yup from 'yup'
 import { useTranslation } from 'react-i18next';
 import API from '../utils/api'
+import {Paragraph} from "../stories/typography/Typography";
 
 export const SignupForm = () => {
   const [isSubmitting, setSubmitting] = useState(false);
@@ -50,12 +51,12 @@ export const SignupForm = () => {
         <Field type="text" name='surname' label={t("surname")} />
         <Field type="email" name='email' label={t("email")} />
         <Field type="password" name='password' label={t("password")} />
-        <p>{t("password-requirements")}</p>
+        <Paragraph>{t("password-requirements")}</Paragraph>
         <Checkbox name='subscribe' label={t("accept-to-receive-email")} />
         <Button htmlType='submit' disabled={isSubmitting}>
           {(isSubmitting) ? '...wait' : t("signup-now")}
         </Button>
-        <p>{t("clicking-button-you-accept-tos")}</p>
+        <Paragraph>{t("clicking-button-you-accept-tos")}</Paragraph>
       </Form>
     </Formik>
   )
