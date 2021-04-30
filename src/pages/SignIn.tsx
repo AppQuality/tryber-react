@@ -12,7 +12,7 @@ export default function SignIn() {
     <Container>
       <h2>{t("become-a-tester")}</h2>
       <Grid>
-        <Col size={8}>
+        <Col size='8'>
           <Card>
             <LoginForm setToken={token.setToken} />
           </Card>

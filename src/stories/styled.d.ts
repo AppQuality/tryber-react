@@ -19,5 +19,15 @@ declare module 'styled-components' {
       primary: string
       secondary: string
     }
+    grid: {
+      breakpoints: {
+        sm: string
+        xs: string
+        md: string
+        lg: string
+        xl: string
+        xxl: string
+      }
+    }
   }
 }
