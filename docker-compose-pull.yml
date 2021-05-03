@@ -1,7 +1,6 @@
 version: "3"
 services:
   app:
-    build: .
     image: 163482350712.dkr.ecr.eu-west-1.amazonaws.com/appq-register-page
     ports:
-      - "3000:5000"
+      - "3000:80"
