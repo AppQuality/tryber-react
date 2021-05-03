@@ -1,5 +1,5 @@
 import React from "react";
-import {Col, Container, Grid} from "../stories/layout/Layout";
+import {BSCol, Container, BSGrid} from "../stories/layout/Layout";
 import {Card} from "../stories/card/Card";
 import LoginForm from "../features/LoginForm";
 import useToken from "../store/useToken";
@@ -11,13 +11,13 @@ export default function SignIn() {
   return (
     <Container>
       <h2>{t("become-a-tester")}</h2>
-      <Grid>
-        <Col size='8'>
+      <BSGrid>
+        <BSCol size='lg-8'>
           <Card>
             <LoginForm setToken={token.setToken} />
           </Card>
-        </Col>
-      </Grid>
+        </BSCol>
+      </BSGrid>
     </Container>
   );
 }
