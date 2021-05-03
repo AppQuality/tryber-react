@@ -14,8 +14,9 @@ const aqBootstrapTheme:DefaultTheme = {
     },
   },
   palette: {
-    primary: '#266A9AFF',
-    secondary: ''
+    primary: '#17405C',
+    secondary: '#448098',
+    disabledFont: '#8EA2AE'
   },
   grid: {
     breakpoints: {

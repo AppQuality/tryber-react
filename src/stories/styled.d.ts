@@ -18,6 +18,7 @@ declare module 'styled-components' {
     palette: {
       primary: string
       secondary: string
+      disabledFont: string
     }
     grid: {
       breakpoints: {

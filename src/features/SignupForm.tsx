@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Checkbox, Field} from "../stories/form/Form"
 import {Button} from "../stories/button/Button"
 import {Formik, Form, FormikProps} from "formik"
@@ -44,22 +44,20 @@ export const SignupForm = () => {
       validationSchema={yup.object(validationSchema)}
       initialValues={initialValues}
     >
-      {(props: FormikProps<any>) => {
-        console.log(props);
-        return(
+      {(props: FormikProps<any>) => (
           <Form>
             <Field type="text" name='name' label={t("name")} />
             <Field type="text" name='surname' label={t("surname")} />
             <Field type="email" name='email' label={t("email")} />
             <Field type="password" name='password' label={t("password")} />
-            <Paragraph small>{t("password-requirements")}</Paragraph>
+            <Paragraph color='disabledFont' small>{t("password-requirements")}</Paragraph>
             <Checkbox name='subscribe' label={t("accept-to-receive-email")} />
             <Button size='block' htmlType='submit' flat disabled={props.isSubmitting || !props.isValid}>
               {(props.isSubmitting) ? '...wait' : t("signup-now")}
             </Button>
-            <Paragraph small>{t("clicking-button-you-accept-tos")}</Paragraph>
+            <Paragraph color='disabledFont' small>{t("clicking-button-you-accept-tos")}</Paragraph>
           </Form>
-      )}}
+      )}
     </Formik>
   )
 }
