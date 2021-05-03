@@ -1,14 +1,13 @@
 import React, {useState} from 'react'
 import {Checkbox, Field} from "../stories/form/Form"
 import {Button} from "../stories/button/Button"
-import {Formik, Form} from "formik"
+import {Formik, Form, FormikProps} from "formik"
 import * as yup from 'yup'
 import { useTranslation } from 'react-i18next';
 import API from '../utils/api'
 import {Paragraph} from "../stories/typography/Typography";
 
 export const SignupForm = () => {
-  const [isSubmitting, setSubmitting] = useState(false);
   const { t, i18n } = useTranslation();
   const initialValues = {
     name: '',
@@ -26,8 +25,7 @@ export const SignupForm = () => {
   }
   return (
     <Formik
-      onSubmit={async values => {
-        setSubmitting(true);
+      onSubmit={async (values, actions) => {
         try {
           const data = {
             name: values.name,
@@ -41,23 +39,27 @@ export const SignupForm = () => {
         } catch (e) {
           alert(e.message);
         }
-        setSubmitting(false);
+        actions.setSubmitting(false);
       }}
       validationSchema={yup.object(validationSchema)}
       initialValues={initialValues}
     >
-      <Form>
-        <Field type="text" name='name' label={t("name")} />
-        <Field type="text" name='surname' label={t("surname")} />
-        <Field type="email" name='email' label={t("email")} />
-        <Field type="password" name='password' label={t("password")} />
-        <Paragraph small>{t("password-requirements")}</Paragraph>
-        <Checkbox name='subscribe' label={t("accept-to-receive-email")} />
-        <Button htmlType='submit' disabled={isSubmitting}>
-          {(isSubmitting) ? '...wait' : t("signup-now")}
-        </Button>
-        <Paragraph small>{t("clicking-button-you-accept-tos")}</Paragraph>
-      </Form>
+      {(props: FormikProps<any>) => {
+        console.log(props);
+        return(
+          <Form>
+            <Field type="text" name='name' label={t("name")} />
+            <Field type="text" name='surname' label={t("surname")} />
+            <Field type="email" name='email' label={t("email")} />
+            <Field type="password" name='password' label={t("password")} />
+            <Paragraph small>{t("password-requirements")}</Paragraph>
+            <Checkbox name='subscribe' label={t("accept-to-receive-email")} />
+            <Button size='block' htmlType='submit' flat disabled={props.isSubmitting || !props.isValid}>
+              {(props.isSubmitting) ? '...wait' : t("signup-now")}
+            </Button>
+            <Paragraph small>{t("clicking-button-you-accept-tos")}</Paragraph>
+          </Form>
+      )}}
     </Formik>
   )
 }
