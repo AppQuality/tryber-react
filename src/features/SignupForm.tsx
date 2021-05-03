@@ -52,7 +52,7 @@ export const SignupForm = () => {
             <Field type="password" name='password' label={t("password")} />
             <Paragraph color='disabledFont' small>{t("password-requirements")}</Paragraph>
             <Checkbox name='subscribe' label={t("accept-to-receive-email")} />
-            <Button size='block' htmlType='submit' flat disabled={props.isSubmitting || !props.isValid}>
+            <Button size='block' htmlType='submit' flat disabled={props.isSubmitting || !props.dirty || !props.isValid }>
               {(props.isSubmitting) ? '...wait' : t("signup-now")}
             </Button>
             <Paragraph color='disabledFont' small>{t("clicking-button-you-accept-tos")}</Paragraph>
