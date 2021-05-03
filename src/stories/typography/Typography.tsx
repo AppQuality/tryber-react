@@ -1,8 +1,9 @@
 import React from "react";
-import styled, {css, DefaultTheme} from "styled-components";
+import styled, {DefaultTheme} from "styled-components";
 
 export interface TypographyProps {
-  theme: DefaultTheme
+  theme: DefaultTheme,
+  color?: keyof DefaultTheme['palette']
 }
 
 export interface ParagraphProps extends TypographyProps {
