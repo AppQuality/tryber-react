@@ -65,6 +65,7 @@ $btn-icon-padding-x-lg: 0;
 .btn-block
 {
   width: 100%;
+  max-width: 300px;
 }
 
 
@@ -77,8 +78,7 @@ $btn-icon-padding-x-lg: 0;
   $disabled-background: $disabled,
   $disabled-color: $disabled-dark
   );
-
-
+  margin-bottom: 1rem;
 }
 @each $color, $value in $theme-colors
 {

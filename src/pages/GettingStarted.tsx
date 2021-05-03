@@ -27,12 +27,8 @@ export default function GettingStarted({location}: PageInterface) {
 								<div className='signup-with-email'>
 									<p>{t("signup-with-social")}</p>
 									<p>{t("signup-with-social-description")}</p>
-									<div className="mb-2">
-										<Button type="primary" size="block" flat >{t("facebook")}</Button>
-									</div>
-									<div className="mb-2">
-										<Button type="secondary" size="block" flat>{t("linkedin")}</Button>
-									</div>
+									<Button type="primary" size="block" flat >{t("facebook")}</Button>
+									<Button type="secondary" size="block" flat>{t("linkedin")}</Button>
 									<img src={signupImage} />
 								</div>
 							</CSSGrid>
