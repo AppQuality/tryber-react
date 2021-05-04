@@ -3,7 +3,7 @@ import {Checkbox, Field} from "../stories/form/Form"
 import {Button} from "../stories/button/Button"
 import {Formik, Form, FormikProps} from "formik"
 import * as yup from 'yup'
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import API from '../utils/api'
 import {Paragraph} from "../stories/typography/Typography";
 
@@ -12,7 +12,7 @@ interface SignupFormProps {
 }
 
 export const SignupForm = ({redirectUrl}: SignupFormProps) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const initialValues = {
     name: '',
     surname: '',
@@ -52,12 +52,17 @@ export const SignupForm = ({redirectUrl}: SignupFormProps) => {
             <Field type="text" name='surname' label={t("surname")} />
             <Field type="email" name='email' label={t("email")} />
             <Field type="password" name='password' label={t("password")} />
-            <Paragraph color='disabledFont' small>{t("password-requirements")}</Paragraph>
+            <Paragraph color='disabledFont' small>{t("password-req")}</Paragraph>
             <Checkbox name='subscribe' label={t("accept-to-receive-email")} />
             <Button size='block' htmlType='submit' flat disabled={props.isSubmitting || !props.dirty || !props.isValid }>
               {(props.isSubmitting) ? '...wait' : t("signup-now")}
             </Button>
-            <Paragraph color='disabledFont' small>{t("clicking-button-you-accept-tos")}</Paragraph>
+            <Paragraph color='disabledFont' small>
+              <Trans i18nKey="clicking-button-you-accept-tos">
+                By clicking this button, you accept the <a target="_blank" href={t('termsLink')}>Terms</a>
+                and <a target="_blank" rel="noopener noreferrer" href={t('privacyLink')}>Privacy Policy</a>
+              </Trans>
+            </Paragraph>
           </Form>
       )}
     </Formik>

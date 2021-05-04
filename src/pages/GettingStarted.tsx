@@ -26,7 +26,7 @@ export default function GettingStarted() {
 				alert(e.message);
 			}
 		});
-	}, []);
+	}, [redirectUrl]);
 
   return (
 		<Container>
