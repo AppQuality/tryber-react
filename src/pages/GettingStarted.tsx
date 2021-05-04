@@ -33,12 +33,11 @@ export default function GettingStarted() {
   }, [redirectUrl]);
 
   const signupWithFb = () => {
-    window.location.href =
-      "/wp-admin/admin-ajax.php?loc=getting-started&action=facebook_oauth_redirect&log=0";
+    window.location.href = `/wp-admin/admin-ajax.php?loc=${redirectUrl}&action=facebook_oauth_redirect&log=0`;
   };
   const signupWithLn = () => {
     window.location.href =
-      "/wp-admin/admin-ajax.php?loc=getting-started&action=linkedin_oauth_redirect&log=0";
+      `/wp-admin/admin-ajax.php?loc=${redirectUrl}&action=linkedin_oauth_redirect&log=0`;
   };
   return (
     <Container>
