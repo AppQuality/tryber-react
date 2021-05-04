@@ -45,7 +45,9 @@ export const Header = ({ user, logo, showLogin = true }: HeaderProps) => {
       <div className='brand-logo'>
         {(logo)
           ? {logo}
-          : <img alt='logo' src='https://crowd.app-quality.com/wp-content/themes/crowdappquality/img/aq_vector_logo_light_crowd.svg' />
+          : <a href='https://crowd.app-quality.com/'>
+              <img alt='logo' src='https://crowd.app-quality.com/wp-content/themes/crowdappquality/img/aq_vector_logo_light_crowd.svg' />
+            </a>
         }
       </div>
       <div className='header-menu'>
