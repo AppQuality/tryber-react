@@ -26,7 +26,19 @@ export const SignupForm = ({ redirectUrl }: SignupFormProps) => {
     email: yup.string().email().required(),
     password: yup
       .string()
-      .min(8, "password must be at least 8 character")
+      .min(6, t("Must be at least 6 character long"))
+      .matches(
+        /[0-9]/,
+        t("Must contain at least a number")
+      )
+      .matches(
+        /[A-Z]/,
+        t("Must contain at least an uppercase letter")
+      )
+      .matches(
+        /[a-z]/,
+        t("Must contain at least a lowercase letter")
+      )
       .required(),
     subscribe: yup
       .boolean()
