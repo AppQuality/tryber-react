@@ -1,21 +1,20 @@
-import React, { useEffect,useState } from "react";
-import { Container, BSGrid, BSCol, CSSGrid } from "../stories/layout/Layout";
-import { Card } from "../stories/card/Card";
-import { Button } from "../stories/button/Button";
-import { H5, Paragraph } from "../stories/typography/Typography";
-import { SignupForm } from "../features/SignupForm";
-import { useTranslation } from "react-i18next";
-import signupImage from "./assets/group-236.png";
-import API from "../utils/api";
+import React, { useEffect,useState } from "react"
+import { Container, BSGrid, BSCol, CSSGrid } from "../stories/layout/Layout"
+import { Card } from "../stories/card/Card"
+import Spinner from "../stories/spinner/Spinner"
+import { Button } from "../stories/button/Button"
+import { H5, Paragraph } from "../stories/typography/Typography"
+import { SignupForm } from "../features/SignupForm"
+import { useTranslation } from "react-i18next"
+import signupImage from "./assets/group-236.png"
+import API from "../utils/api"
+import styled from "styled-components"
 
-export interface PageInterface {
-  location: string;
-}
 
 export default function GettingStarted() {
   const [isLoading, setisLoading] = useState(true);
-  const [loadingMessage, setLoadingMessage] = useState("Loading");
   const { t, i18n } = useTranslation();
+  const [loadingMessage, setLoadingMessage] = useState(t("Loading"));
   const redirectUrl =
     i18n.language === "en" ? "/my-dashboard/" : "/it/la-mia-dashboard/";
 
@@ -23,7 +22,7 @@ export default function GettingStarted() {
     API.me()
       .then((res) => {
         // user logged in
-        setLoadingMessage('Redirecting...')
+        setLoadingMessage(t('Redirecting to your dashboard...'))
         window.location.href = redirectUrl;
       })
       .catch((e) => {
@@ -43,8 +42,22 @@ export default function GettingStarted() {
     window.location.href =
       `/wp-admin/admin-ajax.php?loc=${redirectUrl}&action=linkedin_oauth_redirect&log=0`;
   };
+  const SpinnerWrapper = styled.div`
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    min-height: 60vh;
+  `
   if (isLoading) {
-    return <Container>{loadingMessage}</Container>
+    return (
+      <Container>
+        <SpinnerWrapper>
+          <Spinner/><H5>{loadingMessage}</H5>
+        </SpinnerWrapper>
+      </Container>
+    )
   }
   return (
     <Container>
