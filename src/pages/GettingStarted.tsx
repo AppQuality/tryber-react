@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { Container, BSGrid, BSCol, CSSGrid } from "../stories/layout/Layout";
 import { Card } from "../stories/card/Card";
 import { Button } from "../stories/button/Button";
@@ -13,6 +13,8 @@ export interface PageInterface {
 }
 
 export default function GettingStarted() {
+  const [isLoading, setisLoading] = useState(true);
+  const [loadingMessage, setLoadingMessage] = useState("Loading");
   const { t, i18n } = useTranslation();
   const redirectUrl =
     i18n.language === "en" ? "/my-dashboard/" : "/it/la-mia-dashboard/";
@@ -21,10 +23,12 @@ export default function GettingStarted() {
     API.me()
       .then((res) => {
         // user logged in
+        setLoadingMessage('Redirecting...')
         window.location.href = redirectUrl;
       })
       .catch((e) => {
         if (e.statusCode === 403) {
+          setisLoading(false)
           // user logged out, proceed
         } else {
           alert(e.message);
@@ -39,6 +43,9 @@ export default function GettingStarted() {
     window.location.href =
       `/wp-admin/admin-ajax.php?loc=${redirectUrl}&action=linkedin_oauth_redirect&log=0`;
   };
+  if (isLoading) {
+    return <Container>{loadingMessage}</Container>
+  }
   return (
     <Container>
       <h2>{t("become-a-tester")}</h2>
