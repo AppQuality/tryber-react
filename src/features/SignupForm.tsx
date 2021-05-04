@@ -75,11 +75,11 @@ export const SignupForm = ({ redirectUrl }: SignupFormProps) => {
           </Button>
           <Paragraph color="disabledFont" small>
             <Trans i18nKey="clicking-button-you-accept-tos">
-              By clicking this button, you accept the{" "}
+              By clicking this button, you accept the
               <a target="_blank" href={t("termsLink")} rel="noreferrer">
                 Terms
               </a>
-              and{" "}
+              and
               <a
                 target="_blank"
                 rel="noopener noreferrer"
