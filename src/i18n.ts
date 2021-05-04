@@ -19,10 +19,9 @@ i18n
 			order: ['querystring', 'path', 'subdomain'],
 		},
     resources,
+    supportedLngs: ['it', 'en'],
     fallbackLng: "en",
-
     keySeparator: false, // we do not use keys in form messages.welcome
-
     interpolation: {
       escapeValue: false // react already safes from xss
     }
