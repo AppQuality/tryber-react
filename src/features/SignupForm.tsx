@@ -1,32 +1,38 @@
-import React from 'react'
-import {Checkbox, Field} from "../stories/form/Form"
-import {Button} from "../stories/button/Button"
-import {Formik, Form, FormikProps} from "formik"
-import * as yup from 'yup'
-import { useTranslation, Trans } from 'react-i18next';
-import API from '../utils/api'
-import {Paragraph} from "../stories/typography/Typography";
+import React from "react";
+import { Checkbox, Field } from "../stories/form/Form";
+import { Button } from "../stories/button/Button";
+import { Formik, Form, FormikProps } from "formik";
+import * as yup from "yup";
+import { useTranslation, Trans } from "react-i18next";
+import API from "../utils/api";
+import { Paragraph, H5 } from "../stories/typography/Typography";
 
 interface SignupFormProps {
-  redirectUrl: string
+  redirectUrl: string;
 }
 
-export const SignupForm = ({redirectUrl}: SignupFormProps) => {
+export const SignupForm = ({ redirectUrl }: SignupFormProps) => {
   const { t } = useTranslation();
   const initialValues = {
-    name: '',
-    surname: '',
-    email: '',
-    password: '',
-    subscribe: ''
+    name: "",
+    surname: "",
+    email: "",
+    password: "",
+    subscribe: "",
   };
   const validationSchema = {
     name: yup.string().required(),
     surname: yup.string().required(),
     email: yup.string().email().required(),
-    password: yup.string().min(8, 'password must be at least 8 character').required(),
-    subscribe: yup.boolean().oneOf([true], 'Must Accept Terms and Conditions').required()
-  }
+    password: yup
+      .string()
+      .min(8, "password must be at least 8 character")
+      .required(),
+    subscribe: yup
+      .boolean()
+      .oneOf([true], "Must Accept Terms and Conditions")
+      .required(),
+  };
   return (
     <Formik
       onSubmit={async (values, actions) => {
@@ -35,9 +41,11 @@ export const SignupForm = ({redirectUrl}: SignupFormProps) => {
             name: values.name,
             surname: values.surname,
             password: values.password,
-            email: values.email
+            email: values.email,
           };
-          API.signup(data).then(() => {window.location.href = redirectUrl});
+          API.signup(data).then(() => {
+            window.location.href = redirectUrl;
+          });
         } catch (e) {
           alert(e.message);
         }
@@ -47,24 +55,42 @@ export const SignupForm = ({redirectUrl}: SignupFormProps) => {
       initialValues={initialValues}
     >
       {(props: FormikProps<any>) => (
-          <Form>
-            <Field type="text" name='name' label={t("name")} />
-            <Field type="text" name='surname' label={t("surname")} />
-            <Field type="email" name='email' label={t("email")} />
-            <Field type="password" name='password' label={t("password")} />
-            <Paragraph color='disabledFont' small>{t("password-req")}</Paragraph>
-            <Checkbox name='subscribe' label={t("accept-to-receive-email")} />
-            <Button size='block' htmlType='submit' flat disabled={props.isSubmitting || !props.dirty || !props.isValid }>
-              {(props.isSubmitting) ? '...wait' : t("signup-now")}
-            </Button>
-            <Paragraph color='disabledFont' small>
-              <Trans i18nKey="clicking-button-you-accept-tos">
-                By clicking this button, you accept the <a target="_blank" href={t('termsLink')}>Terms</a>
-                and <a target="_blank" rel="noopener noreferrer" href={t('privacyLink')}>Privacy Policy</a>
-              </Trans>
-            </Paragraph>
-          </Form>
+        <Form>
+          <H5>{t("Create an account")}</H5>
+          <Field type="text" name="name" label={t("name")} />
+          <Field type="text" name="surname" label={t("surname")} />
+          <Field type="email" name="email" label={t("email")} />
+          <Field type="password" name="password" label={t("password")} />
+          <Paragraph color="disabledFont" small>
+            {t("password-req")}
+          </Paragraph>
+          <Checkbox name="subscribe" label={t("accept-to-receive-email")} />
+          <Button
+            size="block"
+            htmlType="submit"
+            flat
+            disabled={props.isSubmitting || !props.dirty || !props.isValid}
+          >
+            {props.isSubmitting ? "...wait" : t("signup-now")}
+          </Button>
+          <Paragraph color="disabledFont" small>
+            <Trans i18nKey="clicking-button-you-accept-tos">
+              By clicking this button, you accept the{" "}
+              <a target="_blank" href={t("termsLink")} rel="noreferrer">
+                Terms
+              </a>
+              and{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={t("privacyLink")}
+              >
+                Privacy Policy
+              </a>
+            </Trans>
+          </Paragraph>
+        </Form>
       )}
     </Formik>
-  )
-}
+  );
+};

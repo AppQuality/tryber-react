@@ -10,7 +10,8 @@ const aqBootstrapTheme:DefaultTheme = {
       small: '.75rem'
     },
     fontWeight: {
-      light: 300
+      light: 300,
+      bold: 700
     },
   },
   palette: {

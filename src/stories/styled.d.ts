@@ -12,7 +12,8 @@ declare module 'styled-components' {
         small: string
       }
       fontWeight: {
-        light: number
+        light: number,
+        bold: number
       }
     }
     palette: {
