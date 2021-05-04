@@ -2,7 +2,7 @@ import React from "react";
 import {ThemeProvider} from "styled-components";
 import {aqBootstrapTheme} from "./stories/theme/defaultTheme";
 import "./App.scss";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { GettingStarted} from "./pages";
 import SignIn from "./pages/SignIn";
 import {Header} from "./stories/header/Header";
@@ -18,6 +18,9 @@ function App() {
         <Header showLogin={false}/>
         <Switch>
           <Route path={`${base}/getting-started`} component={GettingStarted} />
+          <Route path={`${base}/it/getting-started-2`}>
+            <Redirect to="/it/getting-started" />
+          </Route>
           <Route path={`${base}/login`} component={SignIn} />
         </Switch>
       </BrowserRouter>
