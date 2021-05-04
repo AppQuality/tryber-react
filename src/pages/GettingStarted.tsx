@@ -34,11 +34,11 @@ export default function GettingStarted() {
 
   const signupWithFb = () => {
     window.location.href =
-      "https://crowd.app-quality.com/wp-admin/admin-ajax.php?loc=getting-started&action=facebook_oauth_redirect&log=0";
+      "/wp-admin/admin-ajax.php?loc=getting-started&action=facebook_oauth_redirect&log=0";
   };
   const signupWithLn = () => {
     window.location.href =
-      "https://crowd.app-quality.com/wp-admin/admin-ajax.php?loc=getting-started&action=linkedin_oauth_redirect&log=0";
+      "/wp-admin/admin-ajax.php?loc=getting-started&action=linkedin_oauth_redirect&log=0";
   };
   return (
     <Container>
