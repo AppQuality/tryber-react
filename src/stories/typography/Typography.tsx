@@ -1,4 +1,4 @@
-import styled, {DefaultTheme} from "styled-components";
+import styled, {DefaultTheme} from "styled-components"
 
 export interface TypographyProps {
   theme: DefaultTheme,

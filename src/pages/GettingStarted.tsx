@@ -13,7 +13,7 @@ export interface PageInterface {
 
 export default function GettingStarted() {
   const { t, i18n } = useTranslation();
-  const redirectUrl = (i18n.language === 'en') ? 'https://crowd.app-quality.com/my-dashboard/' : 'https://crowd.app-quality.com/it/la-mia-dashboard/';
+  const redirectUrl = (i18n.language === 'en') ? '/my-dashboard/' : '/it/la-mia-dashboard/';
 
   useEffect( () => {
 		API.me().then((res) => {
@@ -28,6 +28,12 @@ export default function GettingStarted() {
 		});
 	}, [redirectUrl]);
 
+  const signupWithFb = () => {
+  	window.location.href = 'https://crowd.app-quality.com/wp-admin/admin-ajax.php?loc=getting-started&action=facebook_oauth_redirect&log=0';
+	};
+  const signupWithLn = () => {
+  	window.location.href = 'https://crowd.app-quality.com/wp-admin/admin-ajax.php?loc=getting-started&action=linkedin_oauth_redirect&log=0';
+	};
   return (
 		<Container>
       <h2>{t("become-a-tester")}</h2>
@@ -40,8 +46,8 @@ export default function GettingStarted() {
 								<div className='signup-with-email'>
 									<p>{t("signup-with-social")}</p>
 									<p>{t("signup-with-social-description")}</p>
-									<Button type="primary" size="block" flat >{t("facebook")}</Button>
-									<Button type="secondary" size="block" flat>{t("linkedin")}</Button>
+									<Button type="primary" size="block" flat onClick={signupWithFb}>{t("facebook")}</Button>
+									<Button type="secondary" size="block" flat onClick={signupWithLn}>{t("linkedin")}</Button>
 									<img src={signupImage} />
 								</div>
 							</CSSGrid>
