@@ -7,7 +7,11 @@ import { useTranslation } from 'react-i18next';
 import API from '../utils/api'
 import {Paragraph} from "../stories/typography/Typography";
 
-export const SignupForm = () => {
+interface SignupFormProps {
+  redirectUrl: string
+}
+
+export const SignupForm = ({redirectUrl}: SignupFormProps) => {
   const { t, i18n } = useTranslation();
   const initialValues = {
     name: '',
@@ -33,9 +37,7 @@ export const SignupForm = () => {
             password: values.password,
             email: values.email
           };
-          const res = await API.signup(data);
-          if (i18n.language === 'en') window.location.assign('https://crowd.app-quality.com/my-dashboard/')
-          if (i18n.language === 'it') window.location.assign('https://crowd.app-quality.com/it/la-mia-dashboard/')
+          API.signup(data).then(() => {window.location.href = redirectUrl});
         } catch (e) {
           alert(e.message);
         }

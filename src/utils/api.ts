@@ -1,6 +1,14 @@
 import config from '../config.json'
 import {operations} from './schema'
 
+class HttpError extends Error {
+	statusCode: number
+	constructor(message: string, statusCode: number) {
+		super(message); // (1)
+		this.name = "HttpError"; // (2)
+		this.statusCode = statusCode;
+	}
+}
 
 const API = {
 	login: (credentials:operations['post-authenticate']['requestBody']['content']["application/json"]) => {
@@ -29,27 +37,35 @@ const API = {
     })
     	.then((res) => res.json())
 	},
-	me: (token:string) => {
+	me: async (token?:string) => {
 		const requestHeaders: HeadersInit = new Headers();
 		requestHeaders.set('Content-Type', 'application/json');
 		if (token) {
 			requestHeaders.set('Authorization',  "Bearer " + token);
 		}
-		return fetch(`${config.api}/me`, {
-      method: "GET",
-      headers: requestHeaders,
-    })
-  	.then((res) => res.json())
+		const res = await fetch(`${config.api}/users/me`, {
+			method: "GET",
+			headers: requestHeaders,
+		});
+		if (res.ok) {
+			return res.json();
+		} else {
+			throw new HttpError(res.statusText, res.status)
+		}
 	},
-	signup: (data:operations['post-users']['requestBody']['content']["application/json"]) => {
+	signup: async (data:operations['post-users']['requestBody']['content']["application/json"]) => {
 		const requestHeaders: HeadersInit = new Headers();
 		requestHeaders.set('Content-Type', 'application/json');
-		return fetch(`${config.api}/users`, {
+		const res = await fetch(`${config.api}/users`, {
       method: "POST",
       headers: requestHeaders,
     	body: JSON.stringify(data)
     })
-  	.then((res) => res.json())
+		if (res.ok) {
+			return res.json();
+		} else {
+			throw new HttpError(res.statusText, res.status)
+		}
 	}
 }
 
