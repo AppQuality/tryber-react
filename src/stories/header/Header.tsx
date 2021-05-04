@@ -2,6 +2,7 @@ import React from 'react'
 import {Button} from '../button/Button'
 import './header.scss'
 import { useHistory } from "react-router-dom"
+import {useTranslation} from "react-i18next";
 
 export interface User {
   id: number
@@ -24,6 +25,7 @@ export interface UserInfoProps {
 
 export const Header = ({ user, logo, showLogin = true }: HeaderProps) => {
   let history = useHistory();
+  const {i18n} = useTranslation();
 
   const UserInfo = ({user}: UserInfoProps) => (
     <div className='user-info'>
@@ -45,7 +47,7 @@ export const Header = ({ user, logo, showLogin = true }: HeaderProps) => {
       <div className='brand-logo'>
         {(logo)
           ? {logo}
-          : <a href='https://crowd.app-quality.com/'>
+          : <a href={`/${(i18n.language === 'it' && i18n.language)}`}>
               <img alt='logo' src='https://crowd.app-quality.com/wp-content/themes/crowdappquality/img/aq_vector_logo_light_crowd.svg' />
             </a>
         }
