@@ -49,20 +49,18 @@ export const SignupForm = ({ redirectUrl, formId = 'signupForm' }: SignupFormPro
   return (
     <Formik
       onSubmit={async (values, actions) => {
-        try {
-          const data = {
-            name: values.name,
-            surname: values.surname,
-            password: values.password,
-            email: values.email,
-          };
-          API.signup(data).then(() => {
-            window.location.href = redirectUrl;
-          });
-        } catch (e) {
-          alert(e.message);
-        }
-        actions.setSubmitting(false);
+        const data = {
+          name: values.name,
+          surname: values.surname,
+          password: values.password,
+          email: values.email,
+        };
+        API.signup(data).then(() => {
+          window.location.href = redirectUrl;
+        })
+        .catch(e => alert(e.message))
+        .finally(() => actions.setSubmitting(false));
+        
       }}
       validationSchema={yup.object(validationSchema)}
       initialValues={initialValues}
