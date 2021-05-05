@@ -27,7 +27,7 @@ const weakPasswords = ["pippo", "pippofranco", "pippofranco0", "pippoFranco"];
 beforeEach(() => {
   const { debug } = render(
     <ThemeProvider theme={aqBootstrapTheme}>
-      <SignupForm redirectUrl="" />
+      <SignupForm redirectUrl="/" />
     </ThemeProvider>
   );
 });
@@ -132,4 +132,27 @@ describe('Weak Passwords', () => {
       });
     }
   );
+})
+
+test("SignupForm should call the signup api on submit", async () => {
+  mockedApi.signup.mockResolvedValueOnce(signupData);
+
+  userEvent.type(screen.getByLabelText("Name"), signupData.name);
+  userEvent.type(screen.getByLabelText("Surname"), signupData.surname);
+  userEvent.type(screen.getByLabelText("Email"), signupData.email);
+  userEvent.type(screen.getByLabelText("Password"), signupData.password);
+  userEvent.click(
+    screen.getByLabelText(
+      "I agree to receive earning opportunity emails from AppQuality"
+    )
+  );
+
+  await waitFor(() => {
+    expect(screen.getByRole("button")).not.toHaveAttribute("disabled");
+  });
+
+  userEvent.click(screen.getByRole("button"))
+  await waitFor(() =>
+    expect(API.signup).toHaveBeenCalledWith(signupData)
+  )
 })
