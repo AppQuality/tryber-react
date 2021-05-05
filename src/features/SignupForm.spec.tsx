@@ -1,4 +1,3 @@
-import * as React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
@@ -28,7 +27,7 @@ const weakPasswords = ["pippo", "pippofranco", "pippofranco0", "pippoFranco"];
 beforeEach(() => {
   const { debug } = render(
     <ThemeProvider theme={aqBootstrapTheme}>
-      <SignupForm redirectUrl='' />
+      <SignupForm redirectUrl="" />
     </ThemeProvider>
   );
 });
@@ -86,51 +85,51 @@ test("SignupForm button should be disabled until all input are filled correctly"
 test("SignupForm fields should show a validation error when not validating", async () => {
   expect(screen.getByText("Create an account")).toBeInTheDocument();
 
-	screen.getByLabelText("Name").focus()
-	screen.getByLabelText("Name").blur()
+  screen.getByLabelText("Name").focus();
+  screen.getByLabelText("Name").blur();
   await waitFor(() => {
-		expect(screen.getByLabelText("Name").classList.contains('is-invalid')).toBe(true)
+    expect(screen.getByLabelText("Name").classList.contains("is-invalid")).toBe(
+      true
+    );
   });
 
-	screen.getByLabelText("Surname").focus()
-	screen.getByLabelText("Surname").blur()
+  screen.getByLabelText("Surname").focus();
+  screen.getByLabelText("Surname").blur();
   await waitFor(() => {
-		expect(screen.getByLabelText("Surname").classList.contains('is-invalid')).toBe(true)
-  });
-	
-	screen.getByLabelText("Email").focus()
-	screen.getByLabelText("Email").blur()
-  await waitFor(() => {
-		expect(screen.getByLabelText("Email").classList.contains('is-invalid')).toBe(true)
-  });
-	
-	screen.getByLabelText("Password").focus()
-	screen.getByLabelText("Password").blur()
-  await waitFor(() => {
-		expect(screen.getByLabelText("Password").classList.contains('is-invalid')).toBe(true)
+    expect(
+      screen.getByLabelText("Surname").classList.contains("is-invalid")
+    ).toBe(true);
   });
 
-  // const promises = weakPasswords.map(async (weakPassword) => {
-  // 	userEvent.type(screen.getByLabelText("Password"), weakPassword);
-  // 	await waitFor(() => {
-  //     expect(screen.getByLabelText("Password")).toHaveValue(weakPassword);
-  // 		expect(screen.getByLabelText("Password").classList.contains('is-invalid')).toBe(true)
-  //   });
-  // });
-  // await Promise.allSettled(promises);
+  screen.getByLabelText("Email").focus();
+  screen.getByLabelText("Email").blur();
+  await waitFor(() => {
+    expect(
+      screen.getByLabelText("Email").classList.contains("is-invalid")
+    ).toBe(true);
+  });
 
-  // console.error
-  // Warning: You seem to have overlapping act() calls, this is not supported. Be sure to await previous act() calls before making a new one.
+  screen.getByLabelText("Password").focus();
+  screen.getByLabelText("Password").blur();
+  await waitFor(() => {
+    expect(
+      screen.getByLabelText("Password").classList.contains("is-invalid")
+    ).toBe(true);
+  });
 });
 
-test.each(weakPasswords) (
-  "writing %p as password, returns an invalid feedback",
-  async (weakPassword) => {
-    userEvent.type(screen.getByLabelText("Password"), weakPassword);
-    screen.getByLabelText("Password").blur()
-    await waitFor(() => {
-      expect(screen.getByLabelText("Password")).toHaveValue(weakPassword);
-      expect(screen.getByLabelText("Password").classList.contains('is-invalid')).toBe(true)
-    });
-  }
-)
+describe('Weak Passwords', () => {
+  test.each(weakPasswords)(
+    "writing %p as password, returns an invalid feedback",
+    async (weakPassword) => {
+      userEvent.type(screen.getByLabelText("Password"), weakPassword);
+      screen.getByLabelText("Password").blur();
+      await waitFor(() => {
+        expect(screen.getByLabelText("Password")).toHaveValue(weakPassword);
+        expect(
+          screen.getByLabelText("Password").classList.contains("is-invalid")
+        ).toBe(true);
+      });
+    }
+  );
+})
