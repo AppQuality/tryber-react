@@ -19,7 +19,7 @@ export interface LayoutProps {
 
 export interface CSSGridProps {
   gutter?: string
-  min?: string
+  min: string
   max?: string
   fill?: boolean
   maxWidth?: string
@@ -38,9 +38,9 @@ export const BSGrid = ({children,gutter}:LayoutProps) => {
 }
 
 
-export const BSCol = ({children,size}:LayoutProps) => {
+export const BSCol = ({children, size='col'}:LayoutProps) => {
   return (
-    <div className={`col-${size}`}>
+    <div className={`${size}`}>
       {children}
     </div>
   )
@@ -51,7 +51,8 @@ export const CSSGrid = styled.div(({gutter, min, max, fill = false, maxWidth}: C
   display: grid;
 	grid-template-columns: repeat(${fill ? 'auto-fill' : 'auto-fit'}, minmax(${min || '1fr'}, ${max || '1fr'}));
 	grid-gap: ${gutter || '1rem'};
-	${maxWidth ? 'max-width: ' + maxWidth : ''}: 
+	${maxWidth ? 'max-width: ' + maxWidth : ''};
+	margin: 0 auto;
   `
 })
 
