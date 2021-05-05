@@ -1,19 +1,18 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { LoggedOutHeader, LoggedInHeader } from './Header.stories';
+import "../../i18n";
+
 
 describe('logged out site-header', () => {
   it('should render with the correct text', () => {
-    const { getByText } = render(<LoggedOutHeader />);
-    const rendered = getByText('login');
-    expect(rendered).toBeTruthy();
+    render(<LoggedOutHeader {...LoggedOutHeader.args} />);
+    expect(screen.getByText("login")).toBeInTheDocument();
   });
 });
 
 describe('logged in site-header', () => {
   it('should render with the correct text', () => {
-    const { getByText } = render(<LoggedInHeader />);
-    const rendered = getByText('logout');
-    expect(rendered).toBeTruthy();
+    render(<LoggedInHeader {...LoggedInHeader.args} />);
+    expect(screen.getByText("logout")).toBeInTheDocument();
   });
 });
