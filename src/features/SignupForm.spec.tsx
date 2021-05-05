@@ -16,12 +16,24 @@ jest.mock("../utils/api");
 
 const mockedApi = mocked(API, true);
 
-test("SignupForm button should be disabled until all input are filled correctly", async () => {
+const signupData = {
+  name: "Pippo",
+  surname: "Franco",
+  email: "pippo.franco@example.com",
+  password: "pippoFranco0",
+};
+
+const weakPasswords = ["pippo", "pippofranco", "pippofranco0", "pippoFranco"];
+
+beforeEach(() => {
   const { debug } = render(
     <ThemeProvider theme={aqBootstrapTheme}>
-      <SignupForm />
+      <SignupForm redirectUrl='' />
     </ThemeProvider>
   );
+});
+
+test("SignupForm button should be disabled until all input are filled correctly", async () => {
   expect(screen.getByText("Create an account")).toBeInTheDocument();
 
   expect(screen.getByLabelText("Name")).toHaveAttribute("type", "text");
@@ -31,13 +43,6 @@ test("SignupForm button should be disabled until all input are filled correctly"
 
   expect(screen.getByRole("button")).toHaveAttribute("type", "submit");
   expect(screen.getByRole("button")).toHaveAttribute("disabled");
-
-  const signupData = {
-    name: "Pippo",
-    surname: "Franco",
-    email: "pippo.franco@example.com",
-    password: "pippoFranco0",
-  };
 
   userEvent.type(screen.getByLabelText("Name"), signupData.name);
   await waitFor(() => {
@@ -79,11 +84,6 @@ test("SignupForm button should be disabled until all input are filled correctly"
 });
 
 test("SignupForm fields should show a validation error when not validating", async () => {
-  const { debug } = render(
-    <ThemeProvider theme={aqBootstrapTheme}>
-      <SignupForm />
-    </ThemeProvider>
-  );
   expect(screen.getByText("Create an account")).toBeInTheDocument();
 
 	screen.getByLabelText("Name").focus()
@@ -109,17 +109,28 @@ test("SignupForm fields should show a validation error when not validating", asy
   await waitFor(() => {
 		expect(screen.getByLabelText("Password").classList.contains('is-invalid')).toBe(true)
   });
-	
-  // const weakPasswords = ["pippoFranc0", "pippofranco", "pippofranco0", "pippoFranco"];
-	// 
-	// await weakPasswords.forEach(async(weakPassword) => {
-	// 	userEvent.type(screen.getByLabelText("Password"), weakPassword);
-	//   await waitFor(() => {
-	// 
-	//     expect(screen.getByLabelText("Password")).toHaveValue(weakPassword);
-	// 		expect(screen.getByLabelText("Password").classList.contains('is-invalid')).toBe(true)
-	//   });
-	// 
-	// 
-	// });
+
+  // const promises = weakPasswords.map(async (weakPassword) => {
+  // 	userEvent.type(screen.getByLabelText("Password"), weakPassword);
+  // 	await waitFor(() => {
+  //     expect(screen.getByLabelText("Password")).toHaveValue(weakPassword);
+  // 		expect(screen.getByLabelText("Password").classList.contains('is-invalid')).toBe(true)
+  //   });
+  // });
+  // await Promise.allSettled(promises);
+
+  // console.error
+  // Warning: You seem to have overlapping act() calls, this is not supported. Be sure to await previous act() calls before making a new one.
 });
+
+test.each(weakPasswords) (
+  "writing %p as password, returns an invalid feedback",
+  async (weakPassword) => {
+    userEvent.type(screen.getByLabelText("Password"), weakPassword);
+    screen.getByLabelText("Password").blur()
+    await waitFor(() => {
+      expect(screen.getByLabelText("Password")).toHaveValue(weakPassword);
+      expect(screen.getByLabelText("Password").classList.contains('is-invalid')).toBe(true)
+    });
+  }
+)
