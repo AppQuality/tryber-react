@@ -21,7 +21,8 @@ export const Field = ({type = 'text', placeholder, name, onChange, label}: Field
           form: { touched, errors, status }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
           meta,
         }: FieldProps) => {
-          const fieldId = `${status.id}-${name}`
+          let fieldId = name;
+          if (status && status.id) fieldId = `${status.id}-${name}`;
           let inputClassName = 'form-control';
           if (meta.touched && meta.error) {inputClassName += ' is-invalid'};
           return (
@@ -50,7 +51,8 @@ export const Checkbox = ({name, onChange, label}: GenericFieldInterface) => {
           form: { touched, errors, status }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
           meta,
         }: FieldProps) => {
-          const fieldId = `${status.id}-${name}`
+          let fieldId = name;
+          if (status && status.id) fieldId = `${status.id}-${name}`;
           let inputClassName = 'form-check-input';
           if (meta.touched && meta.error) {inputClassName += ' is-invalid'};
           return (
