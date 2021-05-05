@@ -25,8 +25,9 @@ export const Field = ({type = 'text', placeholder, name, onChange, label}: Field
           if (meta.touched && meta.error) {inputClassName += ' is-invalid'};
           return (
             <div className='form-group'>
-              {(label) && <label className="form-label">{label}</label>}
+              {(label) && <label htmlFor={name} className="form-label">{label}</label>}
               <input
+                id={name}
                 type={type}
                 placeholder={placeholder}
                 className={inputClassName}
@@ -52,8 +53,9 @@ export const Checkbox = ({name, onChange, label}: GenericFieldInterface) => {
           if (meta.touched && meta.error) {inputClassName += ' is-invalid'};
           return (
             <div className="form-check">
-              {(label) && <label className="form-check-label">{label}</label>}
+              {(label) && <label htmlFor={name} className="form-check-label">{label}</label>}
               <input
+                id={name}
                 type='checkbox'
                 className={inputClassName}
                 {...field}
