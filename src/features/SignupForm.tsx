@@ -9,9 +9,10 @@ import { Paragraph, H5 } from "../stories/typography/Typography";
 
 interface SignupFormProps {
   redirectUrl: string;
+  formId?: string
 }
 
-export const SignupForm = ({ redirectUrl }: SignupFormProps) => {
+export const SignupForm = ({ redirectUrl, formId = 'signupForm' }: SignupFormProps) => {
   const { t } = useTranslation();
   const initialValues = {
     name: "",
@@ -65,9 +66,10 @@ export const SignupForm = ({ redirectUrl }: SignupFormProps) => {
       }}
       validationSchema={yup.object(validationSchema)}
       initialValues={initialValues}
+      initialStatus={{id: formId}}
     >
       {(props: FormikProps<any>) => (
-        <Form>
+        <Form id='signupForm'>
           <H5>{t("Create an account")}</H5>
           <Field type="text" name="name" label={t("name")} />
           <Field type="text" name="surname" label={t("surname")} />

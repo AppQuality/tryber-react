@@ -18,16 +18,17 @@ export const Field = ({type = 'text', placeholder, name, onChange, label}: Field
     <FormikField name={name}>
       {({
           field, // { name, value, onChange, onBlur }
-          form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+          form: { touched, errors, status }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
           meta,
         }: FieldProps) => {
+          const fieldId = `${status.id}-${name}`
           let inputClassName = 'form-control';
           if (meta.touched && meta.error) {inputClassName += ' is-invalid'};
           return (
             <div className='form-group'>
-              {(label) && <label htmlFor={name} className="form-label">{label}</label>}
+              {(label) && <label htmlFor={fieldId} className="form-label">{label}</label>}
               <input
-                id={name}
+                id={fieldId}
                 type={type}
                 placeholder={placeholder}
                 className={inputClassName}
@@ -46,16 +47,17 @@ export const Checkbox = ({name, onChange, label}: GenericFieldInterface) => {
     <FormikField name={name}>
       {({
           field, // { name, value, onChange, onBlur }
-          form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+          form: { touched, errors, status }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
           meta,
         }: FieldProps) => {
+          const fieldId = `${status.id}-${name}`
           let inputClassName = 'form-check-input';
           if (meta.touched && meta.error) {inputClassName += ' is-invalid'};
           return (
             <div className="form-check">
-              {(label) && <label htmlFor={name} className="form-check-label">{label}</label>}
+              {(label) && <label htmlFor={fieldId} className="form-check-label">{label}</label>}
               <input
-                id={name}
+                id={fieldId}
                 type='checkbox'
                 className={inputClassName}
                 {...field}
