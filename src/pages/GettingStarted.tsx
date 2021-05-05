@@ -33,7 +33,7 @@ export default function GettingStarted() {
           alert(e.message);
         }
       });
-  }, [redirectUrl]);
+  }, [redirectUrl, t]);
 
   const signupWithFb = () => {
     window.location.href = `/wp-admin/admin-ajax.php?loc=${redirectUrl}&action=facebook_oauth_redirect&log=0`;
