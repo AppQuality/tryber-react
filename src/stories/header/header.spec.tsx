@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { LoggedOutHeader, LoggedInHeader } from './Header.stories';
 
-describe('site-header', () => {
+describe('logged out site-header', () => {
   it('should render with the correct text', () => {
     const { getByText } = render(<LoggedOutHeader />);
     const rendered = getByText('login');
@@ -10,7 +10,7 @@ describe('site-header', () => {
   });
 });
 
-describe('site-header', () => {
+describe('logged in site-header', () => {
   it('should render with the correct text', () => {
     const { getByText } = render(<LoggedInHeader />);
     const rendered = getByText('logout');
