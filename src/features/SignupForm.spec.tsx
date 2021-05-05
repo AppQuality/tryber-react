@@ -138,21 +138,42 @@ test("SignupForm should call the signup api on submit", async () => {
   mockedApi.signup.mockResolvedValueOnce(signupData);
 
   userEvent.type(screen.getByLabelText("Name"), signupData.name);
+  await waitFor(() => {
+    expect(screen.getByLabelText("Name")).toHaveValue(signupData.name);
+  });
+
   userEvent.type(screen.getByLabelText("Surname"), signupData.surname);
+  await waitFor(() => {
+    expect(screen.getByLabelText("Surname")).toHaveValue(signupData.surname);
+  });
+
   userEvent.type(screen.getByLabelText("Email"), signupData.email);
+  await waitFor(() => {
+    expect(screen.getByLabelText("Email")).toHaveValue(signupData.email);
+  });
+
   userEvent.type(screen.getByLabelText("Password"), signupData.password);
+  await waitFor(() => {
+    expect(screen.getByLabelText("Password")).toHaveValue(signupData.password);
+  });
+
   userEvent.click(
     screen.getByLabelText(
       "I agree to receive earning opportunity emails from AppQuality"
     )
   );
-
   await waitFor(() => {
+    expect(
+      screen.getByLabelText(
+        "I agree to receive earning opportunity emails from AppQuality"
+      )
+    ).toBeChecked();
     expect(screen.getByRole("button")).not.toHaveAttribute("disabled");
   });
-
-  userEvent.click(screen.getByRole("button"))
-  await waitFor(() =>
+  
+  userEvent.click(screen.getByRole("button"));
+  await waitFor(() => {
     expect(API.signup).toHaveBeenCalledWith(signupData)
-  )
+    expect(API.signup).toHaveBeenCalledTimes(1);
+  })
 })
