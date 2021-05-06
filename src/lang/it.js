@@ -1,6 +1,7 @@
 const it = {
 	'become-a-tester' : 'Diventa un Tester AppQuality',
 	'name': 'Nome',
+	'This is a required field': 'Campo obbligatorio',
 	'surname': 'Cognome',
 	'Create an account': 'Crea un Account',
 	'password': 'Password',

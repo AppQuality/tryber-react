@@ -1,10 +1,6 @@
 import React from "react";
-import { Checkbox, Field } from "../stories/form/Form";
 import { Button } from "../stories/button/Button";
-import { Formik, Form, FormikProps } from "formik";
-import * as yup from "yup";
-import { useTranslation, Trans } from "react-i18next";
-import API from "../utils/api";
+import { useTranslation } from "react-i18next";
 import { Paragraph, H5 } from "../stories/typography/Typography";
 import {SignupForm} from "./SignupForm";
 import signupImage from "../pages/assets/group-236.png";

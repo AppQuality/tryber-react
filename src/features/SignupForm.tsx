@@ -23,9 +23,9 @@ export const SignupForm = ({ redirectUrl, formId = 'signupForm' }: SignupFormPro
     subscribe: "",
   };
   const validationSchema = {
-    name: yup.string().required(),
-    surname: yup.string().required(),
-    email: yup.string().email().required(),
+    name: yup.string().required(t("This is a required field")),
+    surname: yup.string().required(t("This is a required field")),
+    email: yup.string().email().required(t("This is a required field")),
     password: yup
       .string()
       .min(6, t("Must be at least 6 character long"))
@@ -41,11 +41,11 @@ export const SignupForm = ({ redirectUrl, formId = 'signupForm' }: SignupFormPro
         /[a-z]/,
         t("Must contain at least a lowercase letter")
       )
-      .required(),
+      .required(t("This is a required field")),
     subscribe: yup
       .boolean()
-      .oneOf([true], "Must Accept Terms and Conditions")
-      .required(),
+      .oneOf([true], t("This is a required field"))
+      .required(t("This is a required field")),
   };
   return (
     <Formik
