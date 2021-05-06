@@ -47,7 +47,7 @@ export const Header = ({ user, logo, showLogin = true }: HeaderProps) => {
       <div className='brand-logo'>
         {(logo)
           ? {logo}
-          : <a href={`/${(i18n.language === 'it' && i18n.language)}`}>
+          : <a href={`${(i18n.language === 'it' ? '/it' : '/')}`}>
               <img alt='logo' src='https://crowd.app-quality.com/wp-content/themes/crowdappquality/img/aq_vector_logo_light_crowd.svg' />
             </a>
         }
