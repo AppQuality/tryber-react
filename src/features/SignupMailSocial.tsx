@@ -25,32 +25,36 @@ export const SignupMailSocial = ({ redirectUrl= '/my-dashboard/' }: SignupMailSo
       `/wp-admin/admin-ajax.php?loc=${redirectUrl}&action=linkedin_oauth_redirect&log=0`;
   };
   return (
-    <CSSGrid gutter='50px' min='220px'>
+    <CSSGrid gutter='50px' rowGap='1rem' min='220px'>
       <SignupForm redirectUrl={redirectUrl} />
-      <div className="signup-with-email">
-        <H5>{t("signup-with-social")}</H5>
-        <Paragraph>{t("signup-with-social-description")}</Paragraph>
-        <CSSGrid min='70px' fill={true}>
-          <div style={{gridColumn: 'auto / span 3'}}>
-            <Button
-              type="primary"
-              size="block"
-              flat
-              onClick={signupWithFb}
-            >
-              {t("facebook")}
-            </Button>
-            <Button
-              type="secondary"
-              size="block"
-              flat
-              onClick={signupWithLn}
-            >
-              {t("linkedin")}
-            </Button>
-          </div>
-        </CSSGrid>
-        <img alt={t('become-a-tester')} src={signupImage} />
+      <div className="signup-with-email" style={{display: 'flex', flexFlow: 'column', justifyContent: 'space-between'}}>
+        <div>
+          <H5>{t("signup-with-social")}</H5>
+          <Paragraph>{t("signup-with-social-description")}</Paragraph>
+          <CSSGrid min='70px' fill={true}>
+            <div style={{gridColumn: 'auto / span 3'}}>
+              <Button
+                type="primary"
+                size="block"
+                flat
+                onClick={signupWithFb}
+              >
+                {t("facebook")}
+              </Button>
+              <Button
+                type="secondary"
+                size="block"
+                flat
+                onClick={signupWithLn}
+              >
+                {t("linkedin")}
+              </Button>
+            </div>
+          </CSSGrid>
+        </div>
+        <div>
+          <img alt={t('become-a-tester')} src={signupImage} />
+        </div>
       </div>
     </CSSGrid>
   );
