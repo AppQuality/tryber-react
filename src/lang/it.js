@@ -2,6 +2,7 @@ const it = {
 	'become-a-tester' : 'Diventa un Tester AppQuality',
 	'name': 'Nome',
 	'surname': 'Cognome',
+	'Create an account': 'Crea un Account',
 	'password': 'Password',
 	'password-req': 'La password deve essere lunga almeno 6 caratteri, contenere una lettera maiuscola, una minuscola ed un numero.',
 	'accept-to-receive-email': 'Accetto di ricevere email con opportunità di guadagno da AppQuality',
