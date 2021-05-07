@@ -7,7 +7,17 @@ import { useTranslation } from "react-i18next"
 import API from "../utils/api"
 import styled from "styled-components"
 import {SignupMailSocial} from "../features/SignupMailSocial";
-
+import TagManager from 'react-gtm-module'
+ 
+const tagManagerArgs = {
+    dataLayer:  {
+      "role": "unknown",
+      "wp_user_id": false,
+      "tester_id": false,
+      "is_admin_page": false
+    },
+    dataLayerName: 'PageDataLayer'
+}
 
 export default function GettingStarted() {
   const [isLoading, setisLoading] = useState(true);
@@ -15,6 +25,7 @@ export default function GettingStarted() {
   const [loadingMessage, setLoadingMessage] = useState(t("Loading"));
   const redirectUrl =
     i18n.language === "en" ? "/my-dashboard/" : "/it/la-mia-dashboard/";
+  TagManager.dataLayer(tagManagerArgs)
 
   useEffect(() => {
     API.me()

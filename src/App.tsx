@@ -7,7 +7,14 @@ import { GettingStarted} from "./pages";
 import SignIn from "./pages/SignIn";
 import {Header} from "./stories/header/Header";
 import './i18n';
+import TagManager from 'react-gtm-module';
+ 
+const tagManagerArgs = {
+    gtmId: 'GTM-K55XC7S',
+    dataLayerName: 'PageDataLayer'
+}
 
+TagManager.initialize(tagManagerArgs)
 const base = '/:locale(en|it)?';
 
 function App() {
