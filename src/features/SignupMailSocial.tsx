@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "../stories/button/Button";
 import { useTranslation } from "react-i18next";
 import { Paragraph, H5 } from "../stories/typography/Typography";
