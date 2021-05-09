@@ -64,7 +64,11 @@ const API = {
 		if (res.ok) {
 			return res.json();
 		} else {
-			throw new HttpError(res.statusText, res.status)
+			let d = await res.json()
+			if (d.message) {
+				throw new Error(d.message)
+			}
+			throw new Error("There was an error")
 		}
 	}
 }
