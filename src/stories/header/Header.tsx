@@ -1,8 +1,9 @@
 import React from 'react'
+import {BoxArrowRight} from "react-bootstrap-icons"
 import {Button} from '../button/Button'
 import './header.scss'
 import { useHistory } from "react-router-dom"
-import {useTranslation} from "react-i18next";
+import {useTranslation} from "react-i18next"
 
 export interface User {
   id: number
@@ -35,7 +36,7 @@ export const Header = ({ user, logo, showLogin = true }: HeaderProps) => {
       <div className="user-name">
         {user.name} {user.surname} <span className="user-id">(T{user.id})</span>
       </div>
-      <Button size='sm' type='link'>logout</Button>
+      <Button size='sm' type='link'><BoxArrowRight /></Button>
     </div>
   )
 
