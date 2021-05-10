@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, ButtonProps } from "./Button";
 import {Story, Meta} from "@storybook/react";
+import {Search} from "react-bootstrap-icons"
 
 export default {
   title: "Button",
@@ -31,4 +32,9 @@ export const Small = Template.bind({});
 Small.args = {
   size: "sm",
   children: 'click'
+};
+
+export const IconButton = Template.bind({});
+IconButton.args = {
+  children: <Search />
 };
