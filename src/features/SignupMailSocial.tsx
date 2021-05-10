@@ -28,14 +28,16 @@ export const SignupMailSocial = ({ redirectUrl= '/my-dashboard/' }: SignupMailSo
           <Paragraph>{t("signup-with-social-description")}</Paragraph>
           <CSSGrid min='70px' fill={true}>
             <div style={{gridColumn: 'auto / span 3'}}>
-              <Button
-                type="primary"
-                size="block"
-                flat
-                onClick={signupWithFb}
-              >
-                {t("facebook")}
-              </Button>
+              <div className='form-group'>
+                <Button
+                  type="primary"
+                  size="block"
+                  flat
+                  onClick={signupWithFb}
+                >
+                  {t("facebook")}
+                </Button>
+              </div>
               <Button
                 type="secondary"
                 size="block"

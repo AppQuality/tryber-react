@@ -78,18 +78,18 @@ export const SignupForm = ({ redirectUrl, formId = 'signupForm' }: SignupFormPro
             {t("password-req")}
           </Paragraph>
           <Checkbox name="subscribe" label={t("accept-to-receive-email")} />
-          <CSSGrid min='70px' fill={true}>
-            <div style={{gridColumn: 'auto / span 3'}}>
-              <Button
-                size="block"
-                htmlType="submit"
-                flat
-                disabled={props.isSubmitting || !props.dirty || !props.isValid}
-              >
-                {props.isSubmitting ? "...wait" : t("signup-now")}
-              </Button>
-            </div>
-          </CSSGrid>
+            <CSSGrid min='70px' fill={true}>
+              <div className='form-group' style={{gridColumn: 'auto / span 3'}}>
+                <Button
+                  size="block"
+                  htmlType="submit"
+                  flat
+                  disabled={props.isSubmitting || !props.dirty || !props.isValid}
+                >
+                  {props.isSubmitting ? "...wait" : t("signup-now")}
+                </Button>
+              </div>
+            </CSSGrid>
           <Paragraph color="disabledFont" small>
             <Trans i18nKey="clicking-button-you-accept-tos">
               By clicking this button, you accept the
