@@ -5,8 +5,9 @@ declare module "styled-components" {
   export interface DefaultTheme {
     typography: {
       fontFamily: {
-        base: string;
-      };
+        base: string
+        serif: string
+      }
       fontSize: {
         base: string;
         small: string;
@@ -17,11 +18,12 @@ declare module "styled-components" {
       };
     };
     palette: {
-      primary: string;
-      secondary: string;
+      primary: string
+      secondary: string
       info: string;
-      disabledFont: string;
-    };
+      disabledFont: string
+      disabledElement: string
+    }
     grid: {
       breakpoints: {
         sm: string;
