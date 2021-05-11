@@ -17,6 +17,7 @@ const aqBootstrapTheme:DefaultTheme = {
   palette: {
     primary: '#17405C',
     secondary: '#448098',
+    info: '#266A9A',
     disabledFont: '#8EA2AE'
   },
   grid: {
