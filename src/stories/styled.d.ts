@@ -6,6 +6,7 @@ declare module 'styled-components' {
     typography: {
       fontFamily: {
         base: string
+        serif: string
       }
       fontSize: {
         base: string
@@ -20,6 +21,7 @@ declare module 'styled-components' {
       primary: string
       secondary: string
       disabledFont: string
+      disabledElement: string
     }
     grid: {
       breakpoints: {
