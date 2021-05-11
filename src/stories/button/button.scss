@@ -67,18 +67,6 @@ $btn-icon-padding-x-lg: 0;
   width: 100%;
 }
 
-
-.btn
-{
-  @include button-variant(
-  $body-color,
-  transparent,
-  $disabled-border: $disabled,
-  $disabled-background: $disabled,
-  $disabled-color: $disabled-dark
-  );
-  margin-bottom: 1rem;
-}
 @each $color, $value in $theme-colors
 {
   .btn.btn-#{$color}

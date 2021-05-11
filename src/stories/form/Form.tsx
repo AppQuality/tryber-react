@@ -1,6 +1,7 @@
-import React, {ChangeEventHandler} from "react";
-import {Field as FormikField, FieldProps} from "formik";
-import "./form.scss";
+import React, {ChangeEventHandler} from "react"
+import {Field as FormikField, FieldProps} from "formik"
+import "./form.scss"
+import {Search} from 'react-bootstrap-icons'
 
 interface GenericFieldInterface {
   name: string
@@ -9,7 +10,7 @@ interface GenericFieldInterface {
 }
 
 export interface FieldInterface extends GenericFieldInterface {
-  type?: 'text' | 'email' | 'password' | 'number' | 'url' | 'tel'
+  type?: 'text' | 'email' | 'password' | 'number' | 'url' | 'tel' | 'search'
   placeholder?: string
 }
 
@@ -28,6 +29,7 @@ export const Field = ({type = 'text', placeholder, name, onChange, label}: Field
           return (
             <div className='form-group'>
               {(label) && <label htmlFor={fieldId} className="form-label">{label}</label>}
+              <div className='input-group'>
               <input
                 id={fieldId}
                 type={type}
@@ -35,6 +37,8 @@ export const Field = ({type = 'text', placeholder, name, onChange, label}: Field
                 className={inputClassName}
                 {...field}
               />
+              {(type === 'search') && <span className="input-group-text" id="basic-addon2"><Search /></span>}
+              </div>
               {meta.touched && meta.error && <div className="invalid-feedback">{meta.error}</div>}
             </div>
           )
