@@ -1,9 +1,17 @@
 import {DefaultTheme} from 'styled-components'
 
+const COLORS = {
+  blue700: '#17405C',
+  cyan600: '#448098',
+  grey300: '#D1E0E8',
+  grey600: '#8EA2AE',
+}
+
 const aqBootstrapTheme:DefaultTheme = {
   typography: {
     fontFamily: {
       base: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;',
+      serif: 'IBM Plex Serif'
     },
     fontSize: {
       base: '.875rem',
@@ -15,9 +23,10 @@ const aqBootstrapTheme:DefaultTheme = {
     },
   },
   palette: {
-    primary: '#17405C',
-    secondary: '#448098',
-    disabledFont: '#8EA2AE'
+    primary: COLORS.blue700,
+    secondary: COLORS.cyan600,
+    disabledFont: COLORS.grey600,
+    disabledElement: COLORS.grey300
   },
   grid: {
     breakpoints: {
