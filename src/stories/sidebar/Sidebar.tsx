@@ -26,7 +26,7 @@ export interface SidebarProps {
 
 const marginFromTop = 54;
 const sidebarWidth = 60;
-const sidebarItemsWidth = 180;
+const sidebarItemsWidth = 260;
 const itemsSpacing = 14;
 
 const SidebarItemsWrapper = styled.div(
@@ -34,6 +34,7 @@ const SidebarItemsWrapper = styled.div(
     const { palette } = theme;
     return `
    padding: ${itemsSpacing}px 0;
+   padding-top: 20px;
    height:calc(100vh - ${marginFromTop}px);
    top: ${marginFromTop}px; 
    left: ${ sidebarWidth }px;
@@ -56,6 +57,7 @@ const SidebarWrapper = styled.div(({ theme }: { theme: DefaultTheme }) => {
   const { palette } = theme;
   return `
    padding: ${itemsSpacing}px;
+   padding-top: 20px;
    height:calc(100vh - ${marginFromTop}px);
    top:${marginFromTop}px;
    position:sticky;
@@ -67,13 +69,16 @@ const SidebarWrapper = styled.div(({ theme }: { theme: DefaultTheme }) => {
    .btn {
      margin-bottom: ${itemsSpacing}px;
      box-shadow: none;
+     padding: 0;
+     width: 32px;
+     height: 32px;
      &:active:focus,&:focus{
        box-shadow: none;
      }
    }
    .btn svg {
      margin: 4px 0;
-     font-size:14px;
+     font-size:18px;
    }
 `;
 });
@@ -160,6 +165,7 @@ export const Sidebar = ({ children, items, languages, open = false }: SidebarPro
       <NavigationContainer>
         {children}
       </NavigationContainer>
+      <div style={{clear: "both"}}></div>
     </>
   );
 };
