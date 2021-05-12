@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Spinner from "../spinner/Spinner";
 import {Inboxes} from "react-bootstrap-icons";
 
-const tableSpace = '11px';
+const cellPadding = '11px 5px';
 
 export interface Column {
   title: string
@@ -35,6 +35,10 @@ export interface TableProps {
    * loading state
    */
   isLoading?: boolean
+  /**
+   * striped theme
+   */
+  isStriped?: boolean
 }
 
 const TableWrapper = styled.div`
@@ -49,6 +53,13 @@ const TableWrapper = styled.div`
     text-align: left;
     width: 100%;
   
+    &.aq-striped>tbody>tr:nth-of-type(odd) {
+      background-color: ${props => (props.theme.colors.grey100)};
+      &:hover {
+        background-color: ${props => (props.theme.colors.grey300)};
+      }
+    }
+    
     thead {
       font-family: ${props => (props.theme.typography.fontFamily.serif)};
       color: ${props => (props.theme.palette.disabledFont)};
@@ -56,7 +67,7 @@ const TableWrapper = styled.div`
       th {
         overflow-wrap: break-word;
         font-weight: 500;
-        padding: 11px 5px;
+        padding: ${cellPadding};
         border-bottom: 1px solid ${props => (props.theme.palette.disabledElement)};
       }
     }
@@ -64,7 +75,11 @@ const TableWrapper = styled.div`
       td {
         overflow-wrap: break-word;
         font-weight: 400;
-        padding: 11px 5px;
+        padding: ${cellPadding};
+        vertical-align: text-top;
+      }
+      tr:hover {
+        background-color: ${props => (props.theme.colors.grey100)};
       }
       tr:not(:last-child) td {
         border-bottom: 1px solid ${props => (props.theme.palette.disabledElement)};
@@ -110,27 +125,32 @@ const TableWrapper = styled.div`
   }
 `;
 
-export const Table = ({dataSource, columns, isLoading, pagination}: TableProps) => {
+export const Table = ({dataSource, columns, isLoading, isStriped, pagination}: TableProps) => {
   const LoadingStatus = () => (
     <div className='aq-table-loading-placeholder'>
-        <Spinner />
-        <div>Loading Data</div>
+      <Spinner />
+      <div>Loading Data</div>
     </div>
   );
 
   const DataPlaceholder = () => (
     <tr>
       <td colSpan={columns.length}>
-        <Inboxes className='aq-table-placeholder-icon' />
-        <div>There's no data here</div>
+        <div className='aq-table-empty-placeholder'>
+          <Inboxes className='aq-table-placeholder-icon' />
+          <div>There's no data here</div>
+        </div>
       </td>
     </tr>
   );
 
+
+  let tableClass = 'aq-table';
+  if (isStriped) tableClass += ' aq-striped';
   return (
     <TableWrapper>
       {(isLoading) && <LoadingStatus />}
-      <table>
+      <table className={tableClass}>
         <colgroup>
           {columns.map((column, index) => {
             return (column.long)
