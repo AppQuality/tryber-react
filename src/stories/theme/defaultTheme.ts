@@ -1,8 +1,17 @@
 import {DefaultTheme} from 'styled-components'
 
-const COLORS = {
+export interface Colors {
+  blue700: string
+  cyan600: string
+  grey100: string
+  grey300: string
+  grey600: string
+}
+
+export const COLORS: Colors = {
   blue700: '#17405C',
   cyan600: '#448098',
+  grey100: '#F0F5F7',
   grey300: '#D1E0E8',
   grey600: '#8EA2AE',
 }
@@ -22,6 +31,7 @@ const aqBootstrapTheme:DefaultTheme = {
       bold: 700
     },
   },
+  colors: COLORS,
   palette: {
     primary: COLORS.blue700,
     secondary: COLORS.cyan600,

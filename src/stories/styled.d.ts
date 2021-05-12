@@ -1,5 +1,6 @@
 // import original module declarations
 import 'styled-components';
+import {Colors} from "./theme/defaultTheme";
 
 declare module 'styled-components' {
   export interface DefaultTheme {
@@ -17,6 +18,7 @@ declare module 'styled-components' {
         bold: number
       }
     }
+    colors: Colors
     palette: {
       primary: string
       secondary: string
