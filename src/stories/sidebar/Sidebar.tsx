@@ -119,9 +119,7 @@ const SidebarText = ({ url, text }: SidebarTextProps) => {
   );
 };
 
-const LanguageIconWrapper = styled.div(({ theme }: { theme: DefaultTheme }) => {
-  const { palette } = theme;
-  return `
+const LanguageIconWrapper = styled.div`
   position: absolute;
   bottom: ${itemsSpacing}px;
   display:flex;
@@ -134,8 +132,7 @@ const LanguageIconWrapper = styled.div(({ theme }: { theme: DefaultTheme }) => {
     border-radius: 50%;
     text-transform: uppercase;
   }
-  `;
-});
+  `
 const LanguageIcons = ({ langs }: { langs: Array<string> }) => {
   return <LanguageIconWrapper>{langs.map((l,idx) => <div key={idx}>{l}</div>)}</LanguageIconWrapper>;
 };
