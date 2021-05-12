@@ -1,4 +1,5 @@
-import { Sidebar, SidebarProps } from "./Sidebar";
+import { Sidebar } from "./Sidebar";
+import { SidebarProps } from "./SidebarProps";
 import { Story, Meta } from "@storybook/react";
 import { HouseFill, PersonFill, Laptop } from "react-bootstrap-icons";
 import { ThemeProvider } from "styled-components";
