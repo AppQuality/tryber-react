@@ -142,6 +142,7 @@ const LanguageIcons = ({ langs }: { langs: Array<string> }) => {
 
 const NavigationContainer = styled.div`
     width: calc(100% - ${sidebarWidth}px);
+    float:right;
 `
 
 export const Sidebar = ({ children, items, languages, open = false }: SidebarProps) => {
