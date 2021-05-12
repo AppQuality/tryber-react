@@ -2,6 +2,7 @@ import React from "react";
 import {BSCol, Container} from "../stories/layout/Layout";
 import {Column, Row, Table, TableProps} from "../stories/table/Table";
 import {Card} from "../stories/card/Card";
+import {Button} from "../stories/button/Button";
 
 export default function TestTables() {
   const dataSource: Row[] = [
@@ -17,14 +18,15 @@ export default function TestTables() {
       id: '161236',
       title: '[registrazione/form] - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolorem error et illum ipsam iure',
       severity: 'Normal',
-      state: 'Critical'
+      state: 'this is a Critical bug'
     },
     {
       key: '770836',
       id: '770836',
       title: '[registrazione/form] - Cum dolorem error et illum ipsam iure',
       severity: 'Normal',
-      state: 'Critical'
+      state: 'Critical',
+      action: <Button type='link' size='sm'>view more</Button>,
     },
   ];
   const columns: Column[] = [
@@ -53,6 +55,7 @@ export default function TestTables() {
       title: 'Action',
       dataIndex: 'action',
       key: 'action',
+      width: '110px'
     }
   ];
   return (
