@@ -15,6 +15,7 @@ export interface SidebarTextProps {
 export interface SidebarItemProps extends SidebarIconProps, SidebarTextProps {}
 
 export interface SidebarProps {
+  children?: React.ReactNode
   items: Array<SidebarItemProps>;
   languages: {
     current: string;
@@ -34,12 +35,14 @@ const SidebarItemsWrapper = styled.div(
     return `
    padding: ${itemsSpacing}px 0;
    height:calc(100vh - ${marginFromTop}px);
-   top:${marginFromTop}px;
-   left: ${open ? sidebarWidth : sidebarWidth - sidebarItemsWidth}px;
-   position: absolute;
-   width: ${sidebarItemsWidth}px;
+   top: ${marginFromTop}px; 
+   left: ${ sidebarWidth }px;
+   position: fixed;
+   overflow: hidden;
+   
+   width: ${open ? sidebarItemsWidth : 0}px;
    background-color:${palette.info};
-   transition: all .2s ease;
+   transition: width .2s ease;
    
    ${LanguageIconWrapper} div {
      margin: 0 8px;
@@ -55,9 +58,10 @@ const SidebarWrapper = styled.div(({ theme }: { theme: DefaultTheme }) => {
    padding: ${itemsSpacing}px;
    height:calc(100vh - ${marginFromTop}px);
    top:${marginFromTop}px;
+   position:sticky;
+   float:left;
    left:0;
    z-index: 1;
-   position: absolute;
    width: ${sidebarWidth}px;
    background-color:${palette.primary};
    .btn {
@@ -136,7 +140,11 @@ const LanguageIcons = ({ langs }: { langs: Array<string> }) => {
   return <LanguageIconWrapper>{langs.map((l,idx) => <div key={idx}>{l}</div>)}</LanguageIconWrapper>;
 };
 
-export const Sidebar = ({ items, languages, open = false }: SidebarProps) => {
+const NavigationContainer = styled.div`
+    width: calc(100% - ${sidebarWidth}px);
+`
+
+export const Sidebar = ({ children, items, languages, open = false }: SidebarProps) => {
   return (
     <>
       <SidebarWrapper>
@@ -151,6 +159,9 @@ export const Sidebar = ({ items, languages, open = false }: SidebarProps) => {
         ))}
         <LanguageIcons langs={languages.others} />
       </SidebarItemsWrapper>
+      <NavigationContainer>
+        {children}
+      </NavigationContainer>
     </>
   );
 };

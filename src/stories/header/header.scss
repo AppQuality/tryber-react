@@ -4,6 +4,9 @@ $headerHeight: 54px;
 $ContentHeight: 30px;
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   width: 100%;
   height: $headerHeight;
   padding: ($headerHeight - $ContentHeight) /2;
