@@ -1,5 +1,9 @@
 import React, {ReactNode} from 'react'
 import styled from "styled-components"
+import Spinner from "../spinner/Spinner";
+import {Inboxes} from "react-bootstrap-icons";
+
+const tableSpace = '11px';
 
 export interface Column {
   title: string
@@ -34,6 +38,7 @@ export interface TableProps {
 }
 
 const TableWrapper = styled.div`
+  position: relative;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 
@@ -51,7 +56,7 @@ const TableWrapper = styled.div`
       th {
         overflow-wrap: break-word;
         font-weight: 500;
-        padding: 1rem .5rem;
+        padding: 11px 5px;
         border-bottom: 1px solid ${props => (props.theme.palette.disabledElement)};
       }
     }
@@ -59,7 +64,7 @@ const TableWrapper = styled.div`
       td {
         overflow-wrap: break-word;
         font-weight: 400;
-        padding: 1rem .5rem;
+        padding: 11px 5px;
       }
       tr:not(:last-child) td {
         border-bottom: 1px solid ${props => (props.theme.palette.disabledElement)};
@@ -82,11 +87,49 @@ const TableWrapper = styled.div`
       }
     }
   }
-`
+  .aq-table-empty-placeholder {
+    min-height: 200px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: ${props => (props.theme.palette.disabledFont)};
+  }
+  .aq-table-placeholder-icon {
+    font-size: 40px;
+    margin-bottom: 1rem;
+  }
+  .aq-table-loading-placeholder {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: rgba(255, 255, 255, .8);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+`;
 
 export const Table = ({dataSource, columns, isLoading, pagination}: TableProps) => {
+  const LoadingStatus = () => (
+    <div className='aq-table-loading-placeholder'>
+        <Spinner />
+        <div>Loading Data</div>
+    </div>
+  );
+
+  const DataPlaceholder = () => (
+    <tr>
+      <td colSpan={columns.length}>
+        <Inboxes className='aq-table-placeholder-icon' />
+        <div>There's no data here</div>
+      </td>
+    </tr>
+  );
+
   return (
     <TableWrapper>
+      {(isLoading) && <LoadingStatus />}
       <table>
         <colgroup>
           {columns.map((column, index) => {
@@ -103,19 +146,22 @@ export const Table = ({dataSource, columns, isLoading, pagination}: TableProps) 
           </tr>
         </thead>
         <tbody>
-          {dataSource.map((row, index) => (
-            <tr key={index}>
-              {columns.map(column => {
-                let className = '';
-                if (column.long) className = 'aq-table-cell-ellipsis';
-                return (
-                  <td title={row[column.dataIndex]} className={className} key={`${row.key}-${column.key}`}>
-                    {row[column.dataIndex]}
-                  </td>
-                )
-              })}
-            </tr>
-          ))}
+        { (dataSource.length)
+            ? dataSource.map((row, index) => (
+                <tr key={index}>
+                  {columns.map(column => {
+                    let className = '';
+                    if (column.long) className = 'aq-table-cell-ellipsis';
+                    return (
+                      <td title={row[column.dataIndex]} className={className} key={`${row.key}-${column.key}`}>
+                        {row[column.dataIndex]}
+                      </td>
+                    )
+                  })}
+                </tr>
+            ))
+          : <DataPlaceholder />
+        }
         </tbody>
       </table>
     </TableWrapper>
