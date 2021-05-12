@@ -15,7 +15,6 @@ export interface Row {
 }
 
 export interface TableProps {
-  children?: ReactNode
   /**
    * Rows
    */
@@ -24,9 +23,20 @@ export interface TableProps {
    * Columns
    */
   columns: Column[]
+  /**
+   * Pagination
+   */
+  pagination?: boolean
+  /**
+   * loading state
+   */
+  isLoading?: boolean
 }
 
 const TableWrapper = styled.div`
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
   table {
     table-layout: auto;
     border-collapse: separate;
@@ -60,20 +70,29 @@ const TableWrapper = styled.div`
       text-overflow: ellipsis;
       white-space: nowrap;
       word-break: keep-all;
-      max-width: 0;
+      max-width: 100vw;
+    }
+    @media (min-width: ${props => (props.theme.grid.breakpoints.lg)}) {
+      .aq-table-cell-ellipsis {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-break: keep-all;
+        max-width: 0;
+      }
     }
   }
 `
 
-export const Table = ({dataSource, columns}: TableProps) => {
+export const Table = ({dataSource, columns, isLoading, pagination}: TableProps) => {
   return (
     <TableWrapper>
       <table>
         <colgroup>
-          {columns.map(column => {
+          {columns.map((column, index) => {
             return (column.long)
-              ? <col style={{width: 'auto', minWidth: 'auto'}}/>
-              : <col style={{width: `${column.width || '10ch'}`, minWidth: '10ch'}}/>
+              ? <col key={index} style={{width: 'auto', minWidth: 'auto'}}/>
+              : <col key={index} style={{width: `${column.width || '10ch'}`, minWidth: '10ch'}}/>
           })}
         </colgroup>
         <thead>
@@ -84,8 +103,8 @@ export const Table = ({dataSource, columns}: TableProps) => {
           </tr>
         </thead>
         <tbody>
-          {dataSource.map(row => (
-            <tr>
+          {dataSource.map((row, index) => (
+            <tr key={index}>
               {columns.map(column => {
                 let className = '';
                 if (column.long) className = 'aq-table-cell-ellipsis';
