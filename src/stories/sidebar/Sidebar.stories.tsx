@@ -19,8 +19,8 @@ export const BasicSidebar = Template.bind({});
 BasicSidebar.args = {
   open: false,
   languages: {
-    current: 'it',
-    others: ['en','es']
+    current: {lang:'it'},
+    others: [{lang:'en'},{lang:'es'}]
   },
   items: [
     {

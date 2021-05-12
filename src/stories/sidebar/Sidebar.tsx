@@ -14,12 +14,16 @@ export interface SidebarTextProps {
 }
 export interface SidebarItemProps extends SidebarIconProps, SidebarTextProps {}
 
+interface LanguageItem {
+  lang: string;
+  onClick?(lang:string): void;
+}
 export interface SidebarProps {
-  children?: React.ReactNode
+  children?: React.ReactNode;
   items: Array<SidebarItemProps>;
   languages: {
-    current: string;
-    others: Array<string>;
+    current: LanguageItem;
+    others: Array<LanguageItem>;
   };
   open?: boolean;
 }
@@ -37,7 +41,7 @@ const SidebarItemsWrapper = styled.div(
    padding-top: 20px;
    height:calc(100vh - ${marginFromTop}px);
    top: ${marginFromTop}px; 
-   left: ${ sidebarWidth }px;
+   left: ${sidebarWidth}px;
    position: fixed;
    overflow: hidden;
    
@@ -45,6 +49,7 @@ const SidebarItemsWrapper = styled.div(
    background-color:${palette.info};
    transition: width .2s ease;
    
+   ${LanguageIconWrapper} button,
    ${LanguageIconWrapper} div {
      margin: 0 8px;
    }
@@ -127,8 +132,12 @@ const SidebarText = ({ url, text }: SidebarTextProps) => {
 const LanguageIconWrapper = styled.div`
   position: absolute;
   bottom: ${itemsSpacing}px;
-  display:flex;
-  div {
+  display: flex;
+  button,div {
+    border: 0;
+    padding:0;
+    text-decoration:none;
+    display:block;
     background: #fff;
     width: 32px;
     height: 32px;
@@ -137,17 +146,36 @@ const LanguageIconWrapper = styled.div`
     border-radius: 50%;
     text-transform: uppercase;
   }
-  `
-const LanguageIcons = ({ langs }: { langs: Array<string> }) => {
-  return <LanguageIconWrapper>{langs.map((l,idx) => <div key={idx}>{l}</div>)}</LanguageIconWrapper>;
+`;
+const LanguageIcons = ({ langs }: { langs: Array<LanguageItem> }) => {
+  return (
+    <LanguageIconWrapper>
+      {langs.map((l, idx) => {
+        if (l.onClick) {
+          return <button key={idx} onClick={() => {
+            if (l.onClick) {
+              l.onClick(l.lang)
+            }
+          }}>{l.lang}</button>
+        } 
+        return <div key={idx}>{l.lang}</div>
+      }
+      )}
+    </LanguageIconWrapper>
+  );
 };
 
 const NavigationContainer = styled.div`
-    width: calc(100% - ${sidebarWidth}px);
-    float:right;
-`
+  width: calc(100% - ${sidebarWidth}px);
+  float: right;
+`;
 
-export const Sidebar = ({ children, items, languages, open = false }: SidebarProps) => {
+export const Sidebar = ({
+  children,
+  items,
+  languages,
+  open = false,
+}: SidebarProps) => {
   return (
     <>
       <SidebarWrapper>
@@ -162,10 +190,8 @@ export const Sidebar = ({ children, items, languages, open = false }: SidebarPro
         ))}
         <LanguageIcons langs={languages.others} />
       </SidebarItemsWrapper>
-      <NavigationContainer>
-        {children}
-      </NavigationContainer>
-      <div style={{clear: "both"}}></div>
+      <NavigationContainer>{children}</NavigationContainer>
+      <div style={{ clear: "both" }}></div>
     </>
   );
 };
