@@ -14,6 +14,7 @@ export const SidebarIcon = ({ url, icon, active }: SidebarIconProps) => {
       onClick={() => (window.location.href = url)}
       size="sm"
       type={active ? "light" : "primary"}
+      data-testid="icon-button"
     >
       {icon}
     </Button>
