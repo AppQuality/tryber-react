@@ -1,4 +1,5 @@
 import { DesktopSidebar } from "./DesktopSidebar";
+import { MobileSidebar } from "./MobileSidebar";
 import { SidebarProps } from "./SidebarProps";
 import { useLayoutEffect, useState } from 'react';
 
@@ -23,7 +24,7 @@ export const Sidebar = ({
 }: SidebarProps) => {
   useWindowSize();
   if (window.matchMedia('only screen and (max-width: 768px)').matches) {
-    return <div>mobile</div>
+    return <MobileSidebar items={items} languages={languages} open={open}>{children}</MobileSidebar>
   }
   return (
     <DesktopSidebar items={items} languages={languages} open={open}>

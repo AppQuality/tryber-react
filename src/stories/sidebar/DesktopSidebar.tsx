@@ -51,6 +51,10 @@ const SidebarWrapper = styled.div(({ theme }: { theme: DefaultTheme }) => {
      margin: 4px 0;
      font-size:18px;
    }
+   ${LanguageIconWrapper} {
+     position: absolute;
+     bottom: ${itemsSpacing}px;
+   }
 `;
 });
 

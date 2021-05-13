@@ -116,6 +116,7 @@ BasicSidebar.args = {
       icon: <PersonFill />,
       active: false,
       text: "Profilo",
+      last: true
     },
     {
       url: "#",

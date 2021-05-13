@@ -1,4 +1,3 @@
-import {itemsSpacing} from './variables'
 import styled from "styled-components";
 
 export interface LanguageItem {
@@ -7,8 +6,6 @@ export interface LanguageItem {
 }
 
 export const LanguageIconWrapper = styled.div`
-  position: absolute;
-  bottom: ${itemsSpacing}px;
   display: flex;
   button,div {
     border: 0;
