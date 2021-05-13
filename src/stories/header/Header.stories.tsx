@@ -11,7 +11,7 @@ const Template: Story<HeaderProps> = (args) => <Header {...args} />;
 export const LoggedOutHeader = Template.bind({});
 LoggedOutHeader.args = {};
 
-export const testUser: User = {
+const testUser: User = {
   id: 1234,
   username: 'testuser0001',
   name: 'test',
