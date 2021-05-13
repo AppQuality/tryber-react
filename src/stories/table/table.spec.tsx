@@ -1,10 +1,9 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import {ThemeProvider} from "styled-components";
 import {aqBootstrapTheme} from "../theme/defaultTheme";
-import {Column, Row, Table, TableProps} from "../../stories/table/Table";
+import {Column, Row, Table, } from "../../stories/table/Table";
 import {Button} from "../button/Button";
 import React from "react";
-import {LoggedInHeader} from "../header/Header.stories";
 
 const dataSource: Row[] = [
   {
@@ -70,24 +69,24 @@ describe('Table should render', () => {
   );
   it('all fields in parameter columns in a thead th', () => {
     const th = container.querySelectorAll('thead th');
-    expect(th.length === columns.length);
+    expect(th.length).toEqual(columns.length);
   });
 
   it('all object in parameter dataSource in a tbody tr', () => {
     const tr = container.querySelectorAll('tbody tr');
-    expect(tr.length === dataSource.length);
+    expect(tr.length).toEqual(dataSource.length);
   });
 
 });
 
-describe('Table should render', () => {
+describe('If no data is provided', () => {
   const {container} = render(
     <ThemeProvider theme={aqBootstrapTheme}>
       <Table dataSource={[]} columns={columns} />
     </ThemeProvider>
   );
-  it('an empty placeholder if no data is provided', () => {
+  it('table should render an empty placeholder', () => {
     const placeholder = container.querySelectorAll('.aq-table-empty-placeholder');
-    expect(placeholder.length === 1);
+    expect(placeholder.length).toEqual(1);
   });
 });

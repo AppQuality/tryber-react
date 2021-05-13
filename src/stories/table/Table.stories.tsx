@@ -1,6 +1,6 @@
 import {BSCol, Container} from "../layout/Layout"
 import {Card} from "../card/Card"
-import {Button, ButtonProps} from "../button/Button"
+import {Button} from "../button/Button"
 import { Table, TableProps, Column, Row } from "./Table"
 import {Story, Meta} from "@storybook/react"
 import {aqBootstrapTheme} from "../theme/defaultTheme";
