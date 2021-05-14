@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import { BasicSidebar } from "./Sidebar.stories";
+import { BasicSidebar, BasicSidebarArgs } from "./Sidebar.stories";
 import "../../i18n";
 
-const closedSidebarArgs = BasicSidebar.args;
-const openSidebarArgs = closedSidebarArgs;
+const closedSidebarArgs = {...BasicSidebarArgs};
+const openSidebarArgs = {...closedSidebarArgs};
 openSidebarArgs.open = true;
 describe("Closed sidebar", () => {
   beforeAll(() => {

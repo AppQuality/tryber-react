@@ -83,9 +83,7 @@ const Template: Story<SidebarProps> = (args) => (
     </Sidebar>
   </ThemeProvider>
 );
-
-export const BasicSidebar = Template.bind({});
-BasicSidebar.args = {
+export const BasicSidebarArgs = {
   open: false,
   languages: {
     current: { lang: "it" },
@@ -126,3 +124,5 @@ BasicSidebar.args = {
     },
   ],
 };
+export const BasicSidebar = Template.bind({});
+BasicSidebar.args = BasicSidebarArgs;
