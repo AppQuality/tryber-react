@@ -1,12 +1,10 @@
 import { Button } from "../button/Button";
- 
 
 export interface SidebarIconProps {
   url: string;
   icon: React.ReactNode;
   active: boolean;
 }
-
 
 export const SidebarIcon = ({ url, icon, active }: SidebarIconProps) => {
   return (

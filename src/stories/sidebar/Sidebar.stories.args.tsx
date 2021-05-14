@@ -2,7 +2,7 @@ import { HouseFill, PersonFill, Laptop } from "react-bootstrap-icons";
 
 export const BasicSidebarArgs = {
   open: false,
-	onLogout: () => alert('Logging out'),
+  onLogout: () => alert("Logging out"),
   languages: {
     current: { lang: "it" },
     others: [

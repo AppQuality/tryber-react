@@ -1,4 +1,4 @@
-@import '../styles/aq-bootstrap';
+@import "../styles/aq-bootstrap";
 @import "../styles/mixins/typography";
 $headerHeight: 54px;
 $ContentHeight: 30px;
@@ -13,7 +13,7 @@ $ContentHeight: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0,.25);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
   background: #fff;
   .brand-logo {
     flex: 0 1 150px;

@@ -1,10 +1,9 @@
-import {itemsSpacing} from './variables'
-import styled, {DefaultTheme} from "styled-components";
+import { itemsSpacing } from "./variables";
+import styled, { DefaultTheme } from "styled-components";
 export interface SidebarTextProps {
   url: string;
   text: string;
 }
-
 
 const SidebarTextDiv = styled.div(({ theme }: { theme: DefaultTheme }) => {
   const { palette } = theme;

@@ -11,30 +11,29 @@
 @import "~bootstrap/scss/containers";
 @import "~bootstrap/scss/grid";
 $utilities: (
-	"font-weight": (
-		property: font-weight,
-		class: fw,
-		values: (
-			light: $font-weight-light,
-			lighter: $font-weight-lighter,
-			lightest: $font-weight-lightest,
-			normal: $font-weight-normal,
-			semi-bold: $font-weight-semi-bold,
-			bold: $font-weight-bold,
-			bolder: $font-weight-bolder,
-			"black": $font-weight-black,
-		)
-	),
-	"font-family": (
-		property: font-family,
-		class: font,
-		values: (
-			monospace: var(--#{$variable-prefix}font-monospace),
-			serif: var(--#{$variable-prefix}font-serif)
-		)
-	),
+  "font-weight": (
+    property: font-weight,
+    class: fw,
+    values: (
+      light: $font-weight-light,
+      lighter: $font-weight-lighter,
+      lightest: $font-weight-lightest,
+      normal: $font-weight-normal,
+      semi-bold: $font-weight-semi-bold,
+      bold: $font-weight-bold,
+      bolder: $font-weight-bolder,
+      "black": $font-weight-black,
+    ),
+  ),
+  "font-family": (
+    property: font-family,
+    class: font,
+    values: (
+      monospace: var(--#{$variable-prefix}font-monospace),
+      serif: var(--#{$variable-prefix}font-serif),
+    ),
+  ),
 );
-
 
 @import "~bootstrap/scss/bootstrap-utilities";
 

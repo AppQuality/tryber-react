@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import API from '../utils/api'
+import API from "../utils/api";
 
 export default function ProjectList({ token }) {
   const [projects, setProjects] = useState([]);
@@ -8,7 +8,7 @@ export default function ProjectList({ token }) {
   useEffect(() => {
     API.campaigns(token)
       .then((response) => {
-        setProjects(response.map(res => ({id: res.id, name: res.name})));
+        setProjects(response.map((res) => ({ id: res.id, name: res.name })));
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
@@ -19,12 +19,10 @@ export default function ProjectList({ token }) {
   }
 
   return (
-      <ul data-testid='projectlist' >
-        {projects.map(project => (
-
-          <li key={project.id} >{project.name}</li>
-        ))}
-      </ul>
+    <ul data-testid="projectlist">
+      {projects.map((project) => (
+        <li key={project.id}>{project.name}</li>
+      ))}
+    </ul>
   );
-
 }

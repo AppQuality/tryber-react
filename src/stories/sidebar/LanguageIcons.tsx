@@ -2,16 +2,17 @@ import styled from "styled-components";
 
 export interface LanguageItem {
   lang: string;
-  onClick?(lang:string): void;
+  onClick?(lang: string): void;
 }
 
 export const LanguageIconWrapper = styled.div`
   display: flex;
-  button,div {
+  button,
+  div {
     border: 0;
-    padding:0;
-    text-decoration:none;
-    display:block;
+    padding: 0;
+    text-decoration: none;
+    display: block;
     background: #fff;
     width: 32px;
     height: 32px;
@@ -26,15 +27,21 @@ export const LanguageIcons = ({ langs }: { langs: Array<LanguageItem> }) => {
     <LanguageIconWrapper>
       {langs.map((l, idx) => {
         if (l.onClick) {
-          return <button key={idx} onClick={() => {
-            if (l.onClick) {
-              l.onClick(l.lang)
-            }
-          }}>{l.lang}</button>
-        } 
-        return <div key={idx}>{l.lang}</div>
-      }
-      )}
+          return (
+            <button
+              key={idx}
+              onClick={() => {
+                if (l.onClick) {
+                  l.onClick(l.lang);
+                }
+              }}
+            >
+              {l.lang}
+            </button>
+          );
+        }
+        return <div key={idx}>{l.lang}</div>;
+      })}
     </LanguageIconWrapper>
   );
 };

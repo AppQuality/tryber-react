@@ -1,23 +1,22 @@
-@import '../styles/aq-bootstrap';
+@import "../styles/aq-bootstrap";
 
 $input-border-color: $grey-100;
 $input-disabled-bg: $grey-100;
-$form-switch-bg-image:            url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$info}'/></svg>");
-$form-switch-focus-bg-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$info}'/></svg>") !default;
+$form-switch-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$info}'/></svg>");
+$form-switch-focus-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$info}'/></svg>") !default;
 $input-color: $primary;
 $form-check-input-checked-bg-color: $info;
 
-$input-padding-y: .5rem;
-$input-padding-x: .75rem;
+$input-padding-y: 0.5rem;
+$input-padding-x: 0.75rem;
 
 $dropzone-padding: 8px;
 $dropzone-preview-size: 100px;
 $dropzone-remove-btn-size: 32px;
 
-
 @import "~bootstrap/scss/forms";
 
-.form-group{
+.form-group {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -35,7 +34,7 @@ $dropzone-remove-btn-size: 32px;
 .form-check {
   margin-bottom: 1rem;
 }
-.form-control{
+.form-control {
   box-shadow: none;
   &::placeholder {
     font-weight: $font-weight-light;
@@ -49,7 +48,7 @@ $dropzone-remove-btn-size: 32px;
       border-color: $input-disabled-bg;
       box-shadow: none;
     }
-    &+ .form-label {
+    & + .form-label {
       color: $grey-700;
     }
   }
@@ -60,7 +59,10 @@ $dropzone-remove-btn-size: 32px;
 
     &:disabled,
     &[readonly] {
-      background-image: url(escape-svg("data:image/svg+xml,%3csvg fill='"+$cyan-300+"' xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3'/%3e%3c/svg%3e"));
+      background-image: url(escape-svg(
+        "data:image/svg+xml,%3csvg fill='" + $cyan-300 +
+          "' xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3'/%3e%3c/svg%3e"
+      ));
     }
   }
 }
@@ -100,7 +102,7 @@ $dropzone-remove-btn-size: 32px;
   .file-details {
     cursor: text;
     position: absolute;
-    top: $dropzone-padding*2;
+    top: $dropzone-padding * 2;
     font-size: $font-size-sm;
     width: $dropzone-preview-size - $dropzone-padding;
     margin-left: $dropzone-padding/2;
@@ -143,7 +145,7 @@ $dropzone-remove-btn-size: 32px;
     position: absolute;
     width: $dropzone-preview-size - $dropzone-padding;
     top: 50%;
-    margin-top: - ($progress-height/2);
+    margin-top: -($progress-height/2);
     margin-left: $dropzone-padding/2;
   }
   .dz-default.dz-message {

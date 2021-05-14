@@ -3,8 +3,8 @@ import { BasicSidebar } from "./Sidebar.stories";
 import { BasicSidebarArgs } from "./Sidebar.stories.args";
 import "../../i18n";
 
-const closedSidebarArgs = {...BasicSidebarArgs};
-const openSidebarArgs = {...closedSidebarArgs};
+const closedSidebarArgs = { ...BasicSidebarArgs };
+const openSidebarArgs = { ...closedSidebarArgs };
 openSidebarArgs.open = true;
 describe("Closed sidebar", () => {
   beforeAll(() => {
@@ -57,9 +57,7 @@ describe("Closed sidebar", () => {
     }
     expect(screen.getByText(lang)).toBeInTheDocument();
   });
-  
 });
-
 
 describe("Open sidebar", () => {
   it("should render the other languages", async () => {
@@ -69,9 +67,11 @@ describe("Open sidebar", () => {
       closedSidebarArgs.languages &&
       closedSidebarArgs.languages.others
     ) {
-      closedSidebarArgs.languages.others.forEach((l:{lang:string,onClick:Function}) => {
-        expect(screen.getByText(l.lang)).toBeInTheDocument();
-      })
+      closedSidebarArgs.languages.others.forEach(
+        (l: { lang: string; onClick: Function }) => {
+          expect(screen.getByText(l.lang)).toBeInTheDocument();
+        }
+      );
     }
   });
-})
+});

@@ -14,5 +14,5 @@ export interface SidebarProps {
     others: Array<LanguageItem>;
   };
   open?: boolean;
-  onLogout: Function
+  onLogout: Function;
 }

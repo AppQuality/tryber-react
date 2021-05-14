@@ -1,9 +1,9 @@
 import React from "react";
-import {BSCol, Container, BSGrid} from "../stories/layout/Layout";
-import {Card} from "../stories/card/Card";
+import { BSCol, Container, BSGrid } from "../stories/layout/Layout";
+import { Card } from "../stories/card/Card";
 import LoginForm from "../features/LoginForm";
 import useToken from "../store/useToken";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export default function SignIn() {
   let token = useToken();
@@ -12,7 +12,7 @@ export default function SignIn() {
     <Container>
       <h2>{t("become-a-tester")}</h2>
       <BSGrid>
-        <BSCol size='lg-8'>
+        <BSCol size="lg-8">
           <Card>
             <LoginForm setToken={token.setToken} />
           </Card>

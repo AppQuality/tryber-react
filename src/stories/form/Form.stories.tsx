@@ -1,6 +1,6 @@
-import { Field, FieldInterface } from "./Form"
-import {Story, Meta} from "@storybook/react"
-import { Formik, Form } from "formik"
+import { Field, FieldInterface } from "./Form";
+import { Story, Meta } from "@storybook/react";
+import { Formik, Form } from "formik";
 import styled from "styled-components";
 
 export default {
@@ -9,12 +9,15 @@ export default {
 } as Meta;
 
 export const Template: Story = () => (
-  <Formik initialValues={{text:''}}  onSubmit={(data)=>{console.log(data)}}>
+  <Formik
+    initialValues={{ text: "" }}
+    onSubmit={(data) => {
+      console.log(data);
+    }}
+  >
     <Form>
-      <Field type='text' name='text' />
-      <Field type='search' name='search' />
+      <Field type="text" name="text" />
+      <Field type="search" name="search" />
     </Form>
   </Formik>
 );
-
-

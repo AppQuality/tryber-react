@@ -118,7 +118,7 @@ test("SignupForm fields should show a validation error when not validating", asy
   });
 });
 
-describe('Weak Passwords', () => {
+describe("Weak Passwords", () => {
   test.each(weakPasswords)(
     "writing %p as password, returns an invalid feedback",
     async (weakPassword) => {
@@ -132,7 +132,7 @@ describe('Weak Passwords', () => {
       });
     }
   );
-})
+});
 
 test("SignupForm should call the signup api on submit", async () => {
   mockedApi.signup.mockResolvedValueOnce(signupData);
@@ -170,10 +170,10 @@ test("SignupForm should call the signup api on submit", async () => {
     ).toBeChecked();
     expect(screen.getByRole("button")).not.toHaveAttribute("disabled");
   });
-  
+
   userEvent.click(screen.getByRole("button"));
   await waitFor(() => {
-    expect(API.signup).toHaveBeenCalledWith(signupData)
+    expect(API.signup).toHaveBeenCalledWith(signupData);
     expect(API.signup).toHaveBeenCalledTimes(1);
-  })
-})
+  });
+});
