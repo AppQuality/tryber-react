@@ -1,23 +1,23 @@
-import React, { useEffect,useState } from "react"
-import { Container, BSGrid, BSCol } from "../stories/layout/Layout"
-import { Card } from "../stories/card/Card"
-import Spinner from "../stories/spinner/Spinner"
-import { H5 } from "../stories/typography/Typography"
-import { useTranslation } from "react-i18next"
-import API from "../utils/api"
-import styled from "styled-components"
-import {SignupMailSocial} from "../features/SignupMailSocial";
-import TagManager from 'react-gtm-module'
- 
+import React, { useEffect, useState } from "react";
+import { Container, BSGrid, BSCol } from "../stories/layout/Layout";
+import { Card } from "../stories/card/Card";
+import Spinner from "../stories/spinner/Spinner";
+import { H5 } from "../stories/typography/Typography";
+import { useTranslation } from "react-i18next";
+import API from "../utils/api";
+import styled from "styled-components";
+import { SignupMailSocial } from "../features/SignupMailSocial";
+import TagManager from "react-gtm-module";
+
 const tagManagerArgs = {
-    dataLayer:  {
-      "role": "unknown",
-      "wp_user_id": false,
-      "tester_id": false,
-      "is_admin_page": false
-    },
-    dataLayerName: 'PageDataLayer'
-}
+  dataLayer: {
+    role: "unknown",
+    wp_user_id: false,
+    tester_id: false,
+    is_admin_page: false,
+  },
+  dataLayerName: "PageDataLayer",
+};
 
 export default function GettingStarted() {
   const [isLoading, setisLoading] = useState(true);
@@ -25,18 +25,18 @@ export default function GettingStarted() {
   const [loadingMessage, setLoadingMessage] = useState(t("Loading"));
   const redirectUrl =
     i18n.language === "en" ? "/my-dashboard/" : "/it/la-mia-dashboard/";
-  TagManager.dataLayer(tagManagerArgs)
+  TagManager.dataLayer(tagManagerArgs);
 
   useEffect(() => {
     API.me()
       .then((res) => {
         // user logged in
-        setLoadingMessage(t('Redirecting to your dashboard...'))
+        setLoadingMessage(t("Redirecting to your dashboard..."));
         window.location.href = redirectUrl;
       })
       .catch((e) => {
         if (e.statusCode === 403) {
-          setisLoading(false)
+          setisLoading(false);
           // user logged out, proceed
         } else {
           alert(e.message);
@@ -51,15 +51,16 @@ export default function GettingStarted() {
     justify-content: center;
     flex-flow: column;
     min-height: 60vh;
-  `
+  `;
   if (isLoading) {
     return (
       <Container>
         <SpinnerWrapper>
-          <Spinner/><H5>{loadingMessage}</H5>
+          <Spinner />
+          <H5>{loadingMessage}</H5>
         </SpinnerWrapper>
       </Container>
-    )
+    );
   }
   return (
     <Container>

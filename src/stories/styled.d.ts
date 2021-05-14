@@ -1,35 +1,36 @@
 // import original module declarations
-import 'styled-components';
+import "styled-components";
 
-declare module 'styled-components' {
+declare module "styled-components" {
   export interface DefaultTheme {
     typography: {
       fontFamily: {
-        base: string
-      }
+        base: string;
+      };
       fontSize: {
-        base: string
-        small: string
-      }
+        base: string;
+        small: string;
+      };
       fontWeight: {
-        light: number,
-        bold: number
-      }
-    }
+        light: number;
+        bold: number;
+      };
+    };
     palette: {
-      primary: string
-      secondary: string
-      disabledFont: string
-    }
+      primary: string;
+      secondary: string;
+      info: string;
+      disabledFont: string;
+    };
     grid: {
       breakpoints: {
-        sm: string
-        xs: string
-        md: string
-        lg: string
-        xl: string
-        xxl: string
-      }
-    }
+        sm: string;
+        xs: string;
+        md: string;
+        lg: string;
+        xl: string;
+        xxl: string;
+      };
+    };
   }
 }
