@@ -62,16 +62,10 @@ describe("Closed sidebar", () => {
 describe("Open sidebar", () => {
   it("should render the other languages", async () => {
     render(<BasicSidebar {...openSidebarArgs} />);
-    if (
-      closedSidebarArgs &&
-      closedSidebarArgs.languages &&
-      closedSidebarArgs.languages.others
-    ) {
-      closedSidebarArgs.languages.others.forEach(
-        (l: { lang: string; onClick: Function }) => {
-          expect(screen.getByText(l.lang)).toBeInTheDocument();
-        }
-      );
-    }
+    closedSidebarArgs.languages.others.forEach(
+      (l: { lang: string; onClick: Function }) => {
+        expect(screen.getByText(l.lang)).toBeInTheDocument();
+      }
+    );
   });
 });
