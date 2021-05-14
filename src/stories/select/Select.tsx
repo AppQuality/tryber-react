@@ -1,6 +1,6 @@
 import ReactSelect, {components, Styles, Theme} from "react-select"
 import {aqBootstrapTheme} from "../theme/defaultTheme"
-import {Search} from "react-bootstrap-icons"
+import {ChevronDown, X} from "react-bootstrap-icons"
 
 interface Option {
   value: string
@@ -8,10 +8,16 @@ interface Option {
 }
 export interface SelectProps {
   options: Option[]
-  isSearch?: boolean
+  defaultValue?: string
+  placeholder?: string
+  isMulti?: boolean
+  isClearable?: boolean
+  isDisabled?: boolean
+  isLoading?: boolean
+  isSearchable?: boolean
 }
 
-export const Select = ({options, isSearch}: SelectProps) => {
+export const Select = ({options, defaultValue, placeholder = 'Select...', isMulti, isDisabled, isLoading, isClearable = true, isSearchable}: SelectProps) => {
   let aqTheme = (theme: Theme) => ({
     borderRadius: 5,
     spacing: theme.spacing,
@@ -25,17 +31,22 @@ export const Select = ({options, isSearch}: SelectProps) => {
   let rest = {
     components: {IndicatorSeparator}
   };
-  if (isSearch) {
-    const DropdownIndicator = (
-      props: JSX.LibraryManagedAttributes<typeof components.DropdownIndicator, any>
-    ) => (
-        <components.DropdownIndicator {...props}>
-          <Search />
-        </components.DropdownIndicator>
-    );
-    // @ts-ignore
-    rest.components = {...rest.components, DropdownIndicator};
-  }
+  const DropdownIndicator = (
+    props: JSX.LibraryManagedAttributes<typeof components.DropdownIndicator, any>
+  ) => (
+      <components.DropdownIndicator {...props}>
+        <ChevronDown />
+      </components.DropdownIndicator>
+  );
+  const ClearIndicator = (
+    props: JSX.LibraryManagedAttributes<typeof components.DropdownIndicator, any>
+  ) => (
+      <components.ClearIndicator {...props}>
+        <X />
+      </components.ClearIndicator>
+  );
+  // @ts-ignore
+  rest.components = {...rest.components, DropdownIndicator, ClearIndicator};
 
   const customStyle: Styles<any, any> = {
     control: (provided, state) => {
@@ -58,7 +69,14 @@ export const Select = ({options, isSearch}: SelectProps) => {
   return (
     <ReactSelect
       options={options}
+      defaultValue={defaultValue}
+      placeholder={placeholder}
+      isDisabled={isDisabled}
+      isLoading={isLoading}
+      isClearable={isClearable}
+      isSearchable={isSearchable}
       styles={customStyle}
+      isMulti={isMulti}
       theme={theme => aqTheme(theme)}
       {...rest}
     />

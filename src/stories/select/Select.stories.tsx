@@ -34,5 +34,5 @@ const Template: Story<SelectProps> = (args) => {
 export const SelectBase = Template.bind({});
 SelectBase.args = {
   options: options,
-  isSearch: true
+  isSearchable: true
 };
