@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import {ThemeProvider} from "styled-components";
 import {aqBootstrapTheme} from "../theme/defaultTheme";
-import {Column, Row, Table, } from "../../stories/table/Table";
+import {Column, Row, Table, } from "./Table";
 import {Button} from "../button/Button";
 import React from "react";
 
@@ -62,30 +62,34 @@ const columns: Column[] = [
 ];
 
 describe('Table should render data correctly', () => {
-  const {container} = render(
-    <ThemeProvider theme={aqBootstrapTheme}>
-      <Table dataSource={dataSource} columns={columns} />
-    </ThemeProvider>
-  );
-  it('There should be as many thead th as columns in parameters', () => {
-    const th = container.querySelectorAll('thead th');
-    expect(th.length).toEqual(columns.length);
-  });
-
-  it('There should be as many tbody tr as object in parameter dataSource', () => {
+  it('There should be as many tbody tr as object in parameter dataSource',() => {
+    const {container} = render(
+      <ThemeProvider theme={aqBootstrapTheme}>
+        <Table dataSource={dataSource} columns={columns} />
+      </ThemeProvider>
+    );
     const tr = container.querySelectorAll('tbody tr');
     expect(tr.length).toEqual(dataSource.length);
+  });
+  it('There should be as many thead th as columns in parameters', () => {
+    const {container} = render(
+      <ThemeProvider theme={aqBootstrapTheme}>
+        <Table dataSource={dataSource} columns={columns} />
+      </ThemeProvider>
+    );
+    const th = container.querySelectorAll('thead th');
+    expect(th.length).toEqual(columns.length);
   });
 
 });
 
 describe('If no data is provided', () => {
-  const {container} = render(
-    <ThemeProvider theme={aqBootstrapTheme}>
-      <Table dataSource={[]} columns={columns} />
-    </ThemeProvider>
-  );
   it('Table should render an empty placeholder', () => {
+    const {container} = render(
+      <ThemeProvider theme={aqBootstrapTheme}>
+        <Table dataSource={[]} columns={columns} />
+      </ThemeProvider>
+    );
     const placeholder = container.querySelectorAll('.aq-table-empty-placeholder');
     expect(placeholder.length).toEqual(1);
   });
