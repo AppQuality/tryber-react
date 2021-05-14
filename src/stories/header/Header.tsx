@@ -15,13 +15,13 @@ export interface User {
 }
 
 export interface HeaderProps {
-  user?: User
-  logo?: React.ReactNode,
-  showLogin?: boolean
+  user?: User;
+  logo?: React.ReactNode;
+  showLogin?: boolean;
 }
 
 export interface UserInfoProps {
-  user: User
+  user: User;
 }
 
 export const Header = ({ user, logo, showLogin = true }: HeaderProps) => {
