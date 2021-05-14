@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { BasicSidebar, BasicSidebarArgs } from "./Sidebar.stories";
+import { BasicSidebar } from "./Sidebar.stories";
+import { BasicSidebarArgs } from "./Sidebar.stories.args";
 import "../../i18n";
 
 const closedSidebarArgs = {...BasicSidebarArgs};
@@ -68,7 +69,7 @@ describe("Open sidebar", () => {
       closedSidebarArgs.languages &&
       closedSidebarArgs.languages.others
     ) {
-      closedSidebarArgs.languages.others.forEach((l) => {
+      closedSidebarArgs.languages.others.forEach((l:{lang:string,onClick:Function}) => {
         expect(screen.getByText(l.lang)).toBeInTheDocument();
       })
     }

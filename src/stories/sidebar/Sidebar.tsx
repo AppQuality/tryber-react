@@ -20,14 +20,15 @@ export const Sidebar = ({
   children,
   items,
   languages,
+  onLogout,
   open = false,
 }: SidebarProps) => {
   useWindowSize();
   if (window.matchMedia('only screen and (max-width: 768px)').matches) {
-    return <MobileSidebar items={items} languages={languages} open={open}>{children}</MobileSidebar>
+    return <MobileSidebar items={items} languages={languages} open={open} onLogout={onLogout}>{children}</MobileSidebar>
   }
   return (
-    <DesktopSidebar items={items} languages={languages} open={open}>
+    <DesktopSidebar items={items} languages={languages} open={open} onLogout={onLogout} >
       {children}
     </DesktopSidebar>
   );
