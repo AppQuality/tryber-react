@@ -25,7 +25,7 @@ const signupData = {
 const weakPasswords = ["pippo", "pippofranco", "pippofranco0", "pippoFranco"];
 
 beforeEach(() => {
-  const { debug } = render(
+  render(
     <ThemeProvider theme={aqBootstrapTheme}>
       <SignupForm redirectUrl="/" />
     </ThemeProvider>

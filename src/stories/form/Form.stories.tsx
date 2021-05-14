@@ -1,7 +1,6 @@
-import { Field, FieldInterface } from "./Form";
+import { Field } from "./Form";
 import { Story, Meta } from "@storybook/react";
 import { Formik, Form } from "formik";
-import styled from "styled-components";
 
 export default {
   title: "Forms",
