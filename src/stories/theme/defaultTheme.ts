@@ -18,11 +18,12 @@ export const COLORS: Colors = {
   grey600: '#8EA2AE',
 }
 
-const aqBootstrapTheme:DefaultTheme = {
+const aqBootstrapTheme: DefaultTheme = {
   typography: {
     fontFamily: {
-      base: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;',
-      serif: 'IBM Plex Serif'
+      base:
+        'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;',
+      serif: "IBM Plex Serif",
     },
     fontSize: {
       base: ".875rem",
@@ -39,7 +40,7 @@ const aqBootstrapTheme:DefaultTheme = {
     secondary: COLORS.cyan600,
     info: COLOR.blue,
     disabledFont: COLORS.grey600,
-    disabledElement: COLORS.grey300
+    disabledElement: COLORS.grey300,
   },
   grid: {
     breakpoints: {

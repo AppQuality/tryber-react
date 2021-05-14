@@ -1,24 +1,24 @@
 // import original module declarations
-import 'styled-components';
-import {Colors} from "./theme/defaultTheme";
+import "styled-components";
+import { Colors } from "./theme/defaultTheme";
 
 declare module "styled-components" {
   export interface DefaultTheme {
     typography: {
       fontFamily: {
-        base: string
-        serif: string
-      }
+        base: string;
+        serif: string;
+      };
       fontSize: {
         base: string;
         small: string;
       };
       fontWeight: {
-        light: number,
-        bold: number
-      }
-    }
-    colors: Colors
+        light: number;
+        bold: number;
+      };
+    };
+    colors: Colors;
     palette: {
       primary: string
       secondary: string
