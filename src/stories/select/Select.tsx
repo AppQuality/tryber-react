@@ -1,7 +1,6 @@
 import ReactSelect, {components, Theme} from "react-select"
 import {aqBootstrapTheme} from "../theme/defaultTheme"
 import {Search} from "react-bootstrap-icons"
-import {ThemeConfig, defaultTheme} from "react-select/src/theme"
 
 interface Option {
   value: string
@@ -11,15 +10,6 @@ export interface SelectProps {
   options: Option[]
   isSearch?: boolean
 }
-
-const SearchIndicator = ({...props}) => {
-  return (
-  // @ts-ignore
-    <components.DropdownIndicator {...props}>
-      <Search />
-    </components.DropdownIndicator>
-  );
-};
 
 export const Select = ({options, isSearch}: SelectProps) => {
   let aqTheme = (theme: Theme) => ({
@@ -43,7 +33,6 @@ export const Select = ({options, isSearch}: SelectProps) => {
           <Search />
         </components.DropdownIndicator>
     );
-
     // @ts-ignore
     rest.components = {...rest.components, DropdownIndicator};
   }
