@@ -20,12 +20,12 @@ declare module "styled-components" {
     };
     colors: Colors;
     palette: {
-      primary: string
-      secondary: string
+      primary: string;
+      secondary: string;
       info: string;
-      disabledFont: string
-      disabledElement: string
-    }
+      disabledFont: string;
+      disabledElement: string;
+    };
     grid: {
       breakpoints: {
         sm: string;

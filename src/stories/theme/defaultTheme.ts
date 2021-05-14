@@ -1,22 +1,22 @@
 import { DefaultTheme } from "styled-components";
 
 export interface Colors {
-  blue: string
-  blue700: string
-  cyan600: string
-  grey100: string
-  grey300: string
-  grey600: string
+  blue: string;
+  blue700: string;
+  cyan600: string;
+  grey100: string;
+  grey300: string;
+  grey600: string;
 }
 
 export const COLORS: Colors = {
   blue: "#266A9A",
-  blue700: '#17405C',
-  cyan600: '#448098',
-  grey100: '#F0F5F7',
-  grey300: '#D1E0E8',
-  grey600: '#8EA2AE',
-}
+  blue700: "#17405C",
+  cyan600: "#448098",
+  grey100: "#F0F5F7",
+  grey300: "#D1E0E8",
+  grey600: "#8EA2AE",
+};
 
 const aqBootstrapTheme: DefaultTheme = {
   typography: {
@@ -38,7 +38,7 @@ const aqBootstrapTheme: DefaultTheme = {
   palette: {
     primary: COLORS.blue700,
     secondary: COLORS.cyan600,
-    info: COLOR.blue,
+    info: COLORS.blue,
     disabledFont: COLORS.grey600,
     disabledElement: COLORS.grey300,
   },
