@@ -55,9 +55,6 @@ const TableWrapper = styled.div`
   
     &.aq-striped>tbody>tr:nth-of-type(odd) {
       background-color: ${props => (props.theme.colors.grey100)};
-      &:hover {
-        background-color: ${props => (props.theme.colors.grey300)};
-      }
     }
     
     thead {
@@ -78,8 +75,8 @@ const TableWrapper = styled.div`
         padding: ${cellPadding};
         vertical-align: text-top;
       }
-      tr:hover {
-        background-color: ${props => (props.theme.colors.grey100)};
+      tr:hover:not(.aq-table-empty-placeholder) {
+        background-color: ${props => (props.theme.colors.grey300)};
       }
       tr:not(:last-child) td {
         border-bottom: 1px solid ${props => (props.theme.palette.disabledElement)};
@@ -103,12 +100,12 @@ const TableWrapper = styled.div`
     }
   }
   .aq-table-empty-placeholder {
-    min-height: 200px;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
+    height: 200px;
+    text-align: center;
     color: ${props => (props.theme.palette.disabledFont)};
+    td {
+      vertical-align: middle;
+    }
   }
   .aq-table-placeholder-icon {
     font-size: 40px;
@@ -134,12 +131,10 @@ export const Table = ({dataSource, columns, isLoading, isStriped, pagination}: T
   );
 
   const DataPlaceholder = () => (
-    <tr>
+    <tr className='aq-table-empty-placeholder'>
       <td colSpan={columns.length}>
-        <div className='aq-table-empty-placeholder'>
           <Inboxes className='aq-table-placeholder-icon' />
           <div>There's no data here</div>
-        </div>
       </td>
     </tr>
   );
