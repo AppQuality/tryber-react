@@ -1,11 +1,13 @@
 // import original module declarations
 import "styled-components";
+import { Colors } from "./theme/defaultTheme";
 
 declare module "styled-components" {
   export interface DefaultTheme {
     typography: {
       fontFamily: {
         base: string;
+        serif: string;
       };
       fontSize: {
         base: string;
@@ -16,11 +18,13 @@ declare module "styled-components" {
         bold: number;
       };
     };
+    colors: Colors;
     palette: {
       primary: string;
       secondary: string;
       info: string;
       disabledFont: string;
+      disabledElement: string;
     };
     grid: {
       breakpoints: {
