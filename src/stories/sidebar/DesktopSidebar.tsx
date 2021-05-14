@@ -21,16 +21,16 @@ const SidebarWrapper = styled.div(({ theme }: { theme: DefaultTheme }) => {
    left:0;
    width: ${sidebarWidth}px;
    
-   ${SidebarIcons}, ${SidebarItems} {
-    padding-top: 20px;
-    height:100%;
-   }
    ${SidebarIcons} {
      position:relative;
      top:0;
     z-index: 1;
     padding: ${itemsSpacing}px;
     background-color:${palette.primary};
+   }
+   ${SidebarIcons}, ${SidebarItems} {
+    padding-top: 20px;
+    height:100%;
    }
    ${SidebarItems} {
      position:absolute;
