@@ -61,18 +61,18 @@ const columns: Column[] = [
   }
 ];
 
-describe('Table should render', () => {
+describe('Table should render data correctly', () => {
   const {container} = render(
     <ThemeProvider theme={aqBootstrapTheme}>
       <Table dataSource={dataSource} columns={columns} />
     </ThemeProvider>
   );
-  it('all fields in parameter columns in a thead th', () => {
+  it('There should be as many thead th as columns in parameters', () => {
     const th = container.querySelectorAll('thead th');
     expect(th.length).toEqual(columns.length);
   });
 
-  it('all object in parameter dataSource in a tbody tr', () => {
+  it('There should be as many tbody tr as object in parameter dataSource', () => {
     const tr = container.querySelectorAll('tbody tr');
     expect(tr.length).toEqual(dataSource.length);
   });
@@ -85,7 +85,7 @@ describe('If no data is provided', () => {
       <Table dataSource={[]} columns={columns} />
     </ThemeProvider>
   );
-  it('table should render an empty placeholder', () => {
+  it('Table should render an empty placeholder', () => {
     const placeholder = container.querySelectorAll('.aq-table-empty-placeholder');
     expect(placeholder.length).toEqual(1);
   });
