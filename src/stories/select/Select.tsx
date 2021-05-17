@@ -13,8 +13,11 @@ export interface Option {
 }
 
 type Options = Option[] | GetOptionsAsync;
-
-export type GetOptionsAsync = () => Promise<Option[]>;
+export interface GetOptionsAsyncResponse {
+  more: boolean
+  results: Option[]
+}
+export type GetOptionsAsync = (start: number, search?: string) => Promise<GetOptionsAsyncResponse>;
 // () => { github.get('repositories').then( rep => rep.map(r => {r.id,r.name}))
 // () => { api.get('/api/users/me/bugs').then( bugs => bug.map( b => b.campaign_name).unique())
 
@@ -30,29 +33,44 @@ export interface SelectProps {
 }
 
 type OptionActionType = 'add' | 'reset' | 'set';
+
 interface OptionAction {
   type: OptionActionType,
   payload: Option[]
 }
 
+interface UpdatePageAction {
+  type: 'increment' | 'reset'
+}
+
+function updateOptions (state: Option[], action: OptionAction): Option[] {
+  const {type, payload} = action;
+  switch (type) {
+    case "set": {
+      return payload;
+    }
+    case 'add': {
+      return [...state, ...payload];
+    }
+    case "reset": {
+      return [];
+    }
+  }
+}
+
+function updatePage (state: number, action:UpdatePageAction): number {
+  switch (action.type) {
+    case "increment": {
+      return state++;
+    }
+    case "reset": {
+      return 0;
+    }
+  }
+}
 export const Select = ({options, defaultValue, placeholder = 'Select...', isMulti, isDisabled, isLoading, isClearable = true, isSearchable}: SelectProps) => {
   const [loading, setLoading] = useState(isLoading);
-
-  function updateOptions (state: Option[], action: OptionAction): Option[] {
-    const {type, payload} = action;
-    switch (type) {
-      case "set": {
-        return payload;
-      }
-      case 'add': {
-        return [...state, ...payload];
-      }
-      case "reset": {
-        return [];
-      }
-    }
-  };
-
+  const [page, setPage] = useState(0);
   const [optionsArray, setOptions] = useReducer(updateOptions, []);
 
   useEffect(()=>{
@@ -63,13 +81,27 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
     if (options instanceof Array) {
       setOptions({type: 'set', payload: options});
     } else {
-      getAsyncRes('set', options);
+      setLoading(true);
+      getAsyncRes('set', options, page).finally(() => {
+        setLoading(false);
+        setPage(page => {return(page+1)});
+      });
     }
   }, [options]);
 
-  const getAsyncRes = async (type: OptionActionType, fn: GetOptionsAsync) => {
-    const res = await fn();
-    setOptions({type: type, payload: res});
+  const getAsyncRes = async (type: OptionActionType, fn: GetOptionsAsync, start: number) => {
+    const res = await fn(start);
+    setOptions({type: type, payload: res.results});
+  }
+
+  const onMenuScrollToBottom = (start: number) => {
+    if (options instanceof Function) {
+      setLoading(true);
+      getAsyncRes('add', options, start).finally(() => {
+        setLoading(false);
+        setPage(page => {return(page+1)});
+      })
+    }
   }
 
   let aqTheme = (theme: Theme) => ({
@@ -102,14 +134,6 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
   // @ts-ignore
   rest.components = {...rest.components, DropdownIndicator, ClearIndicator};
 
-  const onMenuScrollToBottom = () => {
-    if (options instanceof Function) {
-      setLoading(true);
-      getAsyncRes('add', options).then(() => {
-        setLoading(false);
-      })
-    }
-  }
   const customStyle: Styles<any, any> = {
     control: (provided, state) => {
       const borderColor = state.isFocused
@@ -129,20 +153,23 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
     }
   }
   return (
-    <ReactSelect
-      options={[...optionsArray, loading ? { value: 'loading', label: 'Loading more...', isDisabled: true } : {}]}
-      defaultValue={defaultValue}
-      placeholder={placeholder}
-      isDisabled={isDisabled}
-      isLoading={loading}
-      isClearable={isClearable}
-      isSearchable={isSearchable}
-      styles={customStyle}
-      isMulti={isMulti}
-      // menuPlacement='auto'
-      onMenuScrollToBottom={onMenuScrollToBottom}
-      theme={theme => aqTheme(theme)}
-      {...rest}
-    />
+    <>
+      page: {page}
+      <ReactSelect
+        options={[...optionsArray, loading ? { value: 'loading', label: 'Loading more...', isDisabled: true } : {}]}
+        defaultValue={defaultValue}
+        placeholder={placeholder}
+        isDisabled={isDisabled}
+        isLoading={loading}
+        isClearable={isClearable}
+        isSearchable={isSearchable}
+        styles={customStyle}
+        isMulti={isMulti}
+        // menuPlacement='auto'
+        onMenuScrollToBottom={() => {onMenuScrollToBottom(page)}}
+        theme={theme => aqTheme(theme)}
+        {...rest}
+      />
+    </>
   )
 }
