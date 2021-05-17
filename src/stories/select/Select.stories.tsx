@@ -76,7 +76,6 @@ const getAsyncOptions: GetOptionsAsync = (start, search ) => {
       if (search) {
         // todo
       }
-      debugger;
       return resolve({results:res, more: (start <= (total/limit))});
     }, 1500);
   });
