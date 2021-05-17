@@ -88,8 +88,15 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
     setOptions({type: type, payload: res.results});
   }
 
-  const handleChange = () => {
-
+  const handleChange = (value:string) => {
+    if (options instanceof Function) {
+      if (value.length >= 3) {
+        setLoading(true);
+        getAsyncRes('reset', options, 0, value).finally(() => {
+          setLoading(false);
+        });
+      }
+    }
   }
   let aqTheme = (theme: Theme) => ({
     borderRadius: 5,
@@ -153,7 +160,7 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
         isMulti={isMulti}
         // menuPlacement='auto'
         onMenuScrollToBottom={() => {setPage(page => page+1)}}
-        onChange={handleChange}
+        onInputChange={handleChange}
         theme={theme => aqTheme(theme)}
         {...rest}
       />

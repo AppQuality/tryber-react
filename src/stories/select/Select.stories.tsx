@@ -58,13 +58,13 @@ const asyncOptions = [
   {value: "salted-caramel", label: "Salted Caramel", rating: "safe"},
   {value: "indian-red", label: "Indian Red"},
   {value: "crimson", label: "Crimson"},
-  {color: "lightpink", label: "Light Pink"},
-  {color: "palevioletred", label: "Pale Violet Red"},
-  {color: "lavenderblush", label: "Lavender Blush"},
-  {color: "violetred", label: "Violet Red"},
-  {color: "maroon", label: "Maroon"},
-  {color: "orchid", label: "Orchid"},
-  {color: "plum", label: "Plum"},
+  {value: "lightpink", label: "Light Pink"},
+  {value: "palevioletred", label: "Pale Violet Red"},
+  {value: "lavenderblush", label: "Lavender Blush"},
+  {value: "violetred", label: "Violet Red"},
+  {value: "maroon", label: "Maroon"},
+  {value: "orchid", label: "Orchid"},
+  {value: "plum", label: "Plum"},
 ]
 
 const getAsyncOptions: GetOptionsAsync = (start, search ) => {
@@ -72,11 +72,14 @@ const getAsyncOptions: GetOptionsAsync = (start, search ) => {
   const total = asyncOptions.length;
   return new Promise<GetOptionsAsyncResponse>((resolve) => {
     setTimeout(() => {
-      const res = asyncOptions.slice((start*limit), (limit * (start+1)));
       if (search) {
-        // todo
+        const filteredRes = asyncOptions.filter(opt => {
+          return opt.value.indexOf(search) > 0;
+        })
+      } else {
+        const res = asyncOptions.slice((start*limit), (limit * (start+1)));
+        return resolve({results:res, more: (start <= (total/limit))});
       }
-      return resolve({results:res, more: (start <= (total/limit))});
     }, 1500);
   });
 }
