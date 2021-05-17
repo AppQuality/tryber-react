@@ -1,31 +1,27 @@
 @import "~bootstrap/scss/functions"; // Required
 
-$blue: 		#266a9a;
-$indigo:  #6610f2;
-$purple:  #6f42c1;
-$pink:    #d63384;
-$red:     #D71116;
-$orange:  #FF9900;
-$yellow:  #ffc107;
-$green:   #3EAD52;
-$teal:    #20c997;
-$cyan: 		#55a0be;
+$blue: #266a9a;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #d63384;
+$red: #d71116;
+$orange: #ff9900;
+$yellow: #ffc107;
+$green: #3ead52;
+$teal: #20c997;
+$cyan: #55a0be;
 
-$grey: #B2CBD9;
+$grey: #b2cbd9;
 
-$grey-100: mix(white,$grey, 80%) ;
-$grey-200: mix(white,$grey, 60%) ;
-$grey-300: mix(white,$grey, 40%) ;
-$grey-400: mix(white,$grey, 20%) ;
+$grey-100: mix(white, $grey, 80%);
+$grey-200: mix(white, $grey, 60%);
+$grey-300: mix(white, $grey, 40%);
+$grey-400: mix(white, $grey, 20%);
 $grey-500: $grey;
-$grey-600: mix(black,$grey, 20%) ;
-$grey-700: mix(black,$grey, 40%) ;
-$grey-800: mix(black,$grey, 60%) ;
-$grey-900: mix(black,$grey, 80%) ;
-
-
-
-
+$grey-600: mix(black, $grey, 20%);
+$grey-700: mix(black, $grey, 40%);
+$grey-800: mix(black, $grey, 60%);
+$grey-900: mix(black, $grey, 80%);
 
 // fusv-disable
 $blue-100: tint-color($blue, 80%) !default;
@@ -129,9 +125,6 @@ $cyan-800: shade-color($cyan, 60%) !default;
 $cyan-900: shade-color($cyan, 80%) !default;
 // fusv-enable
 
-
-
-
 $primary: $blue-700;
 $secondary: $cyan-600;
 $success: $green;
@@ -139,17 +132,15 @@ $info: $blue;
 $warning: $orange;
 $danger: $red;
 
-
 $disabled: $grey-300;
 $disabled-dark: $grey-600;
 
-
-
 $theme-colors: (
-        "primary":    $primary,
-        "secondary":  $secondary,
-        "success":    $success,
-        "info":       $info,
-        "warning":    $warning,
-        "danger":     $danger
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": white,
 );

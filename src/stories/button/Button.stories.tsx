@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, ButtonProps } from "./Button";
-import {Story, Meta} from "@storybook/react";
-import {Search} from "react-bootstrap-icons"
+import { Story, Meta } from "@storybook/react";
+import { Search } from "react-bootstrap-icons";
 
 export default {
   title: "Button",
@@ -12,29 +12,29 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  type: 'primary',
-  children: 'click'
+  type: "primary",
+  children: "click",
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  type: 'secondary',
-  children: 'click'
+  type: "secondary",
+  children: "click",
 };
 
 export const Large = Template.bind({});
 Large.args = {
   size: "lg",
-  children: 'click'
+  children: "click",
 };
 
 export const Small = Template.bind({});
 Small.args = {
   size: "sm",
-  children: 'click'
+  children: "click",
 };
 
 export const IconButton = Template.bind({});
 IconButton.args = {
-  children: <Search />
+  children: <Search />,
 };
