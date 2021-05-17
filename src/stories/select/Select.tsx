@@ -3,7 +3,7 @@ import {aqBootstrapTheme} from "../theme/defaultTheme"
 import {ChevronDown, X} from "react-bootstrap-icons"
 import {useEffect, useReducer, useState} from "react";
 
-interface Option {
+export interface Option {
   label: string
   value?: string
   options?: Option[]
@@ -12,13 +12,14 @@ interface Option {
   [index: string]: any;
 }
 
+type Options = Option[] | GetOptionsAsync;
+
 export type GetOptionsAsync = () => Promise<Option[]>;
 // () => { github.get('repositories').then( rep => rep.map(r => {r.id,r.name}))
 // () => { api.get('/api/users/me/bugs').then( bugs => bug.map( b => b.campaign_name).unique())
 
-
 export interface SelectProps {
-  options: Option[] | GetOptionsAsync
+  options: Options
   defaultValue?: string
   placeholder?: string
   isMulti?: boolean
@@ -64,7 +65,7 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
     } else {
       getAsyncRes('set', options);
     }
-  });
+  }, [options]);
 
   const getAsyncRes = async (type: OptionActionType, fn: GetOptionsAsync) => {
     const res = await fn();
@@ -102,8 +103,12 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
   rest.components = {...rest.components, DropdownIndicator, ClearIndicator};
 
   const onMenuScrollToBottom = () => {
-    setLoading(true);
-    // addOptions
+    if (options instanceof Function) {
+      setLoading(true);
+      getAsyncRes('add', options).then(() => {
+        setLoading(false);
+      })
+    }
   }
   const customStyle: Styles<any, any> = {
     control: (provided, state) => {
