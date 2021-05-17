@@ -35,6 +35,7 @@ $btn-icon-padding-x-lg: 0;
   $btn-icon-padding-x-lg: $btn-padding-y-lg - $btn-padding-x-lg;
 }
 
+@import "~bootstrap/scss/button-group";
 @import "~bootstrap/scss/buttons";
 .btn {
   @include button-size(
