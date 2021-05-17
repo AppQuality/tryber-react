@@ -39,10 +39,6 @@ interface OptionAction {
   payload: Option[]
 }
 
-interface UpdatePageAction {
-  type: 'increment' | 'reset'
-}
-
 function updateOptions (state: Option[], action: OptionAction): Option[] {
   const {type, payload} = action;
   switch (type) {
@@ -58,16 +54,6 @@ function updateOptions (state: Option[], action: OptionAction): Option[] {
   }
 }
 
-function updatePage (state: number, action:UpdatePageAction): number {
-  switch (action.type) {
-    case "increment": {
-      return state++;
-    }
-    case "reset": {
-      return 0;
-    }
-  }
-}
 export const Select = ({options, defaultValue, placeholder = 'Select...', isMulti, isDisabled, isLoading, isClearable = true, isSearchable}: SelectProps) => {
   const [loading, setLoading] = useState(isLoading);
   const [page, setPage] = useState(0);
@@ -77,6 +63,15 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
     setLoading(isLoading);
   }, [isLoading]);
 
+  useEffect(()=>{
+    if (options instanceof Function) {
+      setLoading(true);
+      getAsyncRes('add', options, page).finally(() => {
+        setLoading(false);
+      })
+    }
+  }, [page]);
+
   useEffect(() => {
     if (options instanceof Array) {
       setOptions({type: 'set', payload: options});
@@ -84,26 +79,18 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
       setLoading(true);
       getAsyncRes('set', options, page).finally(() => {
         setLoading(false);
-        setPage(page => {return(page+1)});
       });
     }
-  }, [options]);
+  }, []);
 
-  const getAsyncRes = async (type: OptionActionType, fn: GetOptionsAsync, start: number) => {
-    const res = await fn(start);
+  const getAsyncRes = async (type: OptionActionType, fn: GetOptionsAsync, start: number, search?: string) => {
+    const res = await fn(start, search);
     setOptions({type: type, payload: res.results});
   }
 
-  const onMenuScrollToBottom = (start: number) => {
-    if (options instanceof Function) {
-      setLoading(true);
-      getAsyncRes('add', options, start).finally(() => {
-        setLoading(false);
-        setPage(page => {return(page+1)});
-      })
-    }
-  }
+  const handleChange = () => {
 
+  }
   let aqTheme = (theme: Theme) => ({
     borderRadius: 5,
     spacing: theme.spacing,
@@ -154,7 +141,6 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
   }
   return (
     <>
-      page: {page}
       <ReactSelect
         options={[...optionsArray, loading ? { value: 'loading', label: 'Loading more...', isDisabled: true } : {}]}
         defaultValue={defaultValue}
@@ -166,7 +152,8 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
         styles={customStyle}
         isMulti={isMulti}
         // menuPlacement='auto'
-        onMenuScrollToBottom={() => {onMenuScrollToBottom(page)}}
+        onMenuScrollToBottom={() => {setPage(page => page+1)}}
+        onChange={handleChange}
         theme={theme => aqTheme(theme)}
         {...rest}
       />

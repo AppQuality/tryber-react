@@ -70,12 +70,13 @@ const asyncOptions = [
 const getAsyncOptions: GetOptionsAsync = (start, search ) => {
   const limit = 10;
   const total = asyncOptions.length;
-  return new Promise<GetOptionsAsyncResponse>((resolve, reject) => {
+  return new Promise<GetOptionsAsyncResponse>((resolve) => {
     setTimeout(() => {
       const res = asyncOptions.slice((start*limit), (limit * (start+1)));
       if (search) {
         // todo
       }
+      debugger;
       return resolve({results:res, more: (start <= (total/limit))});
     }, 1500);
   });
