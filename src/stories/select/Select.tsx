@@ -148,10 +148,14 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
       };
     }
   }
+  const optionsDropdown = [...optionsArray];
+  if (loading) {
+    optionsDropdown.push({ value: 'loading', label: 'Loading more...', isDisabled: true })
+  }
   return (
     <>
       <ReactSelect
-        options={[...optionsArray, loading ? { value: 'loading', label: 'Loading more...', isDisabled: true } : {}]}
+        options={optionsDropdown}
         defaultValue={defaultValue}
         placeholder={placeholder}
         isDisabled={isDisabled}
