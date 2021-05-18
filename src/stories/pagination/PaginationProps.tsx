@@ -4,4 +4,5 @@ export interface PaginationProps {
   maxPages: number;
   before: number;
   after: number;
+  mobileText: (current: number, maxPages?: number) => string;
 }
