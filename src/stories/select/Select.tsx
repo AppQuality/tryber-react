@@ -57,6 +57,7 @@ function updateOptions (state: Option[], action: OptionAction): Option[] {
 export const Select = ({options, defaultValue, placeholder = 'Select...', isMulti, isDisabled, isLoading, isClearable = true, isSearchable}: SelectProps) => {
   const [loading, setLoading] = useState(isLoading);
   const [page, setPage] = useState(0);
+  const [thereIsMore, setMore] = useState(false);
   const [optionsArray, setOptions] = useReducer(updateOptions, []);
 
   useEffect(()=>{
@@ -64,7 +65,7 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
   }, [isLoading]);
 
   useEffect(()=>{
-    if (options instanceof Function) {
+    if (options instanceof Function && thereIsMore) {
       setLoading(true);
       getAsyncRes('add', options, page).finally(() => {
         setLoading(false);
@@ -85,6 +86,7 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
 
   const getAsyncRes = async (type: OptionActionType, fn: GetOptionsAsync, start: number, search?: string) => {
     const res = await fn(start, search);
+    setMore(res.more);
     setOptions({type: type, payload: res.results});
   }
 
@@ -158,8 +160,8 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
         isSearchable={isSearchable}
         styles={customStyle}
         isMulti={isMulti}
-        // menuPlacement='auto'
         onMenuScrollToBottom={() => {setPage(page => page+1)}}
+        // menuPlacement='auto'
         onInputChange={handleChange}
         theme={theme => aqTheme(theme)}
         {...rest}

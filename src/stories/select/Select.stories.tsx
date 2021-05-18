@@ -78,7 +78,7 @@ const getAsyncOptions: GetOptionsAsync = (start, search ) => {
         })
       } else {
         const res = asyncOptions.slice((start*limit), (limit * (start+1)));
-        return resolve({results:res, more: (start <= (total/limit))});
+        return resolve({results:res, more: (start < Math.floor(total/limit))});
       }
     }, 1500);
   });
