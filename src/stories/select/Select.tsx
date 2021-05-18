@@ -56,9 +56,9 @@ function updateOptions (state: Option[], action: OptionAction): Option[] {
 
 export const Select = ({options, defaultValue, placeholder = 'Select...', isMulti, isDisabled, isLoading, isClearable = true, isSearchable}: SelectProps) => {
   const [loading, setLoading] = useState(isLoading);
-  const [searching, setSearching] = useState(false);
+  const [searching, setSearching] = useState<string | false>(false);
   const [page, setPage] = useState(0);
-  const [thereIsMore, setMore] = useState(false);
+  const [thereIsMore, setMore] = useState(true);
   const [optionsArray, setOptions] = useReducer(updateOptions, []);
 
   useEffect(()=>{
@@ -77,11 +77,6 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
   useEffect(() => {
     if (options instanceof Array) {
       setOptions({type: 'set', payload: options});
-    } else {
-      setLoading(true);
-      getAsyncRes('set', options, page).finally(() => {
-        setLoading(false);
-      });
     }
   }, []);
 
@@ -91,22 +86,30 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
     setOptions({type: type, payload: res.results});
   }
 
-  const handleChange = (value:string) => {
+  const handleInputChange = (value:string) => {
     if (options instanceof Function) {
+      setSearching(value);
       if (value.length >= 2) {
-        setSearching(false);
         setLoading(true);
         getAsyncRes('set', options, 0, value).finally(() => {
           setLoading(false);
         });
-      } else if (value.length > 0) {
-        setSearching(true);
       }
     }
   }
+
+  const handleChange = (/* values */) => {
+    if (options instanceof Function) {
+      // handleBlur();
+      if (typeof searching === "string" && searching.length >= 2) {
+        resetOptions();
+      }
+    }
+  }
+
   const handleBlur = () => {
     if (searching) {
-      resetOptions()
+      resetOptions();
     }
     setSearching(false);
     setLoading(false);
@@ -114,8 +117,8 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
 
   const resetOptions = () => {
     setOptions({type: 'reset', payload: []});
-    setPage(0);
     setMore(true);
+    setPage(0);
   }
 
   const onMenuScrollToBottom = () => {
@@ -174,13 +177,14 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
   const optionsDropdown = [...optionsArray];
   if (loading) {
     optionsDropdown.push({ value: 'loading-placeholder', label: 'Loading more...', isDisabled: true })
-  } else if (searching) {
+  } else if (searching && typeof searching === 'string' && searching.length < 2) {
     optionsDropdown.push({ value: 'search-placeholder', label: 'Please write at list 2 characters to load more results', isDisabled: true })
   }
   return (
     <>
       <ReactSelect
         onBlur={handleBlur}
+        onChange={handleChange}
         options={optionsDropdown}
         defaultValue={defaultValue}
         placeholder={placeholder}
@@ -192,7 +196,7 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
         isMulti={isMulti}
         onMenuScrollToBottom={onMenuScrollToBottom}
         // menuPlacement='auto'
-        onInputChange={handleChange}
+        onInputChange={handleInputChange}
         theme={theme => aqTheme(theme)}
         {...rest}
       />
