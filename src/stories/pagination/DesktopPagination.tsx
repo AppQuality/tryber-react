@@ -18,7 +18,7 @@ export const DesktopPagination = ({
 
   return (
     <div className="btn-group">
-      {current >= 1 ? (
+      {current > 1 ? (
         <Button
           flat={true}
           squared={true}
