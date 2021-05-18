@@ -74,8 +74,9 @@ const getAsyncOptions: GetOptionsAsync = (start, search ) => {
     setTimeout(() => {
       if (search) {
         const filteredRes = asyncOptions.filter(opt => {
-          return opt.value.indexOf(search) > 0;
+          return opt.value.indexOf(search) >= 0;
         })
+        return resolve({results:filteredRes, more:false});
       } else {
         const res = asyncOptions.slice((start*limit), (limit * (start+1)));
         return resolve({results:res, more: (start < Math.floor(total/limit))});

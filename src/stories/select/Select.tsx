@@ -56,6 +56,7 @@ function updateOptions (state: Option[], action: OptionAction): Option[] {
 
 export const Select = ({options, defaultValue, placeholder = 'Select...', isMulti, isDisabled, isLoading, isClearable = true, isSearchable}: SelectProps) => {
   const [loading, setLoading] = useState(isLoading);
+  const [searching, setSearching] = useState(false);
   const [page, setPage] = useState(0);
   const [thereIsMore, setMore] = useState(false);
   const [optionsArray, setOptions] = useReducer(updateOptions, []);
@@ -92,14 +93,35 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
 
   const handleChange = (value:string) => {
     if (options instanceof Function) {
-      if (value.length >= 3) {
+      if (value.length >= 2) {
+        setSearching(false);
         setLoading(true);
-        getAsyncRes('reset', options, 0, value).finally(() => {
+        getAsyncRes('set', options, 0, value).finally(() => {
           setLoading(false);
         });
+      } else if (value.length > 0) {
+        setSearching(true);
       }
     }
   }
+  const handleBlur = () => {
+    if (searching) {
+      resetOptions()
+    }
+    setSearching(false);
+    setLoading(false);
+  }
+
+  const resetOptions = () => {
+    setOptions({type: 'reset', payload: []});
+    setPage(0);
+    setMore(true);
+  }
+
+  const onMenuScrollToBottom = () => {
+    if (thereIsMore) setPage(page => page+1); // this is not the updated value of thereIsMore untill rerender :((
+  }
+
   let aqTheme = (theme: Theme) => ({
     borderRadius: 5,
     spacing: theme.spacing,
@@ -109,6 +131,7 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
       primary25: aqBootstrapTheme.palette.disabledElement
     },
   });
+
   const IndicatorSeparator = () => null;
   let rest = {
     components: {IndicatorSeparator}
@@ -150,11 +173,14 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
   }
   const optionsDropdown = [...optionsArray];
   if (loading) {
-    optionsDropdown.push({ value: 'loading', label: 'Loading more...', isDisabled: true })
+    optionsDropdown.push({ value: 'loading-placeholder', label: 'Loading more...', isDisabled: true })
+  } else if (searching) {
+    optionsDropdown.push({ value: 'search-placeholder', label: 'Please write at list 2 characters to load more results', isDisabled: true })
   }
   return (
     <>
       <ReactSelect
+        onBlur={handleBlur}
         options={optionsDropdown}
         defaultValue={defaultValue}
         placeholder={placeholder}
@@ -164,7 +190,7 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
         isSearchable={isSearchable}
         styles={customStyle}
         isMulti={isMulti}
-        onMenuScrollToBottom={() => {setPage(page => page+1)}}
+        onMenuScrollToBottom={onMenuScrollToBottom}
         // menuPlacement='auto'
         onInputChange={handleChange}
         theme={theme => aqTheme(theme)}
