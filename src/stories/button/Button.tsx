@@ -24,9 +24,9 @@ export interface ButtonProps {
    */
   disabled?: boolean;
   /**
-   * Optional is for icon?
+   * Optional is squared?
    */
-  icon?: boolean;
+  squared?: boolean;
   /**
    * Optional click handler
    */
@@ -41,7 +41,7 @@ export const Button = ({
   type = "primary",
   size = "medium",
   flat = false,
-  icon = false,
+  squared = false,
   children,
   ...props
 }: ButtonProps) => {
@@ -49,8 +49,8 @@ export const Button = ({
   if (flat) {
     className.push("btn-flat");
   }
-  if (icon) {
-    className.push("btn-flat");
+  if (squared) {
+    className.push("btn-squared");
   }
   return (
     <button type={htmlType} className={className.join(" ")} {...props}>
