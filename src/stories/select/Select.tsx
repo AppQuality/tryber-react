@@ -8,7 +8,7 @@ import {
   OptionActionType,
   SelectProps,
 } from "./_types";
-import {getOptionValue} from "react-select/src/builtins";
+import { getOptionValue } from "react-select/src/builtins";
 
 function updateOptions(state: Option[], action: OptionAction): Option[] {
   const { type, payload } = action;
@@ -25,7 +25,7 @@ function updateOptions(state: Option[], action: OptionAction): Option[] {
   }
 }
 
-let searchBuffer = '';
+let searchBuffer = "";
 let timer: NodeJS.Timeout | false = false;
 
 export const Select = ({
@@ -43,7 +43,10 @@ export const Select = ({
   const [page, setPage] = useState(0);
   const [thereIsMore, setMore] = useState(false);
   const [optionsArray, setOptions] = useReducer(updateOptions, []);
-  const [initialOptions, setInitialOptions] = useState<{more: boolean, results: Option[]}>({more: true, results: []});
+  const [initialOptions, setInitialOptions] = useState<{
+    more: boolean;
+    results: Option[];
+  }>({ more: true, results: [] });
 
   useEffect(() => {
     setLoading(isLoading);
@@ -60,11 +63,11 @@ export const Select = ({
       setOptions({ type: "set", payload: options });
     } else {
       setLoading(true);
-      getAsyncRes(options, 0).then(res => {
+      getAsyncRes(options, 0).then((res) => {
         setInitialOptions(res);
         showInitialOptions();
         setLoading(false);
-      })
+      });
     }
   }, []);
 
@@ -77,10 +80,7 @@ export const Select = ({
     }
   };
 
-  const getAsyncRes = async (
-    fn: GetOptionsAsync,
-    start: number
-  ) => {
+  const getAsyncRes = async (fn: GetOptionsAsync, start: number) => {
     return await fn(start);
   };
 
@@ -103,20 +103,20 @@ export const Select = ({
       timer = setTimeout(function () {
         if (searchBuffer.length >= 2) {
           setLoading(true);
-          setAsyncRes('set', options, 0, searchBuffer).finally(() => {
+          setAsyncRes("set", options, 0, searchBuffer).finally(() => {
             setLoading(false);
           });
         } else {
-          showInitialOptions()
+          showInitialOptions();
         }
       }, 800);
     }
   };
 
   const showInitialOptions = () => {
-    setOptions({type: 'set', payload: initialOptions.results});
+    setOptions({ type: "set", payload: initialOptions.results });
     setMore(initialOptions.more);
-  }
+  };
 
   const handleChange = () => {
     if (options instanceof Function) {
@@ -181,6 +181,7 @@ export const Select = ({
         isSearchable={isSearchable}
         styles={customStyle}
         isMulti={isMulti}
+        maxMenuHeight={200}
         captureMenuScroll={true}
         onMenuScrollToBottom={onMenuScrollToBottom}
         // menuPlacement='auto'
