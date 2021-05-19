@@ -13,9 +13,6 @@ const aqTheme = (theme: Theme) => ({
 });
 
 const IndicatorSeparator = () => null;
-let customComponents = {
-  components: { IndicatorSeparator },
-};
 const DropdownIndicator = (
   props: JSX.LibraryManagedAttributes<typeof components.DropdownIndicator, any>
 ) => (
@@ -30,11 +27,12 @@ const ClearIndicator = (
     <X />
   </components.ClearIndicator>
 );
-// @ts-ignore
-customComponents.components = {
-  ...customComponents.components,
-  DropdownIndicator,
-  ClearIndicator,
+let customComponents = {
+  components: {
+    IndicatorSeparator,
+    DropdownIndicator,
+    ClearIndicator,
+  },
 };
 
 const customStyle: Styles<any, any> = {
