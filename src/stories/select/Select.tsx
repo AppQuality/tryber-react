@@ -18,6 +18,9 @@ function updateOptions (state: Option[], action: OptionAction): Option[] {
   }
 }
 
+let searchBuffer = '';
+let timer: NodeJS.Timeout | false = false;
+
 export const Select = ({options, defaultValue, placeholder = 'Select...', isMulti, isDisabled, isLoading, isClearable = true, isSearchable}: SelectProps) => {
   const [loading, setLoading] = useState(isLoading);
   const [searching, setSearching] = useState<string | false>(false);
@@ -58,13 +61,17 @@ export const Select = ({options, defaultValue, placeholder = 'Select...', isMult
 
   const handleInputChange = (value:string) => {
     if (options instanceof Function) {
+      timer = false;
+      searchBuffer = value;
       setSearching(value);
-      if (value.length >= 2) {
-        setLoading(true);
-        getAsyncRes('set', options, 0, value).finally(() => {
-          setLoading(false);
-        });
-      }
+      timer = setTimeout(function () {
+        if (searchBuffer.length >= 2) {
+          setLoading(true);
+          getAsyncRes('set', options, 0, searchBuffer).finally(() => {
+            setLoading(false);
+          });
+        }
+      }, 800);
     }
   }
 
