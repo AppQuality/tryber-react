@@ -1,6 +1,7 @@
 import { PaginationProps } from "./PaginationProps";
 import { Button } from "../button/Button";
 import { generateShrinkedPages } from "./utils";
+import { MouseEventHandler } from "react";
 
 export const DesktopPagination = ({
   onPageChange,
@@ -28,20 +29,30 @@ export const DesktopPagination = ({
           {"<"}
         </Button>
       ) : null}
-      {pages.map((i, idx) => (
-        <Button
-          squared={true}
-          flat={typeof i == "string" ? true : i !== current}
-          onClick={
-            typeof i == "string" || i == current
-              ? undefined
-              : () => onPageChange(i)
-          }
-          key={idx}
-        >
-          {i}
-        </Button>
-      ))}
+      {pages.map((i, idx) => {
+        let onClick: MouseEventHandler | undefined = () => onPageChange(i);
+        if (i == "prev") {
+          onClick = () => onPageChange(current - 1);
+          i = "...";
+        }
+        if (i == "next") {
+          onClick = () => onPageChange(current + 1);
+          i = "...";
+        }
+        if (i == current) {
+          onClick = undefined;
+        }
+        return (
+          <Button
+            squared={true}
+            flat={typeof i == "string" ? true : i !== current}
+            onClick={onClick}
+            key={idx}
+          >
+            {i}
+          </Button>
+        );
+      })}
       {current < maxPages ? (
         <Button
           flat={true}
