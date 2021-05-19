@@ -8,6 +8,7 @@ import {
   OptionActionType,
   SelectProps,
 } from "./_types";
+import {getOptionValue} from "react-select/src/builtins";
 
 function updateOptions(state: Option[], action: OptionAction): Option[] {
   const { type, payload } = action;
@@ -40,8 +41,9 @@ export const Select = ({
   const [loading, setLoading] = useState(isLoading);
   const [searching, setSearching] = useState<string | false>(false);
   const [page, setPage] = useState(0);
-  const [thereIsMore, setMore] = useState(true);
+  const [thereIsMore, setMore] = useState(false);
   const [optionsArray, setOptions] = useReducer(updateOptions, []);
+  const [initialOptions, setInitialOptions] = useState<{more: boolean, results: Option[]}>({more: true, results: []});
 
   useEffect(() => {
     setLoading(isLoading);
@@ -56,19 +58,33 @@ export const Select = ({
   useEffect(() => {
     if (options instanceof Array) {
       setOptions({ type: "set", payload: options });
+    } else {
+      setLoading(true);
+      getAsyncRes(options, 0).then(res => {
+        setInitialOptions(res);
+        showInitialOptions();
+        setLoading(false);
+      })
     }
   }, []);
 
   const triggerUpdate = () => {
     if (options instanceof Function) {
       setLoading(true);
-      getAsyncRes("add", options, page).finally(() => {
+      setAsyncRes("add", options, page).finally(() => {
         setLoading(false);
       });
     }
   };
 
   const getAsyncRes = async (
+    fn: GetOptionsAsync,
+    start: number
+  ) => {
+    return await fn(start);
+  };
+
+  const setAsyncRes = async (
     type: OptionActionType,
     fn: GetOptionsAsync,
     start: number,
@@ -87,13 +103,20 @@ export const Select = ({
       timer = setTimeout(function () {
         if (searchBuffer.length >= 2) {
           setLoading(true);
-          getAsyncRes('set', options, 0, searchBuffer).finally(() => {
+          setAsyncRes('set', options, 0, searchBuffer).finally(() => {
             setLoading(false);
           });
+        } else {
+          showInitialOptions()
         }
       }, 800);
     }
   };
+
+  const showInitialOptions = () => {
+    setOptions({type: 'set', payload: initialOptions.results});
+    setMore(initialOptions.more);
+  }
 
   const handleChange = () => {
     if (options instanceof Function) {
