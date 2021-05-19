@@ -73,7 +73,8 @@ export const getAsyncOptions: GetOptionsAsync = (start, search) => {
       if (search) {
         const filteredRes = asyncOptions.filter((opt) => {
           return (
-            opt.value.indexOf(search) >= 0 || opt.label.indexOf(search) >= 0
+            opt.value.toLowerCase().indexOf(search.toLowerCase()) >= 0 ||
+            opt.label.toLowerCase().indexOf(search.toLowerCase()) >= 0
           );
         });
         return resolve({ results: filteredRes, more: false });
