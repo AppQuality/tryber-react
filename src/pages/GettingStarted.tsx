@@ -28,6 +28,19 @@ export default function GettingStarted() {
     i18n.language === "en" ? "/my-dashboard/" : "/it/la-mia-dashboard/";
   TagManager.dataLayer(tagManagerArgs);
 
+  const helmet = (
+    <Helmet>
+      <title>{t("Getting Started")} - AppQuality Crowd</title>
+      <meta
+        property="og:title"
+        content={t("Create a tester profile on appquality")}
+      />
+      <meta
+        name="description"
+        content={t("Create a tester profile on appquality")}
+      />
+    </Helmet>
+  );
   useEffect(() => {
     API.me()
       .then((res) => {
@@ -55,27 +68,20 @@ export default function GettingStarted() {
   `;
   if (isLoading) {
     return (
-      <Container>
-        <SpinnerWrapper>
-          <Spinner />
-          <H5>{loadingMessage}</H5>
-        </SpinnerWrapper>
-      </Container>
+      <>
+        {helmet}
+        <Container>
+          <SpinnerWrapper>
+            <Spinner />
+            <H5>{loadingMessage}</H5>
+          </SpinnerWrapper>
+        </Container>
+      </>
     );
   }
   return (
     <>
-      <Helmet>
-        <title>{t("Getting Started")} - AppQuality Crowd</title>
-        <meta
-          property="og:title"
-          content={t("Create a tester profile on appquality")}
-        />
-        <meta
-          name="description"
-          content={t("Create a tester profile on appquality")}
-        />
-      </Helmet>
+      {helmet}
       <Container>
         <h2>{t("become-a-tester")}</h2>
         <BSGrid>
