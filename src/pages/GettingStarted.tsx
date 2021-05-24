@@ -8,6 +8,7 @@ import API from "../utils/api";
 import styled from "styled-components";
 import { SignupMailSocial } from "../features/SignupMailSocial";
 import TagManager from "react-gtm-module";
+import { Helmet } from "react-helmet-async";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -63,15 +64,24 @@ export default function GettingStarted() {
     );
   }
   return (
-    <Container>
-      <h2>{t("become-a-tester")}</h2>
-      <BSGrid>
-        <BSCol size="col-lg-8 col-xxl-7">
-          <Card>
-            <SignupMailSocial />
-          </Card>
-        </BSCol>
-      </BSGrid>
-    </Container>
+    <>
+      <Helmet>
+        <title>Getting Started - AppQuality Crowd</title>
+        <meta
+          name="description"
+          content="Create a tester profile on appquality"
+        />
+      </Helmet>
+      <Container>
+        <h2>{t("become-a-tester")}</h2>
+        <BSGrid>
+          <BSCol size="col-lg-8 col-xxl-7">
+            <Card>
+              <SignupMailSocial />
+            </Card>
+          </BSCol>
+        </BSGrid>
+      </Container>
+    </>
   );
 }

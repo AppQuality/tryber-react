@@ -1,4 +1,3 @@
-import React from "react";
 import { ThemeProvider } from "styled-components";
 import { aqBootstrapTheme } from "./stories/theme/defaultTheme";
 import "./App.scss";
@@ -8,6 +7,7 @@ import SignIn from "./pages/SignIn";
 import { Header } from "./stories/header/Header";
 import "./i18n";
 import TagManager from "react-gtm-module";
+import Helmet from "react-helmet";
 
 const tagManagerArgs = {
   gtmId: "GTM-K55XC7S",
@@ -20,6 +20,13 @@ const base = "/:locale(en|it)?";
 function App() {
   return (
     <ThemeProvider theme={aqBootstrapTheme}>
+      <Helmet>
+        <title>AppQuality Crowd - Earn money using your devices</title>
+        <meta
+          name="description"
+          content="Becoming a part of Crowd AppQuality community is simple: It's not requested a particular profile, is the multiprofile our power."
+        />
+      </Helmet>
       <BrowserRouter>
         <Header showLogin={false} />
         <Switch>
