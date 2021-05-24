@@ -8,6 +8,7 @@ import API from "../utils/api";
 import styled from "styled-components";
 import { SignupMailSocial } from "../features/SignupMailSocial";
 import TagManager from "react-gtm-module";
+import { Helmet } from "react-helmet";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -27,6 +28,19 @@ export default function GettingStarted() {
     i18n.language === "en" ? "/my-dashboard/" : "/it/la-mia-dashboard/";
   TagManager.dataLayer(tagManagerArgs);
 
+  const helmet = (
+    <Helmet>
+      <title>{t("Getting Started")} - AppQuality Crowd</title>
+      <meta
+        property="og:title"
+        content={t("Create a tester profile on appquality")}
+      />
+      <meta
+        name="description"
+        content={t("Create a tester profile on appquality")}
+      />
+    </Helmet>
+  );
   useEffect(() => {
     API.me()
       .then((res) => {
@@ -54,24 +68,30 @@ export default function GettingStarted() {
   `;
   if (isLoading) {
     return (
-      <Container>
-        <SpinnerWrapper>
-          <Spinner />
-          <H5>{loadingMessage}</H5>
-        </SpinnerWrapper>
-      </Container>
+      <>
+        {helmet}
+        <Container>
+          <SpinnerWrapper>
+            <Spinner />
+            <H5>{loadingMessage}</H5>
+          </SpinnerWrapper>
+        </Container>
+      </>
     );
   }
   return (
-    <Container>
-      <h2>{t("become-a-tester")}</h2>
-      <BSGrid>
-        <BSCol size="col-lg-8 col-xxl-7">
-          <Card>
-            <SignupMailSocial />
-          </Card>
-        </BSCol>
-      </BSGrid>
-    </Container>
+    <>
+      {helmet}
+      <Container>
+        <h2>{t("become-a-tester")}</h2>
+        <BSGrid>
+          <BSCol size="col-lg-8 col-xxl-7">
+            <Card>
+              <SignupMailSocial />
+            </Card>
+          </BSCol>
+        </BSGrid>
+      </Container>
+    </>
   );
 }
