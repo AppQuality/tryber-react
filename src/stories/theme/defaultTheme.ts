@@ -1,6 +1,8 @@
 import { DefaultTheme } from "styled-components";
 
 export interface Colors {
+  white: string;
+  black: string;
   blue: string;
   blue700: string;
   cyan600: string;
@@ -10,6 +12,8 @@ export interface Colors {
 }
 
 export const COLORS: Colors = {
+  white: "#ffffff",
+  black: "#000000",
   blue: "#266A9A",
   blue700: "#17405C",
   cyan600: "#448098",
@@ -22,7 +26,7 @@ const aqBootstrapTheme: DefaultTheme = {
   typography: {
     fontFamily: {
       base:
-        'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;',
+        'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";',
       serif: "IBM Plex Serif",
     },
     fontSize: {
@@ -31,6 +35,7 @@ const aqBootstrapTheme: DefaultTheme = {
     },
     fontWeight: {
       light: 300,
+      normal: 500,
       bold: 700,
     },
   },
@@ -39,8 +44,6 @@ const aqBootstrapTheme: DefaultTheme = {
     primary: COLORS.blue700,
     secondary: COLORS.cyan600,
     info: COLORS.blue,
-    disabledFont: COLORS.grey600,
-    disabledElement: COLORS.grey300,
   },
   grid: {
     breakpoints: {

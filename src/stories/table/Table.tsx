@@ -59,14 +59,13 @@ const TableWrapper = styled.div`
 
     thead {
       font-family: ${(props) => props.theme.typography.fontFamily.serif};
-      color: ${(props) => props.theme.palette.disabledFont};
+      color: ${(props) => props.theme.colors.grey600};
 
       th {
         overflow-wrap: break-word;
         font-weight: 500;
         padding: ${cellPadding};
-        border-bottom: 1px solid
-          ${(props) => props.theme.palette.disabledElement};
+        border-bottom: 1px solid ${(props) => props.theme.colors.grey300};
       }
     }
     tbody {
@@ -80,8 +79,7 @@ const TableWrapper = styled.div`
         background-color: ${(props) => props.theme.colors.grey300};
       }
       tr:not(:last-child) td {
-        border-bottom: 1px solid
-          ${(props) => props.theme.palette.disabledElement};
+        border-bottom: 1px solid ${(props) => props.theme.colors.grey300};
       }
     }
     .aq-table-cell-ellipsis {
@@ -104,7 +102,7 @@ const TableWrapper = styled.div`
   .aq-table-empty-placeholder {
     height: 200px;
     text-align: center;
-    color: ${(props) => props.theme.palette.disabledFont};
+    color: ${(props) => props.theme.colors.grey600};
     td {
       vertical-align: middle;
     }

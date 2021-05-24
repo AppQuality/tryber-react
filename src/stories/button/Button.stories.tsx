@@ -1,14 +1,20 @@
-import React from "react";
-import { Button, ButtonProps } from "./Button";
+import { Button } from "./Button";
+import { ButtonProps } from "./ButtonProps";
 import { Story, Meta } from "@storybook/react";
 import { Search } from "react-bootstrap-icons";
+import { ThemeProvider } from "styled-components";
+import { aqBootstrapTheme } from "../theme/defaultTheme";
 
 export default {
   title: "Button",
   component: Button,
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<ButtonProps> = (args) => (
+  <ThemeProvider theme={aqBootstrapTheme}>
+    <Button {...args} />
+  </ThemeProvider>
+);
 
 export const Primary = Template.bind({});
 Primary.args = {

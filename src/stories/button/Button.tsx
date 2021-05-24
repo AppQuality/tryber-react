@@ -1,37 +1,6 @@
-import React, { MouseEventHandler, ReactNode } from "react";
-import "./button.scss";
-
-export interface ButtonProps {
-  htmlType?: "button" | "submit" | "reset";
-  /**
-   * Is this the principal call to action on the page?
-   */
-  type?: "primary" | "secondary" | "link" | "light";
-  /**
-   * How large should the button be?
-   */
-  size?: "sm" | "medium" | "lg" | "block";
-  /**
-   * Forms contents
-   */
-  children?: ReactNode;
-  /**
-   * Is flat?
-   */
-  flat?: boolean;
-  /**
-   * Optional is disabled?
-   */
-  disabled?: boolean;
-  /**
-   * Optional is squared?
-   */
-  squared?: boolean;
-  /**
-   * Optional click handler
-   */
-  onClick?: MouseEventHandler;
-}
+// import "./button.scss";
+import { ButtonProps } from "./ButtonProps";
+import { ButtonStyle } from "./ButtonStyle";
 
 /**
  * Primary UI component for user interaction
@@ -45,16 +14,16 @@ export const Button = ({
   children,
   ...props
 }: ButtonProps) => {
-  let className = ["btn", `btn-${size}`, `btn-${type}`];
+  let className = [`aq-btn-${size}`, `aq-btn-${type}`];
   if (flat) {
-    className.push("btn-flat");
+    className.push("aq-btn-flat");
   }
   if (squared) {
-    className.push("btn-squared");
+    className.push("aq-btn-squared");
   }
   return (
-    <button type={htmlType} className={className.join(" ")} {...props}>
+    <ButtonStyle type={htmlType} className={className.join(" ")} {...props}>
       {children}
-    </button>
+    </ButtonStyle>
   );
 };
