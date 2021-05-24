@@ -8,7 +8,7 @@ import API from "../utils/api";
 import styled from "styled-components";
 import { SignupMailSocial } from "../features/SignupMailSocial";
 import TagManager from "react-gtm-module";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 const tagManagerArgs = {
   dataLayer: {
