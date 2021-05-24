@@ -66,10 +66,14 @@ export default function GettingStarted() {
   return (
     <>
       <Helmet>
-        <title>Getting Started - AppQuality Crowd</title>
+        <title>{t("Getting Started")} - AppQuality Crowd</title>
+        <meta
+          property="og:title"
+          content={t("Create a tester profile on appquality")}
+        />
         <meta
           name="description"
-          content="Create a tester profile on appquality"
+          content={t("Create a tester profile on appquality")}
         />
       </Helmet>
       <Container>
