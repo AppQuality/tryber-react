@@ -33,7 +33,12 @@ export const Header = ({
         )}
       </div>
       <div className="header-menu" />
-      <UserInfo showLogin={showLogin} user={user} isLoading={isLoading} />
+      <UserInfo
+        showLogin={showLogin}
+        user={user}
+        isLoading={isLoading}
+        onLogin={handleLoginClick}
+      />
     </div>
   );
 };

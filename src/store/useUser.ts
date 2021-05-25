@@ -8,20 +8,21 @@ export const useUser = (): UserStatus => {
 
   useEffect(() => {
     const getUser = async () => {
-      const user = await API.me();
-      setUser(user);
-      setLoading(false);
+      try {
+        const user = await API.me();
+        setUser(user);
+      } catch (err) {
+        if (err.statusCode === 403) {
+          // user logged out, proceed
+        } else {
+          alert(err.message);
+        }
+      } finally {
+        setLoading(false);
+      }
     };
 
-    try {
-      getUser();
-    } catch (err) {
-      if (err.statusCode === 403) {
-        // user logged out, proceed
-      } else {
-        alert(err.message);
-      }
-    }
+    getUser();
   }, []);
 
   return {

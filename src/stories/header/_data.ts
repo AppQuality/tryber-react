@@ -1,6 +1,4 @@
-import { User } from "../../types";
-
-export const testUser: User = {
+export const testUser = {
   id: 1234,
   username: "testuser0001",
   name: "test",

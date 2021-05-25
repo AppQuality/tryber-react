@@ -1,6 +1,6 @@
 import React from "react";
 import { BSCol, Container } from "../stories/layout/Layout";
-import { Column, Row, Table, TableProps } from "../stories/table/Table";
+import { Column, Row, Table } from "../stories/table/Table";
 import { Card } from "../stories/card/Card";
 import { Button } from "../stories/button/Button";
 
