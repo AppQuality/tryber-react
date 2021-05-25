@@ -1,4 +1,3 @@
-// import "./button.scss";
 import { ButtonProps } from "./ButtonProps";
 import { ButtonStyle } from "./ButtonStyle";
 

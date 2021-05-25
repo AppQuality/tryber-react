@@ -20,24 +20,28 @@ export const Primary = Template.bind({});
 Primary.args = {
   type: "primary",
   children: "click",
+  onClick: () => alert("clicked!"),
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   type: "secondary",
   children: "click",
+  onClick: () => alert("clicked!"),
 };
 
 export const Large = Template.bind({});
 Large.args = {
   size: "lg",
   children: "click",
+  onClick: () => alert("clicked!"),
 };
 
 export const Small = Template.bind({});
 Small.args = {
   size: "sm",
   children: "click",
+  onClick: () => alert("clicked!"),
 };
 
 export const IconButton = Template.bind({});

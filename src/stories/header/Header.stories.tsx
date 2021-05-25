@@ -1,13 +1,18 @@
 import { Header, HeaderProps, User } from "./Header";
 import { Story, Meta } from "@storybook/react";
+import { ThemeProvider } from "styled-components";
+import { aqBootstrapTheme } from "../theme/defaultTheme";
 
 export default {
   title: "Header",
   component: Header,
 } as Meta;
 
-const Template: Story<HeaderProps> = (args) => <Header {...args} />;
-
+const Template: Story<HeaderProps> = (args) => (
+  <ThemeProvider theme={aqBootstrapTheme}>
+    <Header {...args} />
+  </ThemeProvider>
+);
 export const LoggedOutHeader = Template.bind({});
 LoggedOutHeader.args = {};
 

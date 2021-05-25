@@ -1,26 +1,5 @@
 import { DefaultTheme } from "styled-components";
-
-export interface Colors {
-  white: string;
-  black: string;
-  blue: string;
-  blue700: string;
-  cyan600: string;
-  grey100: string;
-  grey300: string;
-  grey600: string;
-}
-
-export const COLORS: Colors = {
-  white: "#ffffff",
-  black: "#000000",
-  blue: "#266A9A",
-  blue700: "#17405C",
-  cyan600: "#448098",
-  grey100: "#F0F5F7",
-  grey300: "#D1E0E8",
-  grey600: "#8EA2AE",
-};
+import COLORS from "../styles/colors.module.scss";
 
 const aqBootstrapTheme: DefaultTheme = {
   typography: {
