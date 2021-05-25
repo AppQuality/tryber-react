@@ -23,6 +23,7 @@ const aqBootstrapTheme: DefaultTheme = {
     primary: COLORS.blue700,
     secondary: COLORS.cyan600,
     info: COLORS.blue500,
+    success: COLORS.green500,
   },
   grid: {
     breakpoints: {

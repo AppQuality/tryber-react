@@ -24,6 +24,7 @@ declare module "styled-components" {
       primary: string;
       secondary: string;
       info: string;
+      success: string;
     };
     grid: {
       breakpoints: {
