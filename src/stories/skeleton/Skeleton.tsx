@@ -6,7 +6,7 @@ export interface SkeletonProps {
 
 const SkeletonWrapper = styled.div(({ theme }: SkeletonProps) => {
   return `
-      background-image: linear-gradient(90deg, #F0F5F7 0px, #ffffff 40px, #F0F5F7 80px);
+      background-image: linear-gradient(90deg, ${theme.colors.gray100} 0px, #ffffff 40px, ${theme.colors.gray100} 80px);
       background-size: 600px;
       border-radius: 4px;
       animation: active 1.6s infinite linear;
