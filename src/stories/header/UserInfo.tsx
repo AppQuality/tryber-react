@@ -11,32 +11,27 @@ export const UserInfo = ({
   isLoading,
   onLogin,
 }: UserInfoProps) => {
+  if (isLoading) return <Skeleton />;
   return (
-    <>
-      {isLoading ? (
-        <Skeleton />
-      ) : (
-        <div className="user-info">
-          {user ? (
-            <>
-              <div className="user-avatar">
-                <img alt={user.name + " " + user.surname} src={user.image} />
-              </div>
-              <div className="user-name">
-                {user.name} {user.surname}{" "}
-                <span className="user-id">(T{user.id})</span>
-              </div>
-              <Button size="sm" type="link">
-                <BoxArrowRight />
-              </Button>
-            </>
-          ) : showLogin ? (
-            <Button size="medium" type="link" onClick={onLogin}>
-              login
-            </Button>
-          ) : null}
-        </div>
-      )}
-    </>
+    <div className="user-info">
+      {user ? (
+        <>
+          <div className="user-avatar">
+            <img alt={user.name + " " + user.surname} src={user.image} />
+          </div>
+          <div className="user-name">
+            {user.name} {user.surname}{" "}
+            <span className="user-id">(T{user.id})</span>
+          </div>
+          <Button size="sm" type="link">
+            <BoxArrowRight />
+          </Button>
+        </>
+      ) : showLogin ? (
+        <Button size="medium" type="link" onClick={onLogin}>
+          login
+        </Button>
+      ) : null}
+    </div>
   );
 };
