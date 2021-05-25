@@ -37,11 +37,13 @@ export const ButtonStyle = styled.button(({ theme }: ButtonStyleProps) => {
       padding: ".375rem .5rem",
       fontSize: theme.typography.fontSize.small,
       borderRadius: ".2rem",
+      squaredMinWidth: "2.438rem",
     },
     lg: {
       padding: ".813rem 1rem",
       fontSize: theme.typography.fontSize.base,
       borderRadius: ".3rem",
+      squaredMinWidth: "3.125rem",
     },
   };
 
@@ -52,6 +54,9 @@ export const ButtonStyle = styled.button(({ theme }: ButtonStyleProps) => {
       padding: ${data.padding};
       font-size: ${data.fontSize};
       border-radius: ${data.borderRadius};
+      &.aq-btn-squared {
+        min-width: ${data.squaredMinWidth}
+      }
     }
   `
     )
@@ -69,6 +74,10 @@ export const ButtonStyle = styled.button(({ theme }: ButtonStyleProps) => {
     line-height: 1.5;
     transition: filter 0.15s ease-in-out 0s, background-color  0.15s ease-in-out 0s;
     color: ${theme.palette.primary};
+    
+    &.aq-btn-squared {
+      min-width: 2.4375rem
+    }
     
 		${styles}
     

@@ -7,6 +7,7 @@ import {
   marginFromTop,
 } from "./variables";
 import { LanguageIcons, LanguageIconWrapper } from "./LanguageIcons";
+import { ButtonStyle } from "../button/ButtonStyle";
 import { SidebarIcon } from "./SidebarIcon";
 import { SidebarText } from "./SidebarText";
 import { SidebarProps } from "./SidebarProps";
@@ -37,7 +38,7 @@ const SidebarWrapper = styled.div(({ theme }: { theme: DefaultTheme }) => {
      top:0;
      background-color:${palette.info};
    }
-   .btn {
+   ${ButtonStyle} {
      margin-bottom: ${itemsSpacing}px;
      box-shadow: none;
      padding: 0;
@@ -47,7 +48,7 @@ const SidebarWrapper = styled.div(({ theme }: { theme: DefaultTheme }) => {
        box-shadow: none;
      }
    }
-   .btn svg {
+   ${ButtonStyle} svg {
      margin: 4px 0;
      font-size:18px;
    }

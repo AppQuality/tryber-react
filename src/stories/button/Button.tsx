@@ -1,5 +1,6 @@
 import { ButtonProps } from "./ButtonProps";
 import { ButtonStyle } from "./ButtonStyle";
+import styled from "styled-components";
 
 /**
  * Primary UI component for user interaction
@@ -26,3 +27,22 @@ export const Button = ({
     </ButtonStyle>
   );
 };
+
+export const ButtonGroup = styled.div`
+  & > ${ButtonStyle}:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  & > ${ButtonStyle}:nth-child(n+3),
+  & > :not(.btn-check) + ${ButtonStyle} {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  & > ${ButtonStyle}:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  & > ${ButtonStyle}:not(:first-child) {
+    margin-left: -1px;
+  }
+`;

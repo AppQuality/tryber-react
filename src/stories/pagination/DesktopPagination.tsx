@@ -1,5 +1,5 @@
 import { PaginationProps } from "./PaginationProps";
-import { Button } from "../button/Button";
+import { Button, ButtonGroup } from "../button/Button";
 import { generateShrinkedPages } from "./utils";
 import { MouseEventHandler } from "react";
 
@@ -18,7 +18,7 @@ export const DesktopPagination = ({
   }
 
   return (
-    <div className="btn-group">
+    <ButtonGroup>
       {current > 1 ? (
         <Button
           flat={true}
@@ -63,6 +63,6 @@ export const DesktopPagination = ({
           {">"}
         </Button>
       ) : null}
-    </div>
+    </ButtonGroup>
   );
 };
