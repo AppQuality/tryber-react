@@ -68,9 +68,7 @@ export const SignupForm = ({
           <Field type="text" name="surname" label={t("surname")} />
           <Field type="email" name="email" label={t("email")} />
           <Field type="password" name="password" label={t("password")} />
-          <Paragraph color="disabledFont" small>
-            {t("password-req")}
-          </Paragraph>
+          <Paragraph small>{t("password-req")}</Paragraph>
           <Checkbox name="subscribe" label={t("accept-to-receive-email")} />
           <CSSGrid min="70px" fill={true}>
             <div className="form-group" style={{ gridColumn: "auto / span 3" }}>
@@ -84,7 +82,7 @@ export const SignupForm = ({
               </Button>
             </div>
           </CSSGrid>
-          <Paragraph color="disabledFont" small>
+          <Paragraph small>
             <Trans i18nKey="clicking-button-you-accept-tos">
               By clicking this button, you accept the
               <a target="_blank" href={t("termsLink")} rel="noreferrer">

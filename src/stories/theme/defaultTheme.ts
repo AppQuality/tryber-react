@@ -1,28 +1,11 @@
 import { DefaultTheme } from "styled-components";
-
-export interface Colors {
-  blue: string;
-  blue700: string;
-  cyan600: string;
-  grey100: string;
-  grey300: string;
-  grey600: string;
-}
-
-export const COLORS: Colors = {
-  blue: "#266A9A",
-  blue700: "#17405C",
-  cyan600: "#448098",
-  grey100: "#F0F5F7",
-  grey300: "#D1E0E8",
-  grey600: "#8EA2AE",
-};
+import COLORS from "../styles/colors.module.scss";
 
 const aqBootstrapTheme: DefaultTheme = {
   typography: {
     fontFamily: {
       base:
-        'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;',
+        'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";',
       serif: "IBM Plex Serif",
     },
     fontSize: {
@@ -31,6 +14,7 @@ const aqBootstrapTheme: DefaultTheme = {
     },
     fontWeight: {
       light: 300,
+      normal: 500,
       bold: 700,
     },
   },
@@ -38,9 +22,10 @@ const aqBootstrapTheme: DefaultTheme = {
   palette: {
     primary: COLORS.blue700,
     secondary: COLORS.cyan600,
-    info: COLORS.blue,
-    disabledFont: COLORS.grey600,
-    disabledElement: COLORS.grey300,
+    info: COLORS.blue500,
+    success: COLORS.green500,
+    warning: COLORS.orange500,
+    danger: COLORS.red500,
   },
   grid: {
     breakpoints: {

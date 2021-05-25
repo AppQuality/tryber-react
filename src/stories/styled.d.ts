@@ -15,6 +15,7 @@ declare module "styled-components" {
       };
       fontWeight: {
         light: number;
+        normal: number;
         bold: number;
       };
     };
@@ -23,8 +24,9 @@ declare module "styled-components" {
       primary: string;
       secondary: string;
       info: string;
-      disabledFont: string;
-      disabledElement: string;
+      success: string;
+      warning: string;
+      danger: string;
     };
     grid: {
       breakpoints: {
