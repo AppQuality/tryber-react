@@ -13,8 +13,6 @@ export const Header = ({
 }: HeaderProps) => {
   let history = useHistory();
   const { i18n } = useTranslation();
-  console.log("user");
-  console.log(user);
   const handleLoginClick = () => {
     history.push("/getting-started");
   };
