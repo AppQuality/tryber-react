@@ -3,10 +3,13 @@ import { operations } from "./schema";
 
 class HttpError extends Error {
   statusCode: number;
-  constructor(message: string, statusCode: number) {
-    super(message); // (1)
-    this.name = "HttpError"; // (2)
-    this.statusCode = statusCode;
+  statusText: string;
+  constructor(status: number, statusText: string, message: string) {
+    super(`${status}: ${statusText} - ${message}`);
+    this.name = "HttpError";
+    this.statusCode = status;
+    this.statusText = statusText;
+    this.message = message;
   }
 }
 
@@ -49,9 +52,10 @@ const API = {
       headers: requestHeaders,
     });
     if (res.ok) {
-      return res.json();
+      return await res.json();
     } else {
-      throw new HttpError(res.statusText, res.status);
+      const json = await res.json();
+      throw new HttpError(res.status, res.statusText, json.err);
     }
   },
   signup: async (

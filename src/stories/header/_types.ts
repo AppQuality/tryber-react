@@ -3,6 +3,7 @@ import React from "react";
 
 export interface UserInfoProps {
   showLogin: boolean;
+  onLogin?: () => void;
   isLoading: boolean;
   user?: User;
 }

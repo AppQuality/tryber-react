@@ -5,7 +5,12 @@ import React from "react";
 import { UserInfoProps } from "./_types";
 import Skeleton from "../skeleton/Skeleton";
 
-export const UserInfo = ({ showLogin, user, isLoading }: UserInfoProps) => {
+export const UserInfo = ({
+  showLogin,
+  user,
+  isLoading,
+  onLogin,
+}: UserInfoProps) => {
   return (
     <>
       {isLoading ? (
@@ -26,7 +31,7 @@ export const UserInfo = ({ showLogin, user, isLoading }: UserInfoProps) => {
               </Button>
             </>
           ) : showLogin ? (
-            <Button size="medium" type="link">
+            <Button size="medium" type="link" onClick={onLogin}>
               login
             </Button>
           ) : null}
