@@ -3,16 +3,15 @@ import { Button } from "../button/Button";
 import "./header.scss";
 import React from "react";
 import { UserInfoProps } from "./_types";
+import Skeleton from "../skeleton/Skeleton";
 
 export const UserInfo = ({ showLogin, user, isLoading }: UserInfoProps) => {
-  let className = "user-info";
-  if (isLoading) className += " loading";
   return (
     <>
       {isLoading ? (
-        <div>loading</div>
+        <Skeleton />
       ) : (
-        <div className={className}>
+        <div className="user-info">
           {user ? (
             <>
               <div className="user-avatar">
