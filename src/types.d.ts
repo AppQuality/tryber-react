@@ -8,3 +8,8 @@ export interface UserData {
 }
 
 export type User = undefined | UserData;
+
+export interface UserStatus {
+  user: User;
+  isLoading: boolean;
+}
