@@ -63,7 +63,6 @@ export const SignupForm = ({
       {(props: FormikProps<any>) => (
         <Form id="signupForm">
           <H5>{t("Create an account")}</H5>
-          <H5>{t("Prova")}</H5>
           <Field type="text" name="name" label={t("Name")} />
           <Field type="text" name="surname" label={t("Surname")} />
           <Field type="email" name="email" label={t("Email")} />
