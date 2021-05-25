@@ -85,3 +85,6 @@ const Template: Story<SidebarProps> = (args) => (
 );
 export const BasicSidebar = Template.bind({});
 BasicSidebar.args = BasicSidebarArgs;
+
+export const OpenSidebar = Template.bind({});
+OpenSidebar.args = { ...BasicSidebarArgs, open: true };
