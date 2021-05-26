@@ -32,14 +32,21 @@ const API = {
         return { token: false, error: data };
       });
   },
-  campaigns: (token: string) => {
-    return fetch(`${config.api}/campaigns`, {
+  campaigns: async (token?: string) => {
+    const requestHeaders: HeadersInit = new Headers();
+    requestHeaders.set("Content-Type", "application/json");
+    if (token) {
+      requestHeaders.set("Authorization", "Bearer " + token);
+    }
+    const res = await fetch(`${config.api}/campaigns`, {
       method: "GET",
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      }),
-    }).then((res) => res.json());
+      headers: requestHeaders,
+    });
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new HttpError(res.statusText, res.status);
+    }
   },
   me: async (token?: string) => {
     const requestHeaders: HeadersInit = new Headers();

@@ -44,7 +44,7 @@ export default function MyBugs() {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await API.campaigns("");
+      const data = await API.campaigns();
       const dataColumns = columns;
       setData(data);
       setColumns(dataColumns);
