@@ -19,3 +19,9 @@ export const BasicCard = Template.bind({});
 BasicCard.args = {
   children: "Lorem ipsum dolor sit amet numquam concupescendit elit",
 };
+
+export const CardWithTitle = Template.bind({});
+CardWithTitle.args = {
+  children: "Lorem ipsum dolor sit amet numquam concupescendit elit",
+  title: "My title",
+};

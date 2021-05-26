@@ -5,4 +5,5 @@ export interface CardProps {
    * contents
    */
   children?: ReactNode;
+  title?: String;
 }
