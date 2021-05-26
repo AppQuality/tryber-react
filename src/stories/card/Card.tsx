@@ -1,17 +1,10 @@
-import React, { ReactNode } from "react";
-import "./card.scss";
-
-export interface CardProps {
-  /**
-   * contents
-   */
-  children?: ReactNode;
-}
+import { CardProps } from "./CardProps";
+import { CardStyle } from "./CardStyle";
 
 export const Card = ({ children }: CardProps) => {
   return (
-    <div className="card">
-      <div className="card-body">{children}</div>
-    </div>
+    <CardStyle>
+      <div className="aq-card-body">{children}</div>
+    </CardStyle>
   );
 };
