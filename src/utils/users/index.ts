@@ -52,7 +52,7 @@ export const myBugs = async ({
         urlps.set(`filterBy[${key}]`, val);
       });
     }
-    params = urlps.toString();
+    params = "?" + urlps.toString();
   }
   const res = await fetch(`${config.api}/users/me/bugs${params}`, {
     method: "GET",
