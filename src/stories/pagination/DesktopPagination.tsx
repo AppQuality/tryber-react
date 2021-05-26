@@ -1,68 +1,54 @@
-import { PaginationProps } from "./PaginationProps";
+import { PaginationProps, PageItem } from "./PaginationProps";
 import { Button, ButtonGroup } from "../button/Button";
 import { generateShrinkedPages } from "./utils";
 import { MouseEventHandler } from "react";
+import { ChevronRight, ChevronLeft } from "react-bootstrap-icons";
 
 export const DesktopPagination = ({
   onPageChange,
   current,
   maxPages,
-  before = 1,
-  after = 1,
+  size = 3,
 }: PaginationProps) => {
-  let pages: Array<number | string> = [];
+  let pages: Array<PageItem> = [];
   if (maxPages < 5) {
-    pages = Array.from(Array(maxPages).keys()).map((i) => i + 1);
+    pages = Array.from(Array(maxPages).keys()).map((i) => ({
+      page: i + 1,
+      flat: i !== current,
+      action: onPageChange,
+    }));
   } else {
-    pages = generateShrinkedPages(current, maxPages, before, after);
+    pages = generateShrinkedPages(current, maxPages, size, onPageChange);
   }
 
   return (
     <ButtonGroup>
-      {current > 1 ? (
-        <Button
-          flat={true}
-          squared={true}
-          onClick={() => onPageChange(current - 1)}
-          key="prev"
-        >
-          {"<"}
-        </Button>
-      ) : null}
+      <Button
+        flat={true}
+        squared={true}
+        onClick={() => onPageChange(current - 1)}
+        key="prev"
+        disabled={current == 1}
+      >
+        <ChevronLeft />
+      </Button>
       {pages.map((i, idx) => {
-        let onClick: MouseEventHandler | undefined = () => onPageChange(i);
-        if (i == "prev") {
-          onClick = () => onPageChange(current - 1);
-          i = "...";
-        }
-        if (i == "next") {
-          onClick = () => onPageChange(current + 1);
-          i = "...";
-        }
-        if (i == current) {
-          onClick = undefined;
-        }
+        let onClick: MouseEventHandler | undefined = () => i.action(i.page);
         return (
-          <Button
-            squared={true}
-            flat={typeof i == "string" ? true : i !== current}
-            onClick={onClick}
-            key={idx}
-          >
-            {i}
+          <Button squared={true} flat={i.flat} onClick={onClick} key={idx}>
+            {i.page}
           </Button>
         );
       })}
-      {current < maxPages ? (
-        <Button
-          flat={true}
-          squared={true}
-          onClick={() => onPageChange(current + 1)}
-          key="next"
-        >
-          {">"}
-        </Button>
-      ) : null}
+      <Button
+        flat={true}
+        squared={true}
+        onClick={() => onPageChange(current + 1)}
+        key="next"
+        disabled={current == maxPages}
+      >
+        <ChevronRight />
+      </Button>
     </ButtonGroup>
   );
 };
