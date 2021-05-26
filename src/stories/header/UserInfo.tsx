@@ -16,15 +16,17 @@ export const UserInfo = ({
     <div className="user-info">
       {user ? (
         <>
-          <div className="user-avatar">
+          <div className={`user-avatar ${user.verified ? "verified" : ""}`}>
             <img alt={user.name + " " + user.surname} src={user.image} />
           </div>
           <div className="user-name">
             {user.name} {user.surname}{" "}
             <span className="user-id">(T{user.id})</span>
           </div>
-          <Button size="sm" type="link">
-            <BoxArrowRight />
+          <Button size="medium" type="link">
+            <span className="text-danger">
+              <BoxArrowRight />
+            </span>
           </Button>
         </>
       ) : showLogin ? (

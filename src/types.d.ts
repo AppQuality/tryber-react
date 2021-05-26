@@ -5,6 +5,7 @@ export interface UserData {
   surname: string;
   email: string;
   image: string;
+  verified?: boolean;
 }
 
 export type User = undefined | UserData;
