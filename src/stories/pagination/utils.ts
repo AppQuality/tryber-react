@@ -31,20 +31,14 @@ export const generateShrinkedPages = (
   let goToPrevSegment = () => {};
   if (i > 0) {
     let prevSegmentPage = segments[i - 1][1];
-    console.log(prevSegmentPage);
     goToPrevSegment = () => {
-      console.log("prev");
       onPageChange(prevSegmentPage);
     };
   }
-  let goToNextSegment = () => {
-    console.log("no");
-  };
+  let goToNextSegment = () => {};
   if (i < segments.length - 1) {
     let nextSegmentPage = segments[i + 1][0];
-    console.log(nextSegmentPage);
     goToNextSegment = () => {
-      console.log("next");
       onPageChange(nextSegmentPage);
     };
   }
