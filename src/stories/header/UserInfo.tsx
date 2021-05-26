@@ -10,6 +10,7 @@ export const UserInfo = ({
   user,
   isLoading,
   onLogin,
+  onLogout,
 }: UserInfoProps) => {
   if (isLoading) return <Skeleton />;
   return (
@@ -23,7 +24,7 @@ export const UserInfo = ({
             {user.name} {user.surname}{" "}
             <span className="user-id">(T{user.id})</span>
           </div>
-          <Button size="medium" type="link">
+          <Button size="medium" type="link" onClick={onLogout}>
             <span className="text-danger">
               <BoxArrowRight />
             </span>
