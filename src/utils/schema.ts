@@ -106,6 +106,11 @@ export interface paths {
     /** Edit your user data */
     put: operations["put-users-me"];
   };
+  "/users/me/bugs": {
+    /** Get all the bugs that you uploaded to AppQuality. */
+    get: operations["get-users-me-bugs"];
+    parameters: {};
+  };
 }
 
 export interface components {
@@ -115,11 +120,12 @@ export interface components {
     };
     Campaign: components["schemas"]["CampaignOptional"] &
       components["schemas"]["CampaignRequired"];
-    Severity: {
-      id?: string;
+    BugSeverity: {
+      id?: number;
+      name?: string;
     };
     BugType: {
-      id?: string;
+      id?: number;
     };
     Replicability: {
       id?: string;
@@ -130,7 +136,7 @@ export interface components {
       customer_name?: string;
     };
     CampaignField: {
-      id?: string;
+      id?: number;
     };
     CampaignOptional: {
       name?: string;
@@ -151,7 +157,7 @@ export interface components {
       minNumberOfMedia?: number;
       titleRule?: boolean;
       allowed?: {
-        severities?: components["schemas"]["Severity"][];
+        severities?: components["schemas"]["BugSeverity"][];
         bug_types?: components["schemas"]["BugType"][];
         replicabilities?: components["schemas"]["Replicability"][];
       };
@@ -193,6 +199,19 @@ export interface components {
       email?: string;
       image?: string;
       id?: number;
+    };
+    Bug: {
+      severity?: components["schemas"]["BugSeverity"];
+      status?: components["schemas"]["BugStatus"];
+      campaign?: components["schemas"]["CampaignOptional"] & {
+        id?: number;
+      };
+      title?: string;
+    };
+    BugStatus: {
+      id?: number;
+      name?: string;
+      description?: string;
     };
   };
   responses: {
@@ -270,6 +289,14 @@ export interface components {
     customer: string;
     /** A project id */
     project: string;
+    /** Max items to retrieve */
+    limit: number;
+    /** Items to skip for pagination */
+    start: number;
+    /** Key-value Array for item filtering */
+    filterBy: { [key: string]: any };
+    /** How to order values (ASC, DESC) */
+    order: "ASC" | "DESC";
   };
 }
 
@@ -587,10 +614,12 @@ export interface operations {
   };
   /** Get all users you have access to */
   "get-users": {
-    responses: {};
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["User"][];
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": components["schemas"]["User"][];
+        };
       };
     };
   };
@@ -645,6 +674,41 @@ export interface operations {
           email?: string;
         };
       };
+    };
+  };
+  /** Get all the bugs that you uploaded to AppQuality. */
+  "get-users-me-bugs": {
+    parameters: {
+      query: {
+        /** Items to skip for pagination */
+        start?: components["parameters"]["start"];
+        /** Max items to retrieve */
+        limit?: components["parameters"]["limit"];
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+        /** The field for item order */
+        orderBy?: "title" | "campaign" | "status" | "id";
+        /** How to order values (ASC, DESC) */
+        order?: components["parameters"]["order"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results: ({
+              id: number;
+            } & components["schemas"]["Bug"])[];
+            limit?: number;
+            size?: number;
+            start?: number;
+            total?: number;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
     };
   };
 }
