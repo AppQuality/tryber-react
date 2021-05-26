@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, BSGrid, BSCol } from "../stories/layout/Layout";
 import { Card } from "../stories/card/Card";
 import Spinner from "../stories/spinner/Spinner";
-import { H5 } from "../stories/typography/Typography";
+import { SmallTitle } from "../stories/typography/Typography";
 import { useTranslation } from "react-i18next";
 import API from "../utils/api";
 import styled from "styled-components";
@@ -45,7 +45,7 @@ export default function MyBugs() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = await API.campaigns();
+        const data = await API.myBugs({});
       } catch (e) {
         alert(e.message);
         const dataColumns = columns;
@@ -72,7 +72,7 @@ export default function MyBugs() {
         <Container>
           <SpinnerWrapper>
             <Spinner />
-            <H5>{t("loading")}</H5>
+            <SmallTitle as="h5">{t("loading")}</SmallTitle>
           </SpinnerWrapper>
         </Container>
       </>

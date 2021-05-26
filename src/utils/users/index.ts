@@ -25,7 +25,7 @@ export const myBugs = async ({
   query,
 }: {
   token?: string;
-  query: operations["get-users-me-bugs"]["parameters"]["query"];
+  query?: operations["get-users-me-bugs"]["parameters"]["query"];
 }) => {
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set("Content-Type", "application/json");
@@ -33,7 +33,7 @@ export const myBugs = async ({
     requestHeaders.set("Authorization", "Bearer " + token);
   }
   let params = "";
-  if (Object.keys(query).length) {
+  if (query && Object.keys(query).length) {
     let urlps = new URLSearchParams();
     if (query.start) {
       urlps.set("start", query.start.toString());
