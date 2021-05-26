@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components";
 import { aqBootstrapTheme } from "./stories/theme/defaultTheme";
 import "./App.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import { GettingStarted } from "./pages";
+import { GettingStarted, MyBugs } from "./pages";
 import SignIn from "./pages/SignIn";
 import "./i18n";
 import { useTranslation } from "react-i18next";
@@ -42,6 +42,7 @@ function App() {
           <Route path={`${base}/it/getting-started-2`}>
             <Redirect to="/it/getting-started" />
           </Route>
+          <Route path={`${base}/my-bugs`} component={MyBugs} />
           <Route path={`${base}/login`} component={SignIn} />
         </Switch>
       </BrowserRouter>
