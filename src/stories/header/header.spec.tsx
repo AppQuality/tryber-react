@@ -1,18 +1,22 @@
 import { render, screen } from "@testing-library/react";
-import { Header } from "./Header";
 import { testUser } from "./_data";
 import "../../i18n";
+import {
+  LoadingHeader,
+  LoggedInHeader,
+  LoggedOutHeader,
+} from "./Header.stories";
 
 describe("logged out site-header", () => {
   it("should render with the login text only", () => {
-    render(<Header isLoading={false} />);
+    render(<LoggedOutHeader {...LoggedOutHeader.args} />);
     expect(screen.getByText("login")).toBeVisible();
   });
 });
 
 describe("logged in site-header user info", () => {
   it("should render with the correct user informations only", () => {
-    render(<Header user={testUser} isLoading={false} />);
+    render(<LoggedInHeader {...LoggedInHeader.args} />);
     expect(screen.queryByText("login")).toBeNull();
     expect(
       screen.getByText(`${testUser.name} ${testUser.surname}`)
@@ -23,7 +27,7 @@ describe("logged in site-header user info", () => {
 
 describe("loading site-header user info", () => {
   it("should only render a skeleton animation only", () => {
-    render(<Header user={testUser} isLoading={true} />);
+    render(<LoadingHeader {...LoadingHeader.args} />);
     expect(screen.queryByText("login")).toBeNull();
     expect(
       screen.queryByText(`${testUser.name} ${testUser.surname}`)
