@@ -17,7 +17,15 @@ export const Header = ({
     window.location.href = "/";
   };
   const handleLogoutClick = () => {
-    window.location.href = "/wp-login.php?action=logout";
+    fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout", {
+      method: "GET",
+    })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((e) => {
+        alert(e.message);
+      });
   };
   return (
     <div className="site-header">
