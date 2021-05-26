@@ -16,6 +16,9 @@ export const Header = ({
   const handleLoginClick = () => {
     history.push("/getting-started");
   };
+  const handleLogoutClick = () => {
+    history.push("/wp-login.php?action=logout");
+  };
   return (
     <div className="site-header">
       <div className="brand-logo">
@@ -36,6 +39,7 @@ export const Header = ({
         user={user}
         isLoading={isLoading}
         onLogin={handleLoginClick}
+        onLogout={handleLogoutClick}
       />
     </div>
   );
