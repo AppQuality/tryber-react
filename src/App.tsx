@@ -36,7 +36,7 @@ function App() {
         />
       </Helmet>
       <BrowserRouter>
-        <SiteHeader showLogin={true} />
+        <SiteHeader showLogin={false} />
         <Switch>
           <Route path={`${base}/getting-started`} component={GettingStarted} />
           <Route path={`${base}/it/getting-started-2`}>

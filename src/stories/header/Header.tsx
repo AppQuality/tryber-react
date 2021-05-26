@@ -14,10 +14,10 @@ export const Header = ({
   let history = useHistory();
   const { i18n } = useTranslation();
   const handleLoginClick = () => {
-    history.push("/getting-started");
+    window.location.href = "/";
   };
   const handleLogoutClick = () => {
-    history.push("/wp-login.php?action=logout");
+    window.location.href = "/wp-login.php?action=logout";
   };
   return (
     <div className="site-header">
