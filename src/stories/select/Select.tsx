@@ -8,7 +8,6 @@ import {
   OptionActionType,
   SelectProps,
 } from "./_types";
-import { getOptionValue } from "react-select/src/builtins";
 
 function updateOptions(state: Option[], action: OptionAction): Option[] {
   const { type, payload } = action;

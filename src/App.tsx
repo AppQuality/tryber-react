@@ -4,11 +4,11 @@ import "./App.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { GettingStarted } from "./pages";
 import SignIn from "./pages/SignIn";
-import { Header } from "./stories/header/Header";
 import "./i18n";
 import { useTranslation } from "react-i18next";
 import TagManager from "react-gtm-module";
 import Helmet from "react-helmet";
+import SiteHeader from "./features/SiteHeader";
 
 const tagManagerArgs = {
   gtmId: "GTM-K55XC7S",
@@ -36,7 +36,7 @@ function App() {
         />
       </Helmet>
       <BrowserRouter>
-        <Header showLogin={false} />
+        <SiteHeader showLogin={false} />
         <Switch>
           <Route path={`${base}/getting-started`} component={GettingStarted} />
           <Route path={`${base}/it/getting-started-2`}>

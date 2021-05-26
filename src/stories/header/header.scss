@@ -22,6 +22,7 @@ $ContentHeight: 30px;
   .user-info {
     display: flex;
     align-items: center;
+    position: relative;
   }
   .user-name {
     @include paragraph;
@@ -31,9 +32,23 @@ $ContentHeight: 30px;
     @include small-paragraph;
     color: $grey-600;
   }
-  .user-avatar img {
-    max-height: $ContentHeight;
-    max-width: $ContentHeight;
+  .user-avatar {
     margin-right: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      max-height: $ContentHeight;
+      max-width: $ContentHeight;
+    }
+    &.verified:after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 15px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: $green-500;
+    }
   }
 }
