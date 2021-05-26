@@ -83,7 +83,7 @@ export default function GettingStarted() {
     <>
       {helmet}
       <Container>
-        <h2>{t("become-a-tester")}</h2>
+        <h2>{t("Become an AppQuality Tester")}</h2>
         <BSGrid>
           <BSCol size="col-lg-8 col-xxl-7">
             <Card>

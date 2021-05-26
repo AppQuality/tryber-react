@@ -32,23 +32,27 @@ export const SignupMailSocial = ({
         }}
       >
         <div>
-          <H5>{t("signup-with-social")}</H5>
-          <Paragraph>{t("signup-with-social-description")}</Paragraph>
+          <H5>{t("Log in with an existing account")}</H5>
+          <Paragraph>
+            {t(
+              "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard"
+            )}
+          </Paragraph>
           <CSSGrid min="70px" fill={true}>
             <div style={{ gridColumn: "auto / span 3" }}>
               <div className="form-group">
                 <Button type="primary" size="block" flat onClick={signupWithFb}>
-                  {t("facebook")}
+                  {t("Facebook")}
                 </Button>
               </div>
               <Button type="secondary" size="block" flat onClick={signupWithLn}>
-                {t("linkedin")}
+                {t("LinkedIn")}
               </Button>
             </div>
           </CSSGrid>
         </div>
         <div>
-          <img alt={t("become-a-tester")} src={signupImage} />
+          <img alt={t("Become an AppQuality Tester")} src={signupImage} />
         </div>
       </div>
     </CSSGrid>

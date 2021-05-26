@@ -1,4 +1,3 @@
-import React from "react";
 import { Checkbox, Field } from "../stories/form/Form";
 import { Button } from "../stories/button/Button";
 import { Formik, Form, FormikProps } from "formik";
@@ -64,12 +63,21 @@ export const SignupForm = ({
       {(props: FormikProps<any>) => (
         <Form id="signupForm">
           <H5>{t("Create an account")}</H5>
-          <Field type="text" name="name" label={t("name")} />
-          <Field type="text" name="surname" label={t("surname")} />
-          <Field type="email" name="email" label={t("email")} />
-          <Field type="password" name="password" label={t("password")} />
-          <Paragraph small>{t("password-req")}</Paragraph>
-          <Checkbox name="subscribe" label={t("accept-to-receive-email")} />
+          <Field type="text" name="name" label={t("Name")} />
+          <Field type="text" name="surname" label={t("Surname")} />
+          <Field type="email" name="email" label={t("Email")} />
+          <Field type="password" name="password" label={t("Password")} />
+          <Paragraph small>
+            {t(
+              "The password must be at least 6 characters long, contain an uppercase letter, a lowercase letter and a number."
+            )}
+          </Paragraph>
+          <Checkbox
+            name="subscribe"
+            label={t(
+              "I agree to receive earning opportunity emails from AppQuality"
+            )}
+          />
           <CSSGrid min="70px" fill={true}>
             <div className="form-group" style={{ gridColumn: "auto / span 3" }}>
               <Button
@@ -78,21 +86,25 @@ export const SignupForm = ({
                 flat
                 disabled={props.isSubmitting || !props.dirty || !props.isValid}
               >
-                {props.isSubmitting ? "...wait" : t("signup-now")}
+                {props.isSubmitting ? "...wait" : t("Signup now")}
               </Button>
             </div>
           </CSSGrid>
           <Paragraph small>
-            <Trans i18nKey="clicking-button-you-accept-tos">
+            <Trans i18nKey="By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>">
               By clicking this button, you accept the
-              <a target="_blank" href={t("termsLink")} rel="noreferrer">
+              <a
+                target="_blank"
+                href={t("/terms-and-conditions/")}
+                rel="noreferrer"
+              >
                 Terms
               </a>
               and
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href={t("privacyLink")}
+                href={t("https://www.iubenda.com/privacy-policy/7934311")}
               >
                 Privacy Policy
               </a>

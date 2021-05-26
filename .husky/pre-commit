@@ -6,8 +6,11 @@ FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
 
 # Prettify all selected files
 npx prettier --ignore-unknown --write $FILES
+npx i18next 'src/**/*.{tsx,ts}'
 
 # Add back the modified/prettified files to staging
 echo "$FILES" | xargs git add
+
+ls -1 -d "$PWD"/src/locales/*/*.json | xargs git add
 
 exit 0

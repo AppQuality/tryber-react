@@ -10,7 +10,7 @@ export default function SignIn() {
   const { t } = useTranslation();
   return (
     <Container>
-      <h2>{t("become-a-tester")}</h2>
+      <h2>{t("Become an AppQuality Tester")}</h2>
       <BSGrid>
         <BSCol size="lg-8">
           <Card>
