@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Container, BSGrid, BSCol } from "../stories/layout/Layout";
 import { Card } from "../stories/card/Card";
 import Spinner from "../stories/spinner/Spinner";
-import { H5 } from "../stories/typography/Typography";
+import { SmallTitle } from "../stories/typography/Typography";
 import { useTranslation } from "react-i18next";
 import API from "../utils/api";
 import styled from "styled-components";
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
 import { Table } from "../stories/table/Table";
-import { Column } from "../stories/table/_types";
 import { Option } from "../stories/select/_types";
 import { Select } from "../stories/select/Select";
+import { Row } from "../stories/table/_types";
+import { Button } from "../stories/button/Button";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -26,8 +27,7 @@ const tagManagerArgs = {
 export default function MyBugs() {
   //const {user, isLoading} = useUser();
   const { t, i18n } = useTranslation();
-  const [data, setData] = useState([]);
-  const [columns, setColumns] = useState<Column[]>([]);
+  const [data, setData] = useState<Row[]>([]);
   const [campaigns, setCampaigns] = useState<Option[]>([]);
   const [severities, setSeverities] = useState<Option[]>([]);
   const [status, setStatus] = useState<Option[]>([]);
@@ -42,15 +42,80 @@ export default function MyBugs() {
     );
   };
 
+  const columns = [
+    {
+      title: "Id",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
+      title: "Title",
+      dataIndex: "title",
+      key: "title",
+      long: true,
+    },
+    {
+      title: "Severity",
+      dataIndex: "severity",
+      key: "severity",
+    },
+    {
+      title: "State",
+      dataIndex: "state",
+      key: "state",
+    },
+    {
+      title: "Action",
+      dataIndex: "action",
+      key: "action",
+      width: "110px",
+    },
+  ];
+
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = await API.campaigns();
+        //const res = await API.campaigns();
+        const response = {
+          results: [
+            {
+              id: 1,
+              severity: {
+                id: 1,
+                name: "LOW",
+              },
+              status: {
+                id: 1,
+                name: "Refused",
+              },
+              campaign: {
+                name: "UX test for a selfdrive service",
+                id: 1,
+              },
+              title: "Self drive system crashing",
+            },
+          ],
+          limit: 5,
+          size: 1,
+          start: 10,
+          total: 100,
+        };
+        const data = response.results.map((res, i) => ({
+          key: i,
+          id: res.id,
+          severity: res.severity.name,
+          status: res.status.name,
+          campaign: res.campaign.name,
+          title: res.title,
+          action: (
+            <Button type="link" size="sm">
+              view more
+            </Button>
+          ),
+        }));
+        setData(data);
       } catch (e) {
         alert(e.message);
-        const dataColumns = columns;
-        setData(data);
-        setColumns(dataColumns);
       }
     };
     TagManager.dataLayer(tagManagerArgs);
@@ -72,7 +137,7 @@ export default function MyBugs() {
         <Container>
           <SpinnerWrapper>
             <Spinner />
-            <H5>{t("loading")}</H5>
+            <SmallTitle as="h5">{t("loading")}</SmallTitle>
           </SpinnerWrapper>
         </Container>
       </>

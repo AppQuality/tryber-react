@@ -7,7 +7,7 @@ export interface Column {
 }
 
 export interface Row {
-  key: string;
+  key: string | number;
   [index: string]: any;
 }
 
