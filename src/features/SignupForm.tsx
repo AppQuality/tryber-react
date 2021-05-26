@@ -4,7 +4,7 @@ import { Formik, Form, FormikProps } from "formik";
 import * as yup from "yup";
 import { useTranslation, Trans } from "react-i18next";
 import API from "../utils/api";
-import { Paragraph, H5 } from "../stories/typography/Typography";
+import { Paragraph, SmallTitle } from "../stories/typography/Typography";
 import { CSSGrid } from "../stories/layout/Layout";
 
 interface SignupFormProps {
@@ -62,7 +62,7 @@ export const SignupForm = ({
     >
       {(props: FormikProps<any>) => (
         <Form id="signupForm">
-          <H5>{t("Create an account")}</H5>
+          <SmallTitle as="h5">{t("Create an account")}</SmallTitle>
           <Field type="text" name="name" label={t("Name")} />
           <Field type="text" name="surname" label={t("Surname")} />
           <Field type="email" name="email" label={t("Email")} />

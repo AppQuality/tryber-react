@@ -1,17 +1,20 @@
-import React, { ReactNode } from "react";
-import "./card.scss";
+import { CardProps } from "./CardProps";
+import { CardStyle } from "./CardStyle";
+import { SmallTitle } from "../typography/Typography";
 
-export interface CardProps {
-  /**
-   * contents
-   */
-  children?: ReactNode;
-}
-
-export const Card = ({ children }: CardProps) => {
+export const Card = ({ children, title }: CardProps) => {
+  let cardHeader = null;
+  if (title) {
+    cardHeader = (
+      <div className="aq-card-header">
+        <SmallTitle className="aq-card-title">{title}</SmallTitle>
+      </div>
+    );
+  }
   return (
-    <div className="card">
-      <div className="card-body">{children}</div>
-    </div>
+    <CardStyle>
+      {cardHeader}
+      <div className="aq-card-body">{children}</div>
+    </CardStyle>
   );
 };

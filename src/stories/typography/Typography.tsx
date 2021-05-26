@@ -26,7 +26,7 @@ export const Paragraph = styled.p(({ theme, small }: ParagraphProps) => {
 /**
  * Primary UI component for h5
  */
-export const H5 = styled.h5(({ theme }: H5Props) => {
+export const SmallTitle = styled.div(({ theme }: H5Props) => {
   const { palette, typography } = theme;
   return `
   color: ${palette.primary};

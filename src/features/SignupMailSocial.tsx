@@ -1,6 +1,6 @@
 import { Button } from "../stories/button/Button";
 import { useTranslation } from "react-i18next";
-import { Paragraph, H5 } from "../stories/typography/Typography";
+import { Paragraph, SmallTitle } from "../stories/typography/Typography";
 import { SignupForm } from "./SignupForm";
 import signupImage from "../pages/assets/group-236.png";
 import { CSSGrid } from "../stories/layout/Layout";
@@ -32,7 +32,9 @@ export const SignupMailSocial = ({
         }}
       >
         <div>
-          <H5>{t("Log in with an existing account")}</H5>
+          <SmallTitle as="h5">
+            {t("Log in with an existing account")}
+          </SmallTitle>
           <Paragraph>
             {t(
               "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard"
