@@ -44,10 +44,14 @@ export default function MyBugs() {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await API.campaigns();
-      const dataColumns = columns;
-      setData(data);
-      setColumns(dataColumns);
+      try {
+        const data = await API.campaigns();
+      } catch (e) {
+        alert(e.message);
+        const dataColumns = columns;
+        setData(data);
+        setColumns(dataColumns);
+      }
     };
     TagManager.dataLayer(tagManagerArgs);
     getData();
