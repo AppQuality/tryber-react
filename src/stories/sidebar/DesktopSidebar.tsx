@@ -21,6 +21,7 @@ const SidebarWrapper = styled.div(({ theme }: { theme: DefaultTheme }) => {
    float:left;
    left:0;
    width: ${sidebarWidth}px;
+   z-index: 1;
    
    ${SidebarIcons} {
      position:relative;
