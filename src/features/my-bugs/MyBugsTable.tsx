@@ -1,6 +1,5 @@
 import { Table } from "../../stories/table/Table";
 import { Pagination } from "../../stories/pagination/Pagination";
-import { useMyBugs } from "../../store/useMyBugs";
 import { Row } from "../../stories/table/_types";
 
 interface MyBugsTableProps {

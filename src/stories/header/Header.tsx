@@ -1,6 +1,4 @@
-import React from "react";
 import "./header.scss";
-import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { UserInfo } from "./UserInfo";
 import { HeaderProps } from "./_types";
@@ -11,7 +9,6 @@ export const Header = ({
   isLoading,
   user,
 }: HeaderProps) => {
-  let history = useHistory();
   const { i18n } = useTranslation();
   const handleLoginClick = () => {
     window.location.href = "/";
