@@ -112,7 +112,7 @@ const BasicSidebarArgs = {
   ],
 };
 
-export default ({ children }: TesterSidebarProps) => {
+const TesterSidebar = ({ children }: TesterSidebarProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -125,3 +125,4 @@ export default ({ children }: TesterSidebarProps) => {
     </Sidebar>
   );
 };
+export default TesterSidebar;

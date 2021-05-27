@@ -4,7 +4,6 @@ import { Option } from "../stories/select/_types";
 import { operations } from "../utils/schema";
 import { Button } from "../stories/button/Button";
 import API from "../utils/api";
-import TagManager from "react-gtm-module";
 import { useTranslation } from "react-i18next";
 
 export const useMyBugs = () => {
@@ -139,7 +138,14 @@ export const useMyBugs = () => {
       }
     };
     getData();
-  }, [order, orderBy, selectedCampaign, selectedStatus, selectedSeverity]);
+  }, [
+    order,
+    orderBy,
+    selectedCampaign,
+    selectedStatus,
+    selectedSeverity,
+    limit,
+  ]);
 
   return {
     data: {

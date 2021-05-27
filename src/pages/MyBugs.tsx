@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Container, BSGrid, BSCol } from "../stories/layout/Layout";
 import { Card } from "../stories/card/Card";
 import Spinner from "../stories/spinner/Spinner";
@@ -23,11 +23,9 @@ const tagManagerArgs = {
 };
 
 export default function MyBugs() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const {
     data,
-    order,
-    orderBy,
     page,
     totalBugs,
     limit,

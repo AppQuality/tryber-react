@@ -45,7 +45,7 @@ export const generateShrinkedPages = (
 
   let pages: Array<PageItem> = [];
   let beforeArray: Array<PageItem> = [
-    { page: 1, flat: current != 1, action: onPageChange },
+    { page: 1, flat: current !== 1, action: onPageChange },
     { page: "...", flat: true, action: goToPrevSegment },
   ];
   let afterArray: Array<PageItem> = [
@@ -56,9 +56,9 @@ export const generateShrinkedPages = (
       action: onPageChange,
     },
   ];
-  if (currentSegment[0].page == 1) {
+  if (currentSegment[0].page === 1) {
     pages = currentSegment.concat(afterArray);
-  } else if (currentSegment[currentSegment.length - 1].page == maxPages) {
+  } else if (currentSegment[currentSegment.length - 1].page === maxPages) {
     pages = beforeArray.concat(currentSegment);
   } else {
     pages = beforeArray.concat(currentSegment, afterArray);

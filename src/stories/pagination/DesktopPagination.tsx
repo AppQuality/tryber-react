@@ -28,7 +28,7 @@ export const DesktopPagination = ({
         squared={true}
         onClick={() => onPageChange(current - 1)}
         key="prev"
-        disabled={current == 1}
+        disabled={current === 1}
         data-test-id="prev"
       >
         <ChevronLeft />
@@ -46,7 +46,7 @@ export const DesktopPagination = ({
         squared={true}
         onClick={() => onPageChange(current + 1)}
         key="next"
-        disabled={current == maxPages}
+        disabled={current === maxPages}
         data-test-id="next"
       >
         <ChevronRight />
