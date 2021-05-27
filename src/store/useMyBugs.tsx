@@ -135,7 +135,10 @@ export const useMyBugs = () => {
         });
         setFilters(totalResponse.results);
       } catch (e) {
-        alert(e.message);
+        if (e.statusCode === 404) {
+          setBugsData([]);
+          setTotalBugs(0);
+        }
       }
     };
     getData();
