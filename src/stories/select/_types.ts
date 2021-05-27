@@ -20,6 +20,8 @@ export type GetOptionsAsync = (
 // () => { api.get('/api/users/me/bugs').then( bugs => bug.map( b => b.campaign_name).unique())
 
 export interface SelectProps {
+  name: string;
+  onChange?: (value: Option) => void;
   options: Options;
   defaultValue?: string;
   placeholder?: string;

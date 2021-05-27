@@ -1,5 +1,5 @@
-import ReactSelect from "react-select";
-import { useEffect, useReducer, useState } from "react";
+import ReactSelect, { ActionMeta, InputActionMeta } from "react-select";
+import { ChangeEvent, useEffect, useReducer, useState } from "react";
 import { aqTheme, customComponents, customStyle } from "./_styles";
 import {
   Option,
@@ -28,6 +28,8 @@ let searchBuffer = "";
 let timer: NodeJS.Timeout | false = false;
 
 export const Select = ({
+  name,
+  onChange,
   options,
   defaultValue,
   placeholder = "Select...",
@@ -94,7 +96,12 @@ export const Select = ({
     setOptions({ type: type, payload: res.results });
   };
 
-  const handleInputChange = (value: string) => {
+  const showInitialOptions = () => {
+    setOptions({ type: "set", payload: initialOptions.results });
+    setMore(initialOptions.more);
+  };
+
+  const handleInputChange = (value: string, actionMeta: InputActionMeta) => {
     if (options instanceof Function) {
       timer = false;
       searchBuffer = value;
@@ -112,20 +119,17 @@ export const Select = ({
     }
   };
 
-  const showInitialOptions = () => {
-    setOptions({ type: "set", payload: initialOptions.results });
-    setMore(initialOptions.more);
-  };
-
-  const handleChange = () => {
+  const handleChange = (value: any, actionMeta: ActionMeta<any>) => {
+    // value
     if (options instanceof Function) {
       if (typeof searching === "string" && searching.length >= 2) {
         resetOptions();
       }
     }
+    if (onChange) onChange(value);
   };
 
-  const handleBlur = () => {
+  const handleBlur = (e: ChangeEvent) => {
     if (searching) {
       resetOptions();
     }
@@ -169,8 +173,10 @@ export const Select = ({
   return (
     <>
       <ReactSelect
+        name={name}
         onBlur={handleBlur}
         onChange={handleChange}
+        onInputChange={handleInputChange}
         options={optionsDropdown}
         defaultValue={defaultValue}
         placeholder={placeholder}
@@ -184,7 +190,6 @@ export const Select = ({
         captureMenuScroll={true}
         onMenuScrollToBottom={onMenuScrollToBottom}
         // menuPlacement='auto'
-        onInputChange={handleInputChange}
         theme={aqTheme}
         {...customComponents}
       />

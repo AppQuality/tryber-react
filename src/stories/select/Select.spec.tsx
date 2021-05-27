@@ -9,7 +9,7 @@ describe("Basic Select should render options correctly", () => {
   it("There should be as many options as provided", () => {
     const { container } = render(
       <ThemeProvider theme={aqBootstrapTheme}>
-        <Select options={basicOptions} />
+        {/*<Select options={basicOptions} />*/}
       </ThemeProvider>
     );
     const th = container.querySelectorAll("thead th");

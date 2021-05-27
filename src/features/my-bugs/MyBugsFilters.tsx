@@ -1,17 +1,33 @@
 import { Select } from "../../stories/select/Select";
 import { useMyBugs } from "../../store/useMyBugs";
+import { Formik, Field, FieldProps } from "formik";
 
 const MyBugsFilters = () => {
   const { campaigns, severities, status } = useMyBugs();
   return (
-    <>
-      campaign
-      <Select options={campaigns.current} isSearchable />
+    <div>
+      Campaign
+      <Select
+        onChange={campaigns.setSelected}
+        name="campaign"
+        options={campaigns.current}
+        isSearchable
+      />
       severity
-      <Select options={severities.current} isSearchable={false} />
+      <Select
+        onChange={severities.setSelected}
+        name="severity"
+        options={severities.current}
+        isSearchable={false}
+      />
       status
-      <Select options={status.current} isSearchable={false} />
-    </>
+      <Select
+        onChange={status.setSelected}
+        name="status"
+        options={status.current}
+        isSearchable={false}
+      />
+    </div>
   );
 };
 
