@@ -5,8 +5,10 @@ import { operations } from "../utils/schema";
 import { Button } from "../stories/button/Button";
 import API from "../utils/api";
 import TagManager from "react-gtm-module";
+import { useTranslation } from "react-i18next";
 
 export const useMyBugs = () => {
+  const { i18n } = useTranslation();
   const [data, setData] = useState<Row[]>([]);
   const [campaigns, setCampaigns] = useState<Option[]>([]);
   const [severities, setSeverities] = useState<Option[]>([]);
@@ -88,7 +90,15 @@ export const useMyBugs = () => {
         campaign: res.campaign?.name,
         title: res.title,
         action: (
-          <Button type="link" size="sm">
+          <Button
+            type="link"
+            size="sm"
+            onClick={() => {
+              window.location.href = `${window.location.origin}/${
+                i18n.language !== "en" ? "en/" : ""
+              }bugs/show/${res.id}`;
+            }}
+          >
             view more
           </Button>
         ),
