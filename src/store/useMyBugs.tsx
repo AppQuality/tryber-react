@@ -12,8 +12,10 @@ export const useMyBugs = () => {
   const [severities, setSeverities] = useState<Option[]>([]);
   const [status, setStatus] = useState<Option[]>([]);
   const [page, setPage] = useState<number>(1);
-  const [order, setOrder] = useState([]);
-  const [orderBy, setOrderBy] = useState([]);
+  const [order, setOrder] = useState<"DESC" | "ASC">("DESC");
+  const [orderBy, setOrderBy] = useState<
+    "id" | "status" | "title" | "campaign"
+  >("id");
   const [totalBugs, setTotalBugs] = useState(0);
   const [limit, setLimit] = useState(25);
 
@@ -82,9 +84,10 @@ export const useMyBugs = () => {
     const getData = async () => {
       try {
         const response = await API.myBugs({
-          token: "",
           query: {
             limit: 25,
+            order: order,
+            orderBy: orderBy,
           },
         });
         setStatuses(response.results);
