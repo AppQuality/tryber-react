@@ -81,11 +81,16 @@ export const DesktopSidebar = ({
   children,
   items,
   languages,
+  onSidebarEnter,
+  onSidebarLeave,
   open = false,
 }: SidebarProps) => {
   return (
     <>
-      <SidebarWrapper>
+      <SidebarWrapper
+        onMouseEnter={onSidebarEnter}
+        onMouseLeave={onSidebarLeave}
+      >
         <SidebarIcons>
           {items.map((i, idx) => (
             <SidebarIcon

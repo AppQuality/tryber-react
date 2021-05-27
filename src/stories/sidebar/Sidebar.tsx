@@ -21,6 +21,8 @@ export const Sidebar = ({
   items,
   languages,
   onLogout,
+  onSidebarEnter,
+  onSidebarLeave,
   open = false,
 }: SidebarProps) => {
   useWindowSize();
@@ -42,6 +44,8 @@ export const Sidebar = ({
       languages={languages}
       open={open}
       onLogout={onLogout}
+      onSidebarEnter={onSidebarEnter}
+      onSidebarLeave={onSidebarLeave}
     >
       {children}
     </DesktopSidebar>

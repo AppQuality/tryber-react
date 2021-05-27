@@ -15,4 +15,6 @@ export interface SidebarProps {
   };
   open?: boolean;
   onLogout: Function;
+  onSidebarEnter?: () => void;
+  onSidebarLeave?: () => void;
 }

@@ -12,6 +12,7 @@ import { Table } from "../stories/table/Table";
 import { Column } from "../stories/table/_types";
 import { Option } from "../stories/select/_types";
 import { Select } from "../stories/select/Select";
+import TesterSidebar from "../features/TesterSidebar";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -70,38 +71,42 @@ export default function MyBugs() {
     return (
       <>
         {helmet}
-        <Container>
-          <SpinnerWrapper>
-            <Spinner />
-            <SmallTitle as="h5">{t("loading")}</SmallTitle>
-          </SpinnerWrapper>
-        </Container>
+        <TesterSidebar>
+          <Container>
+            <SpinnerWrapper>
+              <Spinner />
+              <SmallTitle as="h5">{t("loading")}</SmallTitle>
+            </SpinnerWrapper>
+          </Container>
+        </TesterSidebar>
       </>
     );
   }
   return (
     <>
       {helmet}
-      <Container>
-        <h2>{t("My Bugs")}</h2>
-        <BSGrid>
-          <BSCol size="col-lg-9 col-xxl-8">
-            <Card>
-              <Table dataSource={data} columns={columns} />
-            </Card>
-          </BSCol>
-          <BSCol size="col-lg-3 col-xxl-4">
-            <Card>
-              campaign
-              <Select options={campaigns} />
-              severity
-              <Select options={severities} />
-              status
-              <Select options={status} />
-            </Card>
-          </BSCol>
-        </BSGrid>
-      </Container>
+      <TesterSidebar>
+        <Container>
+          <h2>{t("My Bugs")}</h2>
+          <BSGrid>
+            <BSCol size="col-lg-9 col-xxl-8">
+              <Card>
+                <Table dataSource={data} columns={columns} />
+              </Card>
+            </BSCol>
+            <BSCol size="col-lg-3 col-xxl-4">
+              <Card>
+                campaign
+                <Select options={campaigns} />
+                severity
+                <Select options={severities} />
+                status
+                <Select options={status} />
+              </Card>
+            </BSCol>
+          </BSGrid>
+        </Container>
+      </TesterSidebar>
     </>
   );
 }
