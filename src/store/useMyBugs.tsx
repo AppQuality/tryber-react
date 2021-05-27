@@ -11,6 +11,13 @@ export const useMyBugs = () => {
   const [campaigns, setCampaigns] = useState<Option[]>([]);
   const [severities, setSeverities] = useState<Option[]>([]);
   const [status, setStatus] = useState<Option[]>([]);
+  const [selectedStatus, setSelectedStatus] = useState<Option | undefined>();
+  const [selectedSeverity, setSelectedSeverity] = useState<
+    Option | undefined
+  >();
+  const [selectedCampaign, setSelectedCampaign] = useState<
+    Option | undefined
+  >();
   const [page, setPage] = useState<number>(1);
   const [order, setOrder] = useState<"DESC" | "ASC">("DESC");
   const [orderBy, setOrderBy] = useState<
@@ -19,36 +26,22 @@ export const useMyBugs = () => {
   const [totalBugs, setTotalBugs] = useState(0);
   const [limit, setLimit] = useState(25);
 
-  const setStatuses = (
+  const setFilters = (
     results: operations["get-users-me-bugs"]["responses"]["200"]["content"]["application/json"]["results"]
   ) => {
-    let _data: Row[] = [];
     let _campaigns: Option[] = [];
     let _campaign_ids: number[] = [];
     let _severities: Option[] = [];
     let _severities_ids: number[] = [];
     let _status: Option[] = [];
     let _status_ids: number[] = [];
-    results.forEach((res, i) => {
+    results.forEach((res) => {
       if (
         typeof res.campaign === "undefined" ||
         typeof res.status === "undefined" ||
         typeof res.severity === "undefined"
       )
         return;
-      _data.push({
-        key: i,
-        id: res.id,
-        severity: res.severity?.name,
-        status: res.status?.name,
-        campaign: res.campaign?.name,
-        title: res.title,
-        action: (
-          <Button type="link" size="sm">
-            view more
-          </Button>
-        ),
-      });
       if (res.campaign?.id && _campaign_ids.indexOf(res.campaign.id) < 0) {
         _campaign_ids.push(res.campaign.id);
         _campaigns.push({
@@ -71,10 +64,37 @@ export const useMyBugs = () => {
         });
       }
     });
-    setData(_data);
     setCampaigns(_campaigns);
     setSeverities(_severities);
     setStatus(_status);
+  };
+
+  const setBugsData = (
+    results: operations["get-users-me-bugs"]["responses"]["200"]["content"]["application/json"]["results"]
+  ) => {
+    let _data: Row[] = [];
+    results.forEach((res, i) => {
+      if (
+        typeof res.campaign === "undefined" ||
+        typeof res.status === "undefined" ||
+        typeof res.severity === "undefined"
+      )
+        return;
+      _data.push({
+        key: i,
+        id: res.id,
+        severity: res.severity?.name,
+        status: res.status?.name,
+        campaign: res.campaign?.name,
+        title: res.title,
+        action: (
+          <Button type="link" size="sm">
+            view more
+          </Button>
+        ),
+      });
+    });
+    setData(_data);
   };
 
   /**
@@ -83,21 +103,33 @@ export const useMyBugs = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await API.myBugs({
-          query: {
-            limit: 25,
-            order: order,
-            orderBy: orderBy,
-          },
+        const query: operations["get-users-me-bugs"]["parameters"]["query"] = {
+          order: order,
+          orderBy: orderBy,
+        };
+        if (selectedCampaign || selectedStatus || selectedSeverity) {
+          query.filterBy = {};
+          if (selectedCampaign)
+            query.filterBy.campaign = selectedCampaign.value;
+          if (selectedStatus) query.filterBy.status = selectedStatus.value;
+          if (selectedSeverity)
+            query.filterBy.severity = selectedSeverity.value;
+        }
+        const limitedResponse = await API.myBugs({
+          query: { ...query, limit },
         });
-        setStatuses(response.results);
-        setTotalBugs(response.total);
+        setTotalBugs(limitedResponse.total);
+        setBugsData(limitedResponse.results);
+        const totalResponse = await API.myBugs({
+          query,
+        });
+        setFilters(totalResponse.results);
       } catch (e) {
         alert(e.message);
       }
     };
     getData();
-  }, []);
+  }, [order, orderBy, selectedCampaign, selectedStatus, selectedSeverity]);
 
   return {
     data: {
@@ -106,15 +138,21 @@ export const useMyBugs = () => {
     },
     campaigns: {
       current: campaigns,
+      selected: selectedCampaign,
       set: setCampaigns,
+      setSelected: setSelectedCampaign,
     },
     severities: {
       current: severities,
+      selected: selectedSeverity,
       set: setSeverities,
+      setSelected: setSelectedSeverity,
     },
     status: {
       current: status,
+      selected: selectedStatus,
       set: setStatus,
+      setSelected: setSelectedStatus,
     },
     page: {
       current: page,
