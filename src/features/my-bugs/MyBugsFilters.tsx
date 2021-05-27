@@ -2,8 +2,7 @@ import { Select } from "../../stories/select/Select";
 import { useMyBugs } from "../../store/useMyBugs";
 import { Formik, Field, FieldProps } from "formik";
 
-const MyBugsFilters = () => {
-  const { campaigns, severities, status } = useMyBugs();
+const MyBugsFilters = ({ campaigns, severities, status }: any) => {
   return (
     <div>
       Campaign

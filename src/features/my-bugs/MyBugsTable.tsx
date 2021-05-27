@@ -2,9 +2,7 @@ import { Table } from "../../stories/table/Table";
 import { Pagination } from "../../stories/pagination/Pagination";
 import { useMyBugs } from "../../store/useMyBugs";
 
-const MyBugsTable = () => {
-  const { data, order, orderBy, page, totalBugs, limit } = useMyBugs();
-
+const MyBugsTable = ({ data, page, totalBugs, limit }: any) => {
   const columns = [
     {
       title: "Id",

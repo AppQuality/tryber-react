@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet";
 import TesterSidebar from "../features/TesterSidebar";
 import MyBugsTable from "../features/my-bugs/MyBugsTable";
 import MyBugsFilters from "../features/my-bugs/MyBugsFilters";
+import { useMyBugs } from "../store/useMyBugs";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -23,6 +24,17 @@ const tagManagerArgs = {
 
 export default function MyBugs() {
   const { t, i18n } = useTranslation();
+  const {
+    data,
+    order,
+    orderBy,
+    page,
+    totalBugs,
+    limit,
+    campaigns,
+    severities,
+    status,
+  } = useMyBugs();
 
   const helmet = () => {
     return (
@@ -70,12 +82,21 @@ export default function MyBugs() {
           <BSGrid>
             <BSCol size="col-lg-9 col-xxl-8">
               <Card>
-                <MyBugsTable />
+                <MyBugsTable
+                  data={data}
+                  page={page}
+                  totalBugs={totalBugs}
+                  limit={limit}
+                />
               </Card>
             </BSCol>
             <BSCol size="col-lg-3 col-xxl-4">
               <Card>
-                <MyBugsFilters />
+                <MyBugsFilters
+                  campaigns={campaigns}
+                  severities={severities}
+                  status={status}
+                />
               </Card>
             </BSCol>
           </BSGrid>
