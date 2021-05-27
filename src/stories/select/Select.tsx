@@ -68,7 +68,7 @@ export const Select = ({
         setLoading(false);
       });
     }
-  }, []);
+  }, [options]);
 
   const triggerUpdate = () => {
     if (options instanceof Function) {
