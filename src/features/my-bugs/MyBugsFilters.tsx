@@ -1,8 +1,17 @@
 import { Select } from "../../stories/select/Select";
-import { useMyBugs } from "../../store/useMyBugs";
-import { Formik, Field, FieldProps } from "formik";
+import { Option } from "../../stories/select/_types";
 
-const MyBugsFilters = ({ campaigns, severities, status }: any) => {
+interface MyBugsFiltersProps {
+  campaigns: { current: Option[]; setSelected: (val: Option) => void };
+  severities: { current: Option[]; setSelected: (val: Option) => void };
+  status: { current: Option[]; setSelected: (val: Option) => void };
+}
+
+const MyBugsFilters = ({
+  campaigns,
+  severities,
+  status,
+}: MyBugsFiltersProps) => {
   return (
     <div>
       Campaign

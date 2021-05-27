@@ -1,8 +1,16 @@
 import { Table } from "../../stories/table/Table";
 import { Pagination } from "../../stories/pagination/Pagination";
 import { useMyBugs } from "../../store/useMyBugs";
+import { Row } from "../../stories/table/_types";
 
-const MyBugsTable = ({ data, page, totalBugs, limit }: any) => {
+interface MyBugsTableProps {
+  data: Row[];
+  page: number;
+  totalBugs: number;
+  limit: number;
+}
+
+const MyBugsTable = ({ data, page, totalBugs, limit }: MyBugsTableProps) => {
   const columns = [
     {
       title: "Id",
@@ -34,13 +42,13 @@ const MyBugsTable = ({ data, page, totalBugs, limit }: any) => {
   ];
   return (
     <>
-      <Table dataSource={data.current} columns={columns} />
+      <Table dataSource={data} columns={columns} />
       <Pagination
         onPageChange={() => {
           alert("change");
         }}
-        current={page.current}
-        maxPages={Math.ceil(totalBugs / limit.current)}
+        current={page}
+        maxPages={Math.ceil(totalBugs / limit)}
       />
     </>
   );

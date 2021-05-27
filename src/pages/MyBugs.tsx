@@ -83,10 +83,10 @@ export default function MyBugs() {
             <BSCol size="col-lg-9 col-xxl-8">
               <Card>
                 <MyBugsTable
-                  data={data}
-                  page={page}
+                  data={data.current}
+                  page={page.current}
                   totalBugs={totalBugs}
-                  limit={limit}
+                  limit={limit.current}
                 />
               </Card>
             </BSCol>
