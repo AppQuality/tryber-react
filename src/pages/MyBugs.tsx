@@ -84,6 +84,7 @@ export default function MyBugs() {
                 <MyBugsTable
                   data={data.current}
                   page={page.current}
+                  setPage={page.set}
                   totalBugs={totalBugs}
                   limit={limit.current}
                   loading={loading}

@@ -149,7 +149,7 @@ export const useMyBugs = () => {
             query.filterBy.severity = selectedSeverity.value;
         }
         const limitedResponse = await API.myBugs({
-          query: { ...query, limit },
+          query: { ...query, limit, start: (page - 1) * limit },
         });
         setTotalBugs(limitedResponse.total);
         setBugsData(limitedResponse.results);
@@ -173,6 +173,7 @@ export const useMyBugs = () => {
     selectedStatus,
     selectedSeverity,
     limit,
+    page,
   ]);
 
   return {

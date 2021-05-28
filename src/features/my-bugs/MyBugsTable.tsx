@@ -5,6 +5,7 @@ import { Row } from "../../stories/table/_types";
 interface MyBugsTableProps {
   data: Row[];
   page: number;
+  setPage: (page: number) => void;
   totalBugs: number;
   limit: number;
   loading: boolean;
@@ -13,6 +14,7 @@ interface MyBugsTableProps {
 const MyBugsTable = ({
   data,
   page,
+  setPage,
   totalBugs,
   limit,
   loading,
@@ -58,9 +60,7 @@ const MyBugsTable = ({
         isStriped
       />
       <Pagination
-        onPageChange={() => {
-          alert("change");
-        }}
+        onPageChange={setPage}
         current={page}
         maxPages={Math.ceil(totalBugs / limit)}
       />
