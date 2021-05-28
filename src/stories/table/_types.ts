@@ -21,10 +21,6 @@ export interface TableProps {
    */
   columns: Column[];
   /**
-   * Pagination
-   */
-  pagination?: boolean;
-  /**
    * loading state
    */
   isLoading?: boolean;
@@ -32,4 +28,5 @@ export interface TableProps {
    * striped theme
    */
   isStriped?: boolean;
+  className?: string;
 }
