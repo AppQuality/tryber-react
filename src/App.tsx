@@ -1,5 +1,6 @@
 import { ThemeProvider } from "styled-components";
 import { aqBootstrapTheme } from "./stories/theme/defaultTheme";
+import GlobalStyle from "./stories/theme/globalStyle";
 import "./App.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { GettingStarted, MyBugs } from "./pages";
@@ -22,6 +23,7 @@ function App() {
   const { t } = useTranslation();
   return (
     <ThemeProvider theme={aqBootstrapTheme}>
+      <GlobalStyle />
       <Helmet>
         <meta
           property="og:title"

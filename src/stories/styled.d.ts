@@ -37,6 +37,9 @@ declare module "styled-components" {
         xl: string;
         xxl: string;
       };
+      spacing: {
+        default: string;
+      };
     };
   }
 }

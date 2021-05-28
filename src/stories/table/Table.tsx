@@ -113,7 +113,7 @@ export const Table = ({
     </tr>
   );
 
-  let tableClass = "aq-table";
+  let tableClass = "aq-table margin-default";
   if (isStriped) tableClass += " aq-striped";
   return (
     <TableWrapper>

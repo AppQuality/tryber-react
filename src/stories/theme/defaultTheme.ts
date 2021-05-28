@@ -36,6 +36,9 @@ const aqBootstrapTheme: DefaultTheme = {
       xl: "1200px",
       xxl: "1400px",
     },
+    spacing: {
+      default: "16px",
+    },
   },
 };
 
