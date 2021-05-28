@@ -92,7 +92,10 @@ export default function MyBugs() {
               </Card>
             </BSCol>
             <BSCol size="col-lg-3">
-              <Card title={t("Search and filters")}>
+              <Card
+                className="stick-to-header-lg"
+                title={t("Search and filters")}
+              >
                 <MyBugsFilters
                   campaigns={campaigns}
                   severities={severities}
