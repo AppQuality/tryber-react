@@ -28,6 +28,22 @@ export const useMyBugs = () => {
   const [totalBugs, setTotalBugs] = useState(0);
   const [limit, setLimit] = useState(25);
 
+  const coloredStatus = (statusId: number | undefined) => {
+    switch (statusId) {
+      case 1:
+        return "text-danger";
+      case 2:
+        return "text-success";
+      case 3:
+        return "text-primary";
+      case 4:
+        return "text-warning";
+      default:
+        break;
+    }
+    return "";
+  };
+
   const setFilters = (
     results: operations["get-users-me-bugs"]["responses"]["200"]["content"]["application/json"]["results"]
   ) => {
@@ -47,7 +63,7 @@ export const useMyBugs = () => {
       if (res.campaign?.id && _campaign_ids.indexOf(res.campaign.id) < 0) {
         _campaign_ids.push(res.campaign.id);
         _campaigns.push({
-          label: res.campaign.name || "",
+          label: `CP${res.campaign?.id} - ${res.campaign?.name}` || "",
           value: res.campaign.id.toString(),
         });
       }
@@ -82,12 +98,18 @@ export const useMyBugs = () => {
         typeof res.severity === "undefined"
       )
         return;
+
+      let status = res.severity ? (
+        <span className={coloredStatus(res.status.id)}>{res.status.name}</span>
+      ) : (
+        <span>unknown</span>
+      );
       _data.push({
         key: i,
         id: res.id,
         severity: res.severity?.name,
-        status: res.status?.name,
-        campaign: res.campaign?.name,
+        status: status,
+        campaign: `CP${res.campaign?.id} - ${res.campaign?.name}`,
         title: res.title,
         action: (
           <Button
