@@ -8,6 +8,7 @@ import {
   OptionActionType,
   SelectProps,
 } from "./_types";
+import { FormGroup, FormLabel } from "../typography/Typography";
 
 function updateOptions(state: Option[], action: OptionAction): Option[] {
   const { type, payload } = action;
@@ -172,13 +173,9 @@ export const Select = ({
     });
   }
   return (
-    <div className="form-group">
-      {label && (
-        <label htmlFor={name} className="form-label">
-          {label}
-        </label>
-      )}
-      <div className="">
+    <FormGroup>
+      {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
+      <div>
         <ReactSelect
           id={name}
           name={name}
@@ -202,6 +199,6 @@ export const Select = ({
           {...customComponents}
         />
       </div>
-    </div>
+    </FormGroup>
   );
 };
