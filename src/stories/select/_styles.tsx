@@ -8,7 +8,7 @@ const aqTheme = (theme: Theme) => ({
   colors: {
     ...theme.colors,
     primary: aqBootstrapTheme.palette.primary,
-    primary25: aqBootstrapTheme.colors.grey300,
+    primary25: aqBootstrapTheme.colors.gray300,
   },
 });
 
