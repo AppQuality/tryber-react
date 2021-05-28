@@ -79,7 +79,7 @@ export default function MyBugs() {
         <Container>
           <h2>{t("My Bugs")}</h2>
           <BSGrid>
-            <BSCol size="col-lg-9 col-xxl-8">
+            <BSCol size="col-lg-9">
               <Card>
                 <MyBugsTable
                   data={data.current}
@@ -90,7 +90,7 @@ export default function MyBugs() {
                 />
               </Card>
             </BSCol>
-            <BSCol size="col-lg-3 col-xxl-4">
+            <BSCol size="col-lg-3">
               <Card>
                 <MyBugsFilters
                   campaigns={campaigns}

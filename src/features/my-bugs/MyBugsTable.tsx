@@ -22,33 +22,41 @@ const MyBugsTable = ({
       title: "Id",
       dataIndex: "id",
       key: "id",
+      width: "8ch",
     },
     {
       title: "Title",
       dataIndex: "title",
       key: "title",
-      long: true,
+      width: "50ch",
     },
     {
       title: "Severity",
       dataIndex: "severity",
       key: "severity",
+      width: "8ch",
     },
     {
       title: "State",
       dataIndex: "status",
       key: "status",
+      width: "8ch",
     },
     {
       title: "Action",
       dataIndex: "action",
       key: "action",
-      width: "110px",
+      width: "8ch",
     },
   ];
   return (
     <>
-      <Table dataSource={data} columns={columns} isLoading={loading} />
+      <Table
+        dataSource={data}
+        columns={columns}
+        isLoading={loading}
+        isStriped
+      />
       <Pagination
         onPageChange={() => {
           alert("change");

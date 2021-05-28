@@ -19,18 +19,18 @@ const TableWrapper = styled.div`
     width: 100%;
 
     &.aq-striped > tbody > tr:nth-of-type(odd) {
-      background-color: ${(props) => props.theme.colors.grey100};
+      background-color: ${(props) => props.theme.colors.gray100};
     }
 
     thead {
       font-family: ${(props) => props.theme.typography.fontFamily.serif};
-      color: ${(props) => props.theme.colors.grey600};
+      color: ${(props) => props.theme.colors.gray600};
 
       th {
         overflow-wrap: break-word;
         font-weight: 500;
         padding: ${cellPadding};
-        border-bottom: 1px solid ${(props) => props.theme.colors.grey300};
+        border-bottom: 1px solid ${(props) => props.theme.colors.gray300};
       }
     }
     tbody {
@@ -41,10 +41,10 @@ const TableWrapper = styled.div`
         vertical-align: text-top;
       }
       tr:hover:not(.aq-table-empty-placeholder) {
-        background-color: ${(props) => props.theme.colors.grey300};
+        background-color: ${(props) => props.theme.colors.gray300};
       }
       tr:not(:last-child) td {
-        border-bottom: 1px solid ${(props) => props.theme.colors.grey300};
+        border-bottom: 1px solid ${(props) => props.theme.colors.gray300};
       }
     }
     .aq-table-cell-ellipsis {
@@ -67,7 +67,7 @@ const TableWrapper = styled.div`
   .aq-table-empty-placeholder {
     height: 200px;
     text-align: center;
-    color: ${(props) => props.theme.colors.grey600};
+    color: ${(props) => props.theme.colors.gray600};
     td {
       vertical-align: middle;
     }
@@ -126,7 +126,10 @@ export const Table = ({
             ) : (
               <col
                 key={index}
-                style={{ width: `${column.width || "10ch"}`, minWidth: "10ch" }}
+                style={{
+                  width: `${column.width || "10ch"}`,
+                  minWidth: `${column.width || "10ch"}`,
+                }}
               />
             );
           })}
