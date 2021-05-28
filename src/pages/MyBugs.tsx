@@ -32,6 +32,7 @@ export default function MyBugs() {
     campaigns,
     severities,
     status,
+    loading,
   } = useMyBugs();
 
   const helmet = () => {
@@ -85,6 +86,7 @@ export default function MyBugs() {
                   page={page.current}
                   totalBugs={totalBugs}
                   limit={limit.current}
+                  loading={loading}
                 />
               </Card>
             </BSCol>

@@ -7,9 +7,16 @@ interface MyBugsTableProps {
   page: number;
   totalBugs: number;
   limit: number;
+  loading: boolean;
 }
 
-const MyBugsTable = ({ data, page, totalBugs, limit }: MyBugsTableProps) => {
+const MyBugsTable = ({
+  data,
+  page,
+  totalBugs,
+  limit,
+  loading,
+}: MyBugsTableProps) => {
   const columns = [
     {
       title: "Id",
@@ -41,7 +48,7 @@ const MyBugsTable = ({ data, page, totalBugs, limit }: MyBugsTableProps) => {
   ];
   return (
     <>
-      <Table dataSource={data} columns={columns} />
+      <Table dataSource={data} columns={columns} isLoading={loading} />
       <Pagination
         onPageChange={() => {
           alert("change");

@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 
 export const useMyBugs = () => {
   const { i18n } = useTranslation();
+  const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<Row[]>([]);
   const [campaigns, setCampaigns] = useState<Option[]>([]);
   const [severities, setSeverities] = useState<Option[]>([]);
@@ -112,6 +113,7 @@ export const useMyBugs = () => {
   useEffect(() => {
     const getData = async () => {
       try {
+        setIsLoading(true);
         const query: operations["get-users-me-bugs"]["parameters"]["query"] = {
           order: order,
           orderBy: orderBy,
@@ -133,6 +135,7 @@ export const useMyBugs = () => {
           query,
         });
         setFilters(totalResponse.results);
+        setIsLoading(false);
       } catch (e) {
         if (e.statusCode === 404) {
           setBugsData([]);
@@ -190,5 +193,6 @@ export const useMyBugs = () => {
       set: setLimit,
     },
     totalBugs: totalBugs,
+    loading: isLoading,
   };
 };
