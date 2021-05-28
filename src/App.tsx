@@ -21,6 +21,7 @@ const base = "/:locale(en|it)?";
 
 function App() {
   const { t } = useTranslation();
+
   return (
     <ThemeProvider theme={aqBootstrapTheme}>
       <GlobalStyle />

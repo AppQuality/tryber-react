@@ -14,6 +14,7 @@ export interface SidebarProps {
     others: Array<LanguageItem>;
   };
   open?: boolean;
+  route?: string;
   onLogout: Function;
   onSidebarEnter?: () => void;
   onSidebarLeave?: () => void;

@@ -3,6 +3,7 @@ import { Sidebar } from "../stories/sidebar/Sidebar";
 import i18next from "i18next";
 import { BasicSidebarArgs } from "../stories/sidebar/Sidebar.stories.args";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 import {
   Laptop,
@@ -18,6 +19,7 @@ import {
 } from "react-bootstrap-icons";
 
 export interface TesterSidebarProps {
+  route?: string;
   children?: React.ReactNode;
 }
 
@@ -30,9 +32,10 @@ export const DefaultLanguage = {
   },
 };
 
-const TesterSidebar = ({ children }: TesterSidebarProps) => {
+const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
+  const languages = Object.keys(i18next.services.resourceStore.data);
 
   BasicSidebarArgs.onLogout = () => {
     fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout", {
@@ -48,9 +51,8 @@ const TesterSidebar = ({ children }: TesterSidebarProps) => {
 
   BasicSidebarArgs.languages = {
     current: { lang: i18next.language },
-    // eslint-disable-next-line eqeqeq
     others: Array.from(
-      i18next.languages.filter((l) => l != i18next.language),
+      languages.filter((l) => l !== i18next.language),
       (lang) => {
         return { ...DefaultLanguage, lang: lang };
       }
@@ -59,64 +61,94 @@ const TesterSidebar = ({ children }: TesterSidebarProps) => {
 
   BasicSidebarArgs.items = [
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/my-dashboard/"
+          : `/${i18next.language}/la-mia-dashboard/`,
       icon: <HouseFill />,
-      active: true,
+      active: route === "MyDashboard",
       text: t("Dashboard"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/my-account/"
+          : `/${i18next.language}/il-mio-account/`,
       icon: <PersonFill />,
-      active: false,
+      active: route === "MyAccount",
       text: t("Profile"),
       last: true,
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/personal-equipments/"
+          : `/${i18next.language}/i-miei-device/`,
       icon: <Laptop />,
-      active: false,
+      active: route === "PersonalEquipments",
       text: t("Devices"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/payments/"
+          : `/${i18next.language}/pagamenti/`,
       icon: <Wallet2 />,
-      active: false,
+      active: route === "Payments",
       text: t("Payments"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/experience-points/"
+          : `/${i18next.language}/punti-esperienza/`,
       icon: <StarFill />,
-      active: false,
+      active: route === "ExperiencePoints",
       text: t("Experience Points"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/leaderboard/"
+          : `/${i18next.language}/leaderboard-2/`,
       icon: <GraphUp />,
-      active: false,
+      active: route === "Leaderboard",
       text: t("Leaderboard"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/my-bugs/"
+          : `/${i18next.language}/i-miei-bug/`,
       icon: <BugFill />,
-      active: false,
+      active: route === "MyBugs",
       text: t("Uploaded Bugs"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/courses/"
+          : `/${i18next.language}/courses/`,
       icon: <Eyeglasses />,
-      active: false,
+      active: route === "Courses",
       text: t("Courses"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/testing-school/"
+          : `/${i18next.language}/universita-del-test/`,
       icon: <AwardFill />,
-      active: false,
+      active: route === "TestingSchool",
       text: t("Testing University"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/feedback-hub/"
+          : `/${i18next.language}/centro-dei-feedback/`,
       icon: <ChatDotsFill />,
-      active: false,
+      active: route === "FeedbackHub",
       text: t("Feedback"),
     },
   ];
