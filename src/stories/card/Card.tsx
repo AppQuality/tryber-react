@@ -2,7 +2,7 @@ import { CardProps } from "./CardProps";
 import styled from "styled-components";
 import { SmallTitle } from "../typography/Typography";
 
-const BasicCard = ({ children, title }: CardProps) => {
+const BasicCard = ({ children, title, className }: CardProps) => {
   let cardHeader = null;
   if (title) {
     cardHeader = (
@@ -12,7 +12,7 @@ const BasicCard = ({ children, title }: CardProps) => {
     );
   }
   return (
-    <div>
+    <div className={className}>
       {cardHeader}
       <div className="aq-card-body">{children}</div>
     </div>
@@ -20,7 +20,6 @@ const BasicCard = ({ children, title }: CardProps) => {
 };
 
 export const Card = styled(BasicCard)`
-  position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
