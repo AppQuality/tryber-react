@@ -140,7 +140,11 @@ export const useMyBugs = () => {
           order: order,
           orderBy: orderBy,
         };
-        if (selectedCampaign || selectedStatus || selectedSeverity) {
+        if (
+          selectedCampaign?.value ||
+          selectedStatus?.value ||
+          selectedSeverity?.value
+        ) {
           query.filterBy = {};
           if (selectedCampaign)
             query.filterBy.campaign = selectedCampaign.value;

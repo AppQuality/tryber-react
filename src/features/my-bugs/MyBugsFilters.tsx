@@ -18,22 +18,25 @@ const MyBugsFilters = ({
         label="Campaign"
         onChange={campaigns.setSelected}
         name="campaign"
-        options={campaigns.current}
+        options={[{ label: "All" }, ...campaigns.current]}
         isSearchable
+        isClearable={false}
       />
       <Select
-        label="Status"
+        label="Severity"
         onChange={severities.setSelected}
         name="severity"
-        options={severities.current}
+        options={[{ label: "All" }, ...severities.current]}
         isSearchable={false}
+        isClearable={false}
       />
       <Select
-        label="Status"
+        label="State"
         onChange={status.setSelected}
-        name="status"
-        options={status.current}
+        name="state"
+        options={[{ label: "All" }, ...status.current]}
         isSearchable={false}
+        isClearable={false}
       />
     </div>
   );
