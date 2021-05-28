@@ -36,19 +36,19 @@ const MyBugsTable = ({
       title: "Severity",
       dataIndex: "severity",
       key: "severity",
-      width: "8ch",
+      width: "10ch",
     },
     {
       title: "State",
       dataIndex: "status",
       key: "status",
-      width: "8ch",
+      width: "10ch",
     },
     {
       title: "Action",
       dataIndex: "action",
       key: "action",
-      width: "8ch",
+      width: "10ch",
     },
   ];
   return (
