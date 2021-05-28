@@ -16,7 +16,7 @@ devel-push: ecr-login devel-env devel-build
 	docker-compose -f docker-compose-devel.yml push
 	make env-restore
 
-devel-pull:
+devel-pull: ecr-login
 	docker-compose -f docker-compose-pull-devel.yml pull 
 
 devel-deploy: devel-pull
