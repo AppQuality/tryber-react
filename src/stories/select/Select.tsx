@@ -1,5 +1,5 @@
 import ReactSelect, { ActionMeta, InputActionMeta } from "react-select";
-import { ChangeEvent, useEffect, useReducer, useState } from "react";
+import React, { ChangeEvent, useEffect, useReducer, useState } from "react";
 import { aqTheme, customComponents, customStyle } from "./_styles";
 import {
   Option,
@@ -28,6 +28,7 @@ let searchBuffer = "";
 let timer: NodeJS.Timeout | false = false;
 
 export const Select = ({
+  label,
   name,
   onChange,
   options,
@@ -171,28 +172,36 @@ export const Select = ({
     });
   }
   return (
-    <>
-      <ReactSelect
-        name={name}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        onInputChange={handleInputChange}
-        options={optionsDropdown}
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-        isDisabled={isDisabled}
-        isLoading={loading}
-        isClearable={isClearable}
-        isSearchable={isSearchable}
-        styles={customStyle}
-        isMulti={isMulti}
-        maxMenuHeight={200}
-        captureMenuScroll={true}
-        onMenuScrollToBottom={onMenuScrollToBottom}
-        // menuPlacement='auto'
-        theme={aqTheme}
-        {...customComponents}
-      />
-    </>
+    <div className="form-group">
+      {label && (
+        <label htmlFor={name} className="form-label">
+          {label}
+        </label>
+      )}
+      <div className="">
+        <ReactSelect
+          id={name}
+          name={name}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          onInputChange={handleInputChange}
+          options={optionsDropdown}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          isDisabled={isDisabled}
+          isLoading={loading}
+          isClearable={isClearable}
+          isSearchable={isSearchable}
+          styles={customStyle}
+          isMulti={isMulti}
+          maxMenuHeight={200}
+          captureMenuScroll={true}
+          onMenuScrollToBottom={onMenuScrollToBottom}
+          // menuPlacement='auto'
+          theme={aqTheme}
+          {...customComponents}
+        />
+      </div>
+    </div>
   );
 };

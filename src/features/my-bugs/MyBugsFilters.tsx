@@ -14,22 +14,22 @@ const MyBugsFilters = ({
 }: MyBugsFiltersProps) => {
   return (
     <div>
-      Campaign
       <Select
+        label="Campaign"
         onChange={campaigns.setSelected}
         name="campaign"
         options={campaigns.current}
         isSearchable
       />
-      severity
       <Select
+        label="Status"
         onChange={severities.setSelected}
         name="severity"
         options={severities.current}
         isSearchable={false}
       />
-      status
       <Select
+        label="Status"
         onChange={status.setSelected}
         name="status"
         options={status.current}

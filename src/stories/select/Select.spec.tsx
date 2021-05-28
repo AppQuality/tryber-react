@@ -8,7 +8,14 @@ describe("Basic Select should render options correctly", () => {
   it("There should be as many options as provided", () => {
     const { container } = render(
       <ThemeProvider theme={aqBootstrapTheme}>
-        <Select name="my-select" options={basicOptions} />
+        <Select
+          name="my-select"
+          options={basicOptions}
+          label="Basic Select"
+          onChange={(val) => {
+            console.log(val);
+          }}
+        />
       </ThemeProvider>
     );
     const th = container.querySelectorAll("thead th");
