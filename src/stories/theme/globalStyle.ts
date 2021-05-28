@@ -2,12 +2,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  html { 
-    font-size: 16px;
-    @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
-    font-size: 14px;
-    }
-  }
   body {
     
   }
