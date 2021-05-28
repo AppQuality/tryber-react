@@ -46,6 +46,7 @@ export const Select = ({
   const [page, setPage] = useState(0);
   const [thereIsMore, setMore] = useState(false);
   const [optionsArray, setOptions] = useReducer(updateOptions, []);
+  const [selectedOption, setSelectedOption] = useState(defaultValue);
   const [initialOptions, setInitialOptions] = useState<{
     more: boolean;
     results: Option[];

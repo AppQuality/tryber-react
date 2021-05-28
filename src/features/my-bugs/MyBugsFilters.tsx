@@ -19,6 +19,7 @@ const MyBugsFilters = ({
         onChange={campaigns.setSelected}
         name="campaign"
         options={[{ label: "All" }, ...campaigns.current]}
+        defaultValue={{ label: "All" }}
         isSearchable
         isClearable={false}
       />
@@ -27,6 +28,7 @@ const MyBugsFilters = ({
         onChange={severities.setSelected}
         name="severity"
         options={[{ label: "All" }, ...severities.current]}
+        defaultValue={{ label: "All" }}
         isSearchable={false}
         isClearable={false}
       />
@@ -35,6 +37,7 @@ const MyBugsFilters = ({
         onChange={status.setSelected}
         name="state"
         options={[{ label: "All" }, ...status.current]}
+        defaultValue={{ label: "All" }}
         isSearchable={false}
         isClearable={false}
       />

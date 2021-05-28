@@ -146,10 +146,11 @@ export const useMyBugs = () => {
           selectedSeverity?.value
         ) {
           query.filterBy = {};
-          if (selectedCampaign)
+          if (selectedCampaign?.value)
             query.filterBy.campaign = selectedCampaign.value;
-          if (selectedStatus) query.filterBy.status = selectedStatus.value;
-          if (selectedSeverity)
+          if (selectedStatus?.value)
+            query.filterBy.status = selectedStatus.value;
+          if (selectedSeverity?.value)
             query.filterBy.severity = selectedSeverity.value;
         }
         const limitedResponse = await API.myBugs({

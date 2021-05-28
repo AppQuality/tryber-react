@@ -24,7 +24,7 @@ export interface SelectProps /*extends GenericFieldInterface*/ {
   label: string;
   onChange?: (value: Option) => void;
   options: Options;
-  defaultValue?: string;
+  defaultValue?: Option;
   placeholder?: string;
   isMulti?: boolean;
   isClearable?: boolean;
