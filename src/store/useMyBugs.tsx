@@ -124,57 +124,69 @@ export const useMyBugs = () => {
     setData(_data);
   };
 
+  const fetchBugsFromAPI = (start: number) => {
+    const query: operations["get-users-me-bugs"]["parameters"]["query"] = {
+      order: order,
+      orderBy: orderBy,
+    };
+    if (
+      selectedCampaign?.value ||
+      selectedStatus?.value ||
+      selectedSeverity?.value
+    ) {
+      query.filterBy = {};
+      if (selectedCampaign?.value)
+        query.filterBy.campaign = selectedCampaign.value;
+      if (selectedStatus?.value) query.filterBy.status = selectedStatus.value;
+      if (selectedSeverity?.value)
+        query.filterBy.severity = selectedSeverity.value;
+    }
+    return API.myBugs({
+      query: { ...query, limit, start },
+    }).then((limitedResponse) => {
+      setTotalBugs(limitedResponse.total);
+      setBugsData(limitedResponse.results);
+      return query;
+    });
+  };
   /**
    *  on Component Mount
    */
   useEffect(() => {
-    const getData = async () => {
-      try {
-        setIsLoading(true);
-        const query: operations["get-users-me-bugs"]["parameters"]["query"] = {
-          order: order,
-          orderBy: orderBy,
-        };
-        if (
-          selectedCampaign?.value ||
-          selectedStatus?.value ||
-          selectedSeverity?.value
-        ) {
-          query.filterBy = {};
-          if (selectedCampaign?.value)
-            query.filterBy.campaign = selectedCampaign.value;
-          if (selectedStatus?.value)
-            query.filterBy.status = selectedStatus.value;
-          if (selectedSeverity?.value)
-            query.filterBy.severity = selectedSeverity.value;
-        }
-        const limitedResponse = await API.myBugs({
-          query: { ...query, limit, start: (page - 1) * limit },
-        });
-        setTotalBugs(limitedResponse.total);
-        setBugsData(limitedResponse.results);
-        const totalResponse = await API.myBugs({
+    setIsLoading(true);
+
+    fetchBugsFromAPI(0)
+      .then((query) => {
+        return API.myBugs({
           query,
+        }).then((totalResponse) => {
+          setFilters(totalResponse.results);
+          setIsLoading(false);
+          setPage(1);
         });
-        setFilters(totalResponse.results);
-        setIsLoading(false);
-      } catch (e) {
+      })
+      .catch((e) => {
         if (e.statusCode === 404) {
           setBugsData([]);
           setTotalBugs(0);
         }
-      }
-    };
-    getData();
-  }, [
-    order,
-    orderBy,
-    selectedCampaign,
-    selectedStatus,
-    selectedSeverity,
-    limit,
-    page,
-  ]);
+      });
+  }, [order, orderBy, selectedCampaign, selectedStatus, selectedSeverity]);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    fetchBugsFromAPI((page - 1) * limit)
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        if (e.statusCode === 404) {
+          setBugsData([]);
+          setTotalBugs(0);
+        }
+      });
+  }, [limit, page]);
 
   return {
     data: {
