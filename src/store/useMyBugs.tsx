@@ -48,11 +48,8 @@ export const useMyBugs = () => {
     results: operations["get-users-me-bugs"]["responses"]["200"]["content"]["application/json"]["results"]
   ) => {
     let _campaigns: Option[] = [];
-    let _campaign_ids: number[] = [];
     let _severities: Option[] = [];
-    let _severities_ids: number[] = [];
     let _status: Option[] = [];
-    let _status_ids: number[] = [];
     results.forEach((res) => {
       if (
         typeof res.campaign === "undefined" ||
@@ -60,31 +57,29 @@ export const useMyBugs = () => {
         typeof res.severity === "undefined"
       )
         return;
-      if (res.campaign?.id && _campaign_ids.indexOf(res.campaign.id) < 0) {
-        _campaign_ids.push(res.campaign.id);
-        _campaigns.push({
+      if (res.campaign?.id) {
+        _campaigns[res.campaign.id] = {
           label: `CP${res.campaign?.id} - ${res.campaign?.name}` || "",
           value: res.campaign.id.toString(),
-        });
+        };
       }
-      if (res.severity?.id && _severities_ids.indexOf(res.severity.id) < 0) {
-        _severities_ids.push(res.severity.id);
-        _severities.push({
+      if (res.severity?.id) {
+        _severities[res.severity.id] = {
           label: res.severity.name || "",
           value: res.severity.id.toString(),
-        });
+        };
       }
-      if (res.status?.id && _status_ids.indexOf(res.status.id) < 0) {
-        _status_ids.push(res.status.id);
-        _status.push({
+      if (res.status?.id) {
+        _status[res.status.id] = {
           label: res.status.name || "",
           value: res.status.id.toString(),
-        });
+        };
       }
     });
-    setCampaigns(_campaigns);
-    setSeverities(_severities);
-    setStatus(_status);
+
+    setCampaigns(_campaigns.filter((el) => el != null).reverse());
+    setSeverities(_severities.filter((el) => el != null));
+    setStatus(_status.filter((el) => el != null));
   };
 
   const setBugsData = (
