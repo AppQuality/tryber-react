@@ -44,7 +44,7 @@ export const FormGroup = styled.div(({ theme }: H5Props) => {
 });
 export const FormLabel = styled.label(({ theme }: H5Props) => {
   return `
-    font-size: 14px;
+    font-size: ${theme.typography.fontSize.base};
     margin-bottom: .5rem;
 `;
 });
