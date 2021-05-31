@@ -161,7 +161,6 @@ export const useMyBugs = () => {
           query,
         }).then((totalResponse) => {
           setFilters(totalResponse.results);
-          setIsLoading(false);
           setPage(1);
         });
       })
@@ -170,6 +169,9 @@ export const useMyBugs = () => {
           setBugsData([]);
           setTotalBugs(0);
         }
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [order, orderBy, selectedCampaign, selectedStatus, selectedSeverity]);
 
@@ -177,14 +179,15 @@ export const useMyBugs = () => {
     setIsLoading(true);
 
     fetchBugsFromAPI((page - 1) * limit)
-      .then(() => {
-        setIsLoading(false);
-      })
       .catch((e) => {
+        debugger;
         if (e.statusCode === 404) {
           setBugsData([]);
           setTotalBugs(0);
         }
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [limit, page]);
 
