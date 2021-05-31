@@ -71,6 +71,7 @@ const MyBugsTable = ({
         dataSource={data}
         columns={columns}
         orderBy={orderBy.current}
+        order={order.current}
         isLoading={loading}
         isStriped
       />

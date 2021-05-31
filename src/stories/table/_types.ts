@@ -18,7 +18,7 @@ export interface Row {
 export interface ColumnSorterProps {
   column: Column;
   order?: string;
-  orderBy?: string
+  orderBy?: string;
 }
 
 export interface TableProps {
@@ -40,4 +40,5 @@ export interface TableProps {
   isStriped?: boolean;
   className?: string;
   orderBy?: string;
+  order?: Order;
 }

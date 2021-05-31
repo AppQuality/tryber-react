@@ -1,23 +1,24 @@
 import { ArrowDownShort, Dash, ArrowUpShort } from "react-bootstrap-icons";
-import { ColumnSorterProps, Order } from "./_types";
-import { useReducer } from "react";
+import { ColumnSorterProps } from "./_types";
 
-function changeOrder(state: Order): Order {
-  return state === "ASC" ? "DESC" : "ASC";
-}
-export const ColumnSorter = ({ column, orderBy }: ColumnSorterProps) => {
-  const [order, setOrder] = useReducer(changeOrder, "DESC");
+export const ColumnSorter = ({ column, orderBy, order }: ColumnSorterProps) => {
   const handleClick = () => {
+    order = (order === "DESC") ? "ASC" : "DESC";
     if (column.onSort) column.onSort(order);
-    setOrder();
   };
   return (
     <>
       {
         <span onClick={handleClick}>
-          {(orderBy === column.key)
-            ? (order === 'ASC') ? <ArrowDownShort /> : <ArrowUpShort />
-            : <Dash />}
+          {orderBy === column.key ? (
+            order === "ASC" ? (
+              <ArrowDownShort />
+            ) : (
+              <ArrowUpShort />
+            )
+          ) : (
+            <Dash />
+          )}
         </span>
       }
     </>
