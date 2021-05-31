@@ -11,6 +11,7 @@ const BasicTable = ({
   columns,
   isLoading,
   isStriped,
+  orderBy,
   className,
 }: TableProps) => {
   const LoadingStatus = () => (
@@ -55,7 +56,7 @@ const BasicTable = ({
             {columns.map((column) => (
               <th key={column.key}>
                 {column.title}
-                {column.isSortable && <ColumnSorter column={column} />}
+                {column.isSortable && <ColumnSorter column={column} orderBy={orderBy} />}
               </th>
             ))}
           </tr>

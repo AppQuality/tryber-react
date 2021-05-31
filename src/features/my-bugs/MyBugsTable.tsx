@@ -70,6 +70,7 @@ const MyBugsTable = ({
       <Table
         dataSource={data}
         columns={columns}
+        orderBy={orderBy.current}
         isLoading={loading}
         isStriped
       />

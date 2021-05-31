@@ -1,3 +1,5 @@
+export type Order = "ASC" | "DESC";
+
 export interface Column {
   title: string;
   dataIndex: string;
@@ -15,6 +17,8 @@ export interface Row {
 
 export interface ColumnSorterProps {
   column: Column;
+  order?: string;
+  orderBy?: string
 }
 
 export interface TableProps {
@@ -35,4 +39,5 @@ export interface TableProps {
    */
   isStriped?: boolean;
   className?: string;
+  orderBy?: string;
 }
