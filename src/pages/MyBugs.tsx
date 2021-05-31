@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Container, BSGrid, BSCol } from "../stories/layout/Layout";
 import { Card } from "../stories/card/Card";
 import { Spinner, SpinnerWrapper } from "../stories/spinner/Spinner";
@@ -11,6 +11,7 @@ import TesterSidebar from "../features/TesterSidebar";
 import MyBugsTable from "../features/my-bugs/MyBugsTable";
 import MyBugsFilters from "../features/my-bugs/MyBugsFilters";
 import { useMyBugs } from "../store/useMyBugs";
+import { useUser } from "../store/useUser";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -23,6 +24,9 @@ const tagManagerArgs = {
 };
 
 export default function MyBugs() {
+  const { user, error } = useUser();
+  const [isLoading, setisLoading] = useState(true);
+
   const { t } = useTranslation();
   const {
     data,
@@ -51,7 +55,21 @@ export default function MyBugs() {
     TagManager.dataLayer(tagManagerArgs);
   }, []);
 
-  if (false) {
+  useEffect(() => {
+    if (user) {
+      setisLoading(false);
+    } else {
+      if (error) {
+        if (error.statusCode === 403) {
+          window.location.href = "/";
+        } else {
+          alert(error.message);
+        }
+      }
+    }
+  }, [user, error]);
+
+  if (isLoading) {
     return (
       <>
         {helmet}
