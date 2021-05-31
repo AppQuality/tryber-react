@@ -33,6 +33,8 @@ export default function MyBugs() {
     severities,
     status,
     loading,
+    order,
+    orderBy,
   } = useMyBugs();
 
   const helmet = () => {
@@ -88,6 +90,8 @@ export default function MyBugs() {
                   totalBugs={totalBugs}
                   limit={limit.current}
                   loading={loading}
+                  order={order}
+                  orderBy={orderBy}
                 />
               </Card>
             </BSCol>

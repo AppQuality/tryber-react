@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Spinner from "../spinner/Spinner";
 import { Inboxes } from "react-bootstrap-icons";
 import { TableProps } from "./_types";
+import { ColumnSorter } from "./ColumnSorter";
 
 const cellPadding = "11px 5px";
 
@@ -52,7 +53,10 @@ const BasicTable = ({
         <thead>
           <tr>
             {columns.map((column) => (
-              <th key={column.key}>{column.title}</th>
+              <th key={column.key}>
+                {column.title}
+                {column.isSortable && <ColumnSorter column={column} />}
+              </th>
             ))}
           </tr>
         </thead>
