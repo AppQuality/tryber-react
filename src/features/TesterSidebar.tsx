@@ -3,7 +3,6 @@ import { Sidebar } from "../stories/sidebar/Sidebar";
 import i18next from "i18next";
 import { BasicSidebarArgs } from "../stories/sidebar/Sidebar.stories.args";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
 
 import {
   Laptop,
@@ -21,6 +20,7 @@ import {
 export interface TesterSidebarProps {
   route?: string;
   children?: React.ReactNode;
+  openFromHeader?: boolean;
 }
 
 export const DefaultLanguage = {
@@ -32,7 +32,11 @@ export const DefaultLanguage = {
   },
 };
 
-const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
+const TesterSidebar = ({
+  route,
+  children,
+  openFromHeader,
+}: TesterSidebarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
   const languages = Object.keys(i18next.services.resourceStore.data);
@@ -155,7 +159,7 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
 
   return (
     <Sidebar
-      {...{ ...BasicSidebarArgs, open: isOpen }}
+      {...{ ...BasicSidebarArgs, open: isOpen || openFromHeader }}
       onSidebarLeave={() => setIsOpen(false)}
       onSidebarEnter={() => setIsOpen(true)}
     >

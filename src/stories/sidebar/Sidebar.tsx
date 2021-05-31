@@ -1,20 +1,7 @@
 import { DesktopSidebar } from "./DesktopSidebar";
 import { MobileSidebar } from "./MobileSidebar";
 import { SidebarProps } from "./SidebarProps";
-import { useLayoutEffect, useState } from "react";
-
-function useWindowSize() {
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  return size;
-}
+import useWindowSize from "../../store/useWindowSize";
 
 export const Sidebar = ({
   children,

@@ -102,7 +102,7 @@ export default function MyBugs() {
     return (
       <>
         {helmet}
-        <TesterSidebar route={"MyBugs"}>
+        <TesterSidebar route={"MyBugs"} openFromHeader={false}>
           <Container>
             <SpinnerWrapper>
               <Spinner />
@@ -116,7 +116,7 @@ export default function MyBugs() {
   return (
     <>
       {helmet}
-      <TesterSidebar route={"MyBugs"}>
+      <TesterSidebar route={"MyBugs"} openFromHeader={false}>
         <Container>
           <h2>{t("My Bugs")}</h2>
           <BSGrid>
