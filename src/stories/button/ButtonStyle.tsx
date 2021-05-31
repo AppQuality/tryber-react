@@ -91,6 +91,7 @@ export const ButtonStyle = styled.button(({ theme }: ButtonStyleProps) => {
       border: 0px;
       background-color: transparent;
       color: ${theme.palette.primary};
+      text-decoration: underline;
     }
     &.aq-btn-light {
       ${shadow}
