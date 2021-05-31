@@ -1,3 +1,5 @@
+import HttpError from "../utils/HttpError";
+
 export interface UserData {
   id: number;
   username: string;
@@ -13,4 +15,5 @@ export type User = undefined | UserData;
 export interface UserStatus {
   user: User;
   isLoading: boolean;
+  error: HttpError;
 }
