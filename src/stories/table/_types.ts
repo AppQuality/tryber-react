@@ -4,11 +4,17 @@ export interface Column {
   key: string;
   long?: boolean; // ellipsis with auto width
   width?: string; // default 10ch
+  isSortable?: boolean;
+  onSort?: (orderBy: any) => void;
 }
 
 export interface Row {
   key: string | number;
   [index: string]: any;
+}
+
+export interface ColumnSorterProps {
+  column: Column;
 }
 
 export interface TableProps {

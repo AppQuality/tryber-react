@@ -9,6 +9,8 @@ interface MyBugsTableProps {
   totalBugs: number;
   limit: number;
   loading: boolean;
+  order: any;
+  orderBy: any;
 }
 
 const MyBugsTable = ({
@@ -18,6 +20,8 @@ const MyBugsTable = ({
   totalBugs,
   limit,
   loading,
+  order,
+  orderBy,
 }: MyBugsTableProps) => {
   const columns = [
     {
@@ -25,12 +29,22 @@ const MyBugsTable = ({
       dataIndex: "id",
       key: "id",
       width: "8ch",
+      isSortable: true,
+      onSort: (sorting: "ASC" | "DESC") => {
+        order.set(sorting);
+        orderBy.set("id");
+      },
     },
     {
       title: "Title",
       dataIndex: "title",
       key: "title",
       width: "50ch",
+      isSortable: true,
+      onSort: (sorting: "ASC" | "DESC") => {
+        order.set(sorting);
+        orderBy.set("title");
+      },
     },
     {
       title: "Severity",
