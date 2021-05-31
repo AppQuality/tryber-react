@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Spinner from "../spinner/Spinner";
+import { Spinner } from "../spinner/Spinner";
 import { Inboxes } from "react-bootstrap-icons";
 import { TableProps } from "./_types";
 import { ColumnSorter } from "./ColumnSorter";

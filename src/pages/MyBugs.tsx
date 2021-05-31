@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Container, BSGrid, BSCol } from "../stories/layout/Layout";
 import { Card } from "../stories/card/Card";
-import Spinner from "../stories/spinner/Spinner";
+import { Spinner, SpinnerWrapper } from "../stories/spinner/Spinner";
 import { SmallTitle } from "../stories/typography/Typography";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
@@ -51,14 +51,6 @@ export default function MyBugs() {
     TagManager.dataLayer(tagManagerArgs);
   }, []);
 
-  const SpinnerWrapper = styled.div`
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    min-height: 60vh;
-  `;
   if (false) {
     return (
       <>
