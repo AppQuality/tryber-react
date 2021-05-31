@@ -180,7 +180,6 @@ export const useMyBugs = () => {
 
     fetchBugsFromAPI((page - 1) * limit)
       .catch((e) => {
-        debugger;
         if (e.statusCode === 404) {
           setBugsData([]);
           setTotalBugs(0);
