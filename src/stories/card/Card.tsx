@@ -2,7 +2,12 @@ import { CardProps } from "./CardProps";
 import styled from "styled-components";
 import { SmallTitle } from "../typography/Typography";
 
-const BasicCard = ({ children, title, className }: CardProps) => {
+const BasicCard = ({
+  children,
+  title,
+  shadow = false,
+  className,
+}: CardProps) => {
   let cardHeader = null;
   if (title) {
     cardHeader = (
@@ -12,7 +17,7 @@ const BasicCard = ({ children, title, className }: CardProps) => {
     );
   }
   return (
-    <div className={className}>
+    <div className={`${className}${shadow ? " aq-card-shadow" : ""}`}>
       {cardHeader}
       <div className="aq-card-body">{children}</div>
     </div>
@@ -29,6 +34,9 @@ export const Card = styled(BasicCard)`
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 5px;
 
+  &.aq-card-shadow {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+  }
   .aq-card-body {
     flex: 1 1 auto;
     padding: 1rem 1rem;
