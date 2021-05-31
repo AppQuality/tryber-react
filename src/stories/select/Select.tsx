@@ -34,7 +34,7 @@ export const Select = ({
   onChange,
   options,
   defaultValue,
-  placeholder = "Select...",
+  placeholder = "Search",
   isMulti,
   isDisabled,
   isLoading,
@@ -173,6 +173,7 @@ export const Select = ({
       isDisabled: true,
     });
   }
+
   return (
     <FormGroup>
       {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
