@@ -27,9 +27,6 @@ export const myBugs = async ({
   token?: string;
   query?: operations["get-users-me-bugs"]["parameters"]["query"];
 }) => {
-  token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MjQ2NjcsInJvbGUiOiJ1bmtub3duIiwicGVybWlzc2lvbiI6eyJhZG1pbiI6e319LCJpYXQiOjE2MjI0NjA4MjYsImV4cCI6MTYyMjQ2MTcyNn0.6mhT6CK_LzplGSFZT4GaSsKEaqnpJrjed0jSGi0rHJQ";
-
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set("Content-Type", "application/json");
   if (token) {
