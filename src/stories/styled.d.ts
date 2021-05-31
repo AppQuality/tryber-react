@@ -40,6 +40,12 @@ declare module "styled-components" {
       spacing: {
         default: string;
       };
+      sizes: {
+        1: string;
+        2: string;
+        3: string;
+        4: string;
+      };
     };
   }
 }

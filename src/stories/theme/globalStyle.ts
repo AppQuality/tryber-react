@@ -1,29 +1,32 @@
 // globalStyles.js
 import { createGlobalStyle } from "styled-components";
+import { stickToHeader } from "./utils/stickToHeader";
+import { paddings } from "./utils/paddings";
+import { margins } from "./utils/margins";
 
-const GlobalStyle = createGlobalStyle`
-  body {
+const GlobalStyle = createGlobalStyle`${(props) => {
+  let style = "";
+  const base = `
+    body {
+      
+    }
+    img {
+      max-width: 100%;
+    }
     
-  }
-  img {
-    max-width: 100%;
-  }
-  .margin-default {
-    margin-bottom: ${(props) => props.theme.grid.spacing.default};
-  }
-  ${(props) =>
-    Object.entries(props.theme.grid.breakpoints)
-      .map(
-        ([key, value]) => `
-      @media (min-width: ${value}) {
-        .stick-to-header-${key} {
-          position: sticky;
-          top: calc(54px + ${props.theme.grid.spacing.default});
-        }
-      }
-    `
-      )
-      .join("")}
+    .margin-default {
+      margin-bottom: ${props.theme.grid.spacing.default};
+    }
+  `;
+  style += base;
+
+  style += stickToHeader(props.theme);
+  style += paddings(props.theme);
+  style += margins(props.theme);
+  
+
+  return style;
+}}  
 `;
 
 export default GlobalStyle;
