@@ -3,7 +3,7 @@ import { ColumnSorterProps } from "./_types";
 
 export const ColumnSorter = ({ column, orderBy, order }: ColumnSorterProps) => {
   const handleClick = () => {
-    order = (order === "DESC") ? "ASC" : "DESC";
+    order = order === "DESC" ? "ASC" : "DESC";
     if (column.onSort) column.onSort(order);
   };
   return (
@@ -12,9 +12,9 @@ export const ColumnSorter = ({ column, orderBy, order }: ColumnSorterProps) => {
         <span onClick={handleClick}>
           {orderBy === column.key ? (
             order === "ASC" ? (
-              <ArrowDownShort />
-            ) : (
               <ArrowUpShort />
+            ) : (
+              <ArrowDownShort />
             )
           ) : (
             <Dash />

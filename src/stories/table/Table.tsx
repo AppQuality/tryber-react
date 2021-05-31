@@ -58,7 +58,11 @@ const BasicTable = ({
               <th key={column.key}>
                 {column.title}
                 {column.isSortable && (
-                  <ColumnSorter column={column} orderBy={orderBy} order={order} />
+                  <ColumnSorter
+                    column={column}
+                    orderBy={orderBy}
+                    order={order}
+                  />
                 )}
               </th>
             ))}
