@@ -23,7 +23,7 @@ BasicCard.args = {
 export const CardWithShadow = Template.bind({});
 BasicCard.args = {
   children: "Lorem ipsum dolor sit amet numquam concupescendit elit",
-  shadow: true
+  shadow: true,
 };
 
 export const CardWithTitle = Template.bind({});
