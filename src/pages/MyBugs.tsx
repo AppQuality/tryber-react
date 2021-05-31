@@ -81,7 +81,7 @@ export default function MyBugs() {
         <Container>
           <h2>{t("My Bugs")}</h2>
           <BSGrid>
-            <BSCol size="col-lg-9">
+            <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
               <Card title={t("Submitted bugs")}>
                 <MyBugsTable
                   data={data.current}
@@ -97,7 +97,7 @@ export default function MyBugs() {
             </BSCol>
             <BSCol size="col-lg-3">
               <Card
-                className="stick-to-header-lg"
+                className="stick-to-header-lg mb-3"
                 title={t("Search and filters")}
               >
                 <MyBugsFilters
