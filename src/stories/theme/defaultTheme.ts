@@ -39,6 +39,12 @@ const aqBootstrapTheme: DefaultTheme = {
     spacing: {
       default: "16px",
     },
+    sizes: {
+      1: ".5rem",
+      2: "1rem",
+      3: "1.5rem",
+      4: "2rem",
+    },
   },
 };
 
