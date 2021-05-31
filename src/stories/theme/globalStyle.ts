@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 import { stickToHeader } from "./utils/stickToHeader";
 import { paddings } from "./utils/paddings";
 import { margins } from "./utils/margins";
+import { orders } from "./utils/orders";
 
 const GlobalStyle = createGlobalStyle`${(props) => {
   let style = "";
@@ -23,7 +24,7 @@ const GlobalStyle = createGlobalStyle`${(props) => {
   style += stickToHeader(props.theme);
   style += paddings(props.theme);
   style += margins(props.theme);
-  
+  style += orders(props.theme);
 
   return style;
 }}  
