@@ -1,9 +1,10 @@
 import { components, Styles, Theme } from "react-select";
 import { aqBootstrapTheme } from "../theme/defaultTheme";
 import { ChevronDown, X } from "react-bootstrap-icons";
+import { borderRadius } from "react-select/src/theme";
 
 const aqTheme = (theme: Theme) => ({
-  borderRadius: 5,
+  borderRadius: aqBootstrapTheme.general.borderRadius,
   spacing: theme.spacing,
   colors: {
     ...theme.colors,
@@ -37,7 +38,7 @@ let customComponents = {
 
 const customStyle: Styles<any, any> = {
   control: (provided, state) => {
-    const borderColor = `${aqBootstrapTheme.colors.gray500}`;
+    const borderColor = `${aqBootstrapTheme.colors.disabled}`;
     const boxShadow = "none";
 
     return {
@@ -45,13 +46,12 @@ const customStyle: Styles<any, any> = {
       borderColor,
       boxShadow,
       ":hover": {
-        // Why is overriding an other border-color property?
         borderColor: borderColor,
       },
     };
   },
   dropdownIndicator: (provided, state) => {
-    const color = `${aqBootstrapTheme.colors.blue900}`;
+    const color = `${aqBootstrapTheme.colors.primary}`;
     const fontSize = "1.25rem";
     const transform = state.selectProps.menuIsOpen ? "rotate(180deg)" : "";
 
@@ -63,11 +63,11 @@ const customStyle: Styles<any, any> = {
     };
   },
   menu: (provided, state) => {
-    const borderColor = `${aqBootstrapTheme.colors.gray500}`;
+    const borderColor = `${aqBootstrapTheme.colors.disabled}`;
     const borderWidth = "1px";
     const borderStyle = "solid";
-    const borderRadius = "4px";
-    const filter = "drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25))";
+    const borderRadius = `${aqBootstrapTheme.general.borderRadius}px`;
+    const boxShadow = `${aqBootstrapTheme.general.boxShadow}`;
 
     return {
       ...provided,
@@ -75,8 +75,48 @@ const customStyle: Styles<any, any> = {
       borderRadius,
       borderWidth,
       borderStyle,
-      filter,
+      boxShadow,
     };
+  },
+  groupHeading: (provided, state) => {
+    const fontFamily = `${aqBootstrapTheme.typography.fontFamily.mono}`;
+    const fontWeight = aqBootstrapTheme.typography.fontWeight.light;
+    const fontSize = `${aqBootstrapTheme.typography.fontSize.base}`;
+    const color = `${aqBootstrapTheme.colors.disabledDark}`;
+
+    return {
+      ...provided,
+      fontFamily,
+      fontWeight,
+      fontSize,
+      color,
+    };
+  },
+  noOptionsMessage: (provided, state) => {
+    const color = `${aqBootstrapTheme.colors.disabled}`;
+    const fontWeight = aqBootstrapTheme.typography.fontWeight.light;
+
+    return {
+      ...provided,
+      color,
+    };
+  },
+  option: (provided, state) => {
+    if (state.data.value == "loading-placeholder") {
+      const color = `${aqBootstrapTheme.colors.disabled}`;
+      const textAlign = "center";
+      const background = "none";
+      const fontWeight = aqBootstrapTheme.typography.fontWeight.light;
+
+      return {
+        ...provided,
+        color,
+        textAlign,
+        background,
+      };
+    }
+
+    return provided;
   },
 };
 

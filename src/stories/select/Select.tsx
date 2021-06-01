@@ -159,7 +159,7 @@ export const Select = ({
   if (loading) {
     optionsDropdown.push({
       value: "loading-placeholder",
-      label: "Loading more...",
+      label: "Loading data",
       isDisabled: true,
     });
   } else if (

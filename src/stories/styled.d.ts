@@ -4,16 +4,22 @@ import { Colors } from "./theme/defaultTheme";
 
 declare module "styled-components" {
   export interface DefaultTheme {
+    general: {
+      borderRadius: number;
+      boxShadow: string;
+    };
     typography: {
       fontFamily: {
         base: string;
         serif: string;
+        mono: string;
       };
       fontSize: {
         base: string;
         small: string;
       };
       fontWeight: {
+        thin: number;
         light: number;
         normal: number;
         bold: number;
