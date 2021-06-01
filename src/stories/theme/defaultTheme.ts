@@ -2,17 +2,23 @@ import { DefaultTheme } from "styled-components";
 import COLORS from "../styles/colors.module.scss";
 
 const aqBootstrapTheme: DefaultTheme = {
+  general: {
+    borderRadius: 4,
+    boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.25)",
+  },
   typography: {
     fontFamily: {
       base:
         'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";',
       serif: "IBM Plex Serif",
+      mono: "'IBM Plex Mono', monospace;",
     },
     fontSize: {
       base: ".875rem",
       small: ".75rem",
     },
     fontWeight: {
+      thin: 100,
       light: 300,
       normal: 500,
       bold: 700,

@@ -35,7 +35,7 @@ export const Select = ({
   value,
   options,
   defaultValue,
-  placeholder = "Select...",
+  placeholder = "Search",
   isMulti,
   isDisabled,
   isLoading,
@@ -158,7 +158,7 @@ export const Select = ({
   if (loading) {
     optionsDropdown.push({
       value: "loading-placeholder",
-      label: "Loading more...",
+      label: "Loading data",
       isDisabled: true,
     });
   } else if (
@@ -172,6 +172,7 @@ export const Select = ({
       isDisabled: true,
     });
   }
+
   return (
     <FormGroup>
       {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
