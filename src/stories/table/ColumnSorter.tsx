@@ -1,4 +1,4 @@
-import { ArrowDownShort, Dash, ArrowUpShort } from "react-bootstrap-icons";
+import { Dash, SortUp, SortDown } from "react-bootstrap-icons";
 import { ColumnSorterProps } from "./_types";
 
 export const ColumnSorter = ({ column, orderBy, order }: ColumnSorterProps) => {
@@ -12,9 +12,9 @@ export const ColumnSorter = ({ column, orderBy, order }: ColumnSorterProps) => {
         <span onClick={handleClick}>
           {orderBy === column.key ? (
             order === "ASC" ? (
-              <ArrowUpShort />
+              <SortUp />
             ) : (
-              <ArrowDownShort />
+              <SortDown />
             )
           ) : (
             <Dash />
