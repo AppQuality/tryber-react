@@ -1,6 +1,6 @@
 import { Table } from "../../stories/table/Table";
 import { Pagination } from "../../stories/pagination/Pagination";
-import { Row } from "../../stories/table/_types";
+import { Column, Row } from "../../stories/table/_types";
 
 interface MyBugsTableProps {
   data: Row[];
@@ -23,7 +23,7 @@ const MyBugsTable = ({
   order,
   orderBy,
 }: MyBugsTableProps) => {
-  const columns = [
+  const columns: Column[] = [
     {
       title: "Id",
       dataIndex: "id",
@@ -63,6 +63,7 @@ const MyBugsTable = ({
       dataIndex: "action",
       key: "action",
       width: "10ch",
+      align: "center",
     },
   ];
   return (

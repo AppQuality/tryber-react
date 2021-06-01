@@ -54,18 +54,21 @@ const BasicTable = ({
         </colgroup>
         <thead>
           <tr>
-            {columns.map((column) => (
-              <th key={column.key}>
-                {column.title}
-                {column.isSortable && (
-                  <ColumnSorter
-                    column={column}
-                    orderBy={orderBy}
-                    order={order}
-                  />
-                )}
-              </th>
-            ))}
+            {columns.map((column) => {
+              let className = column.align ? `aq-text-${column.align}` : "";
+              return (
+                <th key={column.key} className={className}>
+                  {column.title}
+                  {column.isSortable && (
+                    <ColumnSorter
+                      column={column}
+                      orderBy={orderBy}
+                      order={order}
+                    />
+                  )}
+                </th>
+              );
+            })}
           </tr>
         </thead>
         <tbody>
@@ -75,6 +78,7 @@ const BasicTable = ({
                 {columns.map((column) => {
                   let className = "";
                   if (column.long) className = "aq-table-cell-ellipsis";
+                  if (column.align) className += ` aq-text-${column.align}`;
                   return (
                     <td
                       title={

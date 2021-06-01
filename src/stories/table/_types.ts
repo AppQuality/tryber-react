@@ -8,6 +8,7 @@ export interface Column {
   width?: string; // default 10ch
   isSortable?: boolean;
   onSort?: (orderBy: any) => void;
+  align?: "left" | "center" | "right";
 }
 
 export interface Row {

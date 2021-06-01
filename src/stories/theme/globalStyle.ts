@@ -8,15 +8,20 @@ import { orders } from "./utils/orders";
 const GlobalStyle = createGlobalStyle`${(props) => {
   let style = "";
   const base = `
-    body {
-      
-    }
     img {
       max-width: 100%;
     }
-    
     .margin-default {
       margin-bottom: ${props.theme.grid.spacing.default};
+    }
+    .aq-text-center {
+      text-align: center;
+    }
+    .aq-text-right {
+      text-align: right;
+    }
+    .aq-text-left {
+      text-align: left;
     }
   `;
   style += base;
