@@ -113,7 +113,7 @@ export const useMyBugs = () => {
         title: res.title,
         action: {
           title: `${window.location.origin}/${
-            i18n.language !== "en" ? "en/" : ""
+            i18n.language !== "en" ? `${i18n.language}/` : ""
           }bugs/show/${res.id}`,
           content: (
             <Button
@@ -121,7 +121,7 @@ export const useMyBugs = () => {
               size="sm"
               onClick={() => {
                 window.location.href = `${window.location.origin}/${
-                  i18n.language !== "en" ? "en/" : ""
+                  i18n.language !== "en" ? `${i18n.language}/` : ""
                 }bugs/show/${res.id}`;
               }}
             >
