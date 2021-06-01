@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Sidebar } from "../stories/sidebar/Sidebar";
+import { Sidebar } from "../../stories/sidebar/Sidebar";
 import i18next from "i18next";
-import { BasicSidebarArgs } from "../stories/sidebar/Sidebar.stories.args";
+import TesterSidebarArgs from "./args";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -32,7 +32,7 @@ const TesterSidebar = ({
   const { t } = useTranslation();
   const languages = Object.keys(i18next.services.resourceStore.data);
 
-  BasicSidebarArgs.onLogout = () => {
+  TesterSidebarArgs.onLogout = () => {
     fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout", {
       method: "GET",
     })
@@ -44,7 +44,7 @@ const TesterSidebar = ({
       });
   };
 
-  BasicSidebarArgs.languages = {
+  TesterSidebarArgs.languages = {
     current: { lang: i18next.language },
     others: Array.from(
       languages.filter((l) => l !== i18next.language),
@@ -60,7 +60,7 @@ const TesterSidebar = ({
     ),
   };
 
-  BasicSidebarArgs.items = [
+  TesterSidebarArgs.items = [
     {
       url:
         i18next.language === "en"
@@ -156,7 +156,11 @@ const TesterSidebar = ({
 
   return (
     <Sidebar
-      {...{ ...BasicSidebarArgs, open: isOpen || openFromHeader, route: route }}
+      {...{
+        ...TesterSidebarArgs,
+        open: isOpen || openFromHeader,
+        route: route,
+      }}
       onSidebarLeave={() => setIsOpen(false)}
       onSidebarEnter={() => setIsOpen(true)}
     >
