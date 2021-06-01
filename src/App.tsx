@@ -54,6 +54,9 @@ function App() {
             path={`${base}/my-bugs`}
             component={() => <MyBugs isMenuOpen={isMenuOpen} />}
           />
+          <Route path={`${base}/it/i-miei-bug`}>
+            <Redirect to="/it/my-bugs" />
+          </Route>
           <Route path={`${base}/login`} component={SignIn} />
         </Switch>
       </BrowserRouter>
