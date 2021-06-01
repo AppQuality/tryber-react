@@ -45,17 +45,21 @@ const items: Array<IItem> = [
 ];
 
 export const paddings = (theme: DefaultTheme) => {
-  let style = `${items.map(
-    (item) => `
-			${Object.values(item.sizes).map(
-        (size) => `
+  let style = `${items
+    .map(
+      (item) => `
+			${Object.values(item.sizes)
+        .map(
+          (size) => `
 			.aq-${item.name}-${size} {
 				${item.style.replaceAll("%val%", theme.grid.sizes[size])}
 			}
 			`
-      )}
+        )
+        .join("")}
 	`
-  )}`;
+    )
+    .join("")}`;
 
   style += Object.entries(theme.grid.breakpoints)
     .map(
@@ -63,13 +67,15 @@ export const paddings = (theme: DefaultTheme) => {
 	@media (min-width: ${bpValue}) {
 		${items.map(
       (item) => `
-				${Object.values(item.sizes).map(
-          (size) => `
+				${Object.values(item.sizes)
+          .map(
+            (size) => `
 				.aq-${item.name}-${size}-${bpName} {
 					${item.style.replaceAll("%val%", theme.grid.sizes[size])}
 				}
 				`
-        )}
+          )
+          .join("")}
 		`
     )}
 	}`
