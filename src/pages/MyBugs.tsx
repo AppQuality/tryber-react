@@ -54,39 +54,22 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
   };
 
   useEffect(() => {
-    TagManager.dataLayer(tagManagerArgs);
-    const values = queryString.parse(search);
-    if (values.cp) {
-      campaigns.setSelected({ value: values.cp.toString(), label: "" });
-    }
-    if (values.status) {
-      status.setSelected({ value: values.status.toString(), label: "" });
-    }
-  }, []);
-
-  useEffect(() => {
     if (user) {
+      const values = queryString.parse(search);
+      if (values.cp) {
+        campaigns.setSelected({ value: values.cp.toString(), label: "" });
+      }
+      if (values.status) {
+        status.setSelected({ value: values.status.toString(), label: "" });
+      }
       tagManagerArgs.dataLayer = {
         role: user.role,
         wp_user_id: user.wp_user_id,
         tester_id: user.id,
         is_admin_page: false,
       };
-    }
-    TagManager.dataLayer(tagManagerArgs);
-  }, [user]);
 
-  useEffect(() => {
-    if (user) {
       setisLoading(false);
-      if (user) {
-        tagManagerArgs.dataLayer = {
-          role: user.role,
-          wp_user_id: user.wp_user_id,
-          tester_id: user.id,
-          is_admin_page: false,
-        };
-      }
     } else {
       if (error) {
         if (error.statusCode === 403) {
