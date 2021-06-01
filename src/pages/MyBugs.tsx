@@ -17,8 +17,8 @@ import queryString from "query-string";
 const tagManagerArgs = {
   dataLayer: {
     role: "unknown",
-    wp_user_id: false,
-    tester_id: false,
+    wp_user_id: 0,
+    tester_id: 0,
     is_admin_page: false,
   },
   dataLayerName: "PageDataLayer",
@@ -66,7 +66,27 @@ export default function MyBugs() {
 
   useEffect(() => {
     if (user) {
+      tagManagerArgs.dataLayer = {
+        role: user.role,
+        wp_user_id: user.wp_user_id,
+        tester_id: user.id,
+        is_admin_page: false,
+      };
+    }
+    TagManager.dataLayer(tagManagerArgs);
+  }, [user]);
+
+  useEffect(() => {
+    if (user) {
       setisLoading(false);
+      if (user) {
+        tagManagerArgs.dataLayer = {
+          role: user.role,
+          wp_user_id: user.wp_user_id,
+          tester_id: user.id,
+          is_admin_page: false,
+        };
+      }
     } else {
       if (error) {
         if (error.statusCode === 403) {
