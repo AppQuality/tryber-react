@@ -11,6 +11,7 @@ import TagManager from "react-gtm-module";
 import Helmet from "react-helmet";
 import SiteHeader from "./features/SiteHeader";
 import { useState } from "react";
+import { Location } from "history";
 
 const tagManagerArgs = {
   gtmId: "GTM-K55XC7S",
@@ -54,9 +55,17 @@ function App() {
             path={`${base}/my-bugs`}
             component={() => <MyBugs isMenuOpen={isMenuOpen} />}
           />
-          <Route path={`${base}/it/i-miei-bug`}>
-            <Redirect to="/it/my-bugs" />
-          </Route>
+          <Route
+            path={`${base}/it/i-miei-bug`}
+            component={({ location }: { location: Location }) => (
+              <Redirect
+                to={{
+                  ...location,
+                  pathname: "/it/my-bugs",
+                }}
+              />
+            )}
+          />
           <Route path={`${base}/login`} component={SignIn} />
         </Switch>
       </BrowserRouter>
