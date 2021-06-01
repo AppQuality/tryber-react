@@ -2,9 +2,22 @@ import { Select } from "../../stories/select/Select";
 import { Option } from "../../stories/select/_types";
 
 interface MyBugsFiltersProps {
-  campaigns: { current: Option[]; setSelected: (val: Option) => void };
-  severities: { current: Option[]; setSelected: (val: Option) => void };
-  status: { current: Option[]; setSelected: (val: Option) => void };
+  // todo: get this from useMyBugs or they could diverge
+  campaigns: {
+    current: Option[];
+    setSelected: (val: Option) => void;
+    selected: Option | undefined;
+  };
+  severities: {
+    current: Option[];
+    setSelected: (val: Option) => void;
+    selected: Option | undefined;
+  };
+  status: {
+    current: Option[];
+    setSelected: (val: Option) => void;
+    selected: Option | undefined;
+  };
 }
 
 const MyBugsFilters = ({
@@ -20,6 +33,7 @@ const MyBugsFilters = ({
         name="campaign"
         options={[{ label: "All" }, ...campaigns.current]}
         defaultValue={{ label: "All" }}
+        value={campaigns.selected}
         isSearchable
         isClearable={false}
       />
@@ -29,6 +43,7 @@ const MyBugsFilters = ({
         name="severity"
         options={[{ label: "All" }, ...severities.current]}
         defaultValue={{ label: "All" }}
+        value={severities.selected}
         isSearchable={false}
         isClearable={false}
       />
@@ -38,6 +53,7 @@ const MyBugsFilters = ({
         name="state"
         options={[{ label: "All" }, ...status.current]}
         defaultValue={{ label: "All" }}
+        value={status.selected}
         isSearchable={false}
         isClearable={false}
       />
