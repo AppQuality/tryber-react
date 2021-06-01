@@ -24,7 +24,7 @@ const tagManagerArgs = {
   dataLayerName: "PageDataLayer",
 };
 
-export default function MyBugs() {
+export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
   const { search } = useLocation();
   const { user, error } = useUser();
   const [isLoading, setisLoading] = useState(true);
@@ -102,7 +102,7 @@ export default function MyBugs() {
     return (
       <>
         {helmet}
-        <TesterSidebar>
+        <TesterSidebar route={"my-bugs"} openFromHeader={isMenuOpen}>
           <Container>
             <SpinnerWrapper>
               <Spinner />
@@ -116,7 +116,7 @@ export default function MyBugs() {
   return (
     <>
       {helmet}
-      <TesterSidebar>
+      <TesterSidebar route={"my-bugs"} openFromHeader={isMenuOpen}>
         <Container>
           <h2>{t("My Bugs")}</h2>
           <BSGrid>

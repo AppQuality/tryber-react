@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export interface LanguageItem {
   lang: string;
-  onClick?(lang: string): void;
+  onClick?(lang: string, route?: string): void;
 }
 
 export const LanguageIconWrapper = styled.div`
@@ -22,7 +22,13 @@ export const LanguageIconWrapper = styled.div`
     text-transform: uppercase;
   }
 `;
-export const LanguageIcons = ({ langs }: { langs: Array<LanguageItem> }) => {
+export const LanguageIcons = ({
+  langs,
+  route,
+}: {
+  langs: Array<LanguageItem>;
+  route?: string;
+}) => {
   return (
     <LanguageIconWrapper>
       {langs.map((l, idx) => {
@@ -32,7 +38,7 @@ export const LanguageIcons = ({ langs }: { langs: Array<LanguageItem> }) => {
               key={idx}
               onClick={() => {
                 if (l.onClick) {
-                  l.onClick(l.lang);
+                  l.onClick(l.lang, route);
                 }
               }}
             >

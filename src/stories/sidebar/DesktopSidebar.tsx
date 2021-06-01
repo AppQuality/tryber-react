@@ -85,6 +85,7 @@ export const DesktopSidebar = ({
   onSidebarEnter,
   onSidebarLeave,
   open = false,
+  route,
 }: SidebarProps) => {
   return (
     <>
@@ -101,19 +102,19 @@ export const DesktopSidebar = ({
               active={i.active}
             />
           ))}
-          <LanguageIcons langs={[languages.current]} />
+          <LanguageIcons langs={[languages.current]} route={route} />
         </SidebarIcons>
         <SidebarItems open={open}>
           <div>
             {items.map((i, idx) => (
               <SidebarText key={idx} url={i.url} text={i.text} />
             ))}
-            <LanguageIcons langs={languages.others} />
+            <LanguageIcons langs={languages.others} route={route} />
           </div>
         </SidebarItems>
       </SidebarWrapper>
       <NavigationContainer>{children}</NavigationContainer>
-      <div style={{ clear: "both" }}></div>
+      <div style={{ clear: "both" }} />
     </>
   );
 };

@@ -76,6 +76,7 @@ export const MobileSidebar = ({
   languages,
   onLogout,
   open = false,
+  route,
 }: SidebarProps) => {
   if (!open) {
     return <>{children}</>;
@@ -92,7 +93,10 @@ export const MobileSidebar = ({
           );
         })}
 
-        <LanguageIcons langs={[languages.current].concat(languages.others)} />
+        <LanguageIcons
+          langs={[languages.current].concat(languages.others)}
+          route={route}
+        />
         <LogoutButton onClick={() => onLogout()}>
           Logout <BoxArrowRight />
         </LogoutButton>
