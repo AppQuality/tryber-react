@@ -18,6 +18,7 @@ i18n
     detection: {
       order: ["querystring", "path", "subdomain"],
     },
+    debug: true,
     resources,
     supportedLngs: ["it", "en"],
     fallbackLng: "en",

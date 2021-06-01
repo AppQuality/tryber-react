@@ -1,25 +1,38 @@
 import React, { useState } from "react";
 import { Sidebar } from "../stories/sidebar/Sidebar";
+import i18next from "i18next";
+import { BasicSidebarArgs } from "../stories/sidebar/Sidebar.stories.args";
+import { useTranslation } from "react-i18next";
 
 import {
-  Laptop,
-  HouseFill,
-  PersonFill,
-  Wallet2,
-  StarFill,
-  GraphUp,
-  BugFill,
-  Eyeglasses,
   AwardFill,
+  BugFill,
   ChatDotsFill,
+  Eyeglasses,
+  GraphUp,
+  HouseFill,
+  Laptop,
+  PersonFill,
+  StarFill,
+  Wallet2,
 } from "react-bootstrap-icons";
+
 export interface TesterSidebarProps {
+  route?: string;
   children?: React.ReactNode;
+  openFromHeader?: boolean;
 }
 
-const BasicSidebarArgs = {
-  open: false,
-  onLogout: () => {
+const TesterSidebar = ({
+  route,
+  children,
+  openFromHeader,
+}: TesterSidebarProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
+  const languages = Object.keys(i18next.services.resourceStore.data);
+
+  BasicSidebarArgs.onLogout = () => {
     fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout", {
       method: "GET",
     })
@@ -29,95 +42,121 @@ const BasicSidebarArgs = {
       .catch((e) => {
         alert(e.message);
       });
-  },
-  languages: {
-    current: { lang: "it" },
-    others: [
-      {
-        lang: "en",
-        onClick: (lang: string) => {
-          alert(`Switching to ${lang}`);
-        },
-      },
-      {
-        lang: "es",
-        onClick: (lang: string) => {
-          alert(`Switching to ${lang}`);
-        },
-      },
-    ],
-  },
-  items: [
+  };
+
+  BasicSidebarArgs.languages = {
+    current: { lang: i18next.language },
+    others: Array.from(
+      languages.filter((l) => l !== i18next.language),
+      (lang) => {
+        return {
+          lang: lang,
+          onClick: (lang: string, route: string) => {
+            window.location.href =
+              lang === "en" ? `/${route}` : `/${lang}/${route}`;
+          },
+        };
+      }
+    ),
+  };
+
+  BasicSidebarArgs.items = [
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/my-dashboard/"
+          : `/${i18next.language}/la-mia-dashboard/`,
       icon: <HouseFill />,
-      active: true,
-      text: "Dashboard",
+      active: route === "my-dashboard",
+      text: t("Dashboard"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/my-account/"
+          : `/${i18next.language}/il-mio-account/`,
       icon: <PersonFill />,
-      active: false,
-      text: "Profile",
+      active: route === "my-account",
+      text: t("Profile"),
       last: true,
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/personal-equipments/"
+          : `/${i18next.language}/i-miei-device/`,
       icon: <Laptop />,
-      active: false,
-      text: "Devices",
+      active: route === "personal-equipments",
+      text: t("Devices"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/payments/"
+          : `/${i18next.language}/pagamenti/`,
       icon: <Wallet2 />,
-      active: false,
-      text: "Payments",
+      active: route === "Payments",
+      text: t("Payments"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/experience-points/"
+          : `/${i18next.language}/punti-esperienza/`,
       icon: <StarFill />,
-      active: false,
-      text: "Experience Points",
+      active: route === "experience-points",
+      text: t("Experience Points"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/leaderboard/"
+          : `/${i18next.language}/leaderboard-2/`,
       icon: <GraphUp />,
-      active: false,
-      text: "Leaderboard",
+      active: route === "leaderboard",
+      text: t("Leaderboard"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/my-bugs/"
+          : `/${i18next.language}/i-miei-bug/`,
       icon: <BugFill />,
-      active: false,
-      text: "Uploaded Bugs",
+      active: route === "my-bugs",
+      text: t("Uploaded Bugs"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/courses/"
+          : `/${i18next.language}/courses/`,
       icon: <Eyeglasses />,
-      active: false,
-      text: "Courses",
+      active: route === "courses",
+      text: t("Courses"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/testing-school/"
+          : `/${i18next.language}/universita-del-test/`,
       icon: <AwardFill />,
-      active: false,
-      text: "Testing University",
+      active: route === "testing-school",
+      text: t("Testing University"),
     },
     {
-      url: "#",
+      url:
+        i18next.language === "en"
+          ? "/feedback-hub/"
+          : `/${i18next.language}/centro-dei-feedback/`,
       icon: <ChatDotsFill />,
-      active: false,
-      text: "Feedback",
+      active: route === "feedback-hub",
+      text: t("Feedback"),
     },
-  ],
-};
-
-const TesterSidebar = ({ children }: TesterSidebarProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  ];
 
   return (
     <Sidebar
-      {...{ ...BasicSidebarArgs, open: isOpen }}
+      {...{ ...BasicSidebarArgs, open: isOpen || openFromHeader, route: route }}
       onSidebarLeave={() => setIsOpen(false)}
       onSidebarEnter={() => setIsOpen(true)}
     >

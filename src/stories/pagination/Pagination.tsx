@@ -1,20 +1,7 @@
 import { PaginationProps } from "./PaginationProps";
-import { useLayoutEffect, useState } from "react";
 import { DesktopPagination } from "./DesktopPagination";
 import { MobilePagination } from "./MobilePagination";
-
-function useWindowSize() {
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  return size;
-}
+import useWindowSize from "../../store/useWindowSize";
 
 export const Pagination = (args: PaginationProps) => {
   useWindowSize();
