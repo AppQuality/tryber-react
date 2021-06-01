@@ -4,7 +4,6 @@ import { Card } from "../stories/card/Card";
 import { Spinner, SpinnerWrapper } from "../stories/spinner/Spinner";
 import { SmallTitle } from "../stories/typography/Typography";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
 import TesterSidebar from "../features/TesterSidebar";
@@ -12,6 +11,8 @@ import MyBugsTable from "../features/my-bugs/MyBugsTable";
 import MyBugsFilters from "../features/my-bugs/MyBugsFilters";
 import { useMyBugs } from "../store/useMyBugs";
 import { useUser } from "../store/useUser";
+import { useLocation } from "react-router-dom";
+import queryString from "query-string";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -24,6 +25,7 @@ const tagManagerArgs = {
 };
 
 export default function MyBugs() {
+  const { search } = useLocation();
   const { user, error } = useUser();
   const [isLoading, setisLoading] = useState(true);
 
@@ -53,6 +55,13 @@ export default function MyBugs() {
 
   useEffect(() => {
     TagManager.dataLayer(tagManagerArgs);
+    const values = queryString.parse(search);
+    if (values.cp) {
+      campaigns.setSelected({ value: values.cp.toString(), label: "" });
+    }
+    if (values.status) {
+      status.setSelected({ value: values.status.toString(), label: "" });
+    }
   }, []);
 
   useEffect(() => {
