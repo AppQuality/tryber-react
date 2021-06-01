@@ -33,6 +33,16 @@ const BasicTable = ({
 
   let tableClass = "aq-table margin-default";
   if (isStriped) tableClass += " aq-striped";
+  const handleSort = ({
+    order,
+    onSort,
+  }: {
+    order?: "ASC" | "DESC";
+    onSort: (order: string) => void;
+  }) => {
+    order = order === "DESC" ? "ASC" : "DESC";
+    onSort(order);
+  };
   return (
     <div className={className}>
       {isLoading && <LoadingStatus />}
@@ -57,7 +67,17 @@ const BasicTable = ({
             {columns.map((column) => {
               let className = column.align ? `aq-text-${column.align}` : "";
               return (
-                <th key={column.key} className={className}>
+                <th
+                  key={column.key}
+                  className={className}
+                  onClick={
+                    column.isSortable
+                      ? () =>
+                          column.onSort &&
+                          handleSort({ order, onSort: column.onSort })
+                      : undefined
+                  }
+                >
                   {column.title}
                   {column.isSortable && (
                     <ColumnSorter
