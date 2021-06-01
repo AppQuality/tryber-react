@@ -1,6 +1,7 @@
 import { Table } from "../../stories/table/Table";
 import { Pagination } from "../../stories/pagination/Pagination";
 import { Column, Row } from "../../stories/table/_types";
+import { useTranslation } from "react-i18next";
 
 interface MyBugsTableProps {
   data: Row[];
@@ -23,6 +24,7 @@ const MyBugsTable = ({
   order,
   orderBy,
 }: MyBugsTableProps) => {
+  const { t } = useTranslation();
   const columns: Column[] = [
     {
       title: "Id",
@@ -80,6 +82,11 @@ const MyBugsTable = ({
         onPageChange={setPage}
         current={page}
         maxPages={Math.ceil(totalBugs / limit)}
+        mobileText={(current, total) =>
+          t(`Page %current% / %total%`)
+            .replace("%current%", current.toString())
+            .replace("%total%", total ? total.toString() : "0")
+        }
       />
     </>
   );

@@ -29,6 +29,7 @@
   "Must contain at least an uppercase letter": "Deve contenere almeno una lettera maiuscola",
   "My Bugs": "I Miei Bug",
   "Name": "Nome",
+  "Page %current% / %total%": "",
   "Password": "Password",
   "Payments": "Pagamenti",
   "Profile": "Profilo",
