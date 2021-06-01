@@ -46,9 +46,9 @@ const MyBugsFilters = ({
         isClearable={false}
       />
       <Select
-        label="State"
+        label="Status"
         onChange={status.setSelected}
-        name="state"
+        name="status"
         options={[{ label: "All" }, ...status.current]}
         value={status.selected || { label: "All" }}
         isSearchable={false}

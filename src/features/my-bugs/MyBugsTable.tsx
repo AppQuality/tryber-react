@@ -53,7 +53,7 @@ const MyBugsTable = ({
       width: "10ch",
     },
     {
-      title: "State",
+      title: "Status",
       dataIndex: "status",
       key: "status",
       width: "10ch",

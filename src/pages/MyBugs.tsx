@@ -137,7 +137,7 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
             <BSCol size="col-lg-3">
               <Card
                 className="stick-to-header-lg mb-3"
-                title={t("Search and filters")}
+                title={t("Filters")}
                 shadow={true}
               >
                 <MyBugsFilters
