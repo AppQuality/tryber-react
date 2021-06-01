@@ -2,14 +2,17 @@ import "./header.scss";
 import { useTranslation } from "react-i18next";
 import { UserInfo } from "./UserInfo";
 import { HeaderProps } from "./_types";
+import useWindowSize from "../../store/useWindowSize";
 
 export const Header = ({
   logo,
   showLogin = true,
   isLoading,
+  toggleMenu,
   user,
 }: HeaderProps) => {
   const { i18n } = useTranslation();
+  useWindowSize();
   const handleLoginClick = () => {
     window.location.href = "/";
   };
@@ -24,6 +27,10 @@ export const Header = ({
         alert(e.message);
       });
   };
+
+  const showMobile = window.matchMedia("only screen and (max-width: 768px)")
+    .matches;
+
   return (
     <div className="site-header">
       <div className="brand-logo">
@@ -39,13 +46,17 @@ export const Header = ({
         )}
       </div>
       <div className="header-menu" />
-      <UserInfo
-        showLogin={showLogin}
-        user={user}
-        isLoading={isLoading}
-        onLogin={handleLoginClick}
-        onLogout={handleLogoutClick}
-      />
+      {showMobile ? (
+        <a onClick={toggleMenu}>|||</a>
+      ) : (
+        <UserInfo
+          showLogin={showLogin}
+          user={user}
+          isLoading={isLoading}
+          onLogin={handleLoginClick}
+          onLogout={handleLogoutClick}
+        />
+      )}
     </div>
   );
 };

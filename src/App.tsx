@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import TagManager from "react-gtm-module";
 import Helmet from "react-helmet";
 import SiteHeader from "./features/SiteHeader";
+import { useState } from "react";
 
 const tagManagerArgs = {
   gtmId: "GTM-K55XC7S",
@@ -21,7 +22,7 @@ const base = "/:locale(en|it)?";
 
 function App() {
   const { t } = useTranslation();
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <ThemeProvider theme={aqBootstrapTheme}>
       <GlobalStyle />
@@ -39,13 +40,19 @@ function App() {
         />
       </Helmet>
       <BrowserRouter>
-        <SiteHeader showLogin={false} />
+        <SiteHeader
+          showLogin={false}
+          toggleMenu={() => setIsMenuOpen(!isMenuOpen)}
+        />
         <Switch>
           <Route path={`${base}/getting-started`} component={GettingStarted} />
           <Route path={`${base}/it/getting-started-2`}>
             <Redirect to="/it/getting-started" />
           </Route>
-          <Route path={`${base}/my-bugs`} component={MyBugs} />
+          <Route
+            path={`${base}/my-bugs`}
+            component={() => <MyBugs isMenuOpen={isMenuOpen} />}
+          />
           <Route path={`${base}/login`} component={SignIn} />
         </Switch>
       </BrowserRouter>
