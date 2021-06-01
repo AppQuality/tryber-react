@@ -77,11 +77,17 @@ const BasicTable = ({
                   if (column.long) className = "aq-table-cell-ellipsis";
                   return (
                     <td
-                      title={row[column.dataIndex]}
+                      title={
+                        typeof row[column.dataIndex] == "object"
+                          ? row[column.dataIndex].title
+                          : row[column.dataIndex]
+                      }
                       className={className}
                       key={`${row.key}-${column.key}`}
                     >
-                      {row[column.dataIndex]}
+                      {typeof row[column.dataIndex] == "object"
+                        ? row[column.dataIndex].content
+                        : row[column.dataIndex]}
                     </td>
                   );
                 })}

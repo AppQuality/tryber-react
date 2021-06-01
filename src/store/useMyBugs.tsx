@@ -94,11 +94,16 @@ export const useMyBugs = () => {
       )
         return;
 
-      let status = res.severity ? (
-        <span className={coloredStatus(res.status.id)}>{res.status.name}</span>
-      ) : (
-        <span>unknown</span>
-      );
+      let status = res.status
+        ? {
+            title: res.status.name,
+            content: (
+              <span className={coloredStatus(res.status.id)}>
+                {res.status.name}
+              </span>
+            ),
+          }
+        : "unknown";
       _data.push({
         key: i,
         id: res.id,
@@ -106,19 +111,24 @@ export const useMyBugs = () => {
         status: status,
         campaign: `CP${res.campaign?.id} - ${res.campaign?.name}`,
         title: res.title,
-        action: (
-          <Button
-            type="link"
-            size="sm"
-            onClick={() => {
-              window.location.href = `${window.location.origin}/${
-                i18n.language !== "en" ? "en/" : ""
-              }bugs/show/${res.id}`;
-            }}
-          >
-            view more
-          </Button>
-        ),
+        action: {
+          title: `${window.location.origin}/${
+            i18n.language !== "en" ? "en/" : ""
+          }bugs/show/${res.id}`,
+          content: (
+            <Button
+              type="link"
+              size="sm"
+              onClick={() => {
+                window.location.href = `${window.location.origin}/${
+                  i18n.language !== "en" ? "en/" : ""
+                }bugs/show/${res.id}`;
+              }}
+            >
+              view more
+            </Button>
+          ),
+        },
       });
     });
     setData(_data);
