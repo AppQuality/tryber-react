@@ -32,6 +32,7 @@ export const Select = ({
   label,
   name,
   onChange,
+  value,
   options,
   defaultValue,
   placeholder = "Select...",
@@ -46,7 +47,6 @@ export const Select = ({
   const [page, setPage] = useState(0);
   const [thereIsMore, setMore] = useState(false);
   const [optionsArray, setOptions] = useReducer(updateOptions, []);
-  const [selectedOption, setSelectedOption] = useState(defaultValue);
   const [initialOptions, setInitialOptions] = useState<{
     more: boolean;
     results: Option[];
@@ -123,7 +123,6 @@ export const Select = ({
   };
 
   const handleChange = (value: any, actionMeta: ActionMeta<any>) => {
-    // value
     if (options instanceof Function) {
       if (typeof searching === "string" && searching.length >= 2) {
         resetOptions();
@@ -180,6 +179,7 @@ export const Select = ({
         <ReactSelect
           id={name}
           name={name}
+          value={optionsArray.filter((opt) => opt.value === value?.value)}
           onBlur={handleBlur}
           onChange={handleChange}
           onInputChange={handleInputChange}
