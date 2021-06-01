@@ -53,7 +53,7 @@ const TesterSidebar = ({
           lang: lang,
           onClick: (lang: string, route: string) => {
             window.location.href =
-              lang === "en" ? `/${route}` : `/${lang}/${route}`;
+              lang === "en" ? `/${route}/` : `/${lang}/${route}/`;
           },
         };
       }
