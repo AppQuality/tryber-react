@@ -69,7 +69,9 @@ const BasicTable = ({
               return (
                 <th
                   key={column.key}
-                  className={className}
+                  className={`${className}${
+                    column.isSortable ? " sortable" : ""
+                  }`}
                   onClick={
                     column.isSortable
                       ? () =>
@@ -151,6 +153,10 @@ export const Table = styled(BasicTable)`
         font-weight: 500;
         padding: ${cellPadding};
         border-bottom: 1px solid ${(props) => props.theme.colors.gray300};
+
+        &.sortable {
+          cursor: pointer;
+        }
       }
     }
     tbody {
