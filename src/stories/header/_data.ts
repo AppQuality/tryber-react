@@ -1,5 +1,7 @@
 export const testUser = {
   id: 1234,
+  wp_user_id: 1234,
+  role: "tester",
   username: "testuser0001",
   name: "test",
   surname: "user",

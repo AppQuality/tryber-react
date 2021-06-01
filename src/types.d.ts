@@ -2,6 +2,8 @@ import HttpError from "../utils/HttpError";
 
 export interface UserData {
   id: number;
+  wp_user_id: number;
+  role: string;
   username: string;
   name: string;
   surname: string;

@@ -4,7 +4,6 @@ import { Card } from "../stories/card/Card";
 import { Spinner, SpinnerWrapper } from "../stories/spinner/Spinner";
 import { SmallTitle } from "../stories/typography/Typography";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
 import TesterSidebar from "../features/TesterSidebar";
@@ -16,8 +15,8 @@ import { useUser } from "../store/useUser";
 const tagManagerArgs = {
   dataLayer: {
     role: "unknown",
-    wp_user_id: false,
-    tester_id: false,
+    wp_user_id: 0,
+    tester_id: 0,
     is_admin_page: false,
   },
   dataLayerName: "PageDataLayer",
@@ -52,8 +51,16 @@ export default function MyBugs() {
   };
 
   useEffect(() => {
+    if (user) {
+      tagManagerArgs.dataLayer = {
+        role: user.role,
+        wp_user_id: user.wp_user_id,
+        tester_id: user.id,
+        is_admin_page: false,
+      };
+    }
     TagManager.dataLayer(tagManagerArgs);
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     if (user) {
