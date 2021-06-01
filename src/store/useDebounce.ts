@@ -1,14 +1,10 @@
-export default function debounce(
-  callback: (...args: any) => any,
-  wait: number
-) {
+export default function debounce(callback: () => void, wait: number) {
   let timer: ReturnType<typeof setTimeout> | undefined;
   return () => {
     if (timer !== undefined) clearTimeout(timer);
     timer = setTimeout(() => {
       timer = undefined;
-      // @ts-ignore
-      callback.apply(this, arguments);
+      callback();
     }, wait);
   };
 }

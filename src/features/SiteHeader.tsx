@@ -3,9 +3,11 @@ import { useUser } from "../store/useUser";
 
 const SiteHeader = ({
   showLogin,
+  isMenuOpen,
   toggleMenu,
 }: {
   showLogin: boolean;
+  isMenuOpen: boolean;
   toggleMenu: () => void;
 }) => {
   const { user, isLoading } = useUser();
@@ -14,6 +16,7 @@ const SiteHeader = ({
       showLogin={showLogin}
       isLoading={isLoading}
       user={user}
+      isMenuOpen={isMenuOpen}
       toggleMenu={toggleMenu}
     />
   );

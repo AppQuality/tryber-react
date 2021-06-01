@@ -42,6 +42,7 @@ function App() {
       <BrowserRouter>
         <SiteHeader
           showLogin={false}
+          isMenuOpen={isMenuOpen}
           toggleMenu={() => setIsMenuOpen(!isMenuOpen)}
         />
         <Switch>

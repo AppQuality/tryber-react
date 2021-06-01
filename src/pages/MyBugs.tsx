@@ -102,7 +102,7 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
     return (
       <>
         {helmet}
-        <TesterSidebar route={"MyBugs"} openFromHeader={isMenuOpen}>
+        <TesterSidebar route={"my-bugs"} openFromHeader={isMenuOpen}>
           <Container>
             <SpinnerWrapper>
               <Spinner />
@@ -116,7 +116,7 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
   return (
     <>
       {helmet}
-      <TesterSidebar route={"MyBugs"} openFromHeader={isMenuOpen}>
+      <TesterSidebar route={"my-bugs"} openFromHeader={isMenuOpen}>
         <Container>
           <h2>{t("My Bugs")}</h2>
           <BSGrid>

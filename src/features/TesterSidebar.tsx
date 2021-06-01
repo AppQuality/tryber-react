@@ -5,16 +5,16 @@ import { BasicSidebarArgs } from "../stories/sidebar/Sidebar.stories.args";
 import { useTranslation } from "react-i18next";
 
 import {
-  Laptop,
-  HouseFill,
-  PersonFill,
-  Wallet2,
-  StarFill,
-  GraphUp,
-  BugFill,
-  Eyeglasses,
   AwardFill,
+  BugFill,
   ChatDotsFill,
+  Eyeglasses,
+  GraphUp,
+  HouseFill,
+  Laptop,
+  PersonFill,
+  StarFill,
+  Wallet2,
 } from "react-bootstrap-icons";
 
 export interface TesterSidebarProps {
@@ -22,15 +22,6 @@ export interface TesterSidebarProps {
   children?: React.ReactNode;
   openFromHeader?: boolean;
 }
-
-export const DefaultLanguage = {
-  lang: "en",
-  onClick: (lang: string) => {
-    alert(`Switching to ${lang}`);
-    //Controllare se esiste.
-    i18next.changeLanguage(lang);
-  },
-};
 
 const TesterSidebar = ({
   route,
@@ -58,7 +49,13 @@ const TesterSidebar = ({
     others: Array.from(
       languages.filter((l) => l !== i18next.language),
       (lang) => {
-        return { ...DefaultLanguage, lang: lang };
+        return {
+          lang: lang,
+          onClick: (lang: string, route: string) => {
+            window.location.href =
+              lang === "en" ? `/${route}` : `/${lang}/${route}`;
+          },
+        };
       }
     ),
   };
@@ -70,7 +67,7 @@ const TesterSidebar = ({
           ? "/my-dashboard/"
           : `/${i18next.language}/la-mia-dashboard/`,
       icon: <HouseFill />,
-      active: route === "MyDashboard",
+      active: route === "my-dashboard",
       text: t("Dashboard"),
     },
     {
@@ -79,7 +76,7 @@ const TesterSidebar = ({
           ? "/my-account/"
           : `/${i18next.language}/il-mio-account/`,
       icon: <PersonFill />,
-      active: route === "MyAccount",
+      active: route === "my-account",
       text: t("Profile"),
       last: true,
     },
@@ -89,7 +86,7 @@ const TesterSidebar = ({
           ? "/personal-equipments/"
           : `/${i18next.language}/i-miei-device/`,
       icon: <Laptop />,
-      active: route === "PersonalEquipments",
+      active: route === "personal-equipments",
       text: t("Devices"),
     },
     {
@@ -107,7 +104,7 @@ const TesterSidebar = ({
           ? "/experience-points/"
           : `/${i18next.language}/punti-esperienza/`,
       icon: <StarFill />,
-      active: route === "ExperiencePoints",
+      active: route === "experience-points",
       text: t("Experience Points"),
     },
     {
@@ -116,7 +113,7 @@ const TesterSidebar = ({
           ? "/leaderboard/"
           : `/${i18next.language}/leaderboard-2/`,
       icon: <GraphUp />,
-      active: route === "Leaderboard",
+      active: route === "leaderboard",
       text: t("Leaderboard"),
     },
     {
@@ -125,7 +122,7 @@ const TesterSidebar = ({
           ? "/my-bugs/"
           : `/${i18next.language}/i-miei-bug/`,
       icon: <BugFill />,
-      active: route === "MyBugs",
+      active: route === "my-bugs",
       text: t("Uploaded Bugs"),
     },
     {
@@ -134,7 +131,7 @@ const TesterSidebar = ({
           ? "/courses/"
           : `/${i18next.language}/courses/`,
       icon: <Eyeglasses />,
-      active: route === "Courses",
+      active: route === "courses",
       text: t("Courses"),
     },
     {
@@ -143,7 +140,7 @@ const TesterSidebar = ({
           ? "/testing-school/"
           : `/${i18next.language}/universita-del-test/`,
       icon: <AwardFill />,
-      active: route === "TestingSchool",
+      active: route === "testing-school",
       text: t("Testing University"),
     },
     {
@@ -152,14 +149,14 @@ const TesterSidebar = ({
           ? "/feedback-hub/"
           : `/${i18next.language}/centro-dei-feedback/`,
       icon: <ChatDotsFill />,
-      active: route === "FeedbackHub",
+      active: route === "feedback-hub",
       text: t("Feedback"),
     },
   ];
 
   return (
     <Sidebar
-      {...{ ...BasicSidebarArgs, open: isOpen || openFromHeader }}
+      {...{ ...BasicSidebarArgs, open: isOpen || openFromHeader, route: route }}
       onSidebarLeave={() => setIsOpen(false)}
       onSidebarEnter={() => setIsOpen(true)}
     >

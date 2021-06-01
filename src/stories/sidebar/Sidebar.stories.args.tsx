@@ -8,14 +8,14 @@ export const BasicSidebarArgs = {
     others: [
       {
         lang: "en",
-        onClick: (lang: string) => {
-          alert(`Switching to ${lang}`);
+        onClick: (lang: string, route: string) => {
+          alert(`Switching to ${lang} and going to ${route}`);
         },
       },
       {
         lang: "es",
-        onClick: (lang: string) => {
-          alert(`Switching to ${lang}`);
+        onClick: (lang: string, route: string) => {
+          alert(`Switching to ${lang} and going to ${route}`);
         },
       },
     ],

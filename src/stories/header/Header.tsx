@@ -3,11 +3,20 @@ import { useTranslation } from "react-i18next";
 import { UserInfo } from "./UserInfo";
 import { HeaderProps } from "./_types";
 import useWindowSize from "../../store/useWindowSize";
+import { Hamburger } from "../button/HamburgerButton";
+import styled from "styled-components";
+
+const StyledHeader = styled.div`
+  ${Hamburger} {
+    position: fixed;
+  }
+`;
 
 export const Header = ({
   logo,
   showLogin = true,
   isLoading,
+  isMenuOpen,
   toggleMenu,
   user,
 }: HeaderProps) => {
@@ -32,7 +41,7 @@ export const Header = ({
     .matches;
 
   return (
-    <div className="site-header">
+    <StyledHeader className="site-header">
       <div className="brand-logo">
         {logo ? (
           { logo }
@@ -46,8 +55,8 @@ export const Header = ({
         )}
       </div>
       <div className="header-menu" />
-      {showMobile ? (
-        <a onClick={toggleMenu}>|||</a>
+      {showMobile && user ? (
+        <Hamburger isOpen={isMenuOpen} clickToggle={toggleMenu} />
       ) : (
         <UserInfo
           showLogin={showLogin}
@@ -57,6 +66,6 @@ export const Header = ({
           onLogout={handleLogoutClick}
         />
       )}
-    </div>
+    </StyledHeader>
   );
 };
