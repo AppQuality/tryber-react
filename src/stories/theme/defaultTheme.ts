@@ -46,10 +46,10 @@ const aqBootstrapTheme: DefaultTheme = {
       default: "16px",
     },
     sizes: {
-      1: ".5rem",
-      2: "1rem",
-      3: "1.5rem",
-      4: "2rem",
+      1: "10px",
+      2: "14px",
+      3: "16px",
+      4: "20px",
     },
   },
 };

@@ -5,7 +5,7 @@ export const ColumnSorter = ({ column, orderBy, order }: ColumnSorterProps) => {
   return (
     <>
       {
-        <span>
+        <span className="aq-ml-1">
           {orderBy === column.key ? (
             order === "ASC" ? (
               <SortUp />
