@@ -32,8 +32,7 @@ const MyBugsFilters = ({
         onChange={campaigns.setSelected}
         name="campaign"
         options={[{ label: "All" }, ...campaigns.current]}
-        defaultValue={{ label: "All" }}
-        value={campaigns.selected}
+        value={campaigns.selected || { label: "All" }}
         isSearchable
         isClearable={false}
       />
@@ -42,8 +41,7 @@ const MyBugsFilters = ({
         onChange={severities.setSelected}
         name="severity"
         options={[{ label: "All" }, ...severities.current]}
-        defaultValue={{ label: "All" }}
-        value={severities.selected}
+        value={severities.selected || { label: "All" }}
         isSearchable={false}
         isClearable={false}
       />
@@ -52,8 +50,7 @@ const MyBugsFilters = ({
         onChange={status.setSelected}
         name="state"
         options={[{ label: "All" }, ...status.current]}
-        defaultValue={{ label: "All" }}
-        value={status.selected}
+        value={status.selected || { label: "All" }}
         isSearchable={false}
         isClearable={false}
       />

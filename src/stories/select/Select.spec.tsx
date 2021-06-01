@@ -12,6 +12,7 @@ describe("Basic Select should render options correctly", () => {
           name="my-select"
           options={basicOptions}
           label="Basic Select"
+          value={{ value: "chocolate", label: "Chocolate" }}
           onChange={(val) => {
             console.log(val);
           }}

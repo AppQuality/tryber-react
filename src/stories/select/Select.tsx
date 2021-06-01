@@ -179,7 +179,7 @@ export const Select = ({
         <ReactSelect
           id={name}
           name={name}
-          value={optionsArray.filter((opt) => opt.value === value?.value)}
+          value={optionsArray.filter((opt) => opt.value === value.value)}
           onBlur={handleBlur}
           onChange={handleChange}
           onInputChange={handleInputChange}
