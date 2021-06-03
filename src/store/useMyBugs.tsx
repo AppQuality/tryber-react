@@ -7,7 +7,7 @@ import API from "../utils/api";
 import { useTranslation } from "react-i18next";
 
 export const useMyBugs = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<Row[]>([]);
   const [campaigns, setCampaigns] = useState<Option[]>([]);
@@ -125,7 +125,7 @@ export const useMyBugs = () => {
                 }bugs/show/${res.id}`;
               }}
             >
-              view more
+              {t("view more")}
             </Button>
           ),
         },

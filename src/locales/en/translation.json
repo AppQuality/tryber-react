@@ -47,5 +47,6 @@
   "The password must be at least 6 characters long, contain an uppercase letter, a lowercase letter and a number.": "The password must be at least 6 characters long, contain an uppercase letter, a lowercase letter and a number.",
   "This is a required field": "This is a required field",
   "Title": "Title",
-  "Uploaded Bugs": "Uploaded Bugs"
+  "Uploaded Bugs": "Uploaded Bugs",
+  "view more": "view more"
 }
