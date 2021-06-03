@@ -85,14 +85,12 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
     return (
       <>
         {helmet()}
-        <TesterSidebar route={"my-bugs"} openFromHeader={isMenuOpen}>
-          <Container>
-            <SpinnerWrapper>
-              <Spinner />
-              <SmallTitle as="h5">{t("loading")}</SmallTitle>
-            </SpinnerWrapper>
-          </Container>
-        </TesterSidebar>
+        <Container>
+          <SpinnerWrapper>
+            <Spinner />
+            <SmallTitle as="h5">{t("loading")}</SmallTitle>
+          </SpinnerWrapper>
+        </Container>
       </>
     );
   }
