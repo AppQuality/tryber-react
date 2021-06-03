@@ -125,7 +125,7 @@ export const useMyBugs = () => {
                 }bugs/show/${res.id}`;
               }}
             >
-              {t("view more")}
+              {t("View more")}
             </Button>
           ),
         },
