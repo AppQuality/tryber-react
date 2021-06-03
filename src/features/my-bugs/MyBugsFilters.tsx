@@ -1,5 +1,6 @@
 import { Select } from "../../stories/select/Select";
 import { Option } from "../../stories/select/_types";
+import { useTranslation } from "react-i18next";
 
 interface MyBugsFiltersProps {
   // todo: get this from useMyBugs or they could diverge
@@ -25,32 +26,33 @@ const MyBugsFilters = ({
   severities,
   status,
 }: MyBugsFiltersProps) => {
+  const { t } = useTranslation();
   return (
     <div>
       <Select
-        label="Campaign"
+        label={t("Campaign")}
         onChange={campaigns.setSelected}
         name="campaign"
-        options={[{ label: "All" }, ...campaigns.current]}
-        value={campaigns.selected || { label: "All" }}
+        options={[{ label: t("All") }, ...campaigns.current]}
+        value={campaigns.selected || { label: t("All") }}
         isSearchable
         isClearable={false}
       />
       <Select
-        label="Severity"
+        label={t("Severity")}
         onChange={severities.setSelected}
         name="severity"
-        options={[{ label: "All" }, ...severities.current]}
-        value={severities.selected || { label: "All" }}
+        options={[{ label: t("All") }, ...severities.current]}
+        value={severities.selected || { label: t("All") }}
         isSearchable={false}
         isClearable={false}
       />
       <Select
-        label="Status"
+        label={t("Status")}
         onChange={status.setSelected}
         name="status"
-        options={[{ label: "All" }, ...status.current]}
-        value={status.selected || { label: "All" }}
+        options={[{ label: t("All") }, ...status.current]}
+        value={status.selected || { label: t("All") }}
         isSearchable={false}
         isClearable={false}
       />

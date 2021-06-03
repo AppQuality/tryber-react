@@ -38,7 +38,7 @@ const MyBugsTable = ({
       },
     },
     {
-      title: "Title",
+      title: t("Title"),
       dataIndex: "title",
       key: "title",
       width: "50ch",
@@ -49,19 +49,19 @@ const MyBugsTable = ({
       },
     },
     {
-      title: "Severity",
+      title: t("Severity"),
       dataIndex: "severity",
       key: "severity",
       width: "10ch",
     },
     {
-      title: "Status",
+      title: t("Status"),
       dataIndex: "status",
       key: "status",
       width: "10ch",
     },
     {
-      title: "Action",
+      title: t("Action"),
       dataIndex: "action",
       key: "action",
       width: "10ch",
