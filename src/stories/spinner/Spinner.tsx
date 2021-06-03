@@ -1,7 +1,15 @@
-import React from "react";
+import styled from "styled-components";
 import "./spinner.scss";
 
-const Spinner = () => {
+export const SpinnerWrapper = styled.div`
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  min-height: 60vh;
+`;
+export const Spinner = () => {
   return (
     <div className="lds-ellipsis">
       <div></div>
@@ -11,5 +19,3 @@ const Spinner = () => {
     </div>
   );
 };
-
-export default Spinner;

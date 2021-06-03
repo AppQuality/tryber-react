@@ -1,9 +1,10 @@
-import { Button } from "./Button";
+import { Button, ButtonGroup } from "./Button";
 import { ButtonProps } from "./ButtonProps";
 import { Story, Meta } from "@storybook/react";
 import { Search } from "react-bootstrap-icons";
 import { ThemeProvider } from "styled-components";
 import { aqBootstrapTheme } from "../theme/defaultTheme";
+import { ChevronRight, ChevronLeft } from "react-bootstrap-icons";
 
 export default {
   title: "Button",
@@ -13,6 +14,19 @@ export default {
 const Template: Story<ButtonProps> = (args) => (
   <ThemeProvider theme={aqBootstrapTheme}>
     <Button {...args} />
+  </ThemeProvider>
+);
+const GroupTemplate: Story<ButtonProps> = (args) => (
+  <ThemeProvider theme={aqBootstrapTheme}>
+    <ButtonGroup>
+      <Button flat={true}>
+        <ChevronLeft />
+      </Button>
+      <Button squared={true}>1</Button>
+      <Button flat={true}>
+        <ChevronRight />
+      </Button>
+    </ButtonGroup>
   </ThemeProvider>
 );
 
@@ -47,4 +61,9 @@ Small.args = {
 export const IconButton = Template.bind({});
 IconButton.args = {
   children: <Search />,
+};
+
+export const GroupedButtons = GroupTemplate.bind({});
+GroupTemplate.args = {
+  children: "1",
 };

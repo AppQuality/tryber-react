@@ -1,14 +1,15 @@
 import { components, Styles, Theme } from "react-select";
 import { aqBootstrapTheme } from "../theme/defaultTheme";
 import { ChevronDown, X } from "react-bootstrap-icons";
+import { borderRadius } from "react-select/src/theme";
 
 const aqTheme = (theme: Theme) => ({
-  borderRadius: 5,
+  borderRadius: aqBootstrapTheme.general.borderRadius,
   spacing: theme.spacing,
   colors: {
     ...theme.colors,
     primary: aqBootstrapTheme.palette.primary,
-    primary25: aqBootstrapTheme.colors.grey300,
+    primary25: aqBootstrapTheme.colors.gray300,
   },
 });
 
@@ -37,20 +38,85 @@ let customComponents = {
 
 const customStyle: Styles<any, any> = {
   control: (provided, state) => {
-    const borderColor = state.isFocused
-      ? `${aqBootstrapTheme.colors.grey600}`
-      : `${aqBootstrapTheme.colors.grey100}`;
-    const boxShadow = state.isFocused
-      ? `inset 0 1px 2px rgb(0 0 0 / 8%), 0 0 0 0.25rem rgb(23 64 92 / 25%)`
-      : `inset 0 1px 2px rgb(0 0 0 / 8%)`;
+    const borderColor = `${aqBootstrapTheme.colors.disabled}`;
+    const boxShadow = "none";
+
     return {
       ...provided,
       borderColor,
       boxShadow,
       ":hover": {
-        borderColor,
+        borderColor: borderColor,
       },
     };
+  },
+  dropdownIndicator: (provided, state) => {
+    const color = `${aqBootstrapTheme.colors.primary}`;
+    const fontSize = "1.25rem";
+    const transform = state.selectProps.menuIsOpen ? "rotate(180deg)" : "";
+
+    return {
+      ...provided,
+      color,
+      fontSize,
+      transform,
+    };
+  },
+  menu: (provided, state) => {
+    const borderColor = `${aqBootstrapTheme.colors.disabled}`;
+    const borderWidth = "1px";
+    const borderStyle = "solid";
+    const borderRadius = `${aqBootstrapTheme.general.borderRadius}px`;
+    const boxShadow = `${aqBootstrapTheme.general.boxShadow}`;
+
+    return {
+      ...provided,
+      borderColor,
+      borderRadius,
+      borderWidth,
+      borderStyle,
+      boxShadow,
+    };
+  },
+  groupHeading: (provided, state) => {
+    const fontFamily = `${aqBootstrapTheme.typography.fontFamily.mono}`;
+    const fontWeight = aqBootstrapTheme.typography.fontWeight.light;
+    const fontSize = `${aqBootstrapTheme.typography.fontSize.base}`;
+    const color = `${aqBootstrapTheme.colors.disabledDark}`;
+
+    return {
+      ...provided,
+      fontFamily,
+      fontWeight,
+      fontSize,
+      color,
+    };
+  },
+  noOptionsMessage: (provided, state) => {
+    const color = `${aqBootstrapTheme.colors.disabled}`;
+    const fontWeight = aqBootstrapTheme.typography.fontWeight.light;
+
+    return {
+      ...provided,
+      color,
+    };
+  },
+  option: (provided, state) => {
+    if (state.data.value == "loading-placeholder") {
+      const color = `${aqBootstrapTheme.colors.disabled}`;
+      const textAlign = "center";
+      const background = "none";
+      const fontWeight = aqBootstrapTheme.typography.fontWeight.light;
+
+      return {
+        ...provided,
+        color,
+        textAlign,
+        background,
+      };
+    }
+
+    return provided;
   },
 };
 

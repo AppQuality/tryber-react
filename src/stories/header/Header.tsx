@@ -1,18 +1,27 @@
-import React from "react";
 import "./header.scss";
-import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { UserInfo } from "./UserInfo";
 import { HeaderProps } from "./_types";
+import useWindowSize from "../../store/useWindowSize";
+import { Hamburger } from "../button/HamburgerButton";
+import styled from "styled-components";
+
+const StyledHeader = styled.div`
+  ${Hamburger} {
+    position: absolute;
+  }
+`;
 
 export const Header = ({
   logo,
   showLogin = true,
   isLoading,
+  isMenuOpen,
+  toggleMenu,
   user,
 }: HeaderProps) => {
-  let history = useHistory();
   const { i18n } = useTranslation();
+  useWindowSize();
   const handleLoginClick = () => {
     window.location.href = "/";
   };
@@ -27,8 +36,12 @@ export const Header = ({
         alert(e.message);
       });
   };
+
+  const showMobile = window.matchMedia("only screen and (max-width: 768px)")
+    .matches;
+
   return (
-    <div className="site-header">
+    <StyledHeader className="site-header">
       <div className="brand-logo">
         {logo ? (
           { logo }
@@ -42,13 +55,17 @@ export const Header = ({
         )}
       </div>
       <div className="header-menu" />
-      <UserInfo
-        showLogin={showLogin}
-        user={user}
-        isLoading={isLoading}
-        onLogin={handleLoginClick}
-        onLogout={handleLogoutClick}
-      />
-    </div>
+      {showMobile && user ? (
+        <Hamburger isOpen={isMenuOpen} clickToggle={toggleMenu} />
+      ) : (
+        <UserInfo
+          showLogin={showLogin}
+          user={user}
+          isLoading={isLoading}
+          onLogin={handleLoginClick}
+          onLogout={handleLogoutClick}
+        />
+      )}
+    </StyledHeader>
   );
 };

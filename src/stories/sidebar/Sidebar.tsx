@@ -1,27 +1,17 @@
 import { DesktopSidebar } from "./DesktopSidebar";
 import { MobileSidebar } from "./MobileSidebar";
 import { SidebarProps } from "./SidebarProps";
-import { useLayoutEffect, useState } from "react";
-
-function useWindowSize() {
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  return size;
-}
+import useWindowSize from "../../store/useWindowSize";
 
 export const Sidebar = ({
   children,
   items,
   languages,
-  onLogout,
   open = false,
+  route,
+  onLogout,
+  onSidebarEnter,
+  onSidebarLeave,
 }: SidebarProps) => {
   useWindowSize();
   if (window.matchMedia("only screen and (max-width: 768px)").matches) {
@@ -31,6 +21,7 @@ export const Sidebar = ({
         languages={languages}
         open={open}
         onLogout={onLogout}
+        route={route}
       >
         {children}
       </MobileSidebar>
@@ -41,7 +32,10 @@ export const Sidebar = ({
       items={items}
       languages={languages}
       open={open}
+      route={route}
       onLogout={onLogout}
+      onSidebarEnter={onSidebarEnter}
+      onSidebarLeave={onSidebarLeave}
     >
       {children}
     </DesktopSidebar>

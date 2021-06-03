@@ -21,6 +21,7 @@ const SidebarWrapper = styled.div(({ theme }: { theme: DefaultTheme }) => {
    float:left;
    left:0;
    width: ${sidebarWidth}px;
+   z-index: 1;
    
    ${SidebarIcons} {
      position:relative;
@@ -81,11 +82,17 @@ export const DesktopSidebar = ({
   children,
   items,
   languages,
+  onSidebarEnter,
+  onSidebarLeave,
   open = false,
+  route,
 }: SidebarProps) => {
   return (
     <>
-      <SidebarWrapper>
+      <SidebarWrapper
+        onMouseEnter={onSidebarEnter}
+        onMouseLeave={onSidebarLeave}
+      >
         <SidebarIcons>
           {items.map((i, idx) => (
             <SidebarIcon
@@ -95,19 +102,19 @@ export const DesktopSidebar = ({
               active={i.active}
             />
           ))}
-          <LanguageIcons langs={[languages.current]} />
+          <LanguageIcons langs={[languages.current]} route={route} />
         </SidebarIcons>
         <SidebarItems open={open}>
           <div>
             {items.map((i, idx) => (
               <SidebarText key={idx} url={i.url} text={i.text} />
             ))}
-            <LanguageIcons langs={languages.others} />
+            <LanguageIcons langs={languages.others} route={route} />
           </div>
         </SidebarItems>
       </SidebarWrapper>
       <NavigationContainer>{children}</NavigationContainer>
-      <div style={{ clear: "both" }}></div>
+      <div style={{ clear: "both" }} />
     </>
   );
 };

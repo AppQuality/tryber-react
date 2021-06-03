@@ -3,7 +3,7 @@ import { Field as FormikField, FieldProps } from "formik";
 import "./form.scss";
 import { Search } from "react-bootstrap-icons";
 
-interface GenericFieldInterface {
+export interface GenericFieldInterface {
   name: string;
   label?: string;
   onChange?: ChangeEventHandler;

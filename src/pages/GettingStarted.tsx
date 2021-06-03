@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Container, BSGrid, BSCol } from "../stories/layout/Layout";
 import { Card } from "../stories/card/Card";
-import Spinner from "../stories/spinner/Spinner";
+import { Spinner, SpinnerWrapper } from "../stories/spinner/Spinner";
 import { SmallTitle } from "../stories/typography/Typography";
 import { useTranslation } from "react-i18next";
+import { useUser } from "../store/useUser";
 import API from "../utils/api";
 import styled from "styled-components";
 import { SignupMailSocial } from "../features/SignupMailSocial";
@@ -21,6 +22,7 @@ const tagManagerArgs = {
 };
 
 export default function GettingStarted() {
+  const { user, error } = useUser();
   const [isLoading, setisLoading] = useState(true);
   const { t, i18n } = useTranslation();
   const [loadingMessage, setLoadingMessage] = useState(t("Loading"));
@@ -42,30 +44,21 @@ export default function GettingStarted() {
     </Helmet>
   );
   useEffect(() => {
-    API.me()
-      .then((res) => {
-        // user logged in
-        setLoadingMessage(t("Redirecting to your dashboard..."));
-        window.location.href = redirectUrl;
-      })
-      .catch((e) => {
-        if (e.statusCode === 403) {
+    if (user) {
+      setLoadingMessage(t("Redirecting to your dashboard..."));
+      window.location.href = redirectUrl;
+    } else {
+      if (error) {
+        if (error.statusCode === 403) {
           setisLoading(false);
           // user logged out, proceed
         } else {
-          alert(e.message);
+          alert(error.message);
         }
-      });
-  }, [redirectUrl, t]);
+      }
+    }
+  }, [redirectUrl, t, user, error]);
 
-  const SpinnerWrapper = styled.div`
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    min-height: 60vh;
-  `;
   if (isLoading) {
     return (
       <>

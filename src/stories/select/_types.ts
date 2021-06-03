@@ -19,9 +19,13 @@ export type GetOptionsAsync = (
 // () => { github.get('repositories').then( rep => rep.map(r => {r.id,r.name}))
 // () => { api.get('/api/users/me/bugs').then( bugs => bug.map( b => b.campaign_name).unique())
 
-export interface SelectProps {
+export interface SelectProps /*extends GenericFieldInterface*/ {
+  name: string;
+  label: string;
+  onChange?: (value: Option) => void;
   options: Options;
-  defaultValue?: string;
+  value: Option;
+  defaultValue?: Option;
   placeholder?: string;
   isMulti?: boolean;
   isClearable?: boolean;

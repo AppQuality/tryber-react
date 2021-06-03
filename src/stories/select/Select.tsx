@@ -1,5 +1,5 @@
-import ReactSelect from "react-select";
-import { useEffect, useReducer, useState } from "react";
+import ReactSelect, { ActionMeta, InputActionMeta } from "react-select";
+import React, { ChangeEvent, useEffect, useReducer, useState } from "react";
 import { aqTheme, customComponents, customStyle } from "./_styles";
 import {
   Option,
@@ -8,6 +8,7 @@ import {
   OptionActionType,
   SelectProps,
 } from "./_types";
+import { FormGroup, FormLabel } from "../typography/Typography";
 
 function updateOptions(state: Option[], action: OptionAction): Option[] {
   const { type, payload } = action;
@@ -28,9 +29,13 @@ let searchBuffer = "";
 let timer: NodeJS.Timeout | false = false;
 
 export const Select = ({
+  label,
+  name,
+  onChange,
+  value,
   options,
   defaultValue,
-  placeholder = "Select...",
+  placeholder = "Search",
   isMulti,
   isDisabled,
   isLoading,
@@ -68,7 +73,7 @@ export const Select = ({
         setLoading(false);
       });
     }
-  }, []);
+  }, [options]);
 
   const triggerUpdate = () => {
     if (options instanceof Function) {
@@ -94,7 +99,12 @@ export const Select = ({
     setOptions({ type: type, payload: res.results });
   };
 
-  const handleInputChange = (value: string) => {
+  const showInitialOptions = () => {
+    setOptions({ type: "set", payload: initialOptions.results });
+    setMore(initialOptions.more);
+  };
+
+  const handleInputChange = (value: string, actionMeta: InputActionMeta) => {
     if (options instanceof Function) {
       timer = false;
       searchBuffer = value;
@@ -112,20 +122,16 @@ export const Select = ({
     }
   };
 
-  const showInitialOptions = () => {
-    setOptions({ type: "set", payload: initialOptions.results });
-    setMore(initialOptions.more);
-  };
-
-  const handleChange = () => {
+  const handleChange = (value: any, actionMeta: ActionMeta<any>) => {
     if (options instanceof Function) {
       if (typeof searching === "string" && searching.length >= 2) {
         resetOptions();
       }
     }
+    if (onChange) onChange(value);
   };
 
-  const handleBlur = () => {
+  const handleBlur = (e: ChangeEvent) => {
     if (searching) {
       resetOptions();
     }
@@ -152,7 +158,7 @@ export const Select = ({
   if (loading) {
     optionsDropdown.push({
       value: "loading-placeholder",
-      label: "Loading more...",
+      label: "Loading data",
       isDisabled: true,
     });
   } else if (
@@ -166,28 +172,35 @@ export const Select = ({
       isDisabled: true,
     });
   }
+
   return (
-    <>
-      <ReactSelect
-        onBlur={handleBlur}
-        onChange={handleChange}
-        options={optionsDropdown}
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-        isDisabled={isDisabled}
-        isLoading={loading}
-        isClearable={isClearable}
-        isSearchable={isSearchable}
-        styles={customStyle}
-        isMulti={isMulti}
-        maxMenuHeight={200}
-        captureMenuScroll={true}
-        onMenuScrollToBottom={onMenuScrollToBottom}
-        // menuPlacement='auto'
-        onInputChange={handleInputChange}
-        theme={aqTheme}
-        {...customComponents}
-      />
-    </>
+    <FormGroup>
+      {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
+      <div>
+        <ReactSelect
+          id={name}
+          name={name}
+          value={optionsArray.filter((opt) => opt.value === value.value)}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          onInputChange={handleInputChange}
+          options={optionsDropdown}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          isDisabled={isDisabled}
+          isLoading={loading}
+          isClearable={isClearable}
+          isSearchable={isSearchable}
+          styles={customStyle}
+          isMulti={isMulti}
+          maxMenuHeight={200}
+          captureMenuScroll={true}
+          onMenuScrollToBottom={onMenuScrollToBottom}
+          // menuPlacement='auto'
+          theme={aqTheme}
+          {...customComponents}
+        />
+      </div>
+    </FormGroup>
   );
 };

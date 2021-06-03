@@ -14,4 +14,6 @@ export interface HeaderProps {
   user?: User;
   logo?: React.ReactNode;
   showLogin?: boolean;
+  isMenuOpen?: boolean;
+  toggleMenu?: () => void;
 }

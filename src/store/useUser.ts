@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { User, UserStatus } from "../types";
+import HttpError from "../utils/HttpError";
 import API from "../utils/api";
 
 export const useUser = (): UserStatus => {
   const [user, setUser] = useState<User>(undefined);
+  const [error, setError] = useState<HttpError | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -12,11 +14,7 @@ export const useUser = (): UserStatus => {
         const user = await API.me();
         setUser(user);
       } catch (err) {
-        if (err.statusCode === 403) {
-          // user logged out, proceed
-        } else {
-          alert(err.message);
-        }
+        setError(err);
       } finally {
         setLoading(false);
       }
@@ -28,5 +26,6 @@ export const useUser = (): UserStatus => {
   return {
     user: user,
     isLoading: loading,
+    error: error,
   };
 };

@@ -8,9 +8,8 @@ const SidebarMobileWrapper = styled.div(
   ({ theme }: { theme: DefaultTheme }) => {
     const { palette } = theme;
     return `
-		height:100vh;
 		background-color: ${palette.primary};
-		position:fixed;
+		position:sticky;
 		width: 100%;
 		padding-top: 20px;
 		top: ${marginFromTop}px;
@@ -76,6 +75,7 @@ export const MobileSidebar = ({
   languages,
   onLogout,
   open = false,
+  route,
 }: SidebarProps) => {
   if (!open) {
     return <>{children}</>;
@@ -92,7 +92,10 @@ export const MobileSidebar = ({
           );
         })}
 
-        <LanguageIcons langs={[languages.current].concat(languages.others)} />
+        <LanguageIcons
+          langs={[languages.current].concat(languages.others)}
+          route={route}
+        />
         <LogoutButton onClick={() => onLogout()}>
           Logout <BoxArrowRight />
         </LogoutButton>

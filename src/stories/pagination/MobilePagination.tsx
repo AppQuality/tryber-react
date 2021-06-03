@@ -22,17 +22,17 @@ export const MobilePagination = ({
   return (
     <MobilePaginationWrapper>
       <Button
-        disabled={current == 1}
+        disabled={current <= 1}
         squared={true}
         onClick={() => onPageChange(current - 1)}
       >
         <ChevronLeft />
       </Button>
       <MobilePaginationTextWrapper>
-        {mobileText(current, maxPages)}
+        {maxPages > 0 ? mobileText(current, maxPages) : null}
       </MobilePaginationTextWrapper>
       <Button
-        disabled={current == maxPages}
+        disabled={current >= maxPages}
         squared={true}
         onClick={() => onPageChange(current + 1)}
       >

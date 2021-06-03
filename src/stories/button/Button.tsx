@@ -41,6 +41,7 @@ export const ButtonGroup = styled.div`
   & > ${ButtonStyle}:not(:last-child):not(.dropdown-toggle) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    border-right-width: 0;
   }
   & > ${ButtonStyle}:not(:first-child) {
     margin-left: -1px;
