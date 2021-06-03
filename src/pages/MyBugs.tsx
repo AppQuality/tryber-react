@@ -46,9 +46,9 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
   const helmet = () => {
     return (
       <Helmet>
-        <title>{t("Uploaded bugs")} - AppQuality Crowd</title>
-        <meta property="og:title" content={t("Uploaded bugs")} />
-        <meta name="description" content={t("Uploaded bugs")} />
+        <title>{t("Uploaded Bugs")} - AppQuality Crowd</title>
+        <meta property="og:title" content={t("Uploaded Bugs")} />
+        <meta name="description" content={t("Uploaded Bugs")} />
       </Helmet>
     );
   };
@@ -84,7 +84,7 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
   if (isLoading) {
     return (
       <>
-        {helmet}
+        {helmet()}
         <TesterSidebar route={"my-bugs"} openFromHeader={isMenuOpen}>
           <Container>
             <SpinnerWrapper>
@@ -98,7 +98,7 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
   }
   return (
     <>
-      {helmet}
+      {helmet()}
       <TesterSidebar route={"my-bugs"} openFromHeader={isMenuOpen}>
         <Container>
           <h2 className="aq-mb-3">{t("My Bugs")}</h2>
