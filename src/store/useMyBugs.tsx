@@ -153,11 +153,16 @@ export const useMyBugs = () => {
     }
     return API.myBugs({
       query: { ...query, limit, start },
-    }).then((limitedResponse) => {
-      setTotalBugs(limitedResponse.total);
-      setBugsData(limitedResponse.results);
-      return query;
-    });
+    })
+      .then((limitedResponse) => {
+        setTotalBugs(limitedResponse.total);
+        setBugsData(limitedResponse.results);
+        return query;
+      })
+      .catch((e) => {
+        alert("Network error, retry");
+        throw e;
+      });
   };
   /**
    *  on Component Mount
