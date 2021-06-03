@@ -8,9 +8,8 @@ const SidebarMobileWrapper = styled.div(
   ({ theme }: { theme: DefaultTheme }) => {
     const { palette } = theme;
     return `
-		height:100vh;
 		background-color: ${palette.primary};
-		position:fixed;
+		position:sticky;
 		width: 100%;
 		padding-top: 20px;
 		top: ${marginFromTop}px;
