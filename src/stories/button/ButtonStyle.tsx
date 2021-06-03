@@ -6,7 +6,7 @@ interface ButtonStyleProps {
   type: ButtonProps["htmlType"];
 }
 export const ButtonStyle = styled.button(({ theme }: ButtonStyleProps) => {
-  const shadow = `box-shadow: inset 0 1px 0 rgb(255 255 255 / 15%), 0 1px 1px rgb(0 0 0 / 8%);`;
+  const shadow = `box-shadow:  0 1px 1px rgb(0 0 0 / 8%);`;
   const styles = Object.entries(theme.palette)
     .map(
       ([key, value]) => `
