@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Sidebar } from "../../stories/sidebar/Sidebar";
 import i18next from "i18next";
-import TesterSidebarArgs from "./args";
 import { useTranslation } from "react-i18next";
+import { SidebarProps } from "../../stories/sidebar/SidebarProps";
 
 import {
   AwardFill,
@@ -23,6 +23,38 @@ export interface TesterSidebarProps {
   openFromHeader?: boolean;
 }
 
+const TesterSidebarArgs: SidebarProps = {
+  open: false,
+  onLogout: () => {
+    fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout", {
+      method: "GET",
+    })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((e) => {
+        alert(e.message);
+      });
+  },
+  languages: {
+    current: { lang: "it" },
+    others: [
+      {
+        lang: "en",
+        onClick: (lang: string, route: string) => {
+          alert(`Switching to ${lang} and going to ${route}`);
+        },
+      },
+      {
+        lang: "es",
+        onClick: (lang: string, route: string) => {
+          alert(`Switching to ${lang} and going to ${route}`);
+        },
+      },
+    ],
+  },
+  items: [],
+};
 const TesterSidebar = ({
   route,
   children,
