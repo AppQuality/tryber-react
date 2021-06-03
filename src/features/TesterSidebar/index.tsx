@@ -78,7 +78,6 @@ const TesterSidebar = ({
       icon: <PersonFill />,
       active: route === "my-account",
       text: t("Profile"),
-      last: true,
     },
     {
       url:
@@ -88,6 +87,7 @@ const TesterSidebar = ({
       icon: <Laptop />,
       active: route === "personal-equipments",
       text: t("Devices"),
+      last: true,
     },
     {
       url:
@@ -124,6 +124,7 @@ const TesterSidebar = ({
       icon: <BugFill />,
       active: route === "my-bugs",
       text: t("Uploaded Bugs"),
+      last: true,
     },
     {
       url:
@@ -151,6 +152,7 @@ const TesterSidebar = ({
       icon: <ChatDotsFill />,
       active: route === "feedback-hub",
       text: t("Feedback"),
+      last: true,
     },
   ];
 

@@ -30,26 +30,6 @@ const TesterSidebarArgs = {
       },
     ],
   },
-  items: [
-    {
-      url: "#",
-      icon: <HouseFill />,
-      active: true,
-      text: "Dashboard",
-    },
-    {
-      url: "#",
-      icon: <PersonFill />,
-      active: false,
-      text: "Profilo",
-      last: true,
-    },
-    {
-      url: "#",
-      icon: <Laptop />,
-      active: false,
-      text: "Dispositivi",
-    },
-  ],
+  items: [],
 };
 export default TesterSidebarArgs;
