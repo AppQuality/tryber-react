@@ -27,9 +27,12 @@ const MyBugsFilters = ({
   status,
 }: MyBugsFiltersProps) => {
   const { t } = useTranslation();
-  let campaignValue = { label: t("All") };
-  let severityValue = { label: t("All") };
-  let statusValue = { label: t("All") };
+  const allCampaign = t("All", { context: "female" });
+  const allSeverity = t("All", { context: "male" });
+  const allStatus = t("All", { context: "female" });
+  let campaignValue = { label: allCampaign };
+  let severityValue = { label: allSeverity };
+  let statusValue = { label: allStatus };
   if (
     campaigns.selected &&
     campaigns.current.map((c) => c.value).includes(campaigns.selected.value)
@@ -54,7 +57,7 @@ const MyBugsFilters = ({
         label={t("Campaign")}
         onChange={campaigns.setSelected}
         name="campaign"
-        options={[{ label: t("All") }, ...campaigns.current]}
+        options={[{ label: allCampaign }, ...campaigns.current]}
         value={campaignValue}
         isSearchable
         placeholder={t("Search")}
@@ -64,7 +67,7 @@ const MyBugsFilters = ({
         label={t("Severity")}
         onChange={severities.setSelected}
         name="severity"
-        options={[{ label: t("All") }, ...severities.current]}
+        options={[{ label: allSeverity }, ...severities.current]}
         value={severityValue}
         isSearchable={false}
         placeholder={t("Search")}
@@ -74,7 +77,7 @@ const MyBugsFilters = ({
         label={t("Status")}
         onChange={status.setSelected}
         name="status"
-        options={[{ label: t("All") }, ...status.current]}
+        options={[{ label: allStatus }, ...status.current]}
         value={statusValue}
         isSearchable={false}
         placeholder={t("Search")}
