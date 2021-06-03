@@ -29,16 +29,19 @@ const Template: Story<SelectProps> = (args) => {
 export const SelectBase = Template.bind({});
 SelectBase.args = {
   options: basicOptions,
+  value: { label: "", value: "" },
 };
 
 export const GroupedAsync = Template.bind({});
 GroupedAsync.args = {
   options: groupedOptions,
   isSearchable: true,
+  value: { label: "", value: "" },
 };
 
 export const SelectAsync = Template.bind({});
 SelectAsync.args = {
   options: getAsyncOptions,
   isSearchable: true,
+  value: { label: "", value: "" },
 };
