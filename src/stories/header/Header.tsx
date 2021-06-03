@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 const StyledHeader = styled.div`
   ${Hamburger} {
-    position: fixed;
+    position: absolute;
   }
 `;
 
