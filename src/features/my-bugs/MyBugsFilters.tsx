@@ -27,6 +27,27 @@ const MyBugsFilters = ({
   status,
 }: MyBugsFiltersProps) => {
   const { t } = useTranslation();
+  let campaignValue = { label: t("All") };
+  let severityValue = { label: t("All") };
+  let statusValue = { label: t("All") };
+  if (
+    campaigns.selected &&
+    campaigns.current.map((c) => c.value).includes(campaigns.selected.value)
+  ) {
+    campaignValue = campaigns.selected;
+  }
+  if (
+    severities.selected &&
+    severities.current.map((s) => s.value).includes(severities.selected.value)
+  ) {
+    severityValue = severities.selected;
+  }
+  if (
+    status.selected &&
+    status.current.map((s) => s.value).includes(status.selected.value)
+  ) {
+    statusValue = status.selected;
+  }
   return (
     <div>
       <Select
@@ -34,7 +55,7 @@ const MyBugsFilters = ({
         onChange={campaigns.setSelected}
         name="campaign"
         options={[{ label: t("All") }, ...campaigns.current]}
-        value={campaigns.selected || { label: t("All") }}
+        value={campaignValue}
         isSearchable
         placeholder={t("Search")}
         isClearable={false}
@@ -44,7 +65,7 @@ const MyBugsFilters = ({
         onChange={severities.setSelected}
         name="severity"
         options={[{ label: t("All") }, ...severities.current]}
-        value={severities.selected || { label: t("All") }}
+        value={severityValue}
         isSearchable={false}
         placeholder={t("Search")}
         isClearable={false}
@@ -54,7 +75,7 @@ const MyBugsFilters = ({
         onChange={status.setSelected}
         name="status"
         options={[{ label: t("All") }, ...status.current]}
-        value={status.selected || { label: t("All") }}
+        value={statusValue}
         isSearchable={false}
         placeholder={t("Search")}
         isClearable={false}
