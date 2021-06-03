@@ -104,7 +104,7 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
           <h2 className="aq-mb-3">{t("Uploaded Bugs")}</h2>
           <BSGrid>
             <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
-              <Card title={t("Submitted bugs")}>
+              <Card className="aq-mb-3" title={t("Submitted bugs")}>
                 <MyBugsTable
                   data={data.current}
                   page={page.current}
@@ -119,7 +119,7 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
             </BSCol>
             <BSCol size="col-lg-3">
               <Card
-                className="stick-to-header-lg mb-3"
+                className="stick-to-header-lg aq-mb-3"
                 title={t("Filters")}
                 shadow={true}
               >
