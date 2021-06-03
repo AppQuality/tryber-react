@@ -9,7 +9,7 @@ env-restore:
 	cat src/config.json.bak > src/config.json
 	rm src/config.json.bak
 
-build:
+prod-build:
 	docker-compose build
 	
 devel-build:
@@ -19,7 +19,7 @@ devel-push: ecr-login set-env devel-build
 	docker-compose -f docker-compose-devel.yml push
 	make env-restore
 	
-push: ecr-login set-env build
+push: ecr-login set-env prod-build
 	docker-compose push
 	make env-restore
 
