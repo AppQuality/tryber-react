@@ -70,7 +70,7 @@ export const ButtonStyle = styled.button(({ theme }: ButtonStyleProps) => {
     border-radius: 5px;
 		
     background-color: transparent;
-    border-width: 0;
+    border-width: 1px;
     
     display: inline-block;
     font-family:${theme.typography.fontFamily.base};
@@ -88,14 +88,14 @@ export const ButtonStyle = styled.button(({ theme }: ButtonStyleProps) => {
     &.aq-btn-link {
       ${shadow}
       box-shadow: none;
-      border: 0px;
+      border-color: transparent;
       background-color: transparent;
       color: ${theme.palette.primary};
       text-decoration: underline;
     }
     &.aq-btn-light {
       ${shadow}
-      border: 0px;
+      border-color: transparent;
       background-color: ${theme.colors.white};
     }
     
