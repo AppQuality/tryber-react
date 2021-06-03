@@ -36,6 +36,7 @@ const MyBugsFilters = ({
         options={[{ label: t("All") }, ...campaigns.current]}
         value={campaigns.selected || { label: t("All") }}
         isSearchable
+        placeholder={t("Search")}
         isClearable={false}
       />
       <Select
@@ -45,6 +46,7 @@ const MyBugsFilters = ({
         options={[{ label: t("All") }, ...severities.current]}
         value={severities.selected || { label: t("All") }}
         isSearchable={false}
+        placeholder={t("Search")}
         isClearable={false}
       />
       <Select
@@ -54,6 +56,7 @@ const MyBugsFilters = ({
         options={[{ label: t("All") }, ...status.current]}
         value={status.selected || { label: t("All") }}
         isSearchable={false}
+        placeholder={t("Search")}
         isClearable={false}
       />
     </div>
