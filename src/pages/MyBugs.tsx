@@ -101,7 +101,7 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
       {helmet()}
       <TesterSidebar route={"my-bugs"} openFromHeader={isMenuOpen}>
         <Container>
-          <h2 className="aq-mb-3">{t("My Bugs")}</h2>
+          <h2 className="aq-mb-3">{t("Uploaded Bugs")}</h2>
           <BSGrid>
             <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
               <Card title={t("Submitted bugs")}>
