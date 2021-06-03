@@ -46,9 +46,9 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
   const helmet = () => {
     return (
       <Helmet>
-        <title>{t("My Bugs")} - AppQuality Crowd</title>
-        <meta property="og:title" content={t("My Bugs")} />
-        <meta name="description" content={t("My Bugs")} />
+        <title>{t("Uploaded bugs")} - AppQuality Crowd</title>
+        <meta property="og:title" content={t("Uploaded bugs")} />
+        <meta name="description" content={t("Uploaded bugs")} />
       </Helmet>
     );
   };
