@@ -1,10 +1,9 @@
-import config from "../../config.json";
 import { operations } from "../schema";
 
 export const login = (
   credentials: operations["post-authenticate"]["requestBody"]["content"]["application/json"]
 ) => {
-  return fetch(`${config.api}/authenticate`, {
+  return fetch(`${process.env.REACT_APP_API_URL}/authenticate`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -25,7 +24,7 @@ export const signup = async (
 ) => {
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set("Content-Type", "application/json");
-  const res = await fetch(`${config.api}/users`, {
+  const res = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
     method: "POST",
     headers: requestHeaders,
     body: JSON.stringify(data),

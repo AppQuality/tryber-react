@@ -1,14 +1,16 @@
-import config from "../../config.json";
 import HttpError from "../HttpError";
 import { operations } from "../schema";
 
 export const me = async (token?: string) => {
+  if (process.env.REACT_APP_DEFAULT_TOKEN)
+    token = process.env.REACT_APP_DEFAULT_TOKEN;
+
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set("Content-Type", "application/json");
   if (token) {
     requestHeaders.set("Authorization", "Bearer " + token);
   }
-  const res = await fetch(`${config.api}/users/me`, {
+  const res = await fetch(`${process.env.REACT_APP_API_URL}/users/me`, {
     method: "GET",
     headers: requestHeaders,
   });
@@ -27,6 +29,8 @@ export const myBugs = async ({
   token?: string;
   query?: operations["get-users-me-bugs"]["parameters"]["query"];
 }) => {
+  if (process.env.REACT_APP_DEFAULT_TOKEN)
+    token = process.env.REACT_APP_DEFAULT_TOKEN;
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set("Content-Type", "application/json");
   if (token) {
@@ -54,10 +58,13 @@ export const myBugs = async ({
     }
     params = "?" + urlps.toString();
   }
-  const res = await fetch(`${config.api}/users/me/bugs${params}`, {
-    method: "GET",
-    headers: requestHeaders,
-  });
+  const res = await fetch(
+    `${process.env.REACT_APP_API_URL}/users/me/bugs${params}`,
+    {
+      method: "GET",
+      headers: requestHeaders,
+    }
+  );
   if (res.ok) {
     return await res.json();
   } else {

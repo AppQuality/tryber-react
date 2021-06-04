@@ -13,12 +13,14 @@ import SiteHeader from "./features/SiteHeader";
 import { useState } from "react";
 import { Location } from "history";
 
-const tagManagerArgs = {
-  gtmId: "GTM-K55XC7S",
-  dataLayerName: "PageDataLayer",
-};
+if (process.env.REACT_APP_USE_GTM && process.env.REACT_APP_GTM_ID) {
+  const tagManagerArgs = {
+    gtmId: process.env.REACT_APP_GTM_ID,
+    dataLayerName: "PageDataLayer",
+  };
 
-TagManager.initialize(tagManagerArgs);
+  TagManager.initialize(tagManagerArgs);
+}
 const base = "/:locale(en|it)?";
 
 function App() {
