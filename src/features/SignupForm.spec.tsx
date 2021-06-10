@@ -5,8 +5,10 @@ import userEvent from "@testing-library/user-event";
 import API from "../utils/api";
 import { mocked } from "ts-jest/utils";
 
-import { ThemeProvider } from "styled-components";
-import { aqBootstrapTheme } from "../stories/theme/defaultTheme";
+import {
+  aqBootstrapTheme,
+  ThemeProvider,
+} from "@appquality/appquality-design-system";
 
 import { SignupForm } from "./SignupForm";
 import "../i18n";

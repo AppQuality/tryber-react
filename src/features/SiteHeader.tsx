@@ -1,4 +1,4 @@
-import { Header } from "../stories/header/Header";
+import { Header } from "@appquality/appquality-design-system";
 import { useUser } from "../store/useUser";
 
 const SiteHeader = ({

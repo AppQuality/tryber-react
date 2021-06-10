@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { Row } from "../stories/table/_types";
-import { Option } from "../stories/select/_types";
 import { operations } from "../utils/schema";
-import { Button } from "../stories/button/Button";
+import {
+  Button,
+  TableType,
+  SelectType,
+} from "@appquality/appquality-design-system";
 import API from "../utils/api";
 import { useTranslation } from "react-i18next";
 
 export const useMyBugs = () => {
   const { i18n, t } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState<Row[]>([]);
-  const [campaigns, setCampaigns] = useState<Option[]>([]);
-  const [severities, setSeverities] = useState<Option[]>([]);
-  const [status, setStatus] = useState<Option[]>([]);
-  const [selectedStatus, setSelectedStatus] = useState<Option | undefined>();
+  const [data, setData] = useState<TableType.Row[]>([]);
+  const [campaigns, setCampaigns] = useState<SelectType.Option[]>([]);
+  const [severities, setSeverities] = useState<SelectType.Option[]>([]);
+  const [status, setStatus] = useState<SelectType.Option[]>([]);
+  const [selectedStatus, setSelectedStatus] = useState<
+    SelectType.Option | undefined
+  >();
   const [selectedSeverity, setSelectedSeverity] = useState<
-    Option | undefined
+    SelectType.Option | undefined
   >();
   const [selectedCampaign, setSelectedCampaign] = useState<
-    Option | undefined
+    SelectType.Option | undefined
   >();
   const [page, setPage] = useState<number>(1);
   const [order, setOrder] = useState<"DESC" | "ASC">("DESC");
@@ -47,9 +51,9 @@ export const useMyBugs = () => {
   const setFilters = (
     results: operations["get-users-me-bugs"]["responses"]["200"]["content"]["application/json"]["results"]
   ) => {
-    let _campaigns: Option[] = [];
-    let _severities: Option[] = [];
-    let _status: Option[] = [];
+    let _campaigns: SelectType.Option[] = [];
+    let _severities: SelectType.Option[] = [];
+    let _status: SelectType.Option[] = [];
     results.forEach((res) => {
       if (
         typeof res.campaign === "undefined" ||
@@ -85,7 +89,7 @@ export const useMyBugs = () => {
   const setBugsData = (
     results: operations["get-users-me-bugs"]["responses"]["200"]["content"]["application/json"]["results"]
   ) => {
-    let _data: Row[] = [];
+    let _data: TableType.Row[] = [];
     results.forEach((res, i) => {
       if (
         typeof res.campaign === "undefined" ||

@@ -1,11 +1,16 @@
-import { Checkbox, Field } from "../stories/form/Form";
-import { Button } from "../stories/button/Button";
-import { Formik, Form, FormikProps } from "formik";
+import {
+  Checkbox,
+  Field,
+  Button,
+  Paragraph,
+  SmallTitle,
+  CSSGrid,
+  Formik,
+  Form,
+} from "@appquality/appquality-design-system";
 import * as yup from "yup";
 import { useTranslation, Trans } from "react-i18next";
 import API from "../utils/api";
-import { Paragraph, SmallTitle } from "../stories/typography/Typography";
-import { CSSGrid } from "../stories/layout/Layout";
 
 interface SignupFormProps {
   redirectUrl: string;
@@ -60,7 +65,7 @@ export const SignupForm = ({
       initialValues={initialValues}
       initialStatus={{ id: formId }}
     >
-      {(props: FormikProps<any>) => (
+      {(props) => (
         <Form id="signupForm">
           <SmallTitle as="h5">{t("Create an account")}</SmallTitle>
           <Field type="text" name="name" label={t("Name")} />

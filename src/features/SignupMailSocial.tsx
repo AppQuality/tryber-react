@@ -1,9 +1,12 @@
-import { Button } from "../stories/button/Button";
+import {
+  Button,
+  Paragraph,
+  SmallTitle,
+  CSSGrid,
+} from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import { Paragraph, SmallTitle } from "../stories/typography/Typography";
 import { SignupForm } from "./SignupForm";
 import signupImage from "../pages/assets/group-236.png";
-import { CSSGrid } from "../stories/layout/Layout";
 
 interface SignupMailSocialProps {
   redirectUrl?: string;
@@ -42,7 +45,7 @@ export const SignupMailSocial = ({
           </Paragraph>
           <CSSGrid min="70px" fill={true}>
             <div style={{ gridColumn: "auto / span 3" }}>
-              <div className="form-group">
+              <div className="aq-mb-3">
                 <Button type="primary" size="block" flat onClick={signupWithFb}>
                   {t("Facebook")}
                 </Button>

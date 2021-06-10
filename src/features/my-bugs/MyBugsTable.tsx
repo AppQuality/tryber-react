@@ -1,10 +1,12 @@
-import { Table } from "../../stories/table/Table";
-import { Pagination } from "../../stories/pagination/Pagination";
-import { Column, Row } from "../../stories/table/_types";
+import {
+  Table,
+  Pagination,
+  TableType,
+} from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 
 interface MyBugsTableProps {
-  data: Row[];
+  data: TableType.Row[];
   page: number;
   setPage: (page: number) => void;
   totalBugs: number;
@@ -25,7 +27,7 @@ const MyBugsTable = ({
   orderBy,
 }: MyBugsTableProps) => {
   const { t } = useTranslation();
-  const columns: Column[] = [
+  const columns: TableType.Column[] = [
     {
       title: "Id",
       dataIndex: "id",

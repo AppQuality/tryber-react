@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Container, BSGrid, BSCol } from "../stories/layout/Layout";
-import { Card } from "../stories/card/Card";
-import { Spinner, SpinnerWrapper } from "../stories/spinner/Spinner";
-import { SmallTitle } from "../stories/typography/Typography";
+import {
+  Container,
+  BSGrid,
+  BSCol,
+  Card,
+  Spinner,
+  SpinnerWrapper,
+  SmallTitle,
+} from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { useUser } from "../store/useUser";
-import API from "../utils/api";
-import styled from "styled-components";
 import { SignupMailSocial } from "../features/SignupMailSocial";
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
