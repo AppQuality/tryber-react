@@ -1,6 +1,7 @@
 import { Select, SelectType } from "@appquality/appquality-design-system";
 import { useState, useMemo } from "react";
 import countryList from "react-select-country-list";
+import { useTranslation } from "react-i18next";
 
 const CountrySelect = ({
   name,
@@ -11,6 +12,7 @@ const CountrySelect = ({
   initialValue: SelectType.Option;
   onChange: (v: SelectType.Option) => void;
 }) => {
+  const { t } = useTranslation();
   const [value, setValue] = useState(initialValue);
   const options = useMemo(
     () =>
@@ -22,7 +24,7 @@ const CountrySelect = ({
   return (
     <Select
       name={name}
-      label="Country"
+      label={t("Country")}
       value={value}
       onChange={(v) => {
         if (v == null) {
