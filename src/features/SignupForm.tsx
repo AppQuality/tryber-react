@@ -6,8 +6,12 @@ import {
   SmallTitle,
   CSSGrid,
   Formik,
+  FormikField,
+  FieldProps,
   Form,
+  SelectType,
 } from "@appquality/appquality-design-system";
+import CountrySelect from "./CountrySelect";
 import * as yup from "yup";
 import { useTranslation, Trans } from "react-i18next";
 import API from "../utils/api";
@@ -26,6 +30,7 @@ export const SignupForm = ({
     name: "",
     surname: "",
     email: "",
+    country: "",
     password: "",
     subscribe: "",
   };
@@ -33,6 +38,7 @@ export const SignupForm = ({
     name: yup.string().required(t("This is a required field")),
     surname: yup.string().required(t("This is a required field")),
     email: yup.string().email().required(t("This is a required field")),
+    country: yup.string().required(t("This is a required field")),
     password: yup
       .string()
       .min(6, t("Must be at least 6 character long"))
@@ -52,6 +58,7 @@ export const SignupForm = ({
           name: values.name,
           surname: values.surname,
           password: values.password,
+          country: values.country,
           email: values.email,
         };
         API.signup(data)
@@ -71,6 +78,23 @@ export const SignupForm = ({
           <Field type="text" name="name" label={t("Name")} />
           <Field type="text" name="surname" label={t("Surname")} />
           <Field type="email" name="email" label={t("Email")} />
+          <FormikField name="country">
+            {({
+              field, // { name, value, onChange, onBlur }
+              form,
+            }: FieldProps) => {
+              return (
+                <CountrySelect
+                  name="country"
+                  initialValue={field.value}
+                  onChange={(v: SelectType.Option) => {
+                    field.onChange(v.value);
+                    form.setFieldValue("country", v.value, true);
+                  }}
+                />
+              );
+            }}
+          </FormikField>
           <Field type="password" name="password" label={t("Password")} />
           <Paragraph small>
             {t(
@@ -84,7 +108,7 @@ export const SignupForm = ({
             )}
           />
           <CSSGrid min="70px" fill={true}>
-            <div className="form-group" style={{ gridColumn: "auto / span 3" }}>
+            <div className="aq-mb-3" style={{ gridColumn: "auto / span 3" }}>
               <Button
                 size="block"
                 htmlType="submit"
