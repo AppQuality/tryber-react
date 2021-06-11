@@ -1,7 +1,8 @@
 import { Select, SelectType } from "@appquality/appquality-design-system";
 import { useState, useMemo } from "react";
-import countryList from "react-select-country-list";
+import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import countries from "i18n-iso-countries";
 
 const CountrySelect = ({
   name,
@@ -14,11 +15,12 @@ const CountrySelect = ({
 }) => {
   const { t } = useTranslation();
   const [value, setValue] = useState(initialValue);
+  const enCountries = countries.getNames("en", { select: "official" });
   const options = useMemo(
     () =>
-      countryList()
-        .getData()
-        .map((c) => ({ label: c.label, value: c.label })),
+      Object.entries(
+        countries.getNames(i18next.language, { select: "official" })
+      ).map(([locale, name]) => ({ label: name, value: enCountries[locale] })),
     []
   );
   return (
