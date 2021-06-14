@@ -10,8 +10,10 @@ import {
   FieldProps,
   Form,
   SelectType,
+  FormGroup,
 } from "@appquality/appquality-design-system";
 import CountrySelect from "./CountrySelect";
+import BirthdayPicker from "./BirthdayPicker";
 import * as yup from "yup";
 import { useTranslation, Trans } from "react-i18next";
 import API from "../utils/api";
@@ -95,6 +97,29 @@ export const SignupForm = ({
               );
             }}
           </FormikField>
+          <FormGroup>
+            <FormikField name="birthDate">
+              {({
+                field, // { name, value, onChange, onBlur }
+                form,
+              }: FieldProps) => {
+                return (
+                  <BirthdayPicker
+                    name="birthDate"
+                    initialValue={field.value}
+                    onChange={(v: Date) => {
+                      field.onChange(v.toISOString().slice(0, 10));
+                      form.setFieldValue(
+                        "birthDate",
+                        v.toISOString().slice(0, 10),
+                        true
+                      );
+                    }}
+                  />
+                );
+              }}
+            </FormikField>
+          </FormGroup>
           <Field type="password" name="password" label={t("Password")} />
           <Paragraph small>
             {t(

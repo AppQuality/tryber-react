@@ -7,6 +7,7 @@ import {
   Spinner,
   SpinnerWrapper,
   SmallTitle,
+  DatepickerGlobalStyle,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { useUser } from "../store/useUser";
@@ -78,6 +79,7 @@ export default function GettingStarted() {
   return (
     <>
       {helmet}
+      <DatepickerGlobalStyle />
       <Container>
         <h2>{t("Become an AppQuality Tester")}</h2>
         <BSGrid>
