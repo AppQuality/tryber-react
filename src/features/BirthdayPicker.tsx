@@ -11,11 +11,16 @@ const BirthdayPicker = ({
   onChange: any;
 }) => {
   const { t } = useTranslation();
+  const now = new Date();
+
   return (
     <>
       <FormLabel>{t("Date of birth")}</FormLabel>
       <Datepicker
         id={name}
+        maxDate={
+          new Date(now.getFullYear() - 18, now.getMonth(), now.getDate())
+        }
         onChange={(v: { value: Date }) => onChange(v.value)}
       />
     </>
