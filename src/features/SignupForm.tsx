@@ -8,6 +8,7 @@ import {
   Formik,
   FormikField,
   FieldProps,
+  ErrorMessage,
   Form,
   SelectType,
   FormGroup,
@@ -107,18 +108,24 @@ export const SignupForm = ({
                 form,
               }: FieldProps) => {
                 return (
-                  <BirthdayPicker
-                    name="birthDate"
-                    initialValue={field.value}
-                    onChange={(v: Date) => {
-                      field.onChange(v.toISOString().slice(0, 10));
-                      form.setFieldValue(
-                        "birthDate",
-                        v.toISOString().slice(0, 10),
-                        true
-                      );
-                    }}
-                  />
+                  <>
+                    <BirthdayPicker
+                      name="birthDate"
+                      initialValue={field.value}
+                      onCancel={({ value }: { value: Date }) =>
+                        form.setFieldTouched("birthDate")
+                      }
+                      onChange={(v: Date) => {
+                        field.onChange(v.toISOString().slice(0, 10));
+                        form.setFieldValue(
+                          "birthDate",
+                          v.toISOString().slice(0, 10),
+                          true
+                        );
+                      }}
+                    />
+                    <ErrorMessage name="birthDate" />
+                  </>
                 );
               }}
             </FormikField>

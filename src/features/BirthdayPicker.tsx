@@ -5,10 +5,12 @@ import i18next from "i18next";
 const BirthdayPicker = ({
   name,
   initialValue,
+  onCancel,
   onChange,
 }: {
   name: string;
   initialValue: any;
+  onCancel: ({ value }: { value: Date }) => void;
   onChange: any;
 }) => {
   const { t } = useTranslation();
@@ -25,6 +27,7 @@ const BirthdayPicker = ({
         }
         setText={t("Set")}
         cancelText={t("Cancel")}
+        onCancel={onCancel}
         onChange={(v: { value: Date }) => onChange(v.value)}
       />
     </>
