@@ -101,35 +101,36 @@ export const SignupForm = ({
               );
             }}
           </FormikField>
-          <FormGroup>
-            <FormikField name="birthDate">
-              {({
-                field, // { name, value, onChange, onBlur }
-                form,
-              }: FieldProps) => {
-                return (
-                  <>
-                    <BirthdayPicker
-                      name="birthDate"
-                      initialValue={field.value}
-                      onCancel={({ value }: { value: Date }) =>
-                        form.setFieldTouched("birthDate")
-                      }
-                      onChange={(v: Date) => {
-                        field.onChange(v.toISOString().slice(0, 10));
-                        form.setFieldValue(
-                          "birthDate",
-                          v.toISOString().slice(0, 10),
-                          true
-                        );
-                      }}
-                    />
-                    <ErrorMessage name="birthDate" />
-                  </>
-                );
-              }}
-            </FormikField>
-          </FormGroup>
+          <FormikField name="birthDate">
+            {({
+              field, // { name, value, onChange, onBlur }
+              form,
+              meta,
+            }: FieldProps) => {
+              return (
+                <FormGroup
+                  className={meta.error && meta.touched ? "is-invalid" : ""}
+                >
+                  <BirthdayPicker
+                    name="birthDate"
+                    initialValue={field.value}
+                    onCancel={({ value }: { value: Date }) =>
+                      form.setFieldTouched("birthDate")
+                    }
+                    onChange={(v: Date) => {
+                      field.onChange(v.toISOString().slice(0, 10));
+                      form.setFieldValue(
+                        "birthDate",
+                        v.toISOString().slice(0, 10),
+                        true
+                      );
+                    }}
+                  />
+                  <ErrorMessage name="birthDate" />
+                </FormGroup>
+              );
+            }}
+          </FormikField>
           <Field type="password" name="password" label={t("Password")} />
           <Paragraph small>
             {t(
@@ -145,6 +146,7 @@ export const SignupForm = ({
           <CSSGrid min="70px" fill={true}>
             <div className="aq-mb-3" style={{ gridColumn: "auto / span 3" }}>
               <Button
+                type="success"
                 size="block"
                 htmlType="submit"
                 flat
