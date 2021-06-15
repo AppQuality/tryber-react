@@ -33,6 +33,7 @@ export const SignupForm = ({
     surname: "",
     email: "",
     country: "",
+    birthDate: "",
     password: "",
     subscribe: "",
   };
@@ -41,6 +42,7 @@ export const SignupForm = ({
     surname: yup.string().required(t("This is a required field")),
     email: yup.string().email().required(t("This is a required field")),
     country: yup.string().required(t("This is a required field")),
+    birthDate: yup.string().required(t("This is a required field")),
     password: yup
       .string()
       .min(6, t("Must be at least 6 character long"))
@@ -60,6 +62,7 @@ export const SignupForm = ({
           name: values.name,
           surname: values.surname,
           password: values.password,
+          birthDate: values.birthDate,
           country: values.country,
           email: values.email,
         };
