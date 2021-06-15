@@ -1,5 +1,6 @@
 import { Datepicker, FormLabel } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 const BirthdayPicker = ({
   name,
@@ -18,6 +19,7 @@ const BirthdayPicker = ({
       <FormLabel>{t("Date of birth")}</FormLabel>
       <Datepicker
         id={name}
+        locale={i18next.language}
         maxDate={
           new Date(now.getFullYear() - 18, now.getMonth(), now.getDate())
         }
