@@ -21,6 +21,8 @@ const BirthdayPicker = ({
         maxDate={
           new Date(now.getFullYear() - 18, now.getMonth(), now.getDate())
         }
+        setText={t("Set")}
+        cancelText={t("Cancel")}
         onChange={(v: { value: Date }) => onChange(v.value)}
       />
     </>

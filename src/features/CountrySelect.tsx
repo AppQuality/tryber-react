@@ -27,6 +27,7 @@ const CountrySelect = ({
     <Select
       name={name}
       label={t("Country")}
+      placeholder={t("Select a country")}
       value={value}
       onChange={(v) => {
         if (v == null) {
