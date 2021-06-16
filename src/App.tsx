@@ -1,10 +1,11 @@
-import { ThemeProvider } from "styled-components";
-import { aqBootstrapTheme } from "./stories/theme/defaultTheme";
-import GlobalStyle from "./stories/theme/globalStyle";
+import {
+  aqBootstrapTheme,
+  GlobalStyle,
+  ThemeProvider,
+} from "@appquality/appquality-design-system";
 import "./App.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { GettingStarted, MyBugs } from "./pages";
-import SignIn from "./pages/SignIn";
 import "./i18n";
 import { useTranslation } from "react-i18next";
 import TagManager from "react-gtm-module";
@@ -68,7 +69,6 @@ function App() {
               />
             )}
           />
-          <Route path={`${base}/login`} component={SignIn} />
         </Switch>
       </BrowserRouter>
     </ThemeProvider>

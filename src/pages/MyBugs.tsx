@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import { Container, BSGrid, BSCol } from "../stories/layout/Layout";
-import { Card } from "../stories/card/Card";
-import { Spinner, SpinnerWrapper } from "../stories/spinner/Spinner";
-import { SmallTitle } from "../stories/typography/Typography";
+import {
+  Container,
+  BSGrid,
+  BSCol,
+  Card,
+  SmallTitle,
+  Spinner,
+  SpinnerWrapper,
+} from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
 import TesterSidebar from "../features/TesterSidebar";
 import MyBugsTable from "../features/my-bugs/MyBugsTable";
@@ -85,7 +89,7 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
     return (
       <>
         {helmet()}
-        <Container>
+        <Container className="aq-py-3">
           <SpinnerWrapper>
             <Spinner />
             <SmallTitle as="h5">{t("loading")}</SmallTitle>
@@ -98,7 +102,7 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
     <>
       {helmet()}
       <TesterSidebar route={"my-bugs"} openFromHeader={isMenuOpen}>
-        <Container>
+        <Container className="aq-py-3">
           <h2 className="aq-mb-3">{t("Uploaded Bugs")}</h2>
           <BSGrid>
             <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">

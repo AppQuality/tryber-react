@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Sidebar } from "../../stories/sidebar/Sidebar";
+import { Sidebar, SidebarType } from "@appquality/appquality-design-system";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
-import { SidebarProps } from "../../stories/sidebar/SidebarProps";
 
 import {
   AwardFill,
@@ -23,7 +22,7 @@ export interface TesterSidebarProps {
   openFromHeader?: boolean;
 }
 
-const TesterSidebarArgs: SidebarProps = {
+const TesterSidebarArgs: SidebarType.SidebarProps = {
   open: false,
   onLogout: () => {
     fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout", {

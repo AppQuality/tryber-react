@@ -1,23 +1,22 @@
-import { Select } from "../../stories/select/Select";
-import { Option } from "../../stories/select/_types";
+import { Select, SelectType } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 
 interface MyBugsFiltersProps {
   // todo: get this from useMyBugs or they could diverge
   campaigns: {
-    current: Option[];
-    setSelected: (val: Option) => void;
-    selected: Option | undefined;
+    current: SelectType.Option[];
+    setSelected: (val: SelectType.Option) => void;
+    selected: SelectType.Option | undefined;
   };
   severities: {
-    current: Option[];
-    setSelected: (val: Option) => void;
-    selected: Option | undefined;
+    current: SelectType.Option[];
+    setSelected: (val: SelectType.Option) => void;
+    selected: SelectType.Option | undefined;
   };
   status: {
-    current: Option[];
-    setSelected: (val: Option) => void;
-    selected: Option | undefined;
+    current: SelectType.Option[];
+    setSelected: (val: SelectType.Option) => void;
+    selected: SelectType.Option | undefined;
   };
 }
 

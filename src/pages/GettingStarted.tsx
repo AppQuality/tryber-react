@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Container, BSGrid, BSCol } from "../stories/layout/Layout";
-import { Card } from "../stories/card/Card";
-import { Spinner, SpinnerWrapper } from "../stories/spinner/Spinner";
-import { SmallTitle } from "../stories/typography/Typography";
+import {
+  Container,
+  BSGrid,
+  BSCol,
+  Card,
+  Spinner,
+  SpinnerWrapper,
+  SmallTitle,
+  DatepickerGlobalStyle,
+} from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { useUser } from "../store/useUser";
-import API from "../utils/api";
-import styled from "styled-components";
 import { SignupMailSocial } from "../features/SignupMailSocial";
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
@@ -63,7 +67,7 @@ export default function GettingStarted() {
     return (
       <>
         {helmet}
-        <Container>
+        <Container className="aq-py-3">
           <SpinnerWrapper>
             <Spinner />
             <SmallTitle as="h5">{loadingMessage}</SmallTitle>
@@ -75,10 +79,15 @@ export default function GettingStarted() {
   return (
     <>
       {helmet}
-      <Container>
-        <h2>{t("Become an AppQuality Tester")}</h2>
+      <DatepickerGlobalStyle />
+      <Container className="aq-py-3">
         <BSGrid>
-          <BSCol size="col-lg-8 col-xxl-7">
+          <BSCol size="col-12">
+            <h2>{t("Become an AppQuality Tester")}</h2>
+          </BSCol>
+        </BSGrid>
+        <BSGrid>
+          <BSCol size="col-lg-9 col-xxl-8">
             <Card>
               <SignupMailSocial />
             </Card>
