@@ -25,6 +25,7 @@ const BirthdayPicker = ({
         maxDate={
           new Date(now.getFullYear() - 18, now.getMonth(), now.getDate())
         }
+        placeholder={t("Select your birth date")}
         setText={t("Set")}
         cancelText={t("Cancel")}
         onCancel={onCancel}
