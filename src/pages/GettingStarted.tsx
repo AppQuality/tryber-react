@@ -87,7 +87,7 @@ export default function GettingStarted() {
           </BSCol>
         </BSGrid>
         <BSGrid>
-          <BSCol size="col-lg-8 col-xxl-7">
+          <BSCol size="col-lg-9 col-xxl-8">
             <Card>
               <SignupMailSocial />
             </Card>
