@@ -1,4 +1,6 @@
-/node_modules
+node_modules
 .github
 .git
+.husky
 generate-devel-token.json
+build

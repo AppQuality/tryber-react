@@ -67,7 +67,7 @@ export default function GettingStarted() {
     return (
       <>
         {helmet}
-        <Container>
+        <Container className="aq-py-3">
           <SpinnerWrapper>
             <Spinner />
             <SmallTitle as="h5">{loadingMessage}</SmallTitle>
@@ -80,7 +80,7 @@ export default function GettingStarted() {
     <>
       {helmet}
       <DatepickerGlobalStyle />
-      <Container>
+      <Container className="aq-py-3">
         <BSGrid>
           <BSCol size="col-12">
             <h2>{t("Become an AppQuality Tester")}</h2>

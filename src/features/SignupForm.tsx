@@ -143,7 +143,7 @@ export const SignupForm = ({
               </Button>
             </div>
           </CSSGrid>
-          <Paragraph small>
+          <Paragraph small className="aq-mb-3">
             <Trans i18nKey="By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>">
               By clicking this button, you accept the
               <a

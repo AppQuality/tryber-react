@@ -39,7 +39,7 @@ export const SignupMailSocial = ({
             <SmallTitle as="h5">
               {t("Log in with an existing account")}
             </SmallTitle>
-            <Paragraph>
+            <Paragraph className="aq-mb-3">
               {t(
                 "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard"
               )}
