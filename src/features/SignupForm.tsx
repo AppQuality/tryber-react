@@ -70,8 +70,6 @@ export const SignupForm = ({
           birthDate: values.birthDate,
           country: values.country,
           email: values.email,
-          country: "cambodia", //ignore
-          birthDate: "1990-01-01", //ignore
         };
         API.signup(data)
           .then((res) => {
