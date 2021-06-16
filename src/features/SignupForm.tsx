@@ -41,7 +41,10 @@ export const SignupForm = ({
   const validationSchema = {
     name: yup.string().required(t("This is a required field")),
     surname: yup.string().required(t("This is a required field")),
-    email: yup.string().email().required(t("This is a required field")),
+    email: yup
+      .string()
+      .email(t("Email must be a valid email"))
+      .required(t("This is a required field")),
     country: yup.string().required(t("This is a required field")),
     birthDate: yup.string().required(t("This is a required field")),
     password: yup
