@@ -1,20 +1,23 @@
-import { Select, SelectType } from "@appquality/appquality-design-system";
+import {
+  Select,
+  SelectType,
+  FormikField,
+  FieldProps,
+  ErrorMessage,
+  FormGroup,
+} from "@appquality/appquality-design-system";
 import { useState, useMemo } from "react";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import countries from "i18n-iso-countries";
+import { ChangeEvent } from "react";
 
-const CountrySelect = ({
-  name,
-  initialValue,
-  onChange,
-}: {
-  name: string;
-  initialValue: SelectType.Option;
-  onChange: (v: SelectType.Option) => void;
-}) => {
+const CountrySelect = ({ name, label }: { name: string; label: string }) => {
+  const [value, setValue] = useState<SelectType.Option>({
+    label: "",
+    value: "",
+  });
   const { t } = useTranslation();
-  const [value, setValue] = useState(initialValue);
   const enCountries = countries.getNames("en", { select: "official" });
   const options = useMemo(
     () =>
@@ -24,20 +27,36 @@ const CountrySelect = ({
     []
   );
   return (
-    <Select
-      name={name}
-      label={t("Country")}
-      placeholder={t("Select a country")}
-      value={value}
-      onChange={(v) => {
-        if (v == null) {
-          v = { label: "", value: "" };
-        }
-        onChange(v);
-        setValue(v);
+    <FormikField name={name}>
+      {({
+        field, // { name, value, onChange, onBlur }
+        form,
+      }: FieldProps) => {
+        return (
+          <FormGroup>
+            <Select
+              name={name}
+              label={label}
+              placeholder={t("Select a country")}
+              value={value}
+              onBlur={(e: ChangeEvent) => {
+                form.setFieldTouched(name);
+              }}
+              onChange={(v) => {
+                if (v == null) {
+                  v = { label: "", value: "" };
+                }
+                field.onChange(v.value);
+                form.setFieldValue(name, v.value, true);
+                setValue(v);
+              }}
+              options={options}
+            />
+            <ErrorMessage name={name} />
+          </FormGroup>
+        );
       }}
-      options={options}
-    />
+    </FormikField>
   );
 };
 

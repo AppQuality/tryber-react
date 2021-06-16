@@ -87,23 +87,7 @@ export const SignupForm = ({
           <Field type="text" name="name" label={t("Name")} />
           <Field type="text" name="surname" label={t("Surname")} />
           <Field type="email" name="email" label={t("Email")} />
-          <FormikField name="country">
-            {({
-              field, // { name, value, onChange, onBlur }
-              form,
-            }: FieldProps) => {
-              return (
-                <CountrySelect
-                  name="country"
-                  initialValue={field.value}
-                  onChange={(v: SelectType.Option) => {
-                    field.onChange(v.value);
-                    form.setFieldValue("country", v.value, true);
-                  }}
-                />
-              );
-            }}
-          </FormikField>
+          <CountrySelect name="country" label={t("Country")} />
           <FormikField name="birthDate">
             {({
               field, // { name, value, onChange, onBlur }
