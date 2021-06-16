@@ -130,7 +130,7 @@ export const SignupForm = ({
               "I agree to receive earning opportunity emails from AppQuality"
             )}
           />
-          <CSSGrid min="72px" fill={true}>
+          <CSSGrid min="78px" fill={true}>
             <div className="aq-mb-3" style={{ gridColumn: "auto / span 3" }}>
               <Button
                 type="success"

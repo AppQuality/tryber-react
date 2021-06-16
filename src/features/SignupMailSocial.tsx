@@ -44,7 +44,7 @@ export const SignupMailSocial = ({
                 "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard"
               )}
             </Paragraph>
-            <CSSGrid min="72px" fill={true}>
+            <CSSGrid min="78px" fill={true}>
               <div style={{ gridColumn: "auto / span 3" }}>
                 <div className="aq-mb-3">
                   <Button
