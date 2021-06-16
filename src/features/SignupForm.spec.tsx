@@ -10,7 +10,6 @@ import {
   ThemeProvider,
 } from "@appquality/appquality-design-system";
 
-
 import { SignupForm } from "./SignupForm";
 import "../i18n";
 
