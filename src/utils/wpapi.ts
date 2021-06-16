@@ -13,6 +13,9 @@ const WPAPI = {
       `${process.env.REACT_APP_CROWD_WP_URL}/wp-admin/admin-ajax.php`,
       {
         method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
         body: queryString.stringify({
           username,
           password,
@@ -34,6 +37,9 @@ const WPAPI = {
       `${process.env.REACT_APP_CROWD_WP_URL}/wp-admin/admin-ajax.php`,
       {
         method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
         body: queryString.stringify({
           action: "appq_get_nonce",
         }),

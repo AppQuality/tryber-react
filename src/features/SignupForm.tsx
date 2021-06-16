@@ -76,7 +76,7 @@ export const SignupForm = ({
             WPAPI.getNonce()
               .then((nonce) => {
                 WPAPI.login({
-                  username: res.username,
+                  username: values.email,
                   password: values.password,
                   security: nonce,
                 })
