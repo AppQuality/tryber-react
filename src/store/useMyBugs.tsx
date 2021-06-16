@@ -35,13 +35,13 @@ export const useMyBugs = () => {
   const coloredStatus = (statusId: number | undefined) => {
     switch (statusId) {
       case 1:
-        return "text-danger";
+        return "aq-text-danger";
       case 2:
-        return "text-success";
+        return "aq-text-success";
       case 3:
-        return "text-primary";
+        return "aq-text-primary";
       case 4:
-        return "text-warning";
+        return "aq-text-warning";
       default:
         break;
     }
