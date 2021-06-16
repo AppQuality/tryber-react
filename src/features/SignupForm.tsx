@@ -119,7 +119,7 @@ export const SignupForm = ({
             }}
           </FormikField>
           <Field type="password" name="password" label={t("Password")} />
-          <Paragraph small>
+          <Paragraph small className="aq-mb-3">
             {t(
               "The password must be at least 6 characters long, contain an uppercase letter, a lowercase letter and a number."
             )}
@@ -143,7 +143,7 @@ export const SignupForm = ({
               </Button>
             </div>
           </CSSGrid>
-          <Paragraph small className="aq-mb-3">
+          <Paragraph small>
             <Trans i18nKey="By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>">
               By clicking this button, you accept the
               <a
