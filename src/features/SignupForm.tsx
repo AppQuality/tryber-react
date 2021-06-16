@@ -18,6 +18,7 @@ import BirthdayPicker from "./BirthdayPicker";
 import * as yup from "yup";
 import { useTranslation, Trans } from "react-i18next";
 import API from "../utils/api";
+import WPAPI from "../utils/wpapi";
 
 interface SignupFormProps {
   redirectUrl: string;
@@ -71,8 +72,20 @@ export const SignupForm = ({
           email: values.email,
         };
         API.signup(data)
-          .then(() => {
-            window.location.href = redirectUrl;
+          .then((res) => {
+            WPAPI.getNonce()
+              .then((nonce) => {
+                WPAPI.login({
+                  username: values.email,
+                  password: values.password,
+                  security: nonce,
+                })
+                  .then(() => {
+                    window.location.href = redirectUrl;
+                  })
+                  .catch((e) => alert(e.message));
+              })
+              .catch((e) => alert(e.message));
           })
           .catch((e) => alert(e.message))
           .finally(() => actions.setSubmitting(false));
