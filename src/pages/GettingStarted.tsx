@@ -81,7 +81,11 @@ export default function GettingStarted() {
       {helmet}
       <DatepickerGlobalStyle />
       <Container>
-        <h2>{t("Become an AppQuality Tester")}</h2>
+        <BSGrid>
+          <BSCol size="col-12">
+            <h2>{t("Become an AppQuality Tester")}</h2>
+          </BSCol>
+        </BSGrid>
         <BSGrid>
           <BSCol size="col-lg-8 col-xxl-7">
             <Card>
