@@ -45,7 +45,7 @@ export const SignupMailSocial = ({
               )}
             </Paragraph>
             <CSSGrid min="78px" fill={true}>
-              <div style={{ gridColumn: "auto / span 3" }}>
+              <div style={{ gridColumn: "auto / span 3" }} className="aq-mb-3">
                 <div className="aq-mb-3">
                   <Button
                     type="primary"
