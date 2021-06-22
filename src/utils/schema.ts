@@ -111,6 +111,10 @@ export interface paths {
     get: operations["get-users-me-bugs"];
     parameters: {};
   };
+  "/users/me/experience": {
+    /** Get all the experience points earned in AppQuality. */
+    get: operations["get-users-me-experience"];
+  };
 }
 
 export interface components {
@@ -199,6 +203,9 @@ export interface components {
       email?: string;
       image?: string;
       id?: number;
+      wp_user_id?: number;
+      role?: string;
+      is_verified?: boolean;
     };
     Bug: {
       severity?: components["schemas"]["BugSeverity"];
@@ -297,6 +304,10 @@ export interface components {
     filterBy: { [key: string]: any };
     /** How to order values (ASC, DESC) */
     order: "ASC" | "DESC";
+    /** A comma separated list of fields which will be searched */
+    searchBy: string;
+    /** The value to search for */
+    search: string;
   };
 }
 
@@ -640,6 +651,8 @@ export interface operations {
           surname: string;
           email: string;
           password: string;
+          country: string;
+          birthDate: string;
         };
       };
     };
@@ -687,7 +700,7 @@ export interface operations {
         /** Key-value Array for item filtering */
         filterBy?: components["parameters"]["filterBy"];
         /** The field for item order */
-        orderBy?: "title" | "campaign" | "status" | "id";
+        orderBy?: "title" | "campaign" | "status" | "id" | "severity";
         /** How to order values (ASC, DESC) */
         order?: components["parameters"]["order"];
       };
@@ -711,4 +724,57 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
+  /** Get all the experience points earned in AppQuality. */
+  "get-users-me-experience": {
+    parameters: {
+      query: {
+        /** Max items to retrieve */
+        limit?: components["parameters"]["limit"];
+        /** Items to skip for pagination */
+        start?: components["parameters"]["start"];
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+        /** How to order values (ASC, DESC) */
+        order?: components["parameters"]["order"];
+        /** A comma separated list of fields which will be searched */
+        searchBy?: components["parameters"]["searchBy"];
+        /** The value to search for */
+        search?: components["parameters"]["search"];
+        /** The field for item order */
+        orderBy?: "amount" | "campaign" | "date" | "note" | "activity" | "id";
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results: {
+              id: number;
+              activity: {
+                id: number;
+              };
+              campaign: {
+                id: number;
+              };
+              date: string;
+              amount: number;
+              note?: string;
+            }[];
+            limit?: number;
+            size?: number;
+            start?: number;
+            /** The total number of experience entries */
+            total?: number;
+            /** The total sum of experience */
+            sum: number;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
 }
+
+export interface external {}

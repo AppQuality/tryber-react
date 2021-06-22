@@ -1,13 +1,14 @@
 import { login, signup } from "./authenticate";
 import { campaigns } from "./campaigns";
-import { me, myBugs } from "./users";
+import { me, myBugs, experiencePoints } from "./users";
 
 const API = {
-  login: login,
-  campaigns: campaigns,
-  me: me,
-  signup: signup,
-  myBugs: myBugs,
+  login,
+  campaigns,
+  me,
+  signup,
+  myBugs,
+  experiencePoints,
 };
 
 export default API;

@@ -5,7 +5,7 @@ import {
 } from "@appquality/appquality-design-system";
 import "./App.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import { GettingStarted, MyBugs } from "./pages";
+import { GettingStarted, MyBugs, ExperiencePoints } from "./pages";
 import "./i18n";
 import { useTranslation } from "react-i18next";
 import TagManager from "react-gtm-module";
@@ -57,6 +57,21 @@ function App() {
           <Route
             path={`${base}/my-bugs`}
             component={() => <MyBugs isMenuOpen={isMenuOpen} />}
+          />
+          <Route
+            path={`${base}/experience-points`}
+            component={() => <ExperiencePoints isMenuOpen={isMenuOpen} />}
+          />
+          <Route
+            path={`${base}/it/punti-esperienza`}
+            component={({ location }: { location: Location }) => (
+              <Redirect
+                to={{
+                  ...location,
+                  pathname: "/it/experience-points",
+                }}
+              />
+            )}
           />
           <Route
             path={`${base}/it/i-miei-bug`}
