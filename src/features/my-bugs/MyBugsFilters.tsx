@@ -52,36 +52,42 @@ const MyBugsFilters = ({
   }
   return (
     <div>
-      <Select
-        label={t("Campaign")}
-        onChange={campaigns.setSelected}
-        name="campaign"
-        options={[{ label: allCampaign }, ...campaigns.current]}
-        value={campaignValue}
-        isSearchable
-        placeholder={t("Search")}
-        isClearable={false}
-      />
-      <Select
-        label={t("Severity")}
-        onChange={severities.setSelected}
-        name="severity"
-        options={[{ label: allSeverity }, ...severities.current]}
-        value={severityValue}
-        isSearchable={false}
-        placeholder={t("Search")}
-        isClearable={false}
-      />
-      <Select
-        label={t("Status")}
-        onChange={status.setSelected}
-        name="status"
-        options={[{ label: allStatus }, ...status.current]}
-        value={statusValue}
-        isSearchable={false}
-        placeholder={t("Search")}
-        isClearable={false}
-      />
+      <div className="aq-mb-3">
+        <Select
+          label={t("Campaign")}
+          onChange={campaigns.setSelected}
+          name="campaign"
+          options={[{ label: allCampaign }, ...campaigns.current]}
+          value={campaignValue}
+          isSearchable
+          placeholder={t("Search")}
+          isClearable={false}
+        />
+      </div>
+      <div className="aq-mb-3">
+        <Select
+          label={t("Severity")}
+          onChange={severities.setSelected}
+          name="severity"
+          options={[{ label: allSeverity }, ...severities.current]}
+          value={severityValue}
+          isSearchable={false}
+          placeholder={t("Search")}
+          isClearable={false}
+        />
+      </div>
+      <div className="aq-mb-3">
+        <Select
+          label={t("Status")}
+          onChange={status.setSelected}
+          name="status"
+          options={[{ label: allStatus }, ...status.current]}
+          value={statusValue}
+          isSearchable={false}
+          placeholder={t("Search")}
+          isClearable={false}
+        />
+      </div>
     </div>
   );
 };
