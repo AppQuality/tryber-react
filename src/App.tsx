@@ -45,7 +45,6 @@ function App() {
       </Helmet>
       <BrowserRouter>
         <SiteHeader
-          showLogin={false}
           isMenuOpen={isMenuOpen}
           toggleMenu={() => setIsMenuOpen(!isMenuOpen)}
         />
