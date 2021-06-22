@@ -20,7 +20,7 @@ interface ExperiencePointsFiltersProps {
   };
 }
 
-const MyBugsFilters = ({
+const ExperiencePointsFilters = ({
   campaigns,
   dates,
   activities,
@@ -86,4 +86,4 @@ const MyBugsFilters = ({
   );
 };
 
-export default MyBugsFilters;
+export default ExperiencePointsFilters;

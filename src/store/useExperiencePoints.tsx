@@ -30,15 +30,15 @@ export const useExperiencePoints = () => {
   const mapActivityName = (activityId: number) => {
     switch (activityId) {
       case 1:
-        return "compl campagn";
+        return t("Campaign Completion");
       case 2:
-        return "bug eval (punti + -)";
+        return t("Bug Evaluation");
       case 3:
-        return "bug eval (correzione)";
+        return t("Points Fix");
       case 4:
-        return "extra";
+        return t("Extra Award");
       default:
-        return "other";
+        return t("Other");
     }
   };
 
@@ -77,7 +77,7 @@ export const useExperiencePoints = () => {
     });
 
     setCampaigns(_campaigns.filter((el) => el != null).reverse());
-    setDates(_dates.filter((el) => el != null));
+    setDates(Object.values(_dates).filter((el) => el != null));
     setActivities(_activities.filter((el) => el != null));
   };
 
