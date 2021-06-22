@@ -55,9 +55,9 @@ export const useExperiencePoints = () => {
         typeof res.date === "undefined"
       )
         return;
-      if (res.campaign?.id) {
+      if (res.campaign?.id && res.campaign?.title) {
         _campaigns[res.campaign.id] = {
-          label: `CP${res.campaign?.id}` || "",
+          label: `CP${res.campaign?.id} - ${res.campaign?.title}` || "",
           value: res.campaign.id.toString(),
         };
       }
@@ -98,7 +98,10 @@ export const useExperiencePoints = () => {
         amount: res.amount,
         date: res.date,
         activity: mapActivityName(res.activity.id),
-        campaign: `CP${res.campaign?.id}`,
+        campaign:
+          res.campaign.title && res.campaign.id > 0
+            ? `CP${res.campaign.id}`
+            : `-`,
         note: res.note,
       });
     });

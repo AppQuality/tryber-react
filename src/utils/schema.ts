@@ -756,6 +756,7 @@ export interface operations {
               };
               campaign: {
                 id: number;
+                title: string;
               };
               date: string;
               amount: number;
