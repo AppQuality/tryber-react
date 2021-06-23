@@ -70,7 +70,12 @@ export const useExperiencePoints = () => {
       if (res.date) {
         let d = new Date(res.date);
         _dates[d.getTime()] = {
-          label: res.date || "",
+          label:
+            d.toLocaleDateString(i18n.language, {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+            }) || "",
           value: res.date,
         };
       }
@@ -93,10 +98,15 @@ export const useExperiencePoints = () => {
       )
         return;
 
+      let d = new Date(res.date);
       _data.push({
         key: i,
         amount: res.amount,
-        date: res.date,
+        date: d.toLocaleString(i18n.language, {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        }),
         activity: mapActivityName(res.activity.id),
         campaign:
           res.campaign.title && res.campaign.id > 0
