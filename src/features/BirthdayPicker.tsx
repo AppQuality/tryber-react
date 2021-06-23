@@ -18,7 +18,7 @@ const BirthdayPicker = ({
 
   return (
     <>
-      <FormLabel>{t("Date of birth")}</FormLabel>
+      <FormLabel htmlFor={name} label={t("Date of birth")} />
       <Datepicker
         id={name}
         locale={i18next.language}

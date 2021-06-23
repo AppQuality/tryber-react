@@ -15,7 +15,6 @@ const SiteHeader = ({
   const homeUrl = i18next.language == "en" ? "/" : `/${i18next.language}/`;
   return (
     <Header
-      showLogin={showLogin}
       isLoading={isLoading}
       logoUrl={homeUrl}
       user={user}
