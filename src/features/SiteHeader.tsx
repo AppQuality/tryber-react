@@ -2,7 +2,7 @@ import { Header } from "@appquality/appquality-design-system";
 import { useUser } from "../store/useUser";
 import { useTranslation } from "react-i18next";
 import { useLogin } from "../hooks/useLogin";
-import { LoginModal } from "./LoginModal";
+import { LoginModal } from "./login-modal/LoginModal";
 
 const SiteHeader = ({
   isMenuOpen,
