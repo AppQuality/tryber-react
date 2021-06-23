@@ -40,6 +40,7 @@ export default function ExperiencePoints({
     page,
     totalEntries,
     limit,
+    search,
     campaigns,
     activities,
     dates,
@@ -120,6 +121,7 @@ export default function ExperiencePoints({
                 shadow={true}
               >
                 <ExperiencePointsFilters
+                  search={search}
                   campaigns={campaigns}
                   activities={activities}
                   dates={dates}

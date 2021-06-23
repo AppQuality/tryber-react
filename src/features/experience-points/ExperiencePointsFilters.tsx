@@ -1,8 +1,20 @@
-import { Select, SelectType } from "@appquality/appquality-design-system";
+import {
+  Select,
+  SelectType,
+  Field,
+  Input,
+  FormLabel,
+} from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import useDebounce from "../../store/useDebounce";
+import { useEffect, useState } from "react";
 
 interface ExperiencePointsFiltersProps {
   // todo: get this from useMyBugs or they could diverge
+  search: {
+    current: string;
+    set: (val: string) => void;
+  };
   campaigns: {
     current: SelectType.Option[];
     setSelected: (val: SelectType.Option) => void;
@@ -21,10 +33,14 @@ interface ExperiencePointsFiltersProps {
 }
 
 const ExperiencePointsFilters = ({
+  search,
   campaigns,
   dates,
   activities,
 }: ExperiencePointsFiltersProps) => {
+  const [currentSearch, setCurrentSearch] = useState(search.current);
+  const debouncedSearch = useDebounce(currentSearch, 500);
+  useEffect(() => search.set(debouncedSearch), [debouncedSearch]);
   const { t } = useTranslation();
   const allCampaign = t("All", { context: "female" });
   const allActivities = t("All", { context: "female" });
@@ -50,8 +66,13 @@ const ExperiencePointsFilters = ({
   ) {
     dateValue = dates.selected;
   }
+
   return (
     <div>
+      <div className="aq-mb-3">
+        <FormLabel htmlFor="search" label={t("Search the reason")} />
+        <Input type="search" id="search" onChange={setCurrentSearch} />
+      </div>
       <div className="aq-mb-3">
         <Select
           label={t("Campaign")}

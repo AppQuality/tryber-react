@@ -11,7 +11,7 @@ export const useExperiencePoints = () => {
   const [campaigns, setCampaigns] = useState<SelectType.Option[]>([]);
   const [activities, setActivities] = useState<SelectType.Option[]>([]);
   const [dates, setDates] = useState<SelectType.Option[]>([]);
-  const [search, setSearch] = useState<string | undefined>();
+  const [search, setSearch] = useState<string>("");
   const [selectedActivity, setSelectedActivity] = useState<
     SelectType.Option | undefined
   >();
@@ -117,7 +117,8 @@ export const useExperiencePoints = () => {
     if (
       selectedCampaign?.value ||
       selectedDate?.value ||
-      selectedActivity?.value
+      selectedActivity?.value ||
+      search
     ) {
       query.filterBy = {};
       if (selectedCampaign?.value)
@@ -125,6 +126,11 @@ export const useExperiencePoints = () => {
       if (selectedDate?.value) query.filterBy.date = selectedDate.value;
       if (selectedActivity?.value)
         query.filterBy.activity = selectedActivity.value;
+
+      if (search) {
+        query.search = search;
+        query.searchBy = "note";
+      }
     }
     return API.experiencePoints({
       query: { ...query, limit, start },
@@ -158,7 +164,14 @@ export const useExperiencePoints = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [order, orderBy, selectedCampaign, selectedActivity, selectedDate]);
+  }, [
+    order,
+    orderBy,
+    selectedCampaign,
+    selectedActivity,
+    selectedDate,
+    search,
+  ]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -185,6 +198,10 @@ export const useExperiencePoints = () => {
       selected: selectedCampaign,
       set: setCampaigns,
       setSelected: setSelectedCampaign,
+    },
+    search: {
+      current: search,
+      set: setSearch,
     },
     activities: {
       current: activities,

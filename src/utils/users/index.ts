@@ -98,6 +98,12 @@ export const experiencePoints = async ({
     if (query.orderBy) {
       urlps.set("orderBy", query.orderBy);
     }
+    if (query.searchBy) {
+      urlps.set("searchBy", query.searchBy);
+    }
+    if (query.search) {
+      urlps.set("search", query.search);
+    }
     if (query.limit) {
       urlps.set("limit", query.limit.toString());
     }
