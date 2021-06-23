@@ -4,9 +4,11 @@ import {
   BSGrid,
   BSCol,
   Card,
+  Button,
   SmallTitle,
   Spinner,
   SpinnerWrapper,
+  Paragraph,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
@@ -100,7 +102,7 @@ export default function ExperiencePoints({
         <Container className="aq-py-3">
           <h2 className="aq-mb-3">{t("Experience Points")}</h2>
           <BSGrid>
-            <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
+            <BSCol size="col-lg-9 ">
               <Card className="aq-mb-3" title={t("History")}>
                 <ExperiencePointsTable
                   data={data.current}
@@ -115,18 +117,41 @@ export default function ExperiencePoints({
               </Card>
             </BSCol>
             <BSCol size="col-lg-3">
-              <Card
-                className="stick-to-header-lg aq-mb-3"
-                title={t("Filters")}
-                shadow={true}
-              >
-                <ExperiencePointsFilters
-                  search={search}
-                  campaigns={campaigns}
-                  activities={activities}
-                  dates={dates}
-                />
-              </Card>
+              <div className="stick-to-header-lg ">
+                <Card className="aq-mb-3" title={t("Filters")} shadow={true}>
+                  <ExperiencePointsFilters
+                    search={search}
+                    campaigns={campaigns}
+                    activities={activities}
+                    dates={dates}
+                  />
+                </Card>
+                <Card className="aq-mb-3" shadow={true}>
+                  <div className="aq-mb-1">
+                    <strong>{t("How do experience points work?")}</strong>
+                  </div>
+                  <Paragraph className="aq-mb-3">
+                    {t(
+                      "Learn more about how we calculate and attribute experience points."
+                    )}
+                  </Paragraph>
+                  <Button
+                    onClick={(e) => {
+                      let url = t("/discover-experience-points/");
+                      if (e.ctrlKey) {
+                        window.open(url, "_blank");
+                      } else {
+                        window.location.href = url;
+                      }
+                    }}
+                    type="primary"
+                    size="block"
+                    flat={true}
+                  >
+                    {t("Learn More")}
+                  </Button>
+                </Card>
+              </div>
             </BSCol>
           </BSGrid>
         </Container>
