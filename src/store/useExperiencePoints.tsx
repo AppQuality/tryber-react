@@ -81,8 +81,11 @@ export const useExperiencePoints = () => {
       }
     });
 
+    let datesFilter = Object.values(_dates).filter((el) => el != null);
+    if (orderBy == "date" && order == "ASC")
+      datesFilter = datesFilter.reverse();
     setCampaigns(_campaigns.filter((el) => el != null).reverse());
-    setDates(Object.values(_dates).filter((el) => el != null));
+    setDates(datesFilter);
     setActivities(_activities.filter((el) => el != null));
   };
 
@@ -101,7 +104,7 @@ export const useExperiencePoints = () => {
       let d = new Date(res.date);
       _data.push({
         key: i,
-        amount: res.amount,
+        amount: `${res.amount > 0 ? `+${res.amount}` : res.amount}pts`,
         date: d.toLocaleString(i18n.language, {
           year: "numeric",
           month: "2-digit",
