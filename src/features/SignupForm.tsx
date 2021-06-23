@@ -144,17 +144,17 @@ export const SignupForm = ({
             )}
           />
           <CSSGrid min="78px" fill={true}>
-            <div className="aq-mb-3" style={{ gridColumn: "auto / span 3" }}>
-              <Button
-                type="success"
-                size="block"
-                htmlType="submit"
-                flat
-                disabled={props.isSubmitting || !props.dirty || !props.isValid}
-              >
-                {props.isSubmitting ? "...wait" : t("Signup now")}
-              </Button>
-            </div>
+            <Button
+              className="aq-mb-3"
+              style={{ gridColumn: "auto / span 3" }}
+              type="success"
+              size="block"
+              htmlType="submit"
+              flat
+              disabled={props.isSubmitting || !props.dirty || !props.isValid}
+            >
+              {props.isSubmitting ? "...wait" : t("Signup now")}
+            </Button>
           </CSSGrid>
           <Paragraph small>
             <Trans i18nKey="By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>">

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const StyledLoginModal = styled.div`
+  .capitalize-first:first-letter {
+    text-transform: capitalize;
+  }
   @media (min-width: 768px) {
     .modal-login-form {
       max-width: 321px;
