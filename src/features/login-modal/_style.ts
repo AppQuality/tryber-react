@@ -23,7 +23,7 @@ export const StyledLoginModal = styled.div`
       padding: 0 32px;
     }
     .modal-body {
-      background: url("static/login-modal-art.svg") right bottom no-repeat;
+      background: url("/static/login-modal-art.svg") right bottom no-repeat;
       min-height: 400px;
     }
     .login-social {

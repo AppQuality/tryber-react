@@ -111,13 +111,13 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                 <div className="aq-mx-1" onClick={handleloginLn}>
                   <img
                     alt="login with linkedin"
-                    src="static/linkedin-logo.svg"
+                    src="/static/linkedin-logo.svg"
                   />
                 </div>
                 <div className="aq-mx-1" onClick={handleloginFb}>
                   <img
                     alt="login with facebook"
-                    src="static/facebook-logo.svg"
+                    src="/static/facebook-logo.svg"
                   />
                 </div>
               </div>
