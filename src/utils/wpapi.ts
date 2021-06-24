@@ -1,4 +1,6 @@
 import queryString from "query-string";
+import { useTranslation } from "react-i18next";
+
 const WPAPI = {
   login: ({
     username,
@@ -9,6 +11,7 @@ const WPAPI = {
     password: string;
     security: string;
   }) => {
+    const { t } = useTranslation();
     return fetch(
       `${process.env.REACT_APP_CROWD_WP_URL}/wp-admin/admin-ajax.php`,
       {
@@ -29,10 +32,11 @@ const WPAPI = {
         if (res.loggedin) {
           return true;
         }
-        throw new Error("Login failed.");
+        throw new Error(t("Login failed"));
       });
   },
   getNonce: () => {
+    const { t } = useTranslation();
     return fetch(
       `${process.env.REACT_APP_CROWD_WP_URL}/wp-admin/admin-ajax.php`,
       {
@@ -50,7 +54,7 @@ const WPAPI = {
         if (res.success) {
           return res.data;
         }
-        throw new Error("Nonce not found.");
+        throw new Error(t("Nonce not found."));
       });
   },
 };
