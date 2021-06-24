@@ -71,7 +71,12 @@ const ExperiencePointsFilters = ({
     <div>
       <div className="aq-mb-3">
         <FormLabel htmlFor="search" label={t("Search the reason")} />
-        <Input type="search" id="search" onChange={setCurrentSearch} />
+        <Input
+          placeholder={t("Search here")}
+          type="search"
+          id="search"
+          onChange={setCurrentSearch}
+        />
       </div>
       <div className="aq-mb-3">
         <Select
