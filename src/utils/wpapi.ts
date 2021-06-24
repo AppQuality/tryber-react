@@ -1,5 +1,5 @@
 import queryString from "query-string";
-import { useTranslation } from "react-i18next";
+import i18next from "../i18n";
 
 const WPAPI = {
   login: ({
@@ -11,7 +11,7 @@ const WPAPI = {
     password: string;
     security: string;
   }) => {
-    const { t } = useTranslation();
+    const { t } = i18next;
     return fetch(
       `${process.env.REACT_APP_CROWD_WP_URL}/wp-admin/admin-ajax.php`,
       {
@@ -36,7 +36,7 @@ const WPAPI = {
       });
   },
   getNonce: () => {
-    const { t } = useTranslation();
+    const { t } = i18next;
     return fetch(
       `${process.env.REACT_APP_CROWD_WP_URL}/wp-admin/admin-ajax.php`,
       {
