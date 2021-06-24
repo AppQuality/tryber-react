@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@appquality/appquality-design-system": "^0.1.54",
+    "@appquality/appquality-design-system": "^0.1.65",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -51,7 +51,7 @@
     ]
   },
   "scripts": {
-    "generate-schema": "APIURL=$(node -p -e \"require('./src/config.json').api\"); npx openapi-typescript $APIURL/reference/ --output src/utils/schema.ts ",
+    "generate-schema": ". ./.env.development; npx openapi-typescript $REACT_APP_API_URL/reference/ --output src/utils/schema.ts ",
     "eslint": "npx eslint src/",
     "start": "react-scripts start",
     "build": "react-scripts build",

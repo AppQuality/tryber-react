@@ -168,6 +168,7 @@ export const useMyBugs = () => {
    */
   useEffect(() => {
     setIsLoading(true);
+    setPage(1);
 
     fetchBugsFromAPI(0)
       .then((query) => {
@@ -175,7 +176,6 @@ export const useMyBugs = () => {
           query,
         }).then((totalResponse) => {
           setFilters(totalResponse.results);
-          setPage(1);
         });
       })
       .catch((e) => {
