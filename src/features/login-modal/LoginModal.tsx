@@ -89,7 +89,10 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
               <Field type="password" name="password" label={t("Password")} />
               <Text className="aq-text-center aq-mb-3 capitalize-first">
                 <strong>
-                  <a href="/wp-login.php?action=lostpassword">
+                  <a
+                    className="aq-text-info"
+                    href="/wp-login.php?action=lostpassword"
+                  >
                     {t("forgot your password?")}
                   </a>
                 </strong>
