@@ -126,7 +126,7 @@ export default function ExperiencePoints({
                     dates={dates}
                   />
                 </Card>
-                <Card className="aq-mb-3" shadow={true}>
+                <Card shadow={true}>
                   <div className="aq-mb-1">
                     <strong>{t("How do experience points work?")}</strong>
                   </div>
