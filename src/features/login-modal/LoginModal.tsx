@@ -16,7 +16,7 @@ import { useState } from "react";
 
 export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
   const { t, i18n } = useTranslation();
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string | boolean>(false);
   const initialValues = {
     email: "",
     password: "",
@@ -75,6 +75,11 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                     </Link>
                   </Trans>
                 </div>
+                {error && (
+                  <div className="aq-text-left aq-mt-1 aq-text-danger">
+                    {error}
+                  </div>
+                )}
               </Text>
               <Field type="email" name="email" label={t("Email")} />
               <Field type="password" name="password" label={t("Password")} />
@@ -87,28 +92,28 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                 className="aq-mb-3 capitalize-first"
                 type="success"
                 size="block"
+                flat
                 htmlType="submit"
                 disabled={props.isSubmitting || !props.dirty || !props.isValid}
               >
-                {props.isSubmitting ? "wait..." : t("login")}
+                {props.isSubmitting ? t("wait...") : t("login")}
               </Button>
-              {error && <div className="aq-text-danger">{error}</div>}
               <Text className="capitalize-first aq-text-center aq-mb-3">
                 {t("or login with")}
               </Text>
               <div className="login-social aq-text-center">
-                <Button type="light" onClick={handleloginLn}>
+                <span onClick={handleloginLn}>
                   <img
                     alt="login with linkedin"
                     src="static/linkedin-logo.svg"
                   />
-                </Button>
-                <Button type="light" onClick={handleloginFb}>
+                </span>
+                <span onClick={handleloginFb}>
                   <img
                     alt="login with facebook"
                     src="static/facebook-logo.svg"
                   />
-                </Button>
+                </span>
               </div>
             </Form>
           )}
