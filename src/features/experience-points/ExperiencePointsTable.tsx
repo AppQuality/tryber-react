@@ -29,7 +29,7 @@ const ExperiencePointsTable = ({
   const { t } = useTranslation();
   const columns: TableType.Column[] = [
     {
-      title: "Points",
+      title: t("Points"),
       dataIndex: "amount",
       key: "amount",
       width: "10ch",
