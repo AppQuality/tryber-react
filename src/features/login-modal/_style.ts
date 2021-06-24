@@ -5,14 +5,16 @@ export const StyledLoginModal = styled.div`
   .capitalize-first:first-letter {
     text-transform: capitalize;
   }
+  .aq-text-small {
+    font-size: ${aqBootstrapTheme.typography.fontSize.small};
+  }
   .login-social {
-    margin: 0 auto;
-    max-width: 78px;
-    display: flex;
-    justify-content: space-between;
+    text-align: center;
     > * {
-      width: 28px;
-      height: 28px;
+      display: inline-block;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
     }
   }
   @media (min-width: ${aqBootstrapTheme.grid.breakpoints.md}) {
@@ -23,6 +25,12 @@ export const StyledLoginModal = styled.div`
     .modal-body {
       background: url("static/login-modal-art.svg") right bottom no-repeat;
       min-height: 400px;
+    }
+    .login-social {
+      > * {
+        width: 28px;
+        height: 28px;
+      }
     }
   }
 `;

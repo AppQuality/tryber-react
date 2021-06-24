@@ -70,13 +70,17 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                 <div>
                   <Trans i18nKey="or <1>create an account</1>">
                     or
-                    <Link onClick={onClose} to={gettingStartedUrl}>
+                    <Link
+                      className="aq-text-info"
+                      onClick={onClose}
+                      to={gettingStartedUrl}
+                    >
                       create an account
                     </Link>
                   </Trans>
                 </div>
                 {error && (
-                  <div className="aq-text-left aq-mt-1 aq-text-danger">
+                  <div className="aq-text-left aq-mt-1 aq-text-danger aq-text-small">
                     {error}
                   </div>
                 )}
@@ -84,9 +88,11 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
               <Field type="email" name="email" label={t("Email")} />
               <Field type="password" name="password" label={t("Password")} />
               <Text className="aq-text-center aq-mb-3 capitalize-first">
-                <a href="/wp-login.php?action=lostpassword">
-                  {t("forgot your password?")}
-                </a>
+                <strong>
+                  <a href="/wp-login.php?action=lostpassword">
+                    {t("forgot your password?")}
+                  </a>
+                </strong>
               </Text>
               <Button
                 className="aq-mb-3 capitalize-first"
@@ -102,18 +108,18 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                 {t("or login with")}
               </Text>
               <div className="login-social aq-text-center">
-                <span onClick={handleloginLn}>
+                <div className="aq-mx-1" onClick={handleloginLn}>
                   <img
                     alt="login with linkedin"
                     src="static/linkedin-logo.svg"
                   />
-                </span>
-                <span onClick={handleloginFb}>
+                </div>
+                <div className="aq-mx-1" onClick={handleloginFb}>
                   <img
                     alt="login with facebook"
                     src="static/facebook-logo.svg"
                   />
-                </span>
+                </div>
               </div>
             </Form>
           )}
