@@ -5,10 +5,10 @@ import {
   BSCol,
   Card,
   Button,
-  SmallTitle,
+  Title,
   Spinner,
   SpinnerWrapper,
-  Paragraph,
+  Text,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
@@ -89,7 +89,9 @@ export default function ExperiencePoints({
         <Container className="aq-py-3">
           <SpinnerWrapper>
             <Spinner />
-            <SmallTitle as="h5">{t("loading")}</SmallTitle>
+            <Title size="xs" as="h5">
+              {t("loading")}
+            </Title>
           </SpinnerWrapper>
         </Container>
       </>
@@ -130,11 +132,11 @@ export default function ExperiencePoints({
                   <div className="aq-mb-1">
                     <strong>{t("How do experience points work?")}</strong>
                   </div>
-                  <Paragraph className="aq-mb-3">
+                  <Text className="aq-mb-3">
                     {t(
                       "Learn more about how we calculate and attribute experience points."
                     )}
-                  </Paragraph>
+                  </Text>
                   <Button
                     onClick={(e) => {
                       let url = t("/discover-experience-points/");

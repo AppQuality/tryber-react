@@ -6,7 +6,7 @@ import {
   Card,
   Spinner,
   SpinnerWrapper,
-  SmallTitle,
+  Title,
   DatepickerGlobalStyle,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
@@ -70,7 +70,9 @@ export default function GettingStarted() {
         <Container className="aq-py-3">
           <SpinnerWrapper>
             <Spinner />
-            <SmallTitle as="h5">{loadingMessage}</SmallTitle>
+            <Title size="xs" as="h5">
+              {loadingMessage}
+            </Title>
           </SpinnerWrapper>
         </Container>
       </>
