@@ -153,7 +153,7 @@ export const SignupForm = ({
               flat
               disabled={props.isSubmitting || !props.dirty || !props.isValid}
             >
-              {props.isSubmitting ? "...wait" : t("Signup now")}
+              {props.isSubmitting ? t("wait...") : t("Signup now")}
             </Button>
           </CSSGrid>
           <Paragraph small>
