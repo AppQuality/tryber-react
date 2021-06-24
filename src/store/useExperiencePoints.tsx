@@ -158,6 +158,7 @@ export const useExperiencePoints = () => {
    */
   useEffect(() => {
     setIsLoading(true);
+    setPage(1);
 
     fetchExpFromAPI(0)
       .then((query) => {
@@ -165,7 +166,6 @@ export const useExperiencePoints = () => {
           query,
         }).then((totalResponse) => {
           setFilters(totalResponse.results);
-          setPage(1);
         });
       })
       .catch((e) => {
