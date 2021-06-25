@@ -4,7 +4,7 @@ import {
   BSGrid,
   BSCol,
   Card,
-  SmallTitle,
+  Title,
   Spinner,
   SpinnerWrapper,
 } from "@appquality/appquality-design-system";
@@ -92,7 +92,9 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
         <Container className="aq-py-3">
           <SpinnerWrapper>
             <Spinner />
-            <SmallTitle as="h5">{t("loading")}</SmallTitle>
+            <Title size="xs" as="h5">
+              {t("loading")}
+            </Title>
           </SpinnerWrapper>
         </Container>
       </>

@@ -1,7 +1,7 @@
 import {
   Button,
-  Paragraph,
-  SmallTitle,
+  Text,
+  Title,
   CSSGrid,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
@@ -36,14 +36,14 @@ export const SignupMailSocial = ({
           }}
         >
           <div>
-            <SmallTitle as="h5">
+            <Title size="xs" as="h5">
               {t("Log in with an existing account")}
-            </SmallTitle>
-            <Paragraph className="aq-mb-3">
+            </Title>
+            <Text className="aq-mb-3">
               {t(
                 "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard"
               )}
-            </Paragraph>
+            </Text>
             <CSSGrid min="78px" fill={true}>
               <div style={{ gridColumn: "auto / span 3" }} className="aq-mb-3">
                 <div className="aq-mb-3">

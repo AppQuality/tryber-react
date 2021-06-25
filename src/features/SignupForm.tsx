@@ -2,8 +2,8 @@ import {
   Checkbox,
   Field,
   Button,
-  Paragraph,
-  SmallTitle,
+  Text,
+  Title,
   CSSGrid,
   Formik,
   FormikField,
@@ -96,7 +96,9 @@ export const SignupForm = ({
     >
       {(props) => (
         <Form id="signupForm">
-          <SmallTitle as="h5">{t("Create an account")}</SmallTitle>
+          <Title size="xs" as="h5">
+            {t("Create an account")}
+          </Title>
           <Field type="text" name="name" label={t("Name")} />
           <Field type="text" name="surname" label={t("Surname")} />
           <Field type="email" name="email" label={t("Email")} />
@@ -132,11 +134,11 @@ export const SignupForm = ({
             }}
           </FormikField>
           <Field type="password" name="password" label={t("Password")} />
-          <Paragraph small className="aq-mb-3">
+          <Text small className="aq-mb-3">
             {t(
               "The password must be at least 6 characters long, contain an uppercase letter, a lowercase letter and a number."
             )}
-          </Paragraph>
+          </Text>
           <Checkbox
             name="subscribe"
             label={t(
@@ -156,7 +158,7 @@ export const SignupForm = ({
               {props.isSubmitting ? t("wait...") : t("Signup now")}
             </Button>
           </CSSGrid>
-          <Paragraph small>
+          <Text small>
             <Trans i18nKey="By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>">
               By clicking this button, you accept the
               <a
@@ -175,7 +177,7 @@ export const SignupForm = ({
                 Privacy Policy
               </a>
             </Trans>
-          </Paragraph>
+          </Text>
         </Form>
       )}
     </Formik>
