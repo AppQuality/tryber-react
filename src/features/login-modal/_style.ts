@@ -2,12 +2,6 @@ import styled from "styled-components";
 import { aqBootstrapTheme } from "@appquality/appquality-design-system";
 
 export const StyledLoginModal = styled.div`
-  .capitalize-first:first-letter {
-    text-transform: capitalize;
-  }
-  .aq-text-small {
-    font-size: ${aqBootstrapTheme.typography.fontSize.small};
-  }
   .login-social {
     text-align: center;
     > * {

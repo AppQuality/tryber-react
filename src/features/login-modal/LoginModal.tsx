@@ -63,28 +63,33 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
         >
           {(props) => (
             <Form className="modal-login-form">
-              <Text className="aq-text-center aq-mb-3">
-                <div className="capitalize-first">
-                  <strong>{t("login with your credentials")}</strong>
-                </div>
-                <div>
-                  <Trans i18nKey="or <1>create an account</1>">
-                    or
-                    <Link
-                      className="aq-text-info"
-                      onClick={onClose}
-                      to={gettingStartedUrl}
-                    >
-                      create an account
-                    </Link>
-                  </Trans>
-                </div>
-                {error && (
-                  <div className="aq-text-left aq-m2-1 aq-text-danger aq-text-small">
-                    {error}
+              <div className="aq-mb-3">
+                <Text className="aq-text-center">
+                  <div className="capitalize-first">
+                    <strong>{t("login with your credentials")}</strong>
                   </div>
+                  <div>
+                    <Trans i18nKey="or <1>create an account</1>">
+                      or
+                      <Link
+                        className="aq-text-info"
+                        onClick={onClose}
+                        to={gettingStartedUrl}
+                      >
+                        create an account
+                      </Link>
+                    </Trans>
+                  </div>
+                  {error && (
+                    <div className="loginform-errormessage">{error}</div>
+                  )}
+                </Text>
+                {error && (
+                  <Text className="aq-text-left aq-text-danger aq-pt-1" small>
+                    {error}
+                  </Text>
                 )}
-              </Text>
+              </div>
               <Field type="email" name="email" label={t("Email")} />
               <Field type="password" name="password" label={t("Password")} />
               <Text className="aq-text-center aq-mb-3 capitalize-first">
