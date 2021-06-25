@@ -80,9 +80,6 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                       </Link>
                     </Trans>
                   </div>
-                  {error && (
-                    <div className="loginform-errormessage">{error}</div>
-                  )}
                 </Text>
                 {error && (
                   <Text className="aq-text-left aq-text-danger aq-pt-1" small>
