@@ -129,7 +129,7 @@ export default function ExperiencePoints({
                   />
                 </Card>
                 <Card shadow={true}>
-                  <div className="aq-mb-1">
+                  <div className="aq-mb-2">
                     <strong>{t("How do experience points work?")}</strong>
                   </div>
                   <Text className="aq-mb-3">

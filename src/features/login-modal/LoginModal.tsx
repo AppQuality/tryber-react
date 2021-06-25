@@ -80,7 +80,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                   </Trans>
                 </div>
                 {error && (
-                  <div className="aq-text-left aq-mt-1 aq-text-danger aq-text-small">
+                  <div className="aq-text-left aq-m2-1 aq-text-danger aq-text-small">
                     {error}
                   </div>
                 )}
@@ -111,13 +111,13 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                 {t("or login with")}
               </Text>
               <div className="login-social aq-text-center">
-                <div className="aq-mx-1" onClick={handleloginLn}>
+                <div className="aq-mx-2" onClick={handleloginLn}>
                   <img
                     alt="login with linkedin"
                     src="/static/linkedin-logo.svg"
                   />
                 </div>
-                <div className="aq-mx-1" onClick={handleloginFb}>
+                <div className="aq-mx-2" onClick={handleloginFb}>
                   <img
                     alt="login with facebook"
                     src="/static/facebook-logo.svg"
