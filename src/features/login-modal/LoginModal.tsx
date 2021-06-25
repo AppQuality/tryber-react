@@ -52,7 +52,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                 username: values.email,
                 password: values.password,
                 security: nonce,
-              }).catch((e) => setError(e.message));
+              }).then(() => window.location.reload());
             } catch (e) {
               setError(e.message);
             }
