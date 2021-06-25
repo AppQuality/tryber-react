@@ -3,6 +3,7 @@ import { StyledLoginModal } from "./_style";
 import { Trans, useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import {
+  aqBootstrapTheme,
   Field,
   Form,
   Formik,
@@ -85,7 +86,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                   </div>
                 </Text>
                 {error && (
-                  <Text className="aq-text-left aq-text-danger aq-pt-1" small>
+                  <Text className="aq-text-left aq-pt-1" color="danger" small>
                     {error}
                   </Text>
                 )}
