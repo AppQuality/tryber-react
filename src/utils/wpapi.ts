@@ -1,5 +1,4 @@
 import queryString from "query-string";
-import i18next from "../i18n";
 
 const WPAPI = {
   login: ({
@@ -11,7 +10,6 @@ const WPAPI = {
     password: string;
     security: string;
   }) => {
-    const { t } = i18next;
     return fetch(
       `${process.env.REACT_APP_CROWD_WP_URL}/wp-admin/admin-ajax.php`,
       {
@@ -32,12 +30,10 @@ const WPAPI = {
         if (res.loggedin) {
           return true;
         }
-        const errorMessage = res.message ? ": " + res.message : "";
-        throw new Error(t("Login failed") + errorMessage);
+        throw new Error(res.message);
       });
   },
   getNonce: () => {
-    const { t } = i18next;
     return fetch(
       `${process.env.REACT_APP_CROWD_WP_URL}/wp-admin/admin-ajax.php`,
       {
@@ -55,7 +51,7 @@ const WPAPI = {
         if (res.success) {
           return res.data;
         }
-        throw new Error(t("Nonce not found."));
+        throw new Error("Nonce not found.");
       });
   },
 };
