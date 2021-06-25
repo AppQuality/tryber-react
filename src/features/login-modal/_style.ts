@@ -7,8 +7,10 @@ export const StyledLoginModal = styled.div`
     > * {
       display: inline-block;
       cursor: pointer;
-      width: 36px;
-      height: 36px;
+      > img {
+        width: 36px;
+        height: 36px;
+      }
     }
   }
   @media (min-width: ${aqBootstrapTheme.grid.breakpoints.md}) {
@@ -21,7 +23,7 @@ export const StyledLoginModal = styled.div`
       min-height: 400px;
     }
     .login-social {
-      > * {
+      > * > img {
         width: 28px;
         height: 28px;
       }
