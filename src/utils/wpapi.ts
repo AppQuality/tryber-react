@@ -32,7 +32,8 @@ const WPAPI = {
         if (res.loggedin) {
           return true;
         }
-        throw new Error(t("Login failed"));
+        const errorMessage = res.message ? ": " + res.message : "";
+        throw new Error(t("Login failed") + errorMessage);
       });
   },
   getNonce: () => {
