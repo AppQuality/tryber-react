@@ -17,6 +17,7 @@ import { useState } from "react";
 export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
   const { t, i18n } = useTranslation();
   const [error, setError] = useState<string | boolean>(false);
+  const [cta, setCta] = useState<string>(t("login"));
   const initialValues = {
     email: "",
     password: "",
@@ -48,11 +49,13 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
             setError(false);
             try {
               const nonce = await WPAPI.getNonce();
-              WPAPI.login({
+              const res = await WPAPI.login({
                 username: values.email,
                 password: values.password,
                 security: nonce,
-              }).then(() => window.location.reload());
+              });
+              setCta(`${t("redirecting")}...`);
+              window.location.reload();
             } catch (e) {
               setError(e.message);
             }
@@ -107,7 +110,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                 htmlType="submit"
                 disabled={props.isSubmitting || !props.dirty || !props.isValid}
               >
-                {props.isSubmitting ? t("wait...") : t("login")}
+                {props.isSubmitting ? t("wait...") : cta}
               </Button>
               <Text className="capitalize-first aq-text-center aq-mb-3">
                 {t("or login with")}
