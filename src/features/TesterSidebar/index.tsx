@@ -113,7 +113,7 @@ const TesterSidebar = ({
     {
       url:
         i18next.language === "en"
-          ? "/personal-equipments/"
+          ? "/personal-equipment/"
           : `/${i18next.language}/i-miei-device/`,
       icon: <Laptop />,
       active: route === "personal-equipments",
