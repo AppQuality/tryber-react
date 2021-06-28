@@ -50,7 +50,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
             setError(false);
             try {
               const nonce = await WPAPI.getNonce();
-              const res = await WPAPI.login({
+              await WPAPI.login({
                 username: values.email,
                 password: values.password,
                 security: nonce,
@@ -58,7 +58,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
               setCta(`${t("redirecting")}...`);
               window.location.reload();
             } catch (e) {
-              setError(e.message);
+              setError(`${t("Wrong username or password.")}`);
             }
             actions.setSubmitting(false);
           }}
