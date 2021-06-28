@@ -121,13 +121,12 @@ export const useMyBugs = () => {
           }bugs/show/${res.id}`,
           content: (
             <Button
+              as="a"
+              href={`${window.location.origin}/${
+                i18n.language !== "en" ? `${i18n.language}/` : ""
+              }bugs/show/${res.id}`}
               type="link"
               size="sm"
-              onClick={() => {
-                window.location.href = `${window.location.origin}/${
-                  i18n.language !== "en" ? `${i18n.language}/` : ""
-                }bugs/show/${res.id}`;
-              }}
             >
               {t("View more")}
             </Button>

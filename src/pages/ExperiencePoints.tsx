@@ -141,14 +141,8 @@ export default function ExperiencePoints({
                     )}
                   </Text>
                   <Button
-                    onClick={(e) => {
-                      let url = t("/discover-experience-points/");
-                      if (e.ctrlKey) {
-                        window.open(url, "_blank");
-                      } else {
-                        window.location.href = url;
-                      }
-                    }}
+                    as="a"
+                    href={`${t("/discover-experience-points/")}`}
                     type="primary"
                     size="block"
                     flat={true}
