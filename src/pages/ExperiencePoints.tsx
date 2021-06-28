@@ -6,6 +6,7 @@ import {
   Card,
   Button,
   Title,
+  PageTitle,
   Spinner,
   SpinnerWrapper,
   Text,
@@ -101,8 +102,10 @@ export default function ExperiencePoints({
     <>
       {helmet()}
       <TesterSidebar route={"experience-points"} openFromHeader={isMenuOpen}>
-        <Container className="aq-py-3">
-          <h2 className="aq-mb-3">{t("Experience Points")}</h2>
+        <Container className="aq-pb-3">
+          <PageTitle as="h2" size="regular">
+            {t("Experience Points")}
+          </PageTitle>
           <BSGrid>
             <BSCol size="col-lg-9 ">
               <Card className="aq-mb-3" title={t("History")}>

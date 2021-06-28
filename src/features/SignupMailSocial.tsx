@@ -36,7 +36,7 @@ export const SignupMailSocial = ({
           }}
         >
           <div>
-            <Title size="xs" as="h5">
+            <Title className="aq-mb-2" size="xs" as="h5">
               {t("Log in with an existing account")}
             </Title>
             <Text className="aq-mb-3">

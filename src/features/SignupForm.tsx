@@ -96,7 +96,7 @@ export const SignupForm = ({
     >
       {(props) => (
         <Form id="signupForm">
-          <Title size="xs" as="h5">
+          <Title className="aq-mb-2" size="xs" as="h5">
             {t("Create an account")}
           </Title>
           <Field type="text" name="name" label={t("Name")} />

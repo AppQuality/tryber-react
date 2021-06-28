@@ -6,6 +6,7 @@ import {
   Card,
   Title,
   Spinner,
+  PageTitle,
   SpinnerWrapper,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
@@ -104,8 +105,10 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
     <>
       {helmet()}
       <TesterSidebar route={"my-bugs"} openFromHeader={isMenuOpen}>
-        <Container className="aq-py-3">
-          <h2 className="aq-mb-3">{t("Uploaded Bugs")}</h2>
+        <Container className="aq-pb-3">
+          <PageTitle size="regular" as="h2" className="aq-mb-3">
+            {t("Uploaded Bugs")}
+          </PageTitle>
           <BSGrid>
             <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
               <Card className="aq-mb-3" title={t("Submitted bugs")}>
