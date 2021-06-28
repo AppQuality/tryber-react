@@ -13,7 +13,7 @@ const SiteHeader = ({
 }) => {
   const { user, isLoading } = useUser();
   const { login, setLogin } = useLogin();
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const homeUrl = i18n.language === "en" ? "/" : `/${i18n.language}/`;
   return (
@@ -25,6 +25,7 @@ const SiteHeader = ({
         user={user}
         isMenuOpen={isMenuOpen}
         toggleMenu={toggleMenu}
+        loginText={t("login")}
       />
       <LoginModal isOpen={login} onClose={() => setLogin(false)} />
     </>
