@@ -5,10 +5,11 @@ import {
   BSCol,
   Card,
   Button,
-  SmallTitle,
+  Title,
+  PageTitle,
   Spinner,
   SpinnerWrapper,
-  Paragraph,
+  Text,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
@@ -89,7 +90,9 @@ export default function ExperiencePoints({
         <Container className="aq-py-3">
           <SpinnerWrapper>
             <Spinner />
-            <SmallTitle as="h5">{t("loading")}</SmallTitle>
+            <Title size="xs" as="h5">
+              {t("loading")}
+            </Title>
           </SpinnerWrapper>
         </Container>
       </>
@@ -99,8 +102,10 @@ export default function ExperiencePoints({
     <>
       {helmet()}
       <TesterSidebar route={"experience-points"} openFromHeader={isMenuOpen}>
-        <Container className="aq-py-3">
-          <h2 className="aq-mb-3">{t("Experience Points")}</h2>
+        <Container className="aq-pb-3">
+          <PageTitle as="h2" size="regular">
+            {t("Experience Points")}
+          </PageTitle>
           <BSGrid>
             <BSCol size="col-lg-9 ">
               <Card className="aq-mb-3" title={t("History")}>
@@ -127,23 +132,17 @@ export default function ExperiencePoints({
                   />
                 </Card>
                 <Card shadow={true}>
-                  <div className="aq-mb-1">
+                  <div className="aq-mb-2">
                     <strong>{t("How do experience points work?")}</strong>
                   </div>
-                  <Paragraph className="aq-mb-3">
+                  <Text className="aq-mb-3">
                     {t(
                       "Learn more about how we calculate and attribute experience points."
                     )}
-                  </Paragraph>
+                  </Text>
                   <Button
-                    onClick={(e) => {
-                      let url = t("/discover-experience-points/");
-                      if (e.ctrlKey) {
-                        window.open(url, "_blank");
-                      } else {
-                        window.location.href = url;
-                      }
-                    }}
+                    as="a"
+                    href={`${t("/discover-experience-points/")}`}
                     type="primary"
                     size="block"
                     flat={true}
