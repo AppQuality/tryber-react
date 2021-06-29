@@ -1,26 +1,34 @@
 import { Header } from "@appquality/appquality-design-system";
 import { useUser } from "../store/useUser";
-import i18next from "i18next";
+import { useTranslation } from "react-i18next";
+import { useLogin } from "../hooks/useLogin";
+import { LoginModal } from "./login-modal/LoginModal";
 
 const SiteHeader = ({
-  showLogin,
   isMenuOpen,
   toggleMenu,
 }: {
-  showLogin: boolean;
   isMenuOpen: boolean;
   toggleMenu: () => void;
 }) => {
   const { user, isLoading } = useUser();
-  const homeUrl = i18next.language == "en" ? "/" : `/${i18next.language}/`;
+  const { login, setLogin } = useLogin();
+  const { i18n, t } = useTranslation();
+
+  const homeUrl = i18n.language === "en" ? "/" : `/${i18n.language}/`;
   return (
-    <Header
-      isLoading={isLoading}
-      logoUrl={homeUrl}
-      user={user}
-      isMenuOpen={isMenuOpen}
-      toggleMenu={toggleMenu}
-    />
+    <>
+      <Header
+        onLogin={() => setLogin(true)}
+        isLoading={isLoading}
+        logoUrl={homeUrl}
+        user={user}
+        isMenuOpen={isMenuOpen}
+        toggleMenu={toggleMenu}
+        loginText={t("login")}
+      />
+      <LoginModal isOpen={login} onClose={() => setLogin(false)} />
+    </>
   );
 };
 

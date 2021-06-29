@@ -1,4 +1,5 @@
 import queryString from "query-string";
+
 const WPAPI = {
   login: ({
     username,
@@ -29,7 +30,7 @@ const WPAPI = {
         if (res.loggedin) {
           return true;
         }
-        throw new Error("Login failed.");
+        throw new Error(res.message);
       });
   },
   getNonce: () => {

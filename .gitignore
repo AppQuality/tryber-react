@@ -28,3 +28,4 @@ src/config.json
 build-storybook.log
 generate-devel-token.json
 .env
+/lib-update.sh
