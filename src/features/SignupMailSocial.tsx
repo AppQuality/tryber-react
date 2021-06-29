@@ -50,6 +50,7 @@ export const SignupMailSocial = ({
                   <Button
                     type="primary"
                     size="block"
+                    id="signup-with-fb"
                     flat
                     onClick={signupWithFb}
                   >
@@ -59,6 +60,7 @@ export const SignupMailSocial = ({
                 <Button
                   type="secondary"
                   size="block"
+                  id="signup-with-ln"
                   flat
                   onClick={signupWithLn}
                 >
