@@ -96,5 +96,13 @@
     "husky": "^6.0.0",
     "prettier": "^2.3.1",
     "ts-jest": "^27.0.3"
+  },
+  "jest": {
+    "transform": {
+      "node_modules/@appquality/appquality-design-system/.+\\.(j|t)sx?$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!@appquality/appquality-design-system/.*)"
+    ]
   }
 }
