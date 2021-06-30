@@ -92,8 +92,12 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                   </Text>
                 )}
               </div>
-              <Field type="email" name="email" label={t("Email")} />
-              <Field type="password" name="password" label={t("Password")} />
+              <div data-testid="email-input-group">
+                <Field type="email" name="email" label={t("Email")} />
+              </div>
+              <div data-testid="password-input-group">
+                <Field type="password" name="password" label={t("Password")} />
+              </div>
               <Text className="aq-text-center aq-mb-3 capitalize-first">
                 <strong>
                   <a
