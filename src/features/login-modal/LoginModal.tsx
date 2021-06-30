@@ -76,7 +76,8 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                     <Trans i18nKey="or <1>create an account</1>">
                       or
                       <Link
-                        className="aq-text-info"
+                        className="aq-text-info capitalize-first"
+                        style={{ display: "inline-block" }}
                         onClick={onClose}
                         to={gettingStartedUrl}
                       >
