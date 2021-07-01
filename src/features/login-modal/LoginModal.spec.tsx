@@ -1,5 +1,6 @@
 import { findByText, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
+import "jest-canvas-mock";
 
 import userEvent from "@testing-library/user-event";
 import { mocked } from "ts-jest/utils";
@@ -26,6 +27,11 @@ const loginData = {
 };
 
 beforeEach(() => {
+  const reloadSpy = jest.fn();
+  Object.defineProperty(window, "location", {
+    value: { reload: reloadSpy },
+  });
+
   render(
     <BrowserRouter>
       <ThemeProvider theme={aqBootstrapTheme}>
@@ -64,10 +70,14 @@ test("Login form email field should show a validation error when not validating"
     ).toBeVisible();
   });
 
-  screen.getByLabelText("Password").focus();
-  screen.getByLabelText("Password").blur();
-  await waitFor(() => {
-    expect(screen.getByText("This is a required field")).toBeInTheDocument();
+  const passwordInput = screen.getByLabelText("Password");
+  passwordInput.focus();
+  passwordInput.blur();
+  await waitFor(async () => {
+    const container = screen.getByTestId("password-input-group");
+    expect(
+      await findByText(container, "This is a required field")
+    ).toBeVisible();
   });
 });
 
