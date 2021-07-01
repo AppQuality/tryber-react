@@ -116,20 +116,20 @@ describe("Signup form: ", () => {
     userEvent.type(nameField, signupData.name);
     await waitFor(() => {
       expect(form).toHaveFormValues({ name: signupData.name });
-      expect(submitButton).toHaveAttribute("disabled");
     });
+    expect(submitButton).toHaveAttribute("disabled");
 
     userEvent.type(surnameField, signupData.surname);
     await waitFor(() => {
       expect(form).toHaveFormValues({ surname: signupData.surname });
-      expect(submitButton).toHaveAttribute("disabled");
     });
+    expect(submitButton).toHaveAttribute("disabled");
 
     userEvent.type(mailField, signupData.email);
     await waitFor(() => {
       expect(form).toHaveFormValues({ email: signupData.email });
-      expect(submitButton).toHaveAttribute("disabled");
     });
+    expect(submitButton).toHaveAttribute("disabled");
 
     const _countrySelect = countrySelect as HTMLElement;
     selectEvent.select(_countrySelect, "Italy");
@@ -141,26 +141,36 @@ describe("Signup form: ", () => {
     await waitFor(async () => {
       const overlay = document.querySelector(".mbsc-popup-overlay");
       if (!overlay) throw new Error("datepicker not open");
-      const options = Array.prototype.slice.call(
-        document.querySelectorAll(".mbsc-scroller-wheel-item")
-      );
-      const buttons = Array.prototype.slice.call(
-        document.querySelectorAll(".mbsc-popup-button")
-      );
-      const Y = options.filter((option) => option.innerHTML === "1990");
-      const M = options.filter((option) => option.innerHTML === "April");
-      const D = options.filter((option) => option.innerHTML === "18");
-      const Set = buttons.filter((button) => button.innerHTML === "Set");
-      expect(Y[0]).toBeInTheDocument();
-      expect(D[0]).toBeInTheDocument();
-      expect(M[0]).toBeInTheDocument();
-      expect(Set[0]).toBeInTheDocument();
-      userEvent.click(Y[0]);
-      userEvent.click(M[0]);
-      userEvent.click(D[0]);
-      userEvent.click(Set[0]);
+      expect(overlay).toBeInTheDocument();
     });
 
+    const options = Array.prototype.slice.call(
+      document.querySelectorAll(".mbsc-scroller-wheel-item")
+    );
+    const buttons = Array.prototype.slice.call(
+      document.querySelectorAll(".mbsc-popup-button")
+    );
+    const Y = options.filter((option) => option.innerHTML === "1990");
+    const M = options.filter((option) => option.innerHTML === "April");
+    const D = options.filter((option) => option.innerHTML === "18");
+    const Set = buttons.filter((button) => button.innerHTML === "Set");
+
+    userEvent.click(Y[0]);
+    await waitFor(() => {
+      expect(Y[0]).toBeInTheDocument();
+    });
+
+    userEvent.click(M[0]);
+    await waitFor(() => {
+      expect(M[0]).toBeInTheDocument();
+    });
+
+    userEvent.click(D[0]);
+    await waitFor(() => {
+      expect(D[0]).toBeInTheDocument();
+    });
+
+    userEvent.click(Set[0]);
     await waitFor(() => {
       expect(datePicker.getAttribute("value")).toBe("04/18/1990");
     });
@@ -168,14 +178,14 @@ describe("Signup form: ", () => {
     userEvent.type(passwordField, signupData.password);
     await waitFor(() => {
       expect(form).toHaveFormValues({ password: signupData.password });
-      expect(submitButton).toHaveAttribute("disabled");
     });
+    expect(submitButton).toHaveAttribute("disabled");
 
     userEvent.click(tosCheckbox);
     await waitFor(() => {
       expect(tosCheckbox).toBeChecked();
-      expect(form).toHaveFormValues({ subscribe: true });
-      expect(submitButton).not.toHaveAttribute("disabled");
     });
+    expect(form).toHaveFormValues({ subscribe: true });
+    expect(submitButton).not.toHaveAttribute("disabled");
   });
 });
