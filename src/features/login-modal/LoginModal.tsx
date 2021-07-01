@@ -58,7 +58,12 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
               setCta(`${t("redirecting")}...`);
               window.location.reload();
             } catch (e) {
-              setError(`${t("Wrong username or password.")}`);
+              const error = JSON.parse(e.message);
+              if (error.type == "invalid") {
+                setError(`${t("Wrong username or password.")}`);
+              } else {
+                window.location.reload();
+              }
             }
             actions.setSubmitting(false);
           }}
