@@ -20,6 +20,8 @@ const mockedApi = mocked(API, true);
 const signupData = {
   name: "Pippo",
   surname: "Franco",
+  country: "italy",
+  birthDate: "18/04/1990",
   email: "pippo.franco@example.com",
   password: "pippoFranco0",
 };
@@ -40,6 +42,7 @@ test("SignupForm button should be disabled until all input are filled correctly"
   expect(screen.getByLabelText("Name")).toHaveAttribute("type", "text");
   expect(screen.getByLabelText("Surname")).toHaveAttribute("type", "text");
   expect(screen.getByLabelText("Email")).toHaveAttribute("type", "email");
+
   expect(screen.getByLabelText("Password")).toHaveAttribute("type", "password");
 
   expect(screen.getByRole("button")).toHaveAttribute("type", "submit");

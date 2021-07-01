@@ -95,7 +95,7 @@ export const SignupForm = ({
       initialStatus={{ id: formId }}
     >
       {(props) => (
-        <Form id="signupForm">
+        <Form id="signupForm" data-testid="signupForm">
           <Title className="aq-mb-2" size="xs" as="h5">
             {t("Create an account")}
           </Title>
