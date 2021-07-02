@@ -29,7 +29,17 @@ const BirthdayPicker = ({
         setText={t("Set")}
         cancelText={t("Cancel")}
         onCancel={onCancel}
-        onChange={(v: { value: Date }) => onChange(v.value)}
+        onChange={(v: { value: Date }) =>
+          onChange(
+            new Date(
+              Date.UTC(
+                v.value.getFullYear(),
+                v.value.getMonth(),
+                v.value.getDate()
+              )
+            )
+          )
+        }
       />
     </>
   );
