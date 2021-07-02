@@ -132,7 +132,7 @@ describe("Signup form: ", () => {
     expect(submitButton).toHaveAttribute("disabled");
 
     const _countrySelect = countrySelect as HTMLElement;
-    selectEvent.select(_countrySelect, "Italy");
+    await selectEvent.select(_countrySelect, "Italy");
     await waitFor(() => {
       expect(form).toHaveFormValues({ country: "Italy" });
     });
