@@ -30,7 +30,17 @@ const WPAPI = {
         if (res.loggedin) {
           return true;
         }
-        throw new Error(res.message);
+        if (res.hasOwnProperty("loggedin")) {
+          throw new Error(
+            JSON.stringify({ type: "invalid", message: res.message })
+          );
+        }
+        throw new Error(
+          JSON.stringify({
+            type: "ajax_failed",
+            message: "There was an error, please reload",
+          })
+        );
       });
   },
   getNonce: () => {

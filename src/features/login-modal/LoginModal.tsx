@@ -58,7 +58,12 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
               setCta(`${t("redirecting")}...`);
               window.location.reload();
             } catch (e) {
-              setError(`${t("Wrong username or password.")}`);
+              const error = JSON.parse(e.message);
+              if (error.type == "invalid") {
+                setError(`${t("Wrong username or password.")}`);
+              } else {
+                window.location.reload();
+              }
             }
             actions.setSubmitting(false);
           }}
@@ -76,7 +81,8 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                     <Trans i18nKey="or <1>create an account</1>">
                       or
                       <Link
-                        className="aq-text-info"
+                        className="aq-text-info capitalize-first"
+                        style={{ display: "inline-block" }}
                         onClick={onClose}
                         to={gettingStartedUrl}
                       >

@@ -114,7 +114,7 @@ export const useMyBugs = () => {
         severity: res.severity?.name,
         status: status,
         campaign: `CP${res.campaign?.id} - ${res.campaign?.name}`,
-        title: res.title,
+        title: res.title?.replace(/\\(.)/gm, "$1"),
         action: {
           title: `${window.location.origin}/${
             i18n.language !== "en" ? `${i18n.language}/` : ""

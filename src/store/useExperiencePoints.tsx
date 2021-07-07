@@ -115,7 +115,7 @@ export const useExperiencePoints = () => {
           res.campaign.title && res.campaign.id > 0
             ? `CP${res.campaign.id}`
             : `-`,
-        note: res.note,
+        note: res.note?.replace(/\\(.)/gm, "$1"),
       });
     });
     setData(_data);

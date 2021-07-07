@@ -152,6 +152,7 @@ export const SignupForm = ({
               type="success"
               size="block"
               htmlType="submit"
+              id="signup-simple"
               flat
               disabled={props.isSubmitting || !props.dirty || !props.isValid}
             >
