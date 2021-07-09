@@ -48,10 +48,10 @@ export const SignupForm = ({
   }, [referral]);
   useEffect(() => {
     const values = queryString.parse(search);
-    if (values.referral && typeof values.referral == "string") {
+    if (values.referral && typeof values.referral === "string") {
       setReferral(values.referral);
     }
-  });
+  }, []);
   const initialValues = {
     name: "",
     surname: "",
@@ -60,7 +60,7 @@ export const SignupForm = ({
     birthDate: "",
     password: "",
     subscribe: "",
-    referral: referral && typeof referral == "string" ? referral : "",
+    referral: referral && typeof referral === "string" ? referral : "",
   };
   const validationSchema = {
     name: yup.string().required(t("This is a required field")),
