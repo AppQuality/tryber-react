@@ -37,14 +37,12 @@ export const SignupForm = ({
   const { t } = useTranslation();
   const { search } = useLocation();
 
-  const [referral, setReferral] = useState(
+  const [referral, setReferral] = useState<string | null>(
     sessionStorage.getItem(REFERRAL_KEY)
-      ? sessionStorage.getItem(REFERRAL_KEY)
-      : false
   );
 
   useEffect(() => {
-    referral && sessionStorage.setItem(REFERRAL_KEY, referral.toString());
+    referral && sessionStorage.setItem(REFERRAL_KEY, referral);
   }, [referral]);
   useEffect(() => {
     const values = queryString.parse(search);
@@ -60,7 +58,7 @@ export const SignupForm = ({
     birthDate: "",
     password: "",
     subscribe: "",
-    referral: referral && typeof referral === "string" ? referral : "",
+    referral: referral || "",
   };
   const validationSchema = {
     name: yup.string().required(t("This is a required field")),
@@ -95,7 +93,7 @@ export const SignupForm = ({
           birthDate: values.birthDate,
           country: values.country,
           email: values.email,
-          referral: values.referral ? values.referral : undefined,
+          referral: values.referral,
         };
         API.signup(data)
           .then((res) => {
@@ -165,9 +163,9 @@ export const SignupForm = ({
               "The password must be at least 6 characters long, contain an uppercase letter, a lowercase letter and a number."
             )}
           </Text>
-          {referral ? (
+          {referral && (
             <Field type="text" name="referral" label={t("Referral")} disabled />
-          ) : null}
+          )}
           <Checkbox
             name="subscribe"
             label={t(
