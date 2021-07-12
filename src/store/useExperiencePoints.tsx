@@ -37,6 +37,8 @@ export const useExperiencePoints = () => {
         return t("Points Fix");
       case 4:
         return t("Extra Award");
+      case 5:
+        return t("Referral");
       default:
         return t("Other");
     }
