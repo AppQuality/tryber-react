@@ -16,6 +16,7 @@ import { useUser } from "../store/useUser";
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
 import { ReactComponent as TopShape } from "./assets/rectangle-top.svg";
+import { ReactComponent as MiddleRect } from "./assets/rectangle-985.svg";
 import people from "./assets/group-1349.png";
 import { Alarm } from "react-bootstrap-icons";
 
@@ -100,104 +101,117 @@ export default function GettingStarted() {
     <>
       {helmet}
       <Container className="aq-pb-3">
-        <BSGrid>
-          <BSCol size="col-7">
-            <PageTitle>
-              <Title size="xl">
-                Entra nella prima Community di Tester italiana!
-              </Title>
-            </PageTitle>
-            <Text>
-              Ti è mai capitato di navigare su internet con il tuo smartphone o
-              il computer e imbatterti in un’app o un sito web poco intuitivo o
-              con errori? Con AppQuality{" "}
-              <strong>
-                avrai l'opportunità di utilizzare servizi e app di grandi
-                aziende
-              </strong>
-              , segnalare i comportamenti anomali che riscontri e migliorare
-              l'esperienza offerta all'utente.
-              <strong>I tuoi feedback e il tuo lavoro sono preziosi!</strong>
-            </Text>
-            <Button type="success">Registrati Ora!</Button>
-          </BSCol>
-          <BSCol size="col-5">
-            <div ref={containerRef} style={{ position: "relative" }}>
-              <TopShape />
+        <section className="aq-my-4 aq-text-center">
+          <BSGrid>
+            <BSCol size="col-7">
+              <PageTitle>
+                <Title size="xl">
+                  Entra nella prima Community di Tester italiana!
+                </Title>
+              </PageTitle>
+              <Text>
+                Ti è mai capitato di navigare su internet con il tuo smartphone
+                o il computer e imbatterti in un’app o un sito web poco
+                intuitivo o con errori? Con AppQuality{" "}
+                <strong>
+                  avrai l'opportunità di utilizzare servizi e app di grandi
+                  aziende
+                </strong>
+                , segnalare i comportamenti anomali che riscontri e migliorare
+                l'esperienza offerta all'utente.
+                <strong>I tuoi feedback e il tuo lavoro sono preziosi!</strong>
+              </Text>
+              <Button type="success">Registrati Ora!</Button>
+            </BSCol>
+            <BSCol size="col-5">
+              <div ref={containerRef} style={{ position: "relative" }}>
+                <TopShape />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "120px",
+                    left: "30px",
+                    color: "#FFF",
+                    fontSize: "24px",
+                  }}
+                >
+                  <img src={people} />
+                  <div>{`boundingClientRect: ${entry?.boundingClientRect.top}`}</div>
+                  <div>{`intersectionRatio: ${entry?.intersectionRatio.valueOf()}`}</div>
+                </div>
+              </div>
+            </BSCol>
+          </BSGrid>
+        </section>
+        <section className="aq-my-4 aq-text-center">
+          <Title size="l">La nostra community</Title>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <div
                 style={{
-                  position: "absolute",
-                  top: "120px",
-                  left: "30px",
-                  color: "#FFF",
-                  fontSize: "24px",
+                  width: "90px",
+                  height: "100px",
+                  backgroundColor: "grey",
                 }}
-              >
-                <img src={people} />
-                <div>{`boundingClientRect: ${entry?.boundingClientRect.top}`}</div>
-                <div>{`intersectionRatio: ${entry?.intersectionRatio.valueOf()}`}</div>
+              ></div>
+              <div>
+                <Title size="m">25.000+</Title>
+                <strong>tester</strong>
               </div>
             </div>
-          </BSCol>
-          <BSCol size="col-12">
-            <Title size="l">La nostra community</Title>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <div
-                  style={{
-                    width: "90px",
-                    height: "100px",
-                    backgroundColor: "grey",
-                  }}
-                ></div>
-                <div>
-                  <Title size="m">25.000+</Title>
-                  <strong>tester</strong>
-                </div>
-              </div>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <div
-                  style={{
-                    width: "90px",
-                    height: "100px",
-                    backgroundColor: "grey",
-                  }}
-                ></div>
-                <div>
-                  <Title size="m">25.000+</Title>
-                  <strong>dispositivi</strong>
-                </div>
-              </div>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <div
-                  style={{
-                    width: "90px",
-                    height: "100px",
-                    backgroundColor: "grey",
-                  }}
-                ></div>
-                <div>
-                  <Title size="m">2.500+</Title>
-                  <strong>campagne di test</strong>
-                </div>
-              </div>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <div
-                  style={{
-                    width: "90px",
-                    height: "100px",
-                    backgroundColor: "grey",
-                  }}
-                ></div>
-                <div>
-                  <Title size="m">150.000+</Title>
-                  <strong>bug scovati</strong>
-                </div>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div
+                style={{
+                  width: "90px",
+                  height: "100px",
+                  backgroundColor: "grey",
+                }}
+              ></div>
+              <div>
+                <Title size="m">25.000+</Title>
+                <strong>dispositivi</strong>
               </div>
             </div>
-          </BSCol>
-          <BSCol size="col-12">
-            <Title size="xl">Perché diventare un tester AppQuality?</Title>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div
+                style={{
+                  width: "90px",
+                  height: "100px",
+                  backgroundColor: "grey",
+                }}
+              ></div>
+              <div>
+                <Title size="m">2.500+</Title>
+                <strong>campagne di test</strong>
+              </div>
+            </div>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div
+                style={{
+                  width: "90px",
+                  height: "100px",
+                  backgroundColor: "grey",
+                }}
+              ></div>
+              <div>
+                <Title size="m">150.000+</Title>
+                <strong>bug scovati</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section style={{ position: "relative" }} className="aq-my-4">
+          <MiddleRect />
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              transform: "translateY(-50%)",
+            }}
+          >
+            <Title size="xl" className="aq-text-center">
+              Perché diventare un tester AppQuality?
+            </Title>
             <div
               style={{
                 display: "flex",
@@ -296,74 +310,76 @@ export default function GettingStarted() {
                 </Card>
               </div>
             </div>
-          </BSCol>
-          <BSCol size="col-12">
-            <Title size="xl">Sei pronto a metterti in gioco?</Title>
-            <Text>
-              In AppQuality le sfide non mancheranno mai e ti sentirai subito
-              parte di una Community dinamica e stimolante! Sali a bordo e
-              guarderai con occhi diversi il mondo digitale intorno a te.
-              Testare crea dipendenza!
-            </Text>
-            <Button type="success">Entra nel Team</Button>
-          </BSCol>
-          <BSCol size="col-12">
-            <Title size="xl">I consigli dei nostri tester</Title>
-            <div
-              style={{
-                display: "flex",
-                flexFlow: "row wrap",
-                justifyContent: "center",
-              }}
-            >
-              <div style={{ width: "314px", padding: "30px" }}>
-                <Card>
-                  <Alarm />
-                  <Text color="success">
-                    <strong>Gestisci il tuo tempo</strong>
-                  </Text>
-                  <Text>
-                    <strong>Testa quando e dove vuoi</strong>
-                  </Text>
-                  <Text>
-                    L’importante è rispettare la data di chiusura della Campagna
-                    di Test
-                  </Text>
-                </Card>
-              </div>
-              <div style={{ width: "314px", padding: "30px" }}>
-                <Card>
-                  <Alarm />
-                  <Text color="success">
-                    <strong>Gestisci il tuo tempo</strong>
-                  </Text>
-                  <Text>
-                    <strong>Testa quando e dove vuoi</strong>
-                  </Text>
-                  <Text>
-                    L’importante è rispettare la data di chiusura della Campagna
-                    di Test
-                  </Text>
-                </Card>
-              </div>
-              <div style={{ width: "314px", padding: "30px" }}>
-                <Card>
-                  <Alarm />
-                  <Text color="success">
-                    <strong>Gestisci il tuo tempo</strong>
-                  </Text>
-                  <Text>
-                    <strong>Testa quando e dove vuoi</strong>
-                  </Text>
-                  <Text>
-                    L’importante è rispettare la data di chiusura della Campagna
-                    di Test
-                  </Text>
-                </Card>
-              </div>
+          </div>
+        </section>
+        <section className="aq-my-4 aq-text-center">
+          <Title size="xl">Sei pronto a metterti in gioco?</Title>
+          <Text>
+            In AppQuality le sfide non mancheranno mai e ti sentirai subito
+            parte di una Community dinamica e stimolante! Sali a bordo e
+            guarderai con occhi diversi il mondo digitale intorno a te. Testare
+            crea dipendenza!
+          </Text>
+          <Button type="success">Entra nel Team</Button>
+        </section>
+        <section className="aq-my-4 aq-text-center">
+          <Title size="xl" className="aq-text-center">
+            I consigli dei nostri tester
+          </Title>
+          <div
+            style={{
+              display: "flex",
+              flexFlow: "row wrap",
+              justifyContent: "center",
+            }}
+          >
+            <div style={{ width: "314px", padding: "30px" }}>
+              <Card>
+                <Alarm />
+                <Text color="success">
+                  <strong>Gestisci il tuo tempo</strong>
+                </Text>
+                <Text>
+                  <strong>Testa quando e dove vuoi</strong>
+                </Text>
+                <Text>
+                  L’importante è rispettare la data di chiusura della Campagna
+                  di Test
+                </Text>
+              </Card>
             </div>
-          </BSCol>
-        </BSGrid>
+            <div style={{ width: "314px", padding: "30px" }}>
+              <Card>
+                <Alarm />
+                <Text color="success">
+                  <strong>Gestisci il tuo tempo</strong>
+                </Text>
+                <Text>
+                  <strong>Testa quando e dove vuoi</strong>
+                </Text>
+                <Text>
+                  L’importante è rispettare la data di chiusura della Campagna
+                  di Test
+                </Text>
+              </Card>
+            </div>
+            <div style={{ width: "314px", padding: "30px" }}>
+              <Card>
+                <Alarm />
+                <Text color="success">
+                  <strong>Gestisci il tuo tempo</strong>
+                </Text>
+                <Text>
+                  <strong>Testa quando e dove vuoi</strong>
+                </Text>
+                <Text>
+                  L’importante è rispettare la data di chiusura della Campagna
+                  di Test
+                </Text>
+              </Card>
+            </div>
+          </div>
+        </section>
       </Container>
     </>
   );
