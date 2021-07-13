@@ -18,7 +18,6 @@ import { Helmet } from "react-helmet";
 import { ReactComponent as TopShape } from "./assets/rectangle-top.svg";
 import { ReactComponent as MiddleRect } from "./assets/rectangle-985.svg";
 import people from "./assets/group-1349.png";
-import { Alarm } from "react-bootstrap-icons";
 import { StyledRect } from "./_styles";
 import { BannerTop } from "./content/BannerTop";
 import { Community } from "./content/Community";
@@ -70,6 +69,7 @@ export default function Home() {
   }, [redirectUrl, t, user, error]);
 
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
+  const [rx, setRx] = useState("100%");
   let containerRef = useRef<HTMLDivElement>(null);
   const options = {
     root: null,
@@ -79,6 +79,10 @@ export default function Home() {
   const callBack: IntersectionObserverCallback = (entries) => {
     if (entries[0]) setEntry(entries[0]);
   };
+  useEffect(() => {
+    const newRx = entry ? entry.intersectionRatio.valueOf() * 100 : 100;
+    setRx(`${newRx.toString()}%`);
+  }, [entry]);
   useEffect(() => {
     const observer = new IntersectionObserver(callBack, options);
     if (containerRef.current) observer.observe(containerRef.current);
@@ -131,7 +135,7 @@ export default function Home() {
           <Community />
         </section>
         <section style={{ position: "relative" }} className="aq-my-4">
-          <StyledRect ref={containerRef} rx="99%">
+          <StyledRect ref={containerRef} rx={rx}>
             <MiddleRect />
           </StyledRect>
           <div
