@@ -5,7 +5,7 @@ import {
 } from "@appquality/appquality-design-system";
 import "./App.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import { GettingStarted, MyBugs, ExperiencePoints } from "./pages";
+import { GettingStarted, MyBugs, ExperiencePoints, Home } from "./pages";
 import "./i18n";
 import { useTranslation } from "react-i18next";
 import TagManager from "react-gtm-module";
@@ -83,6 +83,7 @@ function App() {
               />
             )}
           />
+          <Route path="/" component={Home} />
         </Switch>
       </BrowserRouter>
     </ThemeProvider>
