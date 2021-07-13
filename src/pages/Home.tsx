@@ -144,8 +144,13 @@ export default function GettingStarted() {
           </BSGrid>
         </section>
         <section className="aq-my-4 aq-text-center">
-          <Title size="l">La nostra community</Title>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Title size="l" className="aq-my-4">
+            La nostra community
+          </Title>
+          <div
+            className="aq-my-4"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
             <div style={{ display: "flex", alignItems: "center" }}>
               <div
                 style={{
@@ -218,6 +223,7 @@ export default function GettingStarted() {
                 flexFlow: "row wrap",
                 justifyContent: "center",
               }}
+              className="aq-text-center"
             >
               <div style={{ width: "314px", padding: "30px" }}>
                 <Card>
@@ -314,7 +320,14 @@ export default function GettingStarted() {
         </section>
         <section className="aq-my-4 aq-text-center">
           <Title size="xl">Sei pronto a metterti in gioco?</Title>
-          <Text>
+          <Text
+            className="aq-my-4"
+            style={{
+              maxWidth: "500px",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
             In AppQuality le sfide non mancheranno mai e ti sentirai subito
             parte di una Community dinamica e stimolante! Sali a bordo e
             guarderai con occhi diversi il mondo digitale intorno a te. Testare
