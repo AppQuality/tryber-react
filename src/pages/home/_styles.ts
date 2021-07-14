@@ -4,14 +4,14 @@ import { StyledRectProps } from "./_types";
 export const StyledRect = styled.div(
   ({ rx }: StyledRectProps) => `
     position: absolute;
-    top: -150px;
+    top: -110px;
     svg {
-      width: 500px;
-      height: 1000px;
+      width: 530px;
+      height: 740px;
       overflow: visible;
       rect {
-        width: 540px;
-        height: 540px;
+        width: 530px;
+        height: 530px;
         rx: ${rx};
       }
     }

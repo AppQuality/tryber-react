@@ -27,11 +27,11 @@ const TopAnimation = styled.div`
     right: 10px;
   }
   .image-animation-enter {
-    animation: swipe-in 500ms forwards;
+    animation: swipe-in 350ms forwards;
   }
   .shape-animation-enter {
     transform: translate3d(100%, 0, 0);
-    transition: transform 500ms ease-in;
+    transition: transform 500ms ease-in-out;
   }
   .shape-animation-enter-active {
     transform: translate3d(0, 0, 0);
@@ -40,19 +40,13 @@ const TopAnimation = styled.div`
   }
   @keyframes swipe-in {
     0% {
-      transform: translate3d(100%, 0, 0) skew(-60deg, -1deg);
+      transform: translate3d(100%, 0, 0) skew(-60deg, 0);
     }
-    60% {
-      transform: translate3d(0, 0, 0) skew(-8deg, 0);
+    40% {
+      transform: translate3d(0, 0, 0) skew(0, 0);
     }
-    75% {
-      transform: translate3d(-8%, 0, 0) skew(10deg, 1deg);
-    }
-    88% {
-      transform: translate3d(-9%, 0, 0) skew(15deg, 1deg);
-    }
-    95% {
-      transform: translate3d(-8%, 0, 0) skew(5deg, 0deg);
+    70% {
+      transform: translate3d(-10%, 0, 0) skew(10deg, 0);
     }
     100% {
       transform: translate3d(0, 0, 0) skew(0, 0);
@@ -81,15 +75,15 @@ export const BannerTop = () => {
     };
   }, [containerRef, options]);
   useEffect(() => {
-    console.log(entry?.intersectionRect.top);
+    //console.log(entry?.intersectionRect.top);
   }, [entry]);
   useEffect(() => {
     setTimeout(() => {
       setShapeVisible(true);
-    }, 800);
+    }, 500);
     setTimeout(() => {
       setImgVisible(true);
-    }, 1000);
+    }, 1100);
   }, []);
   return (
     <BSGrid>
@@ -134,7 +128,7 @@ export const BannerTop = () => {
             {imgIsVisible && (
               <CSSTransition
                 key="img-animation"
-                timeout={500}
+                timeout={350}
                 classNames="image-animation"
               >
                 <img className="top-image" src={people} />

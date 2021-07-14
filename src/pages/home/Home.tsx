@@ -1,12 +1,8 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Container,
-  BSGrid,
-  BSCol,
-  Card,
   Spinner,
   SpinnerWrapper,
-  PageTitle,
   Title,
   Button,
   Text,
@@ -190,11 +186,14 @@ export default function Home() {
   }, [ref, options]);
   const [rx, setRx] = useState("100%");
   useEffect(() => {
-    // console.log(entry?.intersectionRect.top);
-    const newRx = entry
-      ? (entry?.intersectionRect.top / entry?.target.clientHeight) * 100
-      : 100;
-    setRx(`${newRx.toString()}%`);
+    if (entry?.intersectionRect.top) {
+      const top =
+        entry?.intersectionRect.top > 20 ? entry?.intersectionRect.top : 20;
+      const newRx = entry
+        ? (top / (entry?.target.clientHeight - 200)) * 100
+        : 100;
+      setRx(`${newRx.toString()}%`);
+    }
   }, [entry]);
 
   if (isLoading) {

@@ -10,7 +10,7 @@ const CardListStyle = styled.div`
 
   .card-list-item {
     padding: 30px;
-    width: 314px;
+    width: 340px;
   }
   .item-icon {
     font-size: 40px;
