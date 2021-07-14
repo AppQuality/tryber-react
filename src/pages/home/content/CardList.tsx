@@ -20,8 +20,8 @@ const CardListStyle = styled.div`
 export const CardList = ({ items }: CardListItemsProps) => {
   return (
     <CardListStyle className="aq-text-center">
-      {items.map((item) => (
-        <div className="card-list-item">
+      {items.map((item, index) => (
+        <div className="card-list-item" key={index}>
           <Card>
             <div className="item-icon">{item.icon}</div>
             <Text color="success">

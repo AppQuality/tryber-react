@@ -33,8 +33,8 @@ const DataListStyle = styled.div`
 export const DataList = ({ data }: DataListProps) => {
   return (
     <DataListStyle className="aq-my-4">
-      {data.map((item) => (
-        <div className="data-list-item">
+      {data.map((item, index) => (
+        <div className="data-list-item" key={index}>
           <div className="item-image">
             <img src={item.icon} alt={item.name} />
           </div>
