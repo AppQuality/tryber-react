@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   Container,
   BSGrid,
@@ -15,7 +15,6 @@ import { Trans, useTranslation } from "react-i18next";
 import { useUser } from "../../store/useUser";
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
-import { ReactComponent as TopShape } from "./assets/rectangle-top.svg";
 import { ReactComponent as MiddleRect } from "./assets/rectangle-985.svg";
 import testerIcon from "./assets/testers.svg";
 import campaignsIcon from "./assets/campaigns.svg";
@@ -35,7 +34,6 @@ import {
   Eyeglasses,
   GraphUp,
 } from "react-bootstrap-icons";
-import styled from "styled-components";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -171,18 +169,26 @@ export default function Home() {
       ),
     },
   ];
-
+  //const [middleRectRef, middleRectEntry] = useObserver<HTMLDivElement>();
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
-  const [rx, setRx] = useState("100%");
-  let containerRef = useRef<HTMLDivElement>(null);
+  let ref = useRef<HTMLDivElement>(null);
+
+  const callBack: IntersectionObserverCallback = (entries) => {
+    if (entries[0]) setEntry(entries[0]);
+  };
   const options = {
     root: null,
     rootMargin: "0px",
     threshold: 1.0,
   };
-  const callBack: IntersectionObserverCallback = (entries) => {
-    if (entries[0]) setEntry(entries[0]);
-  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(callBack, options);
+    if (ref.current) observer.observe(ref.current);
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, [ref, options]);
+  const [rx, setRx] = useState("100%");
   useEffect(() => {
     // console.log(entry?.intersectionRect.top);
     const newRx = entry
@@ -190,13 +196,6 @@ export default function Home() {
       : 100;
     setRx(`${newRx.toString()}%`);
   }, [entry]);
-  useEffect(() => {
-    const observer = new IntersectionObserver(callBack, options);
-    if (containerRef.current) observer.observe(containerRef.current);
-    return () => {
-      if (containerRef.current) observer.unobserve(containerRef.current);
-    };
-  }, [containerRef, options]);
 
   if (isLoading) {
     return (
@@ -233,7 +232,7 @@ export default function Home() {
           <Title size="xl" className="aq-text-center">
             Perché diventare un tester AppQuality?
           </Title>
-          <StyledRect className="hero" ref={containerRef} rx={rx}>
+          <StyledRect className="hero" ref={ref} rx={rx}>
             <MiddleRect />
           </StyledRect>
           <div
