@@ -11,13 +11,12 @@ import {
   Button,
   Text,
 } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useUser } from "../../store/useUser";
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
 import { ReactComponent as TopShape } from "./assets/rectangle-top.svg";
 import { ReactComponent as MiddleRect } from "./assets/rectangle-985.svg";
-import people from "./assets/group-1349.png";
 import testerIcon from "./assets/testers.svg";
 import campaignsIcon from "./assets/campaigns.svg";
 import devicesIcon from "./assets/devices.svg";
@@ -25,9 +24,17 @@ import bugsIcon from "./assets/bugs.svg";
 import { StyledRect } from "./_styles";
 import { BannerTop } from "./content/BannerTop";
 import { DataList } from "./content/DataList";
-import { Tester } from "./content/Tester";
+import { CardList } from "./content/CardList";
 import { Reviews } from "./content/Reviews";
 import { DataListItem } from "./_types";
+import {
+  Alarm,
+  Headset,
+  Wallet2,
+  Laptop,
+  Eyeglasses,
+  GraphUp,
+} from "react-bootstrap-icons";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -96,6 +103,74 @@ export default function Home() {
     },
   ];
 
+  const cardListItems = [
+    {
+      icon: <Alarm />,
+      title: t("manage your time"),
+      body: (
+        <Trans i18nKey="<0>Testa quando e dove vuoi!</0> L’importante è rispettare la data di chiusura della Campagna di Test">
+          <strong>Testa quando e dove vuoi!</strong>
+          <br />
+          L’importante è rispettare la data di chiusura della Campagna di Test
+        </Trans>
+      ),
+    },
+    {
+      icon: <Laptop />,
+      title: t("devices"),
+      body: (
+        <Trans i18nKey="Per testare non avrai bisogno di attrezzature speciali, ma semplicemente dei <1>tuoi dispositivi personali</1>">
+          Per testare non avrai bisogno di attrezzature speciali, ma
+          semplicemente dei <strong>tuoi dispositivi personali</strong>
+        </Trans>
+      ),
+    },
+    {
+      icon: <Eyeglasses />,
+      title: t("formazione gratuita"),
+      body: (
+        <Trans i18nKey="Non sai nulla di test? Non temere! Abbiamo per te dei <1>Corsi Base con attestato</> e tanti articoli formativi ">
+          Non sai nulla di test?
+          <br />
+          Non temere! Abbiamo per te dei{" "}
+          <strong>Corsi Base con attestato</strong> e tanti articoli formativi
+        </Trans>
+      ),
+    },
+    {
+      icon: <Wallet2 />,
+      title: t("pagamenti sicuri"),
+      body: (
+        <Trans i18nKey="Completando correttamente una Campagna <1>riceverai un payout</>, che potrai trasferire sul tuo IBAN o PayPal">
+          Completando correttamente una Campagna{" "}
+          <strong>riceverai un payout</strong>, che potrai trasferire sul tuo
+          IBAN o PayPal
+        </Trans>
+      ),
+    },
+    {
+      icon: <GraphUp />,
+      title: t("migliora ogni giorno"),
+      body: (
+        <Trans i18nKey="Testa quando e dove vuoi! L’importante è rispettare la data di chiusura della Campagna di Test">
+          <strong>Testa quando e dove vuoi!</strong>
+          <br />
+          L’importante è rispettare la data di chiusura della Campagna di Test
+        </Trans>
+      ),
+    },
+    {
+      icon: <Headset />,
+      title: t("supporto costante"),
+      body: (
+        <Trans i18nKey="<0>Un Team di figure competenti</0> e professionali sarà sempre al tuo fianco per risolvere ogni tuo dubbio">
+          <strong>Un Team di figure competenti</strong> e professionali sarà
+          sempre al tuo fianco per risolvere ogni tuo dubbio
+        </Trans>
+      ),
+    },
+  ];
+
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
   const [rx, setRx] = useState("100%");
   let containerRef = useRef<HTMLDivElement>(null);
@@ -148,6 +223,9 @@ export default function Home() {
           <DataList data={communityData} />
         </section>
         <section style={{ position: "relative" }} className="aq-my-4">
+          <Title size="xl" className="aq-text-center">
+            Perché diventare un tester AppQuality?
+          </Title>
           <StyledRect ref={containerRef} rx={rx}>
             <MiddleRect />
           </StyledRect>
@@ -158,7 +236,7 @@ export default function Home() {
               transform: "translateY(-50%)",
             }}
           >
-            <Tester />
+            <CardList items={cardListItems} />
           </div>
         </section>
         <section className="aq-my-4 aq-text-center">

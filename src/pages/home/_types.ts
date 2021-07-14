@@ -13,3 +13,13 @@ export interface DataListItem {
   icon: string;
   text: string;
 }
+
+export interface CardListItemsProps {
+  items: CardListItem[];
+}
+
+export interface CardListItem {
+  icon: ReactNode;
+  title: string;
+  body: ReactNode;
+}
