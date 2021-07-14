@@ -18,11 +18,16 @@ import { Helmet } from "react-helmet";
 import { ReactComponent as TopShape } from "./assets/rectangle-top.svg";
 import { ReactComponent as MiddleRect } from "./assets/rectangle-985.svg";
 import people from "./assets/group-1349.png";
+import testerIcon from "./assets/testers.svg";
+import campaignsIcon from "./assets/campaigns.svg";
+import devicesIcon from "./assets/devices.svg";
+import bugsIcon from "./assets/bugs.svg";
 import { StyledRect } from "./_styles";
 import { BannerTop } from "./content/BannerTop";
-import { Community } from "./content/Community";
+import { DataList } from "./content/DataList";
 import { Tester } from "./content/Tester";
 import { Reviews } from "./content/Reviews";
+import { DataListItem } from "./_types";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -68,6 +73,29 @@ export default function Home() {
     }
   }, [redirectUrl, t, user, error]);
 
+  const communityData: DataListItem[] = [
+    {
+      name: t("tester"),
+      icon: testerIcon,
+      text: "25.000",
+    },
+    {
+      name: t("devices"),
+      icon: devicesIcon,
+      text: "25.000",
+    },
+    {
+      name: t("testing campaigns"),
+      icon: campaignsIcon,
+      text: "2.500",
+    },
+    {
+      name: t("bugs found"),
+      icon: bugsIcon,
+      text: "150.000",
+    },
+  ];
+
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
   const [rx, setRx] = useState("100%");
   let containerRef = useRef<HTMLDivElement>(null);
@@ -111,28 +139,13 @@ export default function Home() {
       {helmet}
       <Container className="aq-pb-3">
         <section className="aq-my-4">
-          <BSGrid>
-            <BannerTop />
-            <BSCol size="col-5">
-              <div style={{ position: "relative" }}>
-                <TopShape />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "120px",
-                    left: "30px",
-                  }}
-                >
-                  <img src={people} />
-                  <div>{`boundingClientRect: ${entry?.boundingClientRect.top}`}</div>
-                  <div>{`intersectionRatio: ${entry?.intersectionRatio.valueOf()}`}</div>
-                </div>
-              </div>
-            </BSCol>
-          </BSGrid>
+          <BannerTop />
         </section>
         <section className="aq-my-4 aq-text-center">
-          <Community />
+          <Title size="l" className="aq-my-4">
+            La nostra community
+          </Title>
+          <DataList data={communityData} />
         </section>
         <section style={{ position: "relative" }} className="aq-my-4">
           <StyledRect ref={containerRef} rx={rx}>
