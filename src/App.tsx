@@ -13,6 +13,7 @@ import Helmet from "react-helmet";
 import SiteHeader from "./features/SiteHeader";
 import { useState } from "react";
 import { Location } from "history";
+import styled, { createGlobalStyle } from "styled-components";
 
 if (process.env.REACT_APP_GTM_ID) {
   const tagManagerArgs = {
@@ -24,12 +25,32 @@ if (process.env.REACT_APP_GTM_ID) {
 }
 const base = "/:locale(en|it)?";
 
+const TemporaryGlobalStyle = createGlobalStyle`
+  .container .hero {
+    margin-left: calc(-24px/2);
+    margin-right: calc(-24px/2);
+    @media (min-width: 768px) {
+      margin-left: calc((720px - 100vw - 24px)/2);
+      margin-right: calc((720px - 100vw - 24px)/2);
+    }
+    @media (min-width: 1200px) {
+      margin-left: calc((1140px - 100vw - 24px)/2);
+      margin-right: calc((1140px - 100vw - 24px)/2);
+    }
+    @media (min-width: 1400px) {
+      margin-left: calc((1320px - 100vw - 24px)/2);
+      margin-right: calc((1320px - 100vw - 24px)/2);
+    }
+  }
+`;
+
 function App() {
   const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <ThemeProvider theme={aqBootstrapTheme}>
       <GlobalStyle />
+      <TemporaryGlobalStyle />
       <Helmet>
         <meta
           property="og:title"

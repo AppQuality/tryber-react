@@ -35,6 +35,7 @@ import {
   Eyeglasses,
   GraphUp,
 } from "react-bootstrap-icons";
+import styled from "styled-components";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -108,7 +109,7 @@ export default function Home() {
       icon: <Alarm />,
       title: t("manage your time"),
       body: (
-        <Trans i18nKey="<0>Testa quando e dove vuoi!</0> L’importante è rispettare la data di chiusura della Campagna di Test">
+        <Trans i18nKey="<0>Testa quando e dove vuoi!</0><1></1>L’importante è rispettare la data di chiusura della Campagna di Test">
           <strong>Testa quando e dove vuoi!</strong>
           <br />
           L’importante è rispettare la data di chiusura della Campagna di Test
@@ -129,7 +130,7 @@ export default function Home() {
       icon: <Eyeglasses />,
       title: t("formazione gratuita"),
       body: (
-        <Trans i18nKey="Non sai nulla di test? Non temere! Abbiamo per te dei <1>Corsi Base con attestato</> e tanti articoli formativi ">
+        <Trans i18nKey="Non sai nulla di test? Non temere! Abbiamo per te dei <1></1><3>Corsi Base con attestato</3> e tanti articoli formativi ">
           Non sai nulla di test?
           <br />
           Non temere! Abbiamo per te dei{" "}
@@ -152,7 +153,7 @@ export default function Home() {
       icon: <GraphUp />,
       title: t("migliora ogni giorno"),
       body: (
-        <Trans i18nKey="Testa quando e dove vuoi! L’importante è rispettare la data di chiusura della Campagna di Test">
+        <Trans i18nKey="<0>Testa quando e dove vuoi!</0><1></1> L’importante è rispettare la data di chiusura della Campagna di Test">
           <strong>Testa quando e dove vuoi!</strong>
           <br />
           L’importante è rispettare la data di chiusura della Campagna di Test
@@ -226,7 +227,7 @@ export default function Home() {
           <Title size="xl" className="aq-text-center">
             Perché diventare un tester AppQuality?
           </Title>
-          <StyledRect ref={containerRef} rx={rx}>
+          <StyledRect className="hero" ref={containerRef} rx={rx}>
             <MiddleRect />
           </StyledRect>
           <div
