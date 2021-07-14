@@ -184,7 +184,10 @@ export default function Home() {
     if (entries[0]) setEntry(entries[0]);
   };
   useEffect(() => {
-    const newRx = entry ? entry.intersectionRatio.valueOf() * 100 : 100;
+    // console.log(entry?.intersectionRect.top);
+    const newRx = entry
+      ? (entry?.intersectionRect.top / entry?.target.clientHeight) * 100
+      : 100;
     setRx(`${newRx.toString()}%`);
   }, [entry]);
   useEffect(() => {
@@ -223,7 +226,10 @@ export default function Home() {
           </Title>
           <DataList data={communityData} />
         </section>
-        <section style={{ position: "relative" }} className="aq-my-4">
+        <section
+          style={{ position: "relative", height: "700px" }}
+          className="aq-my-4"
+        >
           <Title size="xl" className="aq-text-center">
             Perché diventare un tester AppQuality?
           </Title>
