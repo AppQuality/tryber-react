@@ -27,20 +27,36 @@ const TopAnimation = styled.div`
     right: 10px;
   }
   .image-animation-enter {
-    transform: translate3d(100%, 0, 0);
-    transition: transform 500ms ease-in-out;
-  }
-  .image-animation-enter-active {
-    transform: translate3d(0, 0, 0);
+    animation: swipe-in 500ms forwards;
   }
   .shape-animation-enter {
     transform: translate3d(100%, 0, 0);
-    transition: transform 500ms ease-in-out;
+    transition: transform 500ms ease-in;
   }
   .shape-animation-enter-active {
     transform: translate3d(0, 0, 0);
   }
   .top-animation-exit {
+  }
+  @keyframes swipe-in {
+    0% {
+      transform: translate3d(100%, 0, 0) skew(-60deg, -1deg);
+    }
+    60% {
+      transform: translate3d(0, 0, 0) skew(-8deg, 0);
+    }
+    75% {
+      transform: translate3d(-8%, 0, 0) skew(10deg, 1deg);
+    }
+    88% {
+      transform: translate3d(-9%, 0, 0) skew(15deg, 1deg);
+    }
+    95% {
+      transform: translate3d(-8%, 0, 0) skew(5deg, 0deg);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) skew(0, 0);
+    }
   }
 `;
 
@@ -70,10 +86,10 @@ export const BannerTop = () => {
   useEffect(() => {
     setTimeout(() => {
       setShapeVisible(true);
-    }, 2000);
+    }, 800);
     setTimeout(() => {
       setImgVisible(true);
-    }, 2500);
+    }, 1000);
   }, []);
   return (
     <BSGrid>
