@@ -1,7 +1,6 @@
 import {
   aqBootstrapTheme,
   GlobalStyle,
-  ThemeProvider,
 } from "@appquality/appquality-design-system";
 import "./App.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
@@ -13,7 +12,7 @@ import Helmet from "react-helmet";
 import SiteHeader from "./features/SiteHeader";
 import { useState } from "react";
 import { Location } from "history";
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 
 if (process.env.REACT_APP_GTM_ID) {
   const tagManagerArgs = {

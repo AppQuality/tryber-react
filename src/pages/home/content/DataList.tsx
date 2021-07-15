@@ -1,6 +1,5 @@
 import { Text, Title } from "@appquality/appquality-design-system";
 import { DataListProps } from "../_types";
-import React from "react";
 import styled from "styled-components";
 
 const DataListStyle = styled.div`
