@@ -18,6 +18,7 @@ import { DataList } from "./content/DataList";
 import { DataListItem } from "./_types";
 import { ReviewSection } from "./content/ReviewSection";
 import { CardSection } from "./content/CardSection";
+import { Footer } from "./content/Footer";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -117,6 +118,7 @@ export default function Home() {
           </StyledCta>
         </StyledSection>
         <ReviewSection />
+        <Footer />
       </Container>
     </>
   );
