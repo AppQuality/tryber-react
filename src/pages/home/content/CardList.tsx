@@ -9,8 +9,10 @@ const CardListStyle = styled.div`
   justify-content: center;
 
   .card-list-item {
-    padding: 30px;
-    width: 340px;
+    width: 100%;
+    @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+      width: 340px;
+    }
   }
   .item-icon {
     font-size: 40px;
@@ -21,13 +23,13 @@ export const CardList = ({ items }: CardListItemsProps) => {
   return (
     <CardListStyle className="aq-text-center">
       {items.map((item, index) => (
-        <div className="card-list-item" key={index}>
+        <div className="card-list-item aq-my-3" key={index}>
           <Card>
             <div className="item-icon">{item.icon}</div>
-            <Text color="success">
+            <Text color="success" className="aq-mb-3 capitalize-first">
               <strong>{item.title}</strong>
             </Text>
-            <Text>{item.body}</Text>
+            <Text color="secondary">{item.body}</Text>
           </Card>
         </div>
       ))}

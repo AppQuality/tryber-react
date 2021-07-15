@@ -13,6 +13,10 @@ import styled from "styled-components";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const TopAnimation = styled.div`
+  display: none;
+  @media (min-width: 991px) {
+    display: block;
+  }
   position: relative;
   height: 500px;
 
@@ -88,18 +92,18 @@ export const BannerTop = () => {
   return (
     <BSGrid>
       <BSCol size="col-lg-7">
-        <div style={{ position: "relative", zIndex: 2 }}>
+        <div style={{ position: "relative" }}>
           <PageTitle>
             <Title size="xl">
               Entra nella prima Community di Tester italiana!
             </Title>
           </PageTitle>
-          <Text className="aq-my-4">
+          <Text className="aq-mb-3">
             Ti è mai capitato di navigare su internet con il tuo smartphone o il
             computer e imbatterti in un’app o un sito web poco intuitivo o con
             errori?{" "}
           </Text>
-          <Text>
+          <Text className="aq-mb-4">
             Con AppQuality
             <strong>
               avrai l'opportunità di utilizzare servizi e app di grandi aziende
@@ -108,7 +112,7 @@ export const BannerTop = () => {
             l'esperienza offerta all'utente.
             <strong>I tuoi feedback e il tuo lavoro sono preziosi!</strong>
           </Text>
-          <Button type="success" className="aq-my-4">
+          <Button type="success" size="block" className="aq-mt-4">
             Registrati Ora!
           </Button>
         </div>

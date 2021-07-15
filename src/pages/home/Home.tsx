@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import {
   Container,
   Title,
@@ -8,25 +8,16 @@ import {
 import { Trans, useTranslation } from "react-i18next";
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
-import { ReactComponent as MiddleRect } from "./assets/rectangle-985.svg";
 import testerIcon from "./assets/testers.svg";
 import campaignsIcon from "./assets/campaigns.svg";
 import devicesIcon from "./assets/devices.svg";
 import bugsIcon from "./assets/bugs.svg";
-import { StyledRect } from "./_styles";
+import { StyledSection } from "./_styles";
 import { BannerTop } from "./content/BannerTop";
 import { DataList } from "./content/DataList";
-import { CardList } from "./content/CardList";
-import { Reviews } from "./content/Reviews";
 import { DataListItem } from "./_types";
-import {
-  Alarm,
-  Headset,
-  Wallet2,
-  Laptop,
-  Eyeglasses,
-  GraphUp,
-} from "react-bootstrap-icons";
+import { ReviewSection } from "./content/ReviewSection";
+import { CardSection } from "./content/CardSection";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -72,141 +63,27 @@ export default function Home() {
       text: "150.000",
     },
   ];
-
-  const cardListItems = [
-    {
-      icon: <Alarm />,
-      title: t("manage your time"),
-      body: (
-        <Trans i18nKey="<0>Testa quando e dove vuoi!</0><1></1>L’importante è rispettare la data di chiusura della Campagna di Test">
-          <strong>Testa quando e dove vuoi!</strong>
-          <br />
-          L’importante è rispettare la data di chiusura della Campagna di Test
-        </Trans>
-      ),
-    },
-    {
-      icon: <Laptop />,
-      title: t("devices"),
-      body: (
-        <Trans i18nKey="Per testare non avrai bisogno di attrezzature speciali, ma semplicemente dei <1>tuoi dispositivi personali</1>">
-          Per testare non avrai bisogno di attrezzature speciali, ma
-          semplicemente dei <strong>tuoi dispositivi personali</strong>
-        </Trans>
-      ),
-    },
-    {
-      icon: <Eyeglasses />,
-      title: t("formazione gratuita"),
-      body: (
-        <Trans i18nKey="Non sai nulla di test? Non temere! Abbiamo per te dei <1></1><3>Corsi Base con attestato</3> e tanti articoli formativi ">
-          Non sai nulla di test?
-          <br />
-          Non temere! Abbiamo per te dei{" "}
-          <strong>Corsi Base con attestato</strong> e tanti articoli formativi
-        </Trans>
-      ),
-    },
-    {
-      icon: <Wallet2 />,
-      title: t("pagamenti sicuri"),
-      body: (
-        <Trans i18nKey="Completando correttamente una Campagna <1>riceverai un payout</>, che potrai trasferire sul tuo IBAN o PayPal">
-          Completando correttamente una Campagna{" "}
-          <strong>riceverai un payout</strong>, che potrai trasferire sul tuo
-          IBAN o PayPal
-        </Trans>
-      ),
-    },
-    {
-      icon: <GraphUp />,
-      title: t("migliora ogni giorno"),
-      body: (
-        <Trans i18nKey="<0>Testa quando e dove vuoi!</0><1></1> L’importante è rispettare la data di chiusura della Campagna di Test">
-          <strong>Testa quando e dove vuoi!</strong>
-          <br />
-          L’importante è rispettare la data di chiusura della Campagna di Test
-        </Trans>
-      ),
-    },
-    {
-      icon: <Headset />,
-      title: t("supporto costante"),
-      body: (
-        <Trans i18nKey="<0>Un Team di figure competenti</0> e professionali sarà sempre al tuo fianco per risolvere ogni tuo dubbio">
-          <strong>Un Team di figure competenti</strong> e professionali sarà
-          sempre al tuo fianco per risolvere ogni tuo dubbio
-        </Trans>
-      ),
-    },
-  ];
   //const [middleRectRef, middleRectEntry] = useObserver<HTMLDivElement>();
-  const [entry, setEntry] = useState<IntersectionObserverEntry>();
-  let ref = useRef<HTMLDivElement>(null);
-
-  const callBack: IntersectionObserverCallback = (entries) => {
-    if (entries[0]) setEntry(entries[0]);
-  };
-  const options = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 1.0,
-  };
-  useEffect(() => {
-    const observer = new IntersectionObserver(callBack, options);
-    if (ref.current) observer.observe(ref.current);
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, [ref, options]);
-  const [rx, setRx] = useState("100%");
-  useEffect(() => {
-    if (entry?.intersectionRect.top) {
-      const top =
-        entry?.intersectionRect.top > 20 ? entry?.intersectionRect.top : 20;
-      const newRx = entry
-        ? (top / (entry?.target.clientHeight - 200)) * 100
-        : 100;
-      setRx(`${newRx.toString()}%`);
-    }
-  }, [entry]);
-
   return (
     <>
       {helmet}
       <Container className="aq-pb-3">
-        <section className="aq-my-4">
+        <section className="aq-mb-4">
           <BannerTop />
         </section>
-        <section className="aq-my-4 aq-text-center">
-          <Title size="l" className="aq-my-4">
+        <section className="aq-pt-3 aq-text-center">
+          <Title size="m" className="aq-pt-3 aq-pb-2 aq-mb-2">
             La nostra community
           </Title>
-          <DataList data={communityData} />
-        </section>
-        <section
-          style={{ position: "relative", height: "700px" }}
-          className="aq-my-4"
-        >
-          <Title size="xl" className="aq-text-center">
-            Perché diventare un tester AppQuality?
-          </Title>
-          <StyledRect className="hero" ref={ref} rx={rx}>
-            <MiddleRect />
-          </StyledRect>
-          <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              transform: "translateY(-50%)",
-            }}
-          >
-            <CardList items={cardListItems} />
+          <div className="aq-pt-4">
+            <DataList data={communityData} />
           </div>
         </section>
-        <section className="aq-my-4 aq-text-center">
+        <CardSection />
+        <StyledSection className="aq-my-4 aq-text-center">
           <Title size="xl">Sei pronto a metterti in gioco?</Title>
           <Text
+            color="secondary"
             className="aq-my-4"
             style={{
               maxWidth: "500px",
@@ -214,33 +91,26 @@ export default function Home() {
               marginRight: "auto",
             }}
           >
-            In AppQuality le sfide non mancheranno mai e ti sentirai subito
-            parte di una Community dinamica e stimolante! Sali a bordo e
-            guarderai con occhi diversi il mondo digitale intorno a te. Testare
-            crea dipendenza!
+            <Trans
+              key={
+                "In AppQuality le sfide non mancheranno mai e <1>ti sentirai subito parte di una Community dinamica e stimolante!</1> Sali a bordo e guarderai con occhi diversi il mondo digitale intorno a te. Testare crea dipendenza!"
+              }
+            >
+              In AppQuality le sfide non mancheranno mai e{" "}
+              <strong>
+                ti sentirai subito parte di una Community dinamica e stimolante!
+              </strong>{" "}
+              Sali a bordo e guarderai con occhi diversi il mondo digitale
+              intorno a te. <br />
+              <br />
+              Testare crea dipendenza!
+            </Trans>
           </Text>
-          <Button type="success">Entra nel Team</Button>
-        </section>
-        <section
-          style={{ position: "relative", height: "700px" }}
-          className="aq-my-4"
-        >
-          <Title size="xl" className="aq-text-center">
-            I consigli dei nostri tester
-          </Title>
-          <StyledRect className="hero" rx="20%">
-            <MiddleRect />
-          </StyledRect>
-          <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              transform: "translateY(-50%)",
-            }}
-          >
-            <Reviews />
-          </div>
-        </section>
+          <Button type="success" size="block" className="aq-mt-3">
+            Entra nel Team
+          </Button>
+        </StyledSection>
+        <ReviewSection />
       </Container>
     </>
   );

@@ -8,18 +8,24 @@ const DataListStyle = styled.div`
   justify-content: space-between;
 
   .data-list-item {
-    max-width: 170px;
-  }
-  .item-text {
-    text-align: center;
+    flex: 1 0 50%;
+    .item-body {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+      display: flex;
+      flex: 1 0 25%;
+      .item-body {
+        flex-flow: row;
+      }
+    }
   }
 
-  @media all and (min-width: 991px) {
-    .data-list-item {
-      display: flex;
-      align-items: center;
-      max-width: 250px;
-    }
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
     .item-image {
       margin-right: ${(props) => props.theme.grid.spacing.default};
     }
@@ -31,20 +37,20 @@ const DataListStyle = styled.div`
 
 export const DataList = ({ data }: DataListProps) => {
   return (
-    <DataListStyle className="aq-my-4">
+    <DataListStyle>
       {data.map((item, index) => (
-        <div className="data-list-item" key={index}>
-          <div className="item-image">
-            <img src={item.icon} alt={item.name} />
-          </div>
-          <div className="item-text">
-            <Title size="m">
-              {item.text}
-              <span className="aq-text-warning">+</span>
-            </Title>
-            <Text color="secondary">
-              <strong>{item.name}</strong>
-            </Text>
+        <div className="data-list-item aq-mb-3" key={index}>
+          <div className="item-body">
+            <img className="item-image" src={item.icon} alt={item.name} />
+            <div className="item-text">
+              <Title size="m">
+                {item.text}
+                <span className="aq-text-warning">+</span>
+              </Title>
+              <Text color="secondary">
+                <strong>{item.name}</strong>
+              </Text>
+            </div>
           </div>
         </div>
       ))}
