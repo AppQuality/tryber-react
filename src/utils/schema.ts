@@ -653,6 +653,8 @@ export interface operations {
           password: string;
           country: string;
           birthDate: string;
+          /** A referral code */
+          referral?: string;
         };
       };
     };
@@ -756,7 +758,7 @@ export interface operations {
               };
               campaign: {
                 id: number;
-                title: string;
+                title?: string;
               };
               date: string;
               amount: number;

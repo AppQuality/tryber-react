@@ -16,7 +16,10 @@ import {
 import CountrySelect from "./CountrySelect";
 import BirthdayPicker from "./BirthdayPicker";
 import * as yup from "yup";
+import { useState, useEffect } from "react";
 import { useTranslation, Trans } from "react-i18next";
+import queryString from "query-string";
+import { useLocation } from "react-router-dom";
 import API from "../utils/api";
 import WPAPI from "../utils/wpapi";
 
@@ -25,11 +28,28 @@ interface SignupFormProps {
   formId?: string;
 }
 
+const REFERRAL_KEY = "appq-referral";
+
 export const SignupForm = ({
   redirectUrl,
   formId = "signupForm",
 }: SignupFormProps) => {
   const { t } = useTranslation();
+  const { search } = useLocation();
+
+  const [referral, setReferral] = useState<string | null>(
+    sessionStorage.getItem(REFERRAL_KEY)
+  );
+
+  useEffect(() => {
+    referral && sessionStorage.setItem(REFERRAL_KEY, referral);
+  }, [referral]);
+  useEffect(() => {
+    const values = queryString.parse(search);
+    if (values.referral && typeof values.referral === "string") {
+      setReferral(values.referral);
+    }
+  }, []);
   const initialValues = {
     name: "",
     surname: "",
@@ -38,6 +58,7 @@ export const SignupForm = ({
     birthDate: "",
     password: "",
     subscribe: "",
+    referral: referral || "",
   };
   const validationSchema = {
     name: yup.string().required(t("This is a required field")),
@@ -59,9 +80,11 @@ export const SignupForm = ({
       .boolean()
       .oneOf([true], t("This is a required field"))
       .required(t("This is a required field")),
+    referral: yup.string(),
   };
   return (
     <Formik
+      enableReinitialize
       onSubmit={async (values, actions) => {
         const data = {
           name: values.name,
@@ -70,6 +93,7 @@ export const SignupForm = ({
           birthDate: values.birthDate,
           country: values.country,
           email: values.email,
+          referral: values.referral,
         };
         API.signup(data)
           .then((res) => {
@@ -139,6 +163,9 @@ export const SignupForm = ({
               "The password must be at least 6 characters long, contain an uppercase letter, a lowercase letter and a number."
             )}
           </Text>
+          {referral && (
+            <Field type="text" name="referral" label={t("Referral")} disabled />
+          )}
           <Checkbox
             name="subscribe"
             label={t(
