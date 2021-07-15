@@ -1,5 +1,5 @@
 import { Title } from "@appquality/appquality-design-system";
-import { StyledRect, StyledSection } from "../_styles";
+import { StyledSection } from "../_styles";
 import { ReactComponent as MiddleRect } from "../assets/rectangle-985.svg";
 import React, { useEffect, useRef, useState } from "react";
 import { CardList } from "./CardList";
@@ -12,6 +12,25 @@ import {
   Laptop,
   Wallet2,
 } from "react-bootstrap-icons";
+import styled from "styled-components";
+import { StyledRectProps } from "../_types";
+
+const StyledRect = styled.div(
+  ({ rx }: StyledRectProps) => `
+    position: absolute;
+    top: -110px;
+    svg {
+      width: 530px;
+      height: 740px;
+      overflow: visible;
+      rect {
+        width: 530px;
+        height: 530px;
+        rx: ${rx};
+      }
+    }
+  `
+);
 
 export const CardSection = () => {
   const { t } = useTranslation();
