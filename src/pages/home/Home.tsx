@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   Container,
-  Spinner,
-  SpinnerWrapper,
   Title,
   Button,
   Text,
 } from "@appquality/appquality-design-system";
 import { Trans, useTranslation } from "react-i18next";
-import { useUser } from "../../store/useUser";
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
 import { ReactComponent as MiddleRect } from "./assets/rectangle-985.svg";
@@ -42,13 +39,7 @@ const tagManagerArgs = {
 };
 
 export default function Home() {
-  const { user, error } = useUser();
-  const [isLoading, setisLoading] = useState(true);
   const { t, i18n } = useTranslation();
-  const [loadingMessage, setLoadingMessage] = useState(t("Loading"));
-
-  const redirectUrl =
-    i18n.language === "en" ? "/my-dashboard/" : "/it/la-mia-dashboard/";
   TagManager.dataLayer(tagManagerArgs);
 
   const helmet = (
@@ -58,22 +49,6 @@ export default function Home() {
       <meta name="description" content={t("home")} />
     </Helmet>
   );
-
-  useEffect(() => {
-    if (user) {
-      setLoadingMessage(t("Redirecting to your dashboard..."));
-      window.location.href = redirectUrl;
-    } else {
-      if (error) {
-        if (error.statusCode === 403) {
-          setisLoading(false);
-          // user logged out, proceed
-        } else {
-          alert(error.message);
-        }
-      }
-    }
-  }, [redirectUrl, t, user, error]);
 
   const communityData: DataListItem[] = [
     {
@@ -196,21 +171,6 @@ export default function Home() {
     }
   }, [entry]);
 
-  if (isLoading) {
-    return (
-      <>
-        {helmet}
-        <Container className="aq-py-3">
-          <SpinnerWrapper>
-            <Spinner />
-            <Title size="xs" as="h5">
-              {loadingMessage}
-            </Title>
-          </SpinnerWrapper>
-        </Container>
-      </>
-    );
-  }
   return (
     <>
       {helmet}
@@ -261,8 +221,25 @@ export default function Home() {
           </Text>
           <Button type="success">Entra nel Team</Button>
         </section>
-        <section className="aq-my-4 aq-text-center">
-          <Reviews />
+        <section
+          style={{ position: "relative", height: "700px" }}
+          className="aq-my-4"
+        >
+          <Title size="xl" className="aq-text-center">
+            I consigli dei nostri tester
+          </Title>
+          <StyledRect className="hero" rx="20%">
+            <MiddleRect />
+          </StyledRect>
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              transform: "translateY(-50%)",
+            }}
+          >
+            <Reviews />
+          </div>
         </section>
       </Container>
     </>
