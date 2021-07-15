@@ -19,6 +19,7 @@ const DataListStyle = styled.div`
     @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
       display: flex;
       flex: 1 0 25%;
+      justify-content: center;
       .item-body {
         flex-flow: row;
       }

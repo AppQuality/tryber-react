@@ -12,7 +12,7 @@ import testerIcon from "./assets/testers.svg";
 import campaignsIcon from "./assets/campaigns.svg";
 import devicesIcon from "./assets/devices.svg";
 import bugsIcon from "./assets/bugs.svg";
-import { StyledSection } from "./_styles";
+import { StyledSection, StyledCta } from "./_styles";
 import { BannerTop } from "./content/BannerTop";
 import { DataList } from "./content/DataList";
 import { DataListItem } from "./_types";
@@ -80,7 +80,7 @@ export default function Home() {
           </div>
         </section>
         <CardSection />
-        <StyledSection className="aq-my-4 aq-text-center">
+        <StyledSection className="aq-text-center">
           <Title size="xl">Sei pronto a metterti in gioco?</Title>
           <Text
             color="secondary"
@@ -106,9 +106,15 @@ export default function Home() {
               Testare crea dipendenza!
             </Trans>
           </Text>
-          <Button type="success" size="block" className="aq-mt-3">
-            Entra nel Team
-          </Button>
+          <StyledCta className="aq-text-center">
+            <Button
+              type="success"
+              size="block"
+              className="aq-mt-3 capitalize-first"
+            >
+              {t("join the team")}
+            </Button>
+          </StyledCta>
         </StyledSection>
         <ReviewSection />
       </Container>

@@ -6,7 +6,7 @@ import React from "react";
 
 export const ReviewSection = () => {
   return (
-    <StyledSection className="aq-my-4">
+    <StyledSection>
       <Title size="xl" className="aq-text-center section-title-wrapper">
         I consigli dei nostri tester
       </Title>

@@ -10,6 +10,14 @@ export const StyledSection = styled.section`
     z-index: 1;
   }
 `;
+export const StyledCta = styled.div`
+  button, a {
+    @media (min-width: ${(props) => props.theme.grid.breakpoints.md}) { {
+      max-width: 200px;
+      margin: 0 auto;
+    }
+  }
+`;
 export const StyledRect = styled.div(
   ({ rx }: StyledRectProps) => `
     position: absolute;

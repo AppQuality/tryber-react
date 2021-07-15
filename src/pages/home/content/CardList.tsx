@@ -4,15 +4,14 @@ import styled from "styled-components";
 import { CardListItemsProps } from "../_types";
 
 const CardListStyle = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-
-  .card-list-item {
-    width: 100%;
-    @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
-      width: 340px;
-    }
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.md}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 18px 40px;
+  }
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 18px 50px;
   }
   .item-icon {
     font-size: 40px;
@@ -23,15 +22,13 @@ export const CardList = ({ items }: CardListItemsProps) => {
   return (
     <CardListStyle className="aq-text-center">
       {items.map((item, index) => (
-        <div className="card-list-item aq-my-3" key={index}>
-          <Card>
-            <div className="item-icon">{item.icon}</div>
-            <Text color="success" className="aq-mb-3 capitalize-first">
-              <strong>{item.title}</strong>
-            </Text>
-            <Text color="secondary">{item.body}</Text>
-          </Card>
-        </div>
+        <Card className="card-list-item aq-my-3" key={index}>
+          <div className="item-icon">{item.icon}</div>
+          <Text color="success" className="aq-mb-3 capitalize-first">
+            <strong>{item.title}</strong>
+          </Text>
+          <Text color="secondary">{item.body}</Text>
+        </Card>
       ))}
     </CardListStyle>
   );

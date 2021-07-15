@@ -10,7 +10,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as TopShape } from "../assets/rectangle-top.svg";
 import people from "../assets/group-1349.png";
 import styled from "styled-components";
+import { StyledCta } from "./../_styles";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { useTranslation } from "react-i18next";
 
 const TopAnimation = styled.div`
   display: none;
@@ -59,9 +61,9 @@ const TopAnimation = styled.div`
 `;
 
 export const BannerTop = () => {
+  const { t } = useTranslation();
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
   const [shapeIsVisible, setShapeVisible] = useState(false);
-  const [imgIsVisible, setImgVisible] = useState(false);
   let containerRef = useRef<HTMLDivElement>(null);
   const options = {
     root: null,
@@ -85,9 +87,6 @@ export const BannerTop = () => {
     setTimeout(() => {
       setShapeVisible(true);
     }, 500);
-    setTimeout(() => {
-      setImgVisible(true);
-    }, 1100);
   }, []);
   return (
     <BSGrid>
@@ -95,13 +94,13 @@ export const BannerTop = () => {
         <div style={{ position: "relative" }}>
           <PageTitle>
             <Title size="xl">
-              Entra nella prima Community di Tester italiana!
+              {t("Entra nella prima Community di Tester italiana!")}
             </Title>
           </PageTitle>
           <Text className="aq-mb-3">
             Ti è mai capitato di navigare su internet con il tuo smartphone o il
             computer e imbatterti in un’app o un sito web poco intuitivo o con
-            errori?{" "}
+            errori?
           </Text>
           <Text className="aq-mb-4">
             Con AppQuality
@@ -112,9 +111,11 @@ export const BannerTop = () => {
             l'esperienza offerta all'utente.
             <strong>I tuoi feedback e il tuo lavoro sono preziosi!</strong>
           </Text>
-          <Button type="success" size="block" className="aq-mt-4">
-            Registrati Ora!
-          </Button>
+          <StyledCta>
+            <Button type="success" size="block" className="aq-mt-4">
+              {t("join the team")}
+            </Button>
+          </StyledCta>
         </div>
       </BSCol>
       <BSCol size="col-lg-5">
@@ -129,15 +130,7 @@ export const BannerTop = () => {
                 <TopShape className="top-shape" />
               </CSSTransition>
             )}
-            {imgIsVisible && (
-              <CSSTransition
-                key="img-animation"
-                timeout={350}
-                classNames="image-animation"
-              >
-                <img className="top-image" src={people} />
-              </CSSTransition>
-            )}
+            <img className="top-image" src={people} />
           </TransitionGroup>
         </TopAnimation>
       </BSCol>
