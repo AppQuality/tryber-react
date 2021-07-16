@@ -38,11 +38,11 @@ export const SignupForm = ({
   const { search } = useLocation();
 
   const [referral, setReferral] = useState<string | null>(
-    sessionStorage.getItem(REFERRAL_KEY)
+    localStorage.getItem(REFERRAL_KEY)
   );
 
   useEffect(() => {
-    referral && sessionStorage.setItem(REFERRAL_KEY, referral);
+    referral && localStorage.setItem(REFERRAL_KEY, referral);
   }, [referral]);
   useEffect(() => {
     const values = queryString.parse(search);
