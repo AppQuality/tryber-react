@@ -25,7 +25,7 @@ export const CardList = ({ items }: CardListItemsProps) => {
   return (
     <CardListStyle className="aq-text-center">
       {items.map((item, index) => (
-        <Card className="card-list-item aq-my-3" key={index}>
+        <Card shadow className="card-list-item aq-my-3" key={index}>
           <div className="item-icon">{item.icon}</div>
           <Text color="success" className="aq-mb-3 capitalize-first">
             <strong>{item.title}</strong>

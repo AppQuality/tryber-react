@@ -15,6 +15,9 @@ const CardListStyle = styled.div`
     grid-gap: ${(props) => props.theme.grid.spacing.default}
       calc(${(props) => props.theme.grid.spacing.default} * 2);
   }
+  .card-list-item {
+    padding-bottom: 35px;
+  }
   .item-icon {
     margin-left: auto;
     margin-right: auto;
@@ -79,7 +82,7 @@ export const Reviews = () => {
   return (
     <CardListStyle>
       {items.map((item, index) => (
-        <Card className="card-list-item aq-my-3" key={index}>
+        <Card shadow className="card-list-item aq-my-3" key={index}>
           <img src={quotes} className="aq-mb-2 item-icon" />
           <div className="item-avatar aq-mb-2">
             <div className="avatar-image">

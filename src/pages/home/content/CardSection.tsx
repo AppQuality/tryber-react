@@ -18,7 +18,8 @@ import { StyledRectProps } from "../_types";
 const StyledRect = styled.div(
   ({ rx }: StyledRectProps) => `
     position: absolute;
-    top: -110px;
+    top: -80px;
+    left: -80px;
     svg {
       width: 530px;
       height: 740px;
@@ -131,7 +132,7 @@ export const CardSection = () => {
     }
   }, [entry]);
   return (
-    <StyledSection>
+    <StyledSection style={{ padding: "0 40px" }}>
       <Title size="xl" className="aq-text-center aq-mb-4 section-title-wrapper">
         {t("Why becoming an AppQuality tester?")}
       </Title>

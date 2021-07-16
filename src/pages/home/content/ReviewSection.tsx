@@ -10,7 +10,7 @@ const StyledRect = styled.div(
   ({ rx }: StyledRectProps) => `
     position: absolute;
     top: -300px;
-    right: -350px;
+    right: -420px;
     svg {
       width: 530px;
       height: 740px;

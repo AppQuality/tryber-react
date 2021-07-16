@@ -33,8 +33,15 @@ const tagManagerArgs = {
 
 const StyledHome = styled.div`
   max-height: calc(100vh - 54px);
-  overflow: scroll;
-  background-image: linear-gradient(#d5e6f0, #fbfbfd, #fbfbfd, #e3eef5);
+  max-width: 100vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-image: linear-gradient(
+    #d5e6f0 0,
+    #fbfbfd 34%,
+    #fbfbfd 66%,
+    #e3eef5 100%
+  );
 `;
 export default function Home() {
   const { t, i18n } = useTranslation();
@@ -87,7 +94,7 @@ export default function Home() {
           </div>
         </section>
         <CardSection />
-        <StyledSection className="aq-text-center">
+        <StyledSection className="aq-text-center" style={{ zIndex: 1 }}>
           <Title size="xl">Sei pronto a metterti in gioco?</Title>
           <Text
             color="secondary"
