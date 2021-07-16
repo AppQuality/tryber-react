@@ -19,6 +19,7 @@ import { DataListItem } from "./_types";
 import { ReviewSection } from "./content/ReviewSection";
 import { CardSection } from "./content/CardSection";
 import { Footer } from "./content/Footer";
+import styled from "styled-components";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -30,6 +31,11 @@ const tagManagerArgs = {
   dataLayerName: "PageDataLayer",
 };
 
+const StyledHome = styled.div`
+  max-height: calc(100vh - 54px);
+  overflow: scroll;
+  background-image: linear-gradient(#d5e6f0, #fbfbfd, #fbfbfd, #e3eef5);
+`;
 export default function Home() {
   const { t, i18n } = useTranslation();
   TagManager.dataLayer(tagManagerArgs);
@@ -66,7 +72,7 @@ export default function Home() {
   ];
   //const [middleRectRef, middleRectEntry] = useObserver<HTMLDivElement>();
   return (
-    <>
+    <StyledHome>
       {helmet}
       <Container className="aq-pb-3">
         <section className="aq-mb-4">
@@ -120,6 +126,6 @@ export default function Home() {
         <ReviewSection />
         <Footer />
       </Container>
-    </>
+    </StyledHome>
   );
 }
