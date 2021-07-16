@@ -12,6 +12,9 @@ const CardListStyle = styled.div`
   @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 18px 50px;
+    .card-list-item {
+      padding-bottom: 35px;
+    }
   }
   .item-icon {
     font-size: 40px;

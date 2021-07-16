@@ -109,6 +109,7 @@ export const BannerTop = () => {
             </strong>
             , segnalare i comportamenti anomali che riscontri e migliorare
             l'esperienza offerta all'utente.
+            <br />
             <strong>I tuoi feedback e il tuo lavoro sono preziosi!</strong>
           </Text>
           <StyledCta>

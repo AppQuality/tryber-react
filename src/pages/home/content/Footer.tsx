@@ -2,7 +2,7 @@ import styled from "styled-components";
 import logo from "../assets/logo.svg";
 import { useTranslation } from "react-i18next";
 import { Text, Title } from "@appquality/appquality-design-system";
-import { Envelope, GeoAltFill } from "react-bootstrap-icons";
+import { EnvelopeFill, GeoAltFill } from "react-bootstrap-icons";
 import { Button } from "@appquality/appquality-design-system";
 import fbLogo from "../assets/fb.svg";
 import lnLogo from "../assets/ln.svg";
@@ -33,12 +33,10 @@ export const Footer = () => {
           {t("company")}
         </Title>
         <Text color="secondary">
-          <Envelope />
-          crowd@app-quality.com
+          <EnvelopeFill /> crowd@app-quality.com
         </Text>
         <Text color="secondary">
-          <GeoAltFill />
-          Via del Chiesotto 4, 26100 Cremona, Italy
+          <GeoAltFill /> Via del Chiesotto 4, 26100 Cremona, Italy
         </Text>
       </div>
       <div className="aq-mb-3">

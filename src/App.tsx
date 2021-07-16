@@ -103,7 +103,7 @@ function App() {
               />
             )}
           />
-          <Route path="/" component={Home} />
+          <Route path="/" exact component={Home} />
         </Switch>
       </BrowserRouter>
     </ThemeProvider>

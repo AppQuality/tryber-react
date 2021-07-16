@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import { StyledRectProps } from "./_types";
 
 export const StyledSection = styled.section`
   position: relative;
   margin-top: 100px;
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+    margin-top: 200px;
+  }
   .section-content-wrapper,
   .section-title-wrapper {
     position: relative;
