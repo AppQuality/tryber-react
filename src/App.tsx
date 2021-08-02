@@ -3,7 +3,11 @@ import {
   GlobalStyle,
 } from "@appquality/appquality-design-system";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+<<<<<<< HEAD
 import { GettingStarted, MyBugs, ExperiencePoints, Home } from "./pages";
+=======
+import {GettingStarted, MyBugs, ExperiencePoints, Dashboard} from "./pages";
+>>>>>>> feat: initial structure for react-dashboard-page
 import "./i18n";
 import { useTranslation } from "react-i18next";
 import TagManager from "react-gtm-module";
@@ -75,6 +79,13 @@ function App() {
           <Route path={`${base}/it/getting-started-2`}>
             <Redirect to="/it/getting-started" />
           </Route>
+
+          <Route path={`${base}/my-dashboard`} component={() => <Dashboard isMenuOpen={isMenuOpen} />} />
+
+          <Route path={`${base}/it/la-mia-dashboard/`}>
+            <Redirect to="/it/my-dashboard" />
+          </Route>
+
           <Route
             path={`${base}/my-bugs`}
             component={() => <MyBugs isMenuOpen={isMenuOpen} />}
@@ -105,7 +116,11 @@ function App() {
               />
             )}
           />
+<<<<<<< HEAD
           <Route path={["/", "/it"]} exact component={Home} />
+=======
+
+>>>>>>> feat: initial structure for react-dashboard-page
         </Switch>
       </BrowserRouter>
     </ThemeProvider>
