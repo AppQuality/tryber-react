@@ -5,7 +5,7 @@ import {
 } from "@appquality/appquality-design-system";
 import "./App.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import { GettingStarted, MyBugs, ExperiencePoints } from "./pages";
+import {GettingStarted, MyBugs, ExperiencePoints, Dashboard} from "./pages";
 import "./i18n";
 import { useTranslation } from "react-i18next";
 import TagManager from "react-gtm-module";
@@ -53,6 +53,13 @@ function App() {
           <Route path={`${base}/it/getting-started-2`}>
             <Redirect to="/it/getting-started" />
           </Route>
+
+          <Route path={`${base}/my-dashboard`} component={() => <Dashboard isMenuOpen={isMenuOpen} />} />
+
+          <Route path={`${base}/it/la-mia-dashboard/`}>
+            <Redirect to="/it/my-dashboard" />
+          </Route>
+
           <Route
             path={`${base}/my-bugs`}
             component={() => <MyBugs isMenuOpen={isMenuOpen} />}
@@ -83,6 +90,7 @@ function App() {
               />
             )}
           />
+
         </Switch>
       </BrowserRouter>
     </ThemeProvider>
