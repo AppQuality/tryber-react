@@ -53,7 +53,9 @@ export const myBugs = async ({
     }
     if (query.filterBy) {
       Object.entries(query.filterBy).forEach(([key, val]) => {
-        urlps.set(`filterBy[${key}]`, val);
+        if (typeof val === "string") {
+          urlps.set(`filterBy[${key}]`, val);
+        }
       });
     }
     params = "?" + urlps.toString();
@@ -72,6 +74,54 @@ export const myBugs = async ({
     throw new HttpError(res.status, res.statusText, json.err);
   }
 };
+
+export const myCampaigns = async ({
+                               token,
+                               query,
+                             }: {
+  token?: string;
+  query?: operations["get-users-me-campaigns"]["parameters"]["query"];
+}) => {
+  if (process.env.REACT_APP_DEFAULT_TOKEN)
+    token = process.env.REACT_APP_DEFAULT_TOKEN;
+  const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set("Content-Type", "application/json");
+  if (token) {
+    requestHeaders.set("Authorization", "Bearer " + token);
+  }
+  let params = "";
+  if (query && Object.keys(query).length) {
+    let urlps = new URLSearchParams();
+    if (query.start) {
+      urlps.set("start", query.start.toString());
+    }
+    if (query.limit) {
+      urlps.set("limit", query.limit.toString());
+    }
+    if (query.filterBy) {
+      Object.entries(query.filterBy).forEach(([key, val]) => {
+        if (typeof val === "string") {
+          urlps.set(`filterBy[${key}]`, val);
+        }
+      });
+    }
+    params = "?" + urlps.toString();
+  }
+  const res = await fetch(
+      `${process.env.REACT_APP_API_URL}/users/me/campaigns${params}`,
+      {
+        method: "GET",
+        headers: requestHeaders,
+      }
+  );
+  if (res.ok) {
+    return await res.json();
+  } else {
+    const json = await res.json();
+    throw new HttpError(res.status, res.statusText, json.err);
+  }
+};
+
 export const experiencePoints = async ({
   token,
   query,
@@ -109,7 +159,9 @@ export const experiencePoints = async ({
     }
     if (query.filterBy) {
       Object.entries(query.filterBy).forEach(([key, val]) => {
-        urlps.set(`filterBy[${key}]`, val);
+        if (typeof val === "string") {
+          urlps.set(`filterBy[${key}]`, val);
+        }
       });
     }
     params = "?" + urlps.toString();
