@@ -5,7 +5,7 @@ import {
   BSCol,
   Card,
   PageTitle,
-  Tabs,Tab
+  Tabs, Tab, Text
 } from "@appquality/appquality-design-system";
 import TesterSidebar from "../features/TesterSidebar";
 import {Helmet} from "react-helmet";
@@ -48,18 +48,21 @@ export default function Dashboard({
               <BSCol size="col-lg-9 ">
                 <Card className="aq-mb-3" bodyClass=''>
                   <Tabs active="active">
-                    <Tab id="active" title={t('Active')} >
+                    <Tab id="active" title={t('Running')} >
                       <div className="aq-m-3">
+                        <Text>A list of all the campaigns you successfully applied for. Read the manual and report as many bugs as you can to earn experience points and earn money. Don’t forget to apply for new campaigns!</Text>
                         <ActiveCampaignsTable/>
                       </div>
                     </Tab>
                     <Tab id="completed" title={t('Completed')}>
                       <div className="aq-m-3">
+                        <Text>A list of all the campaigns you participated in that are now completed. We will evaluate your performance in the 14 days following the end of the campaign and award you experience points and money accordingly.</Text>
                      <CompletedCampaignsTable/>
                       </div>
                     </Tab>
                     <Tab id="closed" title={t('Closed')} >
                       <div className="aq-m-3">
+                        <Text>A list of the campaigns you particiated in that were successfully evaluated by us. Campaigns will remain in this list until you collect your booty, to make sure you never miss your well deserved payout.</Text>
                         <ClosedCampaignsTable/>
                       </div>
                     </Tab>
