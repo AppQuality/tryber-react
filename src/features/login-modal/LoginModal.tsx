@@ -1,4 +1,3 @@
-import { Modal } from "@appquality/appquality-design-system";
 import { StyledLoginModal } from "./_style";
 import { Trans, useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -8,6 +7,7 @@ import {
   Form,
   Formik,
   Text,
+  Modal
 } from "@appquality/appquality-design-system";
 import { Button } from "@appquality/appquality-design-system";
 import * as yup from "yup";
