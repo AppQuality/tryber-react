@@ -12,26 +12,39 @@ export default () => {
     const [totalEntries, setTotalEntries] = useState(0)
 
     const fetchCampaignsFromApi = () =>{
-        return Promise.resolve(
-            [
-                {
-                    key: 123,
-                    campaignName: 'Nome Campagna',
-                    type: 'tipo campagnaaaaaaa',
-                    startDate: '',
-                    endDate: '',
-                    actions: '',
+        return API.myCampaigns({
+            query: {
+                filterBy: {
+                    completed: '0',
                 }
-            ]
-        );
+            }
+        }).
+        then((data:operations['get-users-me-campaigns']['responses']['200']['content']['application/json'])=> {
+            if (data && data.results) {
+                const campaigns = data.results.map((cp) => {
+                    return {
+                        key: cp.id ? cp.id : 123,
+                        campaignName: cp.name,
+                        type: 'tipo cp'
+                    }
+                });
+                return campaigns;
+            }
+            return [];
+
+        });
     }
 
     useEffect(() => {
-
         //
         fetchCampaignsFromApi().
-        then((campaigns)=>{
-            setCampaigns(campaigns);
+        then((data)=>{
+            setCampaigns(data);
+        }).catch((e) => {
+            if (e.statusCode === 404) {
+                setCampaigns([]);
+                setTotalEntries(0);
+            }
         });
 
     }, [page]);
