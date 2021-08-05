@@ -208,6 +208,11 @@ export interface components {
       projectManager?: components["schemas"]["User"];
       customerCanViewReviewing?: boolean;
       additionalFields?: components["schemas"]["CampaignField"][];
+      tokens?: number;
+      csm_effort?: number;
+      ux_effort?: number;
+      preview_link?: components["schemas"]["TranslatablePage"];
+      manual_link?: components["schemas"]["TranslatablePage"];
     };
     CampaignRequired: {
       name: string;
@@ -235,7 +240,7 @@ export interface components {
       content: string;
       campaign_id: number;
     };
-    CampaignType: number;
+    CampaignType: string | number;
     User: {
       username?: string;
       name?: string;
@@ -273,6 +278,10 @@ export interface components {
       once?: boolean;
       content?: string;
       title?: string;
+    };
+    TranslatablePage: {
+      en?: string;
+      it?: string;
     };
   };
   responses: {
@@ -899,7 +908,7 @@ export interface operations {
         content: {
           "application/json": {
             results?: ({
-              id?: number;
+              id: number;
             } & components["schemas"]["Campaign"])[];
             limit?: number;
             size?: number;
