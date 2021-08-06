@@ -21,6 +21,8 @@ export default () => {
         filterBy: {
           completed: "0",
         },
+        order: order,
+        orderBy: orderBy == "endDate" ? "end_date" : "start_date",
         limit,
         start: (page - 1) * limit,
       },
@@ -88,7 +90,7 @@ export default () => {
       .finally(() => {
         setLoading(false);
       });
-  }, [page]);
+  }, [page, orderBy, order]);
 
   return {
     campaigns,

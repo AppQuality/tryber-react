@@ -726,6 +726,12 @@ export interface operations {
   };
   /** Get your user data */
   "get-users-me": {
+    parameters: {
+      query: {
+        /** Comma separeted string of specific fields requested */
+        fields?: string;
+      };
+    };
     responses: {
       /** OK */
       200: {
@@ -900,6 +906,10 @@ export interface operations {
         filterBy?: components["parameters"]["filterBy"];
         /** How to localize values */
         locale?: components["parameters"]["locale"];
+        /** How to order values (ASC, DESC) */
+        order?: components["parameters"]["order"];
+        /** The field for item order */
+        orderBy?: "name" | "start_date" | "end_date" | "close_date";
       };
     };
     responses: {
