@@ -1,4 +1,9 @@
-import { Card, Text, Carousel } from "@appquality/appquality-design-system";
+import {
+  Card,
+  Text,
+  Carousel,
+  CarouselSlide,
+} from "@appquality/appquality-design-system";
 import React from "react";
 import styled from "styled-components";
 import quotes from "../assets/quotes.svg";
@@ -47,6 +52,10 @@ const CardListStyle = styled.div`
   }
   .avatar-qualification {
     grid-area: qualification;
+    min-height: 40px;
+  }
+  .review-content {
+    min-height: 100px;
   }
 `;
 
@@ -128,28 +137,32 @@ export const Reviews = () => {
   ];
   return (
     <CardListStyle>
-      <Carousel>
+      <Carousel step={{ xs: 1, lg: 3 }}>
         {items.map((item, index) => (
-          <Card shadow className="card-list-item aq-my-3" key={index}>
-            <img src={quotes} className="aq-mb-2 item-icon" />
-            <div className="item-avatar aq-mb-2">
-              <div className="avatar-image">
-                <img src={item.pic} />
+          <CarouselSlide>
+            <Card shadow className="card-list-item aq-my-3" key={index}>
+              <img src={quotes} className="aq-mb-2 item-icon" />
+              <div className="item-avatar aq-mb-2">
+                <div className="avatar-image">
+                  <img src={item.pic} />
+                </div>
+                <Text color="primary" className="capitalize-first avatar-name">
+                  <strong>
+                    {item.name}, {item.age}
+                  </strong>
+                </Text>
+                <Text
+                  color="secondary"
+                  className="capitalize-first avatar-qualification"
+                >
+                  {item.qualification}
+                </Text>
               </div>
-              <Text color="primary" className="capitalize-first avatar-name">
-                <strong>
-                  {item.name}, {item.age}
-                </strong>
+              <Text color="secondary">
+                <div className="review-content">{item.review}</div>
               </Text>
-              <Text
-                color="secondary"
-                className="capitalize-first avatar-qualification"
-              >
-                {item.qualification}
-              </Text>
-            </div>
-            <Text color="secondary">{item.review}</Text>
-          </Card>
+            </Card>
+          </CarouselSlide>
         ))}
       </Carousel>
     </CardListStyle>

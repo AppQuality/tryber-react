@@ -32,7 +32,6 @@ const tagManagerArgs = {
 };
 
 const StyledHome = styled.div`
-  max-height: calc(100vh - 54px);
   max-width: 100vw;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -81,7 +80,7 @@ export default function Home() {
   return (
     <StyledHome>
       {helmet}
-      <Container className="aq-pb-3">
+      <Container className="aq-py-3">
         <section className="aq-mb-4">
           <BannerTop />
         </section>
