@@ -192,3 +192,5 @@ export const experiencePoints = async ({
     throw new HttpError(res.status, res.statusText, json.err);
   }
 };
+
+export * from "./myPopups";
