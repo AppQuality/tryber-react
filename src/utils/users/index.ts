@@ -104,6 +104,12 @@ export const myCampaigns = async ({
     if (query.limit) {
       urlps.set("limit", query.limit.toString());
     }
+    if (query.order) {
+      urlps.set("order", query.order);
+    }
+    if (query.orderBy) {
+      urlps.set("orderBy", query.orderBy);
+    }
     if (query.filterBy) {
       Object.entries(query.filterBy).forEach(([key, val]) => {
         if (typeof val === "string") {
