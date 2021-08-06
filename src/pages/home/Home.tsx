@@ -1,10 +1,10 @@
-import React from "react";
 import {
   Container,
   Title,
   Button,
   Text,
 } from "@appquality/appquality-design-system";
+import { useState, useEffect } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
@@ -20,12 +20,14 @@ import { ReviewSection } from "./content/ReviewSection";
 import { CardSection } from "./content/CardSection";
 import { Footer } from "./content/Footer";
 import styled from "styled-components";
+import TesterSidebar from "../../features/TesterSidebar";
+import { useUser } from "../../store/useUser";
 
 const tagManagerArgs = {
   dataLayer: {
     role: "unknown",
-    wp_user_id: false,
-    tester_id: false,
+    wp_user_id: 0,
+    tester_id: 0,
     is_admin_page: false,
   },
   dataLayerName: "PageDataLayer",
@@ -41,10 +43,32 @@ const StyledHome = styled.div`
     #fbfbfd 66%,
     #e3eef5 100%
   );
+  ${Text} {
+    font-size: 17.5px;
+    @media only screen and (max-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      font-size: 16px;
+    }
+  }
 `;
-export default function Home() {
+export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
   const { t, i18n } = useTranslation();
+  const { user, error } = useUser();
+  const [isLoading, setisLoading] = useState(true);
+
   TagManager.dataLayer(tagManagerArgs);
+
+  useEffect(() => {
+    if (user) {
+      tagManagerArgs.dataLayer = {
+        role: user.role,
+        wp_user_id: user.wp_user_id,
+        tester_id: user.id,
+        is_admin_page: false,
+      };
+    }
+    setisLoading(false);
+  }, [user]);
 
   const helmet = (
     <Helmet>
@@ -76,8 +100,7 @@ export default function Home() {
       text: "150.000",
     },
   ];
-  //const [middleRectRef, middleRectEntry] = useObserver<HTMLDivElement>();
-  return (
+  const content = (
     <StyledHome>
       {helmet}
       <Container className="aq-py-3">
@@ -99,7 +122,7 @@ export default function Home() {
             color="secondary"
             className="aq-my-4"
             style={{
-              maxWidth: "500px",
+              maxWidth: "800px",
               marginLeft: "auto",
               marginRight: "auto",
             }}
@@ -134,4 +157,9 @@ export default function Home() {
       </Container>
     </StyledHome>
   );
+
+  if (user) {
+    return <TesterSidebar>{content}</TesterSidebar>;
+  }
+  return content;
 }

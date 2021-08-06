@@ -103,7 +103,11 @@ function App() {
               />
             )}
           />
-          <Route path="/" exact component={Home} />
+          <Route
+            path="/"
+            exact
+            component={() => <Home isMenuOpen={isMenuOpen} />}
+          />
         </Switch>
       </BrowserRouter>
     </ThemeProvider>

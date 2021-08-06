@@ -103,7 +103,7 @@ export const BannerTop = () => {
             errori?
           </Text>
           <Text className="aq-mb-4">
-            Con AppQuality
+            Con AppQuality{" "}
             <strong>
               avrai l'opportunità di utilizzare servizi e app di grandi aziende
             </strong>
