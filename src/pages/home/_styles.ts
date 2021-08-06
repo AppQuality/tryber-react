@@ -18,5 +18,8 @@ export const StyledCta = styled.div`
       max-width: 200px;
       margin: 0 auto;
     }
+    &:first-letter {
+      text-transform: capitalize;
+    }
   }
 `;

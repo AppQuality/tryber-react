@@ -4,7 +4,7 @@ import {
   Button,
   Text,
 } from "@appquality/appquality-design-system";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
@@ -35,6 +35,7 @@ const tagManagerArgs = {
 
 const StyledHome = styled.div`
   max-width: 100vw;
+  max-height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden;
   background-image: linear-gradient(
@@ -141,11 +142,7 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
             </Trans>
           </Text>
           <StyledCta className="aq-text-center">
-            <Button
-              type="success"
-              size="block"
-              className="aq-mt-3 capitalize-first"
-            >
+            <Button as='a' href={`${window.location.href}/getting-started`} type="success" size="block">
               {t("join the team")}
             </Button>
           </StyledCta>

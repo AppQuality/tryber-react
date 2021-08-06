@@ -10,7 +10,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as TopShape } from "../assets/rectangle-top.svg";
 import people from "../assets/group-1349.png";
 import styled from "styled-components";
-import { StyledCta } from "./../_styles";
+import { StyledCta } from "../_styles";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useTranslation } from "react-i18next";
 
@@ -113,7 +113,7 @@ export const BannerTop = () => {
             <strong>I tuoi feedback e il tuo lavoro sono preziosi!</strong>
           </Text>
           <StyledCta>
-            <Button type="success" size="block" className="aq-mt-4">
+            <Button as='a' href={`${window.location.href}/getting-started`} type="success" size="block">
               {t("join the team")}
             </Button>
           </StyledCta>
