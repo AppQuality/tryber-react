@@ -1,7 +1,7 @@
 import HttpError from "../HttpError";
 import { operations } from "../schema";
 
-export const me = async (token?: string) => {
+export const me = async (token?: string, query?: string) => {
   if (process.env.REACT_APP_DEFAULT_TOKEN)
     token = process.env.REACT_APP_DEFAULT_TOKEN;
 
@@ -10,7 +10,13 @@ export const me = async (token?: string) => {
   if (token) {
     requestHeaders.set("Authorization", "Bearer " + token);
   }
-  const res = await fetch(`${process.env.REACT_APP_API_URL}/users/me`, {
+  let url = `${process.env.REACT_APP_API_URL}/users/me`;
+  if (query) {
+    let urlps = new URLSearchParams();
+    urlps.set("fields", query);
+    url += "?" + urlps.toString();
+  }
+  const res = await fetch(url, {
     method: "GET",
     headers: requestHeaders,
   });
@@ -76,9 +82,9 @@ export const myBugs = async ({
 };
 
 export const myCampaigns = async ({
-                               token,
-                               query,
-                             }: {
+  token,
+  query,
+}: {
   token?: string;
   query?: operations["get-users-me-campaigns"]["parameters"]["query"];
 }) => {
@@ -108,11 +114,11 @@ export const myCampaigns = async ({
     params = "?" + urlps.toString();
   }
   const res = await fetch(
-      `${process.env.REACT_APP_API_URL}/users/me/campaigns${params}`,
-      {
-        method: "GET",
-        headers: requestHeaders,
-      }
+    `${process.env.REACT_APP_API_URL}/users/me/campaigns${params}`,
+    {
+      method: "GET",
+      headers: requestHeaders,
+    }
   );
   if (res.ok) {
     return await res.json();
