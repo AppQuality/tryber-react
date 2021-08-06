@@ -97,12 +97,12 @@ export const BannerTop = () => {
               {t("Entra nella prima Community di Tester italiana!")}
             </Title>
           </PageTitle>
-          <Text className="aq-mb-3">
+          <Text className="aq-mb-3 large-desktop">
             Ti è mai capitato di navigare su internet con il tuo smartphone o il
             computer e imbatterti in un’app o un sito web poco intuitivo o con
             errori?
           </Text>
-          <Text className="aq-mb-4">
+          <Text className="aq-mb-4 large-desktop">
             Con AppQuality{" "}
             <strong>
               avrai l'opportunità di utilizzare servizi e app di grandi aziende

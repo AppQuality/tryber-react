@@ -43,11 +43,9 @@ const StyledHome = styled.div`
     #fbfbfd 66%,
     #e3eef5 100%
   );
-  ${Text} {
-    font-size: 17.5px;
-    @media only screen and (max-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      font-size: 16px;
+  ${Text}.large-desktop {
+    @media only screen and (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+      font-size: 17.5px;
     }
   }
 `;
@@ -120,7 +118,7 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
           <Title size="xl">Sei pronto a metterti in gioco?</Title>
           <Text
             color="secondary"
-            className="aq-my-4"
+            className="aq-my-4 large-desktop"
             style={{
               maxWidth: "800px",
               marginLeft: "auto",

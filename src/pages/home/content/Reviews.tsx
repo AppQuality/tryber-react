@@ -21,6 +21,7 @@ import { useTranslation } from "react-i18next";
 const CardListStyle = styled.div`
   .card-list-item {
     padding-bottom: 35px;
+    width: 100%;
   }
   .item-icon {
     margin-left: auto;
