@@ -7,11 +7,13 @@ import { useTranslation } from "react-i18next";
 export default () => {
   const { i18n, t } = useTranslation();
 
-  const limit = 1;
+  const limit = 10;
   const [campaigns, setCampaigns] = useState<TableType.Row[]>([]);
   const [page, setPage] = useState(1);
   const [totalEntries, setTotalEntries] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [order, setOrder] = useState<"ASC" | "DESC">("DESC");
+  const [orderBy, setOrderBy] = useState<"startDate" | "endDate">("startDate");
 
   const fetchCampaignsFromApi = (page: number) => {
     return API.myCampaigns({
@@ -49,13 +51,11 @@ export default () => {
               content: (
                 <Button
                   as="a"
-                  href={`${window.location.href}
-                                    ${
-                                      i18n.language !== "it"
-                                        ? `${cp.preview_link?.en}`
-                                        : `${cp.preview_link?.it}`
-                                    }
-                                `}
+                  href={`${window.location.href}${
+                    i18n.language !== "it"
+                      ? `${cp.preview_link?.en}`
+                      : `${cp.preview_link?.it}`
+                  }`}
                   type="link"
                   size="sm"
                 >
@@ -74,7 +74,6 @@ export default () => {
   };
 
   useEffect(() => {
-    //
     fetchCampaignsFromApi(page)
       .then((data) => {
         setCampaigns(data.results);
@@ -100,5 +99,13 @@ export default () => {
     totalEntries,
     limit,
     loading,
+    order: {
+      current: order,
+      set: setOrder,
+    },
+    orderBy: {
+      current: orderBy,
+      set: setOrderBy,
+    },
   };
 };
