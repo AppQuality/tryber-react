@@ -2,7 +2,7 @@ import styled from "styled-components";
 import logo from "../assets/logo.svg";
 import { useTranslation } from "react-i18next";
 import { Text, Title } from "@appquality/appquality-design-system";
-import { EnvelopeFill, GeoAltFill, Bank2, Briefcase } from "react-bootstrap-icons";
+import { Mailbox, PinMap, Bank2, Briefcase } from "react-bootstrap-icons";
 import { Button } from "@appquality/appquality-design-system";
 import fbLogo from "../assets/fb.svg";
 import lnLogo from "../assets/ln.svg";
@@ -12,6 +12,7 @@ const StyledFooter = styled.section`
   margin-top: 90px;
   ${Title} {
     text-transform: capitalize;
+    margin-bottom: ${props => props.theme.grid.spacing.default};
   }
   @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
     margin-top: 200px;
@@ -61,10 +62,10 @@ export const Footer = () => {
           {t("address")}
         </Title>
         <Text color="secondary" small>
-          <GeoAltFill /> Via del Chiesotto 4, 26100 Cremona, Italy
+          <PinMap /> Via del Chiesotto 4, 26100 Cremona, Italy
         </Text>
         <Text color="secondary" small>
-          <EnvelopeFill /> crowd@app-quality.com
+          <Mailbox /> crowd@app-quality.com
         </Text>
       </div>
       <div className="aq-mb-3">
