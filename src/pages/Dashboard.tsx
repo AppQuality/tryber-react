@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Container,
   BSGrid,
@@ -16,6 +15,7 @@ import CompletedCampaignsTable from "../features/dashboard/CompletedCampaignsTab
 import ClosedCampaignsTable from "../features/dashboard/ClosedCampaignsTable";
 import AvailableCampaignsTable from "../features/dashboard/AvailableCampaignsTable";
 import PerformanceData from "../features/dashboard/PerformanceData";
+import PopupContainer from "../features/dashboard/PopupContainer";
 import { useTranslation } from "react-i18next";
 
 export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
@@ -36,6 +36,7 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
     <>
       {helmet()}
       <TesterSidebar route={"my-dashboard"} openFromHeader={isMenuOpen}>
+        <PopupContainer />
         <Container className="aq-pb-3">
           <PageTitle
             as="h2"
