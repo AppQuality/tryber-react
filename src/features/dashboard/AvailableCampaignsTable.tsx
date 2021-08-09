@@ -12,6 +12,7 @@ const AvailableCampaignsTable = () => {
       <Table
         dataSource={campaigns}
         isLoading={loading}
+        isStriped={true}
         order={order.current}
         orderBy={orderBy.current}
         columns={[
