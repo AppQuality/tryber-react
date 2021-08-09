@@ -15,11 +15,14 @@ import CompletedCampaignsTable from "../features/dashboard/CompletedCampaignsTab
 import ClosedCampaignsTable from "../features/dashboard/ClosedCampaignsTable";
 import AvailableCampaignsTable from "../features/dashboard/AvailableCampaignsTable";
 import PerformanceData from "../features/dashboard/PerformanceData";
+import PopupCard from "../features/dashboard/PopupCard";
 import PopupContainer from "../features/dashboard/PopupContainer";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
   //constants - START
+  const [isPopupModalOpen, setIsPopupModalOpen] = useState(true);
   const { t } = useTranslation();
   const helmet = () => {
     return (
@@ -36,7 +39,10 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
     <>
       {helmet()}
       <TesterSidebar route={"my-dashboard"} openFromHeader={isMenuOpen}>
-        <PopupContainer />
+        <PopupContainer
+          open={isPopupModalOpen}
+          onClose={() => setIsPopupModalOpen(false)}
+        />
         <Container className="aq-pb-3">
           <PageTitle
             as="h2"
@@ -99,6 +105,7 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
                 >
                   <PerformanceData />
                 </Card>
+                <PopupCard />
               </div>
             </BSCol>
           </BSGrid>
