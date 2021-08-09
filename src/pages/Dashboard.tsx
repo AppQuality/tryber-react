@@ -48,7 +48,7 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
             as="h2"
             size="regular"
             subtitle={t(
-              "This is your personal dashboard. From here you can check out your stats, keen an eye on the progress of your work and find new campaigns to apply for. Have fun!"
+              "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!"
             )}
           >
             {t("Dashboard")}
@@ -60,10 +60,9 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
                   <Tab id="active" title={t("Running")}>
                     <div className="aq-m-3">
                       <Text>
-                        A list of all the campaigns you successfully applied
-                        for. Read the manual and report as many bugs as you can
-                        to earn experience points and earn money. Don’t forget
-                        to apply for new campaigns!
+                        {t(
+                          `A list of all the campaigns you successfully applied for. Read the manual and report as many bugs as you can to earn experience points and earn money. Don't forget to apply for new campaigns!`
+                        )}
                       </Text>
                       <ActiveCampaignsTable />
                     </div>
@@ -71,10 +70,9 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
                   <Tab id="completed" title={t("Completed")}>
                     <div className="aq-m-3">
                       <Text>
-                        A list of all the campaigns you participated in that are
-                        now completed. We will evaluate your performance in the
-                        14 days following the end of the campaign and award you
-                        experience points and money accordingly.
+                        {t(
+                          `A list of all the campaigns you participated in that are now completed. We will evaluate your performance in the 14 days following the end of the campaign and award you experience points and money accordingly.`
+                        )}
                       </Text>
                       <CompletedCampaignsTable />
                     </div>
@@ -82,10 +80,9 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
                   <Tab id="closed" title={t("Closed")}>
                     <div className="aq-m-3">
                       <Text>
-                        A list of the campaigns you particiated in that were
-                        successfully evaluated by us. Campaigns will remain in
-                        this list until you collect your booty, to make sure you
-                        never miss your well deserved payout.
+                        {t(
+                          `A list of the campaigns you participated in that were successfully evaluated by us. Campaigns will remain on this list until you collect your booty, to make sure you never miss your well-deserved payout.`
+                        )}
                       </Text>
                       <ClosedCampaignsTable />
                     </div>
