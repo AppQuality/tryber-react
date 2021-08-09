@@ -38,7 +38,7 @@ export const CardSection = () => {
   const cardListItems = [
     {
       icon: <Alarm />,
-      title: t("manage your time"),
+      title: t("flexible hours"),
       body: (
         <Trans i18nKey="<0>Testa quando e dove vuoi!</0><1></1>L’importante è rispettare la data di chiusura della Campagna di Test">
           <strong>Testa quando e dove vuoi!</strong>
@@ -71,7 +71,7 @@ export const CardSection = () => {
     },
     {
       icon: <Wallet2 />,
-      title: t("pagamenti sicuri"),
+      title: t("fair payments"),
       body: (
         <Trans i18nKey="Completando correttamente una Campagna <1>riceverai un payout</>, che potrai trasferire sul tuo IBAN o PayPal">
           Completando correttamente una Campagna{" "}
@@ -82,7 +82,7 @@ export const CardSection = () => {
     },
     {
       icon: <GraphUp />,
-      title: t("migliora ogni giorno"),
+      title: t("grow your experience"),
       body: (
         <Trans i18nKey="<0>Testa quando e dove vuoi!</0><1></1> L’importante è rispettare la data di chiusura della Campagna di Test">
           <strong>Testa quando e dove vuoi!</strong>

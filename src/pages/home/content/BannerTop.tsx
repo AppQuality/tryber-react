@@ -6,7 +6,7 @@ import {
   Text,
   Title,
 } from "@appquality/appquality-design-system";
-import React, { useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { ReactComponent as TopShape } from "../assets/rectangle-top.svg";
 import people from "../assets/group-1349.png";
 import styled from "styled-components";
@@ -28,7 +28,7 @@ const LangMenu = styled.div`
 `;
 const TopAnimation = styled.div`
   display: none;
-  @media (min-width: 991px) {
+  @media (min-width: ${props => props.theme.grid.breakpoints.lg}) {
     display: block;
   }
   position: relative;
@@ -37,7 +37,8 @@ const TopAnimation = styled.div`
   svg {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -450px;
+    will-change: transform;
   }
   img {
     position: absolute;
@@ -75,6 +76,7 @@ const TopAnimation = styled.div`
 export const BannerTop = () => {
   const { t, i18n } = useTranslation();
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
+  const [bottomDistance, setBottomDistance] = useState(0);
   const [shapeIsVisible, setShapeVisible] = useState(false);
   let containerRef = useRef<HTMLDivElement>(null);
   const options = {
@@ -93,7 +95,9 @@ export const BannerTop = () => {
     };
   }, [containerRef, options]);
   useEffect(() => {
-    //console.log(entry?.intersectionRect.top);
+    // console.log(bottomDistance);
+    setBottomDistance(entry?.boundingClientRect?.bottom || 0);
+    //return () => window.removeEventListener('scroll', onScroll);
   }, [entry]);
   useEffect(() => {
     setTimeout(() => {
@@ -154,7 +158,10 @@ export const BannerTop = () => {
                 timeout={500}
                 classNames="shape-animation"
               >
-                <TopShape className="top-shape" />
+                <TopShape className="top-shape" style={{
+                  transform: `translate3d(0, ${bottomDistance - 607}px, 0)
+                              rotate(calc(${bottomDistance - 607}deg * -0.1)`
+                }} />
               </CSSTransition>
             )}
             <img className="top-image" src={people} />
