@@ -9,8 +9,8 @@ import {
   Frame,
 } from "@appquality/craft-blocks";
 import { Modal, ModalBody, Title } from "@appquality/appquality-design-system";
-import { useState } from "react";
 import API from "../../utils/api";
+import SetPopupAsSeenButton from "./SetPopupAsSeenButton";
 
 export default ({
   open = true,
@@ -24,22 +24,19 @@ export default ({
   const { popups } = usePopups({ showExpired });
   if (!popups.length) return null;
 
+  const expirePopup = (id: number) => {
+    API.myPopupsById({ popupId: id }).catch((e) => {
+      if (e.statusCode !== 404) {
+        alert(e.message);
+      }
+    });
+  };
   let i = 1;
   return (
     <Modal isOpen={open} onClose={onClose}>
       {popups.map((p) => {
         return (
-          <ModalBody
-            onShow={() => {
-              if (p.id) {
-                API.myPopupsById({ popupId: p.id }).catch((e) => {
-                  if (e.statusCode !== 404) {
-                    alert(e.message);
-                  }
-                });
-              }
-            }}
-          >
+          <ModalBody onShow={() => p.id && expirePopup(p.id)}>
             <Title size="s">
               {i++}/{popups.length}
             </Title>
@@ -55,6 +52,9 @@ export default ({
             >
               <Frame data={p.content}></Frame>
             </Editor>
+            {!showExpired && !p.once && p.id && (
+              <SetPopupAsSeenButton id={p.id} />
+            )}
           </ModalBody>
         );
       })}
