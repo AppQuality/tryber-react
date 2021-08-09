@@ -1,7 +1,13 @@
 import HttpError from "../HttpError";
 import { operations } from "../schema";
 
-export const myPopups = async ({ token }: { token?: string }) => {
+export const myPopups = async ({
+  token,
+  showExpired,
+}: {
+  token?: string;
+  showExpired: boolean;
+}) => {
   if (process.env.REACT_APP_DEFAULT_TOKEN)
     token = process.env.REACT_APP_DEFAULT_TOKEN;
   const requestHeaders: HeadersInit = new Headers();
@@ -9,10 +15,19 @@ export const myPopups = async ({ token }: { token?: string }) => {
   if (token) {
     requestHeaders.set("Authorization", "Bearer " + token);
   }
-  const res = await fetch(`${process.env.REACT_APP_API_URL}/users/me/popups`, {
-    method: "GET",
-    headers: requestHeaders,
-  });
+  let params = "";
+  if (showExpired) {
+    let urlps = new URLSearchParams();
+    urlps.set("showExpired", showExpired.toString());
+    params = "?" + urlps.toString();
+  }
+  const res = await fetch(
+    `${process.env.REACT_APP_API_URL}/users/me/popups${params}`,
+    {
+      method: "GET",
+      headers: requestHeaders,
+    }
+  );
   if (res.ok) {
     return await res.json();
   } else {
