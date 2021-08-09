@@ -19,9 +19,8 @@ export default () => {
     return API.myCampaigns({
       query: {
         filterBy: {
-          // accepted: '1',
-          // completed: "0",
-          statusId: "1",
+          accepted: "1",
+          completed: "0",
         },
         order: order,
         orderBy: orderBy == "endDate" ? "end_date" : "name",
