@@ -1,6 +1,9 @@
 {
   "/discover-experience-points/": "/it/come-funzionano-i-punti-esperienza/",
   "/terms-and-conditions/": "/it/termini-e-condizioni/",
+  "A list of all the campaigns you participated in that are\n                        now completed. We will evaluate your performance in the\n                        14 days following the end of the campaign and award you\n                        experience points and money accordingly.": "",
+  "A list of all the campaigns you successfully applied\n                        for. Read the manual and report as many bugs as you can\n                        to earn experience points and earn money. Don't forget\n                        to apply for new campaigns!": "",
+  "A list of the campaigns you particiated in that were\n                        successfully evaluated by us. Campaigns will remain in\n                        this list until you collect your booty, to make sure you\n                        never miss your well deserved payout.": "",
   "Action": "Azione",
   "Actions": "Azioni",
   "Activity": "Attività",
@@ -91,7 +94,7 @@
   "Testing University": "Università del test",
   "The password must be at least 6 characters long, contain an uppercase letter, a lowercase letter and a number.": "La password deve essere lunga almeno 6 caratteri, contenere una lettera maiuscola, una lettera minuscola e un numero.",
   "This is a required field": "Questo è un campo obbligatorio",
-  "This is your personal dashboard. From here you can check out your stats, keen an eye on the progress of your work and find new campaigns to apply for. Have fun!": "",
+  "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!": "Questa è la tua dashboard personale. Da qui puoi controllare le tue statistiche, tenere d'occhio l'andamento del tuo lavoro e trovare nuove campagne per cui candidarti. Buon divertimento!",
   "Title": "Titolo",
   "Type": "Tipo",
   "Uploaded Bugs": "Bug caricati",
