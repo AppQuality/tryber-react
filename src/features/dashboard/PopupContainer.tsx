@@ -38,7 +38,7 @@ export default ({
         return (
           <ModalBody onShow={() => p.id && expirePopup(p.id)}>
             <Title size="s">
-              {i++}/{popups.length}
+              {i++}/{popups.length} {p.title}
             </Title>
             <Editor
               enabled={false}

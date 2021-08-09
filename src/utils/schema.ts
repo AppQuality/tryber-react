@@ -1016,12 +1016,19 @@ export interface operations {
     };
   };
   "get-users-me-popups": {
+    parameters: {
+      query: {
+        /** Show all popup history, expired popups included */
+        showExpired?: boolean;
+      };
+    };
     responses: {
       /** OK */
       200: {
         content: {
           "application/json": {
             id?: number;
+            title?: string;
             content?: string;
             once?: boolean;
           }[];
