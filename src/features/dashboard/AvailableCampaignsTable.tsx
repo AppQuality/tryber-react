@@ -16,7 +16,7 @@ const AvailableCampaignsTable = () => {
         orderBy={orderBy.current}
         columns={[
           {
-            title: t("Campaigns"),
+            title: t("Campaign"),
             dataIndex: "campaignName",
             key: "campaignName",
           },
@@ -46,7 +46,7 @@ const AvailableCampaignsTable = () => {
             },
           },
           {
-            title: "Actions",
+            title: t("Actions"),
             dataIndex: "actions",
             key: "actions",
             align: "center",
