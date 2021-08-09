@@ -1,7 +1,49 @@
 import { icons } from "@appquality/appquality-design-system";
 import usePerformance from "../../store/dashboard/usePerformance";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+
+const StyledPerformance = styled.div`
+  .stats {
+    border-bottom: 1px solid #d1e0e8;
+  }
+  .stats-row {
+    display: grid;
+    grid-template-columns: 21px 1fr 75px;
+  }
+  .stats-go-to {
+    display: grid;
+    grid-template-columns: 190px 21px;
+  }
+  .warning {
+    color: #ff9900;
+  }
+  .danger {
+    color: #d71116;
+  }
+  .success {
+    color: #3ead52;
+  }
+  .info {
+    color: #266a9a;
+  }
+  .primary {
+    color: #17405c;
+  }
+  .secondary {
+    color: #448098;
+  }
+  .icon {
+    width: 21px;
+    height: 21px;
+  }
+  .disabled-font {
+    color: #8ea2ae;
+  }
+`;
 
 const PerformanceData = () => {
+  const { t } = useTranslation();
   const {
     AwardFill,
     BookmarkCheckFill,
@@ -24,42 +66,47 @@ const PerformanceData = () => {
     return <div>LOADING CAZZO! ASPETTA!</div>;
   }
   return (
-    <div>
-      <div style={{ borderBottom: "1px solid #d1e0e8" }} className={"row"}>
-        <div>
-          <StarFill /> Experience points <strong>{expPoints}</strong>
+    <StyledPerformance>
+      <div className={"stats"}>
+        <div className={"stats-row"}>
+          <StarFill className={"icon warning"} /> {t("Experience points")}{" "}
+          <strong>{expPoints}</strong>
         </div>
-        <div>
-          <AwardFill /> Your Rank <strong>{rank}</strong>
-        </div>
-        <a>
-          View ranking page <ArrowRight />
-        </a>
-      </div>
-      <div style={{ borderBottom: "1px solid #d1e0e8" }} className={"row"}>
-        <div>
-          <BookmarkCheckFill /> Completed campaigns{" "}
-          <strong>{cpCompleted}</strong>
-        </div>
-        <div>
-          <BugFill /> Approved bugs <strong>{bugsApproved}</strong>
+        <div className={"stats-row"}>
+          <AwardFill className={"icon info"} /> {t("Your Rank")}{" "}
+          <strong>{rank}</strong>
         </div>
         <a>
-          View bugs page <ArrowRight />
+          {t("View ranking page")} <ArrowRight className={"icon"} />
         </a>
       </div>
-      <div className={"row"}>
-        <div>
-          <CashCoin /> All-time booty <strong>€ {allBooty}</strong>
+      <div className={"stats"}>
+        <div className={"stats-row"}>
+          <BookmarkCheckFill className={"icon secondary"} />{" "}
+          {t("Completed campaigns")} <strong>{cpCompleted}</strong>
         </div>
-        <div>
-          <PiggyBankFill /> Reserved booty <strong>€ {pendingBooty}</strong>
+        <div className={"stats-row"}>
+          <BugFill className={"icon danger"} /> {t("Approved bugs")}{" "}
+          <strong>{bugsApproved}</strong>
         </div>
         <a>
-          View payments page <ArrowRight />
+          {t("View bugs page")} <ArrowRight className={"icon"} />
         </a>
       </div>
-    </div>
+      <div className={"stats-no-border"}>
+        <div className={"stats-row"}>
+          <CashCoin className={"icon success"} /> {t("All-time booty")}{" "}
+          <strong>€ {allBooty}</strong>
+        </div>
+        <div className={"stats-row"}>
+          <PiggyBankFill className={"icon disabled-font"} />{" "}
+          {t("Reserved booty")} <strong>€ {pendingBooty}</strong>
+        </div>
+        <a className={"stats-go-to"}>
+          {t("View payments page")} <ArrowRight className={"icon"} />
+        </a>
+      </div>
+    </StyledPerformance>
   );
 };
 
