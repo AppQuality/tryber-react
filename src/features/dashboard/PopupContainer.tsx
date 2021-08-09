@@ -10,6 +10,7 @@ import {
 } from "@appquality/craft-blocks";
 import { Modal, ModalBody, Title } from "@appquality/appquality-design-system";
 import { useState } from "react";
+import API from "../../utils/api";
 
 export default () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -22,7 +23,13 @@ export default () => {
     <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
       {popups.map((p) => {
         return (
-          <ModalBody>
+          <ModalBody
+            onShow={() => {
+              if (p.id) {
+                API.myPopupsById({ popupId: p.id });
+              }
+            }}
+          >
             <Title size="s">
               {i++}/{popups.length}
             </Title>
