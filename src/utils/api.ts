@@ -1,6 +1,13 @@
 import { login, signup } from "./authenticate";
 import { campaigns } from "./campaigns";
-import { me, myBugs, myCampaigns, experiencePoints, myPopups } from "./users";
+import {
+  me,
+  myBugs,
+  myCampaigns,
+  experiencePoints,
+  myPopups,
+  myPopupsById,
+} from "./users";
 
 const API = {
   login,
@@ -9,6 +16,7 @@ const API = {
   signup,
   myBugs,
   myPopups,
+  myPopupsById,
   myCampaigns,
   experiencePoints,
 };
