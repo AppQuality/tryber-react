@@ -14,6 +14,18 @@ import { StyledCta } from "../_styles";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useTranslation } from "react-i18next";
 
+const LangMenu = styled.div`
+  color: ${props => props.theme.palette.primary};
+  text-align: right;
+  .lang-navLink {
+    color: ${props => props.theme.palette.info};
+    &.current {
+      text-decoration: none;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+`;
 const TopAnimation = styled.div`
   display: none;
   @media (min-width: 991px) {
@@ -61,7 +73,7 @@ const TopAnimation = styled.div`
 `;
 
 export const BannerTop = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
   const [shapeIsVisible, setShapeVisible] = useState(false);
   let containerRef = useRef<HTMLDivElement>(null);
@@ -90,11 +102,25 @@ export const BannerTop = () => {
   }, []);
   return (
     <BSGrid>
+      <LangMenu className='aq-mb-3'>
+        <a
+            href="/it"
+            className={`${(i18n.language === 'it') ? 'current ' : ''}lang-navLink`}
+        >
+          Italiano
+        </a> | {" "}
+        <a
+            href="/"
+            className={`${(i18n.language === 'en') ? 'current ' : ''}lang-navLink`}
+        >
+          English
+        </a>
+      </LangMenu>
       <BSCol size="col-lg-7">
         <div style={{ position: "relative" }}>
           <PageTitle>
             <Title size="xl">
-              {t("Entra nella prima Community di Tester italiana!")}
+              {t("Join the first italian tester comunity!")}
             </Title>
           </PageTitle>
           <Text className="aq-mb-3 large-desktop">
@@ -103,7 +129,7 @@ export const BannerTop = () => {
             errori?
           </Text>
           <Text className="aq-mb-4 large-desktop">
-            Con AppQuality{" "}
+            Con AppQuality{" "}`
             <strong>
               avrai l'opportunità di utilizzare servizi e app di grandi aziende
             </strong>
