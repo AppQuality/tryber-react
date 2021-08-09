@@ -12,7 +12,7 @@ export default () => {
   const [page, setPage] = useState(1);
   const [totalEntries, setTotalEntries] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [order, setOrder] = useState<"ASC" | "DESC">("DESC");
+  const [order, setOrder] = useState<"ASC" | "DESC">("ASC");
   const [orderBy, setOrderBy] = useState<"startDate" | "endDate">("startDate");
 
   const fetchCampaignsFromApi = (page: number) => {
@@ -55,7 +55,7 @@ export default () => {
                   as="a"
                   href={`${window.location.href}${
                     i18n.language !== "it"
-                      ? `${cp.preview_link?.en}`
+                      ? `${cp.manual_link?.en}`
                       : `${cp.preview_link?.it}`
                   }`}
                   type="link"
@@ -76,6 +76,7 @@ export default () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetchCampaignsFromApi(page)
       .then((data) => {
         setCampaigns(data.results);
