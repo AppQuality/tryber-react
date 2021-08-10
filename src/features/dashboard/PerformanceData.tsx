@@ -85,7 +85,7 @@ const PerformanceData = () => {
       <GoToBlock className={"aq-mb-3 aq-pb-3"}>
         <StyledAnchor
           href={`${window.location.host}/${
-            i18n.language !== "it" ? "it/leaderboard-2/" : "leaderboard"
+            i18n.language !== "en" ? "it/leaderboard-2/" : "leaderboard"
           }`}
         >
           <BSGrid>
@@ -132,7 +132,7 @@ const PerformanceData = () => {
       <GoToBlock className={"aq-mb-3 aq-pb-3"}>
         <StyledAnchor
           href={`${window.location.host}/${
-            i18n.language !== "it" ? "it/" : ""
+            i18n.language !== "en" ? "it/" : ""
           }my-bugs`}
         >
           <BSGrid>
@@ -181,7 +181,7 @@ const PerformanceData = () => {
       <div className={"aq-mb-3"}>
         <StyledAnchor
           href={`${window.location.host}/${
-            i18n.language !== "it" ? "it/pagamenti/" : "payments/"
+            i18n.language !== "en" ? "it/pagamenti/" : "payments/"
           }`}
         >
           <BSGrid>
