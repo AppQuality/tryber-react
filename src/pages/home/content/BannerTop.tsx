@@ -6,19 +6,19 @@ import {
   Text,
   Title,
 } from "@appquality/appquality-design-system";
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as TopShape } from "../assets/rectangle-top.svg";
-import people from "../assets/group-1349.png";
+import people from "../assets/join-the-community.svg";
 import styled from "styled-components";
 import { StyledCta } from "../_styles";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useTranslation } from "react-i18next";
 
 const LangMenu = styled.div`
-  color: ${props => props.theme.palette.primary};
+  color: ${(props) => props.theme.palette.primary};
   text-align: right;
   .lang-navLink {
-    color: ${props => props.theme.palette.info};
+    color: ${(props) => props.theme.palette.info};
     &.current {
       text-decoration: none;
       cursor: default;
@@ -28,7 +28,7 @@ const LangMenu = styled.div`
 `;
 const TopAnimation = styled.div`
   display: none;
-  @media (min-width: ${props => props.theme.grid.breakpoints.lg}) {
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
     display: block;
   }
   position: relative;
@@ -106,16 +106,17 @@ export const BannerTop = () => {
   }, []);
   return (
     <BSGrid>
-      <LangMenu className='aq-mb-3'>
+      <LangMenu className="aq-mb-3">
         <a
-            href="/it"
-            className={`${(i18n.language === 'it') ? 'current ' : ''}lang-navLink`}
+          href="/it"
+          className={`${i18n.language === "it" ? "current " : ""}lang-navLink`}
         >
           Italiano
-        </a> | {" "}
+        </a>{" "}
+        |{" "}
         <a
-            href="/"
-            className={`${(i18n.language === 'en') ? 'current ' : ''}lang-navLink`}
+          href="/"
+          className={`${i18n.language === "en" ? "current " : ""}lang-navLink`}
         >
           English
         </a>
@@ -133,7 +134,7 @@ export const BannerTop = () => {
             errori?
           </Text>
           <Text className="aq-mb-4 large-desktop">
-            Con AppQuality{" "}`
+            Con AppQuality `
             <strong>
               avrai l'opportunità di utilizzare servizi e app di grandi aziende
             </strong>
@@ -143,7 +144,12 @@ export const BannerTop = () => {
             <strong>I tuoi feedback e il tuo lavoro sono preziosi!</strong>
           </Text>
           <StyledCta>
-            <Button as='a' href={`${window.location.href}/getting-started`} type="success" size="block">
+            <Button
+              as="a"
+              href={`${window.location.href}/getting-started`}
+              type="success"
+              size="block"
+            >
               {t("join the team")}
             </Button>
           </StyledCta>
@@ -158,10 +164,13 @@ export const BannerTop = () => {
                 timeout={500}
                 classNames="shape-animation"
               >
-                <TopShape className="top-shape" style={{
-                  transform: `translate3d(0, ${bottomDistance - 607}px, 0)
-                              rotate(calc(${bottomDistance - 607}deg * -0.1)`
-                }} />
+                <TopShape
+                  className="top-shape"
+                  style={{
+                    transform: `translate3d(0, ${bottomDistance - 607}px, 0)
+                              rotate(calc(${bottomDistance - 607}deg * -0.1)`,
+                  }}
+                />
               </CSSTransition>
             )}
             <img className="top-image" src={people} />
