@@ -2,7 +2,6 @@ import {
   aqBootstrapTheme,
   GlobalStyle,
 } from "@appquality/appquality-design-system";
-import "./App.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { GettingStarted, MyBugs, ExperiencePoints, Home } from "./pages";
 import "./i18n";
@@ -25,6 +24,9 @@ if (process.env.REACT_APP_GTM_ID) {
 const base = "/:locale(en|it)?";
 
 const TemporaryGlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+  }
   .container .hero {
     margin-left: calc(-24px/2);
     margin-right: calc(-24px/2);
@@ -108,11 +110,11 @@ function App() {
             exact
             component={() => <Home isMenuOpen={isMenuOpen} />}
           />
-            <Route
-                path="/it"
-                exact
-                component={() => <Home isMenuOpen={isMenuOpen} />}
-            />
+          <Route
+            path="/it"
+            exact
+            component={() => <Home isMenuOpen={isMenuOpen} />}
+          />
         </Switch>
       </BrowserRouter>
     </ThemeProvider>
