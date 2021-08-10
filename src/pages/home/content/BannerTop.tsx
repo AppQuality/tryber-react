@@ -143,7 +143,7 @@ export const BannerTop = ({ isLogged }: { isLogged: boolean }) => {
             errori?
           </Text>
           <Text className="aq-mb-4 large-desktop">
-            Con AppQuality `
+            Con AppQuality{" "}
             <strong>
               avrai l'opportunità di utilizzare servizi e app di grandi aziende
             </strong>
