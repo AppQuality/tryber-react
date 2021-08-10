@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   BSGrid,
@@ -8,6 +8,9 @@ import {
   Tabs,
   Tab,
   Text,
+  SpinnerWrapper,
+  Spinner,
+  Title,
 } from "@appquality/appquality-design-system";
 import TesterSidebar from "../features/TesterSidebar";
 import { Helmet } from "react-helmet";
@@ -17,10 +20,26 @@ import ClosedCampaignsTable from "../features/dashboard/ClosedCampaignsTable";
 import AvailableCampaignsTable from "../features/dashboard/AvailableCampaignsTable";
 import PerformanceData from "../features/dashboard/PerformanceData";
 import { useTranslation } from "react-i18next";
+import { useUser } from "../store/useUser";
+
+const tagManagerArgs = {
+  dataLayer: {
+    role: "unknown",
+    wp_user_id: 0,
+    tester_id: 0,
+    is_admin_page: false,
+  },
+  dataLayerName: "PageDataLayer",
+};
 
 export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
   //constants - START
+
+  const { user, error } = useUser();
+  const [isLoading, setisLoading] = useState(true);
+
   const { t } = useTranslation();
+
   const helmet = () => {
     return (
       <Helmet>
@@ -32,6 +51,42 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
   };
   //constants - END
 
+  useEffect(() => {
+    if (user) {
+      tagManagerArgs.dataLayer = {
+        role: user.role,
+        wp_user_id: user.wp_user_id,
+        tester_id: user.id,
+        is_admin_page: false,
+      };
+
+      setisLoading(false);
+    } else {
+      if (error) {
+        if (error.statusCode === 403) {
+          window.location.href = "/";
+        } else {
+          alert(error.message);
+        }
+      }
+    }
+  }, [user, error]);
+
+  if (isLoading) {
+    return (
+      <>
+        {helmet()}
+        <Container className="aq-py-3">
+          <SpinnerWrapper>
+            <Spinner />
+            <Title size="xs" as="h5">
+              {t("loading")}
+            </Title>
+          </SpinnerWrapper>
+        </Container>
+      </>
+    );
+  }
   return (
     <>
       {helmet()}
