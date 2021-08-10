@@ -160,17 +160,23 @@ export const BannerTop = () => {
           <TransitionGroup classNames="top-animation">
             {shapeIsVisible && (
               <CSSTransition
-                key="shape-animation"
+                key="image-animation"
                 timeout={500}
-                classNames="shape-animation"
+                classNames="image-animation"
               >
-                <TopShape
-                  className="top-shape"
-                  style={{
-                    transform: `translate3d(0, ${bottomDistance - 607}px, 0)
+                <CSSTransition
+                  key="shape-animation"
+                  timeout={500}
+                  classNames="shape-animation"
+                >
+                  <TopShape
+                    className="top-shape"
+                    style={{
+                      transform: `translate3d(0, ${bottomDistance - 607}px, 0)
                               rotate(calc(${bottomDistance - 607}deg * -0.1)`,
-                  }}
-                />
+                    }}
+                  />
+                </CSSTransition>
               </CSSTransition>
             )}
             <img className="top-image" src={people} />
