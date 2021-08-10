@@ -36,7 +36,7 @@ export default ({
     <Modal isOpen={open} onClose={onClose}>
       {popups.map((p) => {
         return (
-          <ModalBody onShow={() => p.id && expirePopup(p.id)}>
+          <ModalBody onShow={() => p.id && p.once && expirePopup(p.id)}>
             <Title size="s">
               {i++}/{popups.length} {p.title}
             </Title>

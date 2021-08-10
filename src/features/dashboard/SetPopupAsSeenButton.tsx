@@ -19,7 +19,7 @@ export default ({ id }: { id: number }) => {
   };
   return (
     <Button
-      type="info"
+      type="link"
       flat
       size="block"
       disabled={seen}
