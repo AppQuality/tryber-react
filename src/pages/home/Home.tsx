@@ -54,8 +54,6 @@ const StyledHome = styled.div`
 export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
   const { t } = useTranslation();
   const { user } = useUser();
-  const [isLoading, setisLoading] = useState(true);
-
   TagManager.dataLayer(tagManagerArgs);
 
   useEffect(() => {
@@ -67,7 +65,6 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
         is_admin_page: false,
       };
     }
-    setisLoading(false);
   }, [user]);
 
   const helmet = (
@@ -78,21 +75,6 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
     </Helmet>
   );
 
-  if (isLoading) {
-    return (
-      <>
-        {helmet}
-        <Container className="aq-py-3">
-          <SpinnerWrapper>
-            <Spinner />
-            <Title size="xs" as="h5">
-              {t("loading")}
-            </Title>
-          </SpinnerWrapper>
-        </Container>
-      </>
-    );
-  }
   const communityData: DataListItem[] = [
     {
       name: t("tester"),
@@ -115,7 +97,7 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
       text: "150.000",
     },
   ];
-  const content = (
+  let content = (
     <StyledHome>
       {helmet}
       <Container className="aq-py-3">
@@ -173,9 +155,10 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
       </Container>
     </StyledHome>
   );
-
   if (user) {
-    return <TesterSidebar openFromHeader={isMenuOpen}>{content}</TesterSidebar>;
+    content = (
+      <TesterSidebar openFromHeader={isMenuOpen}>{content}</TesterSidebar>
+    );
   }
   return content;
 }
