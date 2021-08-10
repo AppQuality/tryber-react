@@ -3,6 +3,8 @@ import {
   Title,
   Button,
   Text,
+  SpinnerWrapper,
+  Spinner,
 } from "@appquality/appquality-design-system";
 import React, { useState, useEffect } from "react";
 import { Trans, useTranslation } from "react-i18next";
@@ -35,8 +37,6 @@ const tagManagerArgs = {
 
 const StyledHome = styled.div`
   max-width: 100vw;
-  max-height: 100vh;
-  overflow-y: scroll;
   overflow-x: hidden;
   background-image: linear-gradient(
     #d5e6f0 0,
@@ -45,14 +45,15 @@ const StyledHome = styled.div`
     #e3eef5 100%
   );
   ${Text}.large-desktop {
-    @media only screen and (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
       font-size: 17.5px;
     }
   }
 `;
 export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
-  const { t, i18n } = useTranslation();
-  const { user, error } = useUser();
+  const { t } = useTranslation();
+  const { user } = useUser();
   const [isLoading, setisLoading] = useState(true);
 
   TagManager.dataLayer(tagManagerArgs);
@@ -77,6 +78,21 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
     </Helmet>
   );
 
+  if (isLoading) {
+    return (
+      <>
+        {helmet}
+        <Container className="aq-py-3">
+          <SpinnerWrapper>
+            <Spinner />
+            <Title size="xs" as="h5">
+              {t("loading")}
+            </Title>
+          </SpinnerWrapper>
+        </Container>
+      </>
+    );
+  }
   const communityData: DataListItem[] = [
     {
       name: t("tester"),
@@ -135,14 +151,19 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
               <strong>
                 ti sentirai subito parte di una Community dinamica e stimolante!
               </strong>{" "}
-              Sali a bordo e guarderai con occhi diversi il mondo digitale
-              intorno a te. <br />
+              Sali a bordo e inizia a guardare con occhi diversi il mondo
+              digitale intorno a te. <br />
               <br />
               Testare crea dipendenza!
             </Trans>
           </Text>
           <StyledCta className="aq-text-center">
-            <Button as='a' href={`${window.location.href}/getting-started`} type="success" size="block">
+            <Button
+              as="a"
+              href={`${window.location.href}/getting-started`}
+              type="success"
+              size="block"
+            >
               {t("join the team")}
             </Button>
           </StyledCta>
@@ -154,7 +175,7 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
   );
 
   if (user) {
-    return <TesterSidebar>{content}</TesterSidebar>;
+    return <TesterSidebar openFromHeader={isMenuOpen}>{content}</TesterSidebar>;
   }
   return content;
 }
