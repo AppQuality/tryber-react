@@ -1,7 +1,9 @@
 import { Table, Pagination } from "@appquality/appquality-design-system";
 import useAvailableCampaigns from "../../store/dashboard/useAvailableCampaigns";
+import { useTranslation } from "react-i18next";
 
 const AvailableCampaignsTable = () => {
+  const { t } = useTranslation();
   const { campaigns, page, totalEntries, limit, loading, order, orderBy } =
     useAvailableCampaigns();
 
@@ -10,21 +12,22 @@ const AvailableCampaignsTable = () => {
       <Table
         dataSource={campaigns}
         isLoading={loading}
+        isStriped={true}
         order={order.current}
         orderBy={orderBy.current}
         columns={[
           {
-            title: "Campaign",
+            title: t("Campaign"),
             dataIndex: "campaignName",
             key: "campaignName",
           },
           {
-            title: "Type",
+            title: t("Type"),
             dataIndex: "type",
             key: "type",
           },
           {
-            title: "Start Date",
+            title: t("Start Date"),
             dataIndex: "startDate",
             key: "startDate",
             isSortable: true,
@@ -34,7 +37,7 @@ const AvailableCampaignsTable = () => {
             },
           },
           {
-            title: "End Date",
+            title: t("End Date"),
             dataIndex: "endDate",
             key: "endDate",
             isSortable: true,
@@ -44,7 +47,7 @@ const AvailableCampaignsTable = () => {
             },
           },
           {
-            title: "Actions",
+            title: t("Actions"),
             dataIndex: "actions",
             key: "actions",
             align: "center",

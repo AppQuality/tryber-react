@@ -13,16 +13,17 @@ export default () => {
   const [totalEntries, setTotalEntries] = useState(0);
   const [loading, setLoading] = useState(true);
   const [order, setOrder] = useState<"ASC" | "DESC">("ASC");
-  const [orderBy, setOrderBy] = useState<"startDate" | "endDate">("startDate");
+  const [orderBy, setOrderBy] = useState<"endDate">("endDate");
 
   const fetchCampaignsFromApi = (page: number) => {
     return API.myCampaigns({
       query: {
         filterBy: {
+          accepted: "1",
           completed: "0",
         },
         order: order,
-        orderBy: orderBy == "endDate" ? "end_date" : "start_date",
+        orderBy: orderBy == "endDate" ? "end_date" : "name",
         limit,
         start: (page - 1) * limit,
       },
@@ -44,26 +45,34 @@ export default () => {
           };
           return {
             key: cp.id ? cp.id : 123,
-            campaignName: cp.name,
-            type: cp.campaign_type,
-            startDate: dateFormatter(cp.dates.start),
+            campaigns: cp.name,
             endDate: dateFormatter(cp.dates.end),
             actions: {
               title: ``,
-              content: (
+              content: [
                 <Button
                   as="a"
                   href={`${window.location.href}${
                     i18n.language !== "it"
                       ? `${cp.manual_link?.en}`
-                      : `${cp.preview_link?.it}`
+                      : `${cp.manual_link?.it}`
                   }`}
                   type="link"
                   size="sm"
                 >
-                  {t("Apply now")}
-                </Button>
-              ),
+                  {t("Read manual")}
+                </Button>,
+                <Button
+                  as="a"
+                  href={`${window.location.host}/${
+                    i18n.language !== "it" ? "it/" : ""
+                  }bugs/?controller=bugs&action=byCampaign&id=${cp.id}`}
+                  type="link"
+                  size="sm"
+                >
+                  {t("Report bug")}
+                </Button>,
+              ],
             },
           };
         });

@@ -1,11 +1,11 @@
-import { TableType, Button } from "@appquality/appquality-design-system";
+import { TableType } from "@appquality/appquality-design-system";
 import React, { useState, useEffect } from "react";
 import { operations } from "../../utils/schema";
 import API from "../../utils/api";
 import { useTranslation } from "react-i18next";
 
 export default () => {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
 
   const limit = 10;
   const [campaigns, setCampaigns] = useState<TableType.Row[]>([]);
@@ -13,16 +13,17 @@ export default () => {
   const [totalEntries, setTotalEntries] = useState(0);
   const [loading, setLoading] = useState(true);
   const [order, setOrder] = useState<"ASC" | "DESC">("ASC");
-  const [orderBy, setOrderBy] = useState<"startDate" | "endDate">("startDate");
+  const [orderBy, setOrderBy] = useState<"closeDate">("closeDate");
 
   const fetchCampaignsFromApi = (page: number) => {
     return API.myCampaigns({
       query: {
         filterBy: {
-          completed: "0",
+          accepted: "1",
+          statusId: "2",
         },
         order: order,
-        orderBy: orderBy == "endDate" ? "end_date" : "start_date",
+        orderBy: orderBy == "closeDate" ? "close_date" : "name",
         limit,
         start: (page - 1) * limit,
       },
@@ -44,27 +45,8 @@ export default () => {
           };
           return {
             key: cp.id ? cp.id : 123,
-            campaignName: cp.name,
-            type: cp.campaign_type,
-            startDate: dateFormatter(cp.dates.start),
-            endDate: dateFormatter(cp.dates.end),
-            actions: {
-              title: ``,
-              content: (
-                <Button
-                  as="a"
-                  href={`${window.location.href}${
-                    i18n.language !== "it"
-                      ? `${cp.manual_link?.en}`
-                      : `${cp.preview_link?.it}`
-                  }`}
-                  type="link"
-                  size="sm"
-                >
-                  {t("Apply now")}
-                </Button>
-              ),
-            },
+            campaigns: cp.name,
+            closeDate: dateFormatter(cp.dates.close),
           };
         });
         return {
