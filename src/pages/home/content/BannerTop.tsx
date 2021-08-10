@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next";
 
 const LangMenu = styled.div`
   color: ${(props) => props.theme.palette.primary};
+  min-height: 24px;
   text-align: right;
   .lang-navLink {
     color: ${(props) => props.theme.palette.info};
@@ -73,7 +74,7 @@ const TopAnimation = styled.div`
   }
 `;
 
-export const BannerTop = () => {
+export const BannerTop = ({ isLogged }: { isLogged: boolean }) => {
   const { t, i18n } = useTranslation();
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
   const [bottomDistance, setBottomDistance] = useState(0);
@@ -107,25 +108,33 @@ export const BannerTop = () => {
   return (
     <BSGrid>
       <LangMenu className="aq-mb-3">
-        <a
-          href="/it"
-          className={`${i18n.language === "it" ? "current " : ""}lang-navLink`}
-        >
-          Italiano
-        </a>{" "}
-        |{" "}
-        <a
-          href="/"
-          className={`${i18n.language === "en" ? "current " : ""}lang-navLink`}
-        >
-          English
-        </a>
+        {!isLogged && (
+          <>
+            <a
+              href="/it"
+              className={`${
+                i18n.language === "it" ? "current " : ""
+              }lang-navLink`}
+            >
+              Italiano
+            </a>{" "}
+            |{" "}
+            <a
+              href="/"
+              className={`${
+                i18n.language === "en" ? "current " : ""
+              }lang-navLink`}
+            >
+              English
+            </a>
+          </>
+        )}
       </LangMenu>
       <BSCol size="col-lg-7">
         <div style={{ position: "relative" }}>
           <PageTitle>
             <Title size="xl">
-              {t("Join the first italian tester comunity!")}
+              {t("Join the first italian tester community!")}
             </Title>
           </PageTitle>
           <Text className="aq-mb-3 large-desktop">

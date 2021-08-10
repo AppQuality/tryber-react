@@ -12,7 +12,7 @@ const StyledFooter = styled.section`
   margin-top: 90px;
   ${Title} {
     text-transform: capitalize;
-    margin-bottom: ${props => props.theme.grid.spacing.default};
+    margin-bottom: ${(props) => props.theme.grid.spacing.default};
   }
   @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
     margin-top: 200px;
@@ -28,7 +28,7 @@ const StyledFooter = styled.section`
     display: inline-block;
     border-radius: 4px;
     overflow: hidden;
-    margin-right: ${props => props.theme.grid.spacing.default};
+    margin-right: ${(props) => props.theme.grid.spacing.default};
     img {
       width: 100%;
       height: 100%;
@@ -48,13 +48,13 @@ export const Footer = () => {
           {t("social")}
         </Title>
         <Button as="a" href="#facebook" type="link" className="social-btn">
-          <img src={fbLogo} alt='facebook'/>
+          <img src={fbLogo} alt="facebook" />
         </Button>
         <Button as="a" href="#linkedin" type="link" className="social-btn">
-          <img src={lnLogo} alt='linkedin' />
+          <img src={lnLogo} alt="linkedin" />
         </Button>
         <Button as="a" href="#telegram" type="link" className="social-btn">
-          <img src={telegramLogo} alt='telegram' />
+          <img src={telegramLogo} alt="telegram" />
         </Button>
       </div>
       <div className="aq-mb-3">
@@ -73,7 +73,7 @@ export const Footer = () => {
           {t("company")}
         </Title>
         <Text color="secondary" small>
-          <Briefcase /> AppQuality srl - P.IVA 01603290196
+          <Briefcase /> APP QUALITY S.R.L. - P.IVA 01603290196
         </Text>
         <Text color="secondary" small>
           <Bank2 /> Capitale Sociale € 22.060,57, di cui € 19.174,11 i.v

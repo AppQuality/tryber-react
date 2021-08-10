@@ -53,7 +53,7 @@ const StyledHome = styled.div`
 `;
 export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
   const { t } = useTranslation();
-  const { user } = useUser();
+  const { user, isLoading } = useUser();
   TagManager.dataLayer(tagManagerArgs);
 
   useEffect(() => {
@@ -97,12 +97,28 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
       text: "150.000",
     },
   ];
+
+  if (isLoading) {
+    return (
+      <>
+        {helmet}
+        <Container className="aq-py-3">
+          <SpinnerWrapper>
+            <Spinner />
+            <Title size="xs" as="h5">
+              {t("loading")}
+            </Title>
+          </SpinnerWrapper>
+        </Container>
+      </>
+    );
+  }
   let content = (
     <StyledHome>
       {helmet}
       <Container className="aq-py-3">
         <section className="aq-mb-4">
-          <BannerTop />
+          <BannerTop isLogged={typeof user !== "undefined" && !isLoading} />
         </section>
         <section className="aq-pt-3 aq-text-center">
           <Title size="m" className="aq-pt-3 aq-pb-2 aq-mb-2">
