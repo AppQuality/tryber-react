@@ -74,7 +74,7 @@ const TopAnimation = styled.div`
   }
 `;
 
-export const BannerTop = ({ isLogged }: { isLogged: boolean }) => {
+export const BannerTop = () => {
   const { t, i18n } = useTranslation();
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
   const [bottomDistance, setBottomDistance] = useState(0);
@@ -108,27 +108,19 @@ export const BannerTop = ({ isLogged }: { isLogged: boolean }) => {
   return (
     <BSGrid>
       <LangMenu className="aq-mb-3">
-        {!isLogged && (
-          <>
-            <a
-              href="/it"
-              className={`${
-                i18n.language === "it" ? "current " : ""
-              }lang-navLink`}
-            >
-              Italiano
-            </a>{" "}
-            |{" "}
-            <a
-              href="/"
-              className={`${
-                i18n.language === "en" ? "current " : ""
-              }lang-navLink`}
-            >
-              English
-            </a>
-          </>
-        )}
+        <a
+          href="/it"
+          className={`${i18n.language === "it" ? "current " : ""}lang-navLink`}
+        >
+          Italiano
+        </a>{" "}
+        |{" "}
+        <a
+          href="/"
+          className={`${i18n.language === "en" ? "current " : ""}lang-navLink`}
+        >
+          English
+        </a>
       </LangMenu>
       <BSCol size="col-lg-7">
         <div style={{ position: "relative" }}>

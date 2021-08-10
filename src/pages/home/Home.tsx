@@ -51,19 +51,17 @@ const StyledHome = styled.div`
     }
   }
 `;
-export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
-  const { t } = useTranslation();
+export default function Home() {
+  const { t, i18n } = useTranslation();
   const { user, isLoading } = useUser();
   TagManager.dataLayer(tagManagerArgs);
 
   useEffect(() => {
     if (user) {
-      tagManagerArgs.dataLayer = {
-        role: user.role,
-        wp_user_id: user.wp_user_id,
-        tester_id: user.id,
-        is_admin_page: false,
-      };
+      window.location.href =
+        i18n.language == "en"
+          ? "/my-dashboard"
+          : `${i18n.language}/my-dashboard`;
     }
   }, [user]);
 
@@ -98,7 +96,7 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
     },
   ];
 
-  if (isLoading) {
+  if (isLoading || user) {
     return (
       <>
         {helmet}
@@ -113,12 +111,12 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
       </>
     );
   }
-  let content = (
+  return (
     <StyledHome>
       {helmet}
       <Container className="aq-py-3">
         <section className="aq-mb-4">
-          <BannerTop isLogged={typeof user !== "undefined" && !isLoading} />
+          <BannerTop />
         </section>
         <section className="aq-pt-3 aq-text-center">
           <Title size="m" className="aq-pt-3 aq-pb-2 aq-mb-2">
@@ -171,10 +169,4 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
       </Container>
     </StyledHome>
   );
-  if (user) {
-    content = (
-      <TesterSidebar openFromHeader={isMenuOpen}>{content}</TesterSidebar>
-    );
-  }
-  return content;
 }
