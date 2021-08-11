@@ -11,7 +11,7 @@ export default () => {
         className="capitalize-first"
         href={`${window.location.origin}/${
           i18n.language == "en" ? "" : `${i18n.language}/`
-        }getting-started`}
+        }getting-started/`}
         type="success"
         size="block"
       >
