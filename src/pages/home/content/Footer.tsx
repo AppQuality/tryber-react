@@ -79,12 +79,16 @@ export const Footer = () => {
           {t("address")}
         </Title>
         <Text color="secondary" small className="aq-mb-2">
-          <PinMap className="aq-mr-2" /> Via del Chiesotto 4, 26100 Cremona,
-          Italy
+          <div style={{ display: "flex" }}>
+            <PinMap size="1.15em" className="aq-mr-2" /> Via del Chiesotto 4,
+            26100 Cremona, Italy
+          </div>
         </Text>
         <Text color="secondary" small>
-          <Mailbox className="aq-mr-2" />{" "}
-          <a href="mailto:crowd@app-quality.com">crowd@app-quality.com</a>
+          <div style={{ display: "flex" }}>
+            <Mailbox size="1.15em" className="aq-mr-2" />{" "}
+            <a href="mailto:crowd@app-quality.com">crowd@app-quality.com</a>
+          </div>
         </Text>
       </div>
       <div className="aq-mb-3">
@@ -92,12 +96,16 @@ export const Footer = () => {
           {t("company")}
         </Title>
         <Text color="secondary" small className="aq-mb-2">
-          <Briefcase className="aq-mr-2" /> APP QUALITY S.R.L. - P.IVA
-          01603290196
+          <div style={{ display: "flex" }}>
+            <Briefcase size="1.15em" className="aq-mr-2" /> APP QUALITY S.R.L. -
+            P.IVA 01603290196
+          </div>
         </Text>
         <Text color="secondary" small className="aq-mb-2">
-          <Bank2 className="aq-mr-2" /> Capitale Sociale € 22.060,57, di cui €
-          19.174,11 i.v
+          <div style={{ display: "flex" }}>
+            <Bank2 size="1.15em" className="aq-mr-2" /> Capitale Sociale €
+            22.060,57, di cui € 19.174,11 i.v
+          </div>
         </Text>
       </div>
     </StyledFooter>
