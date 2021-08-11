@@ -15,7 +15,7 @@ export default () => {
         showExpired={true}
       />
       <Button flat type="info" size="block" onClick={() => setOpen(!open)}>
-        {t("What's new")}
+        {t("Message archive")}
       </Button>
     </Card>
   );

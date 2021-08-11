@@ -33,7 +33,7 @@ export default ({
   };
   let i = 1;
   return (
-    <Modal isOpen={open} onClose={onClose}>
+    <Modal isOpen={open} onClose={onClose} title=" ">
       {popups.map((p) => {
         return (
           <ModalBody onShow={() => p.id && p.once && expirePopup(p.id)}>
