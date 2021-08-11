@@ -17,7 +17,7 @@ const StyledFooter = styled.section`
   @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
     margin-top: 200px;
     display: grid;
-    grid-template-columns: 210px 140px 1fr 1fr;
+    grid-template-columns: 210px 140px 1fr 1.1fr;
     grid-gap: 60px;
   }
   .social-btn {
@@ -78,11 +78,12 @@ export const Footer = () => {
         <Title size="s" color="secondary">
           {t("address")}
         </Title>
-        <Text color="secondary" small>
-          <PinMap /> Via del Chiesotto 4, 26100 Cremona, Italy
+        <Text color="secondary" small className="aq-mb-2">
+          <PinMap className="aq-mr-2" /> Via del Chiesotto 4, 26100 Cremona,
+          Italy
         </Text>
         <Text color="secondary" small>
-          <Mailbox />{" "}
+          <Mailbox className="aq-mr-2" />{" "}
           <a href="mailto:crowd@app-quality.com">crowd@app-quality.com</a>
         </Text>
       </div>
@@ -90,11 +91,13 @@ export const Footer = () => {
         <Title size="s" color="secondary">
           {t("company")}
         </Title>
-        <Text color="secondary" small>
-          <Briefcase /> APP QUALITY S.R.L. - P.IVA 01603290196
+        <Text color="secondary" small className="aq-mb-2">
+          <Briefcase className="aq-mr-2" /> APP QUALITY S.R.L. - P.IVA
+          01603290196
         </Text>
-        <Text color="secondary" small>
-          <Bank2 /> Capitale Sociale € 22.060,57, di cui € 19.174,11 i.v
+        <Text color="secondary" small className="aq-mb-2">
+          <Bank2 className="aq-mr-2" /> Capitale Sociale € 22.060,57, di cui €
+          19.174,11 i.v
         </Text>
       </div>
     </StyledFooter>
