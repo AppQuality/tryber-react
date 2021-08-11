@@ -21,6 +21,8 @@ const LangMenu = styled.div`
   .lang-navLink {
     color: ${(props) => props.theme.palette.info};
     &.current {
+      font-weight: ${(props) =>
+        props.theme.typography.fontWeight.bold.toString()};
       text-decoration: none;
       cursor: default;
       pointer-events: none;

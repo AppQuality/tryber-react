@@ -58,13 +58,13 @@ export const ReviewSection = () => {
   }, [entry]);
   return (
     <StyledSection>
-      <Title size="xl" className="aq-text-center section-title-wrapper">
+      <Title size="xl" className="aq-text-center section-title-wrapper aq-mb-4">
         {t("Our Testers’ advices")}
       </Title>
       <StyledRect className="hero" ref={ref} rx={rx}>
         <MiddleRect />
       </StyledRect>
-      <div className="section-content-wrapper">
+      <div className="section-content-wrapper aq-pt-3">
         <Reviews />
       </div>
     </StyledSection>

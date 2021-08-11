@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "private": true,
   "dependencies": {
-    "@appquality/appquality-design-system": "^0.1.99",
+    "@appquality/appquality-design-system": "^0.1.100",
     "@appquality/craft-blocks": "^0.1.12",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

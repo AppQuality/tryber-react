@@ -60,8 +60,8 @@ export default function Home() {
     if (user) {
       window.location.href =
         i18n.language == "en"
-          ? "/my-dashboard"
-          : `${i18n.language}/my-dashboard`;
+          ? "/my-dashboard/"
+          : `/${i18n.language}/my-dashboard/`;
     }
   }, [user]);
 
@@ -133,7 +133,7 @@ export default function Home() {
             color="secondary"
             className="aq-my-4 large-desktop"
             style={{
-              maxWidth: "800px",
+              maxWidth: "810px",
               marginLeft: "auto",
               marginRight: "auto",
             }}
