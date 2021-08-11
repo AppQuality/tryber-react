@@ -14,7 +14,7 @@ import testerIcon from "./assets/testers.svg";
 import campaignsIcon from "./assets/campaigns.svg";
 import devicesIcon from "./assets/devices.svg";
 import bugsIcon from "./assets/bugs.svg";
-import { StyledSection, StyledCta } from "./_styles";
+import { StyledSection } from "./_styles";
 import { BannerTop } from "./content/BannerTop";
 import { DataList } from "./content/DataList";
 import { DataListItem } from "./_types";
@@ -22,7 +22,7 @@ import { ReviewSection } from "./content/ReviewSection";
 import { CardSection } from "./content/CardSection";
 import { Footer } from "./content/Footer";
 import styled from "styled-components";
-import TesterSidebar from "../../features/TesterSidebar";
+import JoinTheTeamButton from "./content/JoinTheTeamButton";
 import { useUser } from "../../store/useUser";
 
 const tagManagerArgs = {
@@ -144,18 +144,7 @@ export default function Home() {
               components={{ br: <br />, bold: <strong /> }}
             />
           </Text>
-          <StyledCta className="aq-text-center">
-            <Button
-              as="a"
-              href={`${window.location.host}/${
-                i18n.language == "en" ? "" : `${i18n.language}/`
-              }getting-started`}
-              type="success"
-              size="block"
-            >
-              {t("join the team")}
-            </Button>
-          </StyledCta>
+          <JoinTheTeamButton />
         </StyledSection>
         <ReviewSection />
         <Footer />

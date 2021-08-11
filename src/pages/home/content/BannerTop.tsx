@@ -10,9 +10,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as TopShape } from "../assets/rectangle-top.svg";
 import people from "../assets/join-the-community.svg";
 import styled from "styled-components";
-import { StyledCta } from "../_styles";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Trans, useTranslation } from "react-i18next";
+import JoinTheTeamButton from "./JoinTheTeamButton";
 
 const LangMenu = styled.div`
   color: ${(props) => props.theme.palette.primary};
@@ -150,19 +150,7 @@ export const BannerTop = () => {
               <strong>Your feedback and work are valuable!</strong>
             </Trans>
           </Text>
-          <StyledCta>
-            <Button
-              as="a"
-              className="capitalize-first"
-              href={`${window.location.host}/${
-                i18n.language == "en" ? "" : `${i18n.language}/`
-              }getting-started`}
-              type="success"
-              size="block"
-            >
-              {t("join the team")}
-            </Button>
-          </StyledCta>
+          <JoinTheTeamButton />
         </div>
       </BSCol>
       <BSCol size="col-lg-5">
