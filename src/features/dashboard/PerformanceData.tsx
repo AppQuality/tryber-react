@@ -22,23 +22,11 @@ const StyledIcon = styled.div`
 const StyledAnchor = styled.a`
   text-decoration: none;
 `;
-/*const PerformanceRow = styled.div`
-  display: flex;
-  .performance-icon {
-    flex: 0 0 16px;
-  }
-  .performance-text {
-    flex: 1 1 auto;
-  }
-  .performance-point {
-    flex: 0 0 32px;
-  }
-`;*/
 
 const PerformanceRow = styled.div`
   display: grid;
-  grid-template-columns: 16px 1fr 32px;
-  grid-gap: 8px;
+  grid-template-columns: 16px 1fr 70px;
+  grid-gap: 16px;
 `;
 
 const PerformanceData = () => {
@@ -61,6 +49,46 @@ const PerformanceData = () => {
     pendingBooty,
     loading,
   } = usePerformance();
+  const rankingData = [
+    {
+      icon: <StarFill size={"21"} className={"aq-text-warning"} />,
+      text: t("Experience Points"),
+      apiVal: expPoints,
+    },
+    {
+      icon: <AwardFill size={"21"} className={"aq-text-info"} />,
+      text: t("Your Rank"),
+      apiVal: rank,
+    },
+  ];
+  const bugData = [
+    {
+      icon: <BookmarkCheckFill size={"21"} className={"aq-text-secondary"} />,
+      text: t("Completed campaigns"),
+      apiVal: cpCompleted,
+    },
+    {
+      icon: <BugFill size={"21"} className={"aq-text-danger"} />,
+      text: t("Approved bugs"),
+      apiVal: bugsApproved,
+    },
+  ];
+  const bootyData = [
+    {
+      icon: <CashCoin size={"21"} className={"aq-text-success"} />,
+      text: t("Recived booty"),
+      apiVal: "€ " + allBooty,
+    },
+    {
+      icon: (
+        <StyledIcon>
+          <PiggyBankFill size={"21"} className={"dark-disabled-font"} />
+        </StyledIcon>
+      ),
+      text: t("Available booty"),
+      apiVal: "€ " + pendingBooty,
+    },
+  ];
   if (loading) {
     return (
       <SpinnerWrapper>
@@ -70,36 +98,15 @@ const PerformanceData = () => {
   }
   return (
     <>
-      <div className={"aq-mb-3"}>
-        <PerformanceRow>
-          <div className='performance-icon'>
-            <StarFill size={"21"} className={"aq-text-warning"} />
-          </div>
-          <div className='performance-text'>
-            <Text>{t("Experience Points")}</Text>
-          </div>
-          <div className='performance-point'>
-            <Text className={"aq-text-right"}>
-              <strong>{expPoints}</strong>
-            </Text>
-          </div>
+      {rankingData.map((item, index) => (
+        <PerformanceRow className="aq-mb-3" key={index}>
+          <div>{item.icon}</div>
+          <Text>{item.text}</Text>
+          <Text className={"aq-text-right"}>
+            <strong>{item.apiVal}</strong>
+          </Text>
         </PerformanceRow>
-      </div>
-      <div className={"aq-mb-3"}>
-        <PerformanceRow>
-          <div className='performance-icon'>
-            <AwardFill size={"21"} className={"aq-text-info"} />
-          </div>
-          <div className='performance-text'>
-            <Text>{t("Your Rank")}</Text>
-          </div>
-          <div className='performance-point'>
-            <Text className={"aq-text-right"}>
-              <strong>{rank}</strong>
-            </Text>
-          </div>
-        </PerformanceRow>
-      </div>
+      ))}
       <GoToBlock className={"aq-mb-3 aq-pb-3"}>
         <StyledAnchor
           href={`${window.location.origin}/${
@@ -117,36 +124,16 @@ const PerformanceData = () => {
         </StyledAnchor>
       </GoToBlock>
 
-      <div className={"aq-mb-3"}>
-        <BSGrid>
-          <BSCol size={"col-2"}>
-            <BookmarkCheckFill size={"21"} className={"aq-text-secondary"} />
-          </BSCol>
-          <BSCol size={"col-7"}>
-            <Text>{t("Completed campaigns")}</Text>
-          </BSCol>
-          <BSCol size={"col-3"}>
-            <Text className={"aq-text-right"}>
-              <strong>{cpCompleted}</strong>
-            </Text>
-          </BSCol>
-        </BSGrid>
-      </div>
-      <div className={"aq-mb-3"}>
-        <BSGrid>
-          <BSCol size={"col-2"}>
-            <BugFill size={"21"} className={"aq-text-danger"} />
-          </BSCol>
-          <BSCol size={"col-7"}>
-            <Text>{t("Approved bugs")}</Text>
-          </BSCol>
-          <BSCol size={"col-3"}>
-            <Text className={"aq-text-right"}>
-              <strong>{bugsApproved}</strong>
-            </Text>
-          </BSCol>
-        </BSGrid>
-      </div>
+      {bugData.map((item, index) => (
+        <PerformanceRow className="aq-mb-3" key={index}>
+          <div>{item.icon}</div>
+          <Text>{item.text}</Text>
+          <Text className={"aq-text-right"}>
+            <strong>{item.apiVal}</strong>
+          </Text>
+        </PerformanceRow>
+      ))}
+
       <GoToBlock className={"aq-mb-3 aq-pb-3"}>
         <StyledAnchor
           href={`${window.location.origin}/${
@@ -164,38 +151,16 @@ const PerformanceData = () => {
         </StyledAnchor>
       </GoToBlock>
 
-      <div className={"aq-mb-3"}>
-        <BSGrid>
-          <BSCol size={"col-2"}>
-            <CashCoin size={"21"} className={"aq-text-success"} />
-          </BSCol>
-          <BSCol size={"col-6"}>
-            <Text>{t("Recived booty")}</Text>
-          </BSCol>
-          <BSCol size={"col-4"}>
-            <Text className={"aq-text-right"}>
-              <strong>€ {allBooty}</strong>
-            </Text>
-          </BSCol>
-        </BSGrid>
-      </div>
-      <div className={"aq-mb-3"}>
-        <BSGrid>
-          <BSCol size={"col-2"}>
-            <StyledIcon>
-              <PiggyBankFill size={"21"} className={"dark-disabled-font"} />
-            </StyledIcon>
-          </BSCol>
-          <BSCol size={"col-6"}>
-            <Text>{t("Available booty")}</Text>
-          </BSCol>
-          <BSCol size={"col-4"}>
-            <Text className={"aq-text-right"}>
-              <strong>€ {pendingBooty}</strong>
-            </Text>
-          </BSCol>
-        </BSGrid>
-      </div>
+      {bootyData.map((item, index) => (
+        <PerformanceRow className="aq-mb-3" key={index}>
+          <div>{item.icon}</div>
+          <Text>{item.text}</Text>
+          <Text className={"aq-text-right"}>
+            <strong>{item.apiVal}</strong>
+          </Text>
+        </PerformanceRow>
+      ))}
+
       <div className={"aq-mb-3"}>
         <StyledAnchor
           href={`${window.location.origin}/${
