@@ -92,8 +92,8 @@ export const CardSection = () => {
       title: t("constant support"),
       body: (
         <Trans
-          i18nKey="<bold>A team of competent and professional figures</bold> will always be at your side to resolve any doubts you may have"
-          defaults="<bold>A team of competent and professional figures</bold> will always be at your side to resolve any doubts you may have"
+          i18nKey="<bold>A team of competent and professional figures</bold> will always be at your side to resolve any doubts <br></br>you may have"
+          defaults="<bold>A team of competent and professional figures</bold> will always be at your side to resolve any doubts <br></br>you may have"
           components={{ br: <br />, bold: <strong /> }}
         />
       ),

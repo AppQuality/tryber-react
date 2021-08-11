@@ -133,7 +133,7 @@ export default function Home() {
             color="secondary"
             className="aq-my-4 large-desktop"
             style={{
-              maxWidth: "800px",
+              maxWidth: "810px",
               marginLeft: "auto",
               marginRight: "auto",
             }}
