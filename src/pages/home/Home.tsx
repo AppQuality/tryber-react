@@ -60,8 +60,8 @@ export default function Home() {
     if (user) {
       window.location.href =
         i18n.language == "en"
-          ? "/my-dashboard"
-          : `${i18n.language}/my-dashboard`;
+          ? "/my-dashboard/"
+          : `${i18n.language}/my-dashboard/`;
     }
   }, [user]);
 
