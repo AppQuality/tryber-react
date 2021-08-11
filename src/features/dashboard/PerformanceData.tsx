@@ -84,7 +84,7 @@ const PerformanceData = () => {
       </div>
       <GoToBlock className={"aq-mb-3 aq-pb-3"}>
         <StyledAnchor
-          href={`${window.location.host}/${
+          href={`${window.location.origin}/${
             i18n.language !== "en" ? "it/leaderboard-2/" : "leaderboard"
           }`}
         >
@@ -131,7 +131,7 @@ const PerformanceData = () => {
       </div>
       <GoToBlock className={"aq-mb-3 aq-pb-3"}>
         <StyledAnchor
-          href={`${window.location.host}/${
+          href={`${window.location.origin}/${
             i18n.language !== "en" ? "it/" : ""
           }my-bugs`}
         >
@@ -180,7 +180,7 @@ const PerformanceData = () => {
       </div>
       <div className={"aq-mb-3"}>
         <StyledAnchor
-          href={`${window.location.host}/${
+          href={`${window.location.origin}/${
             i18n.language !== "en" ? "it/pagamenti/" : "payments/"
           }`}
         >
