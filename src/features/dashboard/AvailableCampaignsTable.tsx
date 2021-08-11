@@ -51,7 +51,7 @@ const AvailableCampaignsTable = () => {
             width: "13%",
           },
           {
-            title: t("Actions"),
+            title: t("Action"),
             dataIndex: "actions",
             key: "actions",
             align: "center",
