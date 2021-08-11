@@ -17,7 +17,7 @@ import Helmet from "react-helmet";
 import SiteHeader from "./features/SiteHeader";
 import { useState } from "react";
 import { Location } from "history";
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 if (process.env.REACT_APP_GTM_ID) {
   const tagManagerArgs = {
@@ -87,7 +87,7 @@ function App() {
             component={() => <Dashboard isMenuOpen={isMenuOpen} />}
           />
 
-          <Route path={`${base}/it/la-mia-dashboard/`}>
+          <Route path={`${base}/it/la-mia-dashboard`}>
             <Redirect to="/it/my-dashboard" />
           </Route>
 

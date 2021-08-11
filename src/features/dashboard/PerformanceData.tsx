@@ -133,7 +133,7 @@ const PerformanceData = () => {
         <StyledAnchor
           href={`${window.location.origin}/${
             i18n.language !== "en" ? "it/" : ""
-          }my-bugs`}
+          }my-bugs/`}
         >
           <BSGrid>
             <BSCol size={"col-9"}>
