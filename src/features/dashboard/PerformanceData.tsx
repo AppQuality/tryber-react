@@ -152,7 +152,8 @@ const PerformanceData = () => {
             <CashCoin size={"21"} className={"aq-text-success"} />
           </BSCol>
           <BSCol size={"col-6"}>
-            <Text>{t("All-time booty")}</Text>
+            <Text>{t("Recived booty")}</Text>
+            {/* Guadagni ricevuti */}
           </BSCol>
           <BSCol size={"col-4"}>
             <Text className={"aq-text-right"}>
@@ -169,7 +170,8 @@ const PerformanceData = () => {
             </StyledIcon>
           </BSCol>
           <BSCol size={"col-6"}>
-            <Text>{t("Reserved booty")}</Text>
+            <Text>{t("Available booty")}</Text>
+            {/* Guadagni disponibili */}
           </BSCol>
           <BSCol size={"col-4"}>
             <Text className={"aq-text-right"}>
