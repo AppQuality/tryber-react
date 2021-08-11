@@ -20,7 +20,7 @@ export default () => {
       query: {
         filterBy: {
           accepted: "1",
-          completed: "1",
+          statusId: "1",
         },
         order: order,
         orderBy: orderBy == "endDate" ? "end_date" : "close_date",
