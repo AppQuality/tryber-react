@@ -1,4 +1,4 @@
-import { Modal } from "@appquality/appquality-design-system/dist/stories/modal/Modal";
+import { Modal } from "@appquality/appquality-design-system";
 import { StyledLoginModal } from "./_style";
 import { Trans, useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
