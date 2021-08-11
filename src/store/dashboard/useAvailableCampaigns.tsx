@@ -55,9 +55,9 @@ export default () => {
                   disabled={cp.applied}
                   as="a"
                   href={`${window.location.href}${
-                    i18n.language !== "it"
-                      ? `${cp.manual_link?.en}`
-                      : `${cp.preview_link?.it}`
+                    i18n.language == "it"
+                      ? `${cp.preview_link?.it}`
+                      : `${cp.preview_link?.en}`
                   }`}
                   type="link"
                   size="sm"
