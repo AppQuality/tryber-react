@@ -16,7 +16,7 @@ import avatarSatesh from "../assets/avatar/Sathesh-Sirimalla2.jpeg";
 import avatarFilippo from "../assets/avatar/filippo2.jpeg";
 import avatarVincenzo from "../assets/avatar/Vincenzo-Falconieri2.jpeg";
 
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 
 const CardListStyle = styled.div`
   .card-list-item {
@@ -69,7 +69,7 @@ export const Reviews = () => {
       age: "25",
       qualification: "Qualified Tester, Student",
       review: t(
-        'Mi sono detto: "Perché non contribuiamo a migliorare ciò che useremo ogni giorno?". Quello che è iniziato come uno scherzo si è rivelato una passione. Un team di lavoro meraviglioso e molto professionale è la ciliegina sulla torta di questa grande esperienza in AppQuality.'
+        'I said to myself "Why don\'t we help improve what we will use every day?". What started out as a joke turned out to be a passion. A wonderful and very professional work team is the icing on the cake of this great experience in AppQuality.'
       ),
     },
     {
@@ -78,7 +78,7 @@ export const Reviews = () => {
       age: "39",
       qualification: "Senior Technician in Computer System Administration",
       review: t(
-        "AppQuality mi ha dato questa opportunità partecipando al miglioramento della qualità delle app e, al tempo stesso, lavorando con una squadra meravigliosa."
+        "AppQuality gave me this opportunity by participating in improving the quality of apps while working with a wonderful team."
       ),
     },
     {
@@ -87,7 +87,7 @@ export const Reviews = () => {
       age: "25",
       qualification: "Qualified Tester, Student",
       review: t(
-        "Ho l'opportunità di testare le app nel mio tempo libero e far crescere la mia esperienza in informatica, senza perdere tempo nei miei studi: grazie ai soldi che guadagno con i test, posso alleggerire le spese universitarie"
+        "I have the opportunity to test apps in my free time and grow my IT experience, without wasting time in my studies; thanks to the money I earn from tests, I can reduce university expenses"
       ),
     },
     {
@@ -96,7 +96,7 @@ export const Reviews = () => {
       age: "38",
       qualification: "Certified ISTQB professional Tester",
       review: t(
-        'Ho trovato una realtà giovane, dinamica, affidabile e solida, con la quale ho potuto approfondire le mie capacità di test, in un modo totalmente nuovo: The Crowd. AppQuality è come una "palestra di prova" per migliorare le capacità di test e abilità con passione, divertimento, linee guida molto chiare e soprattutto ... insieme!'
+        'I found a young, dynamic, reliable and solid reality, with which I was able to deepen my test skills, in a totally new way; The Crowd. AppQuality is like a "test gym" to improve test and skill skills with passion, fun, very clear guidelines and most of all ... together!'
       ),
     },
     {
@@ -105,7 +105,7 @@ export const Reviews = () => {
       age: "20",
       qualification: "Certified ISTQB professional Tester",
       review: t(
-        "AppQuality fornisce un ambiente di test affidabile per i migliori risultati delle applicazioni, mi diverto molto a partecipare a progetti di test reali e mi sento così orgoglioso di far parte della community di tester di App Quality ... e anche di essere pagato!"
+        "AppQuality provides a reliable testing environment for the best application results, I have a lot of fun participating in real test projects and feel so proud to be part of the App Quality testing community ... and to get paid too!"
       ),
     },
     {
@@ -114,7 +114,7 @@ export const Reviews = () => {
       age: "22",
       qualification: "Qualified Tester, Student",
       review: t(
-        "È un'esperienza interessante e una grande opportunità per lavorare con AppQuality: posso dire di aver migliorato la mia attenzione ai dettagli e in generale alle mie capacità di test."
+        "It is an interesting experience and a great opportunity to work with AppQuality. I can say that I have improved my attention to detail and my testing skills in general."
       ),
     },
     {
@@ -123,7 +123,7 @@ export const Reviews = () => {
       age: "23",
       qualification: "Qualified Tester, Student",
       review: t(
-        "Ogni volta che sono coinvolto in una campagna di test mi sento onorato e orgoglioso di contribuire a migliorare quello che molte persone usano ogni giorno. Il team di AppQuality è fantastico!"
+        "Whenever I am involved in a test campaign I feel honored and proud to help improve what many people use every day. The AppQuality team is great!"
       ),
     },
     {
@@ -132,7 +132,7 @@ export const Reviews = () => {
       age: "33",
       qualification: "Certified ISTQB professional Tester",
       review: t(
-        "AppQuality rappresenta un'opportunità molto interessante per partecipare a progetti di test reali per importanti clienti internazionali. È un buon modo per utilizzare le mie capacità professionali di test in un'attività molto divertente. Posso guadagnare soldi extra ... e questo è fantastico!"
+        "AppQuality represents a very interesting opportunity to participate in real test projects for important international clients. It's a good way to use my professional testing skills in a very fun activity. I can earn extra money ... and that's great!"
       ),
     },
   ];

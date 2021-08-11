@@ -75,7 +75,7 @@ export default function Home() {
 
   const communityData: DataListItem[] = [
     {
-      name: t("tester"),
+      name: t("testers"),
       icon: testerIcon,
       text: "25.000",
     },
@@ -120,7 +120,7 @@ export default function Home() {
         </section>
         <section className="aq-pt-3 aq-text-center">
           <Title size="m" className="aq-pt-3 aq-pb-2 aq-mb-2">
-            La nostra community
+            {t("Our Community")}
           </Title>
           <div className="aq-pt-4">
             <DataList data={communityData} />
@@ -128,7 +128,7 @@ export default function Home() {
         </section>
         <CardSection />
         <StyledSection className="aq-text-center" style={{ zIndex: 1 }}>
-          <Title size="xl">Sei pronto a metterti in gioco?</Title>
+          <Title size="xl">{t("Are you ready to get involved?")}</Title>
           <Text
             color="secondary"
             className="aq-my-4 large-desktop"
@@ -139,19 +139,10 @@ export default function Home() {
             }}
           >
             <Trans
-              key={
-                "In AppQuality le sfide non mancheranno mai e <1>ti sentirai subito parte di una Community dinamica e stimolante!</1> Sali a bordo e guarderai con occhi diversi il mondo digitale intorno a te. Testare crea dipendenza!"
-              }
-            >
-              In AppQuality le sfide non mancheranno mai e{" "}
-              <strong>
-                ti sentirai subito parte di una Community dinamica e stimolante!
-              </strong>{" "}
-              Sali a bordo e inizia a guardare con occhi diversi il mondo
-              digitale intorno a te. <br />
-              <br />
-              Testare crea dipendenza!
-            </Trans>
+              i18nKey="In AppQuality there will never be a lack of challenges and you <bold>will immediately feel part of a dynamic and stimulating community!</bold> Get on board and start looking at the digital world around you with different eyes. <br></br><br></br>Testing is addictive!"
+              defaults="In AppQuality there will never be a lack of challenges and you <bold>will immediately feel part of a dynamic and stimulating community!</bold> Get on board and start looking at the digital world around you with different eyes. <br></br><br></br>Testing is addictive!"
+              components={{ br: <br />, bold: <strong /> }}
+            />
           </Text>
           <StyledCta className="aq-text-center">
             <Button

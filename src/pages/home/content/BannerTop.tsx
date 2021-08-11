@@ -12,7 +12,7 @@ import people from "../assets/join-the-community.svg";
 import styled from "styled-components";
 import { StyledCta } from "../_styles";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 const LangMenu = styled.div`
   color: ${(props) => props.theme.palette.primary};
@@ -126,23 +126,29 @@ export const BannerTop = () => {
         <div style={{ position: "relative" }}>
           <PageTitle>
             <Title size="xl">
-              {t("Join the first italian tester community!")}
+              {t("Join the AppQuality tester community!")}
             </Title>
           </PageTitle>
           <Text className="aq-mb-3 large-desktop">
-            Ti è mai capitato di navigare su internet con il tuo smartphone o il
-            computer e imbatterti in un’app o un sito web poco intuitivo o con
-            errori?
+            {t(
+              "Have you ever surfed the internet with your smartphone or computer and come across an app or website that is unintuitive or has errors?"
+            )}
           </Text>
           <Text className="aq-mb-4 large-desktop">
-            Con AppQuality{" "}
-            <strong>
-              avrai l'opportunità di utilizzare servizi e app di grandi aziende
-            </strong>
-            , segnalare i comportamenti anomali che riscontri e migliorare
-            l'esperienza offerta all'utente.
-            <br />
-            <strong>I tuoi feedback e il tuo lavoro sono preziosi!</strong>
+            <Trans
+              i18nKey={
+                "With AppQuality you will <2>have the opportunity to use services and apps of big companies</2>, report anomalous behaviors that you find and improve the experience offered to the user.<4></4><5>Your feedback and work are valuable!</5>"
+              }
+            >
+              With AppQuality you will{" "}
+              <strong>
+                have the opportunity to use services and apps of big companies
+              </strong>
+              , report anomalous behaviors that you find and improve the
+              experience offered to the user.
+              <br />
+              <strong>Your feedback and work are valuable!</strong>
+            </Trans>
           </Text>
           <StyledCta>
             <Button

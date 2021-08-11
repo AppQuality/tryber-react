@@ -5,6 +5,7 @@ import { Reviews } from "./Reviews";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { StyledRectProps } from "../_types";
+import { useTranslation } from "react-i18next";
 
 const StyledRect = styled.div(
   ({ rx }: StyledRectProps) => `
@@ -25,6 +26,7 @@ const StyledRect = styled.div(
 );
 
 export const ReviewSection = () => {
+  const { t } = useTranslation();
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
   let ref = useRef<HTMLDivElement>(null);
 
@@ -57,7 +59,7 @@ export const ReviewSection = () => {
   return (
     <StyledSection>
       <Title size="xl" className="aq-text-center section-title-wrapper">
-        I consigli dei nostri tester
+        {t("Our Testers’ advices")}
       </Title>
       <StyledRect className="hero" ref={ref} rx={rx}>
         <MiddleRect />

@@ -48,7 +48,7 @@ export const DataList = ({ data }: DataListProps) => {
                 {item.text}
                 <span className="aq-text-warning">+</span>
               </Title>
-              <Text color="secondary">
+              <Text color="secondary" className="capitalize-first">
                 <strong>{item.name}</strong>
               </Text>
             </div>

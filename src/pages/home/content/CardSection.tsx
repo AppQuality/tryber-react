@@ -40,65 +40,62 @@ export const CardSection = () => {
       icon: <Alarm />,
       title: t("flexible hours"),
       body: (
-        <Trans i18nKey="<0>Testa quando e dove vuoi!</0><1></1>L’importante è rispettare la data di chiusura della Campagna di Test">
-          <strong>Testa quando e dove vuoi!</strong>
-          <br />
-          L’importante è rispettare la data di chiusura della Campagna di Test
-        </Trans>
+        <Trans
+          i18nKey="<bold>Test when and where you want!</bold><br></br>The important thing is to respect the closing date of the Test Campaign"
+          defaults="<bold>Test when and where you want!</bold><br></br>The important thing is to respect the closing date of the Test Campaign"
+          components={{ br: <br />, bold: <strong /> }}
+        />
       ),
     },
     {
       icon: <Laptop />,
       title: t("devices"),
       body: (
-        <Trans i18nKey="Per testare non avrai bisogno di attrezzature speciali, ma semplicemente dei <1>tuoi dispositivi personali</1>">
-          Per testare non avrai bisogno di attrezzature speciali, ma
-          semplicemente dei <strong>tuoi dispositivi personali</strong>
-        </Trans>
+        <Trans
+          i18nKey="To test you won't need special equipment, but simply  <bold>your own personal devices</bold>"
+          defaults="To test you won't need special equipment, but simply  <bold>your own personal devices</bold>"
+          components={{ bold: <strong /> }}
+        />
       ),
     },
     {
       icon: <Eyeglasses />,
-      title: t("formazione gratuita"),
+      title: t("free training"),
       body: (
-        <Trans i18nKey="Non sai nulla di test? Non temere! Abbiamo per te dei <1></1><3>Corsi Base con attestato</3> e tanti articoli formativi ">
-          Non sai nulla di test?
-          <br />
-          Non temere! Abbiamo per te dei{" "}
-          <strong>Corsi Base con attestato</strong> e tanti articoli formativi
-        </Trans>
+        <Trans
+          i18nKey="Don't know anything about testing?<br></br> Don't be afraid! We have for you <bold>Certificated Basic Courses</bold> and many training articles"
+          defaults="Don't know anything about testing?<br></br> Don't be afraid! We have for you <bold>Certificated Basic Courses</bold> and many training articles"
+          components={{ br: <br />, bold: <strong /> }}
+        />
       ),
     },
     {
       icon: <Wallet2 />,
       title: t("fair payments"),
       body: (
-        <Trans i18nKey="Completando correttamente una Campagna <1>riceverai un payout</>, che potrai trasferire sul tuo IBAN o PayPal">
-          Completando correttamente una Campagna{" "}
-          <strong>riceverai un payout</strong>, che potrai trasferire sul tuo
-          IBAN o PayPal
-        </Trans>
+        <Trans
+          i18nKey="By successfully completing a Campaign <bold>you will receive a payout</bold>, which you can transfer to your IBAN or PayPal."
+          defaults="By successfully completing a Campaign <bold>you will receive a payout</bold>, which you can transfer to your IBAN or PayPal."
+          components={{ br: <br />, bold: <strong /> }}
+        />
       ),
     },
     {
       icon: <GraphUp />,
       title: t("grow your experience"),
-      body: (
-        <Trans i18nKey="<0>Testa quando e dove vuoi!</0><1></1> L’importante è rispettare la data di chiusura della Campagna di Test">
-          <strong>Testa quando e dove vuoi!</strong>
-          <br />
-          L’importante è rispettare la data di chiusura della Campagna di Test
-        </Trans>
+      body: t(
+        "Each Test you take will allow you to increase your skills and hone your tester abilities."
       ),
     },
     {
       icon: <Headset />,
-      title: t("supporto costante"),
+      title: t("constant support"),
       body: (
-        <Trans i18nKey="<0>Un Team di figure competenti</0> e professionali sarà sempre al tuo fianco per risolvere ogni tuo dubbio">
-          <strong>Un Team di figure competenti</strong> e professionali sarà
-          sempre al tuo fianco per risolvere ogni tuo dubbio
-        </Trans>
+        <Trans
+          i18nKey="<bold>A team of competent and professional figures</bold> will always be at your side to resolve any doubts you may have"
+          defaults="<bold>A team of competent and professional figures</bold> will always be at your side to resolve any doubts you may have"
+          components={{ br: <br />, bold: <strong /> }}
+        />
       ),
     },
   ];
@@ -134,7 +131,7 @@ export const CardSection = () => {
   return (
     <StyledSection style={{ padding: "0 40px" }}>
       <Title size="xl" className="aq-text-center aq-mb-4 section-title-wrapper">
-        {t("Why becoming an AppQuality tester?")}
+        {t("Why you should become an AppQuality tester?")}
       </Title>
       <StyledRect className="hero" ref={ref} rx={rx}>
         <MiddleRect />
