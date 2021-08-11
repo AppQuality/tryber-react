@@ -142,7 +142,7 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
                     <div className="aq-m-3">
                       <Text>
                         {t(
-                          `A list of the campaigns you participated in that were successfully evaluated by us. Campaigns will remain on this list until you collect your booty, to make sure you never miss your well-deserved payout.`
+                          `A list of the campaigns you particiated in that were successfully evaluated by us. This list is designed to help you keep track of your activities as a tester.`
                         )}
                       </Text>
                       <ClosedCampaignsTable />
