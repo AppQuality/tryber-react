@@ -11,6 +11,7 @@ import {
   SpinnerWrapper,
   Spinner,
   Title,
+  Button,
 } from "@appquality/appquality-design-system";
 import TesterSidebar from "../features/TesterSidebar";
 import { Helmet } from "react-helmet";
@@ -19,7 +20,6 @@ import CompletedCampaignsTable from "../features/dashboard/CompletedCampaignsTab
 import ClosedCampaignsTable from "../features/dashboard/ClosedCampaignsTable";
 import AvailableCampaignsTable from "../features/dashboard/AvailableCampaignsTable";
 import PerformanceData from "../features/dashboard/PerformanceData";
-import PopupCard from "../features/dashboard/PopupCard";
 import PopupContainer from "../features/dashboard/PopupContainer";
 import { useTranslation } from "react-i18next";
 import { useUser } from "../store/useUser";
@@ -40,6 +40,7 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
   const { user, error } = useUser();
   const [isLoading, setisLoading] = useState(true);
   const [isPopupModalOpen, setIsPopupModalOpen] = useState(true);
+  const [isPopupArchiveModalOpen, setIsPopupArchiveModalOpen] = useState(false);
 
   const { t } = useTranslation();
 
@@ -93,11 +94,16 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
   return (
     <>
       {helmet()}
+      <PopupContainer
+        open={isPopupModalOpen}
+        onClose={() => setIsPopupModalOpen(false)}
+      />
+      <PopupContainer
+        onClose={() => setIsPopupArchiveModalOpen(false)}
+        open={isPopupArchiveModalOpen}
+        showExpired={true}
+      />
       <TesterSidebar route={"my-dashboard"} openFromHeader={isMenuOpen}>
-        <PopupContainer
-          open={isPopupModalOpen}
-          onClose={() => setIsPopupModalOpen(false)}
-        />
         <Container className="aq-pb-3">
           <PageTitle
             as="h2"
@@ -157,7 +163,18 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
                 >
                   <PerformanceData />
                 </Card>
-                <PopupCard />
+                <Card>
+                  <Button
+                    flat
+                    type="info"
+                    size="block"
+                    onClick={() =>
+                      setIsPopupArchiveModalOpen(!isPopupArchiveModalOpen)
+                    }
+                  >
+                    {t("Message archive")}
+                  </Button>
+                </Card>
               </div>
             </BSCol>
           </BSGrid>
