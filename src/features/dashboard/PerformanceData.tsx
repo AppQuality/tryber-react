@@ -22,6 +22,24 @@ const StyledIcon = styled.div`
 const StyledAnchor = styled.a`
   text-decoration: none;
 `;
+/*const PerformanceRow = styled.div`
+  display: flex;
+  .performance-icon {
+    flex: 0 0 16px;
+  }
+  .performance-text {
+    flex: 1 1 auto;
+  }
+  .performance-point {
+    flex: 0 0 32px;
+  }
+`;*/
+
+const PerformanceRow = styled.div`
+  display: grid;
+  grid-template-columns: 16px 1fr 32px;
+  grid-gap: 8px;
+`;
 
 const PerformanceData = () => {
   const { t } = useTranslation();
@@ -53,34 +71,34 @@ const PerformanceData = () => {
   return (
     <>
       <div className={"aq-mb-3"}>
-        <BSGrid>
-          <BSCol size={"col-2"}>
+        <PerformanceRow>
+          <div className='performance-icon'>
             <StarFill size={"21"} className={"aq-text-warning"} />
-          </BSCol>
-          <BSCol size={"col-7"}>
+          </div>
+          <div className='performance-text'>
             <Text>{t("Experience Points")}</Text>
-          </BSCol>
-          <BSCol size={"col-3"}>
+          </div>
+          <div className='performance-point'>
             <Text className={"aq-text-right"}>
               <strong>{expPoints}</strong>
             </Text>
-          </BSCol>
-        </BSGrid>
+          </div>
+        </PerformanceRow>
       </div>
       <div className={"aq-mb-3"}>
-        <BSGrid>
-          <BSCol size={"col-2"}>
+        <PerformanceRow>
+          <div className='performance-icon'>
             <AwardFill size={"21"} className={"aq-text-info"} />
-          </BSCol>
-          <BSCol size={"col-7"}>
+          </div>
+          <div className='performance-text'>
             <Text>{t("Your Rank")}</Text>
-          </BSCol>
-          <BSCol size={"col-3"}>
+          </div>
+          <div className='performance-point'>
             <Text className={"aq-text-right"}>
               <strong>{rank}</strong>
             </Text>
-          </BSCol>
-        </BSGrid>
+          </div>
+        </PerformanceRow>
       </div>
       <GoToBlock className={"aq-mb-3 aq-pb-3"}>
         <StyledAnchor
