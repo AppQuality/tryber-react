@@ -67,26 +67,30 @@ export default () => {
             endDate: dateFormatter(cp.dates.end),
             actions: {
               title: ``,
-              content: [
-                <Button
-                  as="a"
-                  disabled={manualLink !== "#"}
-                  href={`${window.location.host}/${manualLink}`}
-                  type="link"
-                  size="sm"
+              content: (
+                <div
+                  style={{ display: "flex", justifyContent: "space-around" }}
                 >
-                  {t("Read manual")}
-                </Button>,
-                <Button
-                  as="a"
-                  disabled={cp.bugform_link === false}
-                  href={`${window.location.host}/${bugformLink}`}
-                  type="link"
-                  size="sm"
-                >
-                  {t("Report a bug")}
-                </Button>,
-              ],
+                  <Button
+                    as="a"
+                    disabled={manualLink !== "#"}
+                    href={`${window.location.origin}${manualLink}`}
+                    type="link"
+                    size="sm"
+                  >
+                    {t("Read manual")}
+                  </Button>
+                  <Button
+                    as="a"
+                    disabled={cp.bugform_link === false}
+                    href={`${window.location.host}/${bugformLink}`}
+                    type="link"
+                    size="sm"
+                  >
+                    {t("Report a bug")}
+                  </Button>
+                </div>
+              ),
             },
           };
         });
