@@ -153,7 +153,10 @@ export const BannerTop = () => {
           <StyledCta>
             <Button
               as="a"
-              href={`${window.location.href}/getting-started`}
+              className="capitalize-first"
+              href={`${window.location.host}/${
+                i18n.language == "en" ? "" : `${i18n.language}/`
+              }getting-started`}
               type="success"
               size="block"
             >

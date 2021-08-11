@@ -147,7 +147,9 @@ export default function Home() {
           <StyledCta className="aq-text-center">
             <Button
               as="a"
-              href={`${window.location.href}/getting-started`}
+              href={`${window.location.host}/${
+                i18n.language == "en" ? "" : `${i18n.language}/`
+              }getting-started`}
               type="success"
               size="block"
             >

@@ -42,18 +42,35 @@ export const Footer = () => {
   const { t } = useTranslation();
   return (
     <StyledFooter>
-      <img src={logo} className="aq-mb-3" />
+      <a href="https://app-quality.com">
+        <img src={logo} className="aq-mb-3" />
+      </a>
       <div className="aq-mb-3">
         <Title size="s" color="secondary">
           {t("social")}
         </Title>
-        <Button as="a" href="#facebook" type="link" className="social-btn">
+        <Button
+          as="a"
+          href="https://www.facebook.com/appqualitypage/"
+          type="link"
+          className="social-btn"
+        >
           <img src={fbLogo} alt="facebook" />
         </Button>
-        <Button as="a" href="#linkedin" type="link" className="social-btn">
+        <Button
+          as="a"
+          href="https://www.linkedin.com/company/app-quality"
+          type="link"
+          className="social-btn"
+        >
           <img src={lnLogo} alt="linkedin" />
         </Button>
-        <Button as="a" href="#telegram" type="link" className="social-btn">
+        <Button
+          as="a"
+          href="https://t.me/AppQualityCrowd"
+          type="link"
+          className="social-btn"
+        >
           <img src={telegramLogo} alt="telegram" />
         </Button>
       </div>
@@ -65,7 +82,8 @@ export const Footer = () => {
           <PinMap /> Via del Chiesotto 4, 26100 Cremona, Italy
         </Text>
         <Text color="secondary" small>
-          <Mailbox /> crowd@app-quality.com
+          <Mailbox />{" "}
+          <a href="mailto:crowd@app-quality.com">crowd@app-quality.com</a>
         </Text>
       </div>
       <div className="aq-mb-3">
