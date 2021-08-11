@@ -52,6 +52,7 @@ export default () => {
               title: ``,
               content: (
                 <Button
+                  disabled={cp.applied}
                   as="a"
                   href={`${window.location.href}${
                     i18n.language !== "it"
@@ -61,7 +62,7 @@ export default () => {
                   type="link"
                   size="sm"
                 >
-                  {t("Apply now")}
+                  {cp.applied ? t("Applied") : t("Apply now")}
                 </Button>
               ),
             },

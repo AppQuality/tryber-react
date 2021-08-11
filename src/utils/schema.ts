@@ -213,6 +213,10 @@ export interface components {
       ux_effort?: number;
       preview_link?: components["schemas"]["TranslatablePage"];
       manual_link?: components["schemas"]["TranslatablePage"];
+      /** If bugform is deactivated is a boolean else contains URLs to bugforms for each languages */
+      bugform_link?: boolean | components["schemas"]["TranslatablePage"];
+      /** True if you applied on this Campaign */
+      applied?: boolean;
     };
     CampaignRequired: {
       name: string;

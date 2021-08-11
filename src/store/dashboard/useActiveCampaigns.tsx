@@ -43,6 +43,24 @@ export default () => {
               day: "2-digit",
             });
           };
+          let manualLink = "#";
+          if (typeof cp.manual_link !== "undefined") {
+            if (i18n.language === "en" && cp.manual_link.en)
+              manualLink = cp.manual_link.en;
+            if (i18n.language === "it" && cp.manual_link.it)
+              manualLink = cp.manual_link.it;
+          }
+          let bugformLink = "#";
+          if (
+            typeof cp.bugform_link !== "boolean" &&
+            typeof cp.bugform_link !== "undefined"
+          ) {
+            if (i18n.language === "en" && cp.bugform_link.en)
+              bugformLink = cp.bugform_link.en;
+            if (i18n.language === "it" && cp.bugform_link.it)
+              bugformLink = cp.bugform_link.it;
+          }
+
           return {
             key: cp.id ? cp.id : 123,
             campaigns: cp.name,
@@ -52,11 +70,8 @@ export default () => {
               content: [
                 <Button
                   as="a"
-                  href={`${window.location.href}${
-                    i18n.language !== "it"
-                      ? `${cp.manual_link?.en}`
-                      : `${cp.manual_link?.it}`
-                  }`}
+                  disabled={manualLink !== "#"}
+                  href={`${window.location.host}/${manualLink}`}
                   type="link"
                   size="sm"
                 >
@@ -64,13 +79,12 @@ export default () => {
                 </Button>,
                 <Button
                   as="a"
-                  href={`${window.location.host}/${
-                    i18n.language !== "it" ? "it/" : ""
-                  }bugs/?controller=bugs&action=byCampaign&id=${cp.id}`}
+                  disabled={cp.bugform_link === false}
+                  href={`${window.location.host}/${bugformLink}`}
                   type="link"
                   size="sm"
                 >
-                  {t("Report bug")}
+                  {t("Report a bug")}
                 </Button>,
               ],
             },
