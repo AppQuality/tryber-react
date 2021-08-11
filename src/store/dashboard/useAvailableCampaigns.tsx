@@ -42,8 +42,23 @@ export default () => {
               day: "2-digit",
             });
           };
+          let previewLink = "#";
+          if (cp.preview_link) {
+            if (
+              cp.preview_link.it &&
+              i18n.language == "it" &&
+              cp.preview_link.it !== "#"
+            )
+              previewLink = `${window.location.origin}${cp.preview_link.it}`;
+            if (
+              cp.preview_link.it &&
+              i18n.language == "en" &&
+              cp.preview_link.en !== "#"
+            )
+              previewLink = `${window.location.origin}${cp.preview_link.en}`;
+          }
           return {
-            key: cp.id ? cp.id : 123,
+            key: cp.id ? cp.id : 0,
             campaignName: cp.name,
             type: cp.campaign_type,
             startDate: dateFormatter(cp.dates.start),
@@ -52,17 +67,17 @@ export default () => {
               title: ``,
               content: (
                 <Button
-                  disabled={cp.applied}
+                  disabled={cp.applied || previewLink === "#"}
                   as="a"
-                  href={`${window.location.origin}${
-                    i18n.language == "it"
-                      ? `${cp.preview_link?.it}`
-                      : `${cp.preview_link?.en}`
-                  }`}
+                  href={previewLink}
                   type="link"
                   size="sm"
                 >
-                  {cp.applied ? t("Applied") : t("Apply now")}
+                  {previewLink === "#"
+                    ? t("Not available")
+                    : cp.applied
+                    ? t("Applied")
+                    : t("Apply now")}
                 </Button>
               ),
             },

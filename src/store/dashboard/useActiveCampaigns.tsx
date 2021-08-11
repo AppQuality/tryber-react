@@ -45,9 +45,17 @@ export default () => {
           };
           let manualLink = "#";
           if (typeof cp.manual_link !== "undefined") {
-            if (i18n.language === "en" && cp.manual_link.en)
+            if (
+              i18n.language === "en" &&
+              cp.manual_link.en &&
+              cp.manual_link.en !== "#"
+            )
               manualLink = cp.manual_link.en;
-            if (i18n.language === "it" && cp.manual_link.it)
+            if (
+              i18n.language === "it" &&
+              cp.manual_link.it &&
+              cp.manual_link.it !== "#"
+            )
               manualLink = cp.manual_link.it;
           }
           let bugformLink = "#";
@@ -73,12 +81,12 @@ export default () => {
                 >
                   <Button
                     as="a"
-                    disabled={manualLink !== "#"}
+                    disabled={manualLink === "#"}
                     href={`${window.location.origin}${manualLink}`}
                     type="link"
                     size="sm"
                   >
-                    {t("Read manual")}
+                    {manualLink === "#" ? t("Not available") : t("Read manual")}
                   </Button>
                   <Button
                     as="a"
@@ -87,7 +95,9 @@ export default () => {
                     type="link"
                     size="sm"
                   >
-                    {t("Report a bug")}
+                    {cp.bugform_link === false
+                      ? t("Not available")
+                      : t("Report a bug")}
                   </Button>
                 </div>
               ),
