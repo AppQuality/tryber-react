@@ -153,7 +153,6 @@ const PerformanceData = () => {
           </BSCol>
           <BSCol size={"col-6"}>
             <Text>{t("Recived booty")}</Text>
-            {/* Guadagni ricevuti */}
           </BSCol>
           <BSCol size={"col-4"}>
             <Text className={"aq-text-right"}>
@@ -171,7 +170,6 @@ const PerformanceData = () => {
           </BSCol>
           <BSCol size={"col-6"}>
             <Text>{t("Available booty")}</Text>
-            {/* Guadagni disponibili */}
           </BSCol>
           <BSCol size={"col-4"}>
             <Text className={"aq-text-right"}>
