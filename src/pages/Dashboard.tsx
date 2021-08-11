@@ -118,7 +118,7 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
             <BSCol size="col-lg-9 ">
               <Card className="aq-mb-3" bodyClass="">
                 <Tabs active="active">
-                  <Tab id="active" title={t("Running")}>
+                  <Tab id="active" title={t("To be completed")}>
                     <div className="aq-m-3">
                       <Text>
                         {t(
