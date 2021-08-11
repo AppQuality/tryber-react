@@ -19,6 +19,7 @@ const ClosedCampaignsTable = () => {
             title: t("Campaign"),
             dataIndex: "campaigns",
             key: "campaigns",
+            width: "86%",
           },
           {
             title: t("Close Date"),
@@ -29,6 +30,7 @@ const ClosedCampaignsTable = () => {
               order.set(sorting);
               orderBy.set("closeDate");
             },
+            width: "14%",
           },
         ]}
       />
