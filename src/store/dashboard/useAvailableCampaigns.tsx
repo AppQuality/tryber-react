@@ -54,7 +54,7 @@ export default () => {
                 <Button
                   disabled={cp.applied}
                   as="a"
-                  href={`${window.location.origin}${
+                  href={`${window.location.origin}/${
                     i18n.language == "it"
                       ? `${cp.preview_link?.it}`
                       : `${cp.preview_link?.en}`
