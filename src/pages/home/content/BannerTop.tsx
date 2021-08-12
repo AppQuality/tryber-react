@@ -91,7 +91,7 @@ export const BannerTop = () => {
   useEffect(() => {
     setTimeout(() => {
       setShapeVisible(true);
-    }, 500);
+    }, 300);
   }, []);
   return (
     <BSGrid>
