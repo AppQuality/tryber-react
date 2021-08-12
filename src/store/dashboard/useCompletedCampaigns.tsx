@@ -21,6 +21,7 @@ export default () => {
         filterBy: {
           accepted: "1",
           statusId: "1",
+          completed: "1",
         },
         order: order,
         orderBy: orderBy == "endDate" ? "end_date" : "close_date",
