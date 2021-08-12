@@ -67,7 +67,7 @@ export default () => {
               title: ``,
               content: (
                 <Button
-                  disabled={cp.applied || previewLink === "#"}
+                  disabled={previewLink === "#"}
                   as="a"
                   href={previewLink}
                   type="link"
