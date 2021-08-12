@@ -140,7 +140,7 @@ export const Reviews = () => {
     <CardListStyle>
       <Carousel step={{ xs: 1, lg: 3 }}>
         {items.map((item, index) => (
-          <CarouselSlide>
+          <CarouselSlide key={index}>
             <Card shadow className="card-list-item aq-my-3" key={index}>
               <img src={quotes} className="aq-mb-2 item-icon" />
               <div className="item-avatar aq-mb-2">
