@@ -77,7 +77,7 @@ const PerformanceData = () => {
     {
       icon: <CashCoin size={"21"} className={"aq-text-success"} />,
       text: t("Recieved booty"),
-      apiVal: "€ " + allBooty,
+      apiVal: allBooty + "€",
     },
     {
       icon: (
@@ -86,7 +86,7 @@ const PerformanceData = () => {
         </StyledIcon>
       ),
       text: t("Available booty"),
-      apiVal: "€ " + pendingBooty,
+      apiVal: pendingBooty + "€",
     },
   ];
   if (loading) {
