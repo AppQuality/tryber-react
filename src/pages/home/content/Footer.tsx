@@ -54,6 +54,7 @@ export const Footer = () => {
           href="https://www.facebook.com/appqualitypage/"
           type="link"
           className="social-btn"
+          target='_blank'
         >
           <img src={fbLogo} alt="facebook" />
         </Button>
@@ -62,6 +63,7 @@ export const Footer = () => {
           href="https://www.linkedin.com/company/app-quality"
           type="link"
           className="social-btn"
+          target='_blank'
         >
           <img src={lnLogo} alt="linkedin" />
         </Button>
@@ -70,6 +72,7 @@ export const Footer = () => {
           href="https://t.me/AppQualityCrowd"
           type="link"
           className="social-btn"
+          target='_blank'
         >
           <img src={telegramLogo} alt="telegram" />
         </Button>
