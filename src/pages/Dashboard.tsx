@@ -39,6 +39,7 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
 
   const { user, error } = useUser();
   const [isLoading, setisLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isPopupModalOpen, setIsPopupModalOpen] = useState(true);
   const [isPopupArchiveModalOpen, setIsPopupArchiveModalOpen] = useState(false);
 
@@ -63,7 +64,7 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
         tester_id: user.id,
         is_admin_page: false,
       };
-
+      setIsAdmin(["administrator", "tester_lead"].includes(user.role));
       setisLoading(false);
     } else {
       if (error) {
@@ -103,7 +104,11 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
         open={isPopupArchiveModalOpen}
         showExpired={true}
       />
-      <TesterSidebar route={"my-dashboard"} openFromHeader={isMenuOpen}>
+      <TesterSidebar
+        isAdmin={isAdmin}
+        route={"my-dashboard"}
+        openFromHeader={isMenuOpen}
+      >
         <Container className="aq-pb-3">
           <PageTitle
             as="h2"

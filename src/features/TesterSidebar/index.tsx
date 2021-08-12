@@ -14,12 +14,14 @@ import {
   PersonFill,
   StarFill,
   Wallet2,
+  GearWideConnected,
 } from "react-bootstrap-icons";
 
 export interface TesterSidebarProps {
   route?: string;
   children?: React.ReactNode;
   openFromHeader?: boolean;
+  isAdmin?: boolean;
 }
 
 const TesterSidebarArgs: SidebarType.SidebarProps = {
@@ -58,6 +60,7 @@ const TesterSidebar = ({
   route,
   children,
   openFromHeader,
+  isAdmin = false,
 }: TesterSidebarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
@@ -183,9 +186,19 @@ const TesterSidebar = ({
       icon: <ChatDotsFill />,
       active: route === "feedback-hub",
       text: t("Feedback"),
-      last: true,
     },
   ];
+
+  if (isAdmin) {
+    TesterSidebarArgs.items.push({
+      url: "/wp-admin",
+      icon: <GearWideConnected />,
+      active: false,
+      text: "Admin",
+    });
+  }
+
+  TesterSidebarArgs.items[TesterSidebarArgs.items.length - 1].last = true;
 
   return (
     <Sidebar

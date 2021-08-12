@@ -35,6 +35,7 @@ export default function ExperiencePoints({
   isMenuOpen: boolean;
 }) {
   const { user, error } = useUser();
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setisLoading] = useState(true);
 
   const { t } = useTranslation();
@@ -71,6 +72,7 @@ export default function ExperiencePoints({
         is_admin_page: false,
       };
 
+      setIsAdmin(["administrator", "tester_lead"].includes(user.role));
       setisLoading(false);
     } else {
       if (error) {
@@ -101,7 +103,11 @@ export default function ExperiencePoints({
   return (
     <>
       {helmet()}
-      <TesterSidebar route={"experience-points"} openFromHeader={isMenuOpen}>
+      <TesterSidebar
+        isAdmin={isAdmin}
+        route={"experience-points"}
+        openFromHeader={isMenuOpen}
+      >
         <Container className="aq-pb-3">
           <PageTitle as="h2" size="regular">
             {t("Experience Points")}
