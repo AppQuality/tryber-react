@@ -32,6 +32,7 @@ const tagManagerArgs = {
 export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
   const { search } = useLocation();
   const { user, error } = useUser();
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setisLoading] = useState(true);
 
   const { t } = useTranslation();
@@ -74,6 +75,7 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
         is_admin_page: false,
       };
 
+      setIsAdmin(["administrator", "tester_lead"].includes(user.role));
       setisLoading(false);
     } else {
       if (error) {
@@ -104,7 +106,11 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
   return (
     <>
       {helmet()}
-      <TesterSidebar route={"my-bugs"} openFromHeader={isMenuOpen}>
+      <TesterSidebar
+        isAdmin={isAdmin}
+        route={"my-bugs"}
+        openFromHeader={isMenuOpen}
+      >
         <Container className="aq-pb-3">
           <PageTitle size="regular" as="h2" className="aq-mb-3">
             {t("Uploaded Bugs")}
