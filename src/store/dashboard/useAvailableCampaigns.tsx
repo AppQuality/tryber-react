@@ -76,7 +76,7 @@ export default () => {
                   {previewLink === "#"
                     ? t("Not available")
                     : cp.applied
-                    ? t("Applied")
+                    ? t("View")
                     : t("Apply now")}
                 </Button>
               ),
