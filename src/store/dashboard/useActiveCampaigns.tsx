@@ -91,7 +91,7 @@ export default () => {
                   <Button
                     as="a"
                     disabled={cp.bugform_link === false}
-                    href={`${window.location.host}/${bugformLink}`}
+                    href={`${window.location.origin}/${bugformLink}`}
                     type="link"
                     size="sm"
                   >
