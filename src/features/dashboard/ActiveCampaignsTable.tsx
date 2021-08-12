@@ -20,7 +20,19 @@ const ActiveCampaignsTable = () => {
             title: t("Campaign"),
             dataIndex: "campaigns",
             key: "campaigns",
-            width: "50%",
+            width: "52%",
+          },
+          {
+            title: t("Start Date"),
+            dataIndex: "startDate",
+            key: "startDate",
+            isSortable: true,
+            onSort: (sorting: "ASC" | "DESC") => {
+              order.set(sorting);
+              orderBy.set("startDate");
+            },
+            width: "12%",
+            align: "center",
           },
           {
             title: t("End Date"),
@@ -31,14 +43,22 @@ const ActiveCampaignsTable = () => {
               order.set(sorting);
               orderBy.set("endDate");
             },
-            width: "15%",
+            width: "12%",
+            align: "center",
           },
           {
-            title: t("Actions"),
-            dataIndex: "actions",
-            key: "actions",
+            title: t("Manual"),
+            dataIndex: "manual",
+            key: "manual",
             align: "center",
-            width: "35%",
+            width: "12%",
+          },
+          {
+            title: t("Bugform"),
+            dataIndex: "bugform",
+            key: "bugform",
+            align: "center",
+            width: "12%",
           },
         ]}
       />

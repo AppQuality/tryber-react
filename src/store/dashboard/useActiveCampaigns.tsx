@@ -13,7 +13,7 @@ export default () => {
   const [totalEntries, setTotalEntries] = useState(0);
   const [loading, setLoading] = useState(true);
   const [order, setOrder] = useState<"ASC" | "DESC">("ASC");
-  const [orderBy, setOrderBy] = useState<"endDate">("endDate");
+  const [orderBy, setOrderBy] = useState<"endDate" | "startDate">("endDate");
 
   const fetchCampaignsFromApi = (page: number) => {
     return API.myCampaigns({
@@ -72,34 +72,36 @@ export default () => {
           return {
             key: cp.id ? cp.id : 123,
             campaigns: cp.name,
+            startDate: dateFormatter(cp.dates.start),
             endDate: dateFormatter(cp.dates.end),
-            actions: {
+            manual: {
               title: ``,
               content: (
-                <div
-                  style={{ display: "flex", justifyContent: "space-around" }}
+                <Button
+                  as="a"
+                  disabled={manualLink === "#"}
+                  href={`${window.location.origin}${manualLink}`}
+                  type="link"
+                  size="sm"
                 >
-                  <Button
-                    as="a"
-                    disabled={manualLink === "#"}
-                    href={`${window.location.origin}${manualLink}`}
-                    type="link"
-                    size="sm"
-                  >
-                    {manualLink === "#" ? t("Not available") : t("Read manual")}
-                  </Button>
-                  <Button
-                    as="a"
-                    disabled={cp.bugform_link === false}
-                    href={`${window.location.origin}/${bugformLink}`}
-                    type="link"
-                    size="sm"
-                  >
-                    {cp.bugform_link === false
-                      ? t("Not available")
-                      : t("Report a bug")}
-                  </Button>
-                </div>
+                  {manualLink === "#" ? t("Not available") : t("Read manual")}
+                </Button>
+              ),
+            },
+            bugform: {
+              title: ``,
+              content: (
+                <Button
+                  as="a"
+                  disabled={cp.bugform_link === false}
+                  href={`${window.location.origin}/${bugformLink}`}
+                  type="link"
+                  size="sm"
+                >
+                  {cp.bugform_link === false
+                    ? t("Not available")
+                    : t("Report a bug")}
+                </Button>
               ),
             },
           };
