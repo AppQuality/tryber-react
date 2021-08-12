@@ -19,6 +19,7 @@ export default ({ id }: { id: number }) => {
   };
   return (
     <Button
+      as="a"
       type="link"
       flat
       size="block"
