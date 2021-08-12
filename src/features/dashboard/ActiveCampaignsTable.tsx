@@ -36,7 +36,6 @@ const ActiveCampaignsTable = () => {
               orderBy.set("startDate");
             },
             width: "10ch",
-            align: "center",
           },
           {
             title: t("End Date"),
@@ -48,20 +47,17 @@ const ActiveCampaignsTable = () => {
               orderBy.set("endDate");
             },
             width: "10ch",
-            align: "center",
           },
           {
             title: t("Manual"),
             dataIndex: "manual",
             key: "manual",
-            align: "center",
             width: "10ch",
           },
           {
             title: t("Bugform"),
             dataIndex: "bugform",
             key: "bugform",
-            align: "center",
             width: "10ch",
           },
         ]}
