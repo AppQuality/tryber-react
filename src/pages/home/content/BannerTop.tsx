@@ -1,7 +1,6 @@
 import {
   BSCol,
   BSGrid,
-  Button,
   PageTitle,
   Text,
   Title,
@@ -10,7 +9,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as TopShape } from "../assets/rectangle-top.svg";
 import people from "../assets/join-the-community.svg";
 import styled from "styled-components";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 import { Trans, useTranslation } from "react-i18next";
 import JoinTheTeamButton from "./JoinTheTeamButton";
 
@@ -40,39 +39,28 @@ const TopAnimation = styled.div`
   svg {
     position: absolute;
     top: 0;
-    right: -450px;
+    left: 0;
     will-change: transform;
+    @media (min-width: ${props => props.theme.grid.breakpoints.xl}) {
+      top: 25px;
+    }
   }
   img {
     position: absolute;
-    top: 50px;
-    right: 10px;
+    top: 110px;
+    right: -50px;
   }
-  .image-animation-enter {
-    animation: swipe-in 350ms forwards;
+  .shape-animation-container {
+    position: relative;
+    will-change: transform;
+    transition: all 500ms ease-in-out;
+    transform: translate3d(200%, 0, 0);
   }
-  .shape-animation-enter {
-    transform: translate3d(100%, 0, 0);
-    transition: transform 500ms ease-in-out;
-  }
-  .shape-animation-enter-active {
+  .shape-animation-enter.shape-animation-enter-active {
     transform: translate3d(0, 0, 0);
   }
-  .top-animation-exit {
-  }
-  @keyframes swipe-in {
-    0% {
-      transform: translate3d(100%, 0, 0) skew(-60deg, 0);
-    }
-    40% {
-      transform: translate3d(0, 0, 0) skew(0, 0);
-    }
-    70% {
-      transform: translate3d(-10%, 0, 0) skew(10deg, 0);
-    }
-    100% {
-      transform: translate3d(0, 0, 0) skew(0, 0);
-    }
+  .shape-animation-enter-done {
+    transform: translate3d(0, 0, 0);
   }
 `;
 
@@ -98,9 +86,7 @@ export const BannerTop = () => {
     };
   }, [containerRef, options]);
   useEffect(() => {
-    // console.log(bottomDistance);
     setBottomDistance(entry?.boundingClientRect?.bottom || 0);
-    //return () => window.removeEventListener('scroll', onScroll);
   }, [entry]);
   useEffect(() => {
     setTimeout(() => {
@@ -124,7 +110,7 @@ export const BannerTop = () => {
           English
         </a>
       </LangMenu>
-      <BSCol size="col-lg-7">
+      <BSCol size="col-lg-7 col-xxl-8">
         <div style={{ position: "relative" }}>
           <PageTitle>
             <Title size="xl">
@@ -155,32 +141,25 @@ export const BannerTop = () => {
           <JoinTheTeamButton />
         </div>
       </BSCol>
-      <BSCol size="col-lg-5">
-        <TopAnimation className="hero" ref={containerRef}>
-          <TransitionGroup classNames="top-animation">
-            {shapeIsVisible && (
-              <CSSTransition
-                key="image-animation"
-                timeout={500}
-                classNames="image-animation"
-              >
-                <CSSTransition
-                  key="shape-animation"
-                  timeout={500}
-                  classNames="shape-animation"
-                >
-                  <TopShape
-                    className="top-shape"
-                    style={{
-                      transform: `translate3d(0, ${bottomDistance - 607}px, 0)
-                              rotate(calc(${bottomDistance - 607}deg * -0.1)`,
-                    }}
-                  />
-                </CSSTransition>
-              </CSSTransition>
-            )}
-            <img className="top-image" src={people} />
-          </TransitionGroup>
+      <BSCol size="col-lg-5 col-xxl-4">
+        <TopAnimation ref={containerRef}>
+          <CSSTransition
+            in={shapeIsVisible}
+            key="shape-animation"
+            timeout={500}
+            classNames="shape-animation"
+          >
+            <div className='shape-animation-container'>
+              <TopShape
+                className="top-shape"
+                style={{
+                  transform: `translate3d(0, ${bottomDistance - 607}px, 0)
+                          rotate(calc(${bottomDistance - 607}deg * -0.1)`,
+                }}
+              />
+            </div>
+          </CSSTransition>
+          <img className="top-image" src={people} />
         </TopAnimation>
       </BSCol>
     </BSGrid>

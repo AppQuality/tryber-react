@@ -3,7 +3,7 @@ import React, {useEffect, useRef, useState} from "react";
 import styled, {keyframes} from "styled-components";
 import { CardListItemsProps } from "../_types";
 
-const tresholdForCardAnimation = 150;
+const tresholdForCardAnimation = 100;
 
 const slideUpAnimation = keyframes`
   from {
