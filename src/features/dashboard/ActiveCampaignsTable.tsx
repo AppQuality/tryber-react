@@ -53,12 +53,14 @@ const ActiveCampaignsTable = () => {
             dataIndex: "manual",
             key: "manual",
             width: "10ch",
+            align: "center",
           },
           {
             title: t("Bugform"),
             dataIndex: "bugform",
             key: "bugform",
             width: "10ch",
+            align: "center",
           },
         ]}
       />
