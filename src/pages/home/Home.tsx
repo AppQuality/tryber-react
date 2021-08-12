@@ -1,12 +1,11 @@
 import {
   Container,
   Title,
-  Button,
   Text,
   SpinnerWrapper,
   Spinner,
 } from "@appquality/appquality-design-system";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
@@ -104,7 +103,7 @@ export default function Home() {
           <SpinnerWrapper>
             <Spinner />
             <Title size="xs" as="h5">
-              {t("loading")}
+              {t("Loading")}
             </Title>
           </SpinnerWrapper>
         </Container>

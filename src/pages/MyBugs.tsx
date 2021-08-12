@@ -96,7 +96,7 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
           <SpinnerWrapper>
             <Spinner />
             <Title size="xs" as="h5">
-              {t("loading")}
+              {t("Loading")}
             </Title>
           </SpinnerWrapper>
         </Container>

@@ -93,7 +93,7 @@ export default function ExperiencePoints({
           <SpinnerWrapper>
             <Spinner />
             <Title size="xs" as="h5">
-              {t("loading")}
+              {t("Loading")}
             </Title>
           </SpinnerWrapper>
         </Container>
