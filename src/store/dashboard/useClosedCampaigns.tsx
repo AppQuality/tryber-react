@@ -12,7 +12,7 @@ export default () => {
   const [page, setPage] = useState(1);
   const [totalEntries, setTotalEntries] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [order, setOrder] = useState<"ASC" | "DESC">("ASC");
+  const [order, setOrder] = useState<"ASC" | "DESC">("DESC");
   const [orderBy, setOrderBy] = useState<"closeDate">("closeDate");
 
   const fetchCampaignsFromApi = (page: number) => {
