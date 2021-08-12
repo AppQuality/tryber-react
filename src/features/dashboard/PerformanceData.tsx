@@ -76,7 +76,7 @@ const PerformanceData = () => {
   const bootyData = [
     {
       icon: <CashCoin size={"21"} className={"aq-text-success"} />,
-      text: t("Recived booty"),
+      text: t("Recieved booty"),
       apiVal: "€ " + allBooty,
     },
     {
