@@ -115,6 +115,46 @@ export interface paths {
     /** Get all the experience points earned in AppQuality. */
     get: operations["get-users-me-experience"];
   };
+  "/users/me/fiscal": {
+    get: operations["get-users-me-fiscal"];
+    post: operations["post-users-me-fiscal"];
+  };
+  "/users/me/campaigns": {
+    /**
+     * get available, and selected campaigns for a single user.
+     * filterBy[accepted] = 1 retrieve accepted campaign only, otherwise retrieve available campaign.
+     * filterBy[completed] = 1 get completed campaigns only (end date in the past)
+     * filterBy[completed] = 0 get not completed campaigns only (end date today or in the future)
+     * filterBy[statusID] = 1 get open campaigns
+     * filterBy[statusID] = 2 get closed campaigns
+     */
+    get: operations["get-users-me-campaigns"];
+  };
+  "/popups": {
+    get: operations["get-popups"];
+    post: operations["post-popups"];
+    parameters: {};
+  };
+  "/popups/{popup}": {
+    get: operations["get-popups-popup"];
+    patch: operations["patch-popups-popup"];
+    parameters: {
+      path: {
+        popup: number;
+      };
+    };
+  };
+  "/users/me/popups": {
+    get: operations["get-users-me-popups"];
+  };
+  "/users/me/popups/{popup}": {
+    get: operations["get-users-me-popups-popup"];
+    parameters: {
+      path: {
+        popup: number;
+      };
+    };
+  };
 }
 
 export interface components {
@@ -168,6 +208,15 @@ export interface components {
       projectManager?: components["schemas"]["User"];
       customerCanViewReviewing?: boolean;
       additionalFields?: components["schemas"]["CampaignField"][];
+      tokens?: number;
+      csm_effort?: number;
+      ux_effort?: number;
+      preview_link?: components["schemas"]["TranslatablePage"];
+      manual_link?: components["schemas"]["TranslatablePage"];
+      /** If bugform is deactivated is a boolean else contains URLs to bugforms for each languages */
+      bugform_link?: boolean | components["schemas"]["TranslatablePage"];
+      /** True if you applied on this Campaign */
+      applied?: boolean;
     };
     CampaignRequired: {
       name: string;
@@ -195,7 +244,7 @@ export interface components {
       content: string;
       campaign_id: number;
     };
-    CampaignType: number;
+    CampaignType: string | number;
     User: {
       username?: string;
       name?: string;
@@ -219,6 +268,24 @@ export interface components {
       id?: number;
       name?: string;
       description?: string;
+    };
+    Popup: {
+      profiles?:
+        | number[]
+        | (
+            | "all"
+            | "italian"
+            | "non-italian"
+            | "logged-in-year"
+            | "not-logged-in-year"
+          );
+      once?: boolean;
+      content?: string;
+      title?: string;
+    };
+    TranslatablePage: {
+      en?: string;
+      it?: string;
     };
   };
   responses: {
@@ -301,9 +368,11 @@ export interface components {
     /** Items to skip for pagination */
     start: number;
     /** Key-value Array for item filtering */
-    filterBy: { [key: string]: any };
+    filterBy: { [key: string]: unknown };
     /** How to order values (ASC, DESC) */
     order: "ASC" | "DESC";
+    /** How to localize values */
+    locale: "en" | "it";
     /** A comma separated list of fields which will be searched */
     searchBy: string;
     /** The value to search for */
@@ -618,7 +687,7 @@ export interface operations {
       /** OK */
       200: {
         content: {
-          "application/json": { [key: string]: any };
+          "application/json": { [key: string]: unknown };
         };
       };
     };
@@ -653,7 +722,7 @@ export interface operations {
           password: string;
           country: string;
           birthDate: string;
-          /** A referral code */
+          /** A referral code (formatted as TESTER_ID-CAMPAIGN_ID) */
           referral?: string;
         };
       };
@@ -661,6 +730,12 @@ export interface operations {
   };
   /** Get your user data */
   "get-users-me": {
+    parameters: {
+      query: {
+        /** Comma separeted string of specific fields requested */
+        fields?: string;
+      };
+    };
     responses: {
       /** OK */
       200: {
@@ -776,6 +851,210 @@ export interface operations {
       };
       403: components["responses"]["NotAuthorized"];
       404: components["responses"]["NotFound"];
+    };
+  };
+  "get-users-me-fiscal": {
+    responses: {
+      /** OK */
+      200: unknown;
+      /** Unauthorized */
+      401: unknown;
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          fiscalResidence?: string;
+          fiscalCategory?: string;
+          birthPlace?: string;
+          fiscalAddress?: string;
+          fiscalId?: string;
+        };
+      };
+    };
+  };
+  "post-users-me-fiscal": {
+    responses: {
+      /** OK */
+      200: unknown;
+      /** Unauthorized */
+      401: unknown;
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          fiscalResidence: string;
+          fiscalCategory: string;
+          birthPlace: string;
+          fiscalAddress: string;
+          fiscalId: string;
+        };
+      };
+    };
+  };
+  /**
+   * get available, and selected campaigns for a single user.
+   * filterBy[accepted] = 1 retrieve accepted campaign only, otherwise retrieve available campaign.
+   * filterBy[completed] = 1 get completed campaigns only (end date in the past)
+   * filterBy[completed] = 0 get not completed campaigns only (end date today or in the future)
+   * filterBy[statusID] = 1 get open campaigns
+   * filterBy[statusID] = 2 get closed campaigns
+   */
+  "get-users-me-campaigns": {
+    parameters: {
+      query: {
+        /** Items to skip for pagination */
+        start?: components["parameters"]["start"];
+        /** Max items to retrieve */
+        limit?: components["parameters"]["limit"];
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+        /** How to localize values */
+        locale?: components["parameters"]["locale"];
+        /** How to order values (ASC, DESC) */
+        order?: components["parameters"]["order"];
+        /** The field for item order */
+        orderBy?: "name" | "start_date" | "end_date" | "close_date";
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results?: ({
+              id: number;
+            } & components["schemas"]["Campaign"])[];
+            limit?: number;
+            size?: number;
+            start?: number;
+            total?: number;
+          };
+        };
+      };
+      /** Forbidden */
+      403: unknown;
+      /** Not Found */
+      404: unknown;
+    };
+  };
+  "get-popups": {
+    parameters: {
+      query: {
+        /** Max items to retrieve */
+        limit?: components["parameters"]["limit"];
+        /** Items to skip for pagination */
+        start?: components["parameters"]["start"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": ({
+            id?: number;
+          } & components["schemas"]["Popup"])[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "post-popups": {
+    parameters: {};
+    responses: {
+      /** Created */
+      201: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["Popup"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["Popup"];
+      };
+    };
+  };
+  "get-popups-popup": {
+    parameters: {
+      path: {
+        popup: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["Popup"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+  };
+  "patch-popups-popup": {
+    parameters: {
+      path: {
+        popup: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["Popup"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["Popup"];
+      };
+    };
+  };
+  "get-users-me-popups": {
+    parameters: {
+      query: {
+        /** Show all popup history, expired popups included */
+        showExpired?: boolean;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+            title?: string;
+            content?: string;
+            once?: boolean;
+          }[];
+        };
+      };
+    };
+  };
+  "get-users-me-popups-popup": {
+    parameters: {
+      path: {
+        popup: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["Popup"];
+        };
+      };
     };
   };
 }
