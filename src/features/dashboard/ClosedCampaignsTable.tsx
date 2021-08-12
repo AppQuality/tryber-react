@@ -14,6 +14,10 @@ const ClosedCampaignsTable = () => {
         isStriped={true}
         order={order.current}
         orderBy={orderBy.current}
+        i18n={{
+          loading: t("Loading Data"),
+          empty: t("There are no Campaigns here"),
+        }}
         columns={[
           {
             title: t("Campaign"),
