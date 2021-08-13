@@ -105,7 +105,7 @@ export const Reviews = () => {
       age: "20",
       qualification: "Certified ISTQB professional Tester",
       review: t(
-        "AppQuality provides a reliable testing environment for the best application results, I have a lot of fun participating in real test projects and feel so proud to be part of the App Quality testing community ... and to get paid too!"
+        "AppQuality provides a reliable testing environment for the best application results, I have a lot of fun participating in real test projects and feel so proud to be part of the AppQuality testing community ... and to get paid too!"
       ),
     },
     {
