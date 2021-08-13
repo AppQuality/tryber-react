@@ -41,7 +41,7 @@ const TopAnimation = styled.div`
     top: 0;
     left: 0;
     will-change: transform;
-    @media (min-width: ${props => props.theme.grid.breakpoints.xl}) {
+    @media (min-width: ${(props) => props.theme.grid.breakpoints.xl}) {
       top: 25px;
     }
   }
@@ -114,7 +114,7 @@ export const BannerTop = () => {
         <div style={{ position: "relative" }}>
           <PageTitle>
             <Title size="xl">
-              {t("Join the AppQuality tester community!")}
+              {t("Join the AppQuality Tester Community!")}
             </Title>
           </PageTitle>
           <Text className="aq-mb-3 large-desktop">
@@ -149,7 +149,7 @@ export const BannerTop = () => {
             timeout={500}
             classNames="shape-animation"
           >
-            <div className='shape-animation-container'>
+            <div className="shape-animation-container">
               <TopShape
                 className="top-shape"
                 style={{

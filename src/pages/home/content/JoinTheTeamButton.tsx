@@ -8,14 +8,13 @@ export default () => {
     <StyledCta>
       <Button
         as="a"
-        className="capitalize-first"
         href={`${window.location.origin}/${
           i18n.language == "en" ? "" : `${i18n.language}/`
         }getting-started/`}
         type="success"
         size="block"
       >
-        {t("join the team")}
+        {t("Join the Team")}
       </Button>
     </StyledCta>
   );

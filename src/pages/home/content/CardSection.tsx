@@ -92,8 +92,8 @@ export const CardSection = () => {
       title: t("constant support"),
       body: (
         <Trans
-          i18nKey="<bold>A team of competent and professional figures</bold> will always be at your side to resolve any doubts <br></br>you may have"
-          defaults="<bold>A team of competent and professional figures</bold> will always be at your side to resolve any doubts <br></br>you may have"
+          i18nKey="<bold>A Team of competent and professional figures</bold> will always be at your side to resolve any doubts <br></br>you may have"
+          defaults="<bold>A Team of competent and professional figures</bold> will always be at your side to resolve any doubts <br></br>you may have"
           components={{ br: <br />, bold: <strong /> }}
         />
       ),
@@ -131,7 +131,7 @@ export const CardSection = () => {
   return (
     <StyledSection style={{ padding: "0 40px" }}>
       <Title size="xl" className="aq-text-center aq-mb-4 section-title-wrapper">
-        {t("Why you should become an AppQuality tester?")}
+        {t("Why you should become an AppQuality Tester?")}
       </Title>
       <StyledRect className="hero" ref={ref} rx={rx}>
         <MiddleRect />
