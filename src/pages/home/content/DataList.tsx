@@ -15,7 +15,10 @@ const DataListStyle = styled.div`
       align-items: center;
       justify-content: center;
     }
-
+    .item-image {
+      height: 56px;
+      max-width: initial;
+    }
     @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
       display: flex;
       flex: 1 0 25%;
@@ -40,10 +43,10 @@ export const DataList = ({ data }: DataListProps) => {
   return (
     <DataListStyle>
       {data.map((item, index) => (
-        <div className="data-list-item aq-mb-3" key={index}>
+        <div className="data-list-item" key={index}>
           <div className="item-body">
-            <img className="item-image" src={item.icon} alt={item.name} />
-            <div className="item-text">
+            <img className="item-image aq-mb-3" src={item.icon} alt={item.name} />
+            <div className="item-text aq-mb-3">
               <Title size="m">
                 {item.text}
                 <span className="aq-text-warning">+</span>
