@@ -9,12 +9,12 @@ import styled from "styled-components";
 import quotes from "../assets/quotes.svg";
 import avatarFabio from "../assets/avatar/fabio2.png";
 import avatarCarlo from "../assets/avatar/carlo2.png";
-import avatarMarina from "../assets/avatar/Marina-Gil-Martìnez2.jpeg";
+import avatarMarina from "../assets/avatar/Marina.jpeg";
 import avatarDaniele from "../assets/avatar/daniele2.jpeg";
-import avatarFabrizio from "../assets/avatar/Fabrizio-de-Fazio2.jpeg";
-import avatarSatesh from "../assets/avatar/Sathesh-Sirimalla2.jpeg";
+import avatarFabrizio from "../assets/avatar/Fabrizio.jpeg";
+import avatarSatesh from "../assets/avatar/Sathesh.jpeg";
 import avatarFilippo from "../assets/avatar/filippo2.jpeg";
-import avatarVincenzo from "../assets/avatar/Vincenzo-Falconieri2.jpeg";
+import avatarVincenzo from "../assets/avatar/Vincenzo.jpeg";
 
 import { useTranslation, Trans } from "react-i18next";
 
