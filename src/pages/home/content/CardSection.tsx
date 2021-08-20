@@ -131,7 +131,7 @@ export const CardSection = () => {
   return (
     <StyledSection style={{ padding: "0 40px" }}>
       <Title size="xl" className="aq-text-center aq-mb-4 section-title-wrapper">
-        {t("Why you should become an AppQuality Tester?")}
+        {t("Why should you become an AppQuality Tester?")}
       </Title>
       <StyledRect className="hero" ref={ref} rx={rx}>
         <MiddleRect />
