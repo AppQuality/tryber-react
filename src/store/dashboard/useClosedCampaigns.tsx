@@ -2,6 +2,7 @@ import { TableType } from "@appquality/appquality-design-system";
 import React, { useState, useEffect } from "react";
 import { operations } from "../../utils/schema";
 import API from "../../utils/api";
+import dateFormatter from "../../utils/dateFormatter";
 import { useTranslation } from "react-i18next";
 
 export default () => {
@@ -35,14 +36,6 @@ export default () => {
           return { results: [], total: 0 };
         }
         const campaigns = data.results.map((cp) => {
-          const dateFormatter = (unformatted: string) => {
-            let d = new Date(unformatted);
-            return d.toLocaleString(i18n.language, {
-              year: "numeric",
-              month: "2-digit",
-              day: "2-digit",
-            });
-          };
           return {
             key: cp.id ? cp.id : 123,
             campaigns: `${cp.id ? `[CP${cp.id}] - ` : ""}${cp.name}`,

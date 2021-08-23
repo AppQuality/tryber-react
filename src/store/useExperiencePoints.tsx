@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { operations } from "../utils/schema";
 import { TableType, SelectType } from "@appquality/appquality-design-system";
 import API from "../utils/api";
+import dateFormatter from "../utils/dateFormatter";
 import { useTranslation } from "react-i18next";
 
 export const useExperiencePoints = () => {
@@ -72,12 +73,7 @@ export const useExperiencePoints = () => {
       if (res.date) {
         let d = new Date(res.date);
         _dates[d.getTime()] = {
-          label:
-            d.toLocaleDateString(i18n.language, {
-              year: "numeric",
-              month: "2-digit",
-              day: "2-digit",
-            }) || "",
+          label: dateFormatter(res.date) || "",
           value: res.date,
         };
       }
@@ -103,15 +99,10 @@ export const useExperiencePoints = () => {
       )
         return;
 
-      let d = new Date(res.date);
       _data.push({
         key: i,
         amount: `${res.amount > 0 ? `+${res.amount}` : res.amount}pts`,
-        date: d.toLocaleString(i18n.language, {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        }),
+        date: dateFormatter(res.date),
         activity: mapActivityName(res.activity.id),
         campaign:
           res.campaign.title && res.campaign.id > 0
