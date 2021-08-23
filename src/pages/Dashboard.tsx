@@ -168,7 +168,7 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
                 >
                   <PerformanceData />
                 </Card>
-                <Card>
+                <Card shadow={true}>
                   <Button
                     flat
                     type="info"
