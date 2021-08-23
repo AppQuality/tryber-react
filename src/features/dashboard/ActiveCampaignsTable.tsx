@@ -49,17 +49,10 @@ const ActiveCampaignsTable = () => {
             width: "10ch",
           },
           {
-            title: t("Manual"),
-            dataIndex: "manual",
-            key: "manual",
-            width: "10ch",
-            align: "center",
-          },
-          {
-            title: t("Bugform"),
-            dataIndex: "bugform",
-            key: "bugform",
-            width: "10ch",
+            title: t("Actions"),
+            dataIndex: "actions",
+            key: "actions",
+            width: "20ch",
             align: "center",
           },
         ]}

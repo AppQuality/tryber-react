@@ -71,38 +71,47 @@ export default () => {
 
           return {
             key: cp.id ? cp.id : 123,
-            campaigns: cp.name,
+            campaigns: `${cp.id ? `[CP${cp.id}] - ` : ""}${cp.name}`,
             startDate: dateFormatter(cp.dates.start),
             endDate: dateFormatter(cp.dates.end),
-            manual: {
+            actions: {
               title: ``,
-              content: (
-                <Button
-                  as="a"
-                  disabled={manualLink === "#"}
-                  href={`${window.location.origin}${manualLink}`}
-                  type="link"
-                  size="sm"
-                >
-                  {manualLink === "#" ? t("Not available") : t("Read manual")}
-                </Button>
-              ),
-            },
-            bugform: {
-              title: ``,
-              content: (
-                <Button
-                  as="a"
-                  disabled={cp.bugform_link === false}
-                  href={`${window.location.origin}/${bugformLink}`}
-                  type="link"
-                  size="sm"
-                >
-                  {cp.bugform_link === false
-                    ? t("Not available")
-                    : t("Report a bug")}
-                </Button>
-              ),
+              content:
+                manualLink === "#" ? (
+                  <Button
+                    as="a"
+                    disabled={true}
+                    href={`#`}
+                    type="link"
+                    size="sm"
+                  >
+                    {t("Coming soon...")}
+                  </Button>
+                ) : (
+                  <div
+                    style={{ display: "flex", justifyContent: "space-around" }}
+                  >
+                    <Button
+                      as="a"
+                      href={`${window.location.origin}${manualLink}`}
+                      type="link"
+                      size="sm"
+                    >
+                      {t("Read manual")}
+                    </Button>
+                    <Button
+                      as="a"
+                      disabled={cp.bugform_link === false}
+                      href={`${window.location.origin}/${bugformLink}`}
+                      type="link"
+                      size="sm"
+                    >
+                      {cp.bugform_link === false
+                        ? t("Not available")
+                        : t("Report a bug")}
+                    </Button>
+                  </div>
+                ),
             },
           };
         });
