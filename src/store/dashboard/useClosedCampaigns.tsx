@@ -45,7 +45,7 @@ export default () => {
           };
           return {
             key: cp.id ? cp.id : 123,
-            campaigns: cp.name,
+            campaigns: `${cp.id ? `[CP${cp.id}] - ` : ""}${cp.name}`,
             closeDate: dateFormatter(cp.dates.close),
           };
         });
