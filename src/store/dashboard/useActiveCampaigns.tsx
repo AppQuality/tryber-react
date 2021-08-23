@@ -99,17 +99,17 @@ export default () => {
                     >
                       {t("Read manual")}
                     </Button>
-                    <Button
-                      as="a"
-                      disabled={cp.bugform_link === false}
-                      href={`${window.location.origin}/${bugformLink}`}
-                      type="link"
-                      size="sm"
-                    >
-                      {cp.bugform_link === false
-                        ? t("Not available")
-                        : t("Report a bug")}
-                    </Button>
+                    {cp.bugform_link === false ? null : (
+                      <Button
+                        as="a"
+                        disabled={cp.bugform_link === false}
+                        href={`${window.location.origin}/${bugformLink}`}
+                        type="link"
+                        size="sm"
+                      >
+                        {t("Report a bug")}
+                      </Button>
+                    )}
                   </div>
                 ),
             },
