@@ -6,14 +6,16 @@ import {
   SpinnerWrapper,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
 
 export default ({ children }: { children: React.ReactNode }) => {
+  const history = useHistory();
   const { user, error, isLoading } = useUser();
   const { t } = useTranslation();
 
   if (!user && error) {
     if (error.statusCode === 403) {
-      window.location.href = "/";
+      history.push("/");
     } else {
       alert(error.message);
     }

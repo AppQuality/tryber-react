@@ -7,6 +7,7 @@ import {
   SpinnerWrapper,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import { useHistory, useRouteMatch } from "react-router-dom";
 
 export default ({
   children,
