@@ -99,7 +99,7 @@ export default function ExperiencePoints() {
   return (
     <>
       {helmet()}
-      <TesterSidebar isAdmin={isAdmin} route={"experience-points"}>
+      <TesterSidebar route={"experience-points"}>
         <Container className="aq-pb-3">
           <PageTitle as="h2" size="regular">
             {t("Experience Points")}

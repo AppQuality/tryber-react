@@ -102,7 +102,7 @@ export default function Dashboard() {
         open={isPopupArchiveModalOpen}
         showExpired={true}
       />
-      <TesterSidebar isAdmin={isAdmin} route={"my-dashboard"}>
+      <TesterSidebar route={"my-dashboard"}>
         <Container className="aq-pb-3">
           <PageTitle
             as="h2"

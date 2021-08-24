@@ -3,8 +3,8 @@ import { Sidebar, SidebarType } from "@appquality/appquality-design-system";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import { openMenu, closeMenu } from "../../redux/menu/actionCreators";
-
 import { Dispatch } from "redux";
+import useUser from "../../redux/user";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 
 import {
@@ -24,7 +24,6 @@ import {
 export interface TesterSidebarProps {
   route?: string;
   children?: React.ReactNode;
-  isAdmin?: boolean;
 }
 
 const TesterSidebarArgs: SidebarType.SidebarProps = {
@@ -59,11 +58,9 @@ const TesterSidebarArgs: SidebarType.SidebarProps = {
   },
   items: [],
 };
-const TesterSidebar = ({
-  route,
-  children,
-  isAdmin = false,
-}: TesterSidebarProps) => {
+const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
+  const { user } = useUser();
+  const isAdmin = user && user.isAdmin ? user.isAdmin : false;
   const open: boolean = useSelector(
     (state: GeneralState) => state.menu.open,
     shallowEqual
@@ -79,7 +76,6 @@ const TesterSidebar = ({
     [dispatch]
   );
 
-  const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
   const languages = Object.keys(i18next.services.resourceStore.data);
 
