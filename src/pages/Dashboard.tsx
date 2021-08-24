@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Container,
   BSGrid,
@@ -8,13 +8,9 @@ import {
   Tabs,
   Tab,
   Text,
-  SpinnerWrapper,
-  Spinner,
-  Title,
   Button,
 } from "@appquality/appquality-design-system";
 import TesterSidebar from "../features/TesterSidebar";
-import { Helmet } from "react-helmet";
 import ActiveCampaignsTable from "../features/dashboard/ActiveCampaignsTable";
 import CompletedCampaignsTable from "../features/dashboard/CompletedCampaignsTable";
 import ClosedCampaignsTable from "../features/dashboard/ClosedCampaignsTable";
@@ -22,20 +18,9 @@ import AvailableCampaignsTable from "../features/dashboard/AvailableCampaignsTab
 import PerformanceData from "../features/dashboard/PerformanceData";
 import PopupContainer from "../features/dashboard/PopupContainer";
 import { useTranslation } from "react-i18next";
-import { useUser } from "../store/useUser";
 
 import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
-
-const tagManagerArgs = {
-  dataLayer: {
-    role: "unknown",
-    wp_user_id: 0,
-    tester_id: 0,
-    is_admin_page: false,
-  },
-  dataLayerName: "PageDataLayer",
-};
 
 export default function Dashboard() {
   //constants - START

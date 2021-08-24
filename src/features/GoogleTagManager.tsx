@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet";
+import TagManager from "react-gtm-module";
 import useUser from "../redux/user";
 
 const tagManagerArgs = {
@@ -39,6 +40,7 @@ export default ({
     };
   }
 
+  TagManager.dataLayer(tagManagerArgs);
   return (
     <>
       {helmet()}
