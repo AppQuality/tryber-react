@@ -15,7 +15,7 @@ import TesterSidebar from "../features/TesterSidebar";
 import MyBugsTable from "../features/my-bugs/MyBugsTable";
 import MyBugsFilters from "../features/my-bugs/MyBugsFilters";
 import { useMyBugs } from "../store/useMyBugs";
-import { useUser } from "../store/useUser";
+import useUser from "../redux/user";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
 
@@ -29,12 +29,10 @@ const tagManagerArgs = {
   dataLayerName: "PageDataLayer",
 };
 
-export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
+export default function MyBugs() {
   const { search } = useLocation();
-  const { user, error } = useUser();
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isLoading, setisLoading] = useState(true);
-
+  const { user, error, isLoading } = useUser();
+  const isAdmin = user && user.isAdmin ? user.isAdmin : false;
   const { t } = useTranslation();
   const {
     data,
@@ -59,36 +57,33 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
     );
   };
 
-  useEffect(() => {
-    if (user) {
-      const values = queryString.parse(search);
-      if (values.cp) {
-        campaigns.setSelected({ value: values.cp.toString(), label: "" });
-      }
-      if (values.status) {
-        status.setSelected({ value: values.status.toString(), label: "" });
-      }
-      tagManagerArgs.dataLayer = {
-        role: user.role,
-        wp_user_id: user.wp_user_id,
-        tester_id: user.id,
-        is_admin_page: false,
-      };
-
-      setIsAdmin(["administrator", "tester_lead"].includes(user.role));
-      setisLoading(false);
-    } else {
-      if (error) {
-        if (error.statusCode === 403) {
-          window.location.href = "/";
-        } else {
-          alert(error.message);
-        }
+  if (user) {
+    tagManagerArgs.dataLayer = {
+      role: user.role,
+      wp_user_id: user.wp_user_id,
+      tester_id: user.id,
+      is_admin_page: false,
+    };
+  } else {
+    if (error) {
+      if (error.statusCode === 403) {
+        window.location.href = "/";
+      } else {
+        alert(error.message);
       }
     }
-  }, [user, error]);
+  }
+  useEffect(() => {
+    const values = queryString.parse(search);
+    if (values.cp) {
+      campaigns.setSelected({ value: values.cp.toString(), label: "" });
+    }
+    if (values.status) {
+      status.setSelected({ value: values.status.toString(), label: "" });
+    }
+  }, [queryString]);
 
-  if (isLoading) {
+  if (isLoading || !user) {
     return (
       <>
         {helmet()}
@@ -106,11 +101,7 @@ export default function MyBugs({ isMenuOpen }: { isMenuOpen: boolean }) {
   return (
     <>
       {helmet()}
-      <TesterSidebar
-        isAdmin={isAdmin}
-        route={"my-bugs"}
-        openFromHeader={isMenuOpen}
-      >
+      <TesterSidebar isAdmin={isAdmin} route={"my-bugs"}>
         <Container className="aq-pb-3">
           <PageTitle size="regular" as="h2" className="aq-mb-3">
             {t("Uploaded Bugs")}

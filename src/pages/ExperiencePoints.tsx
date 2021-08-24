@@ -29,11 +29,7 @@ const tagManagerArgs = {
   dataLayerName: "PageDataLayer",
 };
 
-export default function ExperiencePoints({
-  isMenuOpen,
-}: {
-  isMenuOpen: boolean;
-}) {
+export default function ExperiencePoints() {
   const { user, error } = useUser();
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setisLoading] = useState(true);
@@ -103,11 +99,7 @@ export default function ExperiencePoints({
   return (
     <>
       {helmet()}
-      <TesterSidebar
-        isAdmin={isAdmin}
-        route={"experience-points"}
-        openFromHeader={isMenuOpen}
-      >
+      <TesterSidebar isAdmin={isAdmin} route={"experience-points"}>
         <Container className="aq-pb-3">
           <PageTitle as="h2" size="regular">
             {t("Experience Points")}

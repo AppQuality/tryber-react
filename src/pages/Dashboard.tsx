@@ -34,11 +34,10 @@ const tagManagerArgs = {
   dataLayerName: "PageDataLayer",
 };
 
-export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
+export default function Dashboard() {
   //constants - START
 
-  const { user, error } = useUser();
-  const [isLoading, setisLoading] = useState(true);
+  const { user, error, isLoading } = useUser();
   const [isAdmin, setIsAdmin] = useState(false);
   const [isPopupModalOpen, setIsPopupModalOpen] = useState(true);
   const [isPopupArchiveModalOpen, setIsPopupArchiveModalOpen] = useState(false);
@@ -65,7 +64,6 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
         is_admin_page: false,
       };
       setIsAdmin(["administrator", "tester_lead"].includes(user.role));
-      setisLoading(false);
     } else {
       if (error) {
         if (error.statusCode === 403) {
@@ -104,11 +102,7 @@ export default function Dashboard({ isMenuOpen }: { isMenuOpen: boolean }) {
         open={isPopupArchiveModalOpen}
         showExpired={true}
       />
-      <TesterSidebar
-        isAdmin={isAdmin}
-        route={"my-dashboard"}
-        openFromHeader={isMenuOpen}
-      >
+      <TesterSidebar isAdmin={isAdmin} route={"my-dashboard"}>
         <Container className="aq-pb-3">
           <PageTitle
             as="h2"

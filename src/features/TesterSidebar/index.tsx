@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Sidebar, SidebarType } from "@appquality/appquality-design-system";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import { openMenu, closeMenu } from "../../redux/menu/actionCreators";
+
+import { Dispatch } from "redux";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
 
 import {
   AwardFill,
@@ -20,7 +24,6 @@ import {
 export interface TesterSidebarProps {
   route?: string;
   children?: React.ReactNode;
-  openFromHeader?: boolean;
   isAdmin?: boolean;
 }
 
@@ -59,9 +62,23 @@ const TesterSidebarArgs: SidebarType.SidebarProps = {
 const TesterSidebar = ({
   route,
   children,
-  openFromHeader,
   isAdmin = false,
 }: TesterSidebarProps) => {
+  const open: boolean = useSelector(
+    (state: GeneralState) => state.menu.open,
+    shallowEqual
+  );
+  const dispatch: Dispatch<any> = useDispatch();
+
+  const openMenuFromSidebar = useCallback(
+    () => dispatch(openMenu()),
+    [dispatch]
+  );
+  const closeMenuFromSidebar = useCallback(
+    () => dispatch(closeMenu()),
+    [dispatch]
+  );
+
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
   const languages = Object.keys(i18next.services.resourceStore.data);
@@ -204,11 +221,11 @@ const TesterSidebar = ({
     <Sidebar
       {...{
         ...TesterSidebarArgs,
-        open: isOpen || openFromHeader,
+        open,
         route: route,
       }}
-      onSidebarLeave={() => setIsOpen(false)}
-      onSidebarEnter={() => setIsOpen(true)}
+      onSidebarLeave={closeMenuFromSidebar}
+      onSidebarEnter={openMenuFromSidebar}
     >
       {children}
     </Sidebar>
