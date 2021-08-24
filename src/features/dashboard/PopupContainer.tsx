@@ -10,6 +10,7 @@ import {
 } from "@appquality/craft-blocks";
 import { Modal, ModalBody, Title } from "@appquality/appquality-design-system";
 import API from "../../utils/api";
+import { useTranslation } from "react-i18next";
 import SetPopupAsSeenButton from "./SetPopupAsSeenButton";
 
 export default ({
@@ -22,6 +23,7 @@ export default ({
   onClose: () => void;
 }) => {
   const { popups } = usePopups({ showExpired });
+  const { t } = useTranslation();
   if (!popups.length) return null;
 
   const expirePopup = (id: number) => {
@@ -36,7 +38,10 @@ export default ({
     <Modal isOpen={open} onClose={onClose} title="Crowd AppQuality - Info">
       {popups.map((p) => {
         return (
-          <ModalBody onShow={() => p.id && p.once && expirePopup(p.id)}>
+          <ModalBody
+            nextText={i == popups.length ? t("Close") : undefined}
+            onShow={() => p.id && p.once && expirePopup(p.id)}
+          >
             <Title size="s">
               {i++}/{popups.length} {p.title}
             </Title>
