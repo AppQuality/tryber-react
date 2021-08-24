@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import { Sidebar, SidebarType } from "@appquality/appquality-design-system";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";

@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet";
-import { User } from "../types";
 import useUser from "../redux/user";
 
 const tagManagerArgs = {
