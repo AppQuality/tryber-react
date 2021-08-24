@@ -1,20 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   Container,
   BSGrid,
   BSCol,
   Card,
-  Title,
-  Spinner,
   PageTitle,
-  SpinnerWrapper,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import TesterSidebar from "../features/TesterSidebar";
 import MyBugsTable from "../features/my-bugs/MyBugsTable";
 import MyBugsFilters from "../features/my-bugs/MyBugsFilters";
 import { useMyBugs } from "../store/useMyBugs";
-import useUser from "../redux/user";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
 import GoogleTagManager from "../features/GoogleTagManager";
@@ -22,8 +18,6 @@ import LoggedOnly from "../features/LoggedOnly";
 
 export default function MyBugs() {
   const { search } = useLocation();
-  const { user } = useUser();
-  const isAdmin = user && user.isAdmin ? user.isAdmin : false;
   const { t } = useTranslation();
   const {
     data,
