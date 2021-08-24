@@ -52,7 +52,7 @@ export default () => {
           }
           return {
             key: cp.id ? cp.id : 0,
-            campaigns: `${cp.id ? `[CP${cp.id}] - ` : ""}${cp.name}`,
+            campaignName: `${cp.id ? `[CP${cp.id}] - ` : ""}${cp.name}`,
             type: cp.campaign_type,
             startDate: dateFormatter(cp.dates.start),
             endDate: dateFormatter(cp.dates.end),
