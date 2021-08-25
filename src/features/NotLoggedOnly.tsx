@@ -16,6 +16,7 @@ export default ({
   children: React.ReactNode;
   redirect?: { url: string; message?: string };
 }) => {
+  const history = useHistory();
   const { user, error, isLoading } = useUser();
   const { t, i18n } = useTranslation();
   const [loadingMessage, setLoadingMessage] = useState<string>(t("Loading"));
@@ -32,7 +33,7 @@ export default ({
   useEffect(() => {
     if (user) {
       setLoadingMessage(redirectMessage);
-      window.location.href = redirectUrl;
+      history.push(redirectUrl);
     }
   }, [user]);
 
