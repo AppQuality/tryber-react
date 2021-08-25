@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { toggleMenu } from "./actionCreators";
+import { toggleMenu, openMenu, closeMenu } from "./actionCreators";
 
 export default () => {
   const open: boolean = useSelector(
@@ -11,7 +11,9 @@ export default () => {
   const dispatch: Dispatch<any> = useDispatch();
 
   return {
-    open,
+    isOpen: open,
     toggle: () => dispatch(toggleMenu()),
+    open: () => dispatch(openMenu()),
+    close: () => dispatch(closeMenu()),
   };
 };

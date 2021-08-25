@@ -7,6 +7,7 @@ import menuStore from "../redux/menu";
 
 const SiteHeader = () => {
   const menu = menuStore();
+  const { isOpen, toggle } = menu;
   const { user, isLoading } = userStore();
   const { login, setLogin } = useLogin();
   const { i18n, t } = useTranslation();
@@ -19,8 +20,8 @@ const SiteHeader = () => {
         isLoading={isLoading}
         logoUrl={homeUrl}
         user={user}
-        isMenuOpen={menu.open}
-        toggleMenu={menu.toggle}
+        isMenuOpen={isOpen}
+        toggleMenu={toggle}
         loginText={t("login")}
       />
       <LoginModal isOpen={login} onClose={() => setLogin(false)} />
