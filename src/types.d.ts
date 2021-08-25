@@ -10,11 +10,14 @@ export interface UserData {
   email: string;
   image: string;
   verified?: boolean;
+  isAdmin?: boolean;
 }
 
 export type User = undefined | UserData;
 
 export interface UserStatus {
+  refresh?: () => void;
+  login?: (data: UserLoginData) => void;
   user: User;
   isLoading: boolean;
   error: HttpError;

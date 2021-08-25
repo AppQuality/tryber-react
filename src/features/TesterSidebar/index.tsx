@@ -1,7 +1,8 @@
-import React, { useState } from "react";
 import { Sidebar, SidebarType } from "@appquality/appquality-design-system";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import menuStore from "../../redux/menu";
+import useUser from "../../redux/user";
 
 import {
   AwardFill,
@@ -20,8 +21,6 @@ import {
 export interface TesterSidebarProps {
   route?: string;
   children?: React.ReactNode;
-  openFromHeader?: boolean;
-  isAdmin?: boolean;
 }
 
 const TesterSidebarArgs: SidebarType.SidebarProps = {
@@ -56,13 +55,11 @@ const TesterSidebarArgs: SidebarType.SidebarProps = {
   },
   items: [],
 };
-const TesterSidebar = ({
-  route,
-  children,
-  openFromHeader,
-  isAdmin = false,
-}: TesterSidebarProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
+  const { user } = useUser();
+  const { isOpen, open, close } = menuStore();
+  const isAdmin = user && user.isAdmin ? user.isAdmin : false;
+
   const { t } = useTranslation();
   const languages = Object.keys(i18next.services.resourceStore.data);
 
@@ -204,11 +201,11 @@ const TesterSidebar = ({
     <Sidebar
       {...{
         ...TesterSidebarArgs,
-        open: isOpen || openFromHeader,
+        open: isOpen,
         route: route,
       }}
-      onSidebarLeave={() => setIsOpen(false)}
-      onSidebarEnter={() => setIsOpen(true)}
+      onSidebarLeave={close}
+      onSidebarEnter={open}
     >
       {children}
     </Sidebar>
