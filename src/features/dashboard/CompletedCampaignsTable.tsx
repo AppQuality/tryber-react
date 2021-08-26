@@ -37,14 +37,10 @@ const CompletedCampaignsTable = () => {
             width: "10ch",
           },
           {
-            title: t("Close Date"),
-            dataIndex: "closeDate",
-            key: "closeDate",
-            isSortable: true,
-            onSort: (sorting: "ASC" | "DESC") => {
-              order.set(sorting);
-              orderBy.set("closeDate");
-            },
+            title: t("Actions"),
+            dataIndex: "actions",
+            key: "actions",
+            align: "center",
             width: "10ch",
           },
         ]}

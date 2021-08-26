@@ -17,7 +17,9 @@ import ClosedCampaignsTable from "../features/dashboard/ClosedCampaignsTable";
 import AvailableCampaignsTable from "../features/dashboard/AvailableCampaignsTable";
 import PerformanceData from "../features/dashboard/PerformanceData";
 import PopupContainer from "../features/dashboard/PopupContainer";
+import ComingSoonHelpModal from "../features/dashboard/ComingSoonHelpModal";
 import { useTranslation } from "react-i18next";
+import useUser from "../redux/user";
 
 import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
@@ -26,12 +28,14 @@ export default function Dashboard() {
   //constants - START
   const [isPopupModalOpen, setIsPopupModalOpen] = useState(true);
   const [isPopupArchiveModalOpen, setIsPopupArchiveModalOpen] = useState(false);
+  const { user } = useUser();
 
   const { t } = useTranslation();
 
   return (
     <GoogleTagManager title={t("Dashboard")}>
       <LoggedOnly>
+        <ComingSoonHelpModal />
         <PopupContainer
           open={isPopupModalOpen}
           onClose={() => setIsPopupModalOpen(false)}
@@ -50,27 +54,27 @@ export default function Dashboard() {
                 "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!"
               )}
             >
-              {t("Dashboard")}
+              {t("Welcome back %s").replace("%s", user ? user.name : "")}
             </PageTitle>
             <BSGrid>
               <BSCol size="col-lg-9 ">
                 <Card className="aq-mb-3" bodyClass="">
                   <Tabs active="active">
-                    <Tab id="active" title={t("To be completed")}>
+                    <Tab id="active" title={t("Active")}>
                       <div className="aq-m-3">
                         <Text>
                           {t(
-                            `A list of all the campaigns you successfully applied for. Read the manual and report as many bugs as you can to earn experience points and earn money. Don't forget to apply for new campaigns!`
+                            `A list of all the campaigns you have been successfully selected for. Read the manual and complete all the requested tasks before the end date to receive your reward.`
                           )}
                         </Text>
                         <ActiveCampaignsTable />
                       </div>
                     </Tab>
-                    <Tab id="completed" title={t("Completed")}>
+                    <Tab id="completed" title={t("Finished")}>
                       <div className="aq-m-3">
                         <Text>
                           {t(
-                            `A list of all the campaigns you participated in that are now completed. We will evaluate your performance in the 14 days following the end of the campaign and award you experience points and money accordingly.`
+                            `A list of all the campaigns you participated in that are now finished. We will evaluate your performance in the days following the end date and reward you accordingly.`
                           )}
                         </Text>
                         <CompletedCampaignsTable />
@@ -80,7 +84,7 @@ export default function Dashboard() {
                       <div className="aq-m-3">
                         <Text>
                           {t(
-                            `A list of the campaigns you particiated in that were successfully evaluated by us. This list is designed to help you keep track of your activities as a tester.`
+                            `A list of the campaigns you participated in that we successfully evaluated and that are now closed.`
                           )}
                         </Text>
                         <ClosedCampaignsTable />

@@ -24,7 +24,7 @@ const ActiveCampaignsTable = () => {
             title: t("Campaign"),
             dataIndex: "campaigns",
             key: "campaigns",
-            width: "40ch",
+            width: "50ch",
           },
           {
             title: t("Start Date"),
@@ -52,7 +52,7 @@ const ActiveCampaignsTable = () => {
             title: t("Actions"),
             dataIndex: "actions",
             key: "actions",
-            width: "20ch",
+            width: "13ch",
             align: "center",
           },
         ]}
