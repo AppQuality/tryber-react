@@ -80,7 +80,7 @@ export default () => {
                       type="link"
                       size="sm"
                     >
-                      {t("Read manual")}
+                      {t("Review the manual")}
                     </Button>
                   )}
                 </div>

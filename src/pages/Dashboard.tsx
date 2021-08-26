@@ -62,7 +62,7 @@ export default function Dashboard() {
                   <Tabs active="active">
                     <Tab id="active" title={t("Active")}>
                       <div className="aq-m-3">
-                        <Text>
+                        <Text className="aq-mb-3">
                           {t(
                             `A list of all the campaigns you have been successfully selected for. Read the manual and complete all the requested tasks before the end date to receive your reward.`
                           )}
@@ -72,7 +72,7 @@ export default function Dashboard() {
                     </Tab>
                     <Tab id="completed" title={t("Finished")}>
                       <div className="aq-m-3">
-                        <Text>
+                        <Text className="aq-mb-3">
                           {t(
                             `A list of all the campaigns you participated in that are now finished. We will evaluate your performance in the days following the end date and reward you accordingly.`
                           )}
@@ -82,7 +82,7 @@ export default function Dashboard() {
                     </Tab>
                     <Tab id="closed" title={t("Closed")}>
                       <div className="aq-m-3">
-                        <Text>
+                        <Text className="aq-mb-3">
                           {t(
                             `A list of the campaigns you participated in that we successfully evaluated and that are now closed.`
                           )}
@@ -93,6 +93,11 @@ export default function Dashboard() {
                   </Tabs>
                 </Card>
                 <Card className="aq-mb-3" title={t("Avalaible Campaigns")}>
+                  <Text className="aq-mb-3">
+                    {t(
+                      `A list of the campaigns that are currently available on the platform. Check the details and apply!`
+                    )}
+                  </Text>
                   <AvailableCampaignsTable />
                 </Card>
               </BSCol>
