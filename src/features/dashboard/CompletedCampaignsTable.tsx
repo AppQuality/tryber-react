@@ -41,7 +41,7 @@ const CompletedCampaignsTable = () => {
             dataIndex: "actions",
             key: "actions",
             align: "center",
-            width: "10ch",
+            width: "12ch",
           },
         ]}
       />
