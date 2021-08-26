@@ -7,6 +7,8 @@ import {
   experiencePoints,
   myPopups,
   myPopupsById,
+  setOnboardingComplete,
+  getOnboardingComplete,
 } from "./users";
 
 const API = {
@@ -19,6 +21,8 @@ const API = {
   myPopupsById,
   myCampaigns,
   experiencePoints,
+  setOnboardingComplete,
+  getOnboardingComplete,
 };
 
 export default API;

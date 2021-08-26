@@ -1,5 +1,6 @@
 import { Title, Button } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import API from "../../../utils/api";
 
 export default ({ onClose }: { onClose: () => void }) => {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ export default ({ onClose }: { onClose: () => void }) => {
             flat
             type="success"
             onClick={() => {
-              //set onboarding true
+              API.setOnboardingComplete();
               onClose();
             }}
           >

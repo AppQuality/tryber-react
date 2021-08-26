@@ -105,6 +105,7 @@ export interface paths {
     get: operations["get-users-me"];
     /** Edit your user data */
     put: operations["put-users-me"];
+    patch: operations["patch-users-me"];
   };
   "/users/me/bugs": {
     /** Get all the bugs that you uploaded to AppQuality. */
@@ -762,6 +763,22 @@ export interface operations {
           surname?: string;
           password?: string;
           email?: string;
+        };
+      };
+    };
+  };
+  "patch-users-me": {
+    responses: {
+      /** OK */
+      200: unknown;
+      /** Bad Request */
+      400: unknown;
+      403: components["responses"]["NotAuthorized"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          onboarding_completed?: boolean;
         };
       };
     };
