@@ -19,7 +19,6 @@ import PerformanceData from "../features/dashboard/PerformanceData";
 import PopupContainer from "../features/dashboard/PopupContainer";
 import ComingSoonHelpModal from "../features/dashboard/ComingSoonHelpModal";
 import { useTranslation } from "react-i18next";
-import useUser from "../redux/user";
 
 import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
@@ -28,7 +27,6 @@ export default function Dashboard() {
   //constants - START
   const [isPopupModalOpen, setIsPopupModalOpen] = useState(true);
   const [isPopupArchiveModalOpen, setIsPopupArchiveModalOpen] = useState(false);
-  const { user } = useUser();
 
   const { t } = useTranslation();
 
@@ -54,7 +52,7 @@ export default function Dashboard() {
                 "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!"
               )}
             >
-              {t("Welcome back %s").replace("%s", user ? user.name : "")}
+              {t("Dashboard")}
             </PageTitle>
             <BSGrid>
               <BSCol size="col-lg-9 ">
