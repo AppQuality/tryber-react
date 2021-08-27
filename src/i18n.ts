@@ -21,6 +21,7 @@ i18n
     detection: {
       order: ["querystring", "path", "subdomain"],
     },
+    nsSeparator: ":::",
     resources,
     supportedLngs: ["it", "en"],
     fallbackLng: "en",
