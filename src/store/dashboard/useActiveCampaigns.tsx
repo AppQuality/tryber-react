@@ -1,4 +1,4 @@
-import { TableType, Button } from "@appquality/appquality-design-system";
+import { TableType, Button, Text } from "@appquality/appquality-design-system";
 import { useState, useEffect } from "react";
 import { operations } from "../../utils/schema";
 import API from "../../utils/api";
@@ -64,27 +64,20 @@ export default () => {
               content:
                 manualLink === "#" ? (
                   <>
-                    <Button
-                      as="a"
-                      disabled={true}
-                      href={`#`}
-                      type="link"
-                      size="sm"
-                    >
-                      {t("Coming soon")}
-                    </Button>
-                    <Button
-                      as="a"
-                      href={`#`}
-                      type="link"
-                      size="sm"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        open();
-                      }}
-                    >
-                      ?
-                    </Button>
+                    <Text as="span" className="aq-text-disabled-dark" small>
+                      <b>{t("Coming soon")}</b>
+                    </Text>{" "}
+                    <Text as="span" small>
+                      <a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          open();
+                        }}
+                      >
+                        (?)
+                      </a>
+                    </Text>
                   </>
                 ) : (
                   <div
