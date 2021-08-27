@@ -26,7 +26,9 @@ export default ({
   return (
     <Modal isOpen={open} onClose={() => false}>
       <ModalBody>
-        <Title size="m">{t("Welcome in AppQuality")}</Title>
+        <Title size="m" as="h2">
+          {t("Welcome in AppQuality")}
+        </Title>
         <Carousel peekNext={false}>
           <CarouselSlide>
             <SlideWelcome />

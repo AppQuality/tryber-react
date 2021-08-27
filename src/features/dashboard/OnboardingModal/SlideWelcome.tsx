@@ -6,9 +6,7 @@ export default () => {
   const { t } = useTranslation();
   return (
     <div>
-      <div>
-        <img src={welcomeImg} />
-      </div>
+      <img className="aq-mb-3" src={welcomeImg} />
       <Text>
         {t(
           "You are few steps away from making your experience memorable in the AppQuality Community World!"
