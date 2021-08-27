@@ -16,7 +16,9 @@ const CompletedCampaignsTable = () => {
         orderBy={orderBy.current}
         i18n={{
           loading: t("Loading Data"),
-          empty: t("There are no Campaigns here"),
+          empty: t(
+            "There are currently no completed campaigns. You can relax, finish the active ones or apply in the new available campaigns!"
+          ),
         }}
         columns={[
           {
