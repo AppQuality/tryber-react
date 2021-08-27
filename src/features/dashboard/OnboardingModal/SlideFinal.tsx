@@ -1,5 +1,5 @@
 import { Title, Button } from "@appquality/appquality-design-system";
-import {Trans, useTranslation} from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import API from "../../../utils/api";
 
 export default ({ onClose }: { onClose: () => void }) => {
@@ -15,12 +15,12 @@ export default ({ onClose }: { onClose: () => void }) => {
             To support your growth, you'll find free and continuously updated training content in the University of Testing.
             If you don't know where to start, we recommend:
             <ul>
-              <li>this short guide on how to start your adventure as a Tester: AQ - Instructions for use.</li>
+              <li>this short guide on how to start your adventure as a Tester: <a target="_blank" href="">AQ - Instructions for use.</a></li>
               <li>the FAQ where all the most common doubts are collected!</li>
             </ul>
-            For any doubt, question or advice do not hesitate to contact us at crowd@app-quality.com, the official email for tester support.
+            For any doubt, question or advice do not hesitate to contact us at <a href="mailto:crowd@app-quality.com">crowd@app-quality.com</a>, the official email for tester support.
           `}
-          components={{ br: <br />, ul: <ul />, li: <li /> }}
+          components={{ br: <br />, ul: <ul />, li: <li />, a: <a /> }}
         />
 
         <div style={{ display: "flex", justifyContent: "center" }}>
