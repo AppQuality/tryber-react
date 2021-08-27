@@ -39,7 +39,8 @@ export default ({
       {popups.map((p) => {
         return (
           <ModalBody
-            nextText={i == popups.length ? t("Close") : undefined}
+            prevText={t("Previous")}
+            nextText={i == popups.length ? t("Close") : t("Next")}
             onShow={() => p.id && p.once && expirePopup(p.id)}
           >
             <Title size="s">
