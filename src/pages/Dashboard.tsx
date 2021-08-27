@@ -117,7 +117,7 @@ export default function Dashboard() {
                         setIsPopupArchiveModalOpen(!isPopupArchiveModalOpen)
                       }
                     >
-                      {t("Message archive")}
+                      {t("Inbox")}
                     </Button>
                   </Card>
                 </div>
