@@ -1,2 +1,9 @@
-type GeneralState = { menu: MenuState; user: UserState };
-type DispatchType = UserDispatchType | MenuDispatchType;
+type GeneralState = {
+  menu: MenuState;
+  user: UserState;
+  dashboardHelpModal: DashboardHelpState;
+};
+type DispatchType =
+  | UserDispatchType
+  | MenuDispatchType
+  | DashboardHelpDispatchType;

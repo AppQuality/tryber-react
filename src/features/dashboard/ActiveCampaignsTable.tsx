@@ -17,14 +17,16 @@ const ActiveCampaignsTable = () => {
         orderBy={orderBy.current}
         i18n={{
           loading: t("Loading Data"),
-          empty: t("There are no Campaigns here"),
+          empty: t(
+            "You are not currently selected for any campaigns. Apply in available campaigns to participate in upcoming ones!"
+          ),
         }}
         columns={[
           {
             title: t("Campaign"),
             dataIndex: "campaigns",
             key: "campaigns",
-            width: "40ch",
+            width: "50ch",
           },
           {
             title: t("Start Date"),
@@ -52,7 +54,7 @@ const ActiveCampaignsTable = () => {
             title: t("Actions"),
             dataIndex: "actions",
             key: "actions",
-            width: "20ch",
+            width: "13ch",
             align: "center",
           },
         ]}

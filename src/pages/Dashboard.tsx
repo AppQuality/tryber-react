@@ -17,6 +17,7 @@ import ClosedCampaignsTable from "../features/dashboard/ClosedCampaignsTable";
 import AvailableCampaignsTable from "../features/dashboard/AvailableCampaignsTable";
 import PerformanceData from "../features/dashboard/PerformanceData";
 import PopupContainer from "../features/dashboard/PopupContainer";
+import ComingSoonHelpModal from "../features/dashboard/ComingSoonHelpModal";
 import { useTranslation } from "react-i18next";
 
 import GoogleTagManager from "../features/GoogleTagManager";
@@ -32,6 +33,7 @@ export default function Dashboard() {
   return (
     <GoogleTagManager title={t("Dashboard")}>
       <LoggedOnly>
+        <ComingSoonHelpModal />
         <PopupContainer
           open={isPopupModalOpen}
           onClose={() => setIsPopupModalOpen(false)}
@@ -56,21 +58,21 @@ export default function Dashboard() {
               <BSCol size="col-lg-9 ">
                 <Card className="aq-mb-3" bodyClass="">
                   <Tabs active="active">
-                    <Tab id="active" title={t("To be completed")}>
+                    <Tab id="active" title={t("Active")}>
                       <div className="aq-m-3">
-                        <Text>
+                        <Text className="aq-mb-3">
                           {t(
-                            `A list of all the campaigns you successfully applied for. Read the manual and report as many bugs as you can to earn experience points and earn money. Don't forget to apply for new campaigns!`
+                            `A list of all the campaigns you have been successfully selected for. Read the manual and complete all the requested tasks before the end date to receive your reward.`
                           )}
                         </Text>
                         <ActiveCampaignsTable />
                       </div>
                     </Tab>
-                    <Tab id="completed" title={t("Completed")}>
+                    <Tab id="completed" title={t("Finished")}>
                       <div className="aq-m-3">
-                        <Text>
+                        <Text className="aq-mb-3">
                           {t(
-                            `A list of all the campaigns you participated in that are now completed. We will evaluate your performance in the 14 days following the end of the campaign and award you experience points and money accordingly.`
+                            `A list of all the campaigns you participated in that are now finished. We will evaluate your performance in the days following the end date and reward you accordingly.`
                           )}
                         </Text>
                         <CompletedCampaignsTable />
@@ -78,9 +80,9 @@ export default function Dashboard() {
                     </Tab>
                     <Tab id="closed" title={t("Closed")}>
                       <div className="aq-m-3">
-                        <Text>
+                        <Text className="aq-mb-3">
                           {t(
-                            `A list of the campaigns you particiated in that were successfully evaluated by us. This list is designed to help you keep track of your activities as a tester.`
+                            `A list of the campaigns you participated in that we successfully evaluated and that are now closed.`
                           )}
                         </Text>
                         <ClosedCampaignsTable />
@@ -89,6 +91,11 @@ export default function Dashboard() {
                   </Tabs>
                 </Card>
                 <Card className="aq-mb-3" title={t("Avalaible Campaigns")}>
+                  <Text className="aq-mb-3">
+                    {t(
+                      `A list of the campaigns that are currently available on the platform. Check the details and apply!`
+                    )}
+                  </Text>
                   <AvailableCampaignsTable />
                 </Card>
               </BSCol>
@@ -110,7 +117,7 @@ export default function Dashboard() {
                         setIsPopupArchiveModalOpen(!isPopupArchiveModalOpen)
                       }
                     >
-                      {t("Message archive")}
+                      {t("Inbox")}
                     </Button>
                   </Card>
                 </div>

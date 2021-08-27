@@ -1,12 +1,14 @@
-import { TableType, Button } from "@appquality/appquality-design-system";
-import React, { useState, useEffect } from "react";
+import { TableType, Button, Text } from "@appquality/appquality-design-system";
+import { useState, useEffect } from "react";
 import { operations } from "../../utils/schema";
 import API from "../../utils/api";
 import dateFormatter from "../../utils/dateFormatter";
 import { useTranslation } from "react-i18next";
+import DashboardHelpStore from "../../redux/dashboardHelpModal";
 
 export default () => {
   const { i18n, t } = useTranslation();
+  const { open } = DashboardHelpStore();
 
   const limit = 10;
   const [campaigns, setCampaigns] = useState<TableType.Row[]>([]);
@@ -51,16 +53,6 @@ export default () => {
             )
               manualLink = cp.manual_link.it;
           }
-          let bugformLink = "#";
-          if (
-            typeof cp.bugform_link !== "boolean" &&
-            typeof cp.bugform_link !== "undefined"
-          ) {
-            if (i18n.language === "en" && cp.bugform_link.en)
-              bugformLink = cp.bugform_link.en;
-            if (i18n.language === "it" && cp.bugform_link.it)
-              bugformLink = cp.bugform_link.it;
-          }
 
           return {
             key: cp.id ? cp.id : 123,
@@ -71,15 +63,22 @@ export default () => {
               title: ``,
               content:
                 manualLink === "#" ? (
-                  <Button
-                    as="a"
-                    disabled={true}
-                    href={`#`}
-                    type="link"
-                    size="sm"
-                  >
-                    {t("Coming soon...")}
-                  </Button>
+                  <>
+                    <Text as="span" className="aq-text-disabled-dark" small>
+                      <b>{t("Coming soon")}</b>
+                    </Text>{" "}
+                    <Text as="span" small>
+                      <a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          open();
+                        }}
+                      >
+                        (?)
+                      </a>
+                    </Text>
+                  </>
                 ) : (
                   <div
                     style={{ display: "flex", justifyContent: "space-around" }}
@@ -92,17 +91,6 @@ export default () => {
                     >
                       {t("Read manual")}
                     </Button>
-                    {cp.bugform_link === false ? null : (
-                      <Button
-                        as="a"
-                        disabled={cp.bugform_link === false}
-                        href={`${window.location.origin}/${bugformLink}`}
-                        type="link"
-                        size="sm"
-                      >
-                        {t("Report a bug")}
-                      </Button>
-                    )}
                   </div>
                 ),
             },

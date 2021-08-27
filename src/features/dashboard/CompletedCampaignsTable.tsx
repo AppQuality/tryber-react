@@ -16,7 +16,9 @@ const CompletedCampaignsTable = () => {
         orderBy={orderBy.current}
         i18n={{
           loading: t("Loading Data"),
-          empty: t("There are no Campaigns here"),
+          empty: t(
+            "There are currently no completed campaigns. You can relax, finish the active ones or apply in the new available campaigns!"
+          ),
         }}
         columns={[
           {
@@ -37,15 +39,11 @@ const CompletedCampaignsTable = () => {
             width: "10ch",
           },
           {
-            title: t("Close Date"),
-            dataIndex: "closeDate",
-            key: "closeDate",
-            isSortable: true,
-            onSort: (sorting: "ASC" | "DESC") => {
-              order.set(sorting);
-              orderBy.set("closeDate");
-            },
-            width: "10ch",
+            title: t("Actions"),
+            dataIndex: "actions",
+            key: "actions",
+            align: "center",
+            width: "16ch",
           },
         ]}
       />

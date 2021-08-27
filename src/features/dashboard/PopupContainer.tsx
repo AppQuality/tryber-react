@@ -35,11 +35,12 @@ export default ({
   };
   let i = 1;
   return (
-    <Modal isOpen={open} onClose={onClose} title="Crowd AppQuality - Info">
+    <Modal isOpen={open} onClose={onClose} title={t("Messages for you")}>
       {popups.map((p) => {
         return (
           <ModalBody
-            nextText={i == popups.length ? t("Close") : undefined}
+            prevText={t("Previous")}
+            nextText={i == popups.length ? t("Close") : t("Next")}
             onShow={() => p.id && p.once && expirePopup(p.id)}
           >
             <Title size="s">
