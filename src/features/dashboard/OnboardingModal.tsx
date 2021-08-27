@@ -13,8 +13,7 @@ import SlideProfile from "./OnboardingModal/SlideProfile";
 import SlideDevices from "./OnboardingModal/SlideDevices";
 import SlideCourses from "./OnboardingModal/SlideCourses";
 import SlidePayments from "./OnboardingModal/SlidePayments";
-import SlideFinalOne from "./OnboardingModal/SlideFinalOne";
-import SlideFinalTwo from "./OnboardingModal/SlideFinalTwo";
+import SlideFinal from "./OnboardingModal/SlideFinal";
 
 export default ({
   open = true,
@@ -45,10 +44,7 @@ export default ({
             <SlidePayments />
           </CarouselSlide>
           <CarouselSlide>
-            <SlideFinalOne />
-          </CarouselSlide>
-          <CarouselSlide>
-            <SlideFinalTwo onClose={onClose} />
+            <SlideFinal onClose={onClose} />
           </CarouselSlide>
         </Carousel>
       </ModalBody>

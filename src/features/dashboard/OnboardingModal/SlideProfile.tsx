@@ -6,9 +6,9 @@ export default () => {
   return (
     <>
       <div>
-        <Title size="xs">{t("Complete your profile")}</Title>
+        <Title size="xs">{t("Fill in your profile details")}</Title>
         {t(
-          "As a first step to take, complete your profile in its entirety by entering authentic and truthful data. Only in this way can you be selected for Test Campaigns and request payment correctly."
+          "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward."
         )}
       </div>
     </>

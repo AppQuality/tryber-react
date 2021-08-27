@@ -8,7 +8,7 @@ export default () => {
       <div>
         <Title size="xs">{t("Complete the Basic Course")}</Title>
         {t(
-          "Take part in the Basic Course now and earn 200 experience points, essential to increase your chances of being selected for the Test Campaigns. You will learn more about the world of AppQuality and you can receive a Linkedin certification to prove that you are a qualified AppQuality Tester."
+          "Take part in the Basic Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become an AppQuality world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community."
         )}
       </div>
     </>

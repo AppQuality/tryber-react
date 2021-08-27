@@ -5,7 +5,7 @@ export default () => {
   return (
     <>
       {t(
-        "There are only a few steps left to make your CrowdTesting experience memorable!"
+        "You are few steps away from making your experience memorable in the AppQuality Community World!"
       )}
     </>
   );

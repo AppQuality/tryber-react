@@ -6,9 +6,11 @@ export default () => {
   return (
     <>
       <div>
-        <Title size="xs">{t("Payments title")}</Title>
+        <Title size="xs">{t("Your efforts will pay off")}</Title>
         {t(
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat."
+          "With your work you will be able to unlock cash prizes and/or experience points. Before every activity you will be informed about the expected prize, unlockable only by successfully completing the campaign.\n" +
+          "The activities that you will encounter as a member of the AppQuality community will always have different prizes, from a few euros up to hundreds for the longest and most complex projects, but remember: everything will depend on your commitment and dedication!\n" +
+          " In the payment section you can view your situation and request at any time the payout accumulated via Paypal or bank transfer."
         )}
       </div>
     </>
