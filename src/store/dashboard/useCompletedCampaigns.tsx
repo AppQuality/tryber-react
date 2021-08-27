@@ -63,26 +63,19 @@ export default () => {
                 <div
                   style={{ display: "flex", justifyContent: "space-around" }}
                 >
-                  {manualLink === "#" ? (
-                    <Button
-                      as="a"
-                      disabled={true}
-                      href={`#`}
-                      type="link"
-                      size="sm"
-                    >
-                      {t("Coming soon")}
-                    </Button>
-                  ) : (
-                    <Button
-                      as="a"
-                      href={`${window.location.origin}${manualLink}`}
-                      type="link"
-                      size="sm"
-                    >
-                      {t("Review the manual")}
-                    </Button>
-                  )}
+                  <Button
+                    as="a"
+                    disabled={manualLink === "#"}
+                    href={
+                      manualLink === "#"
+                        ? "#"
+                        : `${window.location.origin}${manualLink}`
+                    }
+                    type="link"
+                    size="sm"
+                  >
+                    {t("Review the manual")}
+                  </Button>
                 </div>
               ),
             },
