@@ -9,8 +9,7 @@ export default ({ onClose }: { onClose: () => void }) => {
       <div className="aq-py-3">
         <Title size="xs">{t("Have fun!")}</Title>
         <Trans
-          i18nKey={`
-            What you are starting is a path, made of test campaigns, courses, bugs, questionnaires, experience points... but above all you are becoming part of a Community formed by thousands of people from all over the world, who want to grow and contribute to improve the services and digital products we use in everyday life.
+          i18nKey={`What you are starting is a path, made of test campaigns, courses, bugs, questionnaires, experience points... but above all you are becoming part of a Community formed by thousands of people from all over the world, who want to grow and contribute to improve the services and digital products we use in everyday life.
             <br />
             To support your growth, you'll find free and continuously updated training content in the University of Testing.
             If you don't know where to start, we recommend:
