@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const OnBoardingSlide = styled.div`
   // max height now is 100vh - some invented/guessed number - margins (16+16) - title  - nav dots - margin-bottom of the slide
   max-height: calc(100vh - (120px + 32px + 42px + 15px + 16px));
-  overflow: scroll;
+  overflow: auto;
   .main-img {
     position: relative;
     height: 300px;
