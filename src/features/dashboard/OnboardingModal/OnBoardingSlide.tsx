@@ -26,7 +26,6 @@ export const OnBoardingSlide = styled.div`
       );
     }
     @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
-      height: auto;
       background-image: var(--desktop-bg);
     }
   }
