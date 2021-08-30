@@ -29,14 +29,14 @@ export const LangMenu = ({ itLink, enLink, className }: LangMenuProps) => {
   return (
     <StyledMenu className={className}>
       <a
-        href="/it"
+        href={itLink}
         className={`${i18n.language === "it" ? "current " : ""}lang-navLink`}
       >
         Italiano
       </a>{" "}
       |{" "}
       <a
-        href="/"
+        href={enLink}
         className={`${i18n.language === "en" ? "current " : ""}lang-navLink`}
       >
         English
