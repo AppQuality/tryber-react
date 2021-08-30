@@ -26,9 +26,9 @@ export default () => {
       </Title>
       <Text>
         {t(
-          "With your work you will be able to unlock cash prizes and/or experience points. Before every activity you will be informed about the expected prize, unlockable only by successfully completing the campaign.\n" +
-            "The activities that you will encounter as a member of the AppQuality community will always have different prizes, from a few euros up to hundreds for the longest and most complex projects, but remember: everything will depend on your commitment and dedication!\n" +
-            " In the payment section you can view your situation and request at any time the payout accumulated via Paypal or bank transfer."
+          "With your work you can unlock cash prizes and/or experience points." +
+            " Before each activity you will be informed of the expected prize, which will vary depending on the effort required: from a few euros to hundreds." +
+            " Remember that you can unlock it only by completing the activity! In the payment section you can view your situation and request at any time the payout accumulated via Paypal or bank transfer."
         )}
       </Text>
     </OnBoardingSlide>
