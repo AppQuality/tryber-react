@@ -10,16 +10,13 @@ import {
   FieldProps,
   ErrorMessage,
   Form,
-  SelectType,
   FormGroup,
 } from "@appquality/appquality-design-system";
 import CountrySelect from "./CountrySelect";
 import BirthdayPicker from "./BirthdayPicker";
 import * as yup from "yup";
-import { useState, useEffect } from "react";
 import { useTranslation, Trans } from "react-i18next";
-import queryString from "query-string";
-import { useLocation } from "react-router-dom";
+import referralStore from "../redux/referral";
 import API from "../utils/api";
 import WPAPI from "../utils/wpapi";
 
@@ -28,28 +25,13 @@ interface SignupFormProps {
   formId?: string;
 }
 
-const REFERRAL_KEY = "appq-referral";
-
 export const SignupForm = ({
   redirectUrl,
   formId = "signupForm",
 }: SignupFormProps) => {
+  const { referral } = referralStore();
   const { t } = useTranslation();
-  const { search } = useLocation();
 
-  const [referral, setReferral] = useState<string | null>(
-    localStorage.getItem(REFERRAL_KEY)
-  );
-
-  useEffect(() => {
-    referral && localStorage.setItem(REFERRAL_KEY, referral);
-  }, [referral]);
-  useEffect(() => {
-    const values = queryString.parse(search);
-    if (values.referral && typeof values.referral === "string") {
-      setReferral(values.referral);
-    }
-  }, []);
   const initialValues = {
     name: "",
     surname: "",
@@ -96,7 +78,7 @@ export const SignupForm = ({
           referral: values.referral,
         };
         API.signup(data)
-          .then((res) => {
+          .then(() => {
             WPAPI.getNonce()
               .then((nonce) => {
                 WPAPI.login({
@@ -140,9 +122,7 @@ export const SignupForm = ({
                   <BirthdayPicker
                     name="birthDate"
                     initialValue={field.value}
-                    onCancel={({ value }: { value: Date }) =>
-                      form.setFieldTouched("birthDate")
-                    }
+                    onCancel={() => form.setFieldTouched("birthDate")}
                     onChange={(v: Date) => {
                       field.onChange(v.toISOString().slice(0, 10));
                       form.setFieldValue(
