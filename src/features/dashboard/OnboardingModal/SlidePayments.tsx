@@ -1,30 +1,41 @@
 import { Text, Title } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import screenshotEng from "./assets/pagamenti_eng.png";
-import screenshotIta from "./assets/pagamenti_ita.png";
 import { OnBoardingSlide } from "./OnBoardingSlide";
+import screenshotEngMob from "./assets/pagamenti_eng_mob.png";
+import screenshotEngDesk from "./assets/pagamenti_eng.png";
+import screenshotItaMob from "./assets/pagamenti_ita_mob.png";
+import screenshotItaDesk from "./assets/pagamenti_ita.png";
 
 export default () => {
   const { t, i18n } = useTranslation();
   const renderImg = () => {
     switch (i18n.language) {
       case "en":
-        return screenshotEng;
+        return {
+          "--mobile-bg": `url(${screenshotEngMob})`,
+          "--desktop-bg": `url(${screenshotEngDesk})`,
+        };
       case "it":
-        return screenshotIta;
+        return {
+          "--mobile-bg": `url(${screenshotItaMob})`,
+          "--desktop-bg": `url(${screenshotItaDesk})`,
+        };
       default:
-        return screenshotEng;
+        return {
+          "--mobile-bg": `url(${screenshotEngMob})`,
+          "--desktop-bg": `url(${screenshotEngDesk})`,
+        };
     }
   };
   return (
-    <OnBoardingSlide>
+    <OnBoardingSlide className="aq-mb-3">
       <div className="main-img aq-mb-3">
-        <img src={renderImg()} />
+        <div className="main-img" style={renderImg()} />
       </div>
       <Title className="aq-mb-2" size="xs" as="h3">
         {t("Your efforts will pay off")}
       </Title>
-      <Text>
+      <Text className="main-text">
         {t(
           "With your work you can unlock cash prizes and/or experience points." +
             " Before each activity you will be informed of the expected prize, which will vary depending on the effort required: from a few euros to hundreds." +

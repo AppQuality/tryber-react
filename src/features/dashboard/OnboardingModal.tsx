@@ -2,10 +2,8 @@ import {
   Modal,
   ModalBody,
   Title,
-  Text,
   Carousel,
   CarouselSlide,
-  Button,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import SlideWelcome from "./OnboardingModal/SlideWelcome";

@@ -7,11 +7,11 @@ export default ({ onClose }: { onClose: () => void }) => {
   const { t } = useTranslation();
   return (
     <>
-      <OnBoardingSlide className="aq-pt-3">
+      <OnBoardingSlide className="aq-pt-3 aq-mb-3">
         <Title className="aq-mb-2" size="xs" as="h3">
           {t("Have fun!")}
         </Title>
-        <Text className="aq-mb-3">
+        <Text className="aq-mb-3 main-text" style={{ "--max-height": "10em" }}>
           <Trans
             i18nKey={`What you are starting is a path, made of test campaigns, courses, bugs, questionnaires, experience points... but above all you are becoming part of a Community formed by thousands of people from all over the world, who want to grow and contribute to improve the services and digital products we use in everyday life.
             <br />
