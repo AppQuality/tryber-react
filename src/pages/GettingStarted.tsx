@@ -8,16 +8,23 @@ import {
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { SignupMailSocial } from "../features/SignupMailSocial";
+import { LangMenu } from "../features/LangMenu";
 import GoogleTagManager from "../features/GoogleTagManager";
 import NotLoggedOnly from "../features/NotLoggedOnly";
+import React from "react";
 
 export default function GettingStarted() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <GoogleTagManager title={t("Getting Started")}>
       <NotLoggedOnly>
         <DatepickerGlobalStyle />
         <Container className="aq-pb-3">
+          <LangMenu
+            className="aq-mt-3"
+            itLink="/it/getting-started/"
+            enLink="/getting-started/"
+          />
           <BSGrid>
             <BSCol size="col-12">
               <PageTitle size="regular" as="h2">

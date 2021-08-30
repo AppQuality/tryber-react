@@ -8,26 +8,12 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as TopShape } from "../assets/rectangle-top.svg";
 import people from "../assets/join-the-community.svg";
+import { LangMenu } from "../../../features/LangMenu";
 import styled from "styled-components";
 import { CSSTransition } from "react-transition-group";
 import { Trans, useTranslation } from "react-i18next";
 import JoinTheTeamButton from "./JoinTheTeamButton";
 
-const LangMenu = styled.div`
-  color: ${(props) => props.theme.palette.primary};
-  min-height: 24px;
-  text-align: right;
-  .lang-navLink {
-    color: ${(props) => props.theme.palette.info};
-    &.current {
-      font-weight: ${(props) =>
-        props.theme.typography.fontWeight.bold.toString()};
-      text-decoration: none;
-      cursor: default;
-      pointer-events: none;
-    }
-  }
-`;
 const TopAnimation = styled.div`
   display: none;
   @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
@@ -95,21 +81,7 @@ export const BannerTop = () => {
   }, []);
   return (
     <BSGrid>
-      <LangMenu className="aq-mb-3">
-        <a
-          href="/it"
-          className={`${i18n.language === "it" ? "current " : ""}lang-navLink`}
-        >
-          Italiano
-        </a>{" "}
-        |{" "}
-        <a
-          href="/"
-          className={`${i18n.language === "en" ? "current " : ""}lang-navLink`}
-        >
-          English
-        </a>
-      </LangMenu>
+      <LangMenu className="aq-mb-3" itLink="/it" enLink="/" />
       <BSCol size="col-lg-7 col-xxl-8">
         <div style={{ position: "relative" }}>
           <PageTitle>
