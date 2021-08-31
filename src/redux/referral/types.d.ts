@@ -1,4 +1,6 @@
-type ReferralState = string | undefined;
+type ReferralState = {
+  current?: string;
+};
 
 type ReferralAction = {
   type: string;

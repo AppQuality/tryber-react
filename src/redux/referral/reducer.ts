@@ -2,8 +2,9 @@ import * as actionTypes from "./actionTypes";
 
 const REFERRAL_KEY = "appq-referral";
 
-const initialState: ReferralState =
-  localStorage.getItem(REFERRAL_KEY) || undefined;
+const initialState: ReferralState = {
+  current: localStorage.getItem(REFERRAL_KEY) || undefined,
+};
 
 const reducer = (
   state: ReferralState = initialState,
@@ -16,7 +17,7 @@ const reducer = (
       }
 
       localStorage.setItem(REFERRAL_KEY, action.data);
-      return action.data;
+      return { ...state, current: action.data };
   }
   return state;
 };

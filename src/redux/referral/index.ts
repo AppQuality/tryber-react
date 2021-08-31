@@ -4,7 +4,7 @@ import { setReferral } from "./actionCreators";
 
 export default () => {
   const referral: string | undefined = useSelector(
-    (state: GeneralState) => state.referral,
+    (state: GeneralState) => state.referral.current,
     shallowEqual
   );
 
