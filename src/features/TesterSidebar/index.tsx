@@ -177,10 +177,7 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       text: t("Testing University"),
     },
     {
-      url:
-        i18next.language === "en"
-          ? `https://crowd.app-quality.com/faq/`
-          : `https://crowd.app-quality.com/it/domande-frequenti/`,
+      url: i18next.language === "en" ? `/faq/` : `/it/domande-frequenti/`,
       icon: <Question />,
       active: route === "faq",
       text: t("FAQ"),
