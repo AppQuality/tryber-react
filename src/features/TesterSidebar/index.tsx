@@ -16,6 +16,7 @@ import {
   StarFill,
   Wallet2,
   GearWideConnected,
+  Question,
 } from "react-bootstrap-icons";
 
 export interface TesterSidebarProps {
@@ -174,6 +175,15 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       icon: <AwardFill />,
       active: route === "testing-school",
       text: t("Testing University"),
+    },
+    {
+      url:
+        i18next.language === "en"
+          ? `https://crowd.app-quality.com/faq/`
+          : `https://crowd.app-quality.com/it/domande-frequenti/`,
+      icon: <Question />,
+      active: route === "faq",
+      text: t("FAQ"),
     },
     {
       url:
