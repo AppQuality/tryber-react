@@ -39,15 +39,6 @@ export default function Dashboard() {
     <GoogleTagManager title={t("Dashboard")}>
       <LoggedOnly>
         <ComingSoonHelpModal />
-        <PopupContainer
-          open={isPopupModalOpen}
-          onClose={() => setIsPopupModalOpen(false)}
-        />
-        <PopupContainer
-          onClose={() => setIsPopupArchiveModalOpen(false)}
-          open={isPopupArchiveModalOpen}
-          showExpired={true}
-        />
         {onboardingComplete ? null : (
           <OnboardingModal
             open={isOnboardingModalOpen}
