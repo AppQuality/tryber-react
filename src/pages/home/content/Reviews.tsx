@@ -174,6 +174,7 @@ export const Reviews = () => {
         ))}
       </Carousel>
       <CarouselNav
+        step={{ xs: 1, lg: 3 }}
         current={current}
         setCurrent={setCurrent}
         totalSlides={items.length}
