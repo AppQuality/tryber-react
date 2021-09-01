@@ -45,6 +45,7 @@
     ]
   },
   "scripts": {
+    "prepare": "npx husky install",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "generate-schema": ". ./.env.development; npx openapi-typescript $REACT_APP_API_URL/reference/ --output src/utils/schema.ts ",
     "eslint": "npx eslint src/",
