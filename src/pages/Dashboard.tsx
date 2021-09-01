@@ -97,7 +97,7 @@ export default function Dashboard() {
                       <div className="aq-m-3">
                         <Text className="aq-mb-3">
                           {t(
-                            `A list of the campaigns you participated in that we successfully evaluated and that are now closed.`
+                            `A list of all the campaigns you participated in that we successfully evaluated and that are now closed.`
                           )}
                         </Text>
                         <ClosedCampaignsTable />

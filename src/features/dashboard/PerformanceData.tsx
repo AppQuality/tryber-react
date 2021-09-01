@@ -75,7 +75,7 @@ const PerformanceData = () => {
     },
     {
       icon: <CashCoin size={"21"} className={"aq-text-success"} />,
-      text: t("Recieved booty"),
+      text: t("Received booty"),
       val: allBooty + "€",
     },
     {
@@ -88,12 +88,12 @@ const PerformanceData = () => {
       val: pendingBooty + "€",
     },
     {
-      icon:<ArrowRight size={"21"} />,
-      text:t("View payments page"),
+      icon: <ArrowRight size={"21"} />,
+      text: t("View payments page"),
       link: `${window.location.origin}/${
         i18n.language !== "en" ? "it/pagamenti/" : "payments/"
       }`,
-    }
+    },
   ];
 
   if (loading) {
@@ -105,12 +105,13 @@ const PerformanceData = () => {
   }
   return (
     <div>
-      {performanceData.map((item, index) => (
-        (item.link)
-          ? <GoToBlock item={item} key={index} />
-          : <Statistic item={item} key={index} />
-
-      ))}
+      {performanceData.map((item, index) =>
+        item.link ? (
+          <GoToBlock item={item} key={index} />
+        ) : (
+          <Statistic item={item} key={index} />
+        )
+      )}
     </div>
   );
 };
