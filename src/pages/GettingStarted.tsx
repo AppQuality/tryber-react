@@ -16,7 +16,7 @@ import React from "react";
 export default function GettingStarted() {
   const { t, i18n } = useTranslation();
   const redirectUrl =
-    i18n.language === "it" ? "/it/my-dashboard" : "/my-dashboard";
+    i18n.language === "it" ? "/it/my-dashboard/" : "/my-dashboard/";
   return (
     <GoogleTagManager title={t("Getting Started")}>
       <NotLoggedOnly>
