@@ -15,6 +15,8 @@ import React from "react";
 
 export default function GettingStarted() {
   const { t, i18n } = useTranslation();
+  const redirectUrl =
+    i18n.language === "it" ? "/it/my-dashboard" : "/my-dashboard";
   return (
     <GoogleTagManager title={t("Getting Started")}>
       <NotLoggedOnly>
@@ -35,7 +37,7 @@ export default function GettingStarted() {
           <BSGrid>
             <BSCol size="col-lg-9 col-xxl-8">
               <Card>
-                <SignupMailSocial />
+                <SignupMailSocial redirectUrl={redirectUrl} />
               </Card>
             </BSCol>
           </BSGrid>
