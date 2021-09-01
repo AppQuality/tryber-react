@@ -3,8 +3,9 @@ import {
   Text,
   Carousel,
   CarouselSlide,
+  CarouselNav,
 } from "@appquality/appquality-design-system";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import quotes from "../assets/quotes.svg";
 import avatarFabio from "../assets/avatar/fabio2.png";
@@ -139,7 +140,12 @@ export const Reviews = () => {
   ];
   return (
     <CardListStyle>
-      <Carousel step={{ xs: 1, lg: 3 }} current={current} setCurrent={setCurrent} totalSlides={items.length}>
+      <Carousel
+        step={{ xs: 1, lg: 3 }}
+        current={current}
+        setCurrent={setCurrent}
+        totalSlides={items.length}
+      >
         {items.map((item, index) => (
           <CarouselSlide key={index}>
             <Card shadow className="card-list-item aq-my-3" key={index}>
@@ -167,6 +173,11 @@ export const Reviews = () => {
           </CarouselSlide>
         ))}
       </Carousel>
+      <CarouselNav
+        current={current}
+        setCurrent={setCurrent}
+        totalSlides={items.length}
+      ></CarouselNav>
     </CardListStyle>
   );
 };
