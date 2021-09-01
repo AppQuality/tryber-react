@@ -3,9 +3,10 @@ import {
   ModalBody,
   Title,
   Carousel,
-  CarouselSlide,
+  CarouselSlide, CarouselNav
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import {useState} from 'react';
 import SlideWelcome from "./OnboardingModal/SlideWelcome";
 import SlideProfile from "./OnboardingModal/SlideProfile";
 import SlideDevices from "./OnboardingModal/SlideDevices";
@@ -20,14 +21,18 @@ export default ({
   open?: boolean;
   onClose: () => void;
 }) => {
+  const [current, setCurrent] = useState(0);
   const { t } = useTranslation();
   return (
-    <Modal isOpen={open} onClose={() => false}>
+    <Modal isOpen={open} onClose={() => false}
+           footer={
+             <CarouselNav current={current} setCurrent={setCurrent} totalSlides={6} showArrows />
+           }>
       <ModalBody>
         <Title size="m" as="h2">
           {t("Welcome in AppQuality")}
         </Title>
-        <Carousel peekNext={false}>
+        <Carousel peekNext={false} current={current} setCurrent={setCurrent} totalSlides={6} >
           <CarouselSlide>
             <SlideWelcome />
           </CarouselSlide>
