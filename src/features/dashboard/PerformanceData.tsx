@@ -47,7 +47,7 @@ const PerformanceData = () => {
     {
       icon: <AwardFill size={"21"} className={"aq-text-info"} />,
       text: t("Your Rank"),
-      val: rank,
+      val: rank + "°",
     },
     {
       icon: <ArrowRight size={"21"} />,
