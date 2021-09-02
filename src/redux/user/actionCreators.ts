@@ -12,8 +12,15 @@ export function refreshUser() {
     return API.me()
       .then((user) => {
         user.isAdmin = ["administrator", "tester_lead"].includes(user.role);
-        action.data = user;
-        return dispatch(action);
+        API.getOnboardingComplete()
+          .then((data) => {
+            user.onboarding_complete = data.onboarding_complete;
+            action.data = user;
+            return dispatch(action);
+          })
+          .catch((e) => {
+            dispatch({ type: actionTypes.USER_FAILED, error: e });
+          });
       })
       .catch((e) => {
         dispatch({ type: actionTypes.USER_FAILED, error: e });

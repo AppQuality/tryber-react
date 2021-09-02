@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import {
   GettingStarted,
   MyBugs,
@@ -10,8 +10,10 @@ import "./i18n";
 import TagManager from "react-gtm-module";
 import SiteHeader from "./features/SiteHeader";
 import { Location } from "history";
+import queryString from "query-string";
 
 import userStore from "./redux/user";
+import referralStore from "./redux/referral";
 import { useEffect } from "react";
 
 if (process.env.REACT_APP_GTM_ID) {
@@ -25,12 +27,19 @@ if (process.env.REACT_APP_GTM_ID) {
 const base = "/:locale(en|it)?";
 
 function Page() {
+  const { search } = useLocation();
   const { refresh } = userStore();
+  const { setReferral } = referralStore();
   useEffect(() => {
     refresh && refresh();
+    const values = queryString.parse(search);
+    if (values.referral && typeof values.referral === "string") {
+      setReferral(values.referral);
+    }
   }, []);
+
   return (
-    <BrowserRouter>
+    <>
       <SiteHeader />
       <Switch>
         <Route path={`${base}/getting-started`} component={GettingStarted} />
@@ -73,7 +82,7 @@ function Page() {
         />
         <Route path={["/", "/it"]} exact component={Home} />
       </Switch>
-    </BrowserRouter>
+    </>
   );
 }
 

@@ -39,7 +39,7 @@ const CompletedCampaignsTable = () => {
             width: "10ch",
           },
           {
-            title: t("Actions"),
+            title: t("Action"),
             dataIndex: "actions",
             key: "actions",
             align: "center",

@@ -1,3 +1,6 @@
+# First install
+- copy generate-devel-token.json.template into generate-devel-token.json
+
 
 # Comandi disponibili
 `npm start` per lo sviluppo

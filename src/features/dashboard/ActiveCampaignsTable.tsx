@@ -51,7 +51,7 @@ const ActiveCampaignsTable = () => {
             width: "10ch",
           },
           {
-            title: t("Actions"),
+            title: t("Action"),
             dataIndex: "actions",
             key: "actions",
             width: "13ch",

@@ -18,15 +18,20 @@ import AvailableCampaignsTable from "../features/dashboard/AvailableCampaignsTab
 import PerformanceData from "../features/dashboard/PerformanceData";
 import PopupContainer from "../features/dashboard/PopupContainer";
 import ComingSoonHelpModal from "../features/dashboard/ComingSoonHelpModal";
+import OnboardingModal from "../features/dashboard/OnboardingModal";
 import { useTranslation } from "react-i18next";
+import useUser from "../redux/user";
 
 import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
 
 export default function Dashboard() {
   //constants - START
+  const { user } = useUser();
+  const onboardingComplete = user && user.onboarding_complete;
   const [isPopupModalOpen, setIsPopupModalOpen] = useState(true);
   const [isPopupArchiveModalOpen, setIsPopupArchiveModalOpen] = useState(false);
+  const [isOnboardingModalOpen, setIsOnboardingModalOpen] = useState(true);
 
   const { t } = useTranslation();
 
@@ -34,15 +39,25 @@ export default function Dashboard() {
     <GoogleTagManager title={t("Dashboard")}>
       <LoggedOnly>
         <ComingSoonHelpModal />
-        <PopupContainer
-          open={isPopupModalOpen}
-          onClose={() => setIsPopupModalOpen(false)}
-        />
-        <PopupContainer
-          onClose={() => setIsPopupArchiveModalOpen(false)}
-          open={isPopupArchiveModalOpen}
-          showExpired={true}
-        />
+        {onboardingComplete ? null : (
+          <OnboardingModal
+            open={isOnboardingModalOpen}
+            onClose={() => setIsOnboardingModalOpen(false)}
+          />
+        )}
+        {onboardingComplete ? (
+          <PopupContainer
+            open={isPopupModalOpen}
+            onClose={() => setIsPopupModalOpen(false)}
+          />
+        ) : null}
+        {onboardingComplete ? (
+          <PopupContainer
+            onClose={() => setIsPopupArchiveModalOpen(false)}
+            open={isPopupArchiveModalOpen}
+            showExpired={true}
+          />
+        ) : null}
         <TesterSidebar route={"my-dashboard"}>
           <Container className="aq-pb-3">
             <PageTitle
@@ -82,7 +97,7 @@ export default function Dashboard() {
                       <div className="aq-m-3">
                         <Text className="aq-mb-3">
                           {t(
-                            `A list of the campaigns you participated in that we successfully evaluated and that are now closed.`
+                            `A list of all the campaigns you participated in that we successfully evaluated and that are now closed.`
                           )}
                         </Text>
                         <ClosedCampaignsTable />
@@ -108,18 +123,20 @@ export default function Dashboard() {
                   >
                     <PerformanceData />
                   </Card>
-                  <Card shadow={true}>
-                    <Button
-                      flat
-                      type="info"
-                      size="block"
-                      onClick={() =>
-                        setIsPopupArchiveModalOpen(!isPopupArchiveModalOpen)
-                      }
-                    >
-                      {t("Inbox")}
-                    </Button>
-                  </Card>
+                  {onboardingComplete ? (
+                    <Card shadow={true}>
+                      <Button
+                        flat
+                        type="info"
+                        size="block"
+                        onClick={() =>
+                          setIsPopupArchiveModalOpen(!isPopupArchiveModalOpen)
+                        }
+                      >
+                        {t("Inbox")}
+                      </Button>
+                    </Card>
+                  ) : null}
                 </div>
               </BSCol>
             </BSGrid>

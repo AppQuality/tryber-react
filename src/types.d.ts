@@ -11,6 +11,7 @@ export interface UserData {
   image: string;
   verified?: boolean;
   isAdmin?: boolean;
+  onboarding_complete?: boolean;
 }
 
 export type User = undefined | UserData;

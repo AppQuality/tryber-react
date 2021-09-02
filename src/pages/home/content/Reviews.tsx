@@ -3,8 +3,9 @@ import {
   Text,
   Carousel,
   CarouselSlide,
+  CarouselNav,
 } from "@appquality/appquality-design-system";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import quotes from "../assets/quotes.svg";
 import avatarFabio from "../assets/avatar/fabio2.png";
@@ -16,7 +17,7 @@ import avatarSatesh from "../assets/avatar/Sathesh.jpeg";
 import avatarFilippo from "../assets/avatar/filippo2.jpeg";
 import avatarVincenzo from "../assets/avatar/Vincenzo.jpeg";
 
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const CardListStyle = styled.div`
   .card-list-item {
@@ -61,6 +62,7 @@ const CardListStyle = styled.div`
 `;
 
 export const Reviews = () => {
+  const [current, setCurrent] = useState(0);
   const { t } = useTranslation();
   const items = [
     {
@@ -138,7 +140,12 @@ export const Reviews = () => {
   ];
   return (
     <CardListStyle>
-      <Carousel step={{ xs: 1, lg: 3 }}>
+      <Carousel
+        step={{ xs: 1, lg: 3 }}
+        current={current}
+        setCurrent={setCurrent}
+        totalSlides={items.length}
+      >
         {items.map((item, index) => (
           <CarouselSlide key={index}>
             <Card shadow className="card-list-item aq-my-3" key={index}>
@@ -166,6 +173,12 @@ export const Reviews = () => {
           </CarouselSlide>
         ))}
       </Carousel>
+      <CarouselNav
+        step={{ xs: 1, lg: 3 }}
+        current={current}
+        setCurrent={setCurrent}
+        totalSlides={items.length}
+      ></CarouselNav>
     </CardListStyle>
   );
 };
