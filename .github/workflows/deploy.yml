@@ -39,6 +39,6 @@ jobs:
         instance-ids: ${{ github.event.inputs.instance }}
         # Bash command you want to execute
         command: |
-         sed -i "s/BRANCH=[a-z]*/BRANCH=${{ github.event.inputs.tag }}/" .env 
+         sed -i "s/BRANCH=[a-z0-9-]*/BRANCH=${{ github.event.inputs.tag }}/" .env 
          make deploy
         working-directory: /var/www/appq-register-page
