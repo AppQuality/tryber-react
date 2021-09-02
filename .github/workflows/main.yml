@@ -3,8 +3,8 @@ on: push
 name: Push to Amazon ECR
 
 jobs:
-  deploy:
-    name: Deploy
+  push-to-ecr:
+    name: Push Image
     runs-on: ubuntu-latest
     environment: production
 
@@ -33,3 +33,5 @@ jobs:
           region: eu-west-1
           repo: appq-register-page
           tags: ${{ steps.extract_branch.outputs.tag }}
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
