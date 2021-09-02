@@ -33,5 +33,4 @@ jobs:
           region: eu-west-1
           repo: appq-register-page
           tags: ${{ steps.extract_branch.outputs.tag }}
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          extra_build_args: --build-arg NPM_TOKEN=${{ secrets.NPM_TOKEN }}
