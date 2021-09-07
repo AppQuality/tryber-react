@@ -8,7 +8,7 @@ export function addMessage(
   expire: number | false = 3
 ) {
   const uuid = uuidv4();
-  const data: SiteWideMessage = {
+  const data: SiteWideMessageItem = {
     message,
     uuid,
     type,

@@ -1,6 +1,6 @@
 type SiteWideMessagesAddAction = {
   type: string;
-  data?: SiteWideMessage;
+  data?: SiteWideMessageItem;
 };
 type SiteWideMessagesRemoveAction = {
   type: string;
@@ -11,22 +11,21 @@ type SiteWideMessagesAction =
   | SiteWideMessagesRemoveAction;
 
 type SiteWideMessage = {
-  message: string;
-  uuid: string;
-  type: keyof Theme["palette"];
-  expire?: number;
-};
-
-type SiteWideMessageAddType = {
-  message: string;
+  message: ReactNode;
   type: keyof Theme["palette"];
   expire?: number | false;
 };
+
+type SiteWideMessageItem = SiteWideMessage & {
+  uuid: string;
+};
+
+type SiteWideMessageAddType = SiteWideMessage;
 type SiteWideMessageRemoveType = {
   uuid: string;
 };
 type SiteWideMessagesState = {
-  messages: array<SiteWideMessage>;
+  messages: array<SiteWideMessageItem>;
 };
 type SiteWideMessagesDispatchType = (
   args: SiteWideMessagesAction | SiteWideMessagesRemoveAction

@@ -3,7 +3,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { addMessage, removeMessage } from "./actionCreators";
 
 export default () => {
-  const messages: Array<SiteWideMessage> = useSelector(
+  const messages: Array<SiteWideMessageItem> = useSelector(
     (state: GeneralState) => state.messages.messages,
     shallowEqual
   );
