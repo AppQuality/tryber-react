@@ -15,6 +15,7 @@ import queryString from "query-string";
 import userStore from "./redux/user";
 import referralStore from "./redux/referral";
 import { useEffect } from "react";
+import SiteWideMessages from "./features/SiteWideMessages";
 
 if (process.env.REACT_APP_GTM_ID) {
   const tagManagerArgs = {
@@ -41,6 +42,7 @@ function Page() {
   return (
     <>
       <SiteHeader />
+      <SiteWideMessages />
       <Switch>
         <Route path={`${base}/getting-started`} component={GettingStarted} />
         <Route path={`${base}/it/getting-started-2`}>
