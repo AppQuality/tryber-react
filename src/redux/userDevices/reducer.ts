@@ -8,7 +8,7 @@ const initialState: UserDeviceState = {
 
 const reducer = (
   state: UserDeviceState = initialState,
-  action: DeviceAction
+  action: UserDeviceAction
 ): UserDeviceState => {
   switch (action.type) {
     case actionTypes.DEVICE_FETCH:

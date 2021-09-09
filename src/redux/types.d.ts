@@ -5,6 +5,7 @@ type GeneralState = {
   referral: ReferralState;
   messages: SiteWideMessagesState;
   userDevices: UserDeviceState;
+  devices: DeviceState;
 };
 type DispatchType =
   | UserDispatchType
@@ -13,4 +14,5 @@ type DispatchType =
   | SiteWideMessagesDispatchType
   | DeviceDispatchType
   | UserDeviceDispatchType
+  | DeviceDispatchType
   | ReferralDispatchType;

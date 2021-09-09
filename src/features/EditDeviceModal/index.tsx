@@ -35,7 +35,7 @@ export default ({ edit = true }: { edit?: boolean }) => {
   if (!edit) {
     steps.push({ content: <DeviceType /> });
   }
-  steps.push({ content: <DeviceDetails /> });
+  steps.push({ content: <DeviceDetails edit={edit} /> });
   steps.push({ content: <DeviceRecap /> });
 
   return (

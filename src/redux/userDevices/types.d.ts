@@ -1,4 +1,4 @@
-type DeviceAction = {
+type UserDeviceAction = {
   type: string;
   data?: array<DeviceItem>;
   error?: string;
@@ -46,4 +46,4 @@ type UserDeviceState = {
   addModalOpen: boolean;
   error?: string;
 };
-type UserDeviceDispatchType = (args: DeviceAction) => DeviceAction;
+type UserDeviceDispatchType = (args: UserDeviceAction) => UserDeviceAction;
