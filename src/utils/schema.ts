@@ -156,6 +156,21 @@ export interface paths {
       };
     };
   };
+  "/users/me/devices": {
+    get: operations["get-users-me-devices"];
+    /** Add a new device to your user */
+    post: operations["post-users-me-devices"];
+  };
+  "/users/me/devices/{deviceId}": {
+    get: operations["get-users-me-devices-deviceId"];
+    delete: operations["delete-users-me-devices-deviceId"];
+    patch: operations["patch-users-me-devices-deviceId"];
+    parameters: {
+      path: {
+        deviceId: number;
+      };
+    };
+  };
 }
 
 export interface components {
@@ -287,6 +302,23 @@ export interface components {
     TranslatablePage: {
       en?: string;
       it?: string;
+    };
+    UserDevice: {
+      type: string;
+      id: number;
+      device:
+        | {
+            manufacturer: string;
+            model: string;
+          }
+        | {
+            pc_type: string;
+          };
+      operative_system: {
+        id: number;
+        platform: string;
+        version: string;
+      };
     };
   };
   responses: {
@@ -1070,6 +1102,122 @@ export interface operations {
           "application/json": {
             id?: number;
           } & components["schemas"]["Popup"];
+        };
+      };
+    };
+  };
+  "get-users-me-devices": {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": ({
+            id?: number;
+          } & components["schemas"]["UserDevice"])[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Add a new device to your user */
+  "post-users-me-devices": {
+    responses: {
+      /** Created */
+      201: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["UserDevice"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          device:
+            | number
+            | (
+                | "Notebook"
+                | "Desktop"
+                | "Ultrabook"
+                | "Gaming PC"
+                | "Tablet PC / Hybrid"
+              );
+          operative_system: number;
+        };
+      };
+    };
+  };
+  "get-users-me-devices-deviceId": {
+    parameters: {
+      path: {
+        deviceId: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["UserDevice"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "delete-users-me-devices-deviceId": {
+    parameters: {
+      path: {
+        deviceId: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            message?: string;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "patch-users-me-devices-deviceId": {
+    parameters: {
+      path: {
+        deviceId: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["UserDevice"];
+        };
+      };
+      /** Not Modified */
+      304: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["UserDevice"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          operating_system?: number;
         };
       };
     };

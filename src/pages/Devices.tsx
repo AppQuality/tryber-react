@@ -11,6 +11,7 @@ import {
 import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
 import { useTranslation } from "react-i18next";
+import DeviceTable from "../features/DeviceTable";
 
 const Devices = () => {
   const { t } = useTranslation();
@@ -25,11 +26,12 @@ const Devices = () => {
             <BSGrid>
               <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
                 <Card className="aq-mb-3" title={t("Your devices")}>
-                  <Text>
+                  <Text className="aq-mb-3">
                     {t(
                       "Here is the list of your all devices. Make sure to keep it update in order to boost your chances to be selected for further projects."
                     )}
                   </Text>
+                  <DeviceTable />
                 </Card>
               </BSCol>
               <BSCol size="col-lg-3">

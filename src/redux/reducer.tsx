@@ -4,6 +4,7 @@ import user from "./user/reducer";
 import dashboardHelpModal from "./dashboardHelpModal/reducer";
 import referral from "./referral/reducer";
 import messages from "./siteWideMessages/reducer";
+import userDevices from "./userDevices/reducer";
 
 export default combineReducers({
   menu,
@@ -11,4 +12,5 @@ export default combineReducers({
   dashboardHelpModal,
   referral,
   messages,
+  userDevices,
 });
