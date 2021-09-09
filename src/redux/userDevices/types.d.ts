@@ -25,9 +25,13 @@ type DeviceItem = {
 };
 
 type DispatchSlice = {
+  openModal: () => void;
+  closeModal: () => void;
   fetch: () => void;
   select: (id: number) => void;
   devices: DeviceItem[];
+  current?: DeviceItem;
+  modalOpen: boolean;
   loading: boolean;
   error?: string;
 };
@@ -35,6 +39,7 @@ type DispatchSlice = {
 type UserDeviceState = {
   items?: array<DeviceItem>;
   loading: boolean;
+  modalOpen: boolean;
   error?: string;
 };
 type UserDeviceDispatchType = (args: DeviceAction) => DeviceAction;

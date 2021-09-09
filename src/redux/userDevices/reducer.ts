@@ -2,6 +2,7 @@ import * as actionTypes from "./actionTypes";
 
 const initialState: UserDeviceState = {
   loading: true,
+  modalOpen: false,
 };
 
 const reducer = (
@@ -39,6 +40,16 @@ const reducer = (
         ...state,
         error: undefined,
         loading: true,
+      };
+    case actionTypes.DEVICE_MODAL_OPEN:
+      return {
+        ...state,
+        modalOpen: true,
+      };
+    case actionTypes.DEVICE_MODAL_CLOSE:
+      return {
+        ...state,
+        modalOpen: false,
       };
   }
   return state;

@@ -21,3 +21,14 @@ export const selectDevice = (id: number) => {
     dispatch({ type: actionTypes.DEVICE_SELECT, data: id });
   };
 };
+
+export const openModal = () => {
+  return (dispatch: UserDeviceDispatchType) => {
+    dispatch({ type: actionTypes.DEVICE_MODAL_OPEN });
+  };
+};
+export const closeModal = () => {
+  return (dispatch: UserDeviceDispatchType) => {
+    dispatch({ type: actionTypes.DEVICE_MODAL_CLOSE });
+  };
+};

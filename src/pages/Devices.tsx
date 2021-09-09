@@ -12,12 +12,14 @@ import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
 import { useTranslation } from "react-i18next";
 import DeviceTable from "../features/DeviceTable";
+import EditDeviceModal from "../features/EditDeviceModal";
 
 const Devices = () => {
   const { t } = useTranslation();
   return (
     <GoogleTagManager title={t("Personal Equipment")}>
       <LoggedOnly>
+        <EditDeviceModal />
         <TesterSidebar route={"personal-equipment"}>
           <Container className="aq-pb-3">
             <PageTitle size="regular" as="h2" className="aq-mb-3">
