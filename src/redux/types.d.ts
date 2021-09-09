@@ -4,7 +4,7 @@ type GeneralState = {
   dashboardHelpModal: DashboardHelpState;
   referral: ReferralState;
   messages: SiteWideMessagesState;
-  userDevices: DeviceState;
+  userDevices: UserDeviceState;
 };
 type DispatchType =
   | UserDispatchType
@@ -12,4 +12,5 @@ type DispatchType =
   | DashboardHelpDispatchType
   | SiteWideMessagesDispatchType
   | DeviceDispatchType
+  | UserDeviceDispatchType
   | ReferralDispatchType;

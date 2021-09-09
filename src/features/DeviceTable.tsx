@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const DeviceTable = () => {
   const { t } = useTranslation();
-  const { devices, loading, fetch } = userDeviceStore();
+  const { devices, loading, fetch, select } = userDeviceStore();
   useEffect(() => {
     fetch();
   }, []);
@@ -23,7 +23,14 @@ const DeviceTable = () => {
           device: deviceName,
           os: d.operative_system.platform,
           os_version: d.operative_system.version,
-          actions: <Button type="link">edit</Button>,
+          actions: {
+            title: "asd",
+            content: (
+              <Button onClick={() => select(d.id)} type="link">
+                {d.selected ? "Selected" : "Not selected"}
+              </Button>
+            ),
+          },
         };
       })
     : [];

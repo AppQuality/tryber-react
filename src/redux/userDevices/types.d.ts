@@ -16,6 +16,7 @@ type DeviceItem = {
   id: number;
   device: DeviceItemPc | DeviceItemOther;
   type: string;
+  selected?: boolean;
   operative_system: {
     id: number;
     platform: string;
@@ -25,14 +26,15 @@ type DeviceItem = {
 
 type DispatchSlice = {
   fetch: () => void;
+  select: (id: number) => void;
   devices: DeviceItem[];
   loading: boolean;
   error?: string;
 };
 
-type DeviceState = {
+type UserDeviceState = {
   items?: array<DeviceItem>;
   loading: boolean;
   error?: string;
 };
-type DeviceDispatchType = (args: DeviceAction) => DeviceAction;
+type UserDeviceDispatchType = (args: DeviceAction) => DeviceAction;

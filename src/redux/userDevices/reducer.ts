@@ -1,13 +1,13 @@
 import * as actionTypes from "./actionTypes";
 
-const initialState: DeviceState = {
+const initialState: UserDeviceState = {
   loading: true,
 };
 
 const reducer = (
-  state: DeviceState = initialState,
+  state: UserDeviceState = initialState,
   action: DeviceAction
-): DeviceState => {
+): UserDeviceState => {
   switch (action.type) {
     case actionTypes.DEVICE_FETCH:
       if (action.data) {
@@ -25,6 +25,14 @@ const reducer = (
         ...state,
         error: action.error,
         loading: false,
+      };
+    case actionTypes.DEVICE_SELECT:
+      return {
+        ...state,
+        items: state.items.map((i: DeviceItem) => {
+          i.selected = i.id === action.data;
+          return i;
+        }),
       };
     case actionTypes.DEVICE_LOAD:
       return {

@@ -1,9 +1,9 @@
 import { Dispatch } from "redux";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { fetchDevices } from "./actionCreators";
+import { fetchDevices, selectDevice } from "./actionCreators";
 
 export default (): DispatchSlice => {
-  const { items, loading, error }: DeviceState = useSelector(
+  const { items, loading, error }: UserDeviceState = useSelector(
     (state: GeneralState) => ({
       items: state.userDevices.items,
       loading: state.userDevices.loading,
@@ -16,6 +16,7 @@ export default (): DispatchSlice => {
 
   return {
     fetch: () => dispatch(fetchDevices()),
+    select: (id: number) => dispatch(selectDevice(id)),
     loading: loading,
     error: error,
     devices: items,
