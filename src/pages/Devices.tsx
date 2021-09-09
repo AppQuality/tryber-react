@@ -13,12 +13,15 @@ import LoggedOnly from "../features/LoggedOnly";
 import { useTranslation } from "react-i18next";
 import DeviceTable from "../features/DeviceTable";
 import EditDeviceModal from "../features/EditDeviceModal";
+import userDeviceStore from "../redux/userDevices";
 
 const Devices = () => {
   const { t } = useTranslation();
+  const { openAddModal } = userDeviceStore();
   return (
     <GoogleTagManager title={t("Personal Equipment")}>
       <LoggedOnly>
+        <EditDeviceModal edit={false} />
         <EditDeviceModal />
         <TesterSidebar route={"personal-equipment"}>
           <Container className="aq-pb-3">
@@ -47,7 +50,12 @@ const Devices = () => {
                       "Adding more devices allows you to apply to more campaigns to earn more money and experience points."
                     )}
                   </Text>
-                  <Button flat={true} type="success" size="block">
+                  <Button
+                    onClick={() => openAddModal()}
+                    flat={true}
+                    type="success"
+                    size="block"
+                  >
                     {t("Add device")}
                   </Button>
                 </Card>

@@ -3,14 +3,23 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import {
   fetchDevices,
   selectDevice,
-  openModal,
-  closeModal,
+  openEditModal,
+  openAddModal,
+  closeEditModal,
+  closeAddModal,
 } from "./actionCreators";
 
 export default (): DispatchSlice => {
-  const { items, loading, error, modalOpen }: UserDeviceState = useSelector(
+  const {
+    items,
+    loading,
+    error,
+    editModalOpen,
+    addModalOpen,
+  }: UserDeviceState = useSelector(
     (state: GeneralState) => ({
-      modalOpen: state.userDevices.modalOpen,
+      editModalOpen: state.userDevices.editModalOpen,
+      addModalOpen: state.userDevices.addModalOpen,
       items: state.userDevices.items,
       loading: state.userDevices.loading,
       error: state.userDevices.error,
@@ -26,12 +35,15 @@ export default (): DispatchSlice => {
   return {
     fetch: () => dispatch(fetchDevices()),
     select: (id: number) => dispatch(selectDevice(id)),
-    openModal: () => dispatch(openModal()),
-    closeModal: () => dispatch(closeModal()),
+    openEditModal: () => dispatch(openEditModal()),
+    closeEditModal: () => dispatch(closeEditModal()),
+    openAddModal: () => dispatch(openAddModal()),
+    closeAddModal: () => dispatch(closeAddModal()),
     loading: loading,
     error: error,
     devices: items,
     current: currentDevice,
-    modalOpen: modalOpen,
+    editModalOpen: editModalOpen,
+    addModalOpen: addModalOpen,
   };
 };

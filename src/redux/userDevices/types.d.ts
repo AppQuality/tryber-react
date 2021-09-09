@@ -25,13 +25,16 @@ type DeviceItem = {
 };
 
 type DispatchSlice = {
-  openModal: () => void;
-  closeModal: () => void;
+  openEditModal: () => void;
+  closeEditModal: () => void;
+  openAddModal: () => void;
+  closeAddModal: () => void;
   fetch: () => void;
   select: (id: number) => void;
   devices: DeviceItem[];
   current?: DeviceItem;
-  modalOpen: boolean;
+  editModalOpen: boolean;
+  addModalOpen: boolean;
   loading: boolean;
   error?: string;
 };
@@ -39,7 +42,8 @@ type DispatchSlice = {
 type UserDeviceState = {
   items?: array<DeviceItem>;
   loading: boolean;
-  modalOpen: boolean;
+  editModalOpen: boolean;
+  addModalOpen: boolean;
   error?: string;
 };
 type UserDeviceDispatchType = (args: DeviceAction) => DeviceAction;

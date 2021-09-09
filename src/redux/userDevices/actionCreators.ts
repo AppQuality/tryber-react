@@ -22,13 +22,23 @@ export const selectDevice = (id: number) => {
   };
 };
 
-export const openModal = () => {
+export const openEditModal = () => {
   return (dispatch: UserDeviceDispatchType) => {
-    dispatch({ type: actionTypes.DEVICE_MODAL_OPEN });
+    dispatch({ type: actionTypes.DEVICE_EDIT_MODAL_OPEN });
   };
 };
-export const closeModal = () => {
+export const closeEditModal = () => {
   return (dispatch: UserDeviceDispatchType) => {
-    dispatch({ type: actionTypes.DEVICE_MODAL_CLOSE });
+    dispatch({ type: actionTypes.DEVICE_EDIT_MODAL_CLOSE });
+  };
+};
+export const openAddModal = () => {
+  return (dispatch: UserDeviceDispatchType) => {
+    dispatch({ type: actionTypes.DEVICE_ADD_MODAL_OPEN });
+  };
+};
+export const closeAddModal = () => {
+  return (dispatch: UserDeviceDispatchType) => {
+    dispatch({ type: actionTypes.DEVICE_ADD_MODAL_CLOSE });
   };
 };

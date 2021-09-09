@@ -6,14 +6,6 @@ const SiteWideMessages = () => {
 
   return (
     <>
-      <button onClick={() => add({ message: "Test", type: "success" })}>
-        Add message
-      </button>
-      <button
-        onClick={() => add({ message: "Test", type: "success", expire: false })}
-      >
-        Add message without expire
-      </button>
       <TransitionGroup>
         {messages.map((m) => (
           <CSSTransition timeout={200} classNames="fade">

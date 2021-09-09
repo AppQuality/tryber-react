@@ -2,7 +2,8 @@ import * as actionTypes from "./actionTypes";
 
 const initialState: UserDeviceState = {
   loading: true,
-  modalOpen: false,
+  editModalOpen: false,
+  addModalOpen: false,
 };
 
 const reducer = (
@@ -41,15 +42,25 @@ const reducer = (
         error: undefined,
         loading: true,
       };
-    case actionTypes.DEVICE_MODAL_OPEN:
+    case actionTypes.DEVICE_EDIT_MODAL_OPEN:
       return {
         ...state,
-        modalOpen: true,
+        editModalOpen: true,
       };
-    case actionTypes.DEVICE_MODAL_CLOSE:
+    case actionTypes.DEVICE_EDIT_MODAL_CLOSE:
       return {
         ...state,
-        modalOpen: false,
+        editModalOpen: false,
+      };
+    case actionTypes.DEVICE_ADD_MODAL_OPEN:
+      return {
+        ...state,
+        addModalOpen: true,
+      };
+    case actionTypes.DEVICE_ADD_MODAL_CLOSE:
+      return {
+        ...state,
+        addModalOpen: false,
       };
   }
   return state;

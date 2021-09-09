@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const DeviceTable = () => {
   const { t } = useTranslation();
-  const { devices, loading, fetch, select, openModal } = userDeviceStore();
+  const { devices, loading, fetch, select, openEditModal } = userDeviceStore();
   useEffect(() => {
     fetch();
   }, []);
@@ -29,7 +29,7 @@ const DeviceTable = () => {
               <Button
                 onClick={() => {
                   select(d.id);
-                  openModal();
+                  openEditModal();
                 }}
                 type="link"
               >
