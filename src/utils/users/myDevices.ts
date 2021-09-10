@@ -1,5 +1,4 @@
 import HttpError from "../HttpError";
-import { operations } from "../schema";
 
 export const myDevices = async ({ token }: { token?: string }) => {
   if (process.env.REACT_APP_DEFAULT_TOKEN)

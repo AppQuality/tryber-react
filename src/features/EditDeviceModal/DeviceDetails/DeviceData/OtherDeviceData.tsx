@@ -1,22 +1,51 @@
 import { useFormikContext, Field } from "formik";
-import deviceStore from "../../../../redux/devices";
 import { Select, SelectType } from "@appquality/appquality-design-system";
+import { useEffect, useState } from "react";
+import API from "../../../../utils/api";
+import { operations } from "../../../../utils/schema";
 
-const OtherDeviceData = () => {
+const OtherDeviceData = ({ edit }: { edit: boolean }) => {
   const { values } = useFormikContext<DeviceFormInterface>();
-  const { devices } = deviceStore();
-  if (!devices || devices.loading) return null;
-  const manufacturer = devices.items.map((d: any) => {
-    return { label: d.manufacturer, value: d.manufacturer };
-  });
-  let models: SelectType.Option[] = [];
-  if (values.manufacturer) {
-    models = devices.items
-      .find((d: any) => d.manufacturer == values.manufacturer)
-      .models.map((m: any) => {
-        return { label: m.model, value: m.id.toString() };
-      });
-  }
+
+  const [apiDevices, setApiDevices] = useState<
+    operations["get-devices-devices-type-model"]["responses"]["200"]["content"]["application/json"]
+  >([]);
+  const [manufacturers, setManufacturers] = useState<SelectType.Option[]>([]);
+  const [models, setModels] = useState<SelectType.Option[]>([]);
+  useEffect(() => {
+    const getModels = async () => {
+      const res = await API.getModels({ deviceType: values.device_type });
+      setApiDevices(res);
+    };
+    if (values.device_type !== 2) {
+      // device type already selected and not a PC
+      // fetch manufacturer and models
+      getModels();
+    }
+  }, [values.device_type]);
+  useEffect(() => {
+    // fill manufacturers and models
+    let manufacturersOptions: SelectType.Option[] = [];
+    let modelsOptions: SelectType.Option[] = [];
+    apiDevices.forEach((d) => {
+      if (d.manufacturer) {
+        manufacturersOptions.push({
+          label: d.manufacturer || "",
+          value: d.manufacturer || "",
+        });
+        if (values.manufacturer === d.manufacturer && d.models)
+          d.models.map((items) => {
+            return {
+              label: items.name,
+              value: items.id,
+            };
+          });
+      }
+    });
+    setManufacturers(manufacturersOptions);
+    setModels(modelsOptions);
+  }, [values.manufacturer, apiDevices]);
+
   return (
     <>
       <Field name="manufacturer">
@@ -28,11 +57,12 @@ const OtherDeviceData = () => {
             <Select
               label="manufacturer"
               name="manufacturer"
+              isDisabled={edit}
               value={{
                 label: values.manufacturer || "",
                 value: values.manufacturer || "",
               }}
-              options={manufacturer}
+              options={manufacturers}
               onChange={(v) => {
                 if (v == null) {
                   v = { label: "", value: "" };
@@ -54,9 +84,10 @@ const OtherDeviceData = () => {
             <Select
               label="model"
               name="model"
+              isDisabled={edit}
               value={{
                 label: values.model || "",
-                value: values.device.toString() || "0",
+                value: values.device?.toString() || "0",
               }}
               options={models}
               onChange={(v) => {

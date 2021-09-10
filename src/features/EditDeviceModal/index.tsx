@@ -102,6 +102,9 @@ export default ({ edit = true }: { edit?: boolean }) => {
               current && current.device && "id" in current.device
                 ? current.device.id
                 : 0,
+            operative_system_id: current?.operative_system.id || 0,
+            operative_system_platform: current?.operative_system.platform || "",
+            operative_system_version: current?.operative_system.version || "",
           }}
           onSubmit={(data) => console.log(data)}
         >

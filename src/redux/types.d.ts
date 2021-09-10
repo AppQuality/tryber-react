@@ -5,14 +5,11 @@ type GeneralState = {
   referral: ReferralState;
   messages: SiteWideMessagesState;
   userDevices: UserDeviceState;
-  devices: DeviceState;
 };
 type DispatchType =
   | UserDispatchType
   | MenuDispatchType
   | DashboardHelpDispatchType
   | SiteWideMessagesDispatchType
-  | DeviceDispatchType
   | UserDeviceDispatchType
-  | DeviceDispatchType
   | ReferralDispatchType;
