@@ -11,7 +11,7 @@ type ManufacturerItem = {
   loading: boolean;
 };
 type DevicesDispatchSlice = {
-  manufacturer?: ManufacturerItem & {
+  devices?: ManufacturerItem & {
     fetch: () => void;
     select: (manufacturer: string) => void;
   };
@@ -24,7 +24,7 @@ type DeviceAction = {
 };
 
 type DeviceState = {
-  manufacturer: ManufacturerItem;
+  devices: ManufacturerItem;
 };
 
 type DeviceDispatchType = (args: DeviceAction) => DeviceAction;

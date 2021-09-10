@@ -3,9 +3,9 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { fetchManufacturers, selectManufacturer } from "./actionCreators";
 
 export default (): DevicesDispatchSlice => {
-  const { manufacturer }: DeviceState = useSelector(
+  const { devices }: DeviceState = useSelector(
     (state: GeneralState) => ({
-      manufacturer: state.devices.manufacturer,
+      devices: state.devices.devices,
     }),
     shallowEqual
   );
@@ -13,8 +13,8 @@ export default (): DevicesDispatchSlice => {
   const dispatch: Dispatch<any> = useDispatch();
 
   return {
-    manufacturer: {
-      ...manufacturer,
+    devices: {
+      ...devices,
       fetch: () => dispatch(fetchManufacturers()),
       select: (manufacturer: string) =>
         dispatch(selectManufacturer(manufacturer)),

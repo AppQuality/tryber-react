@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionTypes";
 
 const initialState: DeviceState = {
-  manufacturer: { items: [], loading: true },
+  devices: { items: [], loading: true },
 };
 
 const reducer = (
@@ -9,25 +9,25 @@ const reducer = (
   action: DeviceAction
 ): DeviceState => {
   switch (action.type) {
-    case actionTypes.MANUFACTURER_LOAD:
+    case actionTypes.DEVICES_LOAD:
       return {
         ...state,
-        manufacturer: { ...state.manufacturer, loading: true },
+        devices: { ...state.devices, loading: true },
       };
-    case actionTypes.MANUFACTURER_FETCH:
+    case actionTypes.DEVICES_FETCH:
       return {
         ...state,
-        manufacturer: {
-          ...state.manufacturer,
+        devices: {
+          ...state.devices,
           items: action.data,
           loading: false,
         },
       };
-    case actionTypes.MANUFACTURER_SELECT:
+    case actionTypes.DEVICES_SELECT:
       return {
         ...state,
-        manufacturer: {
-          ...state.manufacturer,
+        devices: {
+          ...state.devices,
           current: action.data,
         },
       };

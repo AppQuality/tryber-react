@@ -4,31 +4,36 @@ import userDeviceStore from "../../../redux/userDevices";
 import { useEffect } from "react";
 
 export default ({ disabled, current }: { disabled: boolean; current: any }) => {
-  const { manufacturer } = deviceStore();
-  if (!manufacturer) return null;
-  const { fetch: fetchManufacturer, select: selectManufacturer } = manufacturer;
+  const { devices } = deviceStore();
+  if (!devices) return null;
+  const { fetch: fetchManufacturer, select: selectManufacturer } = devices;
 
+  let models: SelectType.Option[] = [];
   useEffect(() => {
     fetchManufacturer();
-    if ("manufacturer" in current.device)
+    if ("manufacturer" in current.device) {
       selectManufacturer(current.device.manufacturer);
+    }
   }, []);
+  useEffect(() => {
+    if ("manufacturer" in current.device) {
+      const currentManufacturer = devices.items.find(
+        (m: ManufacturerDeviceItem) =>
+          m.manufacturer === current.device.manufacturer
+      );
+      if (currentManufacturer) {
+        models = currentManufacturer.models.map((mod: any) => {
+          return { label: mod.model, value: mod.id };
+        });
+      }
+    }
+  }, [current]);
 
   if (current.type === "PC" && "pc_type" in current.device) {
     return <>PC</>;
   } else if ("manufacturer" in current.device && "model" in current.device) {
-    let models: SelectType.Option[] = [];
-    const manufacturers: SelectType.Option[] = manufacturer.items.map(
+    const manufacturers: SelectType.Option[] = devices.items.map(
       (m: ManufacturerDeviceItem) => {
-        if (
-          current.device &&
-          "manufacturer" in current.device &&
-          current.device.manufacturer === m.manufacturer
-        ) {
-          models = m.models.map((mod: any) => {
-            return { label: mod.model, value: mod.id };
-          });
-        }
         return { label: m.manufacturer, value: m.manufacturer };
       }
     );
@@ -40,11 +45,11 @@ export default ({ disabled, current }: { disabled: boolean; current: any }) => {
           options={manufacturers}
           isClearable={false}
           onChange={(o) => o.value && selectManufacturer(o.value)}
-          isLoading={manufacturer.loading}
-          isDisabled={disabled || manufacturer.loading}
+          isLoading={devices.loading}
+          isDisabled={disabled || devices.loading}
           value={{
-            label: manufacturer.current || "",
-            value: manufacturer.current || "",
+            label: devices.current || "",
+            value: devices.current || "",
           }}
         ></Select>
         <Select
@@ -53,7 +58,7 @@ export default ({ disabled, current }: { disabled: boolean; current: any }) => {
           options={models}
           isClearable={false}
           onChange={(o) => o.value && selectManufacturer(o.value)}
-          isLoading={manufacturer.loading}
+          isLoading={devices.loading}
           isDisabled={disabled || !models.length}
           value={{
             label: "",
