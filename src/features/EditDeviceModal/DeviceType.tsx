@@ -46,25 +46,25 @@ const DeviceType = () => {
       <StyledDeviceBurrito role="group">
         <div className="device-radio aq-p-3">
           <label htmlFor="0">
-            <Field type="radio" id="0" name="device-type" value="0" />
+            <Field type="radio" id="0" name="device_type" value="0" />
             <Phone className="aq-mb-3" /> Smartphone
           </label>
         </div>
         <div className="device-radio aq-p-3">
           <label htmlFor="2">
-            <Field type="radio" id="2" name="device-type" value="2" />
+            <Field type="radio" id="2" name="device_type" value="2" />
             <Laptop className="aq-mb-3" /> Computer
           </label>
         </div>
         <div className="device-radio aq-p-3">
           <label htmlFor="1">
-            <Field type="radio" id="1" name="device-type" value="1" />
+            <Field type="radio" id="1" name="device_type" value="1" />
             <Tablet className="aq-mb-3" /> Tablet
           </label>
         </div>
         <div className="device-radio aq-p-3">
           <label htmlFor="5">
-            <Field type="radio" id="5" name="device-type" value="5" />
+            <Field type="radio" id="5" name="device_type" value="5" />
             <Tv className="aq-mb-3" /> Smart TV & TV Box
           </label>
         </div>

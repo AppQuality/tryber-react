@@ -89,6 +89,7 @@ export default ({ edit = true }: { edit?: boolean }) => {
       <ModalBody>
         <Formik
           initialValues={{
+            device_type: current?.type || "",
             manufacturer:
               current?.device && "manufacturer" in current.device
                 ? current?.device.manufacturer
