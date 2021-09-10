@@ -33,7 +33,7 @@ const StyledDeviceBurrito = styled.div`
     }
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        background-color: ${(props) => props.theme.colors.disabled};
+        background-color: ${(props) => props.theme.colors.gray200};
       }
     }
   }
