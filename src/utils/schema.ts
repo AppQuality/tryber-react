@@ -171,6 +171,33 @@ export interface paths {
       };
     };
   };
+  "/devices/{device_type}/models": {
+    /** Get all model of devices with theirs manufacturers */
+    get: operations["get-devices-devices-type-model"];
+    parameters: {
+      path: {
+        device_type: string;
+      };
+    };
+  };
+  "/devices/{device_type}/operating_systems": {
+    /** Get all operating systems of a device type */
+    get: operations["get-devices-operating-systems"];
+    parameters: {
+      path: {
+        device_type: string;
+      };
+    };
+  };
+  "/devices/{device_type}/os_versions": {
+    /** Get all versions of an operating systems */
+    get: operations["get-devices-os-versions"];
+    parameters: {
+      path: {
+        device_type: string;
+      };
+    };
+  };
 }
 
 export interface components {
@@ -1220,6 +1247,84 @@ export interface operations {
           operating_system?: number;
         };
       };
+    };
+  };
+  /** Get all model of devices with theirs manufacturers */
+  "get-devices-devices-type-model": {
+    parameters: {
+      path: {
+        device_type: string;
+      };
+      query: {
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            manufacturer?: string;
+            models?: {
+              id?: number;
+              name?: string;
+            }[];
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Get all operating systems of a device type */
+  "get-devices-operating-systems": {
+    parameters: {
+      path: {
+        device_type: string;
+      };
+      query: {
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+            name?: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Get all versions of an operating systems */
+  "get-devices-os-versions": {
+    parameters: {
+      path: {
+        device_type: string;
+      };
+      query: {
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+            name?: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
     };
   };
 }

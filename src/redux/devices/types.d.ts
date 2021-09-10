@@ -1,5 +1,12 @@
+type ManufacturerDeviceItem = {
+  manufacturer: string;
+  models: array<{
+    id: number;
+    name: string;
+  }>;
+};
 type ManufacturerItem = {
-  items: array<string>;
+  items: array<ManufacturerDeviceItem>;
   current?: string;
   loading: boolean;
 };

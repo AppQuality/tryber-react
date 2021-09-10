@@ -1,13 +1,17 @@
 import * as actionTypes from "./actionTypes";
+import API from "../../utils/api";
 
 export const fetchManufacturers = () => {
   return (dispatch: DeviceDispatchType) => {
     dispatch({ type: actionTypes.MANUFACTURER_LOAD });
 
-    setTimeout(() => {
-      const manufacturers = ["Samsung", "manufacturer2", "manufacturer3"];
-      dispatch({ type: actionTypes.MANUFACTURER_FETCH, data: manufacturers });
-    }, 1000);
+    return API.getModels({ deviceType: 0 })
+      .then((data: any) => {
+        dispatch({ type: actionTypes.MANUFACTURER_FETCH, data: data });
+      })
+      .catch((e: any) =>
+        dispatch({ type: actionTypes.MANUFACTURER_FAILED, error: e })
+      );
   };
 };
 
