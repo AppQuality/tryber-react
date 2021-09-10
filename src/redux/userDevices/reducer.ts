@@ -36,6 +36,14 @@ const reducer = (
           return i;
         }),
       };
+    case actionTypes.DEVICE_UNSELECT:
+      return {
+        ...state,
+        items: state.items.map((i: DeviceItem) => {
+          i.selected = false;
+          return i;
+        }),
+      };
     case actionTypes.DEVICE_LOAD:
       return {
         ...state,

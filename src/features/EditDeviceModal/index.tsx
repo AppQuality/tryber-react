@@ -12,6 +12,7 @@ import { useState } from "react";
 import DeviceType from "./DeviceType";
 import DeviceDetails from "./DeviceDetails";
 import DeviceRecap from "./DeviceRecap";
+import { Formik, Form, Field } from "formik";
 
 export default ({ edit = true }: { edit?: boolean }) => {
   const {
@@ -24,7 +25,6 @@ export default ({ edit = true }: { edit?: boolean }) => {
   const { add } = siteWideMessageStore();
   const [step, setStep] = useState(0);
   const { t } = useTranslation();
-  if (!current) return null;
 
   const modalOpen = edit ? editModalOpen : addModalOpen;
   const closeModal = () => {
@@ -86,7 +86,27 @@ export default ({ edit = true }: { edit?: boolean }) => {
         </BSGrid>
       }
     >
-      <ModalBody>{steps[step].content}</ModalBody>
+      <ModalBody>
+        <Formik
+          initialValues={{
+            manufacturer:
+              current?.device && "manufacturer" in current.device
+                ? current?.device.manufacturer
+                : "",
+            model:
+              current?.device && "model" in current.device
+                ? current?.device.model
+                : "",
+            device:
+              current && current.device && "id" in current.device
+                ? current.device.id
+                : 0,
+          }}
+          onSubmit={(data) => console.log(data)}
+        >
+          {steps[step].content}
+        </Formik>
+      </ModalBody>
     </Modal>
   );
 };

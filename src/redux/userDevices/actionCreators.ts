@@ -29,11 +29,13 @@ export const openEditModal = () => {
 };
 export const closeEditModal = () => {
   return (dispatch: UserDeviceDispatchType) => {
+    dispatch({ type: actionTypes.DEVICE_UNSELECT });
     dispatch({ type: actionTypes.DEVICE_EDIT_MODAL_CLOSE });
   };
 };
 export const openAddModal = () => {
   return (dispatch: UserDeviceDispatchType) => {
+    dispatch({ type: actionTypes.DEVICE_UNSELECT });
     dispatch({ type: actionTypes.DEVICE_ADD_MODAL_OPEN });
   };
 };

@@ -10,6 +10,7 @@ type DeviceItemPc = {
 type DeviceItemOther = {
   manufacturer: string;
   model: string;
+  id?: number;
 };
 
 type DeviceItem = {

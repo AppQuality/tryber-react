@@ -337,6 +337,7 @@ export interface components {
         | {
             manufacturer: string;
             model: string;
+            id?: number;
           }
         | {
             pc_type: string;
