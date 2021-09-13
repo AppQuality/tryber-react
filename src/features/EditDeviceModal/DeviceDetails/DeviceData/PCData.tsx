@@ -31,6 +31,7 @@ const PCData = ({ edit }: { edit: boolean }) => {
       <Field name="pc_type" disabled={edit}>
         {({
           field, // { name, value, onChange, onBlur }
+          form,
         }: FieldProps) => (
           <Select
             isDisabled={edit}
@@ -38,6 +39,13 @@ const PCData = ({ edit }: { edit: boolean }) => {
             label={t("Computer type")}
             options={options}
             value={{ label: field.value, value: field.value }}
+            onChange={(v) => {
+              if (v == null) {
+                v = { label: "", value: "" };
+              }
+              field.onChange(v.value);
+              form.setFieldValue(field.name, v.value, true);
+            }}
           />
         )}
       </Field>
