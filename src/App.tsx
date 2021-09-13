@@ -24,6 +24,11 @@ const TemporaryGlobalStyle = createGlobalStyle`
   body {
     margin: 0;
   }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
   .container .hero {
     margin-left: calc(-24px/2);
     margin-right: calc(-24px/2);
