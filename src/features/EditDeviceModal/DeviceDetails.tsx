@@ -48,7 +48,7 @@ export default ({ edit }: { edit: boolean }) => {
       }));
       setOsVersions(options);
     };
-    if (values.device) {
+    if (values.device || values.pc_type) {
       // manufacturer AND model already selected
       // fetch os_platform values
       getOsPlatforms();

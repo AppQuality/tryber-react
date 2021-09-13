@@ -1,4 +1,5 @@
 interface DeviceFormInterface {
+  pc_type?: string;
   manufacturer?: string;
   model?: string;
   device?:

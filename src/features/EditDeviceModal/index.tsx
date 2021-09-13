@@ -52,7 +52,6 @@ export default ({ edit = true }: { edit?: boolean }) => {
       : current?.type == "Smart-tv"
       ? 5
       : 0;
-
   return (
     <Modal
       isOpen={modalOpen}
@@ -105,6 +104,10 @@ export default ({ edit = true }: { edit?: boolean }) => {
         <Formik
           initialValues={{
             device_type: device_type,
+            pc_type:
+              current?.device && "pc_type" in current.device
+                ? current.device.pc_type
+                : "",
             manufacturer:
               current?.device && "manufacturer" in current.device
                 ? current.device.manufacturer

@@ -6,27 +6,38 @@ const PCData = ({ edit }: { edit: boolean }) => {
   const { t } = useTranslation();
   const options = [
     {
-      label: "Gaming",
-      value: "Gaming",
-    },
-    {
       label: "Notebook",
       value: "Notebook",
+    },
+    {
+      label: "Desktop",
+      value: "Desktop",
+    },
+    {
+      label: "Ultrabook",
+      value: "Ultrabook",
+    },
+    {
+      label: "Gaming PC",
+      value: "Gaming PC",
+    },
+    {
+      label: "Tablet PC / Hybrid",
+      value: "Tablet PC / Hybrid",
     },
   ];
   return (
     <>
-      <Field name="device" disabled={edit}>
+      <Field name="pc_type" disabled={edit}>
         {({
           field, // { name, value, onChange, onBlur }
-          form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-          meta,
         }: FieldProps) => (
           <Select
+            isDisabled={edit}
             name={field.name}
             label={t("Computer type")}
             options={options}
-            value={field.value}
+            value={{ label: field.value, value: field.value }}
           />
         )}
       </Field>
