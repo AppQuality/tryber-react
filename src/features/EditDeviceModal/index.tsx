@@ -1,10 +1,4 @@
-import {
-  Modal,
-  ModalBody,
-  BSGrid,
-  BSCol,
-  Button,
-} from "@appquality/appquality-design-system";
+import { Modal, ModalBody, Button } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import userDeviceStore from "../../redux/userDevices";
 import siteWideMessageStore from "../../redux/siteWideMessages";
@@ -13,6 +7,7 @@ import DeviceType from "./DeviceType";
 import DeviceDetails from "./DeviceDetails";
 import DeviceRecap from "./DeviceRecap";
 import { Formik } from "formik";
+import styled from "styled-components";
 
 export default ({ edit = true }: { edit?: boolean }) => {
   const {
@@ -58,46 +53,38 @@ export default ({ edit = true }: { edit?: boolean }) => {
       onClose={closeModal}
       title={edit ? t("Edit device") : t("Add new device")}
       footer={
-        <BSGrid>
-          <BSCol size="col-6"></BSCol>
-          <BSCol size="col-3">
+        <FooterBurrito>
+          <Button
+            type="primary"
+            flat={true}
+            onClick={() => setStep(step - 1)}
+            disabled={step === 0}
+          >
+            {t("Back")}
+          </Button>
+          {step == steps.length - 1 ? (
+            <Button
+              type="success"
+              onClick={() => {
+                add({ message: "ok", type: "success" });
+                closeModal();
+              }}
+              flat={true}
+              disabled={step > steps.length - 1}
+            >
+              {edit ? t("Edit device") : t("Add device")}
+            </Button>
+          ) : (
             <Button
               type="primary"
-              size="block"
+              onClick={() => setStep(step + 1)}
               flat={true}
-              onClick={() => setStep(step - 1)}
-              disabled={step === 0}
+              disabled={step > steps.length - 1}
             >
-              {t("Back")}
+              {t("Next")}
             </Button>
-          </BSCol>
-          <BSCol size="col-3">
-            {step == steps.length - 1 ? (
-              <Button
-                type="success"
-                size="block"
-                onClick={() => {
-                  add({ message: "ok", type: "success" });
-                  closeModal();
-                }}
-                flat={true}
-                disabled={step > steps.length - 1}
-              >
-                {edit ? t("Edit device") : t("Add device")}
-              </Button>
-            ) : (
-              <Button
-                type="primary"
-                size="block"
-                onClick={() => setStep(step + 1)}
-                flat={true}
-                disabled={step > steps.length - 1}
-              >
-                {t("Next")}
-              </Button>
-            )}
-          </BSCol>
-        </BSGrid>
+          )}
+        </FooterBurrito>
       }
     >
       <ModalBody>
@@ -132,3 +119,24 @@ export default ({ edit = true }: { edit?: boolean }) => {
     </Modal>
   );
 };
+
+const FooterBurrito = styled.div`
+  display: grid;
+  grid-template-areas: "prev next";
+  grid-template-columns: 1fr 1fr;
+  grid-gap: ${(props) => props.theme.grid.spacing.default};
+
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+    grid-template-areas: "empty prev next";
+    grid-template-columns: 1fr auto auto;
+  }
+  button {
+    min-width: 120px;
+  }
+  button:first-child {
+    grid-area: prev;
+  }
+  button:last-child {
+    grid-area: next;
+  }
+`;
