@@ -81,9 +81,11 @@ export const getOsPlatforms = async ({
 export const getOsVersions = async ({
   token,
   deviceType,
+  query,
 }: {
   token?: string;
   deviceType: number;
+  query?: operations["get-devices-os-versions"]["parameters"]["query"];
 }): Promise<
   operations["get-devices-os-versions"]["responses"]["200"]["content"]["application/json"]
 > => {
@@ -94,8 +96,21 @@ export const getOsVersions = async ({
   if (token) {
     requestHeaders.set("Authorization", "Bearer " + token);
   }
+
+  let params = "";
+  if (query && Object.keys(query).length) {
+    let urlps = new URLSearchParams();
+    if (query.filterBy) {
+      Object.entries(query.filterBy).forEach(([key, val]) => {
+        if (typeof val === "string") {
+          urlps.set(`filterBy[${key}]`, val);
+        }
+      });
+    }
+    params = "?" + urlps.toString();
+  }
   const res = await fetch(
-    `${process.env.REACT_APP_API_URL}/devices/${deviceType}/operating_systems`,
+    `${process.env.REACT_APP_API_URL}/devices/${deviceType}/os_versions${params}`,
     {
       method: "GET",
       headers: requestHeaders,

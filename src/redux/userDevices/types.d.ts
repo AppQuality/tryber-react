@@ -18,7 +18,7 @@ type DeviceItem = {
   device: DeviceItemPc | DeviceItemOther;
   type: string;
   selected?: boolean;
-  operative_system: {
+  operating_system: {
     id: number;
     platform: string;
     version: string;

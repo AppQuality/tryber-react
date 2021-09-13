@@ -21,8 +21,8 @@ const DeviceTable = () => {
           key: d.id,
           type: d.type,
           device: deviceName,
-          os: d.operative_system.platform,
-          os_version: d.operative_system.version,
+          os: d.operating_system.platform,
+          os_version: d.operating_system.version,
           actions: {
             title: "asd",
             content: (
@@ -64,7 +64,7 @@ const DeviceTable = () => {
             width: "25ch",
           },
           {
-            title: t("Operative System"),
+            title: t("Operating System"),
             dataIndex: "os",
             key: "os",
             width: "15ch",
