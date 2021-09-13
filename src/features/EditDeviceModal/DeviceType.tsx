@@ -1,6 +1,41 @@
 import { Laptop, Phone, Tablet, Tv } from "react-bootstrap-icons";
 import styled from "styled-components";
-import { Field } from "formik";
+import { Field, useFormikContext } from "formik";
+
+const RadioInput = ({
+  name,
+  value,
+  children,
+}: {
+  name: string;
+  value: number;
+  children: React.ReactNode;
+}) => {
+  return (
+    <label htmlFor={`${name}-${value}`}>
+      <Field name={name}>
+        {({
+          field, // { name, value, onChange, onBlur }
+          form,
+        }: any) => {
+          return (
+            <input
+              name={field.name}
+              id={`${name}-${value}`}
+              type="radio"
+              checked={field.value == value}
+              defaultValue={value}
+              onChange={(e) => {
+                form.setFieldValue(field.name, parseInt(e.target.value));
+              }}
+            />
+          );
+        }}
+      </Field>
+      {children}
+    </label>
+  );
+};
 
 const StyledDeviceBurrito = styled.div`
   display: grid;
@@ -41,32 +76,30 @@ const StyledDeviceBurrito = styled.div`
 `;
 
 const DeviceType = () => {
+  const { values } = useFormikContext<DeviceFormInterface>();
+  console.log(values);
   return (
     <>
       <StyledDeviceBurrito role="group">
         <div className="device-radio aq-p-3">
-          <label htmlFor="0">
-            <Field type="radio" id="0" name="device_type" value={0} />
+          <RadioInput name="device_type" value={0}>
             <Phone className="aq-mb-3" /> Smartphone
-          </label>
+          </RadioInput>
         </div>
         <div className="device-radio aq-p-3">
-          <label htmlFor="2">
-            <Field type="radio" id="2" name="device_type" value={2} />
+          <RadioInput name="device_type" value={2}>
             <Laptop className="aq-mb-3" /> Computer
-          </label>
+          </RadioInput>
         </div>
         <div className="device-radio aq-p-3">
-          <label htmlFor="1">
-            <Field type="radio" id="1" name="device_type" value={1} />
+          <RadioInput name="device_type" value={1}>
             <Tablet className="aq-mb-3" /> Tablet
-          </label>
+          </RadioInput>
         </div>
         <div className="device-radio aq-p-3">
-          <label htmlFor="5">
-            <Field type="radio" id="5" name="device_type" value={5} />
+          <RadioInput name="device_type" value={5}>
             <Tv className="aq-mb-3" /> Smart TV & TV Box
-          </label>
+          </RadioInput>
         </div>
       </StyledDeviceBurrito>
     </>
