@@ -7,16 +7,17 @@ import {
 import { useTranslation } from "react-i18next";
 import userDeviceStore from "../../redux/userDevices";
 import siteWideMessageStore from "../../redux/siteWideMessages";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import DeviceType from "./DeviceType";
 import DeviceDetails from "./DeviceDetails";
 import DeviceRecap from "./DeviceRecap";
-import { Formik } from "formik";
+import { Formik, FormikErrors } from "formik";
 import styled from "styled-components";
 
 interface WizardStep {
   title: string;
   content: ReactNode;
+  isCompleted?: (errors: FormikErrors<any>) => boolean;
 }
 
 export default ({ edit = true }: { edit?: boolean }) => {
@@ -36,16 +37,26 @@ export default ({ edit = true }: { edit?: boolean }) => {
     setStep(0);
     edit ? closeEditModal() : closeAddModal();
   };
-  const steps: WizardStep[] = [];
+  let steps: WizardStep[] = [
+    {
+      title: t("Device details"),
+      content: <DeviceDetails edit={edit} />,
+      isCompleted: (errors) => !errors.operating_system_id && step > 1,
+    },
+    { title: t("Device recap"), content: <DeviceRecap /> },
+  ];
   if (!edit) {
-    steps.push({ title: t("Device type"), content: <DeviceType /> });
+    steps = [
+      {
+        title: t("Device type"),
+        content: <DeviceType />,
+        isCompleted: (errors) => {
+          return !errors.device_type && step > 0;
+        },
+      },
+      ...steps,
+    ];
   }
-  steps.push({
-    title: t("Device details"),
-    content: <DeviceDetails edit={edit} />,
-  });
-  steps.push({ title: t("Device recap"), content: <DeviceRecap /> });
-
   let device_type =
     current?.type == "Smartphone"
       ? 0
@@ -59,7 +70,7 @@ export default ({ edit = true }: { edit?: boolean }) => {
       ? 4
       : current?.type == "Smart-tv"
       ? 5
-      : 0;
+      : -1;
   return (
     <DeviceWizard>
       <Formik
@@ -86,64 +97,93 @@ export default ({ edit = true }: { edit?: boolean }) => {
           operating_system_version: current?.operating_system.version || "",
         }}
         onSubmit={(data) => console.log(data)}
+        isInitialValid={false}
+        validate={(values) => {
+          const errors: { device_type?: string; operating_system_id?: string } =
+            {};
+          if (step === 0 && values.device_type === -1) {
+            errors.device_type = "required";
+          }
+          if (
+            step === 1 &&
+            values.operating_system_id === 0 &&
+            !values.pc_type &&
+            !values.device
+          ) {
+            errors.operating_system_id = "required";
+          }
+          return errors;
+        }}
       >
-        {(props) => (
-          <Modal
-            isOpen={modalOpen}
-            onClose={() => {
-              closeModal();
-              props.handleReset();
-            }}
-            title={edit ? t("Edit device") : t("Add new device")}
-            footer={
-              <div className="device-wizard-footer">
-                <Button
-                  type="primary"
-                  flat={true}
-                  onClick={() => setStep(step - 1)}
-                  disabled={step === 0}
-                >
-                  {t("Back")}
-                </Button>
-                {step == steps.length - 1 ? (
-                  <Button
-                    type="success"
-                    onClick={() => {
-                      add({ message: "ok", type: "success" });
-                      closeModal();
-                    }}
-                    flat={true}
-                    disabled={step > steps.length - 1}
-                  >
-                    {edit ? t("Edit device") : t("Add device")}
-                  </Button>
-                ) : (
+        {(props) => {
+          useEffect(() => {
+            props.validateForm();
+          }, [step]);
+          return (
+            <Modal
+              isOpen={modalOpen}
+              onClose={() => {
+                closeModal();
+                props.handleReset();
+              }}
+              title={edit ? t("Edit device") : t("Add new device")}
+              footer={
+                <div className="device-wizard-footer">
                   <Button
                     type="primary"
-                    onClick={() => setStep(step + 1)}
                     flat={true}
-                    disabled={step > steps.length - 1}
+                    onClick={() => setStep(step - 1)}
+                    disabled={step === 0}
                   >
-                    {t("Next")}
+                    {t("Back")}
                   </Button>
-                )}
-              </div>
-            }
-          >
-            <ModalBody>
-              <Steps current={step}>
-                {steps.map((step) => (
-                  <Steps.Step
-                    className="device-wizard-step"
-                    isCompleted={false}
-                    title={step.title}
-                  />
-                ))}
-              </Steps>
-              <div className="device-wizard-content">{steps[step].content}</div>
-            </ModalBody>
-          </Modal>
-        )}
+                  {step === steps.length - 1 ? (
+                    <Button
+                      type="success"
+                      onClick={() => {
+                        add({ message: "ok", type: "success" });
+                        closeModal();
+                      }}
+                      flat={true}
+                      disabled={step > steps.length - 1}
+                    >
+                      {edit ? t("Edit device") : t("Add device")}
+                    </Button>
+                  ) : (
+                    <Button
+                      type="primary"
+                      onClick={() => {
+                        setStep(step + 1);
+                      }}
+                      flat={true}
+                      disabled={step > steps.length - 1 || !props.isValid}
+                    >
+                      {t("Next")}
+                    </Button>
+                  )}
+                </div>
+              }
+            >
+              <ModalBody>
+                <Steps current={step}>
+                  {steps.map((step, index) => (
+                    <Steps.Step
+                      key={index}
+                      className="device-wizard-step"
+                      isCompleted={
+                        step.isCompleted && step.isCompleted(props.errors)
+                      }
+                      title={step.title}
+                    />
+                  ))}
+                </Steps>
+                <div className="device-wizard-content">
+                  {steps[step].content}
+                </div>
+              </ModalBody>
+            </Modal>
+          );
+        }}
       </Formik>
     </DeviceWizard>
   );

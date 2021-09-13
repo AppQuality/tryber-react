@@ -76,8 +76,6 @@ const StyledDeviceBurrito = styled.div`
 `;
 
 const DeviceType = () => {
-  const { values } = useFormikContext<DeviceFormInterface>();
-  console.log(values);
   return (
     <>
       <StyledDeviceBurrito role="group">
