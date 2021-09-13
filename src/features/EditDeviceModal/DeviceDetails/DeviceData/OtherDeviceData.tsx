@@ -73,6 +73,11 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
                 }
                 field.onChange(v.value);
                 form.setFieldValue("manufacturer", v.value, true);
+                form.setFieldValue("model", "", true);
+                form.setFieldValue("device", 0, true);
+                form.setFieldValue("operating_system_id", 0, true);
+                form.setFieldValue("operating_system_platform", "", true);
+                form.setFieldValue("operating_system_version", "", true);
               }}
             />
           );
@@ -102,6 +107,9 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
                 field.onChange(v.value);
                 form.setFieldValue("model", v.label, true);
                 form.setFieldValue("device", v.value, true);
+                form.setFieldValue("operating_system_platform", "", true);
+                form.setFieldValue("operating_system_version", "", true);
+                form.setFieldValue("operating_system_id", 0, true);
               }}
             />
           );

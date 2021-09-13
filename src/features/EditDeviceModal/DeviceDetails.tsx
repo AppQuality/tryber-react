@@ -84,6 +84,8 @@ export default ({ edit }: { edit: boolean }) => {
               }
               field.onChange(v.value);
               form.setFieldValue(field.name, v.value, true);
+              form.setFieldValue("operating_system_version", "", true);
+              form.setFieldValue("operating_system_id", 0, true);
             }}
             value={{
               label: field.value,
