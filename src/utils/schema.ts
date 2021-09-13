@@ -342,7 +342,7 @@ export interface components {
         | {
             pc_type: string;
           };
-      operative_system: {
+      operating_system: {
         id: number;
         platform: string;
         version: string;
@@ -1173,7 +1173,7 @@ export interface operations {
                 | "Gaming PC"
                 | "Tablet PC / Hybrid"
               );
-          operative_system: number;
+          operating_system: number;
         };
       };
     };

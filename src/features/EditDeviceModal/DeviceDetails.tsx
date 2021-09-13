@@ -36,13 +36,17 @@ export default ({ edit }: { edit: boolean }) => {
     const getOsVersions = async () => {
       const versionsResults = await API.getOsVersions({
         deviceType: values.device_type,
+        query: {
+          filterBy: {
+            platform: values.operating_system_platform,
+          },
+        },
       });
-      // setOsVersions(versionsResults);
-      // const options = versionsResults.map(item => ({
-      //   value: item.name || '',
-      //   label: item.name || ''
-      // }));
-      // setOsPlatforms(options);
+      const options = versionsResults.map((item) => ({
+        value: item.id?.toString() || "",
+        label: item.name || "",
+      }));
+      setOsVersions(options);
     };
     if (values.device) {
       // manufacturer AND model already selected
@@ -62,32 +66,54 @@ export default ({ edit }: { edit: boolean }) => {
       ) : (
         <OtherDeviceData edit={edit} />
       )}
-      <Field name="operative_system_platform" disabled={edit}>
+      <Field name="operating_system_platform">
         {({
           field, // { name, value, onChange, onBlur }
-          form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+          form,
           meta,
         }: FieldProps) => (
           <Select
             name={field.name}
             label={t("Operating system")}
+            isDisabled={edit}
             options={osPlatforms}
-            value={field.value}
+            onChange={(v) => {
+              if (v == null) {
+                v = { label: "", value: "" };
+              }
+              field.onChange(v.value);
+              form.setFieldValue(field.name, v.value, true);
+            }}
+            value={{
+              label: field.value,
+              value: field.value,
+            }}
           />
         )}
       </Field>
-      <Field name="operative_system_version">
+      <Field name="operating_system_version">
         {/* enabled if the rest is completed */}
         {({
           field, // { name, value, onChange, onBlur }
-          form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+          form, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
           meta,
         }: FieldProps) => (
           <Select
             name={field.name}
             label={t("Operating system version")}
             options={osVersions}
-            value={field.value}
+            value={{
+              label: values.operating_system_version || "",
+              value: values.operating_system_id?.toString() || "0",
+            }}
+            onChange={(v) => {
+              if (v == null) {
+                v = { label: "", value: "" };
+              }
+              field.onChange(v.value);
+              form.setFieldValue("operating_system_version", v.label, true);
+              form.setFieldValue("operating_system_id", v.value, true);
+            }}
           />
         )}
       </Field>
