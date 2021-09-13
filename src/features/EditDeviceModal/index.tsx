@@ -170,8 +170,4 @@ const DeviceWizard = styled.div`
       grid-area: next;
     }
   }
-  .steps > * {
-    flex: 1 1 100%;
-    text-align: center;
-  }
 `;
