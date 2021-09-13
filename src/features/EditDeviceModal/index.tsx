@@ -7,12 +7,17 @@ import {
 import { useTranslation } from "react-i18next";
 import userDeviceStore from "../../redux/userDevices";
 import siteWideMessageStore from "../../redux/siteWideMessages";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import DeviceType from "./DeviceType";
 import DeviceDetails from "./DeviceDetails";
 import DeviceRecap from "./DeviceRecap";
 import { Formik } from "formik";
 import styled from "styled-components";
+
+interface WizardStep {
+  title: string;
+  content: ReactNode;
+}
 
 export default ({ edit = true }: { edit?: boolean }) => {
   const {
@@ -31,7 +36,7 @@ export default ({ edit = true }: { edit?: boolean }) => {
     setStep(0);
     edit ? closeEditModal() : closeAddModal();
   };
-  const steps = [];
+  const steps: WizardStep[] = [];
   if (!edit) {
     steps.push({ title: t("Device type"), content: <DeviceType /> });
   }
@@ -82,58 +87,63 @@ export default ({ edit = true }: { edit?: boolean }) => {
         }}
         onSubmit={(data) => console.log(data)}
       >
-        <Modal
-          isOpen={modalOpen}
-          onClose={closeModal}
-          title={edit ? t("Edit device") : t("Add new device")}
-          footer={
-            <div className="device-wizard-footer">
-              <Button
-                type="primary"
-                flat={true}
-                onClick={() => setStep(step - 1)}
-                disabled={step === 0}
-              >
-                {t("Back")}
-              </Button>
-              {step == steps.length - 1 ? (
-                <Button
-                  type="success"
-                  onClick={() => {
-                    add({ message: "ok", type: "success" });
-                    closeModal();
-                  }}
-                  flat={true}
-                  disabled={step > steps.length - 1}
-                >
-                  {edit ? t("Edit device") : t("Add device")}
-                </Button>
-              ) : (
+        {(props) => (
+          <Modal
+            isOpen={modalOpen}
+            onClose={() => {
+              closeModal();
+              props.handleReset();
+            }}
+            title={edit ? t("Edit device") : t("Add new device")}
+            footer={
+              <div className="device-wizard-footer">
                 <Button
                   type="primary"
-                  onClick={() => setStep(step + 1)}
                   flat={true}
-                  disabled={step > steps.length - 1}
+                  onClick={() => setStep(step - 1)}
+                  disabled={step === 0}
                 >
-                  {t("Next")}
+                  {t("Back")}
                 </Button>
-              )}
-            </div>
-          }
-        >
-          <ModalBody>
-            <Steps current={step}>
-              {steps.map((step) => (
-                <Steps.Step
-                  className="device-wizard-step"
-                  isCompleted={false}
-                  title={step.title}
-                />
-              ))}
-            </Steps>
-            <div className="device-wizard-content">{steps[step].content}</div>
-          </ModalBody>
-        </Modal>
+                {step == steps.length - 1 ? (
+                  <Button
+                    type="success"
+                    onClick={() => {
+                      add({ message: "ok", type: "success" });
+                      closeModal();
+                    }}
+                    flat={true}
+                    disabled={step > steps.length - 1}
+                  >
+                    {edit ? t("Edit device") : t("Add device")}
+                  </Button>
+                ) : (
+                  <Button
+                    type="primary"
+                    onClick={() => setStep(step + 1)}
+                    flat={true}
+                    disabled={step > steps.length - 1}
+                  >
+                    {t("Next")}
+                  </Button>
+                )}
+              </div>
+            }
+          >
+            <ModalBody>
+              <Steps current={step}>
+                {steps.map((step) => (
+                  <Steps.Step
+                    className="device-wizard-step"
+                    isCompleted={false}
+                    title={step.title}
+                  />
+                ))}
+              </Steps>
+              <div className="device-wizard-content">{steps[step].content}</div>
+            </ModalBody>
+          </Modal>
+        )}
       </Formik>
     </DeviceWizard>
   );
