@@ -1,6 +1,13 @@
 import HttpError from "../HttpError";
+import { operations } from "../schema";
 
-export const myDevices = async ({ token }: { token?: string }) => {
+export const myDevices = async ({
+  token,
+}: {
+  token?: string;
+}): Promise<
+  operations["get-users-me-devices"]["responses"]["200"]["content"]["application/json"]
+> => {
   if (process.env.REACT_APP_DEFAULT_TOKEN)
     token = process.env.REACT_APP_DEFAULT_TOKEN;
   const requestHeaders: HeadersInit = new Headers();

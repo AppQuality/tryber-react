@@ -7,9 +7,6 @@ export const fetchDevices = () => {
 
     API.myDevices({})
       .then((devices) => {
-        if (devices.length) {
-          devices[0].selected = true;
-        }
         dispatch({ type: actionTypes.DEVICE_FETCH, data: devices });
       })
       .catch((e) => dispatch({ type: actionTypes.DEVICE_FAILED, error: e }));

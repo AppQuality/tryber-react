@@ -38,6 +38,21 @@ export default ({ edit = true }: { edit?: boolean }) => {
   steps.push({ content: <DeviceDetails edit={edit} /> });
   steps.push({ content: <DeviceRecap /> });
 
+  let device_type =
+    current?.type == "Smartphone"
+      ? 0
+      : current?.type == "Tablet"
+      ? 1
+      : current?.type == "PC"
+      ? 2
+      : current?.type == "Console"
+      ? 3
+      : current?.type == "Smartwatch"
+      ? 4
+      : current?.type == "Smart-tv"
+      ? 5
+      : 0;
+
   return (
     <Modal
       isOpen={modalOpen}
@@ -89,14 +104,14 @@ export default ({ edit = true }: { edit?: boolean }) => {
       <ModalBody>
         <Formik
           initialValues={{
-            device_type: current?.type || "",
+            device_type: device_type,
             manufacturer:
               current?.device && "manufacturer" in current.device
-                ? current?.device.manufacturer
+                ? current.device.manufacturer
                 : "",
             model:
               current?.device && "model" in current.device
-                ? current?.device.model
+                ? current.device.model
                 : "",
             device:
               current && current.device && "id" in current.device
