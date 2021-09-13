@@ -1245,7 +1245,7 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": {
-          operating_system?: number;
+          operating_system: number;
         };
       };
     };

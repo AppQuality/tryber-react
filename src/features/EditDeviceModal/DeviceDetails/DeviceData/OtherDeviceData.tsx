@@ -34,11 +34,14 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
           value: d.manufacturer || "",
         });
         if (values.manufacturer === d.manufacturer && d.models)
-          d.models.map((items) => {
-            return {
-              label: items.name,
-              value: items.id,
-            };
+          modelsOptions = d.models.map((items) => {
+            if (items.name && items.id) {
+              return {
+                label: items.name,
+                value: items.id.toString(),
+              };
+            }
+            return { label: "", value: "" };
           });
       }
     });
