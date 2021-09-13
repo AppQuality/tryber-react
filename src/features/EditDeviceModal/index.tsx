@@ -12,7 +12,7 @@ import { useState } from "react";
 import DeviceType from "./DeviceType";
 import DeviceDetails from "./DeviceDetails";
 import DeviceRecap from "./DeviceRecap";
-import { Formik, Form, Field } from "formik";
+import { Formik } from "formik";
 
 export default ({ edit = true }: { edit?: boolean }) => {
   const {

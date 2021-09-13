@@ -36,6 +36,7 @@ const PCData = ({ edit }: { edit: boolean }) => {
           <Select
             isDisabled={edit}
             name={field.name}
+            menuTargetQuery="body"
             label={t("Computer type")}
             options={options}
             value={{ label: field.value, value: field.value }}
