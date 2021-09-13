@@ -98,7 +98,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
                   v = { label: "", value: "" };
                 }
                 field.onChange(v.value);
-                form.setFieldValue("model", v.value, true);
+                form.setFieldValue("model", v.label, true);
                 form.setFieldValue("device", v.value, true);
               }}
             />

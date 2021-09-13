@@ -20,6 +20,12 @@ export default ({ edit }: { edit: boolean }) => {
     const getOsPlatforms = async () => {
       const platformsResults = await API.getOsPlatforms({
         deviceType: values.device_type,
+        query: {
+          filterBy: {
+            manufacturer: values.manufacturer,
+            model: values.model,
+          },
+        },
       });
       const options = platformsResults.map((item) => ({
         value: item.name || "",
