@@ -75,7 +75,7 @@ export default ({ edit }: { edit: boolean }) => {
           <Select
             name={field.name}
             label={t("Operating system")}
-            isDisabled={edit}
+            isDisabled={edit || (!values.model && !values.pc_type)}
             options={osPlatforms}
             menuTargetQuery="body"
             onChange={(v) => {
@@ -101,6 +101,7 @@ export default ({ edit }: { edit: boolean }) => {
         }: FieldProps) => (
           <Select
             name={field.name}
+            isDisabled={!values.operating_system_platform}
             label={t("Operating system version")}
             options={osVersions}
             value={{

@@ -88,7 +88,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
             <Select
               label="model"
               name="model"
-              isDisabled={edit}
+              isDisabled={edit || !values.manufacturer}
               menuTargetQuery="body"
               value={{
                 label: values.model || "",
