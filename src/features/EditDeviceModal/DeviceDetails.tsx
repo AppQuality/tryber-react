@@ -77,6 +77,7 @@ export default ({ edit }: { edit: boolean }) => {
             label={t("Operating system")}
             isDisabled={edit}
             options={osPlatforms}
+            menuTargetQuery="body"
             onChange={(v) => {
               if (v == null) {
                 v = { label: "", value: "" };
@@ -106,6 +107,7 @@ export default ({ edit }: { edit: boolean }) => {
               label: values.operating_system_version || "",
               value: values.operating_system_id?.toString() || "0",
             }}
+            menuTargetQuery="body"
             onChange={(v) => {
               if (v == null) {
                 v = { label: "", value: "" };

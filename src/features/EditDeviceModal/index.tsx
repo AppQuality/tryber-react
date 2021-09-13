@@ -1,4 +1,9 @@
-import { Modal, ModalBody, Button } from "@appquality/appquality-design-system";
+import {
+  Modal,
+  ModalBody,
+  Button,
+  Steps,
+} from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import userDeviceStore from "../../redux/userDevices";
 import siteWideMessageStore from "../../redux/siteWideMessages";
@@ -28,10 +33,13 @@ export default ({ edit = true }: { edit?: boolean }) => {
   };
   const steps = [];
   if (!edit) {
-    steps.push({ content: <DeviceType /> });
+    steps.push({ title: t("Device type"), content: <DeviceType /> });
   }
-  steps.push({ content: <DeviceDetails edit={edit} /> });
-  steps.push({ content: <DeviceRecap /> });
+  steps.push({
+    title: t("Device details"),
+    content: <DeviceDetails edit={edit} />,
+  });
+  steps.push({ title: t("Device recap"), content: <DeviceRecap /> });
 
   let device_type =
     current?.type == "Smartphone"
@@ -48,95 +56,112 @@ export default ({ edit = true }: { edit?: boolean }) => {
       ? 5
       : 0;
   return (
-    <Modal
-      isOpen={modalOpen}
-      onClose={closeModal}
-      title={edit ? t("Edit device") : t("Add new device")}
-      footer={
-        <FooterBurrito>
-          <Button
-            type="primary"
-            flat={true}
-            onClick={() => setStep(step - 1)}
-            disabled={step === 0}
-          >
-            {t("Back")}
-          </Button>
-          {step == steps.length - 1 ? (
-            <Button
-              type="success"
-              onClick={() => {
-                add({ message: "ok", type: "success" });
-                closeModal();
-              }}
-              flat={true}
-              disabled={step > steps.length - 1}
-            >
-              {edit ? t("Edit device") : t("Add device")}
-            </Button>
-          ) : (
-            <Button
-              type="primary"
-              onClick={() => setStep(step + 1)}
-              flat={true}
-              disabled={step > steps.length - 1}
-            >
-              {t("Next")}
-            </Button>
-          )}
-        </FooterBurrito>
-      }
-    >
-      <ModalBody>
-        <Formik
-          initialValues={{
-            device_type: device_type,
-            pc_type:
-              current?.device && "pc_type" in current.device
-                ? current.device.pc_type
-                : "",
-            manufacturer:
-              current?.device && "manufacturer" in current.device
-                ? current.device.manufacturer
-                : "",
-            model:
-              current?.device && "model" in current.device
-                ? current.device.model
-                : "",
-            device:
-              current && current.device && "id" in current.device
-                ? current.device.id
-                : 0,
-            operating_system_id: current?.operating_system.id || 0,
-            operating_system_platform: current?.operating_system.platform || "",
-            operating_system_version: current?.operating_system.version || "",
-          }}
-          onSubmit={(data) => console.log(data)}
+    <DeviceWizard>
+      <Formik
+        initialValues={{
+          device_type: device_type,
+          pc_type:
+            current?.device && "pc_type" in current.device
+              ? current.device.pc_type
+              : "",
+          manufacturer:
+            current?.device && "manufacturer" in current.device
+              ? current.device.manufacturer
+              : "",
+          model:
+            current?.device && "model" in current.device
+              ? current.device.model
+              : "",
+          device:
+            current && current.device && "id" in current.device
+              ? current.device.id
+              : 0,
+          operating_system_id: current?.operating_system.id || 0,
+          operating_system_platform: current?.operating_system.platform || "",
+          operating_system_version: current?.operating_system.version || "",
+        }}
+        onSubmit={(data) => console.log(data)}
+      >
+        <Modal
+          isOpen={modalOpen}
+          onClose={closeModal}
+          title={edit ? t("Edit device") : t("Add new device")}
+          footer={
+            <div className="device-wizard-footer">
+              <Button
+                type="primary"
+                flat={true}
+                onClick={() => setStep(step - 1)}
+                disabled={step === 0}
+              >
+                {t("Back")}
+              </Button>
+              {step == steps.length - 1 ? (
+                <Button
+                  type="success"
+                  onClick={() => {
+                    add({ message: "ok", type: "success" });
+                    closeModal();
+                  }}
+                  flat={true}
+                  disabled={step > steps.length - 1}
+                >
+                  {edit ? t("Edit device") : t("Add device")}
+                </Button>
+              ) : (
+                <Button
+                  type="primary"
+                  onClick={() => setStep(step + 1)}
+                  flat={true}
+                  disabled={step > steps.length - 1}
+                >
+                  {t("Next")}
+                </Button>
+              )}
+            </div>
+          }
         >
-          {steps[step].content}
-        </Formik>
-      </ModalBody>
-    </Modal>
+          <ModalBody>
+            <Steps current={step}>
+              {steps.map((step) => (
+                <Steps.Step
+                  className="device-wizard-step"
+                  isCompleted={false}
+                  title={step.title}
+                />
+              ))}
+            </Steps>
+            <div className="device-wizard-content">{steps[step].content}</div>
+          </ModalBody>
+        </Modal>
+      </Formik>
+    </DeviceWizard>
   );
 };
 
-const FooterBurrito = styled.div`
-  display: grid;
-  grid-template-areas: "prev next";
-  grid-template-columns: 1fr 1fr;
-  grid-gap: ${(props) => props.theme.grid.spacing.default};
+const DeviceWizard = styled.div`
+  .device-wizard-footer {
+    display: grid;
+    grid-template-areas: "prev next";
+    grid-template-columns: 1fr 1fr;
+    grid-gap: ${(props) => props.theme.grid.spacing.default};
 
-  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
-    grid-template-areas: "empty prev next";
-    grid-template-columns: 1fr auto auto;
+    @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+      grid-template-areas: "empty prev next";
+      grid-template-columns: 1fr auto auto;
+    }
+    button {
+      min-width: 120px;
+    }
+    button:first-child {
+      grid-area: prev;
+    }
+    button:last-child {
+      grid-area: next;
+    }
   }
-  button {
-    min-width: 120px;
-  }
-  button:first-child {
-    grid-area: prev;
-  }
-  button:last-child {
-    grid-area: next;
+  .steps > * {
+    flex: 1 1 100%;
+    text-align: center;
   }
 `;

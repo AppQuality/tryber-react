@@ -65,6 +65,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
                 label: values.manufacturer || "",
                 value: values.manufacturer || "",
               }}
+              menuTargetQuery="body"
               options={manufacturers}
               onChange={(v) => {
                 if (v == null) {
@@ -88,6 +89,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
               label="model"
               name="model"
               isDisabled={edit}
+              menuTargetQuery="body"
               value={{
                 label: values.model || "",
                 value: values.device?.toString() || "0",
