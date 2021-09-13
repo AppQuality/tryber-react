@@ -65,14 +65,24 @@ export default ({ edit }: { edit: boolean }) => {
       <Field name="operative_system_platform" disabled={edit}>
         {({
           field, // { name, value, onChange, onBlur }
-          form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+          form,
           meta,
         }: FieldProps) => (
           <Select
             name={field.name}
             label={t("Operating system")}
             options={osPlatforms}
-            value={field.value}
+            onChange={(v) => {
+              if (v == null) {
+                v = { label: "", value: "" };
+              }
+              field.onChange(v.value);
+              form.setFieldValue(field.name, v.value, true);
+            }}
+            value={{
+              label: field.value,
+              value: field.value,
+            }}
           />
         )}
       </Field>
