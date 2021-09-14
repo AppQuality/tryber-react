@@ -62,7 +62,7 @@ export default () => {
                 closeModal();
                 formikProps.handleReset();
               }}
-              title={current ? t("Edit device") : t("Add new device")}
+              title={current ? t("Edit device") : t("Add a new device")}
               footer={
                 <DeviceModalFooter
                   isValid={formikProps.isValid}
@@ -74,7 +74,7 @@ export default () => {
               }
             >
               <ModalBody>
-                <Steps current={step}>
+                <Steps current={step} className="aq-mb-3">
                   {steps.map((step, index) => (
                     <Steps.Step
                       key={index}

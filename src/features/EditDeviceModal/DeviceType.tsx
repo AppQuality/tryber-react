@@ -12,7 +12,7 @@ const RadioInput = ({
   children: React.ReactNode;
 }) => {
   return (
-    <label htmlFor={`${name}-${value}`}>
+    <label htmlFor={`${name}-${value}`} className="aq-text-center">
       <Field name={name}>
         {({
           field, // { name, value, onChange, onBlur }
@@ -81,22 +81,22 @@ const DeviceType = () => {
       <StyledDeviceBurrito role="group">
         <div className="device-radio aq-p-3">
           <RadioInput name="device_type" value={2}>
-            <Laptop className="aq-mb-3" /> Computer
+            <Laptop className="aq-mb-3" /> <strong>Computer</strong>
           </RadioInput>
         </div>
         <div className="device-radio aq-p-3">
           <RadioInput name="device_type" value={0}>
-            <Phone className="aq-mb-3" /> Smartphone
+            <Phone className="aq-mb-3" /> <strong>Smartphone</strong>
           </RadioInput>
         </div>
         <div className="device-radio aq-p-3">
           <RadioInput name="device_type" value={1}>
-            <Tablet className="aq-mb-3" /> Tablet
+            <Tablet className="aq-mb-3" /> <strong>Tablet</strong>
           </RadioInput>
         </div>
         <div className="device-radio aq-p-3">
           <RadioInput name="device_type" value={5}>
-            <Tv className="aq-mb-3" /> Smart TV & TV Box
+            <Tv className="aq-mb-3" /> <strong>Smart TV & TV Box</strong>
           </RadioInput>
         </div>
       </StyledDeviceBurrito>
