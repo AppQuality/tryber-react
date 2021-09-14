@@ -59,8 +59,24 @@ const RemoveDeviceModal = () => {
                     fetch();
                     closeDeleteModal();
                   })
-                  .catch(() => {
-                    add({ message: "Error", type: "danger" });
+                  .catch((e) => {
+                    if (e.statusCode === 406) {
+                      add({
+                        message: (
+                          <div>
+                            <strong>{t(`Oh no!`)}</strong>
+                            <div>
+                              {t(
+                                "You can't delete this device, you are using it in a campaign!"
+                              )}
+                            </div>
+                          </div>
+                        ),
+                        type: "danger",
+                      });
+                    } else {
+                      add({ message: "Error", type: "danger" });
+                    }
                   });
               }}
             >
