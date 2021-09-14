@@ -41,7 +41,8 @@ export default ({ edit = true }: { edit?: boolean }) => {
     {
       title: t("Device details"),
       content: <DeviceDetails edit={edit} />,
-      isCompleted: (errors) => !errors.operating_system_id && step > 1,
+      isCompleted: (errors) =>
+        !errors.operating_system_id && step > (edit ? 0 : 1),
     },
     { title: t("Device recap"), content: <DeviceRecap /> },
   ];
