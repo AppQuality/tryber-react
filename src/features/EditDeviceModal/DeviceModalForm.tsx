@@ -141,12 +141,7 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
         if (step === 0 && values.device_type === -1) {
           errors.device_type = "required";
         }
-        if (
-          step === 1 &&
-          values.operating_system_id === 0 &&
-          !values.pc_type &&
-          !values.device
-        ) {
+        if (step === 1 && values.operating_system_id === 0) {
           errors.operating_system_id = "required";
         }
         return errors;
