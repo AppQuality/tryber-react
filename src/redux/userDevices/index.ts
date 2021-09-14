@@ -5,6 +5,8 @@ import {
   selectDevice,
   openEditModal,
   openAddModal,
+  closeDeleteModal,
+  openDeleteModal,
   closeEditModal,
   closeAddModal,
 } from "./actionCreators";
@@ -16,10 +18,12 @@ export default (): DispatchSlice => {
     error,
     editModalOpen,
     addModalOpen,
+    deleteModalOpen,
   }: UserDeviceState = useSelector(
     (state: GeneralState) => ({
       editModalOpen: state.userDevices.editModalOpen,
       addModalOpen: state.userDevices.addModalOpen,
+      deleteModalOpen: state.userDevices.deleteModalOpen,
       items: state.userDevices.items,
       loading: state.userDevices.loading,
       error: state.userDevices.error,
@@ -39,11 +43,14 @@ export default (): DispatchSlice => {
     closeEditModal: () => dispatch(closeEditModal()),
     openAddModal: () => dispatch(openAddModal()),
     closeAddModal: () => dispatch(closeAddModal()),
+    openDeleteModal: () => dispatch(openDeleteModal()),
+    closeDeleteModal: () => dispatch(closeDeleteModal()),
     loading: loading,
     error: error,
     devices: items,
     current: currentDevice,
     editModalOpen: editModalOpen,
     addModalOpen: addModalOpen,
+    deleteModalOpen: deleteModalOpen,
   };
 };

@@ -41,3 +41,14 @@ export const closeAddModal = () => {
     dispatch({ type: actionTypes.DEVICE_ADD_MODAL_CLOSE });
   };
 };
+export const openDeleteModal = () => {
+  return (dispatch: UserDeviceDispatchType) => {
+    dispatch({ type: actionTypes.DEVICE_DELETE_MODAL_OPEN });
+  };
+};
+export const closeDeleteModal = () => {
+  return (dispatch: UserDeviceDispatchType) => {
+    dispatch({ type: actionTypes.DEVICE_UNSELECT });
+    dispatch({ type: actionTypes.DEVICE_DELETE_MODAL_CLOSE });
+  };
+};

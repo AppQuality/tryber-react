@@ -30,12 +30,15 @@ type DispatchSlice = {
   closeEditModal: () => void;
   openAddModal: () => void;
   closeAddModal: () => void;
+  openDeleteModal: () => void;
+  closeDeleteModal: () => void;
   fetch: () => void;
   select: (id: number) => void;
   devices: DeviceItem[];
   current?: DeviceItem;
   editModalOpen: boolean;
   addModalOpen: boolean;
+  deleteModalOpen: boolean;
   loading: boolean;
   error?: string;
 };
@@ -45,6 +48,7 @@ type UserDeviceState = {
   loading: boolean;
   editModalOpen: boolean;
   addModalOpen: boolean;
+  deleteModalOpen: boolean;
   error?: string;
 };
 type UserDeviceDispatchType = (args: UserDeviceAction) => UserDeviceAction;

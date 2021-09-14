@@ -7,7 +7,8 @@ import API from "../utils/api";
 
 const DeviceTable = () => {
   const { t } = useTranslation();
-  const { devices, loading, fetch, select, openEditModal } = userDeviceStore();
+  const { devices, loading, fetch, select, openEditModal, openDeleteModal } =
+    userDeviceStore();
   const { add } = siteWideMessageStore();
   useEffect(() => {
     fetch();
@@ -41,26 +42,8 @@ const DeviceTable = () => {
                 </Button>
                 <Button
                   onClick={() => {
-                    API.deleteDevice({ deviceId: d.id })
-                      .then(() => {
-                        add({
-                          message: (
-                            <div>
-                              <strong>{t(`Device removed`)}</strong>
-                              <div>
-                                {t(
-                                  `We successfully removed a device from your device list`
-                                )}
-                              </div>
-                            </div>
-                          ),
-                          type: "success",
-                        });
-                        fetch();
-                      })
-                      .catch(() => {
-                        add({ message: "Error", type: "danger" });
-                      });
+                    select(d.id);
+                    openDeleteModal();
                   }}
                   type="link"
                 >

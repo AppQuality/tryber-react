@@ -4,6 +4,7 @@ const initialState: UserDeviceState = {
   loading: true,
   editModalOpen: false,
   addModalOpen: false,
+  deleteModalOpen: false,
 };
 
 const reducer = (
@@ -69,6 +70,16 @@ const reducer = (
       return {
         ...state,
         addModalOpen: false,
+      };
+    case actionTypes.DEVICE_DELETE_MODAL_OPEN:
+      return {
+        ...state,
+        deleteModalOpen: true,
+      };
+    case actionTypes.DEVICE_DELETE_MODAL_CLOSE:
+      return {
+        ...state,
+        deleteModalOpen: false,
       };
   }
   return state;
