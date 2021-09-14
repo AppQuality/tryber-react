@@ -43,7 +43,19 @@ const DeviceTable = () => {
                   onClick={() => {
                     API.deleteDevice({ deviceId: d.id })
                       .then(() => {
-                        add({ message: "Deleted", type: "success" });
+                        add({
+                          message: (
+                            <div>
+                              <strong>{t(`Device removed`)}</strong>
+                              <div>
+                                {t(
+                                  `We successfully removed a device from your device list`
+                                )}
+                              </div>
+                            </div>
+                          ),
+                          type: "success",
+                        });
                         fetch();
                       })
                       .catch(() => {

@@ -41,7 +41,7 @@ const Devices = () => {
               <BSCol size="col-lg-3">
                 <Card
                   className="stick-to-header-lg aq-mb-3"
-                  title={t("Add device")}
+                  title={t("Update your device list")}
                   shadow={true}
                 >
                   <Text className="aq-mb-3">

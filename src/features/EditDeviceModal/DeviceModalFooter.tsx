@@ -22,14 +22,16 @@ export const DeviceModalFooter = ({
   const { current } = userDeviceStore();
   return (
     <div className="device-wizard-footer">
-      <Button
-        type="primary"
-        flat={true}
-        onClick={() => setStep(currentStep - 1)}
-        disabled={currentStep === 0}
-      >
-        {t("Back")}
-      </Button>
+      {currentStep > 0 && (
+        <Button
+          type="primary"
+          flat={true}
+          onClick={() => setStep(currentStep - 1)}
+          disabled={currentStep === 0}
+        >
+          {t("Back")}
+        </Button>
+      )}
       {currentStep === steps.length - 1 ? (
         <Button
           type="success"

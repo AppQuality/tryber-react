@@ -71,7 +71,16 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
             })
               .then(() => {
                 add({
-                  message: t(`device succesfully edited`),
+                  message: (
+                    <div>
+                      <strong>{t(`Device modified`)}</strong>
+                      <div>
+                        {t(
+                          `The changes to your device were successfully saved`
+                        )}
+                      </div>
+                    </div>
+                  ),
                   type: "success",
                 });
                 closeModal();
@@ -103,7 +112,16 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
                 },
               });
               add({
-                message: t(`device succesfully added`),
+                message: (
+                  <div>
+                    <strong>{t(`Device added`)}</strong>
+                    <div>
+                      {t(
+                        `A new device was successfully added to your device list`
+                      )}
+                    </div>
+                  </div>
+                ),
                 type: "success",
               });
               closeModal();
