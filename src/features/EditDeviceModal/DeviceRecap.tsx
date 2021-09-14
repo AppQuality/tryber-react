@@ -54,7 +54,7 @@ export default () => {
       <ul className="device-recap-props">
         {values.device_type === 2 ? (
           <li>
-            <span>{t("Computer type")}:</span> <strong>{values.device}</strong>
+            <span>{t("Computer type")}:</span> <strong>{values.pc_type}</strong>
           </li>
         ) : (
           <>
