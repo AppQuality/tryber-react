@@ -145,39 +145,64 @@ export default ({ edit = true }: { edit?: boolean }) => {
                     <Button
                       type="success"
                       onClick={async () => {
-                        let newDeviceId: operations["post-users-me-devices"]["requestBody"]["content"]["application/json"]["device"] =
-                          -1;
-                        const {
-                          device_type,
-                          pc_type,
-                          device,
-                          operating_system_id,
-                        } = formikProps.values;
-                        if (device_type === 2 && pc_type) {
-                          newDeviceId = pc_type;
-                        } else if (typeof device === "string") {
-                          newDeviceId = parseInt(device);
-                        }
-                        const osId =
-                          typeof operating_system_id === "string"
-                            ? parseInt(operating_system_id)
-                            : operating_system_id;
-                        if (newDeviceId !== -1) {
-                          try {
-                            const res = await API.addMyDevice({
-                              newDevice: {
-                                device: newDeviceId,
-                                operating_system: osId,
-                              },
-                            });
-                            add({
-                              message: t(`device succesfully added`),
-                              type: "success",
-                            });
-                            closeModal();
-                            fetch();
-                          } catch (e) {
-                            add({ message: e.message, type: "danger" });
+                        if (edit) {
+                          const { operating_system_id } = formikProps.values;
+                          const osId =
+                            typeof operating_system_id === "string"
+                              ? parseInt(operating_system_id)
+                              : operating_system_id;
+                          if (current?.id) {
+                            API.editDevice({
+                              deviceId: current.id,
+                              osId: osId,
+                            })
+                              .then(() => {
+                                add({
+                                  message: t(`device succesfully edited`),
+                                  type: "success",
+                                });
+                                closeModal();
+                                fetch();
+                              })
+                              .catch(() => {
+                                add({ message: "error", type: "danger" });
+                              });
+                          }
+                        } else {
+                          let newDeviceId: operations["post-users-me-devices"]["requestBody"]["content"]["application/json"]["device"] =
+                            -1;
+                          const {
+                            device_type,
+                            pc_type,
+                            device,
+                            operating_system_id,
+                          } = formikProps.values;
+                          if (device_type === 2 && pc_type) {
+                            newDeviceId = pc_type;
+                          } else if (typeof device === "string") {
+                            newDeviceId = parseInt(device);
+                          }
+                          const osId =
+                            typeof operating_system_id === "string"
+                              ? parseInt(operating_system_id)
+                              : operating_system_id;
+                          if (newDeviceId !== -1) {
+                            try {
+                              const res = await API.addMyDevice({
+                                newDevice: {
+                                  device: newDeviceId,
+                                  operating_system: osId,
+                                },
+                              });
+                              add({
+                                message: t(`device succesfully added`),
+                                type: "success",
+                              });
+                              closeModal();
+                              fetch();
+                            } catch (e) {
+                              add({ message: e.message, type: "danger" });
+                            }
                           }
                         }
                       }}

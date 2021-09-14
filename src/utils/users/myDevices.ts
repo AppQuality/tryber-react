@@ -89,3 +89,39 @@ export const deleteDevice = async ({
     throw new HttpError(res.status, res.statusText, json.err);
   }
 };
+
+export const editDevice = async ({
+  token,
+  deviceId,
+  osId,
+}: {
+  token?: string;
+  deviceId: number;
+  osId: number;
+}): Promise<
+  operations["delete-users-me-devices-deviceId"]["responses"]["200"]["content"]["application/json"]
+> => {
+  if (process.env.REACT_APP_DEFAULT_TOKEN)
+    token = process.env.REACT_APP_DEFAULT_TOKEN;
+  const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set("Content-Type", "application/json");
+  if (token) {
+    requestHeaders.set("Authorization", "Bearer " + token);
+  }
+  const res = await fetch(
+    `${process.env.REACT_APP_API_URL}/users/me/devices/${deviceId}`,
+    {
+      method: "PATCH",
+      headers: requestHeaders,
+      body: JSON.stringify({
+        operating_system: osId,
+      }),
+    }
+  );
+  if (res.ok) {
+    return await res.json();
+  } else {
+    const json = await res.json();
+    throw new HttpError(res.status, res.statusText, json.err);
+  }
+};
