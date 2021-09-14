@@ -3,6 +3,7 @@ import { Select, SelectType } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import API from "../../../../utils/api";
 import { operations } from "../../../../utils/schema";
+import { DeviceFormInterface } from "../../types";
 
 const OtherDeviceData = ({ edit }: { edit: boolean }) => {
   const { values } = useFormikContext<DeviceFormInterface>();

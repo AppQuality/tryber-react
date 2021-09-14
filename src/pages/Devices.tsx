@@ -21,7 +21,6 @@ const Devices = () => {
   return (
     <GoogleTagManager title={t("Personal Equipment")}>
       <LoggedOnly>
-        <EditDeviceModal edit={false} />
         <EditDeviceModal />
         <TesterSidebar route={"personal-equipment"}>
           <Container className="aq-pb-3">

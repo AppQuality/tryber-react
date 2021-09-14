@@ -9,6 +9,7 @@ import PCData from "./DeviceDetails/DeviceData/PCData";
 import OtherDeviceData from "./DeviceDetails/DeviceData/OtherDeviceData";
 import { useTranslation } from "react-i18next";
 import API from "../../utils/api";
+import { DeviceFormInterface } from "./types";
 
 export default ({ edit }: { edit: boolean }) => {
   const { values } = useFormikContext<DeviceFormInterface>();

@@ -1,9 +1,18 @@
+import { ReactNode } from "react";
+import { FormikErrors } from "formik";
+
 type PcType =
   | "Notebook"
   | "Desktop"
   | "Ultrabook"
   | "Gaming PC"
   | "Tablet PC / Hybrid";
+
+interface WizardStep {
+  title: string;
+  content: ReactNode;
+  isCompleted?: (errors: FormikErrors<any>) => boolean;
+}
 
 interface DeviceFormInterface {
   pc_type?: PcType;

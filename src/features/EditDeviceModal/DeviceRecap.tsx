@@ -2,6 +2,7 @@ import { useFormikContext } from "formik";
 import { Laptop, Phone, Tablet, Tv } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { DeviceFormInterface } from "./types";
 
 export default () => {
   const { values } = useFormikContext<DeviceFormInterface>();
