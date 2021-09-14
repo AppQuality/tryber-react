@@ -17,7 +17,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
       const res = await API.getModels({ deviceType: values.device_type });
       setApiDevices(res);
     };
-    if (values.device_type !== 2) {
+    if (values.device_type !== 2 && values.device_type >= 0) {
       // device type already selected and not a PC
       // fetch manufacturer and models
       getModels();

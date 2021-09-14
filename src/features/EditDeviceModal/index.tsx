@@ -71,9 +71,11 @@ export default ({ edit = true }: { edit?: boolean }) => {
       : current?.type == "Smart-tv"
       ? 5
       : -1;
+  console.log(device_type);
   return (
     <DeviceWizard>
       <Formik
+        enableReinitialize
         initialValues={{
           device_type: device_type,
           pc_type:
@@ -115,16 +117,16 @@ export default ({ edit = true }: { edit?: boolean }) => {
           return errors;
         }}
       >
-        {(props) => {
+        {(formikProps) => {
           useEffect(() => {
-            props.validateForm();
+            formikProps.validateForm();
           }, [step]);
           return (
             <Modal
               isOpen={modalOpen}
               onClose={() => {
                 closeModal();
-                props.handleReset();
+                formikProps.handleReset();
               }}
               title={edit ? t("Edit device") : t("Add new device")}
               footer={
@@ -156,7 +158,7 @@ export default ({ edit = true }: { edit?: boolean }) => {
                         setStep(step + 1);
                       }}
                       flat={true}
-                      disabled={step > steps.length - 1 || !props.isValid}
+                      disabled={step > steps.length - 1 || !formikProps.isValid}
                     >
                       {t("Next")}
                     </Button>
@@ -171,7 +173,7 @@ export default ({ edit = true }: { edit?: boolean }) => {
                       key={index}
                       className="device-wizard-step"
                       isCompleted={
-                        step.isCompleted && step.isCompleted(props.errors)
+                        step.isCompleted && step.isCompleted(formikProps.errors)
                       }
                       title={step.title}
                     />
