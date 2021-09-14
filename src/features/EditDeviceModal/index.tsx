@@ -14,6 +14,7 @@ import DeviceRecap from "./DeviceRecap";
 import { Formik, FormikErrors } from "formik";
 import styled from "styled-components";
 import API from "../../utils/api";
+import { operations } from "../../utils/schema";
 
 interface WizardStep {
   title: string;
@@ -28,6 +29,7 @@ export default ({ edit = true }: { edit?: boolean }) => {
     closeEditModal,
     closeAddModal,
     current,
+    fetch,
   } = userDeviceStore();
   const { add } = siteWideMessageStore();
   const [step, setStep] = useState(0);
@@ -73,33 +75,31 @@ export default ({ edit = true }: { edit?: boolean }) => {
       : current?.type == "Smart-tv"
       ? 5
       : -1;
-  console.log(device_type);
+  const initialValues: DeviceFormInterface = {
+    device_type: device_type,
+    pc_type:
+      current?.device && "pc_type" in current.device
+        ? current.device.pc_type
+        : undefined,
+    manufacturer:
+      current?.device && "manufacturer" in current.device
+        ? current.device.manufacturer
+        : "",
+    model:
+      current?.device && "model" in current.device ? current.device.model : "",
+    device:
+      current && current.device && "id" in current.device
+        ? current.device.id
+        : 0,
+    operating_system_id: current?.operating_system.id || 0,
+    operating_system_platform: current?.operating_system.platform || "",
+    operating_system_version: current?.operating_system.version || "",
+  };
   return (
     <DeviceWizard>
       <Formik
         enableReinitialize
-        initialValues={{
-          device_type: device_type,
-          pc_type:
-            current?.device && "pc_type" in current.device
-              ? current.device.pc_type
-              : "",
-          manufacturer:
-            current?.device && "manufacturer" in current.device
-              ? current.device.manufacturer
-              : "",
-          model:
-            current?.device && "model" in current.device
-              ? current.device.model
-              : "",
-          device:
-            current && current.device && "id" in current.device
-              ? current.device.id
-              : 0,
-          operating_system_id: current?.operating_system.id || 0,
-          operating_system_platform: current?.operating_system.platform || "",
-          operating_system_version: current?.operating_system.version || "",
-        }}
+        initialValues={initialValues}
         onSubmit={(data) => console.log(data)}
         isInitialValid={false}
         validate={(values) => {
@@ -144,22 +144,42 @@ export default ({ edit = true }: { edit?: boolean }) => {
                   {step === steps.length - 1 ? (
                     <Button
                       type="success"
-                      onClick={() => {
-                        const { device_type, pc_type, device } =
-                          formikProps.values;
-                        if (device_type === 2 && pc_type)
-                          API.addMyDevice({
-                            newDevice: {
-                              device:
-                                formikProps.values.device_type === 2
-                                  ? formikProps.values.pc_type
-                                  : formikProps.values.device,
-                              operating_system:
-                                formikProps.values.operating_system_id,
-                            },
-                          });
-                        add({ message: "ok", type: "success" });
-                        closeModal();
+                      onClick={async () => {
+                        let newDeviceId: operations["post-users-me-devices"]["requestBody"]["content"]["application/json"]["device"] =
+                          -1;
+                        const {
+                          device_type,
+                          pc_type,
+                          device,
+                          operating_system_id,
+                        } = formikProps.values;
+                        if (device_type === 2 && pc_type) {
+                          newDeviceId = pc_type;
+                        } else if (typeof device === "string") {
+                          newDeviceId = parseInt(device);
+                        }
+                        const osId =
+                          typeof operating_system_id === "string"
+                            ? parseInt(operating_system_id)
+                            : operating_system_id;
+                        if (newDeviceId !== -1) {
+                          try {
+                            const res = await API.addMyDevice({
+                              newDevice: {
+                                device: newDeviceId,
+                                operating_system: osId,
+                              },
+                            });
+                            add({
+                              message: t(`device succesfully added`),
+                              type: "success",
+                            });
+                            closeModal();
+                            fetch();
+                          } catch (e) {
+                            add({ message: e.message, type: "danger" });
+                          }
+                        }
                       }}
                       flat={true}
                       disabled={step > steps.length - 1}

@@ -5,7 +5,7 @@ type UserDeviceAction = {
 };
 
 type DeviceItemPc = {
-  pc_type: string;
+  pc_type: PcType;
 };
 type DeviceItemOther = {
   manufacturer: string;
