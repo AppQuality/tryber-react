@@ -13,6 +13,7 @@ import DeviceDetails from "./DeviceDetails";
 import DeviceRecap from "./DeviceRecap";
 import { Formik, FormikErrors } from "formik";
 import styled from "styled-components";
+import API from "../../utils/api";
 
 interface WizardStep {
   title: string;
@@ -144,6 +145,19 @@ export default ({ edit = true }: { edit?: boolean }) => {
                     <Button
                       type="success"
                       onClick={() => {
+                        const { device_type, pc_type, device } =
+                          formikProps.values;
+                        if (device_type === 2 && pc_type)
+                          API.addMyDevice({
+                            newDevice: {
+                              device:
+                                formikProps.values.device_type === 2
+                                  ? formikProps.values.pc_type
+                                  : formikProps.values.device,
+                              operating_system:
+                                formikProps.values.operating_system_id,
+                            },
+                          });
                         add({ message: "ok", type: "success" });
                         closeModal();
                       }}
