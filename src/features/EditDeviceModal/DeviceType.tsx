@@ -80,13 +80,13 @@ const DeviceType = () => {
     <>
       <StyledDeviceBurrito role="group">
         <div className="device-radio aq-p-3">
-          <RadioInput name="device_type" value={0}>
-            <Phone className="aq-mb-3" /> Smartphone
+          <RadioInput name="device_type" value={2}>
+            <Laptop className="aq-mb-3" /> Computer
           </RadioInput>
         </div>
         <div className="device-radio aq-p-3">
-          <RadioInput name="device_type" value={2}>
-            <Laptop className="aq-mb-3" /> Computer
+          <RadioInput name="device_type" value={0}>
+            <Phone className="aq-mb-3" /> Smartphone
           </RadioInput>
         </div>
         <div className="device-radio aq-p-3">
