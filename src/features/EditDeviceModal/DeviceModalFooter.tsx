@@ -40,7 +40,7 @@ export const DeviceModalFooter = ({
           flat={true}
           disabled={currentStep > steps.length - 1}
         >
-          {current ? t("Edit device") : t("Add device")}
+          {current ? t("Save changes") : t("Add device")}
         </Button>
       ) : (
         <Button
