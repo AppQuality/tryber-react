@@ -1,11 +1,14 @@
 import { Table, Button, TableType } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import userDeviceStore from "../redux/userDevices";
+import siteWideMessageStore from "../redux/siteWideMessages";
 import { useEffect } from "react";
+import API from "../utils/api";
 
 const DeviceTable = () => {
   const { t } = useTranslation();
   const { devices, loading, fetch, select, openEditModal } = userDeviceStore();
+  const { add } = siteWideMessageStore();
   useEffect(() => {
     fetch();
   }, []);
@@ -26,15 +29,32 @@ const DeviceTable = () => {
           actions: {
             title: "asd",
             content: (
-              <Button
-                onClick={() => {
-                  select(d.id);
-                  openEditModal();
-                }}
-                type="link"
-              >
-                {t("Edit")}
-              </Button>
+              <>
+                <Button
+                  onClick={() => {
+                    select(d.id);
+                    openEditModal();
+                  }}
+                  type="link"
+                >
+                  {t("Edit")}
+                </Button>
+                <Button
+                  onClick={() => {
+                    API.deleteDevice({ deviceId: d.id })
+                      .then(() => {
+                        add({ message: "Deleted", type: "success" });
+                        fetch();
+                      })
+                      .catch(() => {
+                        add({ message: "Error", type: "danger" });
+                      });
+                  }}
+                  type="link"
+                >
+                  {t("Delete")}
+                </Button>
+              </>
             ),
           },
         };
