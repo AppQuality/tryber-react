@@ -17,7 +17,16 @@ import userStore from "./redux/user";
 import referralStore from "./redux/referral";
 import { useEffect } from "react";
 import SiteWideMessages from "./features/SiteWideMessages";
+import { datadogLogs } from "@datadog/browser-logs";
 
+if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
+  datadogLogs.init({
+    clientToken: process.env.REACT_APP_DATADOG_CLIENT_TOKEN,
+    site: "datadoghq.eu",
+    forwardErrorsToLogs: true,
+    sampleRate: 100,
+  });
+}
 if (process.env.REACT_APP_GTM_ID) {
   const tagManagerArgs = {
     gtmId: process.env.REACT_APP_GTM_ID,
