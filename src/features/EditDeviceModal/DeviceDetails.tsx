@@ -3,6 +3,7 @@ import {
   FieldProps,
   Select,
   SelectType,
+  Text,
 } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import PCData from "./DeviceDetails/DeviceData/PCData";
@@ -13,7 +14,7 @@ import { DeviceFormInterface } from "./types";
 
 export default ({ edit }: { edit: boolean }) => {
   const { values } = useFormikContext<DeviceFormInterface>();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [osPlatforms, setOsPlatforms] = useState<SelectType.Option[]>([]);
   const [osVersions, setOsVersions] = useState<SelectType.Option[]>([]);
 
@@ -60,6 +61,10 @@ export default ({ edit }: { edit: boolean }) => {
       }
     }
   }, [values]);
+  const osGuideUrl =
+    i18n.language === "en"
+      ? "https://crowd.app-quality.com/miniguide-os-version/"
+      : "https://crowd.app-quality.com/it/individuare-la-propria-versione-del-sistema-operativo/";
   return (
     <div>
       {values.device_type === 2 ? ( // id of PC device type
@@ -94,6 +99,11 @@ export default ({ edit }: { edit: boolean }) => {
                 value: field.value,
               }}
             />
+            <Text color="info" className="aq-mt-2">
+              <a href={osGuideUrl} target="_blank">
+                {t("What operative system am i using?")}
+              </a>
+            </Text>
           </div>
         )}
       </Field>
