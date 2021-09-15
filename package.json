@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "private": true,
   "dependencies": {
-    "@appquality/appquality-design-system": "^0.1.122",
+    "@appquality/appquality-design-system": "^0.1.123",
     "@appquality/craft-blocks": "^0.1.15",
     "@datadog/browser-logs": "^3.4.1",
     "@testing-library/jest-dom": "^5.11.4",
