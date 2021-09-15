@@ -81,19 +81,19 @@ const DeviceTable = () => {
             title: t("Model"),
             dataIndex: "device",
             key: "device",
-            width: "25ch",
+            width: "15ch",
           },
           {
             title: t("Operating System"),
             dataIndex: "os",
             key: "os",
-            width: "15ch",
+            width: "10ch",
           },
           {
             title: t("Version"),
             dataIndex: "os_version",
             key: "os_version",
-            width: "10ch",
+            width: "25ch",
           },
           {
             title: t("Actions"),
