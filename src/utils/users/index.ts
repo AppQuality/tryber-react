@@ -194,4 +194,5 @@ export const experiencePoints = async ({
 };
 
 export * from "./myPopups";
+export * from "./myDevices";
 export * from "./onboardingComplete";

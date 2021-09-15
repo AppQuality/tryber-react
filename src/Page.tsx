@@ -5,6 +5,7 @@ import {
   ExperiencePoints,
   Home,
   Dashboard,
+  Devices,
 } from "./pages";
 import "./i18n";
 import TagManager from "react-gtm-module";
@@ -50,6 +51,11 @@ function Page() {
         </Route>
 
         <Route path={`${base}/my-dashboard`} component={() => <Dashboard />} />
+
+        <Route
+          path={`${base}/personal-equipment`}
+          component={() => <Devices />}
+        />
 
         <Route path={`${base}/it/la-mia-dashboard`}>
           <Redirect to="/it/my-dashboard" />
