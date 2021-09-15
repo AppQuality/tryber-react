@@ -66,8 +66,14 @@ const RecapBurrito = styled.div`
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    li {
+      text-align: center;
+    }
     @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
       align-items: flex-start;
+      li {
+        text-align: left;
+      }
     }
   }
 `;
