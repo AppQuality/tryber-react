@@ -149,8 +149,9 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
           errors.device_type = "required";
         }
         if (
-          (step === 1 && values.operating_system_id === 0) ||
-          values.operating_system_id === ""
+          step === 1 &&
+          (values.operating_system_id === 0 ||
+            values.operating_system_id === "")
         ) {
           errors.operating_system_id = "required";
         }
