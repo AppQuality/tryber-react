@@ -34,7 +34,7 @@ const Devices = () => {
                 <Card className="aq-mb-3" title={t("Your devices")}>
                   <Text className="aq-mb-3">
                     {t(
-                      "Here is the list of your all devices. Make sure to keep it update in order to boost your chances to be selected for further projects."
+                      "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects."
                     )}
                   </Text>
                   <DeviceTable />
