@@ -67,6 +67,13 @@ export default ({ edit }: { edit: boolean }) => {
       : "https://crowd.app-quality.com/it/individuare-la-propria-versione-del-sistema-operativo/";
   return (
     <div>
+      {edit ? (
+        <Text className="aq-mb-3">
+          {t(
+            "Here you can only change the version of your operating system. If you want to add another device click on Add device"
+          )}
+        </Text>
+      ) : null}
       {values.device_type === 2 ? ( // id of PC device type
         <PCData edit={edit} />
       ) : (
@@ -100,7 +107,7 @@ export default ({ edit }: { edit: boolean }) => {
               }}
             />
             <Text color="info" className="aq-mt-2">
-              <a href={osGuideUrl} target="_blank">
+              <a href={osGuideUrl} target="_blank" rel="noreferrer">
                 {t("What operative system am i using?")}
               </a>
             </Text>
