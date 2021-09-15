@@ -73,26 +73,28 @@ export default ({ edit }: { edit: boolean }) => {
           form,
           meta,
         }: FieldProps) => (
-          <Select
-            name={field.name}
-            label={t("Operating system")}
-            isDisabled={edit || (!values.model && !values.pc_type)}
-            options={osPlatforms}
-            menuTargetQuery="body"
-            onChange={(v) => {
-              if (v == null) {
-                v = { label: "", value: "" };
-              }
-              field.onChange(v.value);
-              form.setFieldValue(field.name, v.value, true);
-              form.setFieldValue("operating_system_version", "", true);
-              form.setFieldValue("operating_system_id", 0, true);
-            }}
-            value={{
-              label: field.value,
-              value: field.value,
-            }}
-          />
+          <div className="aq-mb-3">
+            <Select
+              name={field.name}
+              label={t("Operating system")}
+              isDisabled={edit || (!values.model && !values.pc_type)}
+              options={osPlatforms}
+              menuTargetQuery="body"
+              onChange={(v) => {
+                if (v == null) {
+                  v = { label: "", value: "" };
+                }
+                field.onChange(v.value);
+                form.setFieldValue(field.name, v.value, true);
+                form.setFieldValue("operating_system_version", "", true);
+                form.setFieldValue("operating_system_id", 0, true);
+              }}
+              value={{
+                label: field.value,
+                value: field.value,
+              }}
+            />
+          </div>
         )}
       </Field>
       <Field name="operating_system_version">
@@ -102,25 +104,27 @@ export default ({ edit }: { edit: boolean }) => {
           form, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
           meta,
         }: FieldProps) => (
-          <Select
-            name={field.name}
-            isDisabled={!values.operating_system_platform}
-            label={t("Operating system version")}
-            options={osVersions}
-            value={{
-              label: values.operating_system_version || "",
-              value: values.operating_system_id?.toString() || "0",
-            }}
-            menuTargetQuery="body"
-            onChange={(v) => {
-              if (v == null) {
-                v = { label: "", value: "" };
-              }
-              field.onChange(v.value);
-              form.setFieldValue("operating_system_version", v.label, true);
-              form.setFieldValue("operating_system_id", v.value, true);
-            }}
-          />
+          <div className="aq-mb-3">
+            <Select
+              name={field.name}
+              isDisabled={!values.operating_system_platform}
+              label={t("Operating system version")}
+              options={osVersions}
+              value={{
+                label: values.operating_system_version || "",
+                value: values.operating_system_id?.toString() || "0",
+              }}
+              menuTargetQuery="body"
+              onChange={(v) => {
+                if (v == null) {
+                  v = { label: "", value: "" };
+                }
+                field.onChange(v.value);
+                form.setFieldValue("operating_system_version", v.label, true);
+                form.setFieldValue("operating_system_id", v.value, true);
+              }}
+            />
+          </div>
         )}
       </Field>
     </div>

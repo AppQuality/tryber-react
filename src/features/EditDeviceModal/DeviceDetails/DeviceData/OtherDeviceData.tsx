@@ -58,29 +58,31 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
           form,
         }: any) => {
           return (
-            <Select
-              label="manufacturer"
-              name="manufacturer"
-              isDisabled={edit}
-              value={{
-                label: values.manufacturer || "",
-                value: values.manufacturer || "",
-              }}
-              menuTargetQuery="body"
-              options={manufacturers}
-              onChange={(v) => {
-                if (v == null) {
-                  v = { label: "", value: "" };
-                }
-                field.onChange(v.value);
-                form.setFieldValue("manufacturer", v.value, true);
-                form.setFieldValue("model", "", true);
-                form.setFieldValue("device", 0, true);
-                form.setFieldValue("operating_system_id", 0, true);
-                form.setFieldValue("operating_system_platform", "", true);
-                form.setFieldValue("operating_system_version", "", true);
-              }}
-            />
+            <div className="aq-mb-3">
+              <Select
+                label="manufacturer"
+                name="manufacturer"
+                isDisabled={edit}
+                value={{
+                  label: values.manufacturer || "",
+                  value: values.manufacturer || "",
+                }}
+                menuTargetQuery="body"
+                options={manufacturers}
+                onChange={(v) => {
+                  if (v == null) {
+                    v = { label: "", value: "" };
+                  }
+                  field.onChange(v.value);
+                  form.setFieldValue("manufacturer", v.value, true);
+                  form.setFieldValue("model", "", true);
+                  form.setFieldValue("device", 0, true);
+                  form.setFieldValue("operating_system_id", 0, true);
+                  form.setFieldValue("operating_system_platform", "", true);
+                  form.setFieldValue("operating_system_version", "", true);
+                }}
+              />
+            </div>
           );
         }}
       </Field>
@@ -91,28 +93,30 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
           form,
         }: any) => {
           return (
-            <Select
-              label="model"
-              name="model"
-              isDisabled={edit || !values.manufacturer}
-              menuTargetQuery="body"
-              value={{
-                label: values.model || "",
-                value: values.device?.toString() || "0",
-              }}
-              options={models}
-              onChange={(v) => {
-                if (v == null) {
-                  v = { label: "", value: "" };
-                }
-                field.onChange(v.value);
-                form.setFieldValue("model", v.label, true);
-                form.setFieldValue("device", v.value, true);
-                form.setFieldValue("operating_system_platform", "", true);
-                form.setFieldValue("operating_system_version", "", true);
-                form.setFieldValue("operating_system_id", 0, true);
-              }}
-            />
+            <div className="aq-mb-3">
+              <Select
+                label="model"
+                name="model"
+                isDisabled={edit || !values.manufacturer}
+                menuTargetQuery="body"
+                value={{
+                  label: values.model || "",
+                  value: values.device?.toString() || "0",
+                }}
+                options={models}
+                onChange={(v) => {
+                  if (v == null) {
+                    v = { label: "", value: "" };
+                  }
+                  field.onChange(v.value);
+                  form.setFieldValue("model", v.label, true);
+                  form.setFieldValue("device", v.value, true);
+                  form.setFieldValue("operating_system_platform", "", true);
+                  form.setFieldValue("operating_system_version", "", true);
+                  form.setFieldValue("operating_system_id", 0, true);
+                }}
+              />
+            </div>
           );
         }}
       </Field>
