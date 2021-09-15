@@ -121,7 +121,13 @@ export const editDevice = async ({
   if (res.ok) {
     return await res.json();
   } else {
-    const json = await res.json();
-    throw new HttpError(res.status, res.statusText, json.err);
+    let errorText = "Error";
+    try {
+      const json = await res.json();
+      errorText = json.err;
+    } catch {
+      errorText = "Error";
+    }
+    throw new HttpError(res.status, res.statusText, errorText);
   }
 };
