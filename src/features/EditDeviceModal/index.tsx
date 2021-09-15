@@ -9,7 +9,7 @@ import styled from "styled-components";
 import { DeviceModalForm } from "./DeviceModalForm";
 import { DeviceModalFooter } from "./DeviceModalFooter";
 import { WizardStep } from "./types";
-import { FormikErrors, FormikProps, useFormikContext } from "formik";
+import { FormikProps } from "formik";
 
 export default () => {
   const {

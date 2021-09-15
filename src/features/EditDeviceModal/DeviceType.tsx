@@ -26,7 +26,18 @@ const RadioInput = ({
               checked={field.value == value}
               defaultValue={value}
               onChange={(e) => {
-                form.setFieldValue(field.name, parseInt(e.target.value));
+                form.setValues(
+                  {
+                    device_type: parseInt(e.target.value),
+                    manufacturer: "",
+                    model: "",
+                    device: 0,
+                    operating_system_id: 0,
+                    operating_system_platform: "",
+                    operating_system_version: "",
+                  },
+                  true
+                );
               }}
             />
           );
