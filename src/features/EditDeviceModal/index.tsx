@@ -57,6 +57,7 @@ export default () => {
           }, [step]);
           return (
             <Modal
+              closeOnClickOutside={false}
               isOpen={modalOpen}
               onClose={() => {
                 closeModal();
