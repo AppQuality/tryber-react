@@ -148,7 +148,6 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
             }
           }
         }
-        formikHelpers.resetForm();
         formikHelpers.setSubmitting(false);
       }}
       isInitialValid={false}
