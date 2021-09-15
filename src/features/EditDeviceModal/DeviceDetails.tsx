@@ -106,11 +106,6 @@ export default ({ edit }: { edit: boolean }) => {
                 value: field.value,
               }}
             />
-            <Text color="info" className="aq-mt-2">
-              <a href={osGuideUrl} target="_blank" rel="noreferrer">
-                {t("What operative system am i using?")}
-              </a>
-            </Text>
           </div>
         )}
       </Field>
@@ -142,6 +137,11 @@ export default ({ edit }: { edit: boolean }) => {
                 form.setFieldValue("operating_system_id", osId, true);
               }}
             />
+            <Text color="info" className="aq-mt-2">
+              <a href={osGuideUrl} target="_blank" rel="noreferrer">
+                {t("What operating system am i using?")}
+              </a>
+            </Text>
           </div>
         )}
       </Field>
