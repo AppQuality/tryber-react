@@ -88,7 +88,17 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
               })
               .catch((e) => {
                 if (e.statusCode === 304) {
-                  add({ message: e.message, type: "info" });
+                  add({
+                    message: (
+                      <div>
+                        <strong>{t(`Your device was not modified`)}</strong>
+                        <div>
+                          {t(`You didn't change anything on your device`)}
+                        </div>
+                      </div>
+                    ),
+                    type: "info",
+                  });
                 } else {
                   add({
                     message: e.message || t("Generic error"),
