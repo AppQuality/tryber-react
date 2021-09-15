@@ -137,8 +137,9 @@ export default ({ edit }: { edit: boolean }) => {
                   v = { label: "", value: "" };
                 }
                 field.onChange(v.value);
+                const osId = v.value !== "" ? v.value : 0;
                 form.setFieldValue("operating_system_version", v.label, true);
-                form.setFieldValue("operating_system_id", v.value, true);
+                form.setFieldValue("operating_system_id", osId, true);
               }}
             />
           </div>

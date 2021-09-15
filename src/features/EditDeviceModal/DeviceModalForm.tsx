@@ -154,14 +154,14 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
       validate={(values) => {
         const errors: { device_type?: string; operating_system_id?: string } =
           {};
-        if (step === 0 && values.device_type === -1) {
+
+        const isDeviceTypeStep = step === 0;
+        const isDeviceDetailsStep = current ? step === 0 : step === 1;
+
+        if (isDeviceTypeStep && values.device_type === -1) {
           errors.device_type = "required";
         }
-        if (
-          step === 1 &&
-          (values.operating_system_id === 0 ||
-            values.operating_system_id === "")
-        ) {
+        if (isDeviceDetailsStep && values.operating_system_id === 0) {
           errors.operating_system_id = "required";
         }
         return errors;
