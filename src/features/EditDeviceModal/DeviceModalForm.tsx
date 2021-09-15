@@ -69,7 +69,7 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
               deviceId: current.id,
               osId: osId,
             })
-              .then(() => {
+              .then((res) => {
                 add({
                   message: (
                     <div>
@@ -86,8 +86,15 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
                 closeModal();
                 fetch();
               })
-              .catch(() => {
-                add({ message: "error", type: "danger" });
+              .catch((e) => {
+                if (e.statusCode === 304) {
+                  add({ message: e.message, type: "info" });
+                } else {
+                  add({
+                    message: e.message || t("Generic error"),
+                    type: "danger",
+                  });
+                }
               });
           }
         } else {
