@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import API from "../../../../utils/api";
 import { operations } from "../../../../utils/schema";
 import { DeviceFormInterface } from "../../types";
+import { useTranslation } from "react-i18next";
 
 const OtherDeviceData = ({ edit }: { edit: boolean }) => {
   const { values } = useFormikContext<DeviceFormInterface>();
@@ -49,7 +50,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
     setManufacturers(manufacturersOptions);
     setModels(modelsOptions);
   }, [values.manufacturer, apiDevices]);
-
+  const { t } = useTranslation();
   return (
     <>
       <Field name="manufacturer">
@@ -60,7 +61,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
           return (
             <div className="aq-mb-3">
               <Select
-                label="manufacturer"
+                label={t("Manufacturer")}
                 name="manufacturer"
                 isDisabled={edit}
                 value={{
@@ -95,7 +96,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
           return (
             <div className="aq-mb-3">
               <Select
-                label="model"
+                label={t("Model")}
                 name="model"
                 isDisabled={edit || !values.manufacturer}
                 menuTargetQuery="body"
