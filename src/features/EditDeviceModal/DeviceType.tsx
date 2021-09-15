@@ -1,4 +1,4 @@
-import { Laptop, Phone, Tablet, Tv } from "react-bootstrap-icons";
+import DeviceIcon from "../DeviceIcon";
 import styled from "styled-components";
 import { Field, useFormikContext } from "formik";
 
@@ -81,22 +81,22 @@ const DeviceType = () => {
       <StyledDeviceBurrito role="group">
         <div className="device-radio aq-p-3">
           <RadioInput name="device_type" value={2}>
-            <Laptop className="aq-mb-3" /> <strong>Computer</strong>
+            <DeviceIcon device_type={2} className="aq-mb-3" showText />
           </RadioInput>
         </div>
         <div className="device-radio aq-p-3">
           <RadioInput name="device_type" value={0}>
-            <Phone className="aq-mb-3" /> <strong>Smartphone</strong>
+            <DeviceIcon device_type={0} className="aq-mb-3" showText />
           </RadioInput>
         </div>
         <div className="device-radio aq-p-3">
           <RadioInput name="device_type" value={1}>
-            <Tablet className="aq-mb-3" /> <strong>Tablet</strong>
+            <DeviceIcon device_type={1} className="aq-mb-3" showText />
           </RadioInput>
         </div>
         <div className="device-radio aq-p-3">
           <RadioInput name="device_type" value={5}>
-            <Tv className="aq-mb-3" /> <strong>Smart TV & TV Box</strong>
+            <DeviceIcon device_type={5} className="aq-mb-3" showText />
           </RadioInput>
         </div>
       </StyledDeviceBurrito>

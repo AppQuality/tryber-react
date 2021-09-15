@@ -1,5 +1,5 @@
 import { useFormikContext } from "formik";
-import { Laptop, Phone, Tablet, Tv } from "react-bootstrap-icons";
+import DeviceIcon from "../DeviceIcon";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { DeviceFormInterface } from "./types";
@@ -7,51 +7,15 @@ import { DeviceFormInterface } from "./types";
 export default () => {
   const { values } = useFormikContext<DeviceFormInterface>();
   const { t } = useTranslation();
-  const getIcon = () => {
-    switch (values.device_type) {
-      case 0:
-        return (
-          <>
-            <Phone className="aq-mb-3" />
-            <div>
-              <strong>Smartphone</strong>
-            </div>
-          </>
-        );
-      case 1:
-        return (
-          <>
-            <Tablet className="aq-mb-3" />
-            <div>
-              <strong>Tablet</strong>
-            </div>
-          </>
-        );
-      case 2:
-        return (
-          <>
-            <Laptop className="aq-mb-3" />
-            <div>
-              <strong>Computer</strong>
-            </div>
-          </>
-        );
-      case 5:
-        return (
-          <>
-            <Tv className="aq-mb-3" />
-            <div>
-              <strong>Smart TV & TV Box</strong>
-            </div>
-          </>
-        );
-      default:
-        return "";
-    }
-  };
   return (
     <RecapBurrito>
-      <div className="device-recap-icon aq-p-3 aq-m-3">{getIcon()}</div>
+      <div className="device-recap-icon aq-p-3 aq-m-3">
+        <DeviceIcon
+          device_type={values.device_type}
+          className="aq-mb-3"
+          showText
+        />
+      </div>
       <ul className="device-recap-props">
         {values.device_type === 2 ? (
           <li>

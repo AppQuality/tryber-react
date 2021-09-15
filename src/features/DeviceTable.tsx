@@ -4,6 +4,7 @@ import userDeviceStore from "../redux/userDevices";
 import siteWideMessageStore from "../redux/siteWideMessages";
 import { useEffect } from "react";
 import API from "../utils/api";
+import DeviceIcon from "./DeviceIcon";
 
 const DeviceTable = () => {
   const { t } = useTranslation();
@@ -23,12 +24,15 @@ const DeviceTable = () => {
         }
         return {
           key: d.id,
-          type: d.type,
+          type: {
+            title: d.type,
+            content: <DeviceIcon device_type={d.type} size={20} />,
+          },
           device: deviceName,
           os: d.operating_system.platform,
           os_version: d.operating_system.version,
           actions: {
-            title: "asd",
+            title: "Edit and Delete",
             content: (
               <>
                 <Button
@@ -70,7 +74,8 @@ const DeviceTable = () => {
             title: t("Type"),
             dataIndex: "type",
             key: "type",
-            width: "15ch",
+            width: "3ch",
+            align: "center",
           },
           {
             title: t("Model"),
