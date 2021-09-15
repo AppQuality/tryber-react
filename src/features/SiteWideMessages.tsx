@@ -1,4 +1,4 @@
-import { Toastr } from "@appquality/appquality-design-system";
+import { Toastr, BSGrid, BSCol } from "@appquality/appquality-design-system";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import siteWideMessageStore from "../redux/siteWideMessages";
 import styled from "styled-components";
@@ -6,11 +6,19 @@ import styled from "styled-components";
 const TIMEOUT = 200;
 const ToastrContainer = styled.div`
   position: fixed;
-  top: 0;
-  left: 20%;
-  right: 20%;
+  top: calc(
+    56px + ${(props) => props.theme.grid.spacing.default}
+  ); // navbar height + default margin
+  width: 100%;
   z-index: 99999;
-
+  .toastr-container {
+    margin-left: calc(var(--gutter-x) / 2);
+    width: calc(100% - var(--gutter-x));
+    @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+      width: 920px;
+      margin-left: calc((100% - 920px) / 2);
+    }
+  }
   .fade {
     transition: all ${TIMEOUT}ms;
   }
@@ -29,23 +37,25 @@ const ToastrContainer = styled.div`
 `;
 
 const SiteWideMessages = () => {
-  const { messages, add, remove } = siteWideMessageStore();
+  const { messages, remove } = siteWideMessageStore();
 
   return (
     <ToastrContainer>
-      <TransitionGroup>
-        {messages.map((m) => (
-          <CSSTransition timeout={TIMEOUT} classNames="fade">
-            <Toastr
-              type={m.type}
-              className="aq-mb-3 fade"
-              onClose={m.expire ? undefined : () => remove({ uuid: m.uuid })}
-            >
-              {m.message}
-            </Toastr>
-          </CSSTransition>
-        ))}
-      </TransitionGroup>
+      <BSGrid>
+        <TransitionGroup className="toastr-container">
+          {messages.map((m) => (
+            <CSSTransition timeout={TIMEOUT} classNames="fade">
+              <Toastr
+                type={m.type}
+                className="aq-mb-3 fade"
+                onClose={m.expire ? undefined : () => remove({ uuid: m.uuid })}
+              >
+                {m.message}
+              </Toastr>
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
+      </BSGrid>
     </ToastrContainer>
   );
 };
