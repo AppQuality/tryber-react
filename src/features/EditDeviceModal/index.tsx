@@ -10,6 +10,7 @@ import { DeviceModalForm } from "./DeviceModalForm";
 import { DeviceModalFooter } from "./DeviceModalFooter";
 import { WizardStep } from "./types";
 import { FormikProps } from "formik";
+import { usePrevious } from "../../hooks/usePrevious";
 
 export default () => {
   const {
@@ -22,6 +23,8 @@ export default () => {
   const [step, setStep] = useState(0);
   const { t } = useTranslation();
   const modalOpen = current ? editModalOpen : addModalOpen;
+  // Get the previous value
+  const prevModalOpen: boolean = usePrevious<boolean>(modalOpen);
   const closeModal = () => {
     setStep(0);
     current ? closeEditModal() : closeAddModal();
@@ -55,6 +58,12 @@ export default () => {
           useEffect(() => {
             formikProps.validateForm();
           }, [step]);
+          useEffect(() => {
+            // if passing from close to open
+            if (!prevModalOpen && modalOpen) {
+              formikProps.handleReset();
+            }
+          }, [modalOpen]);
           return (
             <Modal
               closeOnClickOutside={false}
