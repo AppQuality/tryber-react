@@ -89,6 +89,7 @@ export default ({ edit }: { edit: boolean }) => {
             <Select
               name={field.name}
               label={t("Operating system")}
+              placeholder={t("Search")}
               isDisabled={edit || (!values.model && !values.pc_type)}
               options={osPlatforms}
               menuTargetQuery="body"
@@ -121,6 +122,7 @@ export default ({ edit }: { edit: boolean }) => {
               name={field.name}
               isDisabled={!values.operating_system_platform}
               label={t("Operating system version")}
+              placeholder={t("Search")}
               options={osVersions}
               value={{
                 label: values.operating_system_version || "",
