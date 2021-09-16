@@ -32,18 +32,24 @@ const reducer = (
     case actionTypes.DEVICE_SELECT:
       return {
         ...state,
-        items: state.items.map((i: DeviceItem) => {
-          i.selected = i.id === action.data;
-          return i;
-        }),
+        items:
+          state.items && state.items.length
+            ? state.items.map((i: DeviceItem) => {
+                i.selected = i.id === action.data;
+                return i;
+              })
+            : [],
       };
     case actionTypes.DEVICE_UNSELECT:
       return {
         ...state,
-        items: state.items.map((i: DeviceItem) => {
-          i.selected = false;
-          return i;
-        }),
+        items:
+          state.items && state.items.length
+            ? state.items.map((i: DeviceItem) => {
+                i.selected = false;
+                return i;
+              })
+            : [],
       };
     case actionTypes.DEVICE_LOAD:
       return {
