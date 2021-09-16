@@ -2,8 +2,8 @@ import { Container, Title, Text } from "@appquality/appquality-design-system";
 import { Trans, useTranslation } from "react-i18next";
 import testerIcon from "./assets/testers.svg";
 import campaignsIcon from "./assets/campaigns.svg";
-import devicesIcon from "./assets/devices.svg";
-import bugsIcon from "./assets/bugs.svg";
+import countriesIcon from "./assets/countries.svg";
+import brandsHelped from "./assets/brandsHelped.svg";
 import { StyledSection } from "./_styles";
 import { BannerTop } from "./content/BannerTop";
 import { DataList } from "./content/DataList";
@@ -39,22 +39,22 @@ export default function Home() {
     {
       name: t("testers"),
       icon: testerIcon,
-      text: "25.000",
+      text: "30.000",
     },
     {
-      name: t("devices"),
-      icon: devicesIcon,
-      text: "25.000",
+      name: t("Countries covered"),
+      icon: countriesIcon,
+      text: "100",
     },
     {
       name: t("testing campaigns"),
       icon: campaignsIcon,
-      text: "2.500",
+      text: "3.500",
     },
     {
-      name: t("bugs found"),
-      icon: bugsIcon,
-      text: "150.000",
+      name: t("Brands helped"),
+      icon: brandsHelped,
+      text: "150",
     },
   ];
 
