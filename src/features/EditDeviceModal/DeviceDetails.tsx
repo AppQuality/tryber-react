@@ -63,8 +63,8 @@ export default ({ edit }: { edit: boolean }) => {
   }, [values]);
   const osGuideUrl =
     i18n.language === "en"
-      ? "https://crowd.app-quality.com/miniguide-os-version/"
-      : "https://crowd.app-quality.com/it/individuare-la-propria-versione-del-sistema-operativo/";
+      ? "/miniguide-os-version/"
+      : "/it/individuare-la-propria-versione-del-sistema-operativo/";
   return (
     <div>
       {edit ? (
