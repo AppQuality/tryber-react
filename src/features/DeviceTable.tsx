@@ -32,7 +32,6 @@ const DeviceTable = () => {
           os: d.operating_system.platform,
           os_version: d.operating_system.version,
           actions: {
-            title: "Edit and Delete",
             content: (
               <>
                 <Button
