@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import userDeviceStore from "../redux/userDevices";
 import siteWideMessageStore from "../redux/siteWideMessages";
 import API from "../utils/api";
+import { Trans } from "react-i18next";
 
 const RemoveDeviceModal = () => {
   const { deleteModalOpen, closeDeleteModal, fetch, current } =
@@ -96,34 +97,52 @@ const RemoveDeviceModal = () => {
           {"manufacturer" in current.device ? (
             <li>
               <Text>
-                {t("Manufacturer")} : <b>{current.device.manufacturer}</b>
+                <Trans
+                  i18nKey="Manufacturer: <bold>{{manufacturer}}</bold>"
+                  values={{ manufacturer: current.device.manufacturer }}
+                  components={{ bold: <strong /> }}
+                />
               </Text>
             </li>
           ) : null}
           {"model" in current.device ? (
             <li>
               <Text>
-                {t("Model")} : <b>{current.device.model}</b>
+                <Trans
+                  i18nKey="Model: <bold>{{model}}</bold>"
+                  values={{ model: current.device.model }}
+                  components={{ bold: <strong /> }}
+                />
               </Text>
             </li>
           ) : null}
           {"pc_type" in current.device ? (
             <li>
               <Text>
-                {t("PC Type")} : <b>{current.device.pc_type}</b>
+                <Trans
+                  i18nKey="PC Type: <bold>{{pc_type}}</bold>"
+                  values={{ pc_type: current.device.pc_type }}
+                  components={{ bold: <strong /> }}
+                />
               </Text>
             </li>
           ) : null}
           <li>
             <Text>
-              {t("Operating System")} :{" "}
-              <b>{current.operating_system.platform}</b>
+              <Trans
+                i18nKey="Operating System: <bold>{{platform}}</bold>"
+                values={{ platform: current.operating_system.platform }}
+                components={{ bold: <strong /> }}
+              />
             </Text>
           </li>
           <li>
             <Text>
-              {t("Operating System Version")} :{" "}
-              <b>{current.operating_system.version}</b>
+              <Trans
+                i18nKey="Operating System Version: <bold>{{version}}</bold>"
+                values={{ version: current.operating_system.version }}
+                components={{ bold: <strong /> }}
+              />
             </Text>
           </li>
         </ul>
