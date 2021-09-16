@@ -9,7 +9,12 @@ export const fetchDevices = () => {
       .then((devices) => {
         dispatch({ type: actionTypes.DEVICE_FETCH, data: devices });
       })
-      .catch((e) => dispatch({ type: actionTypes.DEVICE_FAILED, error: e }));
+      .catch((e) => {
+        if (e.statusCode === 404) {
+          return dispatch({ type: actionTypes.DEVICE_FETCH, data: [] });
+        }
+        dispatch({ type: actionTypes.DEVICE_FAILED, error: e });
+      });
   };
 };
 

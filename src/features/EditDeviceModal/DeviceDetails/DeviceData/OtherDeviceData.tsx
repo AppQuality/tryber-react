@@ -62,6 +62,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
             <div className="aq-mb-3">
               <Select
                 label={t("Manufacturer")}
+                placeholder={t("Search")}
                 name="manufacturer"
                 isDisabled={edit}
                 value={{
@@ -97,6 +98,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
             <div className="aq-mb-3">
               <Select
                 label={t("Model")}
+                placeholder={t("Search")}
                 name="model"
                 isDisabled={edit || !values.manufacturer}
                 menuTargetQuery="body"

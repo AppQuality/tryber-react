@@ -39,6 +39,7 @@ const PCData = ({ edit }: { edit: boolean }) => {
               name={field.name}
               menuTargetQuery="body"
               label={t("Computer type")}
+              placeholder={t("Search")}
               options={options}
               value={{ label: field.value, value: field.value }}
               onChange={(v) => {

@@ -67,7 +67,9 @@ const DeviceTable = () => {
         isStriped={true}
         i18n={{
           loading: t("Loading Data"),
-          empty: t("There are no data here!"),
+          empty: t(
+            "You don't have any devices yet. Add one to participate in the tests!"
+          ),
         }}
         columns={[
           {
