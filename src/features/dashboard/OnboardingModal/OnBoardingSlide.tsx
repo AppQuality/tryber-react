@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 export const OnBoardingSlide = styled.div`
   overflow: auto;
+  ul {
+    list-style: disc;
+    padding: 1em;
+    margin: 1em;
+  }
   .main-img {
     position: relative;
     height: 300px;
