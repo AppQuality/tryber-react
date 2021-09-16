@@ -5,6 +5,7 @@ import {
   ExperiencePoints,
   Home,
   Dashboard,
+  Devices,
 } from "./pages";
 import "./i18n";
 import TagManager from "react-gtm-module";
@@ -15,7 +16,17 @@ import queryString from "query-string";
 import userStore from "./redux/user";
 import referralStore from "./redux/referral";
 import { useEffect } from "react";
+import SiteWideMessages from "./features/SiteWideMessages";
+import { datadogLogs } from "@datadog/browser-logs";
 
+if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
+  datadogLogs.init({
+    clientToken: process.env.REACT_APP_DATADOG_CLIENT_TOKEN,
+    site: "datadoghq.eu",
+    forwardErrorsToLogs: true,
+    sampleRate: 100,
+  });
+}
 if (process.env.REACT_APP_GTM_ID) {
   const tagManagerArgs = {
     gtmId: process.env.REACT_APP_GTM_ID,
@@ -41,6 +52,7 @@ function Page() {
   return (
     <>
       <SiteHeader />
+      <SiteWideMessages />
       <Switch>
         <Route path={`${base}/getting-started`} component={GettingStarted} />
         <Route path={`${base}/it/getting-started-2`}>
@@ -48,6 +60,22 @@ function Page() {
         </Route>
 
         <Route path={`${base}/my-dashboard`} component={() => <Dashboard />} />
+
+        <Route
+          path={`${base}/personal-equipment`}
+          component={() => <Devices />}
+        />
+        <Route
+          path={`/it/i-miei-device`}
+          component={({ location }: { location: Location }) => (
+            <Redirect
+              to={{
+                ...location,
+                pathname: "/it/personal-equipment",
+              }}
+            />
+          )}
+        />
 
         <Route path={`${base}/it/la-mia-dashboard`}>
           <Redirect to="/it/my-dashboard" />

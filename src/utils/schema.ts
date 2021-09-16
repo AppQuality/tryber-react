@@ -156,6 +156,48 @@ export interface paths {
       };
     };
   };
+  "/users/me/devices": {
+    get: operations["get-users-me-devices"];
+    /** Add a new device to your user */
+    post: operations["post-users-me-devices"];
+  };
+  "/users/me/devices/{deviceId}": {
+    get: operations["get-users-me-devices-deviceId"];
+    delete: operations["delete-users-me-devices-deviceId"];
+    patch: operations["patch-users-me-devices-deviceId"];
+    parameters: {
+      path: {
+        deviceId: number;
+      };
+    };
+  };
+  "/devices/{device_type}/models": {
+    /** Get all model of devices with theirs manufacturers */
+    get: operations["get-devices-devices-type-model"];
+    parameters: {
+      path: {
+        device_type: string;
+      };
+    };
+  };
+  "/devices/{device_type}/operating_systems": {
+    /** Get all operating systems of a device type */
+    get: operations["get-devices-operating-systems"];
+    parameters: {
+      path: {
+        device_type: string;
+      };
+    };
+  };
+  "/devices/{device_type}/os_versions": {
+    /** Get all versions of an operating systems */
+    get: operations["get-devices-os-versions"];
+    parameters: {
+      path: {
+        device_type: string;
+      };
+    };
+  };
 }
 
 export interface components {
@@ -287,6 +329,24 @@ export interface components {
     TranslatablePage: {
       en?: string;
       it?: string;
+    };
+    UserDevice: {
+      type: string;
+      id: number;
+      device:
+        | {
+            manufacturer: string;
+            model: string;
+            id?: number;
+          }
+        | {
+            pc_type: string;
+          };
+      operating_system: {
+        id: number;
+        platform: string;
+        version: string;
+      };
     };
   };
   responses: {
@@ -1072,6 +1132,200 @@ export interface operations {
           } & components["schemas"]["Popup"];
         };
       };
+    };
+  };
+  "get-users-me-devices": {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": ({
+            id?: number;
+          } & components["schemas"]["UserDevice"])[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Add a new device to your user */
+  "post-users-me-devices": {
+    responses: {
+      /** Created */
+      201: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["UserDevice"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          device:
+            | number
+            | (
+                | "Notebook"
+                | "Desktop"
+                | "Ultrabook"
+                | "Gaming PC"
+                | "Tablet PC / Hybrid"
+              );
+          operating_system: number;
+        };
+      };
+    };
+  };
+  "get-users-me-devices-deviceId": {
+    parameters: {
+      path: {
+        deviceId: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["UserDevice"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "delete-users-me-devices-deviceId": {
+    parameters: {
+      path: {
+        deviceId: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            message?: string;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "patch-users-me-devices-deviceId": {
+    parameters: {
+      path: {
+        deviceId: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["UserDevice"];
+        };
+      };
+      /** Not Modified */
+      304: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["UserDevice"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          operating_system: number;
+        };
+      };
+    };
+  };
+  /** Get all model of devices with theirs manufacturers */
+  "get-devices-devices-type-model": {
+    parameters: {
+      path: {
+        device_type: string;
+      };
+      query: {
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            manufacturer?: string;
+            models?: {
+              id?: number;
+              name?: string;
+            }[];
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Get all operating systems of a device type */
+  "get-devices-operating-systems": {
+    parameters: {
+      path: {
+        device_type: string;
+      };
+      query: {
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+            name?: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Get all versions of an operating systems */
+  "get-devices-os-versions": {
+    parameters: {
+      path: {
+        device_type: string;
+      };
+      query: {
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+            name?: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
     };
   };
 }

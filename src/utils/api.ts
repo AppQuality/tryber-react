@@ -1,28 +1,13 @@
-import { login, signup } from "./authenticate";
-import { campaigns } from "./campaigns";
-import {
-  me,
-  myBugs,
-  myCampaigns,
-  experiencePoints,
-  myPopups,
-  myPopupsById,
-  setOnboardingComplete,
-  getOnboardingComplete,
-} from "./users";
+import * as authenticate from "./authenticate";
+import * as campaigns from "./campaigns";
+import * as user from "./users";
+import * as devices from "./devices";
 
 const API = {
-  login,
-  campaigns,
-  me,
-  signup,
-  myBugs,
-  myPopups,
-  myPopupsById,
-  myCampaigns,
-  experiencePoints,
-  setOnboardingComplete,
-  getOnboardingComplete,
+  ...authenticate,
+  ...campaigns,
+  ...user,
+  ...devices,
 };
 
 export default API;

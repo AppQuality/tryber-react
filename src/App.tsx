@@ -20,35 +20,12 @@ if (process.env.REACT_APP_GTM_ID) {
   TagManager.initialize(tagManagerArgs);
 }
 
-const TemporaryGlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-  }
-  .container .hero {
-    margin-left: calc(-24px/2);
-    margin-right: calc(-24px/2);
-    @media (min-width: 768px) {
-      margin-left: calc((720px - 100vw - 24px)/2);
-      margin-right: calc((720px - 100vw - 24px)/2);
-    }
-    @media (min-width: 1200px) {
-      margin-left: calc((1140px - 100vw - 24px)/2);
-      margin-right: calc((1140px - 100vw - 24px)/2);
-    }
-    @media (min-width: 1400px) {
-      margin-left: calc((1320px - 100vw - 24px)/2);
-      margin-right: calc((1320px - 100vw - 24px)/2);
-    }
-  }
-`;
-
 function App() {
   const { t } = useTranslation();
   return (
     <Provider>
       <ThemeProvider theme={aqBootstrapTheme}>
         <GlobalStyle />
-        <TemporaryGlobalStyle />
         <Helmet>
           <meta
             property="og:title"

@@ -4,3 +4,4 @@ node_modules
 .husky
 generate-devel-token.json
 build
+Dockerfile
