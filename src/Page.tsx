@@ -65,6 +65,17 @@ function Page() {
           path={`${base}/personal-equipment`}
           component={() => <Devices />}
         />
+        <Route
+          path={`/it/i-miei-device`}
+          component={({ location }: { location: Location }) => (
+            <Redirect
+              to={{
+                ...location,
+                pathname: "/it/personal-equipment",
+              }}
+            />
+          )}
+        />
 
         <Route path={`${base}/it/la-mia-dashboard`}>
           <Redirect to="/it/my-dashboard" />
