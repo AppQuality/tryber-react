@@ -70,7 +70,7 @@ export default ({ edit }: { edit: boolean }) => {
       {edit ? (
         <Text className="aq-mb-3">
           {t(
-            "Here you can only change the version of your operating system. If you want to add another device click on Add device"
+            `Here you can only change the version of your operating system. If you want to add another device click on "Add device"`
           )}
         </Text>
       ) : null}
