@@ -47,7 +47,7 @@ export default function Home() {
       text: "100",
     },
     {
-      name: t("testing campaigns"),
+      name: t("Campaigns delivered"),
       icon: campaignsIcon,
       text: "3.500",
     },

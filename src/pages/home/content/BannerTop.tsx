@@ -7,7 +7,7 @@ import {
 } from "@appquality/appquality-design-system";
 import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as TopShape } from "../assets/rectangle-top.svg";
-import people from "../assets/join-the-community.png";
+import people from "../assets/join-the-community.svg";
 import { LangMenu } from "../../../features/LangMenu";
 import styled from "styled-components";
 import { CSSTransition } from "react-transition-group";
