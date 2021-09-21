@@ -37,12 +37,12 @@ export const CardSection = () => {
   const { t } = useTranslation();
   const cardListItems = [
     {
-      icon: <Alarm />,
-      title: t("flexible hours"),
+      icon: <Wallet2 />,
+      title: t("fair payments"),
       body: (
         <Trans
-          i18nKey="<bold>Test when and where you want!</bold><br></br>The important thing is to respect the closing date of the Test Campaign"
-          defaults="<bold>Test when and where you want!</bold><br></br>The important thing is to respect the closing date of the Test Campaign"
+          i18nKey="By successfully completing a Campaign <bold>you will receive a payout</bold>, which you can transfer to your IBAN or PayPal."
+          defaults="By successfully completing a Campaign <bold>you will receive a payout</bold>, which you can transfer to your IBAN or PayPal."
           components={{ br: <br />, bold: <strong /> }}
         />
       ),
@@ -70,12 +70,12 @@ export const CardSection = () => {
       ),
     },
     {
-      icon: <Wallet2 />,
-      title: t("fair payments"),
+      icon: <Alarm />,
+      title: t("flexible hours"),
       body: (
         <Trans
-          i18nKey="By successfully completing a Campaign <bold>you will receive a payout</bold>, which you can transfer to your IBAN or PayPal."
-          defaults="By successfully completing a Campaign <bold>you will receive a payout</bold>, which you can transfer to your IBAN or PayPal."
+          i18nKey="<bold>Test when and where you want!</bold><br></br>The important thing is to respect the closing date of the Test Campaign"
+          defaults="<bold>Test when and where you want!</bold><br></br>The important thing is to respect the closing date of the Test Campaign"
           components={{ br: <br />, bold: <strong /> }}
         />
       ),
