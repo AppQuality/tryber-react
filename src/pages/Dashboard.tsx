@@ -21,7 +21,7 @@ import ComingSoonHelpModal from "../features/dashboard/ComingSoonHelpModal";
 import OnboardingModal from "../features/dashboard/OnboardingModal";
 import { useTranslation } from "react-i18next";
 import useUser from "../redux/user";
-
+import { FeedbackModal } from "../features/dashboard/FeedbackModal";
 import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
 
@@ -32,6 +32,7 @@ export default function Dashboard() {
   const [isPopupModalOpen, setIsPopupModalOpen] = useState(true);
   const [isPopupArchiveModalOpen, setIsPopupArchiveModalOpen] = useState(false);
   const [isOnboardingModalOpen, setIsOnboardingModalOpen] = useState(true);
+  const [isFeedbackModalOpen, setFeedbackModalOpen] = useState(false);
 
   const { t } = useTranslation();
 
@@ -56,6 +57,12 @@ export default function Dashboard() {
             onClose={() => setIsPopupArchiveModalOpen(false)}
             open={isPopupArchiveModalOpen}
             showExpired={true}
+          />
+        ) : null}
+        {onboardingComplete ? (
+          <FeedbackModal
+            onClose={() => setFeedbackModalOpen(false)}
+            open={isFeedbackModalOpen}
           />
         ) : null}
         <TesterSidebar route={"my-dashboard"}>
@@ -124,18 +131,30 @@ export default function Dashboard() {
                     <PerformanceData />
                   </Card>
                   {onboardingComplete ? (
-                    <Card shadow={true}>
-                      <Button
-                        flat
-                        type="info"
-                        size="block"
-                        onClick={() =>
-                          setIsPopupArchiveModalOpen(!isPopupArchiveModalOpen)
-                        }
-                      >
-                        {t("Inbox")}
-                      </Button>
-                    </Card>
+                    <>
+                      <Card shadow={true} className="aq-mb-3">
+                        <Button
+                          flat
+                          type="info"
+                          size="block"
+                          onClick={() =>
+                            setIsPopupArchiveModalOpen(!isPopupArchiveModalOpen)
+                          }
+                        >
+                          {t("Inbox")}
+                        </Button>
+                      </Card>
+                      <Card shadow={true}>
+                        <Button
+                          flat
+                          type="info"
+                          size="block"
+                          onClick={() => setFeedbackModalOpen(true)}
+                        >
+                          {t("Feedback")}
+                        </Button>
+                      </Card>
+                    </>
                   ) : null}
                 </div>
               </BSCol>
