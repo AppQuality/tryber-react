@@ -1,4 +1,4 @@
-import { Modal, ModalBody, Title } from "@appquality/appquality-design-system";
+import { Modal, ModalBody } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 
 export const FeedbackModal = ({

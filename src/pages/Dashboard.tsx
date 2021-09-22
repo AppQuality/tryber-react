@@ -21,9 +21,9 @@ import ComingSoonHelpModal from "../features/dashboard/ComingSoonHelpModal";
 import OnboardingModal from "../features/dashboard/OnboardingModal";
 import { useTranslation } from "react-i18next";
 import useUser from "../redux/user";
-import { FeedbackModal } from "../features/dashboard/FeedbackModal";
 import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
+import { Helmet } from "react-helmet";
 
 export default function Dashboard() {
   //constants - START
@@ -35,9 +35,25 @@ export default function Dashboard() {
   const [isFeedbackModalOpen, setFeedbackModalOpen] = useState(false);
 
   const { t } = useTranslation();
-
   return (
     <GoogleTagManager title={t("Dashboard")}>
+      <Helmet
+        script={[
+          {
+            type: "text/javascript",
+            innerHTML: `new JF_FeedbackEmbedButton({
+          buttonText: "Feedback",
+          buttonFontColor: "#FFFFFF",
+          buttonBackgroundColor: "#266A9A",
+          buttonSide: "Bottom",
+          buttonAlign: "Right",
+          buttonIcon: "rate",
+          base: "https://form.jotform.com/",
+          formId: 212631772995061
+        });`,
+          },
+        ]}
+      />
       <LoggedOnly>
         <ComingSoonHelpModal />
         {onboardingComplete ? null : (
@@ -57,12 +73,6 @@ export default function Dashboard() {
             onClose={() => setIsPopupArchiveModalOpen(false)}
             open={isPopupArchiveModalOpen}
             showExpired={true}
-          />
-        ) : null}
-        {onboardingComplete ? (
-          <FeedbackModal
-            onClose={() => setFeedbackModalOpen(false)}
-            open={isFeedbackModalOpen}
           />
         ) : null}
         <TesterSidebar route={"my-dashboard"}>
@@ -131,30 +141,18 @@ export default function Dashboard() {
                     <PerformanceData />
                   </Card>
                   {onboardingComplete ? (
-                    <>
-                      <Card shadow={true} className="aq-mb-3">
-                        <Button
-                          flat
-                          type="info"
-                          size="block"
-                          onClick={() =>
-                            setIsPopupArchiveModalOpen(!isPopupArchiveModalOpen)
-                          }
-                        >
-                          {t("Inbox")}
-                        </Button>
-                      </Card>
-                      <Card shadow={true}>
-                        <Button
-                          flat
-                          type="info"
-                          size="block"
-                          onClick={() => setFeedbackModalOpen(true)}
-                        >
-                          {t("Feedback")}
-                        </Button>
-                      </Card>
-                    </>
+                    <Card shadow={true} className="aq-mb-3">
+                      <Button
+                        flat
+                        type="info"
+                        size="block"
+                        onClick={() =>
+                          setIsPopupArchiveModalOpen(!isPopupArchiveModalOpen)
+                        }
+                      >
+                        {t("Inbox")}
+                      </Button>
+                    </Card>
                   ) : null}
                 </div>
               </BSCol>

@@ -38,6 +38,7 @@ function App() {
               "Becoming a part of Crowd AppQuality community is simple: It's not requested a particular profile, is the multiprofile our power."
             )}
           />
+          <script src="https://form.jotform.com/cardforms/feedbackEmbedButton.min.js"></script>
         </Helmet>
         <BrowserRouter>
           <Page />
