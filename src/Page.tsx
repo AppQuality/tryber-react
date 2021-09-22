@@ -108,7 +108,7 @@ function Page() {
             />
           )}
         />
-        <Route path={["/", "/it"]} exact component={Home} />
+        <Route path={["/", "/it", "/es"]} exact component={Home} />
       </Switch>
     </>
   );
