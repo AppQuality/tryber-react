@@ -42,15 +42,15 @@ export default function Dashboard() {
           {
             type: "text/javascript",
             innerHTML: `new JF_FeedbackEmbedButton({
-          buttonText: "Feedback",
-          buttonFontColor: "#FFFFFF",
-          buttonBackgroundColor: "#266A9A",
-          buttonSide: "Bottom",
-          buttonAlign: "Right",
-          buttonIcon: "rate",
-          base: "https://form.jotform.com/",
-          formId: 212631772995061
-        });`,
+              buttonText: "Feedback",
+              buttonFontColor: "#FFFFFF",
+              buttonBackgroundColor: "#266A9A",
+              buttonSide: "Bottom",
+              buttonAlign: "Right",
+              buttonIcon: "rate",
+              base: "https://form.jotform.com/",
+              formId: "212631772995061?testerId=${user?.id}"
+            });`,
           },
         ]}
       />

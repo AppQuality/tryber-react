@@ -17,13 +17,7 @@ export const FeedbackModal = ({
   };
   return (
     <Modal isOpen={open} onClose={onClose}>
-      <ModalBody>
-        <iframe
-          title="feedback jotform"
-          style={iFrameStyle}
-          src="https://form.jotform.com/212631772995061"
-        />
-      </ModalBody>
+      <ModalBody />
     </Modal>
   );
 };
