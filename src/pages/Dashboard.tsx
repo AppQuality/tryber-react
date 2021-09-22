@@ -49,7 +49,12 @@ export default function Dashboard() {
               buttonAlign: "Right",
               buttonIcon: "rate",
               base: "https://form.jotform.com/",
-              formId: "212631772995061${user ? "?testerId=T" + user.id : null}"
+              formId: "212631772995061",
+              ${
+                user
+                  ? "additionalQueryParams: '?testerId=T" + user.id + "'"
+                  : null
+              }
             });`,
           },
         ]}
