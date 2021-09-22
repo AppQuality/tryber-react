@@ -22,9 +22,15 @@ const StyledMenu = styled.div`
 interface LangMenuProps extends BaseProps {
   itLink: string;
   enLink: string;
+  esLink: string;
 }
 
-export const LangMenu = ({ itLink, enLink, className }: LangMenuProps) => {
+export const LangMenu = ({
+  itLink,
+  enLink,
+  esLink,
+  className,
+}: LangMenuProps) => {
   const { t, i18n } = useTranslation();
   return (
     <StyledMenu className={className}>
@@ -40,6 +46,13 @@ export const LangMenu = ({ itLink, enLink, className }: LangMenuProps) => {
         className={`${i18n.language === "en" ? "current " : ""}lang-navLink`}
       >
         English
+      </a>
+      |{" "}
+      <a
+        href={esLink}
+        className={`${i18n.language === "es" ? "current " : ""}lang-navLink`}
+      >
+        Spanish
       </a>
     </StyledMenu>
   );

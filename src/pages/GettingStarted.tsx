@@ -25,6 +25,7 @@ export default function GettingStarted() {
           <LangMenu
             className="aq-mt-3"
             itLink="/it/getting-started/"
+            esLink="/es/getting-started/"
             enLink="/getting-started/"
           />
           <BSGrid>
