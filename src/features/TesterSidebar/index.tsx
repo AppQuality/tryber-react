@@ -105,6 +105,8 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       url:
         i18next.language === "en"
           ? "/my-account/"
+          : i18next.language === "es"
+          ? `/${i18next.language}/perfil/`
           : `/${i18next.language}/il-mio-account/`,
       icon: <PersonFill />,
       active: route === "my-account",
@@ -123,6 +125,8 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       url:
         i18next.language === "en"
           ? "/payments/"
+          : i18next.language === "es"
+          ? `/${i18next.language}/pagos/`
           : `/${i18next.language}/pagamenti/`,
       icon: <Wallet2 />,
       active: route === "Payments",
@@ -140,6 +144,8 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       url:
         i18next.language === "en"
           ? "/leaderboard/"
+          : i18next.language === "en"
+          ? `/${i18next.language}/tabla-de-classificacion/`
           : `/${i18next.language}/leaderboard-2/`,
       icon: <GraphUp />,
       active: route === "leaderboard",
@@ -167,6 +173,8 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       url:
         i18next.language === "en"
           ? "/testing-school/"
+          : i18next.language === "es"
+          ? `/${i18next.language}/academia/`
           : `/${i18next.language}/universita-del-test/`,
       icon: <AwardFill />,
       active: route === "testing-school",
