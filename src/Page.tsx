@@ -55,7 +55,7 @@ function Page() {
       <SiteWideMessages />
       <Switch>
         <Route path={`${base}/getting-started`} component={GettingStarted} />
-        <Route path={`${base}/it/getting-started-2`}>
+        <Route path={`/it/getting-started-2`}>
           <Redirect to="/it/getting-started" />
         </Route>
 
@@ -76,9 +76,23 @@ function Page() {
             />
           )}
         />
+        <Route
+          path={`/es/dispositivos`}
+          component={({ location }: { location: Location }) => (
+            <Redirect
+              to={{
+                ...location,
+                pathname: "/es/personal-equipment",
+              }}
+            />
+          )}
+        />
 
-        <Route path={`${base}/it/la-mia-dashboard`}>
+        <Route path={`/it/la-mia-dashboard`}>
           <Redirect to="/it/my-dashboard" />
+        </Route>
+        <Route path={`/es/tablero`}>
+          <Redirect to="/es/my-dashboard" />
         </Route>
 
         <Route path={`${base}/my-bugs`} component={() => <MyBugs />} />
@@ -98,12 +112,34 @@ function Page() {
           )}
         />
         <Route
+          path={`${base}/es/puntos-de-experiencia`}
+          component={({ location }: { location: Location }) => (
+            <Redirect
+              to={{
+                ...location,
+                pathname: "/es/experience-points",
+              }}
+            />
+          )}
+        />
+        <Route
           path={`${base}/it/i-miei-bug`}
           component={({ location }: { location: Location }) => (
             <Redirect
               to={{
                 ...location,
                 pathname: "/it/my-bugs",
+              }}
+            />
+          )}
+        />
+        <Route
+          path={`${base}/es/errores-cargados`}
+          component={({ location }: { location: Location }) => (
+            <Redirect
+              to={{
+                ...location,
+                pathname: "/es/my-bugs",
               }}
             />
           )}
