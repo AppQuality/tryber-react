@@ -19,11 +19,14 @@ import PerformanceData from "../features/dashboard/PerformanceData";
 import PopupContainer from "../features/dashboard/PopupContainer";
 import ComingSoonHelpModal from "../features/dashboard/ComingSoonHelpModal";
 import OnboardingModal from "../features/dashboard/OnboardingModal";
+import {
+  FeedbackModal,
+  FeedbackButton,
+} from "../features/dashboard/FeedbackModal";
 import { useTranslation } from "react-i18next";
 import useUser from "../redux/user";
 import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
-import { Helmet } from "react-helmet";
 
 export default function Dashboard() {
   //constants - START
@@ -37,28 +40,6 @@ export default function Dashboard() {
   const { t } = useTranslation();
   return (
     <GoogleTagManager title={t("Dashboard")}>
-      <Helmet
-        script={[
-          {
-            type: "text/javascript",
-            innerHTML: `new JF_FeedbackEmbedButton({
-              buttonText: "Feedback",
-              buttonFontColor: "#FFFFFF",
-              buttonBackgroundColor: "#266A9A",
-              buttonSide: "Bottom",
-              buttonAlign: "Right",
-              buttonIcon: "rate",
-              base: "https://form.jotform.com/",
-              formId: "212631772995061",
-              ${
-                user
-                  ? "additionalQueryParams: '?testerId=T" + user.id + "'"
-                  : null
-              }
-            });`,
-          },
-        ]}
-      />
       <LoggedOnly>
         <ComingSoonHelpModal />
         {onboardingComplete ? null : (
@@ -79,6 +60,16 @@ export default function Dashboard() {
             open={isPopupArchiveModalOpen}
             showExpired={true}
           />
+        ) : null}
+        {onboardingComplete ? (
+          <>
+            <FeedbackModal
+              onClose={() => setFeedbackModalOpen(false)}
+              open={isFeedbackModalOpen}
+              user={user}
+            />
+            <FeedbackButton handleClick={() => setFeedbackModalOpen(true)} />
+          </>
         ) : null}
         <TesterSidebar route={"my-dashboard"}>
           <Container className="aq-pb-3">

@@ -6,7 +6,7 @@ import "./i18n";
 import { useTranslation } from "react-i18next";
 import TagManager from "react-gtm-module";
 import Helmet from "react-helmet";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
 import Provider from "./redux/provider";
 import Page from "./Page";
@@ -38,7 +38,6 @@ function App() {
               "Becoming a part of Crowd AppQuality community is simple: It's not requested a particular profile, is the multiprofile our power."
             )}
           />
-          <script src="https://form.jotform.com/cardforms/feedbackEmbedButton.min.js"></script>
         </Helmet>
         <BrowserRouter>
           <Page />
