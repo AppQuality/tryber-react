@@ -198,6 +198,41 @@ export interface paths {
       };
     };
   };
+  "/users/me/certifications": {
+    post: operations["post-users-me-certifications"];
+  };
+  "/users/me/certifications/{certificationId}": {
+    delete: operations["delete-users-me-certifications-certificationId"];
+    patch: operations["patch-users-me-certifications-certificationId"];
+    parameters: {
+      path: {
+        certificationId: number;
+      };
+    };
+  };
+  "/users/me/languages": {
+    post: operations["post-users-me-languages"];
+  };
+  "/users/me/languages/{languageId}": {
+    delete: operations["delete-users-me-languages-languageId"];
+    patch: operations["patch-users-me-languages-languageId"];
+    parameters: {
+      path: {
+        languageId: number;
+      };
+    };
+  };
+  "/users/me/additionals": {
+    get: operations["get-users-me-additionals"];
+  };
+  "/users/me/additionals/{fieldId}": {
+    put: operations["put-users-me-additionals-fieldId"];
+    parameters: {
+      path: {
+        fieldId: number;
+      };
+    };
+  };
 }
 
 export interface components {
@@ -793,7 +828,7 @@ export interface operations {
   "get-users-me": {
     parameters: {
       query: {
-        /** Comma separeted string of specific fields requested */
+        /** Comma separated string of specific fields requested */
         fields?: string;
       };
     };
@@ -801,7 +836,40 @@ export interface operations {
       /** OK */
       200: {
         content: {
-          "application/json": components["schemas"]["User"];
+          "application/json": {
+            username?: string;
+            name?: string;
+            surname?: string;
+            email?: string;
+            image?: string;
+            id: number;
+            wp_user_id?: number;
+            role?: string;
+            is_verified?: boolean;
+            rank?: string;
+            total_exp_pts?: number;
+            booty?: number;
+            pending_booty?: number;
+            languages?: string[];
+            onboarding_completed?: boolean;
+            additional?: { [key: string]: unknown }[];
+            gender?: string;
+            birthDate?: string;
+            phone?: string;
+            education?: string;
+            profession?: string;
+            certifications?:
+              | {
+                  name?: string;
+                  area?: string;
+                  institute?: string;
+                  achievement_date?: string;
+                }[]
+              | boolean;
+            completionPercent?: number;
+            country?: string;
+            city?: string;
+          };
         };
       };
     };
@@ -838,7 +906,18 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": {
+          name?: string;
+          email?: string;
           onboarding_completed?: boolean;
+          surname?: string;
+          gender?: string;
+          birthDate?: string;
+          phone?: string;
+          education?: string;
+          profession?: string;
+          country?: string;
+          city?: string;
+          password?: string;
         };
       };
     };
@@ -1326,6 +1405,187 @@ export interface operations {
       };
       403: components["responses"]["NotAuthorized"];
       404: components["responses"]["NotFound"];
+    };
+  };
+  "post-users-me-certifications": {
+    responses: {
+      /** Created */
+      201: {
+        content: {
+          "application/json": {
+            name: string;
+            area: string;
+            institute: string;
+            achievement_date: string;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          certification_id: string;
+          achievement_date: string;
+        };
+      };
+    };
+  };
+  "delete-users-me-certifications-certificationId": {
+    parameters: {
+      path: {
+        certificationId: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: unknown;
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "patch-users-me-certifications-certificationId": {
+    parameters: {
+      path: {
+        certificationId: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            name: string;
+            area: string;
+            institute: string;
+            achievement_date: string;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          certification_id?: number;
+          achievement_date?: string;
+        };
+      };
+    };
+  };
+  "post-users-me-languages": {
+    responses: {
+      /** Created */
+      201: {
+        content: {
+          "application/json": {
+            id: string;
+            name: string;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+    requestBody: {
+      content: {
+        "application/json": number;
+      };
+    };
+  };
+  "delete-users-me-languages-languageId": {
+    parameters: {
+      path: {
+        languageId: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: unknown;
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "patch-users-me-languages-languageId": {
+    parameters: {
+      path: {
+        languageId: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": number;
+      };
+    };
+  };
+  "get-users-me-additionals": {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            field_id: number;
+            name: string;
+            value: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "put-users-me-additionals-fieldId": {
+    parameters: {
+      path: {
+        fieldId: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json":
+            | {
+                field_id: number;
+                name: string;
+                value: string;
+              }[]
+            | {
+                field_id: number;
+                name: string;
+                value: string;
+              };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json":
+          | {
+              value: string;
+              is_candidate?: string;
+            }[]
+          | {
+              value: string;
+              is_candidate?: string;
+            }
+          | string;
+      };
     };
   };
 }
