@@ -12,7 +12,7 @@ export interface UserData {
   image: string;
   verified?: boolean;
   isAdmin?: boolean;
-  onboarding_complete?: boolean;
+  onboarding_completed?: boolean;
 }
 
 export type User = undefined | UserData;

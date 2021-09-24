@@ -9,18 +9,11 @@ export function refreshUser() {
 
   return (dispatch: UserDispatchType) => {
     dispatch({ type: actionTypes.USER_LOAD });
-    return API.me()
+    return API.me(undefined, "name,surname,image,onboarding_completed")
       .then((user) => {
         user.isAdmin = ["administrator", "tester_lead"].includes(user.role);
-        API.getOnboardingComplete()
-          .then((data) => {
-            user.onboarding_complete = data.onboarding_complete;
-            action.data = user;
-            return dispatch(action);
-          })
-          .catch((e) => {
-            dispatch({ type: actionTypes.USER_FAILED, error: e });
-          });
+        action.data = user;
+        return dispatch(action);
       })
       .catch((e) => {
         dispatch({ type: actionTypes.USER_FAILED, error: e });
