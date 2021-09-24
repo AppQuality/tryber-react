@@ -14,6 +14,7 @@ export const FeedbackModal = ({
   user: User;
 }) => {
   const { t } = useTranslation();
+
   const iFrameStyle = {
     height: "100%",
     width: "100%",
@@ -24,7 +25,7 @@ export const FeedbackModal = ({
     <Modal isOpen={open} onClose={onClose} title={t("Send us your feedback!")}>
       <ModalBody>
         <iframe
-          src={`https://form.jotform.com/212631772995061?testerId=T${user?.id}`}
+          src={`https://form.jotform.com/212631772995061?testerId=T${user?.id}&email=${user?.email}`}
           style={iFrameStyle}
         />
       </ModalBody>
