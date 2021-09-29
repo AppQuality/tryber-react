@@ -178,15 +178,6 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       active: route === "faq",
       text: t("FAQ"),
     },
-    {
-      url:
-        i18next.language === "en"
-          ? "/feedback-hub/"
-          : `/${i18next.language}/centro-dei-feedback/`,
-      icon: <ChatDotsFill />,
-      active: route === "feedback-hub",
-      text: t("Feedback"),
-    },
   ];
 
   if (isAdmin) {
