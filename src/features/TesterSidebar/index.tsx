@@ -94,10 +94,9 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
 
   TesterSidebarArgs.items = [
     {
-      url:
-        i18next.language === "en"
-          ? "/my-dashboard/"
-          : `/${i18next.language}/la-mia-dashboard/`,
+      url: `${
+        i18next.language === "en" ? "" : "/" + i18next.language
+      }/my-dashboard/`,
       icon: <HouseFill />,
       active: route === "my-dashboard",
       text: t("Dashboard"),
@@ -112,10 +111,9 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       text: t("Profile"),
     },
     {
-      url:
-        i18next.language === "en"
-          ? "/personal-equipment/"
-          : `/${i18next.language}/i-miei-device/`,
+      url: `${
+        i18next.language === "en" ? "" : "/" + i18next.language
+      }/personal-equipment/`,
       icon: <Laptop />,
       active: route === "personal-equipments",
       text: t("Devices"),
@@ -131,10 +129,9 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       text: t("Payments"),
     },
     {
-      url:
-        i18next.language === "en"
-          ? "/experience-points/"
-          : `/${i18next.language}/punti-esperienza/`,
+      url: `${
+        i18next.language === "en" ? "" : "/" + i18next.language
+      }/experience-points/`,
       icon: <StarFill />,
       active: route === "experience-points",
       text: t("Experience Points"),
@@ -149,10 +146,9 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       text: t("Leaderboard"),
     },
     {
-      url:
-        i18next.language === "en"
-          ? "/my-bugs/"
-          : `/${i18next.language}/i-miei-bug/`,
+      url: `${
+        i18next.language === "en" ? "" : "/" + i18next.language
+      }/my-bugs/`,
       icon: <BugFill />,
       active: route === "my-bugs",
       text: t("Uploaded Bugs"),
@@ -177,7 +173,7 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       text: t("Testing University"),
     },
     {
-      url: i18next.language === "en" ? `/faq/` : `/it/domande-frequenti/`,
+      url: t("/faq/"),
       icon: <Question />,
       active: route === "faq",
       text: t("FAQ"),

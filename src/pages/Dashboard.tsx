@@ -31,7 +31,7 @@ import LoggedOnly from "../features/LoggedOnly";
 export default function Dashboard() {
   //constants - START
   const { user } = useUser();
-  const onboardingComplete = user && user.onboarding_complete;
+  const onboardingComplete = user && user.onboarding_completed;
   const [isPopupModalOpen, setIsPopupModalOpen] = useState(true);
   const [isPopupArchiveModalOpen, setIsPopupArchiveModalOpen] = useState(false);
   const [isOnboardingModalOpen, setIsOnboardingModalOpen] = useState(true);
