@@ -1,5 +1,6 @@
 {
   "/discover-experience-points/": "/it/come-funzionano-i-punti-esperienza/",
+  "/faq/": "/it/domande-frequenti/",
   "/terms-and-conditions/": "/it/termini-e-condizioni/",
   "<bold>A Team of competent and professional figures</bold> will always be at your side to resolve any doubts <br></br>you may have": "<bold>Un Team di figure competenti e professionali</bold> sarà sempre al tuo fianco per risolvere ogni tuo dubbio",
   "<bold>Test when and where you want!</bold><br></br>The important thing is to respect the closing date of the Test Campaign": "<bold>Testa quando e dove vuoi!</bold><br></br>L’importante è rispettare la data di chiusura della Campagna di Test",
@@ -80,7 +81,6 @@
   "Facebook": "Facebook",
   "fair payments": "pagamenti equi",
   "FAQ": "Domande frequenti",
-  "Feedback": "Feedback",
   "Fill in your profile details": "Completa il tuo profilo",
   "Filters": "Filtri",
   "Finished": "Terminate",
@@ -168,6 +168,7 @@
   "Search here": "Cerca",
   "Select a country": "Seleziona un paese",
   "Select your birth date": "Seleziona la tua data di nascita",
+  "Send us your feedback!": "",
   "Set": "Conferma",
   "Severity": "Gravità",
   "Signup now": "Iscriviti ora",

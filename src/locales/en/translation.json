@@ -1,5 +1,6 @@
 {
   "/discover-experience-points/": "/discover-experience-points/",
+  "/faq/": "/faq/",
   "/terms-and-conditions/": "/terms-and-conditions/",
   "<bold>A Team of competent and professional figures</bold> will always be at your side to resolve any doubts <br></br>you may have": "<bold>A Team of competent and professional figures</bold> will always be at your side to resolve any doubts <br></br>you may have",
   "<bold>Test when and where you want!</bold><br></br>The important thing is to respect the closing date of the Test Campaign": "<bold>Test when and where you want!</bold><br></br>The important thing is to respect the closing date of the Test Campaign\n",
@@ -80,7 +81,6 @@
   "Facebook": "Facebook",
   "fair payments": "fair payments",
   "FAQ": "FAQ",
-  "Feedback": "Feedback",
   "Fill in your profile details": "Fill in your profile details",
   "Filters": "Filters",
   "Finished": "Finished",
@@ -168,6 +168,7 @@
   "Search here": "Search here",
   "Select a country": "Select a country",
   "Select your birth date": "Select your birth date",
+  "Send us your feedback!": "Send us your feedback!",
   "Set": "Set",
   "Severity": "Severity",
   "Signup now": "Signup now",

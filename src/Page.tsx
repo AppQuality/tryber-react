@@ -35,7 +35,7 @@ if (process.env.REACT_APP_GTM_ID) {
 
   TagManager.initialize(tagManagerArgs);
 }
-const base = "/:locale(en|it)?";
+const base = "/:locale(en|it|es)?";
 
 function Page() {
   const { search } = useLocation();

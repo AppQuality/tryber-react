@@ -5,10 +5,12 @@ import countries from "i18n-iso-countries";
 
 import en from "./locales/en/translation.json";
 import it from "./locales/it/translation.json";
+import es from "./locales/es/translation.json";
 // the translations
 // (tip move them in a JSON file and import them)
 countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
 countries.registerLocale(require("i18n-iso-countries/langs/it.json"));
+countries.registerLocale(require("i18n-iso-countries/langs/es.json"));
 const resources = {
   en: { translation: en },
   it: { translation: it },

@@ -19,22 +19,25 @@ import PerformanceData from "../features/dashboard/PerformanceData";
 import PopupContainer from "../features/dashboard/PopupContainer";
 import ComingSoonHelpModal from "../features/dashboard/ComingSoonHelpModal";
 import OnboardingModal from "../features/dashboard/OnboardingModal";
+import {
+  FeedbackModal,
+  FeedbackButton,
+} from "../features/dashboard/FeedbackModal";
 import { useTranslation } from "react-i18next";
 import useUser from "../redux/user";
-
 import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
 
 export default function Dashboard() {
   //constants - START
   const { user } = useUser();
-  const onboardingComplete = user && user.onboarding_complete;
+  const onboardingComplete = user && user.onboarding_completed;
   const [isPopupModalOpen, setIsPopupModalOpen] = useState(true);
   const [isPopupArchiveModalOpen, setIsPopupArchiveModalOpen] = useState(false);
   const [isOnboardingModalOpen, setIsOnboardingModalOpen] = useState(true);
+  const [isFeedbackModalOpen, setFeedbackModalOpen] = useState(false);
 
   const { t } = useTranslation();
-
   return (
     <GoogleTagManager title={t("Dashboard")}>
       <LoggedOnly>
@@ -57,6 +60,16 @@ export default function Dashboard() {
             open={isPopupArchiveModalOpen}
             showExpired={true}
           />
+        ) : null}
+        {onboardingComplete ? (
+          <>
+            <FeedbackModal
+              onClose={() => setFeedbackModalOpen(false)}
+              open={isFeedbackModalOpen}
+              user={user}
+            />
+            <FeedbackButton handleClick={() => setFeedbackModalOpen(true)} />
+          </>
         ) : null}
         <TesterSidebar route={"my-dashboard"}>
           <Container className="aq-pb-3">
@@ -124,7 +137,7 @@ export default function Dashboard() {
                     <PerformanceData />
                   </Card>
                   {onboardingComplete ? (
-                    <Card shadow={true}>
+                    <Card shadow={true} className="aq-mb-3">
                       <Button
                         flat
                         type="info"
