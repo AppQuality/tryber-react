@@ -201,7 +201,7 @@ export const useMyBugs = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [limit, page]);
+  }, [limit, page, selectedCampaign, selectedStatus, selectedSeverity]);
 
   return {
     data: {
