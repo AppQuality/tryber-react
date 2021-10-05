@@ -1,5 +1,5 @@
-import { AppRoute } from "../router";
 import { useTranslation } from "react-i18next";
+import { AppRoute } from "../AppRouter";
 
 export const localizeRoute = (route: AppRoute) => {
   const { i18n } = useTranslation();

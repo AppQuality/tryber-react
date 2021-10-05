@@ -8,7 +8,7 @@ import { Statistic, GoToBlock } from "./performanceRow";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";
-import { crowdRoutes } from "../../router";
+//import { crowdRoutes } from "../../AppRouter";
 
 const StyledIcon = styled.div`
   .dark-disabled-font {
@@ -67,7 +67,7 @@ const PerformanceData = () => {
     {
       icon: <ArrowRight size={"21"} />,
       text: t("View bugs page"),
-      link: `${crowdRoutes.myBugs}`,
+      link: `${"crowdRoutes.myBugs"}`,
     },
     {
       icon: <CashCoin size={"21"} className={"aq-text-success"} />,

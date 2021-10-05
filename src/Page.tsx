@@ -8,10 +8,10 @@ import queryString from "query-string";
 
 import userStore from "./redux/user";
 import referralStore from "./redux/referral";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import SiteWideMessages from "./features/SiteWideMessages";
 import { datadogLogs } from "@datadog/browser-logs";
-import { crowdRoutes, AppRoutes, appPages } from "./router";
+import { AppRouter } from "./AppRouter";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
   datadogLogs.init({
@@ -31,7 +31,6 @@ if (process.env.REACT_APP_GTM_ID) {
 }
 
 function Page() {
-  const [routes, setRoutes] = useState<appPages[]>([]);
   const { search } = useLocation();
   const { refresh } = userStore();
   const { setReferral } = referralStore();
@@ -42,24 +41,12 @@ function Page() {
       setReferral(values.referral);
     }
   }, []);
-  useEffect(() => {
-    const appRoutes = Object.keys(crowdRoutes) as (keyof AppRoutes)[];
-    setRoutes(appRoutes);
-  }, [crowdRoutes]);
-
-  const base = "/:locale(en|it|es)?";
   return (
     <>
       <SiteHeader />
       <SiteWideMessages />
       <Switch>
-        {routes.map((route) => (
-          <Route
-            path={`${base}/${crowdRoutes[route].path}`}
-            component={crowdRoutes[route].component}
-            key={crowdRoutes[route].path}
-          />
-        ))}
+        <AppRouter />
         <Route path={`/it/getting-started-2`}>
           <Redirect to="/it/getting-started" />
         </Route>
