@@ -1,5 +1,12 @@
 import { Route, Switch, Redirect, useLocation } from "react-router-dom";
-import { Home } from "./pages";
+import {
+  Dashboard,
+  Devices,
+  ExperiencePoints,
+  GettingStarted,
+  Home,
+  MyBugs,
+} from "./pages";
 import "./i18n";
 import TagManager from "react-gtm-module";
 import SiteHeader from "./features/SiteHeader";
@@ -11,7 +18,6 @@ import referralStore from "./redux/referral";
 import { useEffect } from "react";
 import SiteWideMessages from "./features/SiteWideMessages";
 import { datadogLogs } from "@datadog/browser-logs";
-import { AppRouter } from "./AppRouter";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
   datadogLogs.init({
@@ -29,6 +35,7 @@ if (process.env.REACT_APP_GTM_ID) {
 
   TagManager.initialize(tagManagerArgs);
 }
+const base = "/:locale(en|it|es)?";
 
 function Page() {
   const { search } = useLocation();
@@ -46,10 +53,17 @@ function Page() {
       <SiteHeader />
       <SiteWideMessages />
       <Switch>
-        <AppRouter />
+        <Route path={`${base}/getting-started`} component={GettingStarted} />
         <Route path={`/it/getting-started-2`}>
           <Redirect to="/it/getting-started" />
         </Route>
+
+        <Route path={`${base}/my-dashboard`} component={() => <Dashboard />} />
+
+        <Route
+          path={`${base}/personal-equipment`}
+          component={() => <Devices />}
+        />
         <Route
           path={`/it/i-miei-device`}
           component={({ location }: { location: Location }) => (
@@ -79,8 +93,14 @@ function Page() {
         <Route path={`/es/tablero`}>
           <Redirect to="/es/my-dashboard" />
         </Route>
+
+        <Route path={`${base}/my-bugs`} component={() => <MyBugs />} />
         <Route
-          path={`/it/punti-esperienza`}
+          path={`${base}/experience-points`}
+          component={() => <ExperiencePoints />}
+        />
+        <Route
+          path={`${base}/it/punti-esperienza`}
           component={({ location }: { location: Location }) => (
             <Redirect
               to={{
@@ -91,7 +111,7 @@ function Page() {
           )}
         />
         <Route
-          path={`/es/puntos-de-experiencia`}
+          path={`${base}/es/puntos-de-experiencia`}
           component={({ location }: { location: Location }) => (
             <Redirect
               to={{
@@ -102,7 +122,7 @@ function Page() {
           )}
         />
         <Route
-          path={`/it/i-miei-bug`}
+          path={`${base}/it/i-miei-bug`}
           component={({ location }: { location: Location }) => (
             <Redirect
               to={{
@@ -113,7 +133,7 @@ function Page() {
           )}
         />
         <Route
-          path={`/es/errores-cargados`}
+          path={`${base}/es/errores-cargados`}
           component={({ location }: { location: Location }) => (
             <Redirect
               to={{
