@@ -1,12 +1,5 @@
 import { Route, Switch, Redirect, useLocation } from "react-router-dom";
-import {
-  GettingStarted,
-  MyBugs,
-  ExperiencePoints,
-  Home,
-  Dashboard,
-  Devices,
-} from "./pages";
+import { Home } from "./pages";
 import "./i18n";
 import TagManager from "react-gtm-module";
 import SiteHeader from "./features/SiteHeader";
@@ -15,9 +8,10 @@ import queryString from "query-string";
 
 import userStore from "./redux/user";
 import referralStore from "./redux/referral";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import SiteWideMessages from "./features/SiteWideMessages";
 import { datadogLogs } from "@datadog/browser-logs";
+import { crowdRoutes, AppRoutes, appPages } from "./router";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
   datadogLogs.init({
@@ -35,9 +29,9 @@ if (process.env.REACT_APP_GTM_ID) {
 
   TagManager.initialize(tagManagerArgs);
 }
-const base = "/:locale(en|it|es)?";
 
 function Page() {
+  const [routes, setRoutes] = useState<appPages[]>([]);
   const { search } = useLocation();
   const { refresh } = userStore();
   const { setReferral } = referralStore();
@@ -48,23 +42,27 @@ function Page() {
       setReferral(values.referral);
     }
   }, []);
+  useEffect(() => {
+    const appRoutes = Object.keys(crowdRoutes) as (keyof AppRoutes)[];
+    setRoutes(appRoutes);
+  }, [crowdRoutes]);
 
+  const base = "/:locale(en|it|es)?";
   return (
     <>
       <SiteHeader />
       <SiteWideMessages />
       <Switch>
-        <Route path={`${base}/getting-started`} component={GettingStarted} />
+        {routes.map((route) => (
+          <Route
+            path={`${base}/${crowdRoutes[route].path}`}
+            component={crowdRoutes[route].component}
+            key={crowdRoutes[route].path}
+          />
+        ))}
         <Route path={`/it/getting-started-2`}>
           <Redirect to="/it/getting-started" />
         </Route>
-
-        <Route path={`${base}/my-dashboard`} component={() => <Dashboard />} />
-
-        <Route
-          path={`${base}/personal-equipment`}
-          component={() => <Devices />}
-        />
         <Route
           path={`/it/i-miei-device`}
           component={({ location }: { location: Location }) => (
@@ -94,14 +92,8 @@ function Page() {
         <Route path={`/es/tablero`}>
           <Redirect to="/es/my-dashboard" />
         </Route>
-
-        <Route path={`${base}/my-bugs`} component={() => <MyBugs />} />
         <Route
-          path={`${base}/experience-points`}
-          component={() => <ExperiencePoints />}
-        />
-        <Route
-          path={`${base}/it/punti-esperienza`}
+          path={`/it/punti-esperienza`}
           component={({ location }: { location: Location }) => (
             <Redirect
               to={{
@@ -112,7 +104,7 @@ function Page() {
           )}
         />
         <Route
-          path={`${base}/es/puntos-de-experiencia`}
+          path={`/es/puntos-de-experiencia`}
           component={({ location }: { location: Location }) => (
             <Redirect
               to={{
@@ -123,7 +115,7 @@ function Page() {
           )}
         />
         <Route
-          path={`${base}/it/i-miei-bug`}
+          path={`/it/i-miei-bug`}
           component={({ location }: { location: Location }) => (
             <Redirect
               to={{
@@ -134,7 +126,7 @@ function Page() {
           )}
         />
         <Route
-          path={`${base}/es/errores-cargados`}
+          path={`/es/errores-cargados`}
           component={({ location }: { location: Location }) => (
             <Redirect
               to={{
