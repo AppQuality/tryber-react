@@ -31,7 +31,7 @@ export const LangMenu = ({
   esLink,
   className,
 }: LangMenuProps) => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   return (
     <StyledMenu className={className}>
       <a
@@ -46,13 +46,13 @@ export const LangMenu = ({
         className={`${i18n.language === "en" ? "current " : ""}lang-navLink`}
       >
         English
-      </a>
+      </a>{" "}
       |{" "}
       <a
         href={esLink}
         className={`${i18n.language === "es" ? "current " : ""}lang-navLink`}
       >
-        Spanish
+        Español
       </a>
     </StyledMenu>
   );
