@@ -9,7 +9,7 @@ export function refreshUser() {
 
   return (dispatch: UserDispatchType) => {
     dispatch({ type: actionTypes.USER_LOAD });
-    return API.me(undefined, "name,surname,image,onboarding_completed")
+    return API.me(undefined, "name,surname,image,email,onboarding_completed")
       .then((user) => {
         user.isAdmin = ["administrator", "tester_lead"].includes(user.role);
         action.data = user;
