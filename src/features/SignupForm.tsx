@@ -149,24 +149,23 @@ export const SignupForm = ({
 
           <FormikField name={"subscribe"}>
             {({
-              field, // { name, value, onChange, onBlur }
-              form: { touched, errors, status }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+              field: { name, onChange, onBlur, value }, // { name, value, onChange, onBlur }
+              form, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
               meta,
             }: FieldProps) => {
-              let className = "aq-mb-3";
               return (
                 <>
                   <Checkbox
-                    name={field.name}
-                    onChange={(v) => {
-                      field.onChange(v);
-                    }}
+                    name={name}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    value={value}
                     isInvalid={meta.touched && !!meta.error}
                     label={t(
                       "I agree to receive earning opportunity emails from AppQuality"
                     )}
                   />
-                  <ErrorMessage name={field.name} />
+                  <ErrorMessage name={name} />
                 </>
               );
             }}

@@ -50,8 +50,10 @@ const PerformanceData = () => {
     {
       icon: <ArrowRight size={"21"} />,
       text: t("View ranking page"),
-      link: `${window.location.origin}/${
-        i18n.language !== "en" ? "it/leaderboard-2/" : "leaderboard"
+      link: `/${
+        i18n.language === "en"
+          ? "leaderboard"
+          : `${i18n.language}/leaderboard-2/`
       }`,
     },
     {
@@ -87,7 +89,11 @@ const PerformanceData = () => {
       icon: <ArrowRight size={"21"} />,
       text: t("View payments page"),
       link: `${window.location.origin}/${
-        i18n.language !== "en" ? "it/pagamenti/" : "payments/"
+        i18n.language === "en"
+          ? "payments"
+          : i18n.language === "it"
+          ? "it/pagamenti/"
+          : "es/pagos"
       }`,
     },
   ];
