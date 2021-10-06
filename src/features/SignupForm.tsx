@@ -146,12 +146,32 @@ export const SignupForm = ({
           {referral && (
             <Field type="text" name="referral" label={t("Referral")} disabled />
           )}
-          <Checkbox
-            name="subscribe"
-            label={t(
-              "I agree to receive earning opportunity emails from AppQuality"
-            )}
-          />
+
+          <FormikField name={"subscribe"}>
+            {({
+              field, // { name, value, onChange, onBlur }
+              form: { touched, errors, status }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+              meta,
+            }: FieldProps) => {
+              let className = "aq-mb-3";
+              return (
+                <>
+                  <Checkbox
+                    name={field.name}
+                    onChange={(v) => {
+                      field.onChange(v);
+                    }}
+                    isInvalid={meta.touched && !!meta.error}
+                    label={t(
+                      "I agree to receive earning opportunity emails from AppQuality"
+                    )}
+                  />
+                  <ErrorMessage name={field.name} />
+                </>
+              );
+            }}
+          </FormikField>
+
           <CSSGrid min="78px" fill={true}>
             <Button
               className="aq-mb-3"
