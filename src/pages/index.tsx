@@ -4,5 +4,14 @@ import ExperiencePoints from "./ExperiencePoints";
 import GettingStarted from "./GettingStarted";
 import Home from "./home/Home";
 import Devices from "./Devices";
+import Profile from "./Profile";
 
-export { Dashboard, GettingStarted, MyBugs, ExperiencePoints, Home, Devices };
+export {
+  Dashboard,
+  GettingStarted,
+  MyBugs,
+  ExperiencePoints,
+  Home,
+  Devices,
+  Profile,
+};

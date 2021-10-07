@@ -6,6 +6,7 @@ import {
   GettingStarted,
   Home,
   MyBugs,
+  Profile
 } from "./pages";
 import "./i18n";
 import TagManager from "react-gtm-module";
@@ -143,6 +144,8 @@ function Page() {
             />
           )}
         />
+        
+        <Route path={`${base}/my-account`} component={Profile} />
         <Route path={["/", "/it", "/es"]} exact component={Home} />
       </Switch>
     </>
