@@ -53,7 +53,9 @@ const PerformanceData = () => {
       link: `/${
         i18n.language === "en"
           ? "leaderboard"
-          : `${i18n.language}/leaderboard-2/`
+          : i18n.language === "it"
+          ? "it/leaderboard-2/"
+          : "es/tabla-de-classificacion/"
       }`,
     },
     {
