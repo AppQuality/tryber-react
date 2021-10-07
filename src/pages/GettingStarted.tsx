@@ -12,11 +12,11 @@ import { LangMenu } from "../features/LangMenu";
 import GoogleTagManager from "../features/GoogleTagManager";
 import NotLoggedOnly from "../features/NotLoggedOnly";
 import React from "react";
+import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
 
 export default function GettingStarted() {
-  const { t, i18n } = useTranslation();
-  const redirectUrl =
-    i18n.language === "it" ? "/it/my-dashboard/" : "/my-dashboard/";
+  const { t } = useTranslation();
+  const redirectUrl = useLocalizeRoute("my-dashboard");
   return (
     <GoogleTagManager title={t("Getting Started")}>
       <NotLoggedOnly>
