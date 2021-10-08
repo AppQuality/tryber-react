@@ -1,5 +1,3 @@
-import { UserStatus, UserData } from "../../types";
-
 import { Dispatch } from "redux";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { refreshUser, loginUser } from "./actionCreators";

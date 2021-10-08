@@ -1,4 +1,3 @@
-import HttpError from "../utils/HttpError";
 import { aqBootstrapTheme } from "@appquality/appquality-design-system";
 import { operations } from "utils/schema";
 
@@ -25,4 +24,7 @@ export interface UserStatus {
 
 declare global {
   type Theme = typeof aqBootstrapTheme;
+  type UserData =
+    operations["get-users-me"]["responses"]["200"]["content"]["application/json"];
+  type HttpError = HttpError;
 }

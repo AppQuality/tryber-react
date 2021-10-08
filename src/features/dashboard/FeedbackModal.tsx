@@ -1,7 +1,6 @@
 import { Modal, ModalBody, Button } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { User } from "../../types";
 import { ChatLeftDots } from "react-bootstrap-icons";
 
 export const FeedbackModal = ({
@@ -11,7 +10,7 @@ export const FeedbackModal = ({
 }: {
   open?: boolean;
   onClose: () => void;
-  user: User;
+  user?: UserData;
 }) => {
   const { t } = useTranslation();
 

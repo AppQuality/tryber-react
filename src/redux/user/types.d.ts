@@ -1,3 +1,13 @@
+type User = undefined | UserData;
+
+interface UserStatus {
+  refresh?: () => void;
+  login?: (data: UserLoginData) => void;
+  user: User;
+  isLoading: boolean;
+  error: HttpError;
+}
+
 interface UserLoginData {
   username: string;
   password: string;
@@ -5,7 +15,7 @@ interface UserLoginData {
 
 type UserAction = {
   type: string;
-  data?: LoginData;
+  data?: UserLoginData;
   error?: string;
 };
 

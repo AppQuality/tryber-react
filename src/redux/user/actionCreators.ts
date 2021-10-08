@@ -1,6 +1,7 @@
 import * as actionTypes from "./actionTypes";
 import API from "../../utils/api";
 import WPAPI from "../../utils/wpapi";
+import HttpError from "../../utils/HttpError";
 
 export function refreshUser() {
   const action: UserAction = {
@@ -9,7 +10,7 @@ export function refreshUser() {
 
   return (dispatch: UserDispatchType) => {
     dispatch({ type: actionTypes.USER_LOAD });
-    return API.me(undefined, "name,surname,image,email,onboarding_completed")
+    return API.me(undefined, "name,surname,image,onboarding_completed,email")
       .then((user) => {
         user.isAdmin = ["administrator", "tester_lead"].includes(user.role);
         action.data = user;
@@ -40,3 +41,16 @@ export function loginUser({ username, password }: UserLoginData) {
       .catch((e) => dispatch({ type: actionTypes.USER_FAILED, data: e }));
   };
 }
+
+export const getProfile = () => {
+  return async (dispatch: UserDispatchType) => {
+    dispatch({ type: actionTypes.FETCH_PROFILE_LOADING });
+    try {
+      const profileData = await API.me(undefined, "all");
+      dispatch({ type: actionTypes.FETCH_PROFILE, data: profileData });
+    } catch (err: unknown) {
+      const { message } = err as HttpError;
+      dispatch({ type: actionTypes.FETCH_PROFILE_FAILED, error: message });
+    }
+  };
+};

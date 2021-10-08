@@ -28,7 +28,7 @@ export default function Profile() {
             </PageTitle>
             <BSGrid>
               <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
-                <Card className="aq-mb-3">
+                <Card className="aq-mb-3" bodyClass="">
                   <GeneralProfile />
                   <Tabs active={activeTab}>
                     <Tab id="base" title={t("Base")}>
