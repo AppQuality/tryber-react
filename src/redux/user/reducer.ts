@@ -2,6 +2,7 @@ import * as actionTypes from "./actionTypes";
 
 const initialState: UserState = {
   loading: true,
+  loadingProfile: true,
 };
 
 const reducer = (
@@ -32,6 +33,26 @@ const reducer = (
         error: undefined,
         loading: true,
       };
+    case actionTypes.FETCH_PROFILE_LOADING:
+      return {
+        ...state,
+        error: undefined,
+        loadingProfile: true,
+      };
+    case actionTypes.FETCH_PROFILE_FAILED:
+      return {
+        ...state,
+        error: action.error,
+        loadingProfile: false,
+      };
+    case actionTypes.FETCH_PROFILE:
+      return action.data
+        ? {
+            ...state,
+            user: { ...state.user, ...action.data },
+            loadingProfile: false,
+          }
+        : state;
   }
   return state;
 };

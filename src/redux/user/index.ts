@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { refreshUser, loginUser } from "./actionCreators";
+import { refreshUser, loginUser, getProfile } from "./actionCreators";
 
 export default (): UserStatus => {
   const {
@@ -21,6 +21,7 @@ export default (): UserStatus => {
   return {
     refresh: () => dispatch(refreshUser()),
     login: (data: UserLoginData) => dispatch(loginUser(data)),
+    getProfile: () => dispatch(getProfile()),
     user: user,
     isLoading: loading,
     error: error,

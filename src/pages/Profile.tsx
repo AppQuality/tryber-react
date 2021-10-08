@@ -11,13 +11,18 @@ import { useTranslation } from "react-i18next";
 import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
 import TesterSidebar from "../features/TesterSidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiscalProfileStatus } from "../features/profile/FiscalProfileStatus";
 import { GeneralProfile } from "../features/profile/GeneralProfile";
+import userStore from "../redux/user";
 
 export default function Profile() {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("base");
+  const { user, getProfile } = userStore();
+  useEffect(() => {
+    getProfile();
+  }, []);
   return (
     <GoogleTagManager title={t("Profile")}>
       <LoggedOnly>
@@ -30,6 +35,7 @@ export default function Profile() {
               <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
                 <Card className="aq-mb-3" bodyClass="">
                   <GeneralProfile />
+                  {JSON.stringify(user)}
                   <Tabs active={activeTab}>
                     <Tab id="base" title={t("Base")}>
                       {t("Base Profile")}
