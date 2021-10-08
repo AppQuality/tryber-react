@@ -31,7 +31,7 @@ export default function Profile() {
                 <Card className="aq-mb-3">
                   <GeneralProfile />
                   <Tabs active={activeTab}>
-                    <Tab id="base" title={t("Base Profile")}>
+                    <Tab id="base" title={t("Base")}>
                       {t("Base Profile")}
                     </Tab>
                     <Tab id="advanced" title={t("Advanced")}>
