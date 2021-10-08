@@ -39,21 +39,21 @@ export const LangMenu = ({
         href={itLink}
         className={`${i18n.language === "it" ? "current " : ""}lang-navLink`}
       >
-        {t("Italian")}
+        Italiano
       </a>{" "}
       |{" "}
       <a
         href={enLink}
         className={`${i18n.language === "en" ? "current " : ""}lang-navLink`}
       >
-        {t("English")}
+        English
       </a>{" "}
       |{" "}
       <a
         href={esLink}
         className={`${i18n.language === "es" ? "current " : ""}lang-navLink`}
       >
-        {t("Spanish")}
+        Español
       </a>
     </StyledMenu>
   );
