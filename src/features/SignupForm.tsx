@@ -17,6 +17,7 @@ import BirthdayPicker from "./BirthdayPicker";
 import * as yup from "yup";
 import { useTranslation, Trans } from "react-i18next";
 import referralStore from "../redux/referral";
+import siteWideMessageStore from "../redux/siteWideMessages";
 import API from "../utils/api";
 import WPAPI from "../utils/wpapi";
 
@@ -30,6 +31,7 @@ export const SignupForm = ({
   formId = "signupForm",
 }: SignupFormProps) => {
   const { referral } = referralStore();
+  const { add } = siteWideMessageStore();
   const { t } = useTranslation();
 
   const initialValues = {
@@ -93,7 +95,16 @@ export const SignupForm = ({
               })
               .catch((e) => alert(e.message));
           })
-          .catch((e) => alert(e.message))
+          .catch((e) => {
+            if (e.message.includes("already registered")) {
+              add({
+                message: t("Email {{email}} already registered", {
+                  email: values.email,
+                }),
+                type: "danger",
+              });
+            }
+          })
           .finally(() => actions.setSubmitting(false));
       }}
       validationSchema={yup.object(validationSchema)}
