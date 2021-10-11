@@ -59,7 +59,7 @@ export default function Profile() {
                 </Card>
               </BSCol>
               <BSCol size="col-lg-3">
-                <FiscalProfileReport />
+                <FiscalProfileReport setActiveTab={setActiveTab} />
               </BSCol>
             </BSGrid>
           </Container>
