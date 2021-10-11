@@ -1,30 +1,39 @@
 import userStore from "../../redux/user";
 import { useTranslation } from "react-i18next";
-import { Text, Button, Title } from "@appquality/appquality-design-system";
+import {
+  Text,
+  Button,
+  Title,
+  Card,
+} from "@appquality/appquality-design-system";
 
-export const FiscalProfileReport = () => {
+interface FiscalProfileReportProps {
+  setActiveTab: (tabId: string) => void;
+}
+
+export const FiscalProfileReport = ({
+  setActiveTab,
+}: FiscalProfileReportProps) => {
   const { user } = userStore();
   return (
-    <div>
+    <>
       {user.fiscalStatus ? (
-        user.fiscalStatus === "verified" ? (
-          <VerifiedFiscalProfile />
-        ) : (
-          <UnVerifiedFiscalProfile />
-        )
+        user.fiscalStatus === "unverified" ? (
+          <UnVerifiedFiscalProfile setActiveTab={setActiveTab} />
+        ) : null
       ) : (
-        <EmptyFiscalProfile />
+        <EmptyFiscalProfile setActiveTab={setActiveTab} />
       )}
-    </div>
+    </>
   );
 };
 
-const EmptyFiscalProfile = () => {
+const EmptyFiscalProfile = ({ setActiveTab }: FiscalProfileReportProps) => {
   const { t } = useTranslation();
   return (
-    <div>
+    <Card className="stick-to-header-lg aq-mb-3" shadow={true}>
       <Title size="xs" className="aq-mb-2">
-        {t("Fiscal Profile")}
+        {t("Fiscal Profile Report")}
       </Title>
       <Text color="danger">
         <strong>{t("Empty profile")}</strong>
@@ -32,41 +41,30 @@ const EmptyFiscalProfile = () => {
       <Text className="aq-mb-3">
         {t("You need to fill in your tax profile data to receive your booty")}
       </Text>
-      <Button flat size="block">
+      <Button flat size="block" onClick={() => setActiveTab("fiscal")}>
         {t("Fill in now")}
       </Button>
-    </div>
+    </Card>
   );
 };
-const VerifiedFiscalProfile = () => {
+const UnVerifiedFiscalProfile = ({
+  setActiveTab,
+}: FiscalProfileReportProps) => {
   const { t } = useTranslation();
   return (
-    <div>
+    <Card className="stick-to-header-lg aq-mb-3" shadow={true}>
       <Title size="xs" className="aq-mb-2">
-        {t("Fiscal Profile")}
+        {t("Fiscal Profile Report")}
       </Title>
-      <Text color="success" className="aq-mb-3">
-        {t("Your fiscal data have been confirmed")}
+      <Text color="warning">
+        <strong>{t("Invalid fiscal profile")}</strong>
       </Text>
       <Text className="aq-mb-3">
-        {t("You can modify your data in the fiscal section of your profile")}
+        {t("submitted data are incorrect or incomplete. Check your data again")}
       </Text>
-    </div>
-  );
-};
-const UnVerifiedFiscalProfile = () => {
-  const { t } = useTranslation();
-  return (
-    <div>
-      <Title size="xs" className="aq-mb-2">
-        {t("Your Fiscal Profile is not valid")}
-      </Title>
-      <Text className="aq-mb-3">
-        {t("Check your data or send an email to crowd@app-quality.com")}
-      </Text>
-      <Button flat size="block" type="warning">
+      <Button flat size="block" onClick={() => setActiveTab("fiscal")}>
         {t("Check your data")}
       </Button>
-    </div>
+    </Card>
   );
 };
