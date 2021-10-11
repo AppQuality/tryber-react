@@ -102,12 +102,7 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       text: t("Dashboard"),
     },
     {
-      url:
-        i18next.language === "en"
-          ? "/my-account/"
-          : i18next.language === "es"
-          ? `/${i18next.language}/perfil/`
-          : `/${i18next.language}/il-mio-account/`,
+      url: t("/my-account/"),
       icon: <PersonFill />,
       active: route === "my-account",
       text: t("Profile"),
@@ -122,12 +117,7 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       last: true,
     },
     {
-      url:
-        i18next.language === "en"
-          ? "/payments/"
-          : i18next.language === "es"
-          ? `/${i18next.language}/pagos/`
-          : `/${i18next.language}/pagamenti/`,
+      url: t("/payments/"),
       icon: <Wallet2 />,
       active: route === "Payments",
       text: t("Payments"),
@@ -141,12 +131,7 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       text: t("Experience Points"),
     },
     {
-      url:
-        i18next.language === "en"
-          ? "/leaderboard/"
-          : i18next.language === "en"
-          ? `/${i18next.language}/tabla-de-classificacion/`
-          : `/${i18next.language}/leaderboard-2/`,
+      url: t("/leaderboard/"),
       icon: <GraphUp />,
       active: route === "leaderboard",
       text: t("Leaderboard"),
@@ -170,12 +155,7 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       text: t("Courses"),
     },
     {
-      url:
-        i18next.language === "en"
-          ? "/testing-school/"
-          : i18next.language === "es"
-          ? `/${i18next.language}/academia/`
-          : `/${i18next.language}/universita-del-test/`,
+      url: t("/testing-school/"),
       icon: <AwardFill />,
       active: route === "testing-school",
       text: t("Testing University"),
