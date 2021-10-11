@@ -23,13 +23,16 @@ import TabOptions from "../features/profile/TabOptions";
 export default function Profile() {
   const { t } = useTranslation();
   const urlParams = new URLSearchParams(window.location.search);
-  const tabParam = urlParams.get("tab") || "base"; //base is default
-  const [activeTab, setActiveTab] = useState(tabParam);
+  const tabParam = urlParams.get("tab");
+  const [activeTab, setActiveTab] = useState(tabParam || "base");
   const { user, getProfile, getFiscalProfile } = userStore();
   useEffect(() => {
     getProfile();
     getFiscalProfile();
   }, []);
+  useEffect(() => {
+    setActiveTab(tabParam || "base");
+  }, [tabParam]);
   return (
     <GoogleTagManager title={t("Profile")}>
       <LoggedOnly>
@@ -59,7 +62,7 @@ export default function Profile() {
                 </Card>
               </BSCol>
               <BSCol size="col-lg-3">
-                <FiscalProfileReport setActiveTab={setActiveTab} />
+                <FiscalProfileReport />
               </BSCol>
             </BSGrid>
           </Container>
