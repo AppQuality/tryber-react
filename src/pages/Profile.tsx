@@ -59,11 +59,7 @@ export default function Profile() {
                 </Card>
               </BSCol>
               <BSCol size="col-lg-3">
-                <Card
-                  className="stick-to-header-lg aq-mb-3"
-                  title={t("Fiscal Profile")}
-                  shadow={true}
-                >
+                <Card className="stick-to-header-lg aq-mb-3" shadow={true}>
                   <FiscalProfileReport />
                 </Card>
               </BSCol>
