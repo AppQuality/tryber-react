@@ -12,7 +12,7 @@ import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
 import TesterSidebar from "../features/TesterSidebar";
 import { useEffect, useState } from "react";
-import { FiscalProfileStatus } from "../features/profile/FiscalProfileStatus";
+import { FiscalProfileReport } from "../features/profile/FiscalProfileReport";
 import { GeneralProfile } from "../features/profile/GeneralProfile";
 import userStore from "../redux/user";
 
@@ -61,7 +61,7 @@ export default function Profile() {
                   title={t("Fiscal Profile")}
                   shadow={true}
                 >
-                  <FiscalProfileStatus />
+                  <FiscalProfileReport />
                 </Card>
               </BSCol>
             </BSGrid>
