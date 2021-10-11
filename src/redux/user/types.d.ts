@@ -4,6 +4,7 @@ interface UserStatus {
   refresh: () => void;
   login: (data: UserLoginData) => void;
   getProfile: () => void;
+  getFiscalProfile: () => void;
   user: User;
   isLoading: boolean;
   error: HttpError;
@@ -16,8 +17,13 @@ interface UserLoginData {
 
 type UserAction = {
   type: string;
-  data?: object;
+  data?: object | FetchProfileData;
   error?: string;
+};
+
+type FetchProfileData = {
+  fiscalProfile: any;
+  baseProfile: any;
 };
 
 type UserState = {

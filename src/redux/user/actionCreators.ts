@@ -45,15 +45,33 @@ export const getProfile = () => {
   return async (dispatch: UserDispatchType) => {
     dispatch({ type: actionTypes.FETCH_PROFILE_LOADING });
     try {
-      const profileData = await API.me(undefined, "all");
-      const fiscalData = await API.myFiscalData({});
+      const baseData = await API.me(undefined, "all");
       dispatch({
         type: actionTypes.FETCH_PROFILE,
-        data: { profileData: profileData, fiscalData: fiscalData },
+        data: { ...baseData },
       });
     } catch (err: unknown) {
       const { message } = err as HttpError;
       dispatch({ type: actionTypes.FETCH_PROFILE_FAILED, error: message });
+    }
+  };
+};
+
+export const getFiscalProfile = () => {
+  return async (dispatch: UserDispatchType) => {
+    dispatch({ type: actionTypes.FETCH_FISCAL_PROFILE_LOADING });
+    try {
+      const fiscalData = await API.myFiscalData({});
+      dispatch({
+        type: actionTypes.FETCH_FISCAL_PROFILE,
+        data: { ...fiscalData },
+      });
+    } catch (err: unknown) {
+      const { message } = err as HttpError;
+      dispatch({
+        type: actionTypes.FETCH_FISCAL_PROFILE_FAILED,
+        error: message,
+      });
     }
   };
 };

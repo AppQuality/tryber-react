@@ -18,10 +18,13 @@ import userStore from "../redux/user";
 
 export default function Profile() {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState("base");
-  const { user, getProfile } = userStore();
+  const urlParams = new URLSearchParams(window.location.search);
+  const tabParam = urlParams.get("tab") || "base"; //base is default
+  const [activeTab, setActiveTab] = useState(tabParam);
+  const { user, getProfile, getFiscalProfile } = userStore();
   useEffect(() => {
     getProfile();
+    getFiscalProfile();
   }, []);
   return (
     <GoogleTagManager title={t("Profile")}>

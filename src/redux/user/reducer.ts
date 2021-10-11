@@ -53,6 +53,26 @@ const reducer = (
             loadingProfile: false,
           }
         : state;
+    case actionTypes.FETCH_FISCAL_PROFILE:
+      return {
+        ...state,
+        error: undefined,
+        loadingProfile: true,
+      };
+    case actionTypes.FETCH_FISCAL_PROFILE_FAILED:
+      return {
+        ...state,
+        error: action.error,
+        loadingProfile: false,
+      };
+    case actionTypes.FETCH_FISCAL_PROFILE:
+      return action.data
+        ? {
+            ...state,
+            user: { ...state.user, ...action.data },
+            loadingProfile: false,
+          }
+        : state;
   }
   return state;
 };
