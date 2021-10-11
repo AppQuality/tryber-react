@@ -15,7 +15,7 @@ export const myFiscalData = async ({
   if (token) {
     requestHeaders.set("Authorization", "Bearer " + token);
   }
-  const res = await fetch(`${process.env.REACT_APP_API_URL}/users/me/fiscal}`, {
+  const res = await fetch(`${process.env.REACT_APP_API_URL}/users/me/fiscal`, {
     method: "GET",
     headers: requestHeaders,
   });
