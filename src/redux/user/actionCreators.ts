@@ -12,7 +12,6 @@ export function refreshUser() {
     dispatch({ type: actionTypes.USER_LOAD });
     return API.me(undefined, "name,surname,image,onboarding_completed,email")
       .then((user) => {
-        user.isAdmin = ["administrator", "tester_lead"].includes(user.role);
         action.data = user;
         return dispatch(action);
       })
@@ -47,7 +46,11 @@ export const getProfile = () => {
     dispatch({ type: actionTypes.FETCH_PROFILE_LOADING });
     try {
       const profileData = await API.me(undefined, "all");
-      dispatch({ type: actionTypes.FETCH_PROFILE, data: profileData });
+      const fiscalData = await API.myFiscalData({});
+      dispatch({
+        type: actionTypes.FETCH_PROFILE,
+        data: { profileData: profileData, fiscalData: fiscalData },
+      });
     } catch (err: unknown) {
       const { message } = err as HttpError;
       dispatch({ type: actionTypes.FETCH_PROFILE_FAILED, error: message });

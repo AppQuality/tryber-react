@@ -1,5 +1,4 @@
 import HttpError from "../HttpError";
-import { operations } from "../schema";
 
 export const myPopups = async ({
   token,

@@ -26,5 +26,7 @@ declare global {
   type Theme = typeof aqBootstrapTheme;
   type UserData =
     operations["get-users-me"]["responses"]["200"]["content"]["application/json"];
+  type UserFiscalData =
+    operations["get-users-me-fiscal"]["responses"]["200"]["content"]["application/json"];
   type HttpError = HttpError;
 }

@@ -16,12 +16,13 @@ interface UserLoginData {
 
 type UserAction = {
   type: string;
-  data?: UserLoginData;
+  data?: object;
   error?: string;
 };
 
 type UserState = {
   user?: UserData;
+  fiscalData?: UserFiscalData;
   loading: boolean;
   loadingProfile: boolean;
   error?: string;

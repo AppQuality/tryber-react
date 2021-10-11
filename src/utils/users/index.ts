@@ -1,7 +1,12 @@
 import HttpError from "../HttpError";
 import { operations } from "../schema";
 
-export const me = async (token?: string, query?: string) => {
+export const me = async (
+  token?: string,
+  query?: string
+): Promise<
+  operations["get-users-me"]["responses"]["200"]["content"]["application/json"]
+> => {
   if (process.env.REACT_APP_DEFAULT_TOKEN)
     token = process.env.REACT_APP_DEFAULT_TOKEN;
 
@@ -193,6 +198,7 @@ export const experiencePoints = async ({
   }
 };
 
+export * from "./myFiscalData";
 export * from "./myPopups";
 export * from "./myDevices";
 export * from "./onboardingComplete";
