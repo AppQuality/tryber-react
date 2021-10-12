@@ -13,8 +13,12 @@ import LoggedOnly from "../features/LoggedOnly";
 import TesterSidebar from "../features/TesterSidebar";
 import { useEffect, useState } from "react";
 import { FiscalProfileReport } from "../features/profile/FiscalProfileReport";
-import { GeneralProfile } from "../features/profile/GeneralProfile";
+import { HeaderProfile } from "../features/profile/HeaderProfile";
 import userStore from "../redux/user";
+import TabBase from "../features/profile/TabBase";
+import TabAdvanced from "../features/profile/TabAdvanced";
+import TabFiscal from "../features/profile/TabFiscal";
+import TabOptions from "../features/profile/TabOptions";
 
 export default function Profile() {
   const { t } = useTranslation();
@@ -37,20 +41,19 @@ export default function Profile() {
             <BSGrid>
               <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
                 <Card className="aq-mb-3" bodyClass="">
-                  <GeneralProfile />
-                  {JSON.stringify(user)}
+                  <HeaderProfile />
                   <Tabs active={activeTab}>
                     <Tab id="base" title={t("Base")}>
-                      {t("Base Profile")}
+                      <TabBase />
                     </Tab>
                     <Tab id="advanced" title={t("Advanced")}>
-                      {t("Advanced Profile")}
+                      <TabAdvanced />
                     </Tab>
                     <Tab id="fiscal" title={t("Fiscal")}>
-                      {t("Fiscal Profile")}
+                      <TabFiscal />
                     </Tab>
                     <Tab id="option" title={t("Options")}>
-                      {t("Profile Options")}
+                      <TabOptions />
                     </Tab>
                   </Tabs>
                 </Card>

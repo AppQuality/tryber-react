@@ -11,11 +11,18 @@ export default (): UserStatus => {
   const {
     user,
     loading,
+    loadingProfile,
     error,
-  }: { user: UserData; loading: boolean; error?: string } = useSelector(
+  }: {
+    user: UserData;
+    loading: boolean;
+    loadingProfile: boolean;
+    error?: string;
+  } = useSelector(
     (state: GeneralState) => ({
       user: state.user.user,
       loading: state.user.loading,
+      loadingProfile: state.user.loadingProfile,
       error: state.user.error,
     }),
     shallowEqual
@@ -30,6 +37,7 @@ export default (): UserStatus => {
     getFiscalProfile: () => dispatch(getFiscalProfile()),
     user: user,
     isLoading: loading,
+    isProfileLoading: loadingProfile,
     error: error,
   };
 };

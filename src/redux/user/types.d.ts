@@ -7,6 +7,7 @@ interface UserStatus {
   getFiscalProfile: () => void;
   user: User;
   isLoading: boolean;
+  isProfileLoading: boolean;
   error: HttpError;
 }
 
