@@ -24,16 +24,32 @@ import TabOptions from "../features/profile/TabOptions";
 export default function Profile() {
   const { t } = useTranslation();
   const urlParams = new URLSearchParams(window.location.search);
-  const tabParam = urlParams.get("tab");
-  const [activeTab, setActiveTab] = useState(tabParam || "base");
+  const tabParam = urlParams.get("tab") || "base";
+  const currentTab = ["base", "advanced", "fiscal", "options"].includes(
+    tabParam
+  )
+    ? tabParam
+    : "base";
+
+  const [activeTab, setActiveTab] = useState(currentTab);
   const { user, getProfile, getFiscalProfile } = userStore();
   useEffect(() => {
     getProfile();
     getFiscalProfile();
   }, []);
   useEffect(() => {
-    setActiveTab(tabParam || "base");
-  }, [tabParam]);
+    const currentParams = new URLSearchParams(window.location.search);
+    currentParams.set("tab", activeTab);
+    window.history.pushState(
+      {},
+      "",
+      window.location.origin +
+        window.location.pathname +
+        "?" +
+        currentParams.toString()
+    );
+  }, [activeTab]);
+
   return (
     <GoogleTagManager title={t("Profile")}>
       <LoggedOnly>
@@ -56,7 +72,7 @@ export default function Profile() {
                     <Tab id="fiscal" title={t("Fiscal")}>
                       <TabFiscal />
                     </Tab>
-                    <Tab id="option" title={t("Options")}>
+                    <Tab id="options" title={t("Options")}>
                       <TabOptions />
                     </Tab>
                   </Tabs>
