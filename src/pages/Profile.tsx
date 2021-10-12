@@ -6,6 +6,7 @@ import {
   PageTitle,
   Tabs,
   Tab,
+  Button,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import GoogleTagManager from "../features/GoogleTagManager";
@@ -45,7 +46,7 @@ export default function Profile() {
               <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
                 <Card className="aq-mb-3" bodyClass="">
                   <HeaderProfile />
-                  <Tabs active={activeTab}>
+                  <Tabs active={activeTab} setActive={setActiveTab}>
                     <Tab id="base" title={t("Base")}>
                       <TabBase />
                     </Tab>
@@ -62,7 +63,7 @@ export default function Profile() {
                 </Card>
               </BSCol>
               <BSCol size="col-lg-3">
-                <FiscalProfileReport />
+                <FiscalProfileReport setActiveTab={setActiveTab} />
               </BSCol>
             </BSGrid>
           </Container>
