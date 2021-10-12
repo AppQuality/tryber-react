@@ -52,6 +52,12 @@ export default () => {
               cp.manual_link.it !== "#"
             )
               manualLink = cp.manual_link.it;
+            if (
+              i18n.language === "es" &&
+              cp.manual_link.es &&
+              cp.manual_link.es !== "#"
+            )
+              manualLink = cp.manual_link.es;
           }
 
           return {
