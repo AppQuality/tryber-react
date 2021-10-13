@@ -18,7 +18,7 @@ export const FiscalProfileReport = ({
   return (
     <>
       {user.fiscalStatus ? (
-        user.fiscalStatus === "unverified" ? (
+        user.fiscalStatus.toLowerCase() === "unverified" ? (
           <UnVerifiedFiscalProfile setActiveTab={setActiveTab} />
         ) : null
       ) : (
