@@ -14,7 +14,7 @@ const reducer = (
       if (action.data) {
         return {
           ...state,
-          user: action.data,
+          user: { ...state.user, ...action.data },
           loading: false,
         };
       }
