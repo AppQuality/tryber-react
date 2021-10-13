@@ -36,10 +36,9 @@ export const HeaderProfile = () => {
         <img className="profile-avatar" src={user.image} alt={user.name} />
       </div>
       <div>
-        <Title size="l">{`${user.name} ${user.surname}`}</Title>
-        <Text color="secondary">
-          <strong>{"T" + user.id}</strong>
-        </Text>
+        <PageTitle size="small" subtitle={"T" + user.id}>
+          {`${user.name} ${user.surname}`}
+        </PageTitle>
         <Text className="aq-mb-3">
           <StarFill
             style={{ verticalAlign: "middle" }}
