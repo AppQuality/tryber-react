@@ -63,16 +63,28 @@ export default function Profile() {
                 <Card className="aq-mb-3" bodyClass="">
                   <HeaderProfile />
                   <Tabs active={activeTab} setActive={setActiveTab}>
-                    <Tab id="base" title={t("Base")}>
+                    <Tab
+                      id="base"
+                      title={<span className="aq-px-3">{t("Base")}</span>}
+                    >
                       <TabBase />
                     </Tab>
-                    <Tab id="advanced" title={t("Advanced")}>
+                    <Tab
+                      id="advanced"
+                      title={<span className="aq-px-3">{t("Advanced")}</span>}
+                    >
                       <TabAdvanced />
                     </Tab>
-                    <Tab id="fiscal" title={t("Fiscal")}>
+                    <Tab
+                      id="fiscal"
+                      title={<span className="aq-px-3">{t("Fiscal")}</span>}
+                    >
                       <TabFiscal />
                     </Tab>
-                    <Tab id="options" title={t("Options")}>
+                    <Tab
+                      id="options"
+                      title={<span className="aq-px-3">{t("Options")}</span>}
+                    >
                       <TabOptions />
                     </Tab>
                   </Tabs>
