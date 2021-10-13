@@ -92,6 +92,7 @@ const StyledHeaderProfile = styled.div`
     grid-template-columns: 20% 40% 40%;
     .profile-avatar {
       width: 100%;
+      height: auto;
     }
   }
 `;
