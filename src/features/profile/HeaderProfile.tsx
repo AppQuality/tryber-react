@@ -32,7 +32,7 @@ export const HeaderProfile = () => {
 
   return (
     <StyledHeaderProfile className="aq-m-3">
-      <div className="aq-mt-3">
+      <div className="aq-mt-3 aq-text-center">
         <img className="profile-avatar" src={user.image} alt={user.name} />
       </div>
       <div>
@@ -60,7 +60,7 @@ export const HeaderProfile = () => {
           </span>
         </Text>
       </div>
-      <div>
+      <div className="aq-mt-3">
         <Title className="aq-mb-2" size="xs">
           {t("Email Status")}
         </Title>
@@ -100,9 +100,5 @@ const StyledHeaderProfile = styled.div`
   }
   @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
     grid-template-columns: 20% 40% 40%;
-    .profile-avatar {
-      width: 100%;
-      height: auto;
-    }
   }
 `;
