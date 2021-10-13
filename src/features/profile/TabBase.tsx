@@ -13,8 +13,6 @@ import {
 } from "@appquality/appquality-design-system";
 import UserStore from "../../redux/user";
 import React from "react";
-import i18next from "i18next";
-import BirthdayPicker from "../BirthdayPicker";
 import CountrySelect from "../CountrySelect";
 import Select from "react-select/base";
 

@@ -12,7 +12,6 @@ import {
   Text,
   Title,
 } from "@appquality/appquality-design-system";
-import CountrySelect from "../CountrySelect";
 import Select from "react-select/base";
 import React from "react";
 
