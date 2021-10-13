@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import WPAPI from "../../utils/wpapi";
 import UserStore from "../../redux/user";
-import { PageTitle, Title } from "@appquality/appquality-design-system";
+import { PageTitle, Title, Text } from "@appquality/appquality-design-system";
 import {
   StarFill,
   BookmarkCheckFill,
@@ -39,38 +39,48 @@ export const HeaderProfile = () => {
         <PageTitle size="small" subtitle={"T" + user.id}>
           {`${user.name} ${user.surname}`}
         </PageTitle>
-        <div>
-          <StarFill color={aqBootstrapTheme.palette.warning} />{" "}
-          <strong>{user.total_exp_pts}</strong> pt
-        </div>
-        <div>
+        <Text className="aq-mb-3">
+          <StarFill
+            style={{ verticalAlign: "middle" }}
+            color={aqBootstrapTheme.palette.warning}
+            size="21"
+          />{" "}
+          <span className="aq-ml-2">
+            <strong>{user.total_exp_pts}</strong> pt
+          </span>
+        </Text>
+        <Text>
           <BookmarkCheckFill
             style={{ verticalAlign: "middle" }}
             color={aqBootstrapTheme.palette.secondary}
+            size="21"
           />{" "}
-          <strong>{user.attended_cp}</strong> {t("completed campaigns")}
-        </div>
+          <span className="aq-ml-2">
+            <strong>{user.attended_cp}</strong> {t("Completed campaigns")}
+          </span>
+        </Text>
       </div>
       <div className="aq-mt-3">
-        <div>
-          <Title size="xs">{t("Email Status")}</Title>
-        </div>
-        <div>
-          {user?.is_verified ? (
-            <div>
-              <CheckCircle
-                style={{ verticalAlign: "middle" }}
-                color={aqBootstrapTheme.palette.success}
-              />{" "}
-              <span>{t("email confirmed")}</span>
-            </div>
-          ) : (
-            <div className="mail-confirm-cta" onClick={handleMailConfirm}>
-              <Mailbox color={aqBootstrapTheme.palette.info} />{" "}
-              {t("confirm email")}
-            </div>
-          )}
-        </div>
+        <Title className="aq-mb-2" size="xs">
+          {t("Email Status")}
+        </Title>
+        {user?.is_verified ? (
+          <Text>
+            <CheckCircle
+              style={{ verticalAlign: "middle" }}
+              color={aqBootstrapTheme.palette.success}
+            />{" "}
+            <span className="aq-ml-2">{t("Email confirmed")}</span>
+          </Text>
+        ) : (
+          <Text className="mail-confirm-cta" onClick={handleMailConfirm}>
+            <Mailbox
+              style={{ verticalAlign: "middle" }}
+              color={aqBootstrapTheme.palette.info}
+            />{" "}
+            <span className="aq-ml-2">{t("Confirm email")}</span>
+          </Text>
+        )}
       </div>
     </StyledHeaderProfile>
   );
