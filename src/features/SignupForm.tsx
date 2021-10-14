@@ -17,6 +17,7 @@ import BirthdayPicker from "./BirthdayPicker";
 import * as yup from "yup";
 import { useTranslation, Trans } from "react-i18next";
 import referralStore from "../redux/referral";
+import siteWideMessageStore from "../redux/siteWideMessages";
 import API from "../utils/api";
 import WPAPI from "../utils/wpapi";
 
@@ -30,6 +31,7 @@ export const SignupForm = ({
   formId = "signupForm",
 }: SignupFormProps) => {
   const { referral } = referralStore();
+  const { add } = siteWideMessageStore();
   const { t } = useTranslation();
 
   const initialValues = {
@@ -93,7 +95,16 @@ export const SignupForm = ({
               })
               .catch((e) => alert(e.message));
           })
-          .catch((e) => alert(e.message))
+          .catch((e) => {
+            if (e.message.includes("already registered")) {
+              add({
+                message: t("Email {{email}} already registered", {
+                  email: values.email,
+                }),
+                type: "danger",
+              });
+            }
+          })
           .finally(() => actions.setSubmitting(false));
       }}
       validationSchema={yup.object(validationSchema)}
@@ -146,12 +157,31 @@ export const SignupForm = ({
           {referral && (
             <Field type="text" name="referral" label={t("Referral")} disabled />
           )}
-          <Checkbox
-            name="subscribe"
-            label={t(
-              "I agree to receive earning opportunity emails from AppQuality"
-            )}
-          />
+
+          <FormikField name={"subscribe"}>
+            {({
+              field: { name, onChange, onBlur, value }, // { name, value, onChange, onBlur }
+              form, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+              meta,
+            }: FieldProps) => {
+              return (
+                <>
+                  <Checkbox
+                    name={name}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    value={value}
+                    isInvalid={meta.touched && !!meta.error}
+                    label={t(
+                      "I agree to receive earning opportunity emails from AppQuality"
+                    )}
+                  />
+                  <ErrorMessage name={name} />
+                </>
+              );
+            }}
+          </FormikField>
+
           <CSSGrid min="78px" fill={true}>
             <Button
               className="aq-mb-3"

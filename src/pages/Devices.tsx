@@ -16,7 +16,7 @@ import EditDeviceModal from "../features/EditDeviceModal";
 import RemoveDeviceModal from "../features/RemoveDeviceModal";
 import userDeviceStore from "../redux/userDevices";
 
-const Devices = () => {
+export default function Devices() {
   const { t } = useTranslation();
   const { openAddModal } = userDeviceStore();
   return (
@@ -67,5 +67,4 @@ const Devices = () => {
       </LoggedOnly>
     </GoogleTagManager>
   );
-};
-export default Devices;
+}

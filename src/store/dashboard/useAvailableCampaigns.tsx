@@ -49,6 +49,12 @@ export default () => {
               cp.preview_link.en !== "#"
             )
               previewLink = `${window.location.origin}${cp.preview_link.en}`;
+            if (
+              cp.preview_link.es &&
+              i18n.language == "es" &&
+              cp.preview_link.es !== "#"
+            )
+              previewLink = `${window.location.origin}${cp.preview_link.es}`;
           }
           return {
             key: cp.id ? cp.id : 0,

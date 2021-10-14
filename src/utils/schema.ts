@@ -4,6 +4,11 @@
  */
 
 export interface paths {
+  "/": {
+    /** Get all routes available for this apis */
+    get: operations["get-root"];
+    parameters: {};
+  };
   "/authenticate": {
     /** A request to login with your username and password */
     post: operations["post-authenticate"];
@@ -89,85 +94,21 @@ export interface paths {
       };
     };
   };
-  "/": {
-    /** Get all routes available for this apis */
-    get: operations["get-root"];
-    parameters: {};
-  };
-  "/users": {
-    /** Get all users you have access to */
-    get: operations["get-users"];
-    /** Create a new user */
-    post: operations["post-users"];
-  };
-  "/users/me": {
-    /** Get your user data */
-    get: operations["get-users-me"];
-    /** Edit your user data */
-    put: operations["put-users-me"];
-    patch: operations["patch-users-me"];
-  };
-  "/users/me/bugs": {
-    /** Get all the bugs that you uploaded to AppQuality. */
-    get: operations["get-users-me-bugs"];
-    parameters: {};
-  };
-  "/users/me/experience": {
-    /** Get all the experience points earned in AppQuality. */
-    get: operations["get-users-me-experience"];
-  };
-  "/users/me/fiscal": {
-    get: operations["get-users-me-fiscal"];
-    post: operations["post-users-me-fiscal"];
-  };
-  "/users/me/campaigns": {
-    /**
-     * get available, and selected campaigns for a single user.
-     * filterBy[accepted] = 1 retrieve accepted campaign only, otherwise retrieve available campaign.
-     * filterBy[completed] = 1 get completed campaigns only (end date in the past)
-     * filterBy[completed] = 0 get not completed campaigns only (end date today or in the future)
-     * filterBy[statusID] = 1 get open campaigns
-     * filterBy[statusID] = 2 get closed campaigns
-     */
-    get: operations["get-users-me-campaigns"];
-  };
   "/popups": {
+    /** Retrieve all available popups for admin operations */
     get: operations["get-popups"];
+    /** The new popup will be inserted as an available popup on admin areas */
     post: operations["post-popups"];
     parameters: {};
   };
   "/popups/{popup}": {
+    /** Retrieve a signle popup for admin operations */
     get: operations["get-popups-popup"];
+    /** Edit your popup with a new content or new rules */
     patch: operations["patch-popups-popup"];
     parameters: {
       path: {
         popup: number;
-      };
-    };
-  };
-  "/users/me/popups": {
-    get: operations["get-users-me-popups"];
-  };
-  "/users/me/popups/{popup}": {
-    get: operations["get-users-me-popups-popup"];
-    parameters: {
-      path: {
-        popup: number;
-      };
-    };
-  };
-  "/users/me/devices": {
-    get: operations["get-users-me-devices"];
-    /** Add a new device to your user */
-    post: operations["post-users-me-devices"];
-  };
-  "/users/me/devices/{deviceId}": {
-    get: operations["get-users-me-devices-deviceId"];
-    delete: operations["delete-users-me-devices-deviceId"];
-    patch: operations["patch-users-me-devices-deviceId"];
-    parameters: {
-      path: {
-        deviceId: number;
       };
     };
   };
@@ -198,37 +139,114 @@ export interface paths {
       };
     };
   };
+  "/users": {
+    /** Get all users you have access to */
+    get: operations["get-users"];
+    /** Create a new user */
+    post: operations["post-users"];
+  };
+  "/users/me": {
+    /** Get your user data */
+    get: operations["get-users-me"];
+    /** Edit your user data */
+    put: operations["put-users-me"];
+    /** Edit basic user fields */
+    patch: operations["patch-users-me"];
+  };
+  "/users/me/bugs": {
+    /** Get all the bugs that you uploaded to AppQuality. */
+    get: operations["get-users-me-bugs"];
+    parameters: {};
+  };
+  "/users/me/experience": {
+    /** Get all the experience points earned in AppQuality. */
+    get: operations["get-users-me-experience"];
+  };
+  "/users/me/fiscal": {
+    /** Get your fiscal profile data */
+    get: operations["get-users-me-fiscal"];
+    /** Update your fiscal data */
+    put: operations["put-users-me-fiscal"];
+    /** Create a new fiscal data entry from empty state */
+    post: operations["post-users-me-fiscal"];
+  };
+  "/users/me/campaigns": {
+    /**
+     * get available, and selected campaigns for a single user.
+     * filterBy[accepted] = 1 retrieve accepted campaign only, otherwise retrieve available campaign.
+     * filterBy[completed] = 1 get completed campaigns only (end date in the past)
+     * filterBy[completed] = 0 get not completed campaigns only (end date today or in the future)
+     * filterBy[statusID] = 1 get open campaigns
+     * filterBy[statusID] = 2 get closed campaigns
+     */
+    get: operations["get-users-me-campaigns"];
+  };
+  "/users/me/popups": {
+    /** Get all popup defined for your user */
+    get: operations["get-users-me-popups"];
+  };
+  "/users/me/popups/{popup}": {
+    /** Get a single popup. Will set the retrieved popup as expired */
+    get: operations["get-users-me-popups-popup"];
+    parameters: {
+      path: {
+        popup: number;
+      };
+    };
+  };
+  "/users/me/devices": {
+    /** Get all your device data */
+    get: operations["get-users-me-devices"];
+    /** Add a new device to your user */
+    post: operations["post-users-me-devices"];
+  };
+  "/users/me/devices/{deviceId}": {
+    /** Retrieve a single device */
+    get: operations["get-users-me-devices-deviceId"];
+    /** The device will be disabled and won't be available for selections and bugs submission. You can't remove a device currently involved in a campaign */
+    delete: operations["delete-users-me-devices-deviceId"];
+    /** You can change only operating system version */
+    patch: operations["patch-users-me-devices-deviceId"];
+    parameters: {
+      path: {
+        deviceId: number;
+      };
+    };
+  };
   "/users/me/certifications": {
+    /** Add one certification to your profile */
     post: operations["post-users-me-certifications"];
   };
   "/users/me/certifications/{certificationId}": {
+    /** The certification will be removed */
     delete: operations["delete-users-me-certifications-certificationId"];
-    patch: operations["patch-users-me-certifications-certificationId"];
     parameters: {
       path: {
+        /** The id of the certification */
         certificationId: number;
       };
     };
   };
   "/users/me/languages": {
+    /** Add one of the languages to your profile */
     post: operations["post-users-me-languages"];
   };
   "/users/me/languages/{languageId}": {
+    /** The language will be removed from your profile */
     delete: operations["delete-users-me-languages-languageId"];
-    patch: operations["patch-users-me-languages-languageId"];
     parameters: {
       path: {
+        /** The id of the language */
         languageId: number;
       };
     };
   };
-  "/users/me/additionals": {
-    get: operations["get-users-me-additionals"];
-  };
   "/users/me/additionals/{fieldId}": {
+    /** The field data will be replaced with your new data */
     put: operations["put-users-me-additionals-fieldId"];
     parameters: {
       path: {
+        /** The id of the field to edit */
         fieldId: number;
       };
     };
@@ -364,6 +382,7 @@ export interface components {
     TranslatablePage: {
       en?: string;
       it?: string;
+      es?: string;
     };
     UserDevice: {
       type: string;
@@ -383,6 +402,19 @@ export interface components {
         version: string;
       };
     };
+    AdditionalField: {
+      field_id: number;
+      name: string;
+      value: string;
+    };
+    Certification: {
+      id?: number;
+      name: string;
+      area: string;
+      institute: string;
+      achievement_date: string;
+    };
+    FiscalType: "withholding" | "witholding-extra" | "other" | "non-italian";
   };
   responses: {
     /** A user */
@@ -477,6 +509,18 @@ export interface components {
 }
 
 export interface operations {
+  /** Get all routes available for this apis */
+  "get-root": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": { [key: string]: unknown };
+        };
+      };
+    };
+  };
   /** A request to login with your username and password */
   "post-authenticate": {
     parameters: {};
@@ -776,16 +820,168 @@ export interface operations {
       };
     };
   };
-  /** Get all routes available for this apis */
-  "get-root": {
-    parameters: {};
+  /** Retrieve all available popups for admin operations */
+  "get-popups": {
+    parameters: {
+      query: {
+        /** Max items to retrieve */
+        limit?: components["parameters"]["limit"];
+        /** Items to skip for pagination */
+        start?: components["parameters"]["start"];
+      };
+    };
     responses: {
       /** OK */
       200: {
         content: {
-          "application/json": { [key: string]: unknown };
+          "application/json": ({
+            id?: number;
+          } & components["schemas"]["Popup"])[];
         };
       };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** The new popup will be inserted as an available popup on admin areas */
+  "post-popups": {
+    parameters: {};
+    responses: {
+      /** Created */
+      201: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["Popup"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["Popup"];
+      };
+    };
+  };
+  /** Retrieve a signle popup for admin operations */
+  "get-popups-popup": {
+    parameters: {
+      path: {
+        popup: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["Popup"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+  };
+  /** Edit your popup with a new content or new rules */
+  "patch-popups-popup": {
+    parameters: {
+      path: {
+        popup: number;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+          } & components["schemas"]["Popup"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["Popup"];
+      };
+    };
+  };
+  /** Get all model of devices with theirs manufacturers */
+  "get-devices-devices-type-model": {
+    parameters: {
+      path: {
+        device_type: string;
+      };
+      query: {
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            manufacturer?: string;
+            models?: {
+              id?: number;
+              name?: string;
+            }[];
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Get all operating systems of a device type */
+  "get-devices-operating-systems": {
+    parameters: {
+      path: {
+        device_type: string;
+      };
+      query: {
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+            name?: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Get all versions of an operating systems */
+  "get-devices-os-versions": {
+    parameters: {
+      path: {
+        device_type: string;
+      };
+      query: {
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+            name?: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
     };
   };
   /** Get all users you have access to */
@@ -852,23 +1048,18 @@ export interface operations {
             pending_booty?: number;
             languages?: string[];
             onboarding_completed?: boolean;
-            additional?: { [key: string]: unknown }[];
+            additional?: components["schemas"]["AdditionalField"][];
             gender?: string;
             birthDate?: string;
             phone?: string;
             education?: string;
             profession?: string;
-            certifications?:
-              | {
-                  name?: string;
-                  area?: string;
-                  institute?: string;
-                  achievement_date?: string;
-                }[]
-              | boolean;
+            certifications?: components["schemas"]["Certification"][] | boolean;
             completionPercent?: number;
             country?: string;
             city?: string;
+            attended_cp?: number;
+            approved_bugs?: number;
           };
         };
       };
@@ -895,6 +1086,7 @@ export interface operations {
       };
     };
   };
+  /** Edit basic user fields */
   "patch-users-me": {
     responses: {
       /** OK */
@@ -913,8 +1105,8 @@ export interface operations {
           gender?: string;
           birthDate?: string;
           phone?: string;
-          education?: string;
-          profession?: string;
+          education?: number;
+          profession?: number;
           country?: string;
           city?: string;
           password?: string;
@@ -1009,40 +1201,127 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
+  /** Get your fiscal profile data */
   "get-users-me-fiscal": {
     responses: {
       /** OK */
-      200: unknown;
-      /** Unauthorized */
-      401: unknown;
+      200: {
+        content: {
+          "application/json": {
+            address: {
+              country: string;
+              province: string;
+              city: string;
+              street: string;
+              cityCode: string;
+            };
+            type: components["schemas"]["FiscalType"];
+            birthPlace: {
+              city?: string;
+              province?: string;
+            };
+            fiscalId: string;
+            fiscalStatus: "Verified" | "Unverified";
+            gender: "Male" | "Female";
+          };
+        };
+      };
+      401: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Update your fiscal data */
+  "put-users-me-fiscal": {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            address: {
+              country: string;
+              province: string;
+              city: string;
+              street: string;
+              cityCode: string;
+            };
+            type: components["schemas"]["FiscalType"];
+            birthPlace?: {
+              city?: string;
+              province?: string;
+            };
+            fiscalId: string;
+            fiscalStatus: "Verified" | "Unverified";
+            gender: "Male" | "Female";
+          };
+        };
+      };
+      401: components["responses"]["NotAuthorized"];
     };
     requestBody: {
       content: {
         "application/json": {
-          fiscalResidence?: string;
-          fiscalCategory?: string;
-          birthPlace?: string;
-          fiscalAddress?: string;
-          fiscalId?: string;
+          address: {
+            country: string;
+            province: string;
+            city: string;
+            street: string;
+            cityCode: string;
+          };
+          type: components["schemas"]["FiscalType"];
+          birthPlace?: {
+            city?: string;
+            province?: string;
+          };
+          fiscalId: string;
+          gender: "Male" | "Female";
         };
       };
     };
   };
+  /** Create a new fiscal data entry from empty state */
   "post-users-me-fiscal": {
     responses: {
-      /** OK */
-      200: unknown;
-      /** Unauthorized */
-      401: unknown;
+      /** Created */
+      201: {
+        content: {
+          "application/json": {
+            address: {
+              country: string;
+              province: string;
+              city: string;
+              street: string;
+              cityCode: string;
+            };
+            type: components["schemas"]["FiscalType"];
+            birthPlace?: {
+              city?: string;
+              province?: string;
+            };
+            fiscalId: string;
+            fiscalStatus: "Verified" | "Unverified";
+            gender: "Male" | "Female";
+          };
+        };
+      };
+      401: components["responses"]["NotAuthorized"];
     };
     requestBody: {
       content: {
         "application/json": {
-          fiscalResidence: string;
-          fiscalCategory: string;
-          birthPlace: string;
-          fiscalAddress: string;
+          address: {
+            country: string;
+            province: string;
+            city: string;
+            street: string;
+            cityCode: string;
+          };
+          type: components["schemas"]["FiscalType"];
+          birthPlace?: {
+            city?: string;
+            province?: string;
+          };
           fiscalId: string;
+          gender: "Male" | "Female";
         };
       };
     };
@@ -1093,88 +1372,7 @@ export interface operations {
       404: unknown;
     };
   };
-  "get-popups": {
-    parameters: {
-      query: {
-        /** Max items to retrieve */
-        limit?: components["parameters"]["limit"];
-        /** Items to skip for pagination */
-        start?: components["parameters"]["start"];
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": ({
-            id?: number;
-          } & components["schemas"]["Popup"])[];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  "post-popups": {
-    parameters: {};
-    responses: {
-      /** Created */
-      201: {
-        content: {
-          "application/json": {
-            id?: number;
-          } & components["schemas"]["Popup"];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Popup"];
-      };
-    };
-  };
-  "get-popups-popup": {
-    parameters: {
-      path: {
-        popup: number;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id?: number;
-          } & components["schemas"]["Popup"];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-    };
-  };
-  "patch-popups-popup": {
-    parameters: {
-      path: {
-        popup: number;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id?: number;
-          } & components["schemas"]["Popup"];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Popup"];
-      };
-    };
-  };
+  /** Get all popup defined for your user */
   "get-users-me-popups": {
     parameters: {
       query: {
@@ -1196,6 +1394,7 @@ export interface operations {
       };
     };
   };
+  /** Get a single popup. Will set the retrieved popup as expired */
   "get-users-me-popups-popup": {
     parameters: {
       path: {
@@ -1213,6 +1412,7 @@ export interface operations {
       };
     };
   };
+  /** Get all your device data */
   "get-users-me-devices": {
     responses: {
       /** OK */
@@ -1257,6 +1457,7 @@ export interface operations {
       };
     };
   };
+  /** Retrieve a single device */
   "get-users-me-devices-deviceId": {
     parameters: {
       path: {
@@ -1276,6 +1477,7 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
+  /** The device will be disabled and won't be available for selections and bugs submission. You can't remove a device currently involved in a campaign */
   "delete-users-me-devices-deviceId": {
     parameters: {
       path: {
@@ -1295,6 +1497,7 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
+  /** You can change only operating system version */
   "patch-users-me-devices-deviceId": {
     parameters: {
       path: {
@@ -1329,124 +1532,39 @@ export interface operations {
       };
     };
   };
-  /** Get all model of devices with theirs manufacturers */
-  "get-devices-devices-type-model": {
-    parameters: {
-      path: {
-        device_type: string;
-      };
-      query: {
-        /** Key-value Array for item filtering */
-        filterBy?: components["parameters"]["filterBy"];
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            manufacturer?: string;
-            models?: {
-              id?: number;
-              name?: string;
-            }[];
-          }[];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  /** Get all operating systems of a device type */
-  "get-devices-operating-systems": {
-    parameters: {
-      path: {
-        device_type: string;
-      };
-      query: {
-        /** Key-value Array for item filtering */
-        filterBy?: components["parameters"]["filterBy"];
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id?: number;
-            name?: string;
-          }[];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  /** Get all versions of an operating systems */
-  "get-devices-os-versions": {
-    parameters: {
-      path: {
-        device_type: string;
-      };
-      query: {
-        /** Key-value Array for item filtering */
-        filterBy?: components["parameters"]["filterBy"];
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id?: number;
-            name?: string;
-          }[];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
+  /** Add one certification to your profile */
   "post-users-me-certifications": {
     responses: {
       /** Created */
       201: {
         content: {
-          "application/json": {
-            name: string;
-            area: string;
-            institute: string;
-            achievement_date: string;
-          };
+          "application/json":
+            | components["schemas"]["Certification"]
+            | {
+                message: string;
+              };
         };
       };
       403: components["responses"]["NotAuthorized"];
     };
     requestBody: {
       content: {
-        "application/json": {
-          certification_id: string;
-          achievement_date: string;
-        };
+        "application/json":
+          | {
+              certifications: boolean;
+            }
+          | {
+              certification_id: number;
+              achievement_date: string;
+            };
       };
     };
   };
+  /** The certification will be removed */
   "delete-users-me-certifications-certificationId": {
     parameters: {
       path: {
-        certificationId: number;
-      };
-    };
-    responses: {
-      /** OK */
-      200: unknown;
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  "patch-users-me-certifications-certificationId": {
-    parameters: {
-      path: {
+        /** The id of the certification */
         certificationId: number;
       };
     };
@@ -1455,25 +1573,15 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            name: string;
-            area: string;
-            institute: string;
-            achievement_date: string;
+            message?: string;
           };
         };
       };
       403: components["responses"]["NotAuthorized"];
       404: components["responses"]["NotFound"];
     };
-    requestBody: {
-      content: {
-        "application/json": {
-          certification_id?: number;
-          achievement_date?: string;
-        };
-      };
-    };
   };
+  /** Add one of the languages to your profile */
   "post-users-me-languages": {
     responses: {
       /** Created */
@@ -1489,26 +1597,17 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": number;
+        "application/json": {
+          languageId?: number;
+        };
       };
     };
   };
+  /** The language will be removed from your profile */
   "delete-users-me-languages-languageId": {
     parameters: {
       path: {
-        languageId: number;
-      };
-    };
-    responses: {
-      /** OK */
-      200: unknown;
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  "patch-users-me-languages-languageId": {
-    parameters: {
-      path: {
+        /** The id of the language */
         languageId: number;
       };
     };
@@ -1517,39 +1616,19 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            id: number;
-            name: string;
+            message?: string;
           };
         };
       };
       403: components["responses"]["NotAuthorized"];
       404: components["responses"]["NotFound"];
     };
-    requestBody: {
-      content: {
-        "application/json": number;
-      };
-    };
   };
-  "get-users-me-additionals": {
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            field_id: number;
-            name: string;
-            value: string;
-          }[];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
+  /** The field data will be replaced with your new data */
   "put-users-me-additionals-fieldId": {
     parameters: {
       path: {
+        /** The id of the field to edit */
         fieldId: number;
       };
     };
@@ -1558,16 +1637,8 @@ export interface operations {
       200: {
         content: {
           "application/json":
-            | {
-                field_id: number;
-                name: string;
-                value: string;
-              }[]
-            | {
-                field_id: number;
-                name: string;
-                value: string;
-              };
+            | components["schemas"]["AdditionalField"][]
+            | components["schemas"]["AdditionalField"];
         };
       };
       403: components["responses"]["NotAuthorized"];
@@ -1578,13 +1649,12 @@ export interface operations {
         "application/json":
           | {
               value: string;
-              is_candidate?: string;
+              is_candidate?: boolean;
             }[]
           | {
               value: string;
-              is_candidate?: string;
-            }
-          | string;
+              is_candidate?: boolean;
+            };
       };
     };
   };

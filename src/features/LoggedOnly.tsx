@@ -7,6 +7,7 @@ import {
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
+import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
 
 export default ({ children }: { children: React.ReactNode }) => {
   const history = useHistory();
@@ -15,7 +16,7 @@ export default ({ children }: { children: React.ReactNode }) => {
 
   if (!user && error) {
     if (error.statusCode === 403) {
-      history.push("/");
+      history.push(useLocalizeRoute(""));
     } else {
       alert(error.message);
     }

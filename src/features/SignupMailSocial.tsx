@@ -7,15 +7,14 @@ import {
 import { useTranslation } from "react-i18next";
 import { SignupForm } from "./SignupForm";
 import signupImage from "../pages/assets/group-236.png";
+import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
 
 interface SignupMailSocialProps {
-  redirectUrl?: string;
+  redirectUrl: string;
   formId?: string;
 }
 
-export const SignupMailSocial = ({
-  redirectUrl = "/my-dashboard/",
-}: SignupMailSocialProps) => {
+export const SignupMailSocial = ({ redirectUrl }: SignupMailSocialProps) => {
   const { t } = useTranslation();
   const signupWithFb = () => {
     window.location.href = `/wp-admin/admin-ajax.php?loc=${redirectUrl}&action=facebook_oauth_redirect&log=0`;

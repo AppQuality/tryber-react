@@ -1,6 +1,14 @@
 import HttpError from "../utils/HttpError";
 import { aqBootstrapTheme } from "@appquality/appquality-design-system";
 
+export type CrowdRoutes =
+  | "getting-started"
+  | "my-dashboard"
+  | "personal-equipment"
+  | "my-bugs"
+  | "experience-points"
+  | "";
+
 export interface UserData {
   id: number;
   wp_user_id: number;

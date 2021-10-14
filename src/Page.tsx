@@ -1,11 +1,11 @@
 import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import {
-  GettingStarted,
-  MyBugs,
-  ExperiencePoints,
-  Home,
   Dashboard,
   Devices,
+  ExperiencePoints,
+  GettingStarted,
+  Home,
+  MyBugs,
 } from "./pages";
 import "./i18n";
 import TagManager from "react-gtm-module";
@@ -48,14 +48,13 @@ function Page() {
       setReferral(values.referral);
     }
   }, []);
-
   return (
     <>
       <SiteHeader />
       <SiteWideMessages />
       <Switch>
         <Route path={`${base}/getting-started`} component={GettingStarted} />
-        <Route path={`${base}/it/getting-started-2`}>
+        <Route path={`/it/getting-started-2`}>
           <Redirect to="/it/getting-started" />
         </Route>
 
@@ -76,9 +75,23 @@ function Page() {
             />
           )}
         />
+        <Route
+          path={`/es/dispositivos`}
+          component={({ location }: { location: Location }) => (
+            <Redirect
+              to={{
+                ...location,
+                pathname: "/es/personal-equipment",
+              }}
+            />
+          )}
+        />
 
-        <Route path={`${base}/it/la-mia-dashboard`}>
+        <Route path={`/it/la-mia-dashboard`}>
           <Redirect to="/it/my-dashboard" />
+        </Route>
+        <Route path={`/es/tablero`}>
+          <Redirect to="/es/my-dashboard" />
         </Route>
 
         <Route path={`${base}/my-bugs`} component={() => <MyBugs />} />
@@ -98,6 +111,17 @@ function Page() {
           )}
         />
         <Route
+          path={`${base}/es/puntos-de-experiencia`}
+          component={({ location }: { location: Location }) => (
+            <Redirect
+              to={{
+                ...location,
+                pathname: "/es/experience-points",
+              }}
+            />
+          )}
+        />
+        <Route
           path={`${base}/it/i-miei-bug`}
           component={({ location }: { location: Location }) => (
             <Redirect
@@ -108,7 +132,18 @@ function Page() {
             />
           )}
         />
-        <Route path={["/", "/it"]} exact component={Home} />
+        <Route
+          path={`${base}/es/errores-cargados`}
+          component={({ location }: { location: Location }) => (
+            <Redirect
+              to={{
+                ...location,
+                pathname: "/es/my-bugs",
+              }}
+            />
+          )}
+        />
+        <Route path={["/", "/it", "/es"]} exact component={Home} />
       </Switch>
     </>
   );
