@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import { useTranslation } from "react-i18next";
+
 import { BaseProps } from "@appquality/appquality-design-system/dist/shared/_types";
 
 const StyledMenu = styled.div`
@@ -22,10 +23,16 @@ const StyledMenu = styled.div`
 interface LangMenuProps extends BaseProps {
   itLink: string;
   enLink: string;
+  esLink: string;
 }
 
-export const LangMenu = ({ itLink, enLink, className }: LangMenuProps) => {
-  const { t, i18n } = useTranslation();
+export const LangMenu = ({
+  itLink,
+  enLink,
+  esLink,
+  className,
+}: LangMenuProps) => {
+  const { i18n, t } = useTranslation();
   return (
     <StyledMenu className={className}>
       <a
@@ -40,6 +47,13 @@ export const LangMenu = ({ itLink, enLink, className }: LangMenuProps) => {
         className={`${i18n.language === "en" ? "current " : ""}lang-navLink`}
       >
         English
+      </a>{" "}
+      |{" "}
+      <a
+        href={esLink}
+        className={`${i18n.language === "es" ? "current " : ""}lang-navLink`}
+      >
+        Español
       </a>
     </StyledMenu>
   );

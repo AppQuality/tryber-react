@@ -81,7 +81,7 @@ export const BannerTop = () => {
   }, []);
   return (
     <BSGrid>
-      <LangMenu className="aq-mb-3" itLink="/it" enLink="/" />
+      <LangMenu className="aq-mb-3" itLink="/it" enLink="/" esLink="/es" />
       <BSCol size="col-lg-7 col-xxl-8">
         <div style={{ position: "relative" }}>
           <PageTitle>

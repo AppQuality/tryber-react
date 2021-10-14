@@ -13,8 +13,9 @@ export const useUser = (): UserStatus => {
       try {
         const user = await API.me();
         setUser(user);
-      } catch (err) {
-        setError(err);
+      } catch (err: unknown) {
+        const error = err as HttpError;
+        setError(error);
       } finally {
         setLoading(false);
       }

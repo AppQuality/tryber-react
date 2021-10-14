@@ -7,7 +7,8 @@ import {
   SpinnerWrapper,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import { useHistory, useRouteMatch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
 
 export default ({
   children,
@@ -18,11 +19,11 @@ export default ({
 }) => {
   const history = useHistory();
   const { user, error, isLoading } = useUser();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [loadingMessage, setLoadingMessage] = useState<string>(t("Loading"));
   let redirectMessage = t("Redirecting to your dashboard...");
-  let redirectUrl =
-    i18n.language === "en" ? "/my-dashboard/" : "/it/la-mia-dashboard/";
+
+  let redirectUrl = useLocalizeRoute("my-dashboard");
   if (redirect) {
     redirectUrl = redirect.url;
     if (redirect.message) {

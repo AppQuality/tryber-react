@@ -2,7 +2,6 @@ import { StyledLoginModal } from "./_style";
 import { Trans, useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import {
-  aqBootstrapTheme,
   Field,
   Form,
   Formik,
@@ -15,6 +14,7 @@ import * as yup from "yup";
 import WPAPI from "../../utils/wpapi";
 import { LoginMopdalProps } from "./_types";
 import { useState } from "react";
+import { useLocalizeRoute } from "../../hooks/useLocalizedRoute";
 
 export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
   const { t, i18n } = useTranslation();
@@ -39,10 +39,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
     window.location.href =
       "https://crowd.app-quality.com/wp-admin/admin-ajax.php?loc=&action=facebook_oauth_redirect";
   };
-  const gettingStartedUrl =
-    i18n.language === "en"
-      ? "/getting-started"
-      : `/${i18n.language}/getting-started`;
+  const gettingStartedRoute = useLocalizeRoute("getting-started");
   return (
     <StyledLoginModal>
       <Modal title={t("Login")} isOpen={isOpen} onClose={onClose}>
@@ -59,9 +56,10 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                 });
                 setCta(`${t("redirecting")}...`);
                 window.location.reload();
-              } catch (e) {
-                const error = JSON.parse(e.message);
-                if (error.type == "invalid") {
+              } catch (e: unknown) {
+                const { message } = e as Error;
+                const error = JSON.parse(message);
+                if (error.type === "invalid") {
                   setError(`${t("Wrong username or password.")}`);
                 } else {
                   window.location.reload();
@@ -86,7 +84,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                           className="aq-text-info capitalize-first"
                           style={{ display: "inline-block" }}
                           onClick={onClose}
-                          to={gettingStartedUrl}
+                          to={gettingStartedRoute}
                         >
                           create an account
                         </Link>

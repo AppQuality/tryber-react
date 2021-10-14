@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import userDeviceStore from "../../redux/userDevices";
 import siteWideMessageStore from "../../redux/siteWideMessages";
 import { DeviceFormInterface } from "./types";
+import HttpError from "../../utils/HttpError";
 
 interface FormProps {
   children: ReactNode;
@@ -143,8 +144,9 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
               });
               closeModal();
               fetch();
-            } catch (e) {
-              add({ message: e.message, type: "danger" });
+            } catch (e: unknown) {
+              const { message } = e as HttpError;
+              add({ message: message, type: "danger" });
             }
           }
         }
