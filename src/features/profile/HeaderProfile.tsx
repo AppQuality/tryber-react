@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import WPAPI from "../../utils/wpapi";
 import UserStore from "../../redux/user";
@@ -13,13 +14,14 @@ import styled from "styled-components";
 import siteWideMessageStore from "../../redux/siteWideMessages";
 
 export const HeaderProfile = () => {
+  const [submittingMailConfirm, setSubmittingMailConfirm] = useState(false);
   const { add } = siteWideMessageStore();
   const { t } = useTranslation();
   const { user } = UserStore();
   const handleMailConfirm = async () => {
     try {
+      setSubmittingMailConfirm(true);
       const data = await WPAPI.sendMailConfirmation();
-      console.log(data); // todo: what's inside data??
       add({
         message: "An Email has been sent to the provided address",
         type: "success",
@@ -67,15 +69,22 @@ export const HeaderProfile = () => {
         {user?.is_verified ? (
           <Text>
             <CheckCircle
-              style={{ verticalAlign: "middle" }}
+              size="21"
+              style={{ verticalAlign: "sub" }}
               color={aqBootstrapTheme.palette.success}
             />{" "}
             <span className="aq-ml-2">{t("Email confirmed")}</span>
           </Text>
         ) : (
-          <Text className="mail-confirm-cta" onClick={handleMailConfirm}>
+          <Text
+            className={`mail-confirm-cta ${
+              submittingMailConfirm ? "disabled" : ""
+            }`}
+            onClick={submittingMailConfirm ? undefined : handleMailConfirm}
+          >
             <Mailbox
-              style={{ verticalAlign: "middle" }}
+              size="21"
+              style={{ verticalAlign: "sub" }}
               color={aqBootstrapTheme.palette.info}
             />{" "}
             <span className="aq-ml-2">{t("Confirm email")}</span>
@@ -97,6 +106,10 @@ const StyledHeaderProfile = styled.div`
   }
   .mail-confirm-cta {
     cursor: pointer;
+    &.disabled {
+      cursor: auto;
+      color: ${(props) => props.theme.colors.disabledDark};
+    }
   }
   @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
     grid-template-columns: 20% 40% 40%;
