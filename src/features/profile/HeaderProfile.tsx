@@ -47,7 +47,7 @@ export const HeaderProfile = () => {
             color={aqBootstrapTheme.palette.warning}
             size="21"
           />{" "}
-          <span className="aq-ml-2">
+          <span className="aq-ml-2 aq-text-secondary">
             <strong>{user.total_exp_pts}</strong> pt
           </span>
         </Text>
@@ -57,7 +57,7 @@ export const HeaderProfile = () => {
             color={aqBootstrapTheme.palette.secondary}
             size="21"
           />{" "}
-          <span className="aq-ml-2">
+          <span className="aq-ml-2 aq-text-secondary">
             <strong>{user.attended_cp}</strong> {t("Completed campaigns")}
           </span>
         </Text>
@@ -77,6 +77,7 @@ export const HeaderProfile = () => {
           </Text>
         ) : (
           <Text
+            as="a"
             className={`mail-confirm-cta ${
               submittingMailConfirm ? "disabled" : ""
             }`}
@@ -86,7 +87,7 @@ export const HeaderProfile = () => {
               size="21"
               style={{ verticalAlign: "sub" }}
               color={aqBootstrapTheme.palette.info}
-            />{" "}
+            />
             <span className="aq-ml-2">{t("Confirm email")}</span>
           </Text>
         )}
