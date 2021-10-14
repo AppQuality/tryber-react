@@ -100,8 +100,8 @@ const StyledHeaderProfile = styled.div`
   grid-template-columns: auto 1fr;
   gap: ${(props) => props.theme.grid.spacing.default};
   .profile-avatar {
-    width: 132px;
-    height: 132px;
+    width: 125px;
+    height: 125px;
     border-radius: 50%;
   }
   .mail-confirm-cta {
