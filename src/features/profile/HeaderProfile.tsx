@@ -86,7 +86,11 @@ export const HeaderProfile = () => {
             <Mailbox
               size="21"
               style={{ verticalAlign: "sub" }}
-              color={aqBootstrapTheme.palette.info}
+              color={
+                submittingMailConfirm
+                  ? aqBootstrapTheme.colors.disabledDark
+                  : aqBootstrapTheme.palette.info
+              }
             />
             <span className="aq-ml-2">{t("Confirm email")}</span>
           </Text>
