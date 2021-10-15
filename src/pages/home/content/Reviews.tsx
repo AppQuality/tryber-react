@@ -149,10 +149,10 @@ export const Reviews = () => {
         {items.map((item, index) => (
           <CarouselSlide key={index}>
             <Card shadow className="card-list-item aq-my-3" key={index}>
-              <img src={quotes} className="aq-mb-2 item-icon" />
+              <img src={quotes} className="aq-mb-2 item-icon" alt="quotes" />
               <div className="item-avatar aq-mb-2">
                 <div className="avatar-image">
-                  <img src={item.pic} />
+                  <img src={item.pic} alt="avatar" />
                 </div>
                 <Text color="primary" className="capitalize-first avatar-name">
                   <strong>

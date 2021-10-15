@@ -43,7 +43,7 @@ export const Footer = () => {
   return (
     <StyledFooter>
       <a href="https://app-quality.com">
-        <img src={logo} className="aq-mb-3" />
+        <img src={logo} className="aq-mb-3" alt="appquality logo" />
       </a>
       <div className="aq-mb-3">
         <Title size="s" color="secondary">
@@ -54,7 +54,7 @@ export const Footer = () => {
           href="https://www.facebook.com/appqualitypage/"
           type="link"
           className="social-btn"
-          target='_blank'
+          target="_blank"
         >
           <img src={fbLogo} alt="facebook" />
         </Button>
@@ -63,7 +63,7 @@ export const Footer = () => {
           href="https://www.linkedin.com/company/app-quality"
           type="link"
           className="social-btn"
-          target='_blank'
+          target="_blank"
         >
           <img src={lnLogo} alt="linkedin" />
         </Button>
@@ -72,7 +72,7 @@ export const Footer = () => {
           href="https://t.me/AppQualityCrowd"
           type="link"
           className="social-btn"
-          target='_blank'
+          target="_blank"
         >
           <img src={telegramLogo} alt="telegram" />
         </Button>

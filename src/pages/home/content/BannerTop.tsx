@@ -131,7 +131,7 @@ export const BannerTop = () => {
               />
             </div>
           </CSSTransition>
-          <img className="top-image" src={people} />
+          <img className="top-image" src={people} alt="people-top-img" />
         </TopAnimation>
       </BSCol>
     </BSGrid>
