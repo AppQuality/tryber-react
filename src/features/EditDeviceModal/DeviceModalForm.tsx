@@ -19,17 +19,17 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
   const { current, fetch } = userDeviceStore();
   const { add } = SiteWideMessageStore();
   let device_type =
-    current?.type == "Smartphone"
+    current?.type === "Smartphone"
       ? 0
-      : current?.type == "Tablet"
+      : current?.type === "Tablet"
       ? 1
-      : current?.type == "PC"
+      : current?.type === "PC"
       ? 2
-      : current?.type == "Console"
+      : current?.type === "Console"
       ? 3
-      : current?.type == "Smartwatch"
+      : current?.type === "Smartwatch"
       ? 4
-      : current?.type == "Smart-tv"
+      : current?.type === "Smart-tv"
       ? 5
       : -1;
 

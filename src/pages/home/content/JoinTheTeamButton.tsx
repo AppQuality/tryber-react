@@ -9,7 +9,7 @@ const JoinTheTeamButton = () => {
       <Button
         as="a"
         href={`${window.location.origin}/${
-          i18n.language == "en" ? "" : `${i18n.language}/`
+          i18n.language === "en" ? "" : `${i18n.language}/`
         }getting-started/`}
         type="success"
         size="block"

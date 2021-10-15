@@ -21,7 +21,7 @@ const useClosedCampaigns = () => {
           statusId: "2",
         },
         order: order,
-        orderBy: orderBy == "closeDate" ? "close_date" : "name",
+        orderBy: orderBy === "closeDate" ? "close_date" : "name",
         limit,
         start: (page - 1) * limit,
       },

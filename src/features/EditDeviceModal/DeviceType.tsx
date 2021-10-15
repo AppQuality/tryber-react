@@ -23,7 +23,7 @@ const RadioInput = ({
               name={field.name}
               id={`${name}-${value}`}
               type="radio"
-              checked={field.value == value}
+              checked={field.value === value}
               defaultValue={value}
               onChange={(e) => {
                 form.setValues(

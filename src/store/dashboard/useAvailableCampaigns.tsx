@@ -23,7 +23,7 @@ const useAvailableCampaigns = () => {
           completed: "0",
         },
         order: order,
-        orderBy: orderBy == "endDate" ? "end_date" : "start_date",
+        orderBy: orderBy === "endDate" ? "end_date" : "start_date",
         limit,
         start: (page - 1) * limit,
       },
@@ -39,19 +39,19 @@ const useAvailableCampaigns = () => {
           if (cp.preview_link) {
             if (
               cp.preview_link.it &&
-              i18n.language == "it" &&
+              i18n.language === "it" &&
               cp.preview_link.it !== "#"
             )
               previewLink = `${window.location.origin}${cp.preview_link.it}`;
             if (
               cp.preview_link.it &&
-              i18n.language == "en" &&
+              i18n.language === "en" &&
               cp.preview_link.en !== "#"
             )
               previewLink = `${window.location.origin}${cp.preview_link.en}`;
             if (
               cp.preview_link.es &&
-              i18n.language == "es" &&
+              i18n.language === "es" &&
               cp.preview_link.es !== "#"
             )
               previewLink = `${window.location.origin}${cp.preview_link.es}`;

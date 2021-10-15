@@ -25,7 +25,7 @@ const useCompletedCampaigns = () => {
           completed: "1",
         },
         order: order,
-        orderBy: orderBy == "endDate" ? "end_date" : "close_date",
+        orderBy: orderBy === "endDate" ? "end_date" : "close_date",
         limit,
         start: (page - 1) * limit,
       },
