@@ -7,7 +7,7 @@ import {
 import DashboardHelpStore from "../../redux/dashboardHelpModal";
 import { useTranslation } from "react-i18next";
 
-const ComingSoonHelpModal = ({}: {}) => {
+const ComingSoonHelpModal = () => {
   const { t } = useTranslation();
   const { isOpen, close } = DashboardHelpStore();
   return (

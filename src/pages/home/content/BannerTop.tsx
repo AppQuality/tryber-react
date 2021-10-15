@@ -56,21 +56,22 @@ export const BannerTop = () => {
   const [bottomDistance, setBottomDistance] = useState(0);
   const [shapeIsVisible, setShapeVisible] = useState(false);
   let containerRef = useRef<HTMLDivElement>(null);
-  const options = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 1.0,
-  };
+
   const callBack: IntersectionObserverCallback = (entries) => {
     if (entries[0]) setEntry(entries[0]);
   };
   useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1.0,
+    };
     const observer = new IntersectionObserver(callBack, options);
     if (containerRef.current) observer.observe(containerRef.current);
     return () => {
       if (containerRef.current) observer.unobserve(containerRef.current);
     };
-  }, [containerRef, options]);
+  }, [containerRef]);
   useEffect(() => {
     setBottomDistance(entry?.boundingClientRect?.bottom || 0);
   }, [entry]);
