@@ -25,6 +25,7 @@ export const FeedbackModal = ({
     <Modal isOpen={open} onClose={onClose} title={t("Send us your feedback!")}>
       <ModalBody>
         <iframe
+          title="jotform-feedback-form"
           src={`https://form.jotform.com/212631772995061?testerId=T${user?.id}&email=${user?.email}`}
           style={iFrameStyle}
         />
