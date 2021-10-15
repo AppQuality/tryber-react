@@ -17,7 +17,7 @@ import { useState } from "react";
 import { useLocalizeRoute } from "../../hooks/useLocalizedRoute";
 
 export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [error, setError] = useState<string | boolean>(false);
   const [cta, setCta] = useState<string>(t("login"));
   const initialValues = {

@@ -1,6 +1,6 @@
 import DeviceIcon from "../DeviceIcon";
 import styled from "styled-components";
-import { Field, useFormikContext } from "formik";
+import { Field } from "formik";
 
 const RadioInput = ({
   name,

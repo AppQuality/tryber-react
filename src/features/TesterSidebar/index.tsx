@@ -7,7 +7,6 @@ import useUser from "../../redux/user";
 import {
   AwardFill,
   BugFill,
-  ChatDotsFill,
   Eyeglasses,
   GraphUp,
   HouseFill,

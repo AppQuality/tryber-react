@@ -1,13 +1,10 @@
 import { TableType } from "@appquality/appquality-design-system";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { operations } from "../../utils/schema";
 import API from "../../utils/api";
 import dateFormatter from "../../utils/dateFormatter";
-import { useTranslation } from "react-i18next";
 
 export default () => {
-  const { i18n } = useTranslation();
-
   const limit = 10;
   const [campaigns, setCampaigns] = useState<TableType.Row[]>([]);
   const [page, setPage] = useState(1);

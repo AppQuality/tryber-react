@@ -1,7 +1,6 @@
 import API from "../../utils/api";
 import { operations } from "../../utils/schema";
-import { useEffect } from "react";
-import { Formik, FormikProps } from "formik";
+import { Formik } from "formik";
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import userDeviceStore from "../../redux/userDevices";
@@ -123,7 +122,7 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
               : operating_system_id;
           if (newDeviceId !== -1) {
             try {
-              const res = await API.addMyDevice({
+              await API.addMyDevice({
                 newDevice: {
                   device: newDeviceId,
                   operating_system: osId,

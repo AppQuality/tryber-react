@@ -21,10 +21,6 @@ export function refreshUser() {
   };
 }
 export function loginUser({ username, password }: UserLoginData) {
-  const action: UserAction = {
-    type: actionTypes.USER_LOGIN,
-  };
-
   return (dispatch: UserDispatchType) => {
     dispatch({ type: actionTypes.USER_LOAD });
     return WPAPI.getNonce()

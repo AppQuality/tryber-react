@@ -1,16 +1,13 @@
 import { Table, Button, TableType } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import userDeviceStore from "../redux/userDevices";
-import siteWideMessageStore from "../redux/siteWideMessages";
 import { useEffect } from "react";
-import API from "../utils/api";
 import DeviceIcon from "./DeviceIcon";
 
 const DeviceTable = () => {
   const { t } = useTranslation();
   const { devices, loading, fetch, select, openEditModal, openDeleteModal } =
     userDeviceStore();
-  const { add } = siteWideMessageStore();
   useEffect(() => {
     fetch();
   }, []);
