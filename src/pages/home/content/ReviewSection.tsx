@@ -33,18 +33,19 @@ export const ReviewSection = () => {
   const callBack: IntersectionObserverCallback = (entries) => {
     if (entries[0]) setEntry(entries[0]);
   };
-  const options = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 1.0,
-  };
+
   useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1.0,
+    };
     const observer = new IntersectionObserver(callBack, options);
     if (ref.current) observer.observe(ref.current);
     return () => {
       if (ref.current) observer.unobserve(ref.current);
     };
-  }, [ref, options]);
+  }, [ref]);
   const [rx, setRx] = useState("100%");
   useEffect(() => {
     if (entry?.intersectionRect.top) {
