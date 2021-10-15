@@ -16,8 +16,8 @@ import CountrySelect from "./CountrySelect";
 import BirthdayPicker from "./BirthdayPicker";
 import * as yup from "yup";
 import { useTranslation, Trans } from "react-i18next";
-import referralStore from "../redux/referral";
-import siteWideMessageStore from "../redux/siteWideMessages";
+import ReferralStore from "../redux/referral";
+import SiteWideMessageStore from "../redux/siteWideMessages";
 import API from "../utils/api";
 import WPAPI from "../utils/wpapi";
 
@@ -30,8 +30,8 @@ export const SignupForm = ({
   redirectUrl,
   formId = "signupForm",
 }: SignupFormProps) => {
-  const { referral } = referralStore();
-  const { add } = siteWideMessageStore();
+  const { referral } = ReferralStore();
+  const { add } = SiteWideMessageStore();
   const { t } = useTranslation();
 
   const initialValues = {

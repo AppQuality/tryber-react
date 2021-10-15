@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { setReferral } from "./actionCreators";
 
-export default () => {
+const ReferralStore = () => {
   const referral: string | undefined = useSelector(
     (state: GeneralState) => state.referral.current,
     shallowEqual
@@ -15,3 +15,5 @@ export default () => {
     setReferral: (referral: string) => dispatch(setReferral(referral)),
   };
 };
+
+export default ReferralStore;

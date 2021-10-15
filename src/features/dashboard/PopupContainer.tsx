@@ -13,7 +13,7 @@ import API from "../../utils/api";
 import { useTranslation } from "react-i18next";
 import SetPopupAsSeenButton from "./SetPopupAsSeenButton";
 
-export default ({
+const PopupContainer = ({
   open = true,
   showExpired = false,
   onClose,
@@ -67,3 +67,5 @@ export default ({
     </Modal>
   );
 };
+
+export default PopupContainer;

@@ -1,4 +1,4 @@
-export default (unformatted: string) => {
+const dateFormatter = (unformatted: string) => {
   let d = new Date(unformatted);
   return d.toLocaleString("it", {
     year: "numeric",
@@ -6,3 +6,4 @@ export default (unformatted: string) => {
     day: "2-digit",
   });
 };
+export default dateFormatter;

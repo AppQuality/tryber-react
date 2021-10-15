@@ -3,7 +3,7 @@ import { Trans, useTranslation } from "react-i18next";
 import API from "../../../utils/api";
 import { OnBoardingSlide } from "./OnBoardingSlide";
 
-export default ({ onClose }: { onClose: () => void }) => {
+const SlideFinal = ({ onClose }: { onClose: () => void }) => {
   const { t } = useTranslation();
   return (
     <>
@@ -42,3 +42,5 @@ export default ({ onClose }: { onClose: () => void }) => {
     </>
   );
 };
+
+export default SlideFinal;

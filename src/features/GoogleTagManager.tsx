@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import TagManager from "react-gtm-module";
-import useUser from "../redux/user";
+import UserStore from "../redux/user";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -12,7 +12,7 @@ const tagManagerArgs = {
   dataLayerName: "PageDataLayer",
 };
 
-export default ({
+const GoogleTagManager = ({
   title,
   children,
   isAdminPage = false,
@@ -21,7 +21,7 @@ export default ({
   children: React.ReactNode;
   isAdminPage?: boolean;
 }) => {
-  const { user } = useUser();
+  const { user } = UserStore();
   const helmet = () => {
     return (
       <Helmet>
@@ -48,3 +48,5 @@ export default ({
     </>
   );
 };
+
+export default GoogleTagManager;

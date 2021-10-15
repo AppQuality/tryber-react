@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import useUser from "../redux/user";
+import UserStore from "../redux/user";
 import {
   Container,
   Title,
@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
 
-export default ({
+const NotLoggedOnly = ({
   children,
   redirect,
 }: {
@@ -18,7 +18,7 @@ export default ({
   redirect?: { url: string; message?: string };
 }) => {
   const history = useHistory();
-  const { user, error, isLoading } = useUser();
+  const { user, error, isLoading } = UserStore();
   const { t } = useTranslation();
   const [loadingMessage, setLoadingMessage] = useState<string>(t("Loading"));
   let redirectMessage = t("Redirecting to your dashboard...");
@@ -57,3 +57,5 @@ export default ({
 
   return <>{children}</>;
 };
+
+export default NotLoggedOnly;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../../utils/api";
 
-export default () => {
+const usePerformance = () => {
   const [expPoints, setExpPoints] = useState(0);
   const [rank, setRank] = useState(0);
   const [cpCompleted, setCpCompleted] = useState(0);
@@ -46,3 +46,5 @@ export default () => {
     loading,
   };
 };
+
+export default usePerformance;

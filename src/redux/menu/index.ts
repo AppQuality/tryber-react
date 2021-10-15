@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { toggleMenu, openMenu, closeMenu } from "./actionCreators";
 
-export default () => {
+const MenuStore = () => {
   const open: boolean = useSelector(
     (state: GeneralState) => state.menu.open,
     shallowEqual
@@ -17,3 +17,5 @@ export default () => {
     close: () => dispatch(closeMenu()),
   };
 };
+
+export default MenuStore;

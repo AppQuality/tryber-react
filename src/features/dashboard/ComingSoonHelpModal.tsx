@@ -7,7 +7,7 @@ import {
 import DashboardHelpStore from "../../redux/dashboardHelpModal";
 import { useTranslation } from "react-i18next";
 
-export default ({}: {}) => {
+const ComingSoonHelpModal = ({}: {}) => {
   const { t } = useTranslation();
   const { isOpen, close } = DashboardHelpStore();
   return (
@@ -30,3 +30,4 @@ export default ({}: {}) => {
     </Modal>
   );
 };
+export default ComingSoonHelpModal;

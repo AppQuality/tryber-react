@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import userDeviceStore from "../../redux/userDevices";
-import siteWideMessageStore from "../../redux/siteWideMessages";
+import SiteWideMessageStore from "../../redux/siteWideMessages";
 import { DeviceFormInterface } from "./types";
 import HttpError from "../../utils/HttpError";
 
@@ -17,7 +17,7 @@ interface FormProps {
 export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
   const { t } = useTranslation();
   const { current, fetch } = userDeviceStore();
-  const { add } = siteWideMessageStore();
+  const { add } = SiteWideMessageStore();
   let device_type =
     current?.type == "Smartphone"
       ? 0

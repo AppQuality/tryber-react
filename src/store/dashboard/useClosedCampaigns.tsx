@@ -4,7 +4,7 @@ import { operations } from "../../utils/schema";
 import API from "../../utils/api";
 import dateFormatter from "../../utils/dateFormatter";
 
-export default () => {
+const useClosedCampaigns = () => {
   const limit = 10;
   const [campaigns, setCampaigns] = useState<TableType.Row[]>([]);
   const [page, setPage] = useState(1);
@@ -84,3 +84,5 @@ export default () => {
     },
   };
 };
+
+export default useClosedCampaigns;

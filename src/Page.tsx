@@ -13,8 +13,8 @@ import SiteHeader from "./features/SiteHeader";
 import { Location } from "history";
 import queryString from "query-string";
 
-import userStore from "./redux/user";
-import referralStore from "./redux/referral";
+import UserStore from "./redux/user";
+import ReferralStore from "./redux/referral";
 import { useEffect } from "react";
 import SiteWideMessages from "./features/SiteWideMessages";
 import { datadogLogs } from "@datadog/browser-logs";
@@ -39,8 +39,8 @@ const base = "/:locale(en|it|es)?";
 
 function Page() {
   const { search } = useLocation();
-  const { refresh } = userStore();
-  const { setReferral } = referralStore();
+  const { refresh } = UserStore();
+  const { setReferral } = ReferralStore();
   useEffect(() => {
     refresh && refresh();
     const values = queryString.parse(search);

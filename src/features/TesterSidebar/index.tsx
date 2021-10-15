@@ -1,8 +1,8 @@
 import { Sidebar, SidebarType } from "@appquality/appquality-design-system";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
-import menuStore from "../../redux/menu";
-import useUser from "../../redux/user";
+import MenuStore from "../../redux/menu";
+import UserStore from "../../redux/user";
 
 import {
   AwardFill,
@@ -56,8 +56,8 @@ const TesterSidebarArgs: SidebarType.SidebarProps = {
   items: [],
 };
 const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
-  const { user } = useUser();
-  const { isOpen, open, close } = menuStore();
+  const { user } = UserStore();
+  const { isOpen, open, close } = MenuStore();
   const isAdmin = user && user.isAdmin ? user.isAdmin : false;
 
   const { t } = useTranslation();

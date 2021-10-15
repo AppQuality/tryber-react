@@ -5,7 +5,7 @@ import API from "../../utils/api";
 import dateFormatter from "../../utils/dateFormatter";
 import { useTranslation } from "react-i18next";
 
-export default () => {
+const useCompletedCampaigns = () => {
   const { i18n, t } = useTranslation();
 
   const limit = 10;
@@ -126,3 +126,5 @@ export default () => {
     },
   };
 };
+
+export default useCompletedCampaigns;

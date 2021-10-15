@@ -9,6 +9,8 @@ const store: Store<GeneralState, MenuAction> & {
   dispatch: DispatchType;
 } = createStore(reducer, applyMiddleware(...middlewares));
 
-export default ({ children }: any) => (
+const StoreProvider = ({ children }: any) => (
   <Provider store={store}>{children}</Provider>
 );
+
+export default StoreProvider;

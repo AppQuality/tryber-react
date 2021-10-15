@@ -11,7 +11,7 @@ import {
   closeAddModal,
 } from "./actionCreators";
 
-export default (): DispatchSlice => {
+const UserDevicesStore = (): DispatchSlice => {
   const {
     items,
     loading,
@@ -54,3 +54,5 @@ export default (): DispatchSlice => {
     deleteModalOpen: deleteModalOpen,
   };
 };
+
+export default UserDevicesStore;

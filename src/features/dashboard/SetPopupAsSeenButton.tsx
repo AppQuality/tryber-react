@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import API from "../../utils/api";
 import { useState } from "react";
 
-export default ({ id }: { id: number }) => {
+const SetPopupAsSeenButton = ({ id }: { id: number }) => {
   const [seen, setSeen] = useState(false);
   const { t } = useTranslation();
   const expirePopup = (id: number) => {
@@ -30,3 +30,5 @@ export default ({ id }: { id: number }) => {
     </Button>
   );
 };
+
+export default SetPopupAsSeenButton;

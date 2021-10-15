@@ -4,7 +4,7 @@ import welcomeImgMob from "./assets/welcome.png";
 import { Text } from "@appquality/appquality-design-system";
 import { OnBoardingSlide } from "./OnBoardingSlide";
 
-export default () => {
+const SlideWelcome = () => {
   const { t } = useTranslation();
   return (
     <OnBoardingSlide className="aq-mb-3">
@@ -23,3 +23,5 @@ export default () => {
     </OnBoardingSlide>
   );
 };
+
+export default SlideWelcome;

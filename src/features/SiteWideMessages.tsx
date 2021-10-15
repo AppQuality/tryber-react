@@ -1,6 +1,6 @@
 import { Toastr, BSGrid } from "@appquality/appquality-design-system";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import siteWideMessageStore from "../redux/siteWideMessages";
+import SiteWideMessageStore from "../redux/siteWideMessages";
 import styled from "styled-components";
 
 const TIMEOUT = 200;
@@ -37,7 +37,7 @@ const ToastrContainer = styled.div`
 `;
 
 const SiteWideMessages = () => {
-  const { messages, remove } = siteWideMessageStore();
+  const { messages, remove } = SiteWideMessageStore();
 
   return (
     <ToastrContainer>

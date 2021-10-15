@@ -6,7 +6,7 @@ import {
   closeDashboardHelp,
 } from "./actionCreators";
 
-export default () => {
+const DashboardHelpStore = () => {
   const open: boolean = useSelector(
     (state: GeneralState) => state.dashboardHelpModal.open,
     shallowEqual
@@ -21,3 +21,5 @@ export default () => {
     close: () => dispatch(closeDashboardHelp()),
   };
 };
+
+export default DashboardHelpStore;

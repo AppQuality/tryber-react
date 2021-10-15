@@ -8,14 +8,14 @@ import {
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import userDeviceStore from "../redux/userDevices";
-import siteWideMessageStore from "../redux/siteWideMessages";
+import SiteWideMessageStore from "../redux/siteWideMessages";
 import API from "../utils/api";
 import { Trans } from "react-i18next";
 
 const RemoveDeviceModal = () => {
   const { deleteModalOpen, closeDeleteModal, fetch, current } =
     userDeviceStore();
-  const { add } = siteWideMessageStore();
+  const { add } = SiteWideMessageStore();
   const { t } = useTranslation();
   if (!current) return null;
   return (

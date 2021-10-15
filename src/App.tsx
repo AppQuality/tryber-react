@@ -8,7 +8,7 @@ import TagManager from "react-gtm-module";
 import Helmet from "react-helmet";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
-import Provider from "./redux/provider";
+import StoreProvider from "./redux/provider";
 import Page from "./Page";
 
 if (process.env.REACT_APP_GTM_ID) {
@@ -23,7 +23,7 @@ if (process.env.REACT_APP_GTM_ID) {
 function App() {
   const { t } = useTranslation();
   return (
-    <Provider>
+    <StoreProvider>
       <ThemeProvider theme={aqBootstrapTheme}>
         <GlobalStyle />
         <Helmet>
@@ -43,7 +43,7 @@ function App() {
           <Page />
         </BrowserRouter>
       </ThemeProvider>
-    </Provider>
+    </StoreProvider>
   );
 }
 

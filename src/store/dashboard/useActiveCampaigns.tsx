@@ -6,7 +6,7 @@ import dateFormatter from "../../utils/dateFormatter";
 import { useTranslation } from "react-i18next";
 import DashboardHelpStore from "../../redux/dashboardHelpModal";
 
-export default () => {
+const useActiveCampaigns = () => {
   const { i18n, t } = useTranslation();
   const { open } = DashboardHelpStore();
 
@@ -147,3 +147,5 @@ export default () => {
     },
   };
 };
+
+export default useActiveCampaigns;

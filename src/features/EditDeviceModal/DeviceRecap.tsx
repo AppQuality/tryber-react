@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { DeviceFormInterface } from "./types";
 
-export default () => {
+const DeviceRecap = () => {
   const { values } = useFormikContext<DeviceFormInterface>();
   const { t } = useTranslation();
   return (
@@ -77,3 +77,5 @@ const RecapBurrito = styled.div`
     }
   }
 `;
+
+export default DeviceRecap;

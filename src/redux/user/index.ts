@@ -4,7 +4,7 @@ import { Dispatch } from "redux";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { refreshUser, loginUser } from "./actionCreators";
 
-export default (): UserStatus => {
+const UserStore = (): UserStatus => {
   const {
     user,
     loading,
@@ -28,3 +28,5 @@ export default (): UserStatus => {
     error: error,
   };
 };
+
+export default UserStore;

@@ -1,14 +1,14 @@
 import { Header } from "@appquality/appquality-design-system";
-import userStore from "../redux/user";
+import UserStore from "../redux/user";
 import { useTranslation } from "react-i18next";
 import { useLogin } from "../hooks/useLogin";
 import { LoginModal } from "./login-modal/LoginModal";
-import menuStore from "../redux/menu";
+import MenuStore from "../redux/menu";
 
 const SiteHeader = () => {
-  const menu = menuStore();
+  const menu = MenuStore();
   const { isOpen, toggle } = menu;
-  const { user, isLoading } = userStore();
+  const { user, isLoading } = UserStore();
   const { login, setLogin } = useLogin();
   const { i18n, t } = useTranslation();
 

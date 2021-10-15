@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { StyledCta } from "../_styles";
 import { Button } from "@appquality/appquality-design-system";
 
-export default () => {
+const JoinTheTeamButton = () => {
   const { t, i18n } = useTranslation();
   return (
     <StyledCta>
@@ -19,3 +19,5 @@ export default () => {
     </StyledCta>
   );
 };
+
+export default JoinTheTeamButton;

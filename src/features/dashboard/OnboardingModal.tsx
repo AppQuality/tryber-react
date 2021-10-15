@@ -15,7 +15,7 @@ import SlideCourses from "./OnboardingModal/SlideCourses";
 import SlidePayments from "./OnboardingModal/SlidePayments";
 import SlideFinal from "./OnboardingModal/SlideFinal";
 
-export default ({
+const OnboardingModal = ({
   open = true,
   onClose,
 }: {
@@ -69,3 +69,5 @@ export default ({
     </Modal>
   );
 };
+
+export default OnboardingModal;

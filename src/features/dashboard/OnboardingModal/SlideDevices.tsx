@@ -6,7 +6,7 @@ import screenshotEngDesk from "./assets/dispositivi_eng.png";
 import screenshotItaMob from "./assets/dispositivi_ita_mob.png";
 import screenshotItaDesk from "./assets/dispositivi_ita.png";
 
-export default () => {
+const SlideDevice = () => {
   const { t, i18n } = useTranslation();
   const renderImg = () => {
     switch (i18n.language) {
@@ -44,3 +44,5 @@ export default () => {
     </OnBoardingSlide>
   );
 };
+
+export default SlideDevice;

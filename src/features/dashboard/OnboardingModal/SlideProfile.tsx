@@ -6,7 +6,7 @@ import screenshotItaDesk from "./assets/profilo_ita.png";
 import screenshotItaMob from "./assets/profilo_ita_mob.png";
 import { OnBoardingSlide } from "./OnBoardingSlide";
 
-export default () => {
+const SlideProfile = () => {
   const { t, i18n } = useTranslation();
   const renderImg = () => {
     switch (i18n.language) {
@@ -43,3 +43,5 @@ export default () => {
     </OnBoardingSlide>
   );
 };
+
+export default SlideProfile;

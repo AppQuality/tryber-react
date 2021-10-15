@@ -24,13 +24,13 @@ import {
   FeedbackButton,
 } from "../features/dashboard/FeedbackModal";
 import { useTranslation } from "react-i18next";
-import useUser from "../redux/user";
+import UserStore from "../redux/user";
 import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
 
 export default function Dashboard() {
   //constants - START
-  const { user } = useUser();
+  const { user } = UserStore();
   const onboardingComplete = user && user.onboarding_completed;
   const [isPopupModalOpen, setIsPopupModalOpen] = useState(true);
   const [isPopupArchiveModalOpen, setIsPopupArchiveModalOpen] = useState(false);

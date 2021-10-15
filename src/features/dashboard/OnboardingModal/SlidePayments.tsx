@@ -6,7 +6,7 @@ import screenshotEngDesk from "./assets/pagamenti_eng.png";
 import screenshotItaMob from "./assets/pagamenti_ita_mob.png";
 import screenshotItaDesk from "./assets/pagamenti_ita.png";
 
-export default () => {
+const SlidePayments = () => {
   const { t, i18n } = useTranslation();
   const renderImg = () => {
     switch (i18n.language) {
@@ -45,3 +45,5 @@ export default () => {
     </OnBoardingSlide>
   );
 };
+
+export default SlidePayments;

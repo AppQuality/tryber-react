@@ -6,7 +6,7 @@ import screenshotEngDesk from "./assets/corsi_eng.png";
 import screenshotItaMob from "./assets/corsi_ita_mob.png";
 import screenshotItaDesk from "./assets/corsi_ita.png";
 
-export default () => {
+const SlideCourses = () => {
   const { t, i18n } = useTranslation();
   const renderImg = () => {
     switch (i18n.language) {
@@ -43,3 +43,5 @@ export default () => {
     </OnBoardingSlide>
   );
 };
+
+export default SlideCourses;

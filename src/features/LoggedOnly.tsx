@@ -1,4 +1,4 @@
-import useUser from "../redux/user";
+import UserStore from "../redux/user";
 import {
   Container,
   Title,
@@ -11,7 +11,7 @@ import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
 
 export default ({ children }: { children: React.ReactNode }) => {
   const history = useHistory();
-  const { user, error, isLoading } = useUser();
+  const { user, error, isLoading } = UserStore();
   const { t } = useTranslation();
 
   if (!user && error) {
