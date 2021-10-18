@@ -14,7 +14,9 @@ import {
 import UserStore from "../../redux/user";
 import React from "react";
 import CountrySelect from "../CountrySelect";
-import Select from "react-select/base";
+import Select from "react-select";
+import * as yup from "yup";
+import BirthdayPicker from "../BirthdayPicker";
 
 const TabBase = () => {
   const { t } = useTranslation();
@@ -22,10 +24,17 @@ const TabBase = () => {
   const initialUserValues = {
     name: user.name || "",
     surname: user.surname || "",
+    gender: user.gender || "",
+    birthDate: user.bithDate || "",
+  };
+  const validationSchema = {
+    name: yup.string().required(t("This is a required field")),
+    surname: yup.string().required(t("This is a required field")),
   };
   const now = new Date();
   return (
     <Formik
+      validationSchema={yup.object(validationSchema)}
       initialValues={initialUserValues}
       onSubmit={(values) => {
         console.log(values);
@@ -37,9 +46,56 @@ const TabBase = () => {
             <Title size="s">{t("Personal info")}</Title>
             <Field name="name" type="text" label={t("Name")} />
             <Field name="surname" type="text" label={t("Surname")} />
-            <Field name="gender" type="text" label={t("Gender")} />
+            <FormikField name="gender">
+              {({ field, form }: FieldProps) => (
+                <FormGroup>
+                  <FormLabel htmlFor={field.name} label={t("Gender")} />
+                  <Select
+                    options={[
+                      { label: "Female", value: "female" },
+                      { label: "Male", value: "male" },
+                      { label: "Not Specified", value: "not-specified" },
+                    ]}
+                    name={field.name}
+                    placeholder={t("Select a gender")}
+                    value={field.value}
+                    onBlur={() => {
+                      form.setFieldTouched(field.name);
+                    }}
+                    onChange={(v) => {
+                      if (v === null) {
+                        v = { label: "", value: "" };
+                      }
+                      field.onChange(v.value);
+                      form.setFieldValue(field.name, v.value, true);
+                    }}
+                  />
+                </FormGroup>
+              )}
+            </FormikField>
 
-            <Field name="birthday" type="text" label={t("Birth Date")} />
+            <FormikField name="birthDate">
+              {({ field, form }: FieldProps) => {
+                return (
+                  <FormGroup>
+                    <BirthdayPicker
+                      name={field.name}
+                      initialValue={field.value}
+                      onCancel={() => form.setFieldTouched(field.name)}
+                      onChange={(v: Date) => {
+                        field.onChange(v.toISOString().slice(0, 10));
+                        form.setFieldValue(
+                          "birthDate",
+                          v.toISOString().slice(0, 10),
+                          true
+                        );
+                      }}
+                    />
+                    <ErrorMessage name={field.name} />
+                  </FormGroup>
+                );
+              }}
+            </FormikField>
             <FormLabel htmlFor="phonenumber" label="Phone number" />
             <Field name="prefix" type="number" />
             <Field name="phone" type="number" />
