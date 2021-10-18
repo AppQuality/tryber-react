@@ -19,7 +19,7 @@ interface UserLoginData {
 type UserAction = {
   type: string;
   data?: object | FetchProfileData;
-  error?: string;
+  error?: HttpError;
 };
 
 type FetchProfileData = {

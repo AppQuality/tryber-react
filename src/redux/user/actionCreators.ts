@@ -51,8 +51,10 @@ export const getProfile = () => {
         data: { ...baseData },
       });
     } catch (err: unknown) {
-      const { message } = err as HttpError;
-      dispatch({ type: actionTypes.FETCH_PROFILE_FAILED, error: message });
+      dispatch({
+        type: actionTypes.FETCH_PROFILE_FAILED,
+        error: err as HttpError,
+      });
     }
   };
 };
@@ -67,10 +69,9 @@ export const getFiscalProfile = () => {
         data: { ...fiscalData },
       });
     } catch (err: unknown) {
-      const { message } = err as HttpError;
       dispatch({
         type: actionTypes.FETCH_FISCAL_PROFILE_FAILED,
-        error: message,
+        error: err as HttpError,
       });
     }
   };
