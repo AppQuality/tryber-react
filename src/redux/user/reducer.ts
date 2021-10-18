@@ -72,7 +72,7 @@ const reducer = (
             ...state,
             user: {
               ...state.user,
-              fiscal: { ...state.user.fiscal, ...action.data },
+              fiscal: { ...state?.user?.fiscal, ...action.data },
             },
             loadingProfile: false,
           }
