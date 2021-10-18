@@ -8,7 +8,7 @@ import {
 } from "@appquality/appquality-design-system";
 
 interface FiscalProfileReportProps {
-  setActiveTab: (tabId: string) => void;
+  setActiveTab: () => void;
 }
 
 export const FiscalProfileReport = ({
@@ -41,7 +41,7 @@ const EmptyFiscalProfile = ({ setActiveTab }: FiscalProfileReportProps) => {
       <Text className="aq-mb-3">
         {t("You need to fill in your tax profile data to receive your booty")}
       </Text>
-      <Button flat size="block" onClick={() => setActiveTab("fiscal")}>
+      <Button flat size="block" onClick={setActiveTab}>
         {t("Fill in now")}
       </Button>
     </Card>
@@ -62,7 +62,7 @@ const UnVerifiedFiscalProfile = ({
       <Text className="aq-mb-3">
         {t("submitted data are incorrect or incomplete. Check your data again")}
       </Text>
-      <Button flat size="block" onClick={() => setActiveTab("fiscal")}>
+      <Button flat size="block" onClick={setActiveTab}>
         {t("Check your data")}
       </Button>
     </Card>
