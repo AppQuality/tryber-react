@@ -50,7 +50,7 @@ const TabAdvanced = () => {
           </div>
 
           <div className="address">
-            <Title size="s">{t("Addictional fields")}</Title>
+            <Title size="s">{t("Additional fields")}</Title>
             <Text>
               {t(
                 "Improve your chances of being selected in test campaigns by completing your profile."
