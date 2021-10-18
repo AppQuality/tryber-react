@@ -9,8 +9,10 @@ import {
   FieldProps,
   FormGroup,
   ErrorMessage,
+  Input,
   FormikField,
   Select,
+  DatepickerGlobalStyle,
 } from "@appquality/appquality-design-system";
 import UserStore from "../../redux/user";
 import React from "react";
@@ -25,13 +27,33 @@ const TabBase = () => {
     name: user.name || "",
     surname: user.surname || "",
     gender: user.gender || "",
-    birthDate: user.bithDate || "",
+    birthDate: user.birthDate || "",
+    phone: user.phone || "",
+    email: user.email || "",
+    address: user.address || "",
+    employment: user.employment || "",
+    education: user.education || "",
   };
   const validationSchema = {
     name: yup.string().required(t("This is a required field")),
     surname: yup.string().required(t("This is a required field")),
+    gender: yup
+      .object()
+      .shape({
+        label: yup.string(),
+        value: yup.string(),
+      })
+      .required(t("This is a required field")),
+    birthDate: yup.string().required(t("This is a required field")),
+    phone: yup.string().required(t("This is a required field")),
+    email: yup
+      .string()
+      .email(t("Email must be a valid email"))
+      .required(t("This is a required field")),
+    address: yup.string().required(t("This is a required field")),
+    employment: yup.string().required(t("This is a required field")),
+    education: yup.string().required(t("This is a required field")),
   };
-  const now = new Date();
   const genderOptions = [
     { label: "Female", value: "female" },
     { label: "Male", value: "male" },
@@ -48,6 +70,7 @@ const TabBase = () => {
     >
       <Form id="baseProfileForm" className="aq-m-3">
         <CSSGrid gutter="50px" rowGap="1rem" min="220px">
+          <DatepickerGlobalStyle />
           <div className="personal-info">
             <Title size="s">{t("Personal info")}</Title>
             <Field name="name" type="text" label={t("Name")} />
@@ -77,7 +100,6 @@ const TabBase = () => {
                 </FormGroup>
               )}
             </FormikField>
-
             <FormikField name="birthDate">
               {({ field, form }: FieldProps) => {
                 return (
@@ -100,10 +122,21 @@ const TabBase = () => {
                 );
               }}
             </FormikField>
-            <FormLabel htmlFor="phonenumber" label="Phone number" />
-            <Field name="prefix" type="number" />
-            <Field name="phone" type="number" />
-
+            <FormikField name="phone">
+              {({ field, form, meta }: FieldProps) => {
+                return (
+                  <FormGroup>
+                    <FormLabel htmlFor={field.name} label="Phone number" />
+                    <Input
+                      type="tel"
+                      id={field.name}
+                      isInvalid={meta.touched && !!meta.error}
+                    />
+                    <ErrorMessage name={field.name} />
+                  </FormGroup>
+                );
+              }}
+            </FormikField>
             <Field name="email" type="email" label={t("Email")} />
           </div>
 
