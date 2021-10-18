@@ -69,7 +69,10 @@ const reducer = (
       return action.data
         ? {
             ...state,
-            user: { ...state.user, ...action.data },
+            user: {
+              ...state.user,
+              fiscal: { ...state.user.fiscal, ...action.data },
+            },
             loadingProfile: false,
           }
         : state;
