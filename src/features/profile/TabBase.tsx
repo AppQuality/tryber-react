@@ -10,11 +10,11 @@ import {
   FormGroup,
   ErrorMessage,
   FormikField,
+  Select,
 } from "@appquality/appquality-design-system";
 import UserStore from "../../redux/user";
 import React from "react";
 import CountrySelect from "../CountrySelect";
-import Select from "react-select";
 import * as yup from "yup";
 import BirthdayPicker from "../BirthdayPicker";
 
@@ -32,8 +32,14 @@ const TabBase = () => {
     surname: yup.string().required(t("This is a required field")),
   };
   const now = new Date();
+  const genderOptions = [
+    { label: "Female", value: "female" },
+    { label: "Male", value: "male" },
+    { label: "Not Specified", value: "not-specified" },
+  ];
   return (
     <Formik
+      enableReinitialize
       validationSchema={yup.object(validationSchema)}
       initialValues={initialUserValues}
       onSubmit={(values) => {
@@ -49,16 +55,14 @@ const TabBase = () => {
             <FormikField name="gender">
               {({ field, form }: FieldProps) => (
                 <FormGroup>
-                  <FormLabel htmlFor={field.name} label={t("Gender")} />
                   <Select
-                    options={[
-                      { label: "Female", value: "female" },
-                      { label: "Male", value: "male" },
-                      { label: "Not Specified", value: "not-specified" },
-                    ]}
+                    options={genderOptions}
+                    label={t("Gender")}
                     name={field.name}
                     placeholder={t("Select a gender")}
-                    value={field.value}
+                    value={genderOptions.filter(
+                      (option) => option.value === field.value
+                    )}
                     onBlur={() => {
                       form.setFieldTouched(field.name);
                     }}
@@ -114,7 +118,6 @@ const TabBase = () => {
             />
             <Title size="s">{t("Language")}</Title>
             <FormLabel htmlFor="language" label={t("Spoken languages")} />
-            <Select></Select>
           </div>
         </CSSGrid>
       </Form>
