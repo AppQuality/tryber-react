@@ -11,16 +11,29 @@ import {
   Title,
 } from "@appquality/appquality-design-system";
 import Select from "react-select/base";
-import React from "react";
-import UserStore from "../../redux/user";
+import { useState, useEffect } from "react";
+import UserStore from "../../../redux/user";
+import TabFiscalShow from "./TabFiscalShow";
 
 const TabFiscal = ({ ref }: { ref?: React.RefObject<HTMLDivElement> }) => {
   const { t } = useTranslation();
   const { user, isProfileLoading } = UserStore();
+  const [isEdit, setIsEdit] = useState(true);
+  useEffect(() => {
+    if (user.fiscal) setIsEdit(false);
+  }, [isProfileLoading]);
   const initialUserValues = {
     name: user.name || "",
     surname: user.surname || "",
   };
+
+  if (!isEdit) {
+    return (
+      <div className="aq-p-3">
+        <TabFiscalShow setEdit={() => setIsEdit(true)} />
+      </div>
+    );
+  }
 
   return (
     <div ref={ref}>
