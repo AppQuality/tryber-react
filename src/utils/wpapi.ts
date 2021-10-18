@@ -64,6 +64,27 @@ const WPAPI = {
         throw new Error("Nonce not found.");
       });
   },
+  sendMailConfirmation: () => {
+    return fetch(
+      `${process.env.REACT_APP_CROWD_WP_URL}/wp-admin/admin-ajax.php`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: queryString.stringify({
+          action: "mcoptin",
+        }),
+      }
+    )
+      .then((data) => data.json())
+      .then((res) => {
+        if (res.success) {
+          return res.data;
+        }
+        throw new Error("error retrieving mail confirmation information");
+      });
+  },
 };
 
 export default WPAPI;

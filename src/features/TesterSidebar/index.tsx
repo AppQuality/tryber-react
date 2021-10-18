@@ -59,7 +59,10 @@ const TesterSidebarArgs: SidebarType.SidebarProps = {
 const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
   const { user } = useUser();
   const { isOpen, open, close } = menuStore();
-  const isAdmin = user && user.isAdmin ? user.isAdmin : false;
+  const isAdmin =
+    user && user.role
+      ? ["administrator", "tester_lead"].includes(user.role)
+      : false;
 
   const { t } = useTranslation();
   const languages = Object.keys(i18next.services.resourceStore.data);

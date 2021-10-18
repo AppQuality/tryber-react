@@ -1,5 +1,5 @@
-import HttpError from "../utils/HttpError";
 import { aqBootstrapTheme } from "@appquality/appquality-design-system";
+import { operations } from "utils/schema";
 
 export type CrowdRoutes =
   | "getting-started"
@@ -8,20 +8,9 @@ export type CrowdRoutes =
   | "my-bugs"
   | "experience-points"
   | "";
-
-export interface UserData {
-  id: number;
-  wp_user_id: number;
-  role: string;
-  username: string;
-  name: string;
-  surname: string;
-  email: string;
-  image: string;
-  verified?: boolean;
-  isAdmin?: boolean;
-  onboarding_completed?: boolean;
-}
+  
+export type UserData =
+  operations["get-users-me"]["responses"]["200"]["content"]["application/json"];
 
 export type User = undefined | UserData;
 
@@ -35,4 +24,9 @@ export interface UserStatus {
 
 declare global {
   type Theme = typeof aqBootstrapTheme;
+  type UserData =
+    operations["get-users-me"]["responses"]["200"]["content"]["application/json"];
+  type UserFiscalData =
+    operations["get-users-me-fiscal"]["responses"]["200"]["content"]["application/json"];
+  type HttpError = HttpError;
 }
