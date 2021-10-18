@@ -56,7 +56,6 @@ export default function Profile() {
 
   const handleEditFiscalInfo = () => {
     setActiveTab("fiscal");
-    console.log(aqBootstrapTheme.grid.breakpoints.lg);
     if (
       window.matchMedia(`(max-width: ${aqBootstrapTheme.grid.breakpoints.lg})`)
         .matches
