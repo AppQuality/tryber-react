@@ -15,14 +15,16 @@ import {
   DatepickerGlobalStyle,
 } from "@appquality/appquality-design-system";
 import UserStore from "../../redux/user";
-import React from "react";
+import React, { useState } from "react";
 import CountrySelect from "../CountrySelect";
+import { CitySelect } from "./CitySelect";
 import * as yup from "yup";
 import BirthdayPicker from "../BirthdayPicker";
 
 const TabBase = () => {
   const { t } = useTranslation();
   const { user, isProfileLoading } = UserStore();
+
   const initialUserValues = {
     name: user.name || "",
     surname: user.surname || "",
@@ -30,9 +32,8 @@ const TabBase = () => {
     birthDate: user.birthDate || "",
     phone: user.phone || "",
     email: user.email || "",
-    address: user.address || "",
-    employment: user.employment || "",
-    education: user.education || "",
+    country: user.country || "",
+    city: user.city || "",
   };
   const validationSchema = {
     name: yup.string().required(t("This is a required field")),
@@ -51,8 +52,8 @@ const TabBase = () => {
       .email(t("Email must be a valid email"))
       .required(t("This is a required field")),
     address: yup.string().required(t("This is a required field")),
-    employment: yup.string().required(t("This is a required field")),
-    education: yup.string().required(t("This is a required field")),
+    country: yup.string().required(t("This is a required field")),
+    city: yup.string().required(t("This is a required field")),
   };
   const genderOptions = [
     { label: "Female", value: "female" },
@@ -111,7 +112,7 @@ const TabBase = () => {
                       onChange={(v: Date) => {
                         field.onChange(v.toISOString().slice(0, 10));
                         form.setFieldValue(
-                          "birthDate",
+                          field.name,
                           v.toISOString().slice(0, 10),
                           true
                         );
@@ -131,6 +132,11 @@ const TabBase = () => {
                       type="tel"
                       id={field.name}
                       isInvalid={meta.touched && !!meta.error}
+                      value={field.value}
+                      onChange={(v) => {
+                        field.onChange(v);
+                        form.setFieldValue(field.name, v);
+                      }}
                     />
                     <ErrorMessage name={field.name} />
                   </FormGroup>
@@ -139,16 +145,10 @@ const TabBase = () => {
             </FormikField>
             <Field name="email" type="email" label={t("Email")} />
           </div>
-
           <div className="address">
             <Title size="s">{t("Address")}</Title>
             <CountrySelect name="country" label={t("Country")} />
-            <Field
-              name="domicile"
-              type="text"
-              label={t("Domicile")}
-              placeholder={t("ex. New York")}
-            />
+            <CitySelect name="city" label={t("Domicile")} />
             <Title size="s">{t("Language")}</Title>
             <FormLabel htmlFor="language" label={t("Spoken languages")} />
           </div>
