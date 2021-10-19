@@ -7,8 +7,10 @@ import {
 } from "@appquality/appquality-design-system";
 import { FieldProps, useFormikContext } from "formik";
 import { useEffect, useState } from "react";
+import sitewideMessageStore from "../../redux/siteWideMessages";
 import { useTranslation } from "react-i18next";
 import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
+import HttpError from "../../utils/HttpError";
 
 export const CitySelect = ({
   name,
@@ -21,18 +23,18 @@ export const CitySelect = ({
 }) => {
   const { values } = useFormikContext();
   const { t, i18n } = useTranslation();
+  const { add } = sitewideMessageStore();
   const [filteredCities, setFilteredCities] = useState<SelectType.Option[]>([]);
-  // const filteredCities = [{label:'',value:''}];
+
   useEffect(() => {
     const getCities = async (cCode: string) => {
       const urlps = new URLSearchParams({
         countryIds: cCode,
         languageCode: i18n.language,
       });
-
       const params = "?" + urlps.toString();
       try {
-        const res = await fetch(
+        const response = await fetch(
           "https://wft-geo-db.p.rapidapi.com/v1/geo/cities" + params,
           {
             method: "GET",
@@ -43,17 +45,27 @@ export const CitySelect = ({
             },
           }
         );
-        if (!res.ok) throw new Error("buuuu");
-        const cities = await res.json();
+        const result = await response.json();
+        if (!response.ok)
+          throw new HttpError(
+            response.status,
+            response.statusText,
+            result.message
+          );
         setFilteredCities(
-          cities.data.map((city: { id: number; name: string }) => ({
+          result.data.map((city: { id: number; name: string }) => ({
             label: city.name,
             value: city.name,
             id: city.id,
           }))
         );
       } catch (err) {
-        // add error message
+        const { message } = err as HttpError;
+        add({
+          type: "danger",
+          expire: false,
+          message: t("Error retrieving cities from GeoDb endpoint: ") + message,
+        });
       }
     };
     if (!countryCode) return;
