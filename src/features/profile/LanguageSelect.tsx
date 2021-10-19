@@ -15,21 +15,14 @@ import HttpError from "../../utils/HttpError";
 export const LanguageSelect = ({
   name,
   label,
+  options,
 }: {
   name: string;
   label: string;
+  options: SelectType.Option[];
 }) => {
   const { t, i18n } = useTranslation();
-  const [languages, setLanguages] = useState<SelectType.Option[]>([]);
-  useEffect(() => {
-    const getLanguages = async () => {
-      const results = await API.languages();
-      setLanguages(
-        results.map((item) => ({ label: item.name, value: item.id.toString() }))
-      );
-    };
-    getLanguages();
-  }, []);
+
   return (
     <FormikField name={name}>
       {({ field, form, meta }: FieldProps) => (
@@ -38,11 +31,11 @@ export const LanguageSelect = ({
             name={field.name}
             isMulti
             label={label}
-            value={languages.filter(
+            value={options.filter(
               (option) => field.value?.indexOf(option.label) >= 0
             )}
             isDisabled={form.values.country === ""}
-            options={languages}
+            options={options}
             onBlur={() => {
               form.setFieldTouched(field.name);
             }}

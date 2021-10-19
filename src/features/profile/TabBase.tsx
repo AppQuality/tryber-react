@@ -14,20 +14,32 @@ import {
   Select,
   DatepickerGlobalStyle,
   SelectType,
+  Button,
 } from "@appquality/appquality-design-system";
 import UserStore from "../../redux/user";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CountrySelect from "../CountrySelect";
 import { CitySelect } from "./CitySelect";
 import * as yup from "yup";
 import BirthdayPicker from "../BirthdayPicker";
 import { LanguageSelect } from "./LanguageSelect";
+import API from "../../utils/api";
 
 const TabBase = () => {
   const { t } = useTranslation();
   const { user, isProfileLoading } = UserStore();
   const [countryCode, setCountryCode] = useState("");
+  const [languages, setLanguages] = useState<SelectType.Option[]>([]);
 
+  useEffect(() => {
+    const getLanguages = async () => {
+      const results = await API.languages();
+      setLanguages(
+        results.map((item) => ({ label: item.name, value: item.id.toString() }))
+      );
+    };
+    getLanguages();
+  }, []);
   const initialUserValues = {
     name: user.name || "",
     surname: user.surname || "",
@@ -68,13 +80,17 @@ const TabBase = () => {
   const handleCountryChange = (v: SelectType.Option) => {
     setCountryCode(v.code);
   };
+
   return (
     <Formik
       enableReinitialize
       validationSchema={yup.object(validationSchema)}
       initialValues={initialUserValues}
       onSubmit={(values) => {
-        console.log(values);
+        const selectedOptions = languages.filter(
+          (option) => values.languages?.indexOf(option.label) >= 0
+        );
+        console.log(selectedOptions);
       }}
     >
       <Form id="baseProfileForm" className="aq-m-3">
@@ -166,7 +182,22 @@ const TabBase = () => {
               countryCode={countryCode}
             />
             <Title size="s">{t("Language")}</Title>
-            <LanguageSelect name="languages" label={t("Spoken languages")} />
+            <LanguageSelect
+              name="languages"
+              label={t("Spoken languages")}
+              options={languages}
+            />
+            <Button
+              className="aq-mb-3"
+              style={{ gridColumn: "auto / span 3" }}
+              type="success"
+              size="block"
+              htmlType="submit"
+              id="signup-simple"
+              flat
+            >
+              salva
+            </Button>
           </div>
         </CSSGrid>
       </Form>
