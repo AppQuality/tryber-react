@@ -77,9 +77,21 @@ export const CitySelect = ({
           <Select
             name={field.name}
             label={label}
-            value={field.value}
+            value={filteredCities.filter(
+              (option) => option.value === field.value
+            )}
             isDisabled={form.values.country === ""}
             options={filteredCities}
+            onBlur={() => {
+              form.setFieldTouched(field.name);
+            }}
+            onChange={(v) => {
+              if (v === null) {
+                v = { label: "", value: "" };
+              }
+              field.onChange(v.value);
+              form.setFieldValue(field.name, v.value, true);
+            }}
           />
         </FormGroup>
       )}
