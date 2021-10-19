@@ -13,6 +13,7 @@ import {
   FormikField,
   Select,
   DatepickerGlobalStyle,
+  SelectType,
 } from "@appquality/appquality-design-system";
 import UserStore from "../../redux/user";
 import React, { useState } from "react";
@@ -24,6 +25,7 @@ import BirthdayPicker from "../BirthdayPicker";
 const TabBase = () => {
   const { t } = useTranslation();
   const { user, isProfileLoading } = UserStore();
+  const [countryCode, setCountryCode] = useState("");
 
   const initialUserValues = {
     name: user.name || "",
@@ -60,6 +62,9 @@ const TabBase = () => {
     { label: "Male", value: "male" },
     { label: "Not Specified", value: "not-specified" },
   ];
+  const handleCountryChange = (v: SelectType.Option) => {
+    setCountryCode(v.code);
+  };
   return (
     <Formik
       enableReinitialize
@@ -147,8 +152,16 @@ const TabBase = () => {
           </div>
           <div className="address">
             <Title size="s">{t("Address")}</Title>
-            <CountrySelect name="country" label={t("Country")} />
-            <CitySelect name="city" label={t("Domicile")} />
+            <CountrySelect
+              name="country"
+              label={t("Country")}
+              onChange={handleCountryChange}
+            />
+            <CitySelect
+              name="city"
+              label={t("Domicile")}
+              countryCode={countryCode}
+            />
             <Title size="s">{t("Language")}</Title>
             <FormLabel htmlFor="language" label={t("Spoken languages")} />
           </div>
