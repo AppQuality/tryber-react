@@ -50,8 +50,10 @@ export const LanguageSelect = ({
               if (v === null) {
                 v = { label: "", value: "" };
               }
-              field.onChange(v.value);
-              form.setFieldValue(field.name, v.value, true);
+              const newValues = v.map(
+                (option: SelectType.Option) => option.label
+              );
+              form.setFieldValue(field.name, newValues, true);
             }}
           />
         </FormGroup>
