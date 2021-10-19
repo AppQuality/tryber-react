@@ -39,9 +39,8 @@ export const CitySelect = ({
           {
             method: "GET",
             headers: {
-              "x-rapidapi-host": "wft-geo-db.p.rapidapi.com",
-              "x-rapidapi-key":
-                "0b9310c254mshe16dee424f318b3p1d40b4jsn442890bc6db1",
+              "x-rapidapi-host": process.env.REACT_APP_RAPIDAPI_HOST || "",
+              "x-rapidapi-key": process.env.REACT_APP_RAPIDAPI_APIKEY || "",
             },
           }
         );
