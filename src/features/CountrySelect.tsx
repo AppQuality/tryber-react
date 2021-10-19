@@ -11,6 +11,7 @@ import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import countries from "i18n-iso-countries";
 import { ChangeEvent } from "react";
+import { initialValues } from "@appquality/appquality-design-system/dist/stories/form/_data";
 
 const CountrySelect = ({
   name,
@@ -50,7 +51,7 @@ const CountrySelect = ({
               name={name}
               label={label}
               placeholder={t("Select a country")}
-              value={value}
+              value={options.filter((option) => option.value === field.value)}
               onBlur={(e: ChangeEvent) => {
                 form.setFieldTouched(name);
               }}
