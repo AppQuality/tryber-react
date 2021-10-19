@@ -27,15 +27,12 @@ interface GeoDbResult {
   };
 }
 
-export const cities = async ({
-  countryIds,
-  languageCode = "en",
-}: {
-  countryIds: string;
-  languageCode: string;
-}): Promise<GeoDbResult> => {
+export const cities = async (
+  countryIds: string[],
+  languageCode = "en"
+): Promise<GeoDbResult> => {
   const urlps = new URLSearchParams({
-    countryIds: countryIds,
+    countryIds: countryIds.toString(),
     languageCode: languageCode,
   });
   const params = "?" + urlps.toString();

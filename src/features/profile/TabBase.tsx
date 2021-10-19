@@ -40,7 +40,7 @@ const TabBase = () => {
     };
     getLanguages();
   }, []);
-  const initialUserValues = {
+  const initialUserValues: BaseFields = {
     name: user.name || "",
     surname: user.surname || "",
     gender: user.gender || "",
@@ -176,11 +176,7 @@ const TabBase = () => {
               label={t("Country")}
               onChange={handleCountryChange}
             />
-            <CitySelect
-              name="city"
-              label={t("Domicile")}
-              countryCode={countryCode}
-            />
+            <CitySelect name="city" label={t("Domicile")} />
             <Title size="s">{t("Language")}</Title>
             <LanguageSelect
               name="languages"
