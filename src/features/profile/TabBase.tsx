@@ -21,6 +21,7 @@ import CountrySelect from "../CountrySelect";
 import { CitySelect } from "./CitySelect";
 import * as yup from "yup";
 import BirthdayPicker from "../BirthdayPicker";
+import { LanguageSelect } from "./LanguageSelect";
 
 const TabBase = () => {
   const { t } = useTranslation();
@@ -36,6 +37,7 @@ const TabBase = () => {
     email: user.email || "",
     country: user.country || "",
     city: user.city || "",
+    languages: user.languages || [], // ['Italiano', 'English']
   };
   const validationSchema = {
     name: yup.string().required(t("This is a required field")),
@@ -56,6 +58,7 @@ const TabBase = () => {
     address: yup.string().required(t("This is a required field")),
     country: yup.string().required(t("This is a required field")),
     city: yup.string().required(t("This is a required field")),
+    languages: yup.array().required(t("This is a required field")),
   };
   const genderOptions = [
     { label: "Female", value: "female" },
@@ -163,7 +166,7 @@ const TabBase = () => {
               countryCode={countryCode}
             />
             <Title size="s">{t("Language")}</Title>
-            <FormLabel htmlFor="language" label={t("Spoken languages")} />
+            <LanguageSelect name="languages" label={t("Spoken languages")} />
           </div>
         </CSSGrid>
       </Form>
