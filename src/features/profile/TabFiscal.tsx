@@ -57,8 +57,8 @@ const TabFiscal = ({ ref }: { ref?: React.RefObject<HTMLDivElement> }) => {
 
             <div className="tax-residence">
               <Title size="s">{t("Tax residence")}</Title>
-              <Radio id="italian" label={t("Italian")}></Radio>
-              <Radio id="notItalian" label={t("Not italian")}></Radio>
+              {/*<Radio id="italian" label={t("Italian")}></Radio>*/}
+              {/*<Radio id="notItalian" label={t("Not italian")}></Radio>*/}
               <Field name="fiscalId" type="text" label={t("Fiscal ID")} />
               <Text>
                 Any change to your personal data will lead to the recalculation

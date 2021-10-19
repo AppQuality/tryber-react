@@ -39,14 +39,14 @@ const TabAdvanced = () => {
             <FormLabel htmlFor="education" label={t("Education level")} />
             <Select></Select>
             <Title size="s">{t("Certifications")}</Title>
-            <Radio
-              id="noCertifications"
-              label={t("I have no certifications")}
-            ></Radio>
-            <Radio
-              id="yesCertifications"
-              label={t("I have the certifications")}
-            ></Radio>
+            {/*<Radio*/}
+            {/*  id="noCertifications"*/}
+            {/*  label={t("I have no certifications")}*/}
+            {/*></Radio>*/}
+            {/*<Radio*/}
+            {/*  id="yesCertifications"*/}
+            {/*  label={t("I have the certifications")}*/}
+            {/*></Radio>*/}
           </div>
 
           <div className="address">
