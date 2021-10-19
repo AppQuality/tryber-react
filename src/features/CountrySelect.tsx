@@ -11,7 +11,6 @@ import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import countries from "i18n-iso-countries";
 import { ChangeEvent } from "react";
-import { initialValues } from "@appquality/appquality-design-system/dist/stories/form/_data";
 
 const CountrySelect = ({
   name,
