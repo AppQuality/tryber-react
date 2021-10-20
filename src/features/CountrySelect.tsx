@@ -27,17 +27,13 @@ const CountrySelect = ({
   });
   const { t } = useTranslation();
   const enCountries = countries.getNames("en", { select: "official" });
-  const options = useMemo(
-    () =>
-      Object.entries(
-        countries.getNames(i18next.language, { select: "official" })
-      ).map(([locale, name]) => ({
-        label: name,
-        code: locale,
-        value: enCountries[locale],
-      })),
-    []
-  );
+  const options = Object.entries(
+    countries.getNames(i18next.language, { select: "official" })
+  ).map(([locale, name]) => ({
+    label: name,
+    code: locale,
+    value: enCountries[locale],
+  }));
   return (
     <FormikField name={name}>
       {({
@@ -50,7 +46,7 @@ const CountrySelect = ({
               name={name}
               label={label}
               placeholder={t("Select a country")}
-              value={options.filter((option) => option.value === field.value)}
+              value={{ label: field.value, value: field.value }}
               onBlur={(e: ChangeEvent) => {
                 form.setFieldTouched(name);
               }}

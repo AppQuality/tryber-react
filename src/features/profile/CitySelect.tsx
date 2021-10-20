@@ -82,9 +82,10 @@ export const CitySelect = ({
           <Select
             name={field.name}
             label={label}
+            defaultValue={{ label: field.value, value: field.value }}
             value={{ label: field.value, value: field.value }}
             isDisabled={form.values.country === ""}
-            options={form.values.country ? getAsyncOptions : []}
+            options={getAsyncOptions}
             onBlur={() => {
               form.setFieldTouched(field.name);
             }}
