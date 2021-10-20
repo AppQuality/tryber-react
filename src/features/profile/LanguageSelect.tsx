@@ -30,9 +30,7 @@ export const LanguageSelect = ({
             name={field.name}
             isMulti
             label={label}
-            value={options.filter(
-              (option) => field.value?.indexOf(option.label) >= 0
-            )}
+            value={field.value}
             isDisabled={form.values.country === ""}
             options={options}
             onBlur={() => {
