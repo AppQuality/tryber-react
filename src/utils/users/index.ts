@@ -223,6 +223,7 @@ export const experiencePoints = async ({
 };
 
 export * from "./myFiscalData";
+export * from "./myLanguages";
 export * from "./myPopups";
 export * from "./myDevices";
 export * from "./onboardingComplete";
