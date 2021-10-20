@@ -9,7 +9,6 @@ import { FieldProps, useFormikContext } from "formik";
 import API from "../../utils/api";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import HttpError from "../../utils/HttpError";
 
 export const LanguageSelect = ({
