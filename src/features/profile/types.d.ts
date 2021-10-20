@@ -7,6 +7,6 @@ export interface BaseFields {
   phone: string;
   email: string;
   country: string;
-  city: string;
+  city: SelectType.Option;
   languages: SelectType.Option[];
 }
