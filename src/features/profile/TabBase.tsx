@@ -50,7 +50,10 @@ const TabBase = () => {
     phone: user.phone || "",
     email: user.email || "",
     country: user.country || "",
-    city: user.city || "",
+    city:
+      typeof user.city === "string"
+        ? { value: user.city, label: user.city }
+        : { value: "", label: "" },
     languages:
       user.languages?.map((l: any) => ({ label: l.name, value: l.id })) || [],
   };
@@ -65,7 +68,7 @@ const TabBase = () => {
       .email(t("Email must be a valid email"))
       .required(t("This is a required field")),
     country: yup.string().required(t("This is a required field")),
-    city: yup.string().required(t("This is a required field")),
+    city: yup.object().required(t("This is a required field")),
     languages: yup.array().required(t("This is a required field")),
   };
   const genderOptions = [

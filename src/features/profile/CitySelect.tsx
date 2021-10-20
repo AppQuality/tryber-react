@@ -26,6 +26,9 @@ export const CitySelect = ({
   const { t, i18n } = useTranslation();
   const { add } = sitewideMessageStore();
   const [filteredCities, setFilteredCities] = useState<SelectType.Option[]>([]);
+  const [searchedOptions, setSearchedOptions] = useState<SelectType.Option[]>(
+    []
+  );
   const enCountries = countries.getNames("en", { select: "official" });
 
   const getAsyncOptions = useMemo(() => {
@@ -52,6 +55,8 @@ export const CitySelect = ({
           value: city.name,
           id: city.id,
         }));
+        // add current to the array if not present
+        options = [...options, values.city];
         const { totalCount, currentOffset } = results.metadata;
         more = !!(totalCount - (limit + currentOffset));
       } catch (e) {
@@ -73,7 +78,7 @@ export const CitySelect = ({
         }
       );
     };
-  }, [values.country]);
+  }, [values.country, values.city]);
 
   return (
     <FormikField name={name}>
@@ -82,8 +87,8 @@ export const CitySelect = ({
           <Select
             name={field.name}
             label={label}
-            defaultValue={{ label: field.value, value: field.value }}
-            value={{ label: field.value, value: field.value }}
+            defaultValue={field.value}
+            value={field.value}
             isDisabled={form.values.country === ""}
             options={getAsyncOptions}
             onBlur={() => {
@@ -94,7 +99,7 @@ export const CitySelect = ({
                 v = { label: "", value: "" };
               }
               field.onChange(v.value);
-              form.setFieldValue(field.name, v.value, true);
+              form.setFieldValue(field.name, v, true);
             }}
           />
         </FormGroup>
