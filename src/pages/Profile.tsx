@@ -7,6 +7,7 @@ import {
   Tabs,
   Tab,
   Button,
+  Modal,
   aqBootstrapTheme,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
@@ -22,6 +23,7 @@ import TabAdvanced from "../features/profile/TabAdvanced";
 import TabFiscal from "../features/profile/TabFiscal";
 import TabOptions from "../features/profile/TabOptions";
 import UserDeleteModal from "../features/profile/UserDeleteModal";
+import FiscalResidenceModal from "../features/profile/TabFiscal/FiscalResidenceModal";
 
 const headerOffset = 60;
 
@@ -75,6 +77,7 @@ export default function Profile() {
     <GoogleTagManager title={t("Profile")}>
       <LoggedOnly>
         <UserDeleteModal />
+        <FiscalResidenceModal />
         <TesterSidebar route={"my-account"}>
           <Container className="aq-pb-3">
             <PageTitle size="regular" as="h2" className="aq-mb-3">

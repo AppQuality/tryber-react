@@ -6,32 +6,39 @@ import {
   Text,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import residenceModalStore from "../../../redux/addResidenceAddressModal";
+import { useFormikContext } from "formik";
 
-const FiscalAddress = ({
-  address,
-}: {
-  address?: {
-    street: string;
-    cityCode: string;
-    city: string;
-    province: string;
-    country: string;
-  };
-}) => {
+const FiscalAddress = () => {
   const { t } = useTranslation();
+  const { values }: any = useFormikContext();
+  const { open: openModal, address } = residenceModalStore();
+
+  const currentAddress = {
+    street: address.street ? address.street : values.address.street,
+  };
+
   return (
     <>
-      <FormLabel htmlFor="fiscalAddress" label={t("Fiscal Address")} />
-      {address ? (
-        <Text>
-          <p>{address.street}</p>
-          <p>{`${address.cityCode} ${address.city} (${address.province})`}</p>
-          <p>{address.country}</p>
-        </Text>
-      ) : null}
+      <div className="aq-mb-3">
+        <FormLabel htmlFor="fiscalAddress" label={t("Fiscal Address")} />
+        {values.address ? (
+          <Text>
+            <p>{currentAddress.street}</p>
+            <p>{`${values.address.cityCode} ${values.address.city} (${values.address.province})`}</p>
+            <p>{values.address.country}</p>
+          </Text>
+        ) : null}
+      </div>
       <BSGrid>
         <BSCol size="col-6">
-          <Button size="block" type="primary" htmlType="button" flat={true}>
+          <Button
+            size="block"
+            type="primary"
+            htmlType="button"
+            flat={true}
+            onClick={openModal}
+          >
             {t("Add")}
           </Button>
         </BSCol>
