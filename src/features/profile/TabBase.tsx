@@ -55,7 +55,10 @@ const TabBase = () => {
         ? { value: user.city, label: user.city }
         : { value: "", label: "" },
     languages:
-      user.languages?.map((l: any) => ({ label: l.name, value: l.id })) || [],
+      user.languages?.map((l: any) => ({
+        label: l.name,
+        value: l.id.toString(),
+      })) || [],
   };
   const validationSchema = {
     name: yup.string().required(t("This is a required field")),
@@ -87,8 +90,16 @@ const TabBase = () => {
       initialValues={initialUserValues}
       onSubmit={async (values) => {
         try {
+          let newLanguages: number[] = [];
+          values.languages.forEach((val) => {
+            if (typeof val.value === "string") {
+              newLanguages.push(parseInt(val.value));
+            }
+          });
+          const resLang = await API.myLanguages(newLanguages);
           const res = await updateProfile(values);
           console.log(res);
+          console.log(resLang);
         } catch (e) {
           console.log(e);
         }
