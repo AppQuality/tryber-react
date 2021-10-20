@@ -9,7 +9,6 @@ import { FieldProps, useFormikContext } from "formik";
 import { useEffect, useMemo, useState } from "react";
 import sitewideMessageStore from "../../redux/siteWideMessages";
 import { useTranslation } from "react-i18next";
-import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import HttpError from "../../utils/HttpError";
 import API from "../../utils/api";
 import countries, { LocalizedCountryNames } from "i18n-iso-countries";
