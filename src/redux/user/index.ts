@@ -4,6 +4,7 @@ import {
   refreshUser,
   loginUser,
   getProfile,
+  updateProfile,
   getFiscalProfile,
 } from "./actionCreators";
 
@@ -34,6 +35,7 @@ export default (): UserStatus => {
     refresh: () => dispatch(refreshUser()),
     login: (data: UserLoginData) => dispatch(loginUser(data)),
     getProfile: () => dispatch(getProfile()),
+    updateProfile: (data: UserData) => dispatch(updateProfile(data)),
     getFiscalProfile: () => dispatch(getFiscalProfile()),
     user: user,
     isLoading: loading,
