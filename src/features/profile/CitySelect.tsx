@@ -13,6 +13,7 @@ import HttpError from "../../utils/HttpError";
 import API from "../../utils/api";
 import countries, { LocalizedCountryNames } from "i18n-iso-countries";
 import { GeoDbCity } from "../../utils/geoDb";
+import { BaseFields } from "./types";
 
 export const CitySelect = ({
   name,
