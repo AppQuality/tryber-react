@@ -40,10 +40,7 @@ export const LanguageSelect = ({
               if (v === null) {
                 v = { label: "", value: "" };
               }
-              const newValues = v.map(
-                (option: SelectType.Option) => option.label
-              );
-              form.setFieldValue(field.name, newValues, true);
+              form.setFieldValue(field.name, v, true);
             }}
           />
         </FormGroup>
