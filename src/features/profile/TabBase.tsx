@@ -27,7 +27,7 @@ import API from "../../utils/api";
 
 const TabBase = () => {
   const { t } = useTranslation();
-  const { user, isProfileLoading } = UserStore();
+  const { user, isProfileLoading, updateProfile } = UserStore();
   const [countryCode, setCountryCode] = useState("");
   const [languages, setLanguages] = useState<SelectType.Option[]>([]);
 
@@ -54,20 +54,13 @@ const TabBase = () => {
   const validationSchema = {
     name: yup.string().required(t("This is a required field")),
     surname: yup.string().required(t("This is a required field")),
-    gender: yup
-      .object()
-      .shape({
-        label: yup.string(),
-        value: yup.string(),
-      })
-      .required(t("This is a required field")),
+    gender: yup.string().required(t("This is a required field")),
     birthDate: yup.string().required(t("This is a required field")),
     phone: yup.string().required(t("This is a required field")),
     email: yup
       .string()
       .email(t("Email must be a valid email"))
       .required(t("This is a required field")),
-    address: yup.string().required(t("This is a required field")),
     country: yup.string().required(t("This is a required field")),
     city: yup.string().required(t("This is a required field")),
     languages: yup.array().required(t("This is a required field")),
@@ -86,11 +79,17 @@ const TabBase = () => {
       enableReinitialize
       validationSchema={yup.object(validationSchema)}
       initialValues={initialUserValues}
-      onSubmit={(values) => {
+      onSubmit={async (values) => {
         const selectedOptions = languages.filter(
           (option) => values.languages?.indexOf(option.label) >= 0
         );
         console.log(selectedOptions);
+        try {
+          const res = await updateProfile(values);
+          console.log(res);
+        } catch (e) {
+          console.log(e);
+        }
       }}
     >
       <Form id="baseProfileForm" className="aq-m-3">
