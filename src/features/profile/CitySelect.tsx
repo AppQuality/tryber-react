@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import HttpError from "../../utils/HttpError";
 import API from "../../utils/api";
 import countries, { LocalizedCountryNames } from "i18n-iso-countries";
+import { BaseFields } from "./types";
 
 export const CitySelect = ({
   name,

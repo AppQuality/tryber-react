@@ -1,4 +1,5 @@
-interface BaseFields {
+import { SelectType } from "@appquality/appquality-design-system";
+export interface BaseFields {
   name: string;
   surname: string;
   gender: string;
@@ -7,5 +8,5 @@ interface BaseFields {
   email: string;
   country: string;
   city: string;
-  languages: string[]; // ['Italiano', 'English']
+  languages: SelectType.Option[];
 }

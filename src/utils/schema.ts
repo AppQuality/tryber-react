@@ -246,6 +246,8 @@ export interface paths {
     };
   };
   "/users/me/languages": {
+    /** Edit your spoken languages */
+    put: operations["put-users-me-languages"];
     /** Add one of the languages to your profile */
     post: operations["post-users-me-languages"];
   };
@@ -272,6 +274,14 @@ export interface paths {
   "/custom_user_fields": {
     get: operations["get-customUserFields"];
     parameters: {};
+  };
+  "/countries/{code}/region": {
+    get: operations["get-regions"];
+    parameters: {
+      path: {
+        code: string;
+      };
+    };
   };
 }
 
@@ -1141,7 +1151,10 @@ export interface operations {
             total_exp_pts?: number;
             booty?: number;
             pending_booty?: number;
-            languages?: string[];
+            languages?: {
+              id?: number;
+              name?: string;
+            }[];
             onboarding_completed?: boolean;
             additional?: components["schemas"]["AdditionalField"][];
             gender?: "male" | "female" | "not-specified";
@@ -1331,7 +1344,7 @@ export interface operations {
             };
             fiscalId: string;
             fiscalStatus: "Verified" | "Unverified";
-            gender: "Male" | "Female";
+            gender: "male" | "female";
           };
         };
       };
@@ -1360,7 +1373,7 @@ export interface operations {
             };
             fiscalId: string;
             fiscalStatus: "Verified" | "Unverified";
-            gender: "Male" | "Female";
+            gender: "male" | "female";
           };
         };
       };
@@ -1382,7 +1395,7 @@ export interface operations {
             province?: string;
           };
           fiscalId: string;
-          gender: "Male" | "Female";
+          gender: "male" | "female";
         };
       };
     };
@@ -1408,7 +1421,7 @@ export interface operations {
             };
             fiscalId: string;
             fiscalStatus: "Verified" | "Unverified";
-            gender: "Male" | "Female";
+            gender: "male" | "female";
           };
         };
       };
@@ -1430,7 +1443,7 @@ export interface operations {
             province?: string;
           };
           fiscalId: string;
-          gender: "Male" | "Female";
+          gender: "male" | "female";
         };
       };
     };
@@ -1690,6 +1703,26 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
+  /** Edit your spoken languages */
+  "put-users-me-languages": {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+            name?: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+    requestBody: {
+      content: {
+        "application/json": number[];
+      };
+    };
+  };
   /** Add one of the languages to your profile */
   "post-users-me-languages": {
     responses: {
@@ -1789,6 +1822,27 @@ export interface operations {
               }[];
               allow_other?: boolean;
             }[];
+          }[];
+        };
+      };
+    };
+  };
+  "get-regions": {
+    parameters: {
+      path: {
+        code: string;
+      };
+      query: {
+        languageCode?: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            name: string;
+            value: string;
           }[];
         };
       };
