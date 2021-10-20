@@ -33,6 +33,30 @@ export const me = async (
   }
 };
 
+export const patchMe = async (
+  data: operations["patch-users-me"]["requestBody"]["content"]["application/json"],
+  token?: string
+): Promise<operations["patch-users-me"]["responses"]["200"]> => {
+  if (process.env.REACT_APP_DEFAULT_TOKEN)
+    token = process.env.REACT_APP_DEFAULT_TOKEN;
+
+  const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set("Content-Type", "application/json");
+  if (token) {
+    requestHeaders.set("Authorization", "Bearer " + token);
+  }
+  let url = `${process.env.REACT_APP_API_URL}/users/me`;
+  const response = await fetch(url, {
+    method: "PATCH",
+    headers: requestHeaders,
+    body: JSON.stringify(data),
+  });
+  const results = await response.json();
+  if (!response.ok)
+    throw new HttpError(response.status, response.statusText, results.err);
+  return results;
+};
+
 export const myBugs = async ({
   token,
   query,
