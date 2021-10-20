@@ -24,6 +24,7 @@ import * as yup from "yup";
 import BirthdayPicker from "../BirthdayPicker";
 import { LanguageSelect } from "./LanguageSelect";
 import API from "../../utils/api";
+import { BaseFields } from "./types";
 
 const TabBase = () => {
   const { t } = useTranslation();
@@ -40,6 +41,7 @@ const TabBase = () => {
     };
     getLanguages();
   }, []);
+
   const initialUserValues: BaseFields = {
     name: user.name || "",
     surname: user.surname || "",
@@ -49,7 +51,8 @@ const TabBase = () => {
     email: user.email || "",
     country: user.country || "",
     city: user.city || "",
-    languages: user.languages || [], // ['Italiano', 'English']
+    languages:
+      user.languages?.map((l: any) => ({ label: l.name, value: l.id })) || [],
   };
   const validationSchema = {
     name: yup.string().required(t("This is a required field")),
@@ -80,10 +83,6 @@ const TabBase = () => {
       validationSchema={yup.object(validationSchema)}
       initialValues={initialUserValues}
       onSubmit={async (values) => {
-        const selectedOptions = languages.filter(
-          (option) => values.languages?.indexOf(option.label) >= 0
-        );
-        console.log(selectedOptions);
         try {
           const res = await updateProfile(values);
           console.log(res);
