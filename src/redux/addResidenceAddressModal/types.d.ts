@@ -5,8 +5,6 @@ type AddResidenceAddressModalAction = {
 
 type AddResidenceAddressModalState = {
   open: boolean;
-  country?: string;
-  region?: string;
   street?: string;
 };
 type AddResidenceAddressModalDispatchType = (
