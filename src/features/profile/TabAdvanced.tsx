@@ -40,10 +40,12 @@ const TabAdvanced = () => {
             <Select></Select>
             <Title size="s">{t("Certifications")}</Title>
             <Radio
+              name="certificationStatus"
               id="noCertifications"
               label={t("I have no certifications")}
             ></Radio>
             <Radio
+              name="certificationStatus"
               id="yesCertifications"
               label={t("I have the certifications")}
             ></Radio>
