@@ -24,7 +24,8 @@ import * as yup from "yup";
 import BirthdayPicker from "../BirthdayPicker";
 import { LanguageSelect } from "./LanguageSelect";
 import API from "../../utils/api";
-import { BaseFields } from "./types";
+import { BaseFields } from "./types.d";
+import { FormikProps } from "formik";
 
 const TabBase = () => {
   const { t } = useTranslation();
@@ -79,9 +80,6 @@ const TabBase = () => {
     { label: "Male", value: "male" },
     { label: "Not Specified", value: "not-specified" },
   ];
-  const handleCountryChange = (v: SelectType.Option) => {
-    setCountryCode(v.code);
-  };
 
   return (
     <Formik
@@ -97,118 +95,125 @@ const TabBase = () => {
             }
           });
           const resLang = await API.myLanguages(newLanguages);
-          const res = await updateProfile(values);
-          console.log(res);
-          console.log(resLang);
+          const profileData = { ...values, city: values.city.value };
+          updateProfile(profileData);
         } catch (e) {
           console.log(e);
         }
       }}
     >
-      <Form id="baseProfileForm" className="aq-m-3">
-        <CSSGrid gutter="50px" rowGap="1rem" min="220px">
-          <DatepickerGlobalStyle />
-          <div className="personal-info">
-            <Title size="s">{t("Personal info")}</Title>
-            <Field name="name" type="text" label={t("Name")} />
-            <Field name="surname" type="text" label={t("Surname")} />
-            <FormikField name="gender">
-              {({ field, form }: FieldProps) => (
-                <FormGroup>
-                  <Select
-                    options={genderOptions}
-                    label={t("Gender")}
-                    name={field.name}
-                    placeholder={t("Select a gender")}
-                    value={genderOptions.filter(
-                      (option) => option.value === field.value
-                    )}
-                    onBlur={() => {
-                      form.setFieldTouched(field.name);
-                    }}
-                    onChange={(v) => {
-                      if (v === null) {
-                        v = { label: "", value: "" };
-                      }
-                      field.onChange(v.value);
-                      form.setFieldValue(field.name, v.value, true);
-                    }}
-                  />
-                </FormGroup>
-              )}
-            </FormikField>
-            <FormikField name="birthDate">
-              {({ field, form }: FieldProps) => {
-                return (
-                  <FormGroup>
-                    <BirthdayPicker
-                      name={field.name}
-                      initialValue={field.value}
-                      onCancel={() => form.setFieldTouched(field.name)}
-                      onChange={(v: Date) => {
-                        field.onChange(v.toISOString().slice(0, 10));
-                        form.setFieldValue(
-                          field.name,
-                          v.toISOString().slice(0, 10),
-                          true
-                        );
-                      }}
-                    />
-                    <ErrorMessage name={field.name} />
-                  </FormGroup>
-                );
-              }}
-            </FormikField>
-            <FormikField name="phone">
-              {({ field, form, meta }: FieldProps) => {
-                return (
-                  <FormGroup>
-                    <FormLabel htmlFor={field.name} label="Phone number" />
-                    <Input
-                      type="tel"
-                      id={field.name}
-                      isInvalid={meta.touched && !!meta.error}
-                      value={field.value}
-                      onChange={(v) => {
-                        field.onChange(v);
-                        form.setFieldValue(field.name, v);
-                      }}
-                    />
-                    <ErrorMessage name={field.name} />
-                  </FormGroup>
-                );
-              }}
-            </FormikField>
-            <Field name="email" type="email" label={t("Email")} />
-          </div>
-          <div className="address">
-            <Title size="s">{t("Address")}</Title>
-            <CountrySelect
-              name="country"
-              label={t("Country")}
-              onChange={handleCountryChange}
-            />
-            <CitySelect name="city" label={t("Domicile")} />
-            <Title size="s">{t("Language")}</Title>
-            <LanguageSelect
-              name="languages"
-              label={t("Spoken languages")}
-              options={languages}
-            />
-            <Button
-              className="aq-mb-3"
-              style={{ gridColumn: "auto / span 3" }}
-              type="success"
-              size="block"
-              htmlType="submit"
-              id="signup-simple"
-              flat
-            >
-              salva
-            </Button>
-          </div>
-        </CSSGrid>
-      </Form>
+      {(formikProps: FormikProps<BaseFields>) => {
+        const handleCountryChange = (v: SelectType.Option) => {
+          setCountryCode(v.code);
+          formikProps.setFieldValue("city", { label: "", value: "" });
+        };
+        return (
+          <Form id="baseProfileForm" className="aq-m-3">
+            <CSSGrid gutter="50px" rowGap="1rem" min="220px">
+              <DatepickerGlobalStyle />
+              <div className="personal-info">
+                <Title size="s">{t("Personal info")}</Title>
+                <Field name="name" type="text" label={t("Name")} />
+                <Field name="surname" type="text" label={t("Surname")} />
+                <FormikField name="gender">
+                  {({ field, form }: FieldProps) => (
+                    <FormGroup>
+                      <Select
+                        options={genderOptions}
+                        label={t("Gender")}
+                        name={field.name}
+                        placeholder={t("Select a gender")}
+                        value={genderOptions.filter(
+                          (option) => option.value === field.value
+                        )}
+                        onBlur={() => {
+                          form.setFieldTouched(field.name);
+                        }}
+                        onChange={(v) => {
+                          if (v === null) {
+                            v = { label: "", value: "" };
+                          }
+                          field.onChange(v.value);
+                          form.setFieldValue(field.name, v.value, true);
+                        }}
+                      />
+                    </FormGroup>
+                  )}
+                </FormikField>
+                <FormikField name="birthDate">
+                  {({ field, form }: FieldProps) => {
+                    return (
+                      <FormGroup>
+                        <BirthdayPicker
+                          name={field.name}
+                          initialValue={field.value}
+                          onCancel={() => form.setFieldTouched(field.name)}
+                          onChange={(v: Date) => {
+                            field.onChange(v.toISOString().slice(0, 10));
+                            form.setFieldValue(
+                              field.name,
+                              v.toISOString().slice(0, 10),
+                              true
+                            );
+                          }}
+                        />
+                        <ErrorMessage name={field.name} />
+                      </FormGroup>
+                    );
+                  }}
+                </FormikField>
+                <FormikField name="phone">
+                  {({ field, form, meta }: FieldProps) => {
+                    return (
+                      <FormGroup>
+                        <FormLabel htmlFor={field.name} label="Phone number" />
+                        <Input
+                          type="tel"
+                          id={field.name}
+                          isInvalid={meta.touched && !!meta.error}
+                          value={field.value}
+                          onChange={(v) => {
+                            field.onChange(v);
+                            form.setFieldValue(field.name, v);
+                          }}
+                        />
+                        <ErrorMessage name={field.name} />
+                      </FormGroup>
+                    );
+                  }}
+                </FormikField>
+                <Field name="email" type="email" label={t("Email")} />
+              </div>
+              <div className="address">
+                <Title size="s">{t("Address")}</Title>
+                <CountrySelect
+                  name="country"
+                  label={t("Country")}
+                  onChange={handleCountryChange}
+                />
+                <CitySelect name="city" label={t("Domicile")} />
+                <Title size="s">{t("Language")}</Title>
+                <LanguageSelect
+                  name="languages"
+                  label={t("Spoken languages")}
+                  options={languages}
+                />
+                <Button
+                  className="aq-mb-3"
+                  style={{ gridColumn: "auto / span 3" }}
+                  type="success"
+                  size="block"
+                  htmlType="submit"
+                  id="signup-simple"
+                  flat
+                >
+                  salva
+                </Button>
+              </div>
+            </CSSGrid>
+          </Form>
+        );
+      }}
     </Formik>
   );
 };
