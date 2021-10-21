@@ -16,7 +16,7 @@ const FiscalAddress = () => {
 
   const currentAddress = {
     street: address.street ? address.street : values.address.street,
-    country: address.country ? address.country : values.address.country,
+    country: values.country ? values.country : values.address.country,
   };
 
   return (
