@@ -9,12 +9,16 @@ export default () => {
   }: {
     isOpen: boolean;
     address: {
+      country?: string;
+      region?: string;
       street?: string;
     };
   } = useSelector((state: GeneralState) => {
     return {
       isOpen: state.addResidenceAddressModal.open,
       address: {
+        country: state.addResidenceAddressModal.country,
+        region: state.addResidenceAddressModal.region,
         street: state.addResidenceAddressModal.street,
       },
     };

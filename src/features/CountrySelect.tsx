@@ -12,18 +12,28 @@ import { useTranslation } from "react-i18next";
 import countries from "i18n-iso-countries";
 import { ChangeEvent } from "react";
 
-const CountrySelect = ({ name, label }: { name: string; label: string }) => {
-  const [value, setValue] = useState<SelectType.Option>({
-    label: "",
-    value: "",
-  });
+const CountrySelect = ({
+  name,
+  label,
+  onChange,
+  menuTargetQuery,
+}: {
+  name: string;
+  label: string;
+  menuTargetQuery?: string;
+  onChange?: (v: SelectType.Option) => void;
+}) => {
   const { t } = useTranslation();
   const enCountries = countries.getNames("en", { select: "official" });
   const options = useMemo(
     () =>
       Object.entries(
         countries.getNames(i18next.language, { select: "official" })
-      ).map(([locale, name]) => ({ label: name, value: enCountries[locale] })),
+      ).map(([locale, name]) => ({
+        label: name,
+        code: locale,
+        value: enCountries[locale],
+      })),
     []
   );
   return (
@@ -37,18 +47,21 @@ const CountrySelect = ({ name, label }: { name: string; label: string }) => {
             <Select
               name={name}
               label={label}
+              menuTargetQuery={menuTargetQuery}
               placeholder={t("Select a country")}
-              value={value}
+              value={options.filter((option) => option.value === field.value)}
               onBlur={(e: ChangeEvent) => {
                 form.setFieldTouched(name);
               }}
               onChange={(v) => {
-                if (v == null) {
+                if (v === null) {
                   v = { label: "", value: "" };
+                }
+                if (onChange) {
+                  onChange(v);
                 }
                 field.onChange(v.value);
                 form.setFieldValue(name, v.value, true);
-                setValue(v);
               }}
               options={options}
             />

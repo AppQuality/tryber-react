@@ -16,6 +16,7 @@ const FiscalAddress = () => {
 
   const currentAddress = {
     street: address.street ? address.street : values.address.street,
+    country: address.country ? address.country : values.address.country,
   };
 
   return (
@@ -26,7 +27,7 @@ const FiscalAddress = () => {
           <Text>
             <p>{currentAddress.street}</p>
             <p>{`${values.address.cityCode} ${values.address.city} (${values.address.province})`}</p>
-            <p>{values.address.country}</p>
+            <p>{currentAddress.country}</p>
           </Text>
         ) : null}
       </div>
