@@ -6,7 +6,7 @@ import {
   GettingStarted,
   Home,
   MyBugs,
-  Profile
+  Profile,
 } from "./pages";
 import "./i18n";
 import TagManager from "react-gtm-module";
@@ -18,6 +18,7 @@ import userStore from "./redux/user";
 import referralStore from "./redux/referral";
 import { useEffect } from "react";
 import SiteWideMessages from "./features/SiteWideMessages";
+import GenericModal from "./features/GenericModal";
 import { datadogLogs } from "@datadog/browser-logs";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
@@ -53,6 +54,7 @@ function Page() {
     <>
       <SiteHeader />
       <SiteWideMessages />
+      <GenericModal />
       <Switch>
         <Route path={`${base}/getting-started`} component={GettingStarted} />
         <Route path={`/it/getting-started-2`}>
@@ -144,7 +146,7 @@ function Page() {
             />
           )}
         />
-        
+
         <Route path={`${base}/my-account`} component={Profile} />
         <Route path={["/", "/it", "/es"]} exact component={Home} />
       </Switch>
