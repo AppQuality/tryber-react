@@ -17,6 +17,7 @@ import {
   Button,
 } from "@appquality/appquality-design-system";
 import UserStore from "../../redux/user";
+import siteWideMessages from "../../redux/siteWideMessages";
 import React, { useEffect, useState } from "react";
 import CountrySelect from "../CountrySelect";
 import { CitySelect } from "./CitySelect";
@@ -26,12 +27,14 @@ import { LanguageSelect } from "./LanguageSelect";
 import API from "../../utils/api";
 import { BaseFields } from "./types.d";
 import { FormikProps } from "formik";
+import { add } from "husky";
 
 const TabBase = () => {
   const { t } = useTranslation();
   const { user, isProfileLoading, updateProfile } = UserStore();
   const [countryCode, setCountryCode] = useState("");
   const [languages, setLanguages] = useState<SelectType.Option[]>([]);
+  const { add } = siteWideMessages();
 
   useEffect(() => {
     const getLanguages = async () => {
@@ -95,10 +98,18 @@ const TabBase = () => {
             }
           });
           const resLang = await API.myLanguages(newLanguages);
-          const profileData = { ...values, city: values.city.value };
-          updateProfile(profileData);
+          const profileDataToSend = { ...values, city: values.city.value };
+          updateProfile(profileDataToSend);
+          add({
+            message: t("Profile data correctly updated."),
+            type: "success",
+          });
         } catch (e) {
           console.log(e);
+          add({
+            message: t("We couldn't update your profile. Try again."),
+            type: "warning",
+          });
         }
       }}
     >

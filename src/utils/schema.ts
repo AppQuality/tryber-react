@@ -1160,8 +1160,14 @@ export interface operations {
             gender?: "male" | "female" | "not-specified";
             birthDate?: string;
             phone?: string;
-            education?: string;
-            profession?: string;
+            education?: {
+              id: number;
+              name: string;
+            };
+            profession?: {
+              id: number;
+              name: string;
+            };
             certifications?: components["schemas"]["Certification"][] | boolean;
             completionPercent?: number;
             country?: string;
@@ -1232,6 +1238,7 @@ export interface operations {
           country?: string;
           city?: string;
           password?: string;
+          oldPassword?: string;
         };
       };
     };
