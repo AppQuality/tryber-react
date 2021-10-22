@@ -50,7 +50,8 @@ export default (): UserStatus => {
     isProfileLoading: loadingProfile,
     deletion: {
       deletionReason: deletionReason,
-      deleteUser: () => dispatch(deleteUser()),
+      deleteUser: (currentLanguage: string) =>
+        dispatch(deleteUser(currentLanguage)),
       updateDeletionReason: (reason: string) =>
         dispatch(updateDeletionReason(reason)),
       isDeleteModalOpen: deleteModalOpen,

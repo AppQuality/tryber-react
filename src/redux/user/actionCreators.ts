@@ -85,9 +85,12 @@ export const updateDeletionReason = (reason: string) => {
     });
   };
 };
-export const deleteUser = () => {
+export const deleteUser = (currentLanguage: string) => {
   return async (dispatch: UserDispatchType, getState: () => GeneralState) => {
     const { deletionReason } = getState().user;
+    await setTimeout(() => {}, 1000);
+    await fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout");
+    window.location.href = `/${currentLanguage}goodbye`;
     console.log(deletionReason);
   };
 };

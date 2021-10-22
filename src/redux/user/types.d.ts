@@ -11,7 +11,7 @@ interface UserStatus {
   error: HttpError;
   deletion: {
     deletionReason?: string;
-    deleteUser: () => void;
+    deleteUser: (lang: string) => void;
     updateDeletionReason: (v: string) => void;
     isDeleteModalOpen: boolean;
     openDeleteModal: () => void;

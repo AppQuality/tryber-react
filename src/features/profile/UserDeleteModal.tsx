@@ -1,6 +1,7 @@
 import UserStore from "../../redux/user";
 import { Modal } from "@appquality/appquality-design-system";
 import { Trans, useTranslation } from "react-i18next";
+import i18n from "i18next";
 import {
   Text,
   Checkbox,
@@ -56,7 +57,11 @@ const GenericModal = () => {
                   type="danger"
                   flat
                   size="block"
-                  onClick={() => deleteUser()}
+                  onClick={() =>
+                    deleteUser(
+                      i18n.language === "en" ? "" : `${i18n.language}/`
+                    )
+                  }
                 >
                   {t("Delete account")}
                 </Button>
