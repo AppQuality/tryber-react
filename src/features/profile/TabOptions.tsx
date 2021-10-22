@@ -21,6 +21,7 @@ import siteWideMessageStore from "../../redux/siteWideMessages";
 import leaveCrowd from "./assets/leave-crowd.png";
 import styled from "styled-components";
 import WPAPI from "../../utils/wpapi";
+import API from "../../utils/api";
 import * as yup from "yup";
 
 const Separator = styled.hr`
@@ -71,8 +72,31 @@ const TabOptions = () => {
                   });
                 }),
             })}
-            onSubmit={(values) => {
-              console.log(values);
+            onSubmit={(values, { resetForm }) => {
+              return API.changePassword({
+                oldPass: values.currentPassword,
+                newPass: values.newPasswordConfirm,
+              })
+                .then(() => {
+                  resetForm();
+                  add({
+                    message: t("Password correctly updated"),
+                    type: "success",
+                  });
+                })
+                .catch((e: HttpError) => {
+                  if (e.statusCode === 417) {
+                    add({
+                      message: t("Your current password is not correct"),
+                      type: "danger",
+                    });
+                  } else {
+                    add({
+                      message: e.message,
+                      type: "warning",
+                    });
+                  }
+                });
             }}
           >
             {(formikProps: FormikProps<typeof initialUserValues>) => {
@@ -83,7 +107,7 @@ const TabOptions = () => {
                   </Title>
                   <Field
                     name="currentPassword"
-                    type="text"
+                    type="password"
                     label={t("Current password")}
                     placeholder="******"
                   />
