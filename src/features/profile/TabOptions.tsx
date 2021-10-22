@@ -17,11 +17,13 @@ import {
 } from "@appquality/appquality-design-system";
 import { FieldProps, FormikProps } from "formik";
 import UserStore from "../../redux/user";
+import modalStore from "../../redux/modal";
 import siteWideMessageStore from "../../redux/siteWideMessages";
 import leaveCrowd from "./assets/leave-crowd.png";
 import styled from "styled-components";
 import WPAPI from "../../utils/wpapi";
 import * as yup from "yup";
+import { useState } from "react";
 
 const Separator = styled.hr`
   display: block;
@@ -34,7 +36,9 @@ const Separator = styled.hr`
 
 const TabOptions = () => {
   const { t } = useTranslation();
-  const { user, isProfileLoading } = UserStore();
+  const { user, isProfileLoading, deleteUser, updateDeletionReason } =
+    UserStore();
+  const { open } = modalStore();
   const { add } = siteWideMessageStore();
   const initialUserValues = {
     currentPassword: "",
@@ -211,7 +215,25 @@ const TabOptions = () => {
             </Text>
             <BSGrid>
               <BSCol size="col-6">
-                <Button flat size="block" type="danger">
+                <Button
+                  flat
+                  size="block"
+                  type="danger"
+                  onClick={() => {
+                    open({
+                      content: (
+                        <div>
+                          <Input
+                            id="deletionReason"
+                            type="text"
+                            onChange={(v) => updateDeletionReason(v)}
+                          />
+                        </div>
+                      ),
+                      footer: <p onClick={() => deleteUser()}>Submit</p>,
+                    });
+                  }}
+                >
                   {t("Delete account")}
                 </Button>
               </BSCol>

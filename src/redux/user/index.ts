@@ -5,6 +5,8 @@ import {
   loginUser,
   getProfile,
   getFiscalProfile,
+  deleteUser,
+  updateDeletionReason,
 } from "./actionCreators";
 
 export default (): UserStatus => {
@@ -35,6 +37,9 @@ export default (): UserStatus => {
     login: (data: UserLoginData) => dispatch(loginUser(data)),
     getProfile: () => dispatch(getProfile()),
     getFiscalProfile: () => dispatch(getFiscalProfile()),
+    deleteUser: () => dispatch(deleteUser()),
+    updateDeletionReason: (reason: string) =>
+      dispatch(updateDeletionReason(reason)),
     user: user,
     isLoading: loading,
     isProfileLoading: loadingProfile,

@@ -76,3 +76,18 @@ export const getFiscalProfile = () => {
     }
   };
 };
+
+export const updateDeletionReason = (reason: string) => {
+  return async (dispatch: UserDispatchType) => {
+    dispatch({
+      type: actionTypes.UPDATE_DELETION_REASON,
+      data: { reason },
+    });
+  };
+};
+export const deleteUser = () => {
+  return async (dispatch: UserDispatchType, getState: () => GeneralState) => {
+    const { deletionReason } = getState().user;
+    console.log(deletionReason);
+  };
+};

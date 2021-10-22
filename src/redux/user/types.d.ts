@@ -4,6 +4,8 @@ interface UserStatus {
   refresh: () => void;
   login: (data: UserLoginData) => void;
   getProfile: () => void;
+  deleteUser: () => void;
+  updateDeletionReason: (v: string) => void;
   getFiscalProfile: () => void;
   user: User;
   isLoading: boolean;
@@ -18,7 +20,7 @@ interface UserLoginData {
 
 type UserAction = {
   type: string;
-  data?: object | FetchProfileData;
+  data?: FetchProfileData | UserDeletionData | object;
   error?: HttpError;
 };
 
@@ -27,11 +29,16 @@ type FetchProfileData = {
   baseProfile: any;
 };
 
+type UserDeletionData = {
+  reason: string;
+};
+
 type UserState = {
   user?: UserData;
   fiscalData?: UserFiscalData;
   loading: boolean;
   loadingProfile: boolean;
+  deletionReason?: string;
   error?: string;
 };
 type UserDispatchType = (args: UserAction) => UserAction;

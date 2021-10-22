@@ -76,6 +76,19 @@ const reducer = (
             loadingProfile: false,
           }
         : state;
+    case actionTypes.UPDATE_DELETION_REASON:
+      if (action.data && "reason" in action.data) {
+        return {
+          ...state,
+          deletionReason: action.data.reason,
+        };
+      }
+      break;
+    case actionTypes.DELETE_USER:
+      return {
+        ...state,
+        user: undefined,
+      };
   }
   return state;
 };
