@@ -121,6 +121,11 @@ export interface paths {
       };
     };
   };
+  "/certifications": {
+    /** Get all certificatio */
+    get: operations["get-certifications"];
+    parameters: {};
+  };
   "/devices/{device_type}/operating_systems": {
     /** Get all operating systems of a device type */
     get: operations["get-devices-operating-systems"];
@@ -139,6 +144,18 @@ export interface paths {
       };
     };
   };
+  "/languages": {
+    /** Get all languages */
+    get: operations["get-languages"];
+  };
+  "/employments": {
+    /** Get all employments */
+    get: operations["get-employments"];
+  };
+  "/education": {
+    /** Get all education levels */
+    get: operations["get-education"];
+  };
   "/users": {
     /** Get all users you have access to */
     get: operations["get-users"];
@@ -150,6 +167,7 @@ export interface paths {
     get: operations["get-users-me"];
     /** Edit your user data */
     put: operations["put-users-me"];
+    delete: operations["delete-users-me"];
     /** Edit basic user fields */
     patch: operations["patch-users-me"];
   };
@@ -228,6 +246,8 @@ export interface paths {
     };
   };
   "/users/me/languages": {
+    /** Edit your spoken languages */
+    put: operations["put-users-me-languages"];
     /** Add one of the languages to your profile */
     post: operations["post-users-me-languages"];
   };
@@ -248,6 +268,18 @@ export interface paths {
       path: {
         /** The id of the field to edit */
         fieldId: number;
+      };
+    };
+  };
+  "/custom_user_fields": {
+    get: operations["get-customUserFields"];
+    parameters: {};
+  };
+  "/countries/{code}/region": {
+    get: operations["get-regions"];
+    parameters: {
+      path: {
+        code: string;
       };
     };
   };
@@ -934,6 +966,30 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
+  /** Get all certificatio */
+  "get-certifications": {
+    parameters: {
+      query: {
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+            area: string;
+            institute: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
   /** Get all operating systems of a device type */
   "get-devices-operating-systems": {
     parameters: {
@@ -977,6 +1033,55 @@ export interface operations {
           "application/json": {
             id?: number;
             name?: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Get all languages */
+  "get-languages": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Get all employments */
+  "get-employments": {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Get all education levels */
+  "get-education": {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
           }[];
         };
       };
@@ -1046,14 +1151,23 @@ export interface operations {
             total_exp_pts?: number;
             booty?: number;
             pending_booty?: number;
-            languages?: string[];
+            languages?: {
+              id?: number;
+              name?: string;
+            }[];
             onboarding_completed?: boolean;
             additional?: components["schemas"]["AdditionalField"][];
-            gender?: string;
+            gender?: "male" | "female" | "not-specified";
             birthDate?: string;
             phone?: string;
-            education?: string;
-            profession?: string;
+            education?: {
+              id: number;
+              name: string;
+            };
+            profession?: {
+              id: number;
+              name: string;
+            };
             certifications?: components["schemas"]["Certification"][] | boolean;
             completionPercent?: number;
             country?: string;
@@ -1086,6 +1200,20 @@ export interface operations {
       };
     };
   };
+  "delete-users-me": {
+    responses: {
+      /** OK */
+      200: unknown;
+      403: components["responses"]["NotAuthorized"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          reason: string;
+        };
+      };
+    };
+  };
   /** Edit basic user fields */
   "patch-users-me": {
     responses: {
@@ -1102,7 +1230,7 @@ export interface operations {
           email?: string;
           onboarding_completed?: boolean;
           surname?: string;
-          gender?: string;
+          gender?: "male" | "female" | "not-specified";
           birthDate?: string;
           phone?: string;
           education?: number;
@@ -1110,6 +1238,7 @@ export interface operations {
           country?: string;
           city?: string;
           password?: string;
+          oldPassword?: string;
         };
       };
     };
@@ -1222,7 +1351,7 @@ export interface operations {
             };
             fiscalId: string;
             fiscalStatus: "Verified" | "Unverified";
-            gender: "Male" | "Female";
+            gender: "male" | "female";
           };
         };
       };
@@ -1251,7 +1380,7 @@ export interface operations {
             };
             fiscalId: string;
             fiscalStatus: "Verified" | "Unverified";
-            gender: "Male" | "Female";
+            gender: "male" | "female";
           };
         };
       };
@@ -1273,7 +1402,7 @@ export interface operations {
             province?: string;
           };
           fiscalId: string;
-          gender: "Male" | "Female";
+          gender: "male" | "female";
         };
       };
     };
@@ -1299,7 +1428,7 @@ export interface operations {
             };
             fiscalId: string;
             fiscalStatus: "Verified" | "Unverified";
-            gender: "Male" | "Female";
+            gender: "male" | "female";
           };
         };
       };
@@ -1321,7 +1450,7 @@ export interface operations {
             province?: string;
           };
           fiscalId: string;
-          gender: "Male" | "Female";
+          gender: "male" | "female";
         };
       };
     };
@@ -1581,6 +1710,26 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
+  /** Edit your spoken languages */
+  "put-users-me-languages": {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+            name?: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+    requestBody: {
+      content: {
+        "application/json": number[];
+      };
+    };
+  };
   /** Add one of the languages to your profile */
   "post-users-me-languages": {
     responses: {
@@ -1655,6 +1804,54 @@ export interface operations {
               value: string;
               is_candidate?: boolean;
             };
+      };
+    };
+  };
+  "get-customUserFields": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            group: {
+              id: number;
+              name: components["schemas"]["TranslatablePage"];
+              description?: components["schemas"]["TranslatablePage"];
+            };
+            fields?: {
+              id?: number;
+              type?: "select" | "multiselect" | "text";
+              placeholder?: components["schemas"]["TranslatablePage"];
+              options?: {
+                id?: number;
+                name?: string;
+              }[];
+              allow_other?: boolean;
+            }[];
+          }[];
+        };
+      };
+    };
+  };
+  "get-regions": {
+    parameters: {
+      path: {
+        code: string;
+      };
+      query: {
+        languageCode?: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            name: string;
+            value: string;
+          }[];
+        };
       };
     };
   };

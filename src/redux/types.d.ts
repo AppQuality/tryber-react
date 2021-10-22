@@ -5,6 +5,7 @@ type GeneralState = {
   referral: ReferralState;
   messages: SiteWideMessagesState;
   userDevices: UserDeviceState;
+  modal: ModalState;
 };
 type DispatchType =
   | UserDispatchType
@@ -12,4 +13,5 @@ type DispatchType =
   | DashboardHelpDispatchType
   | SiteWideMessagesDispatchType
   | UserDeviceDispatchType
+  | ModalDispatchType
   | ReferralDispatchType;
