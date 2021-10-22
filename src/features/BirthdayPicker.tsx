@@ -8,7 +8,7 @@ const BirthdayPicker = ({
   onChange,
 }: {
   name: string;
-  initialValue: any;
+  initialValue?: Date;
   onCancel: ({ value }: { value: Date }) => void;
   onChange: any;
 }) => {
@@ -19,6 +19,7 @@ const BirthdayPicker = ({
     <>
       <FormLabel htmlFor={name} label={t("Date of birth")} />
       <Datepicker
+        value={initialValue}
         id={name}
         locale={i18n.language}
         maxDate={

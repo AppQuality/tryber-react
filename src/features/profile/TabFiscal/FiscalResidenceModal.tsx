@@ -20,9 +20,6 @@ import API from "../../../utils/api";
 import CountrySelect from "../../CountrySelect";
 import { ProvinceSelect } from "./ProvinceSelect";
 import countries from "i18n-iso-countries";
-import GooglePlacesAutocomplete, {
-  geocodeByPlaceId,
-} from "react-google-places-autocomplete";
 import { useMemo, useState } from "react";
 
 const FiscalResidenceModal = () => {
@@ -92,7 +89,6 @@ const FiscalResidenceModal = () => {
             <Form>
               <CountrySelect
                 name="country"
-                menuTargetQuery="body"
                 label={t("Country")}
                 onChange={(v) => {
                   formikProps.setFieldValue("countryCode", v.code, true);

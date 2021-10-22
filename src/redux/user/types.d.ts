@@ -4,6 +4,7 @@ interface UserStatus {
   refresh: () => void;
   login: (data: UserLoginData) => void;
   getProfile: () => void;
+  updateProfile: (data: UserData) => void;
   getFiscalProfile: () => void;
   user: User;
   isLoading: boolean;

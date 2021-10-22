@@ -8,13 +8,14 @@ import {
   Tab,
   Button,
   Modal,
+  DatepickerGlobalStyle,
   aqBootstrapTheme,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
 import TesterSidebar from "../features/TesterSidebar";
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FiscalProfileReport } from "../features/profile/FiscalProfileReport";
 import { HeaderProfile } from "../features/profile/HeaderProfile";
 import userStore from "../redux/user";
@@ -76,6 +77,7 @@ export default function Profile() {
   return (
     <GoogleTagManager title={t("Profile")}>
       <LoggedOnly>
+        <DatepickerGlobalStyle />
         <UserDeleteModal />
         <FiscalResidenceModal />
         <TesterSidebar route={"my-account"}>

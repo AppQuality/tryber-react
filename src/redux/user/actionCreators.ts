@@ -2,6 +2,7 @@ import * as actionTypes from "./actionTypes";
 import API from "../../utils/api";
 import WPAPI from "../../utils/wpapi";
 import HttpError from "../../utils/HttpError";
+import { operations } from "../../utils/schema";
 
 export function refreshUser() {
   const action: UserAction = {
@@ -71,6 +72,26 @@ export const getFiscalProfile = () => {
     } catch (err: unknown) {
       dispatch({
         type: actionTypes.FETCH_FISCAL_PROFILE_FAILED,
+        error: err as HttpError,
+      });
+    }
+  };
+};
+
+export const updateProfile = (
+  data: operations["patch-users-me"]["requestBody"]["content"]["application/json"]
+) => {
+  return async (dispatch: UserDispatchType) => {
+    try {
+      const response = await API.patchMe(data);
+      dispatch({
+        type: actionTypes.FETCH_PROFILE,
+        // @ts-ignore
+        data: response,
+      });
+    } catch (err: unknown) {
+      dispatch({
+        type: actionTypes.FETCH_PROFILE_FAILED,
         error: err as HttpError,
       });
     }
