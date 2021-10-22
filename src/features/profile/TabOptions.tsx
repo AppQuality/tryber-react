@@ -192,7 +192,9 @@ const TabOptions = () => {
                   WPAPI.requestUserData()
                     .then(() => {
                       add({
-                        message: t("We couldn't retrieve your data"),
+                        message: t(
+                          "We've received your request. You'll get an email in a few days."
+                        ),
                         type: "success",
                       });
                     })
