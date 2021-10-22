@@ -6,7 +6,7 @@ import {
   ErrorMessage,
   FormGroup,
 } from "@appquality/appquality-design-system";
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import countries from "i18n-iso-countries";
@@ -16,11 +16,9 @@ const CountrySelect = ({
   name,
   label,
   onChange,
-  menuTargetQuery,
 }: {
   name: string;
   label: string;
-  menuTargetQuery?: string;
   onChange?: (v: SelectType.Option) => void;
 }) => {
   const { t } = useTranslation();
@@ -47,9 +45,8 @@ const CountrySelect = ({
             <Select
               name={name}
               label={label}
-              menuTargetQuery={menuTargetQuery}
               placeholder={t("Select a country")}
-              value={options.filter((option) => option.value === field.value)}
+              value={{ label: field.value, value: field.value }}
               onBlur={(e: ChangeEvent) => {
                 form.setFieldTouched(name);
               }}

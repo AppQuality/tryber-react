@@ -2,6 +2,7 @@ import * as authenticate from "./authenticate";
 import * as campaigns from "./campaigns";
 import * as user from "./users";
 import * as devices from "./devices";
+import * as languages from "./languages";
 import * as geoDb from "./geoDb";
 
 const API = {
@@ -9,6 +10,7 @@ const API = {
   ...campaigns,
   ...user,
   ...devices,
+  ...languages,
   ...geoDb,
 };
 

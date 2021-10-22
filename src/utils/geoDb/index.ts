@@ -1,9 +1,11 @@
 import HttpError from "../HttpError";
 
 // inferred type from really bad docs, please check
-interface GeoDbCity {
+export interface GeoDbCity {
   id: number;
   wikiDataId: string;
+  type: "ADM2" | "CITY" | string;
+  city: string;
   name: string;
   country: string;
   countryCode: string;
@@ -20,14 +22,14 @@ export interface GeoDbRegion {
   name: string;
   wikiDataId: string;
 }
-interface GeoDbLinks {
+export interface GeoDbLinks {
   rel: string;
   href: string;
 }
 // inferred type from really bad docs, please check
-interface GeoDbResult<T> {
+export interface GeoDbResult<T> {
   data: T[];
-  links: GeoDbLinks[];
+  links?: GeoDbLinks[];
   metadata: {
     currentOffset: number;
     totalCount: number;
@@ -55,18 +57,15 @@ export const cities = async ({
   languageCode = "en",
   offset = 0,
   limit = 100,
-}: {
-  countryIds: string;
-  languageCode: string;
-  offset?: number;
-  limit?: number;
-}): Promise<GeoDbResult<GeoDbCity>> => {
+  search,
+}: CitiesRequestProps): Promise<GeoDbResult<GeoDbCity>> => {
   const urlps = new URLSearchParams({
-    countryIds: countryIds,
+    countryIds: countryIds.toString(),
     languageCode: languageCode,
     offset: offset.toString(),
     limit: limit.toString(),
   });
+  if (search) urlps.set("namePrefix", search);
   const params = "?" + urlps.toString();
   const response = await fetch(
     "https://wft-geo-db.p.rapidapi.com/v1/geo/cities" + params,
