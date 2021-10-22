@@ -3,6 +3,7 @@ import * as actionTypes from "./actionTypes";
 const initialState: UserState = {
   loading: true,
   loadingProfile: true,
+  isDeleteModalOpen: false,
 };
 
 const reducer = (
@@ -88,6 +89,16 @@ const reducer = (
       return {
         ...state,
         user: undefined,
+      };
+    case actionTypes.OPEN_DELETE_MODAL:
+      return {
+        ...state,
+        isDeleteModalOpen: true,
+      };
+    case actionTypes.CLOSE_DELETE_MODAL:
+      return {
+        ...state,
+        isDeleteModalOpen: false,
       };
   }
   return state;

@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import {
   Button,
   CSSGrid,
@@ -17,13 +17,11 @@ import {
 } from "@appquality/appquality-design-system";
 import { FieldProps, FormikProps } from "formik";
 import UserStore from "../../redux/user";
-import modalStore from "../../redux/modal";
 import siteWideMessageStore from "../../redux/siteWideMessages";
 import leaveCrowd from "./assets/leave-crowd.png";
 import styled from "styled-components";
 import WPAPI from "../../utils/wpapi";
 import * as yup from "yup";
-import { useState } from "react";
 
 const Separator = styled.hr`
   display: block;
@@ -36,16 +34,14 @@ const Separator = styled.hr`
 
 const TabOptions = () => {
   const { t } = useTranslation();
-  const { user, isProfileLoading, deleteUser, updateDeletionReason } =
-    UserStore();
-  const { open } = modalStore();
+  const { deletion, user } = UserStore();
+  const { openDeleteModal } = deletion;
   const { add } = siteWideMessageStore();
   const initialUserValues = {
     currentPassword: "",
     newPassword: "",
     newPasswordConfirm: "",
   };
-
   return (
     <div className="aq-m-3">
       <CSSGrid gutter="50px" rowGap="1rem" min="220px">
@@ -205,12 +201,12 @@ const TabOptions = () => {
             {t("Delete your account")}
             <Text className="aq-mb-3">
               <div>
-                The deletion of your account (T14999){" "}
-                <b>will be irreversible</b>.
-                <br />
-                <br />
-                You will not be able to continue earning money with us. <br />
-                Are you sure you want to leave our community?
+                <Trans
+                  values={{ testerId: `T${user.id}` }}
+                  i18nKey="The deletion of your account ({{testerId}}) <bold>will be irreversible</bold>.<br></br><br></br>You will not be able to continue earning money with us. <br></br>Are you sure you want to leave our community?"
+                  defaults="The deletion of your account ({{testerId}}) <bold>will be irreversible</bold>.<br></br><br></br>You will not be able to continue earning money with us. <br></br>Are you sure you want to leave our community?"
+                  components={{ br: <br />, bold: <strong /> }}
+                />
               </div>
             </Text>
             <BSGrid>
@@ -220,18 +216,7 @@ const TabOptions = () => {
                   size="block"
                   type="danger"
                   onClick={() => {
-                    open({
-                      content: (
-                        <div>
-                          <Input
-                            id="deletionReason"
-                            type="text"
-                            onChange={(v) => updateDeletionReason(v)}
-                          />
-                        </div>
-                      ),
-                      footer: <p onClick={() => deleteUser()}>Submit</p>,
-                    });
+                    openDeleteModal();
                   }}
                 >
                   {t("Delete account")}

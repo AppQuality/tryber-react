@@ -4,13 +4,19 @@ interface UserStatus {
   refresh: () => void;
   login: (data: UserLoginData) => void;
   getProfile: () => void;
-  deleteUser: () => void;
-  updateDeletionReason: (v: string) => void;
   getFiscalProfile: () => void;
   user: User;
   isLoading: boolean;
   isProfileLoading: boolean;
   error: HttpError;
+  deletion: {
+    deletionReason?: string;
+    deleteUser: () => void;
+    updateDeletionReason: (v: string) => void;
+    isDeleteModalOpen: boolean;
+    openDeleteModal: () => void;
+    closeDeleteModal: () => void;
+  };
 }
 
 interface UserLoginData {
@@ -40,5 +46,6 @@ type UserState = {
   loadingProfile: boolean;
   deletionReason?: string;
   error?: string;
+  isDeleteModalOpen: boolean;
 };
 type UserDispatchType = (args: UserAction) => UserAction;

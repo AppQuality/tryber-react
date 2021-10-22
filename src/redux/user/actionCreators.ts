@@ -91,3 +91,19 @@ export const deleteUser = () => {
     console.log(deletionReason);
   };
 };
+
+export const openDeleteModal = () => {
+  return async (dispatch: UserDispatchType) => {
+    dispatch({
+      type: actionTypes.OPEN_DELETE_MODAL,
+    });
+  };
+};
+
+export const closeDeleteModal = () => {
+  return async (dispatch: UserDispatchType) => {
+    dispatch({
+      type: actionTypes.CLOSE_DELETE_MODAL,
+    });
+  };
+};

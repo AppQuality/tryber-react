@@ -21,6 +21,7 @@ import TabBase from "../features/profile/TabBase";
 import TabAdvanced from "../features/profile/TabAdvanced";
 import TabFiscal from "../features/profile/TabFiscal";
 import TabOptions from "../features/profile/TabOptions";
+import UserDeleteModal from "../features/profile/UserDeleteModal";
 
 const headerOffset = 60;
 
@@ -73,6 +74,7 @@ export default function Profile() {
   return (
     <GoogleTagManager title={t("Profile")}>
       <LoggedOnly>
+        <UserDeleteModal />
         <TesterSidebar route={"my-account"}>
           <Container className="aq-pb-3">
             <PageTitle size="regular" as="h2" className="aq-mb-3">
