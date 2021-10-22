@@ -202,3 +202,4 @@ export * from "./myFiscalData";
 export * from "./myPopups";
 export * from "./myDevices";
 export * from "./onboardingComplete";
+export * from "./delete";
