@@ -69,7 +69,15 @@ const TabBase = () => {
     surname: yup.string().required(t("This is a required field")),
     gender: yup.string().required(t("This is a required field")),
     birthDate: yup.string().required(t("This is a required field")),
-    phone: yup.string().required(t("This is a required field")),
+    phone: yup
+      .string()
+      .required(t("This is a required field"))
+      .matches(
+        /^\+?((\d\-|\d)+\d){4,20}$/gi,
+        t(
+          "This is an invalid format. Should be formatted as +11000000000 or 0011000000000"
+        )
+      ),
     email: yup
       .string()
       .email(t("Email must be a valid email"))
