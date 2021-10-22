@@ -1,4 +1,7 @@
-import { aqBootstrapTheme } from "@appquality/appquality-design-system";
+import {
+  aqBootstrapTheme,
+  SelectType,
+} from "@appquality/appquality-design-system";
 import { operations } from "utils/schema";
 
 export type CrowdRoutes =
@@ -8,7 +11,7 @@ export type CrowdRoutes =
   | "my-bugs"
   | "experience-points"
   | "";
-  
+
 export type UserData =
   operations["get-users-me"]["responses"]["200"]["content"]["application/json"];
 
@@ -29,4 +32,5 @@ declare global {
   type UserFiscalData =
     operations["get-users-me-fiscal"]["responses"]["200"]["content"]["application/json"];
   type HttpError = HttpError;
+  type SelectOptionType = SelectType.Option;
 }

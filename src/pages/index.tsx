@@ -5,6 +5,7 @@ import GettingStarted from "./GettingStarted";
 import Home from "./home/Home";
 import Devices from "./Devices";
 import Profile from "./Profile";
+import GoodbyePage from "./GoodbyePage";
 
 export {
   Dashboard,
@@ -14,4 +15,5 @@ export {
   Home,
   Devices,
   Profile,
+  GoodbyePage,
 };

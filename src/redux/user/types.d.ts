@@ -9,6 +9,14 @@ interface UserStatus {
   isLoading: boolean;
   isProfileLoading: boolean;
   error: HttpError;
+  deletion: {
+    deletionReason?: string;
+    deleteUser: (lang: string) => void;
+    updateDeletionReason: (v: string) => void;
+    isDeleteModalOpen: boolean;
+    openDeleteModal: () => void;
+    closeDeleteModal: () => void;
+  };
 }
 
 interface UserLoginData {
@@ -18,7 +26,7 @@ interface UserLoginData {
 
 type UserAction = {
   type: string;
-  data?: object | FetchProfileData;
+  data?: FetchProfileData | UserDeletionData | object;
   error?: HttpError;
 };
 
@@ -27,11 +35,17 @@ type FetchProfileData = {
   baseProfile: any;
 };
 
+type UserDeletionData = {
+  reason: string;
+};
+
 type UserState = {
   user?: UserData;
   fiscalData?: UserFiscalData;
   loading: boolean;
   loadingProfile: boolean;
+  deletionReason?: string;
   error?: string;
+  isDeleteModalOpen: boolean;
 };
 type UserDispatchType = (args: UserAction) => UserAction;

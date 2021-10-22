@@ -3,6 +3,7 @@ import * as actionTypes from "./actionTypes";
 const initialState: UserState = {
   loading: true,
   loadingProfile: true,
+  isDeleteModalOpen: false,
 };
 
 const reducer = (
@@ -71,11 +72,34 @@ const reducer = (
             ...state,
             user: {
               ...state.user,
-              fiscal: { ...state.user.fiscal, ...action.data },
+              fiscal: { ...state?.user?.fiscal, ...action.data },
             },
             loadingProfile: false,
           }
         : state;
+    case actionTypes.UPDATE_DELETION_REASON:
+      if (action.data && "reason" in action.data) {
+        return {
+          ...state,
+          deletionReason: action.data.reason,
+        };
+      }
+      break;
+    case actionTypes.DELETE_USER:
+      return {
+        ...state,
+        user: undefined,
+      };
+    case actionTypes.OPEN_DELETE_MODAL:
+      return {
+        ...state,
+        isDeleteModalOpen: true,
+      };
+    case actionTypes.CLOSE_DELETE_MODAL:
+      return {
+        ...state,
+        isDeleteModalOpen: false,
+      };
   }
   return state;
 };
