@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import UserStore from "../../redux/user";
 import {
   Button,
-  ButtonGroup,
   CSSGrid,
   Field,
   Form,
@@ -14,6 +13,8 @@ import {
 } from "@appquality/appquality-design-system";
 import Select from "react-select/base";
 import React from "react";
+import { EmploymentSelect } from "./EmploymentSelect";
+import * as yup from "yup";
 
 const TabAdvanced = () => {
   const { t } = useTranslation();
@@ -21,10 +22,18 @@ const TabAdvanced = () => {
   const initialUserValues = {
     name: user.name || "",
     surname: user.surname || "",
+    employment: user.profession
+      ? { label: user.profession.name, value: user.profession.id.toString() }
+      : { label: "", value: "" },
   };
-  const now = new Date();
+  const validationSchema = {
+    name: yup.string().required(t("This is a required field")),
+    surname: yup.string().required(t("This is a required field")),
+    employment: yup.string().required(t("This is a required field")),
+  };
   return (
     <Formik
+      enableReinitialize
       initialValues={initialUserValues}
       onSubmit={(values) => {
         console.log(values);
@@ -34,8 +43,7 @@ const TabAdvanced = () => {
         <CSSGrid gutter="50px" rowGap="1rem" min="220px">
           <div className="employment">
             <Title size="s">{t("Employment")}</Title>
-            <FormLabel htmlFor="profession" label={t("Profession")} />
-            <Select></Select>
+            <EmploymentSelect name="employment" label={t("Profession")} />
             <FormLabel htmlFor="education" label={t("Education level")} />
             <Select></Select>
             <Title size="s">{t("Certifications")}</Title>
