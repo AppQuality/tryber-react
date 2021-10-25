@@ -47,6 +47,7 @@ const TabFiscal = ({ ref }: { ref?: React.RefObject<HTMLDivElement> }) => {
           )
         ? "italian"
         : "",
+    formattedFiscalAddress: "",
     address: {
       ...user?.fiscal?.address,
       street: address.street ? address.street : user?.fiscal?.address.street,

@@ -3,11 +3,14 @@ import {
   BSGrid,
   BSCol,
   FormLabel,
+  FormikField,
   Text,
+  PlacesAutocomplete,
+  FormGroup,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import residenceModalStore from "../../../redux/addResidenceAddressModal";
-import { useFormikContext } from "formik";
+import { FieldProps, useFormikContext } from "formik";
 
 const FiscalAddress = () => {
   const { t } = useTranslation();
@@ -22,14 +25,21 @@ const FiscalAddress = () => {
   return (
     <>
       <div className="aq-mb-3">
-        <FormLabel htmlFor="fiscalAddress" label={t("Fiscal Address")} />
-        {values.address ? (
-          <Text>
-            <p>{currentAddress.street}</p>
-            <p>{`${values.address.cityCode} ${values.address.city} (${values.address.province})`}</p>
-            <p>{currentAddress.country}</p>
-          </Text>
-        ) : null}
+        <FormikField name="formattedFiscalAddress">
+          {({ form, field }: FieldProps) => (
+            <FormGroup>
+              <FormLabel htmlFor={field.name} label={t("Fiscal Address")} />
+              <PlacesAutocomplete
+                placesProps={{
+                  apiKey: process.env.REACT_APP_GOOGLE_APIKEY || "",
+                }}
+                onChange={(places) => {
+                  form.setFieldValue(field.name, places[0].formatted_address);
+                }}
+              />
+            </FormGroup>
+          )}
+        </FormikField>
       </div>
       <BSGrid>
         <BSCol size="col-6">
