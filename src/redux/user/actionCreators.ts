@@ -70,6 +70,12 @@ export const getFiscalProfile = () => {
         data: { ...fiscalData },
       });
     } catch (err: unknown) {
+      const { statusCode } = err as HttpError;
+      if (statusCode === 404) {
+        return dispatch({
+          type: actionTypes.FETCH_FISCAL_PROFILE,
+        });
+      }
       dispatch({
         type: actionTypes.FETCH_FISCAL_PROFILE_FAILED,
         error: err as HttpError,

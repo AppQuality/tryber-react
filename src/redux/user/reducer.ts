@@ -67,16 +67,17 @@ const reducer = (
         loadingProfile: false,
       };
     case actionTypes.FETCH_FISCAL_PROFILE:
-      return action.data
-        ? {
-            ...state,
-            user: {
-              ...state.user,
-              fiscal: { ...state?.user?.fiscal, ...action.data },
-            },
-            loadingProfile: false,
-          }
-        : state;
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          fiscal: action.data
+            ? { ...state?.user?.fiscal, ...action.data }
+            : undefined,
+        },
+        loadingProfile: false,
+      };
+
     case actionTypes.UPDATE_DELETION_REASON:
       if (action.data && "reason" in action.data) {
         return {
