@@ -21,6 +21,8 @@ import { useEffect } from "react";
 import SiteWideMessages from "./features/SiteWideMessages";
 import GenericModal from "./features/GenericModal";
 import { datadogLogs } from "@datadog/browser-logs";
+import { useDispatch } from "react-redux";
+import { refreshUser } from "./redux/user/actions/refreshUser";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
   datadogLogs.init({
@@ -42,10 +44,10 @@ const base = "/:locale(en|it|es)?";
 
 function Page() {
   const { search } = useLocation();
-  const { refresh } = userStore();
   const { setReferral } = referralStore();
+  const dispatch = useDispatch();
   useEffect(() => {
-    refresh();
+    dispatch(refreshUser());
     const values = queryString.parse(search);
     if (values.referral && typeof values.referral === "string") {
       setReferral(values.referral);

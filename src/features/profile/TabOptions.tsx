@@ -67,7 +67,7 @@ const TabOptions = () => {
               newPasswordConfirm: yup
                 .string()
                 .required(t("This is a required field"))
-                .when("newPassword", (newPassword, schema) => {
+                .when("newPassword", (newPassword: string, schema: any) => {
                   return schema.test({
                     test: (newPasswordConfirm: string) =>
                       newPassword === newPasswordConfirm,
