@@ -50,7 +50,9 @@ const TabOptions = () => {
           <Formik
             initialValues={initialUserValues}
             validationSchema={yup.object().shape({
-              currentPassword: yup.string().required(),
+              currentPassword: yup
+                .string()
+                .required(t("This is a required field")),
               newPassword: yup
                 .string()
                 .min(6, t("Must be at least 6 character long"))
@@ -63,7 +65,7 @@ const TabOptions = () => {
                 .required(t("This is a required field")),
               newPasswordConfirm: yup
                 .string()
-                .required()
+                .required(t("This is a required field"))
                 .when("newPassword", (newPassword, schema) => {
                   return schema.test({
                     test: (newPasswordConfirm: string) =>
