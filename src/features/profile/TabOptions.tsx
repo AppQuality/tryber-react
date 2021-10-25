@@ -49,6 +49,7 @@ const TabOptions = () => {
         <div className="edit-password">
           <Formik
             initialValues={initialUserValues}
+            validateOnMount
             validationSchema={yup.object().shape({
               currentPassword: yup
                 .string()
