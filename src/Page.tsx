@@ -148,7 +148,7 @@ function Page() {
           )}
         />
 
-        <Route path={`${base}/my-account`} component={Profile} />
+        <Route path={`${base}/my-account`} component={() => <Profile />} />
         <Route
           path={["/goodbye", "/it/goodbye", "/es/goodbye"]}
           exact
