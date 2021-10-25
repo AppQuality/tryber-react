@@ -1,4 +1,3 @@
-import useUser from "../redux/user";
 import {
   Container,
   Title,
@@ -8,21 +7,36 @@ import {
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
 
 export default ({ children }: { children: React.ReactNode }) => {
   const history = useHistory();
-  const { user, error, isLoading } = useUser();
+
+  const {
+    error,
+    loading,
+  }: {
+    error?: any;
+    loading?: boolean;
+  } = useSelector(
+    (state: GeneralState) => ({
+      loading: state.user.loading,
+      error: state.user.error,
+    }),
+    shallowEqual
+  );
+
   const { t } = useTranslation();
 
-  if (!user && error) {
+  if (error) {
     if (error.statusCode === 403) {
       history.push(useLocalizeRoute(""));
     } else {
       alert(error.message);
     }
+    return null;
   }
-
-  if (isLoading || !user) {
+  if (loading || typeof loading === "undefined") {
     return (
       <Container className="aq-py-3">
         <SpinnerWrapper>

@@ -45,7 +45,7 @@ function Page() {
   const { refresh } = userStore();
   const { setReferral } = referralStore();
   useEffect(() => {
-    refresh && refresh();
+    refresh();
     const values = queryString.parse(search);
     if (values.referral && typeof values.referral === "string") {
       setReferral(values.referral);
