@@ -158,14 +158,28 @@ const TabOptions = () => {
                   >
                     {t("Change password")}
                   </Button>
-                  <Button
-                    as="a"
-                    type="link"
-                    target="_blank"
-                    href="/wp-login.php?action=lostpassword"
-                  >
-                    {t("Request a new password")}
-                  </Button>
+                  <div className="aq-my-3">
+                    <Title size="xs" className="aq-mb-2">
+                      {t("Reset password")}
+                    </Title>
+                    <CSSGrid min="110px" fill={true}>
+                      <div style={{ gridColumn: "auto / span 2" }}>
+                        <Text>
+                          {t(
+                            "If you don't remember your password, you can just ask for a new one."
+                          )}
+                        </Text>
+                      </div>
+                      <Button
+                        as="a"
+                        type="link"
+                        target="_blank"
+                        href="/wp-login.php?action=lostpassword"
+                      >
+                        {t("Request now")}
+                      </Button>
+                    </CSSGrid>
+                  </div>
                 </Form>
               );
             }}
