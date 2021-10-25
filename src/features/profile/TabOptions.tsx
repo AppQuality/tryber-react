@@ -67,13 +67,10 @@ const TabOptions = () => {
               newPasswordConfirm: yup
                 .string()
                 .required(t("This is a required field"))
-                .when("newPassword", (newPassword: string, schema: any) => {
-                  return schema.test({
-                    test: (newPasswordConfirm: string) =>
-                      newPassword === newPasswordConfirm,
-                    message: t("Password confirmation doesn't match"),
-                  });
-                }),
+                .oneOf(
+                  [yup.ref("newPassword"), null],
+                  t("Password confirmation doesn't match")
+                ),
             })}
             onSubmit={(values, { resetForm }) => {
               return API.changePassword({
