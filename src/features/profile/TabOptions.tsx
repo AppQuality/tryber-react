@@ -34,7 +34,7 @@ const Separator = styled.hr`
 `;
 
 const TabOptions = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { deletion, user } = UserStore();
   const { openDeleteModal } = deletion;
   const { add } = siteWideMessageStore();
@@ -203,7 +203,7 @@ const TabOptions = () => {
                 htmlType="submit"
                 flat={true}
                 onClick={async () => {
-                  WPAPI.requestUserData()
+                  WPAPI.requestUserData(i18n.language)
                     .then(() => {
                       add({
                         message: t(
@@ -214,14 +214,14 @@ const TabOptions = () => {
                     })
                     .catch((e) => {
                       const { message } = e as HttpError;
-                      if (message === "FAILED_REQUEST") {
+                      if (message === "GENERIC_ERROR") {
                         add({
-                          message: t("We couldn't retrieve your data"),
+                          message: t("There was an error"),
                           type: "danger",
                         });
                       } else {
                         add({
-                          message: t("There was an error"),
+                          message: message,
                           type: "danger",
                         });
                       }

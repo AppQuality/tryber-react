@@ -1,5 +1,5 @@
 import queryString from "query-string";
-import siteWideMessageStore from "../redux/siteWideMessages";
+import Cookies from "universal-cookie";
 
 const WPAPI = {
   login: ({
@@ -86,7 +86,10 @@ const WPAPI = {
         throw new Error("error retrieving mail confirmation information");
       });
   },
-  requestUserData: async () => {
+  requestUserData: async (language: string) => {
+    const cookies = new Cookies();
+    cookies.set("pll_language", language);
+
     try {
       const data = await fetch(
         `${process.env.REACT_APP_CROWD_WP_URL}/wp-admin/admin-ajax.php`,
@@ -104,9 +107,10 @@ const WPAPI = {
       if (res.success) {
         return res.data;
       }
-      throw new Error("FAILED_REQUEST");
+      throw new Error(res.error);
     } catch (e) {
-      throw e;
+      console.log(e);
+      throw new Error("GENERIC_ERROR");
     }
   },
 };
