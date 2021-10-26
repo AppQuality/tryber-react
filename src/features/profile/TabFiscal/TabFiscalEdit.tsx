@@ -24,6 +24,7 @@ import FiscalAddress from "./components/FiscalAddress";
 import residenceModalStore from "../../../redux/addResidenceAddressModal";
 import * as yup from "yup";
 import FiscalResidenceModal from "./components/FiscalResidenceModal";
+import styled from "styled-components";
 
 export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   const { t } = useTranslation();
@@ -124,8 +125,11 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                       options={genderOptions}
                     />
                     <Text small className="aq-mt-1">
-                      For tax reasons we are obliged to tie this choice to
-                      binary options only
+                      <span className="aq-text-disabled-dark">
+                        {t(
+                          "For tax reasons we are obliged to tie this choice to binary options only"
+                        )}
+                      </span>
                     </Text>
                     <ErrorMessage name={field.name} />
                   </FormGroup>
@@ -155,12 +159,21 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
             <div className="aq-mb-3">
               <FiscalAddress />
             </div>
-            <Button type="primary" htmlType="submit" flat={true}>
-              {t("Save")}
-            </Button>
+            <CSSGrid min="50%" gutter="0" fill>
+              <SubmitButton type="success" htmlType="submit" flat>
+                {t("Save")}
+              </SubmitButton>
+            </CSSGrid>
           </div>
         </CSSGrid>
       </Form>
     </Formik>
   );
 };
+
+const SubmitButton = styled(Button)`
+  grid-column: span 2;
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+    grid-column: span 1;
+  }
+`;
