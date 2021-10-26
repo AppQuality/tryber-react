@@ -213,7 +213,7 @@
   "Page %current% / %total%": "Pagina %current% / %total%",
   "Password": "Password",
   "Password confirmation doesn't match": "",
-  "Password correctly updated": "",
+  "Password correctly updated, you will be logged out": "",
   "Payments": "Pagamenti",
   "PC Type: <bold>{{pc_type}}</bold>": "Tipo PC: <bold>{{pc_type}}</bold>",
   "Personal Equipment": "I miei dispositivi",

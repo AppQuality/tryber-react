@@ -56,9 +56,18 @@ const EditPassword = () => {
             });
             resetForm();
             add({
-              message: t("Password correctly updated"),
+              message: t("Password correctly updated, you will be logged out"),
               type: "success",
             });
+            fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout", {
+              method: "GET",
+            })
+              .then(() => {
+                window.location.reload();
+              })
+              .catch((e) => {
+                alert(e.message);
+              });
           } catch (e: HttpError) {
             if (e.statusCode === 417) {
               add({
