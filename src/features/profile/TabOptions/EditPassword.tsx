@@ -65,6 +65,7 @@ const EditPassword = () => {
             const wpLoggedInCookie = Object.keys(cookieValue).filter((c) =>
               c.startsWith("wordpress_logged_in")
             );
+            console.log(wpLoggedInCookie);
             if (wpLoggedInCookie) {
               wpLoggedInCookie.forEach((c) => cookies.remove(c));
             }
