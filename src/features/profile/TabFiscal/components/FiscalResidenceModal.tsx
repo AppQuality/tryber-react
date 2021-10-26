@@ -1,30 +1,10 @@
-import {
-  Formik,
-  FormikField,
-  Modal,
-  Form,
-  FormGroup,
-  Input,
-  Button,
-  BSGrid,
-  BSCol,
-  Select,
-  SelectType,
-  FormLabel,
-  ModalBody,
-} from "@appquality/appquality-design-system";
+import { ModalBody } from "@appquality/appquality-design-system";
 import residenceModalStore from "../../../../redux/addResidenceAddressModal";
 import userStore from "../../../../redux/user";
-import { useTranslation } from "react-i18next";
-import { useMemo, useState } from "react";
-import { useFormikContext } from "formik";
 import modalStore from "../../../../redux/modal";
 
 const FiscalResidenceModal = ({ values }: { values: FiscalFormValues }) => {
-  const { close: modalClose, isOpen: isModalOpen } = residenceModalStore();
-  const { open } = modalStore();
-  const { user, isLoading, isProfileLoading } = userStore();
-  const { t, i18n } = useTranslation();
+  const { user } = userStore();
 
   const iFrameStyle = {
     height: "100%",
