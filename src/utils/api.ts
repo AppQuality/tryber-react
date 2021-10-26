@@ -4,6 +4,7 @@ import * as user from "./users";
 import * as devices from "./devices";
 import * as languages from "./languages";
 import * as employments from "./employments";
+import * as educationLevels from "./educationLevels";
 import * as geoDb from "./geoDb";
 
 const API = {
@@ -14,6 +15,7 @@ const API = {
   ...languages,
   ...geoDb,
   ...employments,
+  ...educationLevels,
 };
 
 export default API;
