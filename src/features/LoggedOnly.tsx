@@ -11,7 +11,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 
 export default ({ children }: { children: React.ReactNode }) => {
   const history = useHistory();
-
+  const homeRoute = useLocalizeRoute("");
   const {
     error,
     loading,
@@ -28,14 +28,6 @@ export default ({ children }: { children: React.ReactNode }) => {
 
   const { t } = useTranslation();
 
-  if (error) {
-    if (error.statusCode === 403) {
-      history.push(useLocalizeRoute(""));
-    } else {
-      alert(error.message);
-    }
-    return null;
-  }
   if (loading || typeof loading === "undefined") {
     return (
       <Container className="aq-py-3">
@@ -47,6 +39,14 @@ export default ({ children }: { children: React.ReactNode }) => {
         </SpinnerWrapper>
       </Container>
     );
+  }
+  if (error) {
+    if (error.statusCode === 403) {
+      history.push(homeRoute);
+    } else {
+      alert(error.message);
+    }
+    return null;
   }
 
   return <>{children}</>;

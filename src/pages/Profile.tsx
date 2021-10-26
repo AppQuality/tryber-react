@@ -18,13 +18,15 @@ import TesterSidebar from "../features/TesterSidebar";
 import React, { useEffect, useState, useRef } from "react";
 import { FiscalProfileReport } from "../features/profile/FiscalProfileReport";
 import { HeaderProfile } from "../features/profile/HeaderProfile";
-import userStore from "../redux/user";
+import { getProfile } from "../redux/user/actions/getProfile";
+import { getFiscalProfile } from "../redux/user/actions/getFiscalProfile";
 import TabBase from "../features/profile/TabBase";
 import TabAdvanced from "../features/profile/TabAdvanced";
 import TabFiscal from "../features/profile/TabFiscal";
 import TabOptions from "../features/profile/TabOptions";
 import UserDeleteModal from "../features/profile/UserDeleteModal";
 import FiscalResidenceModal from "../features/profile/TabFiscal/FiscalResidenceModal";
+import { useDispatch } from "react-redux";
 
 const headerOffset = 60;
 
@@ -40,11 +42,7 @@ export default function Profile() {
     : "base";
 
   const [activeTab, setActiveTab] = useState(currentTab);
-  const { user, getProfile, getFiscalProfile } = userStore();
-  useEffect(() => {
-    getProfile();
-    getFiscalProfile();
-  }, []);
+  const dispatch = useDispatch();
   useEffect(() => {
     const currentParams = new URLSearchParams(window.location.search);
     currentParams.set("tab", activeTab);
@@ -57,6 +55,10 @@ export default function Profile() {
         currentParams.toString()
     );
   }, [activeTab]);
+  useEffect(() => {
+    dispatch(getProfile());
+    dispatch(getFiscalProfile());
+  }, []);
 
   const handleEditFiscalInfo = () => {
     setActiveTab("fiscal");

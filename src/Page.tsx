@@ -15,7 +15,6 @@ import SiteHeader from "./features/SiteHeader";
 import { Location } from "history";
 import queryString from "query-string";
 
-import userStore from "./redux/user";
 import referralStore from "./redux/referral";
 import { useEffect } from "react";
 import SiteWideMessages from "./features/SiteWideMessages";
@@ -150,7 +149,7 @@ function Page() {
           )}
         />
 
-        <Route path={`${base}/my-account`} component={() => <Profile />} />
+        <Route path={`${base}/my-account`} component={Profile} />
         <Route
           path={["/goodbye", "/it/goodbye", "/es/goodbye"]}
           exact
