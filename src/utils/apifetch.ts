@@ -1,5 +1,4 @@
 import HttpError from "./HttpError";
-import { operations } from "./schema";
 
 const apifetch = async ({
   endpoint,

@@ -6,8 +6,6 @@ import {
   PageTitle,
   Tabs,
   Tab,
-  Button,
-  Modal,
   DatepickerGlobalStyle,
   aqBootstrapTheme,
 } from "@appquality/appquality-design-system";

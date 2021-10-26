@@ -6,15 +6,12 @@ import {
   FormLabel,
   Input,
   Text,
-  Field,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { ChangeEvent } from "react";
-import UserStore from "../../../../redux/user";
 
 const FiscalTypeArea = () => {
   const { values } = useFormikContext<FiscalFormValues>();
-  const { user } = UserStore();
   const { t } = useTranslation();
   return (
     <>
