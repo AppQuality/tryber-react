@@ -214,6 +214,7 @@ const TabOptions = () => {
                     })
                     .catch((e) => {
                       const { message } = e as HttpError;
+                      debugger;
                       if (message === "GENERIC_ERROR") {
                         add({
                           message: t("There was an error"),
