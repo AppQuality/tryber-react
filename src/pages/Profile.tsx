@@ -117,7 +117,7 @@ export default function Profile() {
                       <Tab
                         id="options"
                         title={
-                          <span className="aq-mx-3-lg">{t("Options")}</span>
+                          <span className="aq-mx-3-lg">{t("Settings")}</span>
                         }
                       >
                         <TabOptions />
