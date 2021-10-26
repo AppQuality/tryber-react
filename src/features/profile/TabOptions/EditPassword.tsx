@@ -9,8 +9,6 @@ import {
   FormikField,
   FormLabel,
   FormGroup,
-  BSGrid,
-  BSCol,
   ErrorMessage,
 } from "@appquality/appquality-design-system";
 import { FieldProps, FormikProps } from "formik";
@@ -18,6 +16,7 @@ import API from "../../../utils/api";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import siteWideMessageStore from "../../../redux/siteWideMessages";
+import ResetPasswordArea from "./ResetPasswordArea";
 
 const EditPassword = () => {
   const { t } = useTranslation();
@@ -135,29 +134,7 @@ const EditPassword = () => {
                 {t("Change password")}
               </Button>
               <div className="aq-my-3">
-                <Title size="xs" className="aq-mb-2">
-                  {t("Reset password")}
-                </Title>
-                <BSGrid gutter={0}>
-                  <BSCol size="col-12 col-lg-8">
-                    <Text>
-                      {t(
-                        "If you don't remember your password, you can just ask for a new one."
-                      )}
-                    </Text>
-                  </BSCol>
-                  <BSCol size="col-12 col-lg-4">
-                    <Button
-                      as="a"
-                      type="link"
-                      size="block"
-                      target="_blank"
-                      href="/wp-login.php?action=lostpassword"
-                    >
-                      {t("Request now")}
-                    </Button>
-                  </BSCol>
-                </BSGrid>
+                <ResetPasswordArea />
               </div>
             </Form>
           );

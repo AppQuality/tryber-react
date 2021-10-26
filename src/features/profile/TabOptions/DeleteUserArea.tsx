@@ -7,7 +7,7 @@ import {
 } from "@appquality/appquality-design-system";
 import { useTranslation, Trans } from "react-i18next";
 import UserStore from "../../../redux/user";
-import leaveCrowd from "./assets/leave-crowd.png";
+import leaveCrowd from "../assets/leave-crowd.png";
 
 const DeleteUserArea = () => {
   const { t } = useTranslation();

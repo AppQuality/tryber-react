@@ -1,14 +1,4 @@
-import { Trans, useTranslation } from "react-i18next";
-import {
-  Button,
-  CSSGrid,
-  Text,
-  Title,
-  BSGrid,
-  BSCol,
-} from "@appquality/appquality-design-system";
-import UserStore from "../../../redux/user";
-import leaveCrowd from "./assets/leave-crowd.png";
+import { CSSGrid } from "@appquality/appquality-design-system";
 import styled from "styled-components";
 import EditPassword from "./EditPassword";
 import RequestUserData from "./RequestUserData";
