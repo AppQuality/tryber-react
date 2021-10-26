@@ -162,23 +162,26 @@ const TabOptions = () => {
                     <Title size="xs" className="aq-mb-2">
                       {t("Reset password")}
                     </Title>
-                    <CSSGrid min="110px" fill={true}>
-                      <div style={{ gridColumn: "auto / span 2" }}>
+                    <BSGrid gutter={0}>
+                      <BSCol size="col-12 col-lg-8">
                         <Text>
                           {t(
                             "If you don't remember your password, you can just ask for a new one."
                           )}
                         </Text>
-                      </div>
-                      <Button
-                        as="a"
-                        type="link"
-                        target="_blank"
-                        href="/wp-login.php?action=lostpassword"
-                      >
-                        {t("Request now")}
-                      </Button>
-                    </CSSGrid>
+                      </BSCol>
+                      <BSCol size="col-12 col-lg-4">
+                        <Button
+                          as="a"
+                          type="link"
+                          size="block"
+                          target="_blank"
+                          href="/wp-login.php?action=lostpassword"
+                        >
+                          {t("Request now")}
+                        </Button>
+                      </BSCol>
+                    </BSGrid>
                   </div>
                 </Form>
               );
@@ -213,7 +216,6 @@ const TabOptions = () => {
                       });
                     })
                     .catch((e) => {
-                      console.log(e);
                       const { message } = e as HttpError;
                       if (message === "GENERIC_ERROR") {
                         add({
@@ -237,7 +239,7 @@ const TabOptions = () => {
       </CSSGrid>
       <Separator className="aq-mt-3 aq-mb-3" />
       <BSGrid>
-        <BSCol size="col-6">
+        <BSCol size="col-12 col-lg-6">
           <Title size="xs" className="aq-mb-2">
             {t("Delete your account")}
             <Text className="aq-mb-3">
@@ -251,7 +253,7 @@ const TabOptions = () => {
               </div>
             </Text>
             <BSGrid>
-              <BSCol size="col-6">
+              <BSCol size="col-12 col-lg-6">
                 <Button
                   flat
                   size="block"
@@ -266,7 +268,7 @@ const TabOptions = () => {
             </BSGrid>
           </Title>
         </BSCol>
-        <BSCol size="col-6">
+        <BSCol size="col-12 col-lg-6">
           <img className="aq-float-right" src={leaveCrowd} />
         </BSCol>
       </BSGrid>
