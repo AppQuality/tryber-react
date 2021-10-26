@@ -12,13 +12,13 @@ import {
   SelectType,
   FormLabel,
 } from "@appquality/appquality-design-system";
-import residenceModalStore from "../../../redux/addResidenceAddressModal";
-import userStore from "../../../redux/user";
+import residenceModalStore from "../../../../redux/addResidenceAddressModal";
+import userStore from "../../../../redux/user";
 import { FieldProps, FormikProps } from "formik";
 import { useTranslation } from "react-i18next";
-import API from "../../../utils/api";
-import CountrySelect from "../../CountrySelect";
-import { ProvinceSelect } from "./ProvinceSelect";
+import API from "../../../../utils/api";
+import CountrySelect from "../../../CountrySelect";
+import { ProvinceSelect } from "./../ProvinceSelect";
 import countries from "i18n-iso-countries";
 import { useMemo, useState } from "react";
 

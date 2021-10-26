@@ -13,3 +13,27 @@ interface ProvinceSelectProps {
   label: string;
   onChange?: (v: SelectType.Option) => void;
 }
+
+interface TabCommonProps {
+  setEdit: Dispatch<SetStateAction<boolean>>;
+}
+
+type FiscalFormValues = {
+  address: {
+    countryCode?: string; // IT,
+    provinceCode?: string; // MI,
+    city?: string; //"Riomaggiore",
+    street?: string; //"Via dell' Amore",
+    zipCode?: string; //"19017"
+  };
+  fiscalTypeRadio?: "non-italian" | "italian";
+  fiscalTypeSelect?: "witholding" | "witholding-extra" | "other";
+  type?: "non-italian" | "witholding" | "witholding-extra" | "other";
+  birthPlace?: {
+    city?: string;
+    province?: string;
+  };
+  fiscalId?: string;
+  fiscalStatus?: "Verified" | "Unverified";
+  gender?: "male" | "female";
+};
