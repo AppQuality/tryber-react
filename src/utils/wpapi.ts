@@ -109,8 +109,7 @@ const WPAPI = {
       }
       throw new Error(res.error);
     } catch (e) {
-      console.log(e);
-      throw new Error("GENERIC_ERROR");
+      throw e;
     }
   },
 };
