@@ -107,7 +107,7 @@ const WPAPI = {
       if (res.success) {
         return res.data;
       }
-      throw new Error(res.error);
+      throw new Error(res.data.error);
     } catch (e) {
       throw e;
     }
