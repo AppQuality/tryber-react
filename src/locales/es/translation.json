@@ -59,6 +59,7 @@
   "Certifications": "",
   "Change password": "",
   "Check your data": "",
+  "City": "",
   "Close": "Cerrar",
   "Close Date": "Fecha de Cierre",
   "Closed": "Cerrado",
@@ -225,6 +226,7 @@
   "Profession": "",
   "Profile": "Perfil",
   "Profile data correctly updated.": "",
+  "Province/state": "",
   "Read manual": "Leer Manual",
   "Reason": "Razón",
   "Received booty": "Saldo Recibido",
@@ -258,6 +260,7 @@
   "Start Date": "Fecha de Inicio",
   "State / Province": "",
   "Status": "Estado",
+  "stret": "",
   "Submitted bugs": "Bugs enviados",
   "submitted data are incorrect or incomplete. Check your data again": "",
   "Surname": "Apellido",
@@ -319,5 +322,6 @@
   "Your efforts will pay off": "Tu esfuerzos darán frutos",
   "Your fiscal data": "",
   "Your Performance": "Tu Performance",
-  "Your Rank": "Tu Posición"
+  "Your Rank": "Tu Posición",
+  "zip code": ""
 }

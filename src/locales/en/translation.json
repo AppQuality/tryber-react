@@ -59,6 +59,7 @@
   "Certifications": "Certifications",
   "Change password": "Change password",
   "Check your data": "Check your data",
+  "City": "City",
   "Close": "Close",
   "Close Date": "Close Date",
   "Closed": "Closed",
@@ -225,6 +226,7 @@
   "Profession": "Profession",
   "Profile": "Profile",
   "Profile data correctly updated.": "Profile data correctly updated.",
+  "Province/state": "Province/state",
   "Read manual": "Read manual",
   "Reason": "Reason",
   "Received booty": "Received booty",
@@ -258,6 +260,7 @@
   "Start Date": "Start Date",
   "State / Province": "State / Province",
   "Status": "Status",
+  "stret": "stret",
   "Submitted bugs": "Submitted bugs",
   "submitted data are incorrect or incomplete. Check your data again": "submitted data are incorrect or incomplete. Check your data again",
   "Surname": "Surname",
@@ -319,5 +322,6 @@
   "Your efforts will pay off": "Your efforts will pay off",
   "Your fiscal data": "Your fiscal data",
   "Your Performance": "Your Performance",
-  "Your Rank": "Your Rank"
+  "Your Rank": "Your Rank",
+  "zip code": "zip code"
 }

@@ -22,6 +22,7 @@ import FiscalTypeArea from "./components/FiscalTypeArea";
 import { ChangeEvent } from "react";
 import FiscalAddress from "./components/FiscalAddress";
 import residenceModalStore from "../../../redux/addResidenceAddressModal";
+import * as yup from "yup";
 
 export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   const { t } = useTranslation();
@@ -40,19 +41,46 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
           )
         ? "italian"
         : undefined,
-    address: {
-      countryCode: user.fiscal?.address?.country,
-      provinceCode: user.fiscal?.address?.province,
-      city: user.fiscal?.address?.city,
-      street: user.fiscal?.address?.street,
-      zipCode: user.fiscal?.address?.cityCode,
-    },
+    birthPlaceCity: user.fiscal?.birthPlace?.city,
+    birthPlaceProvince: user.fiscal?.birthPlace?.province,
+    countryCode: user.fiscal?.address?.country,
+    provinceCode: user.fiscal?.address?.province,
+    city: user.fiscal?.address?.city,
+    street: user.fiscal?.address?.street,
+    zipCode: user.fiscal?.address?.cityCode,
   };
+
+  const validationSchema = {
+    gender: yup.string().oneOf(["male", "female"]).required(),
+    countryCode: yup.string().required(t("Country")),
+    provinceCode: yup.string().required(t("Province/state")),
+    city: yup.string().required(t("City")),
+    street: yup.string().required(t("stret")),
+    zipCode: yup.string().required(t("zip code")),
+    fiscalTypeRadio: yup.string().oneOf(["non-italian", "italian"]).required(),
+    fiscalTypeSelect: yup
+      .string()
+      .oneOf(["witholding", "witholding-extra", "other"])
+      .required(),
+    type: yup
+      .string()
+      .oneOf(["non-italian", "witholding", "witholding-extra", "other"])
+      .required(),
+    birthPlaceCity: yup.string().required(),
+    birthPlaceProvince: yup.string().required(),
+    fiscalId: yup.string().required(),
+  };
+
+  const genderOptions = [
+    { value: "male", label: t("Male") },
+    { value: "female", label: t("Female") },
+  ];
 
   return (
     <Formik
       enableReinitialize
       initialValues={initialUserValues}
+      validationSchema={yup.object(validationSchema)}
       onSubmit={(values) => {}}
     >
       <Form id="baseProfileForm" className="aq-m-3">
@@ -79,31 +107,26 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                     <Select
                       name={field.name}
                       label={t("Gender")}
-                      value={
-                        user.fiscal?.gender
-                          ? { value: user.fiscal.gender, label: "" }
-                          : { value: "", label: "" }
-                      }
+                      value={genderOptions.filter(
+                        (opt) => opt.value === field.value
+                      )}
                       onBlur={(e: ChangeEvent) => {
-                        form.setFieldTouched("gender");
+                        form.setFieldTouched(field.name);
                       }}
                       onChange={(v) => {
                         if (v === null) {
                           v = { label: "", value: "" };
                         }
                         field.onChange(v.value);
-                        form.setFieldValue("gender", v.value, true);
+                        form.setFieldValue(field.name, v.value, true);
                       }}
-                      options={[
-                        { value: "male", label: t("Male") },
-                        { value: "female", label: t("Female") },
-                      ]}
+                      options={genderOptions}
                     />
                     <Text small className="aq-mt-1">
                       For tax reasons we are obliged to tie this choice to
                       binary options only
                     </Text>
-                    <ErrorMessage name={"gender"} />
+                    <ErrorMessage name={field.name} />
                   </FormGroup>
                 );
               }}

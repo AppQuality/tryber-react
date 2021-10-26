@@ -7,6 +7,7 @@ import {
   Text,
   PlacesAutocomplete,
   FormGroup,
+  ErrorMessage,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import residenceModalStore from "../../../../redux/addResidenceAddressModal";
@@ -15,8 +16,11 @@ import { FieldProps, useFormikContext } from "formik";
 const FiscalAddress = () => {
   const { t } = useTranslation();
   const { open: openModal, address } = residenceModalStore();
-  const { setValues, values } = useFormikContext<FiscalFormValues>();
-  const formattedAddress = `${values.address?.street} ${values.address?.city} ${values.address?.zipCode} ${values.address?.provinceCode}, ${values.address?.countryCode}`;
+  const { setValues, setTouched, values, errors } =
+    useFormikContext<FiscalFormValues>();
+  const formattedAddress = `${values.street || ""} ${values.city || ""} ${
+    values.zipCode || ""
+  } ${values.provinceCode || ""}, ${values.countryCode || ""}`;
   return (
     <FormGroup>
       <FormLabel htmlFor="" label={t("Fiscal Address")} />
@@ -30,6 +34,15 @@ const FiscalAddress = () => {
             },
           },
         }}
+        onBlur={(e) =>
+          setTouched({
+            countryCode: true,
+            provinceCode: true,
+            city: true,
+            zipCode: true,
+            street: true,
+          })
+        }
         onChange={(places) => {
           const fields = places[0].address_components;
           const country = fields.find(
@@ -53,20 +66,56 @@ const FiscalAddress = () => {
           setValues(
             (prevState) => ({
               ...prevState,
-              address: {
-                countryCode: country?.short_name,
-                provinceCode: province?.short_name,
-                city: city?.long_name,
-                zipCode: zipCode?.long_name,
-                street: street?.long_name,
-                streetNumber: streetNumber?.long_name,
-              },
+              countryCode: country?.short_name,
+              provinceCode: province?.short_name,
+              city: city?.long_name,
+              zipCode: zipCode?.long_name,
+              street: street?.long_name,
+              streetNumber: streetNumber?.long_name,
             }),
             true
           );
         }}
       />
       <Text className="aq-mt-3">
+        {(errors.countryCode ||
+          errors.provinceCode ||
+          errors.city ||
+          errors.zipCode ||
+          errors.street) && (
+          <div>
+            <Text color="danger">
+              Please add the following fields to your address:
+            </Text>
+            <ul style={{ listStyle: "disc" }}>
+              {errors.countryCode && (
+                <li>
+                  <ErrorMessage name="countryCode" />
+                </li>
+              )}
+              {errors.provinceCode && (
+                <li>
+                  <ErrorMessage name="provinceCode" />
+                </li>
+              )}
+              {errors.city && (
+                <li>
+                  <ErrorMessage name="city" />
+                </li>
+              )}
+              {errors.zipCode && (
+                <li>
+                  <ErrorMessage name="zipCode" />
+                </li>
+              )}
+              {errors.street && (
+                <li>
+                  <ErrorMessage name="street" />
+                </li>
+              )}
+            </ul>
+          </div>
+        )}
         {t("Problems?")}
         <Button
           as="a"
