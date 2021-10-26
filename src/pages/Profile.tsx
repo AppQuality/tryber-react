@@ -81,7 +81,6 @@ export default function Profile() {
       <LoggedOnly>
         <DatepickerGlobalStyle />
         <UserDeleteModal />
-        <FiscalResidenceModal />
         <TesterSidebar route={"my-account"}>
           <Container className="aq-pb-3">
             <PageTitle size="regular" as="h2" className="aq-mb-3">

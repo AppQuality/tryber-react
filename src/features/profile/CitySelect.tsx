@@ -2,11 +2,10 @@ import {
   FormGroup,
   FormikField,
   Select,
-  FormLabel,
   SelectType,
 } from "@appquality/appquality-design-system";
 import { FieldProps, useFormikContext } from "formik";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import sitewideMessageStore from "../../redux/siteWideMessages";
 import { useTranslation } from "react-i18next";
 import HttpError from "../../utils/HttpError";

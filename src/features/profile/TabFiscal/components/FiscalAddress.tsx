@@ -8,19 +8,25 @@ import {
   PlacesAutocomplete,
   FormGroup,
   ErrorMessage,
+  ModalBody,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import modalStore from "../../../../redux/modal";
+import userStore from "../../../../redux/user";
 import residenceModalStore from "../../../../redux/addResidenceAddressModal";
 import { FieldProps, useFormikContext } from "formik";
+import FiscalResidenceModal from "./FiscalResidenceModal";
 
 const FiscalAddress = () => {
   const { t } = useTranslation();
   const { open: openModal, address } = residenceModalStore();
+  const { open } = modalStore();
   const { setValues, setTouched, values, errors } =
     useFormikContext<FiscalFormValues>();
   const formattedAddress = `${values.street || ""} ${values.city || ""} ${
     values.zipCode || ""
   } ${values.provinceCode || ""}, ${values.countryCode || ""}`;
+
   return (
     <FormGroup>
       <FormLabel htmlFor="" label={t("Fiscal Address")} />
@@ -122,7 +128,11 @@ const FiscalAddress = () => {
           type="link"
           htmlType="button"
           flat={true}
-          onClick={openModal}
+          onClick={() => {
+            open({
+              content: <FiscalResidenceModal values={values} />,
+            });
+          }}
         >
           {t("Contact us")}
         </Button>

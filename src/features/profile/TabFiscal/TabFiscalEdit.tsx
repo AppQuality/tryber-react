@@ -23,6 +23,7 @@ import { ChangeEvent } from "react";
 import FiscalAddress from "./components/FiscalAddress";
 import residenceModalStore from "../../../redux/addResidenceAddressModal";
 import * as yup from "yup";
+import FiscalResidenceModal from "./components/FiscalResidenceModal";
 
 export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   const { t } = useTranslation();
