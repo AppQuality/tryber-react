@@ -83,13 +83,13 @@ const FiscalAddress = () => {
           );
         }}
       />
-      <Text className="aq-mt-3">
+      <Text>
         {(errors.countryCode ||
           errors.provinceCode ||
           errors.city ||
           errors.zipCode ||
           errors.street) && (
-          <div>
+          <div className="aq-mt-2">
             <Text color="danger">
               Please add the following fields to your address:
             </Text>
@@ -122,20 +122,25 @@ const FiscalAddress = () => {
             </ul>
           </div>
         )}
-        {t("Problems?")}
-        <Button
-          as="a"
-          type="link"
-          htmlType="button"
-          flat={true}
-          onClick={() => {
-            open({
-              content: <FiscalResidenceModal values={values} />,
-            });
-          }}
-        >
-          {t("Contact us")}
-        </Button>
+        <Text small className="aq-mt-1">
+          <span className="aq-text-disabled-dark">
+            {t("If your address is not in the list please ")}
+          </span>
+          <Button
+            type="link"
+            htmlType="button"
+            flat
+            style={{ padding: 0, fontWeight: 400 }}
+            size="sm"
+            onClick={() => {
+              open({
+                content: <FiscalResidenceModal values={values} />,
+              });
+            }}
+          >
+            {t("contact us")}
+          </Button>
+        </Text>
       </Text>
     </FormGroup>
   );
