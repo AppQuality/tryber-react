@@ -17,6 +17,7 @@ import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import siteWideMessageStore from "../../../redux/siteWideMessages";
 import ResetPasswordArea from "./ResetPasswordArea";
+import Cookies from "universal-cookie";
 
 const EditPassword = () => {
   const { t } = useTranslation();
@@ -59,15 +60,15 @@ const EditPassword = () => {
               message: t("Password correctly updated, you will be logged out"),
               type: "success",
             });
-            fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout", {
-              method: "GET",
-            })
-              .then(() => {
-                window.location.reload();
-              })
-              .catch((e) => {
-                alert(e.message);
-              });
+            const cookies = new Cookies();
+            const cookieValue = cookies.getAll();
+            const wpLoggedInCookie = Object.keys(cookieValue).filter((c) =>
+              c.startsWith("wordpress_logged_in")
+            );
+            if (wpLoggedInCookie) {
+              wpLoggedInCookie.forEach((c) => cookies.remove(c));
+            }
+            window.location.reload();
           } catch (e: HttpError) {
             if (e.statusCode === 417) {
               add({
