@@ -88,7 +88,7 @@ const WPAPI = {
   },
   requestUserData: async (language: string) => {
     const cookies = new Cookies();
-    cookies.set("pll_language", language);
+    cookies.set("pll_language", language, { path: "/" });
 
     try {
       const data = await fetch(
