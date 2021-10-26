@@ -6,7 +6,6 @@ import {
   Field,
   Form,
   Formik,
-  FormLabel,
   Radio,
   Text,
   Title,
@@ -15,6 +14,7 @@ import Select from "react-select/base";
 import React from "react";
 import { EmploymentSelect } from "./EmploymentSelect";
 import * as yup from "yup";
+import { EducationSelect } from "./EducationSelect";
 
 const TabAdvanced = () => {
   const { t } = useTranslation();
@@ -25,11 +25,15 @@ const TabAdvanced = () => {
     employment: user.profession
       ? { label: user.profession.name, value: user.profession.id.toString() }
       : { label: "", value: "" },
+    education: user.education
+      ? { label: user.education.name, value: user.education.id.toString() }
+      : { label: "", value: "" },
   };
   const validationSchema = {
     name: yup.string().required(t("This is a required field")),
     surname: yup.string().required(t("This is a required field")),
     employment: yup.string().required(t("This is a required field")),
+    education: yup.string().required(t("This is a required field")),
   };
   return (
     <Formik
@@ -44,8 +48,8 @@ const TabAdvanced = () => {
           <div className="employment">
             <Title size="s">{t("Employment")}</Title>
             <EmploymentSelect name="employment" label={t("Profession")} />
-            <FormLabel htmlFor="education" label={t("Education level")} />
-            <Select></Select>
+            <EducationSelect name="education" label={t("Education level")} />
+
             <Title size="s">{t("Certifications")}</Title>
             <Radio
               name="certifications"
