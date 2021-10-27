@@ -10,11 +10,11 @@ import {
   Text,
   Title,
 } from "@appquality/appquality-design-system";
-import Select from "react-select/base";
-import React from "react";
+import React, { useEffect } from "react";
 import { EmploymentSelect } from "./EmploymentSelect";
 import * as yup from "yup";
 import { EducationSelect } from "./EducationSelect";
+import { CustomUserFields } from "./CustomUserFields";
 
 const TabAdvanced = () => {
   const { t } = useTranslation();
@@ -34,7 +34,11 @@ const TabAdvanced = () => {
     surname: yup.string().required(t("This is a required field")),
     employment: yup.string().required(t("This is a required field")),
     education: yup.string().required(t("This is a required field")),
+    telegram: yup.string().required(t("This is a required field")),
   };
+  useEffect(() => {
+    console.log(user);
+  });
   return (
     <Formik
       enableReinitialize
@@ -70,19 +74,12 @@ const TabAdvanced = () => {
                 "Improve your chances of being selected in test campaigns by completing your profile."
               )}
             </Text>
-            <Field name="telegram" type="text" label={t("Telegram username")} />
-            <Field name="linkedin" type="text" label={t("Linkedin profile")} />
-            <Field name="facebook" type="text" label={t("Facebook profile")} />
-
-            <Select placeholder={t("Utilities and suppliers")}></Select>
-            <Select placeholder={t("Banks and insurance companies")}></Select>
-            <Select placeholder={t("Family")}></Select>
-            <Select placeholder={t("Services")}></Select>
+            <CustomUserFields name={""} label={""}></CustomUserFields>
             <Button
               type="success"
               htmlType="submit"
               flat={true}
-              disabled={true}
+              disabled={false}
             >
               {t("Save")}
             </Button>

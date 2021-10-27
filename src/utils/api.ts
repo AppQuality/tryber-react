@@ -5,6 +5,7 @@ import * as devices from "./devices";
 import * as languages from "./languages";
 import * as employments from "./employments";
 import * as educationLevels from "./educationLevels";
+import * as customUserFields from "./customUserFields";
 import * as geoDb from "./geoDb";
 
 const API = {
@@ -16,6 +17,7 @@ const API = {
   ...geoDb,
   ...employments,
   ...educationLevels,
+  ...customUserFields,
 };
 
 export default API;

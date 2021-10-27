@@ -1820,14 +1820,16 @@ export interface operations {
               description?: components["schemas"]["TranslatablePage"];
             };
             fields?: {
-              id?: number;
-              type?: "select" | "multiselect" | "text";
+              id: number;
+              type: "select" | "multiselect" | "text";
               placeholder?: components["schemas"]["TranslatablePage"];
-              options?: {
-                id?: number;
-                name?: string;
-              }[];
               allow_other?: boolean;
+              name: components["schemas"]["TranslatablePage"];
+              format?: string;
+              options?: {
+                id: number;
+                name: string;
+              }[];
             }[];
           }[];
         };
