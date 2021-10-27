@@ -34,7 +34,9 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   const initialUserValues: FiscalFormValues = {
     gender: user.gender || "",
     fiscalId: user.fiscal?.fiscalId || "",
-    fiscalTypeSelect: user.fiscal?.type || "",
+    type: user.fiscal?.type || "",
+    fiscalTypeSelect:
+      user.fiscal?.type === "non-italian" ? "" : user.fiscal?.type,
     fiscalTypeRadio:
       user.fiscal?.type === "non-italian"
         ? "non-italian"
@@ -63,13 +65,22 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
     fiscalTypeSelect: yup
       .string()
       .oneOf(["witholding", "witholding-extra", "other"])
-      .required(),
+      .when("fiscalTypeRadio", {
+        is: "italian",
+        then: yup.string().required(),
+      }),
     type: yup
       .string()
       .oneOf(["non-italian", "witholding", "witholding-extra", "other"])
       .required(),
-    birthPlaceCity: yup.string().required(),
-    birthPlaceProvince: yup.string().required(),
+    birthPlaceCity: yup.string().when("fiscalTypeRadio", {
+      is: "italian",
+      then: yup.string().required(),
+    }),
+    birthPlaceProvince: yup.string().when("fiscalTypeRadio", {
+      is: "italian",
+      then: yup.string().required(),
+    }),
     fiscalId: yup.string().required(),
   };
 
@@ -81,92 +92,116 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   return (
     <Formik
       enableReinitialize
+      validateOnMount
       initialValues={initialUserValues}
       validationSchema={yup.object(validationSchema)}
-      onSubmit={(values) => {}}
+      onSubmit={(values) => {
+        const submitValues = {
+          address: {
+            country: values.countryCode,
+            province: values.provinceCode,
+            city: values.city,
+            street: values.street,
+            cityCode: values.zipCode,
+          },
+          type: values.type,
+          birthPlace: {
+            city: values.birthPlaceCity,
+            province: values.birthPlaceProvince,
+          },
+          fiscalId: values.fiscalId,
+          gender: values.gender,
+        };
+      }}
     >
-      <Form id="baseProfileForm" className="aq-m-3">
-        <CSSGrid gutter="50px" rowGap="1rem" min="220px">
-          <div className="user-info">
-            <Title size="xs" className="aq-mb-2">
-              {t("Informations")}
-            </Title>
-            <FormGroup>
-              <FormLabel htmlFor="name" label={t("Name")} isDisabled />
-              <Input id="name" type="text" disabled value={user.name} />
-            </FormGroup>
-            <FormGroup>
-              <FormLabel htmlFor="surname" label={t("Surname")} />
-              <Input id="surname" type="text" disabled value={user.surname} />
-            </FormGroup>
-            <FormikField name="gender">
-              {({
-                field, // { name, value, onChange, onBlur }
-                form,
-              }: FieldProps) => {
-                return (
-                  <FormGroup>
-                    <Select
-                      name={field.name}
-                      label={t("Gender")}
-                      value={genderOptions.filter(
-                        (opt) => opt.value === field.value
-                      )}
-                      onBlur={(e: ChangeEvent) => {
-                        form.setFieldTouched(field.name);
-                      }}
-                      onChange={(v) => {
-                        if (v === null) {
-                          v = { label: "", value: "" };
-                        }
-                        field.onChange(v.value);
-                        form.setFieldValue(field.name, v.value, true);
-                      }}
-                      options={genderOptions}
-                    />
-                    <Text small className="aq-mt-1">
-                      <span className="aq-text-disabled-dark">
-                        {t(
-                          "For tax reasons we are obliged to tie this choice to binary options only"
+      {({ isValid, isValidating, dirty, errors, values }) => (
+        <Form id="baseProfileForm" className="aq-m-3">
+          <CSSGrid gutter="50px" rowGap="1rem" min="220px">
+            <div className="user-info">
+              <Title size="xs" className="aq-mb-2">
+                {t("Informations")}
+              </Title>
+              <FormGroup>
+                <FormLabel htmlFor="name" label={t("Name")} isDisabled />
+                <Input id="name" type="text" disabled value={user.name} />
+              </FormGroup>
+              <FormGroup>
+                <FormLabel htmlFor="surname" label={t("Surname")} />
+                <Input id="surname" type="text" disabled value={user.surname} />
+              </FormGroup>
+              <FormikField name="gender">
+                {({
+                  field, // { name, value, onChange, onBlur }
+                  form,
+                }: FieldProps) => {
+                  return (
+                    <FormGroup>
+                      <Select
+                        name={field.name}
+                        label={t("Gender")}
+                        value={genderOptions.filter(
+                          (opt) => opt.value === field.value
                         )}
-                      </span>
-                    </Text>
-                    <ErrorMessage name={field.name} />
-                  </FormGroup>
-                );
-              }}
-            </FormikField>
-            <FormGroup className="aq-mb-3">
-              <FormLabel
-                htmlFor="birth_date"
-                label={t("Birth Date")}
-                isDisabled
-              />
-              <Input
-                id="birth_date"
-                type="text"
-                disabled
-                value={user.birthDate}
-              />
-            </FormGroup>
-          </div>
-
-          <div className="tax-residence">
-            <Title size="xs" className="aq-mb-2">
-              {t("Tax residence")}
-            </Title>
-            <FiscalTypeArea />
-            <div className="aq-mb-3">
-              <FiscalAddress />
+                        onBlur={(e: ChangeEvent) => {
+                          form.setFieldTouched(field.name);
+                        }}
+                        onChange={(v) => {
+                          if (v === null) {
+                            v = { label: "", value: "" };
+                          }
+                          field.onChange(v.value);
+                          form.setFieldValue(field.name, v.value, true);
+                        }}
+                        options={genderOptions}
+                      />
+                      <Text small className="aq-mt-1">
+                        <span className="aq-text-disabled-dark">
+                          {t(
+                            "For tax reasons we are obliged to tie this choice to binary options only"
+                          )}
+                        </span>
+                      </Text>
+                      <ErrorMessage name={field.name} />
+                    </FormGroup>
+                  );
+                }}
+              </FormikField>
+              <FormGroup className="aq-mb-3">
+                <FormLabel
+                  htmlFor="birth_date"
+                  label={t("Birth Date")}
+                  isDisabled
+                />
+                <Input
+                  id="birth_date"
+                  type="text"
+                  disabled
+                  value={user.birthDate}
+                />
+              </FormGroup>
             </div>
-            <CSSGrid min="50%" gutter="0" fill>
-              <SubmitButton type="success" htmlType="submit" flat>
-                {t("Save")}
-              </SubmitButton>
-            </CSSGrid>
-          </div>
-        </CSSGrid>
-      </Form>
+            <div className="tax-residence">
+              <Title size="xs" className="aq-mb-2">
+                {t("Tax residence")}
+              </Title>
+              <FiscalTypeArea />
+              <div className="aq-mb-3">
+                <FiscalAddress />
+              </div>
+              <CSSGrid min="50%" gutter="0" fill>
+                <SubmitButton
+                  type="success"
+                  htmlType="submit"
+                  flat
+                  disabled={!isValid || isValidating || !dirty}
+                >
+                  {dirty ? t("Save") : t("Nothing to Save")}
+                </SubmitButton>
+              </CSSGrid>
+            </div>
+          </CSSGrid>
+        </Form>
+      )}
     </Formik>
   );
 };
