@@ -6,13 +6,14 @@ import {
   FormLabel,
   Input,
   Text,
+  PlacesAutocomplete,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { ChangeEvent } from "react";
 
 const FiscalTypeArea = () => {
-  const { values } = useFormikContext<FiscalFormValues>();
-  const { t } = useTranslation();
+  const { values, setValues } = useFormikContext<FiscalFormValues>();
+  const { t, i18n } = useTranslation();
   return (
     <>
       <FormikField name="fiscalTypeRadio">
@@ -86,6 +87,45 @@ const FiscalTypeArea = () => {
           }}
         </FormikField>
       )}
+      <FormGroup>
+        <FormLabel label={t("city of birth")} htmlFor="birthCity" />
+        <PlacesAutocomplete
+          placesProps={{
+            apiKey: process.env.REACT_APP_GOOGLE_APIKEY || "",
+            apiOptions: {
+              language: i18n.language,
+              region: i18n.language,
+            },
+            selectProps: {
+              // value: {
+              //   label: formattedAddress,
+              //   value: formattedAddress,
+              // },
+            },
+            autocompletionRequest: {
+              types: ["(cities)"],
+            },
+          }}
+          onChange={(places) => {
+            const fields = places[0].address_components;
+            const country = fields.find(
+              (field) => field.types.indexOf("country") >= 0
+            );
+            const province = fields.find(
+              (field) => field.types.indexOf("administrative_area_level_2") >= 0
+            );
+            const city = fields.find(
+              (field) => field.types.indexOf("administrative_area_level_3") >= 0
+            );
+            setValues((prevState) => ({
+              ...prevState,
+              birthPlaceCity: city?.long_name,
+              birthPlaceProvince:
+                country?.short_name === "IT" ? province?.short_name : "EE",
+            }));
+          }}
+        />
+      </FormGroup>
       <FormikField name="fiscalId">
         {({
           field, // { name, value, onChange, onBlur }

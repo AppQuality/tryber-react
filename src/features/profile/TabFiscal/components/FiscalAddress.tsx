@@ -18,7 +18,7 @@ import { FieldProps, useFormikContext } from "formik";
 import FiscalResidenceModal from "./FiscalResidenceModal";
 
 const FiscalAddress = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { open: openModal, address } = residenceModalStore();
   const { open } = modalStore();
   const { setValues, setTouched, values, errors } =
@@ -33,6 +33,10 @@ const FiscalAddress = () => {
       <PlacesAutocomplete
         placesProps={{
           apiKey: process.env.REACT_APP_GOOGLE_APIKEY || "",
+          apiOptions: {
+            language: i18n.language,
+            region: i18n.language,
+          },
           selectProps: {
             value: {
               label: formattedAddress,
