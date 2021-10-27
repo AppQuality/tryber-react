@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import UserStore from "../../redux/user";
+import UserStore from "../../../redux/user";
 import {
   Button,
   CSSGrid,
@@ -11,12 +11,12 @@ import {
   Title,
 } from "@appquality/appquality-design-system";
 import React, { useEffect } from "react";
-import { EmploymentSelect } from "./EmploymentSelect";
+import { EmploymentSelect } from "../EmploymentSelect";
 import * as yup from "yup";
-import { EducationSelect } from "./EducationSelect";
+import { EducationSelect } from "../EducationSelect";
 import { CustomUserFields } from "./CustomUserFields";
 
-const TabAdvanced = () => {
+const Index = () => {
   const { t } = useTranslation();
   const { user, isProfileLoading } = UserStore();
   const initialUserValues = {
@@ -40,15 +40,15 @@ const TabAdvanced = () => {
     console.log(user);
   });
   return (
-    <Formik
-      enableReinitialize
-      initialValues={initialUserValues}
-      onSubmit={(values) => {
-        console.log(values);
-      }}
-    >
-      <Form id="baseProfileForm" className="aq-m-3">
-        <CSSGrid gutter="50px" rowGap="1rem" min="220px">
+    <CSSGrid gutter="50px" rowGap="1rem" min="220px" className="aq-m-3">
+      <Formik
+        enableReinitialize
+        initialValues={initialUserValues}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      >
+        <Form id="baseProfileForm">
           <div className="employment">
             <Title size="s">{t("Employment")}</Title>
             <EmploymentSelect name="employment" label={t("Profession")} />
@@ -66,28 +66,22 @@ const TabAdvanced = () => {
               label={t("I have the certifications")}
             ></Radio>
           </div>
-
-          <div className="address">
-            <Title size="s">{t("Additional fields")}</Title>
-            <Text>
-              {t(
-                "Improve your chances of being selected in test campaigns by completing your profile."
-              )}
-            </Text>
-            <CustomUserFields></CustomUserFields>
-            <Button
-              type="success"
-              htmlType="submit"
-              flat={true}
-              disabled={false}
-            >
-              {t("Save")}
-            </Button>
-          </div>
-        </CSSGrid>
-      </Form>
-    </Formik>
+        </Form>
+      </Formik>
+      <div className="address">
+        <Title size="s">{t("Additional fields")}</Title>
+        <Text>
+          {t(
+            "Improve your chances of being selected in test campaigns by completing your profile."
+          )}
+        </Text>
+        <CustomUserFields></CustomUserFields>
+        <Button type="success" htmlType="submit" flat={true} disabled={false}>
+          {t("Save")}
+        </Button>
+      </div>
+    </CSSGrid>
   );
 };
 
-export default TabAdvanced;
+export default Index;
