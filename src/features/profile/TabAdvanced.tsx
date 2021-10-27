@@ -74,7 +74,7 @@ const TabAdvanced = () => {
                 "Improve your chances of being selected in test campaigns by completing your profile."
               )}
             </Text>
-            <CustomUserFields name={""} label={""}></CustomUserFields>
+            <CustomUserFields></CustomUserFields>
             <Button
               type="success"
               htmlType="submit"
