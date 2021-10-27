@@ -77,12 +77,12 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
       <div>
         <ShowItem Icon={CashCoin} label={t("Fiscal Type")}>
           {user.fiscal.type === "witholding"
-            ? t(`Ritenuta d'acconto annua < 5000€`)
+            ? t(`Annual witholding < 5000€`)
             : user.fiscal.type === "witholding-extra"
-            ? t("Ritenuta > 5000")
+            ? t("Annual witholding > 5000")
             : user.fiscal.type == "non-italian"
-            ? t("Estero")
-            : t("Altro regime")}
+            ? t("Foreign")
+            : t("Different rate scheme")}
         </ShowItem>
         <ShowItem Icon={CreditCard2Front} label={t("Fiscal Code")}>
           {user.fiscal.fiscalId}

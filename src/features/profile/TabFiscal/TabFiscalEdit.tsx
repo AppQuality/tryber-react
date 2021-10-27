@@ -59,7 +59,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
     countryCode: yup.string().required(t("Country")),
     provinceCode: yup.string().required(t("Province/state")),
     city: yup.string().required(t("City")),
-    street: yup.string().required(t("stret")),
+    street: yup.string().required(t("Street")),
     zipCode: yup.string().required(t("zip code")),
     fiscalTypeRadio: yup.string().oneOf(["non-italian", "italian"]).required(),
     fiscalTypeSelect: yup
