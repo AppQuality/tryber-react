@@ -28,7 +28,7 @@ import styled from "styled-components";
 
 export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   const { t } = useTranslation();
-  const { user } = UserStore();
+  const { user, updateFiscalProfile } = UserStore();
   const { address } = residenceModalStore();
 
   const initialUserValues: FiscalFormValues = {
@@ -112,6 +112,8 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
           fiscalId: values.fiscalId,
           gender: values.gender,
         };
+        // todo: check types
+        updateFiscalProfile(submitValues);
       }}
     >
       {({ isValid, isValidating, dirty, errors, values }) => (
