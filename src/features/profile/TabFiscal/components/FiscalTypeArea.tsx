@@ -28,7 +28,19 @@ const FiscalTypeArea = () => {
               checked={field.value === "italian"}
               id="italian"
               label={t("Italian")}
-              onChange={() => form.setFieldValue(field.name, "italian")}
+              onChange={() => {
+                form.setValues((prevState: FiscalFormValues) => ({
+                  ...prevState,
+                  fiscalTypeRadio: "italian",
+                }));
+                form.setTouched({
+                  ...form.touched,
+                  fiscalTypeRadio: true,
+                  type: true,
+                  fiscalTypeSelect: true,
+                });
+                console.log(form);
+              }}
             />
             <Radio
               name={field.name}
@@ -41,6 +53,11 @@ const FiscalTypeArea = () => {
                   fiscalTypeRadio: "non-italian",
                   type: "non-italian",
                 }));
+                form.setTouched({
+                  ...form.touched,
+                  fiscalTypeRadio: true,
+                  type: true,
+                });
               }}
             />
             <ErrorMessage name={field.name} />
@@ -72,11 +89,15 @@ const FiscalTypeArea = () => {
                         v = { label: "", value: "" };
                       }
                       field.onChange(v.value);
-                      form.setFieldValue(field.name, v.value, true);
+                      form.setValues((prevState: FiscalFormValues) => ({
+                        ...prevState,
+                        fiscalTypeSelect: v.value,
+                        type: v.value,
+                      }));
                     }}
                     options={[
                       {
-                        value: "witholding",
+                        value: "withholding",
                         label: t("witholding < 5000"),
                       },
                       {
@@ -96,7 +117,6 @@ const FiscalTypeArea = () => {
           </FormikField>
           <FormikField name="birthPlaceCity">
             {({ field, form }: FieldProps) => {
-              console.log(field.value);
               return (
                 <FormGroup>
                   <FormLabel label={t("City of birth")} htmlFor={field.name} />
@@ -119,6 +139,7 @@ const FiscalTypeArea = () => {
                     }}
                     onBlur={(e) =>
                       form.setTouched({
+                        ...form.touched,
                         birthPlaceProvince: true,
                         birthPlaceCity: true,
                       })

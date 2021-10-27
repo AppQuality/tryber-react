@@ -25,8 +25,8 @@ type FiscalFormValues = {
   street?: string; //"Via dell' Amore",
   zipCode?: string; //"19017"
   fiscalTypeRadio?: "non-italian" | "italian";
-  fiscalTypeSelect?: "witholding" | "witholding-extra" | "other";
-  type?: "non-italian" | "witholding" | "witholding-extra" | "other";
+  fiscalTypeSelect?: "withholding" | "witholding-extra" | "other";
+  type?: "non-italian" | "withholding" | "witholding-extra" | "other";
   birthPlaceCity?: string;
   birthPlaceProvince?: string;
   fiscalId?: string;

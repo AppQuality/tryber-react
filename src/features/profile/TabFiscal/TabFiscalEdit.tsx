@@ -40,7 +40,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
     fiscalTypeRadio:
       user.fiscal?.type === "non-italian"
         ? "non-italian"
-        : ["witholding", "witholding-extra", "other"].includes(
+        : ["withholding", "witholding-extra", "other"].includes(
             user.fiscal?.type
           )
         ? "italian"
@@ -64,14 +64,14 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
     fiscalTypeRadio: yup.string().oneOf(["non-italian", "italian"]).required(),
     fiscalTypeSelect: yup
       .string()
-      .oneOf(["witholding", "witholding-extra", "other"])
+      .oneOf(["withholding", "witholding-extra", "other"])
       .when("fiscalTypeRadio", {
         is: "italian",
         then: yup.string().required(),
       }),
     type: yup
       .string()
-      .oneOf(["non-italian", "witholding", "witholding-extra", "other"])
+      .oneOf(["non-italian", "withholding", "witholding-extra", "other"])
       .required(),
     birthPlaceCity: yup.string().when("fiscalTypeRadio", {
       is: "italian",
@@ -92,10 +92,9 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   return (
     <Formik
       enableReinitialize
-      validateOnMount
       initialValues={initialUserValues}
       validationSchema={yup.object(validationSchema)}
-      onSubmit={(values) => {
+      onSubmit={async (values, action) => {
         const submitValues = {
           address: {
             country: values.countryCode,
@@ -113,7 +112,8 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
           gender: values.gender,
         };
         // todo: check types
-        updateFiscalProfile(submitValues);
+        await updateFiscalProfile(submitValues);
+        action.setSubmitting(false);
       }}
     >
       {({ isValid, isValidating, dirty, errors, values }) => (

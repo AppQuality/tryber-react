@@ -21,11 +21,11 @@ const FiscalAddress = () => {
   const { t, i18n } = useTranslation();
   const { open: openModal, address } = residenceModalStore();
   const { open } = modalStore();
-  const { setValues, setTouched, values, errors } =
+  const { setValues, setTouched, values, errors, touched } =
     useFormikContext<FiscalFormValues>();
   const formattedAddress = `${values.street || ""} ${values.city || ""} ${
     values.zipCode || ""
-  } ${values.provinceCode || ""}, ${values.countryCode || ""}`;
+  } ${values.provinceCode || ""} ${values.countryCode || ""}`;
 
   return (
     <FormGroup>
@@ -92,40 +92,45 @@ const FiscalAddress = () => {
           errors.provinceCode ||
           errors.city ||
           errors.zipCode ||
-          errors.street) && (
-          <div className="aq-mt-2">
-            <Text color="danger">
-              Please add the following fields to your address:
-            </Text>
-            <ul style={{ listStyle: "disc" }}>
-              {errors.countryCode && (
-                <li>
-                  <ErrorMessage name="countryCode" />
-                </li>
-              )}
-              {errors.provinceCode && (
-                <li>
-                  <ErrorMessage name="provinceCode" />
-                </li>
-              )}
-              {errors.city && (
-                <li>
-                  <ErrorMessage name="city" />
-                </li>
-              )}
-              {errors.zipCode && (
-                <li>
-                  <ErrorMessage name="zipCode" />
-                </li>
-              )}
-              {errors.street && (
-                <li>
-                  <ErrorMessage name="street" />
-                </li>
-              )}
-            </ul>
-          </div>
-        )}
+          errors.street) &&
+          touched.countryCode &&
+          touched.provinceCode &&
+          touched.city &&
+          touched.zipCode &&
+          touched.street && (
+            <div className="aq-mt-2">
+              <Text color="danger">
+                Please add the following fields to your address:
+              </Text>
+              <ul style={{ listStyle: "disc" }}>
+                {errors.countryCode && (
+                  <li>
+                    <ErrorMessage name="countryCode" />
+                  </li>
+                )}
+                {errors.provinceCode && (
+                  <li>
+                    <ErrorMessage name="provinceCode" />
+                  </li>
+                )}
+                {errors.city && (
+                  <li>
+                    <ErrorMessage name="city" />
+                  </li>
+                )}
+                {errors.zipCode && (
+                  <li>
+                    <ErrorMessage name="zipCode" />
+                  </li>
+                )}
+                {errors.street && (
+                  <li>
+                    <ErrorMessage name="street" />
+                  </li>
+                )}
+              </ul>
+            </div>
+          )}
         <Text small className="aq-mt-1">
           <span className="aq-text-disabled-dark">
             {t("If your address is not in the list please ")}
