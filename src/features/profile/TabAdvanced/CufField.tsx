@@ -8,7 +8,6 @@ import {
 } from "@appquality/appquality-design-system";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { operations } from "../../../utils/schema";
 
 type OptionsType = {
   id: number;

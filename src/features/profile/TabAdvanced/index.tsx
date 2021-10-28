@@ -15,13 +15,12 @@ import { EmploymentSelect } from "../EmploymentSelect";
 import * as yup from "yup";
 import { EducationSelect } from "../EducationSelect";
 import { CustomUserFields } from "./CustomUserFields";
+import Certifications from "./Certifications";
 
 const Index = () => {
   const { t } = useTranslation();
   const { user, isProfileLoading } = UserStore();
   const initialUserValues = {
-    name: user.name || "",
-    surname: user.surname || "",
     employment: user.profession
       ? { label: user.profession.name, value: user.profession.id.toString() }
       : { label: "", value: "" },
@@ -30,11 +29,8 @@ const Index = () => {
       : { label: "", value: "" },
   };
   const validationSchema = {
-    name: yup.string().required(t("This is a required field")),
-    surname: yup.string().required(t("This is a required field")),
     employment: yup.string().required(t("This is a required field")),
     education: yup.string().required(t("This is a required field")),
-    telegram: yup.string().required(t("This is a required field")),
   };
   useEffect(() => {
     console.log(user);
@@ -54,17 +50,9 @@ const Index = () => {
             <EmploymentSelect name="employment" label={t("Profession")} />
             <EducationSelect name="education" label={t("Education level")} />
 
-            <Title size="s">{t("Certifications")}</Title>
-            <Radio
-              name="certifications"
-              id="noCertifications"
-              label={t("I have no certifications")}
-            ></Radio>
-            <Radio
-              name="certifications"
-              id="yesCertifications"
-              label={t("I have the certifications")}
-            ></Radio>
+            {/*<Certification*/}
+            <Title size="xs">{t("Certifications")}</Title>
+            <Certifications />
           </div>
         </Form>
       </Formik>
