@@ -18,7 +18,7 @@ import { CustomUserFields } from "./CustomUserFields";
 import Certifications from "./Certifications";
 import { MapCufValues } from "./MapCufValues";
 
-const Index = () => {
+export const TabAdvanced = () => {
   const { t } = useTranslation();
   const { initialUserValues, validationSchema } = MapCufValues();
   const { user, isProfileLoading } = UserStore();
@@ -63,5 +63,3 @@ const Index = () => {
     </Formik>
   );
 };
-
-export default Index;
