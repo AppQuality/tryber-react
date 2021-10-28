@@ -29,17 +29,16 @@ const FiscalTypeArea = () => {
               id="italian"
               label={t("Italian")}
               onChange={() => {
-                form.setValues((prevState: FiscalFormValues) => ({
-                  ...prevState,
-                  fiscalTypeRadio: "italian",
-                }));
                 form.setTouched({
                   ...form.touched,
                   fiscalTypeRadio: true,
                   type: true,
                   fiscalTypeSelect: true,
                 });
-                console.log(form);
+                form.setValues((prevState: FiscalFormValues) => ({
+                  ...prevState,
+                  fiscalTypeRadio: "italian",
+                }));
               }}
             />
             <Radio
