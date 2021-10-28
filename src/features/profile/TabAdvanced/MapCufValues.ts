@@ -22,16 +22,24 @@ export const MapCufValues = () => {
   const [cufGroups, setCufGroups] = useState<
     operations["get-customUserFields"]["responses"]["200"]["content"]["application/json"]
   >([]);
-  const [initialUserValues, setInitialUserValues] = useState<{
-    [key: string]: string | object | object[];
-  }>({
-    employment: user.profession
-      ? { label: user.profession.name, value: user.profession.id.toString() }
-      : { label: "", value: "" },
-    education: user.education
-      ? { label: user.education.name, value: user.education.id.toString() }
-      : { label: "", value: "" },
-  });
+  let initialCertRadioValue: CertificationsRadio = "";
+  if (typeof user.certifications === "boolean") {
+    initialCertRadioValue = user.certifications.toString();
+  }
+  if (typeof user.certifications?.length) {
+    initialCertRadioValue = "true";
+  }
+  const [initialUserValues, setInitialUserValues] =
+    useState<AdvancedFormValues>({
+      certificationsRadio: initialCertRadioValue,
+      certifications: user.certifications?.length ? user.certifications : [],
+      employment: user.profession
+        ? { label: user.profession.name, value: user.profession.id.toString() }
+        : { label: "", value: "" },
+      education: user.education
+        ? { label: user.education.name, value: user.education.id.toString() }
+        : { label: "", value: "" },
+    });
   const [validationSchema, setValidationSchema] = useState<{
     [key: string]: yup.AnySchema;
   }>({
