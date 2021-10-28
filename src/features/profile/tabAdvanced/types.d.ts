@@ -1,0 +1,3 @@
+interface AdvancedFormValues {
+  certifications: string;
+}
