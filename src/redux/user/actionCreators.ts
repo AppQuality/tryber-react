@@ -1,6 +1,5 @@
 import * as actionTypes from "./actionTypes";
 import API from "../../utils/api";
-import WPAPI from "../../utils/wpapi";
 import HttpError from "../../utils/HttpError";
 import { operations } from "../../utils/schema";
 

@@ -80,7 +80,7 @@ export const useExperiencePoints = () => {
     });
 
     let datesFilter = Object.values(_dates).filter((el) => el != null);
-    if (orderBy == "date" && order == "ASC")
+    if (orderBy === "date" && order === "ASC")
       datesFilter = datesFilter.reverse();
     setCampaigns(_campaigns.filter((el) => el != null).reverse());
     setDates(datesFilter);
