@@ -60,7 +60,6 @@
   "Certifications": "",
   "Change password": "",
   "Check your data": "",
-  "City": "",
   "City of birth": "",
   "Close": "Chiudi",
   "Close Date": "Chiusa",
@@ -230,7 +229,6 @@
   "Profession": "",
   "Profile": "Profilo",
   "Profile data correctly updated.": "",
-  "Province/state": "",
   "Read manual": "Leggi il manuale",
   "Reason": "Motivazione",
   "Received booty": "Guadagni ricevuti",
@@ -261,7 +259,6 @@
   "Spoken languages": "",
   "Start Date": "Inizio",
   "Status": "Stato",
-  "Street": "",
   "Submitted bugs": "Bug caricati",
   "submitted data are incorrect or incomplete. Check your data again": "",
   "Surname": "Cognome",
@@ -282,6 +279,7 @@
   "This is a required field": "Questo è un campo obbligatorio",
   "This is an invalid format. Should be formatted as +11000000000 or 0011000000000": "",
   "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!": "Questa è la tua dashboard personale. Da qui puoi controllare le tue statistiche, tenere d'occhio l'andamento del tuo lavoro e trovare nuove campagne per cui candidarti. Buon divertimento!",
+  "This value is invalid, you need to select a city with a province": "",
   "Title": "Titolo",
   "To test you won't need special equipment, but simply  <bold>your own personal devices</bold>": "Per testare non avrai bisogno di attrezzature speciali, ma <bold>semplicemente dei tuoi dispositivi personali</bold>",
   "Type": "Tipo",
@@ -323,6 +321,5 @@
   "Your efforts will pay off": "I tuoi sforzi saranno ripagati",
   "Your fiscal data": "",
   "Your Performance": "Le tue Statistiche",
-  "Your Rank": "Classifica",
-  "zip code": ""
+  "Your Rank": "Classifica"
 }

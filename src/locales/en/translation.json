@@ -60,7 +60,6 @@
   "Certifications": "Certifications",
   "Change password": "Change password",
   "Check your data": "Check your data",
-  "City": "City",
   "City of birth": "City of birth",
   "Close": "Close",
   "Close Date": "Close Date",
@@ -230,7 +229,6 @@
   "Profession": "Profession",
   "Profile": "Profile",
   "Profile data correctly updated.": "Profile data correctly updated.",
-  "Province/state": "Province/state",
   "Read manual": "Read manual",
   "Reason": "Reason",
   "Received booty": "Received booty",
@@ -261,7 +259,6 @@
   "Spoken languages": "Spoken languages",
   "Start Date": "Start Date",
   "Status": "Status",
-  "Street": "Street",
   "Submitted bugs": "Submitted bugs",
   "submitted data are incorrect or incomplete. Check your data again": "submitted data are incorrect or incomplete. Check your data again",
   "Surname": "Surname",
@@ -282,6 +279,7 @@
   "This is a required field": "This is a required field",
   "This is an invalid format. Should be formatted as +11000000000 or 0011000000000": "This is an invalid format. Should be formatted as +11000000000 or 0011000000000",
   "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!": "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!",
+  "This value is invalid, you need to select a city with a province": "This value is invalid, you need to select a city with a province",
   "Title": "Title",
   "To test you won't need special equipment, but simply  <bold>your own personal devices</bold>": "To test you won't need special equipment, but simply  <bold>your own personal devices</bold>",
   "Type": "Type",
@@ -323,6 +321,5 @@
   "Your efforts will pay off": "Your efforts will pay off",
   "Your fiscal data": "Your fiscal data",
   "Your Performance": "Your Performance",
-  "Your Rank": "Your Rank",
-  "zip code": "zip code"
+  "Your Rank": "Your Rank"
 }

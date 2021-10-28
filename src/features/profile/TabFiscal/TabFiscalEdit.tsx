@@ -55,33 +55,43 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   };
 
   const validationSchema = {
-    gender: yup.string().oneOf(["male", "female"]).required(),
-    countryCode: yup.string().required(t("Country")),
-    provinceCode: yup.string().required(t("Province/state")),
-    city: yup.string().required(t("City")),
-    street: yup.string().required(t("Street")),
-    zipCode: yup.string().required(t("zip code")),
-    fiscalTypeRadio: yup.string().oneOf(["non-italian", "italian"]).required(),
+    gender: yup
+      .string()
+      .oneOf(["male", "female"])
+      .required(t("This is a required field")),
+    countryCode: yup.string().required(t("This is a required field")),
+    provinceCode: yup.string().required(t("This is a required field")),
+    city: yup.string().required(t("This is a required field")),
+    street: yup.string().required(t("This is a required field")),
+    zipCode: yup.string().required(t("This is a required field")),
+    fiscalTypeRadio: yup
+      .string()
+      .oneOf(["non-italian", "italian"])
+      .required(t("This is a required field")),
     fiscalTypeSelect: yup
       .string()
       .oneOf(["withholding", "witholding-extra", "other"])
       .when("fiscalTypeRadio", {
         is: "italian",
-        then: yup.string().required(),
+        then: yup.string().required(t("This is a required field")),
       }),
     type: yup
       .string()
       .oneOf(["non-italian", "withholding", "witholding-extra", "other"])
-      .required(),
+      .required(t("This is a required field")),
     birthPlaceCity: yup.string().when("fiscalTypeRadio", {
       is: "italian",
-      then: yup.string().required(),
+      then: yup.string().required(t("This is a required field")),
     }),
     birthPlaceProvince: yup.string().when("fiscalTypeRadio", {
       is: "italian",
-      then: yup.string().required(),
+      then: yup
+        .string()
+        .required(
+          t("This value is invalid, you need to select a city with a province")
+        ),
     }),
-    fiscalId: yup.string().required(),
+    fiscalId: yup.string().required(t("This is a required field")),
   };
 
   const genderOptions = [
