@@ -117,7 +117,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
       }}
     >
       {({ isValid, isValidating, dirty, errors, values }) => (
-        <Form id="baseProfileForm" className="aq-m-3">
+        <Form id="baseProfileForm">
           <CSSGrid gutter="50px" rowGap="1rem" min="220px">
             <div className="user-info">
               <Title size="xs" className="aq-mb-2">
