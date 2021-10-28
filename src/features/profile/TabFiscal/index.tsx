@@ -9,8 +9,8 @@ export const TabFiscal = ({
 }: {
   ref?: React.RefObject<HTMLDivElement>;
 }) => {
-  const { isProfileLoading, isLoading } = UserStore();
-  const [isEdit, setIsEdit] = useState(true);
+  const { isProfileLoading, isLoading, user } = UserStore();
+  const [isEdit, setIsEdit] = useState(!user.fiscal?.fiscalStatus);
 
   return (
     <div className="aq-p-3">
