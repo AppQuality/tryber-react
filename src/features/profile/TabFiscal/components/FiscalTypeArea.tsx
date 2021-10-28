@@ -129,8 +129,8 @@ const FiscalTypeArea = () => {
                       },
                       selectProps: {
                         value: {
-                          label: field.value,
-                          value: field.value,
+                          label: field.value || "",
+                          value: field.value || "",
                         },
                       },
                       autocompletionRequest: {
