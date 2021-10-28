@@ -27,6 +27,12 @@ const EditPassword = () => {
     newPassword: "",
     newPasswordConfirm: "",
   };
+  const cookies = new Cookies();
+  const cookieValue = cookies.getAll();
+  const wpLoggedInCookie = Object.keys(cookieValue).filter((c) =>
+    c.startsWith("wordpress_logged_in")
+  );
+  console.log(wpLoggedInCookie);
   return (
     <div className="edit-password">
       <Formik
