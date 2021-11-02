@@ -10,3 +10,5 @@ export interface BaseFields {
   city: SelectType.Option;
   languages: SelectType.Option[];
 }
+
+export interface CertificationFields {}
