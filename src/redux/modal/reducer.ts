@@ -15,6 +15,7 @@ const reducer = (
         open: true,
         content: action?.data?.content,
         footer: action?.data?.footer,
+        title: action?.data?.title,
       };
     case actionTypes.UNSET_MODAL:
       return {
@@ -22,6 +23,7 @@ const reducer = (
         open: false,
         content: undefined,
         footer: undefined,
+        title: undefined,
       };
   }
   return state;

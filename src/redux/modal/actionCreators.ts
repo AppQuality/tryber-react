@@ -1,11 +1,16 @@
 import * as actionTypes from "./actionTypes";
 
-export function openModal(content: React.ReactNode, footer?: React.ReactNode) {
+export function openModal(
+  content: React.ReactNode,
+  footer?: React.ReactNode,
+  title?: React.ReactNode
+) {
   const action: ModalAction = {
     type: actionTypes.SET_MODAL,
     data: {
       content,
       footer,
+      title,
     },
   };
 
