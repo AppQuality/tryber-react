@@ -79,6 +79,8 @@ export const NewCertificationModal = () => {
                     }}
                     onChange={(v) => {
                       form.setFieldValue(field.name, v.value);
+                      form.setFieldValue("area", "");
+                      form.setFieldValue("certification", "");
                     }}
                   />
                 </FormGroup>
@@ -91,6 +93,9 @@ export const NewCertificationModal = () => {
                   <Select
                     menuTargetQuery={"body"}
                     name="area"
+                    isDisabled={
+                      !form.values.institute || !form.values.institute.length
+                    }
                     label={t("Area")}
                     options={areas}
                     value={{
@@ -99,6 +104,7 @@ export const NewCertificationModal = () => {
                     }}
                     onChange={(v) => {
                       form.setFieldValue(field.name, v.value);
+                      form.setFieldValue("certification", "");
                     }}
                   />
                 </FormGroup>
@@ -109,6 +115,7 @@ export const NewCertificationModal = () => {
               {({ field, form }: FieldProps) => (
                 <FormGroup>
                   <Select
+                    isDisabled={!form.values.area || !form.values.area.length}
                     menuTargetQuery={"body"}
                     name="certification"
                     label={t("Certification")}
