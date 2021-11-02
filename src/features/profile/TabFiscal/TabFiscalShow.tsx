@@ -10,6 +10,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { Icon } from "react-bootstrap-icons";
 import UserStore from "../../../redux/user";
+import { Dispatch, SetStateAction } from "react";
 
 const ShowItem = ({
   Icon,
@@ -35,7 +36,7 @@ const ShowItem = ({
   );
 };
 
-const TabFiscalShow = ({ setEdit }: { setEdit: () => void }) => {
+export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
   const { t } = useTranslation();
   const {
     Person,
@@ -47,6 +48,9 @@ const TabFiscalShow = ({ setEdit }: { setEdit: () => void }) => {
     Compass,
   } = icons;
   const { user, isProfileLoading } = UserStore();
+  const handleEditClick = () => {
+    setEdit(true);
+  };
   return (
     <CSSGrid gutter="50px" rowGap="0" min="220px">
       <div>
@@ -73,12 +77,12 @@ const TabFiscalShow = ({ setEdit }: { setEdit: () => void }) => {
       <div>
         <ShowItem Icon={CashCoin} label={t("Fiscal Type")}>
           {user.fiscal.type === "witholding"
-            ? t(`Ritenuta d'acconto annua < 5000€`)
+            ? t(`Annual witholding < 5000€`)
             : user.fiscal.type === "witholding-extra"
-            ? t("Ritenuta > 5000")
+            ? t("Annual witholding > 5000")
             : user.fiscal.type == "non-italian"
-            ? t("Estero")
-            : t("Altro regime")}
+            ? t("Foreign")
+            : t("Different rate scheme")}
         </ShowItem>
         <ShowItem Icon={CreditCard2Front} label={t("Fiscal Code")}>
           {user.fiscal.fiscalId}
@@ -94,7 +98,7 @@ const TabFiscalShow = ({ setEdit }: { setEdit: () => void }) => {
 
         <BSGrid>
           <BSCol size="col-6">
-            <Button size="block" type="primary" flat onClick={setEdit}>
+            <Button size="block" type="primary" flat onClick={handleEditClick}>
               {t("Edit")}
             </Button>
           </BSCol>
@@ -103,5 +107,3 @@ const TabFiscalShow = ({ setEdit }: { setEdit: () => void }) => {
     </CSSGrid>
   );
 };
-
-export default TabFiscalShow;

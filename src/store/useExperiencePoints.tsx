@@ -6,7 +6,7 @@ import dateFormatter from "../utils/dateFormatter";
 import { useTranslation } from "react-i18next";
 
 export const useExperiencePoints = () => {
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<TableType.Row[]>([]);
   const [campaigns, setCampaigns] = useState<SelectType.Option[]>([]);

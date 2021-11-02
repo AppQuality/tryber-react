@@ -6,6 +6,7 @@ interface UserStatus {
   getProfile: () => void;
   updateProfile: (data: UserData) => void;
   getFiscalProfile: () => void;
+  updateFiscalProfile: (data: UserData) => void;
   user: User;
   isLoading: boolean;
   isProfileLoading: boolean;

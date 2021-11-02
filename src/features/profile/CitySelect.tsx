@@ -2,16 +2,15 @@ import {
   FormGroup,
   FormikField,
   Select,
-  FormLabel,
   SelectType,
 } from "@appquality/appquality-design-system";
 import { FieldProps, useFormikContext } from "formik";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import sitewideMessageStore from "../../redux/siteWideMessages";
 import { useTranslation } from "react-i18next";
 import HttpError from "../../utils/HttpError";
 import API from "../../utils/api";
-import countries, { LocalizedCountryNames } from "i18n-iso-countries";
+import countries from "i18n-iso-countries";
 import { GeoDbCity } from "../../utils/geoDb";
 import { BaseFields } from "./types";
 
@@ -25,10 +24,6 @@ export const CitySelect = ({
   const { values } = useFormikContext<BaseFields>();
   const { t, i18n } = useTranslation();
   const { add } = sitewideMessageStore();
-  const [filteredCities, setFilteredCities] = useState<SelectType.Option[]>([]);
-  const [searchedOptions, setSearchedOptions] = useState<SelectType.Option[]>(
-    []
-  );
   const enCountries = countries.getNames("en", { select: "official" });
 
   const getAsyncOptions = useMemo(() => {

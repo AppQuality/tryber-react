@@ -8,6 +8,7 @@ export * from "./actions/refreshUser";
 export * from "./actions/loginUser";
 export * from "./actions/getProfile";
 export * from "./actions/getFiscalProfile";
+export * from "./actions/updateFiscalProfile";
 export * from "./actions/updateProfile";
 
 export const updateDeletionReason = (reason: string) => {
