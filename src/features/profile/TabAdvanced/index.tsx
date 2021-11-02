@@ -18,7 +18,7 @@ import { CustomUserFields } from "./CustomUserFields";
 import Certifications from "./Certifications";
 import { MapCufValues } from "./MapCufValues";
 
-export const TabAdvanced = () => {
+const TabAdvanced = () => {
   const { t } = useTranslation();
   const { initialUserValues, validationSchema } = MapCufValues();
   const { user, isProfileLoading } = UserStore();
@@ -74,3 +74,5 @@ export const TabAdvanced = () => {
     </Formik>
   );
 };
+
+export default TabAdvanced;
