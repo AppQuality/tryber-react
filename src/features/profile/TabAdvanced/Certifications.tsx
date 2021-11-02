@@ -59,6 +59,7 @@ const Certifications = () => {
           onClick={() => {
             open({
               content: <NewCertificationModal />,
+              title: t("Add Certifications"),
             });
           }}
         >

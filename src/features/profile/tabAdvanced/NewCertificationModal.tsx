@@ -1,5 +1,8 @@
-import { Modal } from "@appquality/appquality-design-system";
+import { useState } from "react";
 
 export const NewCertificationModal = () => {
-  return <div></div>;
+  const [institutes, setInstitutes] = useState();
+  const [areas, setAreas] = useState();
+  const [certifications, setCertifications] = useState();
+  return <></>;
 };
