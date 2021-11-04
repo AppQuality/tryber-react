@@ -11,5 +11,6 @@ export const certifications = async ({
   return apifetch({
     endpoint: "/certifications",
     params: filterBy,
+    paramType: "filterBy",
   });
 };
