@@ -11,4 +11,8 @@ export interface BaseFields {
   languages: SelectType.Option[];
 }
 
-export interface CertificationFields {}
+export interface CertificationFields {
+  institute: string;
+  area: string;
+  certificationId: string;
+}
