@@ -1,26 +1,15 @@
-import HttpError from "../HttpError";
 import { operations } from "../schema";
+import apifetch from "../apifetch";
 
-export const certifications = async (
-  token?: string
-): Promise<
+export const certifications = async ({
+  filterBy,
+}: {
+  filterBy?: { institute?: string; area?: string };
+}): Promise<
   operations["get-certifications"]["responses"]["200"]["content"]["application/json"]
 > => {
-  if (process.env.REACT_APP_DEFAULT_TOKEN)
-    token = process.env.REACT_APP_DEFAULT_TOKEN;
-
-  const requestHeaders: HeadersInit = new Headers();
-  requestHeaders.set("Content-Type", "application/json");
-  if (token) {
-    requestHeaders.set("Authorization", "Bearer " + token);
-  }
-  let url = `${process.env.REACT_APP_API_URL}/certifications`;
-  const response = await fetch(url, {
-    method: "GET",
-    headers: requestHeaders,
+  return apifetch({
+    endpoint: "/certifications",
+    params: filterBy,
   });
-  const results = await response.json();
-  if (!response.ok)
-    throw new HttpError(response.status, response.statusText, results.err);
-  return results;
 };
