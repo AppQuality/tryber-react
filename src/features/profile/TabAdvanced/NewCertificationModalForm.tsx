@@ -20,11 +20,6 @@ const NewCertificationModalForm = ({
   const [institutes, setInstitutes] = useState<SelectType.Option[]>([]);
   const [areas, setAreas] = useState<SelectType.Option[]>([]);
   const [certifications, setCertifications] = useState<SelectType.Option[]>([]);
-  const [current, setCurrent] = useState<CertificationFields>({
-    institute: "",
-    area: "",
-    certificationId: "",
-  });
 
   useEffect(() => {
     const getInstitutes = async () => {
@@ -41,8 +36,8 @@ const NewCertificationModalForm = ({
 
   useEffect(() => {
     const getAreas = async () => {
-      let filterBy = current.institute
-        ? { filterBy: { institute: current.institute } }
+      let filterBy = values.institute
+        ? { filterBy: { institute: values.institute } }
         : {};
       let results = await API.certifications(filterBy);
       let areas = results
@@ -51,12 +46,12 @@ const NewCertificationModalForm = ({
       setAreas(areas.map((item) => ({ label: item, value: item })));
     };
     getAreas();
-  }, [institutes]);
+  }, [values.institute]);
   useEffect(() => {
     const getCertifications = async () => {
       let filterBy =
-        current.institute && current.area
-          ? { filterBy: { institute: current.institute, area: current.area } }
+        values.institute && values.area
+          ? { filterBy: { institute: values.institute, area: values.area } }
           : {};
       let results = await API.certifications(filterBy);
       setCertifications(
@@ -64,7 +59,7 @@ const NewCertificationModalForm = ({
       );
     };
     getCertifications();
-  }, [institutes, areas]);
+  }, [values.area]);
 
   return (
     <Form>
@@ -82,13 +77,6 @@ const NewCertificationModalForm = ({
               }}
               onChange={(v) => {
                 form.setFieldValue(field.name, v.value);
-                form.setFieldValue("area", "");
-                form.setFieldValue("certificationId", "");
-                setCurrent({
-                  institute: v.value ? v.value.toString() : "",
-                  area: "",
-                  certificationId: "",
-                });
                 form.setFieldValue("area", "");
                 form.setFieldValue("certificationId", "");
               }}
@@ -114,13 +102,7 @@ const NewCertificationModalForm = ({
               }}
               onChange={(v) => {
                 form.setFieldValue(field.name, v.value);
-                form.values.area = v.value;
                 form.setFieldValue("certificationId", "");
-                setCurrent({
-                  institute: current.institute,
-                  area: v.value ? v.value.toString() : "",
-                  certificationId: "",
-                });
               }}
             />
           </FormGroup>
@@ -142,11 +124,6 @@ const NewCertificationModalForm = ({
               }}
               onChange={(v) => {
                 form.setFieldValue(field.name, v.value);
-                setCurrent({
-                  institute: current.institute,
-                  area: current.area,
-                  certificationId: v.value ? v.value.toString() : "",
-                });
               }}
             />
           </FormGroup>
