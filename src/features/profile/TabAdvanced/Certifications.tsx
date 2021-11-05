@@ -4,12 +4,15 @@ import {
   FormGroup,
   FormikField,
   ErrorMessage,
+  Text,
+  CSSGrid,
 } from "@appquality/appquality-design-system";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { FieldProps, useFormikContext } from "formik";
 import modalStore from "../../../redux/modal";
 import { NewCertificationModal } from "./NewCertificationModal";
+import { AdvancedFormValues } from "./types";
 
 const Certifications = () => {
   const { t } = useTranslation();
@@ -50,21 +53,57 @@ const Certifications = () => {
         )}
       </FormikField>
       {values.certificationsRadio && (
-        <Button
-          type="link"
-          htmlType="button"
-          flat
-          style={{ padding: 0, fontWeight: 400 }}
-          size="sm"
-          onClick={() => {
-            open({
-              content: <NewCertificationModal />,
-              title: t("Add Certifications"),
-            });
-          }}
-        >
-          {t("Add")}
-        </Button>
+        <>
+          {values?.certifications?.map((cert) => (
+            <CSSGrid
+              gutter="20%"
+              rowGap="1rem"
+              min="70px"
+              className="aq-mb-3"
+              // style= "border-top: 1px solid #d1e0e8;"
+            >
+              <div className="aq-text-primary">
+                <Text small aria-disabled={true}>
+                  {cert.achievement_date}
+                </Text>
+                <strong>{cert.name}</strong>
+                <strong>{cert.area}</strong>
+                <Text>
+                  {t("Institute:")} <strong>{cert.institute}</strong>
+                </Text>
+              </div>
+              <div className="remove-certification">
+                <Button
+                  className="aq-text-danger"
+                  type="link"
+                  htmlType="button"
+                  flat
+                  style={{ padding: 0, fontWeight: 400 }}
+                  size="sm"
+                  onClick={() => {}}
+                >
+                  {t("Remove")}
+                </Button>
+              </div>
+            </CSSGrid>
+          ))}
+
+          <Button
+            type="link"
+            htmlType="button"
+            flat
+            style={{ padding: 0, fontWeight: 400 }}
+            size="sm"
+            onClick={() => {
+              open({
+                content: <NewCertificationModal />,
+                title: t("Add Certifications"),
+              });
+            }}
+          >
+            {t("Add")}
+          </Button>
+        </>
       )}
     </>
   );

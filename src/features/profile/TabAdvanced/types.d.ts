@@ -1,9 +1,16 @@
 type CertificationsRadio = "" | "false" | "true";
+type Certifications = {
+  id: number;
+  name: string;
+  area: string;
+  institute: string;
+  achievement_date: string;
+}[];
 
-interface AdvancedFormValues {
+export interface AdvancedFormValues {
   employment: SelectOptionType;
   education: SelectOptionType;
   certificationsRadio: CertificationsRadio;
-  certifications: Certification[];
+  certifications: Certifications;
   [key: string]: string | object | object[];
 }

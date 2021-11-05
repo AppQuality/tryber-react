@@ -1,16 +1,13 @@
 import { useTranslation } from "react-i18next";
-import UserStore from "../../../redux/user";
 import {
   Button,
   CSSGrid,
-  Field,
   Form,
   Formik,
-  Radio,
   Text,
   Title,
 } from "@appquality/appquality-design-system";
-import React, { useEffect } from "react";
+import React from "react";
 import { EmploymentSelect } from "../EmploymentSelect";
 import * as yup from "yup";
 import { EducationSelect } from "../EducationSelect";
@@ -21,7 +18,6 @@ import { MapCufValues } from "./MapCufValues";
 const TabAdvanced = () => {
   const { t } = useTranslation();
   const { initialUserValues, validationSchema } = MapCufValues();
-  const { user, isProfileLoading } = UserStore();
 
   return (
     <Formik
