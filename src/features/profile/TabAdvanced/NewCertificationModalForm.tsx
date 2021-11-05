@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
+  Button,
   Form,
   FormGroup,
   FormikField,
@@ -129,7 +130,9 @@ const NewCertificationModalForm = ({
           </FormGroup>
         )}
       </FormikField>
-      <button type="submit">submmit NOW</button>
+      <Button type="success" htmlType="submit" flat={true} disabled={false}>
+        {t("Add")}
+      </Button>
     </Form>
   );
 };

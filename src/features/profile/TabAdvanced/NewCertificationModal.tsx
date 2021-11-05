@@ -4,8 +4,6 @@ import { CertificationFields } from "../types";
 import NewCertificationModalForm from "./NewCertificationModalForm";
 
 export const NewCertificationModal = () => {
-  // const { values } = useFormikContext<CertificationFields>();
-
   return (
     <Formik
       initialValues={{ institute: "", area: "", certificationId: "" }}
