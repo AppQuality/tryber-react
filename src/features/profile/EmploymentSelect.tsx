@@ -21,7 +21,10 @@ export const EmploymentSelect = ({
     const getEmployments = async () => {
       const results = await API.employments({});
       setEmployments(
-        results.map((item) => ({ label: item.name, value: item.id.toString() }))
+        results.map((item) => ({
+          label: item.name.toString(),
+          value: item.id.toString(),
+        }))
       );
     };
     getEmployments();
@@ -34,7 +37,7 @@ export const EmploymentSelect = ({
           <Select
             name={field.name}
             label={label}
-            value={field.value}
+            value={field.value.toString()}
             options={employments}
             onBlur={() => {
               form.setFieldTouched(field.name);

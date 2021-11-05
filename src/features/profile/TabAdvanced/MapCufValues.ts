@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { operations } from "../../../utils/schema";
 import { shallowEqual, useSelector } from "react-redux";
 import UserStore from "../../../redux/user";
+import { AdvancedFormValues, CertificationsRadio } from "./types";
 
 export const MapCufValues = () => {
   const {
@@ -29,10 +30,11 @@ export const MapCufValues = () => {
   if (typeof user.certifications?.length) {
     initialCertRadioValue = "true";
   }
+  console.log(user);
   const [initialUserValues, setInitialUserValues] =
     useState<AdvancedFormValues>({
       certificationsRadio: initialCertRadioValue,
-      certifications: user.certifications?.length ? user.certifications : [],
+      certifications: user && user.certifications ? user.certifications : [],
       employment: user.profession
         ? { label: user.profession.name, value: user.profession.id.toString() }
         : { label: "", value: "" },
@@ -60,6 +62,13 @@ export const MapCufValues = () => {
   useEffect(() => {
     let schema: { [key: string]: yup.AnySchema } = {};
     let values: { [key: string]: string | object | object[] } = {};
+    values.certifications = user.certifications ? user.certifications : [];
+    values.education = user.education
+      ? user.education
+      : { label: "", value: "" };
+    values.employment = user.employment
+      ? user.employment
+      : { label: "", value: "" };
     cufGroups.forEach((group) => {
       if (group.fields)
         group.fields.forEach((field) => {
@@ -101,6 +110,7 @@ export const MapCufValues = () => {
     setInitialUserValues({ ...initialUserValues, ...values });
     setValidationSchema({ ...validationSchema, ...schema });
   }, [cufGroups]);
+  console.log(initialUserValues);
   return {
     cufGroups: cufGroups,
     initialUserValues: initialUserValues,
