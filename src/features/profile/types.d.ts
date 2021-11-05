@@ -16,3 +16,10 @@ export interface CertificationFields {
   area: string;
   certificationId: string;
 }
+export interface UserCertification {
+  id: number;
+  name: string;
+  area: string;
+  institute: string;
+  achievement_date: string;
+}

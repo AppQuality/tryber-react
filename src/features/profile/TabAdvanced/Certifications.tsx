@@ -13,6 +13,7 @@ import { FieldProps, useFormikContext } from "formik";
 import modalStore from "../../../redux/modal";
 import { NewCertificationModal } from "./NewCertificationModal";
 import { AdvancedFormValues } from "./types";
+import { DeleteCertificationsModal } from "./DeleteCertificationsModal";
 
 const Certifications = () => {
   const { t } = useTranslation();
@@ -35,6 +36,35 @@ const Certifications = () => {
               onChange={(v) => {
                 form.setFieldTouched(field.name);
                 form.setFieldValue(field.name, v);
+                open({
+                  content: (
+                    <DeleteCertificationsModal
+                      certifications={values.certifications}
+                    />
+                  ),
+                  title: t("Remove all the Certifications"),
+                  footer: (
+                    <>
+                      {" "}
+                      <Button
+                        type="primary"
+                        htmlType="submit"
+                        flat={true}
+                        disabled={false}
+                      >
+                        {t("Keep")}
+                      </Button>
+                      <Button
+                        type="danger"
+                        htmlType="submit"
+                        flat={true}
+                        disabled={false}
+                      >
+                        {t("Remove")}
+                      </Button>
+                    </>
+                  ),
+                });
               }}
             />
             <Radio
@@ -80,7 +110,37 @@ const Certifications = () => {
                   flat
                   style={{ padding: 0, fontWeight: 400 }}
                   size="sm"
-                  onClick={() => {}}
+                  onClick={() => {
+                    let certifications = [];
+                    certifications.push(cert);
+                    open({
+                      content: (
+                        <DeleteCertificationsModal certifications={[cert]} />
+                      ),
+                      title: t("Remove Certification"),
+                      footer: (
+                        <>
+                          {" "}
+                          <Button
+                            type="primary"
+                            htmlType="submit"
+                            flat={true}
+                            disabled={false}
+                          >
+                            {t("Keep")}
+                          </Button>
+                          <Button
+                            type="danger"
+                            htmlType="submit"
+                            flat={true}
+                            disabled={false}
+                          >
+                            {t("Remove")}
+                          </Button>
+                        </>
+                      ),
+                    });
+                  }}
                 >
                   {t("Remove")}
                 </Button>
@@ -89,9 +149,10 @@ const Certifications = () => {
           ))}
 
           <Button
-            type="link"
-            htmlType="button"
-            flat
+            type="success"
+            htmlType="submit"
+            flat={true}
+            disabled={false}
             style={{ padding: 0, fontWeight: 400 }}
             size="sm"
             onClick={() => {
@@ -101,7 +162,7 @@ const Certifications = () => {
               });
             }}
           >
-            {t("Add")}
+            {t("Add Certifications")}
           </Button>
         </>
       )}
