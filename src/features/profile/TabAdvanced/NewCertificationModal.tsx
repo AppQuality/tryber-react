@@ -10,8 +10,8 @@ import { useTranslation } from "react-i18next";
 import { Title, Text } from "@appquality/appquality-design-system";
 
 export const NewCertificationModal = () => {
-  const { refresh } = userStore();
   const { add } = siteWideMessageStore();
+  const { refresh } = userStore();
   const { close } = modalStore();
   const { t } = useTranslation();
   return (

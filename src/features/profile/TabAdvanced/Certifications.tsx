@@ -6,6 +6,7 @@ import {
   ErrorMessage,
   Text,
   CSSGrid,
+  Title,
 } from "@appquality/appquality-design-system";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -15,11 +16,39 @@ import { NewCertificationModal } from "./NewCertificationModal";
 import { AdvancedFormValues } from "./types";
 import { DeleteCertificationsModal } from "./DeleteCertificationsModal";
 import API from "../../../utils/api";
+import siteWideMessageStore from "../../../redux/siteWideMessages";
+import userStore from "../../../redux/user";
 
 const Certifications = () => {
   const { t } = useTranslation();
   const { values } = useFormikContext<AdvancedFormValues>();
-  const { open } = modalStore();
+  const { open, close } = modalStore();
+  const { refresh } = userStore();
+  const { add } = siteWideMessageStore();
+  const handleDeleteCertification = (certficationId: number) => {
+    API.deleteCertification(certficationId)
+      .then(() => {
+        add({
+          message: t("Certification deleted successfully"),
+          type: "success",
+        });
+        refresh("certifications");
+      })
+      .catch((e) => {
+        const { message } = e as HttpError;
+        const ErrorMessage = (
+          <div>
+            <Title size="s">
+              {t("There was an error adding this certification")}
+            </Title>
+            <Text>{message}</Text>
+          </div>
+        );
+        add({ message: ErrorMessage, type: "danger" });
+      });
+    close();
+  };
+
   return (
     <>
       <FormikField name="certificationsRadio">
@@ -52,6 +81,9 @@ const Certifications = () => {
                         htmlType="submit"
                         flat={true}
                         disabled={false}
+                        onClick={() => {
+                          close();
+                        }}
                       >
                         {t("Keep")}
                       </Button>
@@ -135,7 +167,9 @@ const Certifications = () => {
                             htmlType="submit"
                             flat={true}
                             disabled={false}
-                            onClick={() => {}}
+                            onClick={() => {
+                              handleDeleteCertification(cert.id);
+                            }}
                           >
                             {t("Remove")}
                           </Button>
