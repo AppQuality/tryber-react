@@ -6,46 +6,32 @@ import {
   ErrorMessage,
   Text,
   CSSGrid,
-  Title,
 } from "@appquality/appquality-design-system";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { FieldProps, useFormikContext } from "formik";
-import modalStore from "../../../redux/modal";
+import modalStore from "src/redux/modal";
 import { NewCertificationModal } from "./NewCertificationModal";
 import { AdvancedFormValues } from "./types";
 import { DeleteCertificationsModal } from "./DeleteCertificationsModal";
-import API from "../../../utils/api";
-import siteWideMessageStore from "../../../redux/siteWideMessages";
-import userStore from "../../../redux/user";
+import { useDispatch } from "react-redux";
+import { deleteCertification } from "src/redux/user/actions/deleteCertification";
+import { useSelector, shallowEqual } from "react-redux";
+import { components } from "src/utils/schema";
 
 const Certifications = () => {
   const { t } = useTranslation();
   const { values } = useFormikContext<AdvancedFormValues>();
   const { open, close } = modalStore();
-  const { refresh } = userStore();
-  const { add } = siteWideMessageStore();
+  const dispatch = useDispatch();
+
+  const userCertifications: components["schemas"]["Certification"][] =
+    useSelector(
+      (state: GeneralState) => state.user.user?.certifications,
+      shallowEqual
+    );
   const handleDeleteCertification = (certficationId: number) => {
-    API.deleteCertification(certficationId)
-      .then(() => {
-        add({
-          message: t("Certification deleted successfully"),
-          type: "success",
-        });
-        refresh("certifications");
-      })
-      .catch((e) => {
-        const { message } = e as HttpError;
-        const ErrorMessage = (
-          <div>
-            <Title size="s">
-              {t("There was an error adding this certification")}
-            </Title>
-            <Text>{message}</Text>
-          </div>
-        );
-        add({ message: ErrorMessage, type: "danger" });
-      });
+    dispatch(deleteCertification(certficationId));
     close();
   };
 
@@ -69,7 +55,7 @@ const Certifications = () => {
                 open({
                   content: (
                     <DeleteCertificationsModal
-                      certifications={values.certifications}
+                      certifications={userCertifications}
                     />
                   ),
                   title: t("Remove all the Certifications"),
@@ -117,7 +103,7 @@ const Certifications = () => {
       </FormikField>
       {values.certificationsRadio && (
         <>
-          {values?.certifications?.map((cert) => (
+          {userCertifications.map((cert) => (
             <CSSGrid
               gutter="20%"
               rowGap="1rem"
@@ -168,7 +154,7 @@ const Certifications = () => {
                             flat={true}
                             disabled={false}
                             onClick={() => {
-                              handleDeleteCertification(cert.id);
+                              cert.id && handleDeleteCertification(cert.id);
                             }}
                           >
                             {t("Remove")}
