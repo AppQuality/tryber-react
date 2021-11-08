@@ -4,6 +4,7 @@ import {
   CSSGrid,
   Form,
   Formik,
+  Spinner,
   Text,
   Title,
 } from "@appquality/appquality-design-system";
@@ -14,11 +15,16 @@ import { EducationSelect } from "../EducationSelect";
 import { CustomUserFields } from "./CustomUserFields";
 import Certifications from "./Certifications";
 import { MapCufValues } from "./MapCufValues";
+import { useSelector } from "react-redux";
 
 const TabAdvanced = () => {
   const { t } = useTranslation();
   const { initialUserValues, validationSchema } = MapCufValues();
+  const isLoading = useSelector(
+    (state: GeneralState) => state.user.loadingProfile
+  );
 
+  if (isLoading) return <Spinner />;
   return (
     <Formik
       enableReinitialize

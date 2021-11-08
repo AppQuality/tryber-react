@@ -30,7 +30,6 @@ export const MapCufValues = () => {
   if (typeof user.certifications?.length) {
     initialCertRadioValue = "true";
   }
-  console.log(user);
   const [initialUserValues, setInitialUserValues] =
     useState<AdvancedFormValues>({
       certificationsRadio: initialCertRadioValue,
@@ -110,7 +109,6 @@ export const MapCufValues = () => {
     setInitialUserValues({ ...initialUserValues, ...values });
     setValidationSchema({ ...validationSchema, ...schema });
   }, [cufGroups]);
-  console.log(initialUserValues);
   return {
     cufGroups: cufGroups,
     initialUserValues: initialUserValues,
