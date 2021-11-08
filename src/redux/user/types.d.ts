@@ -28,8 +28,12 @@ interface UserLoginData {
 
 type UserAction = {
   type: string;
-  data?: FetchProfileData | UserDeletionData | object;
+  data?: FetchProfileData | UserDeletionData | DeleteCertificationData | object;
   error?: HttpError;
+};
+
+type DeleteCertificationData = {
+  certificationId: number;
 };
 
 type FetchProfileData = {
