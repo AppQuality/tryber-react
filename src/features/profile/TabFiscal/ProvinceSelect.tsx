@@ -4,7 +4,6 @@ import {
   Select,
   SelectType,
 } from "@appquality/appquality-design-system";
-import { SelectProps } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import { FieldProps, useFormikContext } from "formik";
 import { ChangeEvent, useMemo } from "react";
 import { useTranslation } from "react-i18next";

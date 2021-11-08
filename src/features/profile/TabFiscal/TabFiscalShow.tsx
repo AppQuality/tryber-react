@@ -10,7 +10,6 @@ import {
 import { useTranslation } from "react-i18next";
 import { Icon } from "react-bootstrap-icons";
 import UserStore from "../../../redux/user";
-import { Dispatch, SetStateAction } from "react";
 
 const ShowItem = ({
   Icon,
@@ -64,9 +63,9 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
           {user.surname}
         </ShowItem>
         <ShowItem Icon={GenderAmbiguous} label={t("Gender")}>
-          {user.gender === "male"
+          {user.fiscal.gender === "male"
             ? t("Male")
-            : user.gender === "female"
+            : user.fiscal.gender === "female"
             ? t("Female")
             : t("Not specified")}
         </ShowItem>
