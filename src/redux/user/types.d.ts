@@ -1,7 +1,7 @@
 type User = undefined | UserData;
 
 interface UserStatus {
-  refresh: () => void;
+  refresh: (additionalFields?: string) => void;
   login: (data: UserLoginData) => void;
   getProfile: () => void;
   updateProfile: (data: UserData) => void;
