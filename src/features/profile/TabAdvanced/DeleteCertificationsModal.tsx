@@ -6,14 +6,14 @@ import {
   Text,
 } from "@appquality/appquality-design-system";
 import { FieldProps } from "formik";
-import { UserCertification } from "../types";
 import { useTranslation } from "react-i18next";
 import React from "react";
+import { components } from "src/utils/schema";
 
 export const DeleteCertificationsModal = ({
   certifications,
 }: {
-  certifications: UserCertification[];
+  certifications: components["schemas"]["Certification"][];
 }) => {
   const { t } = useTranslation();
   return (

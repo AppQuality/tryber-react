@@ -33,7 +33,7 @@ type UserAction = {
 };
 
 type DeleteCertificationData = {
-  certificationId: number;
+  newCertifications: components["schemas"]["Certification"][];
 };
 
 type FetchProfileData = {

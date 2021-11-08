@@ -102,20 +102,14 @@ const reducer = (
         isDeleteModalOpen: false,
       };
     case actionTypes.DELETE_CERTIFICATION:
-      const { certifications } = state.user;
-      if (Array.isArray(certifications)) {
-        if (action.data && "certificationId" in action.data) {
-          certifications.filter((cert) => {
-            return cert.id !== action.data.certificationId;
-          });
-        }
-      }
-      return {
-        ...state,
-        user: {
-          certifications: action.data,
-        },
-      };
+      if (action.data && "newCertifications" in action.data)
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            certifications: action.data.newCertifications,
+          },
+        };
   }
   return state;
 };
