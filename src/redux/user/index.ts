@@ -43,7 +43,8 @@ export default (): UserStatus => {
   const dispatch: Dispatch<any> = useDispatch();
 
   return {
-    refresh: () => dispatch(refreshUser()),
+    refresh: (additionalFields?: string) =>
+      dispatch(refreshUser(additionalFields)),
     login: (data: UserLoginData) => dispatch(loginUser(data)),
     getProfile: () => dispatch(getProfile()),
     updateProfile: (data: UserData) => dispatch(updateProfile(data)),

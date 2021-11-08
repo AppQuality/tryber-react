@@ -49,7 +49,7 @@ const apifetch = async ({
     return await res.json();
   } else {
     const json = await res.json();
-    throw new HttpError(res.status, res.statusText, json.err);
+    throw new HttpError(res.status, res.statusText, json.message || json.err);
   }
 };
 
