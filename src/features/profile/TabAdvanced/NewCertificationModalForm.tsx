@@ -130,6 +130,13 @@ const NewCertificationModalForm = ({
           </FormGroup>
         )}
       </FormikField>
+      <FormikField name={"achievement_date"}>
+        {({}: FieldProps) => (
+          <FormGroup>
+            <input type="text" />
+          </FormGroup>
+        )}
+      </FormikField>
       <Button type="success" htmlType="submit" flat={true} disabled={false}>
         {t("Add")}
       </Button>

@@ -18,8 +18,8 @@ export interface CertificationFields {
 }
 export interface UserCertification {
   id: number;
-  name: string;
-  area: string;
-  institute: string;
+  name?: string;
+  area?: string;
+  institute?: string;
   achievement_date: string;
 }
