@@ -31,7 +31,7 @@ export const addCertification = async (certification: {
 export const deleteCertification = async (
   certificationId: number
 ): Promise<
-  operations["get-certifications"]["responses"]["200"]["content"]["application/json"]
+  operations["delete-users-me-certifications-certificationId"]["responses"]["200"]["content"]["application/json"]
 > => {
   return apifetch({
     endpoint: "/users/me/certifications/" + certificationId.toString(),
