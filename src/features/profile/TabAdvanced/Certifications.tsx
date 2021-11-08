@@ -27,9 +27,10 @@ const Certifications = () => {
 
   const userCertifications: components["schemas"]["Certification"][] =
     useSelector(
-      (state: GeneralState) => state.user.user?.certifications,
+      (state: GeneralState) => state.user.user?.certifications || [],
       shallowEqual
     );
+
   const handleDeleteCertification = (certficationId: number) => {
     dispatch(deleteCertification(certficationId));
     close();

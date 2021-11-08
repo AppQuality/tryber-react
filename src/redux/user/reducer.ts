@@ -10,6 +10,7 @@ const reducer = (
   state: UserState = initialState,
   action: UserAction
 ): UserState => {
+  console.log(action.type);
   switch (action.type) {
     case actionTypes.USER_REFRESH:
       if (action.data) {
