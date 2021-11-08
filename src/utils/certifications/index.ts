@@ -27,3 +27,14 @@ export const addCertification = async (certification: {
     body: certification,
   });
 };
+
+export const deleteCertification = async (
+  certificationId: number
+): Promise<
+  operations["get-certifications"]["responses"]["200"]["content"]["application/json"]
+> => {
+  return apifetch({
+    endpoint: "/users/me/certifications/" + certificationId.toString(),
+    method: "DELETE",
+  });
+};
