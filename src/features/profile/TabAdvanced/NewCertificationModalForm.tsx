@@ -24,7 +24,7 @@ const NewCertificationModalForm = ({
 
   useEffect(() => {
     const getInstitutes = async () => {
-      let results = await API.certifications({});
+      let results = await API.getCertifications({});
       //get only institutes
       let institutes = results
         .map((item) => item.institute)
@@ -40,7 +40,7 @@ const NewCertificationModalForm = ({
       let filterBy = values.institute
         ? { filterBy: { institute: values.institute } }
         : {};
-      let results = await API.certifications(filterBy);
+      let results = await API.getCertifications(filterBy);
       let areas = results
         .map((item) => item.area)
         .filter((v, i, a) => a.indexOf(v) === i);
@@ -54,7 +54,7 @@ const NewCertificationModalForm = ({
         values.institute && values.area
           ? { filterBy: { institute: values.institute, area: values.area } }
           : {};
-      let results = await API.certifications(filterBy);
+      let results = await API.getCertifications(filterBy);
       setCertifications(
         results.map((item) => ({ label: item.name, value: item.id.toString() }))
       );

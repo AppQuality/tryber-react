@@ -1,7 +1,7 @@
 import { operations } from "../schema";
 import apifetch from "../apifetch";
 
-export const certifications = async ({
+export const getCertifications = async ({
   filterBy,
 }: {
   filterBy?: operations["get-certifications"]["parameters"]["query"]["filterBy"];

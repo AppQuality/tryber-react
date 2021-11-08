@@ -14,6 +14,7 @@ import modalStore from "../../../redux/modal";
 import { NewCertificationModal } from "./NewCertificationModal";
 import { AdvancedFormValues } from "./types";
 import { DeleteCertificationsModal } from "./DeleteCertificationsModal";
+import API from "../../../utils/api";
 
 const Certifications = () => {
   const { t } = useTranslation();
@@ -134,6 +135,7 @@ const Certifications = () => {
                             htmlType="submit"
                             flat={true}
                             disabled={false}
+                            onClick={() => {}}
                           >
                             {t("Remove")}
                           </Button>
