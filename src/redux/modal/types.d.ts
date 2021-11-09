@@ -4,6 +4,7 @@ type ModalAction = {
     content?: React.ReactNode;
     footer?: React.ReactNode;
     title?: React.ReactNode;
+    size?: "large" | "mid" | "small";
   };
 };
 
@@ -12,5 +13,6 @@ type ModalState = {
   content?: React.ReactNode;
   footer?: React.ReactNode;
   title?: React.ReactNode;
+  size?: "large" | "mid" | "small";
 };
 type ModalDispatchType = (args: ModalAction) => ModalAction;

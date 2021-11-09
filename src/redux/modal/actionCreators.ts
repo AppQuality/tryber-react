@@ -3,7 +3,8 @@ import * as actionTypes from "./actionTypes";
 export function openModal(
   content: React.ReactNode,
   footer?: React.ReactNode,
-  title?: React.ReactNode
+  title?: React.ReactNode,
+  size?: "large" | "mid" | "small"
 ) {
   const action: ModalAction = {
     type: actionTypes.SET_MODAL,
@@ -11,6 +12,7 @@ export function openModal(
       content,
       footer,
       title,
+      size,
     },
   };
 
