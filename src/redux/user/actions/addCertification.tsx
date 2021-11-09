@@ -6,29 +6,28 @@ import { ReactNode } from "react";
 
 export function addCertification(
   certification: operations["post-users-me-certifications"]["requestBody"]["content"]["application/json"],
-  onSuccessMsg: ReactNode,
-  onFailMsg: ReactNode
+  onSuccessMsg?: ReactNode,
+  onFailMsg?: ReactNode
 ) {
   return (dispatch: any) => {
     return API.addCertification(certification)
       .then(async () => {
         try {
           const res = await API.me(undefined, "certifications");
-          dispatch(addMessage(onSuccessMsg, "success", false));
+          dispatch(addMessage(onSuccessMsg, "success"));
           return dispatch({
-            type: actionTypes.ADD_CERTIFICATION,
+            type: actionTypes.UPDATE_CERTIFICATIONS,
             data: { newCertifications: res.certifications || [] },
           });
         } catch (e) {
-          dispatch(addMessage(onFailMsg, "danger", 3));
+          dispatch(addMessage(onFailMsg, "danger"));
           console.log(e);
           dispatch({ type: actionTypes.FETCH_PROFILE_FAILED, error: e });
         }
       })
       .catch((e) => {
-        dispatch(addMessage(onFailMsg, "danger", 4));
+        dispatch(addMessage(onFailMsg, "danger"));
         console.log(e);
-        dispatch({ type: actionTypes.ADD_CERTIFICATION_FAILED, error: e });
       });
   };
 }

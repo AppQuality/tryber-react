@@ -7,34 +7,29 @@ import {
   Text,
   CSSGrid,
 } from "@appquality/appquality-design-system";
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { FieldProps, useFormikContext } from "formik";
 import modalStore from "src/redux/modal";
 import { NewCertificationModal } from "./NewCertificationModal";
 import { AdvancedFormValues } from "./types";
-import { DeleteCertificationsModal } from "./DeleteCertificationsModal";
-import { useDispatch } from "react-redux";
-import { deleteCertification } from "src/redux/user/actions/deleteCertification";
+import {
+  DeleteCertificationsModal,
+  DeleteCertificationsModalFooter,
+} from "./DeleteCertificationsModal";
 import { useSelector, shallowEqual } from "react-redux";
 import { components } from "src/utils/schema";
 
 const Certifications = () => {
   const { t } = useTranslation();
   const { values } = useFormikContext<AdvancedFormValues>();
-  const { open, close } = modalStore();
-  const dispatch = useDispatch();
+  const { open } = modalStore();
 
   const userCertifications: components["schemas"]["Certification"][] =
     useSelector(
       (state: GeneralState) => state.user.user?.certifications || [],
       shallowEqual
     );
-
-  const handleDeleteCertification = (certficationId: number) => {
-    dispatch(deleteCertification(certficationId));
-    close();
-  };
 
   return (
     <>
@@ -50,9 +45,11 @@ const Certifications = () => {
               checked={field.value === "false"}
               id="certificationFalse"
               label={t("I have no certifications")}
-              onChange={(v) => {
-                form.setFieldTouched(field.name);
-                form.setFieldValue(field.name, v);
+              onChange={(v: string, e?: ChangeEvent<HTMLInputElement>) => {
+                e?.preventDefault();
+                if (v === "false") {
+                  form.setFieldValue(field.name, "true");
+                }
                 open({
                   content: (
                     <DeleteCertificationsModal
@@ -61,29 +58,18 @@ const Certifications = () => {
                   ),
                   title: t("Remove all the Certifications"),
                   footer: (
-                    <>
-                      {" "}
-                      <Button
-                        type="primary"
-                        htmlType="submit"
-                        flat={true}
-                        disabled={false}
-                        onClick={() => {
-                          close();
-                        }}
-                      >
-                        {t("Keep")}
-                      </Button>
-                      <Button
-                        type="danger"
-                        htmlType="submit"
-                        flat={true}
-                        disabled={false}
-                      >
-                        {t("Remove")}
-                      </Button>
-                    </>
+                    <DeleteCertificationsModalFooter
+                      onSubmit={() => {
+                        e?.target?.click();
+                        form.setFieldTouched(field.name);
+                        form.setFieldValue(field.name, v);
+                      }}
+                      onClose={() => {
+                        form.setFieldValue(field.name, "true");
+                      }}
+                    />
                   ),
+                  size: "small",
                 });
               }}
             />
@@ -105,13 +91,7 @@ const Certifications = () => {
       {values.certificationsRadio && (
         <>
           {userCertifications.map((cert) => (
-            <CSSGrid
-              gutter="20%"
-              rowGap="1rem"
-              min="70px"
-              className="aq-mb-3"
-              // style= "border-top: 1px solid #d1e0e8;"
-            >
+            <CSSGrid gutter="20%" rowGap="1rem" min="70px" className="aq-mb-3">
               <div className="aq-text-primary">
                 <Text small aria-disabled={true}>
                   {cert.achievement_date}
@@ -131,40 +111,15 @@ const Certifications = () => {
                   style={{ padding: 0, fontWeight: 400 }}
                   size="sm"
                   onClick={() => {
-                    let certifications = [];
-                    certifications.push(cert);
                     open({
                       content: (
                         <DeleteCertificationsModal certifications={[cert]} />
                       ),
                       title: t("Remove Certification"),
                       footer: (
-                        <>
-                          {" "}
-                          <Button
-                            type="primary"
-                            htmlType="submit"
-                            flat={true}
-                            disabled={false}
-                            onClick={() => {
-                              close();
-                            }}
-                          >
-                            {t("Keep")}
-                          </Button>
-                          <Button
-                            type="danger"
-                            htmlType="submit"
-                            flat={true}
-                            disabled={false}
-                            onClick={() => {
-                              cert.id && handleDeleteCertification(cert.id);
-                            }}
-                          >
-                            {t("Remove")}
-                          </Button>
-                        </>
+                        <DeleteCertificationsModalFooter certification={cert} />
                       ),
+                      size: "small",
                     });
                   }}
                 >
@@ -173,23 +128,22 @@ const Certifications = () => {
               </div>
             </CSSGrid>
           ))}
-
-          <Button
-            type="success"
-            htmlType="submit"
-            flat={true}
-            disabled={false}
-            style={{ padding: 0, fontWeight: 400 }}
-            size="sm"
-            onClick={() => {
-              open({
-                content: <NewCertificationModal />,
-                title: t("Add Certifications"),
-              });
-            }}
-          >
-            {t("Add Certifications")}
-          </Button>
+          {values.certificationsRadio === "true" && (
+            <Button
+              type="success"
+              htmlType="submit"
+              flat={true}
+              disabled={false}
+              onClick={() => {
+                open({
+                  content: <NewCertificationModal />,
+                  title: t("Add Certifications"),
+                });
+              }}
+            >
+              {t("Add Certifications")}
+            </Button>
+          )}
         </>
       )}
     </>
