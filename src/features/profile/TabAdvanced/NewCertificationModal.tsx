@@ -14,7 +14,12 @@ export const NewCertificationModal = () => {
 
   return (
     <Formik
-      initialValues={{ institute: "", area: "", certificationId: "" }}
+      initialValues={{
+        institute: "",
+        area: "",
+        certificationId: "",
+        achievementDate: "",
+      }}
       onSubmit={async (values) => {
         dispatch(
           addCertification(

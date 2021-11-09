@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import {
   Button,
+  Datepicker,
   Form,
   FormGroup,
   FormikField,
+  FormLabel,
   Select,
   SelectType,
 } from "@appquality/appquality-design-system";
@@ -130,10 +132,33 @@ const NewCertificationModalForm = ({
           </FormGroup>
         )}
       </FormikField>
-      <FormikField name={"achievement_date"}>
-        {({}: FieldProps) => (
+      <FormikField name={"achievementDate"}>
+        {({ form, field }: FieldProps) => (
           <FormGroup>
-            <input type="text" />
+            <FormLabel htmlFor={field.name} label={t("Achievement Date")} />
+            {/*<Datepicker*/}
+            {/*  value={initialValue}*/}
+            {/*  id={name}*/}
+            {/*  locale={i18n.language}*/}
+            {/*  maxDate={*/}
+            {/*    new Date(now.getFullYear() - 18, now.getMonth(), now.getDate())*/}
+            {/*  }*/}
+            {/*  placeholder={t("Select your birth date")}*/}
+            {/*  setText={t("Set")}*/}
+            {/*  cancelText={t("Cancel")}*/}
+            {/*  onCancel={onCancel}*/}
+            {/*  onChange={(v: { value: Date }) =>*/}
+            {/*    onChange(*/}
+            {/*      new Date(*/}
+            {/*        Date.UTC(*/}
+            {/*          v.value.getFullYear(),*/}
+            {/*          v.value.getMonth(),*/}
+            {/*          v.value.getDate()*/}
+            {/*        )*/}
+            {/*      )*/}
+            {/*    )*/}
+            {/*  }*/}
+            {/*/>*/}
           </FormGroup>
         )}
       </FormikField>
