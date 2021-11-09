@@ -10,7 +10,7 @@ const reducer = (
   state: UserState = initialState,
   action: UserAction
 ): UserState => {
-  console.log(action.type);
+  // @ts-ignore
   switch (action.type) {
     case actionTypes.USER_REFRESH:
       if (action.data) {
@@ -102,6 +102,16 @@ const reducer = (
         ...state,
         isDeleteModalOpen: false,
       };
+    case actionTypes.ADD_CERTIFICATION:
+      if (action.data && "newCertifications" in action.data)
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            certifications: action.data.newCertifications,
+          },
+        };
+      break;
     case actionTypes.DELETE_CERTIFICATION:
       if (action.data && "newCertifications" in action.data)
         return {
@@ -111,6 +121,7 @@ const reducer = (
             certifications: action.data.newCertifications,
           },
         };
+      break;
   }
   return state;
 };
