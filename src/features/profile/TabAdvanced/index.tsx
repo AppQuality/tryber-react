@@ -61,6 +61,15 @@ const TabAdvanced = () => {
                   </ul>
                 </Text>
               )}
+              {formikProps.values && (
+                <Text color="primary" small>
+                  <ul style={{ listStyle: "disc" }}>
+                    {Object.entries(formikProps.values).map((value, key) => (
+                      <li>{JSON.stringify(value)}</li>
+                    ))}
+                  </ul>
+                </Text>
+              )}
               <Button
                 type="success"
                 htmlType="submit"

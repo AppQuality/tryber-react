@@ -102,17 +102,7 @@ const reducer = (
         ...state,
         isDeleteModalOpen: false,
       };
-    case actionTypes.ADD_CERTIFICATION:
-      if (action.data && "newCertifications" in action.data)
-        return {
-          ...state,
-          user: {
-            ...state.user,
-            certifications: action.data.newCertifications,
-          },
-        };
-      break;
-    case actionTypes.DELETE_CERTIFICATION:
+    case actionTypes.UPDATE_CERTIFICATIONS:
       if (action.data && "newCertifications" in action.data)
         return {
           ...state,
