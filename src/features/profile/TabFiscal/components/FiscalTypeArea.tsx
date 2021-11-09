@@ -47,16 +47,16 @@ const FiscalTypeArea = () => {
               id="notItalian"
               label={t("Not italian")}
               onChange={() => {
-                form.setValues((prevState: FiscalFormValues) => ({
-                  ...prevState,
-                  fiscalTypeRadio: "non-italian",
-                  type: "non-italian",
-                }));
                 form.setTouched({
                   ...form.touched,
                   fiscalTypeRadio: true,
                   type: true,
                 });
+                form.setValues((prevState: FiscalFormValues) => ({
+                  ...prevState,
+                  fiscalTypeRadio: "non-italian",
+                  type: "non-italian",
+                }));
               }}
             />
             <ErrorMessage name={field.name} />

@@ -32,7 +32,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   const { address } = residenceModalStore();
 
   const initialUserValues: FiscalFormValues = {
-    gender: user.fiscal.gender || "",
+    gender: user.fiscal?.gender || "",
     fiscalId: user.fiscal?.fiscalId || "",
     type: user.fiscal?.type || "",
     fiscalTypeSelect:
