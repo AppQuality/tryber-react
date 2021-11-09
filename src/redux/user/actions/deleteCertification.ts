@@ -3,7 +3,6 @@ import API from "src/utils/api";
 
 export function deleteCertification(certificationId: number) {
   return (dispatch: UserDispatchType) => {
-    dispatch({ type: actionTypes.DELETE_CERTIFICATION_LOADING });
     return API.deleteCertification(certificationId)
       .then(async () => {
         try {

@@ -146,6 +146,9 @@ const Certifications = () => {
                             htmlType="submit"
                             flat={true}
                             disabled={false}
+                            onClick={() => {
+                              close();
+                            }}
                           >
                             {t("Keep")}
                           </Button>

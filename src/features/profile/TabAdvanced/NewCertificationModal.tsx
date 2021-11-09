@@ -2,45 +2,39 @@ import { Formik } from "@appquality/appquality-design-system";
 import { FormikProps } from "formik";
 import { CertificationFields } from "../types";
 import NewCertificationModalForm from "./NewCertificationModalForm";
-import API from "../../../utils/api";
-import userStore from "../../../redux/user";
-import siteWideMessageStore from "../../../redux/siteWideMessages";
 import modalStore from "../../../redux/modal";
 import { useTranslation } from "react-i18next";
-import { Title, Text } from "@appquality/appquality-design-system";
+import { useDispatch } from "react-redux";
+import { addCertification } from "../../../redux/user/actions/addCertification";
 
 export const NewCertificationModal = () => {
-  const { add } = siteWideMessageStore();
-  const { refresh } = userStore();
   const { close } = modalStore();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{ institute: "", area: "", certificationId: "" }}
       onSubmit={async (values) => {
-        try {
-          const res = await API.addCertification({
-            certification_id: parseInt(values.certificationId),
-            achievement_date: "2021-11-10",
-          });
-          refresh("certifications");
-          close();
-          add({
-            message: t("Certification added successfully"),
-            type: "success",
-          });
-        } catch (e) {
-          const { message } = e as HttpError;
-          const ErrorMessage = (
+        dispatch(
+          addCertification(
+            {
+              certification_id: parseInt(values.certificationId),
+              achievement_date: "2021-11-10",
+            },
             <div>
-              <Title size="s">
-                {t("There was an error adding this certification")}
-              </Title>
-              <Text>{message}</Text>
+              <strong>{t("Certification uploaded correctly.")}</strong>
+              {t("You can add more in the certifications section")}
+            </div>,
+            <div>
+              <strong>
+                {t("There was an error adding this certification.")}
+              </strong>
+              {t("Try again.")}
             </div>
-          );
-          add({ message: ErrorMessage, type: "danger" });
-        }
+          )
+        );
+        close();
       }}
     >
       {(formikProps: FormikProps<CertificationFields>) => {
