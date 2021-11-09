@@ -93,7 +93,11 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
           t("This value is invalid, you need to select a city with a province")
         ),
     }),
-    fiscalId: yup.string().required(t("This is a required field")),
+    fiscalId: yup
+      .string()
+      .required(t("This is a required field"))
+      .min(11, t("Should be at least 11 characters"))
+      .max(16, t("Should be at most 16 characters")),
   };
 
   const genderOptions = [

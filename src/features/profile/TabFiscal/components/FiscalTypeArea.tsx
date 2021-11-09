@@ -190,6 +190,7 @@ const FiscalTypeArea = () => {
                 type="text"
                 value={field.value}
                 onChange={(v) => {
+                  form.setFieldTouched(field.name);
                   field.onChange(v);
                   form.setFieldValue(field.name, v, true);
                 }}

@@ -254,6 +254,8 @@
   "Services": "Services",
   "Set": "Set",
   "Severity": "Severity",
+  "Should be at least 11 characters": "Should be at least 11 characters",
+  "Should be at most 16 characters": "Should be at most 16 characters",
   "Signup now": "Signup now",
   "social": "social",
   "Spoken languages": "Spoken languages",
