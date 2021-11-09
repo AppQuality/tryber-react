@@ -2,7 +2,7 @@ import modalStore from "../redux/modal";
 import { Modal } from "@appquality/appquality-design-system";
 
 const GenericModal = () => {
-  const { isOpen, close, content, footer, title } = modalStore();
+  const { isOpen, close, content, footer, title, size } = modalStore();
 
   return (
     <Modal
@@ -10,6 +10,7 @@ const GenericModal = () => {
       footer={footer}
       title={title}
       onClose={() => close()}
+      size={size}
     >
       {content}
     </Modal>
