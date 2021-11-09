@@ -32,6 +32,14 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   const { user, updateFiscalProfile } = UserStore();
   const { address } = residenceModalStore();
 
+  let street, streetNumber;
+  let streetData = user.fiscal?.address?.street;
+  if (streetData) {
+    streetData = streetData.split(",");
+    street = streetData[0];
+    if (streetData.length > 1) streetNumber = streetData[1];
+  }
+
   const initialUserValues: FiscalFormValues = {
     gender: user.fiscal?.gender || "",
     fiscalId: user.fiscal?.fiscalId || "",
@@ -51,8 +59,8 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
     countryCode: user.fiscal?.address?.country,
     provinceCode: user.fiscal?.address?.province,
     city: user.fiscal?.address?.city,
-    street: user.fiscal?.address?.street,
-    streetNumber: user.fiscal?.address?.streetNumber,
+    street: street,
+    streetNumber: streetNumber,
     zipCode: user.fiscal?.address?.cityCode,
   };
 
@@ -121,7 +129,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
             country: values.countryCode,
             province: values.provinceCode,
             city: values.city,
-            street: `${values.street} ${values.streetNumber}`,
+            street: `${values.street}, ${values.streetNumber}`,
             cityCode: values.zipCode,
           },
           type: values.type,
