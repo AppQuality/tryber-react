@@ -75,7 +75,7 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
       </div>
       <div>
         <ShowItem Icon={CashCoin} label={t("Fiscal Type")}>
-          {user.fiscal.type === "witholding"
+          {user.fiscal.type === "withholding"
             ? t(`Annual witholding < 5000€`)
             : user.fiscal.type === "witholding-extra"
             ? t("Annual witholding > 5000")
