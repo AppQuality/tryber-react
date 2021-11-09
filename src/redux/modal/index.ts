@@ -8,17 +8,20 @@ export default () => {
     content,
     footer,
     title,
+    size,
   }: {
     open: boolean;
     content?: React.ReactNode;
     footer?: React.ReactNode;
     title?: React.ReactNode;
+    size?: "large" | "mid" | "small";
   } = useSelector(
     (state: GeneralState) => ({
       open: state.modal.open,
       content: state.modal.content,
       footer: state.modal.footer,
       title: state.modal.title,
+      size: state.modal.size,
     }),
     shallowEqual
   );
@@ -30,15 +33,18 @@ export default () => {
     content: content,
     footer: footer,
     title: title,
+    size: size,
     close: () => dispatch(closeModal()),
     open: ({
       content,
       footer,
       title,
+      size,
     }: {
       content?: React.ReactNode;
       footer?: React.ReactNode;
       title?: React.ReactNode;
-    }) => dispatch(openModal(content, footer, title)),
+      size?: "large" | "mid" | "small";
+    }) => dispatch(openModal(content, footer, title, size)),
   };
 };
