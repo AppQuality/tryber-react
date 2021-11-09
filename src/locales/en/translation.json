@@ -321,6 +321,7 @@
   "You need to select a city": "You need to select a city",
   "You need to select a country": "You need to select a country",
   "You need to select a street": "You need to select a street",
+  "You need to select a street with a street code": "You need to select a street with a street code",
   "Your address need a zip code": "Your address need a zip code",
   "Your address need to have a province code": "Your address need to have a province code",
   "Your current password is not correct": "Your current password is not correct",

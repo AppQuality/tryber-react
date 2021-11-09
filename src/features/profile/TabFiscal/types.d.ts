@@ -23,6 +23,7 @@ type FiscalFormValues = {
   provinceCode?: string; // MI,
   city?: string; //"Riomaggiore",
   street?: string; //"Via dell' Amore",
+  streetNumber?: string; //"1",
   zipCode?: string; //"19017"
   fiscalTypeRadio?: "non-italian" | "italian";
   fiscalTypeSelect?: "withholding" | "witholding-extra" | "other";

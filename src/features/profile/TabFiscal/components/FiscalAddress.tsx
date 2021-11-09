@@ -1,31 +1,26 @@
 import {
   Button,
-  BSGrid,
-  BSCol,
   FormLabel,
-  FormikField,
   Text,
   PlacesAutocomplete,
   FormGroup,
   ErrorMessage,
-  ModalBody,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import modalStore from "../../../../redux/modal";
-import userStore from "../../../../redux/user";
-import residenceModalStore from "../../../../redux/addResidenceAddressModal";
-import { FieldProps, useFormikContext } from "formik";
+import { useFormikContext } from "formik";
 import FiscalResidenceModal from "./FiscalResidenceModal";
 
 const FiscalAddress = () => {
   const { t, i18n } = useTranslation();
-  const { open: openModal, address } = residenceModalStore();
   const { open } = modalStore();
   const { setValues, setTouched, values, errors, touched } =
     useFormikContext<FiscalFormValues>();
-  const formattedAddress = `${values.street || ""} ${values.city || ""} ${
-    values.zipCode || ""
-  } ${values.provinceCode || ""} ${values.countryCode || ""}`;
+  const formattedAddress = `${values.street || ""} ${
+    values.streetNumber || ""
+  } ${values.city || ""} ${values.zipCode || ""} ${values.provinceCode || ""} ${
+    values.countryCode || ""
+  }`;
 
   return (
     <FormGroup>
@@ -52,6 +47,7 @@ const FiscalAddress = () => {
             city: true,
             zipCode: true,
             street: true,
+            streetNumber: true,
           })
         }
         onChange={(places) => {
@@ -93,12 +89,14 @@ const FiscalAddress = () => {
           errors.provinceCode ||
           errors.city ||
           errors.zipCode ||
-          errors.street) &&
+          errors.street ||
+          errors.streetNumber) &&
           touched.countryCode &&
           touched.provinceCode &&
           touched.city &&
           touched.zipCode &&
-          touched.street && (
+          touched.street &&
+          touched.streetNumber && (
             <div className="aq-mt-2">
               <ul style={{ listStyle: "disc" }}>
                 {errors.countryCode && (
@@ -124,6 +122,11 @@ const FiscalAddress = () => {
                 {errors.street && (
                   <li>
                     <ErrorMessage name="street" />
+                  </li>
+                )}
+                {errors.streetNumber && (
+                  <li>
+                    <ErrorMessage name="streetNumber" />
                   </li>
                 )}
               </ul>

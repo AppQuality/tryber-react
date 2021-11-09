@@ -51,6 +51,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
     provinceCode: user.fiscal?.address?.province,
     city: user.fiscal?.address?.city,
     street: user.fiscal?.address?.street,
+    streetNumber: user.fiscal?.address?.streetNumber,
     zipCode: user.fiscal?.address?.cityCode,
   };
 
@@ -65,6 +66,9 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
       .required(t("Your address need to have a province code")),
     city: yup.string().required(t("You need to select a city")),
     street: yup.string().required(t("You need to select a street")),
+    streetNumber: yup
+      .string()
+      .required(t("You need to select a street with a street code")),
     zipCode: yup.string().required(t("Your address need a zip code")),
     fiscalTypeRadio: yup
       .string()
@@ -117,6 +121,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
             province: values.provinceCode,
             city: values.city,
             street: values.street,
+            streetNumber: values.streetNumber,
             cityCode: values.zipCode,
           },
           type: values.type,
