@@ -99,9 +99,6 @@ const FiscalAddress = () => {
           touched.zipCode &&
           touched.street && (
             <div className="aq-mt-2">
-              <Text color="danger">
-                Please add the following fields to your address:
-              </Text>
               <ul style={{ listStyle: "disc" }}>
                 {errors.countryCode && (
                   <li>

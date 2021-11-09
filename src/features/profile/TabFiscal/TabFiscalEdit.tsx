@@ -59,11 +59,13 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
       .string()
       .oneOf(["male", "female"])
       .required(t("This is a required field")),
-    countryCode: yup.string().required(t("This is a required field")),
-    provinceCode: yup.string().required(t("This is a required field")),
-    city: yup.string().required(t("This is a required field")),
-    street: yup.string().required(t("This is a required field")),
-    zipCode: yup.string().required(t("This is a required field")),
+    countryCode: yup.string().required(t("You need to select a country")),
+    provinceCode: yup
+      .string()
+      .required(t("Your address need to have a province code")),
+    city: yup.string().required(t("You need to select a city")),
+    street: yup.string().required(t("You need to select a street")),
+    zipCode: yup.string().required(t("Your address need a zip code")),
     fiscalTypeRadio: yup
       .string()
       .oneOf(["non-italian", "italian"])
