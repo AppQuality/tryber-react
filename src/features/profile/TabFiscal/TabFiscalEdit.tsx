@@ -25,6 +25,7 @@ import residenceModalStore from "../../../redux/addResidenceAddressModal";
 import * as yup from "yup";
 import FiscalResidenceModal from "./components/FiscalResidenceModal";
 import styled from "styled-components";
+import dateFormatter from "../../../utils/dateFormatter";
 
 export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   const { t } = useTranslation();
@@ -194,7 +195,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                   id="birth_date"
                   type="text"
                   disabled
-                  value={user.birthDate}
+                  value={dateFormatter(user.birthDate)}
                 />
               </FormGroup>
             </div>

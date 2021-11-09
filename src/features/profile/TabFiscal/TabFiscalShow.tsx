@@ -10,6 +10,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { Icon } from "react-bootstrap-icons";
 import UserStore from "../../../redux/user";
+import dateFormatter from "../../../utils/dateFormatter";
 
 const ShowItem = ({
   Icon,
@@ -70,7 +71,7 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
             : t("Not specified")}
         </ShowItem>
         <ShowItem Icon={Calendar2Date} label={t("Birth Date")}>
-          {user.birthDate}
+          {dateFormatter(user.birthDate)}
         </ShowItem>
       </div>
       <div>
