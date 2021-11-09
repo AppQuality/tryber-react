@@ -127,6 +127,7 @@ const FiscalTypeArea = () => {
                         region: i18n.language,
                       },
                       selectProps: {
+                        isClearable: true,
                         value: {
                           label: field.value || "",
                           value: field.value || "",

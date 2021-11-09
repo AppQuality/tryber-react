@@ -38,6 +38,7 @@ const FiscalAddress = () => {
             region: i18n.language,
           },
           selectProps: {
+            isClearable: true,
             value: {
               label: formattedAddress,
               value: formattedAddress,
