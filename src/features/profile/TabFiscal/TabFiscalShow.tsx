@@ -86,9 +86,11 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
         <ShowItem Icon={CreditCard2Front} label={t("Fiscal Code")}>
           {user.fiscal.fiscalId}
         </ShowItem>
-        <ShowItem Icon={Building} label={t("Birth city")}>
-          {user.fiscal.birthPlace.city}
-        </ShowItem>
+        {user.fiscal.type !== "non-italian" && (
+          <ShowItem Icon={Building} label={t("Birth city")}>
+            {user.fiscal.birthPlace.city}
+          </ShowItem>
+        )}
         <ShowItem Icon={Compass} label={t("Fiscal residence")}>
           <p>{user.fiscal.address.street}</p>
           <p>{`${user.fiscal.address.cityCode} ${user.fiscal.address.city} (${user.fiscal.address.province})`}</p>
