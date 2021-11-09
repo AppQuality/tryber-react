@@ -157,17 +157,13 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                       <Select
                         name={field.name}
                         label={t("Gender")}
-                        value={genderOptions.filter(
-                          (opt) => opt.value === field.value
-                        )}
-                        onBlur={(e: ChangeEvent) => {
-                          form.setFieldTouched(field.name);
-                        }}
+                        value={{ label: "", value: field.value }}
                         onChange={(v) => {
-                          if (v === null) {
-                            v = { label: "", value: "" };
+                          form.setFieldTouched(field.name);
+                          if (!v || !v.value) {
+                            form.setFieldValue(field.name, "", true);
+                            return;
                           }
-                          field.onChange(v.value);
                           form.setFieldValue(field.name, v.value, true);
                         }}
                         options={genderOptions}
