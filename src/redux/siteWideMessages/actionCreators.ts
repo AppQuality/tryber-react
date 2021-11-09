@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { aqBootstrapTheme } from "@appquality/appquality-design-system";
 
 export function addMessage(
-  message: string,
+  message: React.ReactNode,
   type: keyof typeof aqBootstrapTheme.palette,
   expire: number | false = 3
 ) {
