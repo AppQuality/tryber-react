@@ -103,11 +103,18 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
     }),
     birthPlaceProvince: yup.string().when("fiscalTypeRadio", {
       is: "italian",
-      then: yup
-        .string()
-        .required(
-          t("This value is invalid, you need to select a city with a province")
-        ),
+      then: yup.string().when("birthPlaceCity", (birthPlaceCity) => {
+        if (yup.string().required().isValidSync(birthPlaceCity)) {
+          return yup
+            .string()
+            .required(
+              t(
+                "This value is invalid, you need to select a city with a province"
+              )
+            );
+        }
+        return yup.string();
+      }),
     }),
     fiscalId: yup
       .string()
