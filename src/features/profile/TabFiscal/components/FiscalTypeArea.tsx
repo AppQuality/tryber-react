@@ -198,7 +198,7 @@ const FiscalTypeArea = () => {
                 }}
               />
               {values.fiscalTypeRadio === "italian" && (
-                <Text small className="aq-mt-1">
+                <Text small className="aq-mt-1 aq-text-secondary">
                   Any change to your personal data will lead to the
                   recalculation of your tax code
                 </Text>

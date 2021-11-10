@@ -192,7 +192,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                 <Input id="name" type="text" disabled value={user.name} />
               </FormGroup>
               <FormGroup>
-                <FormLabel htmlFor="surname" label={t("Surname")} />
+                <FormLabel htmlFor="surname" label={t("Surname")} isDisabled />
                 <Input id="surname" type="text" disabled value={user.surname} />
               </FormGroup>
               <FormikField name="gender">
@@ -217,7 +217,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                         options={genderOptions}
                       />
                       <Text small className="aq-mt-1">
-                        <span className="aq-text-disabled-dark">
+                        <span className="aq-text-secondary">
                           {t(
                             "For tax reasons we are obliged to tie this choice to binary options only"
                           )}
