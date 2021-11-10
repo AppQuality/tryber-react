@@ -7,7 +7,7 @@ import {
   Text,
   CSSGrid,
 } from "@appquality/appquality-design-system";
-import React, { ChangeEvent } from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { FieldProps, useFormikContext } from "formik";
 import modalStore from "src/redux/modal";
@@ -22,9 +22,37 @@ import { components } from "src/utils/schema";
 
 const Certifications = () => {
   const { t } = useTranslation();
-  const { values } = useFormikContext<AdvancedFormValues>();
+  const { touched, values, setFieldTouched, setFieldValue } =
+    useFormikContext<AdvancedFormValues>();
   const { open } = modalStore();
 
+  useEffect(() => {
+    if (touched.certificationsRadio && values.certificationsRadio === "false") {
+      if (userCertifications.length) {
+        open({
+          content: (
+            <DeleteCertificationsModal certifications={userCertifications} />
+          ),
+          title: t("Remove all the Certifications"),
+          footer: (
+            <DeleteCertificationsModalFooter
+              onSubmit={() => {
+                setFieldTouched("certificationsRadio");
+                setFieldValue("certificationsRadio", "false");
+              }}
+              onClose={() => {
+                setFieldTouched("certificationsRadio");
+                setFieldValue("certificationsRadio", "true");
+              }}
+            />
+          ),
+          size: "small",
+        });
+      } else {
+        // set false
+      }
+    }
+  }, [values.certificationsRadio]);
   const userCertifications: components["schemas"]["Certification"][] =
     useSelector(
       (state: GeneralState) => state.user.user?.certifications || [],
@@ -37,56 +65,35 @@ const Certifications = () => {
         {({
           field, // { name, value, onChange, onBlur }
           form,
-        }: FieldProps) => (
-          <FormGroup>
-            <Radio
-              value="false"
-              name={field.name}
-              checked={field.value === "false"}
-              id="certificationFalse"
-              label={t("I have no certifications")}
-              onChange={(v: string, e?: ChangeEvent<HTMLInputElement>) => {
-                e?.preventDefault();
-                if (v === "false") {
-                  form.setFieldValue(field.name, "true");
-                }
-                open({
-                  content: (
-                    <DeleteCertificationsModal
-                      certifications={userCertifications}
-                    />
-                  ),
-                  title: t("Remove all the Certifications"),
-                  footer: (
-                    <DeleteCertificationsModalFooter
-                      onSubmit={() => {
-                        e?.target?.click();
-                        form.setFieldTouched(field.name);
-                        form.setFieldValue(field.name, v);
-                      }}
-                      onClose={() => {
-                        form.setFieldValue(field.name, "true");
-                      }}
-                    />
-                  ),
-                  size: "small",
-                });
-              }}
-            />
-            <Radio
-              value="true"
-              name={field.name}
-              checked={field.value === "true"}
-              id="certificationTrue"
-              label={t("I have the certifications")}
-              onChange={(v) => {
-                form.setFieldTouched(field.name);
-                form.setFieldValue(field.name, v);
-              }}
-            />
-            <ErrorMessage name={field.name} />
-          </FormGroup>
-        )}
+        }: FieldProps) => {
+          return (
+            <FormGroup>
+              <Radio
+                value="false"
+                name={field.name}
+                checked={field.value === "false"}
+                id="certificationFalse"
+                label={t("I have no certifications")}
+                onChange={(v: string) => {
+                  form.setFieldTouched(field.name);
+                  form.setFieldValue(field.name, "false");
+                }}
+              />
+              <Radio
+                value="true"
+                name={field.name}
+                checked={field.value === "true"}
+                id="certificationTrue"
+                label={t("I have the certifications")}
+                onChange={(v) => {
+                  form.setFieldTouched(field.name);
+                  form.setFieldValue(field.name, v);
+                }}
+              />
+              <ErrorMessage name={field.name} />
+            </FormGroup>
+          );
+        }}
       </FormikField>
       {values.certificationsRadio && (
         <>
