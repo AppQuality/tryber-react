@@ -37,7 +37,7 @@ export const EmploymentSelect = ({
           <Select
             name={field.name}
             label={label}
-            value={field.value.toString()}
+            value={employments.filter((em) => em.value === field.value)}
             options={employments}
             onBlur={() => {
               form.setFieldTouched(field.name);
@@ -46,7 +46,7 @@ export const EmploymentSelect = ({
               if (v === null) {
                 v = { label: "", value: "" };
               }
-              form.setFieldValue(field.name, v, true);
+              form.setFieldValue(field.name, v.value, true);
             }}
           />
         </FormGroup>

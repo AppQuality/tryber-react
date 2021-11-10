@@ -34,7 +34,7 @@ export const EducationSelect = ({
           <Select
             name={field.name}
             label={label}
-            value={field.value}
+            value={educationLevels.filter((ed) => ed.value === field.value)}
             options={educationLevels}
             onBlur={() => {
               form.setFieldTouched(field.name);
@@ -43,7 +43,7 @@ export const EducationSelect = ({
               if (v === null) {
                 v = { label: "", value: "" };
               }
-              form.setFieldValue(field.name, v, true);
+              form.setFieldValue(field.name, v.value, true);
             }}
           />
         </FormGroup>

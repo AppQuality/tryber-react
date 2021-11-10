@@ -69,8 +69,12 @@ export const MapCufValues = () => {
     let schema: { [key: string]: yup.AnySchema } = {};
     let values: { [key: string]: string | object | object[] } = {};
     values.certifications = certifications || [];
-    values.education = education ? education : { label: "", value: "" };
-    values.employment = profession ? profession : { label: "", value: "" };
+    values.education = education
+      ? education.id.toString()
+      : { label: "", value: "" };
+    values.employment = profession
+      ? profession.id.toString()
+      : { label: "", value: "" };
     cufGroups.forEach((group) => {
       if (group.fields)
         group.fields.forEach((field) => {
