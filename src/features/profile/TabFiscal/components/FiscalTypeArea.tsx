@@ -33,7 +33,6 @@ const FiscalTypeArea = () => {
                   ...form.touched,
                   fiscalTypeRadio: true,
                   type: true,
-                  fiscalTypeSelect: true,
                 });
                 form.setValues((prevState: FiscalFormValues) => ({
                   ...prevState,
@@ -199,8 +198,9 @@ const FiscalTypeArea = () => {
               />
               {values.fiscalTypeRadio === "italian" && (
                 <Text small className="aq-mt-1 aq-text-secondary">
-                  Any change to your personal data will lead to the
-                  recalculation of your tax code
+                  {t(
+                    "Any change to your personal data will lead to the recalculation of your tax code"
+                  )}
                 </Text>
               )}
               <ErrorMessage name={field.name} />
