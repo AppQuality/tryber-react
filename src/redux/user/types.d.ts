@@ -1,7 +1,7 @@
 type User = undefined | UserData;
 
 interface UserStatus {
-  refresh: () => void;
+  refresh: (additionalFields?: string) => void;
   login: (data: UserLoginData) => void;
   getProfile: () => void;
   updateProfile: (data: UserData) => void;
@@ -28,8 +28,12 @@ interface UserLoginData {
 
 type UserAction = {
   type: string;
-  data?: FetchProfileData | UserDeletionData | object;
+  data?: FetchProfileData | UserDeletionData | DeleteCertificationData | object;
   error?: HttpError;
+};
+
+type DeleteCertificationData = {
+  newCertifications: components["schemas"]["Certification"][];
 };
 
 type FetchProfileData = {

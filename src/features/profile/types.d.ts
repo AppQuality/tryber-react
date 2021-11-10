@@ -10,3 +10,16 @@ export interface BaseFields {
   city: SelectType.Option;
   languages: SelectType.Option[];
 }
+
+export interface CertificationFields {
+  institute: string;
+  area: string;
+  certificationId: string;
+}
+export interface UserCertification {
+  id: number;
+  name?: string;
+  area?: string;
+  institute?: string;
+  achievement_date: string;
+}

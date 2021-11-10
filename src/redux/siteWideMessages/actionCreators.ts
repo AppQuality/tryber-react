@@ -1,9 +1,10 @@
 import * as actionTypes from "./actionTypes";
 import { v4 as uuidv4 } from "uuid";
 import { aqBootstrapTheme } from "@appquality/appquality-design-system";
+import { ReactNode } from "react";
 
 export function addMessage(
-  message: React.ReactNode,
+  message: ReactNode,
   type: keyof typeof aqBootstrapTheme.palette,
   expire: number | false = 3
 ) {

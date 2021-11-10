@@ -4,7 +4,7 @@ import ExperiencePoints from "./ExperiencePoints";
 import GettingStarted from "./GettingStarted";
 import Home from "./home/Home";
 import Devices from "./Devices";
-import Profile from "./Profile";
+import Profile from "./profile/Profile";
 import GoodbyePage from "./GoodbyePage";
 
 export {

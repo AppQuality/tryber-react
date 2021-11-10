@@ -4,11 +4,7 @@ import UserStore from "../../../redux/user";
 import { TabFiscalShow } from "./TabFiscalShow";
 import { TabFiscalEdit } from "./TabFiscalEdit";
 
-export const TabFiscal = ({
-  ref,
-}: {
-  ref?: React.RefObject<HTMLDivElement>;
-}) => {
+const TabFiscal = ({ ref }: { ref?: React.RefObject<HTMLDivElement> }) => {
   const { isProfileLoading, isLoading, user } = UserStore();
   const [isEdit, setIsEdit] = useState(true);
   useEffect(() => {
@@ -28,3 +24,5 @@ export const TabFiscal = ({
     </div>
   );
 };
+
+export default TabFiscal;

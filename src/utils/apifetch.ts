@@ -6,12 +6,14 @@ const apifetch = async ({
   body,
   params,
   token,
+  paramType,
 }: {
   endpoint: string;
   method?: string;
   body?: object;
   params?: object;
   token?: string;
+  paramType?: string;
 }) => {
   if (process.env.REACT_APP_DEFAULT_TOKEN)
     token = process.env.REACT_APP_DEFAULT_TOKEN;
@@ -24,7 +26,11 @@ const apifetch = async ({
   if (params && Object.keys(params).length) {
     let urlps = new URLSearchParams();
     Object.entries(params).forEach(([key, value]) => {
-      urlps.set(key, value);
+      if (paramType === "filterBy") {
+        urlps.set(`filterBy[${key}]`, value);
+      } else {
+        urlps.set(key, value);
+      }
     });
     query = "?" + urlps.toString();
   }
@@ -43,7 +49,7 @@ const apifetch = async ({
     return await res.json();
   } else {
     const json = await res.json();
-    throw new HttpError(res.status, res.statusText, json.err);
+    throw new HttpError(res.status, res.statusText, json.message || json.err);
   }
 };
 

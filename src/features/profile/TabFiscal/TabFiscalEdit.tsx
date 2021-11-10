@@ -28,6 +28,7 @@ import styled from "styled-components";
 import dateFormatter from "../../../utils/dateFormatter";
 import { useDispatch } from "react-redux";
 import { updateFiscalProfile } from "../../../redux/user/actions/updateFiscalProfile";
+import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
 
 export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   const { t } = useTranslation();
@@ -251,14 +252,13 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                 <FiscalAddress />
               </div>
               <CSSGrid min="50%" gutter="0" fill>
-                <SubmitButton
+                <HalfColumnButton
                   type="success"
                   htmlType="submit"
                   flat
                   disabled={!isValid || isValidating}
-                >
                   {t("Save")}
-                </SubmitButton>
+                </HalfColumnButton>
               </CSSGrid>
             </div>
           </CSSGrid>
@@ -267,10 +267,3 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
     </Formik>
   );
 };
-
-const SubmitButton = styled(Button)`
-  grid-column: span 2;
-  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
-    grid-column: span 1;
-  }
-`;

@@ -10,20 +10,19 @@ import {
   aqBootstrapTheme,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import GoogleTagManager from "../features/GoogleTagManager";
-import LoggedOnly from "../features/LoggedOnly";
-import TesterSidebar from "../features/TesterSidebar";
+import GoogleTagManager from "src/features/GoogleTagManager";
+import LoggedOnly from "src/features/LoggedOnly";
+import TesterSidebar from "src/features/TesterSidebar";
 import React, { useEffect, useState, useRef } from "react";
-import { FiscalProfileReport } from "../features/profile/FiscalProfileReport";
-import { HeaderProfile } from "../features/profile/HeaderProfile";
-import { getProfile } from "../redux/user/actions/getProfile";
-import { getFiscalProfile } from "../redux/user/actions/getFiscalProfile";
-import TabBase from "../features/profile/TabBase";
-import TabAdvanced from "../features/profile/TabAdvanced";
-import { TabFiscal } from "../features/profile/TabFiscal";
-import TabOptions from "../features/profile/TabOptions";
-import UserDeleteModal from "../features/profile/UserDeleteModal";
-import FiscalResidenceModal from "../features/profile/TabFiscal/components/FiscalResidenceModal";
+import { FiscalProfileReport } from "src/features/profile/FiscalProfileReport";
+import { HeaderProfile } from "src/features/profile/HeaderProfile";
+import { getProfile } from "src/redux/user/actions/getProfile";
+import { getFiscalProfile } from "src/redux/user/actions/getFiscalProfile";
+import TabBase from "src/features/profile/TabBase";
+import TabAdvanced from "src/features/profile/TabAdvanced";
+import TabFiscal from "src/features/profile/TabFiscal";
+import TabOptions from "src/features/profile/TabOptions";
+import UserDeleteModal from "src/features/profile/UserDeleteModal";
 import { useDispatch } from "react-redux";
 
 const headerOffset = 60;
@@ -117,7 +116,7 @@ export default function Profile() {
                       <Tab
                         id="options"
                         title={
-                          <span className="aq-mx-3-lg">{t("Options")}</span>
+                          <span className="aq-mx-3-lg">{t("Settings")}</span>
                         }
                       >
                         <TabOptions />

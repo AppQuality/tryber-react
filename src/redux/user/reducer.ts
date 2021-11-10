@@ -10,6 +10,7 @@ const reducer = (
   state: UserState = initialState,
   action: UserAction
 ): UserState => {
+  // @ts-ignore
   switch (action.type) {
     case actionTypes.USER_REFRESH:
       if (action.data) {
@@ -101,6 +102,16 @@ const reducer = (
         ...state,
         isDeleteModalOpen: false,
       };
+    case actionTypes.UPDATE_CERTIFICATIONS:
+      if (action.data && "newCertifications" in action.data)
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            certifications: action.data.newCertifications,
+          },
+        };
+      break;
   }
   return state;
 };

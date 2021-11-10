@@ -1,5 +1,5 @@
 import { TableType } from "@appquality/appquality-design-system";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { operations } from "../../utils/schema";
 import API from "../../utils/api";
 import dateFormatter from "../../utils/dateFormatter";
