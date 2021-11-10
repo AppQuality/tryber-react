@@ -243,9 +243,9 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                   type="success"
                   htmlType="submit"
                   flat
-                  disabled={!isValid || isValidating || !dirty}
+                  disabled={!isValid || isValidating}
                 >
-                  {dirty ? t("Save") : t("Nothing to Save")}
+                  {t("Save")}
                 </SubmitButton>
               </CSSGrid>
             </div>
