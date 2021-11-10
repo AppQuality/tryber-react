@@ -105,7 +105,7 @@ const Certifications = () => {
           {userCertifications.map((cert) => (
             <CSSGrid
               rowGap="1rem"
-              min="70px"
+              min="60px"
               className="aq-mb-3 aq-pt-3"
               style={{
                 borderTop: `1px solid ${aqBootstrapTheme.colors.disabled}`,

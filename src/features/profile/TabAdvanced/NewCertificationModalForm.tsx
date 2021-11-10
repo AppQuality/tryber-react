@@ -66,7 +66,7 @@ const NewCertificationModalForm = ({
   }, [values.area]);
 
   return (
-    <Form>
+    <Form id="newCertificationForm">
       <FormikField name={"institute"}>
         {({ field, form }: FieldProps) => (
           <FormGroup>

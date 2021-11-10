@@ -69,6 +69,7 @@ export const NewCertificationModalFooter = () => {
         type="success"
         htmlType="submit"
         flat={true}
+        form="newCertificationForm"
         disabled={false}
         style={{ minWidth: "150px" }}
       >
