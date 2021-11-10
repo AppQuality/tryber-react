@@ -84,7 +84,7 @@ export const MapCufValues = () => {
                 (cuf: UserData["additional"][0]) => cuf.field_id === field.id
               );
               schema["cuf_" + field.id] = yup.array(yup.object());
-              values["cuf_" + field.id] = multiselectValue
+              values["cuf_" + field.id] = multiselectValue // todo: mapping {label: multiselectValue, value: }
                 ? multiselectValue
                 : [];
               break;

@@ -15,12 +15,13 @@ type OptionsType = {
 }[];
 
 const CufTextField = ({
-  field,
+  fieldProps,
   label,
 }: {
-  field: UserData["additional"][0];
+  fieldProps: FieldProps;
   label: string;
 }) => {
+  const { field } = fieldProps;
   return (
     <>
       <FormLabel htmlFor={field.name} label={label} />
@@ -29,14 +30,15 @@ const CufTextField = ({
   );
 };
 const CufSelectField = ({
-  field,
+  fieldProps,
   options,
   label,
 }: {
-  field: UserData["additional"][0];
+  fieldProps: FieldProps;
   options: OptionsType;
   label: string;
 }) => {
+  const { field } = fieldProps;
   let value = "";
   const option = field?.value?.value
     ? options.find((o) => o.name === field.value.value)
@@ -55,14 +57,15 @@ const CufSelectField = ({
   );
 };
 const CufMultiSelectField = ({
-  field,
+  fieldProps,
   options,
   label,
 }: {
-  field: UserData["additional"][0];
+  fieldProps: FieldProps;
   options: OptionsType;
   label: string;
 }) => {
+  const { field, form } = fieldProps;
   let value: any = [];
   const option = field?.value
     ? options.filter((o) =>
@@ -80,6 +83,13 @@ const CufMultiSelectField = ({
       options={options.map((o) => ({ label: o.name, value: o.id.toString() }))}
       label={label}
       value={value}
+      onChange={(v) => {
+        if (!v) {
+          form.setFieldValue(field.name, { label: "", value: "" });
+        } else {
+          form.setFieldValue(field.name, v);
+        }
+      }}
     />
   );
 };
@@ -89,24 +99,24 @@ const CufField = ({ cufField }: { cufField: UserData["additional"][0] }) => {
   return (
     <>
       <FormikField name={`cuf_${cufField.id}`}>
-        {({ field, form, meta }: FieldProps) => {
+        {(fieldProps: FieldProps) => {
           const cufFieldLabel = cufField.name[i18n.language]
             ? cufField.name[i18n.language]
             : cufField.name.it || "";
           return (
             <FormGroup>
               {cufField.type === "text" ? (
-                <CufTextField field={field} label={cufFieldLabel} />
+                <CufTextField fieldProps={fieldProps} label={cufFieldLabel} />
               ) : cufField.type === "select" ? (
                 <CufSelectField
-                  field={field}
+                  fieldProps={fieldProps}
                   label={cufFieldLabel}
                   options={cufField.options}
                 />
               ) : cufField.type === "multiselect" ? (
                 <CufMultiSelectField
                   label={cufFieldLabel}
-                  field={field}
+                  fieldProps={fieldProps}
                   options={cufField.options}
                 />
               ) : null}
