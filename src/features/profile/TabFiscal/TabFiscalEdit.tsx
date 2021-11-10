@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 import {
-  Button,
   CSSGrid,
   Form,
   Formik,
@@ -9,22 +8,16 @@ import {
   FieldProps,
   FormGroup,
   ErrorMessage,
-  Radio,
   Text,
   Title,
   Input,
   Select,
-  Modal,
 } from "@appquality/appquality-design-system";
-import { useState, useEffect } from "react";
 import UserStore from "../../../redux/user";
 import FiscalTypeArea from "./components/FiscalTypeArea";
-import { ChangeEvent } from "react";
 import FiscalAddress from "./components/FiscalAddress";
 import residenceModalStore from "../../../redux/addResidenceAddressModal";
 import * as yup from "yup";
-import FiscalResidenceModal from "./components/FiscalResidenceModal";
-import styled from "styled-components";
 import dateFormatter from "../../../utils/dateFormatter";
 import { useDispatch } from "react-redux";
 import { updateFiscalProfile } from "../../../redux/user/actions/updateFiscalProfile";
@@ -257,6 +250,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                   htmlType="submit"
                   flat
                   disabled={!isValid || isValidating}
+                >
                   {t("Save")}
                 </HalfColumnButton>
               </CSSGrid>
