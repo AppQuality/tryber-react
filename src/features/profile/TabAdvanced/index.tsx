@@ -16,6 +16,7 @@ import { CustomUserFields } from "./CustomUserFields";
 import Certifications from "./Certifications";
 import { MapCufValues } from "./MapCufValues";
 import { useSelector } from "react-redux";
+import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
 
 const TabAdvanced = () => {
   const { t } = useTranslation();
@@ -61,23 +62,16 @@ const TabAdvanced = () => {
                   </ul>
                 </Text>
               )}
-              {formikProps.values && (
-                <Text color="primary" small>
-                  <ul style={{ listStyle: "disc" }}>
-                    {Object.entries(formikProps.values).map((value, key) => (
-                      <li>{JSON.stringify(value)}</li>
-                    ))}
-                  </ul>
-                </Text>
-              )}
-              <Button
-                type="success"
-                htmlType="submit"
-                flat={true}
-                disabled={false}
-              >
-                {t("Save")}
-              </Button>
+              <CSSGrid min="50%" gutter="0" fill={true}>
+                <HalfColumnButton
+                  type="success"
+                  htmlType="submit"
+                  flat={true}
+                  disabled={false}
+                >
+                  {t("Save")}
+                </HalfColumnButton>
+              </CSSGrid>
             </div>
           </CSSGrid>
         </Form>

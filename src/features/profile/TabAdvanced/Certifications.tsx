@@ -5,13 +5,17 @@ import {
   FormikField,
   ErrorMessage,
   Text,
+  aqBootstrapTheme,
   CSSGrid,
 } from "@appquality/appquality-design-system";
 import React, { ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { FieldProps, useFormikContext } from "formik";
 import modalStore from "src/redux/modal";
-import { NewCertificationModal } from "./NewCertificationModal";
+import {
+  NewCertificationModal,
+  NewCertificationModalFooter,
+} from "./NewCertificationModal";
 import { AdvancedFormValues } from "./types";
 import {
   DeleteCertificationsModal,
@@ -19,6 +23,7 @@ import {
 } from "./DeleteCertificationsModal";
 import { useSelector, shallowEqual } from "react-redux";
 import { components } from "src/utils/schema";
+import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
 
 const Certifications = () => {
   const { t } = useTranslation();
@@ -91,8 +96,15 @@ const Certifications = () => {
       {values.certificationsRadio && (
         <>
           {userCertifications.map((cert) => (
-            <CSSGrid gutter="20%" rowGap="1rem" min="70px" className="aq-mb-3">
-              <div className="aq-text-primary">
+            <CSSGrid
+              rowGap="1rem"
+              min="70px"
+              className="aq-mb-3 aq-pt-3"
+              style={{
+                borderTop: `1px solid ${aqBootstrapTheme.colors.disabled}`,
+              }}
+            >
+              <div className="aq-text-primary" style={{ gridColumn: "span 3" }}>
                 <Text small aria-disabled={true}>
                   {cert.achievement_date}
                 </Text>
@@ -102,13 +114,12 @@ const Certifications = () => {
                   {t("Institute:")} <strong>{cert.institute}</strong>
                 </Text>
               </div>
-              <div className="remove-certification">
+              <div className="remove-certification aq-text-right">
                 <Button
                   className="aq-text-danger"
                   type="link"
                   htmlType="button"
                   flat
-                  style={{ padding: 0, fontWeight: 400 }}
                   size="sm"
                   onClick={() => {
                     open({
@@ -129,20 +140,23 @@ const Certifications = () => {
             </CSSGrid>
           ))}
           {values.certificationsRadio === "true" && (
-            <Button
-              type="success"
-              htmlType="submit"
-              flat={true}
-              disabled={false}
-              onClick={() => {
-                open({
-                  content: <NewCertificationModal />,
-                  title: t("Add Certifications"),
-                });
-              }}
-            >
-              {t("Add Certifications")}
-            </Button>
+            <CSSGrid min="50%" gutter="0" fill={true}>
+              <HalfColumnButton
+                type="primary"
+                htmlType="submit"
+                flat={true}
+                disabled={false}
+                onClick={() => {
+                  open({
+                    content: <NewCertificationModal />,
+                    title: t("Add Certifications"),
+                    footer: <NewCertificationModalFooter />,
+                  });
+                }}
+              >
+                {t("Add Certifications")}
+              </HalfColumnButton>
+            </CSSGrid>
           )}
         </>
       )}

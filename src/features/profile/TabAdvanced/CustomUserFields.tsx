@@ -26,7 +26,7 @@ export const CustomUserFields = () => {
   }, [cufGroups]);
 
   return (
-    <div>
+    <div className="aq-mb-3">
       {/*foreach Others CUF add field input*/}
       {groupOfFieldsWithoutGroup?.fields?.map((field) => (
         <CufField cufField={field} key={`cuf_${field.id}`} />

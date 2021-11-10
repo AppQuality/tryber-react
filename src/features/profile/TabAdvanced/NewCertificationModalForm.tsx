@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   Button,
   Datepicker,
+  ErrorMessage,
   Form,
   FormGroup,
   FormikField,
@@ -9,7 +10,7 @@ import {
   Select,
   SelectType,
 } from "@appquality/appquality-design-system";
-import API from "../../../utils/api";
+import API from "src/utils/api";
 import { FieldProps } from "formik";
 import { CertificationFields } from "../types";
 import { useTranslation } from "react-i18next";
@@ -19,7 +20,7 @@ const NewCertificationModalForm = ({
 }: {
   values: CertificationFields;
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [institutes, setInstitutes] = useState<SelectType.Option[]>([]);
   const [areas, setAreas] = useState<SelectType.Option[]>([]);
   const [certifications, setCertifications] = useState<SelectType.Option[]>([]);
@@ -79,11 +80,18 @@ const NewCertificationModalForm = ({
                 value: field.value || "",
               }}
               onChange={(v) => {
-                form.setFieldValue(field.name, v.value);
-                form.setFieldValue("area", "");
-                form.setFieldValue("certificationId", "");
+                if (!v) {
+                  form.setFieldValue(field.name, "");
+                  form.setFieldValue("area", "");
+                  form.setFieldValue("certificationId", "");
+                } else {
+                  form.setFieldValue(field.name, v.value);
+                  form.setFieldValue("area", "");
+                  form.setFieldValue("certificationId", "");
+                }
               }}
             />
+            <ErrorMessage name={field.name} />
           </FormGroup>
         )}
       </FormikField>
@@ -104,10 +112,16 @@ const NewCertificationModalForm = ({
                 value: field.value || "",
               }}
               onChange={(v) => {
-                form.setFieldValue(field.name, v.value);
-                form.setFieldValue("certificationId", "");
+                if (!v) {
+                  form.setFieldValue(field.name, "");
+                  form.setFieldValue("certificationId", "");
+                } else {
+                  form.setFieldValue(field.name, v.value);
+                  form.setFieldValue("certificationId", "");
+                }
               }}
             />
+            <ErrorMessage name={field.name} />
           </FormGroup>
         )}
       </FormikField>
@@ -126,9 +140,14 @@ const NewCertificationModalForm = ({
                 value: field.value || "",
               }}
               onChange={(v) => {
-                form.setFieldValue(field.name, v.value);
+                if (!v) {
+                  form.setFieldValue(field.name, "");
+                } else {
+                  form.setFieldValue(field.name, v.value || "");
+                }
               }}
             />
+            <ErrorMessage name={field.name} />
           </FormGroup>
         )}
       </FormikField>
@@ -136,35 +155,36 @@ const NewCertificationModalForm = ({
         {({ form, field }: FieldProps) => (
           <FormGroup>
             <FormLabel htmlFor={field.name} label={t("Achievement Date")} />
-            {/*<Datepicker*/}
-            {/*  value={initialValue}*/}
-            {/*  id={name}*/}
-            {/*  locale={i18n.language}*/}
-            {/*  maxDate={*/}
-            {/*    new Date(now.getFullYear() - 18, now.getMonth(), now.getDate())*/}
-            {/*  }*/}
-            {/*  placeholder={t("Select your birth date")}*/}
-            {/*  setText={t("Set")}*/}
-            {/*  cancelText={t("Cancel")}*/}
-            {/*  onCancel={onCancel}*/}
-            {/*  onChange={(v: { value: Date }) =>*/}
-            {/*    onChange(*/}
-            {/*      new Date(*/}
-            {/*        Date.UTC(*/}
-            {/*          v.value.getFullYear(),*/}
-            {/*          v.value.getMonth(),*/}
-            {/*          v.value.getDate()*/}
-            {/*        )*/}
-            {/*      )*/}
-            {/*    )*/}
-            {/*  }*/}
-            {/*/>*/}
+            <Datepicker
+              value={field.value}
+              id={field.name}
+              locale={i18n.language}
+              maxDate={new Date()}
+              placeholder={t("Select achievement date")}
+              setText={t("Set")}
+              cancelText={t("Cancel")}
+              onCancel={() => form.setFieldTouched(field.name)}
+              onChange={(v: { value: Date | null }) => {
+                if (!v.value) return;
+                const date = new Date(
+                  Date.UTC(
+                    v.value.getFullYear(),
+                    v.value.getMonth(),
+                    v.value.getDate()
+                  )
+                );
+                field.onChange(date.toISOString().slice(0, 10));
+                form.setFieldValue(
+                  field.name,
+                  date.toISOString().slice(0, 10),
+                  true
+                );
+              }}
+            />
+            <ErrorMessage name={field.name} />
           </FormGroup>
         )}
       </FormikField>
-      <Button type="success" htmlType="submit" flat={true} disabled={false}>
-        {t("Add")}
-      </Button>
     </Form>
   );
 };
