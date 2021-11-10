@@ -12,7 +12,9 @@ export const TabFiscal = ({
   const { isProfileLoading, isLoading, user } = UserStore();
   const [isEdit, setIsEdit] = useState(true);
   useEffect(() => {
-    setIsEdit(!user.fiscal?.fiscalStatus);
+    setIsEdit(
+      !user.fiscal?.fiscalStatus || user.fiscal?.fiscalStatus === "Unverified"
+    );
   }, [user]);
   return (
     <div className="aq-p-3">
