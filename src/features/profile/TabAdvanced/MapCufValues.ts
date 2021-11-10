@@ -4,41 +4,48 @@ import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { operations } from "../../../utils/schema";
 import { shallowEqual, useSelector } from "react-redux";
-import UserStore from "../../../redux/user";
 import { AdvancedFormValues, CertificationsRadio } from "./types";
 
 export const MapCufValues = () => {
   const {
     additional,
+    certifications,
+    profession,
+    education,
   }: {
     additional: UserData["additional"];
+    certifications: UserData["certifications"];
+    profession: UserData["profession"];
+    education: UserData["education"];
   } = useSelector(
     (state: GeneralState) => ({
       additional: state.user.user?.additional,
+      certifications: state.user.user?.certifications,
+      profession: state.user.user?.profession,
+      education: state.user.user?.education,
     }),
     shallowEqual
   );
   const { t } = useTranslation();
-  const { user } = UserStore();
   const [cufGroups, setCufGroups] = useState<
     operations["get-customUserFields"]["responses"]["200"]["content"]["application/json"]
   >([]);
   let initialCertRadioValue: CertificationsRadio = "";
-  if (typeof user.certifications === "boolean") {
-    initialCertRadioValue = user.certifications.toString();
+  if (typeof certifications === "boolean") {
+    initialCertRadioValue = certifications ? "true" : "false";
   }
-  if (typeof user.certifications?.length) {
+  if (typeof certifications?.length) {
     initialCertRadioValue = "true";
   }
   const [initialUserValues, setInitialUserValues] =
     useState<AdvancedFormValues>({
       certificationsRadio: initialCertRadioValue,
-      certifications: user && user.certifications ? user.certifications : [],
-      employment: user.profession
-        ? { label: user.profession.name, value: user.profession.id.toString() }
+      certifications: certifications || [],
+      employment: profession
+        ? { label: profession.name, value: profession.id.toString() }
         : { label: "", value: "" },
-      education: user.education
-        ? { label: user.education.name, value: user.education.id.toString() }
+      education: education
+        ? { label: education.name, value: education.id.toString() }
         : { label: "", value: "" },
     });
   const [validationSchema, setValidationSchema] = useState<{
@@ -61,13 +68,9 @@ export const MapCufValues = () => {
   useEffect(() => {
     let schema: { [key: string]: yup.AnySchema } = {};
     let values: { [key: string]: string | object | object[] } = {};
-    values.certifications = user.certifications ? user.certifications : [];
-    values.education = user.education
-      ? user.education
-      : { label: "", value: "" };
-    values.employment = user.employment
-      ? user.employment
-      : { label: "", value: "" };
+    values.certifications = certifications || [];
+    values.education = education ? education : { label: "", value: "" };
+    values.employment = profession ? profession : { label: "", value: "" };
     cufGroups.forEach((group) => {
       if (group.fields)
         group.fields.forEach((field) => {
