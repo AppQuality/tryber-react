@@ -11,8 +11,8 @@ export const updateFiscalProfile = (
     verifiedMessage = "Verified",
     unverifiedMessage = "Unverified",
   }: {
-    verifiedMessage?: React.ReactNode;
-    unverifiedMessage?: React.ReactNode;
+    verifiedMessage?: React.ReactNode | boolean;
+    unverifiedMessage?: React.ReactNode | boolean;
   } = {}
 ) => {
   return async (
@@ -33,9 +33,13 @@ export const updateFiscalProfile = (
         data: { ...newFiscalData },
       });
       if (newFiscalData.fiscalStatus === "Verified") {
-        messageDispatch(addMessage(verifiedMessage, "success"));
+        if (verifiedMessage !== false) {
+          messageDispatch(addMessage(verifiedMessage, "success"));
+        }
       } else {
-        messageDispatch(addMessage(unverifiedMessage, "danger"));
+        if (unverifiedMessage !== false) {
+          messageDispatch(addMessage(unverifiedMessage, "danger"));
+        }
       }
     } catch (err: unknown) {
       const { statusCode } = err as HttpError;

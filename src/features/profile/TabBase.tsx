@@ -16,6 +16,7 @@ import {
   Button,
 } from "@appquality/appquality-design-system";
 import UserStore from "../../redux/user";
+import { updateProfile } from "../../redux/user/actions/updateProfile";
 import siteWideMessages from "../../redux/siteWideMessages";
 import React, { useEffect, useState } from "react";
 import CountrySelect from "../CountrySelect";
@@ -26,14 +27,16 @@ import { LanguageSelect } from "./LanguageSelect";
 import API from "../../utils/api";
 import { BaseFields } from "./types.d";
 import { FormikProps } from "formik";
-import { add } from "husky";
+import { useDispatch } from "react-redux";
+import { operations } from "src/utils/schema";
 
 const TabBase = () => {
   const { t } = useTranslation();
-  const { user, isProfileLoading, updateProfile } = UserStore();
+  const { user, isProfileLoading } = UserStore();
   const [countryCode, setCountryCode] = useState("");
   const [languages, setLanguages] = useState<SelectType.Option[]>([]);
   const { add } = siteWideMessages();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getLanguages = async () => {
@@ -105,8 +108,15 @@ const TabBase = () => {
             }
           });
           const resLang = await API.myLanguages(newLanguages);
-          const profileDataToSend = { ...values, city: values.city.value };
-          updateProfile(profileDataToSend);
+          const profileDataToSend: any = { ...values, city: values.city.value };
+          dispatch(
+            updateProfile(
+              profileDataToSend,
+              t(
+                "Your profile doesn't match with your fiscal profile, please check your data"
+              )
+            )
+          );
           add({
             message: t("Profile data correctly updated."),
             type: "success",
