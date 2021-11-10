@@ -98,7 +98,7 @@ const FiscalAddress = () => {
           touched.street &&
           touched.streetNumber && (
             <div className="aq-mt-2">
-              <ul style={{ listStyle: "disc" }}>
+              <ul>
                 {errors.countryCode && (
                   <li>
                     <ErrorMessage name="countryCode" />
