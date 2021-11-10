@@ -33,7 +33,6 @@ const FiscalTypeArea = () => {
                   ...form.touched,
                   fiscalTypeRadio: true,
                   type: true,
-                  fiscalTypeSelect: true,
                 });
                 form.setValues((prevState: FiscalFormValues) => ({
                   ...prevState,
@@ -132,6 +131,7 @@ const FiscalTypeArea = () => {
                           label: field.value || "",
                           value: field.value || "",
                         },
+                        noOptionsMessage: () => t("Select your city"),
                       },
                       autocompletionRequest: {
                         types: ["(cities)"],
@@ -197,9 +197,10 @@ const FiscalTypeArea = () => {
                 }}
               />
               {values.fiscalTypeRadio === "italian" && (
-                <Text small className="aq-mt-1">
-                  Any change to your personal data will lead to the
-                  recalculation of your tax code
+                <Text small className="aq-mt-1 aq-text-secondary">
+                  {t(
+                    "Any change to your personal data will lead to the recalculation of your tax code"
+                  )}
                 </Text>
               )}
               <ErrorMessage name={field.name} />

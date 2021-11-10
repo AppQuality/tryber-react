@@ -98,7 +98,7 @@ const FiscalAddress = () => {
           touched.street &&
           touched.streetNumber && (
             <div className="aq-mt-2">
-              <ul style={{ listStyle: "disc" }}>
+              <ul>
                 {errors.countryCode && (
                   <li>
                     <ErrorMessage name="countryCode" />
@@ -133,7 +133,7 @@ const FiscalAddress = () => {
             </div>
           )}
         <Text small className="aq-mt-1">
-          <span className="aq-text-disabled-dark">
+          <span className="aq-text-secondary">
             {t("If your address is not in the list please ")}
           </span>
           <Button

@@ -104,17 +104,29 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
     }),
     birthPlaceProvince: yup.string().when("fiscalTypeRadio", {
       is: "italian",
-      then: yup
-        .string()
-        .required(
-          t("This value is invalid, you need to select a city with a province")
-        ),
+      then: yup.string().when("birthPlaceCity", (birthPlaceCity) => {
+        if (yup.string().required().isValidSync(birthPlaceCity)) {
+          return yup
+            .string()
+            .required(
+              t(
+                "This value is invalid, you need to select a city with a province"
+              )
+            );
+        }
+        return yup.string();
+      }),
     }),
     fiscalId: yup
       .string()
       .required(t("This is a required field"))
-      .min(11, t("Should be at least 11 characters"))
-      .max(16, t("Should be at most 16 characters")),
+      .when("fiscalTypeRadio", {
+        is: "italian",
+        then: yup
+          .string()
+          .min(16, t("Should be exactly 16 characters"))
+          .max(16, t("Should be exactly 16 characters")),
+      }),
   };
 
   const genderOptions = [
@@ -181,7 +193,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                 <Input id="name" type="text" disabled value={user.name} />
               </FormGroup>
               <FormGroup>
-                <FormLabel htmlFor="surname" label={t("Surname")} />
+                <FormLabel htmlFor="surname" label={t("Surname")} isDisabled />
                 <Input id="surname" type="text" disabled value={user.surname} />
               </FormGroup>
               <FormikField name="gender">
@@ -206,7 +218,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                         options={genderOptions}
                       />
                       <Text small className="aq-mt-1">
-                        <span className="aq-text-disabled-dark">
+                        <span className="aq-text-secondary">
                           {t(
                             "For tax reasons we are obliged to tie this choice to binary options only"
                           )}
@@ -244,9 +256,8 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                   type="success"
                   htmlType="submit"
                   flat
-                  disabled={!isValid || isValidating || !dirty}
-                >
-                  {dirty ? t("Save") : t("Nothing to Save")}
+                  disabled={!isValid || isValidating}
+                  {t("Save")}
                 </HalfColumnButton>
               </CSSGrid>
             </div>
