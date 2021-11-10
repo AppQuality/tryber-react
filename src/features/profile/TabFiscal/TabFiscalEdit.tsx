@@ -112,8 +112,8 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
     fiscalId: yup
       .string()
       .required(t("This is a required field"))
-      .min(11, t("Should be at least 11 characters"))
-      .max(16, t("Should be at most 16 characters")),
+      .min(16, t("Should be exactly 16 characters"))
+      .max(16, t("Should be exactly 16 characters")),
   };
 
   const genderOptions = [
