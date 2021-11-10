@@ -132,6 +132,7 @@ const FiscalTypeArea = () => {
                           label: field.value || "",
                           value: field.value || "",
                         },
+                        noOptionsMessage: () => t("Select your city"),
                       },
                       autocompletionRequest: {
                         types: ["(cities)"],
