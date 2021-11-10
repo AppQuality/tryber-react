@@ -26,11 +26,22 @@ import * as yup from "yup";
 import FiscalResidenceModal from "./components/FiscalResidenceModal";
 import styled from "styled-components";
 import dateFormatter from "../../../utils/dateFormatter";
+import { useDispatch } from "react-redux";
+import { updateFiscalProfile } from "../../../redux/user/actions/updateFiscalProfile";
 
 export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   const { t } = useTranslation();
-  const { user, updateFiscalProfile } = UserStore();
+  const { user } = UserStore();
   const { address } = residenceModalStore();
+  const dispatch = useDispatch();
+
+  let street, streetNumber;
+  let streetData = user.fiscal?.address?.street;
+  if (streetData) {
+    streetData = streetData.split(",");
+    street = streetData[0];
+    if (streetData.length > 1) streetNumber = streetData[1];
+  }
 
   const initialUserValues: FiscalFormValues = {
     gender: user.fiscal?.gender || "",
@@ -51,8 +62,8 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
     countryCode: user.fiscal?.address?.country,
     provinceCode: user.fiscal?.address?.province,
     city: user.fiscal?.address?.city,
-    street: user.fiscal?.address?.street,
-    streetNumber: user.fiscal?.address?.streetNumber,
+    street: street,
+    streetNumber: streetNumber,
     zipCode: user.fiscal?.address?.cityCode,
   };
 
@@ -121,7 +132,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
             country: values.countryCode,
             province: values.provinceCode,
             city: values.city,
-            street: `${values.street} ${values.streetNumber}`,
+            street: `${values.street}, ${values.streetNumber}`,
             cityCode: values.zipCode,
           },
           type: values.type,
@@ -132,8 +143,28 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
           fiscalId: values.fiscalId,
           gender: values.gender,
         };
-        // todo: check types
-        await updateFiscalProfile(submitValues);
+        dispatch(
+          updateFiscalProfile(submitValues as UserData, {
+            verifiedMessage: (
+              <>
+                <b className="aq-text-success">{t("Valid tax profile.")}</b>
+                <br />
+                {t(
+                  'You can view your profile summary and make changes if necessary in the "Tax" section of your profile.'
+                )}
+              </>
+            ),
+            unverifiedMessage: (
+              <>
+                <b className="aq-text-danger">{t("Invalid tax profile.")}</b>
+                <br />
+                {t(
+                  "There was an error validating your fiscal profile, please check your data."
+                )}
+              </>
+            ),
+          })
+        );
         action.setSubmitting(false);
       }}
     >
