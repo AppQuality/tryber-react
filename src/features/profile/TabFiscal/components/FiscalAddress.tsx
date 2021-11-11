@@ -139,6 +139,7 @@ const FiscalAddress = () => {
           <Button
             type="link"
             htmlType="button"
+            className="aq-text-secondary"
             flat
             style={{ padding: 0, fontWeight: 400 }}
             size="sm"
