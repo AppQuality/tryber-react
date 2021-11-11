@@ -11,9 +11,11 @@ import {
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { ChangeEvent } from "react";
+import CitySelect from "src/features/profile/CitySelect";
 
 const FiscalTypeArea = () => {
-  const { values, setValues } = useFormikContext<FiscalFormValues>();
+  const { values, setValues, setFieldTouched } =
+    useFormikContext<FiscalFormValues>();
   const { t, i18n } = useTranslation();
   return (
     <>
@@ -113,69 +115,42 @@ const FiscalTypeArea = () => {
               );
             }}
           </FormikField>
-          <FormikField name="birthPlaceCity">
-            {({ field, form }: FieldProps) => {
-              return (
-                <FormGroup>
-                  <FormLabel label={t("City of birth")} htmlFor={field.name} />
-                  <PlacesAutocomplete
-                    placesProps={{
-                      apiKey: process.env.REACT_APP_GOOGLE_APIKEY || "",
-                      apiOptions: {
-                        language: i18n.language,
-                        region: i18n.language,
-                      },
-                      selectProps: {
-                        isClearable: true,
-                        value: {
-                          label: field.value || "",
-                          value: field.value || "",
-                        },
-                        noOptionsMessage: () => t("Select your city"),
-                      },
-                      autocompletionRequest: {
-                        types: ["(cities)"],
-                      },
-                    }}
-                    onBlur={(e) =>
-                      form.setTouched({
-                        ...form.touched,
-                        birthPlaceProvince: true,
-                        birthPlaceCity: true,
-                      })
-                    }
-                    onChange={(places) => {
-                      const fields = places[0].address_components;
-                      const country = fields.find(
-                        (field) => field.types.indexOf("country") >= 0
-                      );
-                      const province = fields.find(
-                        (field) =>
-                          field.types.indexOf("administrative_area_level_2") >=
-                          0
-                      );
-                      const city = fields.find(
-                        (field) => field.types.indexOf("locality") >= 0
-                      );
-                      setValues(
-                        (prevState) => ({
-                          ...prevState,
-                          birthPlaceCity: city?.long_name,
-                          birthPlaceProvince:
-                            country?.short_name === "IT"
-                              ? province?.short_name
-                              : "EE",
-                        }),
-                        true
-                      );
-                    }}
-                  />
-                  <ErrorMessage name={field.name} />
-                  <ErrorMessage name="birthPlaceProvince" />
-                </FormGroup>
-              );
-            }}
-          </FormikField>
+          <FormGroup>
+            <CitySelect
+              name="birthPlaceCity"
+              label={t("City of birth")}
+              onBlur={() => {
+                setFieldTouched("birthPlaceCity");
+                setFieldTouched("birthPlaceProvince");
+              }}
+              onChange={(place) => {
+                const fields = place.address_components;
+                const country = fields.find(
+                  (field) => field.types.indexOf("country") >= 0
+                );
+                const province = fields.find(
+                  (field) =>
+                    field.types.indexOf("administrative_area_level_2") >= 0
+                );
+                const city = fields.find(
+                  (field) => field.types.indexOf("locality") >= 0
+                );
+                setValues(
+                  (prevState) => ({
+                    ...prevState,
+                    birthPlaceCity: city?.long_name,
+                    birthPlaceProvince:
+                      country?.short_name === "IT"
+                        ? province?.short_name
+                        : "EE",
+                  }),
+                  true
+                );
+              }}
+            />
+            <ErrorMessage name="birthPlaceCity" />
+            <ErrorMessage name="birthPlaceProvince" />
+          </FormGroup>
         </>
       )}
       <FormikField name="fiscalId">

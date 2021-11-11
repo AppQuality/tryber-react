@@ -18,9 +18,8 @@ import {
 import UserStore from "../../redux/user";
 import { updateProfile } from "../../redux/user/actions/updateProfile";
 import siteWideMessages from "../../redux/siteWideMessages";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CountrySelect from "../CountrySelect";
-import { CitySelect } from "./CitySelect";
 import * as yup from "yup";
 import BirthdayPicker from "../BirthdayPicker";
 import { LanguageSelect } from "./LanguageSelect";
@@ -28,7 +27,7 @@ import API from "../../utils/api";
 import { BaseFields } from "./types.d";
 import { FormikProps } from "formik";
 import { useDispatch } from "react-redux";
-import { operations } from "src/utils/schema";
+import CitySelect from "src/features/profile/CitySelect";
 
 const TabBase = () => {
   const { t } = useTranslation();
@@ -56,10 +55,7 @@ const TabBase = () => {
     phone: user.phone || "",
     email: user.email || "",
     country: user.country || "",
-    city:
-      typeof user.city === "string"
-        ? { value: user.city, label: user.city }
-        : { value: "", label: "" },
+    city: user.city || "",
     languages:
       user.languages?.map((l: any) => ({
         label: l.name,
@@ -85,7 +81,7 @@ const TabBase = () => {
       .email(t("Email must be a valid email"))
       .required(t("This is a required field")),
     country: yup.string().required(t("This is a required field")),
-    city: yup.object().required(t("This is a required field")),
+    city: yup.string().required(t("This is a required field")),
     languages: yup.array().required(t("This is a required field")),
   };
   const genderOptions = [
@@ -108,7 +104,7 @@ const TabBase = () => {
             }
           });
           const resLang = await API.myLanguages(newLanguages);
-          const profileDataToSend: any = { ...values, city: values.city.value };
+          const profileDataToSend: any = { ...values };
           dispatch(
             updateProfile(
               profileDataToSend,
@@ -218,7 +214,29 @@ const TabBase = () => {
                   label={t("Country")}
                   onChange={handleCountryChange}
                 />
-                <CitySelect name="city" label={t("Domicile")} />
+                <CitySelect
+                  name="city"
+                  label={t("Domicile")}
+                  onBlur={() => {
+                    formikProps.setFieldTouched("city");
+                  }}
+                  onChange={(place) => {
+                    const fields = place.address_components;
+                    const city = fields.find(
+                      (field) => field.types.indexOf("locality") >= 0
+                    );
+                    formikProps
+                      .getFieldProps("city")
+                      .onChange(city?.long_name || "");
+                    formikProps.setFieldValue(
+                      "city",
+                      city?.long_name || "",
+                      true
+                    );
+                  }}
+                />
+                <ErrorMessage name="city" />
+
                 <Title size="s">{t("Language")}</Title>
                 <LanguageSelect
                   name="languages"

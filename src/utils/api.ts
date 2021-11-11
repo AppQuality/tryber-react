@@ -7,7 +7,6 @@ import * as employments from "./employments";
 import * as certifications from "./certifications";
 import * as educationLevels from "./educationLevels";
 import * as customUserFields from "./customUserFields";
-import * as geoDb from "./geoDb";
 
 const API = {
   ...authenticate,
@@ -15,7 +14,6 @@ const API = {
   ...user,
   ...devices,
   ...languages,
-  ...geoDb,
   ...employments,
   ...educationLevels,
   ...customUserFields,
