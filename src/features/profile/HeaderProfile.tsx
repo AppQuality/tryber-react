@@ -35,11 +35,11 @@ export const HeaderProfile = () => {
   return (
     <StyledHeaderProfile className="aq-m-3">
       <div className="aq-mt-3 aq-text-center">
-        <img className="profile-avatar" src={user.image} alt={user.name} />
+        <img className="profile-avatar" src={user?.image} alt={user?.name} />
       </div>
       <div>
-        <PageTitle size="small" subtitle={"T" + user.id}>
-          {`${user.name} ${user.surname}`}
+        <PageTitle size="small" subtitle={"T" + user?.id}>
+          {`${user?.name} ${user?.surname}`}
         </PageTitle>
         <Text className="aq-mb-3">
           <StarFill
@@ -48,7 +48,7 @@ export const HeaderProfile = () => {
             size="21"
           />{" "}
           <span className="aq-ml-2 aq-text-secondary">
-            <strong>{user.total_exp_pts}</strong> pt
+            <strong>{user?.total_exp_pts}</strong> pt
           </span>
         </Text>
         <Text>
@@ -58,7 +58,7 @@ export const HeaderProfile = () => {
             size="21"
           />{" "}
           <span className="aq-ml-2 aq-text-secondary">
-            <strong>{user.attended_cp}</strong> {t("Completed campaigns")}
+            <strong>{user?.attended_cp}</strong> {t("Completed campaigns")}
           </span>
         </Text>
       </div>

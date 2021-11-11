@@ -2,7 +2,7 @@ import {
   aqBootstrapTheme,
   SelectType,
 } from "@appquality/appquality-design-system";
-import { operations } from "utils/schema";
+import { operations, components } from "src/utils/schema";
 
 export type CrowdRoutes =
   | "getting-started"
@@ -11,9 +11,6 @@ export type CrowdRoutes =
   | "my-bugs"
   | "experience-points"
   | "";
-
-export type UserData =
-  operations["get-users-me"]["responses"]["200"]["content"]["application/json"];
 
 export type User = undefined | UserData;
 
@@ -27,10 +24,12 @@ export interface UserStatus {
 
 declare global {
   type Theme = typeof aqBootstrapTheme;
-  type UserData =
-    operations["get-users-me"]["responses"]["200"]["content"]["application/json"];
+  type UserData = any;
   type UserFiscalData =
     operations["get-users-me-fiscal"]["responses"]["200"]["content"]["application/json"];
   type HttpError = HttpError;
+  type ApiOperations = operations;
+  type ApiComponents = components;
+  type SupportedLanguages = "es" | "it" | "en";
   type SelectOptionType = SelectType.Option;
 }

@@ -1,41 +1,52 @@
-import {
-  Field,
-  Accordion,
-  Formik,
-  Form,
-} from "@appquality/appquality-design-system";
-import API from "../../../utils/api";
+import { Accordion } from "@appquality/appquality-design-system";
 import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { operations } from "../../../utils/schema";
-import * as yup from "yup";
-import { shallowEqual, useSelector } from "react-redux";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
+import { getCustomUserFields } from "src/redux/user/actions/getCustomUserFields";
 import CufField from "./CufField";
-import { MapCufValues } from "./MapCufValues";
+import { operations } from "src/utils/schema";
 
 export const CustomUserFields = () => {
-  const { cufGroups } = MapCufValues();
-  const { t } = useTranslation();
-  const [groupOfFieldsWithoutGroup, setGroupOfFieldsWithoutGroup] =
-    useState<typeof cufGroups[0]>();
-  const [groupsOfFields, setGroupOfFields] = useState<typeof cufGroups>([]);
+  const dispatch = useDispatch();
+  const {
+    customUserFields,
+  }: {
+    customUserFields?: operations["get-customUserFields"]["responses"]["200"]["content"]["application/json"];
+  } = useSelector(
+    (state: GeneralState) => ({
+      customUserFields: state.user.customUserFields,
+    }),
+    shallowEqual
+  );
+  const [groupOfFieldsWithoutGroup, setGroupOfFieldsWithoutGroup] = useState<
+    typeof customUserFields
+  >([]);
+  const [groupsOfFields, setGroupOfFields] = useState<typeof customUserFields>(
+    []
+  );
 
   useEffect(() => {
-    setGroupOfFieldsWithoutGroup(cufGroups.find((g) => g.group.id === 0));
-    setGroupOfFields(cufGroups.filter((g) => g.group.id !== 0));
-  }, [cufGroups]);
+    setGroupOfFieldsWithoutGroup(
+      customUserFields?.filter((g) => g.group.id === 0)
+    );
+    setGroupOfFields(customUserFields?.filter((g) => g.group.id !== 0));
+  }, [customUserFields]);
+
+  useEffect(() => {
+    dispatch(getCustomUserFields());
+  }, []);
 
   return (
     <div className="aq-mb-3">
       {/*foreach Others CUF add field input*/}
-      {groupOfFieldsWithoutGroup?.fields?.map((field) => (
-        <CufField cufField={field} key={`cuf_${field.id}`} />
-      ))}
-
+      {groupOfFieldsWithoutGroup?.map((group) =>
+        group.fields?.map((field) => (
+          <CufField cufField={field} key={`cuf_${field.id}`} />
+        ))
+      )}
       <Accordion initialActive="">
-        {groupsOfFields.map(
+        {groupsOfFields?.map(
           (cufGroup) =>
-            // create an accordion Item forach
+            // create an accordion Item foreach
             cufGroup.fields && (
               <Accordion.Item
                 id={cufGroup.group.id.toString()}

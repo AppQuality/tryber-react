@@ -1,12 +1,11 @@
 import * as actionTypes from "./actionTypes";
 import API from "../../utils/api";
-import HttpError from "../../utils/HttpError";
-import { operations } from "../../utils/schema";
 
 export * from "./actions/refreshUser";
 export * from "./actions/loginUser";
 export * from "./actions/getProfile";
 export * from "./actions/getFiscalProfile";
+export * from "./actions/getCustomUserFields";
 export * from "./actions/updateFiscalProfile";
 export * from "./actions/updateProfile";
 

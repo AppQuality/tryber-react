@@ -8,6 +8,7 @@ interface UserStatus {
   getFiscalProfile: () => void;
   updateFiscalProfile: (data: UserData) => void;
   user: User;
+  customUserFields?: CustomUserFields;
   isLoading: boolean;
   isProfileLoading: boolean;
   error: HttpError;
@@ -28,12 +29,12 @@ interface UserLoginData {
 
 type UserAction = {
   type: string;
-  data?: FetchProfileData | UserDeletionData | DeleteCertificationData | object;
+  data?: any;
   error?: HttpError;
 };
 
 type DeleteCertificationData = {
-  newCertifications: components["schemas"]["Certification"][];
+  newCertifications: ApiComponents["schemas"]["Certification"][];
 };
 
 type FetchProfileData = {
@@ -46,12 +47,14 @@ type UserDeletionData = {
 };
 
 type UserState = {
-  user?: UserData;
+  user?: UserData & { fiscal: UserFiscalData };
   fiscalData?: UserFiscalData;
   loading: boolean;
   loadingProfile: boolean;
+  customUserFields?: ApiOperations["get-customUserFields"]["responses"]["200"]["content"]["application/json"];
   deletionReason?: string;
   error?: string;
   isDeleteModalOpen: boolean;
 };
+
 type UserDispatchType = (args: UserAction) => UserAction;

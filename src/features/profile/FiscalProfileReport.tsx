@@ -1,4 +1,3 @@
-import userStore from "../../redux/user";
 import { useTranslation } from "react-i18next";
 import {
   Text,
@@ -6,6 +5,7 @@ import {
   Title,
   Card,
 } from "@appquality/appquality-design-system";
+import { useSelector, shallowEqual } from "react-redux";
 
 interface FiscalProfileReportProps {
   setActiveTab: () => void;
@@ -14,10 +14,13 @@ interface FiscalProfileReportProps {
 export const FiscalProfileReport = ({
   setActiveTab,
 }: FiscalProfileReportProps) => {
-  const { user } = userStore();
+  const user = useSelector(
+    (state: GeneralState) => state.user.user,
+    shallowEqual
+  );
   return (
     <>
-      {user.fiscal?.fiscalStatus ? (
+      {user?.fiscal?.fiscalStatus ? (
         user.fiscal.fiscalStatus.toLowerCase() !== "verified" ? (
           <UnVerifiedFiscalProfile setActiveTab={setActiveTab} />
         ) : null

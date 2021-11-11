@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import API from "../../../utils/api";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
-import { operations } from "../../../utils/schema";
 import { shallowEqual, useSelector } from "react-redux";
 import { AdvancedFormValues, CertificationsRadio } from "./types";
 
@@ -12,24 +10,18 @@ export const MapCufValues = () => {
     certifications,
     profession,
     education,
-  }: {
-    additional: UserData["additional"];
-    certifications: UserData["certifications"];
-    profession: UserData["profession"];
-    education: UserData["education"];
+    customUserFields,
   } = useSelector(
     (state: GeneralState) => ({
       additional: state.user.user?.additional,
       certifications: state.user.user?.certifications,
       profession: state.user.user?.profession,
       education: state.user.user?.education,
+      customUserFields: state.user.customUserFields,
     }),
     shallowEqual
   );
   const { t } = useTranslation();
-  const [cufGroups, setCufGroups] = useState<
-    operations["get-customUserFields"]["responses"]["200"]["content"]["application/json"]
-  >([]);
   let initialCertRadioValue: CertificationsRadio = "";
   if (typeof certifications === "boolean") {
     initialCertRadioValue = certifications ? "true" : "false";
@@ -55,17 +47,6 @@ export const MapCufValues = () => {
     education: yup.string().required(t("This is a required field")),
   });
   useEffect(() => {
-    const getCUF = async () => {
-      try {
-        const groups = await API.customUserFields({});
-        setCufGroups(groups);
-      } catch (e) {
-        alert(e);
-      }
-    };
-    getCUF();
-  }, []);
-  useEffect(() => {
     let schema: { [key: string]: yup.AnySchema } = {};
     let values: { [key: string]: string | object | object[] } = {};
     values.certifications = certifications || [];
@@ -75,28 +56,44 @@ export const MapCufValues = () => {
     values.employment = profession
       ? profession.id.toString()
       : { label: "", value: "" };
-    cufGroups.forEach((group) => {
+    if (customUserFields) {
+      customUserFields.forEach((group) => {
+        console.log(group);
+      });
+    }
+    customUserFields?.forEach((group) => {
       if (group.fields)
         group.fields.forEach((field) => {
           switch (field.type) {
             case "multiselect":
               const multiselectValue = additional?.filter(
-                (cuf: UserData["additional"][0]) => cuf.field_id === field.id
+                (cuf: ApiComponents["schemas"]["AdditionalField"]) =>
+                  cuf.field_id === field.id
+              );
+              const mappedOptions: SelectOptionType[] = multiselectValue.map(
+                (val: ApiComponents["schemas"]["AdditionalField"]) => ({
+                  ...val,
+                  label: val.text || "",
+                })
               );
               schema["cuf_" + field.id] = yup.array(yup.object());
-              values["cuf_" + field.id] = multiselectValue // todo: mapping {label: multiselectValue, value: }
-                ? multiselectValue
-                : [];
+              values["cuf_" + field.id] = mappedOptions;
               break;
             case "select":
-              const selectValue = additional.find(
+              const selectValue = additional?.find(
                 (cuf: UserData["additional"][0]) => cuf.field_id === field.id
               );
               schema["cuf_" + field.id] = yup.object();
-              values["cuf_" + field.id] = selectValue ? selectValue : {};
+              values["cuf_" + field.id] = selectValue
+                ? {
+                    label: selectValue.text,
+                    value: selectValue.value,
+                    is_candidate: selectValue.is_candidate,
+                  }
+                : { label: "", value: "" };
               break;
             case "text":
-              const textValue = additional.find(
+              const textValue = additional?.find(
                 (cuf: UserData["additional"][0]) => cuf.field_id === field.id
               );
               values["cuf_" + field.id] = textValue ? textValue.value : "";
@@ -115,9 +112,8 @@ export const MapCufValues = () => {
     });
     setInitialUserValues({ ...initialUserValues, ...values });
     setValidationSchema({ ...validationSchema, ...schema });
-  }, [cufGroups]);
+  }, [customUserFields]);
   return {
-    cufGroups: cufGroups,
     initialUserValues: initialUserValues,
     validationSchema: validationSchema,
   };

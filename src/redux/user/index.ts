@@ -12,6 +12,7 @@ import {
   closeDeleteModal,
   openDeleteModal,
 } from "./actionCreators";
+import { operations } from "src/utils/schema";
 
 export default (): UserStatus => {
   const {
@@ -19,12 +20,14 @@ export default (): UserStatus => {
     loading,
     loadingProfile,
     deletionReason,
+    customUserFields,
     error,
     deleteModalOpen,
   }: {
     user: UserData;
     loading: boolean;
     loadingProfile: boolean;
+    customUserFields?: operations["get-customUserFields"]["responses"]["200"]["content"]["application/json"];
     error?: string;
     deletionReason?: string;
     deleteModalOpen: boolean;
@@ -32,6 +35,7 @@ export default (): UserStatus => {
     (state: GeneralState) => ({
       user: state.user.user,
       loading: state.user.loading,
+      customUserFields: state.user.customUserFields,
       loadingProfile: state.user.loadingProfile,
       deletionReason: state.user.deletionReason,
       error: state.user.error,
@@ -51,6 +55,7 @@ export default (): UserStatus => {
     getFiscalProfile: () => dispatch(getFiscalProfile()),
     updateFiscalProfile: (data) => dispatch(updateFiscalProfile(data)),
     user: user,
+    customUserFields: customUserFields,
     isLoading: loading,
     isProfileLoading: loadingProfile,
     deletion: {

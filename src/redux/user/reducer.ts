@@ -112,6 +112,12 @@ const reducer = (
           },
         };
       break;
+    case actionTypes.GET_CUSTOM_USER_FIELDS:
+      if (action.data)
+        return {
+          ...state,
+          customUserFields: action.data,
+        };
   }
   return state;
 };

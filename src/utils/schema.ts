@@ -438,6 +438,8 @@ export interface components {
       field_id: number;
       name: string;
       value: string;
+      text?: string;
+      is_candidate?: boolean;
     };
     Certification: {
       id?: number;
@@ -447,6 +449,19 @@ export interface components {
       achievement_date: string;
     };
     FiscalType: "withholding" | "witholding-extra" | "other" | "non-italian";
+    CustomUserFieldsData: {
+      id: number;
+      type: "select" | "multiselect" | "text";
+      placeholder?: components["schemas"]["TranslatablePage"];
+      allow_other?: boolean;
+      name: components["schemas"]["TranslatablePage"];
+      format?: string;
+      options?: components["schemas"]["CustomUserFieldsDataOption"][];
+    };
+    CustomUserFieldsDataOption: {
+      id: number;
+      name: string;
+    };
   };
   responses: {
     /** A user */
@@ -1680,11 +1695,11 @@ export interface operations {
       content: {
         "application/json":
           | {
-              certifications: boolean;
-            }
-          | {
               certification_id: number;
               achievement_date: string;
+            }
+          | {
+              certifications?: boolean;
             };
       };
     };
@@ -1819,18 +1834,7 @@ export interface operations {
               name: components["schemas"]["TranslatablePage"];
               description?: components["schemas"]["TranslatablePage"];
             };
-            fields?: {
-              id: number;
-              type: "select" | "multiselect" | "text";
-              placeholder?: components["schemas"]["TranslatablePage"];
-              allow_other?: boolean;
-              name: components["schemas"]["TranslatablePage"];
-              format?: string;
-              options?: {
-                id: number;
-                name: string;
-              }[];
-            }[];
+            fields?: components["schemas"]["CustomUserFieldsData"][];
           }[];
         };
       };

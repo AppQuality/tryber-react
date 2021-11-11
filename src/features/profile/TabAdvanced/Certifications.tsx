@@ -33,7 +33,7 @@ const Certifications = () => {
 
   useEffect(() => {
     if (touched.certificationsRadio && values.certificationsRadio === "false") {
-      if (userCertifications.length) {
+      if (Array.isArray(userCertifications) && userCertifications.length) {
         open({
           content: (
             <DeleteCertificationsModal certifications={userCertifications} />
@@ -58,7 +58,7 @@ const Certifications = () => {
       }
     }
   }, [values.certificationsRadio]);
-  const userCertifications: components["schemas"]["Certification"][] =
+  const userCertifications: components["schemas"]["Certification"][] | boolean =
     useSelector(
       (state: GeneralState) => state.user.user?.certifications || [],
       shallowEqual
@@ -102,50 +102,56 @@ const Certifications = () => {
       </FormikField>
       {values.certificationsRadio && (
         <>
-          {userCertifications.map((cert) => (
-            <CSSGrid
-              rowGap="1rem"
-              min="60px"
-              className="aq-mb-3 aq-pt-3"
-              style={{
-                borderTop: `1px solid ${aqBootstrapTheme.colors.disabled}`,
-              }}
-            >
-              <div className="aq-text-primary" style={{ gridColumn: "span 3" }}>
-                <Text small aria-disabled={true}>
-                  {cert.achievement_date}
-                </Text>
-                <strong>{cert.name}</strong>
-                <strong>{cert.area}</strong>
-                <Text>
-                  {t("Institute:")} <strong>{cert.institute}</strong>
-                </Text>
-              </div>
-              <div className="remove-certification aq-text-right">
-                <Button
-                  className="aq-text-danger"
-                  type="link"
-                  htmlType="button"
-                  flat
-                  size="sm"
-                  onClick={() => {
-                    open({
-                      content: (
-                        <DeleteCertificationsModal certifications={[cert]} />
-                      ),
-                      title: t("Remove Certification"),
-                      footer: (
-                        <DeleteCertificationsModalFooter certification={cert} />
-                      ),
-                      size: "small",
-                    });
-                  }}
+          {Array.isArray(userCertifications) &&
+            userCertifications.map((cert) => (
+              <CSSGrid
+                rowGap="1rem"
+                min="60px"
+                className="aq-mb-3 aq-pt-3"
+                style={{
+                  borderTop: `1px solid ${aqBootstrapTheme.colors.disabled}`,
+                }}
+              >
+                <div
+                  className="aq-text-primary"
+                  style={{ gridColumn: "span 3" }}
                 >
-                  {t("Remove")}
-                </Button>
-              </div>
-            </CSSGrid>
-          ))}
+                  <Text small aria-disabled={true}>
+                    {cert.achievement_date}
+                  </Text>
+                  <strong>{cert.name}</strong>
+                  <strong>{cert.area}</strong>
+                  <Text>
+                    {t("Institute:")} <strong>{cert.institute}</strong>
+                  </Text>
+                </div>
+                <div className="remove-certification aq-text-right">
+                  <Button
+                    className="aq-text-danger"
+                    type="link"
+                    htmlType="button"
+                    flat
+                    size="sm"
+                    onClick={() => {
+                      open({
+                        content: (
+                          <DeleteCertificationsModal certifications={[cert]} />
+                        ),
+                        title: t("Remove Certification"),
+                        footer: (
+                          <DeleteCertificationsModalFooter
+                            certification={cert}
+                          />
+                        ),
+                        size: "small",
+                      });
+                    }}
+                  >
+                    {t("Remove")}
+                  </Button>
+                </div>
+              </CSSGrid>
+            ))}
           {values.certificationsRadio === "true" && (
             <CSSGrid min="50%" gutter="0" fill={true}>
               <HalfColumnButton
