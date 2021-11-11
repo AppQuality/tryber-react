@@ -17,7 +17,6 @@ import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import siteWideMessageStore from "../../../redux/siteWideMessages";
 import ResetPasswordArea from "./ResetPasswordArea";
-import Cookies from "universal-cookie";
 
 const EditPassword = () => {
   const { t } = useTranslation();
@@ -27,12 +26,6 @@ const EditPassword = () => {
     newPassword: "",
     newPasswordConfirm: "",
   };
-  const cookies = new Cookies();
-  const cookieValue = cookies.getAll();
-  const wpLoggedInCookie = Object.keys(cookieValue).filter((c) =>
-    c.startsWith("wordpress_logged_in")
-  );
-  console.log(wpLoggedInCookie);
   return (
     <div className="edit-password">
       <Formik
@@ -66,15 +59,6 @@ const EditPassword = () => {
               message: t("Password correctly updated, you will be logged out"),
               type: "success",
             });
-            const cookies = new Cookies();
-            const cookieValue = cookies.getAll();
-            const wpLoggedInCookie = Object.keys(cookieValue).filter((c) =>
-              c.startsWith("wordpress_logged_in")
-            );
-            console.log(wpLoggedInCookie);
-            if (wpLoggedInCookie) {
-              wpLoggedInCookie.forEach((c) => cookies.remove(c));
-            }
             window.location.reload();
           } catch (e: HttpError) {
             if (e.statusCode === 417) {
@@ -123,10 +107,10 @@ const EditPassword = () => {
                         }}
                         placeholder="******"
                       />
-                      <Text small className="aq-mt-2">
-                        * For a secure password we recommend: Minimum 6
-                        characters. An uppercase character. A numerical digit. A
-                        lowercase character.
+                      <Text small className="aq-mt-2 aq-text-secondary">
+                        {t(
+                          "For a secure password we recommend: Minimum 6  characters. An uppercase character. A numerical digit. A lowercase character."
+                        )}
                       </Text>
                       <ErrorMessage name={field.name} />
                     </FormGroup>
@@ -144,9 +128,6 @@ const EditPassword = () => {
                 htmlType="submit"
                 flat={true}
                 disabled={!formikProps.isValid}
-                onClick={() => {
-                  console.log(formikProps);
-                }}
               >
                 {t("Change password")}
               </Button>
