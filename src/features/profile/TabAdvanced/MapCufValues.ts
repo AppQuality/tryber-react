@@ -86,9 +86,8 @@ export const MapCufValues = () => {
               schema["cuf_" + field.id] = yup.object();
               values["cuf_" + field.id] = selectValue
                 ? {
+                    ...selectValue,
                     label: selectValue.text,
-                    value: selectValue.value,
-                    is_candidate: selectValue.is_candidate,
                   }
                 : { label: "", value: "" };
               break;

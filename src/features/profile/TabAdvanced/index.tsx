@@ -33,6 +33,11 @@ const TabAdvanced = () => {
       validationSchema={yup.object(validationSchema)}
       onSubmit={(values) => {
         console.log(values);
+        Object.keys(values).forEach((key) => {
+          if (typeof values[key] === "string") {
+            let id = key.split("_")[1];
+          }
+        });
       }}
     >
       {(formikProps) => (
