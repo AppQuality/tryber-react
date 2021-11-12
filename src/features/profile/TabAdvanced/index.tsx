@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 import {
-  Button,
   CSSGrid,
   Form,
   Formik,
@@ -17,6 +16,7 @@ import Certifications from "./Certifications";
 import { MapCufValues } from "./MapCufValues";
 import { useSelector } from "react-redux";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
+import { FormikValues } from "formik";
 
 const TabAdvanced = () => {
   const { t } = useTranslation();
@@ -24,6 +24,59 @@ const TabAdvanced = () => {
   const isLoading = useSelector(
     (state: GeneralState) => state.user.loadingProfile
   );
+
+  function getCufToSave(values: FormikValues) {
+    const cufToSave: any = [];
+    Object.keys(values).forEach((key) => {
+      //key == cuf_n, certifications, certificationRadio, education, employment
+      if (key.includes("cuf_")) {
+        // case: text { id: 1, values: {value:'suca'}}
+        if (typeof values[key] === "string") {
+          cufToSave.push({
+            id: key.split("_")[1].toString(),
+            values: { value: values[key] },
+          });
+        }
+        //case: multiselect
+        else if (Array.isArray(values[key])) {
+          let fieldMultiselect: {
+            id: string;
+            values: { value: string; is_candidate?: boolean }[];
+          };
+          fieldMultiselect = { id: "", values: [] };
+          fieldMultiselect.id = key.split("_")[1].toString();
+          values[key].forEach((multiSelectOption: any) => {
+            multiSelectOption.hasOwnProperty("is_candidate")
+              ? fieldMultiselect.values.push({
+                  value: multiSelectOption.value,
+                  is_candidate: multiSelectOption.is_candidate,
+                })
+              : fieldMultiselect.values.push({
+                  value: multiSelectOption.value,
+                });
+          });
+          cufToSave.push(fieldMultiselect);
+        } else {
+          // case: select
+          let fieldSelect: {
+            id: string;
+            values: { value: string; is_candidate?: boolean };
+          };
+          fieldSelect = { id: "", values: { value: "" } };
+          fieldSelect.id = key.split("_")[1].toString();
+          values[key].hasOwnProperty("is_candidate")
+            ? (fieldSelect.values = {
+                value: values[key].value,
+                is_candidate: values[key].is_candidate,
+              })
+            : (fieldSelect.values = {
+                value: values[key].value,
+              });
+          cufToSave.push(fieldSelect);
+        }
+      }
+    });
+  }
 
   if (isLoading) return <Spinner />;
   return (
@@ -33,11 +86,7 @@ const TabAdvanced = () => {
       validationSchema={yup.object(validationSchema)}
       onSubmit={(values) => {
         console.log(values);
-        Object.keys(values).forEach((key) => {
-          if (typeof values[key] === "string") {
-            let id = key.split("_")[1];
-          }
-        });
+        getCufToSave(values);
       }}
     >
       {(formikProps) => (
@@ -61,7 +110,7 @@ const TabAdvanced = () => {
               {formikProps.errors && (
                 <Text color="danger" small>
                   <ul style={{ listStyle: "disc" }}>
-                    {Object.entries(formikProps.errors).map((value, key) => (
+                    {Object.entries(formikProps.errors).map((value) => (
                       <li>{value}</li>
                     ))}
                   </ul>
