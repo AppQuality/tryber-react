@@ -85,7 +85,6 @@ const TabAdvanced = () => {
       initialValues={initialUserValues}
       validationSchema={yup.object(validationSchema)}
       onSubmit={(values) => {
-        console.log(values);
         getCufToSave(values);
       }}
     >
