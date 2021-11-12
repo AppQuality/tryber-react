@@ -229,3 +229,4 @@ export * from "./myDevices";
 export * from "./onboardingComplete";
 export * from "./delete";
 export * from "./changePassword";
+export * from "./myCustomUserFields";

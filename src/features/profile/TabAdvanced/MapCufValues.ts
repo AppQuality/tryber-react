@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { AdvancedFormValues, CertificationsRadio } from "./types";
+import { FormikValues } from "formik";
 
 export const MapCufValues = () => {
   const {
@@ -116,4 +117,60 @@ export const MapCufValues = () => {
     initialUserValues: initialUserValues,
     validationSchema: validationSchema,
   };
+};
+export const PrepareUserCuf = (values: FormikValues) => {
+  const cufToSave: {
+    id: string;
+    values: ApiOperations["put-users-me-additionals-fieldId"]["requestBody"]["content"]["application/json"];
+  }[] = [];
+  Object.keys(values).forEach((key) => {
+    //key == cuf_n, certifications, certificationRadio, education, employment
+    if (key.includes("cuf_")) {
+      // case: text { id: 1, values: {value:'suca'}}
+      if (typeof values[key] === "string") {
+        cufToSave.push({
+          id: key.split("_")[1].toString(),
+          values: { value: values[key] },
+        });
+      }
+      //case: multiselect
+      else if (Array.isArray(values[key])) {
+        let fieldMultiselect: {
+          id: string;
+          values: { value: string; is_candidate?: boolean }[];
+        };
+        fieldMultiselect = { id: "", values: [] };
+        fieldMultiselect.id = key.split("_")[1].toString();
+        values[key].forEach((multiSelectOption: any) => {
+          multiSelectOption.hasOwnProperty("is_candidate")
+            ? fieldMultiselect.values.push({
+                value: multiSelectOption.value,
+                is_candidate: multiSelectOption.is_candidate,
+              })
+            : fieldMultiselect.values.push({
+                value: multiSelectOption.value,
+              });
+        });
+        cufToSave.push(fieldMultiselect);
+      } else {
+        // case: select
+        let fieldSelect: {
+          id: string;
+          values: { value: string; is_candidate?: boolean };
+        };
+        fieldSelect = { id: "", values: { value: "" } };
+        fieldSelect.id = key.split("_")[1].toString();
+        values[key].hasOwnProperty("is_candidate")
+          ? (fieldSelect.values = {
+              value: values[key].value,
+              is_candidate: values[key].is_candidate,
+            })
+          : (fieldSelect.values = {
+              value: values[key].value,
+            });
+        cufToSave.push(fieldSelect);
+      }
+    }
+  });
+  return cufToSave;
 };

@@ -13,10 +13,10 @@ import * as yup from "yup";
 import { EducationSelect } from "../EducationSelect";
 import { CustomUserFields } from "./CustomUserFields";
 import Certifications from "./Certifications";
-import { MapCufValues } from "./MapCufValues";
+import { MapCufValues, PrepareUserCuf } from "./MapCufValues";
 import { useSelector } from "react-redux";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
-import { FormikValues } from "formik";
+import API from "src/utils/api";
 
 const TabAdvanced = () => {
   const { t } = useTranslation();
@@ -25,59 +25,6 @@ const TabAdvanced = () => {
     (state: GeneralState) => state.user.loadingProfile
   );
 
-  function getCufToSave(values: FormikValues) {
-    const cufToSave: any = [];
-    Object.keys(values).forEach((key) => {
-      //key == cuf_n, certifications, certificationRadio, education, employment
-      if (key.includes("cuf_")) {
-        // case: text { id: 1, values: {value:'suca'}}
-        if (typeof values[key] === "string") {
-          cufToSave.push({
-            id: key.split("_")[1].toString(),
-            values: { value: values[key] },
-          });
-        }
-        //case: multiselect
-        else if (Array.isArray(values[key])) {
-          let fieldMultiselect: {
-            id: string;
-            values: { value: string; is_candidate?: boolean }[];
-          };
-          fieldMultiselect = { id: "", values: [] };
-          fieldMultiselect.id = key.split("_")[1].toString();
-          values[key].forEach((multiSelectOption: any) => {
-            multiSelectOption.hasOwnProperty("is_candidate")
-              ? fieldMultiselect.values.push({
-                  value: multiSelectOption.value,
-                  is_candidate: multiSelectOption.is_candidate,
-                })
-              : fieldMultiselect.values.push({
-                  value: multiSelectOption.value,
-                });
-          });
-          cufToSave.push(fieldMultiselect);
-        } else {
-          // case: select
-          let fieldSelect: {
-            id: string;
-            values: { value: string; is_candidate?: boolean };
-          };
-          fieldSelect = { id: "", values: { value: "" } };
-          fieldSelect.id = key.split("_")[1].toString();
-          values[key].hasOwnProperty("is_candidate")
-            ? (fieldSelect.values = {
-                value: values[key].value,
-                is_candidate: values[key].is_candidate,
-              })
-            : (fieldSelect.values = {
-                value: values[key].value,
-              });
-          cufToSave.push(fieldSelect);
-        }
-      }
-    });
-  }
-
   if (isLoading) return <Spinner />;
   return (
     <Formik
@@ -85,7 +32,10 @@ const TabAdvanced = () => {
       initialValues={initialUserValues}
       validationSchema={yup.object(validationSchema)}
       onSubmit={(values) => {
-        getCufToSave(values);
+        const readyCuf = PrepareUserCuf(values);
+        readyCuf.forEach((cuf) => {
+          API.updateCustomUserFields(cuf.id, cuf.values);
+        });
       }}
     >
       {(formikProps) => (
