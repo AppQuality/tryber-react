@@ -21,7 +21,12 @@ const CufTextField = ({
   return (
     <>
       <FormLabel htmlFor={field.name} label={label} />
-      <Input id={field.name} type="text" value={field.value} />
+      <Input
+        id={field.name}
+        type="text"
+        value={field.value}
+        onChange={(val) => fieldProps.form.setFieldValue(field.name, val)}
+      />
     </>
   );
 };
