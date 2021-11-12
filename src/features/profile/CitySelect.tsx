@@ -10,11 +10,13 @@ const CitySelect = ({
   label,
   onBlur,
   onChange,
+  countryRestrictions,
 }: {
   name: string;
   label: string;
   onBlur: () => void;
   onChange: (place: google.maps.GeocoderResult) => void;
+  countryRestrictions?: string | string[];
 }) => {
   const { t, i18n } = useTranslation();
   return (
@@ -40,6 +42,7 @@ const CitySelect = ({
                 },
                 autocompletionRequest: {
                   types: ["(cities)"],
+                  componentRestrictions: { country: countryRestrictions || "" },
                 },
               }}
               onBlur={onBlur}

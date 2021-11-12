@@ -26,13 +26,13 @@ import { updateProfile } from "../../redux/user/actions/updateProfile";
 import API from "../../utils/api";
 import BirthdayPicker from "../BirthdayPicker";
 import CountrySelect from "../CountrySelect";
+import countries from "i18n-iso-countries";
 import { LanguageSelect } from "./LanguageSelect";
 import { BaseFields } from "./types.d";
 
 const TabBase = () => {
   const { t } = useTranslation();
   const { user, isProfileLoading } = UserStore();
-  const [countryCode, setCountryCode] = useState("");
   const [languages, setLanguages] = useState<SelectType.Option[]>([]);
   const { add } = siteWideMessages();
   const dispatch = useDispatch();
@@ -55,6 +55,7 @@ const TabBase = () => {
     phone: user.phone || "",
     email: user.email || "",
     country: user.country || "",
+    countryCode: countries.getAlpha2Code(user.country, "en"),
     city: user.city || "",
     languages:
       user.languages?.map((l: any) => ({
@@ -81,6 +82,7 @@ const TabBase = () => {
       .email(t("Email must be a valid email"))
       .required(t("This is a required field")),
     country: yup.string().required(t("This is a required field")),
+    countryCode: yup.string(),
     city: yup.string().required(t("This is a required field")),
     languages: yup.array().required(t("This is a required field")),
   };
@@ -128,8 +130,8 @@ const TabBase = () => {
     >
       {(formikProps: FormikProps<BaseFields>) => {
         const handleCountryChange = (v: SelectType.Option) => {
-          setCountryCode(v.code);
           formikProps.setFieldValue("city", "");
+          formikProps.setFieldValue("countryCode", v.code);
         };
         return (
           <Form id="baseProfileForm" className="aq-m-3">
@@ -220,6 +222,7 @@ const TabBase = () => {
                   onBlur={() => {
                     formikProps.setFieldTouched("city");
                   }}
+                  countryRestrictions={formikProps.values.countryCode}
                   onChange={(place) => {
                     const fields = place.address_components;
                     const city = fields.find(
