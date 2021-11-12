@@ -116,7 +116,7 @@ const StyledHeaderProfile = styled.div`
       color: ${(props) => props.theme.colors.disabledDark};
     }
   }
-  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.md}) {
     grid-template-columns: 20% 40% 40%;
   }
 `;
