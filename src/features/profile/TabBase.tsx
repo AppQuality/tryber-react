@@ -129,7 +129,7 @@ const TabBase = () => {
       {(formikProps: FormikProps<BaseFields>) => {
         const handleCountryChange = (v: SelectType.Option) => {
           setCountryCode(v.code);
-          formikProps.setFieldValue("city", { label: "", value: "" });
+          formikProps.setFieldValue("city", "");
         };
         return (
           <Form id="baseProfileForm" className="aq-m-3">
