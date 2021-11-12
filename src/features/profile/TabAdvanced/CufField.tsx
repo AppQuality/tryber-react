@@ -28,10 +28,12 @@ const CufSelectField = ({
   fieldProps,
   options,
   label,
+  id,
 }: {
   fieldProps: FieldProps;
   options: ApiComponents["schemas"]["CustomUserFieldsDataOption"][];
   label: string;
+  id: number;
 }) => {
   const { field } = fieldProps;
   const [selectOptions, setOptions] = useState<SelectOptionType[]>([]);
@@ -40,6 +42,7 @@ const CufSelectField = ({
       options.map((o) => ({
         label: o.name,
         value: o.id.toString(),
+        field_id: id,
       }))
     );
   }, [options]);
@@ -58,10 +61,12 @@ const CufMultiSelectField = ({
   fieldProps,
   options,
   label,
+  id,
 }: {
   fieldProps: FieldProps;
   options: ApiComponents["schemas"]["CustomUserFieldsDataOption"][];
   label: string;
+  id: number;
 }) => {
   const { field, form } = fieldProps;
   const [selectOptions, setOptions] = useState<SelectOptionType[]>([]);
@@ -70,6 +75,7 @@ const CufMultiSelectField = ({
       options.map((o) => ({
         label: o.name,
         value: o.id.toString(),
+        field_id: id,
       }))
     );
   }, [options]);
@@ -119,12 +125,14 @@ const CufField = ({
                   fieldProps={fieldProps}
                   label={cufFieldLabel || ""}
                   options={cufField.options || []}
+                  id={cufField.id}
                 />
               ) : cufField.type === "multiselect" ? (
                 <CufMultiSelectField
                   label={cufFieldLabel || ""}
                   fieldProps={fieldProps}
                   options={cufField.options || []}
+                  id={cufField.id}
                 />
               ) : null}
             </FormGroup>
