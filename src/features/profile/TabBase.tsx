@@ -1,33 +1,33 @@
-import { useTranslation } from "react-i18next";
 import {
-  Title,
-  FormLabel,
   CSSGrid,
-  Field,
-  Formik,
-  Form,
-  FieldProps,
-  FormGroup,
   ErrorMessage,
-  Input,
+  Field,
+  FieldProps,
+  Form,
+  FormGroup,
+  Formik,
   FormikField,
+  FormLabel,
+  Input,
   Select,
   SelectType,
-  Button,
+  Title,
 } from "@appquality/appquality-design-system";
-import UserStore from "../../redux/user";
-import { updateProfile } from "../../redux/user/actions/updateProfile";
-import siteWideMessages from "../../redux/siteWideMessages";
-import { useEffect, useState } from "react";
-import CountrySelect from "../CountrySelect";
-import * as yup from "yup";
-import BirthdayPicker from "../BirthdayPicker";
-import { LanguageSelect } from "./LanguageSelect";
-import API from "../../utils/api";
-import { BaseFields } from "./types.d";
 import { FormikProps } from "formik";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import CitySelect from "src/features/profile/CitySelect";
+import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
+import * as yup from "yup";
+import siteWideMessages from "../../redux/siteWideMessages";
+import UserStore from "../../redux/user";
+import { updateProfile } from "../../redux/user/actions/updateProfile";
+import API from "../../utils/api";
+import BirthdayPicker from "../BirthdayPicker";
+import CountrySelect from "../CountrySelect";
+import { LanguageSelect } from "./LanguageSelect";
+import { BaseFields } from "./types.d";
 
 const TabBase = () => {
   const { t } = useTranslation();
@@ -243,17 +243,16 @@ const TabBase = () => {
                   label={t("Spoken languages")}
                   options={languages}
                 />
-                <Button
+                <HalfColumnButton
                   className="aq-mb-3"
-                  style={{ gridColumn: "auto / span 3" }}
                   type="success"
                   size="block"
                   htmlType="submit"
                   id="signup-simple"
                   flat
                 >
-                  salva
-                </Button>
+                  {t("Save")}
+                </HalfColumnButton>
               </div>
             </CSSGrid>
           </Form>
