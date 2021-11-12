@@ -72,7 +72,13 @@ const CufSelectField = ({
       options={selectOptions}
       label={label}
       value={field.value}
-      onChange={(val) => fieldProps.form.setFieldValue(field.name, val)}
+      onChange={(v) => {
+        if (!v) {
+          form.setFieldValue(field.name, { label: "", value: "" });
+        } else {
+          form.setFieldValue(field.name, v);
+        }
+      }}
       {...optionalArgs}
     />
   );
