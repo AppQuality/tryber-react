@@ -29,27 +29,35 @@ const CufSelectField = ({
   options,
   label,
   id,
+  allowOther,
 }: {
   fieldProps: FieldProps;
   options: ApiComponents["schemas"]["CustomUserFieldsDataOption"][];
   label: string;
   id: number;
+  allowOther?: boolean;
 }) => {
-  const { field } = fieldProps;
+  const { field, form } = fieldProps;
   const [selectOptions, setOptions] = useState<SelectOptionType[]>([]);
   useEffect(() => {
-    setOptions(
-      options.map((o) => ({
-        label: o.name,
-        value: o.id.toString(),
-        field_id: id,
-      }))
-    );
-  }, [options]);
+    let buildOptions = options.map((o) => ({
+      label: o.name,
+      value: o.id.toString(),
+      field_id: id,
+    }));
+    if (field.value && "is_candidate" in field.value)
+      buildOptions.push(field.value);
+    setOptions(buildOptions);
+  }, [options, field.value]);
 
   return (
     <Select
       menuTargetQuery={"body"}
+      onCreate={(val) => {
+        const newOption = { label: val, value: val, is_candidate: true };
+        form.setFieldValue(field.name, newOption);
+        setOptions([...selectOptions, newOption]);
+      }}
       name={field.name}
       options={selectOptions}
       label={label}
@@ -61,27 +69,41 @@ const CufMultiSelectField = ({
   fieldProps,
   options,
   label,
+  allowOther,
   id,
 }: {
   fieldProps: FieldProps;
   options: ApiComponents["schemas"]["CustomUserFieldsDataOption"][];
   label: string;
   id: number;
+  allowOther?: boolean;
 }) => {
   const { field, form } = fieldProps;
   const [selectOptions, setOptions] = useState<SelectOptionType[]>([]);
   useEffect(() => {
-    setOptions(
-      options.map((o) => ({
-        label: o.name,
-        value: o.id.toString(),
-        field_id: id,
-      }))
-    );
-  }, [options]);
+    let buildOptions = options.map((o) => ({
+      label: o.name,
+      value: o.id.toString(),
+      field_id: id,
+    }));
+    if (Array.isArray(field.value)) {
+      field.value.forEach((val) => {
+        if ("is_candidate" in val) buildOptions.push(val);
+      });
+    }
+    setOptions(buildOptions);
+  }, [options, field.value]);
   return (
     <Select
-      isMulti={true}
+      isMulti
+      onCreate={(val) => {
+        const newOption = { label: val, value: val, is_candidate: true };
+        form.setFieldValue(field.name, [
+          ...field.value,
+          { value: val, label: val, is_candidate: true },
+        ]);
+        setOptions([...selectOptions, newOption]);
+      }}
       menuTargetQuery={"body"}
       name={field.name}
       options={selectOptions}
@@ -126,6 +148,7 @@ const CufField = ({
                   label={cufFieldLabel || ""}
                   options={cufField.options || []}
                   id={cufField.id}
+                  allowOther={cufField.allow_other}
                 />
               ) : cufField.type === "multiselect" ? (
                 <CufMultiSelectField
@@ -133,6 +156,7 @@ const CufField = ({
                   fieldProps={fieldProps}
                   options={cufField.options || []}
                   id={cufField.id}
+                  allowOther={cufField.allow_other}
                 />
               ) : null}
             </FormGroup>
