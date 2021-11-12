@@ -8,6 +8,7 @@ import {
 } from "@appquality/appquality-design-system";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { validationSchema } from "@appquality/appquality-design-system/dist/stories/form/_data";
 
 const CufTextField = ({
   fieldProps,
@@ -50,18 +51,23 @@ const CufSelectField = ({
     setOptions(buildOptions);
   }, [options, field.value]);
 
+  const optionalArgs = allowOther
+    ? {
+        onCreate: (val: string) => {
+          const newOption = { label: val, value: val, is_candidate: true };
+          form.setFieldValue(field.name, newOption);
+          setOptions([...selectOptions, newOption]);
+        },
+      }
+    : null;
   return (
     <Select
       menuTargetQuery={"body"}
-      onCreate={(val) => {
-        const newOption = { label: val, value: val, is_candidate: true };
-        form.setFieldValue(field.name, newOption);
-        setOptions([...selectOptions, newOption]);
-      }}
       name={field.name}
       options={selectOptions}
       label={label}
       value={field.value}
+      {...optionalArgs}
     />
   );
 };
@@ -93,17 +99,20 @@ const CufMultiSelectField = ({
     }
     setOptions(buildOptions);
   }, [options, field.value]);
+
+  const optionalArgs = {
+    onCreate: (val: string) => {
+      const newOption = { label: val, value: val, is_candidate: true };
+      form.setFieldValue(field.name, [
+        ...field.value,
+        { value: val, label: val, is_candidate: true },
+      ]);
+      setOptions([...selectOptions, newOption]);
+    },
+  };
   return (
     <Select
       isMulti
-      onCreate={(val) => {
-        const newOption = { label: val, value: val, is_candidate: true };
-        form.setFieldValue(field.name, [
-          ...field.value,
-          { value: val, label: val, is_candidate: true },
-        ]);
-        setOptions([...selectOptions, newOption]);
-      }}
       menuTargetQuery={"body"}
       name={field.name}
       options={selectOptions}
@@ -116,6 +125,7 @@ const CufMultiSelectField = ({
           form.setFieldValue(field.name, v);
         }
       }}
+      {...optionalArgs}
     />
   );
 };
