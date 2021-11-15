@@ -252,16 +252,18 @@ const TabBase = () => {
                   label={t("Spoken languages")}
                   options={languages}
                 />
-                <HalfColumnButton
-                  className="aq-mb-3"
-                  type="success"
-                  size="block"
-                  htmlType="submit"
-                  id="signup-simple"
-                  flat
-                >
-                  {t("Save")}
-                </HalfColumnButton>
+                <CSSGrid min="50%" gutter="0" fill={true}>
+                  <HalfColumnButton
+                    className="aq-mb-3"
+                    type="success"
+                    size="block"
+                    htmlType="submit"
+                    id="signup-simple"
+                    flat
+                  >
+                    {t("Save")}
+                  </HalfColumnButton>
+                </CSSGrid>
               </div>
             </CSSGrid>
           </Form>
