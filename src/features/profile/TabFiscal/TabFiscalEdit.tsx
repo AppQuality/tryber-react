@@ -153,7 +153,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
           updateFiscalProfile(submitValues as UserData, {
             verifiedMessage: (
               <>
-                <b className="aq-text-success">{t("Valid tax profile.")}</b>
+                <b>{t("Valid tax profile.")}</b>
                 <br />
                 {t(
                   'You can view your profile summary and make changes if necessary in the "Tax" section of your profile.'
@@ -162,7 +162,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
             ),
             unverifiedMessage: (
               <>
-                <b className="aq-text-danger">{t("Invalid tax profile.")}</b>
+                <b>{t("Invalid tax profile.")}</b>
                 <br />
                 {t(
                   "There was an error validating your fiscal profile, please check your data."
