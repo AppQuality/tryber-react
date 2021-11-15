@@ -14,6 +14,7 @@ import {
   Title,
 } from "@appquality/appquality-design-system";
 import { FormikProps } from "formik";
+import countries from "i18n-iso-countries";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -26,7 +27,6 @@ import { updateProfile } from "../../redux/user/actions/updateProfile";
 import API from "../../utils/api";
 import BirthdayPicker from "../BirthdayPicker";
 import CountrySelect from "../CountrySelect";
-import countries from "i18n-iso-countries";
 import { LanguageSelect } from "./LanguageSelect";
 import { BaseFields } from "./types.d";
 
@@ -137,7 +137,9 @@ const TabBase = () => {
           <Form id="baseProfileForm" className="aq-m-3">
             <CSSGrid gutter="50px" rowGap="1rem" min="220px">
               <div className="personal-info">
-                <Title size="s">{t("Personal info")}</Title>
+                <Title className="aq-mb-2" size="xs">
+                  {t("Personal info")}
+                </Title>
                 <Field name="name" type="text" label={t("Name")} />
                 <Field name="surname" type="text" label={t("Surname")} />
                 <FormikField name="gender">
@@ -210,7 +212,9 @@ const TabBase = () => {
                 <Field name="email" type="email" label={t("Email")} />
               </div>
               <div className="address">
-                <Title size="s">{t("Address")}</Title>
+                <Title className="aq-mb-2" size="xs">
+                  {t("Address")}
+                </Title>
                 <CountrySelect
                   name="country"
                   label={t("Country")}
