@@ -33,7 +33,7 @@ const TabAdvanced = () => {
       enableReinitialize
       initialValues={initialUserValues}
       validationSchema={yup.object(validationSchema)}
-      onSubmit={async (values) => {
+      onSubmit={async (values, helpers) => {
         try {
           const readyCuf = PrepareUserCuf(values);
           const updateCuf = readyCuf.map((cuf) => {
@@ -41,6 +41,7 @@ const TabAdvanced = () => {
           });
           await Promise.all(updateCuf);
           dispatch(addMessage(t("Profile data correctly updated."), "success"));
+          helpers.resetForm({ values });
         } catch (e) {
           dispatch(
             addMessage(
@@ -88,8 +89,12 @@ const TabAdvanced = () => {
                 <HalfColumnButton
                   type="success"
                   htmlType="submit"
-                  flat={true}
-                  disabled={false}
+                  flat
+                  disabled={
+                    !formikProps.isValid ||
+                    formikProps.isValidating ||
+                    !formikProps.dirty
+                  }
                 >
                   {t("Save")}
                 </HalfColumnButton>
