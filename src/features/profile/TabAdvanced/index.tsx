@@ -60,7 +60,9 @@ const TabAdvanced = () => {
               </Title>
               <EmploymentSelect name="employment" label={t("Profession")} />
               <EducationSelect name="education" label={t("Education level")} />
-              <Title size="xs">{t("Certifications")}</Title>
+              <Title className="aq-mb-2" size="xs">
+                {t("Certifications")}
+              </Title>
               <Certifications />
             </div>
             <div className="address">
