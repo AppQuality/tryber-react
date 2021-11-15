@@ -7,7 +7,6 @@ import {
   Input,
   Text,
   ErrorMessage,
-  PlacesAutocomplete,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { ChangeEvent } from "react";
@@ -16,7 +15,7 @@ import CitySelect from "src/features/profile/CitySelect";
 const FiscalTypeArea = () => {
   const { values, setValues, setFieldTouched } =
     useFormikContext<FiscalFormValues>();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <>
       <FormikField name="fiscalTypeRadio">
@@ -135,6 +134,21 @@ const FiscalTypeArea = () => {
                 const city = fields.find(
                   (field) => field.types.indexOf("locality") >= 0
                 );
+                // they made me do this
+                if (country?.short_name === "IT") {
+                  if (city?.long_name === "Milan") {
+                    city.long_name = "Milano";
+                  }
+                  if (city?.long_name === "Rome") {
+                    city.long_name = "Roma";
+                  }
+                  if (city?.long_name === "Turin") {
+                    city.long_name = "Torino";
+                  }
+                  if (city?.long_name === "Naples") {
+                    city.long_name = "Napoli";
+                  }
+                }
                 setValues(
                   (prevState) => ({
                     ...prevState,
