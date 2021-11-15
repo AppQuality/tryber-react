@@ -70,7 +70,6 @@ const TabBase = () => {
     birthDate: yup.string().required(t("This is a required field")),
     phone: yup
       .string()
-      .required(t("This is a required field"))
       .matches(
         /^\+?((\d\-|\d)+\d){4,20}$/gi,
         t(
@@ -97,7 +96,7 @@ const TabBase = () => {
       enableReinitialize
       validationSchema={yup.object(validationSchema)}
       initialValues={initialUserValues}
-      onSubmit={async (values) => {
+      onSubmit={async (values, helpers) => {
         try {
           let newLanguages: number[] = [];
           values.languages.forEach((val) => {
@@ -119,6 +118,8 @@ const TabBase = () => {
             message: t("Profile data correctly updated."),
             type: "success",
           });
+          helpers.setSubmitting(false);
+          helpers.resetForm({ values });
         } catch (e) {
           console.log(e);
           add({
@@ -260,6 +261,11 @@ const TabBase = () => {
                     htmlType="submit"
                     id="signup-simple"
                     flat
+                    disabled={
+                      !formikProps.isValid ||
+                      formikProps.isValidating ||
+                      !formikProps.dirty
+                    }
                   >
                     {t("Save")}
                   </HalfColumnButton>

@@ -132,7 +132,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
       enableReinitialize
       initialValues={initialUserValues}
       validationSchema={yup.object(validationSchema)}
-      onSubmit={async (values, action) => {
+      onSubmit={async (values, helpers) => {
         const submitValues = {
           address: {
             country: values.countryCode,
@@ -171,10 +171,11 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
             ),
           })
         );
-        action.setSubmitting(false);
+        helpers.setSubmitting(false);
+        helpers.resetForm({ values });
       }}
     >
-      {({ isValid, isValidating, dirty, errors, values }) => (
+      {({ isValid, isValidating, dirty }) => (
         <Form id="baseProfileForm">
           <CSSGrid gutter="50px" rowGap="1rem" min="220px">
             <div className="user-info">
@@ -249,7 +250,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                   type="success"
                   htmlType="submit"
                   flat
-                  disabled={!isValid || isValidating}
+                  disabled={!isValid || isValidating || !dirty}
                 >
                   {t("Save")}
                 </HalfColumnButton>

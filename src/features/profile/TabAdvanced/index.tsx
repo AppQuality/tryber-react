@@ -41,6 +41,7 @@ const TabAdvanced = () => {
           });
           await Promise.all(updateCuf);
           dispatch(addMessage(t("Profile data correctly updated."), "success"));
+          helpers.setSubmitting(false);
           helpers.resetForm({ values });
         } catch (e) {
           dispatch(
