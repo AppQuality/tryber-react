@@ -21,7 +21,7 @@ const CitySelect = ({
   const { t, i18n } = useTranslation();
   return (
     <FormikField name={name}>
-      {({ field, form }: FieldProps) => {
+      {({ field }: FieldProps) => {
         return (
           <>
             <FormLabel label={label} htmlFor={field.name} />

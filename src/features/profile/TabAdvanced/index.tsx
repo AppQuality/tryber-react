@@ -78,7 +78,7 @@ const TabAdvanced = () => {
               </Text>
               <CustomUserFields />
               {formikProps.errors && (
-                <Text color="danger" small>
+                <Text color="danger" small className="aq-my-3">
                   <ul style={{ listStyle: "disc" }}>
                     {Object.entries(formikProps.errors).map((value) => (
                       <li>{value}</li>
