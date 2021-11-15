@@ -244,7 +244,9 @@ const TabBase = () => {
                 />
                 <ErrorMessage name="city" />
 
-                <Title size="s">{t("Language")}</Title>
+                <Title className="aq-mb-2 aq-mt-3" size="xs">
+                  {t("Language")}
+                </Title>
                 <LanguageSelect
                   name="languages"
                   label={t("Spoken languages")}
