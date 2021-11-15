@@ -8,8 +8,9 @@ import {
 } from "@appquality/appquality-design-system";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
+import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 import API from "src/utils/api";
 import * as yup from "yup";
 import { EducationSelect } from "../EducationSelect";
@@ -17,8 +18,6 @@ import { EmploymentSelect } from "../EmploymentSelect";
 import Certifications from "./Certifications";
 import { CustomUserFields } from "./CustomUserFields";
 import { MapCufValues, PrepareUserCuf } from "./MapCufValues";
-import { useDispatch } from "react-redux";
-import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 
 const TabAdvanced = () => {
   const { t } = useTranslation();
@@ -68,7 +67,7 @@ const TabAdvanced = () => {
               <Title className="aq-mb-2" size="xs">
                 {t("Additional fields")}
               </Title>
-              <Text>
+              <Text className="aq-mb-3">
                 {t(
                   "Improve your chances of being selected in test campaigns by completing your profile."
                 )}
