@@ -34,7 +34,7 @@ export const updateFiscalProfile = (
       });
       if (newFiscalData.fiscalStatus === "Verified") {
         if (verifiedMessage !== false) {
-          messageDispatch(addMessage(verifiedMessage, "success"));
+          messageDispatch(addMessage(verifiedMessage, "success", 5));
         }
       } else {
         if (unverifiedMessage !== false) {
@@ -42,7 +42,6 @@ export const updateFiscalProfile = (
         }
       }
     } catch (err: unknown) {
-      const { statusCode } = err as HttpError;
       userDispatch({
         type: actionTypes.FETCH_FISCAL_PROFILE_FAILED,
         error: err as HttpError,
