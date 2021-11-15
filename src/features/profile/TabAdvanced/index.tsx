@@ -17,6 +17,8 @@ import { EmploymentSelect } from "../EmploymentSelect";
 import Certifications from "./Certifications";
 import { CustomUserFields } from "./CustomUserFields";
 import { MapCufValues, PrepareUserCuf } from "./MapCufValues";
+import { useDispatch } from "react-redux";
+import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 
 const TabAdvanced = () => {
   const { t } = useTranslation();
@@ -24,6 +26,7 @@ const TabAdvanced = () => {
   const isLoading = useSelector(
     (state: GeneralState) => state.user.loadingProfile
   );
+  const dispatch = useDispatch();
 
   if (isLoading) return <Spinner />;
   return (
@@ -31,11 +34,22 @@ const TabAdvanced = () => {
       enableReinitialize
       initialValues={initialUserValues}
       validationSchema={yup.object(validationSchema)}
-      onSubmit={(values) => {
-        const readyCuf = PrepareUserCuf(values);
-        readyCuf.forEach((cuf) => {
-          API.updateCustomUserFields(cuf.id, cuf.values);
-        });
+      onSubmit={async (values) => {
+        try {
+          const readyCuf = PrepareUserCuf(values);
+          const updateCuf = readyCuf.map((cuf) => {
+            return API.updateCustomUserFields(cuf.id, cuf.values);
+          });
+          await Promise.all(updateCuf);
+          dispatch(addMessage(t("Profile data correctly updated."), "success"));
+        } catch (e) {
+          dispatch(
+            addMessage(
+              t("Profile data not saved. Please try again."),
+              "warning"
+            )
+          );
+        }
       }}
     >
       {(formikProps) => (
