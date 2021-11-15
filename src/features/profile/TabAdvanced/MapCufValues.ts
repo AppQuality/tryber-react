@@ -1,9 +1,9 @@
+import { FormikValues } from "formik";
 import { useEffect, useState } from "react";
-import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
+import * as yup from "yup";
 import { AdvancedFormValues, CertificationsRadio } from "./types";
-import { FormikValues } from "formik";
 
 export const MapCufValues = () => {
   const {
@@ -67,10 +67,12 @@ export const MapCufValues = () => {
         group.fields.forEach((field) => {
           switch (field.type) {
             case "multiselect":
-              const multiselectValue = additional?.filter(
-                (cuf: ApiComponents["schemas"]["AdditionalField"]) =>
-                  cuf.field_id === field.id
-              );
+              const multiselectValue = additional
+                ? additional.filter(
+                    (cuf: ApiComponents["schemas"]["AdditionalField"]) =>
+                      cuf.field_id === field.id
+                  )
+                : [];
               const mappedOptions: SelectOptionType[] = multiselectValue.map(
                 (val: ApiComponents["schemas"]["AdditionalField"]) => ({
                   ...val,
@@ -81,9 +83,12 @@ export const MapCufValues = () => {
               values["cuf_" + field.id] = mappedOptions;
               break;
             case "select":
-              const selectValue = additional?.find(
-                (cuf: UserData["additional"][0]) => cuf.field_id === field.id
-              );
+              const selectValue = additional
+                ? additional.find(
+                    (cuf: UserData["additional"][0]) =>
+                      cuf.field_id === field.id
+                  )
+                : [];
               schema["cuf_" + field.id] = yup.object();
               values["cuf_" + field.id] = selectValue
                 ? {
@@ -93,9 +98,12 @@ export const MapCufValues = () => {
                 : { label: "", value: "" };
               break;
             case "text":
-              const textValue = additional?.find(
-                (cuf: UserData["additional"][0]) => cuf.field_id === field.id
-              );
+              const textValue = additional
+                ? additional.find(
+                    (cuf: UserData["additional"][0]) =>
+                      cuf.field_id === field.id
+                  )
+                : [];
               values["cuf_" + field.id] = textValue ? textValue.value : "";
               const formatData = field.format ? field.format.split(";") : false;
               const format = formatData ? new RegExp(formatData[0]) : false;
