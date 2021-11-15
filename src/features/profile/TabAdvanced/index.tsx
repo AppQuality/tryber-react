@@ -1,4 +1,3 @@
-import { useTranslation } from "react-i18next";
 import {
   CSSGrid,
   Form,
@@ -8,15 +7,16 @@ import {
   Title,
 } from "@appquality/appquality-design-system";
 import React from "react";
-import { EmploymentSelect } from "../EmploymentSelect";
-import * as yup from "yup";
-import { EducationSelect } from "../EducationSelect";
-import { CustomUserFields } from "./CustomUserFields";
-import Certifications from "./Certifications";
-import { MapCufValues, PrepareUserCuf } from "./MapCufValues";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
 import API from "src/utils/api";
+import * as yup from "yup";
+import { EducationSelect } from "../EducationSelect";
+import { EmploymentSelect } from "../EmploymentSelect";
+import Certifications from "./Certifications";
+import { CustomUserFields } from "./CustomUserFields";
+import { MapCufValues, PrepareUserCuf } from "./MapCufValues";
 
 const TabAdvanced = () => {
   const { t } = useTranslation();
@@ -42,14 +42,18 @@ const TabAdvanced = () => {
         <Form id="advancedProfileForm" className="aq-m-3">
           <CSSGrid gutter="50px" rowGap="1rem" min="220px">
             <div className="employment">
-              <Title size="s">{t("Employment")}</Title>
+              <Title className="aq-mb-2" size="xs">
+                {t("Employment")}
+              </Title>
               <EmploymentSelect name="employment" label={t("Profession")} />
               <EducationSelect name="education" label={t("Education level")} />
               <Title size="xs">{t("Certifications")}</Title>
               <Certifications />
             </div>
             <div className="address">
-              <Title size="s">{t("Additional fields")}</Title>
+              <Title className="aq-mb-2" size="xs">
+                {t("Additional fields")}
+              </Title>
               <Text>
                 {t(
                   "Improve your chances of being selected in test campaigns by completing your profile."
