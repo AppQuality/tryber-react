@@ -111,7 +111,8 @@ const TabBase = () => {
               profileDataToSend,
               t(
                 "Your profile doesn't match with your fiscal profile, please check your data"
-              )
+              ),
+              t("Your fiscal profile is now verified")
             )
           );
           add({

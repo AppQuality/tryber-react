@@ -5,13 +5,18 @@ import { updateFiscalProfile } from "./updateFiscalProfile";
 
 export const updateProfile = (
   data: operations["patch-users-me"]["requestBody"]["content"]["application/json"],
-  unverifiedFiscalProfileMessage?: string
+  unverifiedFiscalProfileMessage?: string,
+  verifiedFiscalProfileMessage?: string
 ) => {
   return async (dispatch: any, getState: () => GeneralState) => {
     try {
       const state = getState();
       const response = await API.patchMe(data);
-      if (state.user.fiscal && unverifiedFiscalProfileMessage) {
+      if (
+        state.user.fiscal.data &&
+        unverifiedFiscalProfileMessage &&
+        verifiedFiscalProfileMessage
+      ) {
         if (
           state.user.user.name !== data.name ||
           state.user.user.surname !== data.surname ||
@@ -29,7 +34,10 @@ export const updateProfile = (
           };
           dispatch(
             updateFiscalProfile(submitValues as UserData, {
-              verifiedMessage: false,
+              verifiedMessage:
+                state.user.fiscal.data.fiscalStatus === "Unverified"
+                  ? verifiedFiscalProfileMessage
+                  : false,
               unverifiedMessage: unverifiedFiscalProfileMessage,
             })
           );
