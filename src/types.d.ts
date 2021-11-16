@@ -25,8 +25,6 @@ export interface UserStatus {
 declare global {
   type Theme = typeof aqBootstrapTheme;
   type UserData = any;
-  type UserFiscalData =
-    operations["get-users-me-fiscal"]["responses"]["200"]["content"]["application/json"];
   type HttpError = HttpError;
   type ApiOperations = operations;
   type ApiComponents = components;

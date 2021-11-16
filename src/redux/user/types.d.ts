@@ -46,9 +46,15 @@ type UserDeletionData = {
   reason: string;
 };
 
+type UserFiscalData = {
+  fiscal: {
+    data: ApiOperations["get-users-me-fiscal"]["responses"]["200"]["content"]["application/json"];
+    loading: boolean;
+  };
+};
+
 type UserState = {
-  user?: UserData & { fiscal: UserFiscalData };
-  fiscalData?: UserFiscalData;
+  user?: UserData & UserFiscalData;
   loading: boolean;
   loadingProfile: boolean;
   customUserFields?: ApiOperations["get-customUserFields"]["responses"]["200"]["content"]["application/json"];
