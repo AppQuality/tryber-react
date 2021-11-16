@@ -37,7 +37,6 @@ function flush(done) {
           delete obj[key];
         }
       });
-      console.log(obj);
       let text = JSON.stringify(obj, null, jsonIndent) + "\n";
 
       if (lineEnding === "auto") {
@@ -112,7 +111,7 @@ module.exports = {
       lineEnding: "auto",
     },
     nsSeparator: false, // namespace separator
-    keySeparator: false, // key separator
+    keySeparator: ":::", // key separator
     interpolation: {
       prefix: "{{",
       suffix: "}}",
