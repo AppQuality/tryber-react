@@ -1,8 +1,8 @@
-import * as actionTypes from "../actionTypes";
+import { ReactNode } from "react";
+import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 import API from "src/utils/api";
 import { operations } from "src/utils/schema";
-import { addMessage } from "src/redux/siteWideMessages/actionCreators";
-import { ReactNode } from "react";
+import * as actionTypes from "../actionTypes";
 
 export function addCertification(
   certification: operations["post-users-me-certifications"]["requestBody"]["content"]["application/json"],
@@ -17,7 +17,10 @@ export function addCertification(
           dispatch(addMessage(onSuccessMsg, "success"));
           return dispatch({
             type: actionTypes.UPDATE_CERTIFICATIONS,
-            data: { newCertifications: res.certifications || [] },
+            data: {
+              newCertifications:
+                res.certifications === false ? false : res.certifications || [],
+            },
           });
         } catch (e) {
           dispatch(addMessage(onFailMsg, "danger"));
