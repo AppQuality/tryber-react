@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
-import API from "src/utils/api";
+import { updateAdvancedProfile } from "src/redux/user/actions/updateAdvancedProfile";
 import * as yup from "yup";
 import { EducationSelect } from "../EducationSelect";
 import { EmploymentSelect } from "../EmploymentSelect";
@@ -34,38 +34,39 @@ const TabAdvanced = () => {
       initialValues={initialUserValues}
       validationSchema={yup.object(validationSchema)}
       onSubmit={async (values, helpers) => {
-        try {
-          // create a TYPE for advancedData
-          // create a dispatch that:
-          // put cuf
-          // fetch profession
-          // fetch education
-          // if necessary set certifications false
+        const readyCuf = PrepareUserCuf(values);
 
-          const readyCuf = PrepareUserCuf(values);
-          const updateCuf = readyCuf.map((cuf) => {
-            return API.updateCustomUserFields(cuf.id, cuf.values);
-          });
-          if (values.certificationsRadio === "false") {
-            await API.addCertification({ certifications: false });
-          }
-          await Promise.all(updateCuf);
-          await API.patchMe({
-            profession: parseInt(values.employment),
-            education: parseInt(values.education),
-          });
+        dispatch(
+          updateAdvancedProfile(
+            {
+              cuf: readyCuf,
+              profile: {
+                profession: parseInt(values.employment),
+                education: parseInt(values.education),
+              },
+              deleteCertificate:
+                values.certificationsRadio === "false" ? true : undefined,
+            },
+            {
+              onSuccess: () => {
+                dispatch(
+                  addMessage(t("Profile data correctly updated."), "success")
+                );
+              },
+              onFailure: () => {
+                dispatch(
+                  addMessage(
+                    t("Profile data not saved. Please try again."),
+                    "warning"
+                  )
+                );
+              },
+            }
+          )
+        );
 
-          dispatch(addMessage(t("Profile data correctly updated."), "success"));
-          helpers.setSubmitting(false);
-          helpers.resetForm({ values });
-        } catch (e) {
-          dispatch(
-            addMessage(
-              t("Profile data not saved. Please try again."),
-              "warning"
-            )
-          );
-        }
+        helpers.setSubmitting(false);
+        helpers.resetForm({ values });
       }}
     >
       {(formikProps) => (
