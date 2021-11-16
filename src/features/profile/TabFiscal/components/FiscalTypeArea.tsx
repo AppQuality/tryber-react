@@ -111,11 +111,8 @@ const FiscalTypeArea = () => {
                   />{" "}
                   <Text small className="aq-mt-1 aq-text-secondary">
                     <Trans
-                      i18nKey="@@Link to help article for fiscal type@@"
-                      tOptions={{
-                        context: `Available tags:
-<a></a>: Link to the fiscal type help article`,
-                      }}
+                      i18nKey="Available tags:
+<a></a>: Link to the fiscal type help article:::@@Link to help article for fiscal type@@"
                       components={{
                         a: (
                           <a
