@@ -24,11 +24,6 @@ export const MapCufValues = () => {
   );
   const { t } = useTranslation();
   let initialCertRadioValue: CertificationsRadio = "";
-  if (typeof certifications === "boolean") {
-    initialCertRadioValue = certifications ? "true" : "false";
-  } else if (certifications?.length) {
-    initialCertRadioValue = "true";
-  }
   const [initialUserValues, setInitialUserValues] =
     useState<AdvancedFormValues>({
       certificationsRadio: initialCertRadioValue,
@@ -113,9 +108,15 @@ export const MapCufValues = () => {
           }
         });
     });
+
+    if (typeof certifications === "boolean") {
+      values.certificationsRadio = certifications ? "true" : "false";
+    } else if (certifications?.length) {
+      values.certificationsRadio = "true";
+    }
     setInitialUserValues({ ...initialUserValues, ...values });
     setValidationSchema({ ...validationSchema, ...schema });
-  }, [customUserFields]);
+  }, [customUserFields, certifications]);
   return {
     initialUserValues: initialUserValues,
     validationSchema: validationSchema,
