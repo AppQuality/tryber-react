@@ -79,7 +79,7 @@ const Certifications = () => {
                 checked={field.value === "false"}
                 id="certificationFalse"
                 label={t("I have no certifications")}
-                onChange={(v: string) => {
+                onChange={() => {
                   form.setFieldTouched(field.name);
                   form.setFieldValue(field.name, "false");
                 }}
@@ -156,7 +156,7 @@ const Certifications = () => {
             <CSSGrid min="50%" gutter="0" fill={true}>
               <HalfColumnButton
                 type="primary"
-                htmlType="submit"
+                htmlType="button"
                 flat={true}
                 disabled={false}
                 onClick={() => {

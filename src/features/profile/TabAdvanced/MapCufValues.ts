@@ -26,20 +26,15 @@ export const MapCufValues = () => {
   let initialCertRadioValue: CertificationsRadio = "";
   if (typeof certifications === "boolean") {
     initialCertRadioValue = certifications ? "true" : "false";
-  }
-  if (typeof certifications?.length) {
+  } else if (certifications?.length) {
     initialCertRadioValue = "true";
   }
   const [initialUserValues, setInitialUserValues] =
     useState<AdvancedFormValues>({
       certificationsRadio: initialCertRadioValue,
       certifications: certifications || [],
-      employment: profession
-        ? { label: profession.name, value: profession.id.toString() }
-        : { label: "", value: "" },
-      education: education
-        ? { label: education.name, value: education.id.toString() }
-        : { label: "", value: "" },
+      employment: profession?.id.toString() || "",
+      education: education?.id.toString() || "",
     });
   const [validationSchema, setValidationSchema] = useState<{
     [key: string]: yup.AnySchema;

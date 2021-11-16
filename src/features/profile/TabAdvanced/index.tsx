@@ -35,11 +35,26 @@ const TabAdvanced = () => {
       validationSchema={yup.object(validationSchema)}
       onSubmit={async (values, helpers) => {
         try {
+          // create a TYPE for advancedData
+          // create a dispatch that:
+          // put cuf
+          // fetch profession
+          // fetch education
+          // if necessary set certifications false
+
           const readyCuf = PrepareUserCuf(values);
           const updateCuf = readyCuf.map((cuf) => {
             return API.updateCustomUserFields(cuf.id, cuf.values);
           });
+          if (values.certificationsRadio === "false") {
+            await API.addCertification({ certifications: false });
+          }
           await Promise.all(updateCuf);
+          await API.patchMe({
+            profession: parseInt(values.employment),
+            education: parseInt(values.education),
+          });
+
           dispatch(addMessage(t("Profile data correctly updated."), "success"));
           helpers.setSubmitting(false);
           helpers.resetForm({ values });
