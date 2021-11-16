@@ -130,10 +130,6 @@ const TabBase = () => {
       }}
     >
       {(formikProps: FormikProps<BaseFields>) => {
-        const handleCountryChange = (v: SelectType.Option) => {
-          formikProps.setFieldValue("city", "");
-          formikProps.setFieldValue("countryCode", v.code);
-        };
         return (
           <Form id="baseProfileForm" className="aq-m-3">
             <CSSGrid gutter="50px" rowGap="1rem" min="220px">
@@ -219,7 +215,11 @@ const TabBase = () => {
                 <CountrySelect
                   name="country"
                   label={t("Country")}
-                  onChange={handleCountryChange}
+                  onChange={(v: SelectType.Option) => {
+                    formikProps.setFieldValue("city", "");
+                    formikProps.setFieldTouched("city");
+                    formikProps.setFieldValue("countryCode", v.code);
+                  }}
                 />
                 <CitySelect
                   name="city"
