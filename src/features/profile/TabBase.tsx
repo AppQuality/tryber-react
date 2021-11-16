@@ -262,11 +262,6 @@ const TabBase = () => {
                     htmlType="submit"
                     id="signup-simple"
                     flat
-                    disabled={
-                      !formikProps.isValid ||
-                      formikProps.isValidating ||
-                      !formikProps.dirty
-                    }
                   >
                     {t("Save")}
                   </HalfColumnButton>

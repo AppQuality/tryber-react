@@ -103,16 +103,7 @@ const TabAdvanced = () => {
                 </Text>
               )}
               <CSSGrid min="50%" gutter="0" fill={true}>
-                <HalfColumnButton
-                  type="success"
-                  htmlType="submit"
-                  flat
-                  disabled={
-                    !formikProps.isValid ||
-                    formikProps.isValidating ||
-                    !formikProps.dirty
-                  }
-                >
+                <HalfColumnButton type="success" htmlType="submit" flat>
                   {t("Save")}
                 </HalfColumnButton>
               </CSSGrid>
