@@ -34,6 +34,13 @@ export const TabFiscalEdit = () => {
   );
   const dispatch = useDispatch();
 
+  let street, streetNumber, streetData;
+  if (fiscalData?.address?.street) {
+    streetData = fiscalData?.address?.street.split(",");
+    street = streetData[0];
+    if (streetData.length > 1) streetNumber = streetData[1];
+  }
+
   const initialUserValues: FiscalFormValues = {
     gender: fiscalData?.gender || "",
     fiscalId: fiscalData?.fiscalId || "",
@@ -53,8 +60,8 @@ export const TabFiscalEdit = () => {
     countryCode: fiscalData?.address?.country,
     provinceCode: fiscalData?.address?.province,
     city: fiscalData?.address?.city,
-    street: undefined,
-    streetNumber: undefined,
+    street: street,
+    streetNumber: streetNumber,
     zipCode: fiscalData?.address?.cityCode,
   };
 
@@ -172,7 +179,7 @@ export const TabFiscalEdit = () => {
         helpers.resetForm({ values });
       }}
     >
-      {({ isValid, isValidating, dirty }) => (
+      {() => (
         <Form id="baseProfileForm">
           <CSSGrid gutter="50px" rowGap="1rem" min="220px">
             <div className="user-info">
@@ -248,12 +255,7 @@ export const TabFiscalEdit = () => {
                 <FiscalAddress />
               </div>
               <CSSGrid min="50%" gutter="0" fill>
-                <HalfColumnButton
-                  type="success"
-                  htmlType="submit"
-                  flat
-                  disabled={!isValid || isValidating || !dirty}
-                >
+                <HalfColumnButton type="success" htmlType="submit" flat>
                   {t("Save")}
                 </HalfColumnButton>
               </CSSGrid>
