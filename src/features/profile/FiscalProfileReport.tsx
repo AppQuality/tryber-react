@@ -14,14 +14,14 @@ interface FiscalProfileReportProps {
 export const FiscalProfileReport = ({
   setActiveTab,
 }: FiscalProfileReportProps) => {
-  const user = useSelector(
-    (state: GeneralState) => state.user.user,
+  const fiscalData = useSelector(
+    (state: GeneralState) => state.user.fiscal.data,
     shallowEqual
   );
   return (
     <>
-      {user?.fiscal?.fiscalStatus ? (
-        user.fiscal.fiscalStatus.toLowerCase() !== "verified" ? (
+      {fiscalData?.fiscalStatus ? (
+        fiscalData.fiscalStatus.toLowerCase() !== "verified" ? (
           <UnVerifiedFiscalProfile setActiveTab={setActiveTab} />
         ) : null
       ) : (
