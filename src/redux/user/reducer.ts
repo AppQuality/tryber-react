@@ -4,6 +4,12 @@ const initialState: UserState = {
   loading: true,
   loadingProfile: true,
   isDeleteModalOpen: false,
+  user: {
+    fiscal: {
+      data: undefined,
+      loading: true,
+    },
+  },
 };
 
 const reducer = (
@@ -59,26 +65,40 @@ const reducer = (
       return {
         ...state,
         error: undefined,
-        loadingProfile: true,
+        user: {
+          ...state.user,
+          fiscal: {
+            data: state.user.fiscal.data,
+            loading: true,
+          },
+        },
       };
     case actionTypes.FETCH_FISCAL_PROFILE_FAILED:
       return {
         ...state,
         error: action.error,
-        loadingProfile: false,
-      };
-    case actionTypes.FETCH_FISCAL_PROFILE:
-      return {
-        ...state,
         user: {
           ...state.user,
-          fiscal: action.data
-            ? { ...state?.user?.fiscal, ...action.data }
-            : undefined,
+          fiscal: {
+            data: state.user.fiscal.data,
+            loading: false,
+          },
         },
-        loadingProfile: false,
       };
-
+    case actionTypes.FETCH_FISCAL_PROFILE:
+      if (action.data) {
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            fiscal: {
+              data: action.data,
+              loading: false,
+            },
+          },
+        };
+      }
+      break;
     case actionTypes.UPDATE_DELETION_REASON:
       if (action.data && "reason" in action.data) {
         return {
