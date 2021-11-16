@@ -1,14 +1,14 @@
 import {
-  Input,
+  ErrorMessage,
   FieldProps,
+  FormGroup,
   FormikField,
   FormLabel,
-  FormGroup,
+  Input,
   Select,
 } from "@appquality/appquality-design-system";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { validationSchema } from "@appquality/appquality-design-system/dist/stories/form/_data";
 
 const CufTextField = ({
   fieldProps,
@@ -25,7 +25,10 @@ const CufTextField = ({
         id={field.name}
         type="text"
         value={field.value}
-        onChange={(val) => fieldProps.form.setFieldValue(field.name, val)}
+        onChange={(val) => {
+          fieldProps.form.setFieldTouched(field.name);
+          fieldProps.form.setFieldValue(field.name, val);
+        }}
       />
     </>
   );
@@ -73,6 +76,7 @@ const CufSelectField = ({
       label={label}
       value={field.value}
       onChange={(v) => {
+        fieldProps.form.setFieldTouched(field.name);
         if (!v) {
           form.setFieldValue(field.name, { label: "", value: "" });
         } else {
@@ -131,6 +135,7 @@ const CufMultiSelectField = ({
       label={label}
       value={field.value}
       onChange={(v) => {
+        fieldProps.form.setFieldTouched(field.name);
         if (!v) {
           form.setFieldValue(field.name, { label: "", value: "" });
         } else {
@@ -181,6 +186,7 @@ const CufField = ({
                   allowOther={cufField.allow_other}
                 />
               ) : null}
+              <ErrorMessage name={fieldProps.field.name} />
             </FormGroup>
           );
         }}

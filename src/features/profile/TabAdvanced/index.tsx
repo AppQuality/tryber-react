@@ -93,15 +93,11 @@ const TabAdvanced = () => {
                 )}
               </Text>
               <CustomUserFields />
-              {formikProps.errors && (
+              {Object.keys(formikProps.errors).length ? (
                 <Text color="danger" small className="aq-my-3">
-                  <ul style={{ listStyle: "disc" }}>
-                    {Object.entries(formikProps.errors).map((value) => (
-                      <li>{value}</li>
-                    ))}
-                  </ul>
+                  {t("Please correct the errors in the form.")}
                 </Text>
-              )}
+              ) : null}
               <CSSGrid min="50%" gutter="0" fill={true}>
                 <HalfColumnButton type="success" htmlType="submit" flat>
                   {t("Save")}
