@@ -1,20 +1,23 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
 import countries from "i18n-iso-countries";
-
+import i18n from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import { initReactI18next } from "react-i18next";
+import enLinks from "./locales/en/links.json";
 import en from "./locales/en/translation.json";
-import it from "./locales/it/translation.json";
+import esLinks from "./locales/es/links.json";
 import es from "./locales/es/translation.json";
+import itLinks from "./locales/it/links.json";
+import it from "./locales/it/translation.json";
+
 // the translations
 // (tip move them in a JSON file and import them)
 countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
 countries.registerLocale(require("i18n-iso-countries/langs/it.json"));
 countries.registerLocale(require("i18n-iso-countries/langs/es.json"));
 const resources = {
-  en: { translation: en },
-  it: { translation: it },
-  es: { translation: es },
+  en: { translation: en, links: enLinks },
+  it: { translation: it, links: itLinks },
+  es: { translation: es, links: esLinks },
 };
 
 i18n
@@ -24,6 +27,10 @@ i18n
     detection: {
       order: ["querystring", "path", "subdomain"],
     },
+    contextSeparator: "_",
+    ns: ["common", "translation", "links"],
+    defaultNS: "translation",
+    returnEmptyString: false,
     nsSeparator: ":::",
     resources,
     supportedLngs: ["it", "en", "es"],

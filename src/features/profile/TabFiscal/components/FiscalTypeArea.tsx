@@ -1,15 +1,15 @@
-import { useFormikContext, Field as FormikField, FieldProps } from "formik";
 import {
-  Radio,
+  ErrorMessage,
   FormGroup,
-  Select,
   FormLabel,
   Input,
+  Radio,
+  Select,
   Text,
-  ErrorMessage,
 } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
+import { Field as FormikField, FieldProps, useFormikContext } from "formik";
 import { ChangeEvent } from "react";
+import { Trans, useTranslation } from "react-i18next";
 import CitySelect from "src/features/profile/CitySelect";
 
 const FiscalTypeArea = () => {
@@ -108,12 +108,32 @@ const FiscalTypeArea = () => {
                         label: t("not compatible fiscal type"),
                       },
                     ]}
-                  />
+                  />{" "}
+                  <Text small className="aq-mt-1 aq-text-secondary">
+                    <Trans
+                      i18nKey="@@Link to help article for fiscal type@@"
+                      tOptions={{
+                        context: `Available tags:
+<a></a>: Link to the fiscal type help article`,
+                      }}
+                      components={{
+                        a: (
+                          <a
+                            className="aq-text-secondary"
+                            href={t("Fiscal type help article", {
+                              ns: "links",
+                            })}
+                          />
+                        ),
+                      }}
+                    />
+                  </Text>
                   <ErrorMessage name={field.name} />
                 </FormGroup>
               );
             }}
           </FormikField>
+
           <FormGroup>
             <CitySelect
               name="birthPlaceCity"

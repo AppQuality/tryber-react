@@ -49,15 +49,11 @@
     "prepare": "npx husky install",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "generate-schema": ". ./.env.development; npx openapi-typescript $REACT_APP_API_URL/reference/ --output src/utils/schema.ts ",
-    "eslint": "npx eslint src/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
     "prettier": "npx prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
-    "chromatic": "npx chromatic --project-token 94613c112cdb"
+    "translate": "i18next-scanner"
   },
   "eslintConfig": {
     "extends": [
@@ -102,7 +98,8 @@
     "@types/styled-components": "^5.1.9",
     "@types/uuid": "^8.3.1",
     "husky": "^6.0.0",
-    "i18next-parser": "^4.1.1",
+    "i18next-scanner": "^3.1.0",
+    "i18next-scanner-typescript": "^1.0.6",
     "prettier": "^2.3.1",
     "react-scripts": "4.0.3",
     "ts-jest": "^27.0.3"
