@@ -25,7 +25,7 @@ export const updateFiscalProfile = (
     const { user } = state;
     userDispatch({ type: actionTypes.FETCH_FISCAL_PROFILE_LOADING });
     try {
-      const newFiscalData = user.user.fiscal
+      const newFiscalData = user.fiscal.data
         ? await API.putFiscalData({ data: data })
         : await API.postFiscalData({ data: data });
       userDispatch({

@@ -11,21 +11,21 @@ export const updateProfile = (
     try {
       const state = getState();
       const response = await API.patchMe(data);
-      if (state.user.user.fiscal && unverifiedFiscalProfileMessage) {
+      if (state.user.fiscal && unverifiedFiscalProfileMessage) {
         if (
           state.user.user.name !== data.name ||
           state.user.user.surname !== data.surname ||
           state.user.user.birthDate !== data.birthDate
         ) {
           const submitValues = {
-            address: state.user.user.fiscal?.address,
-            type: state.user.user.fiscal?.type,
+            address: state.user.fiscal.data?.address,
+            type: state.user.fiscal.data?.type,
             birthPlace: {
-              city: state.user.user.fiscal?.birthPlace?.city,
-              province: state.user.user.fiscal?.birthPlace?.province,
+              city: state.user.fiscal.data?.birthPlace?.city,
+              province: state.user.fiscal.data?.birthPlace?.province,
             },
-            fiscalId: state.user.user.fiscal?.fiscalId,
-            gender: state.user.user.fiscal?.gender,
+            fiscalId: state.user.fiscal.data?.fiscalId,
+            gender: state.user.fiscal.data?.gender,
           };
           dispatch(
             updateFiscalProfile(submitValues as UserData, {
@@ -37,7 +37,6 @@ export const updateProfile = (
       }
       dispatch({
         type: actionTypes.FETCH_PROFILE,
-        // @ts-ignore
         data: response,
       });
     } catch (err: unknown) {
