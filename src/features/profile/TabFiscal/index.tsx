@@ -3,21 +3,27 @@ import { useState, useEffect } from "react";
 import UserStore from "../../../redux/user";
 import { TabFiscalShow } from "./TabFiscalShow";
 import { TabFiscalEdit } from "./TabFiscalEdit";
+import { useSelector, shallowEqual } from "react-redux";
 
-const TabFiscal = ({ ref }: { ref?: React.RefObject<HTMLDivElement> }) => {
-  const { isProfileLoading, isLoading, user } = UserStore();
+const TabFiscal = () => {
+  const { isProfileLoading } = UserStore();
+  const userFiscal = useSelector(
+    (state: GeneralState) => state.user.fiscal,
+    shallowEqual
+  );
   const [isEdit, setIsEdit] = useState(true);
   useEffect(() => {
     setIsEdit(
-      !user.fiscal?.fiscalStatus || user.fiscal?.fiscalStatus === "Unverified"
+      !userFiscal.data?.fiscalStatus ||
+        userFiscal.data?.fiscalStatus === "Unverified"
     );
-  }, [user]);
+  }, [userFiscal]);
   return (
     <div className="aq-p-3">
-      {isProfileLoading || isLoading ? (
+      {isProfileLoading || userFiscal.loading ? (
         <Spinner />
       ) : isEdit ? (
-        <TabFiscalEdit setEdit={setIsEdit} />
+        <TabFiscalEdit />
       ) : (
         <TabFiscalShow setEdit={setIsEdit} />
       )}

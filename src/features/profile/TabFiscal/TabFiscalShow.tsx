@@ -9,7 +9,7 @@ import {
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { Icon } from "react-bootstrap-icons";
-import UserStore from "../../../redux/user";
+import { useSelector, shallowEqual } from "react-redux";
 import dateFormatter from "../../../utils/dateFormatter";
 
 const ShowItem = ({
@@ -47,7 +47,14 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
     Building,
     Compass,
   } = icons;
-  const { user, isProfileLoading } = UserStore();
+  const userData = useSelector(
+    (state: GeneralState) => state.user.user,
+    shallowEqual
+  );
+  const fiscalData = useSelector(
+    (state: GeneralState) => state.user.fiscal.data,
+    shallowEqual
+  );
   const handleEditClick = () => {
     setEdit(true);
   };
@@ -58,44 +65,44 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
           {t("Your fiscal data")}
         </Title>
         <ShowItem Icon={Person} label={t("Name")}>
-          {user.name}
+          {userData.name}
         </ShowItem>
         <ShowItem Icon={Person} label={t("Surname")}>
-          {user.surname}
+          {userData.surname}
         </ShowItem>
         <ShowItem Icon={GenderAmbiguous} label={t("Gender")}>
-          {user.fiscal.gender === "male"
+          {fiscalData?.gender === "male"
             ? t("Male")
-            : user.fiscal.gender === "female"
+            : fiscalData?.gender === "female"
             ? t("Female")
             : t("Not specified")}
         </ShowItem>
         <ShowItem Icon={Calendar2Date} label={t("Birth Date")}>
-          {dateFormatter(user.birthDate)}
+          {dateFormatter(userData.birthDate)}
         </ShowItem>
       </div>
       <div>
         <ShowItem Icon={CashCoin} label={t("Fiscal Type")}>
-          {user.fiscal.type === "withholding"
+          {fiscalData?.type === "withholding"
             ? t(`Annual witholding < 5000€`)
-            : user.fiscal.type === "witholding-extra"
+            : fiscalData?.type === "witholding-extra"
             ? t("Annual witholding > 5000")
-            : user.fiscal.type == "non-italian"
+            : fiscalData?.type == "non-italian"
             ? t("Foreign")
             : t("Different rate scheme")}
         </ShowItem>
         <ShowItem Icon={CreditCard2Front} label={t("Fiscal Code")}>
-          {user.fiscal.fiscalId}
+          {fiscalData?.fiscalId}
         </ShowItem>
-        {user.fiscal.type !== "non-italian" && (
+        {fiscalData?.type !== "non-italian" && (
           <ShowItem Icon={Building} label={t("Birth city")}>
-            {user.fiscal.birthPlace.city}
+            {fiscalData?.birthPlace.city}
           </ShowItem>
         )}
         <ShowItem Icon={Compass} label={t("Fiscal residence")}>
-          <p>{user.fiscal.address.street}</p>
-          <p>{`${user.fiscal.address.cityCode} ${user.fiscal.address.city} (${user.fiscal.address.province})`}</p>
-          <p>{user.fiscal.address.country}</p>
+          <p>{fiscalData?.address.street}</p>
+          <p>{`${fiscalData?.address.cityCode} ${fiscalData?.address.city} (${fiscalData?.address.province})`}</p>
+          <p>{fiscalData?.address.country}</p>
         </ShowItem>
 
         <BSGrid>

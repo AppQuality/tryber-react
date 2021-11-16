@@ -4,11 +4,9 @@ const initialState: UserState = {
   loading: true,
   loadingProfile: true,
   isDeleteModalOpen: false,
-  user: {
-    fiscal: {
-      data: undefined,
-      loading: true,
-    },
+  fiscal: {
+    data: undefined,
+    loading: false,
   },
 };
 
@@ -65,36 +63,27 @@ const reducer = (
       return {
         ...state,
         error: undefined,
-        user: {
-          ...state.user,
-          fiscal: {
-            data: state.user.fiscal.data,
-            loading: true,
-          },
+        fiscal: {
+          data: state.fiscal.data,
+          loading: true,
         },
       };
     case actionTypes.FETCH_FISCAL_PROFILE_FAILED:
       return {
         ...state,
         error: action.error,
-        user: {
-          ...state.user,
-          fiscal: {
-            data: state.user.fiscal.data,
-            loading: false,
-          },
+        fiscal: {
+          data: state.fiscal.data,
+          loading: false,
         },
       };
     case actionTypes.FETCH_FISCAL_PROFILE:
       if (action.data) {
         return {
           ...state,
-          user: {
-            ...state.user,
-            fiscal: {
-              data: action.data,
-              loading: false,
-            },
+          fiscal: {
+            data: action.data,
+            loading: false,
           },
         };
       }

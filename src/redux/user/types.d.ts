@@ -47,14 +47,13 @@ type UserDeletionData = {
 };
 
 type UserFiscalData = {
-  fiscal: {
-    data: ApiOperations["get-users-me-fiscal"]["responses"]["200"]["content"]["application/json"];
-    loading: boolean;
-  };
+  data?: ApiOperations["get-users-me-fiscal"]["responses"]["200"]["content"]["application/json"];
+  loading: boolean;
 };
 
 type UserState = {
-  user?: UserData & UserFiscalData;
+  user?: UserData;
+  fiscal: UserFiscalData;
   loading: boolean;
   loadingProfile: boolean;
   customUserFields?: ApiOperations["get-customUserFields"]["responses"]["200"]["content"]["application/json"];

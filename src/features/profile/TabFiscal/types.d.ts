@@ -26,11 +26,11 @@ type FiscalFormValues = {
   streetNumber?: string; //"1",
   zipCode?: string; //"19017"
   fiscalTypeRadio?: "non-italian" | "italian";
-  fiscalTypeSelect?: "withholding" | "witholding-extra" | "other";
-  type?: "non-italian" | "withholding" | "witholding-extra" | "other";
+  fiscalTypeSelect?: "withholding" | "witholding-extra" | "other" | "";
+  type?: "non-italian" | "withholding" | "witholding-extra" | "other" | "";
   birthPlaceCity?: string;
   birthPlaceProvince?: string;
   fiscalId?: string;
   fiscalStatus?: "Verified" | "Unverified";
-  gender?: "male" | "female";
+  gender?: "male" | "female" | "";
 };

@@ -13,52 +13,49 @@ import {
   Input,
   Select,
 } from "@appquality/appquality-design-system";
-import UserStore from "../../../redux/user";
+import { useSelector, shallowEqual } from "react-redux";
 import FiscalTypeArea from "./components/FiscalTypeArea";
 import FiscalAddress from "./components/FiscalAddress";
-import residenceModalStore from "../../../redux/addResidenceAddressModal";
 import * as yup from "yup";
 import dateFormatter from "../../../utils/dateFormatter";
 import { useDispatch } from "react-redux";
 import { updateFiscalProfile } from "../../../redux/user/actions/updateFiscalProfile";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
 
-export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
+export const TabFiscalEdit = () => {
   const { t } = useTranslation();
-  const { user } = UserStore();
-  const { address } = residenceModalStore();
+  const fiscalData = useSelector(
+    (state: GeneralState) => state.user.fiscal.data,
+    shallowEqual
+  );
+  const userData = useSelector(
+    (state: GeneralState) => state.user.user,
+    shallowEqual
+  );
   const dispatch = useDispatch();
 
-  let street, streetNumber;
-  let streetData = user.fiscal?.address?.street;
-  if (streetData) {
-    streetData = streetData.split(",");
-    street = streetData[0];
-    if (streetData.length > 1) streetNumber = streetData[1];
-  }
-
   const initialUserValues: FiscalFormValues = {
-    gender: user.fiscal?.gender || "",
-    fiscalId: user.fiscal?.fiscalId || "",
-    type: user.fiscal?.type || "",
+    gender: fiscalData?.gender || "",
+    fiscalId: fiscalData?.fiscalId || "",
+    type: fiscalData?.type || "",
     fiscalTypeSelect:
-      user.fiscal?.type === "non-italian" ? "" : user.fiscal?.type,
+      fiscalData?.type === "non-italian" ? "" : fiscalData?.type,
     fiscalTypeRadio:
-      user.fiscal?.type === "non-italian"
+      fiscalData?.type === "non-italian"
         ? "non-italian"
         : ["withholding", "witholding-extra", "other"].includes(
-            user.fiscal?.type
+            fiscalData?.type || ""
           )
         ? "italian"
         : undefined,
-    birthPlaceCity: user.fiscal?.birthPlace?.city,
-    birthPlaceProvince: user.fiscal?.birthPlace?.province,
-    countryCode: user.fiscal?.address?.country,
-    provinceCode: user.fiscal?.address?.province,
-    city: user.fiscal?.address?.city,
-    street: street,
-    streetNumber: streetNumber,
-    zipCode: user.fiscal?.address?.cityCode,
+    birthPlaceCity: fiscalData?.birthPlace?.city,
+    birthPlaceProvince: fiscalData?.birthPlace?.province,
+    countryCode: fiscalData?.address?.country,
+    provinceCode: fiscalData?.address?.province,
+    city: fiscalData?.address?.city,
+    street: undefined,
+    streetNumber: undefined,
+    zipCode: fiscalData?.address?.cityCode,
   };
 
   const validationSchema = {
@@ -153,7 +150,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
           updateFiscalProfile(submitValues as UserData, {
             verifiedMessage: (
               <>
-                <b>{t("Valid tax profile.")}</b>
+                <b>{t("Valid tax profile")}</b>
                 <br />
                 {t(
                   'You can view your profile summary and make changes if necessary in the "Tax" section of your profile.'
@@ -184,11 +181,16 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
               </Title>
               <FormGroup>
                 <FormLabel htmlFor="name" label={t("Name")} isDisabled />
-                <Input id="name" type="text" disabled value={user.name} />
+                <Input id="name" type="text" disabled value={userData.name} />
               </FormGroup>
               <FormGroup>
                 <FormLabel htmlFor="surname" label={t("Surname")} isDisabled />
-                <Input id="surname" type="text" disabled value={user.surname} />
+                <Input
+                  id="surname"
+                  type="text"
+                  disabled
+                  value={userData.surname}
+                />
               </FormGroup>
               <FormikField name="gender">
                 {({
@@ -233,7 +235,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                   id="birth_date"
                   type="text"
                   disabled
-                  value={dateFormatter(user.birthDate)}
+                  value={dateFormatter(userData.birthDate)}
                 />
               </FormGroup>
             </div>
