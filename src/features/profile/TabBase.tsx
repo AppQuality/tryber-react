@@ -66,7 +66,7 @@ const TabBase = () => {
   const validationSchema = {
     name: yup.string().required(t("This is a required field")),
     surname: yup.string().required(t("This is a required field")),
-    gender: yup.string().required(t("This is a required field")),
+    gender: yup.string(),
     birthDate: yup.string().required(t("This is a required field")),
     phone: yup
       .string()
@@ -82,8 +82,8 @@ const TabBase = () => {
       .required(t("This is a required field")),
     country: yup.string().required(t("This is a required field")),
     countryCode: yup.string(),
-    city: yup.string().required(t("This is a required field")),
-    languages: yup.array().required(t("This is a required field")),
+    city: yup.string(),
+    languages: yup.array(),
   };
   const genderOptions = [
     { label: "Female", value: "female" },
@@ -156,7 +156,7 @@ const TabBase = () => {
                         }}
                         onChange={(v) => {
                           if (v === null) {
-                            v = { label: "", value: "" };
+                            v = { label: "", value: "not-specified" };
                           }
                           field.onChange(v.value);
                           form.setFieldValue(field.name, v.value, true);
