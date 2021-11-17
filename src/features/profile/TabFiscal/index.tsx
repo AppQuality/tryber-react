@@ -1,14 +1,16 @@
-import { Spinner } from "@appquality/appquality-design-system";
 import { useState, useEffect } from "react";
-import UserStore from "../../../redux/user";
 import { TabFiscalShow } from "./TabFiscalShow";
 import { TabFiscalEdit } from "./TabFiscalEdit";
 import { useSelector, shallowEqual } from "react-redux";
+import { SkeletonTab } from "src/features/profile/SkeletonTab";
 
 const TabFiscal = () => {
-  const { isProfileLoading } = UserStore();
   const userFiscal = useSelector(
-    (state: GeneralState) => state.user.fiscal,
+    (state: GeneralState) => state.user?.fiscal,
+    shallowEqual
+  );
+  const isProfileLoading = useSelector(
+    (state: GeneralState) => state.user?.user?.loadingProfile,
     shallowEqual
   );
   const [isEdit, setIsEdit] = useState(true);
@@ -21,7 +23,7 @@ const TabFiscal = () => {
   return (
     <div className="aq-p-3">
       {isProfileLoading || userFiscal.loading ? (
-        <Spinner />
+        <SkeletonTab />
       ) : isEdit ? (
         <TabFiscalEdit />
       ) : (

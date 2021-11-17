@@ -2,7 +2,6 @@ import {
   CSSGrid,
   Form,
   Formik,
-  Spinner,
   Text,
   Title,
 } from "@appquality/appquality-design-system";
@@ -18,6 +17,7 @@ import { EmploymentSelect } from "../EmploymentSelect";
 import Certifications from "./Certifications";
 import { CustomUserFields } from "./CustomUserFields";
 import { MapCufValues, PrepareUserCuf } from "./MapCufValues";
+import { SkeletonTab } from "src/features/profile/SkeletonTab";
 
 const TabAdvanced = () => {
   const { t } = useTranslation();
@@ -27,7 +27,7 @@ const TabAdvanced = () => {
   );
   const dispatch = useDispatch();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <SkeletonTab />;
   return (
     <Formik
       enableReinitialize

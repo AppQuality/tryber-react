@@ -21,6 +21,7 @@ import dateFormatter from "../../../utils/dateFormatter";
 import { useDispatch } from "react-redux";
 import { updateFiscalProfile } from "../../../redux/user/actions/updateFiscalProfile";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
+import { SkeletonTab } from "src/features/profile/SkeletonTab";
 
 export const TabFiscalEdit = () => {
   const { t } = useTranslation();
@@ -30,6 +31,10 @@ export const TabFiscalEdit = () => {
   );
   const userData = useSelector(
     (state: GeneralState) => state.user.user,
+    shallowEqual
+  );
+  const isProfileLoading = useSelector(
+    (state: GeneralState) => state.user.loadingProfile,
     shallowEqual
   );
   const dispatch = useDispatch();
@@ -131,6 +136,7 @@ export const TabFiscalEdit = () => {
     { value: "female", label: t("Female") },
   ];
 
+  if (isProfileLoading) return <SkeletonTab />;
   return (
     <Formik
       enableReinitialize

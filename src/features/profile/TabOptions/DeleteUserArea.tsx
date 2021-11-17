@@ -22,7 +22,7 @@ const DeleteUserArea = () => {
         <Text className="aq-mb-3">
           <div>
             <Trans
-              values={{ testerId: `T${user.id}` }}
+              values={{ testerId: `T${user?.id}` }}
               i18nKey="The deletion of your account ({{testerId}}) <bold>will be irreversible</bold>.<br></br><br></br>You will not be able to continue earning money with us. <br></br>Are you sure you want to leave our community?"
               defaults="The deletion of your account ({{testerId}}) <bold>will be irreversible</bold>.<br></br><br></br>You will not be able to continue earning money with us. <br></br>Are you sure you want to leave our community?"
               components={{ br: <br />, bold: <strong /> }}

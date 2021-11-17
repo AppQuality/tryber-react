@@ -17,7 +17,7 @@ import { FormikProps } from "formik";
 import countries from "i18n-iso-countries";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import CitySelect from "src/features/profile/CitySelect";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
 import * as yup from "yup";
@@ -29,10 +29,17 @@ import BirthdayPicker from "../BirthdayPicker";
 import CountrySelect from "../CountrySelect";
 import { LanguageSelect } from "./LanguageSelect";
 import { BaseFields } from "./types.d";
+import { SkeletonTab } from "src/features/profile/SkeletonTab";
 
 const TabBase = () => {
   const { t } = useTranslation();
-  const { user, isProfileLoading } = UserStore();
+  const { user, loading } = useSelector(
+    (state: GeneralState) => ({
+      user: state.user.user,
+      loading: state.user.loading,
+    }),
+    shallowEqual
+  );
   const [languages, setLanguages] = useState<SelectType.Option[]>([]);
   const { add } = siteWideMessages();
   const dispatch = useDispatch();
@@ -48,17 +55,17 @@ const TabBase = () => {
   }, []);
 
   const initialUserValues: BaseFields = {
-    name: user.name || "",
-    surname: user.surname || "",
-    gender: user.gender || "",
-    birthDate: user.birthDate || "",
-    phone: user.phone || "",
-    email: user.email || "",
-    country: user.country || "",
-    countryCode: countries.getAlpha2Code(user.country, "en"),
-    city: user.city || "",
+    name: user?.name || "",
+    surname: user?.surname || "",
+    gender: user?.gender || "",
+    birthDate: user?.birthDate || "",
+    phone: user?.phone || "",
+    email: user?.email || "",
+    country: user?.country || "",
+    countryCode: countries.getAlpha2Code(user?.country, "en"),
+    city: user?.city || "",
     languages:
-      user.languages?.map((l: any) => ({
+      user?.languages?.map((l: any) => ({
         label: l.name,
         value: l.id.toString(),
       })) || [],
@@ -90,6 +97,8 @@ const TabBase = () => {
     { label: "Male", value: "male" },
     { label: "Not Specified", value: "not-specified" },
   ];
+
+  if (loading) return <SkeletonTab />;
 
   return (
     <Formik

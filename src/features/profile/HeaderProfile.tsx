@@ -2,7 +2,13 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import WPAPI from "../../utils/wpapi";
 import UserStore from "../../redux/user";
-import { PageTitle, Title, Text } from "@appquality/appquality-design-system";
+import {
+  PageTitle,
+  Title,
+  Text,
+  CSSGrid,
+  Skeleton,
+} from "@appquality/appquality-design-system";
 import {
   StarFill,
   BookmarkCheckFill,
@@ -12,12 +18,21 @@ import {
 import { aqBootstrapTheme } from "@appquality/appquality-design-system";
 import styled from "styled-components";
 import siteWideMessageStore from "../../redux/siteWideMessages";
+import { shallowEqual, useSelector } from "react-redux";
+import { SkeletonHeader } from "src/features/profile/SkeletonHeader";
 
 export const HeaderProfile = () => {
   const [submittingMailConfirm, setSubmittingMailConfirm] = useState(false);
   const { add } = siteWideMessageStore();
   const { t } = useTranslation();
-  const { user } = UserStore();
+  const { user, loading } = useSelector(
+    (state: GeneralState) => ({
+      user: state.user.user,
+      loading: state.user.loading,
+    }),
+    shallowEqual
+  );
+
   const handleMailConfirm = async () => {
     try {
       setSubmittingMailConfirm(true);
@@ -31,6 +46,8 @@ export const HeaderProfile = () => {
       add({ message: message, type: "danger" });
     }
   };
+
+  if (loading) return <SkeletonHeader />;
 
   return (
     <StyledHeaderProfile className="aq-m-3">
@@ -100,7 +117,7 @@ export const HeaderProfile = () => {
   );
 };
 
-const StyledHeaderProfile = styled.div`
+export const StyledHeaderProfile = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   gap: ${(props) => props.theme.grid.spacing.default};
