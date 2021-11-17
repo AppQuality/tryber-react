@@ -179,7 +179,7 @@ export const TabFiscalEdit = () => {
         helpers.resetForm({ values });
       }}
     >
-      {() => (
+      {({ isValid, isValidating, dirty }) => (
         <Form id="baseProfileForm">
           <CSSGrid gutter="50px" rowGap="1rem" min="220px">
             <div className="user-info">
@@ -255,7 +255,12 @@ export const TabFiscalEdit = () => {
                 <FiscalAddress />
               </div>
               <CSSGrid min="50%" gutter="0" fill>
-                <HalfColumnButton type="success" htmlType="submit" flat>
+                <HalfColumnButton
+                  type="success"
+                  htmlType="submit"
+                  flat
+                  disabled={!isValid || isValidating || !dirty}
+                >
                   {t("Save")}
                 </HalfColumnButton>
               </CSSGrid>
