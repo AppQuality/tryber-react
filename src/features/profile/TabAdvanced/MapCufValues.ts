@@ -34,8 +34,8 @@ export const MapCufValues = () => {
   const [validationSchema, setValidationSchema] = useState<{
     [key: string]: yup.AnySchema;
   }>({
-    employment: yup.string().required(t("This is a required field")),
-    education: yup.string().required(t("This is a required field")),
+    employment: yup.string(),
+    education: yup.string(),
   });
   useEffect(() => {
     let schema: { [key: string]: yup.AnySchema } = {};

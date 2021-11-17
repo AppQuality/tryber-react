@@ -41,7 +41,7 @@ export const EducationSelect = ({
             }}
             onChange={(v) => {
               if (v === null) {
-                v = { label: "", value: "" };
+                v = { label: "", value: "0" };
               }
               form.setFieldValue(field.name, v.value, true);
             }}
