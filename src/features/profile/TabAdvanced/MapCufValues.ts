@@ -3,31 +3,24 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import * as yup from "yup";
-import { AdvancedFormValues, CertificationsRadio } from "./types";
+import { AdvancedFormValues } from "./types";
 
 export const MapCufValues = () => {
-  const {
-    additional,
-    certifications,
-    profession,
-    education,
-    customUserFields,
-  } = useSelector(
+  const { additional, profession, education } = useSelector(
     (state: GeneralState) => ({
       additional: state.user.user?.additional,
-      certifications: state.user.user?.certifications,
       profession: state.user.user?.profession,
       education: state.user.user?.education,
-      customUserFields: state.user.customUserFields,
     }),
     shallowEqual
   );
+  const customUserFields = useSelector(
+    (state: GeneralState) => state.user.customUserFields,
+    shallowEqual
+  );
   const { t } = useTranslation();
-  let initialCertRadioValue: CertificationsRadio = "";
   const [initialUserValues, setInitialUserValues] =
     useState<AdvancedFormValues>({
-      certificationsRadio: initialCertRadioValue,
-      certifications: certifications || [],
       employment: profession?.id.toString() || "0",
       education: education?.id.toString() || "0",
     });
@@ -40,14 +33,8 @@ export const MapCufValues = () => {
   useEffect(() => {
     let schema: { [key: string]: yup.AnySchema } = {};
     let values: { [key: string]: string | object | object[] } = {};
-    values.certifications = certifications || [];
     values.education = education ? education.id.toString() : "0";
     values.employment = profession ? profession.id.toString() : "0";
-    if (customUserFields) {
-      customUserFields.forEach((group) => {
-        console.log(group);
-      });
-    }
     customUserFields?.forEach((group) => {
       if (group.fields)
         group.fields.forEach((field) => {
@@ -104,15 +91,9 @@ export const MapCufValues = () => {
           }
         });
     });
-
-    if (typeof certifications === "boolean") {
-      values.certificationsRadio = certifications ? "true" : "false";
-    } else if (certifications?.length) {
-      values.certificationsRadio = "true";
-    }
     setInitialUserValues({ ...initialUserValues, ...values });
     setValidationSchema({ ...validationSchema, ...schema });
-  }, [customUserFields, certifications]);
+  }, [customUserFields]);
   return {
     initialUserValues: initialUserValues,
     validationSchema: validationSchema,
