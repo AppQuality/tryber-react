@@ -97,22 +97,22 @@ const FiscalTypeArea = () => {
                     options={[
                       {
                         value: "withholding",
-                        label: t("witholding < 5000"),
+                        label: t("Fiscal types:::@@Witholding < 5000€@@"),
                       },
                       {
                         value: "witholding-extra",
-                        label: t("witholding > 5000"),
+                        label: t("Fiscal types:::@@Witholding > 5000€@@"),
                       },
                       {
                         value: "other",
-                        label: t("not compatible fiscal type"),
+                        label: t("Fiscal types:::@@Not compatible regime@@"),
                       },
                     ]}
                   />{" "}
                   <Text small className="aq-mt-1 aq-text-secondary">
                     <Trans
                       i18nKey="Available tags:
-<a></a>: Link to the fiscal type help article:::@@Link to help article for fiscal type@@"
+<a></a>: Link to the fiscal type help article:::@@Description for help article for fiscal type@@"
                       components={{
                         a: (
                           <a

@@ -133,6 +133,11 @@
   "Fiscal Profile Report": "",
   "Fiscal Type": "",
   "Fiscal residence": "",
+  "Fiscal types": {
+    "@@Not compatible regime@@": "",
+    "@@Witholding < 5000€@@": "",
+    "@@Witholding > 5000€@@": ""
+  },
   "For a secure password we recommend: Minimum 6  characters. An uppercase character. A numerical digit. A lowercase character.": "",
   "For tax reasons we are obliged to tie this choice to binary options only": "",
   "Foreign": "",
@@ -343,14 +348,11 @@
   "https://www.iubenda.com/privacy-policy/7934311": "\nhttps://www.iubenda.com/privacy-policy/7934311",
   "login": "Login",
   "login with your credentials": "Login con tus credenciales",
-  "not compatible fiscal type": "",
   "or <1>create an account</1>": "o <1>crear una cuenta</1>",
   "or login with": "o inicie sesión con",
   "redirecting": "redireccionando",
   "social": "social",
   "submitted data are incorrect or incomplete. Check your data again": "",
   "testers": "Testers",
-  "wait...": "espere...",
-  "witholding < 5000": "",
-  "witholding > 5000": ""
+  "wait...": "espere..."
 }
