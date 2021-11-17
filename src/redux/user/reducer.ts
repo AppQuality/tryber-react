@@ -14,7 +14,6 @@ const reducer = (
   state: UserState = initialState,
   action: UserAction
 ): UserState => {
-  // @ts-ignore
   switch (action.type) {
     case actionTypes.USER_REFRESH:
       if (action.data) {
@@ -78,16 +77,13 @@ const reducer = (
         },
       };
     case actionTypes.FETCH_FISCAL_PROFILE:
-      if (action.data) {
-        return {
-          ...state,
-          fiscal: {
-            data: action.data,
-            loading: false,
-          },
-        };
-      }
-      break;
+      return {
+        ...state,
+        fiscal: {
+          data: action.data,
+          loading: false,
+        },
+      };
     case actionTypes.UPDATE_DELETION_REASON:
       if (action.data && "reason" in action.data) {
         return {
