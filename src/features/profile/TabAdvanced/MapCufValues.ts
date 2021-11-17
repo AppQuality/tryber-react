@@ -28,8 +28,8 @@ export const MapCufValues = () => {
     useState<AdvancedFormValues>({
       certificationsRadio: initialCertRadioValue,
       certifications: certifications || [],
-      employment: profession?.id.toString() || "",
-      education: education?.id.toString() || "",
+      employment: profession?.id.toString() || "0",
+      education: education?.id.toString() || "0",
     });
   const [validationSchema, setValidationSchema] = useState<{
     [key: string]: yup.AnySchema;
@@ -41,12 +41,8 @@ export const MapCufValues = () => {
     let schema: { [key: string]: yup.AnySchema } = {};
     let values: { [key: string]: string | object | object[] } = {};
     values.certifications = certifications || [];
-    values.education = education
-      ? education.id.toString()
-      : { label: "", value: "" };
-    values.employment = profession
-      ? profession.id.toString()
-      : { label: "", value: "" };
+    values.education = education ? education.id.toString() : "0";
+    values.employment = profession ? profession.id.toString() : "0";
     if (customUserFields) {
       customUserFields.forEach((group) => {
         console.log(group);
