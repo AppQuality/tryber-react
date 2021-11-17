@@ -1,26 +1,25 @@
-import { Route, Switch, Redirect, useLocation } from "react-router-dom";
+import { datadogLogs } from "@datadog/browser-logs";
+import { Location } from "history";
+import queryString from "query-string";
+import { useEffect, useRef } from "react";
+import TagManager from "react-gtm-module";
+import { useDispatch } from "react-redux";
+import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import GenericModal from "./features/GenericModal";
+import SiteHeader from "./features/SiteHeader";
+import SiteWideMessages from "./features/SiteWideMessages";
+import "./i18n";
 import {
   Dashboard,
   Devices,
   ExperiencePoints,
   GettingStarted,
+  GoodbyePage,
   Home,
   MyBugs,
   Profile,
-  GoodbyePage,
 } from "./pages";
-import "./i18n";
-import TagManager from "react-gtm-module";
-import SiteHeader from "./features/SiteHeader";
-import { Location } from "history";
-import queryString from "query-string";
-
 import referralStore from "./redux/referral";
-import { useEffect } from "react";
-import SiteWideMessages from "./features/SiteWideMessages";
-import GenericModal from "./features/GenericModal";
-import { datadogLogs } from "@datadog/browser-logs";
-import { useDispatch } from "react-redux";
 import { refreshUser } from "./redux/user/actions/refreshUser";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
@@ -43,6 +42,7 @@ const base = "/:locale(en|it|es)?";
 
 function Page() {
   const { search } = useLocation();
+  const topPageRef = useRef<HTMLDivElement>(null);
   const { setReferral } = referralStore();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -53,7 +53,7 @@ function Page() {
     }
   }, []);
   return (
-    <>
+    <div ref={topPageRef}>
       <SiteHeader />
       <SiteWideMessages />
       <GenericModal />
@@ -155,9 +155,13 @@ function Page() {
           exact
           component={GoodbyePage}
         />
-        <Route path={["/", "/it", "/es"]} exact component={Home} />
+        <Route
+          path={["/", "/it", "/es"]}
+          exact
+          component={() => <Home topPageRef={topPageRef} />}
+        />
       </Switch>
-    </>
+    </div>
   );
 }
 
