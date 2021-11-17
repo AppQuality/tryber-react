@@ -104,11 +104,13 @@ const TabBase = () => {
               newLanguages.push(parseInt(val.value));
             }
           });
-          const resLang = await API.myLanguages(newLanguages);
           const profileDataToSend: any = { ...values };
           dispatch(
             updateProfile(
-              profileDataToSend,
+              {
+                profile: profileDataToSend,
+                languages: newLanguages,
+              },
               t(
                 "Your profile doesn't match with your fiscal profile, please check your data"
               ),

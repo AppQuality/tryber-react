@@ -1,26 +1,32 @@
-import * as actionTypes from "../actionTypes";
 import API from "../../../utils/api";
-import { operations } from "../../../utils/schema";
+import * as actionTypes from "../actionTypes";
 import { updateFiscalProfile } from "./updateFiscalProfile";
 
 export const updateProfile = (
-  data: operations["patch-users-me"]["requestBody"]["content"]["application/json"],
+  data: {
+    profile: ApiOperations["patch-users-me"]["requestBody"]["content"]["application/json"];
+    languages: number[];
+  },
   unverifiedFiscalProfileMessage?: string,
   verifiedFiscalProfileMessage?: string
 ) => {
   return async (dispatch: any, getState: () => GeneralState) => {
     try {
       const state = getState();
-      const response = await API.patchMe(data);
+      const resLang = await API.myLanguages(data.languages);
+      const response = await API.patchMe(data.profile);
+      if (!response.languages) {
+        response.languages = [];
+      }
       if (
         state.user.fiscal.data &&
         unverifiedFiscalProfileMessage &&
         verifiedFiscalProfileMessage
       ) {
         if (
-          state.user.user.name !== data.name ||
-          state.user.user.surname !== data.surname ||
-          state.user.user.birthDate !== data.birthDate
+          state.user.user.name !== data.profile.name ||
+          state.user.user.surname !== data.profile.surname ||
+          state.user.user.birthDate !== data.profile.birthDate
         ) {
           const submitValues = {
             address: state.user.fiscal.data?.address,
@@ -43,6 +49,7 @@ export const updateProfile = (
           );
         }
       }
+
       dispatch({
         type: actionTypes.FETCH_PROFILE,
         data: response,

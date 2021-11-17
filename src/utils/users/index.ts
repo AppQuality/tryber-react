@@ -5,7 +5,7 @@ export const me = async (
   token?: string,
   query?: string
 ): Promise<
-  operations["get-users-me"]["responses"]["200"]["content"]["application/json"]
+  ApiOperations["get-users-me"]["responses"]["200"]["content"]["application/json"]
 > => {
   if (process.env.REACT_APP_DEFAULT_TOKEN)
     token = process.env.REACT_APP_DEFAULT_TOKEN;
@@ -36,7 +36,9 @@ export const me = async (
 export const patchMe = async (
   data: operations["patch-users-me"]["requestBody"]["content"]["application/json"],
   token?: string
-): Promise<operations["patch-users-me"]["responses"]["200"]> => {
+): Promise<
+  operations["patch-users-me"]["responses"]["200"]["content"]["application/json"]
+> => {
   if (process.env.REACT_APP_DEFAULT_TOKEN)
     token = process.env.REACT_APP_DEFAULT_TOKEN;
 
@@ -222,11 +224,11 @@ export const experiencePoints = async ({
   }
 };
 
+export * from "./changePassword";
+export * from "./delete";
+export * from "./myCustomUserFields";
+export * from "./myDevices";
 export * from "./myFiscalData";
 export * from "./myLanguages";
 export * from "./myPopups";
-export * from "./myDevices";
 export * from "./onboardingComplete";
-export * from "./delete";
-export * from "./changePassword";
-export * from "./myCustomUserFields";

@@ -1233,7 +1233,48 @@ export interface operations {
   "patch-users-me": {
     responses: {
       /** OK */
-      200: unknown;
+      200: {
+        content: {
+          "application/json": {
+            username?: string;
+            name?: string;
+            surname?: string;
+            email?: string;
+            image?: string;
+            id: number;
+            wp_user_id?: number;
+            role?: string;
+            is_verified?: boolean;
+            rank?: string;
+            total_exp_pts?: number;
+            booty?: number;
+            pending_booty?: number;
+            languages?: {
+              id?: number;
+              name?: string;
+            }[];
+            onboarding_completed?: boolean;
+            additional?: components["schemas"]["AdditionalField"][];
+            gender?: "male" | "female" | "not-specified";
+            birthDate?: string;
+            phone?: string;
+            education?: {
+              id: number;
+              name: string;
+            };
+            profession?: {
+              id: number;
+              name: string;
+            };
+            certifications?: components["schemas"]["Certification"][] | boolean;
+            completionPercent?: number;
+            country?: string;
+            city?: string;
+            attended_cp?: number;
+            approved_bugs?: number;
+          };
+        };
+      };
       /** Bad Request */
       400: unknown;
       403: components["responses"]["NotAuthorized"];
@@ -1695,11 +1736,11 @@ export interface operations {
       content: {
         "application/json":
           | {
-              certification_id: number;
-              achievement_date: string;
+              certifications: boolean;
             }
           | {
-              certifications?: boolean;
+              certification_id: number;
+              achievement_date: string;
             };
       };
     };
