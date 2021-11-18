@@ -19,24 +19,23 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import CitySelect from "src/features/profile/CitySelect";
+import { SkeletonTab } from "src/features/profile/SkeletonTab";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
 import * as yup from "yup";
 import siteWideMessages from "../../redux/siteWideMessages";
-import UserStore from "../../redux/user";
 import { updateProfile } from "../../redux/user/actions/updateProfile";
 import API from "../../utils/api";
 import BirthdayPicker from "../BirthdayPicker";
 import CountrySelect from "../CountrySelect";
 import { LanguageSelect } from "./LanguageSelect";
 import { BaseFields } from "./types.d";
-import { SkeletonTab } from "src/features/profile/SkeletonTab";
 
 const TabBase = () => {
   const { t } = useTranslation();
   const { user, loading } = useSelector(
     (state: GeneralState) => ({
       user: state.user.user,
-      loading: state.user.loading,
+      loading: state.user.loadingProfile,
     }),
     shallowEqual
   );
