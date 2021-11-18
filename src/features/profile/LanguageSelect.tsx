@@ -2,14 +2,9 @@ import {
   FormGroup,
   FormikField,
   Select,
-  FormLabel,
   SelectType,
 } from "@appquality/appquality-design-system";
-import { FieldProps, useFormikContext } from "formik";
-import API from "../../utils/api";
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import HttpError from "../../utils/HttpError";
+import { FieldProps } from "formik";
 
 export const LanguageSelect = ({
   name,
@@ -20,8 +15,6 @@ export const LanguageSelect = ({
   label: string;
   options: SelectType.Option[];
 }) => {
-  const { t, i18n } = useTranslation();
-
   return (
     <FormikField name={name}>
       {({ field, form, meta }: FieldProps) => (
@@ -31,7 +24,6 @@ export const LanguageSelect = ({
             isMulti
             label={label}
             value={field.value}
-            isDisabled={form.values.country === ""}
             options={options}
             onBlur={() => {
               form.setFieldTouched(field.name);
