@@ -1,9 +1,3 @@
-import {
-  Container,
-  Spinner,
-  SpinnerWrapper,
-  Title,
-} from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -29,14 +23,11 @@ export default ({ children }: { children: React.ReactNode }) => {
 
   if (loading || typeof loading === "undefined") {
     return (
-      <Container className="aq-py-3">
-        <SpinnerWrapper>
-          <Spinner />
-          <Title size="xs" as="h5">
-            {t("Loading")}
-          </Title>
-        </SpinnerWrapper>
-      </Container>
+      <div id="appq-loading-content">
+        <div id="appq-loading-spinner">
+          <div></div>
+        </div>
+      </div>
     );
   }
   if (error) {

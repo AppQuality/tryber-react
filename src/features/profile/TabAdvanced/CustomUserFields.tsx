@@ -1,9 +1,9 @@
-import { Accordion } from "@appquality/appquality-design-system";
+import { Accordion, Skeleton } from "@appquality/appquality-design-system";
 import React, { useEffect, useState } from "react";
-import { useSelector, shallowEqual, useDispatch } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { getCustomUserFields } from "src/redux/user/actions/getCustomUserFields";
-import CufField from "./CufField";
 import { operations } from "src/utils/schema";
+import CufField from "./CufField";
 
 export const CustomUserFields = () => {
   const dispatch = useDispatch();
@@ -17,6 +17,7 @@ export const CustomUserFields = () => {
     }),
     shallowEqual
   );
+  const [isLoading, setIsLoading] = useState(true);
   const [groupOfFieldsWithoutGroup, setGroupOfFieldsWithoutGroup] = useState<
     typeof customUserFields
   >([]);
@@ -29,12 +30,36 @@ export const CustomUserFields = () => {
       customUserFields?.filter((g) => g.group.id === 0)
     );
     setGroupOfFields(customUserFields?.filter((g) => g.group.id !== 0));
+    if (customUserFields?.length) setIsLoading(false);
   }, [customUserFields]);
 
   useEffect(() => {
     dispatch(getCustomUserFields());
   }, []);
 
+  if (isLoading)
+    return (
+      <div className="aq-mb-3">
+        <Skeleton>
+          <div className="aq-mb-3">
+            <Skeleton.Item
+              className="aq-mb-3"
+              width="200px"
+              height="1.5rem"
+            ></Skeleton.Item>
+            <Skeleton.Item width="100%" height="3rem"></Skeleton.Item>
+          </div>
+          <div className="aq-mb-3">
+            <Skeleton.Item
+              className="aq-mb-3"
+              width="200px"
+              height="1.5rem"
+            ></Skeleton.Item>
+            <Skeleton.Item width="100%" height="3rem"></Skeleton.Item>
+          </div>
+        </Skeleton>
+      </div>
+    );
   return (
     <div className="aq-mb-3">
       {/*foreach Others CUF add field input*/}

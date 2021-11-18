@@ -1,10 +1,10 @@
 import { FormikValues } from "formik";
+import i18n from "i18next";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import * as yup from "yup";
 import { AdvancedFormValues } from "./types";
-import i18n from "i18next";
 
 export const MapCufValues = () => {
   const { additional, profession, education } = useSelector(
@@ -103,7 +103,6 @@ export const MapCufValues = () => {
                       "Invalid format. Please use the correct format. " +
                         placeholder
                     );
-              console.log(formatData);
               schema["cuf_" + field.id] = format
                 ? yup.string().matches(format, formatMessage)
                 : yup.string();

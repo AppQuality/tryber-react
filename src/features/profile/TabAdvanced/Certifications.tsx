@@ -1,22 +1,16 @@
 import {
-  Radio,
   Button,
-  FormGroup,
-  FormikField,
-  ErrorMessage,
-  Text,
   aqBootstrapTheme,
   CSSGrid,
 } from "@appquality/appquality-design-system";
-import React, { useEffect } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import { FieldProps, useFormikContext } from "formik";
 import modalStore from "src/redux/modal";
+import SingleCertification from "./SingleCertification";
 import {
   NewCertificationModal,
   NewCertificationModalFooter,
 } from "./NewCertificationModal";
-import { AdvancedFormValues } from "./types";
 import {
   DeleteCertificationsModal,
   DeleteCertificationsModalFooter,
@@ -49,16 +43,7 @@ const Certifications = () => {
                 i > 0 ? `1px solid ${aqBootstrapTheme.colors.disabled}` : "",
             }}
           >
-            <div className="aq-text-primary" style={{ gridColumn: "span 3" }}>
-              <Text small aria-disabled={true}>
-                {cert.achievement_date}
-              </Text>
-              <strong>{cert.name}</strong>
-              <strong>{cert.area}</strong>
-              <Text>
-                {t("Institute:")} <strong>{cert.institute}</strong>
-              </Text>
-            </div>
+            <SingleCertification certification={cert} />
             <div className="remove-certification aq-text-right">
               <Button
                 className="aq-text-danger"
