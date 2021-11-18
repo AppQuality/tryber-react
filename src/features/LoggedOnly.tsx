@@ -28,14 +28,16 @@ export default ({ children }: { children: React.ReactNode }) => {
   const { t } = useTranslation();
 
   if (loading || typeof loading === "undefined") {
-    <Container className="aq-py-3">
-      <SpinnerWrapper>
-        <Spinner />
-        <Title size="xs" as="h5">
-          {t("Loading")}
-        </Title>
-      </SpinnerWrapper>
-    </Container>;
+    return (
+      <Container className="aq-py-3">
+        <SpinnerWrapper>
+          <Spinner />
+          <Title size="xs" as="h5">
+            {t("Loading")}
+          </Title>
+        </SpinnerWrapper>
+      </Container>
+    );
   }
   if (error) {
     if (error.statusCode === 403) {
