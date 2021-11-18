@@ -38,7 +38,7 @@ const CitySelect = ({
                     label: field.value || "",
                     value: field.value || "",
                   },
-                  noOptionsMessage: () => t("Select your city"),
+                  noOptionsMessage: () => t("Type to search your city"),
                 },
                 autocompletionRequest: {
                   types: ["(cities)"],
