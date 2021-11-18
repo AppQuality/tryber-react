@@ -63,12 +63,13 @@ export const MapCufValues = () => {
                   )
                 : [];
               schema["cuf_" + field.id] = yup.object();
-              values["cuf_" + field.id] = selectValue
-                ? {
-                    ...selectValue,
-                    label: selectValue.text,
-                  }
-                : { label: "", value: "" };
+              values["cuf_" + field.id] =
+                selectValue && selectValue.hasOwnProperty("value")
+                  ? {
+                      ...selectValue,
+                      label: selectValue.text,
+                    }
+                  : { label: "", value: "" };
               break;
             case "text":
               const textValue = additional
@@ -77,7 +78,10 @@ export const MapCufValues = () => {
                       cuf.field_id === field.id
                   )
                 : [];
-              values["cuf_" + field.id] = textValue ? textValue.value : "";
+              values["cuf_" + field.id] =
+                textValue && textValue.hasOwnProperty("value")
+                  ? textValue.value
+                  : "";
               const formatData = field.format ? field.format.split(";") : false;
               const format = formatData ? new RegExp(formatData[0]) : false;
               const formatMessage =
@@ -107,7 +111,6 @@ export const PrepareUserCuf = (values: FormikValues) => {
   Object.keys(values).forEach((key) => {
     //key == cuf_n, certifications, certificationRadio, education, employment
     if (key.includes("cuf_")) {
-      // case: text { id: 1, values: {value:'suca'}}
       if (typeof values[key] === "string") {
         cufToSave.push({
           id: key.split("_")[1].toString(),
