@@ -6,6 +6,7 @@ import modalStore from "src/redux/modal";
 import { deleteCertification } from "src/redux/user/actions/deleteCertification";
 import { useDispatch } from "react-redux";
 import { addCertification } from "src/redux/user/actions/addCertification";
+import SingleCertification from "./SingleCertification";
 
 export const DeleteCertificationsModal = ({
   certifications,
@@ -28,14 +29,7 @@ export const DeleteCertificationsModal = ({
               "Do you want to remove this certification? This is a irreversible action."
             )}
           </Text>
-          <Text small className="aq-text-disabled-dark">
-            {certifications[0].achievement_date}
-          </Text>
-          <Text>
-            {t("Institute:")} <strong>{certifications[0].institute}</strong>
-          </Text>
-          <strong>{certifications[0].name}</strong>
-          <strong>{certifications[0].area}</strong>
+          <SingleCertification certification={certifications[0]} />
         </div>
       )}
     </div>
