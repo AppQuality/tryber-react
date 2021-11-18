@@ -23,10 +23,14 @@ export const NewCertificationModal = () => {
         achievementDate: "",
       }}
       validationSchema={yup.object({
-        institute: yup.string().required(),
-        area: yup.string().required(),
-        certificationId: yup.string().required(),
-        achievementDate: yup.string().required(),
+        institute: yup.string().required(t("Institute is a required field.")),
+        area: yup.string().required(t("Area is a required field.")),
+        certificationId: yup
+          .string()
+          .required(t("Certification is a required field.")),
+        achievementDate: yup
+          .string()
+          .required(t("Achievement Date is a required field.")),
       })}
       onSubmit={async (values) => {
         dispatch(
