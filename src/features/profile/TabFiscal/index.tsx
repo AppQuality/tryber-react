@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { TabFiscalShow } from "./TabFiscalShow";
-import { TabFiscalEdit } from "./TabFiscalEdit";
-import { useSelector, shallowEqual } from "react-redux";
+import { useEffect, useState } from "react";
+import { shallowEqual, useSelector } from "react-redux";
 import { SkeletonTab } from "src/features/profile/SkeletonTab";
+import { TabFiscalEdit } from "./TabFiscalEdit";
+import { TabFiscalShow } from "./TabFiscalShow";
 
 const TabFiscal = () => {
   const userFiscal = useSelector(
@@ -10,7 +10,7 @@ const TabFiscal = () => {
     shallowEqual
   );
   const isProfileLoading = useSelector(
-    (state: GeneralState) => state.user?.user?.loadingProfile,
+    (state: GeneralState) => state.user.loadingProfile,
     shallowEqual
   );
   const [isEdit, setIsEdit] = useState(true);
