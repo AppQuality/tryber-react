@@ -13,9 +13,11 @@ import { useTranslation } from "react-i18next";
 const CufTextField = ({
   fieldProps,
   label,
+  placeholder,
 }: {
   fieldProps: FieldProps;
   label: string;
+  placeholder?: string;
 }) => {
   const { field } = fieldProps;
   return (
@@ -24,6 +26,7 @@ const CufTextField = ({
       <Input
         id={field.name}
         type="text"
+        placeholder={placeholder}
         value={field.value}
         onChange={(val) => {
           fieldProps.form.setFieldTouched(field.name);
@@ -91,7 +94,6 @@ const CufMultiSelectField = ({
   fieldProps,
   options,
   label,
-  allowOther,
   id,
 }: {
   fieldProps: FieldProps;
@@ -153,6 +155,17 @@ const CufField = ({
   cufField: ApiComponents["schemas"]["CustomUserFieldsData"];
 }) => {
   const { i18n } = useTranslation();
+  const lang = (i18n.language as SupportedLanguages) || "it";
+  // apl = available Placeholder Langs
+  const apl = Object.keys(cufField.placeholder || {});
+  let placeholder = "";
+  if (!apl.includes(lang) && cufField.placeholder) {
+    placeholder = cufField.placeholder.it || "";
+  } else if (apl.includes(lang) && cufField.placeholder) {
+    placeholder = cufField.placeholder[lang] || "";
+  } else {
+    placeholder = "";
+  }
   return (
     <>
       <FormikField name={`cuf_${cufField.id}`}>
@@ -166,6 +179,7 @@ const CufField = ({
             <FormGroup>
               {cufField.type === "text" ? (
                 <CufTextField
+                  placeholder={placeholder}
                   fieldProps={fieldProps}
                   label={cufFieldLabel || ""}
                 />

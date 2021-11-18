@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import * as yup from "yup";
 import { AdvancedFormValues } from "./types";
+import i18n from "i18next";
 
 export const MapCufValues = () => {
   const { additional, profession, education } = useSelector(
@@ -84,10 +85,25 @@ export const MapCufValues = () => {
                   : "";
               const formatData = field.format ? field.format.split(";") : false;
               const format = formatData ? new RegExp(formatData[0]) : false;
+              const lang = (i18n.language as SupportedLanguages) || "it";
+              // apl = available Placeholder Langs
+              const apl = Object.keys(field.placeholder || {});
+              let placeholder = "";
+              if (!apl.includes(lang) && field.placeholder) {
+                placeholder = field.placeholder.it || "";
+              } else if (apl.includes(lang) && field.placeholder) {
+                placeholder = field.placeholder[lang] || "";
+              } else {
+                placeholder = "";
+              }
               const formatMessage =
                 formatData && formatData.length > 1
                   ? formatData[1]
-                  : t("Invalid format");
+                  : t(
+                      "Invalid format. Please use the correct format. " +
+                        placeholder
+                    );
+              console.log(formatData);
               schema["cuf_" + field.id] = format
                 ? yup.string().matches(format, formatMessage)
                 : yup.string();
