@@ -38,6 +38,7 @@ const FiscalAddress = () => {
               label: formattedAddress,
               value: formattedAddress,
             },
+            noOptionsMessage: () => t("Type to search your address"),
           },
         }}
         onBlur={(e) =>
