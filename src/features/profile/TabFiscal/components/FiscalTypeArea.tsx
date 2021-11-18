@@ -196,6 +196,7 @@ const FiscalTypeArea = () => {
                 id={field.name}
                 type="text"
                 value={field.value}
+                extra={{ maxlength: "30" }}
                 onChange={(v) => {
                   form.setFieldTouched(field.name);
                   field.onChange(v);
