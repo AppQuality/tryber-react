@@ -1,5 +1,5 @@
 import {
-  Button,
+  CSSGrid,
   Field,
   Form,
   Formik,
@@ -17,6 +17,7 @@ import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import siteWideMessageStore from "../../../redux/siteWideMessages";
 import ResetPasswordArea from "./ResetPasswordArea";
+import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
 
 const EditPassword = () => {
   const { t } = useTranslation();
@@ -123,14 +124,16 @@ const EditPassword = () => {
                 label={t("Confirm password")}
                 placeholder="******"
               />
-              <Button
-                type="primary"
-                htmlType="submit"
-                flat={true}
-                disabled={!formikProps.isValid}
-              >
-                {t("Change password")}
-              </Button>
+              <CSSGrid min="50%" gutter="0" fill={true}>
+                <HalfColumnButton
+                  type="primary"
+                  htmlType="submit"
+                  flat={true}
+                  disabled={!formikProps.isValid}
+                >
+                  {t("Change password")}
+                </HalfColumnButton>
+              </CSSGrid>
               <div className="aq-my-3">
                 <ResetPasswordArea />
               </div>
