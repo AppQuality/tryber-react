@@ -244,14 +244,23 @@ const TabBase = () => {
                     const city = fields.find(
                       (field) => field.types.indexOf("locality") >= 0
                     );
-                    formikProps
-                      .getFieldProps("city")
-                      .onChange(city?.long_name || "");
-                    formikProps.setFieldValue(
-                      "city",
-                      city?.long_name || "",
-                      true
-                    );
+                    if (!city) {
+                      formikProps.setFieldError(
+                        "city",
+                        t(
+                          "We couldn't find a city with that name, please search again"
+                        )
+                      );
+                    } else {
+                      formikProps
+                        .getFieldProps("city")
+                        .onChange(city?.long_name || "");
+                      formikProps.setFieldValue(
+                        "city",
+                        city?.long_name || "",
+                        true
+                      );
+                    }
                   }}
                 />
                 <ErrorMessage name="city" />

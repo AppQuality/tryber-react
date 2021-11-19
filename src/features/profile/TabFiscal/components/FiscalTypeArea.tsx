@@ -13,7 +13,7 @@ import { Trans, useTranslation } from "react-i18next";
 import CitySelect from "src/features/profile/CitySelect";
 
 const FiscalTypeArea = () => {
-  const { values, setValues, setFieldTouched } =
+  const { values, setValues, setFieldTouched, setFieldError } =
     useFormikContext<FiscalFormValues>();
   const { t } = useTranslation();
   return (
@@ -166,17 +166,26 @@ const FiscalTypeArea = () => {
                     city.long_name = "Napoli";
                   }
                 }
-                setValues(
-                  (prevState) => ({
-                    ...prevState,
-                    birthPlaceCity: city?.long_name,
-                    birthPlaceProvince:
-                      country?.short_name === "IT"
-                        ? province?.short_name
-                        : "EE",
-                  }),
-                  true
-                );
+                if (!city) {
+                  setFieldError(
+                    "birthPlaceCity",
+                    t(
+                      "We couldn't find a city with that name, please search again"
+                    )
+                  );
+                } else {
+                  setValues(
+                    (prevState) => ({
+                      ...prevState,
+                      birthPlaceCity: city?.long_name,
+                      birthPlaceProvince:
+                        country?.short_name === "IT"
+                          ? province?.short_name
+                          : "EE",
+                    }),
+                    true
+                  );
+                }
               }}
             />
             <ErrorMessage name="birthPlaceCity" />
