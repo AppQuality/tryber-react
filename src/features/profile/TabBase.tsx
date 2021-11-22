@@ -273,7 +273,7 @@ const TabBase = () => {
                   label={t("Spoken languages")}
                   options={languages}
                 />
-                <CSSGrid min="50%" gutter="0" fill={true}>
+                <CSSGrid min="50%" gutter="0" fill="true">
                   <HalfColumnButton
                     className="aq-mb-3"
                     type="success"

@@ -98,7 +98,7 @@ const TabAdvanced = () => {
                   {t("Please correct the errors in the form.")}
                 </Text>
               ) : null}
-              <CSSGrid min="50%" gutter="0" fill={true}>
+              <CSSGrid min="50%" gutter="0" fill="true">
                 <HalfColumnButton
                   type="success"
                   htmlType="submit"

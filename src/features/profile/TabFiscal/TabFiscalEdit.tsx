@@ -260,7 +260,7 @@ export const TabFiscalEdit = () => {
               <div className="aq-mb-3">
                 <FiscalAddress />
               </div>
-              <CSSGrid min="50%" gutter="0" fill>
+              <CSSGrid min="50%" gutter="0" fill="true">
                 <HalfColumnButton
                   type="success"
                   htmlType="submit"

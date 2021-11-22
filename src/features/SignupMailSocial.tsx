@@ -42,7 +42,7 @@ export const SignupMailSocial = ({ redirectUrl }: SignupMailSocialProps) => {
                 "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard"
               )}
             </Text>
-            <CSSGrid min="78px" fill={true}>
+            <CSSGrid min="78px" fill="true">
               <div style={{ gridColumn: "auto / span 3" }} className="aq-mb-3">
                 <div className="aq-mb-3">
                   <Button

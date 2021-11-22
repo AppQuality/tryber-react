@@ -69,7 +69,7 @@ const Certifications = () => {
             </div>
           </CSSGrid>
         ))}
-      <CSSGrid min="50%" gutter="0" fill={true}>
+      <CSSGrid min="50%" gutter="0" fill="true">
         <HalfColumnButton
           type="primary"
           htmlType="button"
