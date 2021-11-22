@@ -1,27 +1,26 @@
-import { useTranslation } from "react-i18next";
 import {
   CSSGrid,
+  ErrorMessage,
+  FieldProps,
   Form,
+  FormGroup,
   Formik,
   FormikField,
   FormLabel,
-  FieldProps,
-  FormGroup,
-  ErrorMessage,
-  Text,
-  Title,
   Input,
   Select,
+  Text,
+  Title,
 } from "@appquality/appquality-design-system";
-import { useSelector, shallowEqual } from "react-redux";
-import FiscalTypeArea from "./components/FiscalTypeArea";
-import FiscalAddress from "./components/FiscalAddress";
-import * as yup from "yup";
-import dateFormatter from "../../../utils/dateFormatter";
-import { useDispatch } from "react-redux";
-import { updateFiscalProfile } from "../../../redux/user/actions/updateFiscalProfile";
-import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
+import { useTranslation } from "react-i18next";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { SkeletonTab } from "src/features/profile/SkeletonTab";
+import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
+import * as yup from "yup";
+import { updateFiscalProfile } from "../../../redux/user/actions/updateFiscalProfile";
+import dateFormatter from "../../../utils/dateFormatter";
+import FiscalAddress from "./components/FiscalAddress";
+import FiscalTypeArea from "./components/FiscalTypeArea";
 
 export const TabFiscalEdit = () => {
   const { t } = useTranslation();
@@ -38,13 +37,6 @@ export const TabFiscalEdit = () => {
     shallowEqual
   );
   const dispatch = useDispatch();
-
-  let street, streetNumber, streetData;
-  if (fiscalData?.address?.street) {
-    streetData = fiscalData?.address?.street.split(",");
-    street = streetData[0];
-    if (streetData.length > 1) streetNumber = streetData[1];
-  }
 
   const initialUserValues: FiscalFormValues = {
     gender: fiscalData?.gender || "",
@@ -65,8 +57,8 @@ export const TabFiscalEdit = () => {
     countryCode: fiscalData?.address?.country,
     provinceCode: fiscalData?.address?.province,
     city: fiscalData?.address?.city,
-    street: street,
-    streetNumber: streetNumber,
+    street: fiscalData?.address?.street,
+    streetNumber: fiscalData?.address?.streetNumber,
     zipCode: fiscalData?.address?.cityCode,
   };
 
@@ -148,7 +140,8 @@ export const TabFiscalEdit = () => {
             country: values.countryCode,
             province: values.provinceCode,
             city: values.city,
-            street: `${values.street}, ${values.streetNumber}`,
+            street: values.street,
+            streetNumber: values.streetNumber,
             cityCode: values.zipCode,
           },
           type: values.type,

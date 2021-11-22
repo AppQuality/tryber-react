@@ -1398,6 +1398,7 @@ export interface operations {
               province: string;
               city: string;
               street: string;
+              streetNumber?: string;
               cityCode: string;
             };
             type: components["schemas"]["FiscalType"];
@@ -1427,6 +1428,7 @@ export interface operations {
               province: string;
               city: string;
               street: string;
+              streetNumber?: string;
               cityCode: string;
             };
             type: components["schemas"]["FiscalType"];
@@ -1450,6 +1452,7 @@ export interface operations {
             province: string;
             city: string;
             street: string;
+            streetNumber: string;
             cityCode: string;
           };
           type: components["schemas"]["FiscalType"];
@@ -1475,6 +1478,7 @@ export interface operations {
               province: string;
               city: string;
               street: string;
+              streetNumber?: string;
               cityCode: string;
             };
             type: components["schemas"]["FiscalType"];
@@ -1498,6 +1502,7 @@ export interface operations {
             province: string;
             city: string;
             street: string;
+            streetNumber: string;
             cityCode: string;
           };
           type: components["schemas"]["FiscalType"];

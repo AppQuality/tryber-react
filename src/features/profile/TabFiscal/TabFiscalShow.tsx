@@ -1,15 +1,15 @@
 import {
-  CSSGrid,
-  BSGrid,
   BSCol,
-  Title,
+  BSGrid,
+  Button,
+  CSSGrid,
   icons,
   Text,
-  Button,
+  Title,
 } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
 import { Icon } from "react-bootstrap-icons";
-import { useSelector, shallowEqual } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { shallowEqual, useSelector } from "react-redux";
 import dateFormatter from "../../../utils/dateFormatter";
 
 const ShowItem = ({
@@ -100,7 +100,9 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
           </ShowItem>
         )}
         <ShowItem Icon={Compass} label={t("Fiscal residence")}>
-          <p>{fiscalData?.address.street}</p>
+          <p>
+            {fiscalData?.address.street} {fiscalData?.address?.streetNumber}
+          </p>
           <p>{`${fiscalData?.address.cityCode} ${fiscalData?.address.city} (${fiscalData?.address.province})`}</p>
           <p>{fiscalData?.address.country}</p>
         </ShowItem>
