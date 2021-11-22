@@ -75,6 +75,7 @@ export const CustomUserFields = () => {
             cufGroup.fields && (
               <Accordion.Item
                 id={cufGroup.group.id.toString()}
+                key={cufGroup.group.id.toString()}
                 title={<h4>{cufGroup.group.name.it}</h4>}
               >
                 {/*cufGroups[index] = fields (foreach fields check the type )*/}
