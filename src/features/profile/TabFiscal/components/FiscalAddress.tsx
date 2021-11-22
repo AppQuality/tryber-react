@@ -60,7 +60,7 @@ const FiscalAddress = () => {
             (field) => field.types.indexOf("administrative_area_level_2") >= 0
           );
           const city = fields.find(
-            (field) => field.types.indexOf("administrative_area_level_3") >= 0
+            (field) => field.types.indexOf("locality") >= 0
           );
           const zipCode = fields.find(
             (field) => field.types.indexOf("postal_code") >= 0
