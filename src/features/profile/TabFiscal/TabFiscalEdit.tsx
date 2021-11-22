@@ -53,6 +53,7 @@ export const TabFiscalEdit = () => {
         ? "italian"
         : undefined,
     birthPlaceCity: fiscalData?.birthPlace?.city,
+    birthDate: userData.birthDate,
     birthPlaceProvince: fiscalData?.birthPlace?.province,
     countryCode: fiscalData?.address?.country,
     provinceCode: fiscalData?.address?.province,
@@ -72,6 +73,9 @@ export const TabFiscalEdit = () => {
       .string()
       .required(t("Your address need to have a province code")),
     city: yup.string().required(t("You need to select a city")),
+    birthDate: yup
+      .string()
+      .required(t("@@Birth date is required, set it on base tab@@")),
     street: yup.string().required(t("You need to select a street")),
     streetNumber: yup
       .string()
@@ -128,10 +132,17 @@ export const TabFiscalEdit = () => {
     { value: "female", label: t("Female") },
   ];
 
+  const initialTouched: { [key: string]: boolean } = {};
+  Object.keys(initialUserValues).forEach((k) => {
+    initialTouched[k] = true;
+  });
+
   if (isProfileLoading) return <SkeletonTab />;
   return (
     <Formik
       enableReinitialize
+      validateOnMount={!!fiscalData}
+      initialTouched={!!fiscalData ? initialTouched : {}}
       initialValues={initialUserValues}
       validationSchema={yup.object(validationSchema)}
       onSubmit={async (values, helpers) => {
@@ -178,7 +189,7 @@ export const TabFiscalEdit = () => {
         helpers.resetForm({ values });
       }}
     >
-      {({ isValid, isValidating, dirty }) => (
+      {({ isValid, isValidating, dirty, errors }) => (
         <Form id="baseProfileForm">
           <CSSGrid gutter="50px" rowGap="1rem" min="220px">
             <div className="user-info">
@@ -231,19 +242,33 @@ export const TabFiscalEdit = () => {
                   );
                 }}
               </FormikField>
-              <FormGroup className="aq-mb-3">
-                <FormLabel
-                  htmlFor="birth_date"
-                  label={t("Birth Date")}
-                  isDisabled
-                />
-                <Input
-                  id="birth_date"
-                  type="text"
-                  disabled
-                  value={dateFormatter(userData.birthDate)}
-                />
-              </FormGroup>
+              <FormikField name="birthDate">
+                {({
+                  field, // { name, value, onChange, onBlur }
+                  form,
+                }: FieldProps) => {
+                  return (
+                    <FormGroup className="aq-mb-3">
+                      <FormLabel
+                        htmlFor="birthDate"
+                        label={t("Birth Date")}
+                        isDisabled
+                      />
+                      <Input
+                        id="birthDate"
+                        type="text"
+                        disabled
+                        value={
+                          userData.birth_date
+                            ? dateFormatter(userData.birth_date)
+                            : ""
+                        }
+                      />
+                      <ErrorMessage name="birthDate" />
+                    </FormGroup>
+                  );
+                }}
+              </FormikField>
             </div>
             <div className="tax-residence">
               <Title size="xs" className="aq-mb-2">

@@ -99,11 +99,17 @@ const TabBase = () => {
 
   if (loading) return <SkeletonTab />;
 
+  const initialTouched: { [key: string]: boolean } = {};
+  Object.keys(initialUserValues).forEach((k) => {
+    initialTouched[k] = true;
+  });
+
   return (
     <Formik
       enableReinitialize
       validationSchema={yup.object(validationSchema)}
       validateOnMount
+      initialTouched={initialTouched}
       initialValues={initialUserValues}
       onSubmit={async (values, helpers) => {
         try {
