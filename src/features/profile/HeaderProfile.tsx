@@ -85,7 +85,7 @@ export const HeaderProfile = () => {
           </span>
         </Text>
       </div>
-      <div className="aq-mt-3">
+      <div className="aq-mt-3 profile-mail-confirm">
         <Title className="aq-mb-2" size="xs">
           {t("Email Status")}
         </Title>
@@ -132,6 +132,12 @@ export const StyledHeaderProfile = styled.div`
     width: 125px;
     height: 125px;
     border-radius: 50%;
+  }
+  .profile-mail-confirm {
+    grid-column: span 2;
+    @media (min-width: ${(props) => props.theme.grid.breakpoints.md}) {
+      grid-column: span 1;
+    }
   }
   .mail-confirm-cta {
     cursor: pointer;
