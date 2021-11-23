@@ -259,8 +259,8 @@ export const TabFiscalEdit = () => {
                         type="text"
                         disabled
                         value={
-                          userData.birth_date
-                            ? dateFormatter(userData.birth_date)
+                          userData.birthDate
+                            ? dateFormatter(userData.birthDate)
                             : ""
                         }
                       />
