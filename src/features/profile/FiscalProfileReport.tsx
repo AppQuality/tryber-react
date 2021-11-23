@@ -1,4 +1,3 @@
-import userStore from "../../redux/user";
 import { useTranslation } from "react-i18next";
 import {
   Text,
@@ -6,6 +5,7 @@ import {
   Title,
   Card,
 } from "@appquality/appquality-design-system";
+import { useSelector, shallowEqual } from "react-redux";
 
 interface FiscalProfileReportProps {
   setActiveTab: () => void;
@@ -14,11 +14,14 @@ interface FiscalProfileReportProps {
 export const FiscalProfileReport = ({
   setActiveTab,
 }: FiscalProfileReportProps) => {
-  const { user } = userStore();
+  const fiscalData = useSelector(
+    (state: GeneralState) => state.user.fiscal.data,
+    shallowEqual
+  );
   return (
     <>
-      {user.fiscalStatus ? (
-        user.fiscalStatus.toLowerCase() === "unverified" ? (
+      {fiscalData?.fiscalStatus ? (
+        fiscalData.fiscalStatus.toLowerCase() !== "verified" ? (
           <UnVerifiedFiscalProfile setActiveTab={setActiveTab} />
         ) : null
       ) : (
@@ -65,6 +68,24 @@ const UnVerifiedFiscalProfile = ({
       <Button flat size="block" onClick={setActiveTab}>
         {t("Check your data")}
       </Button>
+    </Card>
+  );
+};
+const VerifiedFiscalProfile = () => {
+  const { t } = useTranslation();
+  return (
+    <Card className="stick-to-header-lg aq-mb-3" shadow={true}>
+      <Title size="xs" className="aq-mb-2">
+        {t("Fiscal Profile Report")}
+      </Title>
+      <Text color="success">
+        <strong>{t("Valid tax profile")}</strong>
+      </Text>
+      <Text>
+        {t(
+          'You can view your profile summary and make changes if necessary in the "Tax" section of your profile.'
+        )}
+      </Text>
     </Card>
   );
 };

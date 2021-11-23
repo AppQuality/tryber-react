@@ -31,7 +31,7 @@ export default ({
       </Helmet>
     );
   };
-  if (user) {
+  if (user?.role && user?.wp_user_id) {
     tagManagerArgs.dataLayer = {
       role: user.role,
       wp_user_id: user.wp_user_id,

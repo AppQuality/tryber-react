@@ -1,4 +1,5 @@
 import queryString from "query-string";
+import Cookies from "universal-cookie";
 
 const WPAPI = {
   login: ({
@@ -84,6 +85,32 @@ const WPAPI = {
         }
         throw new Error("error retrieving mail confirmation information");
       });
+  },
+  requestUserData: async (language: string) => {
+    const cookies = new Cookies();
+    cookies.set("pll_language", language, { path: "/" });
+
+    try {
+      const data = await fetch(
+        `${process.env.REACT_APP_CROWD_WP_URL}/wp-admin/admin-ajax.php`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: queryString.stringify({
+            action: "appq_personal_data_request",
+          }),
+        }
+      );
+      const res = await data.json();
+      if (res.success) {
+        return res.data;
+      }
+      throw new Error(res.data.error);
+    } catch (e) {
+      throw e;
+    }
   },
 };
 

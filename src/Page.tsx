@@ -1,24 +1,26 @@
-import { Route, Switch, Redirect, useLocation } from "react-router-dom";
+import { datadogLogs } from "@datadog/browser-logs";
+import { Location } from "history";
+import queryString from "query-string";
+import { useEffect, useRef } from "react";
+import TagManager from "react-gtm-module";
+import { useDispatch } from "react-redux";
+import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import GenericModal from "./features/GenericModal";
+import SiteHeader from "./features/SiteHeader";
+import SiteWideMessages from "./features/SiteWideMessages";
+import "./i18n";
 import {
   Dashboard,
   Devices,
   ExperiencePoints,
   GettingStarted,
+  GoodbyePage,
   Home,
   MyBugs,
-  Profile
+  Profile,
 } from "./pages";
-import "./i18n";
-import TagManager from "react-gtm-module";
-import SiteHeader from "./features/SiteHeader";
-import { Location } from "history";
-import queryString from "query-string";
-
-import userStore from "./redux/user";
 import referralStore from "./redux/referral";
-import { useEffect } from "react";
-import SiteWideMessages from "./features/SiteWideMessages";
-import { datadogLogs } from "@datadog/browser-logs";
+import { refreshUser } from "./redux/user/actions/refreshUser";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
   datadogLogs.init({
@@ -40,19 +42,21 @@ const base = "/:locale(en|it|es)?";
 
 function Page() {
   const { search } = useLocation();
-  const { refresh } = userStore();
+  const topPageRef = useRef<HTMLDivElement>(null);
   const { setReferral } = referralStore();
+  const dispatch = useDispatch();
   useEffect(() => {
-    refresh && refresh();
+    dispatch(refreshUser());
     const values = queryString.parse(search);
     if (values.referral && typeof values.referral === "string") {
       setReferral(values.referral);
     }
   }, []);
   return (
-    <>
+    <div ref={topPageRef}>
       <SiteHeader />
       <SiteWideMessages />
+      <GenericModal />
       <Switch>
         <Route path={`${base}/getting-started`} component={GettingStarted} />
         <Route path={`/it/getting-started-2`}>
@@ -144,11 +148,20 @@ function Page() {
             />
           )}
         />
-        
+
         <Route path={`${base}/my-account`} component={Profile} />
-        <Route path={["/", "/it", "/es"]} exact component={Home} />
+        <Route
+          path={["/goodbye", "/it/goodbye", "/es/goodbye"]}
+          exact
+          component={GoodbyePage}
+        />
+        <Route
+          path={["/", "/it", "/es"]}
+          exact
+          component={() => <Home topPageRef={topPageRef} />}
+        />
       </Switch>
-    </>
+    </div>
   );
 }
 

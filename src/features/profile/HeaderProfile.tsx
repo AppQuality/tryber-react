@@ -2,7 +2,13 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import WPAPI from "../../utils/wpapi";
 import UserStore from "../../redux/user";
-import { PageTitle, Title, Text } from "@appquality/appquality-design-system";
+import {
+  PageTitle,
+  Title,
+  Text,
+  CSSGrid,
+  Skeleton,
+} from "@appquality/appquality-design-system";
 import {
   StarFill,
   BookmarkCheckFill,
@@ -12,12 +18,21 @@ import {
 import { aqBootstrapTheme } from "@appquality/appquality-design-system";
 import styled from "styled-components";
 import siteWideMessageStore from "../../redux/siteWideMessages";
+import { shallowEqual, useSelector } from "react-redux";
+import { SkeletonHeader } from "src/features/profile/SkeletonHeader";
 
 export const HeaderProfile = () => {
   const [submittingMailConfirm, setSubmittingMailConfirm] = useState(false);
   const { add } = siteWideMessageStore();
   const { t } = useTranslation();
-  const { user } = UserStore();
+  const { user, loading } = useSelector(
+    (state: GeneralState) => ({
+      user: state.user.user,
+      loading: state.user.loading,
+    }),
+    shallowEqual
+  );
+
   const handleMailConfirm = async () => {
     try {
       setSubmittingMailConfirm(true);
@@ -32,14 +47,16 @@ export const HeaderProfile = () => {
     }
   };
 
+  if (loading) return <SkeletonHeader />;
+
   return (
     <StyledHeaderProfile className="aq-m-3">
       <div className="aq-mt-3 aq-text-center">
-        <img className="profile-avatar" src={user.image} alt={user.name} />
+        <img className="profile-avatar" src={user?.image} alt={user?.name} />
       </div>
       <div>
-        <PageTitle size="small" subtitle={"T" + user.id}>
-          {`${user.name} ${user.surname}`}
+        <PageTitle size="small" subtitle={"T" + user?.id}>
+          {`${user?.name} ${user?.surname}`}
         </PageTitle>
         <Text className="aq-mb-3">
           <StarFill
@@ -48,7 +65,7 @@ export const HeaderProfile = () => {
             size="21"
           />{" "}
           <span className="aq-ml-2 aq-text-secondary">
-            <strong>{user.total_exp_pts}</strong> pt
+            <strong>{user?.total_exp_pts}</strong> pt
           </span>
         </Text>
         <Text>
@@ -58,7 +75,7 @@ export const HeaderProfile = () => {
             size="21"
           />{" "}
           <span className="aq-ml-2 aq-text-secondary">
-            <strong>{user.attended_cp}</strong> {t("Completed campaigns")}
+            <strong>{user?.attended_cp}</strong> {t("Completed campaigns")}
           </span>
         </Text>
       </div>
@@ -100,7 +117,7 @@ export const HeaderProfile = () => {
   );
 };
 
-const StyledHeaderProfile = styled.div`
+export const StyledHeaderProfile = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   gap: ${(props) => props.theme.grid.spacing.default};
@@ -116,7 +133,7 @@ const StyledHeaderProfile = styled.div`
       color: ${(props) => props.theme.colors.disabledDark};
     }
   }
-  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.md}) {
     grid-template-columns: 20% 40% 40%;
   }
 `;

@@ -6,7 +6,7 @@ import dateFormatter from "../utils/dateFormatter";
 import { useTranslation } from "react-i18next";
 
 export const useExperiencePoints = () => {
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<TableType.Row[]>([]);
   const [campaigns, setCampaigns] = useState<SelectType.Option[]>([]);
@@ -80,7 +80,7 @@ export const useExperiencePoints = () => {
     });
 
     let datesFilter = Object.values(_dates).filter((el) => el != null);
-    if (orderBy == "date" && order == "ASC")
+    if (orderBy === "date" && order === "ASC")
       datesFilter = datesFilter.reverse();
     setCampaigns(_campaigns.filter((el) => el != null).reverse());
     setDates(datesFilter);

@@ -1,3 +1,4 @@
+import apifetch from "../apifetch";
 import HttpError from "../HttpError";
 import { operations } from "../schema";
 
@@ -25,4 +26,37 @@ export const myFiscalData = async ({
     const json = await res.json();
     throw new HttpError(res.status, res.statusText, json.err);
   }
+};
+
+export const putFiscalData = async ({
+  data,
+  token,
+}: {
+  token?: string;
+  data: operations["put-users-me-fiscal"]["requestBody"]["content"]["application/json"];
+}): Promise<
+  operations["put-users-me-fiscal"]["responses"]["200"]["content"]["application/json"]
+> => {
+  return apifetch({
+    endpoint: "/users/me/fiscal",
+    method: "PUT",
+    token: token,
+    body: data,
+  });
+};
+export const postFiscalData = async ({
+  data,
+  token,
+}: {
+  token?: string;
+  data: operations["post-users-me-fiscal"]["requestBody"]["content"]["application/json"];
+}): Promise<
+  operations["put-users-me-fiscal"]["responses"]["200"]["content"]["application/json"]
+> => {
+  return apifetch({
+    endpoint: "/users/me/fiscal",
+    method: "POST",
+    token: token,
+    body: data,
+  });
 };

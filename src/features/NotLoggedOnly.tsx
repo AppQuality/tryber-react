@@ -1,14 +1,8 @@
-import { useState, useEffect } from "react";
-import useUser from "../redux/user";
-import {
-  Container,
-  Title,
-  Spinner,
-  SpinnerWrapper,
-} from "@appquality/appquality-design-system";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
+import useUser from "../redux/user";
 
 export default ({
   children,
@@ -40,14 +34,11 @@ export default ({
 
   if (isLoading || user) {
     return (
-      <Container className="aq-py-3">
-        <SpinnerWrapper>
-          <Spinner />
-          <Title size="xs" as="h5">
-            {loadingMessage}
-          </Title>
-        </SpinnerWrapper>
-      </Container>
+      <div id="appq-loading-content">
+        <div id="appq-loading-spinner">
+          <div></div>
+        </div>
+      </div>
     );
   }
 

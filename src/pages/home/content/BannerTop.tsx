@@ -51,7 +51,7 @@ const TopAnimation = styled.div`
 `;
 
 export const BannerTop = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
   const [bottomDistance, setBottomDistance] = useState(0);
   const [shapeIsVisible, setShapeVisible] = useState(false);
