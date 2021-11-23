@@ -60,24 +60,28 @@ export const HeaderProfile = () => {
         <PageTitle size="small" subtitle={"T" + user?.id}>
           {`${user?.name} ${user?.surname}`}
         </PageTitle>
-        <Text className="aq-mb-3">
+        <Text className="aq-mb-3" style={{ display: "flex" }}>
           <StarFill
             style={{ verticalAlign: "middle" }}
             color={aqBootstrapTheme.palette.warning}
             size="21"
           />{" "}
-          <span className="aq-ml-2 aq-text-secondary">
-            <strong>{user?.total_exp_pts}</strong> pt
-          </span>
+          <div className="aq-ml-2 aq-text-secondary">
+            <strong className="aq-mr-2">{user?.total_exp_pts}</strong>pt
+          </div>
         </Text>
-        <Text>
+        <Text style={{ display: "flex" }}>
           <BookmarkCheckFill
             style={{ verticalAlign: "middle" }}
             color={aqBootstrapTheme.palette.secondary}
             size="21"
           />{" "}
-          <span className="aq-ml-2 aq-text-secondary">
-            <strong>{user?.attended_cp}</strong> {t("Completed campaigns")}
+          <span
+            className="aq-ml-2 aq-text-secondary"
+            style={{ display: "flex" }}
+          >
+            <strong className="aq-mr-2">{user?.attended_cp}</strong>
+            <span> {t("Completed campaigns")}</span>
           </span>
         </Text>
       </div>
@@ -123,6 +127,7 @@ export const StyledHeaderProfile = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   gap: ${(props) => props.theme.grid.spacing.default};
+  row-gap: 0;
   .profile-avatar {
     width: 125px;
     height: 125px;

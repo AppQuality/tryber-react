@@ -150,7 +150,7 @@ const TabBase = () => {
       {(formikProps: FormikProps<BaseFields>) => {
         return (
           <Form id="baseProfileForm" className="aq-m-3">
-            <CSSGrid gutter="50px" rowGap="1rem" min="220px">
+            <CSSGrid gutter="50px" rowGap="0" min="220px">
               <div className="personal-info">
                 <Title className="aq-mb-2" size="xs">
                   {t("Personal info")}

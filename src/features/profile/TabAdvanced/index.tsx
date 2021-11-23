@@ -73,11 +73,16 @@ const TabAdvanced = () => {
         <Form id="advancedProfileForm" className="aq-m-3">
           <CSSGrid gutter="50px" rowGap="1rem" min="220px">
             <div className="employment">
-              <Title className="aq-mb-2" size="xs">
-                {t("Employment")}
-              </Title>
-              <EmploymentSelect name="employment" label={t("Profession")} />
-              <EducationSelect name="education" label={t("Education level")} />
+              <div className="aq-mb-4">
+                <Title className="aq-mb-2" size="xs">
+                  {t("Employment")}
+                </Title>
+                <EmploymentSelect name="employment" label={t("Profession")} />
+                <EducationSelect
+                  name="education"
+                  label={t("Education level")}
+                />
+              </div>
               <Title className="aq-mb-2" size="xs">
                 {t("Certifications")}
               </Title>
