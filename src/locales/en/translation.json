@@ -121,7 +121,6 @@
   "Email must be a valid email": "Email must be a valid email",
   "Email {{email}} already registered": "Email {{email}} already registered",
   "Employment": "Employment",
-  "Empty profile": "Empty profile",
   "End Date": "End Date",
   "Experience Points": "Experience Points",
   "Extra Award": "Extra Award",
@@ -266,6 +265,10 @@
   "Spoken languages": "Spoken languages",
   "Start Date": "Start Date",
   "Status": "Status",
+  "Status of user fiscal profile": {
+    "Empty profile": "",
+    "Fiscal Profile Report": ""
+  },
   "Submitted bugs": "Submitted bugs",
   "Surname": "Surname",
   "Take me to the dashboard": "Take me to the dashboard",

@@ -36,10 +36,10 @@ const EmptyFiscalProfile = ({ setActiveTab }: FiscalProfileReportProps) => {
   return (
     <Card className="stick-to-header-lg aq-mb-3" shadow={true}>
       <Title size="xs" className="aq-mb-2">
-        {t("Fiscal Profile Report")}
+        {t("Status of user fiscal profile:::Fiscal Profile Report")}
       </Title>
       <Text color="danger">
-        <strong>{t("Empty profile")}</strong>
+        <strong>{t("Status of user fiscal profile:::Empty profile")}</strong>
       </Text>
       <Text className="aq-mb-3">
         {t("You need to fill in your tax profile data to receive your booty")}
@@ -57,7 +57,7 @@ const UnVerifiedFiscalProfile = ({
   return (
     <Card className="stick-to-header-lg aq-mb-3" shadow={true}>
       <Title size="xs" className="aq-mb-2">
-        {t("Fiscal Profile Report")}
+        {t("Status of user fiscal profile:::Fiscal Profile Report")}
       </Title>
       <Text color="warning">
         <strong>{t("Invalid fiscal profile")}</strong>

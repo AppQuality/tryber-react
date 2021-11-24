@@ -121,7 +121,6 @@
   "Email must be a valid email": "El correo electrónico debe ser válido",
   "Email {{email}} already registered": "Email {{email}} già presente",
   "Employment": "Empleo",
-  "Empty profile": "Perfil vacío",
   "End Date": "Fecha Final",
   "Experience Points": "Puntos de Experiencia",
   "Extra Award": "Recompensa Extra",
@@ -266,6 +265,10 @@
   "Spoken languages": "Idiomas hablados",
   "Start Date": "Fecha de Inicio",
   "Status": "Estado",
+  "Status of user fiscal profile": {
+    "Empty profile": "",
+    "Fiscal Profile Report": ""
+  },
   "Submitted bugs": "Bugs enviados",
   "Surname": "Apellido",
   "Take me to the dashboard": "Llévame a la dashboard",
