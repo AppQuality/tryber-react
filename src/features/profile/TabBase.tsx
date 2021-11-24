@@ -208,7 +208,10 @@ const TabBase = () => {
                   {({ field, form, meta }: FieldProps) => {
                     return (
                       <FormGroup>
-                        <FormLabel htmlFor={field.name} label="Phone number" />
+                        <FormLabel
+                          htmlFor={field.name}
+                          label={t("Phone number")}
+                        />
                         <Input
                           type="tel"
                           id={field.name}
