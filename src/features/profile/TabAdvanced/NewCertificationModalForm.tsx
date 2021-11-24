@@ -105,7 +105,7 @@ const NewCertificationModalForm = ({
               isDisabled={
                 !form.values.institute || !form.values.institute.length
               }
-              label={t("Area")}
+              label={t("Add new certification:::Area")}
               options={areas}
               value={{
                 label: field.value || "",
