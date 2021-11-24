@@ -1,11 +1,11 @@
-import * as actionTypes from "./actionTypes";
 import API from "../../utils/api";
+import * as actionTypes from "./actionTypes";
 
-export * from "./actions/refreshUser";
-export * from "./actions/loginUser";
-export * from "./actions/getProfile";
-export * from "./actions/getFiscalProfile";
 export * from "./actions/getCustomUserFields";
+export * from "./actions/getFiscalProfile";
+export * from "./actions/getProfile";
+export * from "./actions/loginUser";
+export * from "./actions/refreshUser";
 export * from "./actions/updateFiscalProfile";
 export * from "./actions/updateProfile";
 
@@ -24,7 +24,7 @@ export const deleteUser = (currentLanguage: string) => {
       reason: deletionReason || "",
     });
     await fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout");
-    window.location.href = `/${currentLanguage}goodbye`;
+    window.location.href = `/${currentLanguage}goodbye/`;
     console.log(deletionReason);
   };
 };
