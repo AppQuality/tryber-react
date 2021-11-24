@@ -27,6 +27,9 @@
   "Add Certifications": "Add Certifications",
   "Add a new device": "Add a new device",
   "Add device": "Add device",
+  "Add new certification": {
+    "Area": ""
+  },
   "Add your devices": "Add your devices",
   "Adding more devices allows you to apply to more campaigns to earn more money and experience points.": "Adding more devices allows you to apply to more campaigns to earn more money and experience points.",
   "Additional fields": "Additional fields",
@@ -44,7 +47,6 @@
   "Apply now": "Apply now",
   "Approved bugs": "Approved bugs",
   "Are you ready to get involved?": "Are you ready to get involved?",
-  "Area": "Area",
   "Area is a required field.": "Area is a required field.",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.",
   "Available booty": "Available booty",
@@ -294,6 +296,9 @@
   "Type to search your city": "Type to search your city",
   "Update your device list": "Update your device list",
   "Uploaded Bugs": "Uploaded Bugs",
+  "User mail validation": {
+    "An Email has been sent to the provided address": ""
+  },
   "Valid tax profile": "Valid tax profile",
   "Version": "Version",
   "View": "View",

@@ -38,7 +38,9 @@ export const HeaderProfile = () => {
       setSubmittingMailConfirm(true);
       const data = await WPAPI.sendMailConfirmation();
       add({
-        message: "An Email has been sent to the provided address",
+        message: t(
+          "User mail validation:::An Email has been sent to the provided address"
+        ),
         type: "success",
       });
     } catch (err) {

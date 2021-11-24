@@ -27,6 +27,9 @@
   "Add Certifications": "Añadir certificaciones",
   "Add a new device": "Añadir un nuevo dispositivo",
   "Add device": "Añadir dispositivo",
+  "Add new certification": {
+    "Area": ""
+  },
   "Add your devices": "Agregue sus dispositivos",
   "Adding more devices allows you to apply to more campaigns to earn more money and experience points.": "Añadir más dispositivos te permite aplicar a más campañas para ganar más dinero y puntos de experiencia.",
   "Additional fields": "Campos adicionales",
@@ -44,7 +47,6 @@
   "Apply now": "Aplicar ahora",
   "Approved bugs": "Bugs aprobados",
   "Are you ready to get involved?": "¿Estás listo para involucrarte?",
-  "Area": "área / esfera",
   "Area is a required field.": "El área / La esfera es un campo obligatorio",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Como primer paso a completar, llene su perfil con datos reales y auténticos. Esta es la única forma para ser seleccionado a las Campañas y obtener tu recompensa.",
   "Available booty": "Saldo Disponible",
@@ -294,6 +296,9 @@
   "Type to search your city": "Escriba para buscar tu ciudad",
   "Update your device list": "Actualizar tu lista de dispositivos",
   "Uploaded Bugs": "Bugs Cargados",
+  "User mail validation": {
+    "An Email has been sent to the provided address": ""
+  },
   "Valid tax profile": "Perfil fiscal válido",
   "Version": "Versión",
   "View": "Ver",
