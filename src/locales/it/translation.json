@@ -131,10 +131,10 @@
   "Fill in your profile details": "Completa il tuo profilo",
   "Filters": "Filtri",
   "Finished": "Terminate",
+  "First Name": "",
   "Fiscal": "Fiscale",
   "Fiscal Address": "Indirizzo fiscale",
   "Fiscal Code": "Codice fiscale",
-  "Fiscal ID": "Documento fiscale",
   "Fiscal Profile Report": "Rapporto del profilo fiscale",
   "Fiscal Type": "Tipo fiscale",
   "Fiscal residence": "Residenza fiscale",
@@ -147,6 +147,11 @@
   "For tax reasons we are obliged to tie this choice to binary options only": "Per motivi fiscali siamo obbligati a legare questa scelta alle sole opzioni binarie",
   "Foreign": "Straniero",
   "Gender": "Genere",
+  "Gender option": {
+    "Female": "",
+    "Male": "",
+    "Not Specified": ""
+  },
   "Generic error": "Errore generico",
   "Getting Started": "Iniziare",
   "Goodbye": "Arrivederci",
@@ -178,11 +183,11 @@
   "Invalid fiscal profile": "Profilo fiscale invalido",
   "Invalid tax profile.": "Profilo fiscale invalido",
   "It is an interesting experience and a great opportunity to work with AppQuality. I can say that I have improved my attention to detail and my testing skills in general.": "È un'esperienza interessante e una grande opportunità per lavorare con AppQuality: posso dire di aver migliorato la mia attenzione ai dettagli e in generale alle mie capacità di test.",
-  "Italian": "Italiano",
   "Join the AppQuality Tester Community!": "Unisciti alla Community di AppQuality!",
   "Join the Team": "Unisciti alla Community",
   "Keep": "Mantieni",
   "Language": "Lingua",
+  "Last Name": "",
   "Leaderboard": "Classifica",
   "Learn More": "Scopri di più",
   "Learn more about how we calculate and attribute experience points.": "Scopri di più su come calcoliamo e attribuiamo i punti esperienza",
@@ -206,7 +211,6 @@
   "Next": "Successivo",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "Nessuna campagna è stata ancora conclusa. È arrivato il momento di mettersi al lavoro: termina quelle attive o candidati nelle campagne disponibili!",
   "Not available": "Non disponibile",
-  "Not italian": "Non italiano ",
   "Not specified": "Non specificato",
   "Oh no!": "Oh no!",
   "Operating System": "SO",
@@ -273,7 +277,17 @@
   "Surname": "Cognome",
   "Take me to the dashboard": "Vai alla dashboard",
   "Take part in the Basic Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become an AppQuality world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community.": "Prendi subito parte al Corso Base e guadagna 200 punti esperienza, fondamentali per aumentare le tue possibilità di essere selezionato per le Campagne. Conoscerai più a fondo il mondo AppQuality e potrai ricevere una certificazione Linkedin per mostrare di essere un membro qualificato della Community.",
+  "Tax identification number": {
+    "Tax ID": ""
+  },
+  "Tax regime options select label": {
+    "Fiscal Type": ""
+  },
   "Tax residence": "Residenza fiscale",
+  "Tax residence option": {
+    "Italian": "",
+    "Not italian": ""
+  },
   "Testing Campaigns are not clear and I'm not able to finished them": "Le campagne di test non sono chiare e non riesco a completarle",
   "Testing University": "Università del test",
   "The changes to your device were successfully saved": "Le modifiche al tuo dispositivo sono state salvate con successo",

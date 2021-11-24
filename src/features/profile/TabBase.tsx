@@ -92,9 +92,9 @@ const TabBase = () => {
     languages: yup.array(),
   };
   const genderOptions = [
-    { label: "Female", value: "female" },
-    { label: "Male", value: "male" },
-    { label: "Not Specified", value: "not-specified" },
+    { label: t("Gender option:::Female"), value: "female" },
+    { label: t("Gender option:::Male"), value: "male" },
+    { label: t("Gender option:::Not Specified"), value: "not-specified" },
   ];
 
   if (loading) return <SkeletonTab />;
@@ -155,8 +155,8 @@ const TabBase = () => {
                 <Title className="aq-mb-2" size="xs">
                   {t("Personal info")}
                 </Title>
-                <Field name="name" type="text" label={t("Name")} />
-                <Field name="surname" type="text" label={t("Surname")} />
+                <Field name="name" type="text" label={t("First Name")} />
+                <Field name="surname" type="text" label={t("Last Name")} />
                 <FormikField name="gender">
                   {({ field, form }: FieldProps) => (
                     <FormGroup>

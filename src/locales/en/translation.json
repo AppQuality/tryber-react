@@ -131,10 +131,10 @@
   "Fill in your profile details": "Fill in your profile details",
   "Filters": "Filters",
   "Finished": "Finished",
+  "First Name": "",
   "Fiscal": "Fiscal",
   "Fiscal Address": "Fiscal Address",
   "Fiscal Code": "Fiscal Code",
-  "Fiscal ID": "Fiscal ID",
   "Fiscal Profile Report": "Fiscal Profile Report",
   "Fiscal Type": "Fiscal Type",
   "Fiscal residence": "Fiscal residence",
@@ -147,6 +147,11 @@
   "For tax reasons we are obliged to tie this choice to binary options only": "For tax reasons we are obliged to tie this choice to binary options only",
   "Foreign": "Foreign",
   "Gender": "Gender",
+  "Gender option": {
+    "Female": "",
+    "Male": "",
+    "Not Specified": ""
+  },
   "Generic error": "Generic error",
   "Getting Started": "Getting Started",
   "Goodbye": "Goodbye",
@@ -178,11 +183,11 @@
   "Invalid fiscal profile": "Invalid fiscal profile",
   "Invalid tax profile.": "Invalid tax profile.",
   "It is an interesting experience and a great opportunity to work with AppQuality. I can say that I have improved my attention to detail and my testing skills in general.": "It is an interesting experience and a great opportunity to work with AppQuality. I can say that I have improved my attention to detail and my testing skills in general.",
-  "Italian": "Italian",
   "Join the AppQuality Tester Community!": "Join the AppQuality Community!",
   "Join the Team": "Join the Team",
   "Keep": "Keep",
   "Language": "Language",
+  "Last Name": "",
   "Leaderboard": "Leaderboard",
   "Learn More": "Learn More",
   "Learn more about how we calculate and attribute experience points.": "Learn more about how we calculate and attribute experience points.",
@@ -206,7 +211,6 @@
   "Next": "Next",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!",
   "Not available": "Not available",
-  "Not italian": "Not italian",
   "Not specified": "Not specified",
   "Oh no!": "Oh no!",
   "Operating System": "OS",
@@ -273,7 +277,17 @@
   "Surname": "Surname",
   "Take me to the dashboard": "Take me to the dashboard",
   "Take part in the Basic Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become an AppQuality world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community.": "Take part in the Basic Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become an AppQuality world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community.",
+  "Tax identification number": {
+    "Tax ID": ""
+  },
+  "Tax regime options select label": {
+    "Fiscal Type": ""
+  },
   "Tax residence": "Tax residence",
+  "Tax residence option": {
+    "Italian": "",
+    "Not italian": ""
+  },
   "Testing Campaigns are not clear and I'm not able to finished them": "Testing Campaigns are not clear and I'm not able to finished them",
   "Testing University": "Testing University",
   "The changes to your device were successfully saved": "The changes to your device were successfully saved",
