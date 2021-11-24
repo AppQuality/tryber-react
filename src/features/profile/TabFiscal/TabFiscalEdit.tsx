@@ -77,10 +77,8 @@ export const TabFiscalEdit = () => {
       .string()
       .required(t("@@Birth date is required, set it on base tab@@")),
     street: yup.string().required(t("You need to select a street")),
-    streetNumber: yup
-      .string()
-      .required(t("You need to select a street with a street code")),
-    zipCode: yup.string().required(t("Your address need a zip code")),
+    streetNumber: yup.string().required(t("You need to select a street code")),
+    zipCode: yup.string().required(t("You need to select a zip code")),
     fiscalTypeRadio: yup
       .string()
       .oneOf(["non-italian", "italian"])
@@ -128,8 +126,8 @@ export const TabFiscalEdit = () => {
   };
 
   const genderOptions = [
-    { value: "male", label: t("Male") },
-    { value: "female", label: t("Female") },
+    { value: "male", label: t("Gender option:::Male") },
+    { value: "female", label: t("Gender option:::Female") },
   ];
 
   const initialTouched: { [key: string]: boolean } = {};
@@ -197,11 +195,15 @@ export const TabFiscalEdit = () => {
                 {t("Informations")}
               </Title>
               <FormGroup>
-                <FormLabel htmlFor="name" label={t("Name")} isDisabled />
+                <FormLabel htmlFor="name" label={t("First Name")} isDisabled />
                 <Input id="name" type="text" disabled value={userData.name} />
               </FormGroup>
               <FormGroup>
-                <FormLabel htmlFor="surname" label={t("Surname")} isDisabled />
+                <FormLabel
+                  htmlFor="surname"
+                  label={t("Last Name")}
+                  isDisabled
+                />
                 <Input
                   id="surname"
                   type="text"

@@ -28,7 +28,7 @@ const FiscalTypeArea = () => {
               name={field.name}
               checked={field.value === "italian"}
               id="italian"
-              label={t("Italian")}
+              label={t("Tax residence option:::Italian")}
               onChange={() => {
                 form.setTouched({
                   ...form.touched,
@@ -45,7 +45,7 @@ const FiscalTypeArea = () => {
               name={field.name}
               checked={field.value === "non-italian"}
               id="notItalian"
-              label={t("Not italian")}
+              label={t("Tax residence option:::Not italian")}
               onChange={() => {
                 form.setTouched({
                   ...form.touched,
@@ -74,7 +74,7 @@ const FiscalTypeArea = () => {
                 <FormGroup>
                   <Select
                     name={field.name}
-                    label={t("Fiscal Type")}
+                    label={t("Tax regime options select label:::Fiscal Type")}
                     value={
                       field.value
                         ? { value: field.value, label: "" }
@@ -200,7 +200,10 @@ const FiscalTypeArea = () => {
         }: FieldProps) => {
           return (
             <FormGroup>
-              <FormLabel htmlFor={field.name} label={t("Fiscal ID")} />
+              <FormLabel
+                htmlFor={field.name}
+                label={t("Tax identification number:::Tax ID")}
+              />
               <Input
                 id={field.name}
                 type="text"

@@ -135,8 +135,8 @@ const FiscalAddress = () => {
           )}
         <Text small className="aq-mt-1">
           <span className="aq-text-secondary">
-            {t("If your address is not in the list please ")}
-          </span>
+            {t("If your address is not in the list please")}
+          </span>{" "}
           <Button
             type="link"
             htmlType="button"
