@@ -250,6 +250,10 @@ const TabBase = () => {
                   }}
                   countryRestrictions={formikProps.values.countryCode}
                   onChange={(place) => {
+                    if (!place) {
+                      formikProps.setFieldValue("city", "", true);
+                      return;
+                    }
                     const fields = place.address_components;
                     const city = fields.find(
                       (field) => field.types.indexOf("locality") >= 0

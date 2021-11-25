@@ -15,7 +15,7 @@ const CitySelect = ({
   name: string;
   label: string;
   onBlur: () => void;
-  onChange: (place: google.maps.GeocoderResult) => void;
+  onChange: (place?: google.maps.GeocoderResult) => void;
   countryRestrictions?: string | string[];
 }) => {
   const { t, i18n } = useTranslation();
@@ -47,7 +47,7 @@ const CitySelect = ({
               }}
               onBlur={onBlur}
               onChange={(places) => {
-                onChange(places[0]);
+                Array.isArray(places) ? onChange(places[0]) : onChange(places);
               }}
             />
           </>

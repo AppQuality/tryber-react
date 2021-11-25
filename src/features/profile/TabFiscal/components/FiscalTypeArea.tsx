@@ -142,6 +142,17 @@ const FiscalTypeArea = () => {
                 setFieldTouched("birthPlaceProvince");
               }}
               onChange={(place) => {
+                if (!place) {
+                  setValues(
+                    (prevState) => ({
+                      ...prevState,
+                      birthPlaceCity: "",
+                      birthPlaceProvince: "",
+                    }),
+                    true
+                  );
+                  return;
+                }
                 const fields = place.address_components;
                 const country = fields.find(
                   (field) => field.types.indexOf("country") >= 0

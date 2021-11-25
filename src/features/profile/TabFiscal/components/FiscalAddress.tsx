@@ -52,6 +52,21 @@ const FiscalAddress = () => {
           })
         }
         onChange={(places) => {
+          if (!places) {
+            setValues(
+              (prevState) => ({
+                ...prevState,
+                countryCode: "",
+                provinceCode: "",
+                city: "",
+                zipCode: "",
+                street: "",
+                streetNumber: "",
+              }),
+              true
+            );
+            return;
+          }
           const fields = places[0].address_components;
           const country = fields.find(
             (field) => field.types.indexOf("country") >= 0
