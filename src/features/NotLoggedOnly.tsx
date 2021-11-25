@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
+import LoadingSvg from "src/pages/assets/loading.svg";
 import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
 import useUser from "../redux/user";
 
@@ -35,8 +36,10 @@ export default ({
   if (isLoading || user) {
     return (
       <div id="appq-loading-content">
-        <div id="appq-loading-spinner">
-          <div></div>
+        <div style={{ width: "60px", height: "60px" }}>
+          <object type="image/svg+xml" data={LoadingSvg}>
+            svg-animation
+          </object>
         </div>
       </div>
     );
