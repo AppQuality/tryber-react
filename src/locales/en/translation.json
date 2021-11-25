@@ -271,7 +271,7 @@
     "Any change to your personal data will lead to the recalculation of your tax code": "Any change to your personal data will lead to the recalculation of your tax code",
     "Area is a required field.": "Area is a required field.",
     "Available tags:\n<a></a>: Link to the fiscal type help article": {
-        "@@Link to help article for fiscal type@@": "Link to help article for fiscal type"
+        "@@Link to help article for fiscal type@@": "<a>Click here</a> for more info"
     },
     "Birth city": "Birth city",
     "Certification": "Certification",
