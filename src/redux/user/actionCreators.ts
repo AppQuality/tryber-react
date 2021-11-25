@@ -1,42 +1,46 @@
-import * as actionTypes from "./actionTypes";
 import API from "../../utils/api";
-import WPAPI from "../../utils/wpapi";
+import * as actionTypes from "./actionTypes";
 
-export function refreshUser() {
-  const action: UserAction = {
-    type: actionTypes.USER_REFRESH,
-  };
+export * from "./actions/getCustomUserFields";
+export * from "./actions/getFiscalProfile";
+export * from "./actions/getProfile";
+export * from "./actions/loginUser";
+export * from "./actions/refreshUser";
+export * from "./actions/updateFiscalProfile";
+export * from "./actions/updateProfile";
 
-  return (dispatch: UserDispatchType) => {
-    dispatch({ type: actionTypes.USER_LOAD });
-    return API.me(undefined, "name,surname,image,email,onboarding_completed")
-      .then((user) => {
-        user.isAdmin = ["administrator", "tester_lead"].includes(user.role);
-        action.data = user;
-        return dispatch(action);
-      })
-      .catch((e) => {
-        dispatch({ type: actionTypes.USER_FAILED, error: e });
-      });
+export const updateDeletionReason = (reason: string) => {
+  return async (dispatch: UserDispatchType) => {
+    dispatch({
+      type: actionTypes.UPDATE_DELETION_REASON,
+      data: { reason },
+    });
   };
-}
-export function loginUser({ username, password }: UserLoginData) {
-  const action: UserAction = {
-    type: actionTypes.USER_LOGIN,
+};
+export const deleteUser = (currentLanguage: string) => {
+  return async (dispatch: UserDispatchType, getState: () => GeneralState) => {
+    const { deletionReason } = getState().user;
+    await API.deleteUser({
+      reason: deletionReason || "",
+    });
+    await fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout");
+    window.location.href = `/${currentLanguage}goodbye/`;
+    console.log(deletionReason);
   };
+};
 
-  return (dispatch: UserDispatchType) => {
-    dispatch({ type: actionTypes.USER_LOAD });
-    return WPAPI.getNonce()
-      .then((nonce) => {
-        return WPAPI.login({
-          username: username,
-          password: password,
-          security: nonce,
-        })
-          .then(() => window.location.reload())
-          .catch((e) => dispatch({ type: actionTypes.USER_FAILED, error: e }));
-      })
-      .catch((e) => dispatch({ type: actionTypes.USER_FAILED, data: e }));
+export const openDeleteModal = () => {
+  return async (dispatch: UserDispatchType) => {
+    dispatch({
+      type: actionTypes.OPEN_DELETE_MODAL,
+    });
   };
-}
+};
+
+export const closeDeleteModal = () => {
+  return async (dispatch: UserDispatchType) => {
+    dispatch({
+      type: actionTypes.CLOSE_DELETE_MODAL,
+    });
+  };
+};

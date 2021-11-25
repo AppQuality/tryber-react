@@ -1,20 +1,21 @@
-import { Container, Title, Text } from "@appquality/appquality-design-system";
+import { Container, Text, Title } from "@appquality/appquality-design-system";
+import { useEffect } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import testerIcon from "./assets/testers.svg";
-import campaignsIcon from "./assets/campaigns.svg";
-import countriesIcon from "./assets/countries.svg";
-import brandsHelped from "./assets/brandsHelped.svg";
-import { StyledSection } from "./_styles";
-import { BannerTop } from "./content/BannerTop";
-import { DataList } from "./content/DataList";
-import { DataListItem } from "./_types";
-import { ReviewSection } from "./content/ReviewSection";
-import { CardSection } from "./content/CardSection";
-import { Footer } from "./content/Footer";
 import styled from "styled-components";
-import JoinTheTeamButton from "./content/JoinTheTeamButton";
 import GoogleTagManager from "../../features/GoogleTagManager";
 import NotLoggedOnly from "../../features/NotLoggedOnly";
+import brandsHelped from "./assets/brandsHelped.svg";
+import campaignsIcon from "./assets/campaigns.svg";
+import countriesIcon from "./assets/countries.svg";
+import testerIcon from "./assets/testers.svg";
+import { BannerTop } from "./content/BannerTop";
+import { CardSection } from "./content/CardSection";
+import { DataList } from "./content/DataList";
+import { Footer } from "./content/Footer";
+import JoinTheTeamButton from "./content/JoinTheTeamButton";
+import { ReviewSection } from "./content/ReviewSection";
+import { StyledSection } from "./_styles";
+import { DataListItem } from "./_types";
 
 const StyledHome = styled.div`
   max-width: 100vw;
@@ -32,9 +33,17 @@ const StyledHome = styled.div`
     }
   }
 `;
-export default function Home() {
+export default function Home({
+  topPageRef,
+}: {
+  topPageRef: React.RefObject<HTMLDivElement>;
+}) {
   const { t } = useTranslation();
-
+  useEffect(() => {
+    if (topPageRef?.current) {
+      topPageRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [topPageRef]);
   const communityData: DataListItem[] = [
     {
       name: t("testers"),

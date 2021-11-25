@@ -1,7 +1,12 @@
 import HttpError from "../HttpError";
 import { operations } from "../schema";
 
-export const me = async (token?: string, query?: string) => {
+export const me = async (
+  token?: string,
+  query?: string
+): Promise<
+  ApiOperations["get-users-me"]["responses"]["200"]["content"]["application/json"]
+> => {
   if (process.env.REACT_APP_DEFAULT_TOKEN)
     token = process.env.REACT_APP_DEFAULT_TOKEN;
 
@@ -26,6 +31,32 @@ export const me = async (token?: string, query?: string) => {
     const json = await res.json();
     throw new HttpError(res.status, res.statusText, json.err);
   }
+};
+
+export const patchMe = async (
+  data: operations["patch-users-me"]["requestBody"]["content"]["application/json"],
+  token?: string
+): Promise<
+  operations["patch-users-me"]["responses"]["200"]["content"]["application/json"]
+> => {
+  if (process.env.REACT_APP_DEFAULT_TOKEN)
+    token = process.env.REACT_APP_DEFAULT_TOKEN;
+
+  const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set("Content-Type", "application/json");
+  if (token) {
+    requestHeaders.set("Authorization", "Bearer " + token);
+  }
+  let url = `${process.env.REACT_APP_API_URL}/users/me`;
+  const response = await fetch(url, {
+    method: "PATCH",
+    headers: requestHeaders,
+    body: JSON.stringify(data),
+  });
+  const results = await response.json();
+  if (!response.ok)
+    throw new HttpError(response.status, response.statusText, results.err);
+  return results;
 };
 
 export const myBugs = async ({
@@ -193,6 +224,11 @@ export const experiencePoints = async ({
   }
 };
 
-export * from "./myPopups";
+export * from "./changePassword";
+export * from "./delete";
+export * from "./myCustomUserFields";
 export * from "./myDevices";
+export * from "./myFiscalData";
+export * from "./myLanguages";
+export * from "./myPopups";
 export * from "./onboardingComplete";

@@ -1,4 +1,4 @@
-import { Toastr, BSGrid, BSCol } from "@appquality/appquality-design-system";
+import { Toastr, BSGrid } from "@appquality/appquality-design-system";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import siteWideMessageStore from "../redux/siteWideMessages";
 import styled from "styled-components";

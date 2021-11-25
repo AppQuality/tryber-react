@@ -182,7 +182,7 @@ export const SignupForm = ({
             }}
           </FormikField>
 
-          <CSSGrid min="78px" fill={true}>
+          <CSSGrid min="78px" fill="true">
             <Button
               className="aq-mb-3"
               style={{ gridColumn: "auto / span 3" }}

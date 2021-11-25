@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import API from "../../utils/api";
 
 export default () => {
@@ -26,12 +26,12 @@ export default () => {
             pendingBooty: 0,
           };
         }
-        setExpPoints(data.total_exp_pts);
-        setRank(data.rank);
-        setCpCompleted(data.attended_cp);
-        setBugsApproved(data.approved_bugs);
-        setAllBooty(data.booty);
-        setPendingBooty(data.pending_booty);
+        setExpPoints(data.total_exp_pts || 0);
+        setRank(parseInt(data.rank || "0"));
+        setCpCompleted(data.attended_cp || 0);
+        setBugsApproved(data.approved_bugs || 0);
+        setAllBooty(data.booty || 0);
+        setPendingBooty(data.pending_booty || 0);
       })
       .finally(() => setLoading(false));
   }, []);

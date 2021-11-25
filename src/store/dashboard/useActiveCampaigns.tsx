@@ -26,7 +26,7 @@ export default () => {
           completed: "0",
         },
         order: order,
-        orderBy: orderBy == "endDate" ? "end_date" : "name",
+        orderBy: orderBy === "endDate" ? "end_date" : "name",
         limit,
         start: (page - 1) * limit,
       },

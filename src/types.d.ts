@@ -1,5 +1,8 @@
-import HttpError from "../utils/HttpError";
-import { aqBootstrapTheme } from "@appquality/appquality-design-system";
+import {
+  aqBootstrapTheme,
+  SelectType,
+} from "@appquality/appquality-design-system";
+import { operations, components } from "src/utils/schema";
 
 export type CrowdRoutes =
   | "getting-started"
@@ -8,20 +11,6 @@ export type CrowdRoutes =
   | "my-bugs"
   | "experience-points"
   | "";
-
-export interface UserData {
-  id: number;
-  wp_user_id: number;
-  role: string;
-  username: string;
-  name: string;
-  surname: string;
-  email: string;
-  image: string;
-  verified?: boolean;
-  isAdmin?: boolean;
-  onboarding_completed?: boolean;
-}
 
 export type User = undefined | UserData;
 
@@ -35,4 +24,10 @@ export interface UserStatus {
 
 declare global {
   type Theme = typeof aqBootstrapTheme;
+  type UserData = any;
+  type HttpError = HttpError;
+  type ApiOperations = operations;
+  type ApiComponents = components;
+  type SupportedLanguages = "es" | "it" | "en";
+  type SelectOptionType = SelectType.Option;
 }

@@ -13,6 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <link rel="apple-touch-icon" href="/static/logo192.png" />
+    <link
+      rel="stylesheet"
+      id="loading-css"
+      href="/static/loading.css"
+      type="text/css"
+    />
     <link rel="manifest" href="/static/manifest.json" />
     <meta property="og:site_name" content="AppQuality Crowd" />
     <meta property="og:image" content="/static/crowdAppQuality.jpg" />
@@ -37,10 +43,21 @@
       rel="stylesheet"
     />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=String.prototype.replaceAll%2CIntersectionObserver%2CArray.prototype.map%2CArray.prototype.reduce"></script>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJqenKVp22KCz9StLq31acTkWq-7eDD_w&libraries=places"
+    ></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+      <div id="appq-loading-header"></div>
+      <div id="appq-loading-content">
+        <div class="loadingImg">
+          <img src="/static/loading.svg" />
+        </div>
+      </div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
