@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import {
   Datepicker,
   ErrorMessage,
@@ -9,10 +8,11 @@ import {
   Select,
   SelectType,
 } from "@appquality/appquality-design-system";
-import API from "src/utils/api";
 import { FieldProps } from "formik";
-import { CertificationFields } from "../types";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import API from "src/utils/api";
+import { CertificationFields } from "../types";
 
 const NewCertificationModalForm = ({
   values,
@@ -162,6 +162,7 @@ const NewCertificationModalForm = ({
               id={field.name}
               locale={i18n.language}
               maxDate={new Date()}
+              minDate={new Date("1/2/1970")}
               placeholder={t("Select achievement date")}
               setText={t("Set")}
               cancelText={t("Cancel")}

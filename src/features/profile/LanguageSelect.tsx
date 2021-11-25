@@ -5,6 +5,7 @@ import {
   SelectType,
 } from "@appquality/appquality-design-system";
 import { FieldProps } from "formik";
+import { useTranslation } from "react-i18next";
 
 export const LanguageSelect = ({
   name,
@@ -15,12 +16,14 @@ export const LanguageSelect = ({
   label: string;
   options: SelectType.Option[];
 }) => {
+  const { t } = useTranslation();
   return (
     <FormikField name={name}>
       {({ field, form, meta }: FieldProps) => (
         <FormGroup>
           <Select
             name={field.name}
+            placeholder={t("Search")}
             isMulti
             label={label}
             value={field.value}
