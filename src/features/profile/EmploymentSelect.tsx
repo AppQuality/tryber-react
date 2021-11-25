@@ -7,6 +7,7 @@ import {
 import { FieldProps } from "formik";
 import API from "../../utils/api";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const EmploymentSelect = ({
   name,
@@ -16,6 +17,7 @@ export const EmploymentSelect = ({
   label: string;
 }) => {
   const [employments, setEmployments] = useState<SelectType.Option[]>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getEmployments = async () => {
@@ -35,6 +37,7 @@ export const EmploymentSelect = ({
       {({ field, form }: FieldProps) => (
         <FormGroup>
           <Select
+            placeholder={t("Search")}
             name={field.name}
             label={label}
             value={employments.filter((em) => em.value === field.value)}

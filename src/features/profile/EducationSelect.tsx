@@ -7,6 +7,7 @@ import {
 import { FieldProps } from "formik";
 import API from "../../utils/api";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const EducationSelect = ({
   name,
@@ -16,7 +17,7 @@ export const EducationSelect = ({
   label: string;
 }) => {
   const [educationLevels, setEducation] = useState<SelectType.Option[]>([]);
-
+  const { t } = useTranslation();
   useEffect(() => {
     const getEmployments = async () => {
       const results = await API.educationLevels({});
@@ -32,6 +33,7 @@ export const EducationSelect = ({
       {({ field, form }: FieldProps) => (
         <FormGroup>
           <Select
+            placeholder={t("Search")}
             name={field.name}
             label={label}
             value={educationLevels.filter((ed) => ed.value === field.value)}

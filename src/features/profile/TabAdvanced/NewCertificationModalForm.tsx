@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  Button,
   Datepicker,
   ErrorMessage,
   Form,
@@ -71,6 +70,7 @@ const NewCertificationModalForm = ({
         {({ field, form }: FieldProps) => (
           <FormGroup>
             <Select
+              placeholder={t("Search")}
               menuTargetQuery={"body"}
               name={field.name}
               label={t("Institute")}
@@ -100,6 +100,7 @@ const NewCertificationModalForm = ({
         {({ field, form }: FieldProps) => (
           <FormGroup>
             <Select
+              placeholder={t("Search")}
               menuTargetQuery={"body"}
               name="area"
               isDisabled={
@@ -130,6 +131,7 @@ const NewCertificationModalForm = ({
         {({ field, form }: FieldProps) => (
           <FormGroup>
             <Select
+              placeholder={t("Search")}
               isDisabled={!form.values.area || !form.values.area.length}
               menuTargetQuery={"body"}
               name="certificationId"

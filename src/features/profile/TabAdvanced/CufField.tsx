@@ -49,6 +49,7 @@ const CufSelectField = ({
   id: number;
   allowOther?: boolean;
 }) => {
+  const { t } = useTranslation();
   const { field, form } = fieldProps;
   const [selectOptions, setOptions] = useState<SelectOptionType[]>([]);
   useEffect(() => {
@@ -73,6 +74,7 @@ const CufSelectField = ({
     : null;
   return (
     <Select
+      placeholder={t("Search")}
       menuTargetQuery={"body"}
       name={field.name}
       options={selectOptions}
@@ -102,6 +104,7 @@ const CufMultiSelectField = ({
   id: number;
   allowOther?: boolean;
 }) => {
+  const { t } = useTranslation();
   const { field, form } = fieldProps;
   const [selectOptions, setOptions] = useState<SelectOptionType[]>([]);
   useEffect(() => {
@@ -130,6 +133,7 @@ const CufMultiSelectField = ({
   };
   return (
     <Select
+      placeholder={t("Search")}
       isMulti
       menuTargetQuery={"body"}
       name={field.name}
