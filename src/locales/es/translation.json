@@ -271,7 +271,7 @@
     "Any change to your personal data will lead to the recalculation of your tax code": "Cualquier cambio en tus datos personales dará lugar al nuevo cálculo de tu código fiscal",
     "Area is a required field.": "El área / La esfera es un campo obligatorio",
     "Available tags:\n<a></a>: Link to the fiscal type help article": {
-        "@@Link to help article for fiscal type@@": "Link al artículo de ayuda para el tipo fiscal"
+        "@@Link to help article for fiscal type@@": "<a>Haga clic aquí</a> para obtener más información"
     },
     "Birth city": "Ciudad de nacimiento",
     "Certification": "Certificación",
