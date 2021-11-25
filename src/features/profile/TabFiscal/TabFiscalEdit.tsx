@@ -187,7 +187,7 @@ export const TabFiscalEdit = () => {
         helpers.resetForm({ values });
       }}
     >
-      {({ isValid, isValidating, dirty, errors }) => (
+      {({ isValid, isValidating, dirty }) => (
         <Form id="baseProfileForm">
           <CSSGrid gutter="50px" rowGap="1rem" min="220px">
             <div className="user-info">
@@ -219,6 +219,7 @@ export const TabFiscalEdit = () => {
                   return (
                     <FormGroup>
                       <Select
+                        placeholder={t("Select a gender please")}
                         name={field.name}
                         label={t("Gender")}
                         value={{ label: "", value: field.value }}

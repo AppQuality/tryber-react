@@ -73,6 +73,7 @@ const FiscalTypeArea = () => {
               return (
                 <FormGroup>
                   <Select
+                    placeholder={t("Select a Fiscal Type please")}
                     name={field.name}
                     label={t("Tax regime options select label:::Fiscal Type")}
                     value={
@@ -205,6 +206,7 @@ const FiscalTypeArea = () => {
                 label={t("Tax identification number:::Tax ID")}
               />
               <Input
+                placeholder={t("Personal Tax identification number")}
                 id={field.name}
                 type="text"
                 value={field.value}
