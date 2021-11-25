@@ -87,6 +87,7 @@ const FiscalTypeArea = () => {
                     onChange={(v) => {
                       if (v == null) {
                         v = { label: "", value: "" };
+                        form.setFieldTouched(field.name);
                       }
                       field.onChange(v.value);
                       form.setValues((prevState: FiscalFormValues) => ({
