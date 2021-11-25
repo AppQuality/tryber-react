@@ -242,7 +242,7 @@
     "Fill in now": "Compila ora",
     "Fiscal": "Fiscale",
     "Fiscal Address": "Indirizzo fiscale",
-    "Fiscal Profile Report": "Rapporto del profilo fiscale",
+    "Fiscal Profile Report": "",
     "Gender": "Genere",
     "Improve your chances of being selected in test campaigns by completing your profile.": "Aumenta le possibilità di venire selezionato in campagne di test completando il tuo profilo",
     "Informations": "Informazioni",
@@ -258,9 +258,9 @@
     "submitted data are incorrect or incomplete. Check your data again": "I dati forniti sono incorretti o incompleti. Controlla di nuovo i tuoi dati",
     "Tax residence": "Residenza fiscale",
     "You need to fill in your tax profile data to receive your booty": "Devi completare il tuo profilo fiscale per ricevere il tuo pagamento",
-    "<bold>Thank you for helping to make the AppQuality Community special!</bold><br></br><bold>Your account will be deleted, </bold><br></br>but if you want to come back and test with us,<br></br> you already know where to find us.<br></br>": "<bold>Thank you for helping to make the AppQuality Community special!</bold><br></br><bold>Your account will be deleted, </bold><br></br>but if you want to come back and test with us,<br></br> you already know where to find us.<br></br>",
-    "<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?": "<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?",
-    "<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve.": "<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve.",
+    "<bold>Thank you for helping to make the AppQuality Community special!</bold><br></br><bold>Your account will be deleted, </bold><br></br>but if you want to come back and test with us,<br></br> you already know where to find us.<br></br>": "<bold>Grazie per aver reso la community di AppQuality speciale!</bold><br></br><bold>Il tuo account verrà cancellato, </bold><br></br>se vuoi tornate a testare con noi, <br></br> sai già dove trovarci.<br></br>",
+    "<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?": "<bold>Questa azione è irreversibile.</bold><br></br>Sei sicuro di volerci lasciare?",
+    "<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve.": "<bold>Ci dispiace tantissimo che ci stai lasciando.</bold><br></br>Prima di andare, aiutaci a capire come possiamo migliorare.",
     "@@Birth date is required, set it on base tab@@": "La data di nascita è obbligatoria, impostala sulla scheda base",
     "Achievement Date": "Data di conseguimento",
     "Achievement Date is a required field.": "La data di conseguimento è un campo obbligatorio",
@@ -271,7 +271,7 @@
     "Any change to your personal data will lead to the recalculation of your tax code": "Ogni cambiamento dei tuoi dati personali porterà ad un ricalcolo del tuo codice fiscale",
     "Area is a required field.": "L'area è un campo obbligatorio",
     "Available tags:\n<a></a>: Link to the fiscal type help article": {
-        "@@Link to help article for fiscal type@@": "Link all'articolo della guida per il tipo fiscale"
+        "@@Link to help article for fiscal type@@": "<a>Clicca qui</a> per maggiorni informazioni"
     },
     "Birth city": "Città di nascita",
     "Certification": "Certificazione",
@@ -320,7 +320,7 @@
     "Settings": "Impostazioni",
     "Should be exactly 16 characters": "Deve contenere esattamente 16 caratteri",
     "Testing Campaigns are not clear and I'm not able to finished them": "Le campagne di test non sono chiare e non riesco a completarle",
-    "The deletion of your account ({{testerId}}) <bold>will be irreversible</bold>.<br></br><br></br>You will not be able to continue earning money with us. <br></br>Are you sure you want to leave our community?": "The deletion of your account ({{testerId}}) <bold>will be irreversible</bold>.<br></br><br></br>You will not be able to continue earning money with us. <br></br>Are you sure you want to leave our community?",
+    "The deletion of your account ({{testerId}}) <bold>will be irreversible</bold>.<br></br><br></br>You will not be able to continue earning money with us. <br></br>Are you sure you want to leave our community?": "La cancellazione dell'account ({{testerId}}) <bold>sarà irreversibile</bold>.<br></br><br></br>Non potrai continuare a guadagnare con noi. <br></br>Sei sicur* di voler lasciarci?",
     "There was an error": "Si è presentato un errore",
     "There was an error adding this certification.": "Si è presentato un errore nel caricamento della certificazione",
     "There was an error removing your certification": "Si è presentato un errore nella rimozione della tua certificazione",
@@ -368,7 +368,7 @@
     },
     "Last Name": "Cognome",
     "Tax identification number": {
-        "Tax ID": "Partita Iva"
+        "Tax ID": "Codice Fiscale"
     },
     "Tax regime options select label": {
         "Fiscal Type": "Tipo fiscale"
