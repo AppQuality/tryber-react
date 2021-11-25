@@ -38,7 +38,7 @@ export const updateFiscalProfile = (
         }
       } else {
         if (unverifiedMessage !== false) {
-          messageDispatch(addMessage(unverifiedMessage, "danger"));
+          messageDispatch(addMessage(unverifiedMessage, "danger", false));
         }
       }
     } catch (err: unknown) {
