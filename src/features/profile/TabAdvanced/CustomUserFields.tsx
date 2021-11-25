@@ -83,7 +83,7 @@ export const CustomUserFields = () => {
               <Accordion.Item
                 id={cufGroup.group.id.toString()}
                 key={cufGroup.group.id.toString()}
-                title={<h4>p{groupName}</h4>}
+                title={<h4>{groupName}</h4>}
               >
                 {/*cufGroups[index] = fields (foreach fields check the type )*/}
                 {/*the type can be SELECT || MULTI-SELECT*/}
