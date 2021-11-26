@@ -30,7 +30,7 @@ const DeleteUserArea = () => {
           </div>
         </Text>
         <BSGrid>
-          <BSCol size="col-12 col-lg-6">
+          <BSCol size="col-12 col-md-6">
             <Button
               flat
               size="block"
