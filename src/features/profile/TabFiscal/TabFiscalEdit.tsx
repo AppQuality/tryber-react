@@ -53,6 +53,7 @@ export const TabFiscalEdit = () => {
         ? "italian"
         : undefined,
     birthPlaceCity: fiscalData?.birthPlace?.city,
+    birthPlaceId: "",
     birthDate: userData.birthDate,
     birthPlaceProvince: fiscalData?.birthPlace?.province,
     countryCode: fiscalData?.address?.country,
@@ -154,10 +155,12 @@ export const TabFiscalEdit = () => {
             cityCode: values.zipCode,
           },
           type: values.type,
-          birthPlace: {
-            city: values.birthPlaceCity,
-            province: values.birthPlaceProvince,
-          },
+          birthPlace: values.birthPlaceId
+            ? { placeId: values.birthPlaceId }
+            : {
+                city: values.birthPlaceCity,
+                province: values.birthPlaceProvince,
+              },
           fiscalId: values.fiscalId,
           gender: values.gender,
         };

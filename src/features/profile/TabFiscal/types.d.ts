@@ -28,6 +28,7 @@ type FiscalFormValues = {
   fiscalTypeRadio?: "non-italian" | "italian";
   fiscalTypeSelect?: "withholding" | "witholding-extra" | "other" | "";
   type?: "non-italian" | "withholding" | "witholding-extra" | "other" | "";
+  birthPlaceId?: string;
   birthPlaceCity?: string;
   birthDate?: string;
   birthPlaceProvince?: string;
