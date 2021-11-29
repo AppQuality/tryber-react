@@ -74,21 +74,3 @@ const UnVerifiedFiscalProfile = ({
     </Card>
   );
 };
-const VerifiedFiscalProfile = () => {
-  const { t } = useTranslation();
-  return (
-    <Card className="stick-to-header-lg aq-mb-3" shadow={true}>
-      <Title size="xs" className="aq-mb-2">
-        {t("Fiscal Profile Report")}
-      </Title>
-      <Text color="success">
-        <strong>{t("Valid tax profile")}</strong>
-      </Text>
-      <Text>
-        {t(
-          'You can view your profile summary and make changes if necessary in the "Tax" section of your profile.'
-        )}
-      </Text>
-    </Card>
-  );
-};
