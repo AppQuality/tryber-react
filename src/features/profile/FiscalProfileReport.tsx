@@ -63,7 +63,10 @@ const UnVerifiedFiscalProfile = ({
         <strong>{t("Invalid fiscal profile")}</strong>
       </Text>
       <Text className="aq-mb-3">
-        {t("submitted data are incorrect or incomplete. Check your data again")}
+        {t(
+          "Submitted data are incorrect or incomplete. " +
+            "Please, check the following fields: name, surname, date of birth, tax-ID or place of birth."
+        )}
       </Text>
       <Button flat size="block" onClick={setActiveTab}>
         {t("Check your data")}
