@@ -49,7 +49,7 @@
     "prepare": "npx husky install",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "generate-schema": ". ./.env.development; npx openapi-typescript $REACT_APP_API_URL/reference/ --output src/utils/schema.ts ",
-    "start": "react-scripts start",
+    "start": "craco start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "prettier": "npx prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
@@ -85,6 +85,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.13.0",
+    "@craco/craco": "^6.4.2",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.41",
     "@types/react": "^17.0.3",
