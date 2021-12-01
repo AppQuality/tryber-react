@@ -8,7 +8,6 @@ import {
   Text,
 } from "@appquality/appquality-design-system";
 import { Field as FormikField, FieldProps, useFormikContext } from "formik";
-import { ChangeEvent } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import CitySelect from "src/features/profile/CitySelect";
 
@@ -81,7 +80,7 @@ const FiscalTypeArea = () => {
                         ? { value: field.value, label: "" }
                         : { value: "", label: "" }
                     }
-                    onBlur={(e: ChangeEvent) => {
+                    onBlur={() => {
                       form.setFieldTouched(field.name);
                     }}
                     onChange={(v) => {
@@ -119,6 +118,7 @@ const FiscalTypeArea = () => {
                         a: (
                           <a
                             className="aq-text-secondary"
+                            target="_blank"
                             href={t("Fiscal type help article", {
                               ns: "links",
                             })}
