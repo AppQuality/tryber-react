@@ -135,7 +135,6 @@
   "Fiscal": "Fiscal",
   "Fiscal Address": "Domicilio fiscal",
   "Fiscal Code": "Códico fiscal",
-  "Fiscal Profile Report": "Informe de perfil fiscal",
   "Fiscal Type": "Tipo fiscal",
   "Fiscal residence": "Residencia fiscal",
   "Fiscal types": {
@@ -380,7 +379,6 @@
   "or login with": "o inicie sesión con",
   "redirecting": "redireccionando",
   "social": "social",
-  "submitted data are incorrect or incomplete. Check your data again": "Los datos enviados son incorrectos o incompletos. Revisa tus datos de nuevo",
   "testers": "Testers",
   "wait...": "espere..."
 }
