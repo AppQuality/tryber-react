@@ -78,7 +78,7 @@ const EditPassword = () => {
       >
         {(formikProps: FormikProps<typeof initialUserValues>) => {
           return (
-            <Form id="baseProfileForm">
+            <Form id="editPasswordForm">
               <Title size="xs" className="aq-mb-2">
                 {t("Change password")}
               </Title>

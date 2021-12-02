@@ -141,7 +141,7 @@ const FiscalTypeArea = () => {
                 setFieldTouched("birthPlaceCity");
                 setFieldTouched("birthPlaceProvince");
               }}
-              onChange={(place) => {
+              onChange={async (place) => {
                 if (!place) {
                   setValues(
                     (prevState) => ({
@@ -164,21 +164,6 @@ const FiscalTypeArea = () => {
                 const city = fields.find(
                   (field) => field.types.indexOf("locality") >= 0
                 );
-                // they made me do this
-                if (country?.short_name === "IT") {
-                  if (city?.long_name === "Milan") {
-                    city.long_name = "Milano";
-                  }
-                  if (city?.long_name === "Rome") {
-                    city.long_name = "Roma";
-                  }
-                  if (city?.long_name === "Turin") {
-                    city.long_name = "Torino";
-                  }
-                  if (city?.long_name === "Naples") {
-                    city.long_name = "Napoli";
-                  }
-                }
                 if (!city) {
                   setFieldError(
                     "birthPlaceCity",
@@ -190,6 +175,7 @@ const FiscalTypeArea = () => {
                   setValues(
                     (prevState) => ({
                       ...prevState,
+                      birthPlaceId: place.place_id,
                       birthPlaceCity: city?.long_name,
                       birthPlaceProvince:
                         country?.short_name === "IT"

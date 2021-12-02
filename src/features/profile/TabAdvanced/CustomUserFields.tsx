@@ -1,11 +1,13 @@
 import { Accordion, Skeleton } from "@appquality/appquality-design-system";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { getCustomUserFields } from "src/redux/user/actions/getCustomUserFields";
 import { operations } from "src/utils/schema";
 import CufField from "./CufField";
 
 export const CustomUserFields = () => {
+  const { i18n } = useTranslation();
   const dispatch = useDispatch();
   const {
     customUserFields,
@@ -69,14 +71,19 @@ export const CustomUserFields = () => {
         ))
       )}
       <Accordion initialActive="">
-        {groupsOfFields?.map(
-          (cufGroup) =>
-            // create an accordion Item foreach
+        {groupsOfFields?.map((cufGroup) => {
+          const groupName = cufGroup.group.name[
+            i18n.language as SupportedLanguages
+          ]
+            ? cufGroup.group.name[i18n.language as SupportedLanguages]
+            : cufGroup.group.name.it || "";
+          // create an accordion Item foreach
+          return (
             cufGroup.fields && (
               <Accordion.Item
                 id={cufGroup.group.id.toString()}
                 key={cufGroup.group.id.toString()}
-                title={<h4>{cufGroup.group.name.it}</h4>}
+                title={<h4>{groupName}</h4>}
               >
                 {/*cufGroups[index] = fields (foreach fields check the type )*/}
                 {/*the type can be SELECT || MULTI-SELECT*/}
@@ -85,7 +92,8 @@ export const CustomUserFields = () => {
                 })}
               </Accordion.Item>
             )
-        )}
+          );
+        })}
       </Accordion>
     </div>
   );
