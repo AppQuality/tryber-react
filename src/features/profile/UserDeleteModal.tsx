@@ -1,14 +1,10 @@
 import UserStore from "../../redux/user";
-import { Modal } from "@appquality/appquality-design-system";
+import { Button, Modal } from "@appquality/appquality-design-system";
 import { Trans, useTranslation } from "react-i18next";
 import i18n from "i18next";
-import {
-  Text,
-  Checkbox,
-  BSGrid,
-  BSCol,
-  Button,
-} from "@appquality/appquality-design-system";
+import { Text, Checkbox } from "@appquality/appquality-design-system";
+import styled from "styled-components";
+
 const GenericModal = () => {
   const { deletion } = UserStore();
   const { t } = useTranslation();
@@ -34,41 +30,29 @@ const GenericModal = () => {
     <Modal
       isOpen={isDeleteModalOpen}
       footer={
-        <BSGrid>
-          <BSCol size="col-lg-6"></BSCol>
-          <BSCol size="col-12 col-lg-6">
-            <BSGrid>
-              <BSCol size="col-6">
-                <Button
-                  type="primary"
-                  flat
-                  size="block"
-                  onClick={() => {
-                    closeDeleteModal();
-                    updateDeletionReason("");
-                  }}
-                >
-                  {t("Back")}
-                </Button>
-              </BSCol>
-              <BSCol size="col-6">
-                <Button
-                  disabled={!deletionReason || !deletionReason.length}
-                  type="danger"
-                  flat
-                  size="block"
-                  onClick={() =>
-                    deleteUser(
-                      i18n.language === "en" ? "" : `${i18n.language}/`
-                    )
-                  }
-                >
-                  {t("Delete account")}
-                </Button>
-              </BSCol>
-            </BSGrid>
-          </BSCol>
-        </BSGrid>
+        <UserDeleteModalFooter>
+          <Button
+            type="primary"
+            flat
+            className="aq-mr-3"
+            onClick={() => {
+              closeDeleteModal();
+              updateDeletionReason("");
+            }}
+          >
+            {t("Back")}
+          </Button>
+          <Button
+            disabled={!deletionReason || !deletionReason.length}
+            type="danger"
+            flat
+            onClick={() =>
+              deleteUser(i18n.language === "en" ? "" : `${i18n.language}/`)
+            }
+          >
+            {t("Delete account")}
+          </Button>
+        </UserDeleteModalFooter>
       }
       onClose={() => closeDeleteModal()}
     >
@@ -146,3 +130,14 @@ const GenericModal = () => {
 };
 
 export default GenericModal;
+
+const UserDeleteModalFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  button {
+    flex: 1 0 auto;
+    @media (min-width: ${(p) => p.theme.grid.breakpoints.md}) {
+      flex: 0 0 auto;
+    }
+  }
+`;
