@@ -1,9 +1,9 @@
+import { SelectType, TableType } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
-import { operations } from "../utils/schema";
-import { TableType, SelectType } from "@appquality/appquality-design-system";
+import { useTranslation } from "react-i18next";
 import API from "../utils/api";
 import dateFormatter from "../utils/dateFormatter";
-import { useTranslation } from "react-i18next";
+import { operations } from "../utils/schema";
 
 export const useExperiencePoints = () => {
   const { t } = useTranslation();
@@ -101,7 +101,14 @@ export const useExperiencePoints = () => {
 
       _data.push({
         key: i,
-        amount: `${res.amount > 0 ? `+${res.amount}` : res.amount}pts`,
+        amount: {
+          title: `${res.amount > 0 ? `+${res.amount}` : res.amount}pts`,
+          content: (
+            <b className="aq-text-primary">{`${
+              res.amount > 0 ? `+${res.amount}` : res.amount
+            }pts`}</b>
+          ),
+        },
         date: dateFormatter(res.date),
         activity: mapActivityName(res.activity.id),
         campaign:

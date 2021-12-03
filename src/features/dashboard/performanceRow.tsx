@@ -16,9 +16,7 @@ const StatisticComponent = ({ item, className }: PerformanceRowProps) => {
   return (
     <div className={`${className} aq-mb-3`}>
       {item.icon && <div className="performance-icon aq-mr-3">{item.icon}</div>}
-      <Text className="performance-text aq-text-secondary aq-mr-3">
-        {item.text}
-      </Text>
+      <Text className="performance-text aq-mr-3">{item.text}</Text>
       <Text className="performance-val">
         <strong>{item.val}</strong>
       </Text>
@@ -28,7 +26,7 @@ const StatisticComponent = ({ item, className }: PerformanceRowProps) => {
 
 const GoToBlockComponent = ({ item, className }: PerformanceRowProps) => {
   return (
-    <a href={item.link} className={`${className} aq-text-info`}>
+    <a href={item.link} className={`${className} `}>
       <span>{item.text}</span>
       <span className="go-to-icon">{item.icon}</span>
     </a>
@@ -46,6 +44,7 @@ export const Statistic = styled(StatisticComponent)`
   .performance-val {
     text-align: right;
     flex: 1 0 auto;
+    color: ${(props) => props.theme.palette.primary};
   }
 `;
 

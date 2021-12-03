@@ -1,15 +1,7 @@
-import {
-  ErrorMessage,
-  FormGroup,
-  FormLabel,
-  Input,
-  Radio,
-  Select,
-  Text,
-} from "@appquality/appquality-design-system";
-import { Field as FormikField, FieldProps, useFormikContext } from "formik";
-import { Trans, useTranslation } from "react-i18next";
-import CitySelect from "src/features/profile/CitySelect";
+import { ErrorMessage, FormGroup, FormLabel, Input, Select, Text } from '@appquality/appquality-design-system';
+import { Field as FormikField, FieldProps, useFormikContext } from 'formik';
+import { Trans, useTranslation } from 'react-i18next';
+import CitySelect from 'src/features/profile/CitySelect';
 
 const FiscalTypeArea = () => {
   const { values, setValues, setFieldTouched, setFieldError } =
@@ -65,7 +57,7 @@ const FiscalTypeArea = () => {
                       },
                     ]}
                   />{" "}
-                  <Text small className="aq-mt-1 aq-text-secondary">
+                  <Text small className="aq-mt-1 aq-text-primaryVariant">
                     <Trans
                       i18nKey="Available tags 
 <a> - Link to help article for fiscal type:::@@Description for fiscal type@@"
@@ -167,7 +159,7 @@ const FiscalTypeArea = () => {
                 extra={{ ...field, maxLength: "30" }}
               />
               {values.countryCode === "IT" && (
-                <Text small className="aq-mt-1 aq-text-secondary">
+                <Text small className="aq-mt-1 aq-text-primaryVariant">
                   {t(
                     "Any change to your personal data will lead to the recalculation of your tax code"
                   )}

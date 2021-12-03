@@ -355,7 +355,7 @@ const TabBase = () => {
                 <CSSGrid min="50%" gutter="0" fill="true">
                   <HalfColumnButton
                     className="aq-mb-3"
-                    type="success"
+                    type="primary"
                     size="block"
                     htmlType="submit"
                     id="signup-simple"

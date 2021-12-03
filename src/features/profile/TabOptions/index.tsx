@@ -1,14 +1,14 @@
 import { CSSGrid } from "@appquality/appquality-design-system";
 import styled from "styled-components";
+import DeleteUserArea from "./DeleteUserArea";
 import EditPassword from "./EditPassword";
 import RequestUserData from "./RequestUserData";
-import DeleteUserArea from "./DeleteUserArea";
 
 const Separator = styled.hr`
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid ${(props) => props.theme.colors.disabledElement};
+  border-top: 1px solid ${(props) => props.theme.colors.elementGeneric};
   margin: 1em 0;
   padding: 0;
 `;

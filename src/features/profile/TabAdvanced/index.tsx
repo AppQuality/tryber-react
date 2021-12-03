@@ -8,6 +8,7 @@ import {
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+import { SkeletonTab } from "src/features/profile/SkeletonTab";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 import { updateAdvancedProfile } from "src/redux/user/actions/updateAdvancedProfile";
@@ -17,7 +18,6 @@ import { EmploymentSelect } from "../EmploymentSelect";
 import Certifications from "./Certifications";
 import { CustomUserFields } from "./CustomUserFields";
 import { MapCufValues, PrepareUserCuf } from "./MapCufValues";
-import { SkeletonTab } from "src/features/profile/SkeletonTab";
 
 const TabAdvanced = () => {
   const { t } = useTranslation();
@@ -105,7 +105,7 @@ const TabAdvanced = () => {
               ) : null}
               <CSSGrid min="50%" gutter="0" fill="true">
                 <HalfColumnButton
-                  type="success"
+                  type="primary"
                   htmlType="submit"
                   flat
                   disabled={

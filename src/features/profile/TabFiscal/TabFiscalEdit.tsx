@@ -294,7 +294,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                         options={genderOptions}
                       />
                       <Text small className="aq-mt-1">
-                        <span className="aq-text-secondary">
+                        <span className="aq-text-primaryVariant">
                           {t(
                             "For tax reasons we are obliged to tie this choice to binary options only"
                           )}
@@ -356,7 +356,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                   </HalfColumnButton>
                 )}
                 <HalfColumnButton
-                  type="success"
+                  type="primary"
                   htmlType="submit"
                   flat
                   disabled={!isValid || isValidating || !dirty}

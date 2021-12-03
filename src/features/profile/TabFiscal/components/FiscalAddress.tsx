@@ -1,19 +1,19 @@
 import {
-  Field,
-  ErrorMessage,
   CSSGrid,
-  Title,
+  ErrorMessage,
+  Field,
   FieldProps,
   FormGroup,
-  Select,
   FormikField,
-} from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
-import { useFormikContext } from "formik";
-import CitySelect from "src/features/profile/CitySelect";
-import { ChangeEvent, useMemo } from "react";
-import countries from "i18n-iso-countries";
-import i18next from "i18next";
+  Select,
+  Title,
+} from '@appquality/appquality-design-system';
+import { useFormikContext } from 'formik';
+import countries from 'i18n-iso-countries';
+import i18next from 'i18next';
+import { ChangeEvent, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import CitySelect from 'src/features/profile/CitySelect';
 
 const FiscalAddress = () => {
   const { t } = useTranslation();

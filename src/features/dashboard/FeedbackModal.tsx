@@ -1,7 +1,7 @@
-import { Modal, ModalBody, Button } from "@appquality/appquality-design-system";
+import { Button, Modal, ModalBody } from "@appquality/appquality-design-system";
+import { ChatLeftDots } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { ChatLeftDots } from "react-bootstrap-icons";
 
 export const FeedbackModal = ({
   open = true,
@@ -39,7 +39,7 @@ export const FeedbackButton = ({
 }) => {
   return (
     <StyledButton onClick={handleClick}>
-      <Button type="info" className="feedback-icon">
+      <Button type="secondary" className="feedback-icon">
         <ChatLeftDots />
       </Button>
     </StyledButton>

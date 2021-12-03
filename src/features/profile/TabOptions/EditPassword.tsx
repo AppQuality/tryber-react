@@ -1,23 +1,23 @@
 import {
   CSSGrid,
+  ErrorMessage,
   Field,
   Form,
+  FormGroup,
   Formik,
-  Text,
-  Title,
-  Input,
   FormikField,
   FormLabel,
-  FormGroup,
-  ErrorMessage,
+  Input,
+  Text,
+  Title,
 } from "@appquality/appquality-design-system";
 import { FieldProps, FormikProps } from "formik";
-import API from "../../../utils/api";
-import * as yup from "yup";
 import { useTranslation } from "react-i18next";
-import siteWideMessageStore from "../../../redux/siteWideMessages";
-import ResetPasswordArea from "./ResetPasswordArea";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
+import * as yup from "yup";
+import siteWideMessageStore from "../../../redux/siteWideMessages";
+import API from "../../../utils/api";
+import ResetPasswordArea from "./ResetPasswordArea";
 
 const EditPassword = () => {
   const { t } = useTranslation();
@@ -108,7 +108,7 @@ const EditPassword = () => {
                         }}
                         placeholder="******"
                       />
-                      <Text small className="aq-mt-2 aq-text-secondary">
+                      <Text small className="aq-mt-2 aq-text-primaryVariant">
                         {t(
                           "For a secure password we recommend: Minimum 6  characters. An uppercase character. A numerical digit. A lowercase character."
                         )}

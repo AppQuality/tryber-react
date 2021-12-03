@@ -1,9 +1,13 @@
-import UserStore from "../../redux/user";
-import { Button, Modal } from "@appquality/appquality-design-system";
-import { Trans, useTranslation } from "react-i18next";
+import {
+  Button,
+  Checkbox,
+  Modal,
+  Text,
+} from "@appquality/appquality-design-system";
 import i18n from "i18next";
-import { Text, Checkbox } from "@appquality/appquality-design-system";
+import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
+import UserStore from "../../redux/user";
 
 const GenericModal = () => {
   const { deletion } = UserStore();
@@ -61,7 +65,10 @@ const GenericModal = () => {
           <Trans
             i18nKey="<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve."
             defaults="<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve."
-            components={{ br: <br />, bold: <strong /> }}
+            components={{
+              br: <br />,
+              bold: <strong className="aq-text-primary" />,
+            }}
           />
         </Text>
         <Text className="aq-mt-3 aq-mb-3">
@@ -121,7 +128,10 @@ const GenericModal = () => {
           <Trans
             i18nKey="<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?"
             defaults="<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?"
-            components={{ br: <br />, bold: <strong /> }}
+            components={{
+              br: <br />,
+              bold: <strong className="aq-text-primary" />,
+            }}
           />
         </Text>
       </div>

@@ -1,19 +1,19 @@
-import TesterSidebar from "../features/TesterSidebar";
 import {
-  Container,
-  BSGrid,
   BSCol,
-  Card,
-  Text,
-  PageTitle,
+  BSGrid,
   Button,
+  Card,
+  Container,
+  PageTitle,
+  Text,
 } from "@appquality/appquality-design-system";
-import GoogleTagManager from "../features/GoogleTagManager";
-import LoggedOnly from "../features/LoggedOnly";
 import { useTranslation } from "react-i18next";
 import DeviceTable from "../features/DeviceTable";
 import EditDeviceModal from "../features/EditDeviceModal";
+import GoogleTagManager from "../features/GoogleTagManager";
+import LoggedOnly from "../features/LoggedOnly";
 import RemoveDeviceModal from "../features/RemoveDeviceModal";
+import TesterSidebar from "../features/TesterSidebar";
 import userDeviceStore from "../redux/userDevices";
 
 export default function Devices() {
@@ -54,7 +54,7 @@ export default function Devices() {
                   <Button
                     onClick={() => openAddModal()}
                     flat={true}
-                    type="success"
+                    type="primary"
                     size="block"
                   >
                     {t("Add device")}

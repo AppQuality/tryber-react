@@ -27,7 +27,7 @@ const ShowItem = ({
         <Icon size="21" className="aq-text-secondary" />
       </div>
       <div className="aq-float-left">
-        <Text className="aq-text-secondary">
+        <Text className="aq-text-primaryVariant">
           <b>{label}</b>
         </Text>
         <Text className="aq-text-primary">{children}</Text>

@@ -1,25 +1,22 @@
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import WPAPI from "../../utils/wpapi";
-import UserStore from "../../redux/user";
 import {
+  aqBootstrapTheme,
   PageTitle,
-  Title,
   Text,
-  CSSGrid,
-  Skeleton,
+  Title,
 } from "@appquality/appquality-design-system";
+import { useState } from "react";
 import {
-  StarFill,
   BookmarkCheckFill,
-  Mailbox,
   CheckCircle,
+  Mailbox,
+  StarFill,
 } from "react-bootstrap-icons";
-import { aqBootstrapTheme } from "@appquality/appquality-design-system";
-import styled from "styled-components";
-import siteWideMessageStore from "../../redux/siteWideMessages";
+import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { SkeletonHeader } from "src/features/profile/SkeletonHeader";
+import styled from "styled-components";
+import siteWideMessageStore from "../../redux/siteWideMessages";
+import WPAPI from "../../utils/wpapi";
 
 export const HeaderProfile = () => {
   const [submittingMailConfirm, setSubmittingMailConfirm] = useState(false);
@@ -66,8 +63,9 @@ export const HeaderProfile = () => {
             color={aqBootstrapTheme.palette.warning}
             size="21"
           />{" "}
-          <div className="aq-ml-2 aq-text-secondary">
-            <strong className="aq-mr-2">{user?.total_exp_pts}</strong>pt
+          <div className="aq-ml-2 aq-text-primary">
+            <strong className="aq-mr-2">{user?.total_exp_pts}</strong>
+            <span className="aq-text-primaryVariant">pt</span>
           </div>
         </Text>
         <Text style={{ display: "flex" }}>
@@ -76,12 +74,12 @@ export const HeaderProfile = () => {
             color={aqBootstrapTheme.palette.secondary}
             size="21"
           />{" "}
-          <span
-            className="aq-ml-2 aq-text-secondary"
-            style={{ display: "flex" }}
-          >
+          <span className="aq-ml-2 aq-text-primary" style={{ display: "flex" }}>
             <strong className="aq-mr-2">{user?.attended_cp}</strong>
-            <span> {t("Completed campaigns")}</span>
+            <span className="aq-text-primaryVariant">
+              {" "}
+              {t("Completed campaigns")}
+            </span>
           </span>
         </Text>
       </div>
@@ -112,7 +110,7 @@ export const HeaderProfile = () => {
               color={
                 submittingMailConfirm
                   ? aqBootstrapTheme.colors.disabledDark
-                  : aqBootstrapTheme.palette.info
+                  : aqBootstrapTheme.palette.primaryVariant
               }
             />
             <span className="aq-ml-2">{t("Confirm email")}</span>
@@ -141,6 +139,7 @@ export const StyledHeaderProfile = styled.div`
   }
   .mail-confirm-cta {
     cursor: pointer;
+    color: ${(props) => props.theme.palette.secondary};
     &.disabled {
       cursor: auto;
       color: ${(props) => props.theme.colors.disabledDark};

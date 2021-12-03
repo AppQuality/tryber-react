@@ -34,7 +34,7 @@ export const DeviceModalFooter = ({
       )}
       {currentStep === steps.length - 1 ? (
         <Button
-          type="success"
+          type="primary"
           htmlType="submit"
           onClick={onSubmit}
           flat={true}

@@ -1,9 +1,8 @@
-import { Table, Button, TableType } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
-import userDeviceStore from "../redux/userDevices";
-import siteWideMessageStore from "../redux/siteWideMessages";
+import { Button, Table, TableType } from "@appquality/appquality-design-system";
 import { useEffect } from "react";
-import API from "../utils/api";
+import { useTranslation } from "react-i18next";
+import siteWideMessageStore from "../redux/siteWideMessages";
+import userDeviceStore from "../redux/userDevices";
 import DeviceIcon from "./DeviceIcon";
 
 const DeviceTable = () => {
@@ -26,7 +25,13 @@ const DeviceTable = () => {
           key: d.id,
           type: {
             title: d.type,
-            content: <DeviceIcon device_type={d.type} size={20} />,
+            content: (
+              <DeviceIcon
+                className="aq-text-secondary"
+                device_type={d.type}
+                size={20}
+              />
+            ),
           },
           device: deviceName,
           os: d.operating_system.platform,

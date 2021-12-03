@@ -1,7 +1,7 @@
 import { useFormikContext } from "formik";
-import DeviceIcon from "../DeviceIcon";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import DeviceIcon from "../DeviceIcon";
 import { DeviceFormInterface } from "./types";
 
 export default () => {
@@ -19,7 +19,8 @@ export default () => {
       <ul className="device-recap-props">
         {values.device_type === 2 ? (
           <li>
-            <span>{t("Computer type")}:</span> <strong>{values.pc_type}</strong>
+            <span>{t("Computer type")}:</span>{" "}
+            <strong className="aq-text-primary">{values.pc_type}</strong>
           </li>
         ) : (
           <>
@@ -28,17 +29,22 @@ export default () => {
               <strong>{values.manufacturer}</strong>
             </li>
             <li>
-              <span>{t("Model")}:</span> <strong>{values.model}</strong>
+              <span>{t("Model")}:</span>{" "}
+              <strong className="aq-text-primary">{values.model}</strong>
             </li>
           </>
         )}
         <li>
           <span>{t("Operating system")}:</span>{" "}
-          <strong>{values.operating_system_platform}</strong>
+          <strong className="aq-text-primary">
+            {values.operating_system_platform}
+          </strong>
         </li>
         <li>
           <span>{t("Operating system version")}:</span>{" "}
-          <strong>{values.operating_system_version}</strong>
+          <strong className="aq-text-primary">
+            {values.operating_system_version}
+          </strong>
         </li>
       </ul>
     </RecapBurrito>
