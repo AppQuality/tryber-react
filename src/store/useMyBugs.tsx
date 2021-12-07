@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { operations } from "../utils/schema";
 import {
   Button,
-  TableType,
   SelectType,
+  TableType,
 } from "@appquality/appquality-design-system";
-import API from "../utils/api";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import API from "../utils/api";
+import { operations } from "../utils/schema";
 
 export const useMyBugs = () => {
   const { i18n, t } = useTranslation();
@@ -121,7 +121,7 @@ export const useMyBugs = () => {
           }bugs/show/${res.id}`,
           content: (
             <Button
-              as="a"
+              forwardedAs="a"
               href={`${window.location.origin}/${
                 i18n.language !== "en" ? `${i18n.language}/` : ""
               }bugs/show/${res.id}`}

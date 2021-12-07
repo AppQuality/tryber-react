@@ -28,7 +28,7 @@ const ResetPasswordArea = () => {
           )}
         </Text>
         <Button
-          as="a"
+          forwardedAs="a"
           type="link"
           size="block"
           target="_blank"

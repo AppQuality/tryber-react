@@ -98,7 +98,7 @@ export const HeaderProfile = () => {
           </Text>
         ) : (
           <Text
-            as="a"
+            forwardedAs="a"
             className={`mail-confirm-cta ${
               submittingMailConfirm ? "disabled" : ""
             }`}
@@ -110,7 +110,7 @@ export const HeaderProfile = () => {
               color={
                 submittingMailConfirm
                   ? aqBootstrapTheme.colors.disabledDark
-                  : aqBootstrapTheme.palette.primaryVariant
+                  : aqBootstrapTheme.variants.primary
               }
             />
             <span className="aq-ml-2">{t("Confirm email")}</span>

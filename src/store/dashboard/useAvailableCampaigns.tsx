@@ -1,9 +1,9 @@
-import { TableType, Button } from "@appquality/appquality-design-system";
-import React, { useState, useEffect } from "react";
-import { operations } from "../../utils/schema";
+import { Button, TableType } from "@appquality/appquality-design-system";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import API from "../../utils/api";
 import dateFormatter from "../../utils/dateFormatter";
-import { useTranslation } from "react-i18next";
+import { operations } from "../../utils/schema";
 
 export default () => {
   const { i18n, t } = useTranslation();
@@ -67,7 +67,7 @@ export default () => {
               content: (
                 <Button
                   disabled={previewLink === "#"}
-                  as="a"
+                  forwardedAs="a"
                   href={previewLink}
                   type="link"
                   size="sm"

@@ -1,10 +1,10 @@
-import { TableType, Button, Text } from "@appquality/appquality-design-system";
-import { useState, useEffect } from "react";
-import { operations } from "../../utils/schema";
-import API from "../../utils/api";
-import dateFormatter from "../../utils/dateFormatter";
+import { Button, TableType, Text } from "@appquality/appquality-design-system";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import DashboardHelpStore from "../../redux/dashboardHelpModal";
+import API from "../../utils/api";
+import dateFormatter from "../../utils/dateFormatter";
+import { operations } from "../../utils/schema";
 
 export default () => {
   const { i18n, t } = useTranslation();
@@ -90,7 +90,7 @@ export default () => {
                     style={{ display: "flex", justifyContent: "space-around" }}
                   >
                     <Button
-                      as="a"
+                      forwardedAs="a"
                       href={`${window.location.origin}${manualLink}`}
                       type="link"
                       size="sm"

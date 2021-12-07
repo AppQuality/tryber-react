@@ -1,11 +1,10 @@
-import styled from "styled-components";
-import logo from "../assets/logo.svg";
+import { Button, Text, Title } from "@appquality/appquality-design-system";
+import { Bank2, Briefcase, Mailbox, PinMap } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
-import { Text, Title } from "@appquality/appquality-design-system";
-import { Mailbox, PinMap, Bank2, Briefcase } from "react-bootstrap-icons";
-import { Button } from "@appquality/appquality-design-system";
+import styled from "styled-components";
 import fbLogo from "../assets/fb.svg";
 import lnLogo from "../assets/ln.svg";
+import logo from "../assets/logo.svg";
 import telegramLogo from "../assets/telegram.svg";
 
 const StyledFooter = styled.section`
@@ -50,29 +49,29 @@ export const Footer = () => {
           {t("social")}
         </Title>
         <Button
-          as="a"
+          forwardedAs="a"
           href="https://www.facebook.com/appqualitypage/"
           type="link"
           className="social-btn"
-          target='_blank'
+          target="_blank"
         >
           <img src={fbLogo} alt="facebook" />
         </Button>
         <Button
-          as="a"
+          forwardedAs="a"
           href="https://www.linkedin.com/company/app-quality"
           type="link"
           className="social-btn"
-          target='_blank'
+          target="_blank"
         >
           <img src={lnLogo} alt="linkedin" />
         </Button>
         <Button
-          as="a"
+          forwardedAs="a"
           href="https://t.me/AppQualityCrowd"
           type="link"
           className="social-btn"
-          target='_blank'
+          target="_blank"
         >
           <img src={telegramLogo} alt="telegram" />
         </Button>

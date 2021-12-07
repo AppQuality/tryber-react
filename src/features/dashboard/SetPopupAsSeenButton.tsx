@@ -1,7 +1,7 @@
 import { Button } from "@appquality/appquality-design-system";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import API from "../../utils/api";
-import { useState } from "react";
 
 export default ({ id }: { id: number }) => {
   const [seen, setSeen] = useState(false);
@@ -19,7 +19,7 @@ export default ({ id }: { id: number }) => {
   };
   return (
     <Button
-      as="a"
+      forwardedAs="a"
       type="link"
       flat
       size="block"

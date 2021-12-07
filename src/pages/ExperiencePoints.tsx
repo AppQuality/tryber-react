@@ -1,19 +1,19 @@
 import {
-  Container,
-  BSGrid,
   BSCol,
-  Card,
+  BSGrid,
   Button,
+  Card,
+  Container,
   PageTitle,
   Text,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import TesterSidebar from "../features/TesterSidebar";
-import ExperiencePointsTable from "../features/experience-points/ExperiencePointsTable";
 import ExperiencePointsFilters from "../features/experience-points/ExperiencePointsFilters";
-import { useExperiencePoints } from "../store/useExperiencePoints";
+import ExperiencePointsTable from "../features/experience-points/ExperiencePointsTable";
 import GoogleTagManager from "../features/GoogleTagManager";
 import LoggedOnly from "../features/LoggedOnly";
+import TesterSidebar from "../features/TesterSidebar";
+import { useExperiencePoints } from "../store/useExperiencePoints";
 
 export default function ExperiencePoints() {
   const { t } = useTranslation();
@@ -74,7 +74,7 @@ export default function ExperiencePoints() {
                       )}
                     </Text>
                     <Button
-                      as="a"
+                      forwardedAs="a"
                       href={`${t("/discover-experience-points/")}`}
                       type="primary"
                       size="block"
