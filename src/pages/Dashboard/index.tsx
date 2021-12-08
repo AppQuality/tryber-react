@@ -1,32 +1,29 @@
-import { useState } from "react";
 import {
-  Container,
-  BSGrid,
   BSCol,
-  Card,
-  PageTitle,
-  Tabs,
-  Tab,
-  Text,
+  BSGrid,
   Button,
+  Card,
+  Container,
+  PageTitle,
+  Tab,
+  Tabs,
+  Text,
 } from "@appquality/appquality-design-system";
-import TesterSidebar from "../features/TesterSidebar";
-import ActiveCampaignsTable from "../features/dashboard/ActiveCampaignsTable";
-import CompletedCampaignsTable from "../features/dashboard/CompletedCampaignsTable";
-import ClosedCampaignsTable from "../features/dashboard/ClosedCampaignsTable";
-import AvailableCampaignsTable from "../features/dashboard/AvailableCampaignsTable";
-import PerformanceData from "../features/dashboard/PerformanceData";
-import PopupContainer from "../features/dashboard/PopupContainer";
-import ComingSoonHelpModal from "../features/dashboard/ComingSoonHelpModal";
-import OnboardingModal from "../features/dashboard/OnboardingModal";
-import {
-  FeedbackModal,
-  FeedbackButton,
-} from "../features/dashboard/FeedbackModal";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import useUser from "../redux/user";
-import GoogleTagManager from "../features/GoogleTagManager";
-import LoggedOnly from "../features/LoggedOnly";
+import GoogleTagManager from "src/features/GoogleTagManager";
+import LoggedOnly from "src/features/LoggedOnly";
+import TesterSidebar from "src/features/TesterSidebar";
+import useUser from "src/redux/user";
+import ActiveCampaignsTable from "./ActiveCampaignsTable";
+import AvailableCampaignsTable from "./AvailableCampaignsTable";
+import ClosedCampaignsTable from "./ClosedCampaignsTable";
+import ComingSoonHelpModal from "./ComingSoonHelpModal";
+import CompletedCampaignsTable from "./CompletedCampaignsTable";
+import { FeedbackButton, FeedbackModal } from "./FeedbackModal";
+import OnboardingModal from "./OnboardingModal";
+import PerformanceData from "./PerformanceData";
+import PopupContainer from "./PopupContainer";
 
 export default function Dashboard() {
   //constants - START
