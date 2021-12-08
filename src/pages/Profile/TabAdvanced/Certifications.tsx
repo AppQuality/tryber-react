@@ -6,7 +6,7 @@ import {
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
-import { HalfColumnButton } from "src/pages/Profile/HalfColumnButton";
+import { HalfColumnButton } from "src/features/HalfColumnButton";
 import modalStore from "src/redux/modal";
 import { components } from "src/utils/schema";
 import {

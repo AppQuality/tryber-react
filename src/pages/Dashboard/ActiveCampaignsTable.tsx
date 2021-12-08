@@ -1,6 +1,6 @@
 import { Pagination, Table } from "@appquality/appquality-design-system";
-import useActiveCampaigns from "../../store/dashboard/useActiveCampaigns";
 import { useTranslation } from "react-i18next";
+import useActiveCampaigns from "./effects/useActiveCampaigns";
 
 const ActiveCampaignsTable = () => {
   const { t } = useTranslation();

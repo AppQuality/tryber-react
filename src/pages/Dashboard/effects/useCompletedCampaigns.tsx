@@ -1,9 +1,9 @@
 import { Button, TableType } from "@appquality/appquality-design-system";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import API from "../../utils/api";
-import dateFormatter from "../../utils/dateFormatter";
-import { operations } from "../../utils/schema";
+import API from "src/utils/api";
+import dateFormatter from "src/utils/dateFormatter";
+import { operations } from "src/utils/schema";
 
 export default () => {
   const { i18n, t } = useTranslation();
@@ -13,17 +13,19 @@ export default () => {
   const [page, setPage] = useState(1);
   const [totalEntries, setTotalEntries] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [order, setOrder] = useState<"ASC" | "DESC">("ASC");
-  const [orderBy, setOrderBy] = useState<"startDate" | "endDate">("startDate");
+  const [order, setOrder] = useState<"ASC" | "DESC">("DESC");
+  const [orderBy, setOrderBy] = useState<"endDate" | "closeDate">("endDate");
 
   const fetchCampaignsFromApi = (page: number) => {
     return API.myCampaigns({
       query: {
         filterBy: {
-          completed: "0",
+          accepted: "1",
+          statusId: "1",
+          completed: "1",
         },
         order: order,
-        orderBy: orderBy == "endDate" ? "end_date" : "start_date",
+        orderBy: orderBy == "endDate" ? "end_date" : "close_date",
         limit,
         start: (page - 1) * limit,
       },
@@ -35,49 +37,46 @@ export default () => {
           return { results: [], total: 0 };
         }
         const campaigns = data.results.map((cp) => {
-          let previewLink = "#";
-          if (cp.preview_link) {
+          let manualLink = "#";
+          if (typeof cp.manual_link !== "undefined") {
             if (
-              cp.preview_link.it &&
-              i18n.language == "it" &&
-              cp.preview_link.it !== "#"
+              i18n.language === "en" &&
+              cp.manual_link.en &&
+              cp.manual_link.en !== "#"
             )
-              previewLink = `${window.location.origin}${cp.preview_link.it}`;
+              manualLink = cp.manual_link.en;
             if (
-              cp.preview_link.it &&
-              i18n.language == "en" &&
-              cp.preview_link.en !== "#"
+              i18n.language === "it" &&
+              cp.manual_link.it &&
+              cp.manual_link.it !== "#"
             )
-              previewLink = `${window.location.origin}${cp.preview_link.en}`;
-            if (
-              cp.preview_link.es &&
-              i18n.language == "es" &&
-              cp.preview_link.es !== "#"
-            )
-              previewLink = `${window.location.origin}${cp.preview_link.es}`;
+              manualLink = cp.manual_link.it;
           }
           return {
-            key: cp.id ? cp.id : 0,
-            campaignName: `${cp.id ? `[CP${cp.id}] - ` : ""}${cp.name}`,
-            type: cp.campaign_type,
-            startDate: dateFormatter(cp.dates.start),
+            key: cp.id ? cp.id : 123,
+            campaigns: `${cp.id ? `[CP${cp.id}] - ` : ""}${cp.name}`,
             endDate: dateFormatter(cp.dates.end),
+            closeDate: dateFormatter(cp.dates.close),
             actions: {
               title: ``,
               content: (
-                <Button
-                  disabled={previewLink === "#"}
-                  forwardedAs="a"
-                  href={previewLink}
-                  type="link"
-                  size="sm"
+                <div
+                  style={{ display: "flex", justifyContent: "space-around" }}
                 >
-                  {previewLink === "#"
-                    ? t("Not available")
-                    : cp.applied
-                    ? t("View")
-                    : t("Apply now")}
-                </Button>
+                  <Button
+                    forwardedAs="a"
+                    disabled={manualLink === "#"}
+                    href={
+                      manualLink === "#"
+                        ? "#"
+                        : `${window.location.origin}${manualLink}`
+                    }
+                    type="link"
+                    size="sm"
+                  >
+                    {t("Review the manual")}
+                  </Button>
+                </div>
               ),
             },
           };

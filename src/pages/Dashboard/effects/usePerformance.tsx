@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import API from "../../utils/api";
+import API from "src/utils/api";
 
 export default () => {
   const [expPoints, setExpPoints] = useState(0);

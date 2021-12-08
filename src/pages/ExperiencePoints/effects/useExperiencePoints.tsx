@@ -1,9 +1,9 @@
 import { SelectType, TableType } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import API from "../utils/api";
-import dateFormatter from "../utils/dateFormatter";
-import { operations } from "../utils/schema";
+import API from "src/utils/api";
+import dateFormatter from "src/utils/dateFormatter";
+import { operations } from "src/utils/schema";
 
 export const useExperiencePoints = () => {
   const { t } = useTranslation();

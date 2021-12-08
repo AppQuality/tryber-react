@@ -6,8 +6,8 @@ import {
 } from "@appquality/appquality-design-system";
 import i18n from "i18next";
 import { Trans, useTranslation } from "react-i18next";
+import UserStore from "src/redux/user";
 import styled from "styled-components";
-import UserStore from "../../redux/user";
 
 const GenericModal = () => {
   const { deletion } = UserStore();

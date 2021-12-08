@@ -14,15 +14,18 @@ import { useDispatch } from 'react-redux';
 import GoogleTagManager from 'src/features/GoogleTagManager';
 import LoggedOnly from 'src/features/LoggedOnly';
 import TesterSidebar from 'src/features/TesterSidebar';
-import { FiscalProfileReport } from 'src/pages/Profile/FiscalProfileReport';
-import { HeaderProfile } from 'src/pages/Profile/HeaderProfile';
-import TabAdvanced from 'src/pages/Profile/TabAdvanced';
-import TabBase from 'src/pages/Profile/TabBase';
-import TabFiscal from 'src/pages/Profile/TabFiscal';
-import TabOptions from 'src/pages/Profile/TabOptions';
-import UserDeleteModal from 'src/pages/Profile/UserDeleteModal';
 import { getFiscalProfile } from 'src/redux/user/actions/getFiscalProfile';
 import { getProfile } from 'src/redux/user/actions/getProfile';
+
+import { FiscalProfileReport } from './FiscalProfileReport';
+import { HeaderProfile } from './HeaderProfile';
+import TabAdvanced from './TabAdvanced';
+import TabBase from './TabBase';
+import TabFiscal from './TabFiscal';
+import TabOptions from './TabOptions';
+import UserDeleteModal from './TabOptions/UserDeleteModal';
+
+
 
 export default function Profile() {
   const { t } = useTranslation();

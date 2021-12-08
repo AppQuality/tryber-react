@@ -1,12 +1,12 @@
-import { Button, TableType } from "@appquality/appquality-design-system";
-import React, { useEffect, useState } from "react";
+import { TableType } from "@appquality/appquality-design-system";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import API from "../../utils/api";
-import dateFormatter from "../../utils/dateFormatter";
-import { operations } from "../../utils/schema";
+import API from "src/utils/api";
+import dateFormatter from "src/utils/dateFormatter";
+import { operations } from "src/utils/schema";
 
 export default () => {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
 
   const limit = 10;
   const [campaigns, setCampaigns] = useState<TableType.Row[]>([]);
@@ -14,18 +14,17 @@ export default () => {
   const [totalEntries, setTotalEntries] = useState(0);
   const [loading, setLoading] = useState(true);
   const [order, setOrder] = useState<"ASC" | "DESC">("DESC");
-  const [orderBy, setOrderBy] = useState<"endDate" | "closeDate">("endDate");
+  const [orderBy, setOrderBy] = useState<"closeDate">("closeDate");
 
   const fetchCampaignsFromApi = (page: number) => {
     return API.myCampaigns({
       query: {
         filterBy: {
           accepted: "1",
-          statusId: "1",
-          completed: "1",
+          statusId: "2",
         },
         order: order,
-        orderBy: orderBy == "endDate" ? "end_date" : "close_date",
+        orderBy: orderBy == "closeDate" ? "close_date" : "name",
         limit,
         start: (page - 1) * limit,
       },
@@ -37,48 +36,10 @@ export default () => {
           return { results: [], total: 0 };
         }
         const campaigns = data.results.map((cp) => {
-          let manualLink = "#";
-          if (typeof cp.manual_link !== "undefined") {
-            if (
-              i18n.language === "en" &&
-              cp.manual_link.en &&
-              cp.manual_link.en !== "#"
-            )
-              manualLink = cp.manual_link.en;
-            if (
-              i18n.language === "it" &&
-              cp.manual_link.it &&
-              cp.manual_link.it !== "#"
-            )
-              manualLink = cp.manual_link.it;
-          }
           return {
             key: cp.id ? cp.id : 123,
             campaigns: `${cp.id ? `[CP${cp.id}] - ` : ""}${cp.name}`,
-            endDate: dateFormatter(cp.dates.end),
             closeDate: dateFormatter(cp.dates.close),
-            actions: {
-              title: ``,
-              content: (
-                <div
-                  style={{ display: "flex", justifyContent: "space-around" }}
-                >
-                  <Button
-                    forwardedAs="a"
-                    disabled={manualLink === "#"}
-                    href={
-                      manualLink === "#"
-                        ? "#"
-                        : `${window.location.origin}${manualLink}`
-                    }
-                    type="link"
-                    size="sm"
-                  >
-                    {t("Review the manual")}
-                  </Button>
-                </div>
-              ),
-            },
           };
         });
         return {

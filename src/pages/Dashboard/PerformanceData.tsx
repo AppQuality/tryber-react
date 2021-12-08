@@ -3,12 +3,12 @@ import {
   Spinner,
   SpinnerWrapper,
 } from "@appquality/appquality-design-system";
-import usePerformance from "../../store/dashboard/usePerformance";
-import { Statistic, GoToBlock } from "./performanceRow";
-import styled from "styled-components";
-import { useTranslation } from "react-i18next";
 import i18n from "i18next";
-import { useLocalizeRoute } from "../../hooks/useLocalizedRoute";
+import { useTranslation } from "react-i18next";
+import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
+import styled from "styled-components";
+import usePerformance from "./effects/usePerformance";
+import { GoToBlock, Statistic } from "./performanceRow";
 
 const StyledIcon = styled.div`
   .dark-disabled-font {

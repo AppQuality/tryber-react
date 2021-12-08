@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import GoogleTagManager from "src/features/GoogleTagManager";
 import LoggedOnly from "src/features/LoggedOnly";
 import TesterSidebar from "src/features/TesterSidebar";
-import { useExperiencePoints } from "src/store/useExperiencePoints";
+import { useExperiencePoints } from "src/pages/ExperiencePoints/effects/useExperiencePoints";
 import ExperiencePointsFilters from "./ExperiencePointsFilters";
 import ExperiencePointsTable from "./ExperiencePointsTable";
 

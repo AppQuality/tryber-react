@@ -5,8 +5,8 @@ import {
 } from "@appquality/appquality-design-system";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import API from "../utils/api";
-import { operations } from "../utils/schema";
+import API from "src/utils/api";
+import { operations } from "src/utils/schema";
 
 export const useMyBugs = () => {
   const { i18n, t } = useTranslation();

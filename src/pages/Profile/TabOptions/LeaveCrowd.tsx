@@ -1,6 +1,6 @@
-import { ReactComponent as LeaveCrowdDesktop } from "../assets/leave-crowd.svg";
-import { ReactComponent as LeaveCrowdMobile } from "../assets/leave-crowd-mobile.svg";
 import styled from "styled-components";
+import { ReactComponent as LeaveCrowdMobile } from "./assets/leave-crowd-mobile.svg";
+import { ReactComponent as LeaveCrowdDesktop } from "./assets/leave-crowd.svg";
 
 const LeaveCrowdComponent = ({ className }: { className?: string }) => {
   return (

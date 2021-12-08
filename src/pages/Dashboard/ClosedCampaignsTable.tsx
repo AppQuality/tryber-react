@@ -1,6 +1,6 @@
 import { Pagination, Table } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import useClosedCampaigns from "../../store/dashboard/useClosedCampaigns";
+import useClosedCampaigns from "./effects/useClosedCampaigns";
 
 const ClosedCampaignsTable = () => {
   const { t } = useTranslation();

@@ -8,15 +8,15 @@ import {
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { HalfColumnButton } from "src/pages/Profile/HalfColumnButton";
+import { HalfColumnButton } from "src/features/HalfColumnButton";
 import { SkeletonTab } from "src/pages/Profile/SkeletonTab";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 import { updateAdvancedProfile } from "src/redux/user/actions/updateAdvancedProfile";
 import * as yup from "yup";
-import { EducationSelect } from "../EducationSelect";
-import { EmploymentSelect } from "../EmploymentSelect";
 import Certifications from "./Certifications";
 import { CustomUserFields } from "./CustomUserFields";
+import { EducationSelect } from "./EducationSelect";
+import { EmploymentSelect } from "./EmploymentSelect";
 import { MapCufValues, PrepareUserCuf } from "./MapCufValues";
 
 const TabAdvanced = () => {

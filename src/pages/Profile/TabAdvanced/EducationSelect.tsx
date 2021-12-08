@@ -5,9 +5,9 @@ import {
   SelectType,
 } from "@appquality/appquality-design-system";
 import { FieldProps } from "formik";
-import API from "../../utils/api";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import API from "src/utils/api";
 
 export const EducationSelect = ({
   name,

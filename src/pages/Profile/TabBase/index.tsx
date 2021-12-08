@@ -20,9 +20,9 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import BirthdayPicker from 'src/features/BirthdayPicker';
+import CitySelect from 'src/features/CitySelect';
 import CountrySelect from 'src/features/CountrySelect';
-import CitySelect from 'src/pages/Profile/CitySelect';
-import { HalfColumnButton } from 'src/pages/Profile/HalfColumnButton';
+import { HalfColumnButton } from 'src/features/HalfColumnButton';
 import { SkeletonTab } from 'src/pages/Profile/SkeletonTab';
 import siteWideMessages from 'src/redux/siteWideMessages';
 import { updateProfile } from 'src/redux/user/actions/updateProfile';
@@ -30,7 +30,11 @@ import API from 'src/utils/api';
 import * as yup from 'yup';
 
 import { LanguageSelect } from './LanguageSelect';
-import { BaseFields } from './types.d';
+
+
+
+
+
 
 
 const TabBase = () => {

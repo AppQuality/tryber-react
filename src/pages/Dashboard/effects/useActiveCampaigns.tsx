@@ -1,10 +1,10 @@
 import { Button, TableType, Text } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import DashboardHelpStore from "../../redux/dashboardHelpModal";
-import API from "../../utils/api";
-import dateFormatter from "../../utils/dateFormatter";
-import { operations } from "../../utils/schema";
+import DashboardHelpStore from "src/redux/dashboardHelpModal";
+import API from "src/utils/api";
+import dateFormatter from "src/utils/dateFormatter";
+import { operations } from "src/utils/schema";
 
 export default () => {
   const { i18n, t } = useTranslation();

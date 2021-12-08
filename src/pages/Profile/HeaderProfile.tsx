@@ -14,9 +14,9 @@ import {
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { SkeletonHeader } from "src/pages/Profile/SkeletonHeader";
+import siteWideMessageStore from "src/redux/siteWideMessages";
+import WPAPI from "src/utils/wpapi";
 import styled from "styled-components";
-import siteWideMessageStore from "../../redux/siteWideMessages";
-import WPAPI from "../../utils/wpapi";
 
 export const HeaderProfile = () => {
   const [submittingMailConfirm, setSubmittingMailConfirm] = useState(false);

@@ -13,10 +13,10 @@ import {
 } from "@appquality/appquality-design-system";
 import { FieldProps, FormikProps } from "formik";
 import { useTranslation } from "react-i18next";
-import { HalfColumnButton } from "src/pages/Profile/HalfColumnButton";
+import { HalfColumnButton } from "src/features/HalfColumnButton";
+import siteWideMessageStore from "src/redux/siteWideMessages";
+import API from "src/utils/api";
 import * as yup from "yup";
-import siteWideMessageStore from "../../../redux/siteWideMessages";
-import API from "../../../utils/api";
 import ResetPasswordArea from "./ResetPasswordArea";
 
 const EditPassword = () => {

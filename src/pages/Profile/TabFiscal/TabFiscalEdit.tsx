@@ -16,16 +16,20 @@ import {
 import { useTranslation } from 'react-i18next';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import BirthdayPicker from 'src/features/BirthdayPicker';
-import { HalfColumnButton } from 'src/pages/Profile/HalfColumnButton';
+import { HalfColumnButton } from 'src/features/HalfColumnButton';
 import { SkeletonTab } from 'src/pages/Profile/SkeletonTab';
-import FiscalResidenceModal from 'src/pages/Profile/TabFiscal/components/FiscalResidenceModal';
 import modalStore from 'src/redux/modal';
 import { updateFiscalProfile } from 'src/redux/user/actions/updateFiscalProfile';
 import { updateProfile } from 'src/redux/user/actions/updateProfile';
 import * as yup from 'yup';
 
 import FiscalAddress from './components/FiscalAddress';
+import FiscalResidenceModal from './components/FiscalResidenceModal';
 import FiscalTypeArea from './components/FiscalTypeArea';
+
+
+
+
 
 
 

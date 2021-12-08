@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 import GoogleTagManager from "src/features/GoogleTagManager";
 import LoggedOnly from "src/features/LoggedOnly";
 import TesterSidebar from "src/features/TesterSidebar";
-import { useMyBugs } from "src/store/useMyBugs";
+import { useMyBugs } from "./effects/useMyBugs";
 import MyBugsFilters from "./MyBugsFilters";
 import MyBugsTable from "./MyBugsTable";
 

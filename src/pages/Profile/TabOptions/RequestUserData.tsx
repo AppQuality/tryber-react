@@ -1,8 +1,8 @@
 import { CSSGrid, Text, Title } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import { HalfColumnButton } from "src/pages/Profile/HalfColumnButton";
-import siteWideMessageStore from "../../../redux/siteWideMessages";
-import WPAPI from "../../../utils/wpapi";
+import { HalfColumnButton } from "src/features/HalfColumnButton";
+import siteWideMessageStore from "src/redux/siteWideMessages";
+import WPAPI from "src/utils/wpapi";
 
 const RequestUserData = () => {
   const { t, i18n } = useTranslation();

@@ -6,7 +6,7 @@ import {
 } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import useDebounce from "src/store/useDebounce";
+import useDebounce from "src/hooks/useDebounce";
 
 interface ExperiencePointsFiltersProps {
   // todo: get this from useMyBugs or they could diverge

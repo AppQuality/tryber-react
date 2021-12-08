@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import API from "../utils/api";
 import lz from "lzutf8";
-import { operations } from "../utils/schema";
+import { useEffect, useState } from "react";
+import API from "src/utils/api";
+import { operations } from "src/utils/schema";
 
 export const usePopups = ({
   showExpired = false,

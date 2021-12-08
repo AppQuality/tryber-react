@@ -1,16 +1,16 @@
-import { usePopups } from "../../store/usePopups";
+import { Modal, ModalBody, Title } from "@appquality/appquality-design-system";
 import {
-  Editor,
   Button,
+  ButtonContainer,
   Container,
+  Editor,
+  Frame,
   Text,
   Wysiwyg,
-  ButtonContainer,
-  Frame,
 } from "@appquality/craft-blocks";
-import { Modal, ModalBody, Title } from "@appquality/appquality-design-system";
-import API from "../../utils/api";
 import { useTranslation } from "react-i18next";
+import API from "src/utils/api";
+import { usePopups } from "./effects/usePopups";
 import SetPopupAsSeenButton from "./SetPopupAsSeenButton";
 
 export default ({

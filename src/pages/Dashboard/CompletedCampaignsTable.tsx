@@ -1,6 +1,6 @@
 import { Pagination, Table } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import useCompletedCampaigns from "../../store/dashboard/useCompletedCampaigns";
+import useCompletedCampaigns from "./effects/useCompletedCampaigns";
 
 const CompletedCampaignsTable = () => {
   const { t } = useTranslation();
