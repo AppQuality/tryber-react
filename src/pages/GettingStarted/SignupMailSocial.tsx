@@ -1,12 +1,12 @@
 import {
   Button,
+  CSSGrid,
   Text,
   Title,
-  CSSGrid,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import signupImage from "./assets/signup.png";
 import { SignupForm } from "./SignupForm";
-import signupImage from "../pages/assets/group-236.png";
 
 interface SignupMailSocialProps {
   redirectUrl: string;

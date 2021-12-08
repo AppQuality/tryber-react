@@ -1,17 +1,14 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
-
-import userEvent from "@testing-library/user-event";
-import API from "../utils/api";
-import { mocked } from "ts-jest/utils";
-
 import {
   aqBootstrapTheme,
   ThemeProvider,
 } from "@appquality/appquality-design-system";
-
-import { SignupForm } from "./SignupForm";
+import "@testing-library/jest-dom/extend-expect";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import API from "src/utils/api";
+import { mocked } from "ts-jest/utils";
 import "../i18n";
+import { SignupForm } from "./SignupForm";
 
 jest.mock("../utils/api");
 

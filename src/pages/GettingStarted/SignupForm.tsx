@@ -1,25 +1,25 @@
 import {
-  Checkbox,
-  Field,
   Button,
-  Text,
-  Title,
+  Checkbox,
   CSSGrid,
-  Formik,
-  FormikField,
-  FieldProps,
   ErrorMessage,
+  Field,
+  FieldProps,
   Form,
   FormGroup,
+  Formik,
+  FormikField,
+  Text,
+  Title,
 } from "@appquality/appquality-design-system";
-import CountrySelect from "./CountrySelect";
-import BirthdayPicker from "./BirthdayPicker";
+import { Trans, useTranslation } from "react-i18next";
+import BirthdayPicker from "src/features/BirthdayPicker";
+import CountrySelect from "src/features/CountrySelect";
+import referralStore from "src/redux/referral";
+import siteWideMessageStore from "src/redux/siteWideMessages";
+import API from "src/utils/api";
+import WPAPI from "src/utils/wpapi";
 import * as yup from "yup";
-import { useTranslation, Trans } from "react-i18next";
-import referralStore from "../redux/referral";
-import siteWideMessageStore from "../redux/siteWideMessages";
-import API from "../utils/api";
-import WPAPI from "../utils/wpapi";
 
 interface SignupFormProps {
   redirectUrl: string;

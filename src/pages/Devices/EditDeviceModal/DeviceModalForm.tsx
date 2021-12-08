@@ -1,12 +1,12 @@
-import API from "../../utils/api";
-import { operations } from "../../utils/schema";
 import { Formik } from "formik";
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import userDeviceStore from "../../redux/userDevices";
-import siteWideMessageStore from "../../redux/siteWideMessages";
+import siteWideMessageStore from "src/redux/siteWideMessages";
+import userDeviceStore from "src/redux/userDevices";
+import API from "src/utils/api";
+import HttpError from "src/utils/HttpError";
+import { operations } from "src/utils/schema";
 import { DeviceFormInterface } from "./types";
-import HttpError from "../../utils/HttpError";
 
 interface FormProps {
   children: ReactNode;

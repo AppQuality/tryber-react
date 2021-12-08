@@ -1,16 +1,16 @@
 import { Modal, ModalBody, Steps } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
-import userDeviceStore from "../../redux/userDevices";
-import { useEffect, useState } from "react";
-import DeviceType from "./DeviceType";
-import DeviceDetails from "./DeviceDetails";
-import DeviceRecap from "./DeviceRecap";
-import styled from "styled-components";
-import { DeviceModalForm } from "./DeviceModalForm";
-import { DeviceModalFooter } from "./DeviceModalFooter";
-import { WizardStep } from "./types";
 import { FormikProps } from "formik";
-import { usePrevious } from "../../hooks/usePrevious";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { usePrevious } from "src/hooks/usePrevious";
+import userDeviceStore from "src/redux/userDevices";
+import styled from "styled-components";
+import DeviceDetails from "./DeviceDetails";
+import { DeviceModalFooter } from "./DeviceModalFooter";
+import { DeviceModalForm } from "./DeviceModalForm";
+import DeviceRecap from "./DeviceRecap";
+import DeviceType from "./DeviceType";
+import { WizardStep } from "./types";
 
 export default () => {
   const {

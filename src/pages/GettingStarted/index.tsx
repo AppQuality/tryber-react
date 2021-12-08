@@ -1,18 +1,18 @@
 import {
-  Container,
-  BSGrid,
   BSCol,
+  BSGrid,
   Card,
-  PageTitle,
+  Container,
   DatepickerGlobalStyle,
+  PageTitle,
 } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
-import { SignupMailSocial } from "../features/SignupMailSocial";
-import { LangMenu } from "../features/LangMenu";
-import GoogleTagManager from "../features/GoogleTagManager";
-import NotLoggedOnly from "../features/NotLoggedOnly";
 import React from "react";
-import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
+import { useTranslation } from "react-i18next";
+import GoogleTagManager from "src/features/GoogleTagManager";
+import { LangMenu } from "src/features/LangMenu";
+import NotLoggedOnly from "src/features/NotLoggedOnly";
+import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
+import { SignupMailSocial } from "./SignupMailSocial";
 
 export default function GettingStarted() {
   const { t } = useTranslation();

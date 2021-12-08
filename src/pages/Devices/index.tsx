@@ -8,13 +8,13 @@ import {
   Text,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import DeviceTable from "../features/DeviceTable";
-import EditDeviceModal from "../features/EditDeviceModal";
-import GoogleTagManager from "../features/GoogleTagManager";
-import LoggedOnly from "../features/LoggedOnly";
-import RemoveDeviceModal from "../features/RemoveDeviceModal";
-import TesterSidebar from "../features/TesterSidebar";
-import userDeviceStore from "../redux/userDevices";
+import GoogleTagManager from "src/features/GoogleTagManager";
+import LoggedOnly from "src/features/LoggedOnly";
+import TesterSidebar from "src/features/TesterSidebar";
+import userDeviceStore from "src/redux/userDevices";
+import DeviceTable from "./DeviceTable";
+import EditDeviceModal from "./EditDeviceModal";
+import RemoveDeviceModal from "./RemoveDeviceModal";
 
 export default function Devices() {
   const { t } = useTranslation();

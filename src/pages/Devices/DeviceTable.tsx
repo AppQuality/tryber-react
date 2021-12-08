@@ -1,8 +1,8 @@
 import { Button, Table, TableType } from "@appquality/appquality-design-system";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import siteWideMessageStore from "../redux/siteWideMessages";
-import userDeviceStore from "../redux/userDevices";
+import siteWideMessageStore from "src/redux/siteWideMessages";
+import userDeviceStore from "src/redux/userDevices";
 import DeviceIcon from "./DeviceIcon";
 
 const DeviceTable = () => {

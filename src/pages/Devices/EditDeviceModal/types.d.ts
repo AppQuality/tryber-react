@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
 import { FormikErrors } from "formik";
+import { ReactNode } from "react";
 
 type PcType =
   | "Notebook"

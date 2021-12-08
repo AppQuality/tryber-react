@@ -1,10 +1,10 @@
-import { useFormikContext, Field } from "formik";
 import { Select, SelectType } from "@appquality/appquality-design-system";
+import { Field, useFormikContext } from "formik";
 import { useEffect, useState } from "react";
-import API from "../../../../utils/api";
-import { operations } from "../../../../utils/schema";
-import { DeviceFormInterface } from "../../types";
 import { useTranslation } from "react-i18next";
+import API from "src/utils/api";
+import { operations } from "src/utils/schema";
+import { DeviceFormInterface } from "../../types";
 
 const OtherDeviceData = ({ edit }: { edit: boolean }) => {
   const { values } = useFormikContext<DeviceFormInterface>();

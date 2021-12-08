@@ -1,16 +1,15 @@
 import {
+  BSCol,
+  BSGrid,
+  Button,
   Modal,
   ModalBody,
-  Button,
-  BSGrid,
   Text,
-  BSCol,
 } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
-import userDeviceStore from "../redux/userDevices";
-import siteWideMessageStore from "../redux/siteWideMessages";
-import API from "../utils/api";
-import { Trans } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import siteWideMessageStore from "src/redux/siteWideMessages";
+import userDeviceStore from "src/redux/userDevices";
+import API from "src/utils/api";
 
 const RemoveDeviceModal = () => {
   const { deleteModalOpen, closeDeleteModal, fetch, current } =

@@ -1,15 +1,15 @@
-import { useFormikContext, Field } from "formik";
 import {
   FieldProps,
   Select,
   SelectType,
   Text,
 } from "@appquality/appquality-design-system";
+import { Field, useFormikContext } from "formik";
 import { useEffect, useState } from "react";
-import PCData from "./DeviceDetails/DeviceData/PCData";
-import OtherDeviceData from "./DeviceDetails/DeviceData/OtherDeviceData";
 import { useTranslation } from "react-i18next";
-import API from "../../utils/api";
+import API from "src/utils/api";
+import OtherDeviceData from "./DeviceDetails/DeviceData/OtherDeviceData";
+import PCData from "./DeviceDetails/DeviceData/PCData";
 import { DeviceFormInterface } from "./types";
 
 export default ({ edit }: { edit: boolean }) => {
