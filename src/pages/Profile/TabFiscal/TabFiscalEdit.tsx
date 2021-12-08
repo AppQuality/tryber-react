@@ -12,19 +12,22 @@ import {
   Select,
   Text,
   Title,
-} from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { SkeletonTab } from "src/features/profile/SkeletonTab";
-import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
-import * as yup from "yup";
-import { updateFiscalProfile } from "../../../redux/user/actions/updateFiscalProfile";
-import FiscalAddress from "./components/FiscalAddress";
-import FiscalTypeArea from "./components/FiscalTypeArea";
-import { updateProfile } from "src/redux/user/actions/updateProfile";
-import BirthdayPicker from "src/features/BirthdayPicker";
-import FiscalResidenceModal from "src/features/profile/TabFiscal/components/FiscalResidenceModal";
-import modalStore from "src/redux/modal";
+} from '@appquality/appquality-design-system';
+import { useTranslation } from 'react-i18next';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import BirthdayPicker from 'src/features/BirthdayPicker';
+import { HalfColumnButton } from 'src/pages/Profile/HalfColumnButton';
+import { SkeletonTab } from 'src/pages/Profile/SkeletonTab';
+import FiscalResidenceModal from 'src/pages/Profile/TabFiscal/components/FiscalResidenceModal';
+import modalStore from 'src/redux/modal';
+import { updateFiscalProfile } from 'src/redux/user/actions/updateFiscalProfile';
+import { updateProfile } from 'src/redux/user/actions/updateProfile';
+import * as yup from 'yup';
+
+import FiscalAddress from './components/FiscalAddress';
+import FiscalTypeArea from './components/FiscalTypeArea';
+
+
 
 export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
   const { t } = useTranslation();

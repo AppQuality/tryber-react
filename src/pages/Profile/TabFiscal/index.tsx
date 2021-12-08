@@ -1,6 +1,6 @@
 import { Ref, useEffect, useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
-import { SkeletonTab } from "src/features/profile/SkeletonTab";
+import { SkeletonTab } from "src/pages/Profile/SkeletonTab";
 import { TabFiscalEdit } from "./TabFiscalEdit";
 import { TabFiscalShow } from "./TabFiscalShow";
 

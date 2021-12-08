@@ -13,7 +13,7 @@ import {
 } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
-import { SkeletonHeader } from "src/features/profile/SkeletonHeader";
+import { SkeletonHeader } from "src/pages/Profile/SkeletonHeader";
 import styled from "styled-components";
 import siteWideMessageStore from "../../redux/siteWideMessages";
 import WPAPI from "../../utils/wpapi";

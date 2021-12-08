@@ -1,23 +1,23 @@
 import {
-  Button,
   aqBootstrapTheme,
+  Button,
   CSSGrid,
 } from "@appquality/appquality-design-system";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { shallowEqual, useSelector } from "react-redux";
+import { HalfColumnButton } from "src/pages/Profile/HalfColumnButton";
 import modalStore from "src/redux/modal";
-import SingleCertification from "./SingleCertification";
-import {
-  NewCertificationModal,
-  NewCertificationModalFooter,
-} from "./NewCertificationModal";
+import { components } from "src/utils/schema";
 import {
   DeleteCertificationsModal,
   DeleteCertificationsModalFooter,
 } from "./DeleteCertificationsModal";
-import { useSelector, shallowEqual } from "react-redux";
-import { components } from "src/utils/schema";
-import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
+import {
+  NewCertificationModal,
+  NewCertificationModalFooter,
+} from "./NewCertificationModal";
+import SingleCertification from "./SingleCertification";
 
 const Certifications = () => {
   const { t } = useTranslation();

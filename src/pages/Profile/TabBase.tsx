@@ -13,23 +13,25 @@ import {
   SelectType,
   Text,
   Title,
-} from "@appquality/appquality-design-system";
-import { FormikProps } from "formik";
-import countries from "i18n-iso-countries";
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import CitySelect from "src/features/profile/CitySelect";
-import { SkeletonTab } from "src/features/profile/SkeletonTab";
-import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
-import * as yup from "yup";
-import siteWideMessages from "src/redux/siteWideMessages";
-import { updateProfile } from "src/redux/user/actions/updateProfile";
-import API from "src/utils/api";
-import BirthdayPicker from "../BirthdayPicker";
-import CountrySelect from "../CountrySelect";
-import { LanguageSelect } from "./LanguageSelect";
-import { BaseFields } from "./types.d";
+} from '@appquality/appquality-design-system';
+import { FormikProps } from 'formik';
+import countries from 'i18n-iso-countries';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import BirthdayPicker from 'src/features/BirthdayPicker';
+import CountrySelect from 'src/features/CountrySelect';
+import CitySelect from 'src/pages/Profile/CitySelect';
+import { HalfColumnButton } from 'src/pages/Profile/HalfColumnButton';
+import { SkeletonTab } from 'src/pages/Profile/SkeletonTab';
+import siteWideMessages from 'src/redux/siteWideMessages';
+import { updateProfile } from 'src/redux/user/actions/updateProfile';
+import API from 'src/utils/api';
+import * as yup from 'yup';
+
+import { LanguageSelect } from './LanguageSelect';
+import { BaseFields } from './types.d';
+
 
 const TabBase = () => {
   const { t } = useTranslation();
@@ -143,7 +145,6 @@ const TabBase = () => {
           helpers.setSubmitting(false);
           helpers.resetForm({ values });
         } catch (e) {
-          console.log(e);
           add({
             message: t("We couldn't update your profile. Try again."),
             type: "warning",

@@ -1,7 +1,7 @@
 import { ErrorMessage, FormGroup, FormLabel, Input, Select, Text } from '@appquality/appquality-design-system';
 import { Field as FormikField, FieldProps, useFormikContext } from 'formik';
 import { Trans, useTranslation } from 'react-i18next';
-import CitySelect from 'src/features/profile/CitySelect';
+import CitySelect from 'src/pages/Profile/CitySelect';
 
 const FiscalTypeArea = () => {
   const { values, setValues, setFieldTouched, setFieldError } =

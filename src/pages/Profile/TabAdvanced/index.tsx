@@ -8,8 +8,8 @@ import {
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { SkeletonTab } from "src/features/profile/SkeletonTab";
-import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
+import { HalfColumnButton } from "src/pages/Profile/HalfColumnButton";
+import { SkeletonTab } from "src/pages/Profile/SkeletonTab";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 import { updateAdvancedProfile } from "src/redux/user/actions/updateAdvancedProfile";
 import * as yup from "yup";

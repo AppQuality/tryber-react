@@ -1,11 +1,11 @@
 import Dashboard from "./Dashboard";
-import MyBugs from "./MyBugs";
+import Devices from "./Devices";
 import ExperiencePoints from "./ExperiencePoints";
 import GettingStarted from "./GettingStarted";
-import Home from "./home/Home";
-import Devices from "./Devices";
-import Profile from "./profile/Profile";
 import GoodbyePage from "./GoodbyePage";
+import Home from "./home/Home";
+import MyBugs from "./MyBugs";
+import Profile from "./Profile";
 
 export {
   Dashboard,
