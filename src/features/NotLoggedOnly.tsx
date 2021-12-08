@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import TagManager from "react-gtm-module";
-import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
-import LoadingSvg from "src/pages/assets/loading.svg";
+import { useEffect, useState } from 'react';
+import TagManager from 'react-gtm-module';
+import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
+import { useLocalizeRoute } from 'src/hooks/useLocalizedRoute';
+import useUser from 'src/redux/user';
 
-import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
-import useUser from "../redux/user";
+import LoadingSvg from './assets/loading.svg';
 
 export default ({
   children,

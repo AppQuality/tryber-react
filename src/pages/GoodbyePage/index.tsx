@@ -1,13 +1,12 @@
 import {
-  Container,
-  BSGrid,
   BSCol,
+  BSGrid,
   Card,
+  Container,
   Text,
 } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
-import GoogleTagManager from "../features/GoogleTagManager";
-import { Trans } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import GoogleTagManager from "src/features/GoogleTagManager";
 import Goodbye from "./assets/goodbye.svg";
 
 export default function GoodbyePage() {

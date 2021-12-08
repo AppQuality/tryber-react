@@ -1,9 +1,10 @@
-import TagManager from "react-gtm-module";
-import { shallowEqual, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import LoadingSvg from "src/pages/assets/loading.svg";
+import TagManager from 'react-gtm-module';
+import { shallowEqual, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import LoadingSvg from 'src/pages/assets/loading.svg';
 
-import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
+import { useLocalizeRoute } from '../hooks/useLocalizedRoute';
+
 
 export default ({ children }: { children: React.ReactNode }) => {
   const history = useHistory();
