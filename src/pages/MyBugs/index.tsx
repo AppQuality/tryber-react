@@ -1,20 +1,20 @@
-import { useEffect } from "react";
 import {
-  Container,
-  BSGrid,
   BSCol,
+  BSGrid,
   Card,
+  Container,
   PageTitle,
 } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
-import TesterSidebar from "../features/TesterSidebar";
-import MyBugsTable from "../features/my-bugs/MyBugsTable";
-import MyBugsFilters from "../features/my-bugs/MyBugsFilters";
-import { useMyBugs } from "../store/useMyBugs";
-import { useLocation } from "react-router-dom";
 import queryString from "query-string";
-import GoogleTagManager from "../features/GoogleTagManager";
-import LoggedOnly from "../features/LoggedOnly";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
+import GoogleTagManager from "src/features/GoogleTagManager";
+import LoggedOnly from "src/features/LoggedOnly";
+import TesterSidebar from "src/features/TesterSidebar";
+import { useMyBugs } from "src/store/useMyBugs";
+import MyBugsFilters from "./MyBugsFilters";
+import MyBugsTable from "./MyBugsTable";
 
 export default function MyBugs() {
   const { search } = useLocation();

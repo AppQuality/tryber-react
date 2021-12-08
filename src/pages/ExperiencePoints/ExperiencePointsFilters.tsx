@@ -1,13 +1,12 @@
 import {
+  FormLabel,
+  Input,
   Select,
   SelectType,
-  Field,
-  Input,
-  FormLabel,
 } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
-import useDebounce from "../../store/useDebounce";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import useDebounce from "src/store/useDebounce";
 
 interface ExperiencePointsFiltersProps {
   // todo: get this from useMyBugs or they could diverge

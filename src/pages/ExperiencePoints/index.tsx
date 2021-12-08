@@ -8,12 +8,12 @@ import {
   Text,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import ExperiencePointsFilters from "../features/experience-points/ExperiencePointsFilters";
-import ExperiencePointsTable from "../features/experience-points/ExperiencePointsTable";
-import GoogleTagManager from "../features/GoogleTagManager";
-import LoggedOnly from "../features/LoggedOnly";
-import TesterSidebar from "../features/TesterSidebar";
-import { useExperiencePoints } from "../store/useExperiencePoints";
+import GoogleTagManager from "src/features/GoogleTagManager";
+import LoggedOnly from "src/features/LoggedOnly";
+import TesterSidebar from "src/features/TesterSidebar";
+import { useExperiencePoints } from "src/store/useExperiencePoints";
+import ExperiencePointsFilters from "./ExperiencePointsFilters";
+import ExperiencePointsTable from "./ExperiencePointsTable";
 
 export default function ExperiencePoints() {
   const { t } = useTranslation();
