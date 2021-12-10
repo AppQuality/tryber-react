@@ -39,7 +39,7 @@ export const useMyBugs = () => {
       case 2:
         return "aq-text-success";
       case 3:
-        return "aq-text-primary";
+        return "aq-text-info";
       case 4:
         return "aq-text-warning";
       default:
@@ -125,7 +125,7 @@ export const useMyBugs = () => {
               href={`${window.location.origin}/${
                 i18n.language !== "en" ? `${i18n.language}/` : ""
               }bugs/show/${res.id}`}
-              type="link"
+              type="link-hover"
               size="sm"
             >
               {t("View more")}

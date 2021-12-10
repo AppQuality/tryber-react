@@ -44,7 +44,7 @@ const DeviceTable = () => {
                     select(d.id);
                     openEditModal();
                   }}
-                  type="link"
+                  type="link-hover"
                 >
                   {t("Edit")}
                 </Button>
@@ -53,7 +53,7 @@ const DeviceTable = () => {
                     select(d.id);
                     openDeleteModal();
                   }}
-                  type="link"
+                  type="link-hover"
                 >
                   {t("Delete")}
                 </Button>

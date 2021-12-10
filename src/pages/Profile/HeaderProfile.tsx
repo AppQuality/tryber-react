@@ -98,7 +98,7 @@ export const HeaderProfile = () => {
           </Text>
         ) : (
           <Text
-            forwardedAs="a"
+            as="a"
             className={`mail-confirm-cta ${
               submittingMailConfirm ? "disabled" : ""
             }`}

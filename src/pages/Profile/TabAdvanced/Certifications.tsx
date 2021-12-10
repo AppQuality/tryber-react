@@ -40,7 +40,9 @@ const Certifications = () => {
             className={i > 0 ? "aq-mb-3 aq-pt-3" : "aq-mb-3"}
             style={{
               borderTop:
-                i > 0 ? `1px solid ${aqBootstrapTheme.colors.disabled}` : "",
+                i > 0
+                  ? `1px solid ${aqBootstrapTheme.colors.elementGeneric}`
+                  : "",
             }}
           >
             <SingleCertification certification={cert} />

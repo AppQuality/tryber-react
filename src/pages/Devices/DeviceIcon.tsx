@@ -18,7 +18,7 @@ const DeviceIcon = ({
         <>
           <Phone className={className} size={size} />
           {showText ? (
-            <div>
+            <div className="aq-text-primary">
               <strong>Smartphone</strong>
             </div>
           ) : null}
@@ -30,7 +30,7 @@ const DeviceIcon = ({
         <>
           <Tablet className={className} size={size} />
           {showText ? (
-            <div>
+            <div className="aq-text-primary">
               <strong>Tablet</strong>
             </div>
           ) : null}
@@ -42,7 +42,7 @@ const DeviceIcon = ({
         <>
           <Laptop className={className} size={size} />
           {showText ? (
-            <div>
+            <div className="aq-text-primary">
               <strong>Computer</strong>
             </div>
           ) : null}
@@ -54,7 +54,7 @@ const DeviceIcon = ({
         <>
           <Tv className={className} size={size} />
           {showText ? (
-            <div>
+            <div className="aq-text-primary">
               <strong>Smart TV & TV Box</strong>
             </div>
           ) : null}

@@ -71,7 +71,7 @@ export default () => {
                         ? "#"
                         : `${window.location.origin}${manualLink}`
                     }
-                    type="link"
+                    type="link-hover"
                     size="sm"
                   >
                     {t("Review the manual")}

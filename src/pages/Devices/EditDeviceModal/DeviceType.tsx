@@ -1,6 +1,6 @@
-import DeviceIcon from "../DeviceIcon";
+import { Field } from "formik";
 import styled from "styled-components";
-import { Field, useFormikContext } from "formik";
+import DeviceIcon from "../DeviceIcon";
 
 const RadioInput = ({
   name,
@@ -64,23 +64,24 @@ const StyledDeviceBurrito = styled.div`
       position: absolute;
     }
     input:checked ~ svg {
-      color: ${(props) => props.theme.palette.success};
+      color: ${(props) => props.theme.palette.secondary};
     }
     label {
       display: flex;
       flex-flow: column;
       align-items: center;
       cursor: pointer;
+      color: ${(props) => props.theme.palette.primary};
 
       svg {
         width: 56px;
         height: 56px;
-        color: ${(props) => props.theme.palette.secondary};
+        color: ${(props) => props.theme.variants.primary};
       }
     }
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        background-color: ${(props) => props.theme.colors.gray200};
+        background-color: ${(props) => props.theme.colors.purple100};
       }
     }
   }

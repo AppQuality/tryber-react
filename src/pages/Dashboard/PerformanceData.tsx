@@ -38,12 +38,12 @@ const PerformanceData = () => {
   } = usePerformance();
   const performanceData = [
     {
-      icon: <StarFill size={"21"} className={"aq-text-warning"} />,
+      icon: <StarFill size={"21"} className={"aq-text-warningVariant"} />,
       text: t("Experience Points"),
       val: expPoints,
     },
     {
-      icon: <AwardFill size={"21"} className={"aq-text-info"} />,
+      icon: <AwardFill size={"21"} className={"aq-text-infoVariant"} />,
       text: t("Your Rank"),
       val: rank + (isNaN(rank) ? "" : "°"),
     },
@@ -59,12 +59,14 @@ const PerformanceData = () => {
       }`,
     },
     {
-      icon: <BookmarkCheckFill size={"21"} className={"aq-text-secondary"} />,
+      icon: (
+        <BookmarkCheckFill size={"21"} className={"aq-text-secondaryVariant"} />
+      ),
       text: t("Completed campaigns"),
       val: cpCompleted,
     },
     {
-      icon: <BugFill size={"21"} className={"aq-text-danger"} />,
+      icon: <BugFill size={"21"} className={"aq-text-dangerVariant"} />,
       text: t("Approved bugs"),
       val: bugsApproved,
     },
@@ -81,7 +83,7 @@ const PerformanceData = () => {
     {
       icon: (
         <StyledIcon>
-          <PiggyBankFill size={"21"} className={"dark-disabled-font"} />
+          <PiggyBankFill size={"21"} className={"aq-text-successVariant"} />
         </StyledIcon>
       ),
       text: t("Available booty"),

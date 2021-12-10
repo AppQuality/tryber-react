@@ -59,7 +59,7 @@ export default function ExperiencePoints() {
               />
             </Card>
             <Card shadow={true}>
-              <div className="aq-mb-2">
+              <div className="aq-mb-2 aq-text-info">
                 <strong>{t("How do experience points work?")}</strong>
               </div>
               <Text className="aq-mb-3">
@@ -70,7 +70,7 @@ export default function ExperiencePoints() {
               <Button
                 forwardedAs="a"
                 href={`${t("/discover-experience-points/")}`}
-                type="primary"
+                type="info"
                 size="block"
                 flat={true}
               >

@@ -92,7 +92,7 @@ export default () => {
                     <Button
                       forwardedAs="a"
                       href={`${window.location.origin}${manualLink}`}
-                      type="link"
+                      type="link-hover"
                       size="sm"
                     >
                       {t("Read manual")}

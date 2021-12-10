@@ -1,11 +1,6 @@
-import { useTranslation } from "react-i18next";
-import {
-  Text,
-  Button,
-  Title,
-  Card,
-} from "@appquality/appquality-design-system";
-import { useSelector, shallowEqual } from "react-redux";
+import { Card, Text, Title } from '@appquality/appquality-design-system';
+import { useTranslation } from 'react-i18next';
+import { shallowEqual, useSelector } from 'react-redux';
 
 export const FiscalProfileReport = () => {
   const fiscalData = useSelector(
@@ -48,7 +43,7 @@ const UnVerifiedFiscalProfile = () => {
       <Title size="xs" className="aq-mb-2">
         {t("Status of user fiscal profile:::Fiscal Profile Report")}
       </Title>
-      <Text color="warning">
+      <Text variant={false} color="warning">
         <strong>{t("Invalid fiscal profile")}</strong>
       </Text>
       <Text className="aq-mb-3">

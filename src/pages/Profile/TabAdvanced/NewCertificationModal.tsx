@@ -1,13 +1,13 @@
 import { Button, Formik } from "@appquality/appquality-design-system";
 import { FormikProps } from "formik";
-import { CertificationFields } from "../types";
-import NewCertificationModalForm from "./NewCertificationModalForm";
-import modalStore from "src/redux/modal";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
+import modalStore from "src/redux/modal";
 import { addCertification } from "src/redux/user/actions/addCertification";
 import * as yup from "yup";
-import React from "react";
+import { CertificationFields } from "../types";
+import NewCertificationModalForm from "./NewCertificationModalForm";
 
 export const NewCertificationModal = () => {
   const { close } = modalStore();
@@ -70,7 +70,7 @@ export const NewCertificationModalFooter = () => {
   return (
     <div className="aq-text-right">
       <Button
-        type="success"
+        type="primary"
         htmlType="submit"
         flat={true}
         form="newCertificationForm"

@@ -26,12 +26,7 @@ const RemoveDeviceModal = () => {
       footer={
         <BSGrid>
           <BSCol size="col-6">
-            <Button
-              size="block"
-              flat
-              type="secondary"
-              onClick={closeDeleteModal}
-            >
+            <Button size="block" flat type="primary" onClick={closeDeleteModal}>
               {t("Keep")}
             </Button>
           </BSCol>

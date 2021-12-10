@@ -26,7 +26,7 @@ export default () => {
           <>
             <li>
               <span>{t("Manufacturer")}:</span>{" "}
-              <strong>{values.manufacturer}</strong>
+              <strong className="aq-text-primary">{values.manufacturer}</strong>
             </li>
             <li>
               <span>{t("Model")}:</span>{" "}
