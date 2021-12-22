@@ -7,6 +7,7 @@ import {
 import { useTranslation } from "react-i18next";
 import signupImage from "./assets/signup.png";
 import { SignupForm } from "./SignupForm";
+import { HalfColumnButton } from "src/features/HalfColumnButton";
 
 interface SignupMailSocialProps {
   redirectUrl: string;
@@ -42,33 +43,37 @@ export const SignupMailSocial = ({ redirectUrl }: SignupMailSocialProps) => {
                 "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard"
               )}
             </Text>
-            <CSSGrid min="78px" fill="true">
-              <div style={{ gridColumn: "auto / span 3" }} className="aq-mb-3">
-                <div className="aq-mb-3">
-                  <Button
-                    type="primary"
-                    size="block"
-                    id="signup-with-fb"
-                    flat
-                    onClick={signupWithFb}
-                  >
-                    {t("Facebook")}
-                  </Button>
-                </div>
-                <Button
-                  type="secondary"
-                  size="block"
-                  id="signup-with-ln"
-                  flat
-                  onClick={signupWithLn}
-                >
-                  {t("LinkedIn")}
-                </Button>
-              </div>
+            <CSSGrid min="50%" max="75%" gutter="0" fill="true">
+              <HalfColumnButton
+                type="primary"
+                size="block"
+                id="signup-with-fb"
+                className="aq-mb-3"
+                flat
+                onClick={signupWithFb}
+              >
+                {t("Facebook")}
+              </HalfColumnButton>
+            </CSSGrid>
+            <CSSGrid min="50%" max="75%" gutter="0" fill="true">
+              <HalfColumnButton
+                type="info"
+                size="block"
+                id="signup-with-ln"
+                className="aq-mb-3"
+                flat
+                onClick={signupWithLn}
+              >
+                {t("LinkedIn")}
+              </HalfColumnButton>
             </CSSGrid>
           </div>
           <div>
-            <img alt={t("Become an AppQuality Tester")} src={signupImage} />
+            <img
+              style={{ width: "100%" }}
+              alt={t("Become an AppQuality Tester")}
+              src={signupImage}
+            />
           </div>
         </div>
       </CSSGrid>
