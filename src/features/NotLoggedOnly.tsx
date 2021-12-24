@@ -5,7 +5,8 @@ import { useHistory } from 'react-router-dom';
 import { useLocalizeRoute } from 'src/hooks/useLocalizedRoute';
 import useUser from 'src/redux/user';
 
-import LoadingSvg from './assets/loading.svg';
+import LoadingImg from './assets/tryber_loading.gif';
+
 
 export default ({
   children,
@@ -38,10 +39,18 @@ export default ({
   if (isLoading || user) {
     return (
       <div id="appq-loading-content">
-        <div style={{ width: "60px", height: "60px" }}>
-          <object type="image/svg+xml" data={LoadingSvg}>
-            svg-animation
-          </object>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            style={{ width: "280px" }}
+            src={LoadingImg}
+            alt="tryber loading"
+          />
         </div>
       </div>
     );
