@@ -22,7 +22,7 @@ import dateFormatter from "../../../utils/dateFormatter";
 import FiscalAddress from "./components/FiscalAddress";
 import FiscalTypeArea from "./components/FiscalTypeArea";
 
-export const TabFiscalEdit = () => {
+export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   const { t } = useTranslation();
   const fiscalData = useSelector(
     (state: GeneralState) => state.user.fiscal.data,
@@ -144,6 +144,9 @@ export const TabFiscalEdit = () => {
       initialTouched={!!fiscalData ? initialTouched : {}}
       initialValues={initialUserValues}
       validationSchema={yup.object(validationSchema)}
+      onReset={() => {
+        setEdit(false);
+      }}
       onSubmit={async (values, helpers) => {
         const submitValues = {
           address: {
@@ -284,7 +287,15 @@ export const TabFiscalEdit = () => {
               <div className="aq-mb-3">
                 <FiscalAddress />
               </div>
-              <CSSGrid min="50%" gutter="0" fill="true">
+              <CSSGrid min="40%" fill="true">
+                <HalfColumnButton
+                  type="primary"
+                  htmlType="reset"
+                  flat
+                  disabled={isValidating}
+                >
+                  {t("Cancel")}
+                </HalfColumnButton>
                 <HalfColumnButton
                   type="success"
                   htmlType="submit"

@@ -25,7 +25,7 @@ const TabFiscal = () => {
       {isProfileLoading || userFiscal.loading ? (
         <SkeletonTab />
       ) : isEdit ? (
-        <TabFiscalEdit />
+        <TabFiscalEdit setEdit={setIsEdit} />
       ) : (
         <TabFiscalShow setEdit={setIsEdit} />
       )}
