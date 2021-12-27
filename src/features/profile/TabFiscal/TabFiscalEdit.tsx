@@ -39,6 +39,8 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   const dispatch = useDispatch();
 
   const initialUserValues: FiscalFormValues = {
+    name: userData.name,
+    surname: userData.surname,
     gender: fiscalData?.gender || "",
     fiscalId: fiscalData?.fiscalId || "",
     type: fiscalData?.type || "",
@@ -65,6 +67,8 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   };
 
   const validationSchema = {
+    name: yup.string().required(t("This is a required field")),
+    surname: yup.string().required(t("This is a required field")),
     gender: yup
       .string()
       .oneOf(["male", "female"])
@@ -200,23 +204,64 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
               <Title size="xs" className="aq-mb-2">
                 {t("Informations")}
               </Title>
-              <FormGroup>
-                <FormLabel htmlFor="name" label={t("First Name")} isDisabled />
-                <Input id="name" type="text" disabled value={userData.name} />
-              </FormGroup>
-              <FormGroup>
-                <FormLabel
-                  htmlFor="surname"
-                  label={t("Last Name")}
-                  isDisabled
-                />
-                <Input
-                  id="surname"
-                  type="text"
-                  disabled
-                  value={userData.surname}
-                />
-              </FormGroup>
+              <FormikField name="name">
+                {({
+                  field, // { name, value, onChange, onBlur }
+                  form,
+                  meta,
+                }: FieldProps) => {
+                  return (
+                    <FormGroup className="aq-mb-3">
+                      <FormLabel htmlFor="name" label={t("First Name")} />
+                      <div className="input-group">
+                        <Input
+                          id="name"
+                          type="text"
+                          isInvalid={
+                            meta.touched && typeof meta.error == "string"
+                          }
+                          extra={{ ...field }}
+                        />
+                      </div>
+                      <Text small className="aq-mt-1">
+                        <span className="aq-text-secondary">
+                          {t("This field is shared with the base section")}
+                        </span>
+                      </Text>
+                      <ErrorMessage name="name" />
+                    </FormGroup>
+                  );
+                }}
+              </FormikField>
+              <FormikField name="surname">
+                {({
+                  field, // { name, value, onChange, onBlur }
+                  form,
+                  meta,
+                }: FieldProps) => {
+                  return (
+                    <FormGroup className="aq-mb-3">
+                      <FormLabel htmlFor="surname" label={t("Last Name")} />
+                      <div className="input-group">
+                        <Input
+                          id="surname"
+                          type="text"
+                          isInvalid={
+                            meta.touched && typeof meta.error == "string"
+                          }
+                          extra={{ ...field }}
+                        />
+                      </div>
+                      <Text small className="aq-mt-1">
+                        <span className="aq-text-secondary">
+                          {t("This field is shared with the base section")}
+                        </span>
+                      </Text>
+                      <ErrorMessage name="surname" />
+                    </FormGroup>
+                  );
+                }}
+              </FormikField>
               <FormikField name="gender">
                 {({
                   field, // { name, value, onChange, onBlur }
@@ -258,21 +303,21 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                 }: FieldProps) => {
                   return (
                     <FormGroup className="aq-mb-3">
-                      <FormLabel
-                        htmlFor="birthDate"
-                        label={t("Birth Date")}
-                        isDisabled
-                      />
+                      <FormLabel htmlFor="birthDate" label={t("Birth Date")} />
                       <Input
                         id="birthDate"
                         type="text"
-                        disabled
                         value={
                           userData.birthDate
                             ? dateFormatter(userData.birthDate)
                             : ""
                         }
                       />
+                      <Text small className="aq-mt-1">
+                        <span className="aq-text-secondary">
+                          {t("This field is shared with the base section")}
+                        </span>
+                      </Text>
                       <ErrorMessage name="birthDate" />
                     </FormGroup>
                   );

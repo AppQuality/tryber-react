@@ -19,6 +19,8 @@ interface TabCommonProps {
 }
 
 type FiscalFormValues = {
+  name: string;
+  surname: string;
   countryCode?: string; // IT,
   provinceCode?: string; // MI,
   city?: string; //"Riomaggiore",
