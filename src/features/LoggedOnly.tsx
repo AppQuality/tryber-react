@@ -1,8 +1,9 @@
-import { useTranslation } from "react-i18next";
+import TagManager from "react-gtm-module";
 import { shallowEqual, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
 import LoadingSvg from "src/pages/assets/loading.svg";
+
+import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
 
 export default ({ children }: { children: React.ReactNode }) => {
   const history = useHistory();
@@ -32,6 +33,11 @@ export default ({ children }: { children: React.ReactNode }) => {
       </div>
     );
   }
+  TagManager.dataLayer({
+    dataLayer: {
+      event: "ApiLoaded",
+    },
+  });
   if (error) {
     if (error.statusCode === 403) {
       history.push(homeRoute);

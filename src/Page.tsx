@@ -1,3 +1,5 @@
+import "./i18n";
+
 import { datadogLogs } from "@datadog/browser-logs";
 import { Location } from "history";
 import queryString from "query-string";
@@ -5,10 +7,10 @@ import { useEffect, useRef } from "react";
 import TagManager from "react-gtm-module";
 import { useDispatch } from "react-redux";
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+
 import GenericModal from "./features/GenericModal";
 import SiteHeader from "./features/SiteHeader";
 import SiteWideMessages from "./features/SiteWideMessages";
-import "./i18n";
 import {
   Dashboard,
   Devices,
@@ -33,7 +35,6 @@ if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
 if (process.env.REACT_APP_GTM_ID) {
   const tagManagerArgs = {
     gtmId: process.env.REACT_APP_GTM_ID,
-    dataLayerName: "PageDataLayer",
   };
 
   TagManager.initialize(tagManagerArgs);

@@ -1,20 +1,21 @@
+import "./i18n";
+
 import {
   aqBootstrapTheme,
   GlobalStyle,
 } from "@appquality/appquality-design-system";
-import "./i18n";
-import { useTranslation } from "react-i18next";
 import TagManager from "react-gtm-module";
 import Helmet from "react-helmet";
-import { ThemeProvider } from "styled-components";
+import { useTranslation } from "react-i18next";
 import { BrowserRouter } from "react-router-dom";
-import Provider from "./redux/provider";
+import { ThemeProvider } from "styled-components";
+
 import Page from "./Page";
+import Provider from "./redux/provider";
 
 if (process.env.REACT_APP_GTM_ID) {
   const tagManagerArgs = {
     gtmId: process.env.REACT_APP_GTM_ID,
-    dataLayerName: "PageDataLayer",
   };
 
   TagManager.initialize(tagManagerArgs);

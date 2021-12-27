@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import TagManager from "react-gtm-module";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import LoadingSvg from "src/pages/assets/loading.svg";
+
 import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
 import useUser from "../redux/user";
 
@@ -44,7 +46,11 @@ export default ({
       </div>
     );
   }
-
+  TagManager.dataLayer({
+    dataLayer: {
+      event: "ApiLoaded",
+    },
+  });
   if (error && error.statusCode !== 403) {
     alert(error.message);
   }
