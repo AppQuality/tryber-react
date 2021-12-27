@@ -177,7 +177,7 @@ const TabBase = () => {
                         </div>
                         <Text small className="aq-mt-1">
                           <span className="aq-text-secondary">
-                            {t("This field is shared with the tax section")}
+                            {t("This field is shared with the fiscal section")}
                           </span>
                         </Text>
                         <ErrorMessage name="name" />
@@ -206,7 +206,7 @@ const TabBase = () => {
                         </div>
                         <Text small className="aq-mt-1">
                           <span className="aq-text-secondary">
-                            {t("This field is shared with the tax section")}
+                            {t("This field is shared with the fiscal section")}
                           </span>
                         </Text>
                         <ErrorMessage name="surname" />
@@ -258,7 +258,7 @@ const TabBase = () => {
                         />
                         <Text small className="aq-mt-1">
                           <span className="aq-text-secondary">
-                            {t("This field is shared with the tax section")}
+                            {t("This field is shared with the fiscal section")}
                           </span>
                         </Text>
                         <ErrorMessage name={field.name} />
