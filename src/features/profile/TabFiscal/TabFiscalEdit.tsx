@@ -21,6 +21,8 @@ import { updateFiscalProfile } from "../../../redux/user/actions/updateFiscalPro
 import dateFormatter from "../../../utils/dateFormatter";
 import FiscalAddress from "./components/FiscalAddress";
 import FiscalTypeArea from "./components/FiscalTypeArea";
+import { updateProfile } from "src/redux/user/actions/updateProfile";
+import BirthdayPicker from "src/features/BirthdayPicker";
 
 export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
   const { t } = useTranslation();
@@ -193,6 +195,21 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
             ),
           })
         );
+        dispatch(
+          updateProfile(
+            {
+              profile: {
+                name: values.name,
+                surname: values.surname,
+                birthDate: values.birthDate,
+              },
+            },
+            t(
+              "Your profile doesn't match with your fiscal profile, please check your data"
+            ),
+            t("Your fiscal profile is now verified")
+          )
+        );
         helpers.setSubmitting(false);
         helpers.resetForm({ values });
       }}
@@ -304,14 +321,18 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                   return (
                     <FormGroup className="aq-mb-3">
                       <FormLabel htmlFor="birthDate" label={t("Birth Date")} />
-                      <Input
-                        id="birthDate"
-                        type="text"
-                        value={
-                          userData.birthDate
-                            ? dateFormatter(userData.birthDate)
-                            : ""
-                        }
+                      <BirthdayPicker
+                        name={field.name}
+                        initialValue={field.value}
+                        onCancel={() => form.setFieldTouched(field.name)}
+                        onChange={(v: Date) => {
+                          field.onChange(v.toISOString().slice(0, 10));
+                          form.setFieldValue(
+                            field.name,
+                            v.toISOString().slice(0, 10),
+                            true
+                          );
+                        }}
                       />
                       <Text small className="aq-mt-1">
                         <span className="aq-text-secondary">
