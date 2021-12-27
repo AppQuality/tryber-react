@@ -177,7 +177,7 @@ const TabBase = () => {
                         </div>
                         <Text small className="aq-mt-1">
                           <span className="aq-text-secondary">
-                            {t("This field is shared with fiscal Tab")}
+                            {t("This field is shared with the tax section")}
                           </span>
                         </Text>
                         <ErrorMessage name="name" />
@@ -185,7 +185,35 @@ const TabBase = () => {
                     );
                   }}
                 </FormikField>
-                <Field name="surname" type="text" label={t("Last Name")} />
+                <FormikField name="surname">
+                  {({
+                    field, // { name, value, onChange, onBlur }
+                    form,
+                    meta,
+                  }: FieldProps) => {
+                    return (
+                      <FormGroup className="aq-mb-3">
+                        <FormLabel htmlFor="surname" label={t("Last Name")} />
+                        <div className="input-group">
+                          <Input
+                            id="surname"
+                            type="text"
+                            isInvalid={
+                              meta.touched && typeof meta.error == "string"
+                            }
+                            extra={{ ...field }}
+                          />
+                        </div>
+                        <Text small className="aq-mt-1">
+                          <span className="aq-text-secondary">
+                            {t("This field is shared with the tax section")}
+                          </span>
+                        </Text>
+                        <ErrorMessage name="surname" />
+                      </FormGroup>
+                    );
+                  }}
+                </FormikField>
                 <FormikField name="gender">
                   {({ field, form }: FieldProps) => (
                     <FormGroup>
@@ -228,6 +256,11 @@ const TabBase = () => {
                             );
                           }}
                         />
+                        <Text small className="aq-mt-1">
+                          <span className="aq-text-secondary">
+                            {t("This field is shared with the tax section")}
+                          </span>
+                        </Text>
                         <ErrorMessage name={field.name} />
                       </FormGroup>
                     );
