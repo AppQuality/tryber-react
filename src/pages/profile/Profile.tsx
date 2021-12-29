@@ -30,6 +30,7 @@ const headerOffset = 60;
 export default function Profile() {
   const { t } = useTranslation();
   let ref = useRef<HTMLDivElement>(null);
+  let inputRef = useRef<HTMLInputElement>(null);
   const urlParams = new URLSearchParams(window.location.search);
   const tabParam = urlParams.get("tab") || "base";
   const currentTab = ["base", "advanced", "fiscal", "options"].includes(
@@ -59,6 +60,7 @@ export default function Profile() {
 
   const handleEditFiscalInfo = () => {
     setActiveTab("fiscal");
+    if (inputRef && inputRef.current) inputRef?.current.focus();
     if (
       window.matchMedia(`(max-width: ${aqBootstrapTheme.grid.breakpoints.lg})`)
         .matches
@@ -110,7 +112,7 @@ export default function Profile() {
                         }
                       >
                         <div>
-                          <TabFiscal />
+                          <TabFiscal inputRef={inputRef} />
                         </div>
                       </Tab>
                       <Tab

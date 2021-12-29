@@ -24,7 +24,7 @@ import FiscalTypeArea from "./components/FiscalTypeArea";
 import { updateProfile } from "src/redux/user/actions/updateProfile";
 import BirthdayPicker from "src/features/BirthdayPicker";
 
-export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
+export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
   const { t } = useTranslation();
   const fiscalData = useSelector(
     (state: GeneralState) => state.user.fiscal.data,
@@ -237,7 +237,7 @@ export const TabFiscalEdit = ({ setEdit }: TabCommonProps) => {
                           isInvalid={
                             meta.touched && typeof meta.error == "string"
                           }
-                          extra={{ ...field }}
+                          extra={{ ...field, ref: inputRef }}
                         />
                       </div>
                       <Text small className="aq-mt-1">

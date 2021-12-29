@@ -16,6 +16,7 @@ interface ProvinceSelectProps {
 
 interface TabCommonProps {
   setEdit: Dispatch<SetStateAction<boolean>>;
+  inputRef?: Ref<HTMLInputElement>;
 }
 
 type FiscalFormValues = {

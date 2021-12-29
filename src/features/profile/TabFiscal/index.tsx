@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { Ref, useEffect, useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { SkeletonTab } from "src/features/profile/SkeletonTab";
 import { TabFiscalEdit } from "./TabFiscalEdit";
 import { TabFiscalShow } from "./TabFiscalShow";
 
-const TabFiscal = () => {
+const TabFiscal = ({ inputRef }: { inputRef?: Ref<HTMLInputElement> }) => {
   const userFiscal = useSelector(
     (state: GeneralState) => state.user?.fiscal,
     shallowEqual
@@ -25,7 +25,7 @@ const TabFiscal = () => {
       {isProfileLoading || userFiscal.loading ? (
         <SkeletonTab />
       ) : isEdit ? (
-        <TabFiscalEdit setEdit={setIsEdit} />
+        <TabFiscalEdit setEdit={setIsEdit} inputRef={inputRef} />
       ) : (
         <TabFiscalShow setEdit={setIsEdit} />
       )}
