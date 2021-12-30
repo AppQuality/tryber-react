@@ -7,7 +7,6 @@ import {
   Tabs,
   Tab,
   DatepickerGlobalStyle,
-  aqBootstrapTheme,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import GoogleTagManager from "src/features/GoogleTagManager";
@@ -24,8 +23,6 @@ import TabFiscal from "src/features/profile/TabFiscal";
 import TabOptions from "src/features/profile/TabOptions";
 import UserDeleteModal from "src/features/profile/UserDeleteModal";
 import { useDispatch } from "react-redux";
-
-const headerOffset = 60;
 
 export default function Profile() {
   const { t } = useTranslation();
@@ -58,23 +55,6 @@ export default function Profile() {
     dispatch(getFiscalProfile());
   }, []);
 
-  const handleEditFiscalInfo = () => {
-    setActiveTab("fiscal");
-    if (inputRef && inputRef.current) inputRef?.current.focus();
-    if (
-      window.matchMedia(`(max-width: ${aqBootstrapTheme.grid.breakpoints.lg})`)
-        .matches
-    ) {
-      const node = ref.current;
-      if (node) {
-        const offsetPosition = node.getBoundingClientRect().top - headerOffset;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      }
-    }
-  };
   return (
     <GoogleTagManager title={t("Profile")}>
       <LoggedOnly>
@@ -128,7 +108,7 @@ export default function Profile() {
                 </Card>
               </BSCol>
               <BSCol size="col-lg-3">
-                <FiscalProfileReport setActiveTab={handleEditFiscalInfo} />
+                <FiscalProfileReport />
               </BSCol>
             </BSGrid>
           </Container>

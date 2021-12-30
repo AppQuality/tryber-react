@@ -1,4 +1,5 @@
 import {
+  Button,
   CSSGrid,
   ErrorMessage,
   FieldProps,
@@ -18,14 +19,16 @@ import { SkeletonTab } from "src/features/profile/SkeletonTab";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
 import * as yup from "yup";
 import { updateFiscalProfile } from "../../../redux/user/actions/updateFiscalProfile";
-import dateFormatter from "../../../utils/dateFormatter";
 import FiscalAddress from "./components/FiscalAddress";
 import FiscalTypeArea from "./components/FiscalTypeArea";
 import { updateProfile } from "src/redux/user/actions/updateProfile";
 import BirthdayPicker from "src/features/BirthdayPicker";
+import FiscalResidenceModal from "src/features/profile/TabFiscal/components/FiscalResidenceModal";
+import modalStore from "src/redux/modal";
 
 export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
   const { t } = useTranslation();
+  const { open } = modalStore();
   const fiscalData = useSelector(
     (state: GeneralState) => state.user.fiscal.data,
     shallowEqual
@@ -48,20 +51,12 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
     type: fiscalData?.type || "",
     fiscalTypeSelect:
       fiscalData?.type === "non-italian" ? "" : fiscalData?.type,
-    fiscalTypeRadio:
-      fiscalData?.type === "non-italian"
-        ? "non-italian"
-        : ["withholding", "witholding-extra", "other"].includes(
-            fiscalData?.type || ""
-          )
-        ? "italian"
-        : undefined,
     birthPlaceCity: fiscalData?.birthPlace?.city,
     birthPlaceId: "",
     birthDate: userData.birthDate,
     birthPlaceProvince: fiscalData?.birthPlace?.province,
     countryCode: fiscalData?.address?.country,
-    provinceCode: fiscalData?.address?.province,
+    province: fiscalData?.address?.province,
     city: fiscalData?.address?.city,
     street: fiscalData?.address?.street,
     streetNumber: fiscalData?.address?.streetNumber,
@@ -76,9 +71,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
       .oneOf(["male", "female"])
       .required(t("This is a required field")),
     countryCode: yup.string().required(t("You need to select a country")),
-    provinceCode: yup
-      .string()
-      .required(t("Your address need to have a province code")),
+    province: yup.string().required(t("This is a required field")),
     city: yup.string().required(t("You need to select a city")),
     birthDate: yup
       .string()
@@ -86,27 +79,23 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
     street: yup.string().required(t("You need to select a street")),
     streetNumber: yup.string().required(t("You need to select a street code")),
     zipCode: yup.string().required(t("You need to select a zip code")),
-    fiscalTypeRadio: yup
-      .string()
-      .oneOf(["non-italian", "italian"])
-      .required(t("This is a required field")),
     fiscalTypeSelect: yup
       .string()
       .oneOf(["withholding", "witholding-extra", "other"])
-      .when("fiscalTypeRadio", {
-        is: "italian",
+      .when("countryCode", {
+        is: "IT",
         then: yup.string().required(t("This is a required field")),
       }),
     type: yup
       .string()
       .oneOf(["non-italian", "withholding", "witholding-extra", "other"])
       .required(t("This is a required field")),
-    birthPlaceCity: yup.string().when("fiscalTypeRadio", {
-      is: "italian",
+    birthPlaceCity: yup.string().when("countryCode", {
+      is: "IT",
       then: yup.string().required(t("This is a required field")),
     }),
-    birthPlaceProvince: yup.string().when("fiscalTypeRadio", {
-      is: "italian",
+    birthPlaceProvince: yup.string().when("countryCode", {
+      is: "IT",
       then: yup.string().when("birthPlaceCity", (birthPlaceCity) => {
         if (yup.string().required().isValidSync(birthPlaceCity)) {
           return yup
@@ -123,8 +112,8 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
     fiscalId: yup
       .string()
       .required(t("This is a required field"))
-      .when("fiscalTypeRadio", {
-        is: "italian",
+      .when("countryCode", {
+        is: "IT",
         then: yup
           .string()
           .min(16, t("Should be exactly 16 characters"))
@@ -157,7 +146,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
         const submitValues = {
           address: {
             country: values.countryCode,
-            province: values.provinceCode,
+            province: values.province,
             city: values.city,
             street: values.street,
             streetNumber: values.streetNumber,
@@ -189,7 +178,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                 <b>{t("Invalid tax profile.")}</b>
                 <br />
                 {t(
-                  "There was an error validating your fiscal profile, please check your data."
+                  "There was an error validating your tax id. Please check your name, surname, date of birth or place of birth"
                 )}
               </>
             ),
@@ -214,7 +203,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
         helpers.resetForm({ values });
       }}
     >
-      {({ isValid, isValidating, dirty }) => (
+      {({ isValid, isValidating, dirty, values }) => (
         <Form id="fiscalProfileForm">
           <CSSGrid gutter="50px" rowGap="1rem" min="220px">
             <div className="user-info">
@@ -346,13 +335,35 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
               </FormikField>
             </div>
             <div className="tax-residence">
-              <Title size="xs" className="aq-mb-2">
-                {t("Tax residence")}
-              </Title>
-              <FiscalTypeArea />
+              <FiscalAddress />
               <div className="aq-mb-3">
-                <FiscalAddress />
+                <Title size="xs" className="aq-mb-2">
+                  {t("Additional Informations")}
+                </Title>
+                <FiscalTypeArea />
               </div>
+              <Text small className="aq-mb-3">
+                <span className="aq-text-secondary">
+                  {t(
+                    "If you have problems filling in your fiscal informations please"
+                  )}
+                </span>{" "}
+                <Button
+                  type="link"
+                  htmlType="button"
+                  className="aq-text-secondary"
+                  flat
+                  style={{ padding: 0, fontWeight: 400 }}
+                  size="sm"
+                  onClick={() => {
+                    open({
+                      content: <FiscalResidenceModal values={values} />,
+                    });
+                  }}
+                >
+                  {t("contact us")}
+                </Button>
+              </Text>
               <CSSGrid min="40%" fill="true">
                 <HalfColumnButton
                   type="primary"

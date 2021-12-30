@@ -7,13 +7,7 @@ import {
 } from "@appquality/appquality-design-system";
 import { useSelector, shallowEqual } from "react-redux";
 
-interface FiscalProfileReportProps {
-  setActiveTab: () => void;
-}
-
-export const FiscalProfileReport = ({
-  setActiveTab,
-}: FiscalProfileReportProps) => {
+export const FiscalProfileReport = () => {
   const fiscalData = useSelector(
     (state: GeneralState) => state.user.fiscal.data,
     shallowEqual
@@ -22,16 +16,16 @@ export const FiscalProfileReport = ({
     <>
       {fiscalData?.fiscalStatus ? (
         fiscalData.fiscalStatus.toLowerCase() !== "verified" ? (
-          <UnVerifiedFiscalProfile setActiveTab={setActiveTab} />
+          <UnVerifiedFiscalProfile />
         ) : null
       ) : (
-        <EmptyFiscalProfile setActiveTab={setActiveTab} />
+        <EmptyFiscalProfile />
       )}
     </>
   );
 };
 
-const EmptyFiscalProfile = ({ setActiveTab }: FiscalProfileReportProps) => {
+const EmptyFiscalProfile = () => {
   const { t } = useTranslation();
   return (
     <Card className="stick-to-header-lg aq-mb-3" shadow={true}>
@@ -44,15 +38,13 @@ const EmptyFiscalProfile = ({ setActiveTab }: FiscalProfileReportProps) => {
       <Text className="aq-mb-3">
         {t("You need to fill in your tax profile data to receive your booty")}
       </Text>
-      <Button flat size="block" onClick={setActiveTab}>
+      <Button flat size="block">
         {t("Fill in now")}
       </Button>
     </Card>
   );
 };
-const UnVerifiedFiscalProfile = ({
-  setActiveTab,
-}: FiscalProfileReportProps) => {
+const UnVerifiedFiscalProfile = () => {
   const { t } = useTranslation();
   return (
     <Card className="stick-to-header-lg aq-mb-3" shadow={true}>
@@ -64,13 +56,10 @@ const UnVerifiedFiscalProfile = ({
       </Text>
       <Text className="aq-mb-3">
         {t(
-          "Submitted data are incorrect or incomplete. " +
-            "Please, check the following fields: name, surname, date of birth, tax-ID or place of birth."
+          "We couldn't validate your tax id. " +
+            "Please check your name, surname, date of birth or place of birth in the fiscal area of your profile."
         )}
       </Text>
-      <Button flat size="block" onClick={setActiveTab}>
-        {t("Check your data")}
-      </Button>
     </Card>
   );
 };
