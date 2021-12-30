@@ -342,7 +342,25 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                 </Title>
                 <FiscalTypeArea />
               </div>
-              <Text small className="aq-mb-3">
+              <CSSGrid min="40%" fill="true">
+                <HalfColumnButton
+                  type="primary"
+                  htmlType="reset"
+                  flat
+                  disabled={isValidating}
+                >
+                  {t("Cancel")}
+                </HalfColumnButton>
+                <HalfColumnButton
+                  type="success"
+                  htmlType="submit"
+                  flat
+                  disabled={!isValid || isValidating || !dirty}
+                >
+                  {t("Save")}
+                </HalfColumnButton>
+              </CSSGrid>
+              <Text small className="aq-mt-3">
                 <span className="aq-text-secondary">
                   {t(
                     "If you have problems filling in your fiscal informations please"
@@ -364,24 +382,6 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                   {t("contact us")}
                 </Button>
               </Text>
-              <CSSGrid min="40%" fill="true">
-                <HalfColumnButton
-                  type="primary"
-                  htmlType="reset"
-                  flat
-                  disabled={isValidating}
-                >
-                  {t("Cancel")}
-                </HalfColumnButton>
-                <HalfColumnButton
-                  type="success"
-                  htmlType="submit"
-                  flat
-                  disabled={!isValid || isValidating || !dirty}
-                >
-                  {t("Save")}
-                </HalfColumnButton>
-              </CSSGrid>
             </div>
           </CSSGrid>
         </Form>
