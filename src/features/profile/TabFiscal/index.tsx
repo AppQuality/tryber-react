@@ -13,17 +13,13 @@ const TabFiscal = ({ inputRef }: { inputRef?: Ref<HTMLInputElement> }) => {
     (state: GeneralState) => state.user.loadingProfile,
     shallowEqual
   );
-  const [isEdit, setIsEdit] = useState(true);
-  useEffect(() => {
-    let isUndefined = typeof userFiscal.data === "undefined";
-    let isVerified = userFiscal.data?.fiscalStatus === "Verified";
-    setIsEdit(isUndefined || !isVerified);
-  }, [userFiscal]);
+  const [isEdit, setIsEdit] = useState(false);
+
   return (
     <div className="aq-p-3">
       {isProfileLoading || userFiscal.loading ? (
         <SkeletonTab />
-      ) : isEdit ? (
+      ) : isEdit && userFiscal.data?.fiscalStatus === "Verified" ? (
         <TabFiscalEdit setEdit={setIsEdit} inputRef={inputRef} />
       ) : (
         <TabFiscalShow setEdit={setIsEdit} />
