@@ -38,9 +38,6 @@ const EmptyFiscalProfile = () => {
       <Text className="aq-mb-3">
         {t("You need to fill in your tax profile data to receive your booty")}
       </Text>
-      <Button flat size="block">
-        {t("Fill in now")}
-      </Button>
     </Card>
   );
 };
