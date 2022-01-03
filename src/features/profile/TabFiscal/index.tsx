@@ -15,10 +15,9 @@ const TabFiscal = ({ inputRef }: { inputRef?: Ref<HTMLInputElement> }) => {
   );
   const [isEdit, setIsEdit] = useState(true);
   useEffect(() => {
-    setIsEdit(
-      typeof userFiscal.data === "undefined" ||
-        userFiscal.data?.fiscalStatus !== "Verified"
-    );
+    let isUndefined = typeof userFiscal.data === "undefined";
+    let isVerified = userFiscal.data?.fiscalStatus === "Verified";
+    setIsEdit(isUndefined || !isVerified);
   }, [userFiscal]);
   return (
     <div className="aq-p-3">
