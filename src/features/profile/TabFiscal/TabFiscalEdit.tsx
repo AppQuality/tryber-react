@@ -203,7 +203,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
         helpers.resetForm({ values });
       }}
     >
-      {({ isValid, isValidating, dirty, values }) => (
+      {({ isValid, isValidating, dirty, values, errors }) => (
         <Form id="fiscalProfileForm">
           <CSSGrid gutter="50px" rowGap="1rem" min="220px">
             <div className="user-info">
@@ -309,7 +309,6 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                 }: FieldProps) => {
                   return (
                     <FormGroup className="aq-mb-3">
-                      <FormLabel htmlFor="birthDate" label={t("Birth Date")} />
                       <BirthdayPicker
                         name={field.name}
                         initialValue={field.value}
@@ -343,14 +342,16 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                 <FiscalTypeArea />
               </div>
               <CSSGrid min="40%" fill="true">
-                <HalfColumnButton
-                  type="primary"
-                  htmlType="reset"
-                  flat
-                  disabled={isValidating}
-                >
-                  {t("Cancel")}
-                </HalfColumnButton>
+                {fiscalData?.fiscalStatus.toLowerCase() === "verified" && (
+                  <HalfColumnButton
+                    type="primary"
+                    htmlType="reset"
+                    flat
+                    disabled={isValidating}
+                  >
+                    {t("Cancel")}
+                  </HalfColumnButton>
+                )}
                 <HalfColumnButton
                   type="success"
                   htmlType="submit"

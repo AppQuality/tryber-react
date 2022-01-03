@@ -65,6 +65,9 @@ const FiscalAddress = () => {
                   setFieldValue("city", "");
                   setFieldTouched("city");
                   setFieldValue(field.name, v.value, true);
+                  if (v.value !== "IT") {
+                    setFieldValue("type", "non-italian", true);
+                  }
                 }}
                 options={countryOptions}
               />
