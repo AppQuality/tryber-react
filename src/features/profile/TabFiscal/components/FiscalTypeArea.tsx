@@ -162,13 +162,7 @@ const FiscalTypeArea = () => {
                 placeholder={t("Personal Tax identification number")}
                 id={field.name}
                 type="text"
-                value={field.value}
-                extra={{ maxLength: "30" }}
-                onChange={(v) => {
-                  form.setFieldTouched(field.name);
-                  field.onChange(v);
-                  form.setFieldValue(field.name, v, true);
-                }}
+                extra={{ ...field, maxLength: "30" }}
               />
               {values.countryCode === "IT" && (
                 <Text small className="aq-mt-1 aq-text-secondary">
