@@ -151,6 +151,7 @@ const FiscalTypeArea = () => {
         {({
           field, // { name, value, onChange, onBlur }
           form,
+          meta,
         }: FieldProps) => {
           return (
             <FormGroup>
@@ -161,6 +162,7 @@ const FiscalTypeArea = () => {
               <Input
                 placeholder={t("Personal Tax identification number")}
                 id={field.name}
+                isInvalid={meta.touched && typeof meta.error == "string"}
                 type="text"
                 extra={{ ...field, maxLength: "30" }}
               />
