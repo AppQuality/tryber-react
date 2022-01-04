@@ -14,12 +14,15 @@ const TabFiscal = ({ inputRef }: { inputRef?: Ref<HTMLInputElement> }) => {
     shallowEqual
   );
   const [isEdit, setIsEdit] = useState(false);
-
+  const [isVerified, setIsVerified] = useState(false);
+  useEffect(() => {
+    setIsVerified(userFiscal.data?.fiscalStatus === "Verified");
+  }, [userFiscal]);
   return (
     <div className="aq-p-3">
       {isProfileLoading || userFiscal.loading ? (
         <SkeletonTab />
-      ) : isEdit && userFiscal.data?.fiscalStatus === "Verified" ? (
+      ) : isEdit || !isVerified ? (
         <TabFiscalEdit setEdit={setIsEdit} inputRef={inputRef} />
       ) : (
         <TabFiscalShow setEdit={setIsEdit} />
