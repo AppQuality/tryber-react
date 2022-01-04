@@ -52,9 +52,10 @@ const UnVerifiedFiscalProfile = () => {
         <strong>{t("Invalid fiscal profile")}</strong>
       </Text>
       <Text className="aq-mb-3">
+        {t("We couldn't validate your tax id.")}
+        <br />
         {t(
-          "We couldn't validate your tax id. " +
-            "Please check your name, surname, date of birth or place of birth in the fiscal area of your profile."
+          "Please check your name, surname, gender, date of birth or place of birth in the fiscal area of your profile."
         )}
       </Text>
     </Card>

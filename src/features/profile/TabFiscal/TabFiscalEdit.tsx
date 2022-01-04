@@ -178,7 +178,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                 <b>{t("Invalid tax profile.")}</b>
                 <br />
                 {t(
-                  "There was an error validating your tax id. Please check your name, surname, date of birth or place of birth"
+                  "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth"
                 )}
               </>
             ),
