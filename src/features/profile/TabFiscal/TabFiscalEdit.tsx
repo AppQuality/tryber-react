@@ -159,7 +159,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                 city: values.birthPlaceCity,
                 province: values.birthPlaceProvince,
               },
-          fiscalId: values.fiscalId,
+          fiscalId: values.fiscalId?.toUpperCase(),
           gender: values.gender,
         };
         dispatch(
