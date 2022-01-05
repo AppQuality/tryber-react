@@ -153,12 +153,15 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
             cityCode: values.zipCode,
           },
           type: values.type,
-          birthPlace: values.birthPlaceId
-            ? { placeId: values.birthPlaceId }
-            : {
-                city: values.birthPlaceCity,
-                province: values.birthPlaceProvince,
-              },
+          birthPlace:
+            values.birthPlaceId &&
+            (values.type === "withholding" ||
+              values.type === "witholding-extra")
+              ? { placeId: values.birthPlaceId }
+              : {
+                  city: values.birthPlaceCity,
+                  province: values.birthPlaceProvince,
+                },
           fiscalId: values.fiscalId?.toUpperCase(),
           gender: values.gender,
         };
