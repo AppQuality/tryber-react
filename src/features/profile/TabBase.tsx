@@ -11,6 +11,7 @@ import {
   Input,
   Select,
   SelectType,
+  Text,
   Title,
 } from "@appquality/appquality-design-system";
 import { FormikProps } from "formik";
@@ -22,9 +23,9 @@ import CitySelect from "src/features/profile/CitySelect";
 import { SkeletonTab } from "src/features/profile/SkeletonTab";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
 import * as yup from "yup";
-import siteWideMessages from "../../redux/siteWideMessages";
-import { updateProfile } from "../../redux/user/actions/updateProfile";
-import API from "../../utils/api";
+import siteWideMessages from "src/redux/siteWideMessages";
+import { updateProfile } from "src/redux/user/actions/updateProfile";
+import API from "src/utils/api";
 import BirthdayPicker from "../BirthdayPicker";
 import CountrySelect from "../CountrySelect";
 import { LanguageSelect } from "./LanguageSelect";
@@ -155,8 +156,64 @@ const TabBase = () => {
                 <Title className="aq-mb-2" size="xs">
                   {t("Personal info")}
                 </Title>
-                <Field name="name" type="text" label={t("First Name")} />
-                <Field name="surname" type="text" label={t("Last Name")} />
+                <FormikField name="name">
+                  {({
+                    field, // { name, value, onChange, onBlur }
+                    form,
+                    meta,
+                  }: FieldProps) => {
+                    return (
+                      <FormGroup className="aq-mb-3">
+                        <FormLabel htmlFor="name" label={t("First Name")} />
+                        <div className="input-group">
+                          <Input
+                            id="name"
+                            type="text"
+                            isInvalid={
+                              meta.touched && typeof meta.error == "string"
+                            }
+                            extra={{ ...field }}
+                          />
+                        </div>
+                        <Text small className="aq-mt-1">
+                          <span className="aq-text-secondary">
+                            {t("This field is shared with the fiscal section")}
+                          </span>
+                        </Text>
+                        <ErrorMessage name="name" />
+                      </FormGroup>
+                    );
+                  }}
+                </FormikField>
+                <FormikField name="surname">
+                  {({
+                    field, // { name, value, onChange, onBlur }
+                    form,
+                    meta,
+                  }: FieldProps) => {
+                    return (
+                      <FormGroup className="aq-mb-3">
+                        <FormLabel htmlFor="surname" label={t("Last Name")} />
+                        <div className="input-group">
+                          <Input
+                            id="surname"
+                            type="text"
+                            isInvalid={
+                              meta.touched && typeof meta.error == "string"
+                            }
+                            extra={{ ...field }}
+                          />
+                        </div>
+                        <Text small className="aq-mt-1">
+                          <span className="aq-text-secondary">
+                            {t("This field is shared with the fiscal section")}
+                          </span>
+                        </Text>
+                        <ErrorMessage name="surname" />
+                      </FormGroup>
+                    );
+                  }}
+                </FormikField>
                 <FormikField name="gender">
                   {({ field, form }: FieldProps) => (
                     <FormGroup>
@@ -199,6 +256,11 @@ const TabBase = () => {
                             );
                           }}
                         />
+                        <Text small className="aq-mt-1">
+                          <span className="aq-text-secondary">
+                            {t("This field is shared with the fiscal section")}
+                          </span>
+                        </Text>
                         <ErrorMessage name={field.name} />
                       </FormGroup>
                     );

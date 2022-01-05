@@ -17,52 +17,7 @@ const FiscalTypeArea = () => {
   const { t } = useTranslation();
   return (
     <>
-      <FormikField name="fiscalTypeRadio">
-        {({
-          field, // { name, value, onChange, onBlur }
-          form,
-        }: FieldProps) => (
-          <FormGroup>
-            <Radio
-              name={field.name}
-              checked={field.value === "italian"}
-              id="italian"
-              label={t("Tax residence option:::Italian")}
-              onChange={() => {
-                form.setTouched({
-                  ...form.touched,
-                  fiscalTypeRadio: true,
-                  type: true,
-                });
-                form.setValues((prevState: FiscalFormValues) => ({
-                  ...prevState,
-                  fiscalTypeRadio: "italian",
-                }));
-              }}
-            />
-            <Radio
-              name={field.name}
-              checked={field.value === "non-italian"}
-              id="notItalian"
-              label={t("Tax residence option:::Not italian")}
-              onChange={() => {
-                form.setTouched({
-                  ...form.touched,
-                  fiscalTypeRadio: true,
-                  type: true,
-                });
-                form.setValues((prevState: FiscalFormValues) => ({
-                  ...prevState,
-                  fiscalTypeRadio: "non-italian",
-                  type: "non-italian",
-                }));
-              }}
-            />
-            <ErrorMessage name={field.name} />
-          </FormGroup>
-        )}
-      </FormikField>
-      {values.fiscalTypeRadio === "italian" && (
+      {values.countryCode === "IT" && (
         <>
           <FormikField name="fiscalTypeSelect">
             {({
@@ -196,6 +151,7 @@ const FiscalTypeArea = () => {
         {({
           field, // { name, value, onChange, onBlur }
           form,
+          meta,
         }: FieldProps) => {
           return (
             <FormGroup>
@@ -206,16 +162,11 @@ const FiscalTypeArea = () => {
               <Input
                 placeholder={t("Personal Tax identification number")}
                 id={field.name}
+                isInvalid={meta.touched && typeof meta.error == "string"}
                 type="text"
-                value={field.value}
-                extra={{ maxLength: "30" }}
-                onChange={(v) => {
-                  form.setFieldTouched(field.name);
-                  field.onChange(v);
-                  form.setFieldValue(field.name, v, true);
-                }}
+                extra={{ ...field, maxLength: "30" }}
               />
-              {values.fiscalTypeRadio === "italian" && (
+              {values.countryCode === "IT" && (
                 <Text small className="aq-mt-1 aq-text-secondary">
                   {t(
                     "Any change to your personal data will lead to the recalculation of your tax code"
