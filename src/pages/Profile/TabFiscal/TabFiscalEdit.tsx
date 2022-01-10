@@ -12,26 +12,20 @@ import {
   Select,
   Text,
   Title,
-} from '@appquality/appquality-design-system';
-import { useTranslation } from 'react-i18next';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import BirthdayPicker from 'src/features/BirthdayPicker';
-import { HalfColumnButton } from 'src/features/HalfColumnButton';
-import { SkeletonTab } from 'src/pages/Profile/SkeletonTab';
-import modalStore from 'src/redux/modal';
-import { updateFiscalProfile } from 'src/redux/user/actions/updateFiscalProfile';
-import { updateProfile } from 'src/redux/user/actions/updateProfile';
-import * as yup from 'yup';
+} from "@appquality/appquality-design-system";
+import { useTranslation } from "react-i18next";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import BirthdayPicker from "src/features/BirthdayPicker";
+import { HalfColumnButton } from "src/features/HalfColumnButton";
+import { SkeletonTab } from "src/pages/Profile/SkeletonTab";
+import modalStore from "src/redux/modal";
+import { updateFiscalProfile } from "src/redux/user/actions/updateFiscalProfile";
+import { updateProfile } from "src/redux/user/actions/updateProfile";
+import * as yup from "yup";
 
-import FiscalAddress from './components/FiscalAddress';
-import FiscalResidenceModal from './components/FiscalResidenceModal';
-import FiscalTypeArea from './components/FiscalTypeArea';
-
-
-
-
-
-
+import FiscalAddress from "./components/FiscalAddress";
+import FiscalResidenceModal from "./components/FiscalResidenceModal";
+import FiscalTypeArea from "./components/FiscalTypeArea";
 
 export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
   const { t } = useTranslation();
@@ -239,10 +233,8 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                           extra={{ ...field, ref: inputRef }}
                         />
                       </div>
-                      <Text small className="aq-mt-1">
-                        <span className="aq-text-secondary">
-                          {t("This field is shared with the base section")}
-                        </span>
+                      <Text small className="aq-mt-1 aq-text-primaryVariant">
+                        {t("This field is shared with the base section")}
                       </Text>
                       <ErrorMessage name="name" />
                     </FormGroup>
@@ -268,10 +260,8 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                           extra={{ ...field }}
                         />
                       </div>
-                      <Text small className="aq-mt-1">
-                        <span className="aq-text-secondary">
-                          {t("This field is shared with the base section")}
-                        </span>
+                      <Text small className="aq-mt-1 aq-text-primaryVariant">
+                        {t("This field is shared with the base section")}
                       </Text>
                       <ErrorMessage name="surname" />
                     </FormGroup>
@@ -332,10 +322,8 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                           );
                         }}
                       />
-                      <Text small className="aq-mt-1">
-                        <span className="aq-text-secondary">
-                          {t("This field is shared with the base section")}
-                        </span>
+                      <Text small className="aq-mt-1 aq-text-primaryVariant">
+                        {t("This field is shared with the base section")}
                       </Text>
                       <ErrorMessage name="birthDate" />
                     </FormGroup>
@@ -371,12 +359,10 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                   {t("Save")}
                 </HalfColumnButton>
               </CSSGrid>
-              <Text small className="aq-mt-3">
-                <span className="aq-text-secondary">
-                  {t(
-                    "If you have problems filling in your fiscal informations please"
-                  )}
-                </span>{" "}
+              <Text small className="aq-mt-1 aq-text-primaryVariant">
+                {t(
+                  "If you have problems filling in your fiscal informations please"
+                )}{" "}
                 <Button
                   type="link"
                   htmlType="button"

@@ -13,29 +13,23 @@ import {
   SelectType,
   Text,
   Title,
-} from '@appquality/appquality-design-system';
-import { FormikProps } from 'formik';
-import countries from 'i18n-iso-countries';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import BirthdayPicker from 'src/features/BirthdayPicker';
-import CitySelect from 'src/features/CitySelect';
-import CountrySelect from 'src/features/CountrySelect';
-import { HalfColumnButton } from 'src/features/HalfColumnButton';
-import { SkeletonTab } from 'src/pages/Profile/SkeletonTab';
-import siteWideMessages from 'src/redux/siteWideMessages';
-import { updateProfile } from 'src/redux/user/actions/updateProfile';
-import API from 'src/utils/api';
-import * as yup from 'yup';
+} from "@appquality/appquality-design-system";
+import { FormikProps } from "formik";
+import countries from "i18n-iso-countries";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import BirthdayPicker from "src/features/BirthdayPicker";
+import CitySelect from "src/features/CitySelect";
+import CountrySelect from "src/features/CountrySelect";
+import { HalfColumnButton } from "src/features/HalfColumnButton";
+import { SkeletonTab } from "src/pages/Profile/SkeletonTab";
+import siteWideMessages from "src/redux/siteWideMessages";
+import { updateProfile } from "src/redux/user/actions/updateProfile";
+import API from "src/utils/api";
+import * as yup from "yup";
 
-import { LanguageSelect } from './LanguageSelect';
-
-
-
-
-
-
+import { LanguageSelect } from "./LanguageSelect";
 
 const TabBase = () => {
   const { t } = useTranslation();
@@ -183,10 +177,8 @@ const TabBase = () => {
                             extra={{ ...field }}
                           />
                         </div>
-                        <Text small className="aq-mt-1">
-                          <span className="aq-text-secondary">
-                            {t("This field is shared with the fiscal section")}
-                          </span>
+                        <Text small className="aq-mt-1 aq-text-primaryVariant">
+                          {t("This field is shared with the fiscal section")}
                         </Text>
                         <ErrorMessage name="name" />
                       </FormGroup>
@@ -212,10 +204,8 @@ const TabBase = () => {
                             extra={{ ...field }}
                           />
                         </div>
-                        <Text small className="aq-mt-1">
-                          <span className="aq-text-secondary">
-                            {t("This field is shared with the fiscal section")}
-                          </span>
+                        <Text small className="aq-mt-1 aq-text-primaryVariant">
+                          {t("This field is shared with the fiscal section")}
                         </Text>
                         <ErrorMessage name="surname" />
                       </FormGroup>
@@ -264,10 +254,8 @@ const TabBase = () => {
                             );
                           }}
                         />
-                        <Text small className="aq-mt-1">
-                          <span className="aq-text-secondary">
-                            {t("This field is shared with the fiscal section")}
-                          </span>
+                        <Text small className="aq-mt-1 aq-text-primaryVariant">
+                          {t("This field is shared with the fiscal section")}
                         </Text>
                         <ErrorMessage name={field.name} />
                       </FormGroup>

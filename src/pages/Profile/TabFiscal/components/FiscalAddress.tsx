@@ -7,13 +7,13 @@ import {
   FormikField,
   Select,
   Title,
-} from '@appquality/appquality-design-system';
-import { useFormikContext } from 'formik';
-import countries from 'i18n-iso-countries';
-import i18next from 'i18next';
-import { ChangeEvent, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import CitySelect from 'src/features/profile/CitySelect';
+} from "@appquality/appquality-design-system";
+import { useFormikContext } from "formik";
+import countries from "i18n-iso-countries";
+import i18next from "i18next";
+import { ChangeEvent, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import CitySelect from "src/features/CitySelect";
 
 const FiscalAddress = () => {
   const { t } = useTranslation();
