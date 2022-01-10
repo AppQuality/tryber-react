@@ -7,13 +7,7 @@ import {
 } from "@appquality/appquality-design-system";
 import { useSelector, shallowEqual } from "react-redux";
 
-interface FiscalProfileReportProps {
-  setActiveTab: () => void;
-}
-
-export const FiscalProfileReport = ({
-  setActiveTab,
-}: FiscalProfileReportProps) => {
+export const FiscalProfileReport = () => {
   const fiscalData = useSelector(
     (state: GeneralState) => state.user.fiscal.data,
     shallowEqual
@@ -22,16 +16,16 @@ export const FiscalProfileReport = ({
     <>
       {fiscalData?.fiscalStatus ? (
         fiscalData.fiscalStatus.toLowerCase() !== "verified" ? (
-          <UnVerifiedFiscalProfile setActiveTab={setActiveTab} />
+          <UnVerifiedFiscalProfile />
         ) : null
       ) : (
-        <EmptyFiscalProfile setActiveTab={setActiveTab} />
+        <EmptyFiscalProfile />
       )}
     </>
   );
 };
 
-const EmptyFiscalProfile = ({ setActiveTab }: FiscalProfileReportProps) => {
+const EmptyFiscalProfile = () => {
   const { t } = useTranslation();
   return (
     <Card className="stick-to-header-lg aq-mb-3" shadow={true}>
@@ -44,15 +38,10 @@ const EmptyFiscalProfile = ({ setActiveTab }: FiscalProfileReportProps) => {
       <Text className="aq-mb-3">
         {t("You need to fill in your tax profile data to receive your booty")}
       </Text>
-      <Button flat size="block" onClick={setActiveTab}>
-        {t("Fill in now")}
-      </Button>
     </Card>
   );
 };
-const UnVerifiedFiscalProfile = ({
-  setActiveTab,
-}: FiscalProfileReportProps) => {
+const UnVerifiedFiscalProfile = () => {
   const { t } = useTranslation();
   return (
     <Card className="stick-to-header-lg aq-mb-3" shadow={true}>
@@ -63,27 +52,10 @@ const UnVerifiedFiscalProfile = ({
         <strong>{t("Invalid fiscal profile")}</strong>
       </Text>
       <Text className="aq-mb-3">
-        {t("submitted data are incorrect or incomplete. Check your data again")}
-      </Text>
-      <Button flat size="block" onClick={setActiveTab}>
-        {t("Check your data")}
-      </Button>
-    </Card>
-  );
-};
-const VerifiedFiscalProfile = () => {
-  const { t } = useTranslation();
-  return (
-    <Card className="stick-to-header-lg aq-mb-3" shadow={true}>
-      <Title size="xs" className="aq-mb-2">
-        {t("Fiscal Profile Report")}
-      </Title>
-      <Text color="success">
-        <strong>{t("Valid tax profile")}</strong>
-      </Text>
-      <Text>
+        {t("We couldn't validate your tax id.")}
+        <br />
         {t(
-          'You can view your profile summary and make changes if necessary in the "Tax" section of your profile.'
+          "Please check your name, surname, gender, date of birth or place of birth in the fiscal area of your profile."
         )}
       </Text>
     </Card>

@@ -1,4 +1,5 @@
 import {
+  Button,
   CSSGrid,
   ErrorMessage,
   FieldProps,
@@ -18,12 +19,16 @@ import { SkeletonTab } from "src/features/profile/SkeletonTab";
 import { HalfColumnButton } from "src/pages/profile/HalfColumnButton";
 import * as yup from "yup";
 import { updateFiscalProfile } from "../../../redux/user/actions/updateFiscalProfile";
-import dateFormatter from "../../../utils/dateFormatter";
 import FiscalAddress from "./components/FiscalAddress";
 import FiscalTypeArea from "./components/FiscalTypeArea";
+import { updateProfile } from "src/redux/user/actions/updateProfile";
+import BirthdayPicker from "src/features/BirthdayPicker";
+import FiscalResidenceModal from "src/features/profile/TabFiscal/components/FiscalResidenceModal";
+import modalStore from "src/redux/modal";
 
-export const TabFiscalEdit = () => {
+export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
   const { t } = useTranslation();
+  const { open } = modalStore();
   const fiscalData = useSelector(
     (state: GeneralState) => state.user.fiscal.data,
     shallowEqual
@@ -39,25 +44,19 @@ export const TabFiscalEdit = () => {
   const dispatch = useDispatch();
 
   const initialUserValues: FiscalFormValues = {
+    name: userData.name,
+    surname: userData.surname,
     gender: fiscalData?.gender || "",
     fiscalId: fiscalData?.fiscalId || "",
     type: fiscalData?.type || "",
     fiscalTypeSelect:
       fiscalData?.type === "non-italian" ? "" : fiscalData?.type,
-    fiscalTypeRadio:
-      fiscalData?.type === "non-italian"
-        ? "non-italian"
-        : ["withholding", "witholding-extra", "other"].includes(
-            fiscalData?.type || ""
-          )
-        ? "italian"
-        : undefined,
     birthPlaceCity: fiscalData?.birthPlace?.city,
     birthPlaceId: "",
     birthDate: userData.birthDate,
     birthPlaceProvince: fiscalData?.birthPlace?.province,
     countryCode: fiscalData?.address?.country,
-    provinceCode: fiscalData?.address?.province,
+    province: fiscalData?.address?.province,
     city: fiscalData?.address?.city,
     street: fiscalData?.address?.street,
     streetNumber: fiscalData?.address?.streetNumber,
@@ -65,14 +64,14 @@ export const TabFiscalEdit = () => {
   };
 
   const validationSchema = {
+    name: yup.string().required(t("This is a required field")),
+    surname: yup.string().required(t("This is a required field")),
     gender: yup
       .string()
       .oneOf(["male", "female"])
       .required(t("This is a required field")),
     countryCode: yup.string().required(t("You need to select a country")),
-    provinceCode: yup
-      .string()
-      .required(t("Your address need to have a province code")),
+    province: yup.string().required(t("This is a required field")),
     city: yup.string().required(t("You need to select a city")),
     birthDate: yup
       .string()
@@ -80,27 +79,23 @@ export const TabFiscalEdit = () => {
     street: yup.string().required(t("You need to select a street")),
     streetNumber: yup.string().required(t("You need to select a street code")),
     zipCode: yup.string().required(t("You need to select a zip code")),
-    fiscalTypeRadio: yup
-      .string()
-      .oneOf(["non-italian", "italian"])
-      .required(t("This is a required field")),
     fiscalTypeSelect: yup
       .string()
       .oneOf(["withholding", "witholding-extra", "other"])
-      .when("fiscalTypeRadio", {
-        is: "italian",
+      .when("countryCode", {
+        is: "IT",
         then: yup.string().required(t("This is a required field")),
       }),
     type: yup
       .string()
       .oneOf(["non-italian", "withholding", "witholding-extra", "other"])
       .required(t("This is a required field")),
-    birthPlaceCity: yup.string().when("fiscalTypeRadio", {
-      is: "italian",
+    birthPlaceCity: yup.string().when("countryCode", {
+      is: "IT",
       then: yup.string().required(t("This is a required field")),
     }),
-    birthPlaceProvince: yup.string().when("fiscalTypeRadio", {
-      is: "italian",
+    birthPlaceProvince: yup.string().when("countryCode", {
+      is: "IT",
       then: yup.string().when("birthPlaceCity", (birthPlaceCity) => {
         if (yup.string().required().isValidSync(birthPlaceCity)) {
           return yup
@@ -116,14 +111,14 @@ export const TabFiscalEdit = () => {
     }),
     fiscalId: yup
       .string()
-      .required(t("This is a required field"))
-      .when("fiscalTypeRadio", {
-        is: "italian",
+      .when("countryCode", {
+        is: "IT",
         then: yup
           .string()
           .min(16, t("Should be exactly 16 characters"))
           .max(16, t("Should be exactly 16 characters")),
-      }),
+      })
+      .required(t("This is a required field")),
   };
 
   const genderOptions = [
@@ -144,24 +139,30 @@ export const TabFiscalEdit = () => {
       initialTouched={!!fiscalData ? initialTouched : {}}
       initialValues={initialUserValues}
       validationSchema={yup.object(validationSchema)}
+      onReset={() => {
+        setEdit(false);
+      }}
       onSubmit={async (values, helpers) => {
         const submitValues = {
           address: {
             country: values.countryCode,
-            province: values.provinceCode,
+            province: values.province,
             city: values.city,
             street: values.street,
             streetNumber: values.streetNumber,
             cityCode: values.zipCode,
           },
           type: values.type,
-          birthPlace: values.birthPlaceId
-            ? { placeId: values.birthPlaceId }
-            : {
-                city: values.birthPlaceCity,
-                province: values.birthPlaceProvince,
-              },
-          fiscalId: values.fiscalId,
+          birthPlace:
+            values.birthPlaceId &&
+            (values.type === "withholding" ||
+              values.type === "witholding-extra")
+              ? { placeId: values.birthPlaceId }
+              : {
+                  city: values.birthPlaceCity,
+                  province: values.birthPlaceProvince,
+                },
+          fiscalId: values.fiscalId?.toUpperCase(),
           gender: values.gender,
         };
         dispatch(
@@ -180,40 +181,96 @@ export const TabFiscalEdit = () => {
                 <b>{t("Invalid tax profile.")}</b>
                 <br />
                 {t(
-                  "There was an error validating your fiscal profile, please check your data."
+                  "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth"
                 )}
               </>
             ),
           })
         );
+        dispatch(
+          updateProfile(
+            {
+              profile: {
+                name: values.name,
+                surname: values.surname,
+                birthDate: values.birthDate,
+              },
+            },
+            t(
+              "Your profile doesn't match with your fiscal profile, please check your data"
+            ),
+            t("Your fiscal profile is now verified")
+          )
+        );
         helpers.setSubmitting(false);
         helpers.resetForm({ values });
       }}
     >
-      {({ isValid, isValidating, dirty }) => (
+      {({ isValid, isValidating, dirty, values, errors }) => (
         <Form id="fiscalProfileForm">
           <CSSGrid gutter="50px" rowGap="1rem" min="220px">
             <div className="user-info">
               <Title size="xs" className="aq-mb-2">
                 {t("Informations")}
               </Title>
-              <FormGroup>
-                <FormLabel htmlFor="name" label={t("First Name")} isDisabled />
-                <Input id="name" type="text" disabled value={userData.name} />
-              </FormGroup>
-              <FormGroup>
-                <FormLabel
-                  htmlFor="surname"
-                  label={t("Last Name")}
-                  isDisabled
-                />
-                <Input
-                  id="surname"
-                  type="text"
-                  disabled
-                  value={userData.surname}
-                />
-              </FormGroup>
+              <FormikField name="name">
+                {({
+                  field, // { name, value, onChange, onBlur }
+                  form,
+                  meta,
+                }: FieldProps) => {
+                  return (
+                    <FormGroup className="aq-mb-3">
+                      <FormLabel htmlFor="name" label={t("First Name")} />
+                      <div className="input-group">
+                        <Input
+                          id="name"
+                          type="text"
+                          isInvalid={
+                            meta.touched && typeof meta.error == "string"
+                          }
+                          extra={{ ...field, ref: inputRef }}
+                        />
+                      </div>
+                      <Text small className="aq-mt-1">
+                        <span className="aq-text-secondary">
+                          {t("This field is shared with the base section")}
+                        </span>
+                      </Text>
+                      <ErrorMessage name="name" />
+                    </FormGroup>
+                  );
+                }}
+              </FormikField>
+              <FormikField name="surname">
+                {({
+                  field, // { name, value, onChange, onBlur }
+                  form,
+                  meta,
+                }: FieldProps) => {
+                  return (
+                    <FormGroup className="aq-mb-3">
+                      <FormLabel htmlFor="surname" label={t("Last Name")} />
+                      <div className="input-group">
+                        <Input
+                          id="surname"
+                          type="text"
+                          isInvalid={
+                            meta.touched && typeof meta.error == "string"
+                          }
+                          extra={{ ...field }}
+                        />
+                      </div>
+                      <Text small className="aq-mt-1">
+                        <span className="aq-text-secondary">
+                          {t("This field is shared with the base section")}
+                        </span>
+                      </Text>
+                      <ErrorMessage name="surname" />
+                    </FormGroup>
+                  );
+                }}
+              </FormikField>
               <FormikField name="gender">
                 {({
                   field, // { name, value, onChange, onBlur }
@@ -255,21 +312,24 @@ export const TabFiscalEdit = () => {
                 }: FieldProps) => {
                   return (
                     <FormGroup className="aq-mb-3">
-                      <FormLabel
-                        htmlFor="birthDate"
-                        label={t("Birth Date")}
-                        isDisabled
+                      <BirthdayPicker
+                        name={field.name}
+                        initialValue={field.value}
+                        onCancel={() => form.setFieldTouched(field.name)}
+                        onChange={(v: Date) => {
+                          field.onChange(v.toISOString().slice(0, 10));
+                          form.setFieldValue(
+                            field.name,
+                            v.toISOString().slice(0, 10),
+                            true
+                          );
+                        }}
                       />
-                      <Input
-                        id="birthDate"
-                        type="text"
-                        disabled
-                        value={
-                          userData.birthDate
-                            ? dateFormatter(userData.birthDate)
-                            : ""
-                        }
-                      />
+                      <Text small className="aq-mt-1">
+                        <span className="aq-text-secondary">
+                          {t("This field is shared with the base section")}
+                        </span>
+                      </Text>
                       <ErrorMessage name="birthDate" />
                     </FormGroup>
                   );
@@ -277,14 +337,24 @@ export const TabFiscalEdit = () => {
               </FormikField>
             </div>
             <div className="tax-residence">
-              <Title size="xs" className="aq-mb-2">
-                {t("Tax residence")}
-              </Title>
-              <FiscalTypeArea />
+              <FiscalAddress />
               <div className="aq-mb-3">
-                <FiscalAddress />
+                <Title size="xs" className="aq-mb-2">
+                  {t("Additional Informations")}
+                </Title>
+                <FiscalTypeArea />
               </div>
-              <CSSGrid min="50%" gutter="0" fill="true">
+              <CSSGrid min="40%" fill="true">
+                {fiscalData?.fiscalStatus.toLowerCase() === "verified" && (
+                  <HalfColumnButton
+                    type="primary"
+                    htmlType="reset"
+                    flat
+                    disabled={isValidating}
+                  >
+                    {t("Cancel")}
+                  </HalfColumnButton>
+                )}
                 <HalfColumnButton
                   type="success"
                   htmlType="submit"
@@ -294,6 +364,28 @@ export const TabFiscalEdit = () => {
                   {t("Save")}
                 </HalfColumnButton>
               </CSSGrid>
+              <Text small className="aq-mt-3">
+                <span className="aq-text-secondary">
+                  {t(
+                    "If you have problems filling in your fiscal informations please"
+                  )}
+                </span>{" "}
+                <Button
+                  type="link"
+                  htmlType="button"
+                  className="aq-text-secondary"
+                  flat
+                  style={{ padding: 0, fontWeight: 400 }}
+                  size="sm"
+                  onClick={() => {
+                    open({
+                      content: <FiscalResidenceModal values={values} />,
+                    });
+                  }}
+                >
+                  {t("contact us")}
+                </Button>
+              </Text>
             </div>
           </CSSGrid>
         </Form>

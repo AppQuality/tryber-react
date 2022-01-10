@@ -1,175 +1,132 @@
 import {
-  Button,
-  FormLabel,
-  Text,
-  PlacesAutocomplete,
-  FormGroup,
+  Field,
   ErrorMessage,
+  CSSGrid,
+  Title,
+  FieldProps,
+  FormGroup,
+  Select,
+  FormikField,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import modalStore from "../../../../redux/modal";
 import { useFormikContext } from "formik";
-import FiscalResidenceModal from "./FiscalResidenceModal";
+import CitySelect from "src/features/profile/CitySelect";
+import { ChangeEvent, useMemo } from "react";
+import countries from "i18n-iso-countries";
+import i18next from "i18next";
 
 const FiscalAddress = () => {
-  const { t, i18n } = useTranslation();
-  const { open } = modalStore();
-  const { setValues, setTouched, values, errors, touched } =
-    useFormikContext<FiscalFormValues>();
-  const formattedAddress = `${values.street || ""} ${
-    values.streetNumber || ""
-  } ${values.city || ""} ${values.zipCode || ""} ${values.provinceCode || ""} ${
-    values.countryCode || ""
-  }`;
+  const { t } = useTranslation();
+
+  const {
+    setFieldValue,
+    setFieldTouched,
+    setFieldError,
+    values,
+    getFieldProps,
+  } = useFormikContext<FiscalFormValues>();
+  const countryOptions = useMemo(
+    () =>
+      Object.entries(
+        countries.getNames(i18next.language, { select: "official" })
+      ).map(([locale, name]) => ({
+        label: name,
+        value: locale,
+      })),
+    []
+  );
 
   return (
-    <FormGroup>
-      <FormLabel htmlFor="" label={t("Fiscal Address")} />
-      <PlacesAutocomplete
-        placesProps={{
-          apiKey: process.env.REACT_APP_GOOGLE_APIKEY || "",
-          apiOptions: {
-            language: i18n.language,
-            region: i18n.language,
-          },
-          selectProps: {
-            isClearable: true,
-            value: {
-              label: formattedAddress,
-              value: formattedAddress,
-            },
-            noOptionsMessage: () => t("Type to search your address"),
-          },
+    <>
+      <Title size="xs" className="aq-mb-2">
+        {t("Fiscal Address")}
+      </Title>
+      <FormikField name="countryCode">
+        {({
+          field, // { name, value, onChange, onBlur }
+          form,
+        }: FieldProps) => {
+          return (
+            <FormGroup>
+              <Select
+                name={field.name}
+                label={t("Country")}
+                placeholder={t("Select a country")}
+                value={countryOptions.filter(
+                  (opt) => opt.value === field.value
+                )}
+                onBlur={(e: ChangeEvent) => {
+                  setFieldTouched(field.name);
+                }}
+                onChange={(v) => {
+                  if (v === null) {
+                    v = { label: "", value: "" };
+                  }
+                  setFieldValue("city", "");
+                  setFieldTouched("city");
+                  setFieldValue(field.name, v.value, true);
+                  if (v.value !== "IT") {
+                    setFieldValue("type", "non-italian", true);
+                  }
+                }}
+                options={countryOptions}
+              />
+              <ErrorMessage name={field.name} />
+            </FormGroup>
+          );
         }}
-        onBlur={(e) =>
-          setTouched({
-            countryCode: true,
-            provinceCode: true,
-            city: true,
-            zipCode: true,
-            street: true,
-            streetNumber: true,
-          })
-        }
-        onChange={(places) => {
-          if (!places) {
-            setValues(
-              (prevState) => ({
-                ...prevState,
-                countryCode: "",
-                provinceCode: "",
-                city: "",
-                zipCode: "",
-                street: "",
-                streetNumber: "",
-              }),
-              true
+      </FormikField>
+      <FormGroup>
+        <CitySelect
+          name="city"
+          label={t("City")}
+          onBlur={() => {
+            setFieldTouched("city");
+          }}
+          countryRestrictions={values.countryCode}
+          onChange={(place) => {
+            if (!place) {
+              setFieldValue("city", "", true);
+              return;
+            }
+            const fields = place.address_components;
+            const city = fields.find(
+              (field) => field.types.indexOf("locality") >= 0
             );
-            return;
-          }
-          const fields = places[0].address_components;
-          const country = fields.find(
-            (field) => field.types.indexOf("country") >= 0
-          );
-          const province = fields.find(
-            (field) => field.types.indexOf("administrative_area_level_2") >= 0
-          );
-          const city = fields.find(
-            (field) => field.types.indexOf("locality") >= 0
-          );
-          const zipCode = fields.find(
-            (field) => field.types.indexOf("postal_code") >= 0
-          );
-          const street = fields.find(
-            (field) => field.types.indexOf("route") >= 0
-          );
-          const streetNumber = fields.find(
-            (field) => field.types.indexOf("street_number") >= 0
-          );
-          setValues(
-            (prevState) => ({
-              ...prevState,
-              countryCode: country?.short_name,
-              provinceCode: province?.short_name,
-              city: city?.long_name,
-              zipCode: zipCode?.long_name,
-              street: street?.long_name,
-              streetNumber: streetNumber?.long_name,
-            }),
-            true
-          );
-        }}
-      />
-      <Text>
-        {(errors.countryCode ||
-          errors.provinceCode ||
-          errors.city ||
-          errors.zipCode ||
-          errors.street ||
-          errors.streetNumber) &&
-          touched.countryCode &&
-          touched.provinceCode &&
-          touched.city &&
-          touched.zipCode &&
-          touched.street &&
-          touched.streetNumber && (
-            <div className="aq-mt-2">
-              <ul>
-                {errors.countryCode && (
-                  <li>
-                    <ErrorMessage name="countryCode" />
-                  </li>
-                )}
-                {errors.provinceCode && (
-                  <li>
-                    <ErrorMessage name="provinceCode" />
-                  </li>
-                )}
-                {errors.city && (
-                  <li>
-                    <ErrorMessage name="city" />
-                  </li>
-                )}
-                {errors.zipCode && (
-                  <li>
-                    <ErrorMessage name="zipCode" />
-                  </li>
-                )}
-                {errors.street && (
-                  <li>
-                    <ErrorMessage name="street" />
-                  </li>
-                )}
-                {errors.streetNumber && (
-                  <li>
-                    <ErrorMessage name="streetNumber" />
-                  </li>
-                )}
-              </ul>
-            </div>
-          )}
-        <Text small className="aq-mt-1">
-          <span className="aq-text-secondary">
-            {t("If your address is not in the list please")}
-          </span>{" "}
-          <Button
-            type="link"
-            htmlType="button"
-            className="aq-text-secondary"
-            flat
-            style={{ padding: 0, fontWeight: 400 }}
-            size="sm"
-            onClick={() => {
-              open({
-                content: <FiscalResidenceModal values={values} />,
-              });
-            }}
-          >
-            {t("contact us")}
-          </Button>
-        </Text>
-      </Text>
-    </FormGroup>
+            const province = fields.find(
+              (field) => field.types.indexOf("administrative_area_level_2") >= 0
+            );
+            if (!city) {
+              setFieldError(
+                "city",
+                t("We couldn't find a city with that name, please search again")
+              );
+            } else {
+              getFieldProps("city").onChange(city?.long_name || "");
+              setFieldValue("city", city?.long_name || "", true);
+              setFieldValue("province", province?.short_name || "", true);
+            }
+          }}
+        />
+        <ErrorMessage name="city" />
+      </FormGroup>
+      <CSSGrid min="35px">
+        <div style={{ gridColumn: "auto / span 2" }}>
+          <Field name="province" label={t("State / Province")} />
+        </div>
+        <div style={{ gridColumn: "auto / span 1" }}>
+          <Field name="zipCode" label={t("Zip code")} />
+        </div>
+      </CSSGrid>
+      <CSSGrid min="35px">
+        <div style={{ gridColumn: "auto / span 2" }}>
+          <Field name="street" label={t("Street")} />
+        </div>
+        <div style={{ gridColumn: "auto / span 1" }}>
+          <Field name="streetNumber" label={t("Street N°")} />
+        </div>
+      </CSSGrid>
+    </>
   );
 };
 export default FiscalAddress;

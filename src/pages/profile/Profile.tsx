@@ -7,7 +7,6 @@ import {
   Tabs,
   Tab,
   DatepickerGlobalStyle,
-  aqBootstrapTheme,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import GoogleTagManager from "src/features/GoogleTagManager";
@@ -25,11 +24,10 @@ import TabOptions from "src/features/profile/TabOptions";
 import UserDeleteModal from "src/features/profile/UserDeleteModal";
 import { useDispatch } from "react-redux";
 
-const headerOffset = 60;
-
 export default function Profile() {
   const { t } = useTranslation();
   let ref = useRef<HTMLDivElement>(null);
+  let inputRef = useRef<HTMLInputElement>(null);
   const urlParams = new URLSearchParams(window.location.search);
   const tabParam = urlParams.get("tab") || "base";
   const currentTab = ["base", "advanced", "fiscal", "options"].includes(
@@ -57,22 +55,6 @@ export default function Profile() {
     dispatch(getFiscalProfile());
   }, []);
 
-  const handleEditFiscalInfo = () => {
-    setActiveTab("fiscal");
-    if (
-      window.matchMedia(`(max-width: ${aqBootstrapTheme.grid.breakpoints.lg})`)
-        .matches
-    ) {
-      const node = ref.current;
-      if (node) {
-        const offsetPosition = node.getBoundingClientRect().top - headerOffset;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      }
-    }
-  };
   return (
     <GoogleTagManager title={t("Profile")}>
       <LoggedOnly>
@@ -110,7 +92,7 @@ export default function Profile() {
                         }
                       >
                         <div>
-                          <TabFiscal />
+                          <TabFiscal inputRef={inputRef} />
                         </div>
                       </Tab>
                       <Tab
@@ -126,7 +108,7 @@ export default function Profile() {
                 </Card>
               </BSCol>
               <BSCol size="col-lg-3">
-                <FiscalProfileReport setActiveTab={handleEditFiscalInfo} />
+                <FiscalProfileReport />
               </BSCol>
             </BSGrid>
           </Container>

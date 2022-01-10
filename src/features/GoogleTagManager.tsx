@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet";
 import TagManager from "react-gtm-module";
-import useUser from "../redux/user";
+import { Helmet } from "react-helmet";
+import { useSelector } from "react-redux";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -9,7 +9,6 @@ const tagManagerArgs = {
     tester_id: 0,
     is_admin_page: false,
   },
-  dataLayerName: "PageDataLayer",
 };
 
 export default ({
@@ -21,7 +20,13 @@ export default ({
   children: React.ReactNode;
   isAdminPage?: boolean;
 }) => {
-  const { user } = useUser();
+  const { user } = useSelector((state: GeneralState) => ({
+    user: {
+      id: state.user.user?.id,
+      role: state.user.user?.role,
+      wp_user_id: state.user.user?.wp_user_id,
+    },
+  }));
   const helmet = () => {
     return (
       <Helmet>

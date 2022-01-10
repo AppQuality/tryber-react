@@ -5,7 +5,7 @@ import { updateFiscalProfile } from "./updateFiscalProfile";
 export const updateProfile = (
   data: {
     profile: ApiOperations["patch-users-me"]["requestBody"]["content"]["application/json"];
-    languages: number[];
+    languages?: number[];
   },
   unverifiedFiscalProfileMessage?: string,
   verifiedFiscalProfileMessage?: string
@@ -13,7 +13,7 @@ export const updateProfile = (
   return async (dispatch: any, getState: () => GeneralState) => {
     try {
       const state = getState();
-      const resLang = await API.myLanguages(data.languages);
+      if (data.languages) await API.myLanguages(data.languages);
       const response = await API.patchMe(data.profile);
       if (!response.languages) {
         response.languages = [];

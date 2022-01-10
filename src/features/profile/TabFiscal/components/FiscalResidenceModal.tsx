@@ -17,12 +17,6 @@ const FiscalResidenceModal = ({ values }: { values: FiscalFormValues }) => {
   const iframeData = {
     testerId: `T${id}`,
     email: email || "",
-    tax_type:
-      values.fiscalTypeRadio === "italian"
-        ? "Italian"
-        : values.fiscalTypeRadio === "non-italian"
-        ? "Not Italian"
-        : "",
     fiscalId: values.fiscalId || "",
     fiscalType: values.fiscalTypeSelect
       ? values.fiscalTypeSelect === "withholding"
@@ -37,7 +31,7 @@ const FiscalResidenceModal = ({ values }: { values: FiscalFormValues }) => {
       ? `${values.street} ${values.streetNumber}`
       : "",
     "fiscalAddress[city]": values.city || "",
-    "fiscalAddress[state]": values.provinceCode || "",
+    "fiscalAddress[state]": values.province || "",
     "fiscalAddress[postal]": values.zipCode || "",
   };
 
@@ -47,7 +41,7 @@ const FiscalResidenceModal = ({ values }: { values: FiscalFormValues }) => {
     <ModalBody>
       <iframe
         title="fiscal address help form"
-        src={`https://form.jotform.com/212982709982369?${iframeParams}`}
+        src={`https://form.jotform.com/213631961040346?${iframeParams}`}
         style={iFrameStyle}
       />
     </ModalBody>
