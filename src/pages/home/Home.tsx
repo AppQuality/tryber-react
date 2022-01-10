@@ -34,10 +34,8 @@ const StyledHome = styled.div`
   }
   .text-marker {
     font-family: "Marker", serif !important;
-    font-size: 35px;
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
-      font-size: 55px;
     }
   }
 `;
@@ -84,7 +82,7 @@ export default function Home({
               <BannerTop />
             </section>
             <section className="aq-pt-3 aq-text-center">
-              <Title size="m" className="text-marker aq-pt-3 aq-pb-2 aq-mb-2">
+              <Title size="xl" className="text-marker aq-pt-3 aq-pb-2 aq-mb-2">
                 {t("Our Community")}
               </Title>
               <div className="aq-pt-4">

@@ -2,20 +2,18 @@ import { Title } from "@appquality/appquality-design-system";
 import { StyledSection } from "../_styles";
 import { CardList } from "./CardList";
 import { Trans, useTranslation } from "react-i18next";
-import {
-  Alarm,
-  Eyeglasses,
-  GraphUp,
-  Headset,
-  Laptop,
-  Wallet2,
-} from "react-bootstrap-icons";
+import clock from "../assets/clock.svg";
+import devices from "../assets/devices.svg";
+import hands from "../assets/hands.svg";
+import wallet from "../assets/wallet.svg";
+import diamond from "../assets/diamond.svg";
+import support from "../assets/support.svg";
 
 export const CardSection = () => {
   const { t } = useTranslation();
   const cardListItems = [
     {
-      icon: <Wallet2 />,
+      icon: wallet,
       title: t("fair payments"),
       body: (
         <Trans
@@ -26,7 +24,7 @@ export const CardSection = () => {
       ),
     },
     {
-      icon: <Laptop />,
+      icon: devices,
       title: t("devices"),
       body: (
         <Trans
@@ -37,7 +35,7 @@ export const CardSection = () => {
       ),
     },
     {
-      icon: <Eyeglasses />,
+      icon: hands,
       title: t("free training"),
       body: (
         <Trans
@@ -48,7 +46,7 @@ export const CardSection = () => {
       ),
     },
     {
-      icon: <Alarm />,
+      icon: clock,
       title: t("flexible hours"),
       body: (
         <Trans
@@ -59,14 +57,14 @@ export const CardSection = () => {
       ),
     },
     {
-      icon: <GraphUp />,
+      icon: diamond,
       title: t("grow your experience"),
       body: t(
         "Each Test you take will allow you to increase your skills and hone your tester abilities."
       ),
     },
     {
-      icon: <Headset />,
+      icon: support,
       title: t("constant support"),
       body: (
         <Trans
