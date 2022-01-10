@@ -32,6 +32,14 @@ const StyledHome = styled.div`
       font-size: 17.5px;
     }
   }
+  .text-marker {
+    font-family: "Marker", serif !important;
+    font-size: 35px;
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      font-size: 55px;
+    }
+  }
 `;
 export default function Home({
   topPageRef,
@@ -76,7 +84,7 @@ export default function Home({
               <BannerTop />
             </section>
             <section className="aq-pt-3 aq-text-center">
-              <Title size="m" className="aq-pt-3 aq-pb-2 aq-mb-2">
+              <Title size="m" className="text-marker aq-pt-3 aq-pb-2 aq-mb-2">
                 {t("Our Community")}
               </Title>
               <div className="aq-pt-4">
@@ -85,7 +93,9 @@ export default function Home({
             </section>
             <CardSection />
             <StyledSection className="aq-text-center" style={{ zIndex: 1 }}>
-              <Title size="xl">{t("Are you ready to get involved?")}</Title>
+              <Title size="xl" className="text-marker">
+                {t("Are you ready to get involved?")}
+              </Title>
               <Text
                 color="secondary"
                 className="aq-my-4 large-desktop"

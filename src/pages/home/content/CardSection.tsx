@@ -1,7 +1,5 @@
 import { Title } from "@appquality/appquality-design-system";
 import { StyledSection } from "../_styles";
-import { ReactComponent as MiddleRect } from "../assets/rectangle-985.svg";
-import React, { useEffect, useRef, useState } from "react";
 import { CardList } from "./CardList";
 import { Trans, useTranslation } from "react-i18next";
 import {
@@ -12,26 +10,6 @@ import {
   Laptop,
   Wallet2,
 } from "react-bootstrap-icons";
-import styled from "styled-components";
-import { StyledRectProps } from "../_types";
-
-const StyledRect = styled.div(
-  ({ rx }: StyledRectProps) => `
-    position: absolute;
-    top: -80px;
-    left: -80px;
-    svg {
-      width: 530px;
-      height: 740px;
-      overflow: visible;
-      rect {
-        width: 530px;
-        height: 530px;
-        rx: ${rx};
-      }
-    }
-  `
-);
 
 export const CardSection = () => {
   const { t } = useTranslation();
@@ -99,43 +77,15 @@ export const CardSection = () => {
       ),
     },
   ];
-  const [entry, setEntry] = useState<IntersectionObserverEntry>();
-  let ref = useRef<HTMLDivElement>(null);
 
-  const callBack: IntersectionObserverCallback = (entries) => {
-    if (entries[0]) setEntry(entries[0]);
-  };
-  const options = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 1.0,
-  };
-  useEffect(() => {
-    const observer = new IntersectionObserver(callBack, options);
-    if (ref.current) observer.observe(ref.current);
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, [ref, options]);
-  const [rx, setRx] = useState("100%");
-  useEffect(() => {
-    if (entry?.intersectionRect.top) {
-      const top =
-        entry?.intersectionRect.top > 20 ? entry?.intersectionRect.top : 20;
-      const newRx = entry
-        ? (top / (entry?.target.clientHeight - 200)) * 100
-        : 100;
-      setRx(`${newRx.toString()}%`);
-    }
-  }, [entry]);
   return (
     <StyledSection style={{ padding: "0 40px" }}>
-      <Title size="xl" className="aq-text-center aq-mb-4 section-title-wrapper">
+      <Title
+        size="xl"
+        className="text-marker aq-text-center aq-mb-4 section-title-wrapper"
+      >
         {t("Why should you become an AppQuality Tester?")}
       </Title>
-      <StyledRect className="hero" ref={ref} rx={rx}>
-        <MiddleRect />
-      </StyledRect>
       <div className="section-content-wrapper">
         <CardList items={cardListItems} />
       </div>
