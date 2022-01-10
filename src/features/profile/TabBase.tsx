@@ -121,6 +121,9 @@ const TabBase = () => {
             }
           });
           const profileDataToSend: any = { ...values };
+          if (profileDataToSend.email === user?.email) {
+            delete profileDataToSend.email;
+          }
           dispatch(
             updateProfile(
               {
