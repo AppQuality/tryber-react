@@ -1,6 +1,6 @@
 import { Card, Text } from "@appquality/appquality-design-system";
-import React, {useEffect, useRef, useState} from "react";
-import styled, {keyframes} from "styled-components";
+import React, { useEffect, useRef, useState } from "react";
+import styled, { keyframes } from "styled-components";
 import { CardListItemsProps } from "../_types";
 
 const tresholdForCardAnimation = 100;
@@ -17,7 +17,7 @@ const slideUpAnimation = keyframes`
 `;
 
 const CardListStyle = styled.div`
-  min-height: ${tresholdForCardAnimation +1}px;
+  min-height: ${tresholdForCardAnimation + 1}px;
   @media (min-width: ${(props) => props.theme.grid.breakpoints.md}) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -30,15 +30,15 @@ const CardListStyle = styled.div`
       padding-bottom: 35px;
     }
   }
-  
+
   .item-icon {
     font-size: 40px;
   }
 `;
 
 const CardItem = styled(Card)<{ index: number }>`
-  animation-duration: .5s;
-  animation-delay: ${({ index }) => index * .2}s;
+  animation-duration: 0.5s;
+  animation-delay: ${({ index }) => index * 0.2}s;
   animation-fill-mode: both;
   animation-name: ${slideUpAnimation};
 `;
@@ -63,20 +63,32 @@ export const CardList = ({ items }: CardListItemsProps) => {
     };
   }, [ref, options]);
   useEffect(() => {
-    if (!isVisible && entry && entry.intersectionRect.height > tresholdForCardAnimation) {
+    if (
+      !isVisible &&
+      entry &&
+      entry.intersectionRect.height > tresholdForCardAnimation
+    ) {
       setIsVisible(true);
     }
   }, [entry]);
   return (
-    <CardListStyle ref={ref} className='aq-text-center'>
-        {isVisible && items.map((item, index) => (
-            <CardItem index={index+1} key={index} shadow className="card-list-item aq-my-3">
-              <div className="item-icon">{item.icon}</div>
-              <Text color="success" className="aq-mb-3 capitalize-first">
-                <strong>{item.title}</strong>
-              </Text>
-              <Text color="secondary">{item.body}</Text>
-            </CardItem>
+    <CardListStyle ref={ref} className="aq-text-center">
+      {isVisible &&
+        items.map((item, index) => (
+          <CardItem
+            index={index + 1}
+            key={index}
+            shadow
+            className="card-list-item aq-my-3"
+          >
+            <div className="item-icon">
+              <img src={item.icon} alt={item.title} />
+            </div>
+            <Text className="aq-mb-3 capitalize-first">
+              <strong>{item.title}</strong>
+            </Text>
+            <Text>{item.body}</Text>
+          </CardItem>
         ))}
     </CardListStyle>
   );

@@ -45,13 +45,17 @@ export const DataList = ({ data }: DataListProps) => {
       {data.map((item, index) => (
         <div className="data-list-item" key={index}>
           <div className="item-body">
-            <img className="item-image aq-mb-3" src={item.icon} alt={item.name} />
+            <img
+              className="item-image aq-mb-3"
+              src={item.icon}
+              alt={item.name}
+            />
             <div className="item-text aq-mb-3">
-              <Title size="m">
+              <Title className="text-marker" size="m">
                 {item.text}
-                <span className="aq-text-warning">+</span>
+                <span className="aq-text-secondary">+</span>
               </Title>
-              <Text color="secondary" className="capitalize-first">
+              <Text className="capitalize-first">
                 <strong>{item.name}</strong>
               </Text>
             </div>
