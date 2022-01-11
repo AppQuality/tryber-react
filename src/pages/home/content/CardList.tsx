@@ -1,7 +1,13 @@
 import { Card, Text } from "@appquality/appquality-design-system";
 import React, { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { CardListItemsProps } from "../_types";
+import { Trans, useTranslation } from "react-i18next";
+import wallet from "src/pages/home/assets/wallet.svg";
+import devices from "src/pages/home/assets/devices.svg";
+import hands from "src/pages/home/assets/hands.svg";
+import clock from "src/pages/home/assets/clock.svg";
+import diamond from "src/pages/home/assets/diamond.svg";
+import support from "src/pages/home/assets/support.svg";
 
 const tresholdForCardAnimation = 100;
 
@@ -42,7 +48,72 @@ const CardItem = styled(Card)<{ index: number }>`
   animation-fill-mode: both;
   animation-name: ${slideUpAnimation};
 `;
-export const CardList = ({ items }: CardListItemsProps) => {
+export const CardList = () => {
+  const { t } = useTranslation();
+  const items = [
+    {
+      icon: wallet,
+      title: t("fair payments"),
+      body: (
+        <Trans
+          i18nKey="By successfully completing a Campaign <bold>you will receive a payout</bold>, which you can transfer to your IBAN or PayPal."
+          defaults="By successfully completing a Campaign <bold>you will receive a payout</bold>, which you can transfer to your IBAN or PayPal."
+          components={{ br: <br />, bold: <strong /> }}
+        />
+      ),
+    },
+    {
+      icon: devices,
+      title: t("devices"),
+      body: (
+        <Trans
+          i18nKey="To test you won't need special equipment, but simply  <bold>your own personal devices</bold>"
+          defaults="To test you won't need special equipment, but simply  <bold>your own personal devices</bold>"
+          components={{ bold: <strong /> }}
+        />
+      ),
+    },
+    {
+      icon: hands,
+      title: t("free training"),
+      body: (
+        <Trans
+          i18nKey="Don't know anything about testing?<br></br> Don't be afraid! We have for you <bold>Certificated Basic Courses</bold> and many training articles"
+          defaults="Don't know anything about testing?<br></br> Don't be afraid! We have for you <bold>Certificated Basic Courses</bold> and many training articles"
+          components={{ br: <br />, bold: <strong /> }}
+        />
+      ),
+    },
+    {
+      icon: clock,
+      title: t("flexible hours"),
+      body: (
+        <Trans
+          i18nKey="<bold>Test when and where you want!</bold><br></br>The important thing is to respect the closing date of the Test Campaign"
+          defaults="<bold>Test when and where you want!</bold><br></br>The important thing is to respect the closing date of the Test Campaign"
+          components={{ br: <br />, bold: <strong /> }}
+        />
+      ),
+    },
+    {
+      icon: diamond,
+      title: t("grow your experience"),
+      body: t(
+        "Each Test you take will allow you to increase your skills and hone your tester abilities."
+      ),
+    },
+    {
+      icon: support,
+      title: t("constant support"),
+      body: (
+        <Trans
+          i18nKey="<bold>A Team of competent and professional figures</bold> will always be at your side to resolve any doubts <br></br>you may have"
+          defaults="<bold>A Team of competent and professional figures</bold> will always be at your side to resolve any doubts <br></br>you may have"
+          components={{ br: <br />, bold: <strong /> }}
+        />
+      ),
+    },
+  ];
   const [isVisible, setIsVisible] = useState(false);
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
   let ref = useRef<HTMLDivElement>(null);

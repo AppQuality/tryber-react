@@ -1,31 +1,21 @@
 import { Container, Text, Title } from "@appquality/appquality-design-system";
-import { useEffect } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
 import GoogleTagManager from "../../features/GoogleTagManager";
 import NotLoggedOnly from "../../features/NotLoggedOnly";
-import brandsHelped from "./assets/brandsHelped.svg";
-import campaignsIcon from "./assets/campaigns.svg";
-import countriesIcon from "./assets/countries.svg";
-import testerIcon from "./assets/testers.svg";
 import { BannerTop } from "./content/BannerTop";
-import { CardSection } from "./content/CardSection";
 import { DataList } from "./content/DataList";
 import { Footer } from "./content/Footer";
 import JoinTheTeamButton from "./content/JoinTheTeamButton";
-import { ReviewSection } from "./content/ReviewSection";
-import { StyledSection } from "./_styles";
-import { DataListItem } from "./_types";
+import { CardList } from "src/pages/home/content/CardList";
+import { Reviews } from "src/pages/home/content/Reviews";
+import { LangMenu } from "src/features/LangMenu";
+import React from "react";
 
 const StyledHome = styled.div`
   max-width: 100vw;
   overflow-x: hidden;
-  background-image: linear-gradient(
-    #d5e6f0 0,
-    #fbfbfd 34%,
-    #fbfbfd 66%,
-    #e3eef5 100%
-  );
+
   ${Text}.large-desktop {
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
@@ -34,68 +24,64 @@ const StyledHome = styled.div`
   }
   .text-marker {
     font-family: "Marker", serif !important;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  section {
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
+      margin-bottom: 50vh;
+    }
+  }
+  .section-title {
+    font-size: 35px !important;
+    color: ${(props) => props.theme.palette.primary};
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      font-size: 55px !important;
     }
   }
 `;
-export default function Home({
-  topPageRef,
-}: {
-  topPageRef: React.RefObject<HTMLDivElement>;
-}) {
+export default function Home() {
   const { t } = useTranslation();
-  useEffect(() => {
-    if (topPageRef?.current) {
-      topPageRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [topPageRef]);
-  const communityData: DataListItem[] = [
-    {
-      name: t("testers"),
-      icon: testerIcon,
-      text: "30.000",
-    },
-    {
-      name: t("Countries covered"),
-      icon: countriesIcon,
-      text: "100",
-    },
-    {
-      name: t("Campaigns delivered"),
-      icon: campaignsIcon,
-      text: "3.500",
-    },
-    {
-      name: t("Brands helped"),
-      icon: brandsHelped,
-      text: "150",
-    },
-  ];
-
   return (
     <GoogleTagManager title={t("Home")}>
       <NotLoggedOnly>
         <StyledHome>
           <Container className="aq-py-3">
-            <section className="aq-mb-4">
+            <LangMenu
+              className="aq-mb-3"
+              itLink="/it"
+              enLink="/"
+              esLink="/es"
+            />
+            <section>
               <BannerTop />
             </section>
             <section className="aq-pt-3 aq-text-center">
-              <Title size="xl" className="text-marker aq-pt-3 aq-pb-2 aq-mb-2">
+              <div className="section-title text-marker aq-pt-3 aq-pb-2 aq-mb-2">
                 {t("Our Community")}
-              </Title>
+              </div>
               <div className="aq-pt-4">
-                <DataList data={communityData} />
+                <DataList />
               </div>
             </section>
-            <CardSection />
-            <StyledSection className="aq-text-center" style={{ zIndex: 1 }}>
-              <Title size="xl" className="text-marker">
-                {t("Are you ready to get involved?")}
+            <section>
+              <Title
+                size="xl"
+                className="text-marker aq-text-center aq-mb-4 section-title-wrapper"
+              >
+                {t("Why should you become an AppQuality Tester?")}
               </Title>
+              <div className="section-content-wrapper">
+                <CardList />
+              </div>
+            </section>
+            <section className="aq-text-center">
+              <div className="section-title text-marker">
+                {t("Are you ready to get involved?")}
+              </div>
               <Text
-                color="secondary"
                 className="aq-my-4 large-desktop"
                 style={{
                   maxWidth: "810px",
@@ -110,8 +96,15 @@ export default function Home({
                 />
               </Text>
               <JoinTheTeamButton />
-            </StyledSection>
-            <ReviewSection />
+            </section>
+            <section>
+              <div className="section-title text-marker aq-text-center aq-mb-4">
+                {t("Our Testers advices")}
+              </div>
+              <div className="section-content-wrapper aq-pt-3">
+                <Reviews />
+              </div>
+            </section>
             <Footer />
           </Container>
         </StyledHome>
