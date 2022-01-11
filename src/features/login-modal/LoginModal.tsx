@@ -1,20 +1,20 @@
-import { StyledLoginModal } from "./_style";
-import { Trans, useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import {
+  Button,
   Field,
   Form,
   Formik,
-  Text,
   Modal,
   ModalBody,
+  Text,
 } from "@appquality/appquality-design-system";
-import { Button } from "@appquality/appquality-design-system";
-import * as yup from "yup";
-import WPAPI from "../../utils/wpapi";
-import { LoginMopdalProps } from "./_types";
 import { useState } from "react";
+import { Trans, useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import * as yup from "yup";
 import { useLocalizeRoute } from "../../hooks/useLocalizedRoute";
+import WPAPI from "../../utils/wpapi";
+import { StyledLoginModal } from "./_style";
+import { LoginMopdalProps } from "./_types";
 
 export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
   const { t, i18n } = useTranslation();
@@ -74,14 +74,14 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
               <Form className="modal-login-form">
                 <div className="aq-mb-3">
                   <Text className="aq-text-center">
-                    <div className="capitalize-first">
+                    <div className="capitalize-first aq-text-primary">
                       <strong>{t("login with your credentials")}</strong>
                     </div>
                     <div>
                       <Trans i18nKey="or <1>create an account</1>">
                         or
                         <Link
-                          className="aq-text-info capitalize-first"
+                          className="aq-text-secondary capitalize-first"
                           style={{ display: "inline-block" }}
                           onClick={onClose}
                           to={gettingStartedRoute}
@@ -102,7 +102,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                 <Text className="aq-text-center aq-mb-3 capitalize-first">
                   <strong>
                     <a
-                      className="aq-text-info"
+                      className="aq-text-secondary"
                       href="/wp-login.php?action=lostpassword"
                     >
                       {t("forgot your password?")}
@@ -111,7 +111,7 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
                 </Text>
                 <Button
                   className="aq-mb-3 capitalize-first"
-                  type="success"
+                  type="primary"
                   size="block"
                   flat
                   htmlType="submit"

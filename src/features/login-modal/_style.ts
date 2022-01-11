@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { aqBootstrapTheme } from "@appquality/appquality-design-system";
+import styled from "styled-components";
 
 export const StyledLoginModal = styled.div`
   .login-social {
@@ -19,7 +19,7 @@ export const StyledLoginModal = styled.div`
       padding: 0 32px;
     }
     .modal-body {
-      background: url("/static/login-modal-art.svg") right bottom no-repeat;
+      background: url("/static/login-modal-art.png") right center no-repeat;
       min-height: 400px;
     }
     .login-social {
