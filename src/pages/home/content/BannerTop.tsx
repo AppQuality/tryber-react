@@ -1,41 +1,15 @@
-import {
-  BSCol,
-  BSGrid,
-  PageTitle,
-  Text,
-  Title,
-} from "@appquality/appquality-design-system";
-import React, { useEffect, useRef, useState } from "react";
+import { Text } from "@appquality/appquality-design-system";
 import people from "../assets/tryber_home_welcome.png";
-import { LangMenu } from "../../../features/LangMenu";
 import styled from "styled-components";
 import { Trans, useTranslation } from "react-i18next";
 import JoinTheTeamButton from "./JoinTheTeamButton";
-
-const StyledWrapper = styled.div`
-  position: relative;
-  overflow: visible;
-  max-width: 100%;
-  .welcome-img {
-    float: right;
-    width: 200px;
-    margin: 50px -40px 20px 20px;
-    shape-outside: ellipse(100px 100px at 90% 70%);
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      width: 540px;
-      margin: 16px;
-      shape-outside: none;
-    }
-  }
-`;
 
 export const BannerTop = () => {
   const { t } = useTranslation();
 
   return (
-    <StyledWrapper>
-      <img className="welcome-img" src={people} alt="tryber welcome people" />
+    <div className="section-banner">
+      <img className="banner-img" src={people} alt="tryber get involved" />
       <div className="text-marker section-title aq-text-secondary aq-mb-4">
         {t("Join the AppQuality Tester Community!")}
       </div>
@@ -61,6 +35,6 @@ export const BannerTop = () => {
         </Trans>
       </Text>
       <JoinTheTeamButton />
-    </StyledWrapper>
+    </div>
   );
 };
