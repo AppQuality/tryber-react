@@ -9,12 +9,18 @@ import { Footer } from "./content/Footer";
 import { CardList } from "src/pages/home/content/CardList";
 import { Reviews } from "src/pages/home/content/Reviews";
 import { LangMenu } from "src/features/LangMenu";
-import React from "react";
 import { BannerMiddle } from "src/pages/home/content/BannerMiddle";
+import borderTopSm from "./assets/top_small.svg";
+import borderTopLg from "./assets/top_large.svg";
+import borderBottomSm from "./assets/bottom_small.svg";
+import borderBottomLg from "./assets/bottom_large.svg";
 
+const bgSpaceSm = "55px";
+const bgSpaceLg = "75px";
 const StyledHome = styled.div`
   max-width: 100vw;
   overflow-x: hidden;
+  background-color: #fff;
 
   ${Text}.large-desktop {
     @media only screen and (min-width: ${(props) =>
@@ -27,11 +33,58 @@ const StyledHome = styled.div`
     text-transform: uppercase;
     line-height: 1.2;
   }
-  section {
+  .home-section {
     margin-bottom: 100px;
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
       margin-bottom: 30vh;
+    }
+    &.gradient-bg {
+      position: relative;
+      z-index: 0;
+      padding: ${bgSpaceSm} 0;
+      background: linear-gradient(180deg, #e9bb38 0%, #811dd7 100%);
+      @media only screen and (min-width: ${(props) =>
+          props.theme.grid.breakpoints.lg}) {
+        padding: ${bgSpaceLg} 0;
+        background: linear-gradient(
+          90deg,
+          #ffdc17 0.42%,
+          #f9d320 10.82%,
+          #e9bb38 27.72%,
+          #d0945f 49%,
+          #ac5e96 73.83%,
+          #811dd7 100%
+        );
+      }
+      .section-border {
+        width: 100%;
+        height: 50%;
+        position: absolute;
+        z-index: -1;
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+      .border-top {
+        background-image: url(${borderTopSm});
+        background-position: top;
+        top: -${bgSpaceSm};
+        @media only screen and (min-width: ${(props) =>
+            props.theme.grid.breakpoints.lg}) {
+          top: -${bgSpaceLg};
+          background-image: url(${borderTopLg});
+        }
+      }
+      .border-bottom {
+        background-image: url(${borderBottomSm});
+        background-position: bottom;
+        bottom: -${bgSpaceSm};
+        @media only screen and (min-width: ${(props) =>
+            props.theme.grid.breakpoints.lg}) {
+          bottom: -${bgSpaceLg};
+          background-image: url(${borderBottomLg});
+        }
+      }
     }
   }
   .section-title {
@@ -73,10 +126,10 @@ export default function Home() {
               enLink="/"
               esLink="/es"
             />
-            <section>
+            <section className="home-section">
               <BannerTop />
             </section>
-            <section className="aq-pt-3 aq-text-center">
+            <section className="home-section aq-pt-3 aq-text-center">
               <div className="section-title text-marker aq-pt-3 aq-pb-2 aq-mb-2">
                 {t("Our Community")}
               </div>
@@ -84,21 +137,23 @@ export default function Home() {
                 <DataList />
               </div>
             </section>
-            <section>
+            <section className="home-section gradient-bg hero">
+              <div className="section-border border-top"></div>
               <Title
                 size="xl"
                 className="text-marker aq-text-center aq-mb-4 section-title-wrapper"
               >
                 {t("Why should you become an AppQuality Tester?")}
               </Title>
-              <div className="section-content-wrapper">
+              <div className="container">
                 <CardList />
               </div>
+              <div className="section-border border-bottom"></div>
             </section>
-            <section>
+            <section className="home-section">
               <BannerMiddle />
             </section>
-            <section>
+            <section className="home-section">
               <div className="section-title text-marker aq-text-center aq-mb-4">
                 {t("Our Testers advices")}
               </div>
