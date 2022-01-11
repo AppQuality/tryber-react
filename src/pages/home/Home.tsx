@@ -1,16 +1,16 @@
 import { Container, Text, Title } from "@appquality/appquality-design-system";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import GoogleTagManager from "../../features/GoogleTagManager";
 import NotLoggedOnly from "../../features/NotLoggedOnly";
 import { BannerTop } from "./content/BannerTop";
 import { DataList } from "./content/DataList";
 import { Footer } from "./content/Footer";
-import JoinTheTeamButton from "./content/JoinTheTeamButton";
 import { CardList } from "src/pages/home/content/CardList";
 import { Reviews } from "src/pages/home/content/Reviews";
 import { LangMenu } from "src/features/LangMenu";
 import React from "react";
+import { BannerMiddle } from "src/pages/home/content/BannerMiddle";
 
 const StyledHome = styled.div`
   max-width: 100vw;
@@ -28,9 +28,10 @@ const StyledHome = styled.div`
     line-height: 1.2;
   }
   section {
+    margin-bottom: 100px;
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
-      margin-bottom: 50vh;
+      margin-bottom: 30vh;
     }
   }
   .section-title {
@@ -39,6 +40,23 @@ const StyledHome = styled.div`
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
       font-size: 55px !important;
+    }
+  }
+  .section-banner {
+    position: relative;
+    overflow: visible;
+    max-width: 100%;
+  }
+  .banner-img {
+    float: right;
+    width: 64%;
+    margin: 50px -40px 20px 20px;
+    shape-outside: ellipse(50% 90px at 80% 63%);
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      width: 540px;
+      margin: 16px -32px 16px 16px;
+      shape-outside: none;
     }
   }
 `;
@@ -77,25 +95,8 @@ export default function Home() {
                 <CardList />
               </div>
             </section>
-            <section className="aq-text-center">
-              <div className="section-title text-marker">
-                {t("Are you ready to get involved?")}
-              </div>
-              <Text
-                className="aq-my-4 large-desktop"
-                style={{
-                  maxWidth: "810px",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                }}
-              >
-                <Trans
-                  i18nKey="In AppQuality there will never be a lack of challenges and you <bold>will immediately feel part of a dynamic and stimulating Community!</bold> Get on board and start looking at the digital world around you with different eyes. <br></br><br></br>Testing is addictive!"
-                  defaults="In AppQuality there will never be a lack of challenges and you <bold>will immediately feel part of a dynamic and stimulating Community!</bold> Get on board and start looking at the digital world around you with different eyes. <br></br><br></br>Testing is addictive!"
-                  components={{ br: <br />, bold: <strong /> }}
-                />
-              </Text>
-              <JoinTheTeamButton />
+            <section>
+              <BannerMiddle />
             </section>
             <section>
               <div className="section-title text-marker aq-text-center aq-mb-4">
