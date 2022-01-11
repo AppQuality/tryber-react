@@ -11,8 +11,8 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: rgb(23, 64, 92);
-  background-color: rgb(240, 245, 247);
+  color: #595959;
+  background-color: #f2f2f2;
   text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   margin: 0px;
@@ -52,8 +52,12 @@ body {
   justify-content: center;
 }
 .loadingImg {
-  width: 50px;
-  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loadingImg img {
+  width: 280px;
 }
 #appq-loading-spinner {
   top: calc(40% - 25px);
