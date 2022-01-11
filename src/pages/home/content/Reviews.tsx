@@ -159,14 +159,11 @@ export const Reviews = () => {
                     {item.name}, {item.age}
                   </strong>
                 </Text>
-                <Text
-                  color="secondary"
-                  className="capitalize-first avatar-qualification"
-                >
+                <Text className="capitalize-first avatar-qualification">
                   {item.qualification}
                 </Text>
               </div>
-              <Text color="secondary">
+              <Text>
                 <div className="review-content">{item.review}</div>
               </Text>
             </Card>
