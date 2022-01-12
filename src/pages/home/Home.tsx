@@ -14,6 +14,11 @@ import borderTopSm from "./assets/top_small.svg";
 import borderTopLg from "./assets/top_large.svg";
 import borderBottomSm from "./assets/bottom_small.svg";
 import borderBottomLg from "./assets/bottom_large.svg";
+import stain from "./assets/stain.svg";
+import tryberCharacters1 from "./assets/tryberini1.svg";
+import tryberCharacters3 from "./assets/tryberini3.svg";
+import tryberCharacters4 from "./assets/tryberini4.svg";
+import React from "react";
 
 const bgSpaceSm = "55px";
 const bgSpaceLg = "75px";
@@ -35,13 +40,13 @@ const StyledHome = styled.div`
   }
   .home-section {
     margin-bottom: 100px;
+    position: relative;
+    z-index: 0;
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
       margin-bottom: 30vh;
     }
     &.gradient-bg {
-      position: relative;
-      z-index: 0;
       padding: ${bgSpaceSm} 0;
       background: linear-gradient(180deg, #e9bb38 0%, #811dd7 100%);
       @media only screen and (min-width: ${(props) =>
@@ -88,6 +93,7 @@ const StyledHome = styled.div`
     }
   }
   .section-title {
+    position: relative;
     font-size: 35px !important;
     color: ${(props) => props.theme.palette.primary};
     @media only screen and (min-width: ${(props) =>
@@ -112,6 +118,79 @@ const StyledHome = styled.div`
       shape-outside: none;
     }
   }
+  .tryber-character-wrapper {
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      position: relative;
+      max-width: 75%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .tryberCharacters-1 {
+    position: absolute;
+    right: -25px;
+    top: -60px;
+    width: 68px;
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      width: 154px;
+      right: -170px;
+    }
+  }
+  // get involved
+  .tryberCharacters-2 {
+    display: block;
+    margin: 0 auto 16px;
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      display: none;
+    }
+  }
+  // why become tryber
+  .tryberCharacters-3 {
+    width: 40px;
+    display: block;
+    margin: 0 auto 16px;
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      width: 74px;
+      display: block;
+      margin: unset;
+      position: absolute;
+      left: -40px;
+      top: -20px;
+    }
+  }
+  // advices
+  .bg-stain {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    max-width: none;
+    left: -600px;
+    height: 600px;
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      top: -50px;
+      left: -290px;
+      height: 560px;
+    }
+  }
+  .tryberCharacters-4 {
+    width: 100px;
+    display: block;
+    margin: 0 auto 16px;
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      width: 200px;
+      display: block;
+      margin: unset;
+      position: absolute;
+      left: -70px;
+      top: -90px;
+    }
+  }
 `;
 export default function Home() {
   const { t } = useTranslation();
@@ -131,7 +210,14 @@ export default function Home() {
             </section>
             <section className="home-section aq-pt-3 aq-text-center">
               <div className="section-title text-marker aq-pt-3 aq-pb-2 aq-mb-2">
-                {t("Our Community")}
+                <div className="tryber-character-wrapper">
+                  {t("Our Community")}
+                  <img
+                    className="tryberCharacters-1"
+                    src={tryberCharacters1}
+                    alt="tryber characters"
+                  />
+                </div>
               </div>
               <div className="aq-pt-4">
                 <DataList />
@@ -139,12 +225,16 @@ export default function Home() {
             </section>
             <section className="home-section gradient-bg hero">
               <div className="section-border border-top"></div>
-              <Title
-                size="xl"
-                className="text-marker aq-text-center aq-mb-4 section-title-wrapper"
-              >
-                {t("Why should you become an AppQuality Tester?")}
-              </Title>
+              <div className="text-marker aq-text-center aq-mb-4 section-title">
+                <div className="tryber-character-wrapper">
+                  <img
+                    className="tryberCharacters-3"
+                    src={tryberCharacters3}
+                    alt="tryber characters"
+                  />
+                  {t("Why should you become an AppQuality Tester?")}
+                </div>
+              </div>
               <div className="container">
                 <CardList />
               </div>
@@ -153,12 +243,25 @@ export default function Home() {
             <section className="home-section">
               <BannerMiddle />
             </section>
-            <section className="home-section">
-              <div className="section-title text-marker aq-text-center aq-mb-4">
-                {t("Our Testers advices")}
-              </div>
-              <div className="section-content-wrapper aq-pt-3">
-                <Reviews />
+            <section
+              className="home-section hero"
+              style={{ overflow: "visible" }}
+            >
+              <img className="bg-stain" src={stain} alt="stain background" />
+              <div className="container">
+                <div className="section-title text-marker aq-text-center aq-mb-4">
+                  <div className="tryber-character-wrapper">
+                    <img
+                      className="tryberCharacters-4"
+                      src={tryberCharacters4}
+                      alt="tryber characters"
+                    />
+                    {t("Our Testers advices")}
+                  </div>
+                </div>
+                <div className="aq-pt-3">
+                  <Reviews />
+                </div>
               </div>
             </section>
             <Footer />

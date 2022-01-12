@@ -20,6 +20,10 @@ import avatarVincenzo from "../assets/avatar/Vincenzo.jpeg";
 import { useTranslation } from "react-i18next";
 
 const CardListStyle = styled.div`
+  .bg-stain {
+    position: absolute;
+    z-index: -1;
+  }
   .card-list-item {
     padding-bottom: 35px;
     width: 100%;
