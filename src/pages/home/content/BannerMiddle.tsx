@@ -1,14 +1,19 @@
 import { Text } from "@appquality/appquality-design-system";
 import getInvolved from "../assets/tryber_home_get_involved.png";
-import styled from "styled-components";
 import { Trans, useTranslation } from "react-i18next";
 import JoinTheTeamButton from "./JoinTheTeamButton";
 import React from "react";
+import tryberCharacters2 from "src/pages/home/assets/tryberini2.svg";
 
 export const BannerMiddle = () => {
   const { t } = useTranslation();
   return (
     <div className="section-banner">
+      <img
+        className="tryberCharacters-2"
+        src={tryberCharacters2}
+        alt="tryber characters"
+      />
       <img
         className="banner-img"
         src={getInvolved}
