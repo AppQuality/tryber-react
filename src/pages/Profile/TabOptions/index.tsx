@@ -15,8 +15,8 @@ const Separator = styled.hr`
 
 const TabOptions = () => {
   return (
-    <div className="aq-m-3">
-      <CSSGrid gutter="50px" rowGap="1rem" min="220px">
+    <div>
+      <CSSGrid gutter="50px" rowGap="1rem" min="220px" className="aq-m-3">
         <EditPassword />
         <RequestUserData />
       </CSSGrid>

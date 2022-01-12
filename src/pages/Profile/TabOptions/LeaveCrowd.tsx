@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import { ReactComponent as LeaveCrowdMobile } from "./assets/leave-crowd-mobile.svg";
 import { ReactComponent as LeaveCrowdDesktop } from "./assets/leave-crowd.svg";
 
 const LeaveCrowdComponent = ({ className }: { className?: string }) => {
   return (
     <div className={className}>
       <LeaveCrowdDesktop className="aq-float-right lv-crowd-desktop" />
-      <LeaveCrowdMobile className="lv-crowd-mobile" style={{ width: "100%" }} />
+      <LeaveCrowdDesktop className="aq-float-right lv-crowd-mobile" />
     </div>
   );
 };

@@ -1,21 +1,29 @@
 import {
+  BSCol,
+  BSGrid,
   Button,
   Text,
   Title,
-  BSGrid,
-  BSCol,
 } from "@appquality/appquality-design-system";
-import { useTranslation, Trans } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import styled from "styled-components";
 import UserStore from "../../../redux/user";
 import LeaveCrowd from "./LeaveCrowd";
+
+const DeleteUserAreaGrid = styled.div`
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+`;
 
 const DeleteUserArea = () => {
   const { t } = useTranslation();
   const { deletion, user } = UserStore();
   const { openDeleteModal } = deletion;
   return (
-    <BSGrid>
-      <BSCol size="col-12 col-lg-6">
+    <DeleteUserAreaGrid>
+      <div className="aq-mx-3">
         <Title size="xs" className="aq-mb-2">
           {t("Delete your account")}
         </Title>
@@ -43,11 +51,11 @@ const DeleteUserArea = () => {
             </Button>
           </BSCol>
         </BSGrid>
-      </BSCol>
-      <BSCol size="col-12 col-lg-6">
+      </div>
+      <div>
         <LeaveCrowd />
-      </BSCol>
-    </BSGrid>
+      </div>
+    </DeleteUserAreaGrid>
   );
 };
 
