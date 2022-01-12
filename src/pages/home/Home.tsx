@@ -49,6 +49,7 @@ const StyledHome = styled.div`
     &.gradient-bg {
       padding: ${bgSpaceSm} 0;
       background: linear-gradient(180deg, #e9bb38 0%, #811dd7 100%);
+      min-height: 600px;
       @media only screen and (min-width: ${(props) =>
           props.theme.grid.breakpoints.lg}) {
         padding: ${bgSpaceLg} 0;
@@ -112,10 +113,14 @@ const StyledHome = styled.div`
     margin: 50px -40px 20px 20px;
     shape-outside: ellipse(50% 90px at 80% 63%);
     @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.md}) {
+      width: 320px;
+      shape-outside: none;
+    }
+    @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
       width: 540px;
       margin: 16px -32px 16px 16px;
-      shape-outside: none;
     }
   }
   .tryber-character-wrapper {
