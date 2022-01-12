@@ -124,23 +124,21 @@ const StyledHome = styled.div`
     }
   }
   .tryber-character-wrapper {
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      position: relative;
-      max-width: 75%;
-      display: block;
-      margin: 0 auto;
-    }
+    position: relative;
+    width: 100vw;
+    max-width: fit-content;
+    display: block;
+    margin: 0 auto;
   }
   .tryberCharacters-1 {
     position: absolute;
-    right: 5px;
-    top: -32px;
+    right: -55px;
+    top: -52px;
     width: 68px;
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
       width: 154px;
-      right: 40px;
+      right: -160px;
       top: -55px;
     }
   }
@@ -164,8 +162,8 @@ const StyledHome = styled.div`
       display: block;
       margin: unset;
       position: absolute;
-      left: -40px;
-      top: -20px;
+      left: -80px;
+      top: -40px;
     }
   }
   // advices
@@ -193,8 +191,8 @@ const StyledHome = styled.div`
       display: block;
       margin: unset;
       position: absolute;
-      left: -70px;
-      top: -90px;
+      left: -190px;
+      top: -70px;
     }
   }
 `;
