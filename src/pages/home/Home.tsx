@@ -129,13 +129,14 @@ const StyledHome = styled.div`
   }
   .tryberCharacters-1 {
     position: absolute;
-    right: -25px;
-    top: -60px;
+    right: 5px;
+    top: -32px;
     width: 68px;
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
       width: 154px;
-      right: -170px;
+      right: 40px;
+      top: -55px;
     }
   }
   // get involved
