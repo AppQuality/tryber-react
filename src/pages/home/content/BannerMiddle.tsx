@@ -14,7 +14,7 @@ export const BannerMiddle = () => {
         src={getInvolved}
         alt="tryber welcome people"
       />
-      <div className="section-title text-marker">
+      <div className="section-title text-marker aq-text-secondary">
         {t("Are you ready to get involved?")}
       </div>
       <Text className="aq-my-4 large-desktop">
