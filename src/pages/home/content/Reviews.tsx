@@ -20,6 +20,10 @@ import avatarVincenzo from "../assets/avatar/Vincenzo.jpeg";
 import { useTranslation } from "react-i18next";
 
 const CardListStyle = styled.div`
+  .bg-stain {
+    position: absolute;
+    z-index: -1;
+  }
   .card-list-item {
     padding-bottom: 35px;
     width: 100%;
@@ -159,14 +163,11 @@ export const Reviews = () => {
                     {item.name}, {item.age}
                   </strong>
                 </Text>
-                <Text
-                  color="secondary"
-                  className="capitalize-first avatar-qualification"
-                >
+                <Text className="capitalize-first avatar-qualification">
                   {item.qualification}
                 </Text>
               </div>
-              <Text color="secondary">
+              <Text>
                 <div className="review-content">{item.review}</div>
               </Text>
             </Card>

@@ -11,7 +11,7 @@ export default () => {
         href={`${window.location.origin}/${
           i18n.language == "en" ? "" : `${i18n.language}/`
         }getting-started/`}
-        type="success"
+        type="primary"
         size="block"
       >
         {t("Join the Team")}

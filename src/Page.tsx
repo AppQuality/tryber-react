@@ -43,7 +43,6 @@ const base = "/:locale(en|it|es)?";
 
 function Page() {
   const { search } = useLocation();
-  const topPageRef = useRef<HTMLDivElement>(null);
   const { setReferral } = referralStore();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -54,7 +53,7 @@ function Page() {
     }
   }, []);
   return (
-    <div ref={topPageRef}>
+    <div>
       <SiteHeader />
       <SiteWideMessages />
       <GenericModal />
@@ -156,11 +155,7 @@ function Page() {
           exact
           component={GoodbyePage}
         />
-        <Route
-          path={["/", "/it", "/es"]}
-          exact
-          component={() => <Home topPageRef={topPageRef} />}
-        />
+        <Route path={["/", "/it", "/es"]} exact component={() => <Home />} />
       </Switch>
     </div>
   );
