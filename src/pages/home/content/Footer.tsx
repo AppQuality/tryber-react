@@ -83,7 +83,7 @@ export const Footer = () => {
         <Text small>
           <div style={{ display: "flex" }}>
             <Mailbox size="1.15em" className="aq-mr-2" />{" "}
-            <a href="mailto:crowd@app-quality.com">crowd@app-quality.com</a>
+            <a href="mailto:support@tryber.me">support@tryber.me</a>
           </div>
         </Text>
       </div>
