@@ -133,7 +133,7 @@ const StyledHome = styled.div`
   }
   .tryberCharacters-1 {
     position: absolute;
-    right: -55px;
+    right: -45px;
     top: -52px;
     width: 68px;
     @media only screen and (min-width: ${(props) =>
@@ -165,6 +165,10 @@ const StyledHome = styled.div`
       position: absolute;
       left: -30px;
       top: -40px;
+    }
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.xxl}) {
+      left: -80px;
     }
   }
   // advices
@@ -205,7 +209,7 @@ export default function Home() {
         <StyledHome>
           <Container className="aq-py-3">
             <LangMenu
-              className="aq-mb-3"
+              className="aq-mb-4"
               itLink="/it"
               enLink="/"
               esLink="/es"

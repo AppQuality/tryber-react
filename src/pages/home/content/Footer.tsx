@@ -17,6 +17,14 @@ const StyledFooter = styled.div`
     grid-template-columns: 210px 140px 1fr 1.1fr;
     grid-gap: 60px;
   }
+  .trb-footer-logo {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+      display: initial;
+    }
+  }
   .social-btn {
     padding: 0;
     font-size: 28px;
@@ -39,8 +47,8 @@ export const Footer = () => {
   const { t } = useTranslation();
   return (
     <StyledFooter>
-      <a href="https://app-quality.com">
-        <img src={logo} className="aq-mb-3" />
+      <a href="https://tryber.me">
+        <img className="trb-footer-logo aq-mb-3" src={logo} />
       </a>
       <div className="aq-mb-3">
         <Title size="s">{t("social")}</Title>

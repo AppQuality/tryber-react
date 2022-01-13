@@ -15,6 +15,7 @@ export const BannerMiddle = () => {
         alt="tryber characters"
       />
       <img
+        loading="lazy"
         className="banner-img"
         src={getInvolved}
         alt="tryber welcome people"
