@@ -126,7 +126,8 @@ const StyledHome = styled.div`
   .tryber-character-wrapper {
     position: relative;
     width: 100vw;
-    max-width: fit-content;
+    width: fit-content;
+    max-width: 75vw;
     display: block;
     margin: 0 auto;
   }
@@ -162,7 +163,7 @@ const StyledHome = styled.div`
       display: block;
       margin: unset;
       position: absolute;
-      left: -80px;
+      left: -30px;
       top: -40px;
     }
   }
