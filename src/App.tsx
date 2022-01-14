@@ -30,9 +30,9 @@ function App() {
         <Helmet>
           <meta
             property="og:title"
-            content={"AppQuality Crowd - " + t("Earn money using your devices")}
+            content={"Tryber - " + t("Earn money using your devices")}
           />
-          <title>AppQuality Crowd - {t("Earn money using your devices")}</title>
+          <title>Tryber - {t("Earn money using your devices")}</title>
           <meta
             name="description"
             content={t(

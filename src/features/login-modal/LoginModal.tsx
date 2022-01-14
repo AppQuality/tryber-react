@@ -11,6 +11,7 @@ import { useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
+
 import { useLocalizeRoute } from "../../hooks/useLocalizedRoute";
 import WPAPI from "../../utils/wpapi";
 import { StyledLoginModal } from "./_style";
@@ -33,11 +34,11 @@ export const LoginModal = ({ isOpen, onClose }: LoginMopdalProps) => {
   };
   const handleloginLn = () => {
     window.location.href =
-      "https://crowd.app-quality.com/wp-admin/admin-ajax.php?loc=&action=linkedin_oauth_redirect";
+      "/wp-admin/admin-ajax.php?loc=&action=linkedin_oauth_redirect";
   };
   const handleloginFb = () => {
     window.location.href =
-      "https://crowd.app-quality.com/wp-admin/admin-ajax.php?loc=&action=facebook_oauth_redirect";
+      "/wp-admin/admin-ajax.php?loc=&action=facebook_oauth_redirect";
   };
   const gettingStartedRoute = useLocalizeRoute("getting-started");
   return (

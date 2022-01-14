@@ -1,13 +1,15 @@
+import "../i18n";
+import "@testing-library/jest-dom/extend-expect";
+
 import {
   aqBootstrapTheme,
   ThemeProvider,
 } from "@appquality/appquality-design-system";
-import "@testing-library/jest-dom/extend-expect";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import API from "src/utils/api";
 import { mocked } from "ts-jest/utils";
-import "../i18n";
+
 import { SignupForm } from "./SignupForm";
 
 jest.mock("../utils/api");
@@ -68,13 +70,13 @@ test("SignupForm button should be disabled until all input are filled correctly"
 
   userEvent.click(
     screen.getByLabelText(
-      "I agree to receive earning opportunity emails from AppQuality"
+      "I agree to receive earning opportunity emails from Tryber"
     )
   );
   await waitFor(() => {
     expect(
       screen.getByLabelText(
-        "I agree to receive earning opportunity emails from AppQuality"
+        "I agree to receive earning opportunity emails from Tryber"
       )
     ).toBeChecked();
     expect(screen.getByRole("button")).not.toHaveAttribute("disabled");
@@ -158,13 +160,13 @@ test("SignupForm should call the signup api on submit", async () => {
 
   userEvent.click(
     screen.getByLabelText(
-      "I agree to receive earning opportunity emails from AppQuality"
+      "I agree to receive earning opportunity emails from Tryber"
     )
   );
   await waitFor(() => {
     expect(
       screen.getByLabelText(
-        "I agree to receive earning opportunity emails from AppQuality"
+        "I agree to receive earning opportunity emails from Trber"
       )
     ).toBeChecked();
     expect(screen.getByRole("button")).not.toHaveAttribute("disabled");
