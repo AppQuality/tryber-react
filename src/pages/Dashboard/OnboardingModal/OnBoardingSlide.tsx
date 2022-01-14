@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const OnBoardingSlide = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
   overflow: auto;
   ul {
     list-style: disc;
@@ -9,6 +13,7 @@ export const OnBoardingSlide = styled.div`
   }
   .main-img {
     position: relative;
+    width: 100%;
     height: 300px;
     background-image: var(--mobile-bg);
     background-position: center;
@@ -31,6 +36,9 @@ export const OnBoardingSlide = styled.div`
     @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
       background-image: var(--desktop-bg);
     }
+  }
+  h3 {
+    align-self: normal;
   }
   .main-text {
   }
