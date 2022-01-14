@@ -1,23 +1,23 @@
 import {
   Card,
-  Text,
   Carousel,
-  CarouselSlide,
   CarouselNav,
+  CarouselSlide,
+  Text,
 } from "@appquality/appquality-design-system";
 import React, { useState } from "react";
-import styled from "styled-components";
-import quotes from "../assets/quotes.svg";
-import avatarFabio from "../assets/avatar/fabio2.png";
-import avatarCarlo from "../assets/avatar/carlo2.png";
-import avatarMarina from "../assets/avatar/Marina.jpeg";
-import avatarDaniele from "../assets/avatar/daniele2.jpeg";
-import avatarFabrizio from "../assets/avatar/Fabrizio.jpeg";
-import avatarSatesh from "../assets/avatar/Sathesh.jpeg";
-import avatarFilippo from "../assets/avatar/filippo2.jpeg";
-import avatarVincenzo from "../assets/avatar/Vincenzo.jpeg";
-
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+
+import avatarCarlo from "../assets/avatar/carlo2.png";
+import avatarDaniele from "../assets/avatar/daniele2.jpeg";
+import avatarFabio from "../assets/avatar/fabio2.png";
+import avatarFabrizio from "../assets/avatar/Fabrizio.jpeg";
+import avatarFilippo from "../assets/avatar/filippo2.jpeg";
+import avatarMarina from "../assets/avatar/Marina.jpeg";
+import avatarSatesh from "../assets/avatar/Sathesh.jpeg";
+import avatarVincenzo from "../assets/avatar/Vincenzo.jpeg";
+import quotes from "../assets/quotes.svg";
 
 const CardListStyle = styled.div`
   .bg-stain {
@@ -73,7 +73,7 @@ export const Reviews = () => {
       pic: avatarCarlo,
       name: "Carlo",
       age: "25",
-      qualification: "Qualified Tester, Student",
+      qualification: "Qualified Tryber, Student",
       review: t(
         'I said to myself "Why don\'t we help improve what we will use every day?". What started out as a joke turned out to be a passion. A wonderful and very professional work team is the icing on the cake of this great experience in AppQuality.'
       ),
@@ -91,7 +91,7 @@ export const Reviews = () => {
       pic: avatarDaniele,
       name: "Daniele",
       age: "25",
-      qualification: "Qualified Tester, Student",
+      qualification: "Qualified Tryber, Student",
       review: t(
         "I have the opportunity to test apps in my free time and grow my IT experience, without wasting time in my studies; thanks to the money I earn from tests, I can reduce university expenses"
       ),
@@ -100,7 +100,7 @@ export const Reviews = () => {
       pic: avatarFabrizio,
       name: "Fabrizio",
       age: "38",
-      qualification: "Certified ISTQB professional Tester",
+      qualification: "Certified ISTQB professional Tryber",
       review: t(
         'I found a young, dynamic, reliable and solid reality, with which I was able to deepen my test skills, in a totally new way; The Crowd. AppQuality is like a "test gym" to improve test and skill skills with passion, fun, very clear guidelines and most of all ... together!'
       ),
@@ -109,7 +109,7 @@ export const Reviews = () => {
       pic: avatarSatesh,
       name: "Sathesh",
       age: "20",
-      qualification: "Certified ISTQB professional Tester",
+      qualification: "Certified ISTQB professional Tryber",
       review: t(
         "AppQuality provides a reliable testing environment for the best application results, I have a lot of fun participating in real test projects and feel so proud to be part of the AppQuality testing community ... and to get paid too!"
       ),
@@ -118,7 +118,7 @@ export const Reviews = () => {
       pic: avatarFabio,
       name: "Fabio",
       age: "22",
-      qualification: "Qualified Tester, Student",
+      qualification: "Qualified Tryber, Student",
       review: t(
         "It is an interesting experience and a great opportunity to work with AppQuality. I can say that I have improved my attention to detail and my testing skills in general."
       ),
@@ -127,7 +127,7 @@ export const Reviews = () => {
       pic: avatarFilippo,
       name: "Filippo",
       age: "23",
-      qualification: "Qualified Tester, Student",
+      qualification: "Qualified Tryber, Student",
       review: t(
         "Whenever I am involved in a test campaign I feel honored and proud to help improve what many people use every day. The AppQuality team is great!"
       ),
@@ -136,7 +136,7 @@ export const Reviews = () => {
       pic: avatarVincenzo,
       name: "Vincenzo",
       age: "33",
-      qualification: "Certified ISTQB professional Tester",
+      qualification: "Certified ISTQB professional Tryber",
       review: t(
         "AppQuality represents a very interesting opportunity to participate in real test projects for important international clients. It's a good way to use my professional testing skills in a very fun activity. I can earn extra money ... and that's great!"
       ),
