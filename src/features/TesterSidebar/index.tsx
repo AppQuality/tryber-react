@@ -1,23 +1,21 @@
 import { Sidebar, SidebarType } from "@appquality/appquality-design-system";
 import i18next from "i18next";
-import { useTranslation } from "react-i18next";
-import menuStore from "../../redux/menu";
-import useUser from "../../redux/user";
-
 import {
   AwardFill,
   BugFill,
-  ChatDotsFill,
   Eyeglasses,
+  GearWideConnected,
   GraphUp,
   HouseFill,
   Laptop,
   PersonFill,
+  Question,
   StarFill,
   Wallet2,
-  GearWideConnected,
-  Question,
 } from "react-bootstrap-icons";
+import { useTranslation } from "react-i18next";
+import menuStore from "../../redux/menu";
+import useUser from "../../redux/user";
 
 export interface TesterSidebarProps {
   route?: string;

@@ -1,6 +1,11 @@
 import { Text, Title } from "@appquality/appquality-design-system";
-import { DataListProps } from "../_types";
 import styled from "styled-components";
+import { DataListItem } from "src/pages/home/_types";
+import testerIcon from "src/pages/home/assets/testers.svg";
+import countriesIcon from "src/pages/home/assets/countries.svg";
+import campaignsIcon from "src/pages/home/assets/campaigns.svg";
+import brandsHelped from "src/pages/home/assets/brandsHelped.svg";
+import { useTranslation } from "react-i18next";
 
 const DataListStyle = styled.div`
   display: flex;
@@ -39,19 +44,46 @@ const DataListStyle = styled.div`
   }
 `;
 
-export const DataList = ({ data }: DataListProps) => {
+export const DataList = () => {
+  const { t } = useTranslation();
+  const data: DataListItem[] = [
+    {
+      name: t("testers"),
+      icon: testerIcon,
+      text: "30.000",
+    },
+    {
+      name: t("Countries covered"),
+      icon: countriesIcon,
+      text: "100",
+    },
+    {
+      name: t("Campaigns delivered"),
+      icon: campaignsIcon,
+      text: "3.500",
+    },
+    {
+      name: t("Brands helped"),
+      icon: brandsHelped,
+      text: "150",
+    },
+  ];
   return (
     <DataListStyle>
       {data.map((item, index) => (
         <div className="data-list-item" key={index}>
           <div className="item-body">
-            <img className="item-image aq-mb-3" src={item.icon} alt={item.name} />
+            <img
+              className="item-image aq-mb-3"
+              src={item.icon}
+              alt={item.name}
+            />
             <div className="item-text aq-mb-3">
-              <Title size="m">
+              <Title className="text-marker" size="m">
                 {item.text}
-                <span className="aq-text-warning">+</span>
+                <span className="aq-text-secondary">+</span>
               </Title>
-              <Text color="secondary" className="capitalize-first">
+              <Text className="capitalize-first">
                 <strong>{item.name}</strong>
               </Text>
             </div>

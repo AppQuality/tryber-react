@@ -30,7 +30,7 @@ export default ({
   const helmet = () => {
     return (
       <Helmet>
-        <title>{title} - AppQuality Crowd</title>
+        <title>{title} - Tryber</title>
         <meta property="og:title" content={title} />
         <meta name="description" content={title} />
       </Helmet>

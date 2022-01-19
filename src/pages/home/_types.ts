@@ -19,17 +19,11 @@ export interface CardListItemsProps {
 }
 
 export interface CardListItem {
-  icon: ReactNode;
+  icon: string;
   title: string;
   body: ReactNode;
 }
 
 export interface CardListItemsProps {
   items: CardListItem[];
-}
-
-export interface CardListItem {
-  icon: ReactNode;
-  title: string;
-  body: ReactNode;
 }

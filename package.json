@@ -3,8 +3,8 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@appquality/appquality-design-system": "^0.1.155",
-    "@appquality/craft-blocks": "^0.1.15",
+    "@appquality/appquality-design-system": "^1.0.3",
+    "@appquality/craft-blocks": "^0.1.17",
     "@datadog/browser-logs": "^3.4.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -98,6 +98,7 @@
     "@types/react-select-country-list": "^2.2.0",
     "@types/styled-components": "^5.1.9",
     "@types/uuid": "^8.3.1",
+    "file-loader": "^6.2.0",
     "husky": "^6.0.0",
     "i18next-scanner": "^3.1.0",
     "i18next-scanner-typescript": "^1.0.6",

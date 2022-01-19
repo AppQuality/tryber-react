@@ -9,32 +9,62 @@
     />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <link rel="icon" href="/static/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <link rel="apple-touch-icon" href="/static/logo192.png" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/static/icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/static/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/static/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/static/icons/site.webmanifest" />
+
     <link
       rel="stylesheet"
       id="loading-css"
       href="/static/loading.css"
       type="text/css"
     />
-    <link rel="manifest" href="/static/manifest.json" />
-    <meta property="og:site_name" content="AppQuality Crowd" />
-    <meta property="og:image" content="/static/crowdAppQuality.jpg" />
+    <link
+      rel="preload"
+      href="/static/fonts/marker.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <style>
+      @font-face {
+        font-family: Marker;
+        src: url("/static/fonts/marker.woff2") format("woff2"),
+          url("/static/fonts/marker.woff") format("woff"),
+          url("/static/fonts/marker.ttf") format("ttf");
+      }
+    </style>
+    <meta property="og:site_name" content="Tryber" />
+    <meta property="og:image" content="/static/tryber-meta.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
       property="og:title"
-      content="AppQuality Crowd - Earn money using your devices"
+      content="Tryber - Make things better"
       data-react-helmet="true"
     />
-    <title data-react-helmet="true">
-      AppQuality Crowd - Earn money using your devices
-    </title>
+    <title data-react-helmet="true">Tryber - Make things better</title>
     <meta
       name="description"
-      content="Becoming a part of Crowd AppQuality community is simple: It's not requested a particular profile, is the multiprofile our power."
+      content="Becoming a part of Tryber community is simple: It's not requested a particular profile, is the multiprofile our power."
       data-react-helmet="true"
     />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -54,7 +84,7 @@
       <div id="appq-loading-header"></div>
       <div id="appq-loading-content">
         <div class="loadingImg">
-          <img src="/static/loading.svg" />
+          <img src="/static/tryber_loading.gif" />
         </div>
       </div>
     </div>
