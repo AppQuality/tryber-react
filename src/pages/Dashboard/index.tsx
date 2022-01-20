@@ -34,9 +34,9 @@ export default function Dashboard() {
     <PageTemplate
       title={t("Dashboard")}
       route="my-dashboard"
-      subtitle={
+      subtitle={t(
         "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!"
-      }
+      )}
       shouldBeLoggedIn
     >
       <PageTemplateModals>
