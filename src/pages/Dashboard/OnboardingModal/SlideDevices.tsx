@@ -37,8 +37,7 @@ export default () => {
       </Title>
       <Text className="main-text">
         {t(
-          "Add the devices you will use for the Tests: they will be the tools to face the campaigns and one of the selection's criteria.\n" +
-            "Currently you can add: PCs/Notebooks, Smartphones, Tablets, Smart Tvs and Boxes/Sticks"
+          "Add the devices you will use for the Tests: they will be the tools to face the campaigns and one of the selection's criteria.\n Currently you can add: PCs/Notebooks, Smartphones, Tablets, Smart Tvs and Boxes/Sticks"
         )}
       </Text>
     </OnBoardingSlide>
