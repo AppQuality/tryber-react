@@ -111,7 +111,7 @@ const StyledHome = styled.div`
     float: right;
     width: 64%;
     margin: 50px -40px 20px 20px;
-    shape-outside: ellipse(50% 90px at 80% 63%);
+    shape-outside: ellipse(50% 100px at 71% 63%);
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.md}) {
       width: 320px;
