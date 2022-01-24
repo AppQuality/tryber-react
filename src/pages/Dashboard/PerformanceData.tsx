@@ -45,7 +45,7 @@ const PerformanceData = () => {
     {
       icon: <AwardFill size={"21"} className={"aq-text-infoVariant"} />,
       text: t("Your Rank"),
-      val: rank + (isNaN(rank) ? "" : "°"),
+      val: rank + (isNaN(parseFloat(rank)) ? "" : "°"),
     },
     {
       icon: <ArrowRight size={"21"} />,

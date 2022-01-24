@@ -3,7 +3,7 @@ import API from "src/utils/api";
 
 export default () => {
   const [expPoints, setExpPoints] = useState(0);
-  const [rank, setRank] = useState(0);
+  const [rank, setRank] = useState("0");
   const [cpCompleted, setCpCompleted] = useState(0);
   const [bugsApproved, setBugsApproved] = useState(0);
   const [allBooty, setAllBooty] = useState(0);
@@ -19,7 +19,7 @@ export default () => {
         if (!data) {
           return {
             expPoints: 0,
-            rank: 0,
+            rank: "N/A",
             cpCompleted: 0,
             bugsApproved: 0,
             allBooty: 0,
@@ -27,7 +27,7 @@ export default () => {
           };
         }
         setExpPoints(data.total_exp_pts || 0);
-        setRank(parseInt(data.rank || "0"));
+        setRank(data.rank || "N/A");
         setCpCompleted(data.attended_cp || 0);
         setBugsApproved(data.approved_bugs || 0);
         setAllBooty(data.booty || 0);
