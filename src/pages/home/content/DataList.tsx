@@ -50,7 +50,7 @@ export const DataList = () => {
     {
       name: t("testers"),
       icon: testerIcon,
-      text: "30.000",
+      text: "45.000",
     },
     {
       name: t("Countries covered"),
