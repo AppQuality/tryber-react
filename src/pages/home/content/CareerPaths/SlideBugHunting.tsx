@@ -1,14 +1,10 @@
-import {
-  Button,
-  icons,
-  Text,
-  Title,
-} from "@appquality/appquality-design-system";
+import { icons, Text, Title } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 import careerImage from "./assets/career-bh@2x.png";
 import GenericSlide, { iconStyle, TextBox } from "./GenericSlide";
+import JoinInButton from "./JoinInButton";
 
 const TextBoxOne = styled(TextBox)`
   bottom: 9%;
@@ -49,9 +45,7 @@ export default () => {
           )}
         </Text>
       </div>
-      <Button type="secondary" flat className="aq-mb-4">
-        {t("JOIN IN TRYBER")}
-      </Button>
+      <JoinInButton />
       <Title size="s" className="text-marker disclaimer">
         {t("Start earning today!")}
       </Title>
