@@ -1,4 +1,4 @@
-import { Container, Text, Title } from "@appquality/appquality-design-system";
+import { Container, Text } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import GoogleTagManager from "../../features/GoogleTagManager";
@@ -9,7 +9,10 @@ import { Footer } from "./content/Footer";
 import { CardList } from "src/pages/home/content/CardList";
 import { Reviews } from "src/pages/home/content/Reviews";
 import { LangMenu } from "src/features/LangMenu";
-import { BannerMiddle } from "src/pages/home/content/BannerMiddle";
+import { AboutUnguess } from "src/pages/home/content/AboutUnguess";
+import { Brands } from "src/pages/home/content/Brands";
+import { HowToJoinTryber } from "src/pages/home/content/HowToJoinTryber";
+import { CareerPaths } from "src/pages/home/content/CareerPaths";
 import borderTopSm from "./assets/top_small.svg";
 import borderTopLg from "./assets/top_large.svg";
 import borderBottomSm from "./assets/bottom_small.svg";
@@ -217,21 +220,6 @@ export default function Home() {
             <section className="home-section">
               <BannerTop />
             </section>
-            <section className="home-section aq-pt-3 aq-text-center">
-              <div className="section-title text-marker aq-pt-3 aq-pb-2 aq-mb-2">
-                <div className="tryber-character-wrapper">
-                  {t("Our Community")}
-                  <img
-                    className="tryberCharacters-1"
-                    src={tryberCharacters1}
-                    alt="tryber characters"
-                  />
-                </div>
-              </div>
-              <div className="aq-pt-4">
-                <DataList />
-              </div>
-            </section>
             <section className="home-section gradient-bg hero">
               <div className="section-border border-top"></div>
               <div className="text-marker aq-text-center aq-mb-4 section-title">
@@ -249,8 +237,32 @@ export default function Home() {
               </div>
               <div className="section-border border-bottom"></div>
             </section>
+            <section>
+              <CareerPaths />
+            </section>
+            <section className="home-section aq-pt-3 aq-text-center">
+              <div className="section-title text-marker aq-pt-3 aq-pb-2 aq-mb-2">
+                <div className="tryber-character-wrapper">
+                  {t("Our Community")}
+                  <img
+                    className="tryberCharacters-1"
+                    src={tryberCharacters1}
+                    alt="tryber characters"
+                  />
+                </div>
+              </div>
+              <div className="aq-pt-4">
+                <DataList />
+              </div>
+            </section>
+            <section>
+              <AboutUnguess />
+            </section>
+            <section>
+              <Brands />
+            </section>
             <section className="home-section">
-              <BannerMiddle />
+              <HowToJoinTryber />
             </section>
             <section
               className="home-section hero"

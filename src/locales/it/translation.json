@@ -30,7 +30,7 @@
   "Add new certification": {
     "Area": "Area"
   },
-  "Add the devices you will use for the Tests: they will be the tools to face the campaigns and one of the selection's criteria.\n Currently you can add: PCs/Notebooks, Smartphones, Tablets, Smart Tvs and Boxes/Sticks": "Aggiungi i dispositivi a tua disposizione: saranno gli strumenti per affrontare le Campagne e uno dei criteri di selezione.\n  Attualmente puoi aggiungere: PC/Notebook, Smartphone, Tablet, Smart Tv e Box/Stick",
+  "Add the devices you will use for the Tests: they will be the tools to face the campaigns and one of the selection's criteria.\n Currently you can add: PCs/Notebooks, Smartphones, Tablets, Smart Tvs and Boxes/Sticks": "Aggiungi i dispositivi che utilizzerai per le Campagne: saranno gli strumenti per affrontare le Campagne e uno dei criteri di selezione.\n  Attualmente puoi aggiungere: PC/Notebook, Smartphone, Tablet, Smart Tv e Box/Stick",
   "Add your devices": "Aggiungi i tuoi dispositivi",
   "Adding more devices allows you to apply to more campaigns to earn more money and experience points.": "L'aggiunta di più dispositivi ti consentirà di candidarti a più Campagne e quindi di guadagnare più soldi e punti esperienza.",
   "Additional Informations": "Informazioni Addizionali",
@@ -382,6 +382,6 @@
   "or login with": "o accedi con",
   "redirecting": "reindirizzamento",
   "social": "social",
-  "testers": "Tryber attivi",
+  "testers": "Tryber",
   "wait...": "attendi..."
 }
