@@ -3,7 +3,7 @@ import { Bank2, Briefcase, Mailbox, PinMap } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import fbLogo from "../assets/fb.svg";
-import lnLogo from "../assets/ln.svg";
+import instagramLogo from "../assets/instagram.svg";
 import logo from "../assets/tryber_logo_full.svg";
 import telegramLogo from "../assets/telegram.svg";
 
@@ -54,7 +54,7 @@ export const Footer = () => {
         <Title size="s">{t("social")}</Title>
         <Button
           forwardedAs="a"
-          href="https://www.facebook.com/appqualitypage/"
+          href="https://www.facebook.com/tryber.me"
           type="link"
           className="social-btn"
           target="_blank"
@@ -63,16 +63,16 @@ export const Footer = () => {
         </Button>
         <Button
           forwardedAs="a"
-          href="https://www.linkedin.com/company/app-quality"
+          href="https://instagram.com/tryber.me?utm_medium=copy_link"
           type="link"
           className="social-btn"
           target="_blank"
         >
-          <img src={lnLogo} alt="linkedin" />
+          <img src={instagramLogo} alt="instagram" />
         </Button>
         <Button
           forwardedAs="a"
-          href="https://t.me/AppQualityCrowd"
+          href="https://t.me/Tryber_me"
           type="link"
           className="social-btn"
           target="_blank"
