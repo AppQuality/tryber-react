@@ -32,7 +32,7 @@ const CampaignsTable = ({
       title: t("Campaign"),
       dataIndex: "amount",
       key: "amount",
-      width: "10ch",
+      maxWidth: "10ch",
       isSortable: true,
       onSort: (sorting: "ASC" | "DESC") => {
         order.set(sorting);
@@ -43,7 +43,7 @@ const CampaignsTable = ({
       title: t("End Date"),
       dataIndex: "date",
       key: "date",
-      width: "8ch",
+      maxWidth: "8ch",
       isSortable: true,
       onSort: (sorting: "ASC" | "DESC") => {
         order.set(sorting);
@@ -54,7 +54,7 @@ const CampaignsTable = ({
       title: t("Action"),
       dataIndex: "activity",
       key: "activity",
-      width: "10ch",
+      maxWidth: "10ch",
     },
   ];
   return (

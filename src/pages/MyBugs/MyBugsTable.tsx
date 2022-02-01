@@ -32,7 +32,7 @@ const MyBugsTable = ({
       title: "Id",
       dataIndex: "id",
       key: "id",
-      width: "8ch",
+      maxWidth: "8ch",
       isSortable: true,
       onSort: (sorting: "ASC" | "DESC") => {
         order.set(sorting);
@@ -43,7 +43,7 @@ const MyBugsTable = ({
       title: t("Title"),
       dataIndex: "title",
       key: "title",
-      width: "50ch",
+      maxWidth: "50ch",
       isSortable: true,
       onSort: (sorting: "ASC" | "DESC") => {
         order.set(sorting);
@@ -54,19 +54,19 @@ const MyBugsTable = ({
       title: t("Severity"),
       dataIndex: "severity",
       key: "severity",
-      width: "10ch",
+      maxWidth: "10ch",
     },
     {
       title: t("Status"),
       dataIndex: "status",
       key: "status",
-      width: "10ch",
+      maxWidth: "10ch",
     },
     {
       title: t("Action"),
       dataIndex: "action",
       key: "action",
-      width: "10ch",
+      maxWidth: "10ch",
       align: "center",
     },
   ];

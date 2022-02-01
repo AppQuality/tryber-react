@@ -32,7 +32,7 @@ const ExperiencePointsTable = ({
       title: t("Points"),
       dataIndex: "amount",
       key: "amount",
-      width: "10ch",
+      maxWidth: "10ch",
       isSortable: true,
       onSort: (sorting: "ASC" | "DESC") => {
         order.set(sorting);
@@ -43,7 +43,7 @@ const ExperiencePointsTable = ({
       title: t("Date"),
       dataIndex: "date",
       key: "date",
-      width: "8ch",
+      maxWidth: "8ch",
       isSortable: true,
       onSort: (sorting: "ASC" | "DESC") => {
         order.set(sorting);
@@ -54,19 +54,19 @@ const ExperiencePointsTable = ({
       title: t("Activity"),
       dataIndex: "activity",
       key: "activity",
-      width: "10ch",
+      maxWidth: "10ch",
     },
     {
       title: t("Campaign"),
       dataIndex: "campaign",
       key: "campaign",
-      width: "8ch",
+      maxWidth: "8ch",
     },
     {
       title: t("Reason"),
       dataIndex: "note",
       key: "note",
-      width: "50ch",
+      maxWidth: "50ch",
     },
   ];
   return (

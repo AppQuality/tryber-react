@@ -25,7 +25,7 @@ const ClosedCampaignsTable = () => {
             title: t("Campaign"),
             dataIndex: "campaigns",
             key: "campaigns",
-            width: "70ch",
+            maxWidth: "70ch",
           },
           {
             title: t("Close Date"),
@@ -36,7 +36,7 @@ const ClosedCampaignsTable = () => {
               order.set(sorting);
               orderBy.set("closeDate");
             },
-            width: "10ch",
+            maxWidth: "10ch",
           },
         ]}
       />
