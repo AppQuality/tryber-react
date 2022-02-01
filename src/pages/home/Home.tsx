@@ -1,27 +1,28 @@
 import { Container, Text } from "@appquality/appquality-design-system";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import GoogleTagManager from "../../features/GoogleTagManager";
-import NotLoggedOnly from "../../features/NotLoggedOnly";
-import { BannerTop } from "./content/BannerTop";
-import { DataList } from "./content/DataList";
-import { Footer } from "./content/Footer";
-import { CardList } from "src/pages/home/content/CardList";
-import { Reviews } from "src/pages/home/content/Reviews";
 import { LangMenu } from "src/features/LangMenu";
 import { AboutUnguess } from "src/pages/home/content/AboutUnguess";
 import { Brands } from "src/pages/home/content/Brands";
-import { HowToJoinTryber } from "src/pages/home/content/HowToJoinTryber";
+import { CardList } from "src/pages/home/content/CardList";
 import { CareerPaths } from "src/pages/home/content/CareerPaths";
-import borderTopSm from "./assets/top_small.svg";
-import borderTopLg from "./assets/top_large.svg";
-import borderBottomSm from "./assets/bottom_small.svg";
+import { HowToJoinTryber } from "src/pages/home/content/HowToJoinTryber";
+import { Reviews } from "src/pages/home/content/Reviews";
+import styled from "styled-components";
+
+import GoogleTagManager from "../../features/GoogleTagManager";
+import NotLoggedOnly from "../../features/NotLoggedOnly";
 import borderBottomLg from "./assets/bottom_large.svg";
+import borderBottomSm from "./assets/bottom_small.svg";
 import stain from "./assets/stain.svg";
+import borderTopLg from "./assets/top_large.svg";
+import borderTopSm from "./assets/top_small.svg";
 import tryberCharacters1 from "./assets/tryberini1.svg";
 import tryberCharacters3 from "./assets/tryberini3.svg";
 import tryberCharacters4 from "./assets/tryberini4.svg";
-import React from "react";
+import { BannerTop } from "./content/BannerTop";
+import { DataList } from "./content/DataList";
+import { Footer } from "./content/Footer";
 
 const bgSpaceSm = "55px";
 const bgSpaceLg = "75px";
@@ -261,7 +262,7 @@ export default function Home() {
             <section>
               <Brands />
             </section>
-            <section className="home-section">
+            <section className="home-section hero">
               <HowToJoinTryber />
             </section>
             <section
