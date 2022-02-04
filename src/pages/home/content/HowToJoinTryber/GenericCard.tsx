@@ -1,3 +1,4 @@
+import { Text } from "@appquality/appquality-design-system";
 import React from "react";
 import styled from "styled-components";
 
@@ -16,7 +17,7 @@ const GenericCard = ({
     <div className={className}>
       <div className="icon aq-mb-2">{icon}</div>
       <div className="title aq-mb-2">{title}</div>
-      <div className="content">{children}</div>
+      <Text className="content  aq-mb-3">{children}</Text>
     </div>
   );
 };

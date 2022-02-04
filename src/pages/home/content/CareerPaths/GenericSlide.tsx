@@ -1,4 +1,4 @@
-import { Button, Text, Title } from "@appquality/appquality-design-system";
+import { Text, Title } from "@appquality/appquality-design-system";
 import React from "react";
 import styled from "styled-components";
 
@@ -13,12 +13,6 @@ const SlideContainer = styled.div`
     color: #fff;
     font-size: 22px;
     line-height: 1.8;
-  }
-  ${Button} {
-    padding: 18px 42px;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bolder;
   }
   display: grid;
   grid-template-columns: 1fr 1fr;

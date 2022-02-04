@@ -1,10 +1,9 @@
 import { icons, Text, Title } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-
+import JoinInButton from "../JoinInButton";
 import careerImage from "./assets/career-bh@2x.png";
 import GenericSlide, { iconStyle, TextBox } from "./GenericSlide";
-import JoinInButton from "./JoinInButton";
 
 const TextBoxOne = styled(TextBox)`
   bottom: 9%;

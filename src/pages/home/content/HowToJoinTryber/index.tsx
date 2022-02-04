@@ -1,5 +1,4 @@
 import {
-  Button,
   Container,
   icons,
   Text,
@@ -7,7 +6,7 @@ import {
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-
+import JoinInButton from "../JoinInButton";
 import background from "./assets/background.png";
 import GenericCard from "./GenericCard";
 
@@ -17,10 +16,10 @@ const JoinTryberContainer = styled.div`
   ${Title},${Text} {
     color: #fff;
   }
-  ${Title} {
+  ${Title}.main {
     font-size: 50px;
   }
-  ${Text} {
+  ${Text}.claim {
     font-size: 22px;
   }
   .cardlist {
@@ -39,10 +38,13 @@ export const HowToJoinTryber = () => {
   return (
     <JoinTryberContainer>
       <Container>
-        <Title size="l" className="text-marker aq-text-center aq-mt-3 aq-mb-2">
+        <Title
+          size="l"
+          className="main text-marker aq-text-center aq-mt-3 aq-mb-2"
+        >
           {t("Join Tryber is simple")}
         </Title>
-        <Text className="aq-text-center">
+        <Text className="aq-text-center claim">
           {t(
             "So what’s in it for you? New skills, free training, good money… and the opportunity to help the brands you use every day improve the user experience of their products and services."
           )}
@@ -65,9 +67,12 @@ export const HowToJoinTryber = () => {
             {t("Join campaigns and start earning money!")}
           </GenericCard>
         </div>
-        <Button type="secondary" flat>
-          {t("Join in Tryber")}
-        </Button>
+        <div className="aq-text-center">
+          <JoinInButton />
+        </div>
+        <Title size="s" className="text-marker disclaimer aq-text-center">
+          {t("It's totally free!")}
+        </Title>
       </Container>
     </JoinTryberContainer>
   );
