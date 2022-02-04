@@ -37,7 +37,7 @@ const ActiveCampaignsTable = () => {
               order.set(sorting);
               orderBy.set("startDate");
             },
-            maxWidth: "10ch",
+            maxWidth: "12ch",
           },
           {
             title: t("End Date"),

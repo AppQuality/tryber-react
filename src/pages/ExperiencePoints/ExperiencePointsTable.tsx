@@ -60,13 +60,12 @@ const ExperiencePointsTable = ({
       title: t("Campaign"),
       dataIndex: "campaign",
       key: "campaign",
-      maxWidth: "8ch",
+      maxWidth: "12ch",
     },
     {
       title: t("Reason"),
       dataIndex: "note",
       key: "note",
-      maxWidth: "50ch",
     },
   ];
   return (
@@ -77,6 +76,7 @@ const ExperiencePointsTable = ({
         orderBy={orderBy.current}
         order={order.current}
         isLoading={loading}
+        className="aq-mb-3"
         isStriped
       />
       <Pagination
