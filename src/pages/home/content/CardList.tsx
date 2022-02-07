@@ -1,13 +1,13 @@
 import { Card, Text } from "@appquality/appquality-design-system";
 import React, { useEffect, useRef, useState } from "react";
-import styled, { keyframes } from "styled-components";
 import { Trans, useTranslation } from "react-i18next";
-import wallet from "src/pages/home/assets/wallet.svg";
-import devices from "src/pages/home/assets/devices.svg";
-import hands from "src/pages/home/assets/hands.svg";
 import clock from "src/pages/home/assets/clock.svg";
+import devices from "src/pages/home/assets/devices.svg";
 import diamond from "src/pages/home/assets/diamond.svg";
+import hands from "src/pages/home/assets/hands.svg";
 import support from "src/pages/home/assets/support.svg";
+import wallet from "src/pages/home/assets/wallet.svg";
+import styled, { keyframes } from "styled-components";
 
 const tresholdForCardAnimation = 100;
 
@@ -23,6 +23,9 @@ const slideUpAnimation = keyframes`
 `;
 
 const CardListStyle = styled.div`
+  .aq-card-body ${Text} {
+    color: ${(props) => props.theme.colors.white};
+  }
   min-height: ${tresholdForCardAnimation + 1}px;
   @media (min-width: ${(props) => props.theme.grid.breakpoints.md}) {
     display: grid;
@@ -36,7 +39,6 @@ const CardListStyle = styled.div`
       padding-bottom: 35px;
     }
   }
-
   .item-icon {
     font-size: 40px;
   }
@@ -47,6 +49,14 @@ const CardItem = styled(Card)<{ index: number }>`
   animation-delay: ${({ index }) => index * 0.2}s;
   animation-fill-mode: both;
   animation-name: ${slideUpAnimation};
+  background: linear-gradient(
+    120.58deg,
+    rgba(141, 62, 133, 0.5) 0%,
+    rgba(157, 94, 97, 0.1) 91.33%
+  );
+  border-radius: 32px;
+  border: none;
+  color: ${(props) => props.theme.colors.white};
 `;
 export const CardList = () => {
   const { t } = useTranslation();
@@ -149,7 +159,6 @@ export const CardList = () => {
           <CardItem
             index={index + 1}
             key={index}
-            shadow
             className="card-list-item aq-my-3"
           >
             <div className="item-icon">

@@ -17,8 +17,8 @@ import borderBottomSm from "./assets/bottom_small.svg";
 import borderTopLg from "./assets/top_large.svg";
 import borderTopSm from "./assets/top_small.svg";
 import tryberCharacters1 from "./assets/tryberini1.svg";
-import tryberCharacters3 from "./assets/tryberini3.svg";
 import tryberCharacters4 from "./assets/tryberini4.svg";
+import tryberCharacters5 from "./assets/tryberini5.svg";
 import { BannerTop } from "./content/BannerTop";
 import { DataList } from "./content/DataList";
 import { Footer } from "./content/Footer";
@@ -51,20 +51,15 @@ const StyledHome = styled.div`
     }
     &.gradient-bg {
       padding: ${bgSpaceSm} 0;
-      background: linear-gradient(180deg, #e9bb38 0%, #811dd7 100%);
+      background: linear-gradient(125.03deg, #a62ad3 3.24%, #f6cf39 101.35%);
       min-height: 600px;
+      color: ${(props) => props.theme.colors.white};
+      .section-title {
+        color: ${(props) => props.theme.colors.white};
+      }
       @media only screen and (min-width: ${(props) =>
           props.theme.grid.breakpoints.lg}) {
         padding: ${bgSpaceLg} 0;
-        background: linear-gradient(
-          90deg,
-          #ffdc17 0.42%,
-          #f9d320 10.82%,
-          #e9bb38 27.72%,
-          #d0945f 49%,
-          #ac5e96 73.83%,
-          #811dd7 100%
-        );
       }
       .section-border {
         width: 100%;
@@ -189,7 +184,7 @@ const StyledHome = styled.div`
       height: 560px;
     }
   }
-  .tryberCharacters-4 {
+  section .tryberCharacters-4 {
     width: 100px;
     display: block;
     margin: 0 auto 16px;
@@ -224,11 +219,11 @@ export default function Home() {
               <div className="text-marker aq-text-center aq-mb-4 section-title">
                 <div className="tryber-character-wrapper">
                   <img
-                    className="tryberCharacters-3"
-                    src={tryberCharacters3}
+                    className="tryberCharacters-5"
+                    src={tryberCharacters5}
                     alt="tryber characters"
                   />
-                  {t("Why should you become an AppQuality Tester?")}
+                  {t("Why should you join tryber?")}
                 </div>
               </div>
               <div className="container">
