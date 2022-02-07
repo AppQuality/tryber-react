@@ -14,7 +14,6 @@ import GoogleTagManager from "../../features/GoogleTagManager";
 import NotLoggedOnly from "../../features/NotLoggedOnly";
 import borderBottomLg from "./assets/bottom_large.svg";
 import borderBottomSm from "./assets/bottom_small.svg";
-import stain from "./assets/stain.svg";
 import borderTopLg from "./assets/top_large.svg";
 import borderTopSm from "./assets/top_small.svg";
 import tryberCharacters1 from "./assets/tryberini1.svg";
@@ -222,7 +221,6 @@ export default function Home() {
               <BannerTop />
             </section>
             <section className="home-section gradient-bg hero">
-              <div className="section-border border-top"></div>
               <div className="text-marker aq-text-center aq-mb-4 section-title">
                 <div className="tryber-character-wrapper">
                   <img
@@ -236,7 +234,6 @@ export default function Home() {
               <div className="container">
                 <CardList />
               </div>
-              <div className="section-border border-bottom"></div>
             </section>
             <section>
               <CareerPaths />
@@ -269,7 +266,6 @@ export default function Home() {
               className="home-section hero"
               style={{ overflow: "visible" }}
             >
-              <img className="bg-stain" src={stain} alt="stain background" />
               <div className="container">
                 <div className="section-title text-marker aq-text-center aq-mb-4">
                   <div className="tryber-character-wrapper">
