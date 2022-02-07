@@ -2,13 +2,19 @@ import { Button } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
-const JoinInButton = ({ className }: { className?: string }) => {
+const JoinInButton = ({
+  className,
+  flat = true,
+}: {
+  className?: string;
+  flat?: boolean;
+}) => {
   const { t, i18n } = useTranslation();
 
   return (
     <Button
       type="secondary"
-      flat
+      flat={flat}
       className={`${className} aq-mb-4`}
       forwardedAs="a"
       href={`${window.location.origin}/${

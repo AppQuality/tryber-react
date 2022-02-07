@@ -1,4 +1,4 @@
-import { Container, Text } from "@appquality/appquality-design-system";
+import { Container, Text, Title } from "@appquality/appquality-design-system";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { LangMenu } from "src/features/LangMenu";
@@ -16,7 +16,6 @@ import borderBottomLg from "./assets/bottom_large.svg";
 import borderBottomSm from "./assets/bottom_small.svg";
 import borderTopLg from "./assets/top_large.svg";
 import borderTopSm from "./assets/top_small.svg";
-import tryberCharacters1 from "./assets/tryberini1.svg";
 import tryberCharacters4 from "./assets/tryberini4.svg";
 import tryberCharacters5 from "./assets/tryberini5.svg";
 import { BannerTop } from "./content/BannerTop";
@@ -231,22 +230,21 @@ export default function Home() {
               </div>
             </section>
             <section>
+              <Title
+                className="text-marker section-title aq-text-primary aq-text-center"
+                size="xs"
+              >
+                {t("Title")}
+              </Title>
+              <Text className="aq-mb-4 large-desktop aq-text-center">
+                {t(
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown."
+                )}
+              </Text>
               <CareerPaths />
             </section>
-            <section className="home-section aq-pt-3 aq-text-center">
-              <div className="section-title text-marker aq-pt-3 aq-pb-2 aq-mb-2">
-                <div className="tryber-character-wrapper">
-                  {t("Our Community")}
-                  <img
-                    className="tryberCharacters-1"
-                    src={tryberCharacters1}
-                    alt="tryber characters"
-                  />
-                </div>
-              </div>
-              <div className="aq-pt-4">
-                <DataList />
-              </div>
+            <section className="home-section our-community hero aq-pt-3 aq-text-center">
+              <DataList />
             </section>
             <section>
               <AboutUnguess />

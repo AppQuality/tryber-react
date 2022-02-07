@@ -2,7 +2,7 @@ import { Text } from "@appquality/appquality-design-system";
 import { Trans, useTranslation } from "react-i18next";
 
 import people from "../assets/tryber_home_welcome.png";
-import JoinTheTeamButton from "./JoinTheTeamButton";
+import JoinInButton from "./JoinInButton";
 
 export const BannerTop = () => {
   const { t } = useTranslation();
@@ -34,7 +34,7 @@ export const BannerTop = () => {
           <strong>Your feedback and work are valuable!</strong>
         </Trans>
       </Text>
-      <JoinTheTeamButton />
+      <JoinInButton flat={false} />
       <div className="text-marker aq-text-primary aq-mt-4">
         {t("it's totally free")}
       </div>
