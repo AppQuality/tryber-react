@@ -59,7 +59,6 @@ const AvailableCampaignsTable = () => {
             dataIndex: "actions",
             key: "actions",
             align: "center",
-            maxWidth: "10ch",
             role: "cta",
           },
         ]}
