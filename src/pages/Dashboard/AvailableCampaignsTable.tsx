@@ -26,13 +26,13 @@ const AvailableCampaignsTable = () => {
             title: t("Campaign"),
             dataIndex: "campaignName",
             key: "campaignName",
-            maxWidth: "30ch",
+            role: "title",
           },
           {
             title: t("Type"),
             dataIndex: "type",
             key: "type",
-            maxWidth: "30ch",
+            role: "overline",
           },
           {
             title: t("Start Date"),
@@ -43,7 +43,6 @@ const AvailableCampaignsTable = () => {
               order.set(sorting);
               orderBy.set("startDate");
             },
-            maxWidth: "10ch",
           },
           {
             title: t("End Date"),
@@ -54,7 +53,6 @@ const AvailableCampaignsTable = () => {
               order.set(sorting);
               orderBy.set("endDate");
             },
-            maxWidth: "10ch",
           },
           {
             title: t("Action"),
@@ -62,6 +60,7 @@ const AvailableCampaignsTable = () => {
             key: "actions",
             align: "center",
             maxWidth: "10ch",
+            role: "cta",
           },
         ]}
       />
