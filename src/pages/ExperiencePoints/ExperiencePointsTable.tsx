@@ -49,6 +49,8 @@ const ExperiencePointsTable = ({
         order.set(sorting);
         orderBy.set("date");
       },
+      role: "overline",
+      hideIndex: true,
     },
     {
       title: t("Activity"),
@@ -59,8 +61,6 @@ const ExperiencePointsTable = ({
       title: t("Campaign"),
       dataIndex: "campaign",
       key: "campaign",
-      role: "overline",
-      hideIndex: true,
     },
     {
       title: t("Reason"),
