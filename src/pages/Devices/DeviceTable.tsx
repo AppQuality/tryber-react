@@ -1,7 +1,6 @@
 import { Button, Table, TableType } from "@appquality/appquality-design-system";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import siteWideMessageStore from "src/redux/siteWideMessages";
 import userDeviceStore from "src/redux/userDevices";
 import DeviceIcon from "./DeviceIcon";
 
@@ -9,7 +8,6 @@ const DeviceTable = () => {
   const { t } = useTranslation();
   const { devices, loading, fetch, select, openEditModal, openDeleteModal } =
     userDeviceStore();
-  const { add } = siteWideMessageStore();
   useEffect(() => {
     fetch();
   }, []);
@@ -45,6 +43,7 @@ const DeviceTable = () => {
                     openEditModal();
                   }}
                   type="link-hover"
+                  className="aq-nopadding aq-mr-1"
                 >
                   {t("Edit")}
                 </Button>
@@ -54,6 +53,7 @@ const DeviceTable = () => {
                     openDeleteModal();
                   }}
                   type="link-hover"
+                  className="aq-nopadding"
                 >
                   {t("Delete")}
                 </Button>
