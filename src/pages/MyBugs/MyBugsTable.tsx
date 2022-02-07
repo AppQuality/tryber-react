@@ -32,42 +32,41 @@ const MyBugsTable = ({
       title: "Id",
       dataIndex: "id",
       key: "id",
-      maxWidth: "8ch",
       isSortable: true,
       onSort: (sorting: "ASC" | "DESC") => {
         order.set(sorting);
         orderBy.set("id");
       },
+      role: "overline",
     },
     {
       title: t("Title"),
       dataIndex: "title",
       key: "title",
-      maxWidth: "50ch",
       isSortable: true,
       onSort: (sorting: "ASC" | "DESC") => {
         order.set(sorting);
         orderBy.set("title");
       },
+      role: "title",
     },
     {
       title: t("Severity"),
       dataIndex: "severity",
       key: "severity",
-      maxWidth: "10ch",
     },
     {
       title: t("Status"),
       dataIndex: "status",
       key: "status",
-      maxWidth: "10ch",
     },
     {
       title: t("Action"),
       dataIndex: "action",
       key: "action",
-      maxWidth: "10ch",
       align: "center",
+      role: "cta",
+      hideIndex: true,
     },
   ];
   return (
