@@ -120,16 +120,14 @@ export const useMyBugs = () => {
             i18n.language !== "en" ? `${i18n.language}/` : ""
           }bugs/show/${res.id}`,
           content: (
-            <Button
-              forwardedAs="a"
+            <a
               href={`${window.location.origin}/${
                 i18n.language !== "en" ? `${i18n.language}/` : ""
               }bugs/show/${res.id}`}
-              type="link-hover"
-              size="sm"
+              target="_blank"
             >
               {t("View more")}
-            </Button>
+            </a>
           ),
         },
       });
