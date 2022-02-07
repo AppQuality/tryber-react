@@ -78,6 +78,7 @@ const MyBugsTable = ({
         order={order.current}
         isLoading={loading}
         isStriped
+        isExpandable
       />
       <Pagination
         onPageChange={setPage}

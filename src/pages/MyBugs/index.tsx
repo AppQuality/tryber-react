@@ -61,6 +61,8 @@ export default function MyBugs() {
               campaigns={campaigns}
               severities={severities}
               status={status}
+              order={order}
+              orderBy={orderBy}
             />
           </Card>
         </BSCol>
