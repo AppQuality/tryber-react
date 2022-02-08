@@ -1,4 +1,9 @@
-import { BSCol, BSGrid, Card } from "@appquality/appquality-design-system";
+import {
+  BSCol,
+  BSGrid,
+  Card,
+  TableType,
+} from "@appquality/appquality-design-system";
 import queryString from "query-string";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -34,6 +39,48 @@ export default function MyBugs() {
     }
   }, [queryString]);
 
+  const columns: TableType.Column[] = [
+    {
+      title: "Id",
+      dataIndex: "id",
+      key: "id",
+      isSortable: true,
+      onSort: (sorting: OrderType) => {
+        order.set(sorting);
+        orderBy.set("id");
+      },
+      role: "overline",
+    },
+    {
+      title: t("Title"),
+      dataIndex: "title",
+      key: "title",
+      isSortable: true,
+      onSort: (sorting: OrderType) => {
+        order.set(sorting);
+        orderBy.set("title");
+      },
+      role: "title",
+    },
+    {
+      title: t("Severity"),
+      dataIndex: "severity",
+      key: "severity",
+    },
+    {
+      title: t("Status"),
+      dataIndex: "status",
+      key: "status",
+    },
+    {
+      title: t("Action"),
+      dataIndex: "action",
+      key: "action",
+      align: "center",
+      role: "cta",
+      hideIndex: true,
+    },
+  ];
   return (
     <PageTemplate title={t("Uploaded Bugs")} route={"my-bugs"} shouldBeLoggedIn>
       <BSGrid>
@@ -46,8 +93,7 @@ export default function MyBugs() {
               totalBugs={totalBugs}
               limit={limit.current}
               loading={loading}
-              order={order}
-              orderBy={orderBy}
+              columns={columns}
             />
           </Card>
         </BSCol>
@@ -61,8 +107,9 @@ export default function MyBugs() {
               campaigns={campaigns}
               severities={severities}
               status={status}
-              order={order}
-              orderBy={orderBy}
+              order={order.current}
+              orderBy={orderBy.current}
+              columns={columns}
             />
           </Card>
         </BSCol>

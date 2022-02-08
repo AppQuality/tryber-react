@@ -4,6 +4,7 @@ import {
   TableType,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import { useMyBugs } from "src/pages/MyBugs/effects/useMyBugs";
 
 interface MyBugsTableProps {
   data: TableType.Row[];
@@ -12,8 +13,7 @@ interface MyBugsTableProps {
   totalBugs: number;
   limit: number;
   loading: boolean;
-  order: any;
-  orderBy: any;
+  columns: TableType.Column[];
 }
 
 const MyBugsTable = ({
@@ -23,52 +23,11 @@ const MyBugsTable = ({
   totalBugs,
   limit,
   loading,
-  order,
-  orderBy,
+  columns,
 }: MyBugsTableProps) => {
   const { t } = useTranslation();
-  const columns: TableType.Column[] = [
-    {
-      title: "Id",
-      dataIndex: "id",
-      key: "id",
-      isSortable: true,
-      onSort: (sorting: "ASC" | "DESC") => {
-        order.set(sorting);
-        orderBy.set("id");
-      },
-      role: "overline",
-    },
-    {
-      title: t("Title"),
-      dataIndex: "title",
-      key: "title",
-      isSortable: true,
-      onSort: (sorting: "ASC" | "DESC") => {
-        order.set(sorting);
-        orderBy.set("title");
-      },
-      role: "title",
-    },
-    {
-      title: t("Severity"),
-      dataIndex: "severity",
-      key: "severity",
-    },
-    {
-      title: t("Status"),
-      dataIndex: "status",
-      key: "status",
-    },
-    {
-      title: t("Action"),
-      dataIndex: "action",
-      key: "action",
-      align: "center",
-      role: "cta",
-      hideIndex: true,
-    },
-  ];
+  const { order, orderBy } = useMyBugs();
+
   return (
     <>
       <Table
@@ -81,6 +40,7 @@ const MyBugsTable = ({
         isExpandable
       />
       <Pagination
+        className="aq-pt-3"
         onPageChange={setPage}
         current={page}
         maxPages={Math.ceil(totalBugs / limit)}

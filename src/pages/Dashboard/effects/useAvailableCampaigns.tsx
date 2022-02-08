@@ -5,6 +5,8 @@ import API from "src/utils/api";
 import dateFormatter from "src/utils/dateFormatter";
 import { operations } from "src/utils/schema";
 
+type OrderByType = "startDate" | "endDate";
+
 export default () => {
   const { i18n, t } = useTranslation();
 
@@ -13,8 +15,8 @@ export default () => {
   const [page, setPage] = useState(1);
   const [totalEntries, setTotalEntries] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [order, setOrder] = useState<"ASC" | "DESC">("ASC");
-  const [orderBy, setOrderBy] = useState<"startDate" | "endDate">("startDate");
+  const [order, setOrder] = useState<OrderType>("ASC");
+  const [orderBy, setOrderBy] = useState<OrderByType>("startDate");
 
   const fetchCampaignsFromApi = (page: number) => {
     return API.myCampaigns({
@@ -23,7 +25,7 @@ export default () => {
           completed: "0",
         },
         order: order,
-        orderBy: orderBy == "endDate" ? "end_date" : "start_date",
+        orderBy: orderBy === "endDate" ? "end_date" : "start_date",
         limit,
         start: (page - 1) * limit,
       },
