@@ -3,6 +3,23 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import userDeviceStore from "src/redux/userDevices";
 import DeviceIcon from "./DeviceIcon";
+import styled from "styled-components";
+import { Trash } from "react-bootstrap-icons";
+
+const DeviceActions = styled.div`
+  .action-text { display: none;}
+    @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+      .action-text { display: block; }
+      .action-icon { display: none; }
+    }
+  }
+  ${Button} {
+    display: block;
+    @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+      display: inline-block;
+    }
+  }
+`;
 
 const DeviceTable = () => {
   const { t } = useTranslation();
@@ -36,7 +53,7 @@ const DeviceTable = () => {
           os_version: d.operating_system.version,
           actions: {
             content: (
-              <>
+              <DeviceActions>
                 <Button
                   onClick={() => {
                     select(d.id);
@@ -55,9 +72,12 @@ const DeviceTable = () => {
                   type="link-hover"
                   className="aq-nopadding"
                 >
-                  {t("Delete")}
+                  <div className="action-text">{t("Delete")}</div>
+                  <div className="action-icon aq-mt-3">
+                    <Trash size={28} />
+                  </div>
                 </Button>
-              </>
+              </DeviceActions>
             ),
           },
         };
