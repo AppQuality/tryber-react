@@ -19,6 +19,7 @@ export interface OrderBySelectProps {
 }
 
 export const OrderBySelect = ({ order, orderBy }: OrderBySelectProps) => {
+  useWindowSize();
   const { t } = useTranslation();
   const orderByColumns: BugsOrderByType[] = [
     "id",
