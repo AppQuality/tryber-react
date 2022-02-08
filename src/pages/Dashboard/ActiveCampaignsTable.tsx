@@ -1,14 +1,60 @@
-import { Pagination, Table } from "@appquality/appquality-design-system";
+import {
+  Pagination,
+  Table,
+  TableType,
+} from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import useActiveCampaigns from "./effects/useActiveCampaigns";
+import { SortTableSelect } from "src/features/SortTableSelect";
 
 const ActiveCampaignsTable = () => {
   const { t } = useTranslation();
   const { campaigns, page, totalEntries, limit, loading, order, orderBy } =
     useActiveCampaigns();
-
+  const columns: TableType.Column[] = [
+    {
+      title: t("Campaign"),
+      dataIndex: "campaigns",
+      key: "campaigns",
+      role: "title",
+      hideIndex: true,
+    },
+    {
+      title: t("Start Date"),
+      dataIndex: "startDate",
+      key: "startDate",
+      isSortable: true,
+      onSort: (sorting: "ASC" | "DESC") => {
+        order.set(sorting);
+        orderBy.set("startDate");
+      },
+    },
+    {
+      title: t("End Date"),
+      dataIndex: "endDate",
+      key: "endDate",
+      isSortable: true,
+      onSort: (sorting: "ASC" | "DESC") => {
+        order.set(sorting);
+        orderBy.set("endDate");
+      },
+    },
+    {
+      title: t("Action"),
+      dataIndex: "actions",
+      key: "actions",
+      role: "cta",
+      hideIndex: true,
+      align: "center",
+    },
+  ];
   return (
     <>
+      <SortTableSelect
+        order={order.current}
+        orderBy={orderBy.current}
+        columns={columns}
+      />
       <Table
         dataSource={campaigns}
         isLoading={loading}
@@ -21,43 +67,7 @@ const ActiveCampaignsTable = () => {
             "You are not currently selected for any campaigns. Apply in available campaigns to participate in upcoming ones!"
           ),
         }}
-        columns={[
-          {
-            title: t("Campaign"),
-            dataIndex: "campaigns",
-            key: "campaigns",
-            role: "title",
-            hideIndex: true,
-          },
-          {
-            title: t("Start Date"),
-            dataIndex: "startDate",
-            key: "startDate",
-            isSortable: true,
-            onSort: (sorting: "ASC" | "DESC") => {
-              order.set(sorting);
-              orderBy.set("startDate");
-            },
-          },
-          {
-            title: t("End Date"),
-            dataIndex: "endDate",
-            key: "endDate",
-            isSortable: true,
-            onSort: (sorting: "ASC" | "DESC") => {
-              order.set(sorting);
-              orderBy.set("endDate");
-            },
-          },
-          {
-            title: t("Action"),
-            dataIndex: "actions",
-            key: "actions",
-            role: "cta",
-            hideIndex: true,
-            align: "center",
-          },
-        ]}
+        columns={columns}
       />
       {totalEntries > limit ? (
         <Pagination
