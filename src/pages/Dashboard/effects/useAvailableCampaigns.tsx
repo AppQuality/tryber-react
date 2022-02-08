@@ -66,6 +66,7 @@ export default () => {
               title: ``,
               content: (
                 <Button
+                  className="aq-nopadding"
                   disabled={previewLink === "#"}
                   forwardedAs="a"
                   href={previewLink}

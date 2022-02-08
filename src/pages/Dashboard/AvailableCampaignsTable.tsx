@@ -27,12 +27,14 @@ const AvailableCampaignsTable = () => {
             dataIndex: "campaignName",
             key: "campaignName",
             role: "title",
+            hideIndex: true,
           },
           {
             title: t("Type"),
             dataIndex: "type",
             key: "type",
             role: "overline",
+            hideIndex: true,
           },
           {
             title: t("Start Date"),
@@ -60,6 +62,7 @@ const AvailableCampaignsTable = () => {
             key: "actions",
             align: "center",
             role: "cta",
+            hideIndex: true,
           },
         ]}
       />

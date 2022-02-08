@@ -60,23 +60,20 @@ export default () => {
             actions: {
               title: ``,
               content: (
-                <div
-                  style={{ display: "flex", justifyContent: "space-around" }}
+                <Button
+                  forwardedAs="a"
+                  disabled={manualLink === "#"}
+                  className="aq-nopadding"
+                  href={
+                    manualLink === "#"
+                      ? "#"
+                      : `${window.location.origin}${manualLink}`
+                  }
+                  type="link-hover"
+                  size="sm"
                 >
-                  <Button
-                    forwardedAs="a"
-                    disabled={manualLink === "#"}
-                    href={
-                      manualLink === "#"
-                        ? "#"
-                        : `${window.location.origin}${manualLink}`
-                    }
-                    type="link-hover"
-                    size="sm"
-                  >
-                    {t("Review the manual")}
-                  </Button>
-                </div>
+                  {t("Review the manual")}
+                </Button>
               ),
             },
           };
