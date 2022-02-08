@@ -1,13 +1,42 @@
-import { Pagination, Table } from "@appquality/appquality-design-system";
+import {
+  Pagination,
+  Table,
+  TableType,
+} from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import useClosedCampaigns from "./effects/useClosedCampaigns";
+import { SortTableSelect } from "src/features/SortTableSelect";
 
 const ClosedCampaignsTable = () => {
   const { t } = useTranslation();
   const { campaigns, page, totalEntries, limit, loading, order, orderBy } =
     useClosedCampaigns();
+  const columns: TableType.Column[] = [
+    {
+      title: t("Campaign"),
+      dataIndex: "campaigns",
+      key: "campaigns",
+      role: "title",
+      hideIndex: true,
+    },
+    {
+      title: t("Close Date"),
+      dataIndex: "closeDate",
+      key: "closeDate",
+      isSortable: true,
+      onSort: (sorting: OrderType) => {
+        order.set(sorting);
+        orderBy.set("closeDate");
+      },
+    },
+  ];
   return (
     <>
+      <SortTableSelect
+        order={order.current}
+        orderBy={orderBy.current}
+        columns={columns}
+      />
       <Table
         dataSource={campaigns}
         isLoading={loading}
@@ -20,25 +49,7 @@ const ClosedCampaignsTable = () => {
             "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!"
           ),
         }}
-        columns={[
-          {
-            title: t("Campaign"),
-            dataIndex: "campaigns",
-            key: "campaigns",
-            role: "title",
-            hideIndex: true,
-          },
-          {
-            title: t("Close Date"),
-            dataIndex: "closeDate",
-            key: "closeDate",
-            isSortable: true,
-            onSort: (sorting: "ASC" | "DESC") => {
-              order.set(sorting);
-              orderBy.set("closeDate");
-            },
-          },
-        ]}
+        columns={columns}
       />
       {totalEntries > limit ? (
         <Pagination
