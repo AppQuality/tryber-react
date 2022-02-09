@@ -203,7 +203,7 @@ export const WhyJoinTryber = () => {
   }, [entry]);
   return (
     <GradientDiv>
-      <div className="text-marker aq-text-center aq-mb-4 section-title">
+      <div className="text-marker aq-card-body aq-text-center aq-mb-4 section-title">
         {t("Why should you join tryber?")}
         <img
           className="tryberCharacters-5"
