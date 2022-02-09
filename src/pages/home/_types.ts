@@ -4,16 +4,6 @@ export interface StyledRectProps {
   rx: string;
 }
 
-export interface DataListProps {
-  data: DataListItem[];
-}
-
-export interface DataListItem {
-  name: string;
-  icon: string;
-  text: string;
-}
-
 export interface CardListItemsProps {
   items: CardListItem[];
 }

@@ -1,13 +1,13 @@
-import {
-  Container,
-  icons,
-  Text,
-  Title,
-} from "@appquality/appquality-design-system";
+import { Container, Text, Title } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+
 import JoinInButton from "../JoinInButton";
+import { ReactComponent as Alarm } from "./assets/alarm.svg";
 import background from "./assets/background.png";
+import { ReactComponent as Devices } from "./assets/devices.svg";
+import { ReactComponent as List } from "./assets/list.svg";
+import { ReactComponent as Wallet } from "./assets/wallet.svg";
 import GenericCard from "./GenericCard";
 
 const JoinTryberContainer = styled.div`
@@ -50,20 +50,18 @@ export const HowToJoinTryber = () => {
           )}
         </Text>
         <div className="cardlist">
-          <GenericCard icon={<icons.Bug />} title={t("STEP 1")}>
+          <GenericCard icon={<Devices />} title={t("STEP 1")}>
             {t("Sign up for the community by hitting the button below.")}
           </GenericCard>
-          <GenericCard icon={<icons.Bug />} title={t("STEP 2")}>
-            {t(
-              "Complete your profile. The more we know about you, the better your chances of being selected!"
-            )}
+          <GenericCard icon={<Alarm />} title={t("STEP 2")}>
+            {t("Complete your profile. The more we know about you!")}
           </GenericCard>
-          <GenericCard icon={<icons.Bug />} title={t("STEP 3")}>
+          <GenericCard icon={<List />} title={t("STEP 3")}>
             {t(
               "Complete the free training to learn about our platform and become an expert."
             )}
           </GenericCard>
-          <GenericCard icon={<icons.Bug />} title={t("STEP 4")}>
+          <GenericCard icon={<Wallet />} title={t("STEP 4")}>
             {t("Join campaigns and start earning money!")}
           </GenericCard>
         </div>

@@ -91,7 +91,7 @@
   "Coming soon": "Coming soon",
   "Complete the Basic Course": "Completa il Corso Base",
   "Complete the free training to learn about our platform and become an expert.": "",
-  "Complete your profile. The more we know about you, the better your chances of being selected!": "",
+  "Complete your profile. The more we know about you!": "",
   "Completed campaigns": "Campagne completate",
   "Computer type": "Tipo di computer",
   "Confirm email": "Conferma l'email",
@@ -414,5 +414,6 @@
   "redirecting": "reindirizzamento",
   "social": "social",
   "testers": "Tryber",
+  "title section slider home ": "",
   "wait...": "attendi..."
 }

@@ -4,10 +4,10 @@ import { useTranslation } from "react-i18next";
 import { LangMenu } from "src/features/LangMenu";
 import { AboutUnguess } from "src/pages/home/content/AboutUnguess";
 import { Brands } from "src/pages/home/content/Brands";
-import { CardList } from "src/pages/home/content/CardList";
 import { CareerPaths } from "src/pages/home/content/CareerPaths";
 import { HowToJoinTryber } from "src/pages/home/content/HowToJoinTryber";
 import { Reviews } from "src/pages/home/content/Reviews";
+import { WhyJoinTryber } from "src/pages/home/content/WhyJoinTryber";
 import styled from "styled-components";
 
 import GoogleTagManager from "../../features/GoogleTagManager";
@@ -19,8 +19,8 @@ import borderTopSm from "./assets/top_small.svg";
 import tryberCharacters4 from "./assets/tryberini4.svg";
 import tryberCharacters5 from "./assets/tryberini5.svg";
 import { BannerTop } from "./content/BannerTop";
-import { DataList } from "./content/DataList";
 import { Footer } from "./content/Footer";
+import OurCommunity from "./content/OurCommunity";
 
 const bgSpaceSm = "55px";
 const bgSpaceLg = "75px";
@@ -226,7 +226,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="container">
-                <CardList />
+                <WhyJoinTryber />
               </div>
             </section>
             <section>
@@ -234,7 +234,7 @@ export default function Home() {
                 className="text-marker section-title aq-text-primary aq-text-center"
                 size="xs"
               >
-                {t("Title")}
+                {t("title section slider home ")}
               </Title>
               <Text className="aq-mb-4 large-desktop aq-text-center">
                 {t(
@@ -244,7 +244,7 @@ export default function Home() {
               <CareerPaths />
             </section>
             <section className="home-section our-community hero aq-pt-3 aq-text-center">
-              <DataList />
+              <OurCommunity />
             </section>
             <section>
               <AboutUnguess />

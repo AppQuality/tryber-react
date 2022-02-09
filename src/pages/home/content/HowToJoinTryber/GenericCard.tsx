@@ -15,7 +15,7 @@ const GenericCard = ({
 }) => {
   return (
     <div className={className}>
-      <div className="icon aq-mb-2">{icon}</div>
+      <div className="icon aq-my-2">{icon}</div>
       <div className="title aq-mb-2">{title}</div>
       <Text className="content  aq-mb-3">{children}</Text>
     </div>
@@ -27,7 +27,7 @@ export default styled(GenericCard)`
   color: #fff;
   opacity: 0.8;
   border-radius: 32px;
-  padding: 16px;
+  padding: 32px 16px;
   .icon,
   .title,
   .content {

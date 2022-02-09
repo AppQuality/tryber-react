@@ -1,11 +1,11 @@
 import { Container, Text, Title } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import { DataListItem } from "src/pages/home/_types";
-import brandsHelped from "src/pages/home/assets/oc-brands.svg";
-import campaignsIcon from "src/pages/home/assets/oc-campaigns.svg";
-import countriesIcon from "src/pages/home/assets/oc-countries.svg";
-import testerIcon from "src/pages/home/assets/oc-trybers.svg";
 import styled from "styled-components";
+
+import brandsHelped from "./assets/oc-brands.svg";
+import campaignsIcon from "./assets/oc-campaigns.svg";
+import countriesIcon from "./assets/oc-countries.svg";
+import testerIcon from "./assets/oc-trybers.svg";
 
 const YellowBox = styled.div`
   background: ${(props) => props.theme.colors.orange600};
@@ -44,7 +44,7 @@ const DataListStyle = styled.div`
   }
 `;
 
-export const DataList = () => {
+export default () => {
   const { t } = useTranslation();
   const data: DataListItem[] = [
     {
