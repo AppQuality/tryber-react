@@ -1,16 +1,65 @@
 import { Card, Text } from "@appquality/appquality-design-system";
 import React, { useEffect, useRef, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import clock from "src/pages/home/assets/clock.svg";
-import devices from "src/pages/home/assets/devices.svg";
-import diamond from "src/pages/home/assets/diamond.svg";
-import hands from "src/pages/home/assets/hands.svg";
-import support from "src/pages/home/assets/support.svg";
-import wallet from "src/pages/home/assets/wallet.svg";
+import borderBottomLg from "src/pages/home/assets/bottom_large.svg";
+import borderBottomSm from "src/pages/home/assets/bottom_small.svg";
+import borderTopLg from "src/pages/home/assets/top_large.svg";
+import borderTopSm from "src/pages/home/assets/top_small.svg";
 import styled, { keyframes } from "styled-components";
 
-const tresholdForCardAnimation = 100;
+import clock from "./assets/clock.svg";
+import devices from "./assets/devices.svg";
+import diamond from "./assets/diamond.svg";
+import hands from "./assets/hands.svg";
+import support from "./assets/support.svg";
+import tryberCharacters5 from "./assets/tryberini5.svg";
+import wallet from "./assets/wallet.svg";
 
+const bgSpaceSm = "55px";
+const bgSpaceLg = "75px";
+
+const tresholdForCardAnimation = 100;
+const GradientDiv = styled.div`
+  padding: ${bgSpaceSm} 0;
+  background: linear-gradient(125.03deg, #a62ad3 3.24%, #f6cf39 101.35%);
+  min-height: 600px;
+  color: ${(props) => props.theme.colors.white};
+  .section-title {
+    color: ${(props) => props.theme.colors.white};
+  }
+  @media only screen and (min-width: ${(props) =>
+      props.theme.grid.breakpoints.lg}) {
+    padding: ${bgSpaceLg} 0;
+  }
+  .section-border {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .border-top {
+    background-image: url(${borderTopSm});
+    background-position: top;
+    top: -${bgSpaceSm};
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      top: -${bgSpaceLg};
+      background-image: url(${borderTopLg});
+    }
+  }
+  .border-bottom {
+    background-image: url(${borderBottomSm});
+    background-position: bottom;
+    bottom: -${bgSpaceSm};
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      bottom: -${bgSpaceLg};
+      background-image: url(${borderBottomLg});
+    }
+  }
+`;
 const slideUpAnimation = keyframes`
   from {
     opacity: 0;
@@ -153,23 +202,35 @@ export const WhyJoinTryber = () => {
     }
   }, [entry]);
   return (
-    <CardListStyle ref={ref} className="aq-text-center">
-      {isVisible &&
-        items.map((item, index) => (
-          <CardItem
-            index={index + 1}
-            key={index}
-            className="card-list-item aq-my-3"
-          >
-            <div className="item-icon">
-              <img src={item.icon} alt={item.title} />
-            </div>
-            <Text className="aq-mb-3 capitalize-first">
-              <strong>{item.title}</strong>
-            </Text>
-            <Text>{item.body}</Text>
-          </CardItem>
-        ))}
-    </CardListStyle>
+    <GradientDiv>
+      <div className="text-marker aq-text-center aq-mb-4 section-title">
+        {t("Why should you join tryber?")}
+        <img
+          className="tryberCharacters-5"
+          src={tryberCharacters5}
+          alt="tryber characters"
+        />
+      </div>
+      <div className="container">
+        <CardListStyle ref={ref} className="aq-text-center">
+          {isVisible &&
+            items.map((item, index) => (
+              <CardItem
+                index={index + 1}
+                key={index}
+                className="card-list-item aq-my-3"
+              >
+                <div className="item-icon">
+                  <img src={item.icon} alt={item.title} />
+                </div>
+                <Text className="aq-mb-3 capitalize-first">
+                  <strong>{item.title}</strong>
+                </Text>
+                <Text>{item.body}</Text>
+              </CardItem>
+            ))}
+        </CardListStyle>
+      </div>
+    </GradientDiv>
   );
 };

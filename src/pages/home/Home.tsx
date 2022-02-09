@@ -12,18 +12,11 @@ import styled from "styled-components";
 
 import GoogleTagManager from "../../features/GoogleTagManager";
 import NotLoggedOnly from "../../features/NotLoggedOnly";
-import borderBottomLg from "./assets/bottom_large.svg";
-import borderBottomSm from "./assets/bottom_small.svg";
-import borderTopLg from "./assets/top_large.svg";
-import borderTopSm from "./assets/top_small.svg";
 import tryberCharacters4 from "./assets/tryberini4.svg";
-import tryberCharacters5 from "./assets/tryberini5.svg";
 import { BannerTop } from "./content/BannerTop";
 import { Footer } from "./content/Footer";
 import OurCommunity from "./content/OurCommunity";
 
-const bgSpaceSm = "55px";
-const bgSpaceLg = "75px";
 const StyledHome = styled.div`
   max-width: 100vw;
   overflow-x: hidden;
@@ -47,47 +40,6 @@ const StyledHome = styled.div`
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
       margin-bottom: 30vh;
-    }
-    &.gradient-bg {
-      padding: ${bgSpaceSm} 0;
-      background: linear-gradient(125.03deg, #a62ad3 3.24%, #f6cf39 101.35%);
-      min-height: 600px;
-      color: ${(props) => props.theme.colors.white};
-      .section-title {
-        color: ${(props) => props.theme.colors.white};
-      }
-      @media only screen and (min-width: ${(props) =>
-          props.theme.grid.breakpoints.lg}) {
-        padding: ${bgSpaceLg} 0;
-      }
-      .section-border {
-        width: 100%;
-        height: 50%;
-        position: absolute;
-        z-index: -1;
-        background-repeat: no-repeat;
-        background-size: 100%;
-      }
-      .border-top {
-        background-image: url(${borderTopSm});
-        background-position: top;
-        top: -${bgSpaceSm};
-        @media only screen and (min-width: ${(props) =>
-            props.theme.grid.breakpoints.lg}) {
-          top: -${bgSpaceLg};
-          background-image: url(${borderTopLg});
-        }
-      }
-      .border-bottom {
-        background-image: url(${borderBottomSm});
-        background-position: bottom;
-        bottom: -${bgSpaceSm};
-        @media only screen and (min-width: ${(props) =>
-            props.theme.grid.breakpoints.lg}) {
-          bottom: -${bgSpaceLg};
-          background-image: url(${borderBottomLg});
-        }
-      }
     }
   }
   .section-title {
@@ -214,20 +166,8 @@ export default function Home() {
             <section className="home-section">
               <BannerTop />
             </section>
-            <section className="home-section gradient-bg hero">
-              <div className="text-marker aq-text-center aq-mb-4 section-title">
-                <div className="tryber-character-wrapper">
-                  <img
-                    className="tryberCharacters-5"
-                    src={tryberCharacters5}
-                    alt="tryber characters"
-                  />
-                  {t("Why should you join tryber?")}
-                </div>
-              </div>
-              <div className="container">
-                <WhyJoinTryber />
-              </div>
+            <section className="home-section hero">
+              <WhyJoinTryber />
             </section>
             <section>
               <Title
