@@ -1,10 +1,10 @@
-import { Container, Text, Title } from "@appquality/appquality-design-system";
+import { Container, Text } from "@appquality/appquality-design-system";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { LangMenu } from "src/features/LangMenu";
 import { AboutUnguess } from "src/pages/home/content/AboutUnguess";
 import { Brands } from "src/pages/home/content/Brands";
-import { CareerPaths } from "src/pages/home/content/CareerPaths";
+import { CareerPathsSlider } from "src/pages/home/content/CareerPathsSlider";
 import { HowToJoinTryber } from "src/pages/home/content/HowToJoinTryber";
 import { Reviews } from "src/pages/home/content/Reviews";
 import { WhyJoinTryber } from "src/pages/home/content/WhyJoinTryber";
@@ -170,18 +170,7 @@ export default function Home() {
               <WhyJoinTryber />
             </section>
             <section>
-              <Title
-                className="text-marker section-title aq-text-primary aq-text-center"
-                size="xs"
-              >
-                {t("title section slider home ")}
-              </Title>
-              <Text className="aq-mb-4 large-desktop aq-text-center">
-                {t(
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown."
-                )}
-              </Text>
-              <CareerPaths />
+              <CareerPathsSlider />
             </section>
             <section className="home-section our-community hero aq-pt-3 aq-text-center">
               <OurCommunity />
