@@ -1,9 +1,12 @@
-import { icons, Text, Title } from "@appquality/appquality-design-system";
+import { Text, Title } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+
 import JoinInButton from "../JoinInButton";
-import careerImage from "./assets/career-ux@2x.png";
-import GenericSlide, { iconStyle, TextBox } from "./GenericSlide";
+import careerImageEN from "./assets/ux_tester_en.svg";
+import careerImageES from "./assets/ux_tester_es.svg";
+import careerImageIT from "./assets/ux_tester_it.svg";
+import GenericSlide, { TextBox } from "./GenericSlide";
 
 const TextBoxOne = styled(TextBox)`
   bottom: 8%;
@@ -14,18 +17,18 @@ const TextBoxTwo = styled(TextBox)`
   left: 51%;
 `;
 const Image = () => {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
+  let translatedImage = careerImageEN;
+  if (i18n.language == `it`) translatedImage = careerImageIT;
+  if (i18n.language == `es`) translatedImage = careerImageES;
+
   return (
     <div style={{ position: "relative" }}>
-      <img src={careerImage} alt="career market research" />
-      <TextBoxOne>
-        <icons.Bug style={iconStyle} />
-        {t("I think the journey could be thought out better in flow 2...")}
-      </TextBoxOne>
-      <TextBoxTwo>
-        <icons.Bug style={iconStyle} />
-        {t("Yes, I agree! It will be a bit confusing for the user there.")}
-      </TextBoxTwo>
+      <img
+        src={translatedImage}
+        className="aq-ml-2"
+        alt="career market research"
+      />
     </div>
   );
 };

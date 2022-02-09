@@ -2,6 +2,7 @@ import {
   Carousel,
   CarouselNav,
   CarouselSlide,
+  Container,
   Text,
   Title,
 } from "@appquality/appquality-design-system";
@@ -11,19 +12,13 @@ import { useTranslation } from "react-i18next";
 import { useTimeout } from "./effects/useTimeout";
 import SlideBugHunting from "./SlideBugHunting";
 import SlideEthicalHacker from "./SlideEthicalHacker";
-import SlideMarketReasearch from "./SlideMarketReasearch";
 import SlideUxResearch from "./SlideUxResearch";
 
 export const CareerPathsSlider = () => {
   const [current, setCurrent] = useState(0);
   const { t } = useTranslation();
 
-  const items = [
-    SlideMarketReasearch,
-    SlideEthicalHacker,
-    SlideBugHunting,
-    SlideUxResearch,
-  ];
+  const items = [SlideEthicalHacker, SlideBugHunting, SlideUxResearch];
   useTimeout(
     10,
     () => {
@@ -33,7 +28,7 @@ export const CareerPathsSlider = () => {
   );
 
   return (
-    <>
+    <Container className="aq-py-4 aq-mb-4">
       <Title
         className="text-marker section-title aq-text-primary aq-text-center"
         size="xs"
@@ -64,6 +59,6 @@ export const CareerPathsSlider = () => {
         setCurrent={setCurrent}
         totalSlides={items.length}
       ></CarouselNav>
-    </>
+    </Container>
   );
 };

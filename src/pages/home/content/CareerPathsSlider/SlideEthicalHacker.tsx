@@ -1,9 +1,12 @@
-import { icons, Text, Title } from "@appquality/appquality-design-system";
+import { Text, Title } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+
 import JoinInButton from "../JoinInButton";
-import careerImage from "./assets/career-eh@2x.png";
-import GenericSlide, { iconStyle, TextBox } from "./GenericSlide";
+import careerImageEN from "./assets/ethical_hacker_en.svg";
+import careerImageES from "./assets/ethical_hacker_es.svg";
+import careerImageIT from "./assets/ethical_hacker_it.svg";
+import GenericSlide, { TextBox } from "./GenericSlide";
 
 const TextBoxOne = styled(TextBox)`
   bottom: 12%;
@@ -14,18 +17,18 @@ const TextBoxTwo = styled(TextBox)`
   left: 51%;
 `;
 const Image = () => {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
+  let translatedImage = careerImageEN;
+  if (i18n.language == `it`) translatedImage = careerImageIT;
+  if (i18n.language == `es`) translatedImage = careerImageES;
+
   return (
     <div style={{ position: "relative" }}>
-      <img src={careerImage} alt="career ethical hacker" />
-      <TextBoxOne>
-        <icons.Bug style={iconStyle} />
-        {t("Looks like this website could be more secure...")}
-      </TextBoxOne>
-      <TextBoxTwo>
-        <icons.Bug style={iconStyle} />
-        {t("I'll flag this as a site penetration issue.")}
-      </TextBoxTwo>
+      <img
+        src={translatedImage}
+        className="aq-ml-2"
+        alt="career ethical hacker"
+      />
     </div>
   );
 };
