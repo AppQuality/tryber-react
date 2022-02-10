@@ -7,8 +7,11 @@ import styled from "styled-components";
 import { Trash } from "react-bootstrap-icons";
 
 const DeviceActions = styled.div`
+  display: flex;
+  flex-flow: column;
   .action-text { display: none;}
     @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+      display: block;
       .action-text { display: block; }
       .action-icon { display: none; }
     }
