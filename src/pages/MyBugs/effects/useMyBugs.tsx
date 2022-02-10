@@ -1,4 +1,8 @@
-import { SelectType, TableType } from "@appquality/appquality-design-system";
+import {
+  SelectType,
+  TableType,
+  Button,
+} from "@appquality/appquality-design-system";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import API from "src/utils/api";
@@ -116,14 +120,17 @@ export const useMyBugs = () => {
             i18n.language !== "en" ? `${i18n.language}/` : ""
           }bugs/show/${res.id}`,
           content: (
-            <a
+            <Button
+              className="aq-nopadding"
+              forwardedAs="a"
               href={`${window.location.origin}/${
                 i18n.language !== "en" ? `${i18n.language}/` : ""
               }bugs/show/${res.id}`}
-              target="_blank"
+              type="link-hover"
+              size="sm"
             >
               {t("View more")}
-            </a>
+            </Button>
           ),
         },
       });
