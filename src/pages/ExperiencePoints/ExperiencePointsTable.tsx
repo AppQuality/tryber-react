@@ -4,6 +4,7 @@ import {
   TableType,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import { SortTableSelect } from "src/features/SortTableSelect";
 
 interface ExperiencePointsTableProps {
   data: TableType.Row[];
@@ -72,6 +73,11 @@ const ExperiencePointsTable = ({
   ];
   return (
     <>
+      <SortTableSelect
+        order={order.current}
+        orderBy={orderBy.current}
+        columns={columns}
+      />
       <Table
         dataSource={data}
         columns={columns}
