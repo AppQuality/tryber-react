@@ -37,7 +37,6 @@ const MyBugsTable = ({
         order={order.current}
         isLoading={loading}
         isStriped
-        isExpandable
       />
       <Pagination
         className="aq-pt-3"
