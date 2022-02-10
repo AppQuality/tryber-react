@@ -103,11 +103,14 @@ export const useExperiencePoints = () => {
         key: i,
         amount: {
           title: `${res.amount > 0 ? `+${res.amount}` : res.amount}pts`,
-          content: (
-            <b className="aq-text-primary">{`${
-              res.amount > 0 ? `+${res.amount}` : res.amount
-            }pts`}</b>
-          ),
+          content:
+            res.amount === 0 ? (
+              <b className="aq-text-primary">{res.amount}pts</b>
+            ) : res.amount > 0 ? (
+              <b className="aq-text-success">+{res.amount}pts</b>
+            ) : (
+              <b className="aq-text-danger">{res.amount}pts</b>
+            ),
         },
         date: dateFormatter(res.date),
         activity: mapActivityName(res.activity.id),
