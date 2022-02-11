@@ -20,11 +20,26 @@ import avatarSatesh from "./assets/Sathesh.jpeg";
 import tryberPurple4 from "./assets/tryberPurple4.svg";
 import avatarVincenzo from "./assets/Vincenzo.jpeg";
 
-const CardListStyle = styled.div`
-  .bg-stain {
-    position: absolute;
-    z-index: -1;
+const ReviewContainer = styled.div`
+  padding: 140px 0;
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.md}) {
+    padding: 240px 0;
   }
+  .section-title > span {
+    position: relative;
+
+    .tryberCharacters {
+      display: block;
+      margin: 0 auto;
+      @media only screen and (min-width: ${(props) =>
+          props.theme.grid.breakpoints.lg}) {
+        display: inline;
+        margin: 0;
+      }
+    }
+  }
+`;
+const CardListStyle = styled.div`
   .card-list-item {
     padding-bottom: 35px;
     width: 100%;
@@ -142,16 +157,16 @@ export default () => {
     },
   ];
   return (
-    <div className="container">
-      <div className="section-title text-marker aq-text-center aq-mb-4">
-        <div className="tryber-character-wrapper">
+    <ReviewContainer className="container">
+      <div className="section-title text-marker aq-text-center">
+        <span>
           <img
-            className="tryberCharacters-4"
+            className="tryberCharacter"
             src={tryberPurple4}
             alt="tryber characters"
           />
           {t("__HOME_TITLE_ADVICE MAX:40")}
-        </div>
+        </span>
       </div>
       <div className="aq-pt-3">
         <CardListStyle>
@@ -196,6 +211,6 @@ export default () => {
           ></CarouselNav>
         </CardListStyle>
       </div>
-    </div>
+    </ReviewContainer>
   );
 };

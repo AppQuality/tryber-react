@@ -108,20 +108,6 @@ const StyledHome = styled.div`
       height: 560px;
     }
   }
-  section .tryberCharacters-4 {
-    width: 100px;
-    display: block;
-    margin: 0 auto 16px;
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      width: 200px;
-      display: block;
-      margin: unset;
-      position: absolute;
-      left: -190px;
-      top: -70px;
-    }
-  }
 `;
 export default function Home() {
   const { t } = useTranslation();
