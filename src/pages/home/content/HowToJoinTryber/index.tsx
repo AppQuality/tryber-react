@@ -13,6 +13,7 @@ import GenericCard from "./GenericCard";
 const JoinTryberContainer = styled.div`
   padding: 90px 80px;
   background: url(${background}) no-repeat;
+  background-size: cover;
   ${Title},${Text} {
     color: #fff;
   }
@@ -26,10 +27,20 @@ const JoinTryberContainer = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 80px;
-    margin-bottom: 60px;
+    margin-bottom: 120px;
+    flex-direction: column;
+    @media (min-width: ${({ theme }) => theme.grid.breakpoints.lg}) {
+      flex-direction: row;
+    }
   }
+
   ${GenericCard} {
-    max-width: 20%;
+    width: 100%;
+    margin: 16px 0;
+    @media (min-width: ${({ theme }) => theme.grid.breakpoints.lg}) {
+      margin: 0;
+      width: 23.5%;
+    }
   }
 `;
 

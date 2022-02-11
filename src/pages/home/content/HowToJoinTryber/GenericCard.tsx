@@ -17,7 +17,7 @@ const GenericCard = ({
     <div className={className}>
       <div className="icon aq-my-2">{icon}</div>
       <div className="title aq-mb-2">{title}</div>
-      <Text className="content  aq-mb-3">{children}</Text>
+      <Text className="content">{children}</Text>
     </div>
   );
 };
@@ -39,5 +39,10 @@ export default styled(GenericCard)`
   .title {
     font-weight: bold;
     font-size: 18px;
+  }
+  @media (max-width: ${({ theme }) => theme.grid.breakpoints.lg}) {
+    .content {
+      margin-bottom: 40px;
+    }
   }
 `;
