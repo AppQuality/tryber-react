@@ -24,7 +24,7 @@ const GradientDiv = styled.div`
   background: linear-gradient(125.03deg, #a62ad3 3.24%, #f6cf39 101.35%);
   min-height: 600px;
   color: ${(props) => props.theme.colors.white};
-  .section-title {
+  .section-title.text-marker {
     color: ${(props) => props.theme.colors.white};
   }
   @media only screen and (min-width: ${(props) =>
@@ -112,7 +112,7 @@ export const WhyJoinTryber = () => {
   const items = [
     {
       icon: wallet,
-      title: t("__HOME_TITLE_CARD_AWARDS MAX:20"),
+      title: t("__HOME_TITLE_CARD_AWARDS  MAX:20"),
       body: <Trans i18nKey="__HOME_PARAGRAPH_CARD_AWARDS MAX: 80" />,
     },
     {
@@ -171,7 +171,7 @@ export const WhyJoinTryber = () => {
   }, [entry]);
   return (
     <GradientDiv>
-      <div className="text-marker aq-card-body aq-text-center aq-mb-4 section-title">
+      <div className="text-marker aq-text-center aq-mb-4 section-title">
         {t("__HOME_TITLE_WHY MAX:40 ")}
         <img
           className="tryberCharacters-5"

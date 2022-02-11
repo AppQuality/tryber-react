@@ -1,5 +1,4 @@
 import { Container, Text } from "@appquality/appquality-design-system";
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { LangMenu } from "src/features/LangMenu";
 import { AboutUnguess } from "src/pages/home/content/AboutUnguess";
