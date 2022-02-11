@@ -31,6 +31,7 @@ const MyBugsTable = ({
   return (
     <>
       <Table
+        className="aq-mb-3"
         dataSource={data}
         columns={columns}
         orderBy={orderBy.current}
