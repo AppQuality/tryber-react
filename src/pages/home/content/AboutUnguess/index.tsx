@@ -2,10 +2,10 @@ import { Button, Text, Title } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
-import JoinInButton from "../JoinInButton";
 import tryber from "./assets/tryber.png";
 
 const SlideContainer = styled.div`
+  margin-top: 160px;
   ${Text} {
     font-size: 22px;
     line-height: 1.8;
@@ -27,12 +27,7 @@ const SlideContainer = styled.div`
   }
 `;
 const TextContainer = styled.div`
-  padding: 16px 26px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: space-between;
+  padding: 16px 26px 110px 26px;
 `;
 const VideoContainer = styled.div`
   position: relative;
@@ -56,15 +51,7 @@ export const AboutUnguess = () => {
         <Title size="xl" className="text-marker">
           {t("__HOME_TITLE_UNGUESS MAX:40")}
         </Title>
-        <Text className="aq-mb-4">{t("__HOME_PARAGRAPH_UNGUESS MAX:120")}</Text>
-
-        <JoinInButton flat={false}>
-          {t("__HOME_CTA_WELCOME MAX:25")}
-        </JoinInButton>
-
-        <Title size="s" className="text-marker disclaimer">
-          {t("__HOME_SUBTITLE-CTA_WELCOME MAX:30")}
-        </Title>
+        <Text className="aq-my-4">{t("__HOME_PARAGRAPH_UNGUESS MAX:120")}</Text>
       </TextContainer>
       <VideoContainer>
         <iframe
