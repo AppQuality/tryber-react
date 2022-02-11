@@ -8,12 +8,24 @@ import {
 } from "@appquality/appquality-design-system";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 
 import { useTimeout } from "./effects/useTimeout";
 import SlideBugHunting from "./SlideBugHunting";
 import SlideEthicalHacker from "./SlideEthicalHacker";
 import SlideUxResearch from "./SlideUxResearch";
 
+const CareerContainer = styled(Container)`
+  margin: 120px 0 100px 0;
+  @media only screen and (min-width: ${({ theme }) =>
+      theme.grid.breakpoints.md}) {
+    margin: 150px 0 170px 0;
+  }
+  @media only screen and (min-width: ${({ theme }) =>
+      theme.grid.breakpoints.lg}) {
+    margin: 200px 0 60px 0;
+  }
+`;
 export const CareerPathsSlider = () => {
   const [current, setCurrent] = useState(0);
   const { t } = useTranslation();
@@ -28,14 +40,14 @@ export const CareerPathsSlider = () => {
   );
 
   return (
-    <Container className="aq-py-4 aq-mb-4">
+    <CareerContainer className="aq-py-4">
       <Title
-        className="text-marker section-title aq-text-primary aq-text-center"
+        className="text-marker section-title aq-text-primary aq-text-center aq-mb-3"
         size="xs"
       >
         {t("__HOME_TITLE_GROWTH MAX:40")}
       </Title>
-      <Text className="aq-mb-4 large-desktop aq-text-center">
+      <Text className="aq-mb-4 aq-pb-2 large-desktop aq-text-center">
         {t("__HOME_PARAGRAPH_GROWTH MAX:110")}
       </Text>
       <Carousel
@@ -52,11 +64,12 @@ export const CareerPathsSlider = () => {
         ))}
       </Carousel>
       <CarouselNav
+        className="aq-mt-3"
         step={1}
         current={current}
         setCurrent={setCurrent}
         totalSlides={items.length}
       ></CarouselNav>
-    </Container>
+    </CareerContainer>
   );
 };
