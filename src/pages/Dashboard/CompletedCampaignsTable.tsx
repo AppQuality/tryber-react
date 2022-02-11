@@ -61,6 +61,7 @@ const CompletedCampaignsTable = () => {
       />
       {totalEntries > limit ? (
         <Pagination
+          className="aq-pt-3"
           onPageChange={page.set}
           current={page.current}
           maxPages={Math.ceil(totalEntries / limit)}
