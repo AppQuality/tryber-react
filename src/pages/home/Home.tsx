@@ -31,15 +31,6 @@ const StyledHome = styled.div`
     text-transform: uppercase;
     line-height: 1.2;
   }
-  .home-section {
-    margin-bottom: 100px;
-    position: relative;
-    z-index: 0;
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      margin-bottom: 30vh;
-    }
-  }
   .section-title {
     position: relative;
     font-size: 35px !important;
@@ -53,22 +44,6 @@ const StyledHome = styled.div`
     position: relative;
     overflow: visible;
     max-width: 100%;
-  }
-  .banner-img {
-    float: right;
-    width: 64%;
-    margin: 50px -40px 20px 20px;
-    shape-outside: ellipse(50% 100px at 71% 63%);
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.md}) {
-      width: 320px;
-      shape-outside: none;
-    }
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      width: 540px;
-      margin: 16px -32px 16px 16px;
-    }
   }
   .tryber-character-wrapper {
     position: relative;

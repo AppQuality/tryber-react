@@ -11,7 +11,7 @@ const JoinInButton = ({
   flat?: boolean;
   children: React.ReactNode;
 }) => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   return (
     <Button
@@ -29,8 +29,14 @@ const JoinInButton = ({
 };
 
 export default styled(JoinInButton)`
-  padding: 18px 42px;
   border-radius: 10px;
   font-size: 18px;
   font-weight: bolder;
+  width: 100%;
+  padding: 12px 0px;
+  @media only screen and (min-width: ${(props) =>
+      props.theme.grid.breakpoints.md}) {
+    padding: 18px 42px;
+    width: unset;
+  }
 `;
