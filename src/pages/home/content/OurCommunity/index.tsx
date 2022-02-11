@@ -72,7 +72,7 @@ export default () => {
     <YellowBox className="aq-py-4">
       <Container className="aq-my-4">
         <div className="section-title text-marker aq-my-4 aq-py-4">
-          {t("Our Community")}
+          {t("__HOME_TITLE_COMMUNITY MAX:40")}
         </div>
         <DataListStyle className="aq-py-2">
           {data.map((item, index) => (

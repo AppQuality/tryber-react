@@ -5,9 +5,11 @@ import styled from "styled-components";
 const JoinInButton = ({
   className,
   flat = true,
+  children,
 }: {
   className?: string;
   flat?: boolean;
+  children: React.ReactNode;
 }) => {
   const { t, i18n } = useTranslation();
 
@@ -21,7 +23,7 @@ const JoinInButton = ({
         i18n.language == "en" ? "" : `${i18n.language}/`
       }getting-started/`}
     >
-      {t("JOIN IN TRYBER")}
+      {children}
     </Button>
   );
 };

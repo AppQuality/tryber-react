@@ -42,7 +42,7 @@ export const Brands = () => {
   return (
     <div>
       <BrandTitle size="s" className="aq-text-center">
-        {t("SOME OF THE GLOBAL BRANDS YOU’LL BE WORKING WITH")}
+        {t("__HOME_TITLE_BRAND MAX:40")}
       </BrandTitle>
       <BrandList>
         <img src={SkyLogo} alt="Sky Logo" />

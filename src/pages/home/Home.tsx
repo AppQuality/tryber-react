@@ -6,16 +6,15 @@ import { AboutUnguess } from "src/pages/home/content/AboutUnguess";
 import { Brands } from "src/pages/home/content/Brands";
 import { CareerPathsSlider } from "src/pages/home/content/CareerPathsSlider";
 import { HowToJoinTryber } from "src/pages/home/content/HowToJoinTryber";
-import { Reviews } from "src/pages/home/content/Reviews";
 import { WhyJoinTryber } from "src/pages/home/content/WhyJoinTryber";
 import styled from "styled-components";
 
 import GoogleTagManager from "../../features/GoogleTagManager";
 import NotLoggedOnly from "../../features/NotLoggedOnly";
-import tryberCharacters4 from "./assets/tryberini4.svg";
 import { BannerTop } from "./content/BannerTop";
-import { Footer } from "./content/Footer";
 import OurCommunity from "./content/OurCommunity";
+import Reviews from "./content/Reviews";
+import Footer from "./Footer";
 
 const StyledHome = styled.div`
   max-width: 100vw;
@@ -188,21 +187,7 @@ export default function Home() {
               className="home-section hero"
               style={{ overflow: "visible" }}
             >
-              <div className="container">
-                <div className="section-title text-marker aq-text-center aq-mb-4">
-                  <div className="tryber-character-wrapper">
-                    <img
-                      className="tryberCharacters-4"
-                      src={tryberCharacters4}
-                      alt="tryber characters"
-                    />
-                    {t("Our Testers advices")}
-                  </div>
-                </div>
-                <div className="aq-pt-3">
-                  <Reviews />
-                </div>
-              </div>
+              <Reviews />
             </section>
             <Footer />
           </Container>

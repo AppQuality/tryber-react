@@ -33,12 +33,10 @@ export const CareerPathsSlider = () => {
         className="text-marker section-title aq-text-primary aq-text-center"
         size="xs"
       >
-        {t("title section slider home ")}
+        {t("__HOME_TITLE_GROWTH MAX:40")}
       </Title>
       <Text className="aq-mb-4 large-desktop aq-text-center">
-        {t(
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown."
-        )}
+        {t("__HOME_PARAGRAPH_GROWTH MAX:110")}
       </Text>
       <Carousel
         step={1}

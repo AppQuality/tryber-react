@@ -39,17 +39,15 @@ export default () => {
     <GenericSlide image={<Image />}>
       <div className=" aq-mt-3">
         <Title size="xl" className="text-marker">
-          {t("BECOME A BUG HUNTER!")}
+          {t("__HOME_CAROUSEL_TITLE_BUG MAX:40")}
         </Title>
         <Text className="aq-mb-2">
-          {t(
-            "A user who will pursue a functional testing career inside the TRYBER Community. That means you will be specialized in Functional Testing, Exploratory Testing and Bug Hunting."
-          )}
+          {t("__HOME_CAROUSEL_PARAGAPH_BUG MAX:110")}
         </Text>
       </div>
-      <JoinInButton />
+      <JoinInButton>{t("__HOME_CAROUSEL_CTA_BUG MAX:25")}</JoinInButton>
       <Title size="s" className="text-marker disclaimer">
-        {t("Start earning today!")}
+        {t("__HOME_CAROUSEL_SUBTITLE_BUG MAX:30")}
       </Title>
     </GenericSlide>
   );

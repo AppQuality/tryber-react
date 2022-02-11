@@ -42,34 +42,42 @@ export const HowToJoinTryber = () => {
           size="l"
           className="main text-marker aq-text-center aq-mt-3 aq-mb-2"
         >
-          {t("Join Tryber is simple")}
+          {t("__HOME_TITLE_STEP MAX:40")}
         </Title>
         <Text className="aq-text-center claim">
-          {t(
-            "So what’s in it for you? New skills, free training, good money… and the opportunity to help the brands you use every day improve the user experience of their products and services."
-          )}
+          {t("__HOME_PARAGRAPH_STEP MAX:110")}
         </Text>
         <div className="cardlist">
-          <GenericCard icon={<Devices />} title={t("STEP 1")}>
-            {t("Sign up for the community by hitting the button below.")}
+          <GenericCard
+            icon={<Devices />}
+            title={t("__HOME_TITLE_CARD_STEP1 MAX:20")}
+          >
+            {t("__HOME_PARAGRAPH_CARD_STEP1 MAX:65")}
           </GenericCard>
-          <GenericCard icon={<Alarm />} title={t("STEP 2")}>
-            {t("Complete your profile. The more we know about you!")}
+          <GenericCard
+            icon={<Alarm />}
+            title={t("__HOME_TITLE_CARD_STEP2 MAX:20")}
+          >
+            {t("__HOME_PARAGRAPH_CARD_STEP2 MAX:65")}
           </GenericCard>
-          <GenericCard icon={<List />} title={t("STEP 3")}>
-            {t(
-              "Complete the free training to learn about our platform and become an expert."
-            )}
+          <GenericCard
+            icon={<List />}
+            title={t("__HOME_TITLE_CARD_STEP3 MAX:20")}
+          >
+            {t("__HOME_PARAGRAPH_CARD_STEP3 MAX:65")}
           </GenericCard>
-          <GenericCard icon={<Wallet />} title={t("STEP 4")}>
-            {t("Join campaigns and start earning money!")}
+          <GenericCard
+            icon={<Wallet />}
+            title={t("__HOME_TITLE_CARD_STEP4 MAX:20")}
+          >
+            {t("__HOME_PARAGRAPH_CARD_STEP4 MAX:65")}
           </GenericCard>
         </div>
         <div className="aq-text-center">
-          <JoinInButton />
+          <JoinInButton>{t("__HOME_CTA_STEP MAX:25")}</JoinInButton>
         </div>
         <Title size="s" className="text-marker disclaimer aq-text-center">
-          {t("It's totally free!")}
+          {t("__HOME_SUBTITLE-CTA_STEP MAX:30")}
         </Title>
       </Container>
     </JoinTryberContainer>

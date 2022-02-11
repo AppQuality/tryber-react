@@ -2,6 +2,7 @@ import { Button, Text, Title } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
+import JoinInButton from "../JoinInButton";
 import tryber from "./assets/tryber.png";
 
 const SlideContainer = styled.div`
@@ -53,34 +54,23 @@ export const AboutUnguess = () => {
     <SlideContainer>
       <TextContainer>
         <Title size="xl" className="text-marker">
-          {t("About Unguess")}
+          {t("__HOME_TITLE_UNGUESS MAX:40")}
         </Title>
-        <Text className="aq-mb-4">
-          {t(
-            "UNGUESS draws on the power of the TRYBER community to give its clients the insights it needs to make better decisions about its business, products and services. ."
-          )}
-        </Text>
+        <Text className="aq-mb-4">{t("__HOME_PARAGRAPH_UNGUESS MAX:120")}</Text>
 
-        <Button
-          type="secondary"
-          className="aq-mb-4"
-          forwardedAs="a"
-          href={`${window.location.origin}/${
-            i18n.language == "en" ? "" : `${i18n.language}/`
-          }getting-started/`}
-        >
-          {t("JOIN IN TRYBER")}
-        </Button>
+        <JoinInButton flat={false}>
+          {t("__HOME_CTA_WELCOME MAX:25")}
+        </JoinInButton>
 
         <Title size="s" className="text-marker disclaimer">
-          {t("It's totally free!")}
+          {t("__HOME_SUBTITLE-CTA_WELCOME MAX:30")}
         </Title>
       </TextContainer>
       <VideoContainer>
         <iframe
           width="500"
           height="294"
-          src="https://www.youtube.com/embed/XHOmBV4js_E?&theme=dark&autohide=2"
+          src="https://www.youtube.com/embed/bPr1XILdV4g"
         ></iframe>
         <img className="tryber" src={tryber} alt="tryber" />
       </VideoContainer>

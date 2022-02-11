@@ -3,9 +3,9 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 import JoinInButton from "../JoinInButton";
-import careerImageEN from "./assets/ethical_hacker_en.svg";
-import careerImageES from "./assets/ethical_hacker_es.svg";
-import careerImageIT from "./assets/ethical_hacker_it.svg";
+import careerImageEN from "./assets/cyber_security_en.svg";
+import careerImageES from "./assets/cyber_security_es.svg";
+import careerImageIT from "./assets/cyber_security_it.svg";
 import GenericSlide, { TextBox } from "./GenericSlide";
 
 const TextBoxOne = styled(TextBox)`
@@ -39,17 +39,15 @@ export default () => {
     <GenericSlide image={<Image />}>
       <div className=" aq-mt-3">
         <Title size="xl" className="text-marker">
-          {t("BECOME AN ETHICAL HACKER!")}
+          {t("__HOME_CAROUSEL_TITLE_CYBER MAX:40")}
         </Title>
         <Text className="aq-mb-2">
-          {t(
-            "A user who will pursue a cyber security career inside the TRYBER Community. That means you will be specialized in Penetration Testing and Bug Bounty Testing and searching for security vulnerabilities."
-          )}
+          {t("__HOME_CAROUSEL_PARAGAFO_CYBER MAX :110")}
         </Text>
       </div>
-      <JoinInButton />
+      <JoinInButton>{t("__HOME_CAROUSEL_CTA_CYBER MAX:25")}</JoinInButton>
       <Title size="s" className="text-marker disclaimer">
-        {t("Start earning today!")}
+        {t("__HOME_CAROUSEL_SUBTITLE_CYBER MAX:30")}
       </Title>
     </GenericSlide>
   );

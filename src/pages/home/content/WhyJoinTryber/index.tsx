@@ -112,65 +112,33 @@ export const WhyJoinTryber = () => {
   const items = [
     {
       icon: wallet,
-      title: t("fair payments"),
-      body: (
-        <Trans
-          i18nKey="By successfully completing a Campaign <bold>you will receive a payout</bold>, which you can transfer to your IBAN or PayPal."
-          defaults="By successfully completing a Campaign <bold>you will receive a payout</bold>, which you can transfer to your IBAN or PayPal."
-          components={{ br: <br />, bold: <strong /> }}
-        />
-      ),
+      title: t("__HOME_TITLE_CARD_AWARDS MAX:20"),
+      body: <Trans i18nKey="__HOME_PARAGRAPH_CARD_AWARDS MAX: 80" />,
     },
     {
       icon: devices,
-      title: t("devices"),
-      body: (
-        <Trans
-          i18nKey="To test you won't need special equipment, but simply  <bold>your own personal devices</bold>"
-          defaults="To test you won't need special equipment, but simply  <bold>your own personal devices</bold>"
-          components={{ bold: <strong /> }}
-        />
-      ),
+      title: t("__HOME_TITLE_CARD_ACCESS MAX:20"),
+      body: <Trans i18nKey="__HOME_PARAGRAFO_CARD_ACCESS MAX:80" />,
     },
     {
       icon: hands,
-      title: t("free training"),
-      body: (
-        <Trans
-          i18nKey="Don't know anything about testing?<br></br> Don't be afraid! We have for you <bold>Certificated Basic Courses</bold> and many training articles"
-          defaults="Don't know anything about testing?<br></br> Don't be afraid! We have for you <bold>Certificated Basic Courses</bold> and many training articles"
-          components={{ br: <br />, bold: <strong /> }}
-        />
-      ),
+      title: t("__HOME_TITLE_CARD_COURSES MAX:20"),
+      body: <Trans i18nKey="__HOME_PARAGRAFO_CARD_COURSES MAX:80" />,
     },
     {
       icon: clock,
-      title: t("flexible hours"),
-      body: (
-        <Trans
-          i18nKey="<bold>Test when and where you want!</bold><br></br>The important thing is to respect the closing date of the Test Campaign"
-          defaults="<bold>Test when and where you want!</bold><br></br>The important thing is to respect the closing date of the Test Campaign"
-          components={{ br: <br />, bold: <strong /> }}
-        />
-      ),
+      title: t("__HOME_TITLE_CARD_TIME MAX:20"),
+      body: <Trans i18nKey="__HOME_PARAGRAPH_CARD_TIME MAX:80" />,
     },
     {
       icon: diamond,
-      title: t("grow your experience"),
-      body: t(
-        "Each Test you take will allow you to increase your skills and hone your tester abilities."
-      ),
+      title: t("__HOME_TITLE_CARD_SKILL MAX:20"),
+      body: <Trans i18nKey="__HOME_PARAGRAPH_CARD_SKILL MAX:80" />,
     },
     {
       icon: support,
-      title: t("constant support"),
-      body: (
-        <Trans
-          i18nKey="<bold>A Team of competent and professional figures</bold> will always be at your side to resolve any doubts <br></br>you may have"
-          defaults="<bold>A Team of competent and professional figures</bold> will always be at your side to resolve any doubts <br></br>you may have"
-          components={{ br: <br />, bold: <strong /> }}
-        />
-      ),
+      title: t("__HOME_TITLE_CARD_SUPPORT MAX:20"),
+      body: <Trans i18nKey="__HOME_PARAGRAPH_CARD_SUPPORT MAX:80" />,
     },
   ];
   const [isVisible, setIsVisible] = useState(false);
@@ -204,7 +172,7 @@ export const WhyJoinTryber = () => {
   return (
     <GradientDiv>
       <div className="text-marker aq-card-body aq-text-center aq-mb-4 section-title">
-        {t("Why should you join tryber?")}
+        {t("__HOME_TITLE_WHY MAX:40 ")}
         <img
           className="tryberCharacters-5"
           src={tryberCharacters5}
