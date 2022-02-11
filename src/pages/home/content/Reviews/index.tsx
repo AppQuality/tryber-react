@@ -25,16 +25,16 @@ const ReviewContainer = styled.div`
   @media (min-width: ${(props) => props.theme.grid.breakpoints.md}) {
     padding: 240px 0;
   }
-  .section-title > span {
-    position: relative;
-
-    .tryberCharacters {
+  .section-title {
+    .tryberCharacter {
       display: block;
       margin: 0 auto;
       @media only screen and (min-width: ${(props) =>
           props.theme.grid.breakpoints.lg}) {
-        display: inline;
+        position: absolute;
         margin: 0;
+        transform: translate(-100%, -40%);
+        display: inline-block;
       }
     }
   }
@@ -159,14 +159,12 @@ export default () => {
   return (
     <ReviewContainer className="container">
       <div className="section-title text-marker aq-text-center">
-        <span>
-          <img
-            className="tryberCharacter"
-            src={tryberPurple4}
-            alt="tryber characters"
-          />
-          {t("__HOME_TITLE_ADVICE MAX:40")}
-        </span>
+        <img
+          className="tryberCharacter"
+          src={tryberPurple4}
+          alt="tryber characters"
+        />
+        {t("__HOME_TITLE_ADVICE MAX:40")}
       </div>
       <div className="aq-pt-3">
         <CardListStyle>
