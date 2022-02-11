@@ -7,6 +7,9 @@ import LottomaticaLogo from "./assets/LottomaticaLogo.png";
 import MilestoneLogo from "./assets/MilestoneLogo.png";
 import SkyLogo from "./assets/SkyLogo.png";
 
+const BrandContainer = styled.div`
+  margin: 160px 0;
+`;
 const BrandTitle = styled(Title)`
   padding-bottom: 24px;
   border-bottom: 2px solid ${(props) => props.theme.palette.primary};
@@ -40,7 +43,7 @@ const BrandList = styled.div`
 export const Brands = () => {
   const { t } = useTranslation();
   return (
-    <div>
+    <BrandContainer>
       <BrandTitle size="s" className="aq-text-center">
         {t("__HOME_TITLE_BRAND MAX:40")}
       </BrandTitle>
@@ -50,6 +53,6 @@ export const Brands = () => {
         <img src={LottomaticaLogo} alt="Lottomatica Logo" />
         <img src={BendingSpoonsLogo} alt="Bending Spoons Logo" />
       </BrandList>
-    </div>
+    </BrandContainer>
   );
 };
