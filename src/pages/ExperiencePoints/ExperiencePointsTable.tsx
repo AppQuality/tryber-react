@@ -2,9 +2,9 @@ import {
   Table,
   Pagination,
   TableType,
+  SortTableSelect,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import { SortTableSelect } from "src/features/SortTableSelect";
 
 interface ExperiencePointsTableProps {
   data: TableType.Row[];

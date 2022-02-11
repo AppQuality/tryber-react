@@ -1,14 +1,11 @@
 import {
   Select,
   SelectType,
-  TableType,
+  SortTableSelect,
+  SortTableSelectProps,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { BugsOrderByType } from "src/pages/MyBugs/effects/useMyBugs";
-import {
-  SortTableSelect,
-  SortTableSelectProps,
-} from "src/features/SortTableSelect";
 
 interface MyBugsFiltersProps extends SortTableSelectProps<BugsOrderByType> {
   // todo: get this from useMyBugs or they could diverge

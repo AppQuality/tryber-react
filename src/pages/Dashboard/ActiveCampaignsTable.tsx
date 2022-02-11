@@ -2,10 +2,10 @@ import {
   Pagination,
   Table,
   TableType,
+  SortTableSelect,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import useActiveCampaigns from "./effects/useActiveCampaigns";
-import { SortTableSelect } from "src/features/SortTableSelect";
 
 const ActiveCampaignsTable = () => {
   const { t } = useTranslation();
