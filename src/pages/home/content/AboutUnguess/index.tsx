@@ -25,18 +25,31 @@ const SlideContainer = styled.div`
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "left" "right";
   }
-  .tryber {
-    display: none;
-    @media (min-width: ${(props) => props.theme.grid.breakpoints.md}) {
-      display: block;
-    }
-  }
 `;
 const TextContainer = styled.div`
   padding: 16px 26px 110px 26px;
   ${Title} {
     display: flex;
     align-items: center;
+    flex-direction: column;
+    .tryber {
+      order: -1;
+      svg {
+        width: 50%;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+    @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+      flex-direction: row;
+      .tryber {
+        order: 1;
+        svg {
+          width: auto;
+          margin: 0;
+        }
+      }
+    }
   }
 `;
 const VideoContainer = styled.div`
@@ -55,8 +68,8 @@ export const AboutUnguess = () => {
       <TextContainer>
         <Title size="xl" className="text-marker">
           <div>{t("__HOME_TITLE_UNGUESS MAX:40")}</div>
-          <div>
-            <Tryber className="tryber" />
+          <div className="tryber">
+            <Tryber />
           </div>
         </Title>
         <Text className="aq-my-4">{t("__HOME_PARAGRAPH_UNGUESS MAX:120")}</Text>
