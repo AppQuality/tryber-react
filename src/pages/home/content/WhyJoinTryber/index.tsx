@@ -44,7 +44,7 @@ const GradientDiv = styled.div`
       display: none;
     }
   }
-  ${Text} {
+  ${Text}.subtitle {
     color: ${(props) => props.theme.colors.white};
     font-size: 22px;
     @media only screen and (min-width: ${(props) =>
@@ -181,7 +181,7 @@ export const WhyJoinTryber = () => {
           alt="tryber characters"
         />
       </div>
-      <Text className="aq-text-center aq-mb-4">
+      <Text className="aq-text-center aq-mb-4 subtitle">
         {t("__HOME_PARAGRAPH_WHY MAX:110")}
       </Text>
       <div className="container">
