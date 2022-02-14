@@ -49,8 +49,8 @@ export const Brands = () => {
       </BrandTitle>
       <BrandList>
         <img src={SkyLogo} alt="Sky Logo" />
-        <img src={MilestoneLogo} alt="Milestone Logo" />
         <img src={LottomaticaLogo} alt="Lottomatica Logo" />
+        <img src={MilestoneLogo} alt="Milestone Logo" />
         <img src={BendingSpoonsLogo} alt="Bending Spoons Logo" />
       </BrandList>
     </BrandContainer>
