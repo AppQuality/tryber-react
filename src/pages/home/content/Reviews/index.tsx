@@ -9,16 +9,16 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
-import avatarCarlo from "./assets/carlo2.png";
-import avatarDaniele from "./assets/daniele2.jpeg";
-import avatarFabio from "./assets/fabio2.png";
-import avatarFabrizio from "./assets/Fabrizio.jpeg";
-import avatarFilippo from "./assets/filippo2.jpeg";
-import avatarMarina from "./assets/Marina.jpeg";
+import avatar1 from "./assets/avatar1.svg";
+import avatar2 from "./assets/avatar2.svg";
+import avatar3 from "./assets/avatar3.svg";
+import avatar4 from "./assets/avatar4.svg";
+import avatar5 from "./assets/avatar5.svg";
+import avatar6 from "./assets/avatar6.svg";
+import avatar7 from "./assets/avatar7.svg";
+import avatar8 from "./assets/avatar8.svg";
 import quotes from "./assets/quotes.svg";
-import avatarSatesh from "./assets/Sathesh.jpeg";
 import tryberPurple4 from "./assets/tryberPurple4.svg";
-import avatarVincenzo from "./assets/Vincenzo.jpeg";
 
 const ReviewContainer = styled.div`
   padding: 140px 0;
@@ -63,9 +63,13 @@ const CardListStyle = styled.div`
     overflow: hidden;
     width: 50px;
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: ${(props) => props.theme.colors.white};
     img {
-      width: 100%;
-      height: 100%;
+      max-width: 70%;
+      max-height: 70%;
       object-fit: cover;
     }
   }
@@ -100,56 +104,56 @@ export default () => {
   const { t } = useTranslation();
   const items = [
     {
-      pic: avatarCarlo,
+      pic: avatar1,
       name: t("__HOME_USER_NAME_ADVICE1 MAX:20"),
       age: "25",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE1 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE1 MAX:190"),
     },
     {
-      pic: avatarMarina,
+      pic: avatar2,
       name: t("__HOME_USER_NAME_ADVICE2 MAX:20"),
       age: "39",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE2 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE2 MAX:190"),
     },
     {
-      pic: avatarDaniele,
+      pic: avatar3,
       name: t("__HOME_USER_NAME_ADVICE3 MAX:20"),
       age: "25",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE3 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE3 MAX:190"),
     },
     {
-      pic: avatarFabrizio,
+      pic: avatar4,
       name: t("__HOME_USER_NAME_ADVICE4 MAX:20"),
       age: "38",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE4 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE4 MAX:190"),
     },
     {
-      pic: avatarSatesh,
+      pic: avatar5,
       name: t("__HOME_USER_NAME_ADVICE5 MAX:20"),
       age: "20",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE5 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE5 MAX:190"),
     },
     {
-      pic: avatarFabio,
+      pic: avatar6,
       name: t("__HOME_USER_NAME_ADVICE6 MAX:20"),
       age: "22",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE6 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE6 MAX:190"),
     },
     {
-      pic: avatarFilippo,
+      pic: avatar7,
       name: t("__HOME_USER_NAME_ADVICE7 MAX:20"),
       age: "23",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE7 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE7 MAX:190"),
     },
     {
-      pic: avatarVincenzo,
+      pic: avatar8,
       name: t("__HOME_USER_NAME_ADVICE8 MAX:20"),
       age: "33",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE8 MAX:30"),
