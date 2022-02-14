@@ -28,21 +28,13 @@ const GradientDiv = styled.div`
     padding: ${bgSpaceLg} 0;
   }
   .tryber {
-    display: none;
-  }
-  .tryber-mobile {
     display: block;
-    width: 20%;
+    width: 25%;
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      width: 15%;
+    }
     margin: 0 auto;
-  }
-  @media only screen and (min-width: ${(props) =>
-      props.theme.grid.breakpoints.lg}) {
-    .tryber {
-      display: inline;
-    }
-    .tryber-mobile {
-      display: none;
-    }
   }
   ${Text}.subtitle {
     color: ${(props) => props.theme.colors.white};
@@ -170,16 +162,11 @@ export const WhyJoinTryber = () => {
     <GradientDiv>
       <div className="text-marker aq-text-center aq-mb-4 section-title">
         <img
-          className="tryber-mobile"
-          src={tryberCharacters5}
-          alt="tryber characters"
-        />
-        <span>{t("__HOME_TITLE_WHY MAX:40 ")}</span>
-        <img
           className="tryber"
           src={tryberCharacters5}
           alt="tryber characters"
         />
+        <span>{t("__HOME_TITLE_WHY MAX:40 ")}</span>
       </div>
       <Text className="aq-text-center aq-mb-4 subtitle">
         {t("__HOME_PARAGRAPH_WHY MAX:110")}
