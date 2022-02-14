@@ -11,9 +11,14 @@ import { ReactComponent as Wallet } from "./assets/wallet.svg";
 import GenericCard from "./GenericCard";
 
 const JoinTryberContainer = styled.div`
-  padding: 90px 80px;
+  padding: 90px 0;
+  @media only screen and (min-width: ${(props) =>
+      props.theme.grid.breakpoints.lg}) {
+    padding: 90px 80px;
+  }
   background: url(${background}) no-repeat;
   background-size: cover;
+  background-position: 1%;
   ${Title},${Text} {
     color: #fff;
   }
