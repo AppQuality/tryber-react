@@ -1,10 +1,6 @@
 import { Card, Text } from "@appquality/appquality-design-system";
 import React, { useEffect, useRef, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import borderBottomLg from "src/pages/home/assets/bottom_large.svg";
-import borderBottomSm from "src/pages/home/assets/bottom_small.svg";
-import borderTopLg from "src/pages/home/assets/top_large.svg";
-import borderTopSm from "src/pages/home/assets/top_small.svg";
 import styled, { keyframes } from "styled-components";
 
 import clock from "./assets/clock.svg";
@@ -31,32 +27,20 @@ const GradientDiv = styled.div`
       props.theme.grid.breakpoints.lg}) {
     padding: ${bgSpaceLg} 0;
   }
-  .section-border {
-    width: 100%;
-    height: 50%;
-    position: absolute;
-    z-index: -1;
-    background-repeat: no-repeat;
-    background-size: 100%;
+  .tryber {
+    display: none;
   }
-  .border-top {
-    background-image: url(${borderTopSm});
-    background-position: top;
-    top: -${bgSpaceSm};
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      top: -${bgSpaceLg};
-      background-image: url(${borderTopLg});
+  .tryber-mobile {
+    display: block;
+    margin: 0 auto;
+  }
+  @media only screen and (min-width: ${(props) =>
+      props.theme.grid.breakpoints.lg}) {
+    .tryber {
+      display: inline;
     }
-  }
-  .border-bottom {
-    background-image: url(${borderBottomSm});
-    background-position: bottom;
-    bottom: -${bgSpaceSm};
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      bottom: -${bgSpaceLg};
-      background-image: url(${borderBottomLg});
+    .tryber-mobile {
+      display: none;
     }
   }
 `;
@@ -172,9 +156,14 @@ export const WhyJoinTryber = () => {
   return (
     <GradientDiv>
       <div className="text-marker aq-text-center aq-mb-4 section-title">
-        {t("__HOME_TITLE_WHY MAX:40 ")}
         <img
-          className="tryberCharacters-5"
+          className="tryber-mobile"
+          src={tryberCharacters5}
+          alt="tryber characters"
+        />
+        <span>{t("__HOME_TITLE_WHY MAX:40 ")}</span>
+        <img
+          className="tryber"
           src={tryberCharacters5}
           alt="tryber characters"
         />
