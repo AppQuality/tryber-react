@@ -26,7 +26,7 @@ const CareerContainer = styled(Container)`
     margin: 200px 0 60px 0;
   }
 `;
-export const CareerPathsSlider = () => {
+export default () => {
   const [current, setCurrent] = useState(0);
   const { t } = useTranslation();
 

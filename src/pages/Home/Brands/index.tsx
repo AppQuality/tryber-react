@@ -40,7 +40,7 @@ const BrandList = styled.div`
     }
   }
 `;
-export const Brands = () => {
+export default () => {
   const { t } = useTranslation();
   return (
     <BrandContainer>

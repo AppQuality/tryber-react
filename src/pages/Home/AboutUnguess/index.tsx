@@ -69,7 +69,7 @@ const VideoContainer = styled.div`
   }
 `;
 
-export const AboutUnguess = () => {
+export default () => {
   const { t, i18n } = useTranslation();
   return (
     <SlideContainer>

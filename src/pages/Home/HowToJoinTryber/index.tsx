@@ -50,7 +50,7 @@ const JoinTryberContainer = styled.div`
   }
 `;
 
-export const HowToJoinTryber = () => {
+export default () => {
   const { t } = useTranslation();
   return (
     <JoinTryberContainer>

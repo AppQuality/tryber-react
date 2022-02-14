@@ -100,7 +100,7 @@ const CardItem = styled(Card)<{ index: number }>`
   border: none;
   color: ${(props) => props.theme.colors.white};
 `;
-export const WhyJoinTryber = () => {
+export default () => {
   const { t } = useTranslation();
   const items = [
     {

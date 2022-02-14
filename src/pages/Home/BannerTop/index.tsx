@@ -17,7 +17,7 @@ const SectionBanner = styled.div`
     }
   }
 `;
-export const BannerTop = () => {
+export default () => {
   const { t } = useTranslation();
   return (
     <SectionBanner className="section-banner">
