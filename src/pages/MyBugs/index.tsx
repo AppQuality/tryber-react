@@ -61,6 +61,7 @@ export default function MyBugs() {
         orderBy.set("title");
       },
       role: "title",
+      hideIndex: true,
     },
     {
       title: t("Severity"),
