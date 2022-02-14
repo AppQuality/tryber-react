@@ -8,7 +8,7 @@ import devices from "./assets/devices.svg";
 import diamond from "./assets/diamond.svg";
 import hands from "./assets/hands.svg";
 import support from "./assets/support.svg";
-import tryberCharacters5 from "./assets/tryberini5.svg";
+import tryberCharacters5 from "./assets/Tryber_Why_Join.svg";
 import wallet from "./assets/wallet.svg";
 
 const bgSpaceSm = "55px";
@@ -29,14 +29,14 @@ const GradientDiv = styled.div`
   }
   .tryber {
     display: block;
-    width: 20%;
+    width: 15%;
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.md}) {
-      width: 15%;
+      width: 10%;
     }
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
-      width: 10%;
+      width: 5%;
     }
     margin: 0 auto;
   }
