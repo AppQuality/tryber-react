@@ -1,5 +1,6 @@
 import { Container, PageTitle } from "@appquality/appquality-design-system";
 import React from "react";
+
 import GoogleTagManager from "./GoogleTagManager";
 import LoggedOnly from "./LoggedOnly";
 import NotLoggedOnly from "./NotLoggedOnly";
@@ -26,7 +27,7 @@ const ContentTemplate = ({
   );
 };
 
-export const PageTemplateModals = ({
+export const OutsideContainer = ({
   children,
 }: {
   children: React.ReactNode;
@@ -39,12 +40,14 @@ export const PageTemplate = ({
   title,
   subtitle,
   shouldBeLoggedIn = false,
+  showTitle = true,
   route,
 }: {
   children: React.ReactNode;
   title?: string;
   subtitle?: string;
   shouldBeLoggedIn?: boolean;
+  showTitle?: boolean;
   route: string;
 }) => {
   const LoggedStatusWrapper = shouldBeLoggedIn ? LoggedOnly : NotLoggedOnly;
@@ -52,7 +55,7 @@ export const PageTemplate = ({
   // map children and separate Modal components from the rest
   const [modalChildren, pageChildren] = React.Children.toArray(children).reduce(
     (acc: React.ReactNode[], child) => {
-      if (React.isValidElement(child) && child.type === PageTemplateModals) {
+      if (React.isValidElement(child) && child.type === OutsideContainer) {
         acc[0] = (
           <>
             {acc[0]}
@@ -73,7 +76,7 @@ export const PageTemplate = ({
   );
 
   const content = (
-    <ContentTemplate title={title} subtitle={subtitle}>
+    <ContentTemplate title={showTitle ? title : undefined} subtitle={subtitle}>
       {pageChildren}
     </ContentTemplate>
   );

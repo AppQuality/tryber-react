@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@appquality/appquality-design-system@^1.0.0", "@appquality/appquality-design-system@^1.0.3":
-  "integrity" "sha512-je/TKug+5mtT8PTMUvBdp+lgFIBVg0qt5rNr3EwmWbDWiHO7zd3+fx7TdUAVtj9Et/Lh5dy0JXjw6s7SwcvQhA=="
-  "resolved" "https://registry.npmjs.org/@appquality/appquality-design-system/-/appquality-design-system-1.0.5.tgz"
-  "version" "1.0.5"
+"@appquality/appquality-design-system@^1.0.0", "@appquality/appquality-design-system@^1.0.16":
+  "integrity" "sha512-mhGR5guSSoIpdYIe9xnXXBUHJ6eQ0/j9ZBYnTKuz16/F726T3tyDh4GCVvrWhB/xLmqawnppLIA7bMCCTi1Bzg=="
+  "resolved" "https://registry.npmjs.org/@appquality/appquality-design-system/-/appquality-design-system-1.0.17.tgz"
+  "version" "1.0.17"
   dependencies:
     "@appquality/mobiscroll" "^5.10.1"
     "formik" "^2.2.9"
@@ -1431,9 +1431,9 @@
   "version" "1.1.2"
 
 "@googlemaps/js-api-loader@^1.11.1":
-  "integrity" "sha512-YdxC1uQhz8bgNlX7LgaDnF4VIaL/Q+72KzHKtDK/xlXkRmwpFuVCXLn22q/Lb5h4d4+NkFYD3cvtqxW6VpFp/w=="
-  "resolved" "https://registry.npmjs.org/@googlemaps/js-api-loader/-/js-api-loader-1.12.11.tgz"
-  "version" "1.12.11"
+  "integrity" "sha512-lYWbTAueTx6mlFMybqtqCseiexghM+/1+cWMWHi2fqkOo1b0c5oWCJqre5MWeZiu6hEj9abpVKl/hG1oMtixbQ=="
+  "resolved" "https://registry.npmjs.org/@googlemaps/js-api-loader/-/js-api-loader-1.13.5.tgz"
+  "version" "1.13.5"
   dependencies:
     "fast-deep-equal" "^3.1.3"
 
@@ -2002,9 +2002,9 @@
     "@types/node" "*"
 
 "@types/google.maps@^3.44.1":
-  "integrity" "sha512-/Auj3324mp/E/T5QXAQnXcxtSUgsC1AH//Zt3COYqcwNCmVZNSwytl15jzyjxLcYA0ZDBE1ZBWTawEJPxZqR/w=="
-  "resolved" "https://registry.npmjs.org/@types/google.maps/-/google.maps-3.47.0.tgz"
-  "version" "3.47.0"
+  "integrity" "sha512-wgNs0Cb0SpWMBmD5WV560bQ++sdtAOqR6V6qQIA5jZFORLsxat4kVkXOOg7KDFqHwNgYpg36Vai2zXUCTmbtnQ=="
+  "resolved" "https://registry.npmjs.org/@types/google.maps/-/google.maps-3.47.4.tgz"
+  "version" "3.47.4"
 
 "@types/graceful-fs@^4.1.2":
   "integrity" "sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw=="
@@ -5706,7 +5706,15 @@
   dependencies:
     "flat-cache" "^3.0.4"
 
-"file-loader@*", "file-loader@6.1.1":
+"file-loader@*", "file-loader@^6.2.0":
+  "integrity" "sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw=="
+  "resolved" "https://registry.npmjs.org/file-loader/-/file-loader-6.2.0.tgz"
+  "version" "6.2.0"
+  dependencies:
+    "loader-utils" "^2.0.0"
+    "schema-utils" "^3.0.0"
+
+"file-loader@6.1.1":
   "integrity" "sha512-Klt8C4BjWSXYQAfhpYYkG4qHNTna4toMHEbWrI5IuVoxbU6uiDKeKAP99R8mmbJi3lvewn/jQBOgU4+NS3tDQw=="
   "resolved" "https://registry.npmjs.org/file-loader/-/file-loader-6.1.1.tgz"
   "version" "6.1.1"
