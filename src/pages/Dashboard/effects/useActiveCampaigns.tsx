@@ -86,18 +86,15 @@ export default () => {
                     </Text>
                   </>
                 ) : (
-                  <div
-                    style={{ display: "flex", justifyContent: "space-around" }}
+                  <Button
+                    className="aq-nopadding"
+                    forwardedAs="a"
+                    href={`${window.location.origin}${manualLink}`}
+                    type="link-hover"
+                    size="sm"
                   >
-                    <Button
-                      forwardedAs="a"
-                      href={`${window.location.origin}${manualLink}`}
-                      type="link-hover"
-                      size="sm"
-                    >
-                      {t("Read manual")}
-                    </Button>
-                  </div>
+                    {t("Read manual")}
+                  </Button>
                 ),
             },
           };

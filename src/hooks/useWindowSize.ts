@@ -1,5 +1,15 @@
 import { useLayoutEffect, useState } from "react";
-import debounce from "./useDebounce";
+
+function debounce(callback: () => void, wait: number) {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  return () => {
+    if (typeof timer !== "undefined") clearTimeout(timer);
+    timer = setTimeout(() => {
+      timer = undefined;
+      callback();
+    }, wait);
+  };
+}
 
 export default function useWindowSize() {
   const [size, setSize] = useState([0, 0]);

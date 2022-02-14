@@ -1,15 +1,33 @@
 import { Button, Table, TableType } from "@appquality/appquality-design-system";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import siteWideMessageStore from "src/redux/siteWideMessages";
 import userDeviceStore from "src/redux/userDevices";
 import DeviceIcon from "./DeviceIcon";
+import styled from "styled-components";
+import { Trash } from "react-bootstrap-icons";
+
+const DeviceActions = styled.div`
+  display: flex;
+  flex-flow: column;
+  .action-text { display: none;}
+    @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+      display: block;
+      .action-text { display: block; }
+      .action-icon { display: none; }
+    }
+  }
+  ${Button} {
+    display: block;
+    @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+      display: inline-block;
+    }
+  }
+`;
 
 const DeviceTable = () => {
   const { t } = useTranslation();
   const { devices, loading, fetch, select, openEditModal, openDeleteModal } =
     userDeviceStore();
-  const { add } = siteWideMessageStore();
   useEffect(() => {
     fetch();
   }, []);
@@ -38,13 +56,14 @@ const DeviceTable = () => {
           os_version: d.operating_system.version,
           actions: {
             content: (
-              <>
+              <DeviceActions>
                 <Button
                   onClick={() => {
                     select(d.id);
                     openEditModal();
                   }}
                   type="link-hover"
+                  className="aq-nopadding aq-mr-1"
                 >
                   {t("Edit")}
                 </Button>
@@ -54,10 +73,14 @@ const DeviceTable = () => {
                     openDeleteModal();
                   }}
                   type="link-hover"
+                  className="aq-nopadding"
                 >
-                  {t("Delete")}
+                  <div className="action-text">{t("Delete")}</div>
+                  <div className="action-icon aq-mt-3">
+                    <Trash size={28} />
+                  </div>
                 </Button>
-              </>
+              </DeviceActions>
             ),
           },
         };
@@ -80,33 +103,34 @@ const DeviceTable = () => {
             title: t("Type"),
             dataIndex: "type",
             key: "type",
-            width: "3ch",
             align: "center",
+            role: "overline",
+            hideIndex: true,
           },
           {
             title: t("Model"),
             dataIndex: "device",
             key: "device",
-            width: "15ch",
+            role: "title",
+            hideIndex: true,
           },
           {
             title: t("Operating System"),
             dataIndex: "os",
             key: "os",
-            width: "10ch",
           },
           {
             title: t("Version"),
             dataIndex: "os_version",
             key: "os_version",
-            width: "25ch",
           },
           {
             title: t("Actions"),
             dataIndex: "actions",
             key: "actions",
-            width: "15ch",
             align: "center",
+            role: "cta",
+            hideIndex: true,
           },
         ]}
       />

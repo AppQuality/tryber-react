@@ -1,12 +1,14 @@
 import {
-  Button,
   SelectType,
   TableType,
+  Button,
 } from "@appquality/appquality-design-system";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import API from "src/utils/api";
 import { operations } from "src/utils/schema";
+
+export type BugsOrderByType = "id" | "status" | "title" | "campaign";
 
 export const useMyBugs = () => {
   const { i18n, t } = useTranslation();
@@ -25,10 +27,8 @@ export const useMyBugs = () => {
     SelectType.Option | undefined
   >();
   const [page, setPage] = useState<number>(1);
-  const [order, setOrder] = useState<"DESC" | "ASC">("DESC");
-  const [orderBy, setOrderBy] = useState<
-    "id" | "status" | "title" | "campaign"
-  >("id");
+  const [order, setOrder] = useState<OrderType>("DESC");
+  const [orderBy, setOrderBy] = useState<BugsOrderByType>("id");
   const [totalBugs, setTotalBugs] = useState(0);
   const [limit, setLimit] = useState(25);
 
@@ -121,6 +121,7 @@ export const useMyBugs = () => {
           }bugs/show/${res.id}`,
           content: (
             <Button
+              className="aq-nopadding"
               forwardedAs="a"
               href={`${window.location.origin}/${
                 i18n.language !== "en" ? `${i18n.language}/` : ""

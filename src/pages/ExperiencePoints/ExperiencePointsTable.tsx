@@ -2,6 +2,7 @@ import {
   Table,
   Pagination,
   TableType,
+  SortTableSelect,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 
@@ -32,51 +33,59 @@ const ExperiencePointsTable = ({
       title: t("Points"),
       dataIndex: "amount",
       key: "amount",
-      width: "10ch",
       isSortable: true,
       onSort: (sorting: "ASC" | "DESC") => {
         order.set(sorting);
         orderBy.set("amount");
       },
+      role: "cta",
+      hideIndex: true,
     },
     {
       title: t("Date"),
       dataIndex: "date",
       key: "date",
-      width: "8ch",
       isSortable: true,
       onSort: (sorting: "ASC" | "DESC") => {
         order.set(sorting);
         orderBy.set("date");
       },
+      role: "overline",
+      hideIndex: true,
     },
     {
       title: t("Activity"),
       dataIndex: "activity",
       key: "activity",
-      width: "10ch",
     },
     {
       title: t("Campaign"),
       dataIndex: "campaign",
       key: "campaign",
-      width: "8ch",
     },
     {
       title: t("Reason"),
       dataIndex: "note",
       key: "note",
-      width: "50ch",
+      role: "title",
+      hideIndex: true,
     },
   ];
   return (
     <>
+      <SortTableSelect
+        order={order.current}
+        orderBy={orderBy.current}
+        columns={columns}
+        label={t("Order By", { context: "Sort Table Select" })}
+      />
       <Table
         dataSource={data}
         columns={columns}
         orderBy={orderBy.current}
         order={order.current}
         isLoading={loading}
+        className="aq-mb-3"
         isStriped
       />
       <Pagination
