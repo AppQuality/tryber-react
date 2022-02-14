@@ -6,8 +6,9 @@ import {
   Text,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import { PageTemplate, PageTemplateModals } from "src/features/PageTemplate";
+import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
 import userDeviceStore from "src/redux/userDevices";
+
 import DeviceTable from "./DeviceTable";
 import EditDeviceModal from "./EditDeviceModal";
 import RemoveDeviceModal from "./RemoveDeviceModal";
@@ -21,10 +22,10 @@ export default function Devices() {
       route={"personal-equipment"}
       shouldBeLoggedIn
     >
-      <PageTemplateModals>
+      <OutsideContainer>
         <EditDeviceModal />
         <RemoveDeviceModal />
-      </PageTemplateModals>
+      </OutsideContainer>
       <BSGrid>
         <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
           <Card className="aq-mb-3" title={t("Your devices")}>

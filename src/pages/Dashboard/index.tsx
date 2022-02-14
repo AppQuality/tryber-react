@@ -9,8 +9,9 @@ import {
 } from "@appquality/appquality-design-system";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { PageTemplate, PageTemplateModals } from "src/features/PageTemplate";
+import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
 import useUser from "src/redux/user";
+
 import ActiveCampaignsTable from "./ActiveCampaignsTable";
 import AvailableCampaignsTable from "./AvailableCampaignsTable";
 import ClosedCampaignsTable from "./ClosedCampaignsTable";
@@ -39,7 +40,7 @@ export default function Dashboard() {
       )}
       shouldBeLoggedIn
     >
-      <PageTemplateModals>
+      <OutsideContainer>
         <ComingSoonHelpModal />
         {onboardingComplete ? null : (
           <OnboardingModal
@@ -70,7 +71,7 @@ export default function Dashboard() {
             <FeedbackButton handleClick={() => setFeedbackModalOpen(true)} />
           </>
         ) : null}
-      </PageTemplateModals>
+      </OutsideContainer>
       <BSGrid>
         <BSCol size="col-lg-9 ">
           <Card className="aq-mb-3" bodyClass="">

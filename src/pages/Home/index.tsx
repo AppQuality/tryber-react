@@ -1,10 +1,9 @@
 import { Container, Text } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { LangMenu } from "src/features/LangMenu";
+import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
 import styled from "styled-components";
 
-import GoogleTagManager from "../../features/GoogleTagManager";
-import NotLoggedOnly from "../../features/NotLoggedOnly";
 import AboutUnguess from "./AboutUnguess";
 import BannerTop from "./BannerTop";
 import Brands from "./Brands";
@@ -44,8 +43,13 @@ const StyledHome = styled.div`
 export default function Home() {
   const { t } = useTranslation();
   return (
-    <GoogleTagManager title={t("Home")}>
-      <NotLoggedOnly>
+    <PageTemplate
+      showTitle={false}
+      title={t("Home")}
+      route={"home"}
+      shouldBeLoggedIn={false}
+    >
+      <OutsideContainer>
         <StyledHome>
           <Container className="aq-py-3">
             <LangMenu
@@ -84,7 +88,7 @@ export default function Home() {
             <Footer />
           </Container>
         </StyledHome>
-      </NotLoggedOnly>
-    </GoogleTagManager>
+      </OutsideContainer>
+    </PageTemplate>
   );
 }
