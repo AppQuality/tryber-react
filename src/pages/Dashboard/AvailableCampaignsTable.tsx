@@ -60,7 +60,7 @@ const AvailableCampaignsTable = () => {
         order={order.current}
         orderBy={orderBy.current}
         columns={columns}
-        label={t("Order By")}
+        label={t("Order By", { context: "Sort Table Select" })}
       />
       <Table
         dataSource={campaigns}

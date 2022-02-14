@@ -102,7 +102,7 @@ const MyBugsFilters = ({
         order={order}
         orderBy={orderBy}
         columns={columns}
-        label={t("Order By")}
+        label={t("Order By", { context: "Sort Table Select" })}
       />
     </div>
   );
