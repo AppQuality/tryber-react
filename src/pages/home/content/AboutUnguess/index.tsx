@@ -1,5 +1,5 @@
 import { Button, Text, Title } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 import { ReactComponent as Tryber } from "./assets/tryber.svg";
@@ -72,7 +72,12 @@ export const AboutUnguess = () => {
             <Tryber />
           </div>
         </Title>
-        <Text className="aq-my-4">{t("__HOME_PARAGRAPH_UNGUESS MAX:120")}</Text>
+        <Text className="aq-my-4">
+          <Trans
+            i18nKey="Available tags : <link> (Link to unguess):::__HOME_PARAGRAPH_UNGUESS MAX:120"
+            components={{ link: <a href="https://unguess.io/" /> }}
+          />
+        </Text>
       </TextContainer>
       <VideoContainer>
         <iframe

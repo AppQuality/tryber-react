@@ -49,6 +49,9 @@
   "Available tags \n<a> - Link to help article for fiscal type": {
     "@@Description for fiscal type@@": "<a>Haga clic aquí</a> para obtener más información"
   },
+  "Available tags : <link> (Link to unguess)": {
+    "__HOME_PARAGRAPH_UNGUESS MAX:120": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliq"
+  },
   "Avalaible Campaigns": "Campañas Disponibles",
   "Back": "Atrás",
   "Base": "Base",
@@ -368,7 +371,6 @@
   "__HOME_PARAGRAPH_CARD_TIME MAX:80": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i",
   "__HOME_PARAGRAPH_GROWTH MAX:110": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
   "__HOME_PARAGRAPH_STEP MAX:110": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
-  "__HOME_PARAGRAPH_UNGUESS MAX:120": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliq",
   "__HOME_PARAGRAPH_WELCOME MAX:150": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q",
   "__HOME_PARAGRAPH_WHY MAX:110": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
   "__HOME_SUBTITLE-CTA_STEP MAX:30": "Lorem ipsum dolor sit amet, co",
