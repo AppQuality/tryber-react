@@ -9,8 +9,8 @@ import { ReactComponent as Logo } from "./assets/tryber_logo_full.svg";
 
 const FooterContainer = styled.div`
   border-top: 1px solid ${(props) => props.theme.palette.primary};
-  padding: 0px 20px;
-
+  max-width: 1140px;
+  margin: 0 auto;
   ${Title} {
     text-transform: capitalize;
   }
@@ -30,30 +30,40 @@ const FooterContainer = styled.div`
     grid-row-gap: 0px;
 
     .logo {
-      padding: 0;
+      padding: 0 0 0 20px;
       margin: 0 auto;
       grid-area: logo;
     }
-    .info {
-      grid-area: info;
-    }
-    .address {
-      grid-area: address;
-    }
-    .social {
-      grid-area: social;
-    }
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-template-areas:
       "logo info a"
-      "b address social";
+      "b address social"
+      "b policy policy";
   }
-
-  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
-    text-align: left;
-    margin-left: 80px;
-    margin-left: 80px;
+  .info {
+    grid-area: info;
+  }
+  .address {
+    grid-area: address;
+  }
+  .social {
+    grid-area: social;
+  }
+  .policy {
+    grid-area: policy;
+    color: ${(p) => p.theme.colors.gray300};
+    display: flex;
+    flex-flow: column;
+    a {
+      color: ${(p) => p.theme.colors.gray300};
+      &:hover {
+        color: ${(p) => p.theme.palette.secondary};
+      }
+    }
+    @media (min-width: ${(p) => p.theme.grid.breakpoints.md}) {
+      flex-flow: row;
+    }
   }
 `;
 
@@ -90,7 +100,7 @@ export default () => {
           forwardedAs="a"
           href="https://www.facebook.com/tryber.me"
           type="link"
-          className="social-btn"
+          className="aq-nopadding aq-mr-4"
           target="_blank"
         >
           <img src={fbLogo} alt="facebook" />
@@ -99,7 +109,7 @@ export default () => {
           forwardedAs="a"
           href="https://instagram.com/tryber.me?utm_medium=copy_link"
           type="link"
-          className="social-btn"
+          className="aq-nopadding aq-mr-4"
           target="_blank"
         >
           <img src={instaLogo} alt="instagram" />
@@ -108,11 +118,28 @@ export default () => {
           forwardedAs="a"
           href="https://t.me/Tryber_me"
           type="link"
-          className="social-btn"
+          className="aq-nopadding aq-mr-4"
           target="_blank"
         >
           <img src={telegramLogo} alt="telegram" />
         </Button>
+      </div>
+      <div className="grid-item policy">
+        <small>
+          © UNGUESS {new Date().getFullYear()} – All rights reserved
+        </small>
+        <small className="aq-ml-3-md">
+          <a
+            href="https://www.iubenda.com/privacy-policy/7934311"
+            target="_blank"
+          >
+            Privacy & Cookie Policy
+          </a>{" "}
+          |{" "}
+          <a href="/terms-and-conditions/" target="_blank">
+            Terms of Services
+          </a>
+        </small>
       </div>
     </FooterContainer>
   );
