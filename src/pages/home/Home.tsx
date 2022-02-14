@@ -1,19 +1,19 @@
 import { Container, Text } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { LangMenu } from "src/features/LangMenu";
-import { AboutUnguess } from "src/pages/home/content/AboutUnguess";
-import { Brands } from "src/pages/home/content/Brands";
-import { CareerPathsSlider } from "src/pages/home/content/CareerPathsSlider";
-import { HowToJoinTryber } from "src/pages/home/content/HowToJoinTryber";
-import { WhyJoinTryber } from "src/pages/home/content/WhyJoinTryber";
+import { AboutUnguess } from "src/pages/home/AboutUnguess";
 import styled from "styled-components";
 
 import GoogleTagManager from "../../features/GoogleTagManager";
 import NotLoggedOnly from "../../features/NotLoggedOnly";
-import { BannerTop } from "./content/BannerTop";
-import OurCommunity from "./content/OurCommunity";
-import Reviews from "./content/Reviews";
+import { BannerTop } from "./BannerTop";
+import { Brands } from "./Brands";
+import { CareerPathsSlider } from "./CareerPathsSlider";
 import Footer from "./Footer";
+import { HowToJoinTryber } from "./HowToJoinTryber";
+import OurCommunity from "./OurCommunity";
+import Reviews from "./Reviews";
+import { WhyJoinTryber } from "./WhyJoinTryber";
 
 const StyledHome = styled.div`
   max-width: 100vw;

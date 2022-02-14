@@ -2,7 +2,7 @@ import { Container, Text, Title } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
-import JoinInButton from "../JoinInButton";
+import JoinInButton from "../_components/JoinInButton";
 import { ReactComponent as Alarm } from "./assets/alarm.svg";
 import background from "./assets/background.png";
 import { ReactComponent as Devices } from "./assets/devices.svg";

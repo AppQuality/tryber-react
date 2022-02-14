@@ -2,8 +2,8 @@ import { BSCol, BSGrid, Text } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
-import people from "../assets/tryber_home_welcome.png";
-import JoinInButton from "./JoinInButton";
+import JoinInButton from "../_components/JoinInButton";
+import people from "./assets/tryber_home_welcome.png";
 
 const SectionBanner = styled.div`
   position: relative;
