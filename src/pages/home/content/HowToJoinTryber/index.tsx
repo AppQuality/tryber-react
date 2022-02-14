@@ -32,9 +32,10 @@ const JoinTryberContainer = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 80px;
-    margin-bottom: 120px;
+    margin-bottom: 32px;
     flex-direction: column;
     @media (min-width: ${({ theme }) => theme.grid.breakpoints.lg}) {
+      margin-bottom: 120px;
       flex-direction: row;
     }
   }
