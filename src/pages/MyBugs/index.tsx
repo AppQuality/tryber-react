@@ -94,6 +94,8 @@ export default function MyBugs() {
               limit={limit.current}
               loading={loading}
               columns={columns}
+              order={order}
+              orderBy={orderBy}
             />
           </Card>
         </BSCol>

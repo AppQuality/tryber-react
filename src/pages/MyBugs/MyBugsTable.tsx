@@ -4,7 +4,8 @@ import {
   TableType,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import { useMyBugs } from "src/pages/MyBugs/effects/useMyBugs";
+import { SetStateAction, Dispatch } from "react";
+import { BugsOrderByType } from "src/pages/MyBugs/effects/useMyBugs";
 
 interface MyBugsTableProps {
   data: TableType.Row[];
@@ -14,6 +15,14 @@ interface MyBugsTableProps {
   limit: number;
   loading: boolean;
   columns: TableType.Column[];
+  order: {
+    current: OrderType;
+    set: Dispatch<SetStateAction<OrderType>>;
+  };
+  orderBy: {
+    current: BugsOrderByType;
+    set: Dispatch<SetStateAction<BugsOrderByType>>;
+  };
 }
 
 const MyBugsTable = ({
@@ -22,11 +31,12 @@ const MyBugsTable = ({
   setPage,
   totalBugs,
   limit,
+  order,
+  orderBy,
   loading,
   columns,
 }: MyBugsTableProps) => {
   const { t } = useTranslation();
-  const { order, orderBy } = useMyBugs();
 
   return (
     <>
