@@ -19,6 +19,9 @@ const FooterContainer = styled.div`
   }
   .logo {
     padding: 42px;
+    svg {
+      width: 100%;
+    }
   }
   @media (min-width: ${(props) => props.theme.grid.breakpoints.md}) {
     padding-top: 60px;
@@ -30,9 +33,6 @@ const FooterContainer = styled.div`
       padding: 0;
       margin: 0 auto;
       grid-area: logo;
-      svg {
-        width: 100%;
-      }
     }
     .info {
       grid-area: info;
