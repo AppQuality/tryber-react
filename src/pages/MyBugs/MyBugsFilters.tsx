@@ -98,7 +98,12 @@ const MyBugsFilters = ({
           isClearable={false}
         />
       </div>
-      <SortTableSelect order={order} orderBy={orderBy} columns={columns} />
+      <SortTableSelect
+        order={order}
+        orderBy={orderBy}
+        columns={columns}
+        label={t("Order By")}
+      />
     </div>
   );
 };
