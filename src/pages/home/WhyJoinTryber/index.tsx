@@ -29,10 +29,14 @@ const GradientDiv = styled.div`
   }
   .tryber {
     display: block;
-    width: 25%;
+    width: 20%;
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.md}) {
+      width: 15%;
+    }
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
-      width: 15%;
+      width: 10%;
     }
     margin: 0 auto;
   }
