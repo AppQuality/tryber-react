@@ -5,7 +5,10 @@ import styled from "styled-components";
 import { ReactComponent as Tryber } from "./assets/tryber.svg";
 
 const SlideContainer = styled.div`
-  margin-top: 160px;
+  margin-top: 16px;
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+    margin-top: 160px;
+  }
   ${Text} {
     font-size: 22px;
     line-height: 1.8;
@@ -27,7 +30,10 @@ const SlideContainer = styled.div`
   }
 `;
 const TextContainer = styled.div`
-  padding: 16px 26px 110px 26px;
+  padding: 16px 26px 16px 26px;
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+    padding-bottom: 110px;
+  }
   ${Title} {
     display: flex;
     align-items: center;

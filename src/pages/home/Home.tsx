@@ -1,19 +1,19 @@
-import { Container, Text } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
-import { LangMenu } from "src/features/LangMenu";
-import { AboutUnguess } from "src/pages/home/content/AboutUnguess";
-import { Brands } from "src/pages/home/content/Brands";
-import { CareerPathsSlider } from "src/pages/home/content/CareerPathsSlider";
-import { HowToJoinTryber } from "src/pages/home/content/HowToJoinTryber";
-import { WhyJoinTryber } from "src/pages/home/content/WhyJoinTryber";
-import styled from "styled-components";
+import { Container, Text } from '@appquality/appquality-design-system';
+import { useTranslation } from 'react-i18next';
+import { LangMenu } from 'src/features/LangMenu';
+import { AboutUnguess } from 'src/pages/home/content/AboutUnguess';
+import { Brands } from 'src/pages/home/content/Brands';
+import { CareerPathsSlider } from 'src/pages/home/content/CareerPathsSlider';
+import { HowToJoinTryber } from 'src/pages/home/content/HowToJoinTryber';
+import { WhyJoinTryber } from 'src/pages/home/content/WhyJoinTryber';
+import styled from 'styled-components';
 
-import GoogleTagManager from "../../features/GoogleTagManager";
-import NotLoggedOnly from "../../features/NotLoggedOnly";
-import { BannerTop } from "./content/BannerTop";
-import OurCommunity from "./content/OurCommunity";
-import Reviews from "./content/Reviews";
-import Footer from "./Footer";
+import GoogleTagManager from '../../features/GoogleTagManager';
+import NotLoggedOnly from '../../features/NotLoggedOnly';
+import { BannerTop } from './content/BannerTop';
+import OurCommunity from './content/OurCommunity';
+import Reviews from './content/Reviews';
+import Footer from './Footer';
 
 const StyledHome = styled.div`
   max-width: 100vw;
@@ -91,21 +91,6 @@ const StyledHome = styled.div`
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.xxl}) {
       left: -80px;
-    }
-  }
-  // advices
-  .bg-stain {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    max-width: none;
-    left: -600px;
-    height: 600px;
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      top: -50px;
-      left: -290px;
-      height: 560px;
     }
   }
 `;
