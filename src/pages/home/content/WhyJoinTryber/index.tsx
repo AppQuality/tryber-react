@@ -32,6 +32,7 @@ const GradientDiv = styled.div`
   }
   .tryber-mobile {
     display: block;
+    width: 20%;
     margin: 0 auto;
   }
   @media only screen and (min-width: ${(props) =>
@@ -41,6 +42,18 @@ const GradientDiv = styled.div`
     }
     .tryber-mobile {
       display: none;
+    }
+  }
+  ${Text} {
+    color: ${(props) => props.theme.colors.white};
+    font-size: 22px;
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.md}) {
+      font-size: 24px;
+    }
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      font-size: 26px;
     }
   }
 `;
@@ -168,6 +181,9 @@ export const WhyJoinTryber = () => {
           alt="tryber characters"
         />
       </div>
+      <Text className="aq-text-center aq-mb-4">
+        {t("__HOME_PARAGRAPH_WHY MAX:110")}
+      </Text>
       <div className="container">
         <CardListStyle ref={ref} className="aq-text-center">
           {isVisible &&
