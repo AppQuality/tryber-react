@@ -8,11 +8,22 @@ const SlideContainer = styled.div`
     &.disclaimer {
       font-size: 20px;
     }
+    @media (max-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+      font-size: 32px;
+    }
   }
   ${Text} {
     color: #fff;
-    font-size: 22px;
+    font-size: 16px;
     line-height: 1.8;
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.md}) {
+      font-size: 18px;
+    }
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      font-size: 26px;
+    }
   }
   display: grid;
   grid-template-columns: 1fr 1fr;
