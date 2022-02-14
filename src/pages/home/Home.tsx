@@ -1,19 +1,19 @@
-import { Container, Text } from '@appquality/appquality-design-system';
-import { useTranslation } from 'react-i18next';
-import { LangMenu } from 'src/features/LangMenu';
-import { AboutUnguess } from 'src/pages/home/content/AboutUnguess';
-import { Brands } from 'src/pages/home/content/Brands';
-import { CareerPathsSlider } from 'src/pages/home/content/CareerPathsSlider';
-import { HowToJoinTryber } from 'src/pages/home/content/HowToJoinTryber';
-import { WhyJoinTryber } from 'src/pages/home/content/WhyJoinTryber';
-import styled from 'styled-components';
+import { Container, Text } from "@appquality/appquality-design-system";
+import { useTranslation } from "react-i18next";
+import { LangMenu } from "src/features/LangMenu";
+import { AboutUnguess } from "src/pages/home/content/AboutUnguess";
+import { Brands } from "src/pages/home/content/Brands";
+import { CareerPathsSlider } from "src/pages/home/content/CareerPathsSlider";
+import { HowToJoinTryber } from "src/pages/home/content/HowToJoinTryber";
+import { WhyJoinTryber } from "src/pages/home/content/WhyJoinTryber";
+import styled from "styled-components";
 
-import GoogleTagManager from '../../features/GoogleTagManager';
-import NotLoggedOnly from '../../features/NotLoggedOnly';
-import { BannerTop } from './content/BannerTop';
-import OurCommunity from './content/OurCommunity';
-import Reviews from './content/Reviews';
-import Footer from './Footer';
+import GoogleTagManager from "../../features/GoogleTagManager";
+import NotLoggedOnly from "../../features/NotLoggedOnly";
+import { BannerTop } from "./content/BannerTop";
+import OurCommunity from "./content/OurCommunity";
+import Reviews from "./content/Reviews";
+import Footer from "./Footer";
 
 const StyledHome = styled.div`
   max-width: 100vw;
@@ -38,59 +38,6 @@ const StyledHome = styled.div`
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
       font-size: 55px !important;
-    }
-  }
-  .section-banner {
-    position: relative;
-    overflow: visible;
-    max-width: 100%;
-  }
-  .tryber-character-wrapper {
-    position: relative;
-    width: 100vw;
-    width: fit-content;
-    max-width: 75vw;
-    display: block;
-    margin: 0 auto;
-  }
-  .tryberCharacters-1 {
-    position: absolute;
-    right: -45px;
-    top: -52px;
-    width: 68px;
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      width: 154px;
-      right: -160px;
-      top: -55px;
-    }
-  }
-  // get involved
-  .tryberCharacters-2 {
-    display: block;
-    margin: 0 auto 16px;
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      display: none;
-    }
-  }
-  // why become tryber
-  .tryberCharacters-3 {
-    width: 40px;
-    display: block;
-    margin: 0 auto 16px;
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      width: 74px;
-      display: block;
-      margin: unset;
-      position: absolute;
-      left: -30px;
-      top: -40px;
-    }
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.xxl}) {
-      left: -80px;
     }
   }
 `;

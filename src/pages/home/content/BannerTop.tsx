@@ -5,17 +5,20 @@ import styled from "styled-components";
 import people from "../assets/tryber_home_welcome.png";
 import JoinInButton from "./JoinInButton";
 
+const SectionBanner = styled.div`
+  position: relative;
+  overflow: visible;
+  max-width: 100%;
+  margin-bottom:60px;
+    @media only screen and (min-width: ${(props) =>
+      props.theme.grid.breakpoints.lg}) {
+      margin: 16px -32px 16px 16px;
+      margin-bottom: 120px;
+    }
+  }
+`;
 export const BannerTop = () => {
   const { t } = useTranslation();
-  const SectionBanner = styled.div`
-    margin-bottom:60px;
-      @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-        margin: 16px -32px 16px 16px;
-        margin-bottom: 120px;
-      }
-    }
-  `;
   return (
     <SectionBanner className="section-banner">
       <BSGrid>
