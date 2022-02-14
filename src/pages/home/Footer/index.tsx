@@ -75,7 +75,7 @@ export default () => {
         <Logo />
       </div>
       <div className="grid-item info">
-        <Title size="ms" className="aq-mb-3">
+        <Title size="ms" className="aq-mb-2">
           {t("company")}
         </Title>
         <Text small>
@@ -84,7 +84,7 @@ export default () => {
         </Text>
       </div>
       <div className="grid-item address">
-        <Title size="ms" className="aq-mb-3">
+        <Title size="ms" className="aq-mb-2">
           {t("address")}
         </Title>
         <Text small>
@@ -93,7 +93,7 @@ export default () => {
         </Text>
       </div>
       <div className="grid-item social">
-        <Title size="ms" className="aq-mb-3">
+        <Title size="ms" className="aq-mb-2">
           {t("social")}
         </Title>
         <Button
