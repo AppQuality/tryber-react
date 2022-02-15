@@ -52,11 +52,12 @@ const FooterContainer = styled.div`
   }
   .policy {
     grid-area: policy;
-    color: ${(p) => p.theme.colors.gray300};
+    color: ${(p) => p.theme.colors.disabledDark};
+    font-weight: ${(p) => p.theme.typography.fontWeight.medium};
     display: flex;
     flex-flow: column;
     a {
-      color: ${(p) => p.theme.colors.gray300};
+      color: ${(p) => p.theme.colors.disabledDark};
       &:hover {
         color: ${(p) => p.theme.palette.secondary};
       }
