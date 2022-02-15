@@ -44,6 +44,7 @@ export default function Home() {
   const { t } = useTranslation();
   return (
     <PageTemplate
+      containerClass=""
       showTitle={false}
       title={t("Home")}
       route={"home"}
@@ -51,7 +52,7 @@ export default function Home() {
     >
       <OutsideContainer>
         <StyledHome>
-          <Container className="aq-py-3">
+          <Container className="aq-pt-3">
             <LangMenu
               className="aq-mb-4"
               itLink="/it"

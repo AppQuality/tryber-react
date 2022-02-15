@@ -35,7 +35,7 @@ const FooterContainer = styled.div`
       grid-area: logo;
     }
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr auto;
     grid-template-areas:
       "logo info a"
       "b address social"
@@ -89,7 +89,7 @@ export default () => {
         </Title>
         <Text small>
           Via del Chiesotto 4, 26100 Cremona, Italy <br />
-          support@tryber.me
+          <a href="mailto:support@tryber.me">support@tryber.me</a>
         </Text>
       </div>
       <div className="grid-item social">

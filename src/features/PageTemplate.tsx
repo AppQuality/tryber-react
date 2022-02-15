@@ -10,13 +10,15 @@ const ContentTemplate = ({
   title,
   subtitle,
   children,
+  className,
 }: {
   title?: string;
   subtitle?: string;
   children: React.ReactNode;
+  className?: string;
 }) => {
   return (
-    <Container className="aq-pb-3">
+    <Container className={className}>
       {title && (
         <PageTitle as="h2" size="regular" subtitle={subtitle}>
           {title}
@@ -41,12 +43,14 @@ export const PageTemplate = ({
   subtitle,
   shouldBeLoggedIn = false,
   showTitle = true,
+  containerClass = "aq-pb-3",
   route,
 }: {
   children: React.ReactNode;
   title?: string;
   subtitle?: string;
   shouldBeLoggedIn?: boolean;
+  containerClass?: string;
   showTitle?: boolean;
   route: string;
 }) => {
@@ -76,7 +80,11 @@ export const PageTemplate = ({
   );
 
   const content = (
-    <ContentTemplate title={showTitle ? title : undefined} subtitle={subtitle}>
+    <ContentTemplate
+      className={containerClass}
+      title={showTitle ? title : undefined}
+      subtitle={subtitle}
+    >
       {pageChildren}
     </ContentTemplate>
   );
