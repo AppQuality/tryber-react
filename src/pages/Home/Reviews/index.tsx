@@ -106,56 +106,48 @@ export default () => {
     {
       pic: avatar1,
       name: t("__HOME_USER_NAME_ADVICE1 MAX:20"),
-      age: "25",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE1 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE1 MAX:190"),
     },
     {
       pic: avatar2,
       name: t("__HOME_USER_NAME_ADVICE2 MAX:20"),
-      age: "39",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE2 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE2 MAX:190"),
     },
     {
       pic: avatar3,
       name: t("__HOME_USER_NAME_ADVICE3 MAX:20"),
-      age: "25",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE3 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE3 MAX:190"),
     },
     {
       pic: avatar4,
       name: t("__HOME_USER_NAME_ADVICE4 MAX:20"),
-      age: "38",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE4 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE4 MAX:190"),
     },
     {
       pic: avatar5,
       name: t("__HOME_USER_NAME_ADVICE5 MAX:20"),
-      age: "20",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE5 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE5 MAX:190"),
     },
     {
       pic: avatar6,
       name: t("__HOME_USER_NAME_ADVICE6 MAX:20"),
-      age: "22",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE6 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE6 MAX:190"),
     },
     {
       pic: avatar7,
       name: t("__HOME_USER_NAME_ADVICE7 MAX:20"),
-      age: "23",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE7 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE7 MAX:190"),
     },
     {
       pic: avatar8,
       name: t("__HOME_USER_NAME_ADVICE8 MAX:20"),
-      age: "33",
       qualification: t("__HOME_USER_QUALIFICATION_ADVICE8 MAX:30"),
       review: t("__HOME_USER_COMMENT_ADVICE8 MAX:190"),
     },
@@ -193,9 +185,7 @@ export default () => {
                       color="primary"
                       className="capitalize-first avatar-name"
                     >
-                      <strong>
-                        {item.name}, {item.age}
-                      </strong>
+                      <strong>{item.name}</strong>
                     </Text>
                     <Text className="capitalize-first avatar-qualification">
                       {item.qualification}
