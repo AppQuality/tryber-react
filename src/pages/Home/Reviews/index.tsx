@@ -41,8 +41,12 @@ const ReviewContainer = styled.div`
 `;
 const CardListStyle = styled.div`
   .card-list-item {
-    padding-bottom: 35px;
     width: 100%;
+    .aq-card-body {
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+    }
   }
   .item-icon {
     margin-left: auto;
@@ -165,7 +169,7 @@ export default () => {
       <div className="aq-pt-3">
         <CardListStyle>
           <Carousel
-            step={{ xs: 1, lg: 3 }}
+            step={{ xs: 1, md: 2, lg: 3 }}
             current={current}
             setCurrent={setCurrent}
             totalSlides={items.length}
@@ -173,13 +177,15 @@ export default () => {
             {items.map((item, index) => (
               <CarouselSlide key={index}>
                 <Card className="card-list-item aq-my-3" key={index}>
-                  <img src={quotes} className="aq-mb-2 item-icon" />
-                  <Text>
-                    <div className="review-content">{item.review}</div>
-                  </Text>
-                  <div className="item-avatar aq-mb-2">
+                  <div>
+                    <img src={quotes} className="aq-mb-2 item-icon" />
+                    <Text>
+                      <div className="review-content">{item.review}</div>
+                    </Text>
+                  </div>
+                  <div className="item-avatar aq-mt-4">
                     <div className="avatar-image">
-                      <img src={item.pic} />
+                      <img alt="avatar-image" src={item.pic} />
                     </div>
                     <Text
                       color="primary"
@@ -200,7 +206,7 @@ export default () => {
             current={current}
             setCurrent={setCurrent}
             totalSlides={items.length}
-          ></CarouselNav>
+          />
         </CardListStyle>
       </div>
     </ReviewContainer>
