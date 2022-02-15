@@ -49,8 +49,8 @@
   "Available tags \n<a> - Link to help article for fiscal type": {
     "@@Description for fiscal type@@": "<a>Click here</a> for more info"
   },
-  "Available tags : <link> (Link to unguess)": {
-    "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supports companies in creating memorable experiences thanks to the power of the Tryber community. <link>Discover UNGUESS</link>"
+  "Available tags : <unguess_link> (Link to unguess)": {
+    "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supports companies in creating memorable experiences thanks to the power of the Tryber community. <unguess_link>Discover UNGUESS</unguess_link>"
   },
   "Avalaible Campaigns": "Avalaible Campaigns",
   "Back": "Back",
