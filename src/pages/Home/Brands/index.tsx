@@ -27,19 +27,56 @@ const BrandTitle = styled(Title)`
   }
 `;
 const BrandList = styled.div`
-  margin: 0 auto;
-  width: 80%;
-  img {
-    max-width: 50%;
-    height: auto;
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+    display: flex;
+    justify-content: center;
   }
-  @media only screen and (min-width: ${(props) =>
-      props.theme.grid.breakpoints.lg}) {
+  .brand-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    &:not(:last-child) {
+      margin-bottom: ${(p) => p.theme.grid.sizes[3]};
+      @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+        margin-bottom: 0;
+      }
+    }
     img {
-      max-width: 25%;
+      max-height: 73px;
+    }
+  }
+  .brand-logo {
+    flex: 0 0 auto;
+    &:nth-child(1) {
+      margin-right: ${(p) => p.theme.grid.sizes[4]};
+    }
+    @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+      &:nth-child(1) {
+        margin-right: 0;
+      }
+      &:not(.lg-4) {
+        margin-right: ${(p) => p.theme.grid.sizes[4]};
+      }
+    }
+  }
+  // order
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+    .lg-1 {
+      order: 1;
+    }
+    .lg-2 {
+      order: 2;
+    }
+    .lg-3 {
+      order: 3;
+    }
+    .lg-4 {
+      order: 4;
     }
   }
 `;
+
 export default () => {
   const { t } = useTranslation();
   return (
@@ -48,10 +85,22 @@ export default () => {
         {t("__HOME_TITLE_BRAND MAX:40")}
       </BrandTitle>
       <BrandList>
-        <img src={SkyLogo} alt="Sky Logo" />
-        <img src={LottomaticaLogo} alt="Lottomatica Logo" />
-        <img src={MilestoneLogo} alt="Milestone Logo" />
-        <img src={BendingSpoonsLogo} alt="Bending Spoons Logo" />
+        <div className="brand-row">
+          <div className="brand-logo lg-1">
+            <img src={SkyLogo} alt="Sky Logo" />
+          </div>
+          <div className="brand-logo lg-2">
+            <img src={BendingSpoonsLogo} alt="Bending Spoons Logo" />
+          </div>
+        </div>
+        <div className="brand-row">
+          <div className="brand-logo lg-4">
+            <img src={LottomaticaLogo} alt="Lottomatica Logo" />
+          </div>
+          <div className="brand-logo lg-3">
+            <img src={MilestoneLogo} alt="Milestone Logo" />
+          </div>
+        </div>
       </BrandList>
     </BrandContainer>
   );
