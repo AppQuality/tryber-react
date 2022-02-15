@@ -25,30 +25,34 @@ const SlideContainer = styled.div`
       font-size: 26px;
     }
   }
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: "left right";
   border-radius: 20px;
   background-color: ${(props) => props.theme.palette.primary};
-  @media (max-width: ${(props) => props.theme.grid.breakpoints.lg}) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: "left" "right";
+
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "left right";
   }
 `;
 const TextSlideContainer = styled.div`
   padding: 16px 26px;
-
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
+  min-height: 100%;
+  > * {
+    width: 100%;
+  }
 `;
 const ImageSlideContainer = styled.div`
+  display: none;
   background: #fff;
-  display: flex;
   align-items: center;
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+    display: flex;
+  }
 `;
 
 export default ({

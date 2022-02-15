@@ -9,8 +9,6 @@ import {
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-
-import { useTimeout } from "./effects/useTimeout";
 import SlideBugHunting from "./SlideBugHunting";
 import SlideEthicalHacker from "./SlideEthicalHacker";
 import SlideUxResearch from "./SlideUxResearch";
@@ -31,13 +29,6 @@ export default () => {
   const { t } = useTranslation();
 
   const items = [SlideEthicalHacker, SlideBugHunting, SlideUxResearch];
-  useTimeout(
-    10,
-    () => {
-      current === items.length - 1 ? setCurrent(0) : setCurrent(current + 1);
-    },
-    [current]
-  );
 
   return (
     <CareerContainer className="aq-py-4">
@@ -52,7 +43,6 @@ export default () => {
       </Text>
       <Carousel
         step={1}
-        peekNext={false}
         current={current}
         setCurrent={setCurrent}
         totalSlides={items.length}
@@ -69,7 +59,7 @@ export default () => {
         current={current}
         setCurrent={setCurrent}
         totalSlides={items.length}
-      ></CarouselNav>
+      />
     </CareerContainer>
   );
 };

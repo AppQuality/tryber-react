@@ -37,7 +37,7 @@ export default () => {
   const { t } = useTranslation();
   return (
     <GenericSlide image={<Image />}>
-      <div className=" aq-mt-3">
+      <div className="aq-my-3">
         <Title size="xl" className="text-marker">
           {t("__HOME_CAROUSEL_TITLE_CYBER MAX:40")}
         </Title>
@@ -45,10 +45,12 @@ export default () => {
           {t("__HOME_CAROUSEL_PARAGAFO_CYBER MAX :110")}
         </Text>
       </div>
-      <JoinInButton>{t("__HOME_CAROUSEL_CTA_CYBER MAX:25")}</JoinInButton>
-      <Title size="s" className="text-marker disclaimer">
-        {t("__HOME_CAROUSEL_SUBTITLE_CYBER MAX:30")}
-      </Title>
+      <div>
+        <JoinInButton>{t("__HOME_CAROUSEL_CTA_CYBER MAX:25")}</JoinInButton>
+        <Title size="s" className="text-marker disclaimer">
+          {t("__HOME_CAROUSEL_SUBTITLE_CYBER MAX:30")}
+        </Title>
+      </div>
     </GenericSlide>
   );
 };
