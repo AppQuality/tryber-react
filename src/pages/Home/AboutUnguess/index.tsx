@@ -91,6 +91,7 @@ export default () => {
         <iframe
           width="500"
           height="294"
+          allow="fulscreen"
           src="https://www.youtube.com/embed/bPr1XILdV4g"
         ></iframe>
       </VideoContainer>
