@@ -4,6 +4,8 @@ import {
   TableType,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import { SetStateAction, Dispatch } from "react";
+import { BugsOrderByType } from "src/pages/MyBugs/effects/useMyBugs";
 
 interface MyBugsTableProps {
   data: TableType.Row[];
@@ -12,8 +14,15 @@ interface MyBugsTableProps {
   totalBugs: number;
   limit: number;
   loading: boolean;
-  order: any;
-  orderBy: any;
+  columns: TableType.Column[];
+  order: {
+    current: OrderType;
+    set: Dispatch<SetStateAction<OrderType>>;
+  };
+  orderBy: {
+    current: BugsOrderByType;
+    set: Dispatch<SetStateAction<BugsOrderByType>>;
+  };
 }
 
 const MyBugsTable = ({
@@ -22,57 +31,17 @@ const MyBugsTable = ({
   setPage,
   totalBugs,
   limit,
-  loading,
   order,
   orderBy,
+  loading,
+  columns,
 }: MyBugsTableProps) => {
   const { t } = useTranslation();
-  const columns: TableType.Column[] = [
-    {
-      title: "Id",
-      dataIndex: "id",
-      key: "id",
-      width: "8ch",
-      isSortable: true,
-      onSort: (sorting: "ASC" | "DESC") => {
-        order.set(sorting);
-        orderBy.set("id");
-      },
-    },
-    {
-      title: t("Title"),
-      dataIndex: "title",
-      key: "title",
-      width: "50ch",
-      isSortable: true,
-      onSort: (sorting: "ASC" | "DESC") => {
-        order.set(sorting);
-        orderBy.set("title");
-      },
-    },
-    {
-      title: t("Severity"),
-      dataIndex: "severity",
-      key: "severity",
-      width: "10ch",
-    },
-    {
-      title: t("Status"),
-      dataIndex: "status",
-      key: "status",
-      width: "10ch",
-    },
-    {
-      title: t("Action"),
-      dataIndex: "action",
-      key: "action",
-      width: "10ch",
-      align: "center",
-    },
-  ];
+
   return (
     <>
       <Table
+        className="aq-mb-3"
         dataSource={data}
         columns={columns}
         orderBy={orderBy.current}
@@ -81,6 +50,7 @@ const MyBugsTable = ({
         isStriped
       />
       <Pagination
+        className="aq-pt-3"
         onPageChange={setPage}
         current={page}
         maxPages={Math.ceil(totalBugs / limit)}

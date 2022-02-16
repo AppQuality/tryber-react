@@ -3,7 +3,7 @@ import Devices from "./Devices";
 import ExperiencePoints from "./ExperiencePoints";
 import GettingStarted from "./GettingStarted";
 import GoodbyePage from "./GoodbyePage";
-import Home from "./home/Home";
+import Home from "./Home";
 import MyBugs from "./MyBugs";
 import Profile from "./Profile";
 

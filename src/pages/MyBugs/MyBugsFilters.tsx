@@ -1,7 +1,13 @@
-import { Select, SelectType } from "@appquality/appquality-design-system";
+import {
+  Select,
+  SelectType,
+  SortTableSelect,
+  SortTableSelectProps,
+} from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import { BugsOrderByType } from "src/pages/MyBugs/effects/useMyBugs";
 
-interface MyBugsFiltersProps {
+interface MyBugsFiltersProps extends SortTableSelectProps<BugsOrderByType> {
   // todo: get this from useMyBugs or they could diverge
   campaigns: {
     current: SelectType.Option[];
@@ -24,6 +30,9 @@ const MyBugsFilters = ({
   campaigns,
   severities,
   status,
+  order,
+  orderBy,
+  columns,
 }: MyBugsFiltersProps) => {
   const { t } = useTranslation();
   const allCampaign = t("All", { context: "female" });
@@ -32,6 +41,7 @@ const MyBugsFilters = ({
   let campaignValue = { label: allCampaign };
   let severityValue = { label: allSeverity };
   let statusValue = { label: allStatus };
+
   if (
     campaigns.selected &&
     campaigns.current.map((c) => c.value).includes(campaigns.selected.value)
@@ -88,6 +98,12 @@ const MyBugsFilters = ({
           isClearable={false}
         />
       </div>
+      <SortTableSelect
+        order={order}
+        orderBy={orderBy}
+        columns={columns}
+        label={t("Order By", { context: "Sort Table Select" })}
+      />
     </div>
   );
 };

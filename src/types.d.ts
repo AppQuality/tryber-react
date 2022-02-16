@@ -30,4 +30,5 @@ declare global {
   type ApiComponents = components;
   type SupportedLanguages = "es" | "it" | "en";
   type SelectOptionType = SelectType.Option;
+  type OrderType = "DESC" | "ASC";
 }
