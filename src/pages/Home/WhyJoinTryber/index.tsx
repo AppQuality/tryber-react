@@ -163,7 +163,7 @@ export default () => {
     }
   }, [entry]);
   return (
-    <GradientDiv>
+    <GradientDiv className="container">
       <div className="text-marker aq-text-center aq-mb-4 section-title">
         <img
           className="tryber"
@@ -175,7 +175,7 @@ export default () => {
       <Text className="aq-text-center aq-mb-4 subtitle">
         {t("__HOME_PARAGRAPH_WHY MAX:110")}
       </Text>
-      <div className="container">
+      <div>
         <CardListStyle ref={ref} className="aq-text-center">
           {isVisible &&
             items.map((item, index) => (
