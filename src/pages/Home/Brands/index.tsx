@@ -14,7 +14,7 @@ const BrandTitle = styled(Title)`
   padding-bottom: 24px;
   border-bottom: 2px solid ${(props) => props.theme.palette.primary};
   margin: 0 auto;
-  font-size: 20px;
+  font-size: 26px;
   width: 80%;
   margin-bottom: 50px;
   @media only screen and (min-width: ${(props) =>
