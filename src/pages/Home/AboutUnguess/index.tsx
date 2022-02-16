@@ -84,7 +84,7 @@ export default () => {
           <Trans
             i18nKey="Available tags : <unguess_link> (Link to unguess), <line_break>:::__HOME_PARAGRAPH_UNGUESS MAX:120"
             components={{
-              unguess_link: <a href="https://unguess.io/" />,
+              unguess_link: <a href="https://unguess.io/" target="_blank" />,
               line_break: <br />,
             }}
           />
