@@ -25,6 +25,9 @@ const StyledHome = styled.div`
       font-size: 17.5px;
     }
   }
+  ${Text} {
+    font-weight: ${(p) => p.theme.typography.fontWeight.normal};
+  }
   .text-marker {
     font-family: "Marker", serif !important;
     text-transform: uppercase;
