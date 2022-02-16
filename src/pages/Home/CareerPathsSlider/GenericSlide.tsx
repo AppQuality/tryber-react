@@ -42,6 +42,9 @@ const TextSlideContainer = styled.div`
   align-items: start;
   justify-content: space-between;
   min-height: 100%;
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+    justify-content: flex-start;
+  }
   > * {
     width: 100%;
   }

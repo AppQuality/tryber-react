@@ -30,7 +30,7 @@ export default () => {
   return (
     <GenericSlide image={<Image />}>
       <div className="aq-my-3">
-        <Title size="xl" className="text-marker">
+        <Title size="xl" className="text-marker aq-mb-3">
           {t("__HOME_CAROUSEL_TITLE_BUG MAX:40")}
         </Title>
         <Text className="aq-mb-2">

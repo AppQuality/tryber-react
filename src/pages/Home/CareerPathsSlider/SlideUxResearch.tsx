@@ -8,19 +8,11 @@ import careerImageES from "./assets/ux_tester_es.svg";
 import careerImageIT from "./assets/ux_tester_it.svg";
 import GenericSlide, { TextBox } from "./GenericSlide";
 
-const TextBoxOne = styled(TextBox)`
-  bottom: 8%;
-  left: 4%;
-`;
-const TextBoxTwo = styled(TextBox)`
-  bottom: 12%;
-  left: 51%;
-`;
 const Image = () => {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
   let translatedImage = careerImageEN;
-  if (i18n.language == `it`) translatedImage = careerImageIT;
-  if (i18n.language == `es`) translatedImage = careerImageES;
+  if (i18n.language === `it`) translatedImage = careerImageIT;
+  if (i18n.language === `es`) translatedImage = careerImageES;
 
   return (
     <div style={{ position: "relative" }}>
@@ -38,7 +30,7 @@ export default () => {
   return (
     <GenericSlide image={<Image />}>
       <div className="aq-my-3">
-        <Title size="xl" className="text-marker">
+        <Title size="xl" className="text-marker aq-mb-3">
           {t("__HOME_CAROUSEL_TITLE_UX MAX:40")}
         </Title>
         <Text className="aq-mb-2">
