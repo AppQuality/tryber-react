@@ -20,10 +20,12 @@ const BrandTitle = styled(Title)`
   @media only screen and (min-width: ${(props) =>
       props.theme.grid.breakpoints.lg}) {
     width: 75%;
+    font-size: 24px;
   }
   @media only screen and (min-width: ${(props) =>
       props.theme.grid.breakpoints.xl}) {
     width: 50%;
+    font-size: 26px;
   }
 `;
 const BrandList = styled.div`

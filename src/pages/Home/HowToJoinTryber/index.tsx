@@ -23,7 +23,7 @@ const JoinTryberContainer = styled.div`
     color: #fff;
   }
   ${Title}.main {
-    font-size: 50px;
+    font-size: 55px;
   }
   ${Text}.claim {
     font-size: 22px;
