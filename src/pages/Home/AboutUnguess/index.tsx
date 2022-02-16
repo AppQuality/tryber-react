@@ -82,8 +82,11 @@ export default () => {
         </Title>
         <Text className="aq-my-4">
           <Trans
-            i18nKey="Available tags : <unguess_link> (Link to unguess):::__HOME_PARAGRAPH_UNGUESS MAX:120"
-            components={{ unguess_link: <a href="https://unguess.io/" /> }}
+            i18nKey="Available tags : <unguess_link> (Link to unguess), <line_break>:::__HOME_PARAGRAPH_UNGUESS MAX:120"
+            components={{
+              unguess_link: <a href="https://unguess.io/" />,
+              line_break: <br />,
+            }}
           />
         </Text>
       </TextContainer>
