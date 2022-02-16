@@ -18,13 +18,6 @@ const StyledHome = styled.div`
   max-width: 100vw;
   overflow-x: hidden;
   background-color: #fff;
-
-  ${Text}.large-desktop {
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      font-size: 17.5px;
-    }
-  }
   ${Text} {
     font-weight: ${(p) => p.theme.typography.fontWeight.normal};
   }
@@ -40,6 +33,18 @@ const StyledHome = styled.div`
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
       font-size: 55px !important;
+    }
+  }
+  ${Text}.subtitle {
+    font-size: 22px;
+    line-height: 1.5;
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.md}) {
+      font-size: 24px;
+    }
+    @media only screen and (min-width: ${(props) =>
+        props.theme.grid.breakpoints.lg}) {
+      font-size: 26px;
     }
   }
 `;

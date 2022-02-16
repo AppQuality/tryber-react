@@ -42,15 +42,6 @@ const GradientDiv = styled.div`
   }
   ${Text}.subtitle {
     color: ${(props) => props.theme.colors.white};
-    font-size: 22px;
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.md}) {
-      font-size: 24px;
-    }
-    @media only screen and (min-width: ${(props) =>
-        props.theme.grid.breakpoints.lg}) {
-      font-size: 26px;
-    }
   }
 `;
 const slideUpAnimation = keyframes`
@@ -163,8 +154,8 @@ export default () => {
     }
   }, [entry]);
   return (
-    <GradientDiv className="container">
-      <div className="text-marker aq-text-center aq-mb-4 section-title">
+    <GradientDiv>
+      <div className="text-marker aq-text-center aq-mb-4 section-title container">
         <img
           className="tryber"
           src={tryberCharacters5}
@@ -172,10 +163,10 @@ export default () => {
         />
         <span>{t("__HOME_TITLE_WHY MAX:40 ")}</span>
       </div>
-      <Text className="aq-text-center aq-mb-4 subtitle">
+      <Text className="aq-text-center aq-mb-4 subtitle container">
         {t("__HOME_PARAGRAPH_WHY MAX:110")}
       </Text>
-      <div>
+      <div className="container">
         <CardListStyle ref={ref} className="aq-text-center">
           {isVisible &&
             items.map((item, index) => (

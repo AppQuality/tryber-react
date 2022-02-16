@@ -38,7 +38,7 @@ export default () => {
       >
         {t("__HOME_TITLE_GROWTH MAX:40")}
       </Title>
-      <Text className="aq-mb-4 aq-pb-2 large-desktop aq-text-center">
+      <Text className="aq-mb-4 aq-pb-2 subtitle aq-text-center">
         {t("__HOME_PARAGRAPH_GROWTH MAX:110")}
       </Text>
       <Carousel

@@ -25,9 +25,6 @@ const JoinTryberContainer = styled.div`
   ${Title}.main {
     font-size: 55px;
   }
-  ${Text}.claim {
-    font-size: 22px;
-  }
   .cardlist {
     display: flex;
     justify-content: space-between;
@@ -61,7 +58,7 @@ export default () => {
         >
           {t("__HOME_TITLE_STEP MAX:40")}
         </Title>
-        <Text className="aq-text-center claim">
+        <Text className="aq-text-center subtitle">
           {t("__HOME_PARAGRAPH_STEP MAX:110")}
         </Text>
         <div className="cardlist">

@@ -80,7 +80,7 @@ export default () => {
             <Tryber />
           </div>
         </Title>
-        <Text className="aq-my-4">
+        <Text className="aq-my-4 subtitle">
           <Trans
             i18nKey="Available tags : <unguess_link> (Link to unguess), <line_break>:::__HOME_PARAGRAPH_UNGUESS MAX:120"
             components={{
