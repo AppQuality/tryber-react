@@ -37,7 +37,7 @@ const StyledHome = styled.div`
   }
   ${Text}.subtitle {
     font-size: 22px;
-    line-height: 1.5;
+    line-height: 1.3;
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.md}) {
       font-size: 24px;
@@ -45,6 +45,7 @@ const StyledHome = styled.div`
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.lg}) {
       font-size: 26px;
+      line-height: 1.5;
     }
   }
 `;

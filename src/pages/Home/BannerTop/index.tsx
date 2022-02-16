@@ -9,12 +9,15 @@ const SectionBanner = styled.div`
   position: relative;
   overflow: visible;
   max-width: 100%;
-  margin-bottom:60px;
-    @media only screen and (min-width: ${(props) =>
+  margin-bottom: 60px;
+  @media only screen and (min-width: ${(props) =>
       props.theme.grid.breakpoints.lg}) {
-      margin: 16px -32px 16px 16px;
-      margin-bottom: 120px;
-    }
+    margin: 16px -32px 16px 16px;
+    margin-bottom: 120px;
+  }
+  text-align: center;
+  @media (min-width: ${(props) => props.theme.grid.breakpoints.md}) {
+    text-align: left;
   }
 `;
 export default () => {
@@ -33,10 +36,8 @@ export default () => {
           <div className="text-marker section-title aq-text-primary aq-mb-4">
             {t("__HOME_TITLE_WELCOME MAX:40")}
           </div>
-          <Text className="aq-mb-4 large-desktop">
-            <div className="aq-mb-2">
-              {t("__HOME_PARAGRAPH_WELCOME MAX:150")}
-            </div>
+          <Text className="aq-mb-4 subtitle">
+            {t("__HOME_PARAGRAPH_WELCOME MAX:150")}
           </Text>
           <JoinInButton flat={false}>
             {t("__HOME_CTA_WELCOME MAX:25")}
