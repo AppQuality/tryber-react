@@ -15,7 +15,7 @@ const SlideContainer = styled.div`
   ${Text} {
     color: #fff;
     font-size: 16px;
-    line-height: 1.8;
+    line-height: 1.4;
     @media only screen and (min-width: ${(props) =>
         props.theme.grid.breakpoints.md}) {
       font-size: 18px;

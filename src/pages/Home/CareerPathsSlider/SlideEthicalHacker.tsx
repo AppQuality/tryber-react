@@ -7,20 +7,11 @@ import careerImageEN from "./assets/cyber_security_en.svg";
 import careerImageES from "./assets/cyber_security_es.svg";
 import careerImageIT from "./assets/cyber_security_it.svg";
 import GenericSlide, { TextBox } from "./GenericSlide";
-
-const TextBoxOne = styled(TextBox)`
-  bottom: 12%;
-  left: 6%;
-`;
-const TextBoxTwo = styled(TextBox)`
-  bottom: 6%;
-  left: 51%;
-`;
 const Image = () => {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
   let translatedImage = careerImageEN;
-  if (i18n.language == `it`) translatedImage = careerImageIT;
-  if (i18n.language == `es`) translatedImage = careerImageES;
+  if (i18n.language === `it`) translatedImage = careerImageIT;
+  if (i18n.language === `es`) translatedImage = careerImageES;
 
   return (
     <div style={{ position: "relative" }}>

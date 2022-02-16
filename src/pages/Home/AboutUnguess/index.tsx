@@ -30,11 +30,10 @@ const SlideContainer = styled.div`
   }
 `;
 const TextContainer = styled.div`
-  padding: 16px 26px 16px 26px;
   text-align: center;
   @media (min-width: ${(props) => props.theme.grid.breakpoints.lg}) {
     text-align: left;
-    padding-bottom: 110px;
+    padding: 16px 26px 16px 26px;
   }
   ${Title} {
     display: flex;
@@ -70,7 +69,7 @@ const VideoContainer = styled.div`
 `;
 
 export default () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <SlideContainer>
       <TextContainer>
