@@ -144,7 +144,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
         setEdit(false);
       }}
       onSubmit={async (values, helpers) => {
-        const submitValues = {
+        const submitValues: UserData = {
           address: {
             country: values.countryCode,
             province: values.province,
@@ -154,18 +154,22 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
             cityCode: values.zipCode,
           },
           type: values.type,
-          birthPlace:
-            values.birthPlaceId &&
-            (values.type === "withholding" ||
-              values.type === "witholding-extra")
-              ? { placeId: values.birthPlaceId }
-              : {
-                  city: values.birthPlaceCity,
-                  province: values.birthPlaceProvince,
-                },
           fiscalId: values.fiscalId?.toUpperCase(),
           gender: values.gender,
         };
+        if (
+          values.birthPlaceId &&
+          (values.type === "withholding" || values.type === "witholding-extra")
+        ) {
+          submitValues.birthPlace = {
+            placeId: values.birthPlaceId,
+          };
+        } else if (values.birthPlaceCity && values.birthPlaceProvince) {
+          submitValues.birthPlace = {
+            city: values.birthPlaceCity,
+            province: values.birthPlaceProvince,
+          };
+        }
         dispatch(
           updateFiscalProfile(submitValues as UserData, {
             verifiedMessage: (
