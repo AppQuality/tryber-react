@@ -6,6 +6,7 @@ import GoodbyePage from "./GoodbyePage";
 import Home from "./Home";
 import MyBugs from "./MyBugs";
 import Profile from "./Profile";
+import Wallet from "./Wallet";
 
 export {
   Dashboard,
@@ -16,4 +17,5 @@ export {
   Devices,
   Profile,
   GoodbyePage,
+  Wallet,
 };

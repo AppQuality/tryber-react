@@ -20,6 +20,7 @@ import {
   Home,
   MyBugs,
   Profile,
+  Wallet,
 } from "./pages";
 import referralStore from "./redux/referral";
 import { refreshUser } from "./redux/user/actions/refreshUser";
@@ -150,6 +151,7 @@ function Page() {
         />
 
         <Route path={`${base}/my-account`} component={Profile} />
+        <Route path={`${base}/wallet`} component={Wallet} />
         <Route
           path={["/goodbye", "/it/goodbye", "/es/goodbye"]}
           exact
