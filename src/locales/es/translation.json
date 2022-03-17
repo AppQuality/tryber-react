@@ -4,6 +4,7 @@
   "/leaderboard/": "/leaderboard-3/",
   "/my-account/": "/perfil/",
   "/payments/": "/pagos/",
+  "/per-saperne-di-piu-pagamenti-privacy/": "",
   "/terms-and-conditions/": "/terms-and-conditions/",
   "/testing-school/": "/academia/",
   "<bold>Thank you for helping to make the AppQuality Community special!</bold><br></br><bold>Your account will be deleted, </bold><br></br>but if you want to come back and test with us,<br></br> you already know where to find us.<br></br>": "<bold>Thank you for helping to make the Tryber Community special!</bold><br></br><bold>Your account will be deleted, </bold><br></br>but if you want to come back and test with us,<br></br> you already know where to find us.<br></br>",
@@ -46,8 +47,8 @@
   "Area is a required field.": "El área / La esfera es un campo obligatorio",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Como primer paso a completar, llene su perfil con datos reales y auténticos. Esta es la única forma para ser seleccionado a las Campañas y obtener tu recompensa.",
   "Available booty": "Saldo Disponible",
-  "Available tags \n<a> - Link to help article for fiscal type": {
-    "@@Description for fiscal type@@": "<a>Haga clic aquí</a> para obtener más información"
+  "Available tags \r\n<a> - Link to help article for fiscal type": {
+    "@@Description for fiscal type@@": ""
   },
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS apoya a las empresas en la creación de experiencias memorables gracias al poder de la Comunidad de TRYBER. <unguess_link>Descubre UNGUESS</unguess_link>"
@@ -175,7 +176,9 @@
   "Last Name": "Apellido",
   "Leaderboard": "Leaderboard",
   "Learn More": "Saber Más",
+  "Learn more": "",
   "Learn more about how we calculate and attribute experience points.": "Aprende más sobre cómo calculamos y atribuimos los puntos de experiencia.",
+  "Learn more about how we handle payment requests.": "",
   "LinkedIn": "LinkedIn",
   "Loading": "Cargando",
   "Loading Data": "Cargando Datos",
@@ -197,6 +200,7 @@
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "Ninguna campaña ha sido completado todavía. Es hora de trabajar: termina las campañas activas o aplica en las que están disponibles",
   "Not available": "No disponibles",
   "Not specified": "No especificado",
+  "Not sure how to request your booty?": "",
   "Oh no!": "Oh no!",
   "Operating System": "SO",
   "Operating System Version: <bold>{{version}}</bold>": "Versión del sistema operativo: <bold>{{version}}</bold>",

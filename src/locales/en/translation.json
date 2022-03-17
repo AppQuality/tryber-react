@@ -4,6 +4,7 @@
   "/leaderboard/": "/leaderboard/",
   "/my-account/": "/my-account/",
   "/payments/": "/payments/",
+  "/per-saperne-di-piu-pagamenti-privacy/": "",
   "/terms-and-conditions/": "/terms-and-conditions/",
   "/testing-school/": "/testing-school/",
   "<bold>Thank you for helping to make the AppQuality Community special!</bold><br></br><bold>Your account will be deleted, </bold><br></br>but if you want to come back and test with us,<br></br> you already know where to find us.<br></br>": "<bold>Thank you for helping to make the Tryber Community special!</bold><br></br><bold>Your account will be deleted, </bold><br></br>but if you want to come back and test with us,<br></br> you already know where to find us.<br></br>",
@@ -46,8 +47,8 @@
   "Area is a required field.": "Area is a required field.",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.",
   "Available booty": "Available booty",
-  "Available tags \n<a> - Link to help article for fiscal type": {
-    "@@Description for fiscal type@@": "<a>Click here</a> for more info"
+  "Available tags \r\n<a> - Link to help article for fiscal type": {
+    "@@Description for fiscal type@@": ""
   },
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supports companies in creating memorable experiences thanks to the power of the TRYBER Community. <unguess_link>Discover UNGUESS</unguess_link>"
@@ -175,7 +176,9 @@
   "Last Name": "Last Name",
   "Leaderboard": "Leaderboard",
   "Learn More": "Learn More",
+  "Learn more": "",
   "Learn more about how we calculate and attribute experience points.": "Learn more about how we calculate and attribute experience points.",
+  "Learn more about how we handle payment requests.": "",
   "LinkedIn": "LinkedIn",
   "Loading": "Loading",
   "Loading Data": "Loading Data",
@@ -197,6 +200,7 @@
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!",
   "Not available": "Not available",
   "Not specified": "Not specified",
+  "Not sure how to request your booty?": "",
   "Oh no!": "Oh no!",
   "Operating System": "OS",
   "Operating System Version: <bold>{{version}}</bold>": "Operating System Version: <bold>{{version}}</bold>",
