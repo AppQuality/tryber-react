@@ -1,7 +1,8 @@
 import { BSCol, BSGrid, Card } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { PageTemplate } from "src/features/PageTemplate";
-import { WalletFilters } from "./WalletFilters";
+import { WalletManagment } from "./WalletManagment";
+import { WalletHelp } from "./WalletHelp";
 import { WalletTable } from "./WalletTable";
 
 export default function Wallet() {
@@ -16,13 +17,8 @@ export default function Wallet() {
           </Card>
         </BSCol>
         <BSCol size="col-lg-3">
-          <Card
-            className="stick-to-header-lg aq-mb-3"
-            title={t("Filters")}
-            shadow={true}
-          >
-            <WalletFilters />
-          </Card>
+          <WalletManagment />
+          <WalletHelp />
         </BSCol>
       </BSGrid>
     </PageTemplate>

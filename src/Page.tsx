@@ -151,7 +151,7 @@ function Page() {
         />
 
         <Route path={`${base}/my-account`} component={Profile} />
-        <Route path={`${base}/wallet`} component={Wallet} />
+        <Route path={`${base}/payments`} component={Wallet} />
         <Route
           path={["/goodbye", "/it/goodbye", "/es/goodbye"]}
           exact
