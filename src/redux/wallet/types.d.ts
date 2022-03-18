@@ -11,9 +11,9 @@ type WalletState = {
       value: number;
       currency: string;
     };
-    threshold: number;
-    overThreshold: boolean;
-    details: {
+    threshold?: number;
+    overThreshold?: boolean;
+    details?: {
       limit?: number;
       size: number;
       start: number;
@@ -47,4 +47,14 @@ type PaymentRequest = {
     surname: string;
   };
   error?: string;
+};
+
+type WalletActions = WalletActions_UpdateRequestList;
+
+/**
+ *  Action types and their payloads
+ */
+type WalletActions_UpdateRequestList = {
+  type: "wallet/updateRequestsList";
+  payload: { items: object[] };
 };

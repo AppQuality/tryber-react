@@ -7,6 +7,7 @@ import messages from "./siteWideMessages/reducer";
 import userDevices from "./userDevices/reducer";
 import modal from "./modal/reducer";
 import addResidenceAddressModal from "./addResidenceAddressModal/reducer";
+import wallet from "./wallet/reducer";
 
 export default combineReducers({
   menu,
@@ -17,4 +18,5 @@ export default combineReducers({
   messages,
   modal,
   userDevices,
+  wallet,
 });
