@@ -12,19 +12,22 @@ export const WalletHelp = () => {
   return (
     <Card shadow>
       <Title size="xs" color="info">
-        {t("Not sure how to request your booty?")}
+        {t("__WALLET_CARD-GUIDES_TITLE MAX: 35")}
       </Title>
       <Text className="aq-mt-2 aq-mb-3">
-        {t("Learn more about how we handle payment requests.")}
+        {t("__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60")}
       </Text>
       <Button
         forwardedAs="a"
-        href={`${t("/per-saperne-di-piu-pagamenti-privacy/")}`}
+        href={t("Wallet help article", {
+          ns: "links",
+        })}
         type="info"
         size="block"
+        target="_blank"
         flat
       >
-        {t("Learn more")}
+        {t("__WALLET_CARD-GUIDES_CTA MAX: 20")}
       </Button>
     </Card>
   );
