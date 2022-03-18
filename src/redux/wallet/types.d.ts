@@ -1,10 +1,7 @@
 type WalletState = {
-  requestsList: {
-    limit?: number;
-    size: number;
-    start: number;
-    total?: number;
-    items: PaymentRequest[];
+  requestsList: ApiOperations["get-users-me-payments"]["responses"]["200"]["content"]["application/json"] & {
+    total: number;
+    limit: number;
   };
   booty: {
     amount: {
@@ -32,23 +29,6 @@ type Attribution = {
   activity: string;
 };
 
-type PaymentRequest = {
-  created: string;
-  updated: string;
-  id: number;
-  amount: {
-    value: number;
-    currency: string;
-  };
-  type: "paypal" | "transferwise";
-  tryber: {
-    id: number;
-    name: string;
-    surname: string;
-  };
-  error?: string;
-};
-
 type WalletActions = WalletActions_UpdateRequestList;
 
 /**
@@ -56,5 +36,5 @@ type WalletActions = WalletActions_UpdateRequestList;
  */
 type WalletActions_UpdateRequestList = {
   type: "wallet/updateRequestsList";
-  payload: { items: object[] };
+  payload: ApiOperations["get-users-me-payments"]["responses"]["200"]["content"]["application/json"];
 };
