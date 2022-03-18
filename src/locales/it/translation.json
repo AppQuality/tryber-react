@@ -46,8 +46,8 @@
   "Area is a required field.": "L'area è un campo obbligatorio",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Come primo step da compiere, completa il tuo profilo in ogni sua parte inserendo dati autentici e veritieri. Solo in questo modo potrai essere selezionat* per le Campagne e richiedere il pagamento in maniera corretta.",
   "Available booty": "Guadagni disponibili",
-  "Available tags \r\n<a> - Link to help article for fiscal type": {
-    "@@Description for fiscal type@@": ""
+  "Available tags \n<a> - Link to help article for fiscal type": {
+    "@@Description for fiscal type@@": "<a>Clicca qui</a> per maggiori informazioni"
   },
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supporta le aziende nella creazione di esperienze memorabili grazie al potere della Community di TRYBER. <unguess_link>Scopri UNGUESS</unguess_link>"

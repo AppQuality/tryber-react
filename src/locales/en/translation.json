@@ -46,8 +46,8 @@
   "Area is a required field.": "Area is a required field.",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.",
   "Available booty": "Available booty",
-  "Available tags \r\n<a> - Link to help article for fiscal type": {
-    "@@Description for fiscal type@@": ""
+  "Available tags \n<a> - Link to help article for fiscal type": {
+    "@@Description for fiscal type@@": "<a>Click here</a> for more info"
   },
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supports companies in creating memorable experiences thanks to the power of the TRYBER Community. <unguess_link>Discover UNGUESS</unguess_link>"
