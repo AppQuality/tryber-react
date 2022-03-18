@@ -74,7 +74,7 @@ export const WalletTable = () => {
     <>
       <Table
         className="aq-mb-3"
-        dataSource={[]}
+        dataSource={rows}
         columns={columns}
         orderBy="date"
         order="ASC"
