@@ -19,7 +19,7 @@ const apifetch = async ({
     token = process.env.REACT_APP_DEFAULT_TOKEN;
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set("Content-Type", "application/json");
-  requestHeaders.set("x-tryber-mock-example", "200:single-paid-payment");
+  //requestHeaders.set("x-tryber-mock-example", "200:single-paid-payment");
   if (token) {
     requestHeaders.set("Authorization", "Bearer " + token);
   }
