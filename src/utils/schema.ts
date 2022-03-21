@@ -271,6 +271,10 @@ export interface paths {
       };
     };
   };
+  "/users/me/payments": {
+    get: operations["get-users-me-payments"];
+    parameters: {};
+  };
   "/custom_user_fields": {
     get: operations["get-customUserFields"];
     parameters: {};
@@ -283,30 +287,48 @@ export interface paths {
       };
     };
   };
+  "/payments": {
+    get: operations["get-payments"];
+    parameters: {};
+  };
+  "/payments/{paymentId}": {
+    post: operations["post-payments-paymentId"];
+    parameters: {
+      path: {
+        paymentId: string;
+      };
+    };
+  };
 }
 
 export interface components {
   schemas: {
+    /** Project */
     Project: {
       name?: string;
     };
     Campaign: components["schemas"]["CampaignOptional"] &
       components["schemas"]["CampaignRequired"];
+    /** BugSeverity */
     BugSeverity: {
       id?: number;
       name?: string;
     };
+    /** BugType */
     BugType: {
       id?: number;
     };
+    /** Replicability */
     Replicability: {
       id?: string;
     };
+    /** Task */
     Task: components["schemas"]["TaskOptional"] &
       components["schemas"]["TaskRequired"];
     Customer: components["schemas"]["User"] & {
       customer_name?: string;
     };
+    /** CampaignField */
     CampaignField: {
       id?: number;
     };
@@ -341,9 +363,9 @@ export interface components {
       ux_effort?: number;
       preview_link?: components["schemas"]["TranslatablePage"];
       manual_link?: components["schemas"]["TranslatablePage"];
-      /** If bugform is deactivated is a boolean else contains URLs to bugforms for each languages */
+      /** @description If bugform is deactivated is a boolean else contains URLs to bugforms for each languages */
       bugform_link?: boolean | components["schemas"]["TranslatablePage"];
-      /** True if you applied on this Campaign */
+      /** @description True if you applied on this Campaign */
       applied?: boolean;
     };
     CampaignRequired: {
@@ -373,17 +395,21 @@ export interface components {
       campaign_id: number;
     };
     CampaignType: string | number;
+    /** User */
     User: {
       username?: string;
       name?: string;
       surname?: string;
+      /** Format: email */
       email?: string;
+      /** Format: uri */
       image?: string;
       id?: number;
       wp_user_id?: number;
       role?: string;
       is_verified?: boolean;
     };
+    /** Bug */
     Bug: {
       severity?: components["schemas"]["BugSeverity"];
       status?: components["schemas"]["BugStatus"];
@@ -392,6 +418,7 @@ export interface components {
       };
       title?: string;
     };
+    /** BugStatus */
     BugStatus: {
       id?: number;
       name?: string;
@@ -411,11 +438,13 @@ export interface components {
       content?: string;
       title?: string;
     };
+    /** TranslatablePage */
     TranslatablePage: {
       en?: string;
       it?: string;
       es?: string;
     };
+    /** UserDevice */
     UserDevice: {
       type: string;
       id: number;
@@ -446,11 +475,18 @@ export interface components {
       name: string;
       area: string;
       institute: string;
+      /** Format: date */
       achievement_date: string;
     };
+    /**
+     * FiscalType
+     * @enum {string}
+     */
     FiscalType: "withholding" | "witholding-extra" | "other" | "non-italian";
+    /** CustomUserFieldsData */
     CustomUserFieldsData: {
       id: number;
+      /** @enum {string} */
       type: "select" | "multiselect" | "text";
       placeholder?: components["schemas"]["TranslatablePage"];
       allow_other?: boolean;
@@ -458,10 +494,21 @@ export interface components {
       format?: string;
       options?: components["schemas"]["CustomUserFieldsDataOption"][];
     };
+    /** CustomUserFieldsDataOption */
     CustomUserFieldsDataOption: {
       id: number;
       name: string;
     };
+    /** FiscalBirthCity */
+    FiscalBirthCity:
+      | {
+          city: string;
+          province: string;
+        }
+      | {
+          /** @description A google maps place id */
+          placeId: string;
+        };
   };
   responses: {
     /** A user */
@@ -530,27 +577,27 @@ export interface components {
     };
   };
   parameters: {
-    /** A campaign id */
+    /** @description A campaign id */
     campaign: string;
-    /** A task id */
+    /** @description A task id */
     task: string;
-    /** A customer id */
+    /** @description A customer id */
     customer: string;
-    /** A project id */
+    /** @description A project id */
     project: string;
-    /** Max items to retrieve */
+    /** @description Max items to retrieve */
     limit: number;
-    /** Items to skip for pagination */
+    /** @description Items to skip for pagination */
     start: number;
-    /** Key-value Array for item filtering */
+    /** @description Key-value Array for item filtering */
     filterBy: { [key: string]: unknown };
-    /** How to order values (ASC, DESC) */
+    /** @description How to order values (ASC, DESC) */
     order: "ASC" | "DESC";
-    /** How to localize values */
+    /** @description How to localize values */
     locale: "en" | "it";
-    /** A comma separated list of fields which will be searched */
+    /** @description A comma separated list of fields which will be searched */
     searchBy: string;
-    /** The value to search for */
+    /** @description The value to search for */
     search: string;
   };
 }
@@ -1130,11 +1177,16 @@ export interface operations {
         "application/json": {
           name: string;
           surname: string;
+          /** Format: email */
           email: string;
           password: string;
           country: string;
+          /** Format: date */
           birthDate: string;
-          /** A referral code (formatted as TESTER_ID-CAMPAIGN_ID) */
+          /**
+           * @description A referral code (formatted as TESTER_ID-CAMPAIGN_ID)
+           * @example 555-1234
+           */
           referral?: string;
         };
       };
@@ -1156,6 +1208,7 @@ export interface operations {
             username?: string;
             name?: string;
             surname?: string;
+            /** Format: email */
             email?: string;
             image?: string;
             id: number;
@@ -1172,7 +1225,9 @@ export interface operations {
             }[];
             onboarding_completed?: boolean;
             additional?: components["schemas"]["AdditionalField"][];
+            /** @enum {string} */
             gender?: "male" | "female" | "not-specified";
+            /** Format: date */
             birthDate?: string;
             phone?: string;
             education?: {
@@ -1255,7 +1310,9 @@ export interface operations {
             }[];
             onboarding_completed?: boolean;
             additional?: components["schemas"]["AdditionalField"][];
+            /** @enum {string} */
             gender?: "male" | "female" | "not-specified";
+            /** Format: date */
             birthDate?: string;
             phone?: string;
             education?: {
@@ -1283,9 +1340,11 @@ export interface operations {
       content: {
         "application/json": {
           name?: string;
+          /** Format: email */
           email?: string;
           onboarding_completed?: boolean;
           surname?: string;
+          /** @enum {string} */
           gender?: "male" | "female" | "not-specified";
           birthDate?: string;
           phone?: string;
@@ -1368,6 +1427,7 @@ export interface operations {
                 id: number;
                 title?: string;
               };
+              /** Format: date */
               date: string;
               amount: number;
               note?: string;
@@ -1375,9 +1435,9 @@ export interface operations {
             limit?: number;
             size?: number;
             start?: number;
-            /** The total number of experience entries */
+            /** @description The total number of experience entries */
             total?: number;
-            /** The total sum of experience */
+            /** @description The total sum of experience */
             sum: number;
           };
         };
@@ -1407,7 +1467,9 @@ export interface operations {
               province?: string;
             };
             fiscalId: string;
+            /** @enum {string} */
             fiscalStatus: "Verified" | "Unverified";
+            /** @enum {string} */
             gender: "male" | "female";
           };
         };
@@ -1437,7 +1499,9 @@ export interface operations {
               province?: string;
             };
             fiscalId: string;
+            /** @enum {string} */
             fiscalStatus: "Verified" | "Unverified";
+            /** @enum {string} */
             gender: "male" | "female";
           };
         };
@@ -1456,11 +1520,9 @@ export interface operations {
             cityCode: string;
           };
           type: components["schemas"]["FiscalType"];
-          birthPlace?: {
-            city?: string;
-            province?: string;
-          };
+          birthPlace?: components["schemas"]["FiscalBirthCity"];
           fiscalId: string;
+          /** @enum {string} */
           gender: "male" | "female";
         };
       };
@@ -1487,7 +1549,9 @@ export interface operations {
               province?: string;
             };
             fiscalId: string;
+            /** @enum {string} */
             fiscalStatus: "Verified" | "Unverified";
+            /** @enum {string} */
             gender: "male" | "female";
           };
         };
@@ -1506,11 +1570,9 @@ export interface operations {
             cityCode: string;
           };
           type: components["schemas"]["FiscalType"];
-          birthPlace?: {
-            city?: string;
-            province?: string;
-          };
+          birthPlace?: components["schemas"]["FiscalBirthCity"];
           fiscalId: string;
+          /** @enum {string} */
           gender: "male" | "female";
         };
       };
@@ -1745,6 +1807,7 @@ export interface operations {
             }
           | {
               certification_id: number;
+              /** Format: date */
               achievement_date: string;
             };
       };
@@ -1868,6 +1931,54 @@ export interface operations {
       };
     };
   };
+  "get-users-me-payments": {
+    parameters: {
+      query: {
+        /** Items to skip for pagination */
+        start?: components["parameters"]["start"];
+        /** Max items to retrieve */
+        limit?: components["parameters"]["limit"];
+        /** The field for item order */
+        orderBy?: string;
+        /** How to order values (ASC, DESC) */
+        order?: components["parameters"]["order"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results?: ({
+              id: number;
+            } & {
+              /** @enum {string} */
+              status: "paid" | "processing";
+              amount: {
+                value?: number;
+                currency?: string;
+              };
+              /** Format: date */
+              paidDate?: string;
+              method?: {
+                /** @enum {string} */
+                type?: "paypal" | "iban";
+                note?: string;
+              };
+              /** Format: uri-reference */
+              receipt?: string;
+            })[];
+            limit?: number;
+            size: number;
+            start: number;
+            total?: number;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
   "get-customUserFields": {
     parameters: {};
     responses: {
@@ -1903,6 +2014,106 @@ export interface operations {
             name: string;
             value: string;
           }[];
+        };
+      };
+    };
+  };
+  "get-payments": {
+    parameters: {
+      query: {
+        /** The status of the payment */
+        status?: "pending" | "failed";
+        /** How to order values (ASC, DESC) */
+        order?: components["parameters"]["order"];
+        /** The value to order by */
+        orderBy?: "created" | "updated" | "id";
+        /** Items to skip for pagination */
+        start?: components["parameters"]["start"];
+        /** Max items to retrieve */
+        limit?: components["parameters"]["limit"];
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            limit?: number;
+            size: number;
+            start: number;
+            total?: number;
+            items: {
+              /** @description The timestamp (GMT) of the request creation */
+              created: string;
+              /** @description The timestamp (GMT) of the request last update */
+              updated: string;
+              id: number;
+              amount: {
+                value: number;
+                currency: string;
+              };
+              /** @enum {string} */
+              type: "paypal" | "transferwise";
+              tryber: {
+                id: number;
+                name: string;
+                surname: string;
+              };
+              error?: string;
+            }[];
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+  };
+  "post-payments-paymentId": {
+    parameters: {
+      path: {
+        paymentId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: unknown;
+      /** Bad Request */
+      400: {
+        content: {
+          "application/json": {
+            /** @enum {string} */
+            element: "payments";
+            id: number;
+            message: {
+              /** @enum {string} */
+              code: "GENERIC_ERROR";
+              data: string;
+            };
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+      /** Unprocessable Entity (WebDAV) */
+      422: {
+        content: {
+          "application/json": {
+            /** @enum {string} */
+            element: "payments";
+            id: number;
+            message: {
+              /** @enum {string} */
+              code:
+                | "GENERIC_ERROR"
+                | "NO_FUNDS"
+                | "DUPLICATE_PAYMENT"
+                | "IBAN_NOT_VALID"
+                | "INSUFFICIENT_FUNDS"
+                | "RECEIVER_UNREGISTERED";
+              data: string;
+            };
+          };
         };
       };
     };
