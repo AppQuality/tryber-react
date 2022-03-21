@@ -7,6 +7,7 @@ import * as employments from "./employments";
 import * as certifications from "./certifications";
 import * as educationLevels from "./educationLevels";
 import * as customUserFields from "./customUserFields";
+import * as wallet from "./wallet";
 
 const API = {
   ...authenticate,
@@ -18,6 +19,7 @@ const API = {
   ...educationLevels,
   ...customUserFields,
   ...certifications,
+  ...wallet,
 };
 
 export default API;
