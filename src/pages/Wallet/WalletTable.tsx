@@ -37,6 +37,8 @@ export const WalletTable = () => {
         results.map((req) => ({
           key: req.id,
           reqId: req.id,
+          status: req.status,
+          paidDate: req.paidDate,
           amount: {
             title: "amount",
             content: (
