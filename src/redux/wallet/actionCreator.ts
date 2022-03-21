@@ -59,3 +59,18 @@ export const updateSortingOptions =
   async (dispatch) => {
     return dispatch(fetchPaymentRequests());
   };
+
+export const fetchBootyInfo =
+  (): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch) => {
+    try {
+      const query: ApiOperations["get-users-me"]["parameters"]["query"] = {
+        fields: "booty,booty_threshold",
+      };
+      const data = await API.getBootyInfo(query);
+      console.log(data);
+    } catch (e) {
+      const error = e as HttpError;
+      addMessage(error.message, "danger", false);
+    }
+  };

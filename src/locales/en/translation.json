@@ -50,9 +50,6 @@
   "Available tags \n<a> - Link to help article for fiscal type": {
     "@@Description for fiscal type@@": "<a>Click here</a> for more info"
   },
-  "Available tags : <fiscal_profile_link> (Link to fiscal profile)": {
-    "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q"
-  },
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supports companies in creating memorable experiences thanks to the power of the TRYBER Community. <unguess_link>Discover UNGUESS</unguess_link>"
   },
