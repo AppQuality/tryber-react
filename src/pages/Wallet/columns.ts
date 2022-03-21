@@ -26,9 +26,8 @@ export const walletColumns = (
     },
     {
       title: t("Paid On"),
-      dataIndex: "updated",
-      key: "updated",
-      isSortable: "reverse",
+      dataIndex: "paidDate",
+      key: "paidDate",
       onSort: (newOrder: OrderType) => {
         setIsLoading(true);
         dispatch(updateSortingOptions(newOrder, "updated")).then(() =>
