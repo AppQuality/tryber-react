@@ -3,9 +3,9 @@ import { Formik } from "formik";
 export const Form: React.FunctionComponent<PaymentModalFormProps> = ({
   children,
 }) => {
-  const initialValues = {
+  const initialValues: PaymentFormType = {
     method: "",
-    termsAcceptanceCheckbox: "",
+    termsAcceptanceCheckbox: false,
     ppAccountOwner: "",
     confirmEmail: "",
     bankaccountOwner: "",
