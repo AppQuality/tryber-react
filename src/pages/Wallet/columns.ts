@@ -10,7 +10,7 @@ export const walletColumns = (
 ): Column[] => {
   return [
     {
-      title: "#",
+      title: "ID",
       dataIndex: "reqId",
       key: "reqId",
       maxWidth: "max-content",
@@ -19,6 +19,8 @@ export const walletColumns = (
       title: t("Status"),
       dataIndex: "status",
       key: "status",
+      role: "overline",
+      hideIndex: true,
     },
     {
       title: t("Amount"),
@@ -48,6 +50,8 @@ export const walletColumns = (
       title: t("Method"),
       dataIndex: "method",
       key: "method",
+      role: "title",
+      hideIndex: true,
     },
     // {
     //   title: t("Actions"),

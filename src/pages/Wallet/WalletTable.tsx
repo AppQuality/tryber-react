@@ -59,12 +59,12 @@ export const WalletTable = () => {
             amount: {
               title: "amount",
               content: (
-                <div>
+                <span>
                   {req.amount.currency && req.amount.currency in currencyTable
                     ? currencyTable[req.amount.currency]
                     : req.amount.currency}{" "}
                   {req.amount.value?.toFixed(2)}
-                </div>
+                </span>
               ),
             },
             method: {
