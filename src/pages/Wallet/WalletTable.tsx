@@ -2,6 +2,7 @@ import {
   Table,
   Pagination,
   TableType,
+  SortTableSelect,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
@@ -15,6 +16,7 @@ import { shallowEqual, useSelector } from "react-redux";
 import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
+import { initialState } from "src/redux/wallet/reducer";
 
 export const WalletTable = () => {
   const { t } = useTranslation();
@@ -68,7 +70,7 @@ export const WalletTable = () => {
               ),
             },
             method: {
-              title: req.method?.type || "-",
+              title: `${req.method?.type} - ${req.method?.note}`,
               content: (
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <img
@@ -83,7 +85,16 @@ export const WalletTable = () => {
                     className="aq-mr-3"
                     style={{ width: "1em", height: "1em" }}
                   />{" "}
-                  {req.method?.note}
+                  <span
+                    style={{
+                      maxWidth: "calc(100% - 3em)",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    {req.method?.note}
+                  </span>
                 </div>
               ),
             },
@@ -99,6 +110,12 @@ export const WalletTable = () => {
   };
   return (
     <>
+      <SortTableSelect
+        order={order || "DESC"}
+        orderBy={orderBy || "paidDate"}
+        columns={columns}
+        label={t("Order By", { context: "Sort Table Select" })}
+      />
       <Table
         className="aq-mb-3"
         dataSource={rows}

@@ -1,4 +1,4 @@
-const initialState: WalletState = {
+export const initialState: WalletState = {
   booty: {
     amount: {
       value: 0,
