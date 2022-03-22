@@ -79,7 +79,7 @@ export const WalletManagment = () => {
       return (
         <Trans
           i18nKey={
-            "Available tags : <fiscal_profile_link> (Link to fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150 "
+            "Available tags : <fiscal_profile_link> (Link to fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150"
           }
           components={{
             fiscal_profile_link: <a href="/my-account/?tab=fiscal" />,
