@@ -11,8 +11,8 @@ export const fetchPaymentRequests =
     try {
       const query: ApiOperations["get-users-me-payments"]["parameters"]["query"] =
         {
-          //order: requestsList.order,
-          //orderBy: requestsList.orderBy,
+          order: requestsList.order,
+          orderBy: requestsList.orderBy,
           limit: requestsList.limit,
           start: requestsList.start,
         };
@@ -48,6 +48,10 @@ export const updatePagination =
     newStart: number
   ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
   async (dispatch) => {
+    dispatch({
+      type: "wallet/updateReqsQuery",
+      payload: { start: newStart },
+    });
     return dispatch(fetchPaymentRequests());
   };
 
@@ -57,5 +61,9 @@ export const updateSortingOptions =
     orderBy: ApiOperations["get-users-me-payments"]["parameters"]["query"]["orderBy"]
   ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
   async (dispatch) => {
+    dispatch({
+      type: "wallet/updateReqsQuery",
+      payload: { order: order, orderBy: orderBy },
+    });
     return dispatch(fetchPaymentRequests());
   };

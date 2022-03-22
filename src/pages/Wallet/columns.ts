@@ -10,28 +10,38 @@ export const walletColumns = (
 ): Column[] => {
   return [
     {
-      title: "#",
-      dataIndex: "id",
-      key: "id",
+      title: "ID",
+      dataIndex: "reqId",
+      key: "reqId",
+      maxWidth: "max-content",
     },
     {
       title: t("Status"),
       dataIndex: "status",
       key: "status",
+      role: "overline",
+      hideIndex: true,
     },
     {
       title: t("Amount"),
       dataIndex: "amount",
       key: "amount",
+      isSortable: true,
+      onSort: (newOrder) => {
+        setIsLoading(true);
+        dispatch(updateSortingOptions(newOrder, "amount")).then(() =>
+          setIsLoading(false)
+        );
+      },
     },
     {
       title: t("Paid On"),
-      dataIndex: "updated",
-      key: "updated",
-      isSortable: "reverse",
+      dataIndex: "paidDate",
+      key: "paidDate",
+      isSortable: true,
       onSort: (newOrder: OrderType) => {
         setIsLoading(true);
-        dispatch(updateSortingOptions(newOrder, "updated")).then(() =>
+        dispatch(updateSortingOptions(newOrder, "paidDate")).then(() =>
           setIsLoading(false)
         );
       },
@@ -40,6 +50,8 @@ export const walletColumns = (
       title: t("Method"),
       dataIndex: "method",
       key: "method",
+      role: "title",
+      hideIndex: true,
     },
     // {
     //   title: t("Actions"),
