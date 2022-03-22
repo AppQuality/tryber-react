@@ -10,7 +10,7 @@ const initialState: WalletState = {
     limit: 10,
     size: 0,
     total: 0,
-    order: "ASC",
+    order: "DESC",
     orderBy: "paidDate",
     results: [],
   },
