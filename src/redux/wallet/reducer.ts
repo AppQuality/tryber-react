@@ -23,7 +23,7 @@ export default (state = initialState, action: WalletActions) => {
         ...state,
         booty: {
           amount: action.payload.booty,
-          // bootyThreshold: action.payload.booty_threshold
+          bootyThreshold: action.payload.booty_threshold,
         },
       };
     default:
