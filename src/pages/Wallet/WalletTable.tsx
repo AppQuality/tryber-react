@@ -70,7 +70,7 @@ export const WalletTable = () => {
             method: {
               title: req.method?.type || "-",
               content: (
-                <>
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <img
                     src={
                       req.method?.type === "paypal"
@@ -80,9 +80,11 @@ export const WalletTable = () => {
                         : ""
                     }
                     alt={req.method?.type || "method not specified"}
+                    className="aq-mr-3"
+                    style={{ width: "1em", height: "1em" }}
                   />{" "}
                   {req.method?.note}
-                </>
+                </div>
               ),
             },
           };
