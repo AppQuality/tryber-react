@@ -48,6 +48,10 @@ export const updatePagination =
     newStart: number
   ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
   async (dispatch) => {
+    dispatch({
+      type: "wallet/updateReqsQuery",
+      payload: { start: newStart },
+    });
     return dispatch(fetchPaymentRequests());
   };
 

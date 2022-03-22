@@ -11,8 +11,9 @@ export const walletColumns = (
   return [
     {
       title: "#",
-      dataIndex: "id",
-      key: "id",
+      dataIndex: "reqId",
+      key: "reqId",
+      maxWidth: "max-content",
     },
     {
       title: t("Status"),

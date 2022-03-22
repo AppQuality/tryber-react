@@ -16,6 +16,14 @@ const initialState: WalletState = {
 
 export default (state = initialState, action: WalletActions) => {
   switch (action.type) {
+    case "wallet/updateReqsQuery":
+      return {
+        ...state,
+        requestsList: {
+          ...state.requestsList,
+          ...action.payload,
+        },
+      };
     case "wallet/updateRequestsList":
       return {
         ...state,

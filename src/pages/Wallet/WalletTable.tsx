@@ -6,7 +6,10 @@ import {
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "src/redux/provider";
-import { fetchPaymentRequests } from "src/redux/wallet/actionCreator";
+import {
+  fetchPaymentRequests,
+  updatePagination,
+} from "src/redux/wallet/actionCreator";
 import { walletColumns } from "src/pages/Wallet/columns";
 import { shallowEqual, useSelector } from "react-redux";
 import { currencyTable } from "src/redux/wallet/utils";
@@ -37,12 +40,23 @@ export const WalletTable = () => {
         results.map((req) => ({
           key: req.id,
           reqId: req.id,
-          status: req.status,
+          status: {
+            title: req.status,
+            content: (
+              <div
+                className={
+                  req.status === "paid" ? "aq-text-success" : "aq-text-warning"
+                }
+              >
+                {req.status}
+              </div>
+            ),
+          },
           paidDate: req.paidDate,
           amount: {
             title: "amount",
             content: (
-              <div className="aq-text-success">
+              <div>
                 {req.amount.currency && req.amount.currency in currencyTable
                   ? currencyTable[req.amount.currency]
                   : req.amount.currency}{" "}
@@ -64,7 +78,7 @@ export const WalletTable = () => {
                   }
                   alt={req.method?.type || "method not specified"}
                 />{" "}
-                {req.method?.type}
+                {req.method?.note}
               </>
             ),
           },
@@ -72,6 +86,11 @@ export const WalletTable = () => {
       );
     }
   }, [requestsList]);
+  const changePagination = (newPage: number) => {
+    setIsLoading(true);
+    const newStart = limit * (newPage - 1);
+    dispatch(updatePagination(newStart)).then(() => setIsLoading(false));
+  };
   return (
     <>
       <Table
@@ -85,7 +104,7 @@ export const WalletTable = () => {
       />
       <Pagination
         className="aq-pt-3"
-        onPageChange={() => {}}
+        onPageChange={changePagination}
         current={start / limit + 1}
         maxPages={Math.ceil(total / limit)}
         mobileText={(current, total) =>
