@@ -12,7 +12,7 @@ import {
 } from "src/redux/wallet/actionCreator";
 import { walletColumns } from "src/pages/Wallet/columns";
 import { shallowEqual, useSelector } from "react-redux";
-import { currencyTable } from "src/redux/wallet/utils";
+import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 
@@ -37,52 +37,56 @@ export const WalletTable = () => {
   useEffect(() => {
     if (typeof results !== "undefined") {
       setRows(
-        results.map((req) => ({
-          key: req.id,
-          reqId: req.id,
-          status: {
-            title: req.status,
-            content: (
-              <div
-                className={
-                  req.status === "paid" ? "aq-text-success" : "aq-text-warning"
-                }
-              >
-                {req.status}
-              </div>
-            ),
-          },
-          paidDate: req.paidDate,
-          amount: {
-            title: "amount",
-            content: (
-              <div>
-                {req.amount.currency && req.amount.currency in currencyTable
-                  ? currencyTable[req.amount.currency]
-                  : req.amount.currency}{" "}
-                {req.amount.value?.toFixed(2)}
-              </div>
-            ),
-          },
-          method: {
-            title: req.method?.type || "-",
-            content: (
-              <>
-                <img
-                  src={
-                    req.method?.type === "paypal"
-                      ? paypalIcon
-                      : req.method?.type === "iban"
-                      ? twIcon
-                      : ""
+        results.map((req) => {
+          return {
+            key: req.id,
+            reqId: req.id,
+            status: {
+              title: req.status,
+              content: (
+                <div
+                  className={
+                    req.status === "paid"
+                      ? "aq-text-success"
+                      : "aq-text-warning"
                   }
-                  alt={req.method?.type || "method not specified"}
-                />{" "}
-                {req.method?.note}
-              </>
-            ),
-          },
-        }))
+                >
+                  {req.status}
+                </div>
+              ),
+            },
+            paidDate: getPaidDate(req.paidDate),
+            amount: {
+              title: "amount",
+              content: (
+                <div>
+                  {req.amount.currency && req.amount.currency in currencyTable
+                    ? currencyTable[req.amount.currency]
+                    : req.amount.currency}{" "}
+                  {req.amount.value?.toFixed(2)}
+                </div>
+              ),
+            },
+            method: {
+              title: req.method?.type || "-",
+              content: (
+                <>
+                  <img
+                    src={
+                      req.method?.type === "paypal"
+                        ? paypalIcon
+                        : req.method?.type === "iban"
+                        ? twIcon
+                        : ""
+                    }
+                    alt={req.method?.type || "method not specified"}
+                  />{" "}
+                  {req.method?.note}
+                </>
+              ),
+            },
+          };
+        })
       );
     }
   }, [requestsList]);
