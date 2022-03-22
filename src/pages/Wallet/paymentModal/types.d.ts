@@ -1,0 +1,2 @@
+interface PaymentModalFormProps {}
+interface PaymentModalFooterProps {}

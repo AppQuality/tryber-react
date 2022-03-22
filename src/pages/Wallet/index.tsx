@@ -4,9 +4,8 @@ import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
 import { WalletManagment } from "./WalletManagment";
 import { WalletHelp } from "./WalletHelp";
 import { WalletTable } from "./WalletTable";
-import UserDeleteModal from "src/pages/Profile/TabOptions/UserDeleteModal";
 import React from "react";
-import { PaymentModal } from "src/pages/Wallet/PaymentModal";
+import { PaymentModal } from "src/pages/Wallet/paymentModal/index";
 
 export default function Wallet() {
   const { t } = useTranslation();
