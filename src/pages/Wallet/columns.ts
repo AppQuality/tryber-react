@@ -24,14 +24,22 @@ export const walletColumns = (
       title: t("Amount"),
       dataIndex: "amount",
       key: "amount",
+      isSortable: true,
+      onSort: (newOrder) => {
+        setIsLoading(true);
+        dispatch(updateSortingOptions(newOrder, "amount")).then(() =>
+          setIsLoading(false)
+        );
+      },
     },
     {
       title: t("Paid On"),
       dataIndex: "paidDate",
       key: "paidDate",
+      isSortable: true,
       onSort: (newOrder: OrderType) => {
         setIsLoading(true);
-        dispatch(updateSortingOptions(newOrder, "updated")).then(() =>
+        dispatch(updateSortingOptions(newOrder, "paidDate")).then(() =>
           setIsLoading(false)
         );
       },

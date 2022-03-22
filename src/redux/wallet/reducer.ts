@@ -10,6 +10,8 @@ const initialState: WalletState = {
     limit: 10,
     size: 0,
     total: 0,
+    order: "ASC",
+    orderBy: "paidDate",
     results: [],
   },
 };
@@ -27,7 +29,10 @@ export default (state = initialState, action: WalletActions) => {
     case "wallet/updateRequestsList":
       return {
         ...state,
-        requestsList: { ...action.payload },
+        requestsList: {
+          ...state.requestsList,
+          ...action.payload,
+        },
       };
     default:
       return state;

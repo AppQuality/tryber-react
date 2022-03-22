@@ -26,7 +26,7 @@ export const WalletTable = () => {
     (state: GeneralState) => state.wallet,
     shallowEqual
   );
-  const { results, limit, total, start } = requestsList;
+  const { results, limit, total, start, order, orderBy } = requestsList;
   // initial requests
   useEffect(() => {
     const cols = walletColumns(setIsLoading, dispatch, t);
@@ -97,8 +97,8 @@ export const WalletTable = () => {
         className="aq-mb-3"
         dataSource={rows}
         columns={columns}
-        orderBy="date"
-        order="ASC"
+        orderBy={orderBy}
+        order={order}
         isLoading={isLoading}
         isStriped
       />

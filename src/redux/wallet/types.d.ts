@@ -2,6 +2,8 @@ type WalletState = {
   requestsList: ApiOperations["get-users-me-payments"]["responses"]["200"]["content"]["application/json"] & {
     total: number;
     limit: number;
+    order: ApiOperations["get-users-me-payments"]["parameters"]["query"]["order"];
+    orderBy: ApiOperations["get-users-me-payments"]["parameters"]["query"]["orderBy"];
   };
   booty: {
     amount: {
