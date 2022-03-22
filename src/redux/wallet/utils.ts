@@ -5,7 +5,7 @@ export const currencyTable: { [index: string]: string } = {
 };
 
 export const getPaidDate = (requestDate?: string) => {
-  if (requestDate) {
+  if (requestDate && requestDate !== "-") {
     const date = new Date(requestDate);
     return date.toLocaleDateString();
   }
