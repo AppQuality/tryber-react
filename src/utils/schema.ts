@@ -273,6 +273,7 @@ export interface paths {
   };
   "/users/me/payments": {
     get: operations["get-users-me-payments"];
+    post: operations["post-users-me-payments"];
     parameters: {};
   };
   "/custom_user_fields": {
@@ -478,15 +479,11 @@ export interface components {
       /** Format: date */
       achievement_date: string;
     };
-    /**
-     * FiscalType
-     * @enum {string}
-     */
+    /** FiscalType */
     FiscalType: "withholding" | "witholding-extra" | "other" | "non-italian";
     /** CustomUserFieldsData */
     CustomUserFieldsData: {
       id: number;
-      /** @enum {string} */
       type: "select" | "multiselect" | "text";
       placeholder?: components["schemas"]["TranslatablePage"];
       allow_other?: boolean;
@@ -1225,7 +1222,6 @@ export interface operations {
             }[];
             onboarding_completed?: boolean;
             additional?: components["schemas"]["AdditionalField"][];
-            /** @enum {string} */
             gender?: "male" | "female" | "not-specified";
             /** Format: date */
             birthDate?: string;
@@ -1244,6 +1240,10 @@ export interface operations {
             city?: string;
             attended_cp?: number;
             approved_bugs?: number;
+            booty_threshold?: {
+              value: number;
+              isOver: boolean;
+            };
           };
         };
       };
@@ -1310,7 +1310,6 @@ export interface operations {
             }[];
             onboarding_completed?: boolean;
             additional?: components["schemas"]["AdditionalField"][];
-            /** @enum {string} */
             gender?: "male" | "female" | "not-specified";
             /** Format: date */
             birthDate?: string;
@@ -1344,7 +1343,6 @@ export interface operations {
           email?: string;
           onboarding_completed?: boolean;
           surname?: string;
-          /** @enum {string} */
           gender?: "male" | "female" | "not-specified";
           birthDate?: string;
           phone?: string;
@@ -1467,9 +1465,7 @@ export interface operations {
               province?: string;
             };
             fiscalId: string;
-            /** @enum {string} */
             fiscalStatus: "Verified" | "Unverified";
-            /** @enum {string} */
             gender: "male" | "female";
           };
         };
@@ -1499,9 +1495,7 @@ export interface operations {
               province?: string;
             };
             fiscalId: string;
-            /** @enum {string} */
             fiscalStatus: "Verified" | "Unverified";
-            /** @enum {string} */
             gender: "male" | "female";
           };
         };
@@ -1522,7 +1516,6 @@ export interface operations {
           type: components["schemas"]["FiscalType"];
           birthPlace?: components["schemas"]["FiscalBirthCity"];
           fiscalId: string;
-          /** @enum {string} */
           gender: "male" | "female";
         };
       };
@@ -1549,9 +1542,7 @@ export interface operations {
               province?: string;
             };
             fiscalId: string;
-            /** @enum {string} */
             fiscalStatus: "Verified" | "Unverified";
-            /** @enum {string} */
             gender: "male" | "female";
           };
         };
@@ -1572,7 +1563,6 @@ export interface operations {
           type: components["schemas"]["FiscalType"];
           birthPlace?: components["schemas"]["FiscalBirthCity"];
           fiscalId: string;
-          /** @enum {string} */
           gender: "male" | "female";
         };
       };
@@ -1950,18 +1940,15 @@ export interface operations {
         content: {
           "application/json": {
             results?: ({
-              id: number;
+              id?: number;
             } & {
-              /** @enum {string} */
               status: "paid" | "processing";
               amount: {
                 value?: number;
                 currency?: string;
               };
-              /** Format: date */
               paidDate?: string;
               method?: {
-                /** @enum {string} */
                 type?: "paypal" | "iban";
                 note?: string;
               };
@@ -1977,6 +1964,38 @@ export interface operations {
       };
       403: components["responses"]["NotAuthorized"];
       404: components["responses"]["NotFound"];
+    };
+  };
+  "post-users-me-payments": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id?: number;
+            amount?: number;
+          };
+        };
+      };
+      /** Forbidden */
+      403: unknown;
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          method:
+            | {
+                type: "paypal";
+                email: string;
+              }
+            | {
+                type: "iban";
+                accountHolderName: string;
+                iban: string;
+              };
+        };
+      };
     };
   };
   "get-customUserFields": {
@@ -2054,7 +2073,6 @@ export interface operations {
                 value: number;
                 currency: string;
               };
-              /** @enum {string} */
               type: "paypal" | "transferwise";
               tryber: {
                 id: number;
@@ -2082,11 +2100,9 @@ export interface operations {
       400: {
         content: {
           "application/json": {
-            /** @enum {string} */
             element: "payments";
             id: number;
             message: {
-              /** @enum {string} */
               code: "GENERIC_ERROR";
               data: string;
             };
@@ -2099,11 +2115,9 @@ export interface operations {
       422: {
         content: {
           "application/json": {
-            /** @enum {string} */
             element: "payments";
             id: number;
             message: {
-              /** @enum {string} */
               code:
                 | "GENERIC_ERROR"
                 | "NO_FUNDS"
