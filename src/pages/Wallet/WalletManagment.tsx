@@ -5,8 +5,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import styled from "styled-components";
 import { useAppDispatch } from "../../redux/provider";
-import { fetchBootyInfo } from "../../redux/wallet/actionCreator";
-import { currencyTable } from "../../redux/wallet/utils";
+import { fetchBooty } from "../../redux/wallet/actionCreator";
 
 const WalletManagmentRow = styled.div`
   display: flex;
@@ -38,19 +37,16 @@ export const WalletManagment = () => {
     shallowEqual
   );
 
-  // initial requests
-  useEffect(() => {
-    dispatch(fetchBootyInfo());
-  }, []);
-
   const isVerified = fiscalStatus === "Verified";
+  const isValidAmount = booty.bootyThreshold?.isOver;
   const paymentInProcessing = requestsList.results?.some(
     (r) => r.status === "processing"
   );
 
-  const isValidAmount = booty.threshold
-    ? booty.amount.value >= booty.threshold
-    : booty.amount.value > 0;
+  // initial requests
+  useEffect(() => {
+    dispatch(fetchBooty());
+  }, []);
 
   return (
     <Card
@@ -65,17 +61,12 @@ export const WalletManagment = () => {
             <Text>{t("__WALLET_CARD-YOUR_WALLET_MAX: 15")}</Text>
             <Text
               className={
-                !isVerified || booty.amount.value === 0 || paymentInProcessing
+                !isVerified || booty.amount === 0 || paymentInProcessing
                   ? "aq-text-disabled-dark"
                   : ""
               }
             >
-              <strong>
-                {booty.amount.value.toFixed(2)}
-                {booty.amount.currency && booty.amount.currency in currencyTable
-                  ? currencyTable[booty.amount.currency]
-                  : booty.amount.currency}
-              </strong>
+              <strong>{booty.amount?.toFixed(2)}€</strong>
             </Text>
           </div>
         </div>
@@ -107,7 +98,7 @@ export const WalletManagment = () => {
                 fiscal_profile_link: <a href="/my-account/?tab=fiscal" />,
               }}
             />
-          ) : booty.amount.value === 0 ? (
+          ) : booty.amount === 0 ? (
             <Trans
               i18nKey={"__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150"}
             />

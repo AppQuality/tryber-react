@@ -13,7 +13,7 @@ export const getUserPaymentRequests = async (
   });
 };
 
-export const getBootyInfo = async (
+export const getBooty = async (
   query?: ApiOperations["get-users-me"]["parameters"]["query"],
   token?: string
 ): Promise<
