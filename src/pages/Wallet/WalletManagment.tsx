@@ -93,22 +93,39 @@ export const WalletManagment = () => {
         {t("__WALLET_CARD-REQUEST_CTA MAX: 25")}
       </Button>
       <Text className="aq-mt-2" small>
-        <Trans
-          i18nKey={
-            paymentInProcessing
-              ? "__WALLET_CARD-REQUEST_DISCLAIMER-PROCESSING MAX: 150"
-              : isVerified
-              ? isValidAmount
-                ? "Available tags : <fiscal_profile_link> (Link to fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150"
-                : booty.amount.value === 0
-                ? "__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150"
-                : "__WALLET_CARD-REQUEST_DISCLAIMER-NOREQUEST MAX: 150"
-              : "Available tags : <fiscal_profile_link> (Link to fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150 "
-          }
-          components={{
-            fiscal_profile_link: <a href="/my-account/?tab=fiscal" />,
-          }}
-        />
+        {paymentInProcessing ? (
+          <Trans
+            i18nKey={"__WALLET_CARD-REQUEST_DISCLAIMER-PROCESSING MAX: 150"}
+          />
+        ) : isVerified ? (
+          isValidAmount ? (
+            <Trans
+              i18nKey={
+                "Available tags : <fiscal_profile_link> (Link to fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150"
+              }
+              components={{
+                fiscal_profile_link: <a href="/my-account/?tab=fiscal" />,
+              }}
+            />
+          ) : booty.amount.value === 0 ? (
+            <Trans
+              i18nKey={"__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150"}
+            />
+          ) : (
+            <Trans
+              i18nKey={"__WALLET_CARD-REQUEST_DISCLAIMER-NOREQUEST MAX: 150"}
+            />
+          )
+        ) : (
+          <Trans
+            i18nKey={
+              "Available tags : <fiscal_profile_link> (Link to fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150 "
+            }
+            components={{
+              fiscal_profile_link: <a href="/my-account/?tab=fiscal" />,
+            }}
+          />
+        )}
       </Text>
     </Card>
   );
