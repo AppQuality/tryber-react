@@ -16,7 +16,6 @@ import { shallowEqual, useSelector } from "react-redux";
 import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
-import { initialState } from "src/redux/wallet/reducer";
 
 export const WalletTable = () => {
   const { t } = useTranslation();
