@@ -6,14 +6,22 @@ import { Step1Data } from "src/pages/Wallet/paymentModal/Step1Data";
 import { FormWrapper } from "src/pages/Wallet/paymentModal/FormWrapper";
 import { FormikProps } from "formik";
 import { useState } from "react";
+import { shallowEqual, useSelector } from "react-redux";
+import { setPaymentModalOpen } from "src/redux/wallet/actionCreator";
 import { Step2Recap } from "src/pages/Wallet/paymentModal/Step2Recap";
 import { Step3Feedback } from "src/pages/Wallet/paymentModal/Step3Feedback";
+import { useAppDispatch } from "src/redux/provider";
 
 export const PaymentModal = () => {
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const [completedSteps, setCompletedSteps] = useState([false, false, false]);
+  const { isPaymentModalOpen } = useSelector(
+    (state: GeneralState) => state.wallet,
+    shallowEqual
+  );
   const closeModal = () => {
-    return;
+    dispatch(setPaymentModalOpen(false));
   };
   return (
     <FormWrapper>
@@ -22,7 +30,7 @@ export const PaymentModal = () => {
         return (
           <form onSubmit={formikProps.handleSubmit}>
             <Modal
-              isOpen={true}
+              isOpen={isPaymentModalOpen}
               onClose={closeModal}
               title={t("Request a payment")}
               footer={
