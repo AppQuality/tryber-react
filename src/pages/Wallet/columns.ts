@@ -53,10 +53,12 @@ export const walletColumns = (
       role: "title",
       hideIndex: true,
     },
-    // {
-    //   title: t("Actions"),
-    //   dataIndex: "actions",
-    //   key: "actions",
-    // },
+    {
+      title: t("Actions"),
+      dataIndex: "actions",
+      key: "actions",
+      align: "right",
+      maxWidth: "max-content",
+    },
   ];
 };

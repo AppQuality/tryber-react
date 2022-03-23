@@ -424,6 +424,8 @@
   "__WALLET_CARD-GUIDES_CTA MAX: 20": "Lorem ipsum dolor si",
   "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed",
   "__WALLET_CARD-GUIDES_TITLE MAX: 35": "Lorem ipsum dolor sit amet, consect",
+  "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "",
+  "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "",
   "address": "indirizzo",
   "company": "Società",
   "contact us": "Contattaci",

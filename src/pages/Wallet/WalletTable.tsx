@@ -17,6 +17,24 @@ import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { initialState } from "src/redux/wallet/reducer";
+import pdfIcon from "src/pages/Wallet/assets/pdf.svg";
+import detailsIcon from "src/pages/Wallet/assets/details.svg";
+import styled from "styled-components";
+
+const ActionsCell = styled.div`
+  display: flex;
+  .pdf-disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+  .action-pdf {
+    padding-right: 1em;
+    height: 100%;
+  }
+  .action-details {
+    padding-right: 0.5em;
+  }
+`;
 
 export const WalletTable = () => {
   const { t } = useTranslation();
@@ -96,6 +114,34 @@ export const WalletTable = () => {
                     {req.method?.note}
                   </span>
                 </div>
+              ),
+            },
+            actions: {
+              title: "",
+              content: (
+                <ActionsCell>
+                  <a
+                    className={
+                      req.status === "processing" ? "pdf-disabled" : ""
+                    }
+                    href={req.receipt}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className="action-pdf"
+                      src={pdfIcon}
+                      title={t("__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:")}
+                      alt={t("__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:")}
+                    />
+                  </a>
+                  <img
+                    className="action-details"
+                    src={detailsIcon}
+                    title={t("__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:")}
+                    alt={t("__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:")}
+                  />
+                </ActionsCell>
               ),
             },
           };
