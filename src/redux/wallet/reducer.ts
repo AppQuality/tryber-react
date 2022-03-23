@@ -11,6 +11,7 @@ export const initialState: WalletState = {
     orderBy: "paidDate",
     results: [],
   },
+  isPaymentModalOpen: false,
 };
 
 export default (state = initialState, action: WalletActions) => {
@@ -38,6 +39,11 @@ export default (state = initialState, action: WalletActions) => {
           amount: action.payload.booty,
           bootyThreshold: action.payload.booty_threshold,
         },
+      };
+    case "wallet/togglePaymentModal":
+      return {
+        ...state,
+        isPaymentModalOpen: action.payload,
       };
     default:
       return state;
