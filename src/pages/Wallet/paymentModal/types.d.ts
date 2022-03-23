@@ -1,8 +1,8 @@
 interface PaymentModalFormProps {}
 interface PaymentModalFooterProps {}
 type PaymentFormType = {
-  method: string;
-  termsAcceptanceCheckbox: boolean;
+  paymentMethod: string;
+  termsAcceptance: boolean;
   ppAccountOwner: string;
   confirmEmail: string;
   bankaccountOwner: string;
