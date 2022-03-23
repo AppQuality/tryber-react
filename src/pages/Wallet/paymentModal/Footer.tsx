@@ -8,7 +8,8 @@ const StyledFooter = styled.div`
   justify-content: flex-end;
   ${Button} {
     flex-grow: 1;
-    flex-basis: 100px;
+    flex-basis: max-content;
+    min-width: 100px;
     @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
       flex-grow: 0;
     }

@@ -1,6 +1,7 @@
-import { Formik } from "formik";
+import { Formik, FormikHelpers } from "formik";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
+import API from "src/utils/api";
 
 export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
   children,
@@ -66,8 +67,15 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
       }),
     }),
   };
-
-  const onSubmit = () => {};
+  const onSubmit = async (
+    values: PaymentFormType,
+    formikHelper: FormikHelpers<PaymentFormType>
+  ) => {
+    formikHelper.setSubmitting(true);
+    const results = await API.postPaymentRequest();
+    formikHelper.setSubmitting(false);
+    formikHelper.setFieldValue("step", 3);
+  };
   return (
     <Formik
       initialValues={initialValues}
