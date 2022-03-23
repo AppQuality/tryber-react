@@ -76,7 +76,6 @@ export const fetchBooty =
         fields: "booty,booty_threshold",
       };
       const data = await API.getBooty(query);
-      console.log(data);
       return dispatch({
         type: "wallet/setBooty",
         payload: data,

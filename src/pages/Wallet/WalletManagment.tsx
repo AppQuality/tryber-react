@@ -4,8 +4,8 @@ import { PiggyBankFill } from "react-bootstrap-icons";
 import { Trans, useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import styled from "styled-components";
-import { useAppDispatch } from "../../redux/provider";
-import { fetchBooty } from "../../redux/wallet/actionCreator";
+import { useAppDispatch } from "src/redux/provider";
+import { fetchBooty } from "src/redux/wallet/actionCreator";
 
 const WalletManagmentRow = styled.div`
   display: flex;
