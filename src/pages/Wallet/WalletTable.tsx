@@ -20,6 +20,7 @@ import { initialState } from "src/redux/wallet/reducer";
 import pdfIcon from "src/pages/Wallet/assets/pdf.svg";
 import detailsIcon from "src/pages/Wallet/assets/details.svg";
 import styled from "styled-components";
+import { PaymentDetailsModal } from "./PaymentDetailsModal/PaymentDetailsModal";
 
 const ActionsCell = styled.div`
   display: flex;
@@ -33,6 +34,7 @@ const ActionsCell = styled.div`
   }
   .action-details {
     padding-right: 0.5em;
+    cursor: pointer;
   }
 `;
 
@@ -42,6 +44,9 @@ export const WalletTable = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
   const [rows, setRows] = useState<TableType.Row[]>([]);
+  const [openDetails, setOpenDetails] = useState<boolean>(false);
+  const [paymentId, setPaymentId] = useState<number | undefined>();
+
   const { requestsList } = useSelector(
     (state: GeneralState) => state.wallet,
     shallowEqual
@@ -140,6 +145,10 @@ export const WalletTable = () => {
                     src={detailsIcon}
                     title={t("__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:")}
                     alt={t("__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:")}
+                    onClick={() => {
+                      setPaymentId(req.id);
+                      setOpenDetails(true);
+                    }}
                   />
                 </ActionsCell>
               ),
@@ -181,6 +190,14 @@ export const WalletTable = () => {
             .replace("%current%", current.toString())
             .replace("%total%", total ? total.toString() : "0")
         }
+      />
+      <PaymentDetailsModal
+        open={openDetails}
+        onClose={() => {
+          setOpenDetails(false);
+          setPaymentId(undefined);
+        }}
+        paymentId={paymentId}
       />
     </>
   );

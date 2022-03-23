@@ -14,6 +14,15 @@ export const initialState: WalletState = {
     orderBy: "paidDate",
     results: [],
   },
+  paymentDetails: {
+    start: 0,
+    limit: 10,
+    size: 0,
+    total: 0,
+    order: "DESC",
+    orderBy: "date",
+    results: [],
+  },
 };
 
 export default (state = initialState, action: WalletActions) => {

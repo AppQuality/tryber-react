@@ -20,6 +20,25 @@ type WalletState = {
       items: Attribution[];
     };
   };
+  // TODO ApiOperations get user/me/payments/{payment}
+  paymentDetails: {
+    results: {
+      id: number;
+      type: string;
+      amount: {
+        value?: number;
+        currency?: string;
+      };
+      date: string;
+      activity: string;
+    }[];
+    start: number;
+    total: number;
+    limit: number;
+    size: number;
+    order: ApiOperations["get-users-me-payments"]["parameters"]["query"]["order"];
+    orderBy: ApiOperations["get-users-me-payments"]["parameters"]["query"]["orderBy"];
+  };
 };
 
 type Attribution = {
