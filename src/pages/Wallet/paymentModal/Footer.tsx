@@ -1,25 +1,56 @@
-import { Button } from "@appquality/appquality-design-system";
+import { Button, CSSGrid } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { useFormikContext } from "formik";
+import styled from "styled-components";
 
-export const Footer: React.FunctionComponent<PaymentModalFooterProps> = () => {
+const StyledFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  ${Button} {
+    flex-grow: 1;
+    flex-basis: 100px;
+    @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+      flex-grow: 0;
+    }
+  }
+`;
+
+export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
+  completedSteps,
+  setCompletedSteps,
+}) => {
   const { t } = useTranslation();
-  const { isValid, dirty, errors, values, setFieldValue } =
-    useFormikContext<PaymentFormType>();
+  const {
+    values: { step },
+    setFieldValue,
+    validateForm,
+    setFieldTouched,
+  } = useFormikContext<PaymentFormType>();
   const decrementStep = () => {
-    setFieldValue("step", values.step - 1);
+    setFieldValue("step", step - 1);
   };
-  const incrementStep = () => {
-    if (isValid && dirty) setFieldValue("step", values.step + 1);
+  const incrementStep = async () => {
+    if (step === 0) {
+      setFieldTouched("paymentMethod");
+      setFieldTouched("termsAcceptance");
+    }
+    const errors = await validateForm();
+    if (Object.keys(errors).length === 0) {
+      completedSteps[step] = true;
+      setCompletedSteps(completedSteps);
+      setFieldValue("step", step + 1);
+    }
   };
   return (
-    <div>
-      {values.step > 0 && (
-        <Button onClick={decrementStep} className="aq-mr-3">
+    <StyledFooter>
+      {step > 0 && (
+        <Button flat onClick={decrementStep} className="aq-mr-3">
           {t("Back")}
         </Button>
       )}
-      <Button onClick={incrementStep}>{t("Continue")}</Button>
-    </div>
+      <Button flat onClick={incrementStep}>
+        {t("Continue")}
+      </Button>
+    </StyledFooter>
   );
 };

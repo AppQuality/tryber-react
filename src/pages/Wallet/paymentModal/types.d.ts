@@ -1,5 +1,8 @@
 interface PaymentModalFormProps {}
-interface PaymentModalFooterProps {}
+interface PaymentModalFooterProps {
+  completedSteps: boolean[];
+  setCompletedSteps: React.Dispatch<React.SetStateAction<boolean[]>>;
+}
 type PaymentFormType = {
   step: number;
   paymentMethod: string;

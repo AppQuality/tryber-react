@@ -20,7 +20,10 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
       .string()
       .required(t("This is a required field"))
       .oneOf(["paypal", "bank"]),
-    termsAcceptance: yup.boolean().required(t("This is a required field")),
+    termsAcceptance: yup
+      .boolean()
+      .required(t("This is a required field"))
+      .oneOf([true], t("you must accept terms and conditions")),
     ppAccountOwner: yup.string().when("step", {
       is: 1,
       then: yup.string().when("paymentMethod", {

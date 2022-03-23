@@ -59,6 +59,7 @@ export const Step0Method = () => {
                 onChange={onCheckChange}
                 checked={field.value}
                 label={t("accept conditions and continue request")}
+                onBlur={field.onBlur}
               />
               <ErrorMessage name={field.name} />
             </FormGroup>
