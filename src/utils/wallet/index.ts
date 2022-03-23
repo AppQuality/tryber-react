@@ -25,3 +25,15 @@ export const getBooty = async (
     params: query,
   });
 };
+
+export const postPaymentRequest = async (
+  token?: string
+): Promise<
+  ApiOperations["post-users-me-payments"]["responses"]["200"]["content"]["application/json"]
+> => {
+  return apifetch({
+    endpoint: "/users/me/payments",
+    token: token,
+    method: "POST",
+  });
+};
