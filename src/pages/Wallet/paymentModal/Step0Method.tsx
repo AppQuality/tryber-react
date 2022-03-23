@@ -9,7 +9,7 @@ import {
 import { FieldProps } from "formik";
 import { BaseSyntheticEvent } from "react";
 
-export const PaymentMethod = () => {
+export const Step0Method = () => {
   const { t } = useTranslation();
   return (
     <div>
@@ -57,6 +57,7 @@ export const PaymentMethod = () => {
                 id="termsAcceptance"
                 name={field.name}
                 onChange={onCheckChange}
+                checked={field.value}
                 label={t("accept conditions and continue request")}
               />
               <ErrorMessage name={field.name} />

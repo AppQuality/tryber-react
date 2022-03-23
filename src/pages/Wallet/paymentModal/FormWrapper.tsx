@@ -39,7 +39,7 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
           .string()
           .required(t("This is a required field"))
           .email(t("Email must be a valid email"))
-          .oneOf([yup.ref("ppAccountOwner")]),
+          .oneOf([yup.ref("ppAccountOwner")], t("email must be the same")),
       }),
     }),
     bankaccountOwner: yup.string().when("step", {

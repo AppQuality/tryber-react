@@ -1,10 +1,10 @@
 import { Modal, ModalBody, Steps } from "@appquality/appquality-design-system";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Footer } from "src/pages/Wallet/paymentModal/Footer";
-import { PaymentMethod } from "src/pages/Wallet/paymentModal/PaymentMethod";
+import { Step0Method } from "src/pages/Wallet/paymentModal/Step0Method";
+import { Step1Data } from "src/pages/Wallet/paymentModal/Step1Data";
 import { FormWrapper } from "src/pages/Wallet/paymentModal/FormWrapper";
-import { FormikProps, useFormikContext } from "formik";
+import { FormikProps } from "formik";
 
 export const PaymentModal = () => {
   const { t } = useTranslation();
@@ -15,12 +15,12 @@ export const PaymentModal = () => {
     {
       title: t("Method"),
       isComplete: false,
-      content: <PaymentMethod />,
+      content: <Step0Method />,
     },
     {
       title: t("Data"),
       isComplete: false,
-      content: <div>{t("Bank account owner")}</div>,
+      content: <Step1Data />,
     },
     {
       title: t("Confirm"),
