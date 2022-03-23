@@ -6,18 +6,10 @@ type WalletState = {
     orderBy: ApiOperations["get-users-me-payments"]["parameters"]["query"]["orderBy"];
   };
   booty: {
-    amount: {
+    amount: number;
+    bootyThreshold?: {
       value: number;
-      currency: string;
-    };
-    threshold?: number;
-    overThreshold?: boolean;
-    details?: {
-      limit?: number;
-      size: number;
-      start: number;
-      total?: number;
-      items: Attribution[];
+      isOver: boolean;
     };
   };
 };
@@ -33,7 +25,8 @@ type Attribution = {
 
 type WalletActions =
   | WalletActions_UpdateRequestList
-  | WalletActions_UpdateRequestQuery;
+  | WalletActions_UpdateRequestQuery
+  | WalletActions_SetBooty;
 
 /**
  *  Action types and their payloads
@@ -42,6 +35,12 @@ type WalletActions_UpdateRequestList = {
   type: "wallet/updateRequestsList";
   payload: ApiOperations["get-users-me-payments"]["responses"]["200"]["content"]["application/json"];
 };
+
+type WalletActions_SetBooty = {
+  type: "wallet/setBooty";
+  payload: ApiOperations["get-users-me"]["responses"]["200"]["content"]["application/json"];
+};
+
 type WalletActions_UpdateRequestQuery = {
   type: "wallet/updateReqsQuery";
   payload: ApiOperations["get-users-me-payments"]["parameters"]["query"];

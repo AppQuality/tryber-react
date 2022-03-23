@@ -1,9 +1,6 @@
 export const initialState: WalletState = {
   booty: {
-    amount: {
-      value: 0,
-      currency: "EUR",
-    },
+    amount: 0,
   },
   requestsList: {
     start: 0,
@@ -32,6 +29,14 @@ export default (state = initialState, action: WalletActions) => {
         requestsList: {
           ...state.requestsList,
           ...action.payload,
+        },
+      };
+    case "wallet/setBooty":
+      return {
+        ...state,
+        booty: {
+          amount: action.payload.booty,
+          bootyThreshold: action.payload.booty_threshold,
         },
       };
     default:

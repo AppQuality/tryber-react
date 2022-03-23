@@ -12,3 +12,16 @@ export const getUserPaymentRequests = async (
     params: query,
   });
 };
+
+export const getBooty = async (
+  query?: ApiOperations["get-users-me"]["parameters"]["query"],
+  token?: string
+): Promise<
+  ApiOperations["get-users-me"]["responses"]["200"]["content"]["application/json"]
+> => {
+  return apifetch({
+    endpoint: "/users/me",
+    token: token,
+    params: query,
+  });
+};
