@@ -25,9 +25,17 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
     setFieldValue,
     validateForm,
     setFieldTouched,
+    resetForm,
   } = useFormikContext<PaymentFormType>();
-  const decrementStep = () => {
-    setFieldValue("step", step - 1);
+  const onClickBack = () => {
+    if (step === 3) {
+      // close modal
+      alert("reset form and closeModal");
+      resetForm();
+    } else {
+      // decrement step
+      setFieldValue("step", step - 1);
+    }
   };
   const incrementStep = async () => {
     if (step === 0) {
@@ -44,13 +52,20 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
   return (
     <StyledFooter>
       {step > 0 && (
-        <Button flat onClick={decrementStep} className="aq-mr-3">
-          {t("Back")}
+        <Button flat onClick={onClickBack} className="aq-mr-3">
+          {step === 3 ? t("Back to wallet") : t("Back")}
         </Button>
       )}
-      <Button flat onClick={incrementStep}>
-        {t("Continue")}
-      </Button>
+      {step < 2 && (
+        <Button flat onClick={incrementStep}>
+          {t("Continue")}
+        </Button>
+      )}
+      {step === 2 && (
+        <Button flat htmlType="submit">
+          {t("Request payment")}
+        </Button>
+      )}
     </StyledFooter>
   );
 };

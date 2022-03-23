@@ -35,10 +35,10 @@ export const Step2Recap = () => {
           <strong>{t("Bank Transfer")}</strong>
         </div>
       )}
-      <div className="aq-text-center aq-mb-3" style={{ maxWidth: "430px" }}>
+      <div className="aq-text-center aq-mb-3">
         {t("Total booty")} <strong>€50</strong>
       </div>
-      <div>
+      <div style={{ maxWidth: "430px", margin: "0 auto" }}>
         {values.paymentMethod === "paypal" ? (
           <>
             <div>
