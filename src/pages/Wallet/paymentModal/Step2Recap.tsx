@@ -4,6 +4,9 @@ import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { useFormikContext } from "formik";
 import styled from "styled-components";
 import { shallowEqual, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useAppDispatch } from "src/redux/provider";
+import { getFiscalProfile } from "src/redux/user/actions/getFiscalProfile";
 
 const iconStyle = {
   verticalAlign: "middle",
@@ -12,6 +15,7 @@ const iconStyle = {
 };
 export const Step2Recap = () => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
   const { values } = useFormikContext<PaymentFormType>();
   const { data, loading } = useSelector(
     (state: GeneralState) => state.user.fiscal,
@@ -21,12 +25,13 @@ export const Step2Recap = () => {
     (state: GeneralState) => state.wallet.booty,
     shallowEqual
   );
-  console.log(loading);
-  console.log(data);
+  useEffect(() => {
+    dispatch(getFiscalProfile());
+  }, []);
   return (
     <>
       {values.paymentMethod === "paypal" ? (
-        <div className="aq-text-center">
+        <div className="aq-text-center aq-mb-2">
           <img
             style={iconStyle}
             src={paypalIcon}
@@ -64,17 +69,20 @@ export const Step2Recap = () => {
             </div>
           </>
         )}
-        <div>
+        <div className="aq-pt-3">
           <strong>{t("This data is retrived from your fiscal profile")}</strong>
         </div>
         <div>
-          {t("Nationl Id Number")}: <strong>{data?.fiscalId}</strong>
+          {t("National Id Number")}: <strong>{data?.fiscalId}</strong>
         </div>
         <div>
           {t("Fiscal Type")}: <strong>{data?.type}</strong>
         </div>
         <div>
-          {t("Birth place")}: <strong>{data?.birthPlace}</strong>
+          {t("Birth place")}:{" "}
+          <strong>
+            {data?.birthPlace.city} - {data?.birthPlace.province}
+          </strong>
         </div>
         <div>
           {t("Address")}:{" "}
