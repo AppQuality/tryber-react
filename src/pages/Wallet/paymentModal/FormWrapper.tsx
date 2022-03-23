@@ -7,6 +7,7 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
 }) => {
   const { t } = useTranslation();
   const initialValues: PaymentFormType = {
+    step: 0,
     paymentMethod: "",
     termsAcceptance: false,
     ppAccountOwner: "",
@@ -20,31 +21,47 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
       .required(t("This is a required field"))
       .oneOf(["paypal", "bank"]),
     termsAcceptance: yup.boolean().required(t("This is a required field")),
-    ppAccountOwner: yup.string().when("paymentMethod", {
-      is: "paypal",
-      then: yup
-        .string()
-        .required(t("This is a required field"))
-        .email(t("Email must be a valid email")),
+    ppAccountOwner: yup.string().when("step", {
+      is: 1,
+      then: yup.string().when("paymentMethod", {
+        is: "paypal",
+        then: yup
+          .string()
+          .required(t("This is a required field"))
+          .email(t("Email must be a valid email")),
+      }),
     }),
-    confirmEmail: yup.string().when("paymentMethod", {
-      is: "paypal",
-      then: yup
-        .string()
-        .required(t("This is a required field"))
-        .email(t("Email must be a valid email"))
-        .oneOf([yup.ref("ppAccountOwner")]),
+    confirmEmail: yup.string().when("step", {
+      is: 1,
+      then: yup.string().when("paymentMethod", {
+        is: "paypal",
+        then: yup
+          .string()
+          .required(t("This is a required field"))
+          .email(t("Email must be a valid email"))
+          .oneOf([yup.ref("ppAccountOwner")]),
+      }),
     }),
-    bankaccountOwner: yup.string().when("paymentMethod", {
-      is: "bank",
-      then: yup.string().required(t("This is a required field")),
+    bankaccountOwner: yup.string().when("step", {
+      is: 1,
+      then: yup.string().when("paymentMethod", {
+        is: "bank",
+        then: yup.string().required(t("This is a required field")),
+      }),
     }),
-    iban: yup
-      .string()
-      .matches(
-        /^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/gi,
-        t("This is an invalid format.")
-      ),
+    iban: yup.string().when("step", {
+      is: 1,
+      then: yup.string().when("paymentMethod", {
+        is: "bank",
+        then: yup
+          .string()
+          .required()
+          .matches(
+            /^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/gi,
+            t("This is an invalid format.")
+          ),
+      }),
+    }),
   };
 
   const onSubmit = () => {};
