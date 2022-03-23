@@ -3,6 +3,7 @@ import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { useFormikContext } from "formik";
 import styled from "styled-components";
+import { shallowEqual, useSelector } from "react-redux";
 
 const iconStyle = {
   verticalAlign: "middle",
@@ -12,6 +13,16 @@ const iconStyle = {
 export const Step2Recap = () => {
   const { t } = useTranslation();
   const { values } = useFormikContext<PaymentFormType>();
+  const { data, loading } = useSelector(
+    (state: GeneralState) => state.user.fiscal,
+    shallowEqual
+  );
+  const { amount } = useSelector(
+    (state: GeneralState) => state.wallet.booty,
+    shallowEqual
+  );
+  console.log(loading);
+  console.log(data);
   return (
     <>
       {values.paymentMethod === "paypal" ? (
@@ -36,38 +47,42 @@ export const Step2Recap = () => {
         </div>
       )}
       <div className="aq-text-center aq-mb-3">
-        {t("Total booty")} <strong>€50</strong>
+        {t("Total booty")} <strong>€{amount}</strong>
       </div>
       <div style={{ maxWidth: "430px", margin: "0 auto" }}>
         {values.paymentMethod === "paypal" ? (
+          <div>
+            Email Paypal: <strong>{values.ppAccountOwner}</strong>
+          </div>
+        ) : (
           <>
             <div>
-              {t("Account holder")}: <strong>Ciccio Paguro</strong>
+              {t("Account holder")}: <strong>{values.bankaccountOwner}</strong>
             </div>
             <div>
-              {t("Iban")}: <strong>Ciccio Paguro</strong>
+              {t("Iban")}: <strong>{values.iban}</strong>
             </div>
           </>
-        ) : (
-          <div>
-            'Email Paypal': <strong>cvsdywdguwd@gmail.como</strong>
-          </div>
         )}
         <div>
           <strong>{t("This data is retrived from your fiscal profile")}</strong>
         </div>
         <div>
-          {t("Nationl Id Number")}: <strong>CRCVLR90B56H501F</strong>
+          {t("Nationl Id Number")}: <strong>{data?.fiscalId}</strong>
         </div>
         <div>
-          {t("Fiscal Type")}: <strong>€ 5.000</strong>
+          {t("Fiscal Type")}: <strong>{data?.type}</strong>
         </div>
         <div>
-          {t("Date of birth")}: <strong>28/02/1990</strong>
+          {t("Birth place")}: <strong>{data?.birthPlace}</strong>
         </div>
         <div>
           {t("Address")}:{" "}
-          <strong>Via Largo Gerardo 78, 61121 Montoro, IT</strong>
+          <strong>
+            {data?.address.street} {data?.address.streetNumber},{" "}
+            {data?.address.cityCode} {data?.address.city},{" "}
+            {data?.address.country}
+          </strong>
         </div>
       </div>
     </>

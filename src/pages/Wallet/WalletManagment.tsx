@@ -131,7 +131,7 @@ export const WalletManagment = () => {
         className="aq-mt-3"
         type="primary"
         size="block"
-        disabled={!isVerified || !isValidAmount || paymentInProcessing}
+        //disabled={!isVerified || !isValidAmount || paymentInProcessing}
         onClick={openPaymentModal}
         flat
       >
