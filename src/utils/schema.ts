@@ -1940,17 +1940,17 @@ export interface operations {
         content: {
           "application/json": {
             results?: ({
-              id?: number;
+              id: number;
             } & {
               status: "paid" | "processing";
               amount: {
                 value?: number;
                 currency?: string;
               };
-              paidDate?: string;
-              method?: {
-                type?: "paypal" | "iban";
-                note?: string;
+              paidDate: string;
+              method: {
+                type: "paypal" | "iban";
+                note: string;
               };
               /** Format: uri-reference */
               receipt?: string;
