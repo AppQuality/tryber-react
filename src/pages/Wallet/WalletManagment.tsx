@@ -5,7 +5,10 @@ import { Trans, useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import styled from "styled-components";
 import { useAppDispatch } from "src/redux/provider";
-import { fetchBooty } from "src/redux/wallet/actionCreator";
+import {
+  fetchBooty,
+  setPaymentModalOpen,
+} from "src/redux/wallet/actionCreator";
 
 const WalletManagmentRow = styled.div`
   display: flex;
@@ -94,6 +97,10 @@ export const WalletManagment = () => {
     dispatch(fetchBooty());
   }, []);
 
+  const openPaymentModal = () => {
+    dispatch(setPaymentModalOpen(true));
+  };
+
   return (
     <Card
       className="aq-mb-3"
@@ -125,6 +132,7 @@ export const WalletManagment = () => {
         type="primary"
         size="block"
         disabled={!isVerified || !isValidAmount || paymentInProcessing}
+        onClick={openPaymentModal}
         flat
       >
         {t("__WALLET_CARD-REQUEST_CTA MAX: 25")}

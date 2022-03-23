@@ -12,21 +12,14 @@ type WalletState = {
       isOver: boolean;
     };
   };
-};
-
-type Attribution = {
-  id: number;
-  amount: {
-    value: number;
-    currency: string;
-  };
-  activity: string;
+  isPaymentModalOpen: boolean;
 };
 
 type WalletActions =
   | WalletActions_UpdateRequestList
   | WalletActions_UpdateRequestQuery
-  | WalletActions_SetBooty;
+  | WalletActions_SetBooty
+  | WalletActions_TogglePaymentModal;
 
 /**
  *  Action types and their payloads
@@ -44,4 +37,9 @@ type WalletActions_SetBooty = {
 type WalletActions_UpdateRequestQuery = {
   type: "wallet/updateReqsQuery";
   payload: ApiOperations["get-users-me-payments"]["parameters"]["query"];
+};
+
+type WalletActions_TogglePaymentModal = {
+  type: "wallet/togglePaymentModal";
+  payload: boolean;
 };

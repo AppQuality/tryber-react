@@ -85,3 +85,14 @@ export const fetchBooty =
       addMessage(error.message, "danger", false);
     }
   };
+
+export const setPaymentModalOpen =
+  (
+    isOpen: boolean
+  ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch) => {
+    dispatch({
+      type: "wallet/togglePaymentModal",
+      payload: isOpen,
+    });
+  };
