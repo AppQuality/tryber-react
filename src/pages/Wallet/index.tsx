@@ -9,7 +9,7 @@ export default function Wallet() {
   const { t } = useTranslation();
 
   return (
-    <PageTemplate title={t("Wallet")} route={"wallet"} shouldBeLoggedIn>
+    <PageTemplate title={t("Wallet")} route={"payments"} shouldBeLoggedIn>
       <BSGrid>
         <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
           <Card className="aq-mb-3">
