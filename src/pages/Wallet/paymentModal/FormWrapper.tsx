@@ -32,16 +32,18 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
       then: yup
         .string()
         .required(t("This is a required field"))
-        .email(t("Email must be a valid email")),
+        .email(t("Email must be a valid email"))
+        .oneOf([yup.ref("ppAccountOwner")]),
     }),
-    bankaccountOwner: yup.string().required(t("This is a required field")),
+    bankaccountOwner: yup.string().when("paymentMethod", {
+      is: "bank",
+      then: yup.string().required(t("This is a required field")),
+    }),
     iban: yup
       .string()
       .matches(
-        /^\+?((\d\-|\d)+\d){4,20}$/gi,
-        t(
-          "This is an invalid format. Should be formatted as +11000000000 or 0011000000000"
-        )
+        /^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/gi,
+        t("This is an invalid format.")
       ),
   };
 
