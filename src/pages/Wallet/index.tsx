@@ -24,8 +24,8 @@ export default function Wallet() {
         <PaymentModal />
       </OutsideContainer>
       <BSGrid>
-        <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
-          <Card className="aq-mb-3">
+        <BSCol size="col-lg-9" className="aq-mb-3">
+          <Card>
             <WalletTable />
           </Card>
         </BSCol>
