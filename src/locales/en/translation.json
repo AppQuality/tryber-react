@@ -52,8 +52,8 @@
     "@@Description for fiscal type@@": "<a>Click here</a> for more info"
   },
   "Available tags : <fiscal_profile_link> (Link to fiscal profile)": {
-    "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q",
-    "__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q"
+    "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150": "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150",
+    "__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150": "__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150"
   },
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supports companies in creating memorable experiences thanks to the power of the TRYBER Community. <unguess_link>Discover UNGUESS</unguess_link>"
@@ -450,11 +450,11 @@
   "__WALLET_CARD-GUIDES_CTA MAX: 20": "Lorem ipsum dolor si",
   "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed",
   "__WALLET_CARD-GUIDES_TITLE MAX: 35": "Lorem ipsum dolor sit amet, consect",
-  "__WALLET_CARD-REQUEST_CTA MAX: 25": "Lorem ipsum dolor sit ame",
+  "__WALLET_CARD-REQUEST_CTA MAX: 25": "__WALLET_CARD-REQUEST_CTA MAX: 25",
   "__WALLET_CARD-REQUEST_CTA-LINK MAX: 15": "Lorem ipsum dol",
-  "__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q",
-  "__WALLET_CARD-REQUEST_DISCLAIMER-NOREQUEST MAX: 150": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q",
-  "__WALLET_CARD-REQUEST_DISCLAIMER-PROCESSING MAX: 150": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q",
+  "__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150": "__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150",
+  "__WALLET_CARD-REQUEST_DISCLAIMER-NOREQUEST MAX: 150": "__WALLET_CARD-REQUEST_DISCLAIMER-NOREQUEST MAX: 150",
+  "__WALLET_CARD-REQUEST_DISCLAIMER-PROCESSING MAX: 150": "__WALLET_CARD-REQUEST_DISCLAIMER-PROCESSING MAX: 150",
   "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Lorem ipsum dolor sit amet, consectetur ",
   "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Lorem ipsum dol",
   "accept conditions and continue request": "",
