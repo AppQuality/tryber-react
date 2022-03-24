@@ -3,6 +3,7 @@ import {
   Pagination,
   TableType,
   SortTableSelect,
+  aqBootstrapTheme,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
@@ -17,6 +18,20 @@ import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 
+const iconStyle = {
+  width: "1em",
+  height: "1em",
+  alignItems: "middle",
+  display: "inline-block",
+};
+const methodStyle = {
+  maxWidth: `calc(100% - 36px)`, // 36 totally magic number, where does it came from?
+  lineHeight: "1em",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  display: "inline-block",
+};
 export const WalletTable = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -71,7 +86,7 @@ export const WalletTable = () => {
             method: {
               title: `${req.method?.type} - ${req.method?.note}`,
               content: (
-                <div style={{ display: "flex", alignItems: "center" }}>
+                <>
                   <img
                     src={
                       req.method?.type === "paypal"
@@ -82,19 +97,10 @@ export const WalletTable = () => {
                     }
                     alt={req.method?.type || "method not specified"}
                     className="aq-mr-3"
-                    style={{ width: "1em", height: "1em" }}
+                    style={iconStyle}
                   />{" "}
-                  <span
-                    style={{
-                      maxWidth: "calc(100% - 4em)",
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
-                    {req.method?.note}
-                  </span>
-                </div>
+                  <span style={methodStyle}>{req.method?.note}</span>
+                </>
               ),
             },
           };
