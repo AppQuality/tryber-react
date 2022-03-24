@@ -86,7 +86,7 @@ export const WalletTable = () => {
                   />{" "}
                   <span
                     style={{
-                      maxWidth: "calc(100% - 3em)",
+                      maxWidth: "calc(100% - 4em)",
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
