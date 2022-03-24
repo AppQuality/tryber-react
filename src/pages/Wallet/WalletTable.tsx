@@ -109,12 +109,14 @@ export const WalletTable = () => {
   };
   return (
     <>
-      <SortTableSelect
-        order={order || "DESC"}
-        orderBy={orderBy || "paidDate"}
-        columns={columns}
-        label={t("Order By", { context: "Sort Table Select" })}
-      />
+      {columns.length > 0 && (
+        <SortTableSelect
+          order={order}
+          orderBy={orderBy}
+          columns={columns}
+          label={t("Order By", { context: "Sort Table Select" })}
+        />
+      )}
       <Table
         className="aq-mb-3"
         dataSource={rows}

@@ -1,6 +1,7 @@
 import { ThunkAction } from "redux-thunk";
 import API from "src/utils/api";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
+import { components } from "src/utils/schema";
 
 export const fetchPaymentRequests =
   (): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
@@ -57,8 +58,8 @@ export const updatePagination =
 
 export const updateSortingOptions =
   (
-    order: ApiOperations["get-users-me-payments"]["parameters"]["query"]["order"],
-    orderBy: ApiOperations["get-users-me-payments"]["parameters"]["query"]["orderBy"]
+    order: WalletState["requestsList"]["order"],
+    orderBy: WalletState["requestsList"]["orderBy"]
   ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
   async (dispatch) => {
     dispatch({
