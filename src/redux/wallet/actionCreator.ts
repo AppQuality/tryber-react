@@ -67,3 +67,80 @@ export const updateSortingOptions =
     });
     return dispatch(fetchPaymentRequests());
   };
+
+export const fetchPaymentDetails =
+  (
+    id: number
+  ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch, getState) => {
+    const {
+      wallet: { paymentDetails },
+    } = getState();
+    try {
+      const query: ApiOperations["get-users-me-payments-payment"]["parameters"]["query"] =
+        {
+          order: paymentDetails.order,
+          orderBy: paymentDetails.orderBy,
+          limit: paymentDetails.limit,
+          start: paymentDetails.start,
+        };
+      const data = await API.getUserPaymentDetails(id, query);
+      return dispatch({
+        type: "wallet/updatePaymentDetails",
+        payload: data,
+      });
+    } catch (e) {
+      const error = e as HttpError;
+      if (error.statusCode === 404) {
+        const { start, limit, size } = paymentDetails;
+        if (start - limit >= 0) {
+          dispatch(updateDetailsPagination(id, start - limit));
+        }
+        return dispatch({
+          type: "wallet/updatePaymentDetails",
+          payload: {
+            size: size,
+            start: start,
+            results: [],
+          },
+        });
+      } else {
+        addMessage(error.message, "danger", false);
+      }
+    }
+  };
+
+export const updateDetailsPagination =
+  (
+    id: number,
+    newStart: number
+  ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch) => {
+    dispatch({
+      type: "wallet/updatePaymentDetailsQuery",
+      payload: { start: newStart },
+    });
+    return dispatch(fetchPaymentDetails(id));
+  };
+
+export const updateDetailsSortingOptions =
+  (
+    id: number,
+    order: WalletState["paymentDetails"]["order"],
+    orderBy: WalletState["paymentDetails"]["orderBy"]
+  ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch) => {
+    dispatch({
+      type: "wallet/updatePaymentDetailsQuery",
+      payload: { order: order, orderBy: orderBy },
+    });
+    return dispatch(fetchPaymentDetails(id));
+  };
+
+export const resetPaymentDetails =
+  (): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch) => {
+    dispatch({
+      type: "wallet/resetPaymentDetails",
+    });
+  };

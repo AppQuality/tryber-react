@@ -11,6 +11,11 @@ import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { useAppDispatch } from "src/redux/provider";
 import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
+import {
+  fetchPaymentDetails,
+  resetPaymentDetails,
+  updateDetailsPagination,
+} from "../../../redux/wallet/actionCreator";
 import { paymentDetailsColumns } from "./columns";
 
 interface PaymentDetailsModalProps {
@@ -26,7 +31,7 @@ export const PaymentDetailsModal = ({
 }: PaymentDetailsModalProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
@@ -35,13 +40,6 @@ export const PaymentDetailsModal = ({
     shallowEqual
   );
   const { results, limit, total, start, order, orderBy } = paymentDetails;
-
-  // TODO REMOVE Example data
-  // const results = [
-  //     { id: 111, type: 'Testing', amount: { value: 20, currency: 'EUR' }, date: '2020-08-13', activity: '[CP-3140] Prototipi preventivatore A/B UX Study' },
-  //     { id: 112, type: 'Community Support', amount: { value: 20, currency: 'EUR' }, date: '2020-05-20', activity: '[CP-3148] Sisal Website' },
-  //     { id: 113, type: 'Community Support', amount: { value: 20, currency: 'EUR' }, date: '2020-05-12', activity: '[CP-3096] Bank App No Regression Testbook 12/2020' }
-  // ];
 
   useEffect(() => {
     if (typeof results !== "undefined") {
@@ -85,16 +83,22 @@ export const PaymentDetailsModal = ({
 
   useEffect(() => {
     if (paymentId) {
-      const cols = paymentDetailsColumns(setIsLoading, dispatch, t);
+      const cols = paymentDetailsColumns(paymentId, setIsLoading, dispatch, t);
       setcolumns(cols);
-      // TODO fetch payment detail
+      dispatch(fetchPaymentDetails(paymentId)).then(() => setIsLoading(false));
+    } else {
+      setIsLoading(true);
+      dispatch(resetPaymentDetails());
     }
   }, [paymentId]);
 
   const changePagination = (newPage: number) => {
     setIsLoading(true);
     const newStart = limit * (newPage - 1);
-    // TODO update pagination
+    paymentId &&
+      dispatch(updateDetailsPagination(paymentId, newStart)).then(() =>
+        setIsLoading(false)
+      );
   };
 
   return (
@@ -107,17 +111,19 @@ export const PaymentDetailsModal = ({
       <Text className="aq-mt-3 aq-mb-3">
         <strong>{`${t("Payment Request ID")} #${paymentId}`}</strong>
       </Text>
-      <SortTableSelect
-        order={order || "DESC"}
-        orderBy={orderBy || "paidDate"}
-        columns={columns}
-        label={t("Order By", { context: "Sort Table Select" })}
-      />
+      {columns.length > 0 && (
+        <SortTableSelect
+          order={order}
+          orderBy={orderBy}
+          columns={columns}
+          label={t("Order By", { context: "Sort Table Select" })}
+        />
+      )}
       <Table
         dataSource={rows}
         columns={columns}
-        orderBy={"date"}
-        order={"DESC"}
+        orderBy={orderBy}
+        order={order}
         isLoading={isLoading}
         isStriped
       />

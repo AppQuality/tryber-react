@@ -43,6 +43,27 @@ export default (state = initialState, action: WalletActions) => {
           ...action.payload,
         },
       };
+    case "wallet/updatePaymentDetailsQuery":
+      return {
+        ...state,
+        paymentDetails: {
+          ...state.paymentDetails,
+          ...action.payload,
+        },
+      };
+    case "wallet/updatePaymentDetails":
+      return {
+        ...state,
+        paymentDetails: {
+          ...state.paymentDetails,
+          ...action.payload,
+        },
+      };
+    case "wallet/resetPaymentDetails":
+      return {
+        ...state,
+        paymentDetails: initialState.paymentDetails,
+      };
     default:
       return state;
   }

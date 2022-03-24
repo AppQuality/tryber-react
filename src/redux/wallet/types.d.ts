@@ -20,24 +20,11 @@ type WalletState = {
       items: Attribution[];
     };
   };
-  // TODO ApiOperations get user/me/payments/{payment}
-  paymentDetails: {
-    results: {
-      id: number;
-      type: string;
-      amount: {
-        value?: number;
-        currency?: string;
-      };
-      date: string;
-      activity: string;
-    }[];
-    start: number;
+  paymentDetails: ApiOperations["get-users-me-payments-payment"]["responses"]["200"]["content"]["application/json"] & {
     total: number;
     limit: number;
-    size: number;
-    order: ApiOperations["get-users-me-payments"]["parameters"]["query"]["order"];
-    orderBy: ApiOperations["get-users-me-payments"]["parameters"]["query"]["orderBy"];
+    order: ApiComponents["parameters"]["order"];
+    orderBy: "date" | "type" | "activity" | "amount";
   };
 };
 
@@ -52,7 +39,10 @@ type Attribution = {
 
 type WalletActions =
   | WalletActions_UpdateRequestList
-  | WalletActions_UpdateRequestQuery;
+  | WalletActions_UpdateRequestQuery
+  | WalletActions_UpdatePaymentDetails
+  | WalletActions_UpdatePaymentDetailsQuery
+  | WalletActions_ResetPaymentDetails;
 
 /**
  *  Action types and their payloads
@@ -64,4 +54,15 @@ type WalletActions_UpdateRequestList = {
 type WalletActions_UpdateRequestQuery = {
   type: "wallet/updateReqsQuery";
   payload: ApiOperations["get-users-me-payments"]["parameters"]["query"];
+};
+type WalletActions_UpdatePaymentDetails = {
+  type: "wallet/updatePaymentDetails";
+  payload: ApiOperations["get-users-me-payments-payment"]["responses"]["200"]["content"]["application/json"];
+};
+type WalletActions_UpdatePaymentDetailsQuery = {
+  type: "wallet/updatePaymentDetailsQuery";
+  payload: ApiOperationsApiOperations["get-users-me-payments-payment"]["parameters"]["query"];
+};
+type WalletActions_ResetPaymentDetails = {
+  type: "wallet/resetPaymentDetails";
 };
