@@ -43,7 +43,7 @@ export const WalletTable = () => {
             key: req.id,
             reqId: req.id,
             status: {
-              title: req.status,
+              title: req.status === "paid" ? t("Paid") : t("Processing"),
               content: (
                 <div
                   className={
@@ -52,7 +52,7 @@ export const WalletTable = () => {
                       : "aq-text-warning"
                   }
                 >
-                  {req.status}
+                  {req.status === "paid" ? t("Paid") : t("Processing")}
                 </div>
               ),
             },
