@@ -16,9 +16,10 @@ import { shallowEqual, useSelector } from "react-redux";
 import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
-import { initialState } from "src/redux/wallet/reducer";
 import pdfIcon from "src/pages/Wallet/assets/pdf.svg";
 import detailsIcon from "src/pages/Wallet/assets/details.svg";
+import pdfHoverIcon from "src/pages/Wallet/assets/pdfHover.svg";
+import detailsHoverIcon from "src/pages/Wallet/assets/detailsHover.svg";
 import styled from "styled-components";
 import { PaymentDetailsModal } from "./PaymentDetailsModal/PaymentDetailsModal";
 
@@ -29,12 +30,25 @@ const ActionsCell = styled.div`
     cursor: default;
   }
   .action-pdf {
-    padding-right: 1em;
-    height: 100%;
+    margin-right: 1em;
+    width: 21px;
+    height: 21px;
+    background: url(${pdfIcon}) no-repeat;
+
+    &:hover {
+      background: url(${pdfHoverIcon}) no-repeat;
+    }
   }
   .action-details {
-    padding-right: 0.5em;
+    margin-right: 0.5em;
     cursor: pointer;
+    width: 21px;
+    height: 21px;
+    background: url(${detailsIcon}) no-repeat;
+
+    &:hover {
+      background: url(${detailsHoverIcon}) no-repeat;
+    }
   }
 `;
 
@@ -133,18 +147,14 @@ export const WalletTable = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <img
+                    <div
                       className="action-pdf"
-                      src={pdfIcon}
                       title={t("__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:")}
-                      alt={t("__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:")}
                     />
                   </a>
-                  <img
+                  <div
                     className="action-details"
-                    src={detailsIcon}
                     title={t("__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:")}
-                    alt={t("__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:")}
                     onClick={() => {
                       setPaymentId(req.id);
                       setOpenDetails(true);
