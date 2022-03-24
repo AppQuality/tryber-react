@@ -36,7 +36,7 @@ export default (state = initialState, action: WalletActions) => {
       return {
         ...state,
         booty: {
-          amount: action.payload.booty,
+          amount: action.payload.pending_booty,
           bootyThreshold: action.payload.booty_threshold,
         },
       };

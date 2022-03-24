@@ -74,7 +74,7 @@ export const fetchBooty =
   async (dispatch) => {
     try {
       const query: ApiOperations["get-users-me"]["parameters"]["query"] = {
-        fields: "booty,booty_threshold",
+        fields: "pending_booty,booty_threshold",
       };
       const data = await API.getBooty(query);
       return dispatch({
