@@ -18,6 +18,13 @@ import {
 } from "../../../redux/wallet/actionCreator";
 import { paymentDetailsColumns } from "./columns";
 
+const activityStyle = {
+  maxWidth: "calc(100% - 1em)",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+};
+
 interface PaymentDetailsModalProps {
   open: boolean;
   onClose: () => void;
@@ -39,46 +46,34 @@ export const PaymentDetailsModal = ({
     (state: GeneralState) => state.wallet.paymentDetails,
     shallowEqual
   );
+
   const { results, limit, total, start, order, orderBy } = paymentDetails;
 
   useEffect(() => {
-    if (typeof results !== "undefined") {
-      setRows(
-        results?.map((r) => {
-          return {
-            key: r.id,
-            activity: {
-              title: r.activity,
-              content: (
-                <div
-                  style={{
-                    maxWidth: "calc(100% - 1em)",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                >
-                  {r.activity}
-                </div>
-              ),
-            },
-            type: r.type,
-            date: getPaidDate(r.date),
-            amount: {
-              title: t("Amount"),
-              content: (
-                <span className="aq-text-success">
-                  {r.amount.currency && r.amount.currency in currencyTable
-                    ? currencyTable[r.amount.currency]
-                    : r.amount.currency}{" "}
-                  {r.amount.value?.toFixed(2)}
-                </span>
-              ),
-            },
-          };
-        })
-      );
-    }
+    setRows(
+      results?.map((r) => {
+        return {
+          key: r.id,
+          activity: {
+            title: r.activity,
+            content: <div style={activityStyle}>{r.activity}</div>,
+          },
+          type: r.type,
+          date: getPaidDate(r.date),
+          amount: {
+            title: t("Amount"),
+            content: (
+              <span className="aq-text-success">
+                {r.amount.currency in currencyTable
+                  ? currencyTable[r.amount.currency]
+                  : r.amount.currency}{" "}
+                {r.amount.value?.toFixed(2)}
+              </span>
+            ),
+          },
+        };
+      })
+    );
   }, [paymentDetails]);
 
   useEffect(() => {

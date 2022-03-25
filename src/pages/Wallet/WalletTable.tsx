@@ -25,6 +25,13 @@ import { PaymentDetailsModal } from "./PaymentDetailsModal/PaymentDetailsModal";
 
 const ActionsCell = styled.div`
   display: flex;
+  @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+    flex-direction: column;
+
+    .action-pdf {
+      margin-bottom: 1em;
+    }
+  }
   .pdf-disabled {
     pointer-events: none;
     cursor: default;

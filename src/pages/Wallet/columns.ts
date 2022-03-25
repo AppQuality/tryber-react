@@ -59,6 +59,8 @@ export const walletColumns = (
       key: "actions",
       align: "right",
       maxWidth: "max-content",
+      hideIndex: true,
+      role: "cta",
     },
   ];
 };
