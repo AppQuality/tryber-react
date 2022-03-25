@@ -19,7 +19,14 @@ export default function Wallet() {
   }, []);
 
   return (
-    <PageTemplate title={t("Wallet")} route={"payments"} shouldBeLoggedIn>
+    <PageTemplate
+      title={t("Wallet")}
+      subtitle={t(
+        "Request a payment with your preferred method and keep an eye on your booty and payment history in detail."
+      )}
+      route={"payments"}
+      shouldBeLoggedIn
+    >
       <OutsideContainer>
         <PaymentModal />
       </OutsideContainer>
