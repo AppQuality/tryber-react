@@ -63,7 +63,12 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
   return (
     <StyledFooter>
       {step > 0 && (
-        <Button flat onClick={onClickBack} className="aq-mr-3">
+        <Button
+          flat
+          onClick={onClickBack}
+          className="aq-mr-3"
+          disabled={isSubmitting}
+        >
           {step === 3 ? t("Back to wallet") : t("Back")}
         </Button>
       )}
