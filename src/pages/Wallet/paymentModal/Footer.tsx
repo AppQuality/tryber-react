@@ -25,8 +25,9 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const {
-    values: { step },
+    values: { step, paymentMethod },
     setFieldValue,
+    isSubmitting,
     validateForm,
     setFieldTouched,
     resetForm,
@@ -44,6 +45,13 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
     if (step === 0) {
       setFieldTouched("paymentMethod");
       setFieldTouched("termsAcceptance");
+    }
+    if (step === 1 && paymentMethod === "paypal") {
+      setFieldTouched("ppAccountOwner");
+      setFieldTouched("confirmEmail");
+    } else if (step === 1 && paymentMethod === "bank") {
+      setFieldTouched("bankaccountOwner");
+      setFieldTouched("iban");
     }
     const errors = await validateForm();
     if (Object.keys(errors).length === 0) {
@@ -68,9 +76,10 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
         <Button
           flat
           htmlType="submit"
+          disabled={isSubmitting}
           onClick={() => setCompletedSteps([true, true, true])}
         >
-          {t("Request payment")}
+          {isSubmitting ? t("...wait") : t("Request payment")}
         </Button>
       )}
     </StyledFooter>
