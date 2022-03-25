@@ -28,8 +28,10 @@ const ActionsCell = styled.div`
   display: flex;
   @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     flex-direction: column;
+    align-items: flex-end;
 
     .action-pdf {
+      margin-right: 0.5em !important;
       margin-bottom: 1em;
     }
   }
