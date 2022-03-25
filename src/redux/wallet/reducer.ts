@@ -12,6 +12,15 @@ export const initialState: WalletState = {
     results: [],
   },
   isPaymentModalOpen: false,
+  paymentDetails: {
+    start: 0,
+    limit: 10,
+    size: 0,
+    total: 0,
+    order: "DESC",
+    orderBy: "date",
+    results: [],
+  },
 };
 
 export default (state = initialState, action: WalletActions) => {
@@ -44,6 +53,27 @@ export default (state = initialState, action: WalletActions) => {
       return {
         ...state,
         isPaymentModalOpen: action.payload,
+      };
+    case "wallet/updatePaymentDetailsQuery":
+      return {
+        ...state,
+        paymentDetails: {
+          ...state.paymentDetails,
+          ...action.payload,
+        },
+      };
+    case "wallet/updatePaymentDetails":
+      return {
+        ...state,
+        paymentDetails: {
+          ...state.paymentDetails,
+          ...action.payload,
+        },
+      };
+    case "wallet/resetPaymentDetails":
+      return {
+        ...state,
+        paymentDetails: initialState.paymentDetails,
       };
     default:
       return state;

@@ -3,7 +3,6 @@ import {
   Pagination,
   TableType,
   SortTableSelect,
-  aqBootstrapTheme,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
@@ -17,27 +16,88 @@ import { shallowEqual, useSelector } from "react-redux";
 import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
+import pdfIcon from "src/pages/Wallet/assets/pdf.svg";
+import detailsIcon from "src/pages/Wallet/assets/details.svg";
+import pdfHoverIcon from "src/pages/Wallet/assets/pdfHover.svg";
+import detailsHoverIcon from "src/pages/Wallet/assets/detailsHover.svg";
+import styled from "styled-components";
+import { PaymentDetailsModal } from "./PaymentDetailsModal/PaymentDetailsModal";
 
-const iconStyle = {
-  width: "1em",
-  height: "1em",
-  alignItems: "middle",
-  display: "inline-block",
-};
-const methodStyle = {
-  maxWidth: `calc(100% - 36px)`, // 36 totally magic number, where does it came from?
-  lineHeight: "1em",
-  whiteSpace: "nowrap",
-  overflow: "hidden",
-  textOverflow: "ellipsis",
-  display: "inline-block",
-};
+const ActionsCell = styled.div`
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+    flex-direction: column;
+    align-items: flex-end;
+
+    .action-pdf {
+      margin-right: 0.5em;
+      margin-bottom: 1em;
+    }
+    .action-details {
+      margin-right: 0.5em;
+    }
+  }
+  .pdf-disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+  .action-pdf {
+    width: 21px;
+    height: 21px;
+    background: url(${pdfIcon}) no-repeat;
+
+    &:hover {
+      background: url(${pdfHoverIcon}) no-repeat;
+    }
+  }
+  .action-details {
+    cursor: pointer;
+    width: 21px;
+    height: 21px;
+    background: url(${detailsIcon}) no-repeat;
+    margin-right: 0.5em;
+
+    &:hover {
+      background: url(${detailsHoverIcon}) no-repeat;
+    }
+  }
+`;
+
+const StyledIcon = styled.img`
+  width: 1em;
+  height: 1em;
+  vertical-align: text-top;
+  display: inline-block;
+`;
+const MethodStyle = styled.span`
+  max-width: calc(
+    100% - 36px
+  ); // 36 totally magic number, where does it came from?
+  line-height: 1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+    max-width: 30ch;
+  }
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.xl}) {
+    max-width: 38ch;
+  }
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.xxl}) {
+    max-width: 50ch;
+  }
+`;
 export const WalletTable = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
   const [rows, setRows] = useState<TableType.Row[]>([]);
+  const [openDetails, setOpenDetails] = useState<boolean>(false);
+  const [paymentId, setPaymentId] = useState<number | undefined>();
+
   const { requestsList } = useSelector(
     (state: GeneralState) => state.wallet,
     shallowEqual
@@ -87,7 +147,7 @@ export const WalletTable = () => {
               title: `${req.method?.type} - ${req.method?.note}`,
               content: (
                 <>
-                  <img
+                  <StyledIcon
                     src={
                       req.method?.type === "paypal"
                         ? paypalIcon
@@ -96,11 +156,38 @@ export const WalletTable = () => {
                         : ""
                     }
                     alt={req.method?.type || "method not specified"}
-                    className="aq-mr-3"
-                    style={iconStyle}
+                    className="aq-mr-2"
                   />{" "}
-                  <span style={methodStyle}>{req.method?.note}</span>
+                  <MethodStyle>{req.method?.note}</MethodStyle>
                 </>
+              ),
+            },
+            actions: {
+              title: "",
+              content: (
+                <ActionsCell>
+                  <a
+                    className={
+                      req.status === "processing" ? "pdf-disabled" : ""
+                    }
+                    href={req.receipt}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <div
+                      className="action-pdf"
+                      title={t("__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:")}
+                    />
+                  </a>
+                  <div
+                    className="action-details"
+                    title={t("__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:")}
+                    onClick={() => {
+                      setPaymentId(req.id);
+                      setOpenDetails(true);
+                    }}
+                  />
+                </ActionsCell>
               ),
             },
           };
@@ -142,6 +229,14 @@ export const WalletTable = () => {
             .replace("%current%", current.toString())
             .replace("%total%", total ? total.toString() : "0")
         }
+      />
+      <PaymentDetailsModal
+        open={openDetails}
+        onClose={() => {
+          setOpenDetails(false);
+          setPaymentId(undefined);
+        }}
+        paymentId={paymentId}
       />
     </>
   );
