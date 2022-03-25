@@ -56,6 +56,7 @@ const ActionsCell = styled.div`
     width: 21px;
     height: 21px;
     background: url(${detailsIcon}) no-repeat;
+    margin-right: 0.5em;
 
     &:hover {
       background: url(${detailsHoverIcon}) no-repeat;

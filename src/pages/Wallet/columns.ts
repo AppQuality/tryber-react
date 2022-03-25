@@ -58,7 +58,7 @@ export const walletColumns = (
       dataIndex: "actions",
       key: "actions",
       align: "right",
-      maxWidth: "5em",
+      maxWidth: "6em",
       hideIndex: true,
       role: "cta",
     },
