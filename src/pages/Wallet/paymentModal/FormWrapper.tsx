@@ -2,11 +2,15 @@ import { Formik, FormikHelpers } from "formik";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import API from "src/utils/api";
+import { useAppDispatch } from "src/redux/provider";
+import { addMessage } from "src/redux/siteWideMessages/actionCreators";
+import { setPaymentModalOpen } from "src/redux/wallet/actionCreator";
 
 export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
   children,
 }) => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
   const initialValues: PaymentFormType = {
     step: 0,
     paymentMethod: "",
@@ -80,11 +84,17 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
             accountHolderName: values.bankaccountOwner,
             iban: values.iban,
           };
-    const results = await API.postPaymentRequest({
-      method: method,
-    });
+    try {
+      const results = await API.postPaymentRequest({
+        method: method,
+      });
+      formikHelper.setFieldValue("step", 3);
+    } catch (e) {
+      const err = e as HttpError;
+      dispatch(setPaymentModalOpen(false));
+      addMessage(err.message || err.statusCode, "danger", false);
+    }
     formikHelper.setSubmitting(false);
-    formikHelper.setFieldValue("step", 3);
   };
   return (
     <Formik
