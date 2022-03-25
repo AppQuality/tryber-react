@@ -20,13 +20,15 @@ export const PaymentModal = () => {
     (state: GeneralState) => state.wallet,
     shallowEqual
   );
-  const closeModal = () => {
-    dispatch(setPaymentModalOpen(false));
-  };
+
   return (
     <FormWrapper>
       {(formikProps: FormikProps<PaymentFormType>) => {
         const { step } = formikProps.values;
+        const closeModal = () => {
+          formikProps.resetForm();
+          dispatch(setPaymentModalOpen(false));
+        };
         return (
           <form onSubmit={formikProps.handleSubmit}>
             <Modal
