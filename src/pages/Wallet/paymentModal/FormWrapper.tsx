@@ -2,11 +2,15 @@ import { Formik, FormikHelpers } from "formik";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import API from "src/utils/api";
+import { useAppDispatch } from "src/redux/provider";
+import { addMessage } from "src/redux/siteWideMessages/actionCreators";
+import { setPaymentModalOpen } from "src/redux/wallet/actionCreator";
 
 export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
   children,
 }) => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
   const initialValues: PaymentFormType = {
     step: 0,
     paymentMethod: "",
@@ -72,9 +76,31 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
     formikHelper: FormikHelpers<PaymentFormType>
   ) => {
     formikHelper.setSubmitting(true);
-    const results = await API.postPaymentRequest();
-    formikHelper.setSubmitting(false);
-    formikHelper.setFieldValue("step", 3);
+    const method: ApiOperations["post-users-me-payments"]["requestBody"]["content"]["application/json"]["method"] =
+      values.paymentMethod === "paypal"
+        ? { type: "paypal", email: values.ppAccountOwner }
+        : {
+            type: "iban",
+            accountHolderName: values.bankaccountOwner,
+            iban: values.iban,
+          };
+    try {
+      const results = await API.postPaymentRequest({
+        method: method,
+      });
+      formikHelper.setFieldValue("step", 3);
+    } catch (e) {
+      const err = e as HttpError;
+      dispatch(setPaymentModalOpen(false));
+      dispatch(
+        addMessage(
+          err.message.toString() || err.statusCode.toString(),
+          "danger",
+          false
+        )
+      );
+    }
+    formikHelper.resetForm();
   };
   return (
     <Formik
