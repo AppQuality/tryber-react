@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import {
   Checkbox,
   ErrorMessage,
@@ -13,8 +13,8 @@ export const Step0Method = () => {
   const { t } = useTranslation();
   return (
     <div>
-      <div>
-        <strong>{t("Chose payment method")}</strong>
+      <div className="aq-mb-1">
+        <strong>{t("Chose a payment method")}</strong>
       </div>
       <FormikField name="paymentMethod" className="aq-mb-3">
         {({ field, form, meta }: FieldProps) => {
@@ -58,7 +58,20 @@ export const Step0Method = () => {
                 name={field.name}
                 onChange={onCheckChange}
                 checked={field.value}
-                label={t("accept conditions and continue request")}
+                label={
+                  <strong>
+                    <Trans
+                      i18nKey={
+                        "Accept the <terms_and_conditions_link>conditions</terms_and_conditions_link> before proceeding"
+                      }
+                      components={{
+                        terms_and_conditions_link: (
+                          <a href="/terms_and_conditions" />
+                        ),
+                      }}
+                    />
+                  </strong>
+                }
                 onBlur={field.onBlur}
               />
               <ErrorMessage name={field.name} />

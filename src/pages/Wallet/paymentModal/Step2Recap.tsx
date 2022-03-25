@@ -35,49 +35,53 @@ export const Step2Recap = () => {
             style={iconStyle}
             src={paypalIcon}
             alt="paypal transfer"
-            className="aq-mr-3"
+            className="aq-mr-1"
           />{" "}
           <strong>PayPal</strong>
         </div>
       ) : (
-        <div className="aq-text-center">
+        <div className="aq-text-center aq-mb-2">
           <img
             style={iconStyle}
             src={twIcon}
             alt="transferwise"
-            className="aq-mr-3"
+            className="aq-mr-1"
           />{" "}
           <strong>{t("Bank Transfer")}</strong>
         </div>
       )}
       <div className="aq-text-center aq-mb-3">
-        {t("Total booty")} <strong>€{amount}</strong>
+        {t("Total booty")}: <strong>€{amount}</strong>
       </div>
       <div style={{ maxWidth: "430px", margin: "0 auto" }}>
         {values.paymentMethod === "paypal" ? (
-          <div>
+          <div className="aq-mb-2">
             Email Paypal: <strong>{values.ppAccountOwner}</strong>
           </div>
         ) : (
           <>
-            <div>
+            <div className="aq-mb-2">
               {t("Account holder")}: <strong>{values.bankaccountOwner}</strong>
             </div>
-            <div>
+            <div className="aq-mb-2">
               {t("Iban")}: <strong>{values.iban}</strong>
             </div>
           </>
         )}
-        <div className="aq-pt-3">
-          <strong>{t("This data is retrived from your fiscal profile")}</strong>
+        <div className="aq-mb-2 aq-pt-2">
+          <strong>
+            {t(
+              "The following informations are retrived from your fiscal profile and will be used to generate your receipt"
+            )}
+          </strong>
         </div>
-        <div>
+        <div className="aq-mb-2">
           {t("National Id Number")}: <strong>{data?.fiscalId}</strong>
         </div>
-        <div>
+        <div className="aq-mb-2">
           {t("Fiscal Type")}: <strong>{data?.type}</strong>
         </div>
-        <div>
+        <div className="aq-mb-2">
           {t("Birth place")}:{" "}
           <strong>
             {data?.birthPlace.city} - {data?.birthPlace.province}

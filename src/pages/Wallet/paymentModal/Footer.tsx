@@ -61,7 +61,7 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
       )}
       {step < 2 && (
         <Button flat onClick={incrementStep}>
-          {t("Continue")}
+          {t("Next")}
         </Button>
       )}
       {step === 2 && (

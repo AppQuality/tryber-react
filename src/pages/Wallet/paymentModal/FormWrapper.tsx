@@ -92,7 +92,7 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
     } catch (e) {
       const err = e as HttpError;
       dispatch(setPaymentModalOpen(false));
-      addMessage(err.message || err.statusCode, "danger", false);
+      dispatch(addMessage(err.message || err.statusCode, "danger", false));
     }
     formikHelper.setSubmitting(false);
   };
