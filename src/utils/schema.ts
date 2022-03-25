@@ -487,15 +487,11 @@ export interface components {
       /** Format: date */
       achievement_date: string;
     };
-    /**
-     * FiscalType
-     * @enum {string}
-     */
+    /** FiscalType */
     FiscalType: "withholding" | "witholding-extra" | "other" | "non-italian";
     /** CustomUserFieldsData */
     CustomUserFieldsData: {
       id: number;
-      /** @enum {string} */
       type: "select" | "multiselect" | "text";
       placeholder?: components["schemas"]["TranslatablePage"];
       allow_other?: boolean;
@@ -1234,7 +1230,6 @@ export interface operations {
             }[];
             onboarding_completed?: boolean;
             additional?: components["schemas"]["AdditionalField"][];
-            /** @enum {string} */
             gender?: "male" | "female" | "not-specified";
             /** Format: date */
             birthDate?: string;
@@ -1323,7 +1318,6 @@ export interface operations {
             }[];
             onboarding_completed?: boolean;
             additional?: components["schemas"]["AdditionalField"][];
-            /** @enum {string} */
             gender?: "male" | "female" | "not-specified";
             /** Format: date */
             birthDate?: string;
@@ -1357,7 +1351,6 @@ export interface operations {
           email?: string;
           onboarding_completed?: boolean;
           surname?: string;
-          /** @enum {string} */
           gender?: "male" | "female" | "not-specified";
           birthDate?: string;
           phone?: string;
@@ -1480,9 +1473,7 @@ export interface operations {
               province?: string;
             };
             fiscalId: string;
-            /** @enum {string} */
             fiscalStatus: "Verified" | "Unverified";
-            /** @enum {string} */
             gender: "male" | "female";
           };
         };
@@ -1512,9 +1503,7 @@ export interface operations {
               province?: string;
             };
             fiscalId: string;
-            /** @enum {string} */
             fiscalStatus: "Verified" | "Unverified";
-            /** @enum {string} */
             gender: "male" | "female";
           };
         };
@@ -1535,7 +1524,6 @@ export interface operations {
           type: components["schemas"]["FiscalType"];
           birthPlace?: components["schemas"]["FiscalBirthCity"];
           fiscalId: string;
-          /** @enum {string} */
           gender: "male" | "female";
         };
       };
@@ -1562,9 +1550,7 @@ export interface operations {
               province?: string;
             };
             fiscalId: string;
-            /** @enum {string} */
             fiscalStatus: "Verified" | "Unverified";
-            /** @enum {string} */
             gender: "male" | "female";
           };
         };
@@ -1585,7 +1571,6 @@ export interface operations {
           type: components["schemas"]["FiscalType"];
           birthPlace?: components["schemas"]["FiscalBirthCity"];
           fiscalId: string;
-          /** @enum {string} */
           gender: "male" | "female";
         };
       };
@@ -1965,7 +1950,6 @@ export interface operations {
             results?: ({
               id: number;
             } & {
-              /** @enum {string} */
               status: "paid" | "processing";
               amount: {
                 value?: number;
@@ -2144,7 +2128,6 @@ export interface operations {
                 value: number;
                 currency: string;
               };
-              /** @enum {string} */
               type: "paypal" | "transferwise";
               tryber: {
                 id: number;
@@ -2172,11 +2155,9 @@ export interface operations {
       400: {
         content: {
           "application/json": {
-            /** @enum {string} */
             element: "payments";
             id: number;
             message: {
-              /** @enum {string} */
               code: "GENERIC_ERROR";
               data: string;
             };
@@ -2189,11 +2170,9 @@ export interface operations {
       422: {
         content: {
           "application/json": {
-            /** @enum {string} */
             element: "payments";
             id: number;
             message: {
-              /** @enum {string} */
               code:
                 | "GENERIC_ERROR"
                 | "NO_FUNDS"

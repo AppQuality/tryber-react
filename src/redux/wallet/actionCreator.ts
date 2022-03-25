@@ -1,6 +1,7 @@
 import { ThunkAction } from "redux-thunk";
 import API from "src/utils/api";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
+import { components } from "src/utils/schema";
 
 export const fetchPaymentRequests =
   (): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
@@ -57,8 +58,8 @@ export const updatePagination =
 
 export const updateSortingOptions =
   (
-    order: ApiOperations["get-users-me-payments"]["parameters"]["query"]["order"],
-    orderBy: ApiOperations["get-users-me-payments"]["parameters"]["query"]["orderBy"]
+    order: WalletState["requestsList"]["order"],
+    orderBy: WalletState["requestsList"]["orderBy"]
   ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
   async (dispatch) => {
     dispatch({
@@ -66,6 +67,35 @@ export const updateSortingOptions =
       payload: { order: order, orderBy: orderBy },
     });
     return dispatch(fetchPaymentRequests());
+  };
+
+export const fetchBooty =
+  (): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch) => {
+    try {
+      const query: ApiOperations["get-users-me"]["parameters"]["query"] = {
+        fields: "pending_booty,booty_threshold",
+      };
+      const data = await API.getBooty(query);
+      return dispatch({
+        type: "wallet/setBooty",
+        payload: data,
+      });
+    } catch (e) {
+      const error = e as HttpError;
+      addMessage(error.message, "danger", false);
+    }
+  };
+
+export const setPaymentModalOpen =
+  (
+    isOpen: boolean
+  ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch) => {
+    dispatch({
+      type: "wallet/togglePaymentModal",
+      payload: isOpen,
+    });
   };
 
 export const fetchPaymentDetails =

@@ -1,9 +1,6 @@
 export const initialState: WalletState = {
   booty: {
-    amount: {
-      value: 0,
-      currency: "EUR",
-    },
+    amount: 0,
   },
   requestsList: {
     start: 0,
@@ -14,6 +11,7 @@ export const initialState: WalletState = {
     orderBy: "paidDate",
     results: [],
   },
+  isPaymentModalOpen: false,
   paymentDetails: {
     start: 0,
     limit: 10,
@@ -42,6 +40,19 @@ export default (state = initialState, action: WalletActions) => {
           ...state.requestsList,
           ...action.payload,
         },
+      };
+    case "wallet/setBooty":
+      return {
+        ...state,
+        booty: {
+          amount: action.payload.pending_booty,
+          bootyThreshold: action.payload.booty_threshold,
+        },
+      };
+    case "wallet/togglePaymentModal":
+      return {
+        ...state,
+        isPaymentModalOpen: action.payload,
       };
     case "wallet/updatePaymentDetailsQuery":
       return {

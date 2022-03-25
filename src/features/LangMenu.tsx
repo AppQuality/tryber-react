@@ -32,7 +32,7 @@ export const LangMenu = ({
   esLink,
   className,
 }: LangMenuProps) => {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
   return (
     <StyledMenu className={className}>
       <a
