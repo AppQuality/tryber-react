@@ -44,7 +44,7 @@ export const PaymentDetailsModal = ({
   useEffect(() => {
     if (typeof results !== "undefined") {
       setRows(
-        results.map((r) => {
+        results?.map((r) => {
           return {
             key: r.id,
             activity: {
