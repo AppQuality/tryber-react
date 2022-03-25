@@ -100,7 +100,7 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
         )
       );
     }
-    formikHelper.resetForm();
+    formikHelper.setSubmitting(false);
   };
   return (
     <Formik
