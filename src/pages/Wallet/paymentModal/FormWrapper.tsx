@@ -4,7 +4,10 @@ import { useTranslation } from "react-i18next";
 import API from "src/utils/api";
 import { useAppDispatch } from "src/redux/provider";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
-import { setPaymentModalOpen } from "src/redux/wallet/actionCreator";
+import {
+  setPaymentModalOpen,
+  fetchPaymentRequests,
+} from "src/redux/wallet/actionCreator";
 
 export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
   children,
@@ -89,6 +92,7 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
         method: method,
       });
       formikHelper.setFieldValue("step", 3);
+      dispatch(fetchPaymentRequests());
     } catch (e) {
       const err = e as HttpError;
       formikHelper.resetForm();
