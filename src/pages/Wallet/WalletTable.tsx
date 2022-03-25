@@ -64,20 +64,31 @@ const ActionsCell = styled.div`
   }
 `;
 
-const iconStyle = {
-  width: "1em",
-  height: "1em",
-  alignItems: "middle",
-  display: "inline-block",
-};
-const methodStyle = {
-  maxWidth: `calc(100% - 36px)`, // 36 totally magic number, where does it came from?
-  lineHeight: "1em",
-  whiteSpace: "nowrap",
-  overflow: "hidden",
-  textOverflow: "ellipsis",
-  display: "inline-block",
-};
+const StyledIcon = styled.img`
+  width: 1em;
+  height: 1em;
+  vertical-align: text-top;
+  display: inline-block;
+`;
+const MethodStyle = styled.span`
+  max-width: calc(
+    100% - 36px
+  ); // 36 totally magic number, where does it came from?
+  line-height: 1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+    max-width: 30ch;
+  }
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.xl}) {
+    max-width: 38ch;
+  }
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.xxl}) {
+    max-width: 50ch;
+  }
+`;
 export const WalletTable = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -136,7 +147,7 @@ export const WalletTable = () => {
               title: `${req.method?.type} - ${req.method?.note}`,
               content: (
                 <>
-                  <img
+                  <StyledIcon
                     src={
                       req.method?.type === "paypal"
                         ? paypalIcon
@@ -145,10 +156,9 @@ export const WalletTable = () => {
                         : ""
                     }
                     alt={req.method?.type || "method not specified"}
-                    className="aq-mr-3"
-                    style={iconStyle}
+                    className="aq-mr-2"
                   />{" "}
-                  <span style={methodStyle}>{req.method?.note}</span>
+                  <MethodStyle>{req.method?.note}</MethodStyle>
                 </>
               ),
             },
