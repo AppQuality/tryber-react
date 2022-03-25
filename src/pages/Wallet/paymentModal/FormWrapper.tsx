@@ -91,14 +91,9 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
       formikHelper.setFieldValue("step", 3);
     } catch (e) {
       const err = e as HttpError;
+      formikHelper.resetForm();
       dispatch(setPaymentModalOpen(false));
-      dispatch(
-        addMessage(
-          err.message.toString() || err.statusCode.toString(),
-          "danger",
-          false
-        )
-      );
+      dispatch(addMessage(err.message || err.statusCode, "danger", false));
     }
     formikHelper.setSubmitting(false);
   };
