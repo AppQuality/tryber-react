@@ -36,5 +36,6 @@ export const postPaymentRequest = async (
     endpoint: "/users/me/payments",
     token: token,
     method: "POST",
+    body: body,
   });
 };
