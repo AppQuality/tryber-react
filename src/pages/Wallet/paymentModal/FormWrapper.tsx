@@ -72,7 +72,17 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
     formikHelper: FormikHelpers<PaymentFormType>
   ) => {
     formikHelper.setSubmitting(true);
-    const results = await API.postPaymentRequest();
+    const method: ApiOperations["post-users-me-payments"]["requestBody"]["content"]["application/json"]["method"] =
+      values.paymentMethod === "paypal"
+        ? { type: "paypal", email: values.ppAccountOwner }
+        : {
+            type: "iban",
+            accountHolderName: values.bankaccountOwner,
+            iban: values.iban,
+          };
+    const results = await API.postPaymentRequest({
+      method: method,
+    });
     formikHelper.setSubmitting(false);
     formikHelper.setFieldValue("step", 3);
   };

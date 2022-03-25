@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { useFormikContext } from "formik";
-import styled from "styled-components";
 import { shallowEqual, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useAppDispatch } from "src/redux/provider";

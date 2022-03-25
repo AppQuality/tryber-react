@@ -11,7 +11,7 @@ export const initialState: WalletState = {
     orderBy: "paidDate",
     results: [],
   },
-  isPaymentModalOpen: false,
+  isPaymentModalOpen: true,
 };
 
 export default (state = initialState, action: WalletActions) => {

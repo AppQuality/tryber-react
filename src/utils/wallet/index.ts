@@ -27,6 +27,7 @@ export const getBooty = async (
 };
 
 export const postPaymentRequest = async (
+  body: ApiOperations["post-users-me-payments"]["requestBody"]["content"]["application/json"],
   token?: string
 ): Promise<
   ApiOperations["post-users-me-payments"]["responses"]["200"]["content"]["application/json"]
