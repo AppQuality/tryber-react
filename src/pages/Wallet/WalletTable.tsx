@@ -3,7 +3,6 @@ import {
   Pagination,
   TableType,
   SortTableSelect,
-  aqBootstrapTheme,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
@@ -26,13 +25,17 @@ import { PaymentDetailsModal } from "./PaymentDetailsModal/PaymentDetailsModal";
 
 const ActionsCell = styled.div`
   display: flex;
+  justify-content: space-between;
   @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     flex-direction: column;
     align-items: flex-end;
 
     .action-pdf {
-      margin-right: 0.5em !important;
+      margin-right: 0.5em;
       margin-bottom: 1em;
+    }
+    .action-details {
+      margin-right: 0.5em;
     }
   }
   .pdf-disabled {
@@ -40,7 +43,6 @@ const ActionsCell = styled.div`
     cursor: default;
   }
   .action-pdf {
-    margin-right: 1em;
     width: 21px;
     height: 21px;
     background: url(${pdfIcon}) no-repeat;
@@ -50,7 +52,6 @@ const ActionsCell = styled.div`
     }
   }
   .action-details {
-    margin-right: 0.5em;
     cursor: pointer;
     width: 21px;
     height: 21px;
