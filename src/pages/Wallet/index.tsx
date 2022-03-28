@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
 import { PaymentModal } from "src/pages/Wallet/paymentModal";
 import { getFiscalProfile } from "src/redux/user/actions/getFiscalProfile";
-
+import { PaymentDetailsModal } from "./PaymentDetailsModal/PaymentDetailsModal";
 import { WalletHelp } from "./WalletHelp";
 import { WalletManagment } from "./WalletManagment";
 import { WalletTable } from "./WalletTable";
@@ -29,6 +29,7 @@ export default function Wallet() {
     >
       <OutsideContainer>
         <PaymentModal />
+        <PaymentDetailsModal />
       </OutsideContainer>
       <BSGrid>
         <BSCol size="col-lg-9" className="aq-mb-3">

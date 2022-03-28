@@ -13,6 +13,10 @@ type WalletState = {
     };
   };
   isPaymentModalOpen: boolean;
+  paymentDetailsModal: {
+    isOpen: boolean;
+    paymentId?: number;
+  };
   paymentDetails: ApiOperations["get-users-me-payments-payment"]["responses"]["200"]["content"]["application/json"] & {
     total: number;
     limit: number;
@@ -26,6 +30,7 @@ type WalletActions =
   | WalletActions_UpdateRequestQuery
   | WalletActions_SetBooty
   | WalletActions_TogglePaymentModal
+  | WalletActions_TogglePaymentDetailsModal
   | WalletActions_UpdatePaymentDetails
   | WalletActions_UpdatePaymentDetailsQuery
   | WalletActions_ResetPaymentDetails;
@@ -65,4 +70,9 @@ type WalletActions_UpdatePaymentDetailsQuery = {
 
 type WalletActions_ResetPaymentDetails = {
   type: "wallet/resetPaymentDetails";
+};
+
+type WalletActions_TogglePaymentDetailsModal = {
+  type: "wallet/togglePaymentDetailsModal";
+  payload: false | number;
 };

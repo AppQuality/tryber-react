@@ -12,6 +12,7 @@ export const initialState: WalletState = {
     results: [],
   },
   isPaymentModalOpen: false,
+  paymentDetailsModal: { isOpen: false },
   paymentDetails: {
     start: 0,
     limit: 10,
@@ -53,6 +54,14 @@ export default (state = initialState, action: WalletActions) => {
       return {
         ...state,
         isPaymentModalOpen: action.payload,
+      };
+    case "wallet/togglePaymentDetailsModal":
+      return {
+        ...state,
+        paymentDetailsModal:
+          action.payload === false
+            ? { isOpen: false }
+            : { isOpen: true, paymentId: action.payload },
       };
     case "wallet/updatePaymentDetailsQuery":
       return {

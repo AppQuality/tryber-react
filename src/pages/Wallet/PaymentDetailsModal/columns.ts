@@ -1,6 +1,7 @@
-import React from "react";
 import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
+import React from "react";
 import { TFunction } from "react-i18next";
+
 import { updateDetailsSortingOptions } from "../../../redux/wallet/actionCreator";
 
 export const paymentDetailsColumns = (
@@ -15,7 +16,9 @@ export const paymentDetailsColumns = (
       dataIndex: "activity",
       key: "activity",
       maxWidth: "28em",
+      role: "title",
       isSortable: true,
+      hideIndex: true,
       onSort: (newOrder) => {
         setIsLoading(true);
         dispatch(updateDetailsSortingOptions(id, newOrder, "activity")).then(
@@ -50,7 +53,9 @@ export const paymentDetailsColumns = (
     {
       title: t("Amount"),
       dataIndex: "amount",
+      role: "cta",
       key: "amount",
+      hideIndex: true,
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);

@@ -35,6 +35,7 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
   const onClickBack = () => {
     if (step === 3) {
       resetForm();
+      setCompletedSteps([false, false, false]);
       dispatch(setPaymentModalOpen(false));
     } else {
       // decrement step
