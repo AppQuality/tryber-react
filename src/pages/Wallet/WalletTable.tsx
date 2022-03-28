@@ -12,6 +12,7 @@ import detailsHoverIcon from "src/pages/Wallet/assets/detailsHover.svg";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import pdfIcon from "src/pages/Wallet/assets/pdf.svg";
 import pdfHoverIcon from "src/pages/Wallet/assets/pdfHover.svg";
+import pdfDisabledIcon from "src/pages/Wallet/assets/pdfDisabled.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { walletColumns } from "src/pages/Wallet/columns";
 import { useAppDispatch } from "src/redux/provider";
@@ -41,6 +42,9 @@ const ActionsCell = styled.div`
   .pdf-disabled {
     pointer-events: none;
     cursor: default;
+    .action-pdf {
+      background: url(${pdfDisabledIcon}) no-repeat;
+    }
   }
   .action-pdf {
     width: 21px;
