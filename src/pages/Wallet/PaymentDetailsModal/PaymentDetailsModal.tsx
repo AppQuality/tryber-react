@@ -58,12 +58,12 @@ export const PaymentDetailsModal = () => {
           amount: {
             title: t("Amount"),
             content: (
-              <span className="aq-text-success">
+              <div className="aq-text-success aq-mt-4 aq-mt-0-md">
                 {r.amount.currency in currencyTable
                   ? currencyTable[r.amount.currency]
                   : r.amount.currency}{" "}
                 {r.amount.value?.toFixed(2)}
-              </span>
+              </div>
             ),
           },
         };

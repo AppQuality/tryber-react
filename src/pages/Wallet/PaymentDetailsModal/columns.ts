@@ -53,6 +53,7 @@ export const paymentDetailsColumns = (
       dataIndex: "amount",
       role: "cta",
       key: "amount",
+      hideIndex: true,
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);
