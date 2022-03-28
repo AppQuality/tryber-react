@@ -5,7 +5,7 @@ import { useFormikContext } from "formik";
 import { shallowEqual, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useAppDispatch } from "src/redux/provider";
-import { getFiscalProfile } from "src/redux/user/actions/getFiscalProfile";
+import { getProfile } from "src/redux/user/actions/getProfile";
 
 const iconStyle = {
   verticalAlign: "middle",
@@ -15,6 +15,7 @@ const iconStyle = {
 export const Step2Recap = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+
   const { values } = useFormikContext<PaymentFormType>();
   const { data, loading } = useSelector(
     (state: GeneralState) => state.user.fiscal,
@@ -24,8 +25,12 @@ export const Step2Recap = () => {
     (state: GeneralState) => state.wallet.booty,
     shallowEqual
   );
+  const { birthDate } = useSelector(
+    (state: GeneralState) => state.user.user,
+    shallowEqual
+  );
   useEffect(() => {
-    dispatch(getFiscalProfile());
+    dispatch(getProfile());
   }, []);
   return (
     <>
@@ -82,10 +87,8 @@ export const Step2Recap = () => {
           {t("Fiscal Type")}: <strong>{data?.type}</strong>
         </div>
         <div className="aq-mb-2">
-          {t("Birth place")}:{" "}
-          <strong>
-            {data?.birthPlace.city} - {data?.birthPlace.province}
-          </strong>
+          {t("Birth date")}:{" "}
+          <strong>{new Date(birthDate).toLocaleDateString()}</strong>
         </div>
         <div>
           {t("Address")}:{" "}
