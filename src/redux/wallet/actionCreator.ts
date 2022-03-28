@@ -174,3 +174,14 @@ export const resetPaymentDetails =
       type: "wallet/resetPaymentDetails",
     });
   };
+
+export const setBootyDetailsModalOpen =
+  (
+    isOpen: boolean
+  ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch) => {
+    dispatch({
+      type: "wallet/toggleBootyDetailsModal",
+      payload: isOpen,
+    });
+  };

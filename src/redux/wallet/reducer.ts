@@ -22,6 +22,7 @@ export const initialState: WalletState = {
     orderBy: "date",
     results: [],
   },
+  isBootyDetailsModalOpen: false,
 };
 
 export default (state = initialState, action: WalletActions) => {
@@ -78,6 +79,11 @@ export default (state = initialState, action: WalletActions) => {
           ...state.paymentDetails,
           ...action.payload,
         },
+      };
+    case "wallet/toggleBootyDetailsModal":
+      return {
+        ...state,
+        isBootyDetailsModalOpen: action.payload,
       };
     case "wallet/resetPaymentDetails":
       return {

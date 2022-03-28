@@ -4,6 +4,7 @@ import {
   SortTableSelect,
   Table,
   TableType,
+  Text,
 } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -13,6 +14,7 @@ import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
 import {
   fetchPaymentDetails,
   resetPaymentDetails,
+  setBootyDetailsModalOpen,
   updateDetailsPagination,
 } from "../../../redux/wallet/actionCreator";
 import { paymentDetailsColumns } from "./columns";
@@ -24,15 +26,7 @@ const activityStyle = {
   textOverflow: "ellipsis",
 };
 
-interface BootyDetailsModalProps {
-  open: boolean;
-  onClose: () => void;
-}
-
-export const BootyDetailsModal = ({
-  open,
-  onClose,
-}: BootyDetailsModalProps) => {
+export const BootyDetailsModal = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -41,6 +35,10 @@ export const BootyDetailsModal = ({
 
   const paymentDetails = useSelector(
     (state: GeneralState) => state.wallet.paymentDetails,
+    shallowEqual
+  );
+  const open = useSelector(
+    (state: GeneralState) => state.wallet.isBootyDetailsModalOpen,
     shallowEqual
   );
 
@@ -53,18 +51,24 @@ export const BootyDetailsModal = ({
           key: r.id,
           activity: {
             title: r.activity,
-            content: <div style={activityStyle}>{r.activity}</div>,
+            content: (
+              <Text as="div" style={activityStyle}>
+                <b className="aq-text-primary">{r.activity}</b>
+              </Text>
+            ),
           },
           date: getPaidDate(r.date),
           amount: {
             title: t("Amount"),
             content: (
-              <span className="aq-text-success">
-                {r.amount.currency in currencyTable
-                  ? currencyTable[r.amount.currency]
-                  : r.amount.currency}{" "}
-                {r.amount.value?.toFixed(2)}
-              </span>
+              <Text className="aq-text-success ">
+                <b>
+                  {r.amount.currency in currencyTable
+                    ? currencyTable[r.amount.currency]
+                    : r.amount.currency}{" "}
+                  {r.amount.value?.toFixed(2)}
+                </b>
+              </Text>
             ),
           },
         };
@@ -95,7 +99,7 @@ export const BootyDetailsModal = ({
     <Modal
       title={t("Booty details")}
       isOpen={open}
-      onClose={onClose}
+      onClose={() => dispatch(setBootyDetailsModalOpen(false))}
       size="large"
     >
       {columns.length > 0 && (

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
 import { PaymentModal } from "src/pages/Wallet/paymentModal";
 import { getFiscalProfile } from "src/redux/user/actions/getFiscalProfile";
+import { BootyDetailsModal } from "./BootyDetailsModal/BootyDetailsModal";
 import { PaymentDetailsModal } from "./PaymentDetailsModal/PaymentDetailsModal";
 import { WalletHelp } from "./WalletHelp";
 import { WalletManagment } from "./WalletManagment";
@@ -28,6 +29,7 @@ export default function Wallet() {
       shouldBeLoggedIn
     >
       <OutsideContainer>
+        <BootyDetailsModal />
         <PaymentModal />
         <PaymentDetailsModal />
       </OutsideContainer>

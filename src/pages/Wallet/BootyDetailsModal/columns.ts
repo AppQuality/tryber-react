@@ -15,7 +15,9 @@ export const paymentDetailsColumns = (
       dataIndex: "activity",
       key: "activity",
       maxWidth: "36em",
+      role: "title",
       isSortable: true,
+      hideIndex: true,
       onSort: (newOrder) => {
         setIsLoading(true);
         dispatch(updateDetailsSortingOptions(id, newOrder, "activity")).then(
@@ -38,7 +40,9 @@ export const paymentDetailsColumns = (
     {
       title: t("Amount"),
       dataIndex: "amount",
+      role: "cta",
       key: "amount",
+      hideIndex: true,
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);

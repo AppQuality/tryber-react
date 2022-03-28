@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { useAppDispatch } from "src/redux/provider";
 import {
   fetchBooty,
+  setBootyDetailsModalOpen,
   setPaymentModalOpen,
 } from "src/redux/wallet/actionCreator";
 import { BootyDetailsModal } from "./BootyDetailsModal/BootyDetailsModal";
@@ -31,7 +32,6 @@ const WalletManagmentRow = styled.div`
 export const WalletManagment = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const [openDetails, setOpenDetails] = useState<boolean>(false);
 
   const fiscalStatus = useSelector(
     (state: GeneralState) => state.user.fiscal.data?.fiscalStatus,
@@ -135,7 +135,9 @@ export const WalletManagment = () => {
           }
           type="link"
           //TODO REMOVE = 0
-          onClick={() => booty.amount >= 0 && setOpenDetails(true)}
+          onClick={() =>
+            booty.amount >= 0 && dispatch(setBootyDetailsModalOpen(true))
+          }
         >
           {t("__WALLET_CARD-REQUEST_CTA-LINK MAX: 15")}
         </Button>
@@ -153,10 +155,6 @@ export const WalletManagment = () => {
       <Text className="aq-mt-2" small>
         {getInfoText()}
       </Text>
-      <BootyDetailsModal
-        open={openDetails}
-        onClose={() => setOpenDetails(false)}
-      />
     </Card>
   );
 };
