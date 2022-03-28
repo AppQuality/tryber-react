@@ -1,4 +1,3 @@
-import { Trans, useTranslation } from "react-i18next";
 import {
   Checkbox,
   ErrorMessage,
@@ -8,13 +7,16 @@ import {
 } from "@appquality/appquality-design-system";
 import { FieldProps } from "formik";
 import { BaseSyntheticEvent } from "react";
+import { Trans, useTranslation } from "react-i18next";
 
 export const Step0Method = () => {
   const { t } = useTranslation();
   return (
     <div>
       <div className="aq-mb-1">
-        <strong>{t("Chose a payment method")}</strong>
+        <strong className="aq-text-primary">
+          {t("Chose a payment method")}
+        </strong>
       </div>
       <FormikField name="paymentMethod" className="aq-mb-3">
         {({ field, form, meta }: FieldProps) => {
@@ -59,7 +61,7 @@ export const Step0Method = () => {
                 onChange={onCheckChange}
                 checked={field.value}
                 label={
-                  <strong>
+                  <strong className="aq-text-primary">
                     <Trans
                       i18nKey={
                         "Accept the <terms_and_conditions_link>conditions</terms_and_conditions_link> before proceeding"

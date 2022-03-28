@@ -1,9 +1,10 @@
+import { Text } from "@appquality/appquality-design-system";
+import { useFormikContext } from "formik";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { shallowEqual, useSelector } from "react-redux";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
-import { useFormikContext } from "formik";
-import { shallowEqual, useSelector } from "react-redux";
-import { useEffect } from "react";
 import { useAppDispatch } from "src/redux/provider";
 import { getProfile } from "src/redux/user/actions/getProfile";
 
@@ -42,7 +43,7 @@ export const Step2Recap = () => {
             alt="paypal transfer"
             className="aq-mr-1"
           />{" "}
-          <strong>PayPal</strong>
+          <strong className="aq-text-primary">PayPal</strong>
         </div>
       ) : (
         <div className="aq-text-center aq-mb-2">
@@ -52,52 +53,52 @@ export const Step2Recap = () => {
             alt="transferwise"
             className="aq-mr-1"
           />{" "}
-          <strong>{t("Bank Transfer")}</strong>
+          <strong className="aq-text-primary">{t("Bank Transfer")}</strong>
         </div>
       )}
-      <div className="aq-text-center aq-mb-3">
+      <Text className="aq-text-center aq-mb-3 aq-text-primary">
         {t("Total booty")}: <strong>€{amount}</strong>
-      </div>
+      </Text>
       <div style={{ maxWidth: "430px", margin: "0 auto" }}>
         {values.paymentMethod === "paypal" ? (
-          <div className="aq-mb-2">
+          <Text className="aq-mb-2 aq-text-primary">
             Email Paypal: <strong>{values.ppAccountOwner}</strong>
-          </div>
+          </Text>
         ) : (
           <>
-            <div className="aq-mb-2">
+            <Text className="aq-mb-2 aq-text-primary">
               {t("Account holder")}: <strong>{values.bankaccountOwner}</strong>
-            </div>
-            <div className="aq-mb-2">
-              {t("Iban")}: <strong>{values.iban}</strong>
-            </div>
+            </Text>
+            <Text className="aq-mb-2 aq-text-primary">
+              {t("IBAN")}: <strong>{values.iban}</strong>
+            </Text>
           </>
         )}
-        <div className="aq-mb-2 aq-pt-2">
+        <div className="aq-mb-2 aq-pt-2 aq-text-primary">
           <strong>
             {t(
               "The following informations are retrived from your fiscal profile and will be used to generate your receipt"
             )}
           </strong>
         </div>
-        <div className="aq-mb-2">
+        <Text className="aq-mb-2 aq-text-primary">
           {t("Tax ID")}: <strong>{data?.fiscalId}</strong>
-        </div>
-        <div className="aq-mb-2">
+        </Text>
+        <Text className="aq-mb-2 aq-text-primary">
           {t("Fiscal Type")}: <strong>{data?.type}</strong>
-        </div>
-        <div className="aq-mb-2">
+        </Text>
+        <Text className="aq-mb-2 aq-text-primary">
           {t("Birth date")}:{" "}
           <strong>{new Date(birthDate).toLocaleDateString()}</strong>
-        </div>
-        <div>
+        </Text>
+        <Text className="aq-text-primary">
           {t("Address")}:{" "}
           <strong>
             {data?.address.street} {data?.address.streetNumber},{" "}
             {data?.address.cityCode} {data?.address.city},{" "}
             {data?.address.country}
           </strong>
-        </div>
+        </Text>
       </div>
     </>
   );
