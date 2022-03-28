@@ -116,7 +116,7 @@ export const WalletManagment = () => {
               className={
                 !isVerified || booty.amount === 0 || paymentInProcessing
                   ? "aq-text-disabled-dark"
-                  : ""
+                  : "aq-text-primary"
               }
             >
               <strong>{booty.amount?.toFixed(2)}€</strong>
