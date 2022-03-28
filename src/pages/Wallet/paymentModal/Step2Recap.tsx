@@ -81,7 +81,7 @@ export const Step2Recap = () => {
           </strong>
         </div>
         <div className="aq-mb-2">
-          {t("National Id Number")}: <strong>{data?.fiscalId}</strong>
+          {t("Tax ID")}: <strong>{data?.fiscalId}</strong>
         </div>
         <div className="aq-mb-2">
           {t("Fiscal Type")}: <strong>{data?.type}</strong>

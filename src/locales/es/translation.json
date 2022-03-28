@@ -214,7 +214,6 @@
   "Must contain at least a number": "Debe contener al menos un número",
   "Must contain at least an uppercase letter": "Debe contener al menos una letra minúscula",
   "Name": "Nombre",
-  "National Id Number": "",
   "New password": "Nueva password",
   "Next": "Siguiente",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "Ninguna campaña ha sido completado todavía. Es hora de trabajar: termina las campañas activas o aplica en las que están disponibles",
@@ -299,6 +298,7 @@
   "Surname": "Apellido",
   "Take me to the dashboard": "Llévame a la dashboard",
   "Take part in the Basic Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become an AppQuality world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community.": "Participa en el Curso Básico y gane 200 puntos de experiencia, serán esenciales para aumentar las posibilidades de ser seleccionado a las campañas. Te convertirás en un experto mundial de Tryber y recibirás el Certificado de LinkedIn para demostrar que eres un miembro calificado de la Community.",
+  "Tax ID": "",
   "Tax identification number": {
     "Tax ID": "Identificación fiscal"
   },

@@ -214,7 +214,6 @@
   "Must contain at least a number": "Must contain at least a number",
   "Must contain at least an uppercase letter": "Must contain at least an uppercase letter",
   "Name": "First name",
-  "National Id Number": "",
   "New password": "New password",
   "Next": "Next",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!",
@@ -299,6 +298,7 @@
   "Surname": "Last name",
   "Take me to the dashboard": "Take me to the dashboard",
   "Take part in the Basic Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become an AppQuality world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community.": "Take part in the Basic Tryber Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become a Tryber world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community.",
+  "Tax ID": "",
   "Tax identification number": {
     "Tax ID": "Tax ID"
   },
