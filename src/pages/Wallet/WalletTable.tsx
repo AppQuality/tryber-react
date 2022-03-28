@@ -1,27 +1,27 @@
 import {
-  Table,
   Pagination,
-  TableType,
   SortTableSelect,
+  Table,
+  TableType,
 } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { shallowEqual, useSelector } from "react-redux";
+import detailsIcon from "src/pages/Wallet/assets/details.svg";
+import detailsHoverIcon from "src/pages/Wallet/assets/detailsHover.svg";
+import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
+import pdfIcon from "src/pages/Wallet/assets/pdf.svg";
+import pdfHoverIcon from "src/pages/Wallet/assets/pdfHover.svg";
+import twIcon from "src/pages/Wallet/assets/transferwise.svg";
+import { walletColumns } from "src/pages/Wallet/columns";
 import { useAppDispatch } from "src/redux/provider";
 import {
   fetchPaymentRequests,
   updatePagination,
 } from "src/redux/wallet/actionCreator";
-import { walletColumns } from "src/pages/Wallet/columns";
-import { shallowEqual, useSelector } from "react-redux";
+import { openPaymentDetailsModal } from "src/redux/wallet/actions/openPaymentDetailsModal";
 import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
-import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
-import twIcon from "src/pages/Wallet/assets/transferwise.svg";
-import pdfIcon from "src/pages/Wallet/assets/pdf.svg";
-import detailsIcon from "src/pages/Wallet/assets/details.svg";
-import pdfHoverIcon from "src/pages/Wallet/assets/pdfHover.svg";
-import detailsHoverIcon from "src/pages/Wallet/assets/detailsHover.svg";
 import styled from "styled-components";
-import { PaymentDetailsModal } from "./PaymentDetailsModal/PaymentDetailsModal";
 
 const ActionsCell = styled.div`
   display: flex;
@@ -95,8 +95,6 @@ export const WalletTable = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
   const [rows, setRows] = useState<TableType.Row[]>([]);
-  const [openDetails, setOpenDetails] = useState<boolean>(false);
-  const [paymentId, setPaymentId] = useState<number | undefined>();
 
   const { requestsList } = useSelector(
     (state: GeneralState) => state.wallet,
@@ -183,8 +181,7 @@ export const WalletTable = () => {
                     className="action-details"
                     title={t("__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:")}
                     onClick={() => {
-                      setPaymentId(req.id);
-                      setOpenDetails(true);
+                      dispatch(openPaymentDetailsModal(req.id));
                     }}
                   />
                 </ActionsCell>
@@ -229,14 +226,6 @@ export const WalletTable = () => {
             .replace("%current%", current.toString())
             .replace("%total%", total ? total.toString() : "0")
         }
-      />
-      <PaymentDetailsModal
-        open={openDetails}
-        onClose={() => {
-          setOpenDetails(false);
-          setPaymentId(undefined);
-        }}
-        paymentId={paymentId}
       />
     </>
   );
