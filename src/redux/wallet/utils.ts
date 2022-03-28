@@ -1,3 +1,5 @@
+import dateFormatter from "src/utils/dateFormatter";
+
 export const currencyTable: { [index: string]: string } = {
   EUR: "€",
   USD: "$",
@@ -6,12 +8,7 @@ export const currencyTable: { [index: string]: string } = {
 
 export const getPaidDate = (requestDate?: string) => {
   if (requestDate && requestDate !== "-") {
-    const date = new Date(requestDate);
-    return date.toLocaleDateString(undefined, {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    });
+    return dateFormatter(requestDate);
   }
   return "-";
 };
