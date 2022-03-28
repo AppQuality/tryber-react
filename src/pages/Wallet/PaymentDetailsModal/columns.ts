@@ -28,7 +28,6 @@ export const paymentDetailsColumns = (
       title: t("Activity"),
       dataIndex: "type",
       key: "type",
-      role: "overline",
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);
