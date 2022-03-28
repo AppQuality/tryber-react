@@ -17,6 +17,7 @@ import {
 } from "src/redux/wallet/actionCreator";
 import { closePaymentDetailsModal } from "src/redux/wallet/actions/closePaymentDetailsModal";
 import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
+
 import { paymentDetailsColumns } from "./columns";
 
 const activityStyle = {
@@ -51,19 +52,29 @@ export const PaymentDetailsModal = () => {
           key: r.id,
           activity: {
             title: r.activity,
-            content: <div style={activityStyle}>{r.activity}</div>,
+            content: (
+              <Text as="div" style={activityStyle}>
+                <b className="aq-text-primary">{r.activity}</b>
+              </Text>
+            ),
           },
-          type: r.type,
+          type: (
+            <Text as="span">
+              <b className="aq-text-primary">{r.type}</b>
+            </Text>
+          ),
           date: getPaidDate(r.date),
           amount: {
             title: t("Amount"),
             content: (
-              <div className="aq-text-success aq-mt-4 aq-mt-0-md">
-                {r.amount.currency in currencyTable
-                  ? currencyTable[r.amount.currency]
-                  : r.amount.currency}{" "}
-                {r.amount.value?.toFixed(2)}
-              </div>
+              <Text className="aq-text-success ">
+                <b>
+                  {r.amount.currency in currencyTable
+                    ? currencyTable[r.amount.currency]
+                    : r.amount.currency}{" "}
+                  {r.amount.value?.toFixed(2)}
+                </b>
+              </Text>
             ),
           },
         };
