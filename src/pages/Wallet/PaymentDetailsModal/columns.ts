@@ -15,6 +15,7 @@ export const paymentDetailsColumns = (
       dataIndex: "activity",
       key: "activity",
       maxWidth: "28em",
+      role: "title",
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);
@@ -27,6 +28,7 @@ export const paymentDetailsColumns = (
       title: t("Activity"),
       dataIndex: "type",
       key: "type",
+      role: "overline",
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);
@@ -50,6 +52,7 @@ export const paymentDetailsColumns = (
     {
       title: t("Amount"),
       dataIndex: "amount",
+      role: "cta",
       key: "amount",
       isSortable: true,
       onSort: (newOrder) => {
