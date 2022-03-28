@@ -1,13 +1,13 @@
 import { Formik, FormikHelpers } from "formik";
-import * as yup from "yup";
 import { useTranslation } from "react-i18next";
-import API from "src/utils/api";
 import { useAppDispatch } from "src/redux/provider";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 import {
-  setPaymentModalOpen,
   fetchPaymentRequests,
+  setPaymentModalOpen,
 } from "src/redux/wallet/actionCreator";
+import API from "src/utils/api";
+import * as yup from "yup";
 
 export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
   children,
@@ -75,7 +75,7 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
           .string()
           .required()
           .matches(
-            /^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/gi,
+            /^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/g,
             t("This is an invalid format.")
           ),
       }),
