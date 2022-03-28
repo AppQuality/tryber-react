@@ -66,7 +66,10 @@ export const Step0Method = () => {
                       }
                       components={{
                         terms_and_conditions_link: (
-                          <a href="/terms_and_conditions" />
+                          <a
+                            target="_blank"
+                            href={t("/payment_conditions", { ns: "links" })}
+                          />
                         ),
                       }}
                     />
