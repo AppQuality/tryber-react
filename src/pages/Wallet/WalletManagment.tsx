@@ -1,5 +1,5 @@
 import { Button, Card, Text } from "@appquality/appquality-design-system";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { PiggyBankFill } from "react-bootstrap-icons";
 import { Trans, useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
@@ -9,6 +9,7 @@ import {
   fetchBooty,
   setPaymentModalOpen,
 } from "src/redux/wallet/actionCreator";
+import { BootyDetailsModal } from "./BootyDetailsModal/BootyDetailsModal";
 
 const WalletManagmentRow = styled.div`
   display: flex;
@@ -22,11 +23,16 @@ const WalletManagmentRow = styled.div`
     padding: 0;
     font-size: 0.875rem;
   }
+  .cursor-default {
+    cursor: default;
+  }
 `;
 
 export const WalletManagment = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const [openDetails, setOpenDetails] = useState<boolean>(false);
+
   const fiscalStatus = useSelector(
     (state: GeneralState) => state.user.fiscal.data?.fiscalStatus,
     shallowEqual
@@ -123,7 +129,14 @@ export const WalletManagment = () => {
             </Text>
           </div>
         </div>
-        <Button type="link">
+        <Button
+          className={
+            booty.amount === 0 ? "aq-text-disabled-dark cursor-default" : ""
+          }
+          type="link"
+          //TODO REMOVE = 0
+          onClick={() => booty.amount >= 0 && setOpenDetails(true)}
+        >
           {t("__WALLET_CARD-REQUEST_CTA-LINK MAX: 15")}
         </Button>
       </WalletManagmentRow>
@@ -140,6 +153,10 @@ export const WalletManagment = () => {
       <Text className="aq-mt-2" small>
         {getInfoText()}
       </Text>
+      <BootyDetailsModal
+        open={openDetails}
+        onClose={() => setOpenDetails(false)}
+      />
     </Card>
   );
 };

@@ -64,6 +64,7 @@
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supporta le aziende nella creazione di esperienze memorabili grazie al potere della Community di TRYBER. <unguess_link>Scopri UNGUESS</unguess_link>"
   },
   "Avalaible Campaigns": "Campagne Disponibili",
+  "Awarded on": "",
   "Back": "Indietro",
   "Back to wallet": "",
   "Bank": "",
@@ -74,6 +75,7 @@
   "Birth Date": "Data di nascita",
   "Birth city": "Città di nascita",
   "Birth place": "",
+  "Booty details": "",
   "Brands helped": "Aziende aiutate",
   "Bug Evaluation": "Valutazione Bug",
   "By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>": "Cliccando questo bottone accetti i <1>Termini d'utilizzo</1> e la <3>Privacy Policy</3>",
@@ -465,7 +467,6 @@
   "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Lorem ipsum dol",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "",
-  "accept conditions and continue request": "",
   "address": "indirizzo",
   "company": "Società",
   "contact us": "Contattaci",
