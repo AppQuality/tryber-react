@@ -7,6 +7,7 @@ import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { useAppDispatch } from "src/redux/provider";
 import { getProfile } from "src/redux/user/actions/getProfile";
+import dateFormatter from "src/utils/dateFormatter";
 
 const iconStyle = {
   verticalAlign: "middle",
@@ -88,8 +89,7 @@ export const Step2Recap = () => {
           {t("Fiscal Type")}: <strong>{data?.type}</strong>
         </Text>
         <Text className="aq-mb-2 aq-text-primary">
-          {t("Birth date")}:{" "}
-          <strong>{new Date(birthDate).toLocaleDateString()}</strong>
+          {t("Birth date")}: <strong>{dateFormatter(birthDate)}</strong>
         </Text>
         <Text className="aq-text-primary">
           {t("Address")}:{" "}
