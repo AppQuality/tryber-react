@@ -44,8 +44,6 @@ export const BootyDetailsModal = () => {
 
   const { results, limit, total, start, order, orderBy } = bootyDetails;
 
-  console.log(results);
-
   useEffect(() => {
     if (typeof results !== "undefined") {
       setRows(
