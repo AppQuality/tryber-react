@@ -58,14 +58,17 @@ export const PaymentDetailsModal = () => {
               </Text>
             ),
           },
-          type: (
-            <Text as="span">
-              <b className="aq-text-primary">{r.type}</b>
-            </Text>
-          ),
+          type: {
+            title: r.type,
+            content: (
+              <Text as="span">
+                <b className="aq-text-primary">{r.type}</b>
+              </Text>
+            ),
+          },
           date: getPaidDate(r.date),
           amount: {
-            title: t("Amount"),
+            title: `€ ` + r.amount.value,
             content: (
               <Text className="aq-text-success ">
                 <b>
