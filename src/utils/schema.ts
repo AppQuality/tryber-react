@@ -271,6 +271,11 @@ export interface paths {
       };
     };
   };
+  "/users/me/pending_booty": {
+    /** Return all single attributions that dials the pending booty */
+    get: operations["get-users-me-pending-booty"];
+    parameters: {};
+  };
   "/users/me/payments": {
     get: operations["get-users-me-payments"];
     post: operations["post-users-me-payments"];
@@ -1929,6 +1934,47 @@ export interface operations {
       };
     };
   };
+  /** Return all single attributions that dials the pending booty */
+  "get-users-me-pending-booty": {
+    parameters: {
+      query: {
+        /** Items to skip for pagination */
+        start?: components["parameters"]["start"];
+        /** Max items to retrieve */
+        limit?: components["parameters"]["limit"];
+        /** The field for item order */
+        orderBy?: "id" | "attributionDate" | "amount";
+        /** How to order values (ASC, DESC) */
+        order?: components["parameters"]["order"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results?: ({
+              id: number;
+            } & {
+              name: string;
+              amount: {
+                value?: number;
+                currency?: string;
+              };
+              /** Format: date */
+              attributionDate: string;
+            })[];
+            limit?: number;
+            size: number;
+            start: number;
+            total?: number;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
   "get-users-me-payments": {
     parameters: {
       query: {
@@ -1957,7 +2003,6 @@ export interface operations {
               };
               paidDate: string;
               method: {
-                /** @enum {string} */
                 type: "paypal" | "iban";
                 note: string;
               };
@@ -1995,12 +2040,10 @@ export interface operations {
         "application/json": {
           method:
             | {
-                /** @enum {string} */
                 type: "paypal";
                 email: string;
               }
             | {
-                /** @enum {string} */
                 type: "iban";
                 accountHolderName: string;
                 iban: string;

@@ -1,7 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import API from "src/utils/api";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
-import { components } from "src/utils/schema";
 
 export const fetchPaymentRequests =
   (): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
@@ -172,5 +171,89 @@ export const resetPaymentDetails =
   async (dispatch) => {
     dispatch({
       type: "wallet/resetPaymentDetails",
+    });
+  };
+
+export const setBootyDetailsModalOpen =
+  (
+    isOpen: boolean
+  ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch) => {
+    dispatch({
+      type: "wallet/toggleBootyDetailsModal",
+      payload: isOpen,
+    });
+  };
+
+export const fetchBootyDetails =
+  (): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch, getState) => {
+    const {
+      wallet: { bootyDetails },
+    } = getState();
+    try {
+      const query: ApiOperations["get-users-me-pending-booty"]["parameters"]["query"] =
+        {
+          order: bootyDetails.order,
+          orderBy: bootyDetails.orderBy,
+          limit: bootyDetails.limit,
+          start: bootyDetails.start,
+        };
+      const data = await API.getUserBootyDetails(query);
+      return dispatch({
+        type: "wallet/updateBootyDetails",
+        payload: data,
+      });
+    } catch (e) {
+      const error = e as HttpError;
+      if (error.statusCode === 404) {
+        const { start, limit, size } = bootyDetails;
+        if (start - limit >= 0) {
+          dispatch(updateBootyDetailsPagination(start - limit));
+        }
+        return dispatch({
+          type: "wallet/updateBootyDetails",
+          payload: {
+            size: size,
+            start: start,
+            results: [],
+          },
+        });
+      } else {
+        addMessage(error.message, "danger", false);
+      }
+    }
+  };
+
+export const updateBootyDetailsPagination =
+  (
+    newStart: number
+  ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch) => {
+    dispatch({
+      type: "wallet/updateBootyDetailsQuery",
+      payload: { start: newStart },
+    });
+    return dispatch(fetchBootyDetails());
+  };
+
+export const updateBootyDetailsSortingOptions =
+  (
+    order: WalletState["bootyDetails"]["order"],
+    orderBy: WalletState["bootyDetails"]["orderBy"]
+  ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch) => {
+    dispatch({
+      type: "wallet/updateBootyDetailsQuery",
+      payload: { order: order, orderBy: orderBy },
+    });
+    return dispatch(fetchBootyDetails());
+  };
+
+export const resetBootyDetails =
+  (): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch) => {
+    dispatch({
+      type: "wallet/resetBootyDetails",
     });
   };

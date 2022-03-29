@@ -23,6 +23,13 @@ type WalletState = {
     order: ApiComponents["parameters"]["order"];
     orderBy: "date" | "type" | "activity" | "amount";
   };
+  isBootyDetailsModalOpen: boolean;
+  bootyDetails: ApiOperations["get-users-me-pending-booty"]["responses"]["200"]["content"]["application/json"] & {
+    total: number;
+    limit: number;
+    order: ApiComponents["parameters"]["order"];
+    orderBy: "attributionDate" | "id" | "amount";
+  };
 };
 
 type WalletActions =
@@ -33,7 +40,11 @@ type WalletActions =
   | WalletActions_TogglePaymentDetailsModal
   | WalletActions_UpdatePaymentDetails
   | WalletActions_UpdatePaymentDetailsQuery
-  | WalletActions_ResetPaymentDetails;
+  | WalletActions_ResetPaymentDetails
+  | WalletActions_UpdateBootyDetails
+  | WalletActions_UpdateBootyDetailsQuery
+  | WalletActions_ResetBootyDetails
+  | WalletActions_ToggleBootyDetailsModal;
 
 /**
  *  Action types and their payloads
@@ -75,4 +86,23 @@ type WalletActions_ResetPaymentDetails = {
 type WalletActions_TogglePaymentDetailsModal = {
   type: "wallet/togglePaymentDetailsModal";
   payload: false | number;
+};
+
+type WalletActions_UpdateBootyDetails = {
+  type: "wallet/updateBootyDetails";
+  payload: ApiOperations["get-users-me-pending-booty"]["responses"]["200"]["content"]["application/json"];
+};
+
+type WalletActions_UpdateBootyDetailsQuery = {
+  type: "wallet/updateBootyDetailsQuery";
+  payload: ApiOperationsApiOperations["get-users-me-pending-booty"]["parameters"]["query"];
+};
+
+type WalletActions_ResetBootyDetails = {
+  type: "wallet/resetBootyDetails";
+};
+
+type WalletActions_ToggleBootyDetailsModal = {
+  type: "wallet/toggleBootyDetailsModal";
+  payload: boolean;
 };

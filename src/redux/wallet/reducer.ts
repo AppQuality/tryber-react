@@ -22,6 +22,16 @@ export const initialState: WalletState = {
     orderBy: "date",
     results: [],
   },
+  isBootyDetailsModalOpen: false,
+  bootyDetails: {
+    start: 0,
+    limit: 10,
+    size: 0,
+    total: 0,
+    order: "DESC",
+    orderBy: "attributionDate",
+    results: [],
+  },
 };
 
 export default (state = initialState, action: WalletActions) => {
@@ -79,10 +89,36 @@ export default (state = initialState, action: WalletActions) => {
           ...action.payload,
         },
       };
+    case "wallet/updateBootyDetailsQuery":
+      return {
+        ...state,
+        bootyDetails: {
+          ...state.bootyDetails,
+          ...action.payload,
+        },
+      };
+    case "wallet/updateBootyDetails":
+      return {
+        ...state,
+        bootyDetails: {
+          ...state.bootyDetails,
+          ...action.payload,
+        },
+      };
+    case "wallet/toggleBootyDetailsModal":
+      return {
+        ...state,
+        isBootyDetailsModalOpen: action.payload,
+      };
     case "wallet/resetPaymentDetails":
       return {
         ...state,
         paymentDetails: initialState.paymentDetails,
+      };
+    case "wallet/resetBootyDetails":
+      return {
+        ...state,
+        bootyDetails: initialState.bootyDetails,
       };
     default:
       return state;
