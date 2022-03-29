@@ -1957,7 +1957,6 @@ export interface operations {
               };
               paidDate: string;
               method: {
-                /** @enum {string} */
                 type: "paypal" | "iban";
                 note: string;
               };
@@ -1995,12 +1994,10 @@ export interface operations {
         "application/json": {
           method:
             | {
-                /** @enum {string} */
                 type: "paypal";
                 email: string;
               }
             | {
-                /** @enum {string} */
                 type: "iban";
                 accountHolderName: string;
                 iban: string;
