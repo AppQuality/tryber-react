@@ -1,16 +1,11 @@
-import { Button, Card, Text } from "@appquality/appquality-design-system";
-import { useEffect, useState } from "react";
-import { PiggyBankFill } from "react-bootstrap-icons";
-import { Trans, useTranslation } from "react-i18next";
-import { shallowEqual, useSelector } from "react-redux";
-import styled from "styled-components";
-import { useAppDispatch } from "src/redux/provider";
-import {
-  fetchBooty,
-  setBootyDetailsModalOpen,
-  setPaymentModalOpen,
-} from "src/redux/wallet/actionCreator";
-import { BootyDetailsModal } from "./BootyDetailsModal/BootyDetailsModal";
+import { Button, Card, Text } from '@appquality/appquality-design-system';
+import { useEffect } from 'react';
+import { PiggyBankFill } from 'react-bootstrap-icons';
+import { Trans, useTranslation } from 'react-i18next';
+import { shallowEqual, useSelector } from 'react-redux';
+import { useAppDispatch } from 'src/redux/provider';
+import { fetchBooty, setBootyDetailsModalOpen, setPaymentModalOpen } from 'src/redux/wallet/actionCreator';
+import styled from 'styled-components';
 
 const WalletManagmentRow = styled.div`
   display: flex;
@@ -32,9 +27,11 @@ const WalletManagmentRow = styled.div`
 export const WalletManagment = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-
-  const fiscalStatus = useSelector(
-    (state: GeneralState) => state.user.fiscal.data?.fiscalStatus,
+  const { fiscalStatus, fiscalType } = useSelector(
+    (state: GeneralState) => ({
+      fiscalStatus: state.user.fiscal.data?.fiscalStatus,
+      fiscalType: state.user.fiscal.data?.type,
+    }),
     shallowEqual
   );
   const booty = useSelector(
@@ -48,6 +45,8 @@ export const WalletManagment = () => {
 
   const isVerified = fiscalStatus === "Verified";
   const isValidAmount = booty.bootyThreshold?.isOver;
+  const isValidFiscalType =
+    fiscalType && ["withholding", "non-italian"].includes(fiscalType);
   const paymentInProcessing = requestsList.results?.some(
     (r) => r.status === "processing"
   );
@@ -59,32 +58,8 @@ export const WalletManagment = () => {
           i18nKey={"__WALLET_CARD-REQUEST_DISCLAIMER-PROCESSING MAX: 150"}
         />
       );
-    } else if (isVerified) {
-      if (isValidAmount) {
-        return (
-          <Trans
-            i18nKey={
-              "Available tags : <fiscal_profile_link> (Link to fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150"
-            }
-            components={{
-              fiscal_profile_link: <a href="/my-account/?tab=fiscal" />,
-            }}
-          />
-        );
-      } else if (booty.amount === 0) {
-        return (
-          <Trans
-            i18nKey={"__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150"}
-          />
-        );
-      } else {
-        return (
-          <Trans
-            i18nKey={"__WALLET_CARD-REQUEST_DISCLAIMER-NOREQUEST MAX: 150"}
-          />
-        );
-      }
-    } else {
+    }
+    if (!isVerified) {
       return (
         <Trans
           i18nKey={
@@ -96,6 +71,40 @@ export const WalletManagment = () => {
         />
       );
     }
+    if (booty.amount === 0) {
+      return (
+        <Trans i18nKey={"__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150"} />
+      );
+    }
+    if (!isValidFiscalType) {
+      return (
+        <Trans
+          i18nKey={
+            "Available tags : <mail_link> (Email link for unsupported fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150"
+          }
+          components={{
+            mail_link: <a href="mailto:support@tryber.me" target="_blank" />,
+          }}
+        />
+      );
+    }
+    if (!isValidAmount) {
+      return (
+        <Trans
+          i18nKey={"__WALLET_CARD-REQUEST_DISCLAIMER-NOREQUEST MAX: 150"}
+        />
+      );
+    }
+    return (
+      <Trans
+        i18nKey={
+          "Available tags : <fiscal_profile_link> (Link to fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150"
+        }
+        components={{
+          fiscal_profile_link: <a href="/my-account/?tab=fiscal" />,
+        }}
+      />
+    );
   };
 
   // initial requests
@@ -145,7 +154,12 @@ export const WalletManagment = () => {
         className="aq-mt-3"
         type="primary"
         size="block"
-        disabled={!isVerified || !isValidAmount || paymentInProcessing}
+        disabled={
+          !isVerified ||
+          !isValidAmount ||
+          paymentInProcessing ||
+          !isValidFiscalType
+        }
         onClick={openPaymentModal}
         flat
       >
