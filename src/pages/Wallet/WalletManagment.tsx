@@ -4,7 +4,12 @@ import { PiggyBankFill } from 'react-bootstrap-icons';
 import { Trans, useTranslation } from 'react-i18next';
 import { shallowEqual, useSelector } from 'react-redux';
 import { useAppDispatch } from 'src/redux/provider';
-import { fetchBooty, setBootyDetailsModalOpen, setPaymentModalOpen } from 'src/redux/wallet/actionCreator';
+import {
+  checkPaymentInProcessing,
+  fetchBooty,
+  setBootyDetailsModalOpen,
+  setPaymentModalOpen,
+} from 'src/redux/wallet/actionCreator';
 import styled from 'styled-components';
 
 const WalletManagmentRow = styled.div`
@@ -38,8 +43,8 @@ export const WalletManagment = () => {
     (state: GeneralState) => state.wallet.booty,
     shallowEqual
   );
-  const { requestsList } = useSelector(
-    (state: GeneralState) => state.wallet,
+  const paymentInProcessing = useSelector(
+    (state: GeneralState) => state.wallet.paymentInProcessing,
     shallowEqual
   );
 
@@ -47,9 +52,6 @@ export const WalletManagment = () => {
   const isValidAmount = booty.bootyThreshold?.isOver;
   const isValidFiscalType =
     fiscalType && ["withholding", "non-italian"].includes(fiscalType);
-  const paymentInProcessing = requestsList.results?.some(
-    (r) => r.status === "processing"
-  );
 
   const getInfoText = () => {
     if (paymentInProcessing) {
@@ -110,6 +112,7 @@ export const WalletManagment = () => {
   // initial requests
   useEffect(() => {
     dispatch(fetchBooty());
+    dispatch(checkPaymentInProcessing());
   }, []);
 
   const openPaymentModal = () => {
