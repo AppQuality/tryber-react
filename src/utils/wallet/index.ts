@@ -53,3 +53,16 @@ export const getUserPaymentDetails = async (
     params: query,
   });
 };
+
+export const getUserBootyDetails = async (
+  query?: ApiOperations["get-users-me-pending-booty"]["parameters"]["query"],
+  token?: string
+): Promise<
+  ApiOperations["get-users-me-pending-booty"]["responses"]["200"]["content"]["application/json"]
+> => {
+  return apifetch({
+    endpoint: "/users/me/pending_booty",
+    token: token,
+    params: query,
+  });
+};

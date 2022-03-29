@@ -12,12 +12,12 @@ import { shallowEqual, useSelector } from "react-redux";
 import { useAppDispatch } from "src/redux/provider";
 import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
 import {
-  fetchPaymentDetails,
-  resetPaymentDetails,
+  fetchBootyDetails,
+  resetBootyDetails,
   setBootyDetailsModalOpen,
-  updateDetailsPagination,
+  updateBootyDetailsPagination,
 } from "../../../redux/wallet/actionCreator";
-import { paymentDetailsColumns } from "./columns";
+import { bootyDetailsColumns } from "./columns";
 
 const activityStyle = {
   maxWidth: "calc(100% - 1em)",
@@ -33,8 +33,8 @@ export const BootyDetailsModal = () => {
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
-  const paymentDetails = useSelector(
-    (state: GeneralState) => state.wallet.paymentDetails,
+  const bootyDetails = useSelector(
+    (state: GeneralState) => state.wallet.bootyDetails,
     shallowEqual
   );
   const open = useSelector(
@@ -42,55 +42,59 @@ export const BootyDetailsModal = () => {
     shallowEqual
   );
 
-  const { results, limit, total, start, order, orderBy } = paymentDetails;
+  const { results, limit, total, start, order, orderBy } = bootyDetails;
+
+  console.log(results);
 
   useEffect(() => {
-    setRows(
-      results?.map((r) => {
-        return {
-          key: r.id,
-          activity: {
-            title: r.activity,
-            content: (
-              <Text as="div" style={activityStyle}>
-                <b className="aq-text-primary">{r.activity}</b>
-              </Text>
-            ),
-          },
-          date: getPaidDate(r.date),
-          amount: {
-            title: t("Amount"),
-            content: (
-              <Text className="aq-text-success ">
-                <b>
-                  {r.amount.currency in currencyTable
-                    ? currencyTable[r.amount.currency]
-                    : r.amount.currency}{" "}
-                  {r.amount.value?.toFixed(2)}
-                </b>
-              </Text>
-            ),
-          },
-        };
-      })
-    );
-  }, [paymentDetails]);
+    if (typeof results !== "undefined") {
+      setRows(
+        results?.map((r) => {
+          const formattedAmount = `${
+            r.amount.currency && r.amount.currency in currencyTable
+              ? currencyTable[r.amount.currency]
+              : r.amount.currency
+          } ${r.amount.value?.toFixed(2)}`;
+          return {
+            key: r.id,
+            name: {
+              title: r.name,
+              content: (
+                <Text as="div" style={activityStyle}>
+                  <b className="aq-text-primary">{r.name}</b>
+                </Text>
+              ),
+            },
+            attributionDate: getPaidDate(r.attributionDate),
+            amount: {
+              title: formattedAmount,
+              content: (
+                <Text className="aq-text-success ">
+                  <b>{formattedAmount}</b>
+                </Text>
+              ),
+            },
+          };
+        })
+      );
+    }
+  }, [bootyDetails]);
 
   useEffect(() => {
     if (open) {
-      const cols = paymentDetailsColumns(7224, setIsLoading, dispatch, t);
+      const cols = bootyDetailsColumns(setIsLoading, dispatch, t);
       setcolumns(cols);
-      dispatch(fetchPaymentDetails(7224)).then(() => setIsLoading(false));
+      dispatch(fetchBootyDetails()).then(() => setIsLoading(false));
     } else {
       setIsLoading(true);
-      dispatch(resetPaymentDetails());
+      dispatch(resetBootyDetails());
     }
   }, [open]);
 
   const changePagination = (newPage: number) => {
     setIsLoading(true);
     const newStart = limit * (newPage - 1);
-    dispatch(updateDetailsPagination(7224, newStart)).then(() =>
+    dispatch(updateBootyDetailsPagination(newStart)).then(() =>
       setIsLoading(false)
     );
   };
@@ -113,7 +117,7 @@ export const BootyDetailsModal = () => {
       <Table
         dataSource={rows}
         columns={columns}
-        orderBy={orderBy}
+        orderBy={orderBy === "id" ? "name" : orderBy}
         order={order}
         isLoading={isLoading}
         isStriped

@@ -1,10 +1,9 @@
 import React from "react";
 import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
 import { TFunction } from "react-i18next";
-import { updateDetailsSortingOptions } from "../../../redux/wallet/actionCreator";
+import { updateBootyDetailsSortingOptions } from "../../../redux/wallet/actionCreator";
 
-export const paymentDetailsColumns = (
-  id: number,
+export const bootyDetailsColumns = (
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
   dispatch: AppDispatch,
   t: TFunction<"translation">
@@ -12,29 +11,29 @@ export const paymentDetailsColumns = (
   return [
     {
       title: t("Activity name"),
-      dataIndex: "activity",
-      key: "activity",
+      dataIndex: "name",
+      key: "name",
       maxWidth: "36em",
       role: "title",
-      isSortable: true,
       hideIndex: true,
+      isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);
-        dispatch(updateDetailsSortingOptions(id, newOrder, "activity")).then(
-          () => setIsLoading(false)
+        dispatch(updateBootyDetailsSortingOptions(newOrder, "id")).then(() =>
+          setIsLoading(false)
         );
       },
     },
     {
       title: t("Awarded on"),
-      dataIndex: "date",
-      key: "date",
+      dataIndex: "attributionDate",
+      key: "attributionDate",
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);
-        dispatch(updateDetailsSortingOptions(id, newOrder, "date")).then(() =>
-          setIsLoading(false)
-        );
+        dispatch(
+          updateBootyDetailsSortingOptions(newOrder, "attributionDate")
+        ).then(() => setIsLoading(false));
       },
     },
     {
@@ -46,8 +45,8 @@ export const paymentDetailsColumns = (
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);
-        dispatch(updateDetailsSortingOptions(id, newOrder, "amount")).then(() =>
-          setIsLoading(false)
+        dispatch(updateBootyDetailsSortingOptions(newOrder, "amount")).then(
+          () => setIsLoading(false)
         );
       },
     },

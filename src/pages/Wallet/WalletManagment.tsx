@@ -134,9 +134,8 @@ export const WalletManagment = () => {
             booty.amount === 0 ? "aq-text-disabled-dark cursor-default" : ""
           }
           type="link"
-          //TODO REMOVE = 0
           onClick={() =>
-            booty.amount >= 0 && dispatch(setBootyDetailsModalOpen(true))
+            booty.amount > 0 && dispatch(setBootyDetailsModalOpen(true))
           }
         >
           {t("__WALLET_CARD-REQUEST_CTA-LINK MAX: 15")}
