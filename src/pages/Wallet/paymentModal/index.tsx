@@ -27,10 +27,14 @@ export const PaymentModal = () => {
         const { step } = formikProps.values;
         const closeModal = () => {
           formikProps.resetForm();
+          setCompletedSteps([false, false, false]);
           dispatch(setPaymentModalOpen(false));
         };
         return (
-          <form onSubmit={formikProps.handleSubmit}>
+          <form
+            onSubmit={formikProps.handleSubmit}
+            onReset={formikProps.handleReset}
+          >
             <Modal
               isOpen={isPaymentModalOpen}
               onClose={closeModal}
