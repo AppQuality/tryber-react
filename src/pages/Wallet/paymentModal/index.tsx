@@ -27,6 +27,7 @@ export const PaymentModal = () => {
         const { step } = formikProps.values;
         const closeModal = () => {
           formikProps.resetForm();
+          setCompletedSteps([false, false, false]);
           dispatch(setPaymentModalOpen(false));
         };
         return (
