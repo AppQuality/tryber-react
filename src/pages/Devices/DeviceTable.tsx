@@ -63,7 +63,7 @@ const DeviceTable = () => {
                     openEditModal();
                   }}
                   type="link-hover"
-                  className="aq-nopadding aq-mr-1"
+                  className="aq-nopadding aq-mr-3"
                 >
                   {t("Edit")}
                 </Button>
