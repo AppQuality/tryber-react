@@ -39,6 +39,8 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
       dispatch(setPaymentModalOpen(false));
     } else {
       // decrement step
+      completedSteps[step] = false;
+      setCompletedSteps(completedSteps);
       setFieldValue("step", step - 1);
     }
   };
