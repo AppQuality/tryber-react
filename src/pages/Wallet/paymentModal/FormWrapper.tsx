@@ -60,7 +60,7 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
         then: yup
           .string()
           .required(t("This is a required field"))
-          .matches(/^.* .*$/gi, t("Insert Name and surname separated by space"))
+          .matches(/^.+ .+$/gi, t("Insert Name and surname separated by space"))
           .matches(
             /^[A-Za-zÀ-ÖØ-öø-ÿ'-ū.]+ ['A-Za-zÀ-Ö Ø-öø-ÿ-ū.]+$/gi,
             t("The account holder name should contain latin character only")
