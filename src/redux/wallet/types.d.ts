@@ -30,6 +30,7 @@ type WalletState = {
     order: ApiComponents["parameters"]["order"];
     orderBy: "attributionDate" | "id" | "amount";
   };
+  paymentInProcessing: boolean;
 };
 
 type WalletActions =
@@ -44,7 +45,8 @@ type WalletActions =
   | WalletActions_UpdateBootyDetails
   | WalletActions_UpdateBootyDetailsQuery
   | WalletActions_ResetBootyDetails
-  | WalletActions_ToggleBootyDetailsModal;
+  | WalletActions_ToggleBootyDetailsModal
+  | WalletActions_CheckPaymentInProcessing;
 
 /**
  *  Action types and their payloads
@@ -104,5 +106,10 @@ type WalletActions_ResetBootyDetails = {
 
 type WalletActions_ToggleBootyDetailsModal = {
   type: "wallet/toggleBootyDetailsModal";
+  payload: boolean;
+};
+
+type WalletActions_CheckPaymentInProcessing = {
+  type: "wallet/checkPaymentInProcessing";
   payload: boolean;
 };

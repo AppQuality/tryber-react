@@ -32,6 +32,7 @@ export const initialState: WalletState = {
     orderBy: "attributionDate",
     results: [],
   },
+  paymentInProcessing: false,
 };
 
 export default (state = initialState, action: WalletActions) => {
@@ -109,6 +110,11 @@ export default (state = initialState, action: WalletActions) => {
       return {
         ...state,
         isBootyDetailsModalOpen: action.payload,
+      };
+    case "wallet/checkPaymentInProcessing":
+      return {
+        ...state,
+        paymentInProcessing: action.payload,
       };
     case "wallet/resetPaymentDetails":
       return {

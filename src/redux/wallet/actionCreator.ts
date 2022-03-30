@@ -257,3 +257,25 @@ export const resetBootyDetails =
       type: "wallet/resetBootyDetails",
     });
   };
+
+export const checkPaymentInProcessing =
+  (): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
+  async (dispatch) => {
+    try {
+      const query: ApiOperations["get-users-me-payments"]["parameters"]["query"] =
+        {
+          order: "DESC",
+          orderBy: "paidDate",
+          limit: 1,
+          start: 0,
+        };
+      const data = await API.getUserPaymentRequests(query);
+      return dispatch({
+        type: "wallet/checkPaymentInProcessing",
+        payload: data?.results?.[0].status === "processing",
+      });
+    } catch (e) {
+      const error = e as HttpError;
+      addMessage(error.message, "danger", false);
+    }
+  };
