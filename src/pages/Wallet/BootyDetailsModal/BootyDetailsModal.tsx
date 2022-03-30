@@ -55,7 +55,7 @@ export const BootyDetailsModal = () => {
           } ${r.amount.value?.toFixed(2)}`;
           return {
             key: r.id,
-            name: {
+            activityName: {
               title: r.name,
               content: (
                 <Text as="div" style={activityStyle}>
@@ -115,7 +115,7 @@ export const BootyDetailsModal = () => {
       <Table
         dataSource={rows}
         columns={columns}
-        orderBy={orderBy === "id" ? "name" : orderBy}
+        orderBy={orderBy}
         order={order}
         isLoading={isLoading}
         isStriped

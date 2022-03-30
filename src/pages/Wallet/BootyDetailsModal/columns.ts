@@ -11,17 +11,17 @@ export const bootyDetailsColumns = (
   return [
     {
       title: t("Activity name"),
-      dataIndex: "name",
-      key: "name",
+      dataIndex: "activityName",
+      key: "activityName",
       maxWidth: "36em",
       role: "title",
       hideIndex: true,
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);
-        dispatch(updateBootyDetailsSortingOptions(newOrder, "id")).then(() =>
-          setIsLoading(false)
-        );
+        dispatch(
+          updateBootyDetailsSortingOptions(newOrder, "activityName")
+        ).then(() => setIsLoading(false));
       },
     },
     {
