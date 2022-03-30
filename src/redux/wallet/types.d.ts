@@ -28,7 +28,7 @@ type WalletState = {
     total: number;
     limit: number;
     order: ApiComponents["parameters"]["order"];
-    orderBy: "attributionDate" | "id" | "amount";
+    orderBy: "attributionDate" | "id" | "amount" | "activityName";
   };
   paymentInProcessing: boolean;
 };
