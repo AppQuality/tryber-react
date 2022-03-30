@@ -11,8 +11,8 @@ import detailsIcon from "src/pages/Wallet/assets/details.svg";
 import detailsHoverIcon from "src/pages/Wallet/assets/detailsHover.svg";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import pdfIcon from "src/pages/Wallet/assets/pdf.svg";
-import pdfHoverIcon from "src/pages/Wallet/assets/pdfHover.svg";
 import pdfDisabledIcon from "src/pages/Wallet/assets/pdfDisabled.svg";
+import pdfHoverIcon from "src/pages/Wallet/assets/pdfHover.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { walletColumns } from "src/pages/Wallet/columns";
 import { useAppDispatch } from "src/redux/provider";
@@ -135,7 +135,7 @@ export const WalletTable = () => {
             },
             paidDate: getPaidDate(req.paidDate),
             amount: {
-              title: "amount",
+              title: "€ " + req.amount.value,
               content: (
                 <span>
                   {req.amount.currency && req.amount.currency in currencyTable
