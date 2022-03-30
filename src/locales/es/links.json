@@ -1,5 +1,5 @@
 {
-  "/payment_conditions": "",
-  "Fiscal type help article": "https://www.tryber.me/it/per-saperne-di-piu-pagamenti-privacy/",
-  "Wallet help article": ""
+    "Fiscal type help article": "https://www.tryber.me/it/per-saperne-di-piu-pagamenti-privacy/",
+    "/payment_conditions": "https://tryber.me/es/condiciones-de-pago/",
+    "Wallet help article": "https://tryber.me/es/monedero-como-funciona/"
 }
