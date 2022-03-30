@@ -31,6 +31,12 @@ export const Step2Recap = () => {
     (state: GeneralState) => state.user.user,
     shallowEqual
   );
+  const fiscalType =
+    data?.type === "withholding"
+      ? t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20")
+      : data?.type === "non-italian"
+      ? t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20")
+      : t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20");
   useEffect(() => {
     dispatch(getProfile());
   }, []);
@@ -86,7 +92,7 @@ export const Step2Recap = () => {
           {t("Tax ID")}: <strong>{data?.fiscalId}</strong>
         </Text>
         <Text className="aq-mb-2 aq-text-primary">
-          {t("Fiscal Type")}: <strong>{data?.type}</strong>
+          {t("Fiscal Type")}: <strong>{fiscalType}</strong>
         </Text>
         <Text className="aq-mb-2 aq-text-primary">
           {t("Birth date")}: <strong>{dateFormatter(birthDate)}</strong>
