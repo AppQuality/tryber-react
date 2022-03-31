@@ -78,7 +78,7 @@
     "Other": "Altro",
     "Page %current% / %total%": "Pagina %current% / %total%",
     "Password": "Password",
-    "Payments": "Pagamenti",
+    "Payments": "Portafoglio",
     "Points": "Punti",
     "Points Fix": "Correzione punti",
     "Previous": "Precedente",
@@ -485,7 +485,7 @@
     "Awarded on": "Data",
     "Booty details": "Dettagli dei guadagni",
     "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
-        "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Il tuo regime fiscale non è valido (ad es. sei partita IVA o superi 5.000 €/anno con prestazioni occasionali). <a href='mailto:administration@tryber.me'>Scrivici</a> per richiedere il pagamento."
+        "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Il tuo regime fiscale non è valido (ad es. sei partita IVA o superi 5.000 €/anno con prestazioni occasionali). <mail_link>Scrivici</mail_link> per richiedere il pagamento."
     },
     "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "Regime fiscale: partita IVA o più di € 5,000/anno con prestazioni occasionali",
     "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "Regime fiscale: estero",
