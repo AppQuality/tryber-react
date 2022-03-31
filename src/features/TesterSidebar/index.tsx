@@ -14,6 +14,7 @@ import {
   Wallet2,
 } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
+
 import menuStore from "../../redux/menu";
 import useUser from "../../redux/user";
 
@@ -118,7 +119,9 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       last: true,
     },
     {
-      url: t("/payments/"),
+      url: `${
+        i18next.language === "en" ? "" : "/" + i18next.language
+      }/payments/`,
       icon: <Wallet2 />,
       active: route === "Payments",
       text: t("Payments"),
