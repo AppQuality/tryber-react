@@ -485,7 +485,7 @@
     "Awarded on": "Awarded on",
     "Booty details": "Booty details",
     "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
-        "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Your fiscal type is not valid (e.g. you are VAT registered or you exceed € 5,000 / year with occasional services). <a href='mailto:administration@tryber.me'>Write to us</a>to request payment."
+        "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Your fiscal type is not valid (e.g. you are VAT registered or you exceed € 5,000 / year with occasional services). <mail_link>Write to us</mail_link>to request payment."
     },
     "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "Fiscal type: VAT registred or more than € 5,000 / year with occasional services",
     "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "Fiscal type: other (not Italian)",
