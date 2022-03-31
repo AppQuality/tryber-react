@@ -40,7 +40,7 @@ export const Step0Method = () => {
                 value="bank"
                 checked={field.value === "bank"}
                 onChange={onRadioChange}
-                label={t("Bank")}
+                label={t("__PAYMENT-METHOD-BANK")}
               />
               <ErrorMessage name={field.name} />
             </FormGroup>
