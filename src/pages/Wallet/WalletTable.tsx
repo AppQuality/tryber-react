@@ -225,6 +225,10 @@ export const WalletTable = () => {
         order={order}
         isLoading={isLoading}
         isStriped
+        i18n={{
+          loading: t("...wait"),
+          empty: t("__WALLET_HOME-EMPTY_STATE_MAX: 105"),
+        }}
       />
       <Pagination
         className="aq-pt-3"
