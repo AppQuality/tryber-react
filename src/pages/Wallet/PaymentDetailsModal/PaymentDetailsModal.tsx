@@ -113,7 +113,7 @@ export const PaymentDetailsModal = () => {
       size="large"
     >
       <Text className="aq-mt-3 aq-mb-3">
-        <strong>{`${t("Payment Request ID")} #${paymentId}`}</strong>
+        <strong>{`${t("Payment Request ID")}${paymentId}`}</strong>
       </Text>
       {columns.length > 0 && (
         <SortTableSelect
