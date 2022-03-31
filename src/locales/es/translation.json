@@ -465,7 +465,7 @@
     "This is an invalid format.": "Este formato no es válido.",
     "Total booty": "Ingresos totales",
     "Wallet": "Monedero",
-    "We got it!": "Listo!",
+    "We got it!": "¡Listo!",
     "Your payment request was successful.<br />You will receive the payment <strong>within 10 working days.</strong>": "¡Listo! Tu solicitud de pago ha sido aceptada.\nRecibirás el pago en un plazo de 10 días laborables.",
     "__WALLET_CARD-GUIDES_CTA MAX: 20": "Nuestras guías",
     "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Descubre cómo gestionamos tus solicitudes de pago",
@@ -481,13 +481,13 @@
     "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Descargar recibo",
     "email must be the same": "Introduce el mismo correo electrónico de tu perfil",
     "name": "Nombre",
-    "you must accept terms and conditions": "Necesitas aceptar los términos y las condiciones",
+    "you must accept terms and conditions": "Debes aceptar los términos y condiciones",
     "Awarded on": "Fecha",
     "Booty details": "Detalles de ingresos",
     "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
-        "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Your fiscal type is not valid (e.g. you are VAT registered or you exceed € 5,000 / year with occasional services). <a href='mailto:administration@tryber.me'>Write to us</a>to request payment."
+        "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Tu régimen fiscal no es válido (estás registrado a efectos del IVA o superas los 5.000 €/ año con servicios ocasionales). <a href='mailto:administration@tryber.me'>Escríbenos</a>para solicitar el pago."
     },
-    "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "Régimen fiscal: VAT registred or more than € 5,000 / year with occasional services",
-    "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "Régimen fiscal: other (not Italian)",
+    "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "Régimen fiscal: IVA registrado o más de 5.000 €/año con servicios ocasionales",
+    "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "Régimen fiscal: otro (no italiano)",
     "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "Régimen fiscal: menos de 5.000 €/año con servicios ocasionales"
 }
