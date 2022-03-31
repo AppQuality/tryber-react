@@ -170,7 +170,9 @@ export const WalletTable = () => {
                 <ActionsCell>
                   <a
                     className={
-                      req.status === "processing" ? "pdf-disabled" : ""
+                      req.status === "processing" || !req.receipt
+                        ? "pdf-disabled"
+                        : ""
                     }
                     href={req.receipt}
                     target="_blank"
