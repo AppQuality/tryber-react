@@ -78,7 +78,6 @@ const MethodStyle = styled.span`
   max-width: calc(
     100% - 36px
   ); // 36 totally magic number, where does it came from?
-  line-height: 1em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -93,6 +92,11 @@ const MethodStyle = styled.span`
     max-width: 50ch;
   }
 `;
+const StyledMethodContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const WalletTable = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -148,7 +152,7 @@ export const WalletTable = () => {
             method: {
               title: `${req.method?.type} - ${req.method?.note}`,
               content: (
-                <>
+                <StyledMethodContainer>
                   <StyledIcon
                     src={
                       req.method?.type === "paypal"
@@ -161,7 +165,7 @@ export const WalletTable = () => {
                     className="aq-mr-2"
                   />{" "}
                   <MethodStyle>{req.method?.note}</MethodStyle>
-                </>
+                </StyledMethodContainer>
               ),
             },
             actions: {
