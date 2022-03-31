@@ -489,5 +489,5 @@
     "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "otro (no italiano)",
     "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "menos de 5.000 brutos € / año con servicios ocasionales",
     "__PAYMENT-METHOD-BANK": "Transferencia bancaria",
-    "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et do"
+    "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Aún no has solicitado ningun pago. Cuando lo harás, podrás ver tus pagos aquí."
 }
