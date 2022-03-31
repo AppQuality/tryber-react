@@ -489,5 +489,5 @@
     "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "estero",
     "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "meno di € 5.000 lordi / anno con prestazioni occasionali",
     "__PAYMENT-METHOD-BANK": "Bonifico bancario",
-    "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et do"
+    "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Per ora non hai ancora richiesto un pagamento. Quando inizierai a richiederne, compariranno qui."
 }
