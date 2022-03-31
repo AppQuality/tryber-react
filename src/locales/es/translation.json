@@ -485,7 +485,7 @@
     "Awarded on": "Fecha",
     "Booty details": "Detalles de ingresos",
     "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
-        "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Tu régimen fiscal no es válido (estás registrado a efectos del IVA o superas los 5.000 €/ año con servicios ocasionales). <a href='mailto:administration@tryber.me'>Escríbenos</a>para solicitar el pago."
+        "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Tu régimen fiscal no es válido (estás registrado a efectos del IVA o superas los 5.000 €/ año con servicios ocasionales). <mail_link>Escríbenos</mail_link>para solicitar el pago."
     },
     "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "Régimen fiscal: IVA registrado o más de 5.000 €/año con servicios ocasionales",
     "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "Régimen fiscal: otro (no italiano)",
