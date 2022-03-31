@@ -7,7 +7,11 @@ type GeneralState = {
   messages: SiteWideMessagesState;
   userDevices: UserDeviceState;
   modal: ModalState;
+  wallet: WalletState;
 };
+
+type AppDispatch = typeof store.dispatch;
+
 type DispatchType =
   | UserDispatchType
   | MenuDispatchType

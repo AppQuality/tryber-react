@@ -3,7 +3,7 @@ import "./i18n";
 import { datadogLogs } from "@datadog/browser-logs";
 import { Location } from "history";
 import queryString from "query-string";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import TagManager from "react-gtm-module";
 import { useDispatch } from "react-redux";
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
@@ -20,6 +20,7 @@ import {
   Home,
   MyBugs,
   Profile,
+  Wallet,
 } from "./pages";
 import referralStore from "./redux/referral";
 import { refreshUser } from "./redux/user/actions/refreshUser";
@@ -150,6 +151,7 @@ function Page() {
         />
 
         <Route path={`${base}/my-account`} component={Profile} />
+        <Route path={`${base}/payments`} component={Wallet} />
         <Route
           path={["/goodbye", "/it/goodbye", "/es/goodbye"]}
           exact
