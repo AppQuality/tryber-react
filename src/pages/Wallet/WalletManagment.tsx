@@ -1,16 +1,17 @@
-import { Button, Card, Text } from '@appquality/appquality-design-system';
-import { useEffect } from 'react';
-import { PiggyBankFill } from 'react-bootstrap-icons';
-import { Trans, useTranslation } from 'react-i18next';
-import { shallowEqual, useSelector } from 'react-redux';
-import { useAppDispatch } from 'src/redux/provider';
+import { Button, Card, Text } from "@appquality/appquality-design-system";
+import { useEffect } from "react";
+import { PiggyBankFill } from "react-bootstrap-icons";
+import { Trans, useTranslation } from "react-i18next";
+import { shallowEqual, useSelector } from "react-redux";
+import { useAppDispatch } from "src/redux/provider";
 import {
   checkPaymentInProcessing,
   fetchBooty,
   setBootyDetailsModalOpen,
   setPaymentModalOpen,
-} from 'src/redux/wallet/actionCreator';
-import styled from 'styled-components';
+} from "src/redux/wallet/actionCreator";
+import localizedUrl from "src/utils/localizedUrl";
+import styled from "styled-components";
 
 const WalletManagmentRow = styled.div`
   display: flex;
@@ -68,7 +69,9 @@ export const WalletManagment = () => {
             "Available tags : <fiscal_profile_link> (Link to fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150"
           }
           components={{
-            fiscal_profile_link: <a href="/my-account/?tab=fiscal" />,
+            fiscal_profile_link: (
+              <a href={localizedUrl(`/my-account/?tab=fiscal`)} />
+            ),
           }}
         />
       );
@@ -103,7 +106,9 @@ export const WalletManagment = () => {
           "Available tags : <fiscal_profile_link> (Link to fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150"
         }
         components={{
-          fiscal_profile_link: <a href="/my-account/?tab=fiscal" />,
+          fiscal_profile_link: (
+            <a href={localizedUrl(`/my-account/?tab=fiscal`)} />
+          ),
         }}
       />
     );
