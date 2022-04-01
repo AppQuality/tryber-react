@@ -246,7 +246,6 @@
     "Do you want to remove all certification? This is an irreversible action.": "Do you want to remove all certification? This is an irreversible action.",
     "Do you want to remove this certification? This is a irreversible action.": "Do you want to remove this certification? This is a irreversible action.",
     "Female": "Female",
-    "Fiscal Code": "Fiscal Code",
     "Fiscal Type": "Fiscal Type",
     "Fiscal residence": "Fiscal residence",
     "Fiscal types": {
@@ -331,7 +330,6 @@
     },
     "You need to select a street code": "You need to select a street code",
     "You need to select a zip code": "You need to select a zip code",
-    "Personal Tax identification number": "Personal Tax identification number",
     "Select a Fiscal Type please": "Select a Fiscal Type please",
     "Select a gender please": "Select a gender please",
     "Available tags \n<a> - Link to help article for fiscal type": {
@@ -457,7 +455,6 @@
     "Request a payment": "Request a payment",
     "Request a payment with your preferred method and keep an eye on your booty and payment history in detail.": "Request a payment with your preferred method and keep an eye on your booty and payment history in detail.",
     "Request payment": "Request a payment",
-    "Tax ID": "National ID number:",
     "The account holder name should contain latin character only": "The account holder name should contain latin characters only",
     "The following informations are retrived from your fiscal profile and will be used to generate your receipt": "The following data come from your tax profile: you will find them in the payment receipt.",
     "This is an invalid format.": "This format is invalid.",

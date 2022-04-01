@@ -246,7 +246,6 @@
     "Do you want to remove all certification? This is an irreversible action.": "¿Quieres eliminar todas las certificaciones? Esta acción es irreversible.",
     "Do you want to remove this certification? This is a irreversible action.": "¿Quieres eliminar esta certificación? Esta acción es irreversible.",
     "Female": "Femenino",
-    "Fiscal Code": "Códico fiscal",
     "Fiscal Type": "Régimen fiscal",
     "Fiscal residence": "Residencia fiscal",
     "Fiscal types": {
@@ -331,7 +330,6 @@
     },
     "You need to select a street code": "Necesitas seleccionar un código de calle",
     "You need to select a zip code": "Es necesario seleccionar un código postal",
-    "Personal Tax identification number": "NIF/NIT",
     "Select a Fiscal Type please": "Seleccione un perfil fiscal",
     "Select a gender please": "Seleccione un género por favor",
     "Available tags \n<a> - Link to help article for fiscal type": {
@@ -457,7 +455,6 @@
     "Request a payment": "Solicitar un pago",
     "Request a payment with your preferred method and keep an eye on your booty and payment history in detail.": "Solicita un pago según el método que prefieras y lleva un control detallado de tus ingresos y de tu historial de pagos.",
     "Request payment": "Solicitar un pago",
-    "Tax ID": "NIF/NIT:",
     "The account holder name should contain latin character only": "El nombre del titular de la cuenta debe contener solo caracteres latinos",
     "The following informations are retrived from your fiscal profile and will be used to generate your receipt": "Los siguientes datos proceden de tu perfil fiscal y los encontrarás en el recibo de pago.",
     "This is an invalid format.": "Este formato no es válido.",

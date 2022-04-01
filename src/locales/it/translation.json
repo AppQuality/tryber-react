@@ -246,7 +246,6 @@
     "Do you want to remove all certification? This is an irreversible action.": "Vuoi rimuovere tutte le certificazioni? Questa azione è irreversibile",
     "Do you want to remove this certification? This is a irreversible action.": "Vuoi rimuovere questa certificazione? Questa azione è irreversibile",
     "Female": "Donna",
-    "Fiscal Code": "Codice fiscale",
     "Fiscal Type": "Regime fiscale",
     "Fiscal residence": "Residenza fiscale",
     "Fiscal types": {
@@ -324,14 +323,13 @@
     },
     "Last Name": "Cognome",
     "Tax identification number": {
-        "Tax ID": "National ID number:"
+        "Tax ID": "Codice Fiscale"
     },
     "Tax regime options select label": {
         "Fiscal Type": "Tipo fiscale"
     },
     "You need to select a street code": "Devi selezionare un codice stradale",
     "You need to select a zip code": "Devi selezionare un CAP",
-    "Personal Tax identification number": "National ID number:",
     "Select a Fiscal Type please": "Per favore seleziona un regime fiscale",
     "Select a gender please": "Per favore seleziona un genere",
     "Available tags \n<a> - Link to help article for fiscal type": {
@@ -457,7 +455,6 @@
     "Request a payment": "Richiedi un pagamento",
     "Request a payment with your preferred method and keep an eye on your booty and payment history in detail.": "Richiedi un pagamento col metodo che preferisci e tieni sotto controllo nel dettaglio i tuoi guadagni e la cronologia dei pagamenti.",
     "Request payment": "Richiedi un pagamento",
-    "Tax ID": "Codice Fiscale",
     "The account holder name should contain latin character only": "Il nome dell'intestatario del conto può contenere solo caratteri latini",
     "The following informations are retrived from your fiscal profile and will be used to generate your receipt": "I dati seguenti provengono dal tuo profilo fiscale e li ritroverai nella ricevuta di pagamento.",
     "This is an invalid format.": "Questo formato non è valido.",
