@@ -74,7 +74,7 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
         is: "bank",
         then: yup
           .string()
-          .required()
+          .required("This is a required field")
           .matches(
             /^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/g,
             t("This is an invalid format.")
