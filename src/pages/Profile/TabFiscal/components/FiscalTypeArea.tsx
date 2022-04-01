@@ -1,7 +1,14 @@
-import { ErrorMessage, FormGroup, FormLabel, Input, Select, Text } from '@appquality/appquality-design-system';
-import { Field as FormikField, FieldProps, useFormikContext } from 'formik';
-import { Trans, useTranslation } from 'react-i18next';
-import CitySelect from 'src/features/CitySelect';
+import {
+  ErrorMessage,
+  FormGroup,
+  FormLabel,
+  Input,
+  Select,
+  Text,
+} from "@appquality/appquality-design-system";
+import { Field as FormikField, FieldProps, useFormikContext } from "formik";
+import { Trans, useTranslation } from "react-i18next";
+import CitySelect from "src/features/CitySelect";
 
 const FiscalTypeArea = () => {
   const { values, setValues, setFieldTouched, setFieldError } =
@@ -152,7 +159,7 @@ const FiscalTypeArea = () => {
                 label={t("Tax identification number:::Tax ID")}
               />
               <Input
-                placeholder={t("Personal Tax identification number")}
+                placeholder={t("Tax identification number:::Tax ID")}
                 id={field.name}
                 isInvalid={meta.touched && typeof meta.error == "string"}
                 type="text"

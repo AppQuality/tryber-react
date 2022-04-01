@@ -91,7 +91,10 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
             ? t("Foreign")
             : t("Different rate scheme")}
         </ShowItem>
-        <ShowItem Icon={CreditCard2Front} label={t("Fiscal Code")}>
+        <ShowItem
+          Icon={CreditCard2Front}
+          label={t("Tax identification number:::Tax ID")}
+        >
           {fiscalData?.fiscalId}
         </ShowItem>
         {fiscalData?.type !== "non-italian" && (
