@@ -88,7 +88,9 @@ export const WalletManagment = () => {
             "Available tags : <mail_link> (Email link for unsupported fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150"
           }
           components={{
-            mail_link: <a href="mailto:support@tryber.me" target="_blank" />,
+            mail_link: (
+              <a href="mailto:administration@tryber.me" target="_blank" />
+            ),
           }}
         />
       );
