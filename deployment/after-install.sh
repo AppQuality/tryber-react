@@ -19,8 +19,6 @@ docker pull 163482350712.dkr.ecr.eu-west-1.amazonaws.com/$DOCKER_IMAGE
 # get env variables from parameter store
 mkdir -p /home/ec2-user/$APPLICATION_NAME
 
-source /var/docker/.env
-
 if test -f "$DOCKER_COMPOSE_FILE"; then
     set +e
     IS_RUNNING=$(docker ps -a | grep $DOCKER_IMAGE| wc -l)
@@ -36,8 +34,6 @@ services:
   app:
     image: 163482350712.dkr.ecr.eu-west-1.amazonaws.com/$DOCKER_IMAGE
     restart: always
-    env_file:
-      - /var/docker/.env
     ports:
       - '80:80'
     environment:
