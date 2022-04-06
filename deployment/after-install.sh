@@ -17,9 +17,7 @@ INSTANCE_ID=$(wget -q -O - http://169.254.169.254/latest/meta-data/instance-id)
 docker pull 163482350712.dkr.ecr.eu-west-1.amazonaws.com/$DOCKER_IMAGE
 
 # get env variables from parameter store
-mkdir -p /var/docker/keys
 mkdir -p /home/ec2-user/$APPLICATION_NAME
-aws ssm get-parameter --region eu-west-1 --name "/$DEPLOYMENT_GROUP_NAME/.env" --with-decryption --query "Parameter.Value" | sed -e 's/\\n/\n/g' -e 's/\\"/"/g' -e 's/^"//' -e 's/"$//' > /var/docker/.env
 
 source /var/docker/.env
 
