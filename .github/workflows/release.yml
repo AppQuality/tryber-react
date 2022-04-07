@@ -31,7 +31,7 @@ jobs:
           secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           account_id: ${{ secrets.AWS_ACCOUNT_ID }}
           region: eu-west-1
-          repo: ${ECR_REPOSITORY}
+          repo: ${{ECR_REPOSITORY}}
           tags: ${{ steps.extract_tag.outputs.tag }}
 
   release-to-preprod:
