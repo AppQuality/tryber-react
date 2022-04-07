@@ -21,7 +21,6 @@ jobs:
         shell: bash
         run: |
           TAG=${GITHUB_REF##*/}
-          ECR_REPOSITORY=${ECR_REPOSITORY}
           echo "##[set-output name=tag;]$TAG"
           echo "##[set-output name=ECR_REPOSITORY;]$ECR_REPOSITORY"
         id: extract_tag
@@ -49,8 +48,6 @@ jobs:
         shell: bash
         run: |
           TAG=${GITHUB_REF##*/}
-          ECR_REPOSITORY=${ECR_REPOSITORY}
-          DEPLOY_BUCKET=${DEPLOY_BUCKET}
           echo "##[set-output name=tag;]$TAG"
           echo "##[set-output name=ECR_REPOSITORY;]$ECR_REPOSITORY"
           echo "##[set-output name=DEPLOY_BUCKET;]$DEPLOY_BUCKET"
