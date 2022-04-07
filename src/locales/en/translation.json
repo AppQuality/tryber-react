@@ -52,8 +52,8 @@
   "Area is a required field.": "Area is a required field.",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Enter your details in the Profile section: they are important to be selected for suitable campaign and to request the payments.",
   "Available booty": "Available booty",
-  "Available tags \n<a> - Link to help article for fiscal type": {
-    "@@Description for fiscal type@@": "<a>Click here</a> for more info"
+  "Available tags \r\n<a> - Link to help article for fiscal type": {
+    "@@Description for fiscal type@@": ""
   },
   "Available tags : <fiscal_profile_link> (Link to fiscal profile)": {
     "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150": "We will use the information in your tax profile for the payment. Do a quick check and update them if necessary.",
