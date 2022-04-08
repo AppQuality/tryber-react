@@ -14,6 +14,9 @@ const BirthdayPicker = ({
 }) => {
   const { t, i18n } = useTranslation();
   const now = new Date();
+  const maxDate = new Date(
+    Date.UTC(now.getFullYear() - 18, now.getMonth(), now.getDate())
+  );
 
   return (
     <>
@@ -22,9 +25,7 @@ const BirthdayPicker = ({
         value={initialValue}
         id={name}
         locale={i18n.language}
-        maxDate={
-          new Date(now.getFullYear() - 18, now.getMonth(), now.getDate())
-        }
+        maxDate={maxDate}
         placeholder={t("Select your birth date")}
         setText={t("Set")}
         cancelText={t("Cancel")}
@@ -39,13 +40,7 @@ const BirthdayPicker = ({
                     v.value.getDate()
                   )
                 )
-              : new Date(
-                  Date.UTC(
-                    now.getFullYear() - 18,
-                    now.getMonth(),
-                    now.getDate()
-                  )
-                )
+              : maxDate
           );
         }}
       />
