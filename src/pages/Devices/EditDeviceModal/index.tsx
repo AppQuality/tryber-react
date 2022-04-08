@@ -5,12 +5,27 @@ import { useTranslation } from "react-i18next";
 import { usePrevious } from "src/hooks/usePrevious";
 import userDeviceStore from "src/redux/userDevices";
 import styled from "styled-components";
+import i18n from "../../../i18n";
 import DeviceDetails from "./DeviceDetails";
 import { DeviceModalFooter } from "./DeviceModalFooter";
 import { DeviceModalForm } from "./DeviceModalForm";
 import DeviceRecap from "./DeviceRecap";
 import DeviceType from "./DeviceType";
 import { WizardStep } from "./types";
+
+const StepsContainer = styled.div`
+  .steps {
+    display: grid;
+    grid-template-columns: ${i18n.language === "en"
+      ? "16% 68% 16%"
+      : "27% 46% 27%"};
+    .step {
+      :last-child {
+        margin-right: 0;
+      }
+    }
+  }
+`;
 
 export default () => {
   const {
@@ -84,18 +99,21 @@ export default () => {
               }
             >
               <ModalBody>
-                <Steps current={step} className="aq-mb-3">
-                  {steps.map((step, index) => (
-                    <Steps.Step
-                      key={index}
-                      className="device-wizard-step"
-                      isCompleted={
-                        step.isCompleted && step.isCompleted(formikProps.errors)
-                      }
-                      title={step.title}
-                    />
-                  ))}
-                </Steps>
+                <StepsContainer>
+                  <Steps current={step} className="aq-mb-3">
+                    {steps.map((step, index) => (
+                      <Steps.Step
+                        key={index}
+                        className="device-wizard-step"
+                        isCompleted={
+                          step.isCompleted &&
+                          step.isCompleted(formikProps.errors)
+                        }
+                        title={step.title}
+                      />
+                    ))}
+                  </Steps>
+                </StepsContainer>
                 <div className="device-wizard-content">
                   {steps[step].content}
                 </div>
