@@ -87,6 +87,7 @@ const ExperiencePointsFilters = ({
           isSearchable
           placeholder={t("Search")}
           isClearable={false}
+          noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
         />
       </div>
       <div className="aq-mb-3">
@@ -99,6 +100,7 @@ const ExperiencePointsFilters = ({
           isSearchable={false}
           placeholder={t("Search")}
           isClearable={false}
+          noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
         />
       </div>
       <div className="aq-mb-3">
@@ -111,6 +113,7 @@ const ExperiencePointsFilters = ({
           isSearchable={false}
           placeholder={t("Search")}
           isClearable={false}
+          noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
         />
       </div>
     </div>

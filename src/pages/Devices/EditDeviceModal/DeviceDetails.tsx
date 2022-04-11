@@ -106,6 +106,7 @@ export default ({ edit }: { edit: boolean }) => {
                 label: field.value,
                 value: field.value,
               }}
+              noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
             />
           </div>
         )}
@@ -138,6 +139,7 @@ export default ({ edit }: { edit: boolean }) => {
                 form.setFieldValue("operating_system_version", v.label, true);
                 form.setFieldValue("operating_system_id", osId, true);
               }}
+              noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
             />
             <Text color="info" className="aq-mt-2">
               <a href={osGuideUrl} target="_blank" rel="noreferrer">

@@ -455,6 +455,7 @@
   "__HOME_USER_QUALIFICATION_ADVICE7 MAX:30": "Qualified Tryber, Student",
   "__HOME_USER_QUALIFICATION_ADVICE8 MAX:30": "Certified ISTQB professional tester",
   "__PAYMENT-METHOD-BANK": "Transferencia bancaria",
+  "__SELECT_DEFAULT_NO_OPTION": "",
   "__WALLET_CARD-GUIDES_CTA MAX: 20": "Nuestras guías",
   "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Descubre cómo gestionamos tus solicitudes de pago",
   "__WALLET_CARD-GUIDES_TITLE MAX: 35": "¿Dudas sobre el proceso de pago?",

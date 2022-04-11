@@ -37,6 +37,7 @@ export const LanguageSelect = ({
               }
               form.setFieldValue(field.name, v, true);
             }}
+            noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
           />
         </FormGroup>
       )}
