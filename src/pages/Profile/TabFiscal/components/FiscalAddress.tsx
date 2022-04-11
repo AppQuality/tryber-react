@@ -70,6 +70,7 @@ const FiscalAddress = () => {
                   }
                 }}
                 options={countryOptions}
+                noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
               />
               <ErrorMessage name={field.name} />
             </FormGroup>

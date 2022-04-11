@@ -90,6 +90,7 @@ const NewCertificationModalForm = ({
                   form.setFieldValue("certificationId", "");
                 }
               }}
+              noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
             />
             <ErrorMessage name={field.name} />
           </FormGroup>
@@ -121,6 +122,7 @@ const NewCertificationModalForm = ({
                   form.setFieldValue("certificationId", "");
                 }
               }}
+              noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
             />
             <ErrorMessage name={field.name} />
           </FormGroup>
@@ -148,6 +150,7 @@ const NewCertificationModalForm = ({
                   form.setFieldValue(field.name, v.value || "");
                 }
               }}
+              noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
             />
             <ErrorMessage name={field.name} />
           </FormGroup>

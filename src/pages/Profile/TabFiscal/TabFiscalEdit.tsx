@@ -293,6 +293,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                           form.setFieldValue(field.name, v.value, true);
                         }}
                         options={genderOptions}
+                        noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
                       />
                       <Text small className="aq-mt-1">
                         <span className="aq-text-primaryVariant">

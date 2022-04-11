@@ -88,6 +88,7 @@ const CufSelectField = ({
           form.setFieldValue(field.name, v);
         }
       }}
+      noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
       {...optionalArgs}
     />
   );
@@ -148,6 +149,7 @@ const CufMultiSelectField = ({
           form.setFieldValue(field.name, v);
         }
       }}
+      noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
       {...optionalArgs}
     />
   );

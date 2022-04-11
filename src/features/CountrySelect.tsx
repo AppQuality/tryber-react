@@ -61,6 +61,7 @@ const CountrySelect = ({
                 form.setFieldValue(name, v.value, true);
               }}
               options={options}
+              noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
             />
             <ErrorMessage name={name} />
           </FormGroup>
