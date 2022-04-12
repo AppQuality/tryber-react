@@ -1,5 +1,10 @@
-import { Sidebar, SidebarType } from "@appquality/appquality-design-system";
+import {
+  aqBootstrapTheme,
+  Sidebar,
+  SidebarType,
+} from "@appquality/appquality-design-system";
 import i18next from "i18next";
+import { useEffect } from "react";
 import {
   AwardFill,
   BugFill,
@@ -14,7 +19,7 @@ import {
   Wallet2,
 } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
-
+import useWindowSize from "../../hooks/useWindowSize";
 import menuStore from "../../redux/menu";
 import useUser from "../../redux/user";
 
@@ -55,6 +60,11 @@ const TesterSidebarArgs: SidebarType.SidebarProps = {
   },
   items: [],
 };
+
+const maxMobileSize = Number(
+  aqBootstrapTheme.grid.breakpoints.md.replace(/\D/g, "")
+);
+
 const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
   const { user } = useUser();
   const { isOpen, open, close } = menuStore();
@@ -182,6 +192,12 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
   }
 
   TesterSidebarArgs.items[TesterSidebarArgs.items.length - 1].last = true;
+
+  const windowWidth = useWindowSize()[0];
+
+  useEffect(() => {
+    if (windowWidth > maxMobileSize) close();
+  }, [windowWidth]);
 
   return (
     <Sidebar
