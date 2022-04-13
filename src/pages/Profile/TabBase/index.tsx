@@ -233,6 +233,7 @@ const TabBase = () => {
                           field.onChange(v.value);
                           form.setFieldValue(field.name, v.value, true);
                         }}
+                        noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
                       />
                     </FormGroup>
                   )}

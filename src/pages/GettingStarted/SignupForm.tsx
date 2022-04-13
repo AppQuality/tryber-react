@@ -128,6 +128,7 @@ export const SignupForm = ({
             }: FieldProps) => {
               return (
                 <FormGroup
+                  key={field.value} // To force the render again when set is clicked without selecting a new date
                   className={meta.error && meta.touched ? "is-invalid" : ""}
                 >
                   <BirthdayPicker

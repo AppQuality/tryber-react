@@ -63,6 +63,7 @@ const FiscalTypeArea = () => {
                         label: t("Fiscal types:::@@Not compatible regime@@"),
                       },
                     ]}
+                    noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
                   />{" "}
                   <Text small className="aq-mt-1 aq-text-primaryVariant">
                     <Trans

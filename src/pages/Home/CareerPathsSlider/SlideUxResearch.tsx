@@ -6,7 +6,7 @@ import JoinInButton from "../_components/JoinInButton";
 import careerImageEN from "./assets/ux_tester_en.svg";
 import careerImageES from "./assets/ux_tester_es.svg";
 import careerImageIT from "./assets/ux_tester_it.svg";
-import GenericSlide, { TextBox } from "./GenericSlide";
+import GenericSlide from "./GenericSlide";
 
 const Image = () => {
   const { i18n } = useTranslation();

@@ -83,6 +83,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
                   form.setFieldValue("operating_system_platform", "", true);
                   form.setFieldValue("operating_system_version", "", true);
                 }}
+                noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
               />
             </div>
           );
@@ -118,6 +119,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
                   form.setFieldValue("operating_system_version", "", true);
                   form.setFieldValue("operating_system_id", 0, true);
                 }}
+                noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
               />
             </div>
           );

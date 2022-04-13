@@ -28,7 +28,7 @@ export default () => {
   const [current, setCurrent] = useState(0);
   const { t } = useTranslation();
 
-  const items = [SlideEthicalHacker, SlideBugHunting, SlideUxResearch];
+  const items = [SlideUxResearch, SlideBugHunting, SlideEthicalHacker];
 
   return (
     <CareerContainer className="aq-py-4">

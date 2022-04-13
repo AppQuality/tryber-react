@@ -55,6 +55,7 @@ const DeviceTable = () => {
           os: d.operating_system.platform,
           os_version: d.operating_system.version,
           actions: {
+            title: "",
             content: (
               <DeviceActions>
                 <Button
@@ -65,7 +66,7 @@ const DeviceTable = () => {
                   type="link-hover"
                   className="aq-nopadding aq-mr-3"
                 >
-                  {t("Edit")}
+                  <div title={t("Edit")}>{t("Edit")}</div>
                 </Button>
                 <Button
                   onClick={() => {
@@ -75,7 +76,9 @@ const DeviceTable = () => {
                   type="link-hover"
                   className="aq-nopadding"
                 >
-                  <div className="action-text">{t("Delete")}</div>
+                  <div className="action-text" title={t("Delete")}>
+                    {t("Delete")}
+                  </div>
                   <div className="action-icon aq-mt-3">
                     <Trash size={28} />
                   </div>
