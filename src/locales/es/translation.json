@@ -46,7 +46,6 @@
   "Amount": "Importe",
   "Annual witholding < 5000€": "Deducción anual < 5000€",
   "Annual witholding > 5000": "Deducción anual > 5000",
-  "Any change to your personal data will lead to the recalculation of your tax code": "Cuando cambies alguno de tus datos personales, tendrás que volver a introducir tu número de identificación fiscal.",
   "Apply now": "Aplicar ahora",
   "Approved bugs": "Bugs aprobados",
   "Area is a required field.": "El área / La esfera es un campo obligatorio",
@@ -64,6 +63,9 @@
   },
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS apoya a las empresas en la creación de experiencias memorables gracias al poder de la Comunidad de TRYBER. <unguess_link>Descubre UNGUESS</unguess_link>"
+  },
+  "Available tags: <tax_id_support_link> (article link for tax id explanation)": {
+    "__FISCAL_PROFILE_TAX_ID_LINK": ""
   },
   "Avalaible Campaigns": "Campañas Disponibles",
   "Awarded on": "Fecha",
@@ -382,6 +384,7 @@
   "Your payment request was successful.<br />You will receive the payment <strong>within 10 working days.</strong>": "¡Listo! Tu solicitud de pago ha sido aceptada.\nRecibirás el pago en un plazo de 10 días laborables.",
   "Your profile doesn't match with your fiscal profile, please check your data": "Tu perfil no coincide con tu perfil fiscal, por favor revisa tus datos",
   "Zip code": "Código postal",
+  "__FISCAL_PROFILE_TAX_ID_DISCLAIMER": "",
   "__HOME_CAROUSEL_CTA_BUG MAX:25": "Entrénate con nosotros",
   "__HOME_CAROUSEL_CTA_CYBER MAX:25": "Ponte a prueba",
   "__HOME_CAROUSEL_CTA_UX MAX:25": "Expresa tu opinión",
