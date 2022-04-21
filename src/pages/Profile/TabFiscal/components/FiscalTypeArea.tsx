@@ -184,7 +184,7 @@ const FiscalTypeArea = () => {
                 {values.countryCode === "IT" && (
                   <span>
                     <br />
-                    t("__FISCAL_PROFILE_TAX_ID_DISCLAIMER")
+                    {t("__FISCAL_PROFILE_TAX_ID_DISCLAIMER")}
                   </span>
                 )}
               </Text>
