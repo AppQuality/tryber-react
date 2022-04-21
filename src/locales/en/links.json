@@ -1,6 +1,6 @@
 {
-  "/payment_conditions": "https://tryber.me/payment-conditions/",
-  "Fiscal type help article": "https://tryber.me/it/per-saperne-di-piu-pagamenti-privacy/",
-  "Wallet help article": "https://tryber.me/wallet-how-does-it-work/",
-  "tax id help article": ""
+    "Fiscal type help article": "https://tryber.me/it/per-saperne-di-piu-pagamenti-privacy/",
+    "/payment_conditions": "https://tryber.me/payment-conditions/",
+    "Wallet help article": "https://tryber.me/wallet-how-does-it-work/",
+    "tax id help article": "https://tryber.me/whats-tax-id-number/"
 }
