@@ -181,8 +181,12 @@ const FiscalTypeArea = () => {
                     ),
                   }}
                 />
-                {values.countryCode === "IT" &&
-                  t("__FISCAL_PROFILE_TAX_ID_DISCLAIMER")}
+                {values.countryCode === "IT" && (
+                  <span>
+                    <br />
+                    t("__FISCAL_PROFILE_TAX_ID_DISCLAIMER")
+                  </span>
+                )}
               </Text>
               <ErrorMessage name={field.name} />
             </FormGroup>
