@@ -150,7 +150,6 @@ const FiscalTypeArea = () => {
       <FormikField name="fiscalId">
         {({
           field, // { name, value, onChange, onBlur }
-          form,
           meta,
         }: FieldProps) => {
           return (
@@ -166,13 +165,29 @@ const FiscalTypeArea = () => {
                 type="text"
                 extra={{ ...field, maxLength: "30" }}
               />
-              {values.countryCode === "IT" && (
-                <Text small className="aq-mt-1 aq-text-primaryVariant">
-                  {t(
-                    "Any change to your personal data will lead to the recalculation of your tax code"
-                  )}
-                </Text>
-              )}
+              <Text small className="aq-mt-1 aq-text-primaryVariant">
+                <Trans
+                  i18nKey={
+                    "Available tags: <tax_id_support_link> (article link for tax id explanation):::__FISCAL_PROFILE_TAX_ID_LINK"
+                  }
+                  components={{
+                    tax_id_support_link: (
+                      <a
+                        href={t("tax id help article", {
+                          ns: "links",
+                        })}
+                        target="_blank"
+                      />
+                    ),
+                  }}
+                />
+                {values.countryCode === "IT" && (
+                  <span>
+                    <br />
+                    {t("__FISCAL_PROFILE_TAX_ID_DISCLAIMER")}
+                  </span>
+                )}
+              </Text>
               <ErrorMessage name={field.name} />
             </FormGroup>
           );
