@@ -2,7 +2,6 @@
   "...wait": "Cargando...",
   "/discover-experience-points/": "/es/puntos-de-experiencia-que-son/",
   "/faq/": "/es/faq-es/",
-  "/leaderboard/": "/leaderboard-3/",
   "/my-account/": "/perfil/",
   "/terms-and-conditions/": "/terms-and-conditions/",
   "/testing-school/": "/academia/",
@@ -51,8 +50,8 @@
   "Area is a required field.": "El área / La esfera es un campo obligatorio",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Añade todos tus datos en la sección Perfil: los necesitaremos para seleccionarte cuando haya una campaña adecuada y para que puedas solicitar los pagos.",
   "Available booty": "Saldo Disponible",
-  "Available tags \n<a> - Link to help article for fiscal type": {
-    "@@Description for fiscal type@@": "<a>Haga clic aquí</a> para obtener más información"
+  "Available tags \r\n<a> - Link to help article for fiscal type": {
+    "@@Description for fiscal type@@": ""
   },
   "Available tags : <fiscal_profile_link> (Link to fiscal profile)": {
     "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150": "Utilizaremos los datos de tu perfil fiscal para el pago. Verifícalos rápidamente y actualízalos si es necesario.",

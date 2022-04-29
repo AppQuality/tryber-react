@@ -8,6 +8,7 @@ type GeneralState = {
   userDevices: UserDeviceState;
   modal: ModalState;
   wallet: WalletState;
+  ranking: RankingState;
 };
 
 type AppDispatch = typeof store.dispatch;
