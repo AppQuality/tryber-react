@@ -50,8 +50,8 @@
   "Area is a required field.": "L'area è un campo obbligatorio",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Inserisci tutti i tuoi dati nella sezione Profilo: servirà a noi per selezionarti quando c'è una campagna adatta e a te per richiedere il pagamento.",
   "Available booty": "Guadagni disponibili",
-  "Available tags \r\n<a> - Link to help article for fiscal type": {
-    "@@Description for fiscal type@@": ""
+  "Available tags \n<a> - Link to help article for fiscal type": {
+    "@@Description for fiscal type@@": "<a>Clicca qui</a> per maggiori informazioni"
   },
   "Available tags : <fiscal_profile_link> (Link to fiscal profile)": {
     "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150": "Useremo i dati presenti nel tuo profilo fiscale per il pagamento. Fai un veloce controllo e aggiornali se necessario.",
