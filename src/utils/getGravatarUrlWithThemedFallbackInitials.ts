@@ -13,7 +13,7 @@ const getGravatarUrlWithColoredFallbackInitials = (
   fallback = decodeURIComponent(fallback);
   fallback += `/${backgroundColor}/${textColor || "fff"}`;
   fallback = encodeURIComponent(fallback);
-  return `https://eu.ui-avatars.com/api/${hash}/132?r=x&d=${fallback}`;
+  return `https://secure.gravatar.com/avatar/${hash}/132?r=x&d=${fallback}`;
 };
 
 export default getGravatarUrlWithColoredFallbackInitials;
