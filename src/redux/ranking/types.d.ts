@@ -1,5 +1,6 @@
 type RankingState = {
   // rankings: ApiOperations["get-users-me-rank-list"]["responses"]["200"]["content"]["application/json"];
+  isLoading: boolean;
   // TODO Remove
   rankings: {
     tops: {
@@ -19,7 +20,7 @@ type RankingState = {
   };
 };
 
-type RankingActions = RankingActions_SetRankings;
+type RankingActions = RankingActions_SetRankings | RankingActions_SetIsLoading;
 
 /**
  *  Action types and their payloads
@@ -45,4 +46,9 @@ type RankingActions_SetRankings = {
       monthly_exp: number;
     }[];
   };
+};
+
+type RankingActions_SetIsLoading = {
+  type: "ranking/setIsLoading";
+  payload: boolean;
 };

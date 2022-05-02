@@ -5,10 +5,14 @@ import styled from "styled-components";
 import { RankingColumns } from "../columns";
 import starIcon from "../assets/star.svg";
 import { shallowEqual, useSelector } from "react-redux";
-import { useAppDispatch } from "../../../../redux/provider";
-import { fetchRankings } from "../../../../redux/ranking/actionCreator";
+import { rankingTheme } from "../../rankingTheme";
 
-const StyledTopRanking = styled.div`
+interface TopRankingProps {
+  readonly background: string;
+  readonly color: string;
+}
+
+const StyledTopRanking = styled.div<TopRankingProps>`
   .tbody.cell {
     display: flex;
     align-items: center;
@@ -16,11 +20,12 @@ const StyledTopRanking = styled.div`
   }
   .ranking-top-title {
     border-bottom: 1px solid ${(p) => p.theme.colors.gray300};
+    border-top: 1px solid ${(p) => p.theme.colors.gray300};
     height: 3em;
     width: 100%;
     padding: 0.75em 1em;
-    background: #fbf1f3;
-    color: #b23a5d;
+    background: ${(p) => p.background};
+    color: ${(p) => p.color};
     font-weight: ${(props) => props.theme.typography.fontWeight.bold};
   }
 `;
@@ -42,10 +47,11 @@ const StyledExp = styled.div`
   }
 `;
 
+// TODO Remove
+const levelId = 40;
+
 export const TopRankingTable = () => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
@@ -53,12 +59,15 @@ export const TopRankingTable = () => {
     (state: GeneralState) => state.ranking.rankings.tops,
     shallowEqual
   );
+  const isLoading = useSelector(
+    (state: GeneralState) => state.ranking.isLoading,
+    shallowEqual
+  );
 
   // initial requests
   useEffect(() => {
     const cols = RankingColumns(t);
     setcolumns(cols);
-    dispatch(fetchRankings()).then(() => setIsLoading(false));
   }, []);
 
   // update datasource for the table
@@ -93,20 +102,21 @@ export const TopRankingTable = () => {
   }, [tops]);
 
   return (
-    <StyledTopRanking>
+    <StyledTopRanking
+      background={rankingTheme[levelId].background1}
+      color={rankingTheme[levelId].textColor}
+    >
       <div className="ranking-top-title">
         {/* TODO Aggiungere livello attuale */}
         {t("__RANKING_TITLE_LABEL_TOP_LEVEL_MAX:")}
       </div>
       <Table
-        className="aq-mb-3"
         dataSource={rows}
         columns={columns}
         isLoading={isLoading}
+        borderedCellColor={rankingTheme[levelId].main}
+        highlightedColor={rankingTheme[levelId].background2}
         mobileAlternative
-        // TODO Agganciare colori del tema in base al livello
-        borderedCellColor="#D57287"
-        highlightedColor="#EEC7CF"
         i18n={{
           loading: t("...wait"),
           empty: "no data",

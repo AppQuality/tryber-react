@@ -3,6 +3,9 @@ import { MyRankingTable } from "./MyRankingTable";
 import { TopRankingTable } from "./TopRankingTable";
 import noLevelBackground from "./assets/noLevelBackground.svg";
 import noLevelIcon from "./assets/noLevelIcon.svg";
+import { useAppDispatch } from "../../../redux/provider";
+import { fetchRankings } from "../../../redux/ranking/actionCreator";
+import { useEffect } from "react";
 
 // TODO Remove
 const noLevel = true;
@@ -13,7 +16,6 @@ const StyledNoLevel = styled.div`
     height: 3em;
     width: 100%;
     padding: 0.75em 1em;
-    color: aq-text-primary;
     font-weight: ${(props) => props.theme.typography.fontWeight.bold};
   }
 
@@ -36,6 +38,17 @@ const StyledNoLevel = styled.div`
 `;
 
 export const RankingTables = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchRankings()).then(() =>
+      dispatch({
+        type: "ranking/setIsLoading",
+        payload: false,
+      })
+    );
+  }, []);
+
   return (
     <>
       {noLevel ? (
