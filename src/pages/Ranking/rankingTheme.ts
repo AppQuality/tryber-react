@@ -92,7 +92,7 @@ const rankingTheme: RankingTheme = {
     textColor: green7,
     icon: diamondIcon,
   },
-  70: {
+  100: {
     main: aqBootstrapTheme.palette.secondary,
     background1: aqBootstrapTheme.colors.purple100,
     background2: aqBootstrapTheme.colors.indigo100,
