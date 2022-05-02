@@ -9,6 +9,10 @@ const getGravatarUrlWithColoredFallbackInitials = (
     formattedUrl.match(
       /^https:\/\/secure.gravatar.com\/avatar\/(.*)&d=(.*)$/
     ) || [];
+  backgroundColor = backgroundColor.replace(/#/, "");
+  if (textColor) {
+    textColor = textColor.replace(/#/, "");
+  }
   fallback = fallback.replace(/&r=x/, "");
   fallback = decodeURIComponent(fallback);
   fallback += `/${backgroundColor}/${textColor || "fff"}`;
