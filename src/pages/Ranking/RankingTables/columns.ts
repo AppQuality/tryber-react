@@ -13,7 +13,7 @@ export const RankingColumns = (t: TFunction<"translation">): Column[] => {
       role: "border",
     },
     {
-      title: t("__RANKING_TITLE_LABEL_POSITION_MAX:"),
+      title: t("__RANKING_TITLE_LABEL_POSITION_MAX: 15"),
       dataIndex: "position",
       key: "position",
       hideIndex: true,
@@ -29,20 +29,20 @@ export const RankingColumns = (t: TFunction<"translation">): Column[] => {
       maxWidth: "max-content",
     },
     {
-      title: t("__RANKING_TITLE_LABEL_ID_MAX:"),
+      title: t("__RANKING_TITLE_LABEL_ID_MAX: 10"),
       dataIndex: "id",
       key: "id",
       hideIndex: true,
       maxWidth: "7em",
     },
     {
-      title: t("__RANKING_TITLE_LABEL_NAME_MAX:"),
+      title: t("__RANKING_TITLE_LABEL_NAME_MAX: 20"),
       dataIndex: "name",
       key: "name",
       hideIndex: true,
     },
     {
-      title: t("__RANKING_TITLE_LABEL_EXP_MAX:"),
+      title: t("__RANKING_TITLE_LABEL_EXP_MAX: 15"),
       dataIndex: "exp",
       key: "monthly_exp",
       hideIndex: true,

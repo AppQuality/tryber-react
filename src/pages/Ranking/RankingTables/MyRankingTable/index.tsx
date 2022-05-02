@@ -116,7 +116,7 @@ export const MyRankingTable = () => {
     <StyledMyRanking>
       <div className="ranking-top-title">
         {/* TODO Aggiungere livello attuale */}
-        {t("__RANKING_TITLE_LABEL_MONTH_MAX:")}
+        {t("__RANKING_TITLE_LABEL_MONTH_MAX: 45")}
       </div>
       <Table
         dataSource={rows}

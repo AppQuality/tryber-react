@@ -108,7 +108,7 @@ export const TopRankingTable = () => {
     >
       <div className="ranking-top-title">
         {/* TODO Aggiungere livello attuale */}
-        {t("__RANKING_TITLE_LABEL_TOP_LEVEL_MAX:")}
+        {t("__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25")}
       </div>
       <Table
         dataSource={rows}

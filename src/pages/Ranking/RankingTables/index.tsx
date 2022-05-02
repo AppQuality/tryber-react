@@ -8,7 +8,7 @@ import { fetchRankings } from "../../../redux/ranking/actionCreator";
 import { useEffect } from "react";
 
 // TODO Remove
-const noLevel = true;
+const noLevel = false;
 
 const StyledNoLevel = styled.div`
   .no-level-top-title {
