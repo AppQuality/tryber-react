@@ -9,6 +9,9 @@ import getGravatarUrlWithColoredFallbackInitials from "../../../../utils/getGrav
 import { rankingTheme } from "../../rankingTheme";
 
 const StyledMyRanking = styled.div`
+  .table-card {
+    grid-template-columns: 6px auto max-content 6em 5em;
+  }
   .tbody.cell {
     display: flex;
     align-items: center;
@@ -16,12 +19,11 @@ const StyledMyRanking = styled.div`
   }
   .ranking-top-title {
     border-bottom: 1px solid ${(p) => p.theme.colors.gray300};
-    height: 3em;
+    min-height: 3em;
     width: 100%;
     padding: 0.75em 1em;
     background: ${(p) => p.theme.colors.gray50};
     color: ${(p) => p.theme.colors.gray700};
-    font-weight: ${(props) => props.theme.typography.fontWeight.bold};
   }
 `;
 
@@ -39,6 +41,11 @@ const StyledExp = styled.div`
   align-items: center;
   .monthly-exp {
     margin-left: 1.5em;
+  }
+  @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+    .monthly-exp {
+      margin-left: 1em;
+    }
   }
 `;
 
