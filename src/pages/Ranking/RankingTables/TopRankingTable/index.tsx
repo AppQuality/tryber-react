@@ -4,34 +4,9 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { RankingColumns } from "../columns";
 import starIcon from "../assets/star.svg";
-
-// TODO Remove
-const tops = [
-  {
-    position: 1,
-    image:
-      "https://secure.gravatar.com/avatar/c8d14ccfd1de75728885d07e5b49823b?s=132&d=https%3A%2F%2Feu.ui-avatars.com%2Fapi%2Falessandro%2Bgiommi%2F132&r=x",
-    id: "T0090",
-    name: "aaaaa",
-    monthly_exp: 80,
-  },
-  {
-    position: 2,
-    image:
-      "https://secure.gravatar.com/avatar/c8d14ccfd1de75728885d07e5b49823b?s=132&d=https%3A%2F%2Feu.ui-avatars.com%2Fapi%2Falessandro%2Bgiommi%2F132&r=x",
-    id: "T8090",
-    name: "bbbbb",
-    monthly_exp: 70,
-  },
-  {
-    position: 3,
-    image:
-      "https://secure.gravatar.com/avatar/c8d14ccfd1de75728885d07e5b49823b?s=132&d=https%3A%2F%2Feu.ui-avatars.com%2Fapi%2Falessandro%2Bgiommi%2F132&r=x",
-    id: "T2780",
-    name: "ccccc",
-    monthly_exp: 60,
-  },
-];
+import { shallowEqual, useSelector } from "react-redux";
+import { useAppDispatch } from "../../../../redux/provider";
+import { fetchRankings } from "../../../../redux/ranking/actionCreator";
 
 const StyledTopRanking = styled.div`
   .tbody.cell {
@@ -69,15 +44,24 @@ const StyledExp = styled.div`
 
 export const TopRankingTable = () => {
   const { t } = useTranslation();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
+  const tops = useSelector(
+    (state: GeneralState) => state.ranking.rankings.tops,
+    shallowEqual
+  );
+
+  // initial requests
   useEffect(() => {
     const cols = RankingColumns(t);
     setcolumns(cols);
+    dispatch(fetchRankings()).then(() => setIsLoading(false));
   }, []);
 
+  // update datasource for the table
   useEffect(() => {
     setRows(
       tops.map((req) => {
@@ -106,7 +90,7 @@ export const TopRankingTable = () => {
         };
       })
     );
-  }, []);
+  }, [tops]);
 
   return (
     <StyledTopRanking>

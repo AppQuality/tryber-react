@@ -1,5 +1,8 @@
 export const initialState: RankingState = {
-  rankings: {},
+  rankings: {
+    tops: [],
+    peers: [],
+  },
 };
 
 export default (state = initialState, action: RankingActions) => {
@@ -7,7 +10,7 @@ export default (state = initialState, action: RankingActions) => {
     case "ranking/setRankings":
       return {
         ...state,
-        rankings: {},
+        rankings: action.payload,
       };
     default:
       return state;
