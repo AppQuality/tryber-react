@@ -6,12 +6,10 @@ import noLevelIcon from "./assets/noLevelIcon.svg";
 import { useAppDispatch } from "../../../redux/provider";
 import { fetchRankings } from "../../../redux/ranking/actionCreator";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
-// TODO Remove
-const noLevel = false;
-
-const StyledNoLevel = styled.div`
-  .no-level-top-title {
+const StyledRankingTables = styled.div`
+  .top-title {
     border-bottom: 1px solid ${(p) => p.theme.colors.gray300};
     height: 3em;
     width: 100%;
@@ -37,8 +35,12 @@ const StyledNoLevel = styled.div`
   }
 `;
 
+// TODO Remove
+const levelId = 40;
+
 export const RankingTables = () => {
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(fetchRankings()).then(() =>
@@ -50,33 +52,27 @@ export const RankingTables = () => {
   }, []);
 
   return (
-    <>
-      {noLevel ? (
-        <StyledNoLevel>
-          <div className="no-level-top-title">
-            {/* TODO add string key */}
-            {"Classifica mensile | Nessun Livello"}
+    <StyledRankingTables>
+      <div className="top-title">
+        {/* TODO add level */}
+        {!levelId
+          ? t("__RANKING_MAIN-TITLE_LABEL_MONTH_NO-LEVEL_MAX: 45")
+          : t("__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45")}
+      </div>
+      {!levelId ? (
+        <div className="no-level">
+          <img src={noLevelBackground} alt={"No level background"} />
+          <div className="no-level-info aq-text-primaryVariant">
+            <img className="aq-mb-2" src={noLevelIcon} alt={"No level icon"} />
+            {t("__RANKING_MODAL_MESSAGE_MAX: 100")}
           </div>
-          <div className="no-level">
-            <img src={noLevelBackground} alt={"No level background"} />
-            <div className="no-level-info aq-text-primaryVariant">
-              <img
-                className="aq-mb-2"
-                src={noLevelIcon}
-                alt={"No level icon"}
-              />
-              {/* TODO add string key */}
-              “Non sei ancora in classifica: completa l’Entry Test per
-              guadagnare i primi punti e raggiungere il livello basic”
-            </div>
-          </div>
-        </StyledNoLevel>
+        </div>
       ) : (
         <>
           <TopRankingTable />
           <MyRankingTable />
         </>
       )}
-    </>
+    </StyledRankingTables>
   );
 };

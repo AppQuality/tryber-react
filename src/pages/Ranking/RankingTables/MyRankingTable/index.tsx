@@ -10,7 +10,7 @@ import { rankingTheme } from "../../rankingTheme";
 
 const StyledMyRanking = styled.div`
   .table-card {
-    grid-template-columns: 6px auto max-content 6em 5em;
+    grid-template-columns: 6px 2em max-content 6em 5em;
   }
   .tbody.cell {
     display: flex;
