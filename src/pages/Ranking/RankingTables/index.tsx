@@ -6,12 +6,13 @@ import noLevelIcon from "./assets/noLevelIcon.svg";
 import { useAppDispatch } from "../../../redux/provider";
 import { fetchRankings } from "../../../redux/ranking/actionCreator";
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import localizedUrl from "../../../utils/localizedUrl";
 
 const StyledRankingTables = styled.div`
   .top-title {
     border-bottom: 1px solid ${(p) => p.theme.colors.gray300};
-    height: 3em;
+    min-height: 3em;
     width: 100%;
     padding: 0.75em 1em;
     font-weight: ${(props) => props.theme.typography.fontWeight.bold};
@@ -21,6 +22,7 @@ const StyledRankingTables = styled.div`
     text-align: center;
     margin: 4em 0;
     position: relative;
+
     .no-level-info {
       position: absolute;
       top: 0;
@@ -31,6 +33,11 @@ const StyledRankingTables = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
+
+      .no-level-link {
+        font-weight: ${(props) => props.theme.typography.fontWeight.medium};
+        color: ${(props) => props.theme.variants.primary};
+      }
     }
   }
 `;
@@ -64,7 +71,19 @@ export const RankingTables = () => {
           <img src={noLevelBackground} alt={"No level background"} />
           <div className="no-level-info aq-text-primaryVariant">
             <img className="aq-mb-2" src={noLevelIcon} alt={"No level icon"} />
-            {t("__RANKING_MODAL_MESSAGE_MAX: 100")}
+            <Trans
+              i18nKey={
+                "Available tags : <entry_test_link> (Link to entry test):::__RANKING_MODAL_MESSAGE_MAX: 250"
+              }
+              components={{
+                entry_test_link: (
+                  <a
+                    className="no-level-link"
+                    href={localizedUrl(`/courses/16`)}
+                  />
+                ),
+              }}
+            />
           </div>
         </div>
       ) : (

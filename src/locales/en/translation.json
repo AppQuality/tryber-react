@@ -53,6 +53,9 @@
   "Available tags \n<a> - Link to help article for fiscal type": {
     "@@Description for fiscal type@@": "<a>Click here</a> for more info"
   },
+  "Available tags : <entry_test_link> (Link to entry test)": {
+    "__RANKING_MODAL_MESSAGE_MAX: 250": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure do"
+  },
   "Available tags : <fiscal_profile_link> (Link to fiscal profile)": {
     "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150": "We will use the information in your tax profile for the payment. Do a quick check and update them if necessary.",
     "__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150": "Complete your <fiscal_profile_link>tax profile</fiscal_profile_link> and ensure all information is correct in order to request a payment."
@@ -459,7 +462,6 @@
   "__PAYMENT-METHOD-BANK": "Bank transfer",
   "__RANKING_MAIN-TITLE_LABEL_MONTH_NO-LEVEL_MAX: 45": "Lorem ipsum dolor sit amet, consectetur adipi",
   "__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45": "Lorem ipsum dolor sit amet, consectetur adipi",
-  "__RANKING_MODAL_MESSAGE_MAX: 100": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
   "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Lorem ipsum dol",
   "__RANKING_TITLE_LABEL_ID_MAX: 10": "Lorem ipsu",
   "__RANKING_TITLE_LABEL_MONTH_MAX: 45": "Lorem ipsum dolor sit amet, consectetur adipi",
