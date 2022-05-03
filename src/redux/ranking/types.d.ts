@@ -1,23 +1,6 @@
 type RankingState = {
-  // rankings: ApiOperations["get-users-me-rank-list"]["responses"]["200"]["content"]["application/json"];
+  rankings: ApiOperations["get-users-me-rank-list"]["responses"]["200"]["content"]["application/json"];
   isLoading: boolean;
-  // TODO Remove
-  rankings: {
-    tops: {
-      position: number;
-      image: string;
-      id: number;
-      name: string;
-      monthly_exp: number;
-    }[];
-    peers: {
-      position: number;
-      image: string;
-      id: number;
-      name: string;
-      monthly_exp: number;
-    }[];
-  };
 };
 
 type RankingActions = RankingActions_SetRankings | RankingActions_SetIsLoading;
@@ -28,24 +11,7 @@ type RankingActions = RankingActions_SetRankings | RankingActions_SetIsLoading;
 
 type RankingActions_SetRankings = {
   type: "ranking/setRankings";
-  // payload: ApiOperations["get-users-me-rank-list"]["responses"]["200"]["content"]["application/json"];
-  // TODO Remove
-  payload: {
-    tops: {
-      position: number;
-      image: string;
-      id: number;
-      name: string;
-      monthly_exp: number;
-    }[];
-    peers: {
-      position: number;
-      image: string;
-      id: number;
-      name: string;
-      monthly_exp: number;
-    }[];
-  };
+  payload: ApiOperations["get-users-me-rank-list"]["responses"]["200"]["content"]["application/json"];
 };
 
 type RankingActions_SetIsLoading = {

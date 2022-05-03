@@ -50,7 +50,7 @@ const StyledExp = styled.div`
 `;
 
 // TODO Remove
-const levelId = 40;
+const levelId = 0;
 
 export const MyRankingTable = () => {
   const { t } = useTranslation();

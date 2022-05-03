@@ -36,7 +36,7 @@ const StyledRankingTables = styled.div`
 `;
 
 // TODO Remove
-const levelId = 40;
+const levelId = 0;
 
 export const RankingTables = () => {
   const dispatch = useAppDispatch();
