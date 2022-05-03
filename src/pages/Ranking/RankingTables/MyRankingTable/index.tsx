@@ -50,7 +50,10 @@ const StyledExp = styled.div`
 `;
 
 // TODO Remove
-const levelId = 0;
+const level = {
+  id: 20,
+  name: "Bronze",
+};
 
 export const MyRankingTable = () => {
   const { t } = useTranslation();
@@ -93,7 +96,7 @@ export const MyRankingTable = () => {
                     req.id === userId
                       ? getGravatarUrlWithColoredFallbackInitials(
                           req.image,
-                          rankingTheme[levelId].main
+                          rankingTheme[level.id].main
                         )
                       : req.image
                   }
@@ -122,20 +125,19 @@ export const MyRankingTable = () => {
   return (
     <StyledMyRanking>
       <div className="ranking-top-title">
-        {/* TODO Aggiungere livello attuale */}
-        {t("__RANKING_TITLE_LABEL_MONTH_MAX: 45")}
+        {`${t("__RANKING_TITLE_LABEL_MONTH_MAX: 45")} ${level.name}`}
       </div>
       <Table
         dataSource={rows}
         columns={columns}
         isLoading={isLoading}
-        borderedCellColor={rankingTheme[levelId].main}
-        highlightedColor={rankingTheme[levelId].background2}
+        borderedCellColor={rankingTheme[level.id].main}
+        highlightedColor={rankingTheme[level.id].background2}
         mobileAlternative
         hideHeader
         i18n={{
           loading: t("...wait"),
-          empty: "no data",
+          empty: t("no data"),
         }}
       />
     </StyledMyRanking>

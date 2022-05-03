@@ -43,7 +43,10 @@ const StyledRankingTables = styled.div`
 `;
 
 // TODO Remove
-const levelId = 0;
+const level = {
+  id: 20,
+  name: "Bronze",
+};
 
 export const RankingTables = () => {
   const dispatch = useAppDispatch();
@@ -61,12 +64,13 @@ export const RankingTables = () => {
   return (
     <StyledRankingTables>
       <div className="top-title">
-        {/* TODO add level */}
-        {!levelId
+        {!level.id
           ? t("__RANKING_MAIN-TITLE_LABEL_MONTH_NO-LEVEL_MAX: 45")
-          : t("__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45")}
+          : `${t("__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45")} ${
+              level.name
+            }`}
       </div>
-      {!levelId ? (
+      {!level.id ? (
         <div className="no-level">
           <img src={noLevelBackground} alt={"No level background"} />
           <div className="no-level-info aq-text-primaryVariant">

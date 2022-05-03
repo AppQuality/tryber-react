@@ -55,7 +55,10 @@ const StyledExp = styled.div`
 `;
 
 // TODO Remove
-const levelId = 0;
+const level = {
+  id: 20,
+  name: "Bronze",
+};
 
 export const TopRankingTable = () => {
   const { t } = useTranslation();
@@ -110,23 +113,22 @@ export const TopRankingTable = () => {
 
   return (
     <StyledTopRanking
-      background={rankingTheme[levelId].background1}
-      color={rankingTheme[levelId].textColor}
+      background={rankingTheme[level.id].background1}
+      color={rankingTheme[level.id].textColor}
     >
       <div className="ranking-top-title">
-        {/* TODO Aggiungere livello attuale */}
-        {t("__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25")}
+        {`${t("__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25")} ${level.name}`}
       </div>
       <Table
         dataSource={rows}
         columns={columns}
         isLoading={isLoading}
-        borderedCellColor={rankingTheme[levelId].main}
-        highlightedColor={rankingTheme[levelId].background2}
+        borderedCellColor={rankingTheme[level.id].main}
+        highlightedColor={rankingTheme[level.id].background2}
         mobileAlternative
         i18n={{
           loading: t("...wait"),
-          empty: "no data",
+          empty: t("no data"),
         }}
       />
     </StyledTopRanking>
