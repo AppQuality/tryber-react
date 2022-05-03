@@ -3,26 +3,25 @@ import { rankingTheme } from "src/pages/Ranking/rankingTheme";
 import React, { useEffect } from "react";
 import getGravatarUrlWithThemedFallbackInitials from "src/utils/getGravatarUrlWithThemedFallbackInitials";
 
-interface AvatarWithRankProps {
-  user: any;
-  rankingSummary: any;
-}
+const badgeSize = "60px";
+const avatarSize = "105px";
+
 const StyledAvatar = styled.div<{ badgeColor: string }>`
   position: relative;
-  width: 132px;
   .ranking-avatar {
-    width: 105px;
-    height: 105px;
+    display: inline-block;
+    width: ${avatarSize};
+    height: ${avatarSize};
     border-radius: 50%;
   }
   .badge {
-    position: absolute;
-    bottom: -5px;
-    right: 0;
+    display: inline-block;
+    margin-left: calc(${badgeSize} / -2);
     color: ${(p) => p.badgeColor};
     font-size: 0.8rem;
-    width: 60px;
-    height: 60px;
+    width: ${badgeSize};
+    height: ${badgeSize};
+    transform: translateY(8px);
     svg {
       width: 100%;
       height: 100%;
@@ -30,10 +29,7 @@ const StyledAvatar = styled.div<{ badgeColor: string }>`
   }
 `;
 
-export const AvatarWithRank = ({
-  user,
-  rankingSummary,
-}: AvatarWithRankProps) => {
+export const AvatarWithRank = ({ user, rankingSummary }: UserRankProps) => {
   const { id } = rankingSummary.level;
   const badgeColor = rankingTheme[id].main;
   const [avatarUrl, setAvatarUrl] = React.useState<string>("");
@@ -45,7 +41,7 @@ export const AvatarWithRank = ({
   return (
     <StyledAvatar badgeColor={badgeColor}>
       <img className="ranking-avatar" src={avatarUrl} alt={user?.name} />
-      <span className="badge">{rankingTheme[id].icon}</span>
+      <div className="badge">{rankingTheme[id].icon}</div>
     </StyledAvatar>
   );
 };

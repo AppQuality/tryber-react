@@ -6,6 +6,7 @@ export const getUserRankingSummary = async (
   ApiOperations["get-users-me-rank"]["responses"]["200"]["content"]["application/json"]
 > => {
   return apifetch({
+    headers: { "x-tryber-mock-example": "200:bronze-to-gold" },
     endpoint: "/users/me/rank",
     token: token,
   });
