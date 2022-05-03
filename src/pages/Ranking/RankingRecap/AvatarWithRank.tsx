@@ -27,7 +27,7 @@ const StyledAvatar = styled.div<{ badgeColor: string }>`
     font-size: 0.8rem;
     width: ${badgeSize};
     height: ${badgeSize};
-    transform: translateY(8px);
+    transform: translateY(7px);
     svg {
       width: 100%;
       height: 100%;
@@ -36,7 +36,6 @@ const StyledAvatar = styled.div<{ badgeColor: string }>`
       margin-left: calc(${badgeSizeDesk} / -2);
       width: ${badgeSizeDesk};
       height: ${badgeSizeDesk};
-      transform: translateY(4px);
     }
   }
 `;
