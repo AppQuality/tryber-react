@@ -5,6 +5,8 @@ import getGravatarUrlWithThemedFallbackInitials from "src/utils/getGravatarUrlWi
 
 const badgeSize = "60px";
 const avatarSize = "105px";
+const badgeSizeDesk = "32px";
+const avatarSizeDesk = "62px";
 
 const StyledAvatar = styled.div<{ badgeColor: string }>`
   position: relative;
@@ -13,6 +15,10 @@ const StyledAvatar = styled.div<{ badgeColor: string }>`
     width: ${avatarSize};
     height: ${avatarSize};
     border-radius: 50%;
+    @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+      width: ${avatarSizeDesk};
+      height: ${avatarSizeDesk};
+    }
   }
   .badge {
     display: inline-block;
@@ -25,6 +31,12 @@ const StyledAvatar = styled.div<{ badgeColor: string }>`
     svg {
       width: 100%;
       height: 100%;
+    }
+    @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+      margin-left: calc(${badgeSizeDesk} / -2);
+      width: ${badgeSizeDesk};
+      height: ${badgeSizeDesk};
+      transform: translateY(4px);
     }
   }
 `;

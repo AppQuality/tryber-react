@@ -7,6 +7,7 @@ import { StarFill } from "react-bootstrap-icons";
 import { rankingTheme } from "src/pages/Ranking/rankingTheme";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Level } from "./Level";
 
 export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
   const [lastMonth, setLastMonth] = useState("");
@@ -30,23 +31,20 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
           {t("level")} {level.name}
         </strong>
       </Text>
-      <Text className="aq-mb-3">
+      <Text className="aq-mb-3" style={{ display: "flex" }}>
         <StarFill
           style={{ verticalAlign: "middle" }}
           color={aqBootstrapTheme.palette.warning}
           size="21"
         />{" "}
-        <div className="aq-ml-2 aq-text-primary">
+        <div className="aq-ml-2">
           <strong className="aq-mr-2">{user?.total_exp_pts}</strong>
           <span className="aq-text-primaryVariant">pt</span>
         </div>
       </Text>
       <Text>
         last month ({lastMonth})
-        <div style={{ color: rankingTheme[previousLevel.id].main }}>
-          <span>{rankingTheme[previousLevel.id].icon}</span>-
-          {previousLevel.name}
-        </div>
+        <Level level={previousLevel} />
       </Text>
     </div>
   );

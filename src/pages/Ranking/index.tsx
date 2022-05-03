@@ -6,12 +6,14 @@ import { RankingRecap } from "./RankingRecap/RankingRecap";
 import { RankingTables } from "./RankingTables";
 import { fetchRankingSummary } from "src/redux/ranking/actionCreator";
 import { useDispatch } from "react-redux";
+import { getProfile } from "src/redux/user/actions/getProfile";
 
 export default function Ranking() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRankingSummary());
+    dispatch(getProfile());
   }, []);
   return (
     <PageTemplate
