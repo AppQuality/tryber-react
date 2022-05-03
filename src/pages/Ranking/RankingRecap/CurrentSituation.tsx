@@ -36,7 +36,7 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
       <Text className="level-name">
         <strong style={{ color: rankingTheme[level.id].textColor }}>
           <Trans
-            i18nKey="__RANKING_NAME_LEVEL_MAX: 25"
+            i18nKey="__RANKING_NAME_LEVEL"
             values={{ levelName: level.name }}
           >
             level {level.name}
@@ -52,15 +52,13 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
         <div className="aq-ml-2">
           <strong className="aq-mr-2">{user?.total_exp_pts}</strong>
           <span className="aq-text-primaryVariant">
-            <Trans i18nKey="__RANKING_EXP_POINTS_MAX: 25">
-              exp points totali
-            </Trans>
+            <Trans i18nKey="__RANKING_EXP_POINTS">exp points totali</Trans>
           </span>
         </div>
       </Text>
       <Text>
         <Trans
-          i18nKey="__RANKING_LAST_MONTH_MAX: 25"
+          i18nKey="__RANKING_LAST_MONTH_MAX"
           values={{ lastMonth: lastMonth }}
         >
           last month ({lastMonth})
