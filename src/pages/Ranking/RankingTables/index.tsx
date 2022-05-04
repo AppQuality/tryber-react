@@ -8,8 +8,11 @@ import { fetchRankings } from "../../../redux/ranking/actionCreator";
 import { useEffect } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import localizedUrl from "../../../utils/localizedUrl";
+import { shallowEqual, useSelector } from "react-redux";
 
 const StyledRankingTables = styled.div`
+  margin-top: 2em;
+
   .top-title {
     border-bottom: 1px solid ${(p) => p.theme.colors.gray300};
     min-height: 3em;
@@ -42,15 +45,14 @@ const StyledRankingTables = styled.div`
   }
 `;
 
-// TODO Remove
-const level = {
-  id: 20,
-  name: "Bronze",
-};
-
 export const RankingTables = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
+
+  const level = useSelector(
+    (state: GeneralState) => state.ranking.summary?.level,
+    shallowEqual
+  );
 
   useEffect(() => {
     dispatch(fetchRankings()).then(() =>
@@ -64,13 +66,13 @@ export const RankingTables = () => {
   return (
     <StyledRankingTables>
       <div className="top-title">
-        {!level.id
+        {level?.id === 0
           ? t("__RANKING_MAIN-TITLE_LABEL_MONTH_NO-LEVEL_MAX: 45")
           : `${t("__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45")} ${
-              level.name
+              level?.name || ""
             }`}
       </div>
-      {!level.id ? (
+      {level?.id === 0 ? (
         <div className="no-level">
           <img src={noLevelBackground} alt={"No level background"} />
           <div className="no-level-info aq-text-primaryVariant">

@@ -49,12 +49,6 @@ const StyledExp = styled.div`
   }
 `;
 
-// TODO Remove
-const level = {
-  id: 20,
-  name: "Bronze",
-};
-
 export const MyRankingTable = () => {
   const { t } = useTranslation();
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
@@ -71,6 +65,11 @@ export const MyRankingTable = () => {
 
   const userId = useSelector(
     (state: GeneralState) => state.user.user.id,
+    shallowEqual
+  );
+
+  const level = useSelector(
+    (state: GeneralState) => state.ranking.summary?.level,
     shallowEqual
   );
 
@@ -93,7 +92,7 @@ export const MyRankingTable = () => {
               <StyledAvatar>
                 <img
                   src={
-                    req.id === userId
+                    req.id === userId && level?.id
                       ? getGravatarUrlWithColoredFallbackInitials(
                           req.image,
                           rankingTheme[level.id].main
@@ -125,14 +124,16 @@ export const MyRankingTable = () => {
   return (
     <StyledMyRanking>
       <div className="ranking-top-title">
-        {`${t("__RANKING_TITLE_LABEL_MONTH_MAX: 45")} ${level.name}`}
+        {`${t("__RANKING_TITLE_LABEL_MONTH_MAX: 45")} ${level?.name || ""}`}
       </div>
       <Table
         dataSource={rows}
         columns={columns}
         isLoading={isLoading}
-        borderedCellColor={rankingTheme[level.id].main}
-        highlightedColor={rankingTheme[level.id].background2}
+        borderedCellColor={level?.id ? rankingTheme[level.id].main : undefined}
+        highlightedColor={
+          level?.id ? rankingTheme[level.id].background2 : undefined
+        }
         mobileAlternative
         hideHeader
         i18n={{

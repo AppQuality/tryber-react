@@ -8,8 +8,8 @@ import { shallowEqual, useSelector } from "react-redux";
 import { rankingTheme } from "../../rankingTheme";
 
 interface TopRankingProps {
-  readonly background: string;
-  readonly color: string;
+  readonly background?: string;
+  readonly color?: string;
 }
 
 const StyledTopRanking = styled.div<TopRankingProps>`
@@ -54,12 +54,6 @@ const StyledExp = styled.div`
   }
 `;
 
-// TODO Remove
-const level = {
-  id: 20,
-  name: "Bronze",
-};
-
 export const TopRankingTable = () => {
   const { t } = useTranslation();
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
@@ -71,6 +65,11 @@ export const TopRankingTable = () => {
   );
   const isLoading = useSelector(
     (state: GeneralState) => state.ranking.isLoading,
+    shallowEqual
+  );
+
+  const level = useSelector(
+    (state: GeneralState) => state.ranking.summary?.level,
     shallowEqual
   );
 
@@ -113,18 +112,20 @@ export const TopRankingTable = () => {
 
   return (
     <StyledTopRanking
-      background={rankingTheme[level.id].background1}
-      color={rankingTheme[level.id].textColor}
+      background={level?.id ? rankingTheme[level.id].background1 : undefined}
+      color={level?.id ? rankingTheme[level.id].textColor : undefined}
     >
       <div className="ranking-top-title">
-        {`${t("__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25")} ${level.name}`}
+        {`${t("__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25")} ${level?.name || ""}`}
       </div>
       <Table
         dataSource={rows}
         columns={columns}
         isLoading={isLoading}
-        borderedCellColor={rankingTheme[level.id].main}
-        highlightedColor={rankingTheme[level.id].background2}
+        borderedCellColor={level?.id ? rankingTheme[level.id].main : undefined}
+        highlightedColor={
+          level?.id ? rankingTheme[level.id].background2 : undefined
+        }
         mobileAlternative
         i18n={{
           loading: t("...wait"),
