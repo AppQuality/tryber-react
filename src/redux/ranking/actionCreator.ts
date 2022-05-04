@@ -1,6 +1,5 @@
 import { ThunkAction } from "redux-thunk";
-import API from "../../utils/api";
-import { addMessage } from "../siteWideMessages/actionCreators";
+import API from "src/utils/api";
 
 export const fetchRankings =
   (): ThunkAction<Promise<any>, GeneralState, unknown, RankingActions> =>
@@ -12,7 +11,20 @@ export const fetchRankings =
         payload: data,
       });
     } catch (e) {
-      const error = e as HttpError;
-      addMessage(error.message, "danger", false);
+      console.log(e);
+    }
+  };
+
+export const fetchRankingSummary =
+  (): ThunkAction<Promise<any>, GeneralState, unknown, RankingActions> =>
+  async (dispatch) => {
+    try {
+      const summary = await API.getUserRankingSummary();
+      dispatch({
+        type: "ranking/setRankingSummary",
+        payload: summary,
+      });
+    } catch (e) {
+      console.log(e);
     }
   };

@@ -10,3 +10,4 @@ export const getRankings = async (
     token: token,
   });
 };
+export * from "./getUserRankingSummary";

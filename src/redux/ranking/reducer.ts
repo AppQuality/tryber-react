@@ -18,6 +18,11 @@ export default (state = initialState, action: RankingActions) => {
         ...state,
         isLoading: action.payload,
       };
+    case "ranking/setRankingSummary":
+      return {
+        ...state,
+        summary: action.payload,
+      };
     default:
       return state;
   }

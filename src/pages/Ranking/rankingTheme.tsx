@@ -1,13 +1,13 @@
 import { aqBootstrapTheme } from "@appquality/appquality-design-system";
-import { ReactNode } from "react";
-import { ReactComponent as noLevelIcon } from "src/pages/Ranking/assets/noLevelIcon.svg";
-import { ReactComponent as basicIcon } from "src/pages/Ranking/assets/basicIcon.svg";
-import { ReactComponent as bronzeIcon } from "src/pages/Ranking/assets/bronzeIcon.svg";
-import { ReactComponent as silverIcon } from "src/pages/Ranking/assets/silverIcon.svg";
-import { ReactComponent as goldIcon } from "src/pages/Ranking/assets/goldIcon.svg";
-import { ReactComponent as platinumIcon } from "src/pages/Ranking/assets/platinumIcon.svg";
-import { ReactComponent as diamondIcon } from "src/pages/Ranking/assets/diamondIcon.svg";
-import { ReactComponent as legendaryIcon } from "src/pages/Ranking/assets/legendaryIcon.svg";
+import React, { ReactNode } from "react";
+import { ReactComponent as NoLevelIcon } from "src/pages/Ranking/assets/noLevelIcon.svg";
+import { ReactComponent as BasicIcon } from "src/pages/Ranking/assets/basicIcon.svg";
+import { ReactComponent as BronzeIcon } from "src/pages/Ranking/assets/bronzeIcon.svg";
+import { ReactComponent as SilverIcon } from "src/pages/Ranking/assets/silverIcon.svg";
+import { ReactComponent as GoldIcon } from "src/pages/Ranking/assets/goldIcon.svg";
+import { ReactComponent as PlatinumIcon } from "src/pages/Ranking/assets/platinumIcon.svg";
+import { ReactComponent as DiamondIcon } from "src/pages/Ranking/assets/diamondIcon.svg";
+import { ReactComponent as LegendaryIcon } from "src/pages/Ranking/assets/legendaryIcon.svg";
 
 const pink = "#D57287",
   pink05 = "#FBF1F3",
@@ -48,56 +48,56 @@ const rankingTheme: RankingTheme = {
     background1: aqBootstrapTheme.colors.gray300,
     background2: aqBootstrapTheme.colors.gray300,
     textColor: aqBootstrapTheme.colors.gray400,
-    icon: noLevelIcon,
+    icon: <NoLevelIcon />,
   },
   10: {
     main: pink,
     background1: pink05,
     background2: pink2,
     textColor: pinkM600,
-    icon: basicIcon,
+    icon: <BasicIcon />,
   },
   20: {
     main: bronze,
     background1: orange05,
     background2: bronze2,
     textColor: orangeM400,
-    icon: bronzeIcon,
+    icon: <BronzeIcon />,
   },
   30: {
     main: royalM400,
     background1: royal05,
     background2: royal2,
     textColor: royalM600,
-    icon: silverIcon,
+    icon: <SilverIcon />,
   },
   40: {
     main: lemon600,
     background1: lemon05,
     background2: lemon1,
     textColor: lemonM600,
-    icon: goldIcon,
+    icon: <GoldIcon />,
   },
   50: {
     main: azure600,
     background1: azure05,
     background2: azure15,
     textColor: azure600,
-    icon: platinumIcon,
+    icon: <PlatinumIcon />,
   },
   60: {
     main: green,
     background1: green0,
     background2: green15,
     textColor: green7,
-    icon: diamondIcon,
+    icon: <DiamondIcon />,
   },
   100: {
     main: aqBootstrapTheme.palette.secondary,
     background1: aqBootstrapTheme.colors.purple100,
     background2: aqBootstrapTheme.colors.indigo100,
     textColor: aqBootstrapTheme.colors.indigo500,
-    icon: legendaryIcon,
+    icon: <LegendaryIcon />,
   },
 };
 
