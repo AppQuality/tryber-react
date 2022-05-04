@@ -17,8 +17,8 @@ export default function Ranking() {
   }, []);
   return (
     <PageTemplate
-      title={t("Leaderboard")}
-      subtitle={"Subtitle"}
+      title={t("__RANKING_TITLE_WELCOM_MAX: 20")}
+      subtitle={t("__RANKING_SUBTITLE_WELCOME_MAX: 125")}
       route={"leaderboard"}
       shouldBeLoggedIn
     >
