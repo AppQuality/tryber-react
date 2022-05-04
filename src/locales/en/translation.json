@@ -460,6 +460,8 @@
   "__RANKING_EXP_POINTS": "exp points totali",
   "__RANKING_LAST_MONTH_MAX": "last month ({{lastMonth}})",
   "__RANKING_NAME_LEVEL": "level {{levelName}}",
+  "__RANKING_SUBTITLE_WELCOME_MAX: 125": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. U",
+  "__RANKING_TITLE_WELCOM_MAX: 20": "Lorem ipsum dolor si",
   "__SELECT_DEFAULT_NO_OPTION": "No options",
   "__WALLET_CARD-GUIDES_CTA MAX: 20": "Read our guides",
   "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Discover how we manage your payment requests.",
