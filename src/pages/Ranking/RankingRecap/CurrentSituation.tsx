@@ -38,9 +38,8 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
           <Trans
             i18nKey="__RANKING_NAME_LEVEL"
             values={{ levelName: level.name }}
-          >
-            level {level.name}
-          </Trans>
+            defaults={"level {{levelName}}"}
+          />
         </strong>
       </Text>
       <Text className="aq-mb-3" style={{ display: "flex" }}>
