@@ -41,7 +41,7 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
             <Trans
               i18nKey="__RANKING_NAME_LEVEL_MAX:25"
               values={{ levelName: level.name }}
-              defaults={"__level {{levelName}}__"}
+              defaults={"level {{levelName}}"}
             />
           )}
         </strong>
@@ -57,7 +57,7 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
           <span className="aq-text-primaryVariant">
             <Trans
               i18nKey="__RANKING_EXP_POINTS_MAX:25"
-              defaults="__total exp points__"
+              defaults="total exp points"
             />
           </span>
         </div>
@@ -66,7 +66,7 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
         <Trans
           i18nKey="__RANKING_LAST_MONTH_MAX:25"
           values={{ lastMonth: lastMonth }}
-          defaults={"__last month ({{lastMonth}})__"}
+          defaults={"last month ({{lastMonth}})"}
         />
         <Level level={previousLevel} />
       </Text>
