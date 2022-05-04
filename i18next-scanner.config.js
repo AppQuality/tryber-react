@@ -1,11 +1,9 @@
 var fs = require("fs");
-var chalk = require("chalk");
 var typescriptTransform = require("i18next-scanner-typescript");
 
 const eol = require("eol");
 const path = require("path");
 const VirtualFile = require("vinyl");
-const { exit } = require("process");
 
 function flush(done) {
   const { parser } = this;
@@ -103,22 +101,22 @@ module.exports = {
     ns: ["links", "translation"],
     defaultLng: "en",
     defaultNs: "translation",
-    defaultValue: (language, namespace, key) => {
-      if (
-        key.indexOf("__") === 0 &&
-        key.indexOf("MAX") > 0 &&
-        key.indexOf(":") > 0
-      ) {
-        let lipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
-        const parts = key.split("MAX");
-        const max = parts[1].replace(/\D/g, "");
-        while (lipsum.length < max) {
-          lipsum += lipsum;
-        }
-        return lipsum.substring(0, max);
-      }
-      return "";
-    },
+    // defaultValue: (language, namespace, key) => {
+    //   if (
+    //     key.indexOf("__") === 0 &&
+    //     key.indexOf("MAX") > 0 &&
+    //     key.indexOf(":") > 0
+    //   ) {
+    //     let lipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
+    //     const parts = key.split("MAX");
+    //     const max = parts[1].replace(/\D/g, "");
+    //     while (lipsum.length < max) {
+    //       lipsum += lipsum;
+    //     }
+    //     return lipsum.substring(0, max);
+    //   }
+    //   return "";
+    // },
     resource: {
       loadPath: "locales/{{lng}}/{{ns}}.json",
       savePath: "locales/{{lng}}/{{ns}}.json",
