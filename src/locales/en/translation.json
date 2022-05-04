@@ -459,7 +459,7 @@
   "__PAYMENT-METHOD-BANK": "Bank transfer",
   "__RANKING_EXP_POINTS": "exp points totali",
   "__RANKING_LAST_MONTH_MAX": "last month ()",
-  "__RANKING_NAME_LEVEL": "level ",
+  "__RANKING_NAME_LEVEL": "level {{levelName}}",
   "__SELECT_DEFAULT_NO_OPTION": "No options",
   "__WALLET_CARD-GUIDES_CTA MAX: 20": "Read our guides",
   "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Discover how we manage your payment requests.",
