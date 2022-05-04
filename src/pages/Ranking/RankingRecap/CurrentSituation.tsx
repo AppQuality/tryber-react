@@ -59,9 +59,8 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
         <Trans
           i18nKey="__RANKING_LAST_MONTH_MAX"
           values={{ lastMonth: lastMonth }}
-        >
-          last month ({lastMonth})
-        </Trans>
+          defaults={"last month ({{lastMonth}})"}
+        />
         <Level level={previousLevel} />
       </Text>
     </StyledRecap>

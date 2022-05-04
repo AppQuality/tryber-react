@@ -458,7 +458,7 @@
   "__HOME_USER_QUALIFICATION_ADVICE8 MAX:30": "Certified ISTQB professional tester",
   "__PAYMENT-METHOD-BANK": "Bonifico bancario",
   "__RANKING_EXP_POINTS": "exp points totali",
-  "__RANKING_LAST_MONTH_MAX": "last month ()",
+  "__RANKING_LAST_MONTH_MAX": "last month ({{lastMonth}})",
   "__RANKING_NAME_LEVEL": "level {{levelName}}",
   "__SELECT_DEFAULT_NO_OPTION": "Nessuna opzione",
   "__WALLET_CARD-GUIDES_CTA MAX: 20": "Le nostre guide",
