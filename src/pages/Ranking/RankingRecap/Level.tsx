@@ -25,7 +25,7 @@ export const Level = ({
   }, [level, size]);
   return (
     <StyledLevel color={levelColor} size={levelSize}>
-      <div className="level-icon aq-mr-2">{rankingTheme[level.id].icon}</div>
+      <div className="level-icon aq-mr-1">{rankingTheme[level.id].icon}</div>
       <Text>
         {" "}
         <strong className="level-name">{level.name}</strong>

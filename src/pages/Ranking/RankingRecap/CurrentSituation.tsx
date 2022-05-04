@@ -35,11 +35,15 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
       </Text>
       <Text className="level-name">
         <strong style={{ color: rankingTheme[level.id].textColor }}>
-          <Trans
-            i18nKey="__RANKING_NAME_LEVEL"
-            values={{ levelName: level.name }}
-            defaults={"level {{levelName}}"}
-          />
+          {level.id === 0 ? (
+            level.name
+          ) : (
+            <Trans
+              i18nKey="__RANKING_NAME_LEVEL_MAX: 25"
+              values={{ levelName: level.name }}
+              defaults={"level {{levelName}}"}
+            />
+          )}
         </strong>
       </Text>
       <Text className="aq-mb-3" style={{ display: "flex" }}>
@@ -48,16 +52,18 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
           color={aqBootstrapTheme.palette.warning}
           size="21"
         />{" "}
-        <div className="aq-ml-2">
-          <strong className="aq-mr-2">{user?.total_exp_pts}</strong>
+        <div className="aq-ml-1">
+          <strong className="aq-mr-1">{user?.total_exp_pts}</strong>
           <span className="aq-text-primaryVariant">
-            <Trans i18nKey="__RANKING_EXP_POINTS">exp points totali</Trans>
+            <Trans i18nKey="__RANKING_EXP_POINTS_MAX: 25">
+              exp points totali
+            </Trans>
           </span>
         </div>
       </Text>
       <Text>
         <Trans
-          i18nKey="__RANKING_LAST_MONTH_MAX"
+          i18nKey="__RANKING_LAST_MONTH_MAX: 25"
           values={{ lastMonth: lastMonth }}
           defaults={"last month ({{lastMonth}})"}
         />
