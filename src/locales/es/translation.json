@@ -460,6 +460,8 @@
   "__RANKING_EXP_POINTS_MAX:25": "__total exp points__",
   "__RANKING_LAST_MONTH_MAX:25": "__last month ({{lastMonth}})__",
   "__RANKING_NAME_LEVEL_MAX:25": "__level {{levelName}}__",
+  "__RANKING_SUBTITLE_WELCOME_MAX: 125": "",
+  "__RANKING_TITLE_WELCOM_MAX: 20": "",
   "__SELECT_DEFAULT_NO_OPTION": "sin opciones",
   "__WALLET_CARD-GUIDES_CTA MAX: 20": "Nuestras guías",
   "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Descubre cómo gestionamos tus solicitudes de pago",
