@@ -5,7 +5,14 @@ export const fetchRankings =
   (): ThunkAction<Promise<any>, GeneralState, unknown, RankingActions> =>
   async (dispatch) => {
     try {
-    } catch (e) {}
+      const data = await API.getRankings();
+      return dispatch({
+        type: "ranking/setRankings",
+        payload: data,
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
 export const fetchRankingSummary =
