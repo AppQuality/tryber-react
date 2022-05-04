@@ -30,6 +30,7 @@ function flush(done) {
         resContent = {};
       }
       const obj = { ...namespaces[ns], ...resContent };
+      console.log(namespaces[ns]);
       Object.keys(obj).forEach((key) => {
         if (namespaces[ns][key] === undefined) {
           delete obj[key];
@@ -86,11 +87,8 @@ module.exports = {
     trans: {
       component: "Trans",
       i18nKey: "i18nKey",
-      defaultsKey: "defaults",
+      defaultsKey: false,
       extensions: [".js", ".jsx"],
-      fallbackKey: function (ns, value) {
-        return value;
-      },
       acorn: {
         ecmaVersion: 2020,
         sourceType: "module", // defaults to 'module'
@@ -101,22 +99,7 @@ module.exports = {
     ns: ["links", "translation"],
     defaultLng: "en",
     defaultNs: "translation",
-    // defaultValue: (language, namespace, key) => {
-    //   if (
-    //     key.indexOf("__") === 0 &&
-    //     key.indexOf("MAX") > 0 &&
-    //     key.indexOf(":") > 0
-    //   ) {
-    //     let lipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
-    //     const parts = key.split("MAX");
-    //     const max = parts[1].replace(/\D/g, "");
-    //     while (lipsum.length < max) {
-    //       lipsum += lipsum;
-    //     }
-    //     return lipsum.substring(0, max);
-    //   }
-    //   return "";
-    // },
+    defaultValue: "",
     resource: {
       loadPath: "locales/{{lng}}/{{ns}}.json",
       savePath: "locales/{{lng}}/{{ns}}.json",

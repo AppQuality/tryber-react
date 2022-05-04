@@ -55,9 +55,10 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
         <div className="aq-ml-1">
           <strong className="aq-mr-1">{user?.total_exp_pts}</strong>
           <span className="aq-text-primaryVariant">
-            <Trans i18nKey="__RANKING_EXP_POINTS_MAX:25">
-              __total exp points__
-            </Trans>
+            <Trans
+              i18nKey="__RANKING_EXP_POINTS_MAX:25"
+              defaults="__total exp points__"
+            />
           </span>
         </div>
       </Text>

@@ -28,7 +28,7 @@ i18n
     name: "test",
     process: function (value: string) {
       const urlSearchParams = new URLSearchParams(window.location.search);
-      if (urlSearchParams.has("debug")) {
+      if (urlSearchParams.has("debugTranslations")) {
         return "<T>" + value + "</T>";
       }
       return value;
