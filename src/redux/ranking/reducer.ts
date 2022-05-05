@@ -14,6 +14,11 @@ export default (state = initialState, action: RankingActions) => {
         ...state,
         summary: action.payload,
       };
+    case "ranking/setLevelInfo":
+      return {
+        ...state,
+        levelInfo: action.payload,
+      };
     default:
       return state;
   }
