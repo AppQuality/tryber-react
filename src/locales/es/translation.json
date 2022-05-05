@@ -466,7 +466,6 @@
   "__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45": "Lorem ipsum dolor sit amet, consectetur adipi",
   "__RANKING_NAME_LEVEL_MAX:25_level {{levelName}}": "",
   "__RANKING_POSITION_MAX: 30_<bold>{{rank}}</bold> in {{level}} ranking": "",
-  "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_{{days}} days left to give your best!": "",
   "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70_<bold>{{pointsToKeepLevel}}</bold> points to keep level": "",
   "__RANKING_PROGRESS_MONTH_MAX: 35": "",
   "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70_<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}": "",
@@ -512,5 +511,9 @@
   "social": "social",
   "testers": "Trybers activos",
   "wait...": "espere...",
-  "you must accept terms and conditions": "Debes aceptar los términos y condiciones"
+  "you must accept terms and conditions": "Debes aceptar los términos y condiciones",
+  "{{days}} days left to give your best!": {
+    "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "",
+    "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": ""
+  }
 }

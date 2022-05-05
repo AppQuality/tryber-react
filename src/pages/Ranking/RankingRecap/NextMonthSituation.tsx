@@ -117,14 +117,13 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
       )}
       <Text>
         <Trans
-          i18nKey="__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
+          i18nKey="{{days}} days left to give your best!:::__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
           values={{
             days: getRemainingDaysInMonth(),
           }}
-          components={{ bold: <strong /> }}
           count={getRemainingDaysInMonth()}
           defaults={"{{days}} days left to give your best!"}
-          tOptions={{ context: "{{days}} days left to give your best!" }}
+          tOptions={{ count: getRemainingDaysInMonth() }}
         />
       </Text>
     </StyledRecap>
