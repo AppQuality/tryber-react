@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { RankingColumns } from "../columns";
-import starIcon from "../assets/star.svg";
+import starIcon from "src/pages/Ranking/assets/star.svg";
 import { shallowEqual, useSelector } from "react-redux";
 import getGravatarUrlWithColoredFallbackInitials from "../../../../utils/getGravatarUrlWithThemedFallbackInitials";
 import { rankingTheme } from "../../rankingTheme";
