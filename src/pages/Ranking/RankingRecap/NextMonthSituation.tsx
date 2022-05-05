@@ -68,9 +68,12 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
         />{" "}
         <Trans
           i18nKey="__RANKING_POSITION_MAX: 30"
-          values={{ rank: rankingSummary.rank }}
+          values={{
+            rank: rankingSummary.rank,
+            level: rankingSummary.level.name,
+          }}
           components={{ bold: <strong /> }}
-          defaults={"<bold>{{rank}}</bold> in basic ranking"}
+          defaults={"<bold>{{rank}}</bold> in {{level}} ranking"}
         />
       </Text>
       {rankingSummary.prospect.maintenance && (
