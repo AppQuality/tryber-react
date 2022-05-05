@@ -9,8 +9,8 @@ import { useTranslation } from "react-i18next";
 interface LevelInfoRowProps {
   level: ApiComponents["schemas"]["MonthlyLevel"];
   levelSize?: "medium" | "large";
-  min?: number;
-  max?: number;
+  hold?: number;
+  reach?: number;
   alternativeText?: string;
 }
 
@@ -42,8 +42,8 @@ const StyledLevelInfoRow = styled.div`
 export const LevelInfoRow = ({
   level,
   levelSize,
-  min = 0,
-  max = 0,
+  hold = 0,
+  reach = 0,
   alternativeText,
 }: LevelInfoRowProps) => {
   const { t } = useTranslation();
@@ -58,7 +58,7 @@ export const LevelInfoRow = ({
             alt={t("__RANKING_LEGEND_HOLD_MAX: 15", {
               defaultValue: "Maintenance",
             })}
-            value={`${min} exp`}
+            value={`${hold} exp`}
             small
           />
           <Experience
@@ -66,7 +66,7 @@ export const LevelInfoRow = ({
             alt={t("__RANKING_LEGEND_NEXT_MAX: 15", {
               defaultValue: "Advancement",
             })}
-            value={`${max} exp`}
+            value={`${reach} exp`}
             small
           />
         </div>
