@@ -2,11 +2,18 @@ import { shallowEqual, useSelector } from "react-redux";
 import { SkeletonHeader } from "src/pages/Profile/SkeletonHeader";
 import { AvatarWithRank } from "src/pages/Ranking/RankingRecap/AvatarWithRank";
 import { CurrentSituation } from "./CurrentSituation";
+import { NextMonthSituation } from "./NextMonthSituation";
 import styled from "styled-components";
 
-const LeftRecap = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr;
+const HeaderRecap = styled.div`
+  .left-recap {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.md}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 export const RankingRecap = () => {
@@ -24,11 +31,12 @@ export const RankingRecap = () => {
 
   if (loading || !summary) return <SkeletonHeader />;
   return (
-    <>
-      <LeftRecap>
+    <HeaderRecap>
+      <div className="left-recap">
         <AvatarWithRank user={user} rankingSummary={summary} />
         <CurrentSituation user={user} rankingSummary={summary} />
-      </LeftRecap>
-    </>
+      </div>
+      <NextMonthSituation user={user} rankingSummary={summary} />
+    </HeaderRecap>
   );
 };
