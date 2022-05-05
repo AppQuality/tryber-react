@@ -6,13 +6,9 @@ import { RankingColumns } from "../columns";
 import starIcon from "../assets/star.svg";
 import { shallowEqual, useSelector } from "react-redux";
 import { rankingTheme } from "../../rankingTheme";
+import { TopTitle } from "../TopTitle";
 
-interface TopRankingProps {
-  readonly background?: string;
-  readonly color?: string;
-}
-
-const StyledTopRanking = styled.div<TopRankingProps>`
+const StyledTopRanking = styled.div`
   .table-card {
     grid-template-columns: 6px 2em max-content 6em 5em;
   }
@@ -20,15 +16,6 @@ const StyledTopRanking = styled.div<TopRankingProps>`
     display: flex;
     align-items: center;
     padding: 8px 8px;
-  }
-  .ranking-top-title {
-    border-bottom: 1px solid ${(p) => p.theme.colors.gray300};
-    min-height: 3em;
-    width: 100%;
-    padding: 0.75em 1em;
-    background: ${(p) => p.background};
-    color: ${(p) => p.color};
-    font-weight: ${(props) => props.theme.typography.fontWeight.bold};
   }
 `;
 
@@ -111,13 +98,15 @@ export const TopRankingTable = () => {
   }, [tops]);
 
   return (
-    <StyledTopRanking
-      background={level?.id ? rankingTheme[level.id].background1 : undefined}
-      color={level?.id ? rankingTheme[level.id].textColor : undefined}
-    >
-      <div className="ranking-top-title">
-        {`${t("__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25")} ${level?.name || ""}`}
-      </div>
+    <StyledTopRanking>
+      <TopTitle
+        text={`${t("__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25")} ${
+          level?.name || ""
+        }`}
+        background={level?.id ? rankingTheme[level.id].background1 : undefined}
+        color={level?.id ? rankingTheme[level.id].textColor : undefined}
+        bold
+      />
       <Table
         dataSource={rows}
         columns={columns}

@@ -1,4 +1,8 @@
-import { Table, TableType } from "@appquality/appquality-design-system";
+import {
+  aqBootstrapTheme,
+  Table,
+  TableType,
+} from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
@@ -7,6 +11,7 @@ import starIcon from "../assets/star.svg";
 import { shallowEqual, useSelector } from "react-redux";
 import getGravatarUrlWithColoredFallbackInitials from "../../../../utils/getGravatarUrlWithThemedFallbackInitials";
 import { rankingTheme } from "../../rankingTheme";
+import { TopTitle } from "../TopTitle";
 
 const StyledMyRanking = styled.div`
   .table-card {
@@ -16,14 +21,6 @@ const StyledMyRanking = styled.div`
     display: flex;
     align-items: center;
     padding: 8px 8px;
-  }
-  .ranking-top-title {
-    border-bottom: 1px solid ${(p) => p.theme.colors.gray300};
-    min-height: 3em;
-    width: 100%;
-    padding: 0.75em 1em;
-    background: ${(p) => p.theme.colors.gray50};
-    color: ${(p) => p.theme.colors.gray700};
   }
 `;
 
@@ -123,9 +120,13 @@ export const MyRankingTable = () => {
 
   return (
     <StyledMyRanking>
-      <div className="ranking-top-title">
-        {`${t("__RANKING_TITLE_LABEL_MONTH_MAX: 45")} ${level?.name || ""}`}
-      </div>
+      <TopTitle
+        text={`${t("__RANKING_TITLE_LABEL_MONTH_MAX: 45")} ${
+          level?.name || ""
+        }`}
+        background={aqBootstrapTheme.colors.gray50}
+        color={aqBootstrapTheme.colors.gray700}
+      />
       <Table
         dataSource={rows}
         columns={columns}
