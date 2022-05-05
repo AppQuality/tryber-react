@@ -15,12 +15,28 @@ import { TopTitle } from "../TopTitle";
 
 const StyledMyRanking = styled.div`
   .table-card {
-    grid-template-columns: 6px 2em max-content 6em 5em;
+    grid-template-columns: 6px 2em max-content 60% auto;
   }
   .tbody.cell {
     display: flex;
     align-items: center;
     padding: 8px 8px;
+  }
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.sm}) and (max-width: ${(
+      p
+    ) => p.theme.grid.breakpoints.md}) {
+    .table-card {
+      grid-template-columns: 6px 2em max-content 45% auto;
+    }
+  }
+  @media (max-width: ${(p) => p.theme.grid.breakpoints.sm}) {
+    .table-card {
+      grid-template-columns: 6px 1.5em max-content minmax(5%, 40%) minmax(
+          20%,
+          35%
+        );
+      grid-column-gap: 8px;
+    }
   }
 `;
 
@@ -36,12 +52,18 @@ const StyledAvatar = styled.div`
 const StyledExp = styled.div`
   display: flex;
   align-items: center;
-  .monthly-exp {
-    margin-left: 1.5em;
+  flex-wrap: wrap;
+  img {
+    margin-right: 1.5em;
   }
   @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
-    .monthly-exp {
-      margin-left: 1em;
+    img {
+      margin-right: 1em;
+    }
+  }
+  @media (max-width: ${(p) => p.theme.grid.breakpoints.sm}) {
+    img {
+      margin-right: 0.5em;
     }
   }
 `;

@@ -16,7 +16,7 @@ const StyledRankingTables = styled.div`
 
   .no-level {
     text-align: center;
-    margin: 4em 0;
+    margin: 4em 0 6em;
     position: relative;
 
     .no-level-info {
@@ -26,6 +26,7 @@ const StyledRankingTables = styled.div`
       right: 0;
       margin: auto;
       width: 20em;
+      max-width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
