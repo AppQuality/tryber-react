@@ -46,21 +46,18 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
           )}
         </strong>
       </Text>
-      <Text className="aq-mb-3" style={{ display: "flex" }}>
+      <Text className="aq-mb-3">
         <StarFill
-          style={{ verticalAlign: "middle" }}
+          style={{ verticalAlign: "top" }}
           color={aqBootstrapTheme.palette.warning}
           size="21"
         />{" "}
-        <div className="aq-ml-1">
-          <strong className="aq-mr-1">{user?.total_exp_pts}</strong>
-          <span className="aq-text-primaryVariant">
-            <Trans
-              i18nKey="__RANKING_EXP_POINTS_MAX:25"
-              defaults="total exp points"
-            />
-          </span>
-        </div>
+        <Trans
+          i18nKey="__RANKING_EXP_POINTS_MAX:25"
+          components={{ bold: <strong /> }}
+          values={{ points: user?.total_exp_pts }}
+          defaults="<bold>{{points}}</bold> total exp points"
+        />
       </Text>
       <Text>
         <Trans
