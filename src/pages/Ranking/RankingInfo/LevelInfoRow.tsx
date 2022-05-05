@@ -4,6 +4,7 @@ import { Level } from "../Level";
 import { Experience } from "./Experience";
 import arrow from "./assets/arrow.svg";
 import doubleArrow from "./assets/doubleArrow.svg";
+import { useTranslation } from "react-i18next";
 
 interface LevelInfoRowProps {
   level: ApiComponents["schemas"]["MonthlyLevel"];
@@ -45,6 +46,8 @@ export const LevelInfoRow = ({
   max = 0,
   alternativeText,
 }: LevelInfoRowProps) => {
+  const { t } = useTranslation();
+
   return (
     <StyledLevelInfoRow className="aq-mt-2">
       <Level level={level} size={levelSize} />
@@ -52,13 +55,17 @@ export const LevelInfoRow = ({
         <div className="experience-row">
           <Experience
             icon={doubleArrow}
-            alt={"Mantenimento"}
+            alt={t("__RANKING_LEGEND_HOLD_MAX: 15", {
+              defaultValue: "Maintenance",
+            })}
             value={`${min} exp`}
             small
           />
           <Experience
             icon={arrow}
-            alt={"Avanzamento"}
+            alt={t("__RANKING_LEGEND_NEXT_MAX: 15", {
+              defaultValue: "Advancement",
+            })}
             value={`${max} exp`}
             small
           />
