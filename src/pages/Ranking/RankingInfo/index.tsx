@@ -8,32 +8,46 @@ import { LevelInfoRow } from "./LevelInfoRow";
 // TODO Remove
 const levelInfo = [
   {
-    level: { id: 10, name: "Basic" },
-    points: { min: 0, max: 0 },
+    id: 10,
+    name: "Basic",
+    hold: 0,
+    reach: 0,
   },
   {
-    level: { id: 20, name: "Bronze" },
-    points: { min: 50, max: 100 },
+    id: 20,
+    name: "Bronze",
+    hold: 50,
+    reach: 100,
   },
   {
-    level: { id: 30, name: "Silver" },
-    points: { min: 150, max: 250 },
+    id: 30,
+    name: "Silver",
+    hold: 150,
+    reach: 250,
   },
   {
-    level: { id: 40, name: "Gold" },
-    points: { min: 300, max: 500 },
+    id: 40,
+    name: "Gold",
+    hold: 300,
+    reach: 500,
   },
   {
-    level: { id: 50, name: "Platinum" },
-    points: { min: 600, max: 1000 },
+    id: 50,
+    name: "Platinum",
+    hold: 600,
+    reach: 1000,
   },
   {
-    level: { id: 60, name: "Diamond" },
-    points: { min: 2000, max: 3000 },
+    id: 60,
+    name: "Diamond",
+    hold: 2000,
+    reach: 3000,
   },
   {
-    level: { id: 100, name: "Legendary" },
-    points: { min: 0, max: 0 },
+    id: 100,
+    name: "Legendary",
+    hold: 0,
+    reach: 0,
   },
 ];
 
@@ -76,9 +90,9 @@ export const RankingInfo = () => {
           const isLast = i === levelInfo.length - 1;
           return (
             <LevelInfoRow
-              level={l.level}
-              min={l.points.min}
-              max={l.points.max}
+              level={{ id: l.id, name: l.name }}
+              hold={l.hold}
+              reach={l.reach}
               alternativeText={
                 isFirst
                   ? t("__RANKING_LEGEND_BASIC_SPEC_MAX: 35", {
