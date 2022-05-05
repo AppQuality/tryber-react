@@ -54,11 +54,10 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
           style={{ verticalAlign: "top" }}
         />{" "}
         <Trans
-          i18nKey="__RANKING_PROGRESS_POINTS_MAX: 25"
+          i18nKey="<bold>{{points}}</bold> exp points:::__RANKING_PROGRESS_POINTS_MAX: 25"
           values={{ points: rankingSummary.points }}
           components={{ bold: <strong /> }}
           defaults={"<bold>{{points}}</bold> exp points"}
-          tOptions={{ context: "<bold>{{points}}</bold> exp points" }}
         />
       </Text>
       <Text className="aq-mb-2">
@@ -68,29 +67,24 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
           style={{ verticalAlign: "top" }}
         />{" "}
         <Trans
-          i18nKey="__RANKING_POSITION_MAX: 30"
+          i18nKey="<bold>{{rank}}</bold> in {{level}} ranking:::__RANKING_POSITION_MAX: 30"
           values={{
             rank: rankingSummary.rank,
             level: rankingSummary.level.name,
           }}
           components={{ bold: <strong /> }}
           defaults={"<bold>{{rank}}</bold> in {{level}} ranking"}
-          tOptions={{ context: "<bold>{{rank}}</bold> in {{level}} ranking" }}
         />
       </Text>
       {rankingSummary.prospect.maintenance && (
         <Text className="aq-mb-3">
           <ArrowLeftRight style={{ verticalAlign: "top" }} size="21" />{" "}
           <Trans
-            i18nKey="__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70"
+            i18nKey="<bold>{{pointsToKeepLevel}}</bold> points to keep level:::__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70"
             values={{ pointsToKeepLevel: rankingSummary.prospect.maintenance }}
             components={{ bold: <strong /> }}
             count={rankingSummary.prospect.maintenance}
             defaults={"<bold>{{pointsToKeepLevel}}</bold> points to keep level"}
-            tOptions={{
-              context:
-                "<bold>{{pointsToKeepLevel}}</bold> points to keep level",
-            }}
           />
         </Text>
       )}
@@ -98,7 +92,7 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
         <Text className="aq-mb-3">
           <ArrowRight style={{ verticalAlign: "top" }} size="21" />{" "}
           <Trans
-            i18nKey="__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70"
+            i18nKey="<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}:::__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70"
             values={{
               pointsToAdvance: rankingSummary.prospect.next?.points,
               nextLevel: rankingSummary.prospect.next?.level.name,
@@ -108,10 +102,6 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
             defaults={
               "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}"
             }
-            tOptions={{
-              context:
-                "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}",
-            }}
           />
         </Text>
       )}

@@ -8,6 +8,21 @@
   "<bold>Thank you for helping to make the AppQuality Community special!</bold><br></br><bold>Your account will be deleted, </bold><br></br>but if you want to come back and test with us,<br></br> you already know where to find us.<br></br>": "<bold>Thank you for helping to make the Tryber Community special!</bold><br></br><bold>Your account will be deleted, </bold><br></br>but if you want to come back and test with us,<br></br> you already know where to find us.<br></br>",
   "<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?": "<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?",
   "<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve.": "<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve.",
+  "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}": {
+    "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": ""
+  },
+  "<bold>{{pointsToKeepLevel}}</bold> points to keep level": {
+    "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": ""
+  },
+  "<bold>{{points}}</bold> exp points": {
+    "__RANKING_PROGRESS_POINTS_MAX: 25": ""
+  },
+  "<bold>{{points}}</bold> total exp points": {
+    "__RANKING_EXP_POINTS_MAX:25": ""
+  },
+  "<bold>{{rank}}</bold> in {{level}} ranking": {
+    "__RANKING_POSITION_MAX: 30": ""
+  },
   "@@Birth date is required, set it on base tab@@": "La fecha de nacimiento es obligatoria, configúrala en la pestaña base",
   "A list of all the campaigns you have been successfully selected for. Read the manual and complete all the requested tasks before the end date to receive your reward.": "Una lista de todas las campañas a las que has sido seleccionado exitosamente . Lea el manual y complete todas las tareas requeridas antes de la fecha límite para recibir tu recompensa.",
   "A list of all the campaigns you participated in that are now finished. We will evaluate your performance in the days following the end date and reward you accordingly.": "Una lista de todas las campañas que has participado y que han terminado. Evaluaremos su desempeño en los días posteriores a la fecha de finalización y por lo tanto recompensarle.",
@@ -460,16 +475,9 @@
   "__HOME_USER_QUALIFICATION_ADVICE7 MAX:30": "Qualified Tryber, Student",
   "__HOME_USER_QUALIFICATION_ADVICE8 MAX:30": "Certified ISTQB professional tester",
   "__PAYMENT-METHOD-BANK": "Transferencia bancaria",
-  "__RANKING_EXP_POINTS_MAX:25_<bold>{{points}}</bold> total exp points": "",
-  "__RANKING_LAST_MONTH_MAX:25_last month ({{lastMonth}})": "",
   "__RANKING_MAIN-TITLE_LABEL_MONTH_NO-LEVEL_MAX: 45": "Lorem ipsum dolor sit amet, consectetur adipi",
   "__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45": "Lorem ipsum dolor sit amet, consectetur adipi",
-  "__RANKING_NAME_LEVEL_MAX:25_level {{levelName}}": "",
-  "__RANKING_POSITION_MAX: 30_<bold>{{rank}}</bold> in {{level}} ranking": "",
-  "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70_<bold>{{pointsToKeepLevel}}</bold> points to keep level": "",
   "__RANKING_PROGRESS_MONTH_MAX: 35": "",
-  "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70_<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}": "",
-  "__RANKING_PROGRESS_POINTS_MAX: 25_<bold>{{points}}</bold> exp points": "",
   "__RANKING_SUBTITLE_WELCOME_MAX: 125": "",
   "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Lorem ipsum dol",
   "__RANKING_TITLE_LABEL_ID_MAX: 10": "Lorem ipsu",
@@ -501,6 +509,12 @@
   "email must be the same": "Introduce el mismo correo electrónico",
   "forgot your password?": "¿Has olvidado tu password?",
   "https://www.iubenda.com/privacy-policy/7934311": "\nhttps://www.iubenda.com/privacy-policy/7934311",
+  "last month ({{lastMonth}})": {
+    "__RANKING_LAST_MONTH_MAX:25": ""
+  },
+  "level {{levelName}}": {
+    "__RANKING_NAME_LEVEL_MAX:25": ""
+  },
   "login": "Login",
   "login with your credentials": "Inicia sesión con tus credenciales",
   "name": "Nombre",
