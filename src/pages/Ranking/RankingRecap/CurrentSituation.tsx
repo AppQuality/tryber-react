@@ -42,6 +42,7 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
               i18nKey="__RANKING_NAME_LEVEL_MAX:25"
               values={{ levelName: level.name }}
               defaults={"level {{levelName}}"}
+              tOptions={{ context: "level {{levelName}}" }}
             />
           )}
         </strong>
@@ -57,6 +58,7 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
           components={{ bold: <strong /> }}
           values={{ points: user?.total_exp_pts }}
           defaults="<bold>{{points}}</bold> total exp points"
+          tOptions={{ context: "<bold>{{points}}</bold> total exp points" }}
         />
       </Text>
       <Text>
@@ -64,6 +66,7 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
           i18nKey="__RANKING_LAST_MONTH_MAX:25"
           values={{ lastMonth: lastMonth }}
           defaults={"last month ({{lastMonth}})"}
+          tOptions={{ context: "last month ({{lastMonth}})" }}
         />
         <Level level={previousLevel} />
       </Text>

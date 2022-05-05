@@ -58,6 +58,7 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
           values={{ points: rankingSummary.points }}
           components={{ bold: <strong /> }}
           defaults={"<bold>{{points}}</bold> exp points"}
+          tOptions={{ context: "<bold>{{points}}</bold> exp points" }}
         />
       </Text>
       <Text className="aq-mb-2">
@@ -74,6 +75,7 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
           }}
           components={{ bold: <strong /> }}
           defaults={"<bold>{{rank}}</bold> in {{level}} ranking"}
+          tOptions={{ context: "<bold>{{rank}}</bold> in {{level}} ranking" }}
         />
       </Text>
       {rankingSummary.prospect.maintenance && (
@@ -85,6 +87,10 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
             components={{ bold: <strong /> }}
             count={rankingSummary.prospect.maintenance}
             defaults={"<bold>{{pointsToKeepLevel}}</bold> points to keep level"}
+            tOptions={{
+              context:
+                "<bold>{{pointsToKeepLevel}}</bold> points to keep level",
+            }}
           />
         </Text>
       )}
@@ -102,6 +108,10 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
             defaults={
               "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}"
             }
+            tOptions={{
+              context:
+                "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}",
+            }}
           />
         </Text>
       )}
@@ -114,6 +124,7 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
           components={{ bold: <strong /> }}
           count={getRemainingDaysInMonth()}
           defaults={"{{days}} days left to give your best!"}
+          tOptions={{ context: "{{days}} days left to give your best!" }}
         />
       </Text>
     </StyledRecap>
