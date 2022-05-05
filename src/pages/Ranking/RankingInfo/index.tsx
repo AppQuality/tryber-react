@@ -1,58 +1,25 @@
 import { Button, Card, Text } from "@appquality/appquality-design-system";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { fetchLevelInfo } from "../../../redux/ranking/actionCreator";
 import arrow from "./assets/arrow.svg";
 import doubleArrow from "./assets/doubleArrow.svg";
 import { Experience } from "./Experience";
 import { LevelInfoRow } from "./LevelInfoRow";
 
-// TODO Remove
-const levelInfo = [
-  {
-    id: 10,
-    name: "Basic",
-    hold: 0,
-    reach: 0,
-  },
-  {
-    id: 20,
-    name: "Bronze",
-    hold: 50,
-    reach: 100,
-  },
-  {
-    id: 30,
-    name: "Silver",
-    hold: 150,
-    reach: 250,
-  },
-  {
-    id: 40,
-    name: "Gold",
-    hold: 300,
-    reach: 500,
-  },
-  {
-    id: 50,
-    name: "Platinum",
-    hold: 600,
-    reach: 1000,
-  },
-  {
-    id: 60,
-    name: "Diamond",
-    hold: 2000,
-    reach: 3000,
-  },
-  {
-    id: 100,
-    name: "Legendary",
-    hold: 0,
-    reach: 0,
-  },
-];
-
 export const RankingInfo = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const levelInfo = useSelector(
+    (state: GeneralState) => state.ranking.levelInfo,
+    shallowEqual
+  );
+
+  useEffect(() => {
+    dispatch(fetchLevelInfo());
+  }, []);
 
   return (
     <Card
@@ -85,11 +52,12 @@ export const RankingInfo = () => {
         })}
       />
       <div className="aq-mt-3 aq-mb-2">
-        {levelInfo.map((l, i) => {
+        {levelInfo?.map((l, i) => {
           const isFirst = i === 0;
           const isLast = i === levelInfo.length - 1;
           return (
             <LevelInfoRow
+              key={l.id}
               level={{ id: l.id, name: l.name }}
               hold={l.hold}
               reach={l.reach}
