@@ -23,9 +23,22 @@ const StyledRecap = styled.div`
     padding-left: ${aqBootstrapTheme.grid.sizes["4"]};
     text-align: left;
   }
+  @media (min-width: ${aqBootstrapTheme.grid.breakpoints.lg}) {
+    padding-top: 0;
+  }
 `;
 
 export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
+  // get remaining days in month
+  const getRemainingDaysInMonth = () => {
+    const currentDate = new Date();
+    const currentMonthDuration = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth() + 1,
+      0
+    ).getDate();
+    return currentMonthDuration - currentDate.getDate();
+  };
   return (
     <StyledRecap>
       <Title size="s" className="aq-mb-2">
@@ -89,6 +102,17 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
           />
         </Text>
       )}
+      <Text>
+        <Trans
+          i18nKey="__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
+          values={{
+            days: getRemainingDaysInMonth(),
+          }}
+          components={{ bold: <strong /> }}
+          count={getRemainingDaysInMonth()}
+          defaults={"{{days}} days left to give your best!"}
+        />
+      </Text>
     </StyledRecap>
   );
 };
