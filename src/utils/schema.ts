@@ -94,6 +94,16 @@ export interface paths {
       };
     };
   };
+  "/campaigns/{campaign}/candidates": {
+    /** The Tryber will be inserted as a candidate Tryber on a specific Campaign */
+    post: operations["post-campaigns-campaign-candidates"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+  };
   "/popups": {
     /** Retrieve all available popups for admin operations */
     get: operations["get-popups"];
@@ -289,6 +299,13 @@ export interface paths {
       };
     };
   };
+  "/users/me/rank": {
+    get: operations["get-users-me-rank"];
+    parameters: {};
+  };
+  "/users/me/rank/list": {
+    get: operations["get-users-me-rank-list"];
+  };
   "/custom_user_fields": {
     get: operations["get-customUserFields"];
     parameters: {};
@@ -307,6 +324,8 @@ export interface paths {
   };
   "/payments/{paymentId}": {
     post: operations["post-payments-paymentId"];
+    /** delete a specific payment request */
+    delete: operations["delete-payments-paymentId"];
     parameters: {
       path: {
         paymentId: string;
@@ -335,6 +354,11 @@ export interface components {
     /** Replicability */
     Replicability: {
       id?: string;
+    };
+    /** MonthlyLevel */
+    MonthlyLevel: {
+      id: number;
+      name: string;
     };
     /** Task */
     Task: components["schemas"]["TaskOptional"] &
@@ -492,11 +516,15 @@ export interface components {
       /** Format: date */
       achievement_date: string;
     };
-    /** FiscalType */
+    /**
+     * FiscalType
+     * @enum {string}
+     */
     FiscalType: "withholding" | "witholding-extra" | "other" | "non-italian";
     /** CustomUserFieldsData */
     CustomUserFieldsData: {
       id: number;
+      /** @enum {string} */
       type: "select" | "multiselect" | "text";
       placeholder?: components["schemas"]["TranslatablePage"];
       allow_other?: boolean;
@@ -519,6 +547,13 @@ export interface components {
           /** @description A google maps place id */
           placeId: string;
         };
+    RankingItem: {
+      position: number;
+      image: string;
+      id: number;
+      name: string;
+      monthly_exp: number;
+    };
   };
   responses: {
     /** A user */
@@ -924,6 +959,43 @@ export interface operations {
       };
     };
   };
+  /** The Tryber will be inserted as a candidate Tryber on a specific Campaign */
+  "post-campaigns-campaign-candidates": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            tester_id: number;
+            accepted: boolean;
+            /** @enum {string} */
+            status:
+              | "ready"
+              | "in-progress"
+              | "completed"
+              | "excluded"
+              | "removed";
+            device: "any" | components["schemas"]["UserDevice"];
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          tester_id: number;
+        };
+      };
+    };
+  };
   /** Retrieve all available popups for admin operations */
   "get-popups": {
     parameters: {
@@ -1235,6 +1307,7 @@ export interface operations {
             }[];
             onboarding_completed?: boolean;
             additional?: components["schemas"]["AdditionalField"][];
+            /** @enum {string} */
             gender?: "male" | "female" | "not-specified";
             /** Format: date */
             birthDate?: string;
@@ -1323,6 +1396,7 @@ export interface operations {
             }[];
             onboarding_completed?: boolean;
             additional?: components["schemas"]["AdditionalField"][];
+            /** @enum {string} */
             gender?: "male" | "female" | "not-specified";
             /** Format: date */
             birthDate?: string;
@@ -1356,6 +1430,7 @@ export interface operations {
           email?: string;
           onboarding_completed?: boolean;
           surname?: string;
+          /** @enum {string} */
           gender?: "male" | "female" | "not-specified";
           birthDate?: string;
           phone?: string;
@@ -1478,7 +1553,9 @@ export interface operations {
               province?: string;
             };
             fiscalId: string;
+            /** @enum {string} */
             fiscalStatus: "Verified" | "Unverified";
+            /** @enum {string} */
             gender: "male" | "female";
           };
         };
@@ -1508,7 +1585,9 @@ export interface operations {
               province?: string;
             };
             fiscalId: string;
+            /** @enum {string} */
             fiscalStatus: "Verified" | "Unverified";
+            /** @enum {string} */
             gender: "male" | "female";
           };
         };
@@ -1529,6 +1608,7 @@ export interface operations {
           type: components["schemas"]["FiscalType"];
           birthPlace?: components["schemas"]["FiscalBirthCity"];
           fiscalId: string;
+          /** @enum {string} */
           gender: "male" | "female";
         };
       };
@@ -1555,7 +1635,9 @@ export interface operations {
               province?: string;
             };
             fiscalId: string;
+            /** @enum {string} */
             fiscalStatus: "Verified" | "Unverified";
+            /** @enum {string} */
             gender: "male" | "female";
           };
         };
@@ -1576,6 +1658,7 @@ export interface operations {
           type: components["schemas"]["FiscalType"];
           birthPlace?: components["schemas"]["FiscalBirthCity"];
           fiscalId: string;
+          /** @enum {string} */
           gender: "male" | "female";
         };
       };
@@ -1996,6 +2079,7 @@ export interface operations {
             results?: ({
               id: number;
             } & {
+              /** @enum {string} */
               status: "paid" | "processing";
               amount: {
                 value?: number;
@@ -2003,6 +2087,7 @@ export interface operations {
               };
               paidDate: string;
               method: {
+                /** @enum {string} */
                 type: "paypal" | "iban";
                 note: string;
               };
@@ -2040,10 +2125,12 @@ export interface operations {
         "application/json": {
           method:
             | {
+                /** @enum {string} */
                 type: "paypal";
                 email: string;
               }
             | {
+                /** @enum {string} */
                 type: "iban";
                 accountHolderName: string;
                 iban: string;
@@ -2089,6 +2176,46 @@ export interface operations {
             size: number;
             total?: number;
             start: number;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "get-users-me-rank": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            level: components["schemas"]["MonthlyLevel"];
+            previousLevel: components["schemas"]["MonthlyLevel"];
+            rank: number;
+            points: number;
+            prospect: {
+              level: components["schemas"]["MonthlyLevel"];
+              maintenance?: number;
+              next?: {
+                points: number;
+                level: components["schemas"]["MonthlyLevel"];
+              };
+            };
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+  };
+  "get-users-me-rank-list": {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            tops: components["schemas"]["RankingItem"][];
+            peers: components["schemas"]["RankingItem"][];
           };
         };
       };
@@ -2171,6 +2298,7 @@ export interface operations {
                 value: number;
                 currency: string;
               };
+              /** @enum {string} */
               type: "paypal" | "transferwise";
               tryber: {
                 id: number;
@@ -2198,9 +2326,11 @@ export interface operations {
       400: {
         content: {
           "application/json": {
+            /** @enum {string} */
             element: "payments";
             id: number;
             message: {
+              /** @enum {string} */
               code: "GENERIC_ERROR";
               data: string;
             };
@@ -2213,9 +2343,11 @@ export interface operations {
       422: {
         content: {
           "application/json": {
+            /** @enum {string} */
             element: "payments";
             id: number;
             message: {
+              /** @enum {string} */
               code:
                 | "GENERIC_ERROR"
                 | "NO_FUNDS"
@@ -2228,6 +2360,20 @@ export interface operations {
           };
         };
       };
+    };
+  };
+  /** delete a specific payment request */
+  "delete-payments-paymentId": {
+    parameters: {
+      path: {
+        paymentId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: unknown;
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
     };
   };
 }

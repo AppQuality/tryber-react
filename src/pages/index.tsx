@@ -7,6 +7,7 @@ import Home from "./Home";
 import MyBugs from "./MyBugs";
 import Profile from "./Profile";
 import Wallet from "./Wallet";
+import Ranking from "./Ranking";
 
 export {
   Dashboard,
@@ -18,4 +19,5 @@ export {
   Profile,
   GoodbyePage,
   Wallet,
+  Ranking,
 };

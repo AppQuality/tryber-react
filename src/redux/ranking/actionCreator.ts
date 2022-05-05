@@ -1,0 +1,30 @@
+import { ThunkAction } from "redux-thunk";
+import API from "src/utils/api";
+
+export const fetchRankings =
+  (): ThunkAction<Promise<any>, GeneralState, unknown, RankingActions> =>
+  async (dispatch) => {
+    try {
+      const data = await API.getRankings();
+      return dispatch({
+        type: "ranking/setRankings",
+        payload: data,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+export const fetchRankingSummary =
+  (): ThunkAction<Promise<any>, GeneralState, unknown, RankingActions> =>
+  async (dispatch) => {
+    try {
+      const summary = await API.getUserRankingSummary();
+      dispatch({
+        type: "ranking/setRankingSummary",
+        payload: summary,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };

@@ -145,7 +145,9 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       text: t("Experience Points"),
     },
     {
-      url: t("/leaderboard/"),
+      url: `${
+        i18next.language === "en" ? "" : "/" + i18next.language
+      }/leaderboard/`,
       icon: <GraphUp />,
       active: route === "leaderboard",
       text: t("Leaderboard"),
