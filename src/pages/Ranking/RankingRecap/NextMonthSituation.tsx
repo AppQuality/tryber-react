@@ -56,7 +56,7 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
         <Trans
           i18nKey="<bold>{{points}}</bold> exp points:::__RANKING_PROGRESS_POINTS_MAX: 25"
           values={{ points: rankingSummary.points }}
-          components={{ bold: <strong /> }}
+          components={{ bold: <strong className="aq-text-primary" /> }}
           defaults={"<bold>{{points}}</bold> exp points"}
         />
       </Text>
@@ -72,7 +72,7 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
             rank: rankingSummary.rank,
             level: rankingSummary.level.name,
           }}
-          components={{ bold: <strong /> }}
+          components={{ bold: <strong className="aq-text-primary" /> }}
           defaults={"<bold>{{rank}}</bold> in {{level}} ranking"}
         />
       </Text>
@@ -82,7 +82,7 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
           <Trans
             i18nKey="<bold>{{pointsToKeepLevel}}</bold> points to keep level:::__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70"
             values={{ pointsToKeepLevel: rankingSummary.prospect.maintenance }}
-            components={{ bold: <strong /> }}
+            components={{ bold: <strong className="aq-text-primary" /> }}
             count={rankingSummary.prospect.maintenance}
             defaults={"<bold>{{pointsToKeepLevel}}</bold> points to keep level"}
           />
@@ -97,7 +97,7 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
               pointsToAdvance: rankingSummary.prospect.next?.points,
               nextLevel: rankingSummary.prospect.next?.level.name,
             }}
-            components={{ bold: <strong /> }}
+            components={{ bold: <strong className="aq-text-primary" /> }}
             count={rankingSummary.prospect.next?.points}
             defaults={
               "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}"

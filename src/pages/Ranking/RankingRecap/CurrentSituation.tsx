@@ -54,7 +54,7 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
         />{" "}
         <Trans
           i18nKey="<bold>{{points}}</bold> total exp points:::__RANKING_EXP_POINTS_MAX:25"
-          components={{ bold: <strong /> }}
+          components={{ bold: <strong className="aq-text-primary" /> }}
           values={{ points: user?.total_exp_pts }}
           defaults="<bold>{{points}}</bold> total exp points"
         />
