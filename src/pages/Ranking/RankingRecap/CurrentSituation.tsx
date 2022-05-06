@@ -33,7 +33,7 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
       <Text small className="aq-mb-1">
         {"T" + user.id}
       </Text>
-      <Text className="level-name">
+      <Text className="level-name aq-mb-1">
         <strong style={{ color: rankingTheme[level.id].main }}>
           {level.id === 0 ? (
             level.name
@@ -51,13 +51,15 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
           style={{ verticalAlign: "top" }}
           color={aqBootstrapTheme.colors.orange500}
           size="21"
-        />{" "}
-        <Trans
-          i18nKey="<bold>{{points}}</bold> total exp points:::__RANKING_EXP_POINTS_MAX:25"
-          components={{ bold: <strong className="aq-text-primary" /> }}
-          values={{ points: user?.total_exp_pts }}
-          defaults="<bold>{{points}}</bold> total exp points"
         />
+        <span className="aq-ml-1">
+          <Trans
+            i18nKey="<bold>{{points}}</bold> total exp points:::__RANKING_EXP_POINTS_MAX:25"
+            components={{ bold: <strong className="aq-text-primary" /> }}
+            values={{ points: user?.total_exp_pts }}
+            defaults="<bold>{{points}}</bold> total exp points"
+          />
+        </span>
       </Text>
       <Text>
         <Trans

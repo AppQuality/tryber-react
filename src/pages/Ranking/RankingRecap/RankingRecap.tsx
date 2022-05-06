@@ -13,7 +13,7 @@ const HeaderRecap = styled.div`
   }
   @media (min-width: ${(p) => p.theme.grid.breakpoints.md}) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 40% 60%;
   }
 `;
 

@@ -51,58 +51,74 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
         <img
           src={starIcon}
           alt={rankingSummary.points.toString()}
-          style={{ verticalAlign: "top" }}
-        />{" "}
-        <Trans
-          i18nKey="<bold>{{points}}</bold> exp points:::__RANKING_PROGRESS_POINTS_MAX: 25"
-          values={{ points: rankingSummary.points }}
-          components={{ bold: <strong className="aq-text-primary" /> }}
-          defaults={"<bold>{{points}}</bold> exp points"}
+          style={{ verticalAlign: "top", height: "1.5rem", width: "1.5rem" }}
         />
+        <span className="aq-ml-1">
+          <Trans
+            className="aq-ml-1"
+            i18nKey="<bold>{{points}}</bold> exp points:::__RANKING_PROGRESS_POINTS_MAX: 25"
+            values={{ points: rankingSummary.points }}
+            components={{ bold: <strong className="aq-text-primary" /> }}
+            defaults={"<bold>{{points}}</bold> exp points"}
+          />
+        </span>
       </Text>
       <Text className="aq-mb-2">
         <img
           src={graphIcon}
           alt={rankingSummary.rank.toString()}
-          style={{ verticalAlign: "top" }}
-        />{" "}
-        <Trans
-          i18nKey="<bold>{{rank}}</bold> in {{level}} ranking:::__RANKING_POSITION_MAX: 30"
-          values={{
-            rank: rankingSummary.rank,
-            level: rankingSummary.level.name,
-          }}
-          components={{ bold: <strong className="aq-text-primary" /> }}
-          defaults={"<bold>{{rank}}</bold> in {{level}} ranking"}
+          style={{ verticalAlign: "top", height: "1.5rem", width: "1.5rem" }}
         />
+        <span className="aq-ml-1">
+          <Trans
+            className="aq-ml-1"
+            i18nKey="<bold>{{rank}}</bold> in {{level}} ranking:::__RANKING_POSITION_MAX: 30"
+            values={{
+              rank: rankingSummary.rank,
+              level: rankingSummary.level.name,
+            }}
+            components={{ bold: <strong className="aq-text-primary" /> }}
+            defaults={"<bold>{{rank}}</bold> in {{level}} ranking"}
+          />
+        </span>
       </Text>
       {rankingSummary.prospect.maintenance && (
         <Text className="aq-mb-3">
-          <ArrowLeftRight style={{ verticalAlign: "top" }} size="21" />{" "}
-          <Trans
-            i18nKey="<bold>{{pointsToKeepLevel}}</bold> points to keep level:::__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70"
-            values={{ pointsToKeepLevel: rankingSummary.prospect.maintenance }}
-            components={{ bold: <strong className="aq-text-primary" /> }}
-            count={rankingSummary.prospect.maintenance}
-            defaults={"<bold>{{pointsToKeepLevel}}</bold> points to keep level"}
-          />
+          <ArrowLeftRight style={{ verticalAlign: "top" }} size="1.5rem" />
+          <span className="aq-ml-1">
+            <Trans
+              className="aq-ml-1"
+              i18nKey="<bold>{{pointsToKeepLevel}}</bold> points to keep level:::__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70"
+              values={{
+                pointsToKeepLevel: rankingSummary.prospect.maintenance,
+              }}
+              components={{ bold: <strong className="aq-text-primary" /> }}
+              count={rankingSummary.prospect.maintenance}
+              defaults={
+                "<bold>{{pointsToKeepLevel}}</bold> points to keep level"
+              }
+            />
+          </span>
         </Text>
       )}
       {rankingSummary.prospect.next?.points && (
         <Text className="aq-mb-3">
-          <ArrowRight style={{ verticalAlign: "top" }} size="21" />{" "}
-          <Trans
-            i18nKey="<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}:::__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70"
-            values={{
-              pointsToAdvance: rankingSummary.prospect.next?.points,
-              nextLevel: rankingSummary.prospect.next?.level.name,
-            }}
-            components={{ bold: <strong className="aq-text-primary" /> }}
-            count={rankingSummary.prospect.next?.points}
-            defaults={
-              "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}"
-            }
-          />
+          <ArrowRight style={{ verticalAlign: "top" }} size="1.5rem" />
+          <span className="aq-ml-1">
+            <Trans
+              className="aq-ml-1"
+              i18nKey="<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}:::__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70"
+              values={{
+                pointsToAdvance: rankingSummary.prospect.next?.points,
+                nextLevel: rankingSummary.prospect.next?.level.name,
+              }}
+              components={{ bold: <strong className="aq-text-primary" /> }}
+              count={rankingSummary.prospect.next?.points}
+              defaults={
+                "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}"
+              }
+            />
+          </span>
         </Text>
       )}
       <Text>
