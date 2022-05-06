@@ -29,9 +29,10 @@ export const RankingInfo = () => {
       shadow
     >
       <Text className="aq-mb-2">
-        {
-          "Guadagna ogni mese un numero minimo di exp per mantenere o avanzare di livello:"
-        }
+        {t("__RANKING_LEGEND_PARAGRAPH_MAX: 100", {
+          defaultValue:
+            "Earn a minimum number of exp each month to maintain or advance a level:",
+        })}
       </Text>
       <Experience
         icon={doubleArrow}
@@ -54,7 +55,8 @@ export const RankingInfo = () => {
       <div className="aq-mt-3 aq-mb-2">
         {levelInfo?.map((l, i) => {
           const isFirst = i === 0;
-          const isLast = i === levelInfo.length - 1;
+          // TODO The "Legendary" level is work in progress...
+          // const isLast = i === levelInfo.length - 1;
           return (
             <LevelInfoRow
               key={l.id}
@@ -66,14 +68,14 @@ export const RankingInfo = () => {
                   ? t("__RANKING_LEGEND_BASIC_SPEC_MAX: 35", {
                       defaultValue: "The starting level",
                     })
-                  : isLast
-                  ? t("__RANKING_LEGEND_LEGENDARY_SPEC_MAX: 70", {
-                      defaultValue:
-                        "The highest level: reach it and it will be yours forever!",
-                    })
-                  : undefined
+                  : // : isLast
+                    // ? t("__RANKING_LEGEND_LEGENDARY_SPEC_MAX: 70", {
+                    //     defaultValue:
+                    //       "The highest level: reach it and it will be yours forever!",
+                    //   })
+                    undefined
               }
-              levelSize={isLast ? "large" : "medium"}
+              // levelSize={isLast ? "large" : "medium"}
             />
           );
         })}
