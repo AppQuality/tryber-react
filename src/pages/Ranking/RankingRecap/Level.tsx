@@ -28,7 +28,7 @@ export const Level = ({
       <div className="level-icon aq-mr-1">{rankingTheme[level.id].icon}</div>
       <Text>
         {" "}
-        <strong className="level-name">{level.name}</strong>
+        <strong className="level-name aq-text-primary">{level.name}</strong>
       </Text>
     </StyledLevel>
   );
