@@ -49,7 +49,7 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
       <Text className="aq-mb-3">
         <StarFill
           style={{ verticalAlign: "top" }}
-          color={aqBootstrapTheme.palette.warning}
+          color={aqBootstrapTheme.colors.orange500}
           size="21"
         />{" "}
         <Trans
