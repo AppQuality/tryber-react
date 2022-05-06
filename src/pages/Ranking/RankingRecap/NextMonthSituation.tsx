@@ -111,7 +111,6 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
           values={{
             days: getRemainingDaysInMonth(),
           }}
-          count={getRemainingDaysInMonth()}
           defaults={"{{days}} days left to give your best!"}
           tOptions={{ count: getRemainingDaysInMonth() }}
         />
