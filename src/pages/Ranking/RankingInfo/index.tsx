@@ -17,6 +17,21 @@ export const RankingInfo = () => {
     shallowEqual
   );
 
+  const expLegendConfig = [
+    {
+      icon: doubleArrow,
+      description: t("__RANKING_LEGEND_HOLD_MAX: 15", {
+        defaultValue: "Maintenance",
+      }),
+    },
+    {
+      icon: arrow,
+      description: t("__RANKING_LEGEND_NEXT_MAX: 15", {
+        defaultValue: "Advancement",
+      }),
+    },
+  ];
+
   useEffect(() => {
     dispatch(fetchLevelInfo());
   }, []);
@@ -34,24 +49,13 @@ export const RankingInfo = () => {
             "Earn a minimum number of exp each month to maintain or advance a level:",
         })}
       </Text>
-      <Experience
-        icon={doubleArrow}
-        alt={t("__RANKING_LEGEND_HOLD_MAX: 15", {
-          defaultValue: "Maintenance",
-        })}
-        description={t("__RANKING_LEGEND_HOLD_MAX: 15", {
-          defaultValue: "Maintenance",
-        })}
-      />
-      <Experience
-        icon={arrow}
-        alt={t("__RANKING_LEGEND_NEXT_MAX: 15", {
-          defaultValue: "Advancement",
-        })}
-        description={t("__RANKING_LEGEND_NEXT_MAX: 15", {
-          defaultValue: "Advancement",
-        })}
-      />
+      {expLegendConfig.map((exp) => (
+        <Experience
+          icon={exp.icon}
+          alt={exp.description}
+          description={exp.description}
+        />
+      ))}
       <div className="aq-mt-3 aq-mb-2">
         {levelInfo?.map((l, i) => {
           const isFirst = i === 0;
