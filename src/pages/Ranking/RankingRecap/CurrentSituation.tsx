@@ -34,7 +34,7 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
         {"T" + user.id}
       </Text>
       <Text className="level-name">
-        <strong style={{ color: rankingTheme[level.id].textColor }}>
+        <strong style={{ color: rankingTheme[level.id].main }}>
           {level.id === 0 ? (
             level.name
           ) : (
