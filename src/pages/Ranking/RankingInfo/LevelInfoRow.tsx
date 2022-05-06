@@ -48,31 +48,35 @@ export const LevelInfoRow = ({
 }: LevelInfoRowProps) => {
   const { t } = useTranslation();
 
+  const rowsConfig = [
+    {
+      icon: doubleArrow,
+      alt: t("__RANKING_LEGEND_HOLD_MAX: 15", {
+        defaultValue: "Maintenance",
+      }),
+      value: `${hold} ${t("__RANKING_LEGEND_EXP_NEXT", {
+        defaultValue: "exp",
+      })}`,
+    },
+    {
+      icon: arrow,
+      alt: t("__RANKING_LEGEND_NEXT_MAX: 15", {
+        defaultValue: "Advancement",
+      }),
+      value: `${reach} ${t("__RANKING_LEGEND_EXP_NEXT", {
+        defaultValue: "exp",
+      })}`,
+    },
+  ];
+
   return (
     <StyledLevelInfoRow className="aq-mt-2">
       <Level level={level} size={levelSize} />
       {!alternativeText ? (
         <div className="experience-row">
-          <Experience
-            icon={doubleArrow}
-            alt={t("__RANKING_LEGEND_HOLD_MAX: 15", {
-              defaultValue: "Maintenance",
-            })}
-            value={`${hold} ${t("__RANKING_LEGEND_EXP_NEXT", {
-              defaultValue: "exp",
-            })}`}
-            small
-          />
-          <Experience
-            icon={arrow}
-            alt={t("__RANKING_LEGEND_NEXT_MAX: 15", {
-              defaultValue: "Advancement",
-            })}
-            value={`${reach} ${t("__RANKING_LEGEND_EXP_NEXT", {
-              defaultValue: "exp",
-            })}`}
-            small
-          />
+          {rowsConfig.map((r) => (
+            <Experience icon={r.icon} alt={r.alt} value={r.value} small />
+          ))}
         </div>
       ) : (
         <Text className={`alternative-text ${levelSize}`}>
