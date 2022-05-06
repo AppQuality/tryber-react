@@ -1,13 +1,7 @@
 type RankingState = {
   rankings: {};
   summary?: ApiOperations["get-users-me-rank"]["responses"]["200"]["content"]["application/json"];
-  // TODO Remove
-  levelInfo?: {
-    id: number;
-    name: string;
-    reach: number;
-    hold: number;
-  }[];
+  levelInfo?: ApiOperations["get-levels"]["responses"]["200"]["content"]["application/json"];
 };
 
 type RankingActions =
@@ -31,11 +25,5 @@ type RankingActions_SetSummary = {
 
 type RankingActions_SetLevelInfo = {
   type: "ranking/setLevelInfo";
-  // TODO Remove
-  payload: {
-    id: number;
-    name: string;
-    reach: number;
-    hold: number;
-  }[];
+  payload: ApiOperations["get-levels"]["responses"]["200"]["content"]["application/json"];
 };

@@ -58,7 +58,9 @@ export const LevelInfoRow = ({
             alt={t("__RANKING_LEGEND_HOLD_MAX: 15", {
               defaultValue: "Maintenance",
             })}
-            value={`${hold} exp`}
+            value={`${hold} ${t("__RANKING_LEGEND_EXP_NEXT", {
+              defaultValue: "exp",
+            })}`}
             small
           />
           <Experience
@@ -66,7 +68,9 @@ export const LevelInfoRow = ({
             alt={t("__RANKING_LEGEND_NEXT_MAX: 15", {
               defaultValue: "Advancement",
             })}
-            value={`${reach} exp`}
+            value={`${reach} ${t("__RANKING_LEGEND_EXP_NEXT", {
+              defaultValue: "exp",
+            })}`}
             small
           />
         </div>
