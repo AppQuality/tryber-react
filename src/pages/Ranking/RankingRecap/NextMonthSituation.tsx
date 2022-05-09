@@ -35,6 +35,52 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
     ).getDate();
     return currentMonthDuration - currentDate.getDate();
   };
+  const getMaintenanceMessage = (
+    rankingSummary: ApiOperations["get-users-me-rank"]["responses"]["200"]["content"]["application/json"]
+  ) => {
+    if (rankingSummary.level.id === 0) {
+      return (
+        <Trans
+          className="aq-ml-1"
+          i18nKey="__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20"
+          defaults={"not calculated"}
+        />
+      );
+    }
+    if (rankingSummary.level.id === 10) {
+      return (
+        <Trans
+          className="aq-ml-1"
+          i18nKey="__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50"
+          defaults={"start from Basic to climb the ladder"}
+        />
+      );
+    }
+    if (rankingSummary.prospect.maintenance) {
+      return (
+        <Trans
+          className="aq-ml-1"
+          i18nKey="<bold>{{pointsToKeepLevel}}</bold> points to keep level:::__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70"
+          values={{
+            pointsToKeepLevel: rankingSummary.prospect.maintenance,
+          }}
+          components={{ bold: <strong className="aq-text-primary" /> }}
+          count={rankingSummary.prospect.maintenance}
+          defaults={"<bold>{{pointsToKeepLevel}}</bold> points to keep level"}
+        />
+      );
+    }
+    return (
+      <Trans
+        className="aq-ml-1"
+        i18nKey="<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>:::__RANKING_PROGRESS_HOLDLVL_REACHED_MAX: 70"
+        components={{ bold: <strong className="aq-text-primary" /> }}
+        defaults={
+          "<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>"
+        }
+      />
+    );
+  };
   return (
     <StyledRecap>
       <Title size="s" className="aq-mb-2">
@@ -78,25 +124,10 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
           />
         </span>
       </Text>
-      {rankingSummary.prospect.maintenance && (
-        <Text className="aq-mb-3">
-          <ArrowLeftRight style={{ verticalAlign: "top" }} size="1.5rem" />
-          <span className="aq-ml-1">
-            <Trans
-              className="aq-ml-1"
-              i18nKey="<bold>{{pointsToKeepLevel}}</bold> points to keep level:::__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70"
-              values={{
-                pointsToKeepLevel: rankingSummary.prospect.maintenance,
-              }}
-              components={{ bold: <strong className="aq-text-primary" /> }}
-              count={rankingSummary.prospect.maintenance}
-              defaults={
-                "<bold>{{pointsToKeepLevel}}</bold> points to keep level"
-              }
-            />
-          </span>
-        </Text>
-      )}
+      <Text className="aq-mb-3">
+        <ArrowLeftRight style={{ verticalAlign: "top" }} size="1.5rem" />
+        <span className="aq-ml-1">{getMaintenanceMessage(rankingSummary)}</span>
+      </Text>
       {rankingSummary.prospect.next?.points && (
         <Text className="aq-mb-3">
           <ArrowRight style={{ verticalAlign: "top" }} size="1.5rem" />

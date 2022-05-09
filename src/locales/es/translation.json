@@ -5,6 +5,9 @@
   "/my-account/": "/perfil/",
   "/terms-and-conditions/": "/terms-and-conditions/",
   "/testing-school/": "/academia/",
+  "<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>": {
+    "__RANKING_PROGRESS_HOLDLVL_REACHED_MAX: 70": ""
+  },
   "<bold>Thank you for helping to make the AppQuality Community special!</bold><br></br><bold>Your account will be deleted, </bold><br></br>but if you want to come back and test with us,<br></br> you already know where to find us.<br></br>": "<bold>Thank you for helping to make the Tryber Community special!</bold><br></br><bold>Your account will be deleted, </bold><br></br>but if you want to come back and test with us,<br></br> you already know where to find us.<br></br>",
   "<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?": "<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?",
   "<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve.": "<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve.",
@@ -486,7 +489,9 @@
   "__RANKING_LEGEND_TITLE_MAX: 35": "How to level up",
   "__RANKING_MAIN-TITLE_LABEL_MONTH_NO-LEVEL_MAX: 45": "Lorem ipsum dolor sit amet, consectetur adipi",
   "__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45": "Lorem ipsum dolor sit amet, consectetur adipi",
+  "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "",
   "__RANKING_PROGRESS_MONTH_MAX: 35": "",
+  "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "",
   "__RANKING_SUBTITLE_WELCOME_MAX: 125": "",
   "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Lorem ipsum dol",
   "__RANKING_TITLE_LABEL_ID_MAX: 10": "Lorem ipsu",
