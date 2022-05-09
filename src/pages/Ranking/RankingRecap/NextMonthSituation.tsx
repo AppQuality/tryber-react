@@ -43,7 +43,7 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
           defaults="your monthly progress"
         />
       </Title>
-      <Text className="aq-mb-1">
+      <Text className="aq-mb-2">
         <img
           src={starIcon}
           alt={rankingSummary.points.toString()}
@@ -59,7 +59,7 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
           />
         </span>
       </Text>
-      <Text className="aq-mb-2">
+      <Text className="aq-mb-3">
         <img
           src={graphIcon}
           alt={rankingSummary.rank.toString()}
