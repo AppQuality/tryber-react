@@ -75,7 +75,13 @@ export const LevelInfoRow = ({
       {!alternativeText ? (
         <div className="experience-row">
           {rowsConfig.map((r) => (
-            <Experience icon={r.icon} alt={r.alt} value={r.value} small />
+            <Experience
+              key={r.value}
+              icon={r.icon}
+              alt={r.alt}
+              value={r.value}
+              small
+            />
           ))}
         </div>
       ) : (
