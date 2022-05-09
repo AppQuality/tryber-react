@@ -108,31 +108,43 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
           style={{ verticalAlign: "top", height: "1.5rem", width: "1.5rem" }}
         />
         <span className="aq-ml-1">
-          <Trans
-            i18nKey="<bold>{{rank}}</bold> in {{level}} ranking:::__RANKING_POSITION_MAX: 30"
-            values={{
-              rank: rankingSummary.rank,
-              level: rankingSummary.level.name,
-            }}
-            components={{ bold: <strong className="aq-text-primary" /> }}
-            defaults={"<bold>{{rank}}</bold> in {{level}} ranking"}
-          />
+          {rankingSummary.level.id === 0 ? (
+            <Trans
+              i18nKey="not in ranking:::__RANKING_POSITION_NOLeVEL_MAX: 30"
+              defaults={"not in ranking"}
+            />
+          ) : (
+            <Trans
+              i18nKey="<bold>{{rank}}</bold> in {{level}} ranking:::__RANKING_POSITION_MAX: 30"
+              values={{
+                rank: rankingSummary.rank,
+                level: rankingSummary.level.name,
+              }}
+              components={{ bold: <strong className="aq-text-primary" /> }}
+              defaults={"<bold>{{rank}}</bold> in {{level}} ranking"}
+            />
+          )}
         </span>
       </Text>
-      <Text className="aq-mb-3">
+      <Text className="aq-mb-2">
         <ArrowLeftRight style={{ verticalAlign: "top" }} size="1.5rem" />
         <span className="aq-ml-1">{getMaintenanceMessage(rankingSummary)}</span>
       </Text>
-      {rankingSummary.prospect.next?.points && (
+      {rankingSummary.level.id === 0 ? (
         <Text className="aq-mb-3">
           <ArrowRight style={{ verticalAlign: "top" }} size="1.5rem" />
           <span className="aq-ml-1">
-            {rankingSummary.level.id === 0 ? (
-              <Trans
-                i18nKey="not calculated:::__RANKING_PROGRESS_NOLVEL_NEXTLVL_MAX: 20"
-                defaults={"not calculated"}
-              />
-            ) : (
+            <Trans
+              i18nKey="not calculated:::__RANKING_PROGRESS_NOLVEL_NEXTLVL_MAX: 20"
+              defaults={"not calculated"}
+            />
+          </span>
+        </Text>
+      ) : (
+        rankingSummary.prospect.next?.points && (
+          <Text className="aq-mb-3">
+            <ArrowRight style={{ verticalAlign: "top" }} size="1.5rem" />
+            <span className="aq-ml-1">
               <Trans
                 i18nKey="<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}:::__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70"
                 values={{
@@ -145,9 +157,9 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
                   "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}"
                 }
               />
-            )}
-          </span>
-        </Text>
+            </span>
+          </Text>
+        )
       )}
       <Text>
         {rankingSummary.level.id === 0 ? (

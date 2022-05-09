@@ -539,6 +539,9 @@
     "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "",
     "__RANKING_PROGRESS_NOLVEL_NEXTLVL_MAX: 20": ""
   },
+  "not in ranking": {
+    "__RANKING_POSITION_NOLeVEL_MAX: 30": ""
+  },
   "or <1>create an account</1>": "o <1>crea un account</1>",
   "or login with": "o accedi con",
   "redirecting": "reindirizzamento",
