@@ -42,8 +42,7 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
     if (rankingSummary.level.id === 0) {
       return (
         <Trans
-          className="aq-ml-1"
-          i18nKey="__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20"
+          i18nKey="not calculated:::__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20"
           defaults={"not calculated"}
         />
       );
@@ -51,7 +50,6 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
     if (rankingSummary.level.id === 10) {
       return (
         <Trans
-          className="aq-ml-1"
           i18nKey="__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50"
           defaults={"start from Basic to climb the ladder"}
         />
@@ -60,7 +58,6 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
     if (rankingSummary.prospect.maintenance) {
       return (
         <Trans
-          className="aq-ml-1"
           i18nKey="<bold>{{pointsToKeepLevel}}</bold> points to keep level:::__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70"
           values={{
             pointsToKeepLevel: rankingSummary.prospect.maintenance,
@@ -73,7 +70,6 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
     }
     return (
       <Trans
-        className="aq-ml-1"
         i18nKey="<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>:::__RANKING_PROGRESS_HOLDLVL_REACHED_MAX: 70"
         components={{ bold: <strong className="aq-text-primary" /> }}
         defaults={
@@ -98,7 +94,6 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
         />
         <span className="aq-ml-1">
           <Trans
-            className="aq-ml-1"
             i18nKey="<bold>{{points}}</bold> exp points:::__RANKING_PROGRESS_POINTS_MAX: 25"
             values={{ points: rankingSummary.points }}
             components={{ bold: <strong className="aq-text-primary" /> }}
@@ -114,7 +109,6 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
         />
         <span className="aq-ml-1">
           <Trans
-            className="aq-ml-1"
             i18nKey="<bold>{{rank}}</bold> in {{level}} ranking:::__RANKING_POSITION_MAX: 30"
             values={{
               rank: rankingSummary.rank,
@@ -133,19 +127,25 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
         <Text className="aq-mb-3">
           <ArrowRight style={{ verticalAlign: "top" }} size="1.5rem" />
           <span className="aq-ml-1">
-            <Trans
-              className="aq-ml-1"
-              i18nKey="<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}:::__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70"
-              values={{
-                pointsToAdvance: rankingSummary.prospect.next?.points,
-                nextLevel: rankingSummary.prospect.next?.level.name,
-              }}
-              components={{ bold: <strong className="aq-text-primary" /> }}
-              count={rankingSummary.prospect.next?.points}
-              defaults={
-                "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}"
-              }
-            />
+            {rankingSummary.level.id === 0 ? (
+              <Trans
+                i18nKey="not calculated:::__RANKING_PROGRESS_NOLVEL_NEXTLVL_MAX: 20"
+                defaults={"not calculated"}
+              />
+            ) : (
+              <Trans
+                i18nKey="<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}:::__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70"
+                values={{
+                  pointsToAdvance: rankingSummary.prospect.next?.points,
+                  nextLevel: rankingSummary.prospect.next?.level.name,
+                }}
+                components={{ bold: <strong className="aq-text-primary" /> }}
+                count={rankingSummary.prospect.next?.points}
+                defaults={
+                  "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}"
+                }
+              />
+            )}
           </span>
         </Text>
       )}

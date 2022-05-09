@@ -494,7 +494,6 @@
   "__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45": "Lorem ipsum dolor sit amet, consectetur adipi",
   "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "",
   "__RANKING_PROGRESS_MONTH_MAX: 35": "",
-  "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "",
   "__RANKING_SUBTITLE_WELCOME_MAX: 125": "",
   "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Lorem ipsum dol",
   "__RANKING_TITLE_LABEL_ID_MAX: 10": "Lorem ipsu",
@@ -536,6 +535,10 @@
   "login with your credentials": "accedi con le tue credenziali",
   "name": "Nome",
   "no data": "",
+  "not calculated": {
+    "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "",
+    "__RANKING_PROGRESS_NOLVEL_NEXTLVL_MAX: 20": ""
+  },
   "or <1>create an account</1>": "o <1>crea un account</1>",
   "or login with": "o accedi con",
   "redirecting": "reindirizzamento",
