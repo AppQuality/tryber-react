@@ -45,7 +45,7 @@ export const TopRankingTable = () => {
               </StyledAvatar>
             ),
           },
-          id: req.id,
+          id: `T${req.id}`,
           name: req.name,
           exp: {
             title: req.monthly_exp.toString(),
