@@ -7,7 +7,7 @@ import { StarFill } from "react-bootstrap-icons";
 import { rankingTheme } from "src/pages/Ranking/rankingTheme";
 import { useEffect, useState } from "react";
 import { useTranslation, Trans } from "react-i18next";
-import { Level } from "./Level";
+import { Level } from "../Level";
 import styled from "styled-components";
 
 const StyledRecap = styled.div`

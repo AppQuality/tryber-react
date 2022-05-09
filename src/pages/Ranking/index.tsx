@@ -7,6 +7,7 @@ import { RankingTables } from "./RankingTables";
 import { fetchRankingSummary } from "src/redux/ranking/actionCreator";
 import { useDispatch } from "react-redux";
 import { getProfile } from "src/redux/user/actions/getProfile";
+import { RankingInfo } from "./RankingInfo";
 
 export default function Ranking() {
   const { t } = useTranslation();
@@ -29,7 +30,9 @@ export default function Ranking() {
             <RankingTables />
           </Card>
         </BSCol>
-        <BSCol size="col-lg-3"></BSCol>
+        <BSCol size="col-lg-3">
+          <RankingInfo />
+        </BSCol>
       </BSGrid>
     </PageTemplate>
   );

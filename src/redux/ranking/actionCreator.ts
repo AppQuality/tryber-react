@@ -28,3 +28,17 @@ export const fetchRankingSummary =
       console.log(e);
     }
   };
+
+export const fetchLevelInfo =
+  (): ThunkAction<Promise<any>, GeneralState, unknown, RankingActions> =>
+  async (dispatch) => {
+    try {
+      const data = await API.getLevelInfo();
+      return dispatch({
+        type: "ranking/setLevelInfo",
+        payload: data,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
