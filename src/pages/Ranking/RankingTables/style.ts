@@ -8,6 +8,9 @@ export const StyledRanking = styled.div`
     display: flex;
     align-items: center;
     padding: 8px 8px;
+    .ranking-position {
+      font-weight: ${(p) => p.theme.typography.fontWeight.bold};
+    }
   }
   .tbody.cell.highlighted {
     font-weight: ${(p) => p.theme.typography.fontWeight.bold};

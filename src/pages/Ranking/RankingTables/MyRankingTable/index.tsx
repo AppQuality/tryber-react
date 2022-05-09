@@ -43,7 +43,10 @@ export const MyRankingTable = () => {
       peers.map((req) => {
         return {
           key: req.id,
-          position: req.position,
+          position: {
+            title: req.position.toString(),
+            content: <div className="ranking-position">{req.position}</div>,
+          },
           image: {
             title: "",
             content: (
