@@ -9,6 +9,9 @@ export const StyledRanking = styled.div`
     align-items: center;
     padding: 8px 8px;
   }
+  .tbody.cell.highlighted {
+    font-weight: ${(p) => p.theme.typography.fontWeight.bold};
+  }
   @media (min-width: ${(p) => p.theme.grid.breakpoints.sm}) and (max-width: ${(
       p
     ) => p.theme.grid.breakpoints.md}) {
