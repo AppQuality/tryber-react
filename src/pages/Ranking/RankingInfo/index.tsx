@@ -51,6 +51,7 @@ export const RankingInfo = () => {
       </Text>
       {expLegendConfig.map((exp) => (
         <Experience
+          key={exp.description}
           icon={exp.icon}
           alt={exp.description}
           description={exp.description}
