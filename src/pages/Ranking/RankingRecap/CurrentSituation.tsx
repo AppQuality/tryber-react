@@ -11,8 +11,8 @@ import { Level } from "./Level";
 import styled from "styled-components";
 
 const StyledRecap = styled.div`
-  padding-top: ${aqBootstrapTheme.grid.sizes["4"]};
-  @media (min-width: ${aqBootstrapTheme.grid.breakpoints.lg}) {
+  padding-top: ${(p) => p.theme.grid.sizes["4"]};
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     padding-top: 0;
   }
 `;

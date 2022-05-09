@@ -1,8 +1,4 @@
-import {
-  aqBootstrapTheme,
-  Text,
-  Title,
-} from "@appquality/appquality-design-system";
+import { Text, Title } from "@appquality/appquality-design-system";
 import { ArrowLeftRight, ArrowRight } from "react-bootstrap-icons";
 import { Trans } from "react-i18next";
 import starIcon from "src/pages/Ranking/assets/star.svg";
@@ -10,20 +6,20 @@ import graphIcon from "src/pages/Ranking/assets/graphIcon.svg";
 import styled from "styled-components";
 
 const StyledRecap = styled.div`
-  border-top: 1px solid ${aqBootstrapTheme.colors.gray200};
-  margin-top: ${aqBootstrapTheme.grid.sizes["4"]};
-  padding-top: ${aqBootstrapTheme.grid.sizes["3"]};
+  border-top: 1px solid ${(p) => p.theme.colors.gray200};
+  margin-top: ${(p) => p.theme.grid.sizes["4"]};
+  padding-top: ${(p) => p.theme.grid.sizes["3"]};
   text-align: center;
-  @media (min-width: ${aqBootstrapTheme.grid.breakpoints.md}) {
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.md}) {
     border-top: 0;
     margin-top: 0;
-    padding-top: ${aqBootstrapTheme.grid.sizes["4"]};
-    border-left: 1px solid ${aqBootstrapTheme.colors.gray200};
-    margin-left: ${aqBootstrapTheme.grid.sizes["3"]};
-    padding-left: ${aqBootstrapTheme.grid.sizes["4"]};
+    padding-top: ${(p) => p.theme.grid.sizes["4"]};
+    border-left: 1px solid ${(p) => p.theme.colors.gray200};
+    margin-left: ${(p) => p.theme.grid.sizes["3"]};
+    padding-left: ${(p) => p.theme.grid.sizes["4"]};
     text-align: left;
   }
-  @media (min-width: ${aqBootstrapTheme.grid.breakpoints.lg}) {
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     padding-top: 0;
   }
 `;
