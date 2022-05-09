@@ -11,8 +11,8 @@ import { Level } from "../Level";
 import styled from "styled-components";
 
 const StyledRecap = styled.div`
-  padding-top: ${aqBootstrapTheme.grid.sizes["4"]};
-  @media (min-width: ${aqBootstrapTheme.grid.breakpoints.lg}) {
+  padding-top: ${(p) => p.theme.grid.sizes["4"]};
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     padding-top: 0;
   }
 `;
@@ -33,13 +33,13 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
       <Text small className="aq-mb-1">
         {"T" + user.id}
       </Text>
-      <Text className="level-name">
-        <strong style={{ color: rankingTheme[level.id].textColor }}>
+      <Text className="level-name aq-mb-1">
+        <strong style={{ color: rankingTheme[level.id].main }}>
           {level.id === 0 ? (
             level.name
           ) : (
             <Trans
-              i18nKey="__RANKING_NAME_LEVEL_MAX:25"
+              i18nKey="level {{levelName}}:::__RANKING_NAME_LEVEL_MAX:25"
               values={{ levelName: level.name }}
               defaults={"level {{levelName}}"}
             />
@@ -49,19 +49,21 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
       <Text className="aq-mb-3">
         <StarFill
           style={{ verticalAlign: "top" }}
-          color={aqBootstrapTheme.palette.warning}
+          color={aqBootstrapTheme.colors.orange500}
           size="21"
-        />{" "}
-        <Trans
-          i18nKey="__RANKING_EXP_POINTS_MAX:25"
-          components={{ bold: <strong /> }}
-          values={{ points: user?.total_exp_pts }}
-          defaults="<bold>{{points}}</bold> total exp points"
         />
+        <span className="aq-ml-1">
+          <Trans
+            i18nKey="<bold>{{points}}</bold> total exp points:::__RANKING_EXP_POINTS_MAX:25"
+            components={{ bold: <strong className="aq-text-primary" /> }}
+            values={{ points: user?.total_exp_pts }}
+            defaults="<bold>{{points}}</bold> total exp points"
+          />
+        </span>
       </Text>
       <Text>
         <Trans
-          i18nKey="__RANKING_LAST_MONTH_MAX:25"
+          i18nKey="last month ({{lastMonth}}):::__RANKING_LAST_MONTH_MAX:25"
           values={{ lastMonth: lastMonth }}
           defaults={"last month ({{lastMonth}})"}
         />

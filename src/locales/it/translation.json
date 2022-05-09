@@ -8,6 +8,21 @@
   "<bold>Thank you for helping to make the AppQuality Community special!</bold><br></br><bold>Your account will be deleted, </bold><br></br>but if you want to come back and test with us,<br></br> you already know where to find us.<br></br>": "<bold>Grazie per aver reso la community di Tryber speciale!</bold><br></br><bold>Il tuo account verrà cancellato, </bold><br></br>se vuoi tornate a testare con noi, <br></br> sai già dove trovarci.<br></br>",
   "<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?": "<bold>Questa azione è irreversibile.</bold><br></br>Sei sicuro di volerci lasciare?",
   "<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve.": "<bold>Ci dispiace tantissimo che ci stai lasciando.</bold><br></br>Prima di andare, aiutaci a capire come possiamo migliorare.",
+  "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}": {
+    "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": ""
+  },
+  "<bold>{{pointsToKeepLevel}}</bold> points to keep level": {
+    "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": ""
+  },
+  "<bold>{{points}}</bold> exp points": {
+    "__RANKING_PROGRESS_POINTS_MAX: 25": ""
+  },
+  "<bold>{{points}}</bold> total exp points": {
+    "__RANKING_EXP_POINTS_MAX:25": ""
+  },
+  "<bold>{{rank}}</bold> in {{level}} ranking": {
+    "__RANKING_POSITION_MAX: 30": ""
+  },
   "@@Birth date is required, set it on base tab@@": "La data di nascita è obbligatoria, impostala sulla scheda base",
   "A list of all the campaigns you have been successfully selected for. Read the manual and complete all the requested tasks before the end date to receive your reward.": "La lista di tutte le Campagne per cui sei stato selezionato. Leggi il manuale e completa tutte le attività richieste prima della fine della campagna per ricevere il tuo premio.",
   "A list of all the campaigns you participated in that are now finished. We will evaluate your performance in the days following the end date and reward you accordingly.": "La lista di tutte le Campagne a cui hai partecipato e che ora sono terminate. Valuteremo la tua performance nei giorni seguenti la fine della campagna e ti attribuiremo il premio meritato.",
@@ -460,26 +475,18 @@
   "__HOME_USER_QUALIFICATION_ADVICE7 MAX:30": "Qualified Tryber, Student",
   "__HOME_USER_QUALIFICATION_ADVICE8 MAX:30": "Certified ISTQB professional tester",
   "__PAYMENT-METHOD-BANK": "Bonifico bancario",
-  "__RANKING_EXP_POINTS_MAX:25": "",
-  "__RANKING_LAST_MONTH_MAX:25": "",
+  "__RANKING_LEGEND_BASIC_SPEC_MAX: 35": "The starting level",
+  "__RANKING_LEGEND_EXP_NEXT": "exp",
+  "__RANKING_LEGEND_HOLD_MAX: 15": "Maintenance",
+  "__RANKING_LEGEND_LEGENDARY_SPEC_MAX: 70": "",
+  "__RANKING_LEGEND_NEXT_MAX: 15": "Advancement",
+  "__RANKING_LEGEND_PARAGRAPH_MAX: 100": "Earn a minimum number of exp each month to maintain or advance a level:",
+  "__RANKING_LEGEND_QUESTIONS_CTA_MAX: 25": "Read the rules",
+  "__RANKING_LEGEND_QUESTIONS_MAX: 70": "Questions or doubts about how the ranking works?",
+  "__RANKING_LEGEND_TITLE_MAX: 35": "How to level up",
   "__RANKING_MAIN-TITLE_LABEL_MONTH_NO-LEVEL_MAX: 45": "Lorem ipsum dolor sit amet, consectetur adipi",
   "__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45": "Lorem ipsum dolor sit amet, consectetur adipi",
-  "__RANKING_LEGEND_BASIC_SPEC_MAX: 35": "",
-  "__RANKING_LEGEND_EXP_NEXT": "",
-  "__RANKING_LEGEND_HOLD_MAX: 15": "",
-  "__RANKING_LEGEND_LEGENDARY_SPEC_MAX: 70": "",
-  "__RANKING_LEGEND_NEXT_MAX: 15": "",
-  "__RANKING_LEGEND_PARAGRAPH_MAX: 100": "",
-  "__RANKING_LEGEND_QUESTIONS_CTA_MAX: 25": "",
-  "__RANKING_LEGEND_QUESTIONS_MAX: 70": "",
-  "__RANKING_LEGEND_TITLE_MAX: 35": "",
-  "__RANKING_NAME_LEVEL_MAX:25": "",
-  "__RANKING_POSITION_MAX: 30": "",
-  "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "",
-  "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": "",
   "__RANKING_PROGRESS_MONTH_MAX: 35": "",
-  "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": "",
-  "__RANKING_PROGRESS_POINTS_MAX: 25": "",
   "__RANKING_SUBTITLE_WELCOME_MAX: 125": "",
   "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Lorem ipsum dol",
   "__RANKING_TITLE_LABEL_ID_MAX: 10": "Lorem ipsu",
@@ -511,6 +518,12 @@
   "email must be the same": "Inserisci lo stesso indirizzo email",
   "forgot your password?": "hai dimenticato la password?",
   "https://www.iubenda.com/privacy-policy/7934311": "https://www.iubenda.com/privacy-policy/7934311",
+  "last month ({{lastMonth}})": {
+    "__RANKING_LAST_MONTH_MAX:25": ""
+  },
+  "level {{levelName}}": {
+    "__RANKING_NAME_LEVEL_MAX:25": ""
+  },
   "login": "accedi",
   "login with your credentials": "accedi con le tue credenziali",
   "name": "Nome",
@@ -521,5 +534,9 @@
   "social": "social",
   "testers": "Tryber attivi",
   "wait...": "attendi...",
-  "you must accept terms and conditions": "Accetta le condizioni per continuare"
+  "you must accept terms and conditions": "Accetta le condizioni per continuare",
+  "{{days}} days left to give your best!": {
+    "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "",
+    "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": ""
+  }
 }

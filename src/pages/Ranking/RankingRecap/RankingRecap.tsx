@@ -9,10 +9,11 @@ const HeaderRecap = styled.div`
   .left-recap {
     display: grid;
     grid-template-columns: auto 1fr;
+    grid-column-gap: ${(p) => p.theme.grid.sizes[1]};
   }
   @media (min-width: ${(p) => p.theme.grid.breakpoints.md}) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 40% 60%;
   }
 `;
 
