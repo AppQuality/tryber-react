@@ -1,71 +1,16 @@
 import { Table, TableType } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import { RankingColumns } from "../columns";
 import starIcon from "src/pages/Ranking/assets/star.svg";
 import { shallowEqual, useSelector } from "react-redux";
 import { rankingTheme } from "../../rankingTheme";
 import { TopTitle } from "../TopTitle";
-
-const StyledTopRanking = styled.div`
-  .table-card {
-    grid-template-columns: 6px 2em max-content 60% auto;
-  }
-  .tbody.cell {
-    display: flex;
-    align-items: center;
-    padding: 8px 8px;
-  }
-  @media (min-width: ${(p) => p.theme.grid.breakpoints.sm}) and (max-width: ${(
-      p
-    ) => p.theme.grid.breakpoints.md}) {
-    .table-card {
-      grid-template-columns: 6px 2em max-content 45% auto;
-    }
-  }
-  @media (max-width: ${(p) => p.theme.grid.breakpoints.sm}) {
-    .table-card {
-      grid-template-columns: 6px 1.5em max-content minmax(5%, 40%) minmax(
-          20%,
-          35%
-        );
-      grid-column-gap: 8px;
-    }
-  }
-`;
-
-const StyledAvatar = styled.div`
-  display: flex;
-  img {
-    width: 33px;
-    height: 33px;
-    border-radius: 50%;
-  }
-`;
-
-const StyledExp = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  img {
-    margin-right: 1.5em;
-  }
-  @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
-    img {
-      margin-right: 1em;
-    }
-  }
-  @media (max-width: ${(p) => p.theme.grid.breakpoints.sm}) {
-    img {
-      margin-right: 0.5em;
-    }
-  }
-`;
+import { StyledAvatar, StyledExp, StyledRanking } from "../style";
 
 export const TopRankingTable = () => {
   const { t } = useTranslation();
-  const [columns, setcolumns] = useState<TableType.Column[]>([]);
+  const [columns, setcolumns] = useState<TableType.Column[]>(RankingColumns(t));
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
   const tops = useSelector(
@@ -82,19 +27,16 @@ export const TopRankingTable = () => {
     shallowEqual
   );
 
-  // initial requests
-  useEffect(() => {
-    const cols = RankingColumns(t);
-    setcolumns(cols);
-  }, []);
-
   // update datasource for the table
   useEffect(() => {
     setRows(
       tops.map((req) => {
         return {
           key: req.id,
-          position: req.position,
+          position: {
+            title: req.position.toString(),
+            content: <div className="ranking-position">{req.position}</div>,
+          },
           image: {
             title: "",
             content: (
@@ -103,7 +45,7 @@ export const TopRankingTable = () => {
               </StyledAvatar>
             ),
           },
-          id: req.id,
+          id: `T${req.id}`,
           name: req.name,
           exp: {
             title: req.monthly_exp.toString(),
@@ -120,7 +62,7 @@ export const TopRankingTable = () => {
   }, [tops]);
 
   return (
-    <StyledTopRanking>
+    <StyledRanking>
       <TopTitle
         text={`${t("__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25")} ${
           level?.name || ""
@@ -143,6 +85,6 @@ export const TopRankingTable = () => {
           empty: t("no data"),
         }}
       />
-    </StyledTopRanking>
+    </StyledRanking>
   );
 };

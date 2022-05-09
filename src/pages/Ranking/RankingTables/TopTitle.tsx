@@ -12,7 +12,7 @@ const StyledTopTitle = styled.div<StyledTopTitleProps>`
   width: 100%;
   padding: 0.75em 1em;
   background: ${(p) => p.background};
-  color: ${(p) => p.color};
+  color: ${(p) => p.color || p.theme.palette.primary};
   ${(p) =>
     p.bold &&
     `
