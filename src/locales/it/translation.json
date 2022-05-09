@@ -1,7 +1,4 @@
 {
-  "": {
-    "let's see what tryber you are with the <link>entry test<link>__RANKING_PROGRESS_NOLEVEL_MAX: 60": ""
-  },
   "...wait": "Un momento...",
   "/discover-experience-points/": "/it/come-funzionano-i-punti-esperienza/",
   "/faq/": "/it/domande-frequenti/",
@@ -527,6 +524,9 @@
   "https://www.iubenda.com/privacy-policy/7934311": "https://www.iubenda.com/privacy-policy/7934311",
   "last month ({{lastMonth}})": {
     "__RANKING_LAST_MONTH_MAX:25": ""
+  },
+  "let's see what tryber you are with the <link>entry test</link>": {
+    "__RANKING_PROGRESS_NOLEVEL_MAX: 60": ""
   },
   "level {{levelName}}": {
     "__RANKING_NAME_LEVEL_MAX:25": ""

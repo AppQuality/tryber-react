@@ -152,7 +152,7 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
       <Text>
         {rankingSummary.level.id === 0 ? (
           <Trans
-            i18nKey=":::let's see what tryber you are with the <link>entry test</link>__RANKING_PROGRESS_NOLEVEL_MAX: 60"
+            i18nKey="let's see what tryber you are with the <link>entry test</link>:::__RANKING_PROGRESS_NOLEVEL_MAX: 60"
             defaults={
               "let's see what tryber you are with the <link>entry test</link>"
             }
