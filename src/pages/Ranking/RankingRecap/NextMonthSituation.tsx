@@ -4,6 +4,7 @@ import { Trans } from "react-i18next";
 import starIcon from "src/pages/Ranking/assets/star.svg";
 import graphIcon from "src/pages/Ranking/assets/graphIcon.svg";
 import styled from "styled-components";
+import localizedUrl from "src/utils/localizedUrl";
 
 const StyledRecap = styled.div`
   border-top: 1px solid ${(p) => p.theme.colors.gray200};
@@ -149,14 +150,31 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
         </Text>
       )}
       <Text>
-        <Trans
-          i18nKey="{{days}} days left to give your best!:::__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
-          values={{
-            days: getRemainingDaysInMonth(),
-          }}
-          defaults={"{{days}} days left to give your best!"}
-          tOptions={{ count: getRemainingDaysInMonth() }}
-        />
+        {rankingSummary.level.id === 0 ? (
+          <Trans
+            i18nKey=":::let's see what tryber you are with the <link>entry test<link>__RANKING_PROGRESS_NOLEVEL_MAX: 60"
+            defaults={
+              "let's see what tryber you are with the <link>entry test<link>"
+            }
+            components={{
+              link: (
+                <a
+                  className="no-level-link"
+                  href={localizedUrl(`/courses/16`)}
+                />
+              ),
+            }}
+          />
+        ) : (
+          <Trans
+            i18nKey="{{days}} days left to give your best!:::__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
+            values={{
+              days: getRemainingDaysInMonth(),
+            }}
+            defaults={"{{days}} days left to give your best!"}
+            tOptions={{ count: getRemainingDaysInMonth() }}
+          />
+        )}
       </Text>
     </StyledRecap>
   );
