@@ -4,6 +4,9 @@ export const StyledRanking = styled.div`
   .table-card {
     grid-template-columns: 6px 2em max-content 60% auto;
   }
+  .ranking-position {
+    font-weight: ${(p) => p.theme.typography.fontWeight.bold};
+  }
   .tbody.cell {
     display: flex;
     align-items: center;
