@@ -90,7 +90,16 @@ export const RankingInfo = () => {
           defaultValue: "Questions or doubts about how the ranking works?",
         })}
       </Text>
-      <Button forwardedAs="a" type="info" size="block" target="_blank" flat>
+      <Button
+        href={t("Ranking help article", {
+          ns: "links",
+        })}
+        forwardedAs="a"
+        type="info"
+        size="block"
+        target="_blank"
+        flat
+      >
         {t("__RANKING_LEGEND_QUESTIONS_CTA_MAX: 25", {
           defaultValue: "Read the rules",
         })}
