@@ -506,7 +506,7 @@
     "__RANKING_TITLE_WELCOM_MAX: 20": "Classifica",
     "no data": "",
     "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}": {
-        "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": "<bold>{{pointsToAdvance}</bold> exp points per avanzare a {{nextLevel}}"
+        "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": "<bold>{{pointsToAdvance}}</bold> exp points per avanzare a {{nextLevel}}"
     },
     "<bold>{{pointsToKeepLevel}}</bold> points to keep level": {
         "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": "<bold>{{pointsToKeepLevel}</bold> exp points per mantenere il livello"
