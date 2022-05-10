@@ -498,13 +498,13 @@
     "__RANKING_PROGRESS_MONTH_MAX: 35": "Come stai andando questo mese",
     "__RANKING_SUBTITLE_WELCOME_MAX: 125": "Controlla i tuoi progressi, aumenta le possibilità di selezione, sorpassa gli altri Tryber e vai in vetta",
     "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Exp points",
-    "__RANKING_TITLE_LABEL_ID_MAX: 10": "ID",
+    "__RANKING_TITLE_LABEL_ID_MAX: 10": "Tryber ID",
     "__RANKING_TITLE_LABEL_MONTH_MAX: 45": "Classifica completa | Livello {{level}}",
     "__RANKING_TITLE_LABEL_NAME_MAX: 20": "Name",
     "__RANKING_TITLE_LABEL_POSITION_MAX: 15": "Posizione",
     "__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25": "Top 3 | Livello {{level}}",
     "__RANKING_TITLE_WELCOM_MAX: 20": "Classifica",
-    "no data": "",
+    "no data": "—",
     "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}": {
         "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": "<bold>{{pointsToAdvance}}</bold> exp points per avanzare a {{nextLevel}}"
     },
@@ -540,17 +540,17 @@
     "__RANKING_LEGEND_QUESTIONS_MAX: 70": "Domande o dubbi su come funziona la classifica?",
     "__RANKING_LEGEND_TITLE_MAX: 35": "Come scalare di livelli",
     "<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>": {
-        "__RANKING_PROGRESS_HOLDLVL_REACHED_MAX: 70": ""
+        "__RANKING_PROGRESS_HOLDLVL_REACHED_MAX: 70": "0 exp points per mantenere il livello. Grande, ce l’hai fatta!"
     },
-    "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "",
+    "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "Parti da Basic per iniziare la scalata",
     "not calculated": {
-        "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "",
-        "__RANKING_PROGRESS_NOLVEL_NEXTLVL_MAX: 20": ""
+        "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "Non conteggiato",
+        "__RANKING_PROGRESS_NOLVEL_NEXTLVL_MAX: 20": "Non conteggiato"
     },
     "let's see what tryber you are with the <link>entry test</link>": {
-        "__RANKING_PROGRESS_NOLEVEL_MAX: 60": ""
+        "__RANKING_PROGRESS_NOLEVEL_MAX: 60": "Facci vedere subito che Tryber sei con l'<link>Entry Test</link>!"
     },
     "not in ranking": {
-        "__RANKING_POSITION_NOLeVEL_MAX: 30": ""
+        "__RANKING_POSITION_NOLeVEL_MAX: 30": "No level"
     }
 }
