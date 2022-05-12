@@ -54,7 +54,7 @@
     "I agree to receive earning opportunity emails from AppQuality": "Acepto recibir correos electrónicos dedicados a la Comunidad de TRYBER",
     "I understand, don't show this again": "Entiendo, no mostrar de nuevo",
     "Inbox": "Inbox",
-    "Leaderboard": "Leaderboard",
+    "Leaderboard": "Clasificación",
     "Learn More": "Saber Más",
     "Learn more about how we calculate and attribute experience points.": "Aprende más sobre cómo calculamos y atribuimos los puntos de experiencia.",
     "LinkedIn": "LinkedIn",
@@ -509,7 +509,7 @@
         "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": "<bold>{{pointsToAdvance}}</bold> exp points para pasar a {{nextLevel}}\n"
     },
     "<bold>{{pointsToKeepLevel}}</bold> points to keep level": {
-        "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": "<bold>{{pointsToKeepLevel}</bold> exp points para mantener tu nivel"
+        "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": "<bold>{{pointsToKeepLevel}}</bold> exp points para mantener tu nivel"
     },
     "<bold>{{points}}</bold> exp points": {
         "__RANKING_PROGRESS_POINTS_MAX: 25": "<bold>{{points}}</bold> exp points"
@@ -540,7 +540,7 @@
     "__RANKING_LEGEND_QUESTIONS_MAX: 70": "¿Dudas o preguntas sobre cómo funciona la clasificación?",
     "__RANKING_LEGEND_TITLE_MAX: 35": "Cómo subir de nivel",
     "<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>": {
-        "__RANKING_PROGRESS_HOLDLVL_REACHED_MAX: 70": "0 exp points para mantener tu nivel. ¡Fantástico, lo has logrado!"
+        "__RANKING_PROGRESS_HOLDLVL_REACHED_MAX: 70": "0 exp points para mantener tu nivel. <bold>¡Fantástico, lo has logrado!</bold>"
     },
     "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "Empieza por el nivel Basic y ve subiendo",
     "not calculated": {
