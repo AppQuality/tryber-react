@@ -16,12 +16,15 @@ const StyledProgressRanking = styled.div<{ colored?: boolean }>`
 
   @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     width: max-content;
-    height: 35rem;
+    height: 22em;
     flex-direction: column;
+    align-items: baseline;
     background: url(${(p) => (p.colored ? backgroundVColored : backgroundV)})
       no-repeat;
     margin: 0 auto;
-    background-size: 97%;
+    padding-top: 1em;
+    background-size: auto 100%;
+    background-position: left;
   }
 `;
 

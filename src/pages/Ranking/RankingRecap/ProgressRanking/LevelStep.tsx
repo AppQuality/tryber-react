@@ -22,11 +22,22 @@ const StyledLevelStep = styled.div<{
 
   .level-step-icon {
     display: inline-block;
-    width: ${(p) => (p.isLarge ? "3rem" : "1.5rem")};
-    height: ${(p) => (p.isLarge ? "3rem" : "1.5rem")};
+    width: ${(p) => (p.isLarge ? "3em" : "1.5em")};
+    height: ${(p) => (p.isLarge ? "3em" : "1.5em")};
     svg {
       width: 100%;
       height: 100%;
+    }
+  }
+
+  @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+    flex-direction: row;
+    &:not(:last-child) {
+      margin: 0 0 0 0.75em;
+    }
+    .level-step-name {
+      margin-top: 0;
+      margin-left: ${(p) => p.theme.grid.sizes[2]};
     }
   }
 `;
