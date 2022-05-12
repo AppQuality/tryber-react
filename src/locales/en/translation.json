@@ -54,7 +54,7 @@
     "I agree to receive earning opportunity emails from AppQuality": "I agree to receive emails dedicated to the TRYBER community",
     "I understand, don't show this again": "I understand, don't show this again",
     "Inbox": "Inbox",
-    "Leaderboard": "Leaderboard",
+    "Leaderboard": "Ranking",
     "Learn More": "Learn More",
     "Learn more about how we calculate and attribute experience points.": "Learn more about how we calculate and attribute experience points.",
     "LinkedIn": "LinkedIn",
@@ -509,7 +509,7 @@
         "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": "<bold>{{pointsToAdvance}}</bold> exp points to reach {{nextLevel}}"
     },
     "<bold>{{pointsToKeepLevel}}</bold> points to keep level": {
-        "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": "<bold>{{pointsToKeepLevel}</bold> exp points to hold this level"
+        "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": "<bold>{{pointsToKeepLevel}}</bold> exp points to hold this level"
     },
     "<bold>{{points}}</bold> exp points": {
         "__RANKING_PROGRESS_POINTS_MAX: 25": "<bold>{{points}}</bold> exp points"
@@ -540,7 +540,7 @@
     "__RANKING_LEGEND_QUESTIONS_MAX: 70": "Any questions or doubts on how our ranking works?",
     "__RANKING_LEGEND_TITLE_MAX: 35": "How to level up",
     "<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>": {
-        "__RANKING_PROGRESS_HOLDLVL_REACHED_MAX: 70": "0 exp points to hold this level. Yey, you made it!"
+        "__RANKING_PROGRESS_HOLDLVL_REACHED_MAX: 70": "0 exp points to hold this level. <bold>Yey, you made it!</bold>"
     },
     "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "Start from Basic to climb up in the ranking",
     "not calculated": {
