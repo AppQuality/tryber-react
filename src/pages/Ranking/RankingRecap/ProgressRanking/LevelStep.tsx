@@ -1,6 +1,5 @@
 import { rankingTheme } from "src/pages/Ranking/rankingTheme";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
 import { Text } from "@appquality/appquality-design-system";
 
 const StyledLevelStep = styled.div<{
@@ -8,10 +7,10 @@ const StyledLevelStep = styled.div<{
   isLarge?: boolean;
   isOn?: boolean;
 }>`
-  width: max-content;
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 0.8;
   color: ${(p) => (p.isOn ? p.color : p.theme.colors.gray400)};
 
   .level-step-name {
@@ -34,7 +33,7 @@ const StyledLevelStep = styled.div<{
   @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     flex-direction: row;
     &:not(:last-child) {
-      margin: 0 0 0 0.75em;
+      margin-left: 0.75em;
     }
     .level-step-name {
       margin-top: 0;
@@ -58,15 +57,10 @@ export const LevelStep = ({
   isLarge,
   isOn,
 }: LevelStepProps) => {
-  const [levelColor, setColor] = useState("");
-  useEffect(() => {
-    setColor(rankingTheme[level.id][color]);
-  }, [level, color]);
-
   return (
     <StyledLevelStep
       className={className}
-      color={levelColor}
+      color={rankingTheme[level.id][color]}
       isOn={isOn}
       isLarge={isLarge}
     >

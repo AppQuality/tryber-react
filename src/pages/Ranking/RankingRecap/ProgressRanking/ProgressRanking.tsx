@@ -5,9 +5,11 @@ import backgroundHColored from "src/pages/Ranking/RankingRecap/ProgressRanking/a
 import backgroundV from "src/pages/Ranking/RankingRecap/ProgressRanking/assets/backgroundV.svg";
 import backgroundVColored from "src/pages/Ranking/RankingRecap/ProgressRanking/assets/backgroundVColored.svg";
 
-const StyledProgressRanking = styled.div<{ colored?: boolean }>`
+const StyledProgressRanking = styled.div<{
+  stepMargin: string;
+  colored?: boolean;
+}>`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
   background: url(${(p) => (p.colored ? backgroundHColored : backgroundH)})
@@ -15,19 +17,20 @@ const StyledProgressRanking = styled.div<{ colored?: boolean }>`
   background-size: 97%;
 
   .level-step {
+    &:not(:last-child) {
+      margin-right: ${(p) => p.stepMargin};
+    }
     &:not(.no-after) {
-      .level-step-icon {
-        position: relative;
-        &:after {
-          content: "";
-          display: block;
-          position: absolute;
-          height: 4px;
-          background: ${(p) => p.theme.colors.gray100};
-          width: 75px;
-          top: 42%;
-          left: 19px;
-        }
+      position: relative;
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 5px;
+        background: ${(p) => p.theme.colors.gray100};
+        width: calc(100% + ${(p) => p.stepMargin});
+        top: 8px;
+        left: 50%;
       }
     }
   }
@@ -35,10 +38,8 @@ const StyledProgressRanking = styled.div<{ colored?: boolean }>`
   @media (max-width: ${(p) => p.theme.grid.breakpoints.xl}) {
     .level-step {
       &:not(.no-after) {
-        .level-step-icon {
-          &:after {
-            width: 60px;
-          }
+        &:after {
+          width: calc(100% + ${(p) => p.stepMargin});
         }
       }
     }
@@ -58,13 +59,11 @@ const StyledProgressRanking = styled.div<{ colored?: boolean }>`
 
     .level-step {
       &:not(.no-after) {
-        .level-step-icon {
-          &:after {
-            width: 4px;
-            height: 30px;
-            top: 24px;
-            left: 10px;
-          }
+        &:after {
+          width: 5px;
+          height: 100%;
+          top: 50%;
+          left: 9px;
         }
       }
     }
@@ -72,41 +71,10 @@ const StyledProgressRanking = styled.div<{ colored?: boolean }>`
 `;
 
 interface ProgressRankingProps {
-  levelsList?: ApiComponents["schemas"]["MonthlyLevel"];
+  levelsList?: ApiComponents["schemas"]["MonthlyLevel"][];
   prospectLevelId?: number;
   isComplete?: boolean;
 }
-
-const levelList = [
-  {
-    id: 10,
-    name: "Basic",
-  },
-  {
-    id: 20,
-    name: "Bronze",
-  },
-  {
-    id: 30,
-    name: "Silver",
-  },
-  {
-    id: 40,
-    name: "Gold",
-  },
-  {
-    id: 50,
-    name: "Platinum",
-  },
-  {
-    id: 60,
-    name: "Diamond",
-  },
-  {
-    id: 100,
-    name: "Legendary",
-  },
-];
 
 export const ProgressRanking = ({
   levelsList,
@@ -114,18 +82,18 @@ export const ProgressRanking = ({
   isComplete,
 }: ProgressRankingProps) => {
   return (
-    <StyledProgressRanking colored={isComplete}>
-      {levelList?.map((level, i) => (
+    <StyledProgressRanking stepMargin={"0.5em"} colored={isComplete}>
+      {levelsList?.map((level, i) => (
         <LevelStep
           key={level.id}
           className={`level-step ${
-            i === levelList.length - 1 || i === levelList.length - 2
+            i === levelsList.length - 1 || i === levelsList.length - 2
               ? "no-after"
               : ""
           }`}
           level={level}
           isOn={level.id <= prospectLevelId}
-          isLarge={i === levelList.length - 1}
+          isLarge={i === levelsList.length - 1}
         />
       ))}
     </StyledProgressRanking>
