@@ -21,6 +21,7 @@ const StyledLevelStep = styled.div<{
   }
 
   .level-step-icon {
+    z-index: 1;
     display: inline-block;
     width: ${(p) => (p.isLarge ? "3em" : "1.5em")};
     height: ${(p) => (p.isLarge ? "3em" : "1.5em")};

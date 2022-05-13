@@ -14,6 +14,36 @@ const StyledProgressRanking = styled.div<{ colored?: boolean }>`
     no-repeat;
   background-size: 97%;
 
+  .level-step {
+    &:not(.no-after) {
+      .level-step-icon {
+        position: relative;
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          height: 4px;
+          background: ${(p) => p.theme.colors.gray100};
+          width: 75px;
+          top: 42%;
+          left: 19px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: ${(p) => p.theme.grid.breakpoints.xl}) {
+    .level-step {
+      &:not(.no-after) {
+        .level-step-icon {
+          &:after {
+            width: 60px;
+          }
+        }
+      }
+    }
+  }
+
   @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     width: max-content;
     height: 22em;
@@ -25,6 +55,19 @@ const StyledProgressRanking = styled.div<{ colored?: boolean }>`
     padding-top: 1em;
     background-size: auto 100%;
     background-position: left;
+
+    .level-step {
+      &:not(.no-after) {
+        .level-step-icon {
+          &:after {
+            width: 4px;
+            height: 30px;
+            top: 24px;
+            left: 10px;
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -75,7 +118,11 @@ export const ProgressRanking = ({
       {levelList?.map((level, i) => (
         <LevelStep
           key={level.id}
-          className="level-step"
+          className={`level-step ${
+            i === levelList.length - 1 || i === levelList.length - 2
+              ? "no-after"
+              : ""
+          }`}
           level={level}
           isOn={level.id <= prospectLevelId}
           isLarge={i === levelList.length - 1}
