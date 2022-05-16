@@ -35,16 +35,6 @@ const StyledProgressRanking = styled.div<{
     }
   }
 
-  @media (max-width: ${(p) => p.theme.grid.breakpoints.xl}) {
-    .level-step {
-      &:not(.no-after) {
-        &:after {
-          width: calc(100% + ${(p) => p.stepMargin});
-        }
-      }
-    }
-  }
-
   @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     width: max-content;
     height: 22em;
@@ -93,7 +83,7 @@ export const ProgressRanking = ({
             }`}
             level={level}
             isOn={level.id <= prospectLevelId}
-            isLarge={isLast}
+            isBig={isLast}
           />
         );
       })}
