@@ -12,6 +12,9 @@ const StyledRecap = styled.div`
   margin-top: ${(p) => p.theme.grid.sizes["4"]};
   padding-top: ${(p) => p.theme.grid.sizes["3"]};
   text-align: center;
+  .progress-container {
+    margin-bottom: ${(p) => p.theme.grid.sizes["4"]};
+  }
   @media (min-width: ${(p) => p.theme.grid.breakpoints.md}) {
     border-top: 0;
     margin-top: 0;
@@ -26,12 +29,6 @@ const StyledRecap = styled.div`
     .progress-container {
       margin-right: ${(p) => p.theme.grid.sizes["3"]};
       margin-bottom: ${(p) => p.theme.grid.sizes["2"]};
-    }
-  }
-  @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
-    padding-top: 0;
-    .progress-container {
-      margin-bottom: ${(p) => p.theme.grid.sizes["4"]};
     }
   }
 `;

@@ -8,15 +8,20 @@ const StyledLevelStep = styled.div<{
   isOn?: boolean;
 }>`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   flex: 0.8;
+  position: relative;
   color: ${(p) => (p.isOn ? p.color : p.theme.colors.gray400)};
+  &:not(:last-child) {
+    margin-left: 0.75em;
+  }
 
   .level-step-name {
     color: ${(p) =>
       p.isOn ? p.theme.palette.primary : p.theme.colors.gray400};
-    margin-top: ${(p) => p.theme.grid.sizes[2]};
+    margin-top: 0;
+    margin-left: ${(p) => p.theme.grid.sizes[2]};
   }
 
   .level-step-icon {
@@ -34,28 +39,33 @@ const StyledLevelStep = styled.div<{
     height: 2.1em;
     color: ${(p) => p.theme.colors.gray400};
     font-size: ${(p) => p.theme.typography.fontSize.small};
-    line-height: 1.1;
     font-weight: ${(p) => p.theme.typography.fontWeight.normal};
-    text-align: center;
-    margin-top: 0.5em;
+    position: absolute;
+    top: 40px;
+    left: 43%;
+    width: 10em;
+    text-align: left;
   }
 
-  @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
-    flex-direction: row;
-    position: relative;
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+    flex-direction: column;
+
     &:not(:last-child) {
-      margin-left: 0.75em;
+      margin-left: 0;
     }
+
     .level-step-name {
-      margin-top: 0;
-      margin-left: ${(p) => p.theme.grid.sizes[2]};
+      margin-top: ${(p) => p.theme.grid.sizes[2]};
+      margin-left: 0;
     }
     .level-step-subtitle {
-      position: absolute;
-      top: 40px;
-      left: 48%;
-      width: 10em;
-      text-align: left;
+      width: auto;
+      top: unset;
+      left: unset;
+      position: relative;
+      line-height: 1.1;
+      text-align: center;
+      margin-top: 0.5em;
     }
   }
 `;
