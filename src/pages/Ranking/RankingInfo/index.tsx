@@ -1,8 +1,6 @@
 import { Button, Card, Text } from "@appquality/appquality-design-system";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { fetchLevelInfo } from "../../../redux/ranking/actionCreator";
+import { shallowEqual, useSelector } from "react-redux";
 import arrow from "./assets/arrow.svg";
 import doubleArrow from "./assets/doubleArrow.svg";
 import { Experience } from "./Experience";
@@ -10,7 +8,6 @@ import { LevelInfoRow } from "./LevelInfoRow";
 
 export const RankingInfo = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
 
   const levelInfo = useSelector(
     (state: GeneralState) => state.ranking.levelInfo,
@@ -31,10 +28,6 @@ export const RankingInfo = () => {
       }),
     },
   ];
-
-  useEffect(() => {
-    dispatch(fetchLevelInfo());
-  }, []);
 
   return (
     <Card

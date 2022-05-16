@@ -30,8 +30,19 @@ const StyledLevelStep = styled.div<{
     }
   }
 
+  .level-step-subtitle {
+    height: 2.1em;
+    color: ${(p) => p.theme.colors.gray400};
+    font-size: ${(p) => p.theme.typography.fontSize.small};
+    line-height: 1.1;
+    font-weight: ${(p) => p.theme.typography.fontWeight.normal};
+    text-align: center;
+    margin-top: 0.5em;
+  }
+
   @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     flex-direction: row;
+    position: relative;
     &:not(:last-child) {
       margin-left: 0.75em;
     }
@@ -39,11 +50,19 @@ const StyledLevelStep = styled.div<{
       margin-top: 0;
       margin-left: ${(p) => p.theme.grid.sizes[2]};
     }
+    .level-step-subtitle {
+      position: absolute;
+      top: 40px;
+      left: 48%;
+      width: 10em;
+      text-align: left;
+    }
   }
 `;
 
 interface LevelStepProps {
   level: ApiComponents["schemas"]["MonthlyLevel"];
+  subtitle?: string;
   className?: string;
   color?: "main" | "background1" | "background2" | "textColor";
   isLarge?: boolean;
@@ -56,6 +75,7 @@ export const LevelStep = ({
   color = "main",
   isLarge,
   isOn,
+  subtitle,
 }: LevelStepProps) => {
   return (
     <StyledLevelStep
@@ -66,6 +86,7 @@ export const LevelStep = ({
     >
       <div className="level-step-icon">{rankingTheme[level.id].icon}</div>
       <Text className="level-step-name">{level.name}</Text>
+      <Text className="level-step-subtitle">{subtitle}</Text>
     </StyledLevelStep>
   );
 };

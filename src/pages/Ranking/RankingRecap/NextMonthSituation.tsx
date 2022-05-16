@@ -5,6 +5,7 @@ import starIcon from "src/pages/Ranking/assets/star.svg";
 import graphIcon from "src/pages/Ranking/assets/graphIcon.svg";
 import styled from "styled-components";
 import localizedUrl from "src/utils/localizedUrl";
+import { ProgressRanking } from "./ProgressRanking/ProgressRanking";
 
 const StyledRecap = styled.div`
   border-top: 1px solid ${(p) => p.theme.colors.gray200};
@@ -22,10 +23,23 @@ const StyledRecap = styled.div`
   }
   @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     padding-top: 0;
+    .progress-container {
+      margin-right: ${(p) => p.theme.grid.sizes["3"]};
+      margin-bottom: ${(p) => p.theme.grid.sizes["2"]};
+    }
+  }
+  @media (max-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+    padding-top: 0;
+    .progress-container {
+      margin-bottom: ${(p) => p.theme.grid.sizes["4"]};
+    }
   }
 `;
 
-export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
+export const NextMonthSituation = ({
+  rankingSummary,
+  levelsList,
+}: UserRankProps) => {
   // get remaining days in month
   const getRemainingDaysInMonth = () => {
     const currentDate = new Date();
@@ -178,14 +192,23 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
             }}
           />
         ) : (
-          <Trans
-            i18nKey="{{days}} days left to give your best!:::__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
-            values={{
-              days: getRemainingDaysInMonth(),
-            }}
-            defaults={"{{days}} days left to give your best!"}
-            tOptions={{ count: getRemainingDaysInMonth() }}
-          />
+          <>
+            <div className="progress-container aq-mt-3">
+              <ProgressRanking
+                levelsList={levelsList}
+                prospectLevelId={rankingSummary.prospect.level.id}
+                isComplete={rankingSummary.level.id === 100}
+              />
+            </div>
+            <Trans
+              i18nKey="{{days}} days left to give your best!:::__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
+              values={{
+                days: getRemainingDaysInMonth(),
+              }}
+              defaults={"{{days}} days left to give your best!"}
+              tOptions={{ count: getRemainingDaysInMonth() }}
+            />
+          </>
         )}
       </Text>
     </StyledRecap>

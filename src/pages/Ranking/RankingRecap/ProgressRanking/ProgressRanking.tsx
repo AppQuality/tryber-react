@@ -83,19 +83,20 @@ export const ProgressRanking = ({
 }: ProgressRankingProps) => {
   return (
     <StyledProgressRanking stepMargin={"0.5em"} colored={isComplete}>
-      {levelsList?.map((level, i) => (
-        <LevelStep
-          key={level.id}
-          className={`level-step ${
-            i === levelsList.length - 1 || i === levelsList.length - 2
-              ? "no-after"
-              : ""
-          }`}
-          level={level}
-          isOn={level.id <= prospectLevelId}
-          isLarge={i === levelsList.length - 1}
-        />
-      ))}
+      {levelsList?.map((level, i) => {
+        const isLast = i === levelsList.length - 1;
+        return (
+          <LevelStep
+            key={level.id}
+            className={`level-step ${
+              isLast || i === levelsList.length - 2 ? "no-after" : ""
+            }`}
+            level={level}
+            isOn={level.id <= prospectLevelId}
+            isLarge={isLast}
+          />
+        );
+      })}
     </StyledProgressRanking>
   );
 };
