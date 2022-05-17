@@ -32,7 +32,7 @@ const StyledProgress = styled.div`
 
   @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     margin-right: ${(p) => p.theme.grid.sizes["3"]};
-    margin-bottom: ${(p) => p.theme.grid.sizes["2"]};
+    margin-bottom: 0;
   }
 `;
 
@@ -140,10 +140,14 @@ export const NextMonthSituation = ({
           )}
         </span>
       </Text>
-      <Text className="aq-mb-2">
-        <ArrowLeftRight style={{ verticalAlign: "top" }} size="1.5rem" />
-        <span className="aq-ml-1">{getMaintenanceMessage(rankingSummary)}</span>
-      </Text>
+      {rankingSummary.prospect.level.id !== 100 && (
+        <Text className="aq-mb-2">
+          <ArrowLeftRight style={{ verticalAlign: "top" }} size="1.5rem" />
+          <span className="aq-ml-1">
+            {getMaintenanceMessage(rankingSummary)}
+          </span>
+        </Text>
+      )}
       {rankingSummary.level.id === 0 ? (
         <Text className="aq-mb-3">
           <ArrowRight style={{ verticalAlign: "top" }} size="1.5rem" />
@@ -175,42 +179,58 @@ export const NextMonthSituation = ({
           </Text>
         )
       )}
-      <Text>
+      <>
         {rankingSummary.level.id === 0 ? (
-          <Trans
-            i18nKey="let's see what tryber you are with the <link>entry test</link>:::__RANKING_PROGRESS_NOLEVEL_MAX: 60"
-            defaults={
-              "let's see what tryber you are with the <link>entry test</link>"
-            }
-            components={{
-              link: (
-                <a
-                  className="no-level-link"
-                  href={localizedUrl(`/courses/16`)}
-                />
-              ),
-            }}
-          />
+          <Text>
+            <Trans
+              i18nKey="let's see what tryber you are with the <link>entry test</link>:::__RANKING_PROGRESS_NOLEVEL_MAX: 60"
+              defaults={
+                "let's see what tryber you are with the <link>entry test</link>"
+              }
+              components={{
+                link: (
+                  <a
+                    className="no-level-link"
+                    href={localizedUrl(`/courses/16`)}
+                  />
+                ),
+              }}
+            />
+          </Text>
         ) : (
           <>
-            <StyledProgress className="aq-mt-3">
+            <StyledProgress className="aq-mt-4">
               <ProgressRanking
                 levelsList={levelsList}
                 prospectLevelId={rankingSummary.prospect.level.id}
                 isComplete={rankingSummary.level.id === 100}
               />
             </StyledProgress>
-            <Trans
-              i18nKey="{{days}} days left to give your best!:::__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
-              values={{
-                days: getRemainingDaysInMonth(),
-              }}
-              defaults={"{{days}} days left to give your best!"}
-              tOptions={{ count: getRemainingDaysInMonth() }}
-            />
+            <Text small>
+              {rankingSummary.level.id !== 100 &&
+              rankingSummary.prospect.level.id !== 100 ? (
+                <Trans
+                  i18nKey="{{days}} days left to give your best!:::__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
+                  values={{
+                    days: getRemainingDaysInMonth(),
+                  }}
+                  defaults={"{{days}} days left to give your best!"}
+                  tOptions={{ count: getRemainingDaysInMonth() }}
+                />
+              ) : (
+                rankingSummary.level.id === 100 && (
+                  <Trans
+                    i18nKey="__RANKING_PROGRESS_EMPATHY_STATE_MAX:100"
+                    defaults={
+                      "Flying! You are Legendary and you will always be! \nKeep earning points and stay on top."
+                    }
+                  />
+                )
+              )}
+            </Text>
           </>
         )}
-      </Text>
+      </>
     </StyledRecap>
   );
 };
