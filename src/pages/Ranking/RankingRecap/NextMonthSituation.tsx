@@ -28,7 +28,7 @@ const StyledRecap = styled.div`
 `;
 
 const StyledProgress = styled.div`
-  margin-bottom: ${(p) => p.theme.grid.sizes["4"]};
+  margin-bottom: 2em;
 
   @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     margin-right: ${(p) => p.theme.grid.sizes["3"]};
