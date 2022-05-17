@@ -222,7 +222,7 @@ export const NextMonthSituation = ({
                   <Trans
                     i18nKey="__RANKING_PROGRESS_EMPATHY_STATE_MAX:100"
                     defaults={
-                      "Flying! You are Legendary and you will always be! \nKeep earning points and stay on top."
+                      "Flying! You are Legendary and you will always be!<br>Keep earning points and stay on top."
                     }
                   />
                 )
