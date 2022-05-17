@@ -12,9 +12,7 @@ const StyledRecap = styled.div`
   margin-top: ${(p) => p.theme.grid.sizes["4"]};
   padding-top: ${(p) => p.theme.grid.sizes["3"]};
   text-align: center;
-  .progress-container {
-    margin-bottom: ${(p) => p.theme.grid.sizes["4"]};
-  }
+
   @media (min-width: ${(p) => p.theme.grid.breakpoints.md}) {
     border-top: 0;
     margin-top: 0;
@@ -26,10 +24,15 @@ const StyledRecap = styled.div`
   }
   @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     padding-top: 0;
-    .progress-container {
-      margin-right: ${(p) => p.theme.grid.sizes["3"]};
-      margin-bottom: ${(p) => p.theme.grid.sizes["2"]};
-    }
+  }
+`;
+
+const StyledProgress = styled.div`
+  margin-bottom: ${(p) => p.theme.grid.sizes["4"]};
+
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+    margin-right: ${(p) => p.theme.grid.sizes["3"]};
+    margin-bottom: ${(p) => p.theme.grid.sizes["2"]};
   }
 `;
 
@@ -190,13 +193,13 @@ export const NextMonthSituation = ({
           />
         ) : (
           <>
-            <div className="progress-container aq-mt-3">
+            <StyledProgress className="aq-mt-3">
               <ProgressRanking
                 levelsList={levelsList}
                 prospectLevelId={rankingSummary.prospect.level.id}
                 isComplete={rankingSummary.level.id === 100}
               />
-            </div>
+            </StyledProgress>
             <Trans
               i18nKey="{{days}} days left to give your best!:::__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
               values={{
