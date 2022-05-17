@@ -491,7 +491,7 @@
   "__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45": "Clasificación mensual | {{level}}",
   "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "Empieza por el nivel Basic y ve subiendo",
   "__RANKING_PROGRESS_EMPATHY_STATE_MAX:100": "",
-  "__RANKING_PROGRESS_MESSAGE_MAX:50": "Becomes Legendary",
+  "__RANKING_PROGRESS_MESSAGE_MAX:50": "",
   "__RANKING_PROGRESS_MONTH_MAX: 35": "Cómo te está yendo este mes",
   "__RANKING_SUBTITLE_WELCOME_MAX: 125": "Consulta tus avances, aumenta tus posibilidades de ser seleccionado, \nsupera a los demás Tryber y obtén el primer puesto",
   "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Exp points",
