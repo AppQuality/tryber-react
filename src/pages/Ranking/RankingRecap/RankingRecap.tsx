@@ -25,7 +25,7 @@ export const RankingRecap = () => {
     }),
     shallowEqual
   );
-  const { summary } = useSelector(
+  const { summary, levelInfo } = useSelector(
     (state: GeneralState) => state.ranking,
     shallowEqual
   );
@@ -37,7 +37,11 @@ export const RankingRecap = () => {
         <AvatarWithRank user={user} rankingSummary={summary} />
         <CurrentSituation user={user} rankingSummary={summary} />
       </div>
-      <NextMonthSituation user={user} rankingSummary={summary} />
+      <NextMonthSituation
+        user={user}
+        rankingSummary={summary}
+        levelsList={levelInfo}
+      />
     </HeaderRecap>
   );
 };

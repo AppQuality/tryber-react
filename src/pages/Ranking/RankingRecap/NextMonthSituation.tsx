@@ -5,12 +5,14 @@ import starIcon from "src/pages/Ranking/assets/star.svg";
 import graphIcon from "src/pages/Ranking/assets/graphIcon.svg";
 import styled from "styled-components";
 import localizedUrl from "src/utils/localizedUrl";
+import { ProgressRanking } from "./ProgressRanking/ProgressRanking";
 
 const StyledRecap = styled.div`
   border-top: 1px solid ${(p) => p.theme.colors.gray200};
   margin-top: ${(p) => p.theme.grid.sizes["4"]};
   padding-top: ${(p) => p.theme.grid.sizes["3"]};
   text-align: center;
+
   @media (min-width: ${(p) => p.theme.grid.breakpoints.md}) {
     border-top: 0;
     margin-top: 0;
@@ -25,7 +27,19 @@ const StyledRecap = styled.div`
   }
 `;
 
-export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
+const StyledProgress = styled.div`
+  margin-bottom: ${(p) => p.theme.grid.sizes["4"]};
+
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+    margin-right: ${(p) => p.theme.grid.sizes["3"]};
+    margin-bottom: ${(p) => p.theme.grid.sizes["2"]};
+  }
+`;
+
+export const NextMonthSituation = ({
+  rankingSummary,
+  levelsList,
+}: UserRankProps) => {
   // get remaining days in month
   const getRemainingDaysInMonth = () => {
     const currentDate = new Date();
@@ -178,14 +192,23 @@ export const NextMonthSituation = ({ rankingSummary }: UserRankProps) => {
             }}
           />
         ) : (
-          <Trans
-            i18nKey="{{days}} days left to give your best!:::__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
-            values={{
-              days: getRemainingDaysInMonth(),
-            }}
-            defaults={"{{days}} days left to give your best!"}
-            tOptions={{ count: getRemainingDaysInMonth() }}
-          />
+          <>
+            <StyledProgress className="aq-mt-3">
+              <ProgressRanking
+                levelsList={levelsList}
+                prospectLevelId={rankingSummary.prospect.level.id}
+                isComplete={rankingSummary.level.id === 100}
+              />
+            </StyledProgress>
+            <Trans
+              i18nKey="{{days}} days left to give your best!:::__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
+              values={{
+                days: getRemainingDaysInMonth(),
+              }}
+              defaults={"{{days}} days left to give your best!"}
+              tOptions={{ count: getRemainingDaysInMonth() }}
+            />
+          </>
         )}
       </Text>
     </StyledRecap>

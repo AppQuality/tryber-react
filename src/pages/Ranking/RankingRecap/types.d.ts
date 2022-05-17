@@ -1,6 +1,7 @@
 interface UserRankProps {
   user: UserData;
   rankingSummary: ApiOperations["get-users-me-rank"]["responses"]["200"]["content"]["application/json"];
+  levelsList?: ApiOperations["get-levels"]["responses"]["200"]["content"]["application/json"];
 }
 
 interface LevelProps {

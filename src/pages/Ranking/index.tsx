@@ -4,7 +4,10 @@ import { useTranslation } from "react-i18next";
 import { PageTemplate } from "src/features/PageTemplate";
 import { RankingRecap } from "./RankingRecap/RankingRecap";
 import { RankingTables } from "./RankingTables";
-import { fetchRankingSummary } from "src/redux/ranking/actionCreator";
+import {
+  fetchLevelInfo,
+  fetchRankingSummary,
+} from "src/redux/ranking/actionCreator";
 import { useDispatch } from "react-redux";
 import { getProfile } from "src/redux/user/actions/getProfile";
 import { RankingInfo } from "./RankingInfo";
@@ -15,6 +18,7 @@ export default function Ranking() {
   useEffect(() => {
     dispatch(fetchRankingSummary());
     dispatch(getProfile());
+    dispatch(fetchLevelInfo());
   }, []);
   return (
     <PageTemplate
