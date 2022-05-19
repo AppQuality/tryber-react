@@ -217,15 +217,20 @@ export const NextMonthSituation = ({
                   defaults={"{{days}} days left to give your best!"}
                   tOptions={{ count: getRemainingDaysInMonth() }}
                 />
+              ) : rankingSummary.level.id === 100 ? (
+                <Trans
+                  i18nKey="__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100"
+                  defaults={
+                    "Flying! You are Legendary and you will always be!<br>Keep earning points and stay on top."
+                  }
+                />
               ) : (
-                rankingSummary.level.id === 100 && (
-                  <Trans
-                    i18nKey="__RANKING_PROGRESS_EMPATHY_STATE_MAX:100"
-                    defaults={
-                      "Flying! You are Legendary and you will always be!<br>Keep earning points and stay on top."
-                    }
-                  />
-                )
+                <Trans
+                  i18nKey="__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100"
+                  defaults={
+                    "Congratulations you have managed to advance until you get to Legendary, from next month you will be officially legend!"
+                  }
+                />
               )}
             </Text>
           </>
