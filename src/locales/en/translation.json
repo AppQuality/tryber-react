@@ -490,6 +490,8 @@
   "__RANKING_MAIN-TITLE_LABEL_MONTH_NO-LEVEL_MAX: 45": "Monthly ranking | {{nolevel}}",
   "__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45": "Monthly ranking | {{level}} level",
   "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "Start from Basic to climb up in the ranking",
+  "__RANKING_PROGRESS_EMPATHY_STATE_MAX:100": "",
+  "__RANKING_PROGRESS_MESSAGE_MAX:50": "",
   "__RANKING_PROGRESS_MONTH_MAX: 35": "Your month at a glance",
   "__RANKING_SUBTITLE_WELCOME_MAX: 125": "Check your progress, increase your chances of selection, outdo other Trybers and go to the top",
   "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Exp points",
