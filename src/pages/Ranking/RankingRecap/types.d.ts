@@ -8,4 +8,5 @@ interface LevelProps {
   level: ApiComponents["schemas"]["MonthlyLevel"];
   color?: "main" | "background1" | "background2" | "textColor";
   size?: "medium" | "large";
+  hideName?: boolean;
 }

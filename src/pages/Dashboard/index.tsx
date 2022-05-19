@@ -7,10 +7,12 @@ import {
   Tabs,
   Text,
 } from "@appquality/appquality-design-system";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
 import useUser from "src/redux/user";
+import { fetchRankingSummary } from "../../redux/ranking/actionCreator";
 
 import ActiveCampaignsTable from "./ActiveCampaignsTable";
 import AvailableCampaignsTable from "./AvailableCampaignsTable";
@@ -31,6 +33,12 @@ export default function Dashboard() {
   const [isFeedbackModalOpen, setFeedbackModalOpen] = useState(false);
 
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchRankingSummary());
+  }, []);
+
   return (
     <PageTemplate
       title={t("Dashboard")}

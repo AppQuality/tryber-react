@@ -7,6 +7,7 @@ export const Level = ({
   level,
   color = "main",
   size = "medium",
+  hideName,
 }: LevelProps) => {
   const [levelColor, setColor] = useState("");
   const [levelSize, setSize] = useState("");
@@ -25,11 +26,15 @@ export const Level = ({
   }, [level, size]);
   return (
     <StyledLevel color={levelColor} size={levelSize}>
-      <div className="level-icon aq-mr-1">{rankingTheme[level.id].icon}</div>
-      <Text>
-        {" "}
-        <strong className="level-name aq-text-primary">{level.name}</strong>
-      </Text>
+      <div className={`level-icon${!hideName ? " aq-mr-1" : ""}`}>
+        {rankingTheme[level.id].icon}
+      </div>
+      {!hideName && (
+        <Text>
+          {" "}
+          <strong className="level-name aq-text-primary">{level.name}</strong>
+        </Text>
+      )}
     </StyledLevel>
   );
 };
