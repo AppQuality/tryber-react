@@ -17,12 +17,12 @@
     "web-vitals" "^1.0.1"
     "yup" "^0.32.9"
 
-"@appquality/craft-blocks@^0.1.17":
-  "integrity" "sha512-mUBbsPRgcPV2jJ7yu79Fi947IZR4qwjlSzfNWp1XCyk2Ky+uZ7yIfz3wC1oTCWbxpB0opR3aXJCviGlH1skm5Q=="
-  "resolved" "https://registry.npmjs.org/@appquality/craft-blocks/-/craft-blocks-0.1.17.tgz"
-  "version" "0.1.17"
+"@appquality/craft-blocks@^0.1.20":
+  "integrity" "sha512-krVlls2hUrivxZcunxLSjV8bz1YVjVHoIbibWFJwsY7Qm7dc6X7HZatO3JOCXkHVrbA2NIAbG2+4fVpwJZgsiA=="
+  "resolved" "https://registry.npmjs.org/@appquality/craft-blocks/-/craft-blocks-0.1.20.tgz"
+  "version" "0.1.20"
   dependencies:
-    "@craftjs/core" "0.2.0-beta.0"
+    "@craftjs/core" "^0.2.0-beta.4"
     "@draft-js-plugins/editor" "^4.1.0"
     "@draft-js-plugins/static-toolbar" "^4.1.1"
     "draft-js" "^0.11.7"
@@ -1251,23 +1251,21 @@
     "semver" "^7.3.2"
     "webpack-merge" "^4.2.2"
 
-"@craftjs/core@0.2.0-beta.0":
-  "integrity" "sha512-CsSW0e7WDFFMLSunu7U5SwxlxjUCSStkeBaHy6nW8/Cm/yz0dWuHx54gaZDMIqwafehDI7/CUlVrCbXBqwOZjA=="
-  "resolved" "https://registry.npmjs.org/@craftjs/core/-/core-0.2.0-beta.0.tgz"
-  "version" "0.2.0-beta.0"
+"@craftjs/core@^0.2.0-beta.4":
+  "integrity" "sha512-irLZylsLYA52ILjM4gJrDe+Kdz/X+je6ABHYUfYenCV5nib7k1ejCclARrAlrIHrtibvVDbKnc8km/jrieBwXA=="
+  "resolved" "https://registry.npmjs.org/@craftjs/core/-/core-0.2.0-beta.4.tgz"
+  "version" "0.2.0-beta.4"
   dependencies:
-    "@craftjs/utils" "^0.2.0-beta.0"
-    "@types/react" "^17.0.5"
+    "@craftjs/utils" "^0.2.0-beta.4"
     "debounce" "^1.2.0"
     "lodash" "^4.17.20"
     "tiny-invariant" "^1.0.6"
 
-"@craftjs/utils@^0.2.0-beta.0":
-  "integrity" "sha512-S6oAlD16eaOD2omRlStN+EKyyPVOVSxC0+Lq+H3VnyFRBBFb8vO4DLc5qz3K8RsskdoKKVXFoV0/5xQ5q1y+rQ=="
-  "resolved" "https://registry.npmjs.org/@craftjs/utils/-/utils-0.2.0-beta.0.tgz"
-  "version" "0.2.0-beta.0"
+"@craftjs/utils@^0.2.0-beta.4":
+  "integrity" "sha512-8+7IjtU+A3dNqHO70FTPhF2fdPCZBIDHyor5MD4ix2jEX1nUB3gLAuro3WmIPQ7Ma0plx3LmKMb/Yp+hkgkCAg=="
+  "resolved" "https://registry.npmjs.org/@craftjs/utils/-/utils-0.2.0-beta.4.tgz"
+  "version" "0.2.0-beta.4"
   dependencies:
-    "@types/react" "^17.0.5"
     "immer" "^9.0.6"
     "lodash" "^4.17.20"
     "nanoid" "^3.1.23"
@@ -2247,7 +2245,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^17.0.3", "@types/react@^17.0.5":
+"@types/react@*", "@types/react@^17.0.3":
   "integrity" "sha512-zgiJwtsggVGtr53MndV7jfiUESTqrbxOcBvwfe6KS/9bzaVPCTDieTWnFNecVNx6EAaapg5xsLLWFfHHR437AA=="
   "resolved" "https://registry.npmjs.org/@types/react/-/react-17.0.27.tgz"
   "version" "17.0.27"
@@ -6669,9 +6667,9 @@
   "version" "5.1.8"
 
 "immer@^9.0.6":
-  "integrity" "sha512-KGllzpbamZDvOIxnmJ0jI840g7Oikx58lBPWV0hUh7dtAyZpFqqrBZdKka5GlTwMTZ1Tjc/bKKW4VSFAt6BqMA=="
-  "resolved" "https://registry.npmjs.org/immer/-/immer-9.0.7.tgz"
-  "version" "9.0.7"
+  "integrity" "sha512-ubBeqQutOSLIFCUBN03jGeOS6a3DoYlSYwYJTa+gSKEZKU5redJIqkIdZ3JVv/4RZpfcXdAWH5zCNLWPRv2WDw=="
+  "resolved" "https://registry.npmjs.org/immer/-/immer-9.0.14.tgz"
+  "version" "9.0.14"
 
 "immer@8.0.1":
   "integrity" "sha512-aqXhGP7//Gui2+UrEtvxZxSquQVXTpZ7KDxfCcKAF3Vysvw0CViVaW9RZ1j1xlIYqaaaipBoqdqeibkc18PNvA=="
@@ -10612,7 +10610,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^0.14.9 || ^15.3.0 || ^16.0.0 || ^17.0.0", "react@^15.5.0 || ^16.0.0 || ^17.0.0", "react@^16.3.0 || ^17.0.0", "react@^16.8.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@^16.8.6 || ^17", "react@^17.0.2", "react@>= 16", "react@>= 16.8.0", "react@>=0.14.0", "react@>=15", "react@>=15.3.0", "react@>=16.3", "react@>=16.3.0", "react@>=16.6.0", "react@>=16.8.0", "react@17.0.2":
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^0.14.9 || ^15.3.0 || ^16.0.0 || ^17.0.0", "react@^15.5.0 || ^16.0.0 || ^17.0.0", "react@^16.3.0 || ^17.0.0", "react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@^16.8.6 || ^17", "react@^17.0.2", "react@>= 16", "react@>= 16.8.0", "react@>=0.14.0", "react@>=15", "react@>=15.3.0", "react@>=16.3", "react@>=16.3.0", "react@>=16.6.0", "react@>=16.8.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
