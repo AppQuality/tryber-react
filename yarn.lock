@@ -17,10 +17,10 @@
     "web-vitals" "^1.0.1"
     "yup" "^0.32.9"
 
-"@appquality/craft-blocks@^0.1.20":
-  "integrity" "sha512-krVlls2hUrivxZcunxLSjV8bz1YVjVHoIbibWFJwsY7Qm7dc6X7HZatO3JOCXkHVrbA2NIAbG2+4fVpwJZgsiA=="
-  "resolved" "https://registry.npmjs.org/@appquality/craft-blocks/-/craft-blocks-0.1.20.tgz"
-  "version" "0.1.20"
+"@appquality/craft-blocks@^0.1.21":
+  "integrity" "sha512-b9iB+JK1lxzEfHBMrhq4rWfJQWFJy+d8CR75eiXsHw0onrR431j6RXeAucP3k0ysZRSwZLeln1FcpP5w3ZrXDw=="
+  "resolved" "https://registry.npmjs.org/@appquality/craft-blocks/-/craft-blocks-0.1.21.tgz"
+  "version" "0.1.21"
   dependencies:
     "@craftjs/core" "^0.2.0-beta.4"
     "@draft-js-plugins/editor" "^4.1.0"
