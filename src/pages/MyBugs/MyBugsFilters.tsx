@@ -4,34 +4,36 @@ import {
   SortTableSelect,
   SortTableSelectProps,
 } from "@appquality/appquality-design-system";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import {
+  setSelectedCampaign,
+  setSelectedSeverity,
+  setSelectedStatus,
+} from "../../redux/myBugs/actionCreator";
+import { useAppDispatch } from "../../redux/provider";
 
 interface MyBugsFiltersProps extends SortTableSelectProps<BugsOrderByType> {
   campaigns: SelectType.Option[];
   severities: SelectType.Option[];
   status: SelectType.Option[];
+  selectedCampaign?: SelectType.Option;
+  selectedSeverity?: SelectType.Option;
+  selectedStatus?: SelectType.Option;
 }
 
 const MyBugsFilters = ({
   campaigns,
   severities,
   status,
+  selectedCampaign,
+  selectedSeverity,
+  selectedStatus,
   order,
   orderBy,
   columns,
 }: MyBugsFiltersProps) => {
   const { t } = useTranslation();
-  const [selectedCampaign, setSelectedCampaign] = useState<
-    SelectType.Option | undefined
-  >();
-  const [selectedSeverities, setSelectedSeverities] = useState<
-    SelectType.Option | undefined
-  >();
-  const [selectedStatus, setSelectedStatus] = useState<
-    SelectType.Option | undefined
-  >();
-
+  const dispatch = useAppDispatch();
   const allCampaign = t("All", { context: "female" });
   const allSeverity = t("All", { context: "female" });
   const allStatus = t("All", { context: "male" });
@@ -46,10 +48,10 @@ const MyBugsFilters = ({
     campaignValue = selectedCampaign;
   }
   if (
-    selectedSeverities &&
-    severities.map((s) => s.value).includes(selectedSeverities.value)
+    selectedSeverity &&
+    severities.map((s) => s.value).includes(selectedSeverity.value)
   ) {
-    severityValue = selectedSeverities;
+    severityValue = selectedSeverity;
   }
   if (
     selectedStatus &&
@@ -62,7 +64,7 @@ const MyBugsFilters = ({
       <div className="aq-mb-3">
         <Select
           label={t("Campaign")}
-          onChange={setSelectedCampaign}
+          onChange={(value) => dispatch(setSelectedCampaign(value))}
           name="campaign"
           options={[{ label: allCampaign }, ...campaigns]}
           value={campaignValue}
@@ -75,7 +77,7 @@ const MyBugsFilters = ({
       <div className="aq-mb-3">
         <Select
           label={t("Severity")}
-          onChange={setSelectedSeverities}
+          onChange={(value) => dispatch(setSelectedSeverity(value))}
           name="severity"
           options={[{ label: allSeverity }, ...severities]}
           value={severityValue}
@@ -88,7 +90,7 @@ const MyBugsFilters = ({
       <div className="aq-mb-3">
         <Select
           label={t("Status")}
-          onChange={setSelectedStatus}
+          onChange={(value) => dispatch(setSelectedStatus(value))}
           name="status"
           options={[{ label: allStatus }, ...status]}
           value={statusValue}

@@ -15,8 +15,11 @@ import i18n from "../../i18n";
 import {
   fetchMyBugs,
   fetchMyBugsFilters,
+  setSelectedCampaign,
+  setSelectedStatus,
   updateMybugsPagination,
 } from "../../redux/myBugs/actionCreator";
+import { coloredStatus } from "../../redux/myBugs/utils";
 import { useAppDispatch } from "../../redux/provider";
 import { MyBugsColumns } from "./columns";
 import MyBugsFilters from "./MyBugsFilters";
@@ -26,46 +29,37 @@ export default function MyBugs() {
   const { search } = useLocation();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [columns, setcolumns] = useState<TableType.Column[]>(
     MyBugsColumns(setIsLoading, dispatch, t)
   );
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
-  const coloredStatus = (statusId: number | undefined) => {
-    switch (statusId) {
-      case 1:
-        return "aq-text-danger";
-      case 2:
-        return "aq-text-success";
-      case 3:
-        return "aq-text-info";
-      case 4:
-        return "aq-text-warning";
-      default:
-        break;
-    }
-    return "";
-  };
-
-  const { bugsList, campaigns, severities, status } = useSelector(
-    (state: GeneralState) => state.myBugs,
-    shallowEqual
-  );
-
-  // useEffect(() => {
-  //   const values = queryString.parse(search);
-  //   if (values.cp) {
-  //     campaigns.setSelected({ value: values.cp.toString(), label: "" });
-  //   }
-  //   if (values.status) {
-  //     status.setSelected({ value: values.status.toString(), label: "" });
-  //   }
-  // }, [queryString]);
+  const {
+    bugsList,
+    campaigns,
+    severities,
+    status,
+    selectedCampaign,
+    selectedSeverity,
+    selectedStatus,
+  } = useSelector((state: GeneralState) => state.myBugs, shallowEqual);
 
   const { results, limit, total, start, order, orderBy } = bugsList;
 
-  // update datasource for the table
+  useEffect(() => {
+    const values = queryString.parse(search);
+    if (values.cp) {
+      dispatch(setSelectedCampaign({ value: values.cp.toString(), label: "" }));
+    }
+    if (values.status) {
+      dispatch(
+        setSelectedStatus({ value: values.status.toString(), label: "" })
+      );
+    }
+  }, [queryString]);
+
   useEffect(() => {
     setRows(
       results.map((res) => {
@@ -148,6 +142,9 @@ export default function MyBugs() {
               campaigns={campaigns}
               severities={severities}
               status={status}
+              selectedCampaign={selectedCampaign}
+              selectedSeverity={selectedSeverity}
+              selectedStatus={selectedStatus}
               order={order}
               orderBy={orderBy}
               columns={columns}

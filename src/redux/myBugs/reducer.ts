@@ -46,6 +46,21 @@ export default (state = initialState, action: MyBugsActions) => {
         ...state,
         status: action.payload,
       };
+    case "myBugs/setSelectedCampaign":
+      return {
+        ...state,
+        selectedCampaign: action.payload,
+      };
+    case "myBugs/setSelectedSeverity":
+      return {
+        ...state,
+        selectedSeverity: action.payload,
+      };
+    case "myBugs/setSelectedStatus":
+      return {
+        ...state,
+        selectedStatus: action.payload,
+      };
     default:
       return state;
   }

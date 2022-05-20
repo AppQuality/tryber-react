@@ -8,6 +8,9 @@ type MyBugsState = {
   campaigns: SelectType.Option[];
   severities: SelectType.Option[];
   status: SelectType.Option[];
+  selectedCampaign?: SelectType.Option;
+  selectedSeverity?: SelectType.Option;
+  selectedStatus?: SelectType.Option;
 };
 
 type MyBugsActions =
@@ -15,7 +18,10 @@ type MyBugsActions =
   | MyBugsActions_UpdateBugsListQuery
   | MyBugsActions_SetCampaigns
   | MyBugsActions_SetSeverities
-  | MyBugsActions_SetStatus;
+  | MyBugsActions_SetStatus
+  | MyBugsActions_SetSelectedCampaign
+  | MyBugsActions_SetSelectedSeverity
+  | MyBugsActions_SetSelectedStatus;
 
 type BugsOrderByType = "id" | "status" | "title" | "campaign";
 
@@ -45,4 +51,19 @@ type MyBugsActions_SetSeverities = {
 type MyBugsActions_SetStatus = {
   type: "myBugs/setStatus";
   payload: SelectType.Option[];
+};
+
+type MyBugsActions_SetSelectedCampaigns = {
+  type: "myBugs/setSelectedCampaigns";
+  payload: SelectType.Option;
+};
+
+type MyBugsActions_SetSelectedSeverity = {
+  type: "myBugs/setSelectedSeverity";
+  payload: SelectType.Option;
+};
+
+type MyBugsActions_SetSelectedStatus = {
+  type: "myBugs/setSelectedStatus";
+  payload: SelectType.Option;
 };

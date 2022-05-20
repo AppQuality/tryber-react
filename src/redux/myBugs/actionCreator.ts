@@ -7,7 +7,7 @@ export const fetchMyBugs =
   (): ThunkAction<Promise<any>, GeneralState, unknown, MyBugsActions> =>
   async (dispatch, getState) => {
     const {
-      myBugs: { bugsList },
+      myBugs: { bugsList, selectedCampaign, selectedSeverity, selectedStatus },
     } = getState();
     try {
       const query: ApiOperations["get-users-me-bugs"]["parameters"]["query"] = {
@@ -15,6 +15,11 @@ export const fetchMyBugs =
         orderBy: bugsList.orderBy,
         limit: bugsList.limit,
         start: bugsList.start,
+        filterBy: {
+          ...(selectedCampaign?.value && { campaing: selectedCampaign.value }),
+          ...(selectedSeverity?.value && { severity: selectedSeverity.value }),
+          ...(selectedStatus?.value && { status: selectedStatus.value }),
+        },
       };
       const data = await API.myBugs({ query });
       return dispatch({
@@ -69,10 +74,18 @@ export const updateMybugsSortingOptions =
 
 export const fetchMyBugsFilters =
   (): ThunkAction<Promise<any>, GeneralState, unknown, MyBugsActions> =>
-  async (dispatch) => {
+  async (dispatch, getState) => {
+    const {
+      myBugs: { selectedCampaign, selectedSeverity, selectedStatus },
+    } = getState();
     try {
       const query: ApiOperations["get-users-me-bugs"]["parameters"]["query"] = {
         orderBy: "id",
+        filterBy: {
+          ...(selectedCampaign?.value && { campaing: selectedCampaign.value }),
+          ...(selectedSeverity?.value && { severity: selectedSeverity.value }),
+          ...(selectedStatus?.value && { status: selectedStatus.value }),
+        },
       };
       const data = await API.myBugs({ query });
 
@@ -123,4 +136,37 @@ export const fetchMyBugsFilters =
       const error = e as HttpError;
       console.log(error);
     }
+  };
+
+export const setSelectedCampaign =
+  (
+    campaign: SelectType.Option
+  ): ThunkAction<Promise<any>, GeneralState, unknown, MyBugsActions> =>
+  async (dispatch) => {
+    dispatch({
+      type: "myBugs/setSelectedCampaign",
+      payload: campaign,
+    });
+  };
+
+export const setSelectedSeverity =
+  (
+    severity: SelectType.Option
+  ): ThunkAction<Promise<any>, GeneralState, unknown, MyBugsActions> =>
+  async (dispatch) => {
+    dispatch({
+      type: "myBugs/setSelectedSeverity",
+      payload: severity,
+    });
+  };
+
+export const setSelectedStatus =
+  (
+    status: SelectType.Option
+  ): ThunkAction<Promise<any>, GeneralState, unknown, MyBugsActions> =>
+  async (dispatch) => {
+    dispatch({
+      type: "myBugs/setSelectedStatus",
+      payload: status,
+    });
   };
