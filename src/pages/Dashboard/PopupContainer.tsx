@@ -5,6 +5,7 @@ import {
   Container,
   Editor,
   Frame,
+  Picture,
   Text,
   Wysiwyg,
 } from "@appquality/craft-blocks";
@@ -54,6 +55,7 @@ export default ({
                 Text,
                 Wysiwyg,
                 ButtonContainer,
+                Picture,
               }}
             >
               <Frame data={p.content}></Frame>
