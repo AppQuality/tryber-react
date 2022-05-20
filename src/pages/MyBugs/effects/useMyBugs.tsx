@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import API from "src/utils/api";
 import { operations } from "src/utils/schema";
 
-export type BugsOrderByType = "id" | "status" | "title" | "campaign";
+// export type BugsOrderByType = "id" | "status" | "title" | "campaign";
 
 export const useMyBugs = () => {
   const { i18n, t } = useTranslation();

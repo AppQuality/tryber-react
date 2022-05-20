@@ -9,6 +9,7 @@ import modal from "./modal/reducer";
 import addResidenceAddressModal from "./addResidenceAddressModal/reducer";
 import wallet from "./wallet/reducer";
 import ranking from "./ranking/reducer";
+import myBugs from "./myBugs/reducer";
 
 export default combineReducers({
   menu,
@@ -21,4 +22,5 @@ export default combineReducers({
   userDevices,
   wallet,
   ranking,
+  myBugs,
 });

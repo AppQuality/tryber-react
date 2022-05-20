@@ -9,6 +9,7 @@ type GeneralState = {
   modal: ModalState;
   wallet: WalletState;
   ranking: RankingState;
+  myBugs: MyBugsState;
 };
 
 type AppDispatch = typeof store.dispatch;
