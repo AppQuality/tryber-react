@@ -257,17 +257,25 @@ export const NextMonthSituation = ({
                 getProgressMessage()
               ) : rankingSummary.level.id === 100 ? (
                 <Trans
-                  i18nKey="__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100"
+                  i18nKey="available tags: <br>, <bold>:::__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100"
                   defaults={
                     "Flying! You are Legendary and you will always be!<br>Keep earning points and stay on top."
                   }
+                  components={{
+                    br: <br />,
+                    bold: <strong className="aq-text-primary" />,
+                  }}
                 />
               ) : (
                 <Trans
-                  i18nKey="__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100"
+                  i18nKey="available tags: <br>, <bold>:::__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100"
                   defaults={
                     "Congratulations you have managed to advance until you get to Legendary, from next month you will be officially legend!"
                   }
+                  components={{
+                    br: <br />,
+                    bold: <strong className="aq-text-primary" />,
+                  }}
                 />
               )}
             </Text>
