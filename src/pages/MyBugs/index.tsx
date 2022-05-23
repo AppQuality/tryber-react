@@ -1,99 +1,135 @@
 import {
   BSCol,
   BSGrid,
+  Button,
   Card,
   TableType,
 } from "@appquality/appquality-design-system";
 import queryString from "query-string";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { shallowEqual, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { PageTemplate } from "src/features/PageTemplate";
-import { useMyBugs } from "./effects/useMyBugs";
+import i18n from "../../i18n";
+import {
+  fetchMyBugs,
+  fetchMyBugsFilters,
+  setSelectedCampaign,
+  setSelectedStatus,
+  updateMybugsPagination,
+} from "../../redux/myBugs/actionCreator";
+import { coloredStatus } from "../../redux/myBugs/utils";
+import { useAppDispatch } from "../../redux/provider";
+import { MyBugsColumns } from "./columns";
 import MyBugsFilters from "./MyBugsFilters";
 import MyBugsTable from "./MyBugsTable";
 
 export default function MyBugs() {
   const { search } = useLocation();
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const [columns, setcolumns] = useState<TableType.Column[]>(
+    MyBugsColumns(dispatch, t)
+  );
+  const [rows, setRows] = useState<TableType.Row[]>([]);
+
   const {
-    data,
-    page,
-    totalBugs,
-    limit,
+    bugsList,
     campaigns,
     severities,
     status,
-    loading,
-    order,
-    orderBy,
-  } = useMyBugs();
+    selectedCampaign,
+    selectedSeverity,
+    selectedStatus,
+    isLoading,
+  } = useSelector((state: GeneralState) => state.myBugs, shallowEqual);
+
+  const { results, limit, total, start, order, orderBy } = bugsList;
+
+  const changePagination = (newPage: number) => {
+    const newStart = limit * (newPage - 1);
+    dispatch(updateMybugsPagination(newStart));
+  };
 
   useEffect(() => {
     const values = queryString.parse(search);
     if (values.cp) {
-      campaigns.setSelected({ value: values.cp.toString(), label: "" });
+      dispatch(setSelectedCampaign({ value: values.cp.toString(), label: "" }));
     }
     if (values.status) {
-      status.setSelected({ value: values.status.toString(), label: "" });
+      dispatch(
+        setSelectedStatus({ value: values.status.toString(), label: "" })
+      );
     }
   }, [queryString]);
 
-  const columns: TableType.Column[] = [
-    {
-      title: "Id",
-      dataIndex: "id",
-      key: "id",
-      isSortable: true,
-      onSort: (sorting: OrderType) => {
-        order.set(sorting);
-        orderBy.set("id");
-      },
-      role: "overline",
-    },
-    {
-      title: t("Title"),
-      dataIndex: "title",
-      key: "title",
-      isSortable: true,
-      onSort: (sorting: OrderType) => {
-        order.set(sorting);
-        orderBy.set("title");
-      },
-      role: "title",
-      hideIndex: true,
-    },
-    {
-      title: t("Severity"),
-      dataIndex: "severity",
-      key: "severity",
-    },
-    {
-      title: t("Status"),
-      dataIndex: "status",
-      key: "status",
-    },
-    {
-      title: t("Action"),
-      dataIndex: "action",
-      key: "action",
-      align: "center",
-      role: "cta",
-      hideIndex: true,
-    },
-  ];
+  useEffect(() => {
+    setRows(
+      results.map((res) => {
+        let status = res.status
+          ? {
+              title: res.status.name,
+              content: (
+                <span className={coloredStatus(res.status.id)}>
+                  {res.status.name}
+                </span>
+              ),
+            }
+          : "unknown";
+        return {
+          key: res.id,
+          id: res.id,
+          severity: res.severity?.name,
+          status: status,
+          title: res.title?.replace(/\\(.)/gm, "$1"),
+          action: {
+            title: `${window.location.origin}/${
+              i18n.language !== "en" ? `${i18n.language}/` : ""
+            }bugs/show/${res.id}`,
+            content: (
+              <Button
+                className="aq-nopadding"
+                forwardedAs="a"
+                href={`${window.location.origin}/${
+                  i18n.language !== "en" ? `${i18n.language}/` : ""
+                }bugs/show/${res.id}`}
+                type="link-hover"
+                size="sm"
+              >
+                {t("View more")}
+              </Button>
+            ),
+          },
+        };
+      })
+    );
+  }, [results]);
+
+  useEffect(() => {
+    if (selectedCampaign || selectedSeverity || selectedStatus) {
+      changePagination(1);
+      dispatch(fetchMyBugsFilters());
+    }
+  }, [selectedCampaign, selectedSeverity, selectedStatus]);
+
+  useEffect(() => {
+    dispatch(fetchMyBugs());
+    dispatch(fetchMyBugsFilters());
+  }, []);
+
   return (
     <PageTemplate title={t("Uploaded Bugs")} route={"my-bugs"} shouldBeLoggedIn>
       <BSGrid>
         <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
           <Card className="aq-mb-3" title={t("Submitted bugs")}>
             <MyBugsTable
-              data={data.current}
-              page={page.current}
-              setPage={page.set}
-              totalBugs={totalBugs}
-              limit={limit.current}
-              loading={loading}
+              data={rows}
+              page={(start || 0) / limit + 1}
+              setPage={changePagination}
+              totalBugs={total}
+              limit={limit}
+              loading={isLoading}
               columns={columns}
               order={order}
               orderBy={orderBy}
@@ -110,8 +146,11 @@ export default function MyBugs() {
               campaigns={campaigns}
               severities={severities}
               status={status}
-              order={order.current}
-              orderBy={orderBy.current}
+              selectedCampaign={selectedCampaign}
+              selectedSeverity={selectedSeverity}
+              selectedStatus={selectedStatus}
+              order={order}
+              orderBy={orderBy}
               columns={columns}
             />
           </Card>
