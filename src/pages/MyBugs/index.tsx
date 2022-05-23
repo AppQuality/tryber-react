@@ -29,10 +29,8 @@ export default function MyBugs() {
   const { search } = useLocation();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [columns, setcolumns] = useState<TableType.Column[]>(
-    MyBugsColumns(setIsLoading, dispatch, t)
+    MyBugsColumns(dispatch, t)
   );
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
@@ -44,9 +42,15 @@ export default function MyBugs() {
     selectedCampaign,
     selectedSeverity,
     selectedStatus,
+    isLoading,
   } = useSelector((state: GeneralState) => state.myBugs, shallowEqual);
 
   const { results, limit, total, start, order, orderBy } = bugsList;
+
+  const changePagination = (newPage: number) => {
+    const newStart = limit * (newPage - 1);
+    dispatch(updateMybugsPagination(newStart));
+  };
 
   useEffect(() => {
     const values = queryString.parse(search);
@@ -78,7 +82,6 @@ export default function MyBugs() {
           id: res.id,
           severity: res.severity?.name,
           status: status,
-          campaign: `CP${res.campaign?.id} - ${res.campaign?.name}`,
           title: res.title?.replace(/\\(.)/gm, "$1"),
           action: {
             title: `${window.location.origin}/${
@@ -104,15 +107,16 @@ export default function MyBugs() {
   }, [results]);
 
   useEffect(() => {
-    dispatch(fetchMyBugs()).then(() => setIsLoading(false));
+    if (selectedCampaign || selectedSeverity || selectedStatus) {
+      changePagination(1);
+      dispatch(fetchMyBugsFilters());
+    }
+  }, [selectedCampaign, selectedSeverity, selectedStatus]);
+
+  useEffect(() => {
+    dispatch(fetchMyBugs());
     dispatch(fetchMyBugsFilters());
   }, []);
-
-  const changePagination = (newPage: number) => {
-    setIsLoading(true);
-    const newStart = limit * (newPage - 1);
-    dispatch(updateMybugsPagination(newStart)).then(() => setIsLoading(false));
-  };
 
   return (
     <PageTemplate title={t("Uploaded Bugs")} route={"my-bugs"} shouldBeLoggedIn>

@@ -9,6 +9,10 @@ export const fetchMyBugs =
     const {
       myBugs: { bugsList, selectedCampaign, selectedSeverity, selectedStatus },
     } = getState();
+    dispatch({
+      type: "myBugs/setIsLoading",
+      payload: true,
+    });
     try {
       const query: ApiOperations["get-users-me-bugs"]["parameters"]["query"] = {
         order: bugsList.order,
@@ -16,13 +20,13 @@ export const fetchMyBugs =
         limit: bugsList.limit,
         start: bugsList.start,
         filterBy: {
-          ...(selectedCampaign?.value && { campaing: selectedCampaign.value }),
+          ...(selectedCampaign?.value && { campaign: selectedCampaign.value }),
           ...(selectedSeverity?.value && { severity: selectedSeverity.value }),
           ...(selectedStatus?.value && { status: selectedStatus.value }),
         },
       };
       const data = await API.myBugs({ query });
-      return dispatch({
+      dispatch({
         type: "myBugs/updateBugsList",
         payload: data,
       });
@@ -33,7 +37,7 @@ export const fetchMyBugs =
         if ((start || 0) - limit >= 0) {
           dispatch(updateMybugsPagination((start || 0) - limit));
         }
-        return dispatch({
+        dispatch({
           type: "myBugs/updateBugsList",
           payload: {
             size: size,
@@ -45,6 +49,10 @@ export const fetchMyBugs =
         addMessage(error.message, "danger", false);
       }
     }
+    dispatch({
+      type: "myBugs/setIsLoading",
+      payload: false,
+    });
   };
 
 export const updateMybugsPagination =
@@ -78,11 +86,16 @@ export const fetchMyBugsFilters =
     const {
       myBugs: { selectedCampaign, selectedSeverity, selectedStatus },
     } = getState();
+    dispatch({
+      type: "myBugs/setIsLoading",
+      payload: true,
+    });
     try {
       const query: ApiOperations["get-users-me-bugs"]["parameters"]["query"] = {
         orderBy: "id",
+        order: "DESC",
         filterBy: {
-          ...(selectedCampaign?.value && { campaing: selectedCampaign.value }),
+          ...(selectedCampaign?.value && { campaign: selectedCampaign.value }),
           ...(selectedSeverity?.value && { severity: selectedSeverity.value }),
           ...(selectedStatus?.value && { status: selectedStatus.value }),
         },
@@ -136,6 +149,10 @@ export const fetchMyBugsFilters =
       const error = e as HttpError;
       console.log(error);
     }
+    dispatch({
+      type: "myBugs/setIsLoading",
+      payload: false,
+    });
   };
 
 export const setSelectedCampaign =

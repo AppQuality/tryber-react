@@ -11,6 +11,7 @@ export const initialState: MyBugsState = {
   campaigns: [],
   severities: [],
   status: [],
+  isLoading: true,
 };
 
 export default (state = initialState, action: MyBugsActions) => {
@@ -60,6 +61,11 @@ export default (state = initialState, action: MyBugsActions) => {
       return {
         ...state,
         selectedStatus: action.payload,
+      };
+    case "myBugs/setIsLoading":
+      return {
+        ...state,
+        isLoading: action.payload,
       };
     default:
       return state;

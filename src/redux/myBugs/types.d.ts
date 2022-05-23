@@ -11,6 +11,7 @@ type MyBugsState = {
   selectedCampaign?: SelectType.Option;
   selectedSeverity?: SelectType.Option;
   selectedStatus?: SelectType.Option;
+  isLoading: boolean;
 };
 
 type MyBugsActions =
@@ -21,7 +22,8 @@ type MyBugsActions =
   | MyBugsActions_SetStatus
   | MyBugsActions_SetSelectedCampaign
   | MyBugsActions_SetSelectedSeverity
-  | MyBugsActions_SetSelectedStatus;
+  | MyBugsActions_SetSelectedStatus
+  | MyBugsActions_SetIsLoading;
 
 type BugsOrderByType = "id" | "status" | "title" | "campaign";
 
@@ -66,4 +68,9 @@ type MyBugsActions_SetSelectedSeverity = {
 type MyBugsActions_SetSelectedStatus = {
   type: "myBugs/setSelectedStatus";
   payload: SelectType.Option;
+};
+
+type MyBugsActions_SetIsLoading = {
+  type: "myBugs/setIsLoading";
+  payload: boolean;
 };

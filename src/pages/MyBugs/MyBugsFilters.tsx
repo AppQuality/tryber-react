@@ -59,6 +59,7 @@ const MyBugsFilters = ({
   ) {
     statusValue = selectedStatus;
   }
+
   return (
     <div>
       <div className="aq-mb-3">
