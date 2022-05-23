@@ -75,10 +75,13 @@ export const NextMonthSituation = ({
           i18nKey="<bold>{{pointsToKeepLevel}}</bold> points to keep level:::__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70"
           values={{
             pointsToKeepLevel: rankingSummary.prospect.maintenance,
+            level: rankingSummary.level.name,
           }}
           components={{ bold: <strong className="aq-text-primary" /> }}
           count={rankingSummary.prospect.maintenance}
-          defaults={"<bold>{{pointsToKeepLevel}}</bold> points to keep level"}
+          defaults={
+            "<bold>{{pointsToKeepLevel}}</bold> points to keep level <bold>{{level}}</bold>"
+          }
         />
       );
     }
