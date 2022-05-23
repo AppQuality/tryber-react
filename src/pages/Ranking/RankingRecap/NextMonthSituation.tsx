@@ -6,6 +6,7 @@ import graphIcon from "src/pages/Ranking/assets/graphIcon.svg";
 import styled from "styled-components";
 import localizedUrl from "src/utils/localizedUrl";
 import { ProgressRanking } from "./ProgressRanking/ProgressRanking";
+import { ReactNode } from "react";
 
 const StyledRecap = styled.div`
   border-top: 1px solid ${(p) => p.theme.colors.gray200};
@@ -92,6 +93,47 @@ export const NextMonthSituation = ({
         defaults={
           "<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>"
         }
+      />
+    );
+  };
+
+  const getProgressMessage = (): ReactNode => {
+    if (rankingSummary.prospect.maintenance) {
+      return (
+        <Trans
+          i18nKey={
+            "give your best to keep level {{level}}:::__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70"
+          }
+          values={{ level: rankingSummary.level.name }}
+          components={{ bold: <strong className="aq-text-primary" /> }}
+        />
+      );
+    }
+    if (
+      rankingSummary.prospect.level.name &&
+      rankingSummary.prospect.next?.level.name
+    ) {
+      return (
+        <Trans
+          i18nKey={
+            "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}:::__RANKING_PROGRESS_MESSAGE_OVER_MAX:70"
+          }
+          values={{
+            level: rankingSummary.prospect.level.name,
+            nextLevel: rankingSummary.prospect.next?.level.name,
+          }}
+          components={{ bold: <strong className="aq-text-primary" /> }}
+        />
+      );
+    }
+    return (
+      <Trans
+        i18nKey="{{days}} days left to give your best!:::__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
+        values={{
+          days: getRemainingDaysInMonth(),
+        }}
+        defaults={"{{days}} days left to give your best!"}
+        tOptions={{ count: getRemainingDaysInMonth() }}
       />
     );
   };
@@ -212,14 +254,7 @@ export const NextMonthSituation = ({
             <Text small>
               {rankingSummary.level.id !== 100 &&
               rankingSummary.prospect.level.id !== 100 ? (
-                <Trans
-                  i18nKey="{{days}} days left to give your best!:::__RANKING_PROGRESS_COUNTDOWN_MAX: 50"
-                  values={{
-                    days: getRemainingDaysInMonth(),
-                  }}
-                  defaults={"{{days}} days left to give your best!"}
-                  tOptions={{ count: getRemainingDaysInMonth() }}
-                />
+                getProgressMessage()
               ) : rankingSummary.level.id === 100 ? (
                 <Trans
                   i18nKey="__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100"

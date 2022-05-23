@@ -191,6 +191,9 @@
   "Generic error": "Error genérico",
   "Getting Started": "Empezando",
   "Great job!": "¡Buen Trabajo!",
+  "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
+    "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": ""
+  },
   "Have fun!": "¡No te olvides de pasarlo bien!",
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Aquí está la lista de todos tus dispositivos. Asegúrete de mantenerla actualizada para aumentar tus posibilidades de ser seleccionado para proyectos futuros.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Aquí solo puedes cambiar la versión de tu sistema operativo. Si deseas agregar otro dispositivo, haga clic en \"Agregar dispositivo\"",
@@ -526,6 +529,9 @@
   "contact us": "Contáctanos",
   "email must be the same": "Introduce el mismo correo electrónico",
   "forgot your password?": "¿Has olvidado tu password?",
+  "give your best to keep level {{level}}": {
+    "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": ""
+  },
   "https://www.iubenda.com/privacy-policy/7934311": "\nhttps://www.iubenda.com/privacy-policy/7934311",
   "last month ({{lastMonth}})": {
     "__RANKING_LAST_MONTH_MAX:25": "Último mes ({{lastMonth}})"
