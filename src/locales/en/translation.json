@@ -557,7 +557,7 @@
     "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-MENSILI_MAX: 25": "Monthly exp points",
     "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Total exp points",
     "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
-        "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Great, you're going to be {{level}} in the next month! Now try your best and reach {{nextlevel}}!"
+        "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Great, you're going to be {{level}} in the next month! Now try your best and reach {{nextLevel}}!"
     },
     "give your best to keep level {{level}}": {
         "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Try your best not to level down and to fight for {{level}}"
