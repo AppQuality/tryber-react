@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@appquality/appquality-design-system": "^1.0.29",
-    "@appquality/craft-blocks": "^0.1.21",
+    "@appquality/craft-blocks": "^0.1.22",
     "@datadog/browser-logs": "^3.4.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
