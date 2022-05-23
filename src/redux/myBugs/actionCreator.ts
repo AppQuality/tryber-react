@@ -49,10 +49,6 @@ export const fetchMyBugs =
         addMessage(error.message, "danger", false);
       }
     }
-    dispatch({
-      type: "myBugs/setIsLoading",
-      payload: false,
-    });
   };
 
 export const updateMybugsPagination =

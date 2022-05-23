@@ -31,6 +31,7 @@ export default (state = initialState, action: MyBugsActions) => {
           ...state.bugsList,
           ...action.payload,
         },
+        isLoading: false,
       };
     case "myBugs/setCampaigns":
       return {
