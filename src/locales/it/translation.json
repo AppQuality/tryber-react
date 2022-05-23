@@ -557,7 +557,7 @@
     "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-MENSILI_MAX: 25": "Exp points mensili",
     "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Exp points totali",
     "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
-        "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Grande, il prossimo mese sarai {{level}}! Dai il tuo meglio e conquista {{nextlevel}}!"
+        "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Grande, il prossimo mese sarai {{level}}! Dai il tuo meglio e conquista {{nextLevel}}!"
     },
     "give your best to keep level {{level}}": {
         "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Dai il tuo meglio per non retrocedere e continuare a essere {{level}}"
