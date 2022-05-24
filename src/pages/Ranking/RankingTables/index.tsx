@@ -3,8 +3,8 @@ import { MyRankingTable } from "./MyRankingTable";
 import { TopRankingTable } from "./TopRankingTable";
 import noLevelBackground from "./assets/noLevelBackground.svg";
 import noLevelIcon from "./assets/noLevelIcon.svg";
-import { useAppDispatch } from "../../../redux/provider";
-import { fetchRankings } from "../../../redux/ranking/actionCreator";
+import { useAppDispatch } from "src/redux/provider";
+import { fetchRankings } from "src/redux/ranking/actionCreator";
 import { useEffect } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import localizedUrl from "../../../utils/localizedUrl";
@@ -59,17 +59,6 @@ export const RankingTables = () => {
 
   return (
     <StyledRankingTables>
-      <TopTitle
-        text={
-          level?.id === 0
-            ? t("__RANKING_MAIN-TITLE_LABEL_MONTH_NO-LEVEL_MAX: 45")
-            : t(
-                "Monthly ranking | level {{level}}:::__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45",
-                { level: level?.name }
-              )
-        }
-        bold
-      />
       {level?.id === 0 ? (
         <div className="no-level">
           <img src={noLevelBackground} alt={"No level background"} />
@@ -92,6 +81,13 @@ export const RankingTables = () => {
         </div>
       ) : (
         <>
+          <TopTitle
+            text={t(
+              "Monthly ranking | level {{level}}:::__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45",
+              { level: level?.name }
+            )}
+            bold
+          />
           <TopRankingTable />
           <MyRankingTable />
         </>
