@@ -235,6 +235,9 @@
   "Method": "Method",
   "Model": "Model",
   "Model: <bold>{{model}}</bold>": "Model: <bold>{{model}}</bold>",
+  "Monthly ranking | level {{level}}": {
+    "__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45": ""
+  },
   "Must be at least 6 character long": "Must be at least 6 character long",
   "Must contain at least a lowercase letter": "Must contain at least a lowercase letter",
   "Must contain at least a number": "Must contain at least a number",
@@ -253,6 +256,9 @@
   "Operating system version": "Operating system version",
   "Order By_Sort Table Select": "Order by",
   "Other": "Other",
+  "Overall ranking | level {{level}}": {
+    "__RANKING_TITLE_LABEL_MONTH_MAX: 45": ""
+  },
   "PC Type: <bold>{{pc_type}}</bold>": "PC Type: <bold>{{pc_type}}</bold>",
   "Page %current% / %total%": "Page %current% / %total%",
   "Paid": "Paid",
@@ -352,6 +358,9 @@
   "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!": "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!",
   "This value is invalid, you need to select a city with a province": "This value is invalid, you need to select a city with a province",
   "Title": "Title",
+  "Top 3 | level {{level}}": {
+    "__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25": ""
+  },
   "Total booty": "Total booty",
   "Try again.": "Try again.",
   "Type": "Type",
@@ -406,7 +415,6 @@
   "Your profile doesn't match with your fiscal profile, please check your data": "Your profile doesn't match with your fiscal profile, please check your data",
   "Zip code": "Zip code",
   "__CARD_RECAP_DASHBOARD_CTA_MAX: 30": "Check ranking",
-  "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "{{level}} level",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-MENSILI_MAX: 25": "Monthly exp points",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Total exp points",
   "__FISCAL_PROFILE_TAX_ID_DISCLAIMER": "Everytime you change any of your personal data, you will need to re-enter the Tax ID Number.",
@@ -493,17 +501,14 @@
   "__RANKING_LEGEND_QUESTIONS_MAX: 70": "Any questions or doubts on how our ranking works?",
   "__RANKING_LEGEND_TITLE_MAX: 35": "How to level up",
   "__RANKING_MAIN-TITLE_LABEL_MONTH_NO-LEVEL_MAX: 45": "Monthly ranking | {{nolevel}}",
-  "__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45": "Monthly ranking | {{level}} level",
   "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "Start from Basic to climb up in the ranking",
   "__RANKING_PROGRESS_MESSAGE_MAX:50": "",
   "__RANKING_PROGRESS_MONTH_MAX: 35": "Real-time scores",
   "__RANKING_SUBTITLE_WELCOME_MAX: 125": "Check your progress, increase your chances of selection, outdo other Trybers and go to the top",
   "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Exp points",
   "__RANKING_TITLE_LABEL_ID_MAX: 10": "Tryber ID",
-  "__RANKING_TITLE_LABEL_MONTH_MAX: 45": "Overall ranking | {{level}} level",
   "__RANKING_TITLE_LABEL_NAME_MAX: 20": "Name",
   "__RANKING_TITLE_LABEL_POSITION_MAX: 15": "Position",
-  "__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25": "Top 3 | {{level}} level",
   "__RANKING_TITLE_WELCOM_MAX: 20": "Ranking",
   "__SELECT_DEFAULT_NO_OPTION": "No options",
   "__WALLET_CARD-GUIDES_CTA MAX: 20": "Read our guides",
@@ -543,6 +548,9 @@
   },
   "level {{levelName}}": {
     "__RANKING_NAME_LEVEL_MAX:25": "{{levelName}} level"
+  },
+  "level {{level}}": {
+    "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Level"
   },
   "login": "login",
   "login with your credentials": "login with your credentials",

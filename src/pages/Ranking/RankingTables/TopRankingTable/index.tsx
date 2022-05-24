@@ -64,9 +64,10 @@ export const TopRankingTable = () => {
   return (
     <StyledRanking>
       <TopTitle
-        text={`${t("__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25")} ${
-          level?.name || ""
-        }`}
+        text={t(
+          "Top 3 | level {{level}}:::__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25",
+          { level: level?.name }
+        )}
         background={level?.id ? rankingTheme[level.id].background1 : undefined}
         color={level?.id ? rankingTheme[level.id].textColor : undefined}
         bold

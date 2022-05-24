@@ -63,9 +63,10 @@ export const RankingTables = () => {
         text={
           level?.id === 0
             ? t("__RANKING_MAIN-TITLE_LABEL_MONTH_NO-LEVEL_MAX: 45")
-            : `${t("__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45")} ${
-                level?.name || ""
-              }`
+            : t(
+                "Monthly ranking | level {{level}}:::__RANKING_MAIN-TITLE_LABEL_MONTH_OTHER_MAX: 45",
+                { level: level?.name }
+              )
         }
         bold
       />

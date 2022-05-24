@@ -85,9 +85,10 @@ export const MyRankingTable = () => {
   return (
     <StyledRanking>
       <TopTitle
-        text={`${t("__RANKING_TITLE_LABEL_MONTH_MAX: 45")} ${
-          level?.name || ""
-        }`}
+        text={t(
+          "Overall ranking | level {{level}}:::__RANKING_TITLE_LABEL_MONTH_MAX: 45",
+          { level: level?.name }
+        )}
         background={aqBootstrapTheme.colors.gray50}
         color={aqBootstrapTheme.colors.gray700}
       />
