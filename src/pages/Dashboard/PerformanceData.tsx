@@ -65,7 +65,7 @@ const PerformanceData = () => {
             text: t(
               "level {{level}}:::__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20",
               {
-                defaultValue: "Level",
+                defaultValue: "Level {{level}}",
                 level: summary?.level.name,
               }
             ),

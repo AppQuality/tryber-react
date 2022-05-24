@@ -550,7 +550,7 @@
     "__RANKING_NAME_LEVEL_MAX:25": "{{levelName}} level"
   },
   "level {{level}}": {
-    "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Level"
+    "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": ""
   },
   "login": "login",
   "login with your credentials": "login with your credentials",
