@@ -10,6 +10,7 @@ type GeneralState = {
   wallet: WalletState;
   ranking: RankingState;
   myBugs: MyBugsState;
+  experiencePoints: ExperiencePointsState;
 };
 
 type AppDispatch = typeof store.dispatch;
