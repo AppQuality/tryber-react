@@ -5,8 +5,10 @@ import {
 } from "@appquality/appquality-design-system";
 import i18n from "i18next";
 import { useTranslation } from "react-i18next";
+import { shallowEqual, useSelector } from "react-redux";
 import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import styled from "styled-components";
+import { Level } from "../Ranking/Level";
 import usePerformance from "./effects/usePerformance";
 import { GoToBlock, Statistic } from "./performanceRow";
 
@@ -19,37 +21,63 @@ const StyledIcon = styled.div`
 const PerformanceData = () => {
   const { t } = useTranslation();
   const {
-    AwardFill,
     BookmarkCheckFill,
     BugFill,
     PiggyBankFill,
     StarFill,
     CashCoin,
     ArrowRight,
+    Star,
   } = icons;
   const {
     expPoints,
-    rank,
     cpCompleted,
     bugsApproved,
     allBooty,
     pendingBooty,
     loading,
   } = usePerformance();
+
+  const { summary } = useSelector(
+    (state: GeneralState) => state.ranking,
+    shallowEqual
+  );
+
   const performanceData = [
     {
       icon: <StarFill size={"21"} className={"aq-text-warningVariant"} />,
-      text: t("Experience Points"),
+      text: t("__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25", {
+        defaultValue: "Total exp points",
+      }),
       val: expPoints,
     },
     {
-      icon: <AwardFill size={"21"} className={"aq-text-infoVariant"} />,
-      text: t("Your Rank"),
-      val: rank + (isNaN(parseFloat(rank)) ? "" : "°"),
+      icon: <Star size={"21"} className={"aq-text-primaryVariant"} />,
+      text: t("__CARD_RECAP_DASHBOARD_LABEL_PUNTI-MENSILI_MAX: 25", {
+        defaultValue: "Monthly exp points",
+      }),
+      val: summary?.points || 0,
     },
+    ...(summary?.level
+      ? [
+          {
+            icon: <Level level={summary?.level} hideName />,
+            text: t(
+              "level {{level}}:::__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20",
+              {
+                defaultValue: "Level {{level}}",
+                level: summary?.level.name,
+              }
+            ),
+            val: `${summary.rank}°`,
+          },
+        ]
+      : []),
     {
       icon: <ArrowRight size={"21"} />,
-      text: t("View ranking page"),
+      text: t("__CARD_RECAP_DASHBOARD_CTA_MAX: 30", {
+        defaultValue: "View ranking page",
+      }),
       link: `/${
         i18n.language === "en"
           ? "leaderboard"

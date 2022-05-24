@@ -23,6 +23,17 @@ const resources = {
 i18n
   .use(LanguageDetector)
   .use(initReactI18next) // passes i18n down to react-i18next
+  .use({
+    type: "postProcessor",
+    name: "test",
+    process: function (value: string) {
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      if (urlSearchParams.has("debugTranslations")) {
+        return "<T>" + value + "</T>";
+      }
+      return value;
+    },
+  })
   .init({
     detection: {
       order: ["querystring", "path", "subdomain"],
@@ -39,6 +50,7 @@ i18n
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
+    postProcess: "test",
   });
 
 export default i18n;

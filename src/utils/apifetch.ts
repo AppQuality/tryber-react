@@ -7,6 +7,7 @@ const apifetch = async ({
   params,
   token,
   paramType,
+  headers,
 }: {
   endpoint: string;
   method?: string;
@@ -14,12 +15,17 @@ const apifetch = async ({
   params?: object;
   token?: string;
   paramType?: string;
+  headers?: { [key: string]: string };
 }) => {
   if (process.env.REACT_APP_DEFAULT_TOKEN)
     token = process.env.REACT_APP_DEFAULT_TOKEN;
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set("Content-Type", "application/json");
-  //requestHeaders.set("x-tryber-mock-example", "200:single-paid-payment");
+  if (headers) {
+    Object.keys(headers).forEach((key) => {
+      requestHeaders.set(key, headers[key]);
+    });
+  }
   if (token) {
     requestHeaders.set("Authorization", "Bearer " + token);
   }
