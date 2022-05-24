@@ -229,9 +229,9 @@ export const NextMonthSituation = ({
         {rankingSummary.level.id === 0 ? (
           <Text>
             <Trans
-              i18nKey="let's see what tryber you are with the <link>entry test</link>:::__RANKING_PROGRESS_NOLEVEL_MAX: 60"
+              i18nKey="let's see what tryber you are with the <entry_test_link>entry test</entry_test_link>:::__RANKING_PROGRESS_NOLEVEL_MAX: 60"
               defaults={
-                "let's see what tryber you are with the <link>entry test</link>"
+                "let's see what tryber you are with the <entry_test_link>entry test</entry_test_link>"
               }
               components={{
                 link: (
