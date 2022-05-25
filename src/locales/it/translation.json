@@ -15,13 +15,16 @@
     "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": "<bold>{{pointsToAdvance}}</bold> exp points per avanzare al livello {{nextLevel}}"
   },
   "<bold>{{pointsToKeepLevel}}</bold> points to keep level": {
-    "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": "<bold>{{pointsToKeepLevel}}</bold> exp points per mantenere il livello {{level}}"
+    "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": "<bold>{{pointsToKeepLevel}}</bold> exp point per mantenere il livello {{level}}",
+    "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70_plural": "<bold>{{pointsToKeepLevel}}</bold> exp point per mantenere il livello {{level}}"
   },
   "<bold>{{points}}</bold> exp points": {
-    "__RANKING_PROGRESS_POINTS_MAX: 25": "<bold>{{points}}</bold> exp points"
+    "__RANKING_PROGRESS_POINTS_MAX: 25": "<bold>{{points}}</bold> exp point",
+    "__RANKING_PROGRESS_POINTS_MAX: 25_plural": "<bold>{{points}}</bold> exp point"
   },
   "<bold>{{points}}</bold> total exp points": {
-    "__RANKING_EXP_POINTS_MAX:25": "<bold>{{points}}</bold> exp points totali"
+    "__RANKING_EXP_POINTS_MAX:25": "<bold>{{points}}</bold> exp point totali",
+    "__RANKING_EXP_POINTS_MAX:25_plural": "<bold>{{points}}</bold> exp points totale"
   },
   "<bold>{{rank}}</bold> in {{level}} ranking": {
     "__RANKING_POSITION_MAX: 30": "<bold>{{rank}}</bold> in classifica {{level}}"
