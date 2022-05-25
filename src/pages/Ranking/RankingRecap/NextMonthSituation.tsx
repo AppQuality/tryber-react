@@ -91,6 +91,9 @@ export const NextMonthSituation = ({
       <Trans
         i18nKey="<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>:::__RANKING_PROGRESS_HOLDLVL_REACHED_MAX: 70"
         components={{ bold: <strong className="aq-text-primary" /> }}
+        values={{
+          level: rankingSummary.level.name,
+        }}
         defaults={
           "<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>"
         }
