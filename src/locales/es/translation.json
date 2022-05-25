@@ -489,7 +489,7 @@
     },
     "__FISCAL_PROFILE_TAX_ID_DISCLAIMER": "Cuando cambies alguno de tus datos personales, tendrás que volver a introducir tu número de identificación fiscal.",
     "Available tags : <entry_test_link> (Link to entry test)": {
-        "__RANKING_MODAL_MESSAGE_MAX: 250": "Todavía no estás en la clasificación: completa el <link>Entry Test</link> para ganar los primeros puntos y llegar al nivel Basic"
+        "__RANKING_MODAL_MESSAGE_MAX: 250": "Todavía no estás en la clasificación: completa el <entry_test_link>Entry Test</entry_test_link> para ganar los primeros puntos y llegar al nivel Basic"
     },
     "__RANKING_PROGRESS_MONTH_MAX: 35": "Tus resultados en tiempo real",
     "__RANKING_SUBTITLE_WELCOME_MAX: 125": "Consulta tus progresos, aumenta tus posibilidades de selección, supera a los demás Tryber y obtén el primer puesto",

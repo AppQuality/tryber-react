@@ -1,12 +1,12 @@
 import { Text, Title } from "@appquality/appquality-design-system";
+import { ReactNode } from "react";
 import { ArrowLeftRight, ArrowRight } from "react-bootstrap-icons";
 import { Trans } from "react-i18next";
-import starIcon from "src/pages/Ranking/assets/star.svg";
 import graphIcon from "src/pages/Ranking/assets/graphIcon.svg";
-import styled from "styled-components";
+import starIcon from "src/pages/Ranking/assets/star.svg";
 import localizedUrl from "src/utils/localizedUrl";
+import styled from "styled-components";
 import { ProgressRanking } from "./ProgressRanking/ProgressRanking";
-import { ReactNode } from "react";
 
 const StyledRecap = styled.div`
   border-top: 1px solid ${(p) => p.theme.colors.gray200};
@@ -234,7 +234,7 @@ export const NextMonthSituation = ({
                 "let's see what tryber you are with the <entry_test_link>entry test</entry_test_link>"
               }
               components={{
-                link: (
+                entry_test_link: (
                   <a
                     className="no-level-link"
                     href={localizedUrl(`/courses/16`)}

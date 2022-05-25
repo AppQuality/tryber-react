@@ -2,7 +2,12 @@ import styled from "styled-components";
 
 export const StyledRanking = styled.div`
   .table-card {
-    grid-template-columns: 6px 2em max-content 60% auto;
+    grid-template-columns: 6px max-content max-content 60% auto;
+    & > div {
+      &:nth-child(2) {
+        margin-right: 1em;
+      }
+    }
   }
   .ranking-position {
     font-weight: ${(p) => p.theme.typography.fontWeight.bold};
@@ -22,16 +27,26 @@ export const StyledRanking = styled.div`
       p
     ) => p.theme.grid.breakpoints.md}) {
     .table-card {
-      grid-template-columns: 6px 2em max-content 45% auto;
+      grid-template-columns: 6px max-content max-content 45% auto;
+      & > div {
+        &:nth-child(2) {
+          margin-right: 1em;
+        }
+      }
     }
   }
   @media (max-width: ${(p) => p.theme.grid.breakpoints.sm}) {
     .table-card {
-      grid-template-columns: 6px 1.5em max-content minmax(5%, 40%) minmax(
+      grid-template-columns: 6px max-content max-content minmax(5%, 40%) minmax(
           20%,
           35%
         );
       grid-column-gap: 8px;
+      & > div {
+        &:nth-child(2) {
+          margin-right: 0.5em;
+        }
+      }
     }
   }
 `;
