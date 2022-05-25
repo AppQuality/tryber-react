@@ -489,7 +489,7 @@
     },
     "__FISCAL_PROFILE_TAX_ID_DISCLAIMER": "Everytime you change any of your personal data, you will need to re-enter the Tax ID Number.",
     "Available tags : <entry_test_link> (Link to entry test)": {
-        "__RANKING_MODAL_MESSAGE_MAX: 250": "You haven't ranked up yet: complete our <link>Entry Test</link> to earn the first exp points and to reach the Basic level"
+        "__RANKING_MODAL_MESSAGE_MAX: 250": "You haven't ranked up yet: complete our <entry_test_link>Entry Test</entry_test_link> to earn the first exp points and to reach the Basic level"
     },
     "__RANKING_PROGRESS_MONTH_MAX: 35": "Real-time scores",
     "__RANKING_SUBTITLE_WELCOME_MAX: 125": "Check your progress, increase your chances of selection, outdo other Trybers and go to the top",
