@@ -23,8 +23,8 @@
     "__RANKING_PROGRESS_POINTS_MAX: 25_plural": "<bold>{{points}}</bold> exp point"
   },
   "<bold>{{points}}</bold> total exp points": {
-    "__RANKING_EXP_POINTS_MAX:25": "<bold>{{points}}</bold> exp point totali",
-    "__RANKING_EXP_POINTS_MAX:25_plural": "<bold>{{points}}</bold> exp points totale"
+    "__RANKING_EXP_POINTS_MAX:25": "<bold>{{points}}</bold> exp point totale",
+    "__RANKING_EXP_POINTS_MAX:25_plural": "<bold>{{points}}</bold> exp points totali"
   },
   "<bold>{{rank}}</bold> in {{level}} ranking": {
     "__RANKING_POSITION_MAX: 30": "<bold>{{rank}}</bold> in classifica {{level}}"
