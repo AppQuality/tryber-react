@@ -3,29 +3,100 @@ import {
   BSGrid,
   Button,
   Card,
+  TableType,
   Text,
 } from "@appquality/appquality-design-system";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { shallowEqual, useSelector } from "react-redux";
 import { PageTemplate } from "src/features/PageTemplate";
-import { useExperiencePoints } from "src/pages/ExperiencePoints/effects/useExperiencePoints";
+import {
+  fetchExperiencePoints,
+  fetchExperiencePointsFilters,
+  updateExperiencePointsPagination,
+} from "../../redux/experiencePoints/actionCreator";
+import { mapActivityName } from "../../redux/experiencePoints/utils";
+import { useAppDispatch } from "../../redux/provider";
+import dateFormatter from "../../utils/dateFormatter";
+import { ExperiencePointsColumns } from "./columns";
 import ExperiencePointsFilters from "./ExperiencePointsFilters";
 import ExperiencePointsTable from "./ExperiencePointsTable";
 
 export default function ExperiencePoints() {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const [columns, setcolumns] = useState<TableType.Column[]>(
+    ExperiencePointsColumns(dispatch, t)
+  );
+  const [rows, setRows] = useState<TableType.Row[]>([]);
+
   const {
-    data,
-    page,
-    totalEntries,
-    limit,
-    search,
+    expList,
     campaigns,
     activities,
     dates,
-    loading,
-    order,
-    orderBy,
-  } = useExperiencePoints();
+    selectedCampaign,
+    selectedActivity,
+    selectedDate,
+    search,
+    isLoading,
+  } = useSelector(
+    (state: GeneralState) => state.experiencePoints,
+    shallowEqual
+  );
+
+  const { results, limit, total, start, order, orderBy } = expList;
+
+  const changePagination = (newPage: number) => {
+    const newStart = limit * (newPage - 1);
+    dispatch(updateExperiencePointsPagination(newStart));
+  };
+
+  useEffect(() => {
+    setRows(
+      results.map((res) => {
+        return {
+          key: res.id,
+          amount: {
+            title: `${res.amount > 0 ? `+${res.amount}` : res.amount}pts`,
+            content:
+              res.amount === 0 ? (
+                <b className="aq-text-primary">{res.amount}pts</b>
+              ) : res.amount > 0 ? (
+                <b className="aq-text-success">+{res.amount}pts</b>
+              ) : (
+                <b className="aq-text-danger">{res.amount}pts</b>
+              ),
+          },
+          date: dateFormatter(res.date),
+          activity: mapActivityName(res.activity.id, t),
+          campaign:
+            res.campaign.title && res.campaign.id > 0
+              ? `CP${res.campaign.id}`
+              : `-`,
+          note: res.note?.replace(/\\(.)/gm, "$1"),
+        };
+      })
+    );
+  }, [results]);
+
+  useEffect(() => {
+    if (
+      selectedCampaign ||
+      selectedActivity ||
+      selectedDate ||
+      search ||
+      search === ""
+    ) {
+      changePagination(1);
+      dispatch(fetchExperiencePointsFilters(t));
+    }
+  }, [selectedCampaign, selectedActivity, selectedDate, search]);
+
+  useEffect(() => {
+    dispatch(fetchExperiencePoints());
+    dispatch(fetchExperiencePointsFilters(t));
+  }, []);
 
   return (
     <PageTemplate
@@ -37,12 +108,13 @@ export default function ExperiencePoints() {
         <BSCol size="col-lg-9 ">
           <Card className="aq-mb-3" title={t("History")}>
             <ExperiencePointsTable
-              data={data.current}
-              page={page.current}
-              setPage={page.set}
-              totalEntries={totalEntries}
-              limit={limit.current}
-              loading={loading}
+              data={rows}
+              page={(start || 0) / limit + 1}
+              setPage={changePagination}
+              totalEntries={total}
+              limit={limit}
+              loading={isLoading}
+              columns={columns}
               order={order}
               orderBy={orderBy}
             />
@@ -56,6 +128,9 @@ export default function ExperiencePoints() {
                 campaigns={campaigns}
                 activities={activities}
                 dates={dates}
+                selectedCampaign={selectedCampaign}
+                selectedActivity={selectedActivity}
+                selectedDate={selectedDate}
               />
             </Card>
             <Card shadow={true}>
