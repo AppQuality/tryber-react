@@ -7,28 +7,21 @@ import {
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useDebounce from "src/hooks/useDebounce";
+import {
+  setSelectedActivity,
+  setSelectedCampaign,
+  setSelectedDate,
+} from "../../redux/experiencePoints/actionCreator";
+import { useAppDispatch } from "../../redux/provider";
 
 interface ExperiencePointsFiltersProps {
-  // todo: get this from useMyBugs or they could diverge
-  search: {
-    current: string;
-    set: (val: string) => void;
-  };
-  campaigns: {
-    current: SelectType.Option[];
-    setSelected: (val: SelectType.Option) => void;
-    selected: SelectType.Option | undefined;
-  };
-  dates: {
-    current: SelectType.Option[];
-    setSelected: (val: SelectType.Option) => void;
-    selected: SelectType.Option | undefined;
-  };
-  activities: {
-    current: SelectType.Option[];
-    setSelected: (val: SelectType.Option) => void;
-    selected: SelectType.Option | undefined;
-  };
+  campaigns: SelectType.Option[];
+  activities: SelectType.Option[];
+  dates: SelectType.Option[];
+  selectedCampaign?: SelectType.Option;
+  selectedActivity?: SelectType.Option;
+  selectedDate?: SelectType.Option;
+  search?: string;
 }
 
 const ExperiencePointsFilters = ({
@@ -36,35 +29,44 @@ const ExperiencePointsFilters = ({
   campaigns,
   dates,
   activities,
+  selectedCampaign,
+  selectedActivity,
+  selectedDate,
 }: ExperiencePointsFiltersProps) => {
-  const [currentSearch, setCurrentSearch] = useState(search.current);
-  const debouncedSearch = useDebounce(currentSearch, 500);
-  useEffect(() => search.set(debouncedSearch), [debouncedSearch]);
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const [currentSearch, setCurrentSearch] = useState(search);
+  const debouncedSearch = useDebounce(currentSearch, 500);
+
   const allCampaign = t("All", { context: "female" });
   const allActivities = t("All", { context: "female" });
   const allDates = t("All", { context: "female" });
   let campaignValue = { label: allCampaign };
   let activityValue = { label: allActivities };
   let dateValue = { label: allDates };
+
   if (
-    campaigns.selected &&
-    campaigns.current.map((c) => c.value).includes(campaigns.selected.value)
+    selectedCampaign &&
+    campaigns.map((c) => c.value).includes(selectedCampaign.value)
   ) {
-    campaignValue = campaigns.selected;
+    campaignValue = selectedCampaign;
   }
   if (
-    activities.selected &&
-    activities.current.map((s) => s.value).includes(activities.selected.value)
+    selectedActivity &&
+    activities.map((s) => s.value).includes(selectedActivity.value)
   ) {
-    activityValue = activities.selected;
+    activityValue = selectedActivity;
   }
-  if (
-    dates.selected &&
-    dates.current.map((s) => s.value).includes(dates.selected.value)
-  ) {
-    dateValue = dates.selected;
+  if (selectedDate && dates.map((s) => s.value).includes(selectedDate.value)) {
+    dateValue = selectedDate;
   }
+
+  useEffect(() => {
+    dispatch({
+      type: "experiencePoints/setSearch",
+      payload: debouncedSearch,
+    });
+  }, [debouncedSearch]);
 
   return (
     <div>
@@ -80,9 +82,9 @@ const ExperiencePointsFilters = ({
       <div className="aq-mb-3">
         <Select
           label={t("Campaign")}
-          onChange={campaigns.setSelected}
+          onChange={(value) => dispatch(setSelectedCampaign(value))}
           name="campaign"
-          options={[{ label: allCampaign }, ...campaigns.current]}
+          options={[{ label: allCampaign }, ...campaigns]}
           value={campaignValue}
           isSearchable
           placeholder={t("Search")}
@@ -93,9 +95,9 @@ const ExperiencePointsFilters = ({
       <div className="aq-mb-3">
         <Select
           label={t("Activity")}
-          onChange={activities.setSelected}
+          onChange={(value) => dispatch(setSelectedActivity(value))}
           name="severity"
-          options={[{ label: allActivities }, ...activities.current]}
+          options={[{ label: allActivities }, ...activities]}
           value={activityValue}
           isSearchable={false}
           placeholder={t("Search")}
@@ -106,9 +108,9 @@ const ExperiencePointsFilters = ({
       <div className="aq-mb-3">
         <Select
           label={t("Date")}
-          onChange={dates.setSelected}
+          onChange={(value) => dispatch(setSelectedDate(value))}
           name="status"
-          options={[{ label: allDates }, ...dates.current]}
+          options={[{ label: allDates }, ...dates]}
           value={dateValue}
           isSearchable={false}
           placeholder={t("Search")}

@@ -11,6 +11,7 @@ type ExperiencePointsState = {
   selectedCampaign?: SelectType.Option;
   selectedActivity?: SelectType.Option;
   selectedDate?: SelectType.Option;
+  search?: string;
   isLoading: boolean;
 };
 
@@ -23,6 +24,7 @@ type ExperiencePointsActions =
   | ExperiencePointsActions_SetSelectedCampaign
   | ExperiencePointsActions_SetSelectedActivity
   | ExperiencePointsActions_SetSelectedDate
+  | ExperiencePointsActions_SetSearch
   | ExperiencePointsActions_SetIsLoading;
 
 type ExpOrderByType = "amount" | "date";
@@ -70,7 +72,12 @@ type ExperiencePointsActions_SetSelectedDate = {
   payload: SelectType.Option;
 };
 
+type ExperiencePointsActions_SetSearch = {
+  type: "experiencePoints/setSearch";
+  payload: string;
+};
+
 type ExperiencePointsActions_SetIsLoading = {
-  type: "ExperiencePoints/setIsLoading";
+  type: "experiencePoints/setIsLoading";
   payload: boolean;
 };

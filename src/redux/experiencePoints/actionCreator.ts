@@ -1,4 +1,5 @@
 import { SelectType } from "@appquality/appquality-design-system";
+import { TFunction } from "i18next";
 import { ThunkAction } from "redux-thunk";
 import API from "../../utils/api";
 import dateFormatter from "../../utils/dateFormatter";
@@ -19,6 +20,7 @@ export const fetchExperiencePoints =
         selectedCampaign,
         selectedActivity,
         selectedDate,
+        search,
       },
     } = getState();
     dispatch({
@@ -41,6 +43,8 @@ export const fetchExperiencePoints =
             }),
             ...(selectedDate?.value && { date: selectedDate.value }),
           },
+          search: search,
+          searchBy: search && "note",
         };
       const data = await API.experiencePoints({ query });
       dispatch({
@@ -104,7 +108,9 @@ export const updateExperiencePointsSortingOptions =
   };
 
 export const fetchExperiencePointsFilters =
-  (): ThunkAction<
+  (
+    t: TFunction
+  ): ThunkAction<
     Promise<any>,
     GeneralState,
     unknown,
@@ -113,10 +119,11 @@ export const fetchExperiencePointsFilters =
   async (dispatch, getState) => {
     const {
       experiencePoints: {
+        expList,
         selectedCampaign,
         selectedActivity,
         selectedDate,
-        ex,
+        search,
       },
     } = getState();
     dispatch({
@@ -137,6 +144,8 @@ export const fetchExperiencePointsFilters =
             }),
             ...(selectedDate?.value && { date: selectedDate.value }),
           },
+          search: search,
+          searchBy: search && "note",
         };
       const data = await API.experiencePoints({ query });
 
@@ -159,7 +168,7 @@ export const fetchExperiencePointsFilters =
         }
         if (res.activity?.id) {
           _activities[res.activity.id] = {
-            label: mapActivityName(res.activity.id) || "",
+            label: mapActivityName(res.activity.id, t) || "",
             value: res.activity.id.toString(),
           };
         }
@@ -173,7 +182,7 @@ export const fetchExperiencePointsFilters =
       });
 
       let datesFilter = Object.values(_dates).filter((el) => el != null);
-      if (orderBy === "date" && order === "ASC")
+      if (expList.orderBy === "date" && expList.order === "ASC")
         datesFilter = datesFilter.reverse();
 
       dispatch({

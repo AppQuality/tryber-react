@@ -64,6 +64,11 @@ export default (state = initialState, action: ExperiencePointsActions) => {
         ...state,
         selectedDate: action.payload,
       };
+    case "experiencePoints/setSearch":
+      return {
+        ...state,
+        search: action.payload,
+      };
     case "experiencePoints/setIsLoading":
       return {
         ...state,
