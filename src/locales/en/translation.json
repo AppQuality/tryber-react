@@ -72,7 +72,7 @@
     "@@Description for fiscal type@@": "<a>Click here</a> for more info"
   },
   "Available tags : <entry_test_link> (Link to entry test)": {
-    "__RANKING_MODAL_MESSAGE_MAX: 250": "You haven't ranked up yet: complete our <link>Entry Test</link> to earn the first exp points and to reach the Basic level"
+    "__RANKING_MODAL_MESSAGE_MAX: 250": "You haven't ranked up yet: complete our <entry_test_link>Entry Test</entry_test_link> to earn the first exp points and to reach the Basic level"
   },
   "Available tags : <fiscal_profile_link> (Link to fiscal profile)": {
     "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150": "We will use the information in your tax profile for the payment. Do a quick check and update them if necessary.",
