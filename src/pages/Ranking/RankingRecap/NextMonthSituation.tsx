@@ -80,6 +80,7 @@ export const NextMonthSituation = ({
           }}
           components={{ bold: <strong className="aq-text-primary" /> }}
           tOptions={{ count: rankingSummary.prospect.maintenance }}
+          count={rankingSummary.prospect.maintenance}
           defaults={
             "<bold>{{pointsToKeepLevel}}</bold> points to keep level <bold>{{level}}</bold>"
           }
@@ -132,6 +133,7 @@ export const NextMonthSituation = ({
         values={{
           days: getRemainingDaysInMonth(),
         }}
+        count={getRemainingDaysInMonth()}
         defaults={"{{days}} days left to give your best!"}
         tOptions={{ count: getRemainingDaysInMonth() }}
       />
@@ -157,6 +159,7 @@ export const NextMonthSituation = ({
             values={{ points: rankingSummary.points }}
             components={{ bold: <strong className="aq-text-primary" /> }}
             tOptions={{ count: rankingSummary.points }}
+            count={rankingSummary.points}
             defaults={"<bold>{{points}}</bold> exp points"}
           />
         </span>
@@ -217,6 +220,7 @@ export const NextMonthSituation = ({
                 }}
                 components={{ bold: <strong className="aq-text-primary" /> }}
                 tOptions={{ count: rankingSummary.prospect.next?.points }}
+                count={rankingSummary.prospect.next?.points}
                 defaults={
                   "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}"
                 }

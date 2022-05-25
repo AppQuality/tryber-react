@@ -58,6 +58,7 @@ export const CurrentSituation = ({ user, rankingSummary }: UserRankProps) => {
             components={{ bold: <strong className="aq-text-primary" /> }}
             values={{ points: user?.total_exp_pts }}
             tOptions={{ count: user?.total_exp_pts }}
+            count={user?.total_exp_pts}
             defaults="<bold>{{points}}</bold> total exp points"
           />
         </span>
