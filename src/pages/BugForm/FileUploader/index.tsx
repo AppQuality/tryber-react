@@ -45,6 +45,23 @@ export const FileUploader = () => {
 
   const uploadedMedia = mediaList.filter((f) => f.status === "success").length;
 
+  const onAccepted = (acceptedFiles: File[]) => {
+    const newList = [...acceptedFiles];
+    mediaList.forEach((media) => {
+      newList.forEach((f, i) => {
+        if (f.name === media.fileName) {
+          const newfile = new File(
+            [newList[i]],
+            f.name.replace(/(\.[\w\d_-]+)$/i, "_copy$1"),
+            { type: newList[i].type }
+          );
+          newList.splice(i, 1, newfile);
+        }
+      });
+    });
+    dispatch(uploadMedia(newList));
+  };
+
   return (
     <Card title={"Uploading media"}>
       <Dropzone
@@ -53,7 +70,7 @@ export const FileUploader = () => {
         disabled={false}
         maxFiles={MAX_FILES - validMedia}
         maxFilesText="You have reached the maximum number of files you can upload"
-        onAccepted={(acceptedFiles) => dispatch(uploadMedia(acceptedFiles))}
+        onAccepted={onAccepted}
         onRejected={(fileRejections) =>
           console.error("fileRejections", fileRejections)
         }
