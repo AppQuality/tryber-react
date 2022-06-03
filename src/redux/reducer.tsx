@@ -10,6 +10,7 @@ import addResidenceAddressModal from "./addResidenceAddressModal/reducer";
 import wallet from "./wallet/reducer";
 import ranking from "./ranking/reducer";
 import myBugs from "./myBugs/reducer";
+import bugForm from "./bugForm/reducer";
 
 export default combineReducers({
   menu,
@@ -23,4 +24,5 @@ export default combineReducers({
   wallet,
   ranking,
   myBugs,
+  bugForm,
 });

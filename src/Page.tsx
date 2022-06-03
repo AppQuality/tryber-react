@@ -25,6 +25,7 @@ import {
 } from "./pages";
 import referralStore from "./redux/referral";
 import { refreshUser } from "./redux/user/actions/refreshUser";
+import BugForm from "./pages/BugForm";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
   datadogLogs.init({
@@ -154,6 +155,7 @@ function Page() {
         <Route path={`${base}/my-account`} component={Profile} />
         <Route path={`${base}/payments`} component={Wallet} />
         <Route path={`${base}/leaderboard`} component={Ranking} />
+        <Route path={`${base}/bug-form`} component={BugForm} />
         <Route
           path={["/goodbye", "/it/goodbye", "/es/goodbye"]}
           exact
