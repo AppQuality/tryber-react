@@ -166,6 +166,12 @@ export interface paths {
     /** Get all education levels */
     get: operations["get-education"];
   };
+  "/media": {
+    /** Send a media for my bug to AppQuality Bucket. */
+    post: operations["post-media"];
+    delete: operations["delete-media"];
+    parameters: {};
+  };
   "/users": {
     /** Get all users you have access to */
     get: operations["get-users"];
@@ -401,8 +407,11 @@ export interface components {
       projectManager?: components["schemas"]["User"];
       customerCanViewReviewing?: boolean;
       additionalFields?: components["schemas"]["CampaignField"][];
+      /** @default 0 */
       tokens?: number;
+      /** @default 0 */
       csm_effort?: number;
+      /** @default 0 */
       ux_effort?: number;
       preview_link?: components["schemas"]["TranslatablePage"];
       manual_link?: components["schemas"]["TranslatablePage"];
@@ -1245,6 +1254,49 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
+  /** Send a media for my bug to AppQuality Bucket. */
+  "post-media": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            files: {
+              name: string;
+              path: string;
+            }[];
+            failed?: {
+              name: string;
+            }[];
+          };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "multipart/form-data": {
+          media?: string | string[];
+        };
+      };
+    };
+  };
+  "delete-media": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: unknown;
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          /** Format: uri */
+          url: string;
+        };
+      };
+    };
+  };
   /** Get all users you have access to */
   "get-users": {
     responses: {
@@ -1728,6 +1780,8 @@ export interface operations {
       query: {
         /** Show all popup history, expired popups included */
         showExpired?: boolean;
+        /** How to order values (ASC, DESC) */
+        order?: components["parameters"]["order"];
       };
     };
     responses: {
