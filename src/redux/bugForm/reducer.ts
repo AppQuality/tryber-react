@@ -7,6 +7,11 @@ export default (state = initialState, action: BugFormActions) => {
     case "bugForm/setMediaList":
       return {
         ...state,
+        mediaList: action.payload,
+      };
+    case "bugForm/appendMediaList":
+      return {
+        ...state,
         mediaList: [...state.mediaList, ...action.payload],
       };
     default:

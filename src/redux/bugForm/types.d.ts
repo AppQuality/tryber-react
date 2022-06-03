@@ -10,7 +10,9 @@ interface FileElement {
   uploadedFileUrl?: string;
 }
 
-type BugFormActions = BugFormActions_SetMediaList | BugFormActions_UploadMedia;
+type BugFormActions =
+  | BugFormActions_SetMediaList
+  | BugFormActions_AppendMediaList;
 
 /**
  *  Action types and their payloads
@@ -21,7 +23,7 @@ type BugFormActions_SetMediaList = {
   payload: FileElement[];
 };
 
-type BugFormActions_UploadMedia = {
-  type: "bugForm/uploadMedia";
-  payload: File[];
+type BugFormActions_AppendMediaList = {
+  type: "bugForm/appendMediaList";
+  payload: FileElement[];
 };
