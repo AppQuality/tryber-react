@@ -41,10 +41,6 @@ export const FileUploader = () => {
     shallowEqual
   );
 
-  const validMedia = mediaList.filter(
-    (f) => f.status === "success" || f.status === "uploading"
-  ).length;
-
   const uploadedMedia = mediaList.filter((f) => f.status === "success").length;
 
   const onAccepted = (acceptedFiles: File[]) => {
@@ -70,7 +66,6 @@ export const FileUploader = () => {
         description="Click here to upload your files or drag and drop!"
         accept={{ "image/*": [], "audio/*": [], "video/*": [] }}
         disabled={false}
-        maxFiles={MAX_FILES - validMedia}
         maxFilesText="You have reached the maximum number of files you can upload"
         onAccepted={onAccepted}
         onRejected={(fileRejections) =>
