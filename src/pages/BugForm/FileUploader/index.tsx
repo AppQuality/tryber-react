@@ -64,7 +64,13 @@ export const FileUploader = () => {
     <Card title={"Uploading media"}>
       <Dropzone
         description="Click here to upload your files or drag and drop!"
-        accept={{ "image/*": [], "audio/*": [], "video/*": [] }}
+        accept={{
+          "image/*": [],
+          "audio/*": [],
+          "video/*": [],
+          "application/pdf": [],
+          "application/zip": [],
+        }}
         disabled={false}
         maxFilesText="You have reached the maximum number of files you can upload"
         onAccepted={onAccepted}
