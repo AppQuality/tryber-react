@@ -6,7 +6,8 @@ import { useAppDispatch } from "../../../redux/provider";
 import { FileCard } from "./FileCard/FileCard";
 
 const StyledFileList = styled.div`
-  height: 10.5em;
+  min-height: 6.5em;
+  max-height: 10.5em;
   overflow: auto;
   margin: 1em 0;
 
@@ -26,7 +27,8 @@ const StyledFileList = styled.div`
   }
 
   @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
-    height: 7.3em;
+    min-height: 4.3em;
+    max-height: 7.3em;
   }
 `;
 
