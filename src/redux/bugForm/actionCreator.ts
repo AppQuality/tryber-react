@@ -59,3 +59,28 @@ export const uploadMedia =
       });
     }
   };
+
+export const deleteMedia =
+  (
+    media: FileElement
+  ): ThunkAction<Promise<any>, GeneralState, unknown, BugFormActions> =>
+  async (dispatch, getState) => {
+    const {
+      bugForm: { mediaList },
+    } = getState();
+    try {
+      if (media.uploadedFileUrl) {
+        await API.deleteMedia({ url: media.uploadedFileUrl });
+      }
+      const newList = [...mediaList];
+      newList.forEach((f, i) => {
+        if (f.fileName === media.fileName) newList.splice(i, 1);
+      });
+      dispatch({
+        type: "bugForm/setMediaList",
+        payload: newList,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };

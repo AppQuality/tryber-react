@@ -1,7 +1,7 @@
 import { Card, Dropzone, Text } from "@appquality/appquality-design-system";
 import { shallowEqual, useSelector } from "react-redux";
 import styled from "styled-components";
-import { uploadMedia } from "../../../redux/bugForm/actionCreator";
+import { deleteMedia, uploadMedia } from "../../../redux/bugForm/actionCreator";
 import { useAppDispatch } from "../../../redux/provider";
 import { FileCard } from "./FileCard/FileCard";
 
@@ -89,7 +89,11 @@ export const FileUploader = () => {
                 fileType={f.fileType}
                 status={f.status}
                 url={f.previewUrl}
-                onDelete={f.status !== "uploading" ? () => null : undefined}
+                onDelete={
+                  f.status !== "uploading"
+                    ? () => dispatch(deleteMedia(f))
+                    : undefined
+                }
               />
             ))}
           </StyledFileList>
