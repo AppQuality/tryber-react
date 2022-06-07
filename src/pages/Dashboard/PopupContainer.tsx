@@ -26,6 +26,7 @@ const PopupContainer = ({
         },
       };
     } catch (e) {
+      console.log(e);
       return {
         Profile: {
           name: "",
