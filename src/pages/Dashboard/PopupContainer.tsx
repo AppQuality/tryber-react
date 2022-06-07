@@ -16,14 +16,24 @@ const PopupContainer = ({
 }) => {
   const { popups } = usePopups({ showExpired });
   const popupResolver = async () => {
-    const data = await API.me();
-    return {
-      Profile: {
-        name: data.name,
-        surname: data.surname,
-        id: data.id,
-      },
-    };
+    try {
+      const data = await API.me();
+      return {
+        Profile: {
+          name: data.name || "",
+          surname: data.surname || "",
+          id: data.id || "",
+        },
+      };
+    } catch (e) {
+      return {
+        Profile: {
+          name: "",
+          surname: "",
+          id: "",
+        },
+      };
+    }
   };
   const { t } = useTranslation();
   if (!popups.length) return null;
