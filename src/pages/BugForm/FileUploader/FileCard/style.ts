@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const StyledFileCard = styled.div`
   .file-card {
-    border: none;
+    box-shadow: 0px 4px 6px -4px rgb(0 0 0 / 25%);
+    margin-bottom: 0.3em;
 
     &.failed {
       background: ${(p) =>
@@ -28,7 +29,7 @@ export const StyledFileCard = styled.div`
           height: 55px;
         }
         .file-info {
-          color: ${(p) => p.theme.palette.primary};
+          color: ${(p) => p.theme.variants.primary};
           width: 100%;
           height: 4.8em;
           overflow: hidden;

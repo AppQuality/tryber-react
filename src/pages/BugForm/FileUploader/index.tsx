@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { deleteMedia, uploadMedia } from "../../../redux/bugForm/actionCreator";
 import { useAppDispatch } from "../../../redux/provider";
 import { FileCard } from "./FileCard/FileCard";
+import { FileType } from "./FileType/FileType";
 
 const StyledFileList = styled.div`
   min-height: 6.5em;
@@ -14,9 +15,6 @@ const StyledFileList = styled.div`
   .file-list-card {
     &:not(:last-child) {
       margin-bottom: 1em;
-    }
-    .file-card {
-      box-shadow: 0px 4px 6px -2px rgb(0 0 0 / 25%);
     }
   }
 
@@ -32,7 +30,16 @@ const StyledFileList = styled.div`
   }
 `;
 
-const MAX_FILES = 5;
+const StyledFilesTypes = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+    justify-content: flex-start;
+  }
+`;
 
 export const FileUploader = () => {
   const dispatch = useAppDispatch();
@@ -62,6 +69,14 @@ export const FileUploader = () => {
 
   return (
     <Card title={"Uploading media"}>
+      <Text className="aq-text-primaryVariant">
+        {"Load at least two media:"}
+      </Text>
+      <StyledFilesTypes className="aq-mb-3">
+        <FileType type="image" />
+        <FileType type="document" />
+        <FileType type="audiovideo" />
+      </StyledFilesTypes>
       <Dropzone
         description="Click here to upload your files or drag and drop!"
         accept={{
@@ -80,7 +95,7 @@ export const FileUploader = () => {
       />
       {mediaList.length ? (
         <>
-          <Text className="aq-mt-4 aq-text-primary" small>
+          <Text className="aq-mt-3 aq-text-primary" small>
             {`${uploadedMedia}/${mediaList.length} uploaded`}
           </Text>
           <StyledFileList>
