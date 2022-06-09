@@ -2,9 +2,11 @@ import { Card, Dropzone, Text } from "@appquality/appquality-design-system";
 import { shallowEqual, useSelector } from "react-redux";
 import styled from "styled-components";
 import {
+  addedDiscardedMedia,
   deleteMedia,
   uploadMedia,
 } from "../../../../redux/bugForm/actionCreator";
+import { checkFileName } from "../../../../redux/bugForm/utils";
 import { useAppDispatch } from "../../../../redux/provider";
 import { FileCard } from "./FileCard/FileCard";
 import { FileType } from "./FileType/FileType";
@@ -51,23 +53,6 @@ export const FileUploader = () => {
 
   const uploadedMedia = mediaList.filter((f) => f.status === "success").length;
 
-  const onAccepted = (acceptedFiles: File[]) => {
-    const newList = [...acceptedFiles];
-    mediaList.forEach((media) => {
-      newList.forEach((f, i) => {
-        if (f.name === media.fileName) {
-          const newfile = new File(
-            [newList[i]],
-            f.name.replace(/(\.[\w\d_-]+)$/i, "_copy$1"),
-            { type: newList[i].type }
-          );
-          newList.splice(i, 1, newfile);
-        }
-      });
-    });
-    dispatch(uploadMedia(newList));
-  };
-
   return (
     <Card title={"Uploading media"}>
       <Text className="aq-text-primaryVariant">
@@ -81,14 +66,22 @@ export const FileUploader = () => {
       <Dropzone
         description="Click here to upload your files or drag and drop!"
         accept={{
-          "*/*": [],
+          "image/*": [],
+          "audio/*": [],
+          "video/*": [],
+          "application/pdf": [],
+          "application/zip": [],
         }}
         disabled={false}
         maxFilesText="You have reached the maximum number of files you can upload"
-        onAccepted={onAccepted}
-        onRejected={(fileRejections) =>
-          console.error("fileRejections", fileRejections)
+        onAccepted={(acceptedFiles) =>
+          dispatch(uploadMedia(checkFileName(mediaList, acceptedFiles)))
         }
+        onRejected={(fileRejections) => {
+          const newFileList: File[] = [];
+          fileRejections.forEach((f) => newFileList.push(f.file));
+          dispatch(addedDiscardedMedia(checkFileName(mediaList, newFileList)));
+        }}
       />
       {mediaList.length ? (
         <>

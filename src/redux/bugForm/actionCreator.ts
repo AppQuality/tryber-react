@@ -1,21 +1,13 @@
 import { ThunkAction } from "redux-thunk";
 import API from "../../utils/api";
+import { createFilesElementList } from "./utils";
 
 export const uploadMedia =
   (
     files: File[]
   ): ThunkAction<Promise<any>, GeneralState, unknown, BugFormActions> =>
   async (dispatch, getState) => {
-    const elements: FileElement[] = [];
-    files.forEach((f) => {
-      const type = f.type.split("/")[0];
-      elements.push({
-        fileName: f.name,
-        fileType: type,
-        status: "uploading",
-        previewUrl: type === "image" ? URL.createObjectURL(f) : undefined,
-      });
-    });
+    const elements = createFilesElementList(files, "uploading");
     dispatch({
       type: "bugForm/appendMediaList",
       payload: elements,
@@ -58,6 +50,18 @@ export const uploadMedia =
         payload: newMediaList,
       });
     }
+  };
+
+export const addedDiscardedMedia =
+  (
+    files: File[]
+  ): ThunkAction<Promise<any>, GeneralState, unknown, BugFormActions> =>
+  async (dispatch) => {
+    const elements = createFilesElementList(files, "failed");
+    dispatch({
+      type: "bugForm/appendMediaList",
+      payload: elements,
+    });
   };
 
 export const deleteMedia =
