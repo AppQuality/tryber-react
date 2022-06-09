@@ -22,7 +22,7 @@ const PopupContainer = ({
         Profile: {
           name: data.name || "",
           surname: data.surname || "",
-          id: data.id || "",
+          id: data.id.toString() || "",
         },
       };
     } catch (e) {
