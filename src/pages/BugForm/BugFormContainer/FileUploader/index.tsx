@@ -1,14 +1,16 @@
 import { Card, Dropzone, Text } from "@appquality/appquality-design-system";
 import { shallowEqual, useSelector } from "react-redux";
 import styled from "styled-components";
-import { deleteMedia, uploadMedia } from "../../../redux/bugForm/actionCreator";
-import { useAppDispatch } from "../../../redux/provider";
+import {
+  deleteMedia,
+  uploadMedia,
+} from "../../../../redux/bugForm/actionCreator";
+import { useAppDispatch } from "../../../../redux/provider";
 import { FileCard } from "./FileCard/FileCard";
 import { FileType } from "./FileType/FileType";
 
 const StyledFileList = styled.div`
   min-height: 6.5em;
-  max-height: 10.5em;
   overflow: auto;
   margin: 1em 0;
 
@@ -26,7 +28,6 @@ const StyledFileList = styled.div`
 
   @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
     min-height: 4.3em;
-    max-height: 7.3em;
   }
 `;
 
@@ -80,11 +81,7 @@ export const FileUploader = () => {
       <Dropzone
         description="Click here to upload your files or drag and drop!"
         accept={{
-          "image/*": [],
-          "audio/*": [],
-          "video/*": [],
-          "application/pdf": [],
-          "application/zip": [],
+          "*/*": [],
         }}
         disabled={false}
         maxFilesText="You have reached the maximum number of files you can upload"
