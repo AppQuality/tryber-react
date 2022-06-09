@@ -4,7 +4,6 @@ import backgroundH from "src/pages/Ranking/RankingRecap/ProgressRanking/assets/b
 import backgroundHColored from "src/pages/Ranking/RankingRecap/ProgressRanking/assets/backgroundHColored.svg";
 import backgroundV from "src/pages/Ranking/RankingRecap/ProgressRanking/assets/backgroundV.svg";
 import backgroundVColored from "src/pages/Ranking/RankingRecap/ProgressRanking/assets/backgroundVColored.svg";
-import { useTranslation } from "react-i18next";
 
 const StyledProgressRanking = styled.div<{
   stepMargin: string;
@@ -76,8 +75,6 @@ export const ProgressRanking = ({
   prospectLevelId = 0,
   isComplete,
 }: ProgressRankingProps) => {
-  const { t } = useTranslation();
-
   return (
     <StyledProgressRanking stepMargin={"0.5em"} colored={isComplete}>
       {levelsList?.map((level, i) => {
@@ -91,13 +88,6 @@ export const ProgressRanking = ({
             level={level}
             isOn={level.id <= prospectLevelId}
             isBig={isLast}
-            subtitle={
-              isLast && prospectLevelId !== 100
-                ? t("__RANKING_PROGRESS_MESSAGE_MAX:50", {
-                    defaultValue: "Becomes Legendary",
-                  })
-                : ""
-            }
           />
         );
       })}
