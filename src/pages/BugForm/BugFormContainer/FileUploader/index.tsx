@@ -6,7 +6,10 @@ import {
   deleteMedia,
   uploadMedia,
 } from "../../../../redux/bugForm/actionCreator";
-import { checkFileName } from "../../../../redux/bugForm/utils";
+import {
+  BUG_FORM_SUPPORTED_TYPES,
+  checkFileName,
+} from "../../../../redux/bugForm/utils";
 import { useAppDispatch } from "../../../../redux/provider";
 import { FileCard } from "./FileCard/FileCard";
 import { FileType } from "./FileType/FileType";
@@ -65,13 +68,7 @@ export const FileUploader = () => {
       </StyledFilesTypes>
       <Dropzone
         description="Click here to upload your files or drag and drop!"
-        accept={{
-          "image/*": [],
-          "audio/*": [],
-          "video/*": [],
-          "application/pdf": [],
-          "application/zip": [],
-        }}
+        accept={BUG_FORM_SUPPORTED_TYPES}
         disabled={false}
         maxFilesText="You have reached the maximum number of files you can upload"
         onAccepted={(acceptedFiles) =>
