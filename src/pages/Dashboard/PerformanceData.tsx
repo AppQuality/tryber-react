@@ -72,7 +72,7 @@ const PerformanceData = () => {
                       level: summary?.level.name,
                     }
                   ),
-            val: `${summary.rank}°`,
+            val: summary.level.id === 0 ? "" : `${summary.rank}°`,
           },
         ]
       : []),
