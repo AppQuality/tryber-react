@@ -21,6 +21,7 @@ export const BugFormContainer = () => {
     usecase: 0,
     expected: "",
     current: "",
+    notes: "",
   };
 
   const validationSchema = {
@@ -55,6 +56,7 @@ export const BugFormContainer = () => {
           usecase: values.usecase,
           expected: values.expected,
           current: values.current,
+          notes: values.notes,
         };
         console.info("submitValues", submitValues);
       }}

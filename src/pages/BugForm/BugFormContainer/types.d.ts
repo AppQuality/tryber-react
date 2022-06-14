@@ -9,4 +9,5 @@ type BugFormValues = {
   usecase: number;
   expected: string;
   current: string;
+  notes: string;
 };

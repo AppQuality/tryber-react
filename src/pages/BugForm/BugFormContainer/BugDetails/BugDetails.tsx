@@ -1,4 +1,5 @@
 import { Card, Field, Select } from "@appquality/appquality-design-system";
+import { TextareaField } from "./TextareaField/TextareaField";
 
 interface BugDetailsProps {
   className?: string;
@@ -84,6 +85,11 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         type="text"
         label="Observed result"
         placeholder="Write what you found"
+      />
+      <TextareaField
+        name="notes"
+        label={"Additional comments"}
+        placeholder={"Anything else you'd like to add"}
       />
     </Card>
   );
