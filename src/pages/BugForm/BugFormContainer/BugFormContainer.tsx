@@ -13,6 +13,7 @@ export const BugFormContainer = () => {
 
   const initialBugValues: BugFormValues = {
     title: "",
+    description: "",
     media: [],
     device: 0,
     severity: "LOW",
@@ -32,6 +33,7 @@ export const BugFormContainer = () => {
         /\[(.+?)\] \- (.+?)/gi,
         "The title must be in the format [Section] - Description"
       ),
+    description: yup.string().required("This is a required field"),
     expected: yup.string().required("This is a required field"),
     current: yup.string().required("This is a required field"),
   };
@@ -48,6 +50,7 @@ export const BugFormContainer = () => {
       onSubmit={async (values, helpers) => {
         const submitValues: BugFormValues = {
           title: values.title,
+          description: values.description,
           media: urls,
           device: values.device,
           severity: values.severity,

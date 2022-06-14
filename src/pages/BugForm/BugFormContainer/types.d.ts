@@ -1,6 +1,7 @@
 // TODO types to review
 type BugFormValues = {
   title: string;
+  description: string;
   media: string[];
   device: number;
   severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";

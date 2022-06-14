@@ -22,7 +22,7 @@ const StyledTextareaField = styled.div<{
 }>`
   textarea {
     width: 100%;
-    height: ${(p) => (p.height ? p.height : "6rem")};
+    height: ${(p) => (p.height ? p.height : "5.715rem")};
     resize: ${(p) => (p.resize ? p.resize : "none")};
     padding: 0.5rem 0.75rem;
     color: ${(p) => p.theme.palette.primary};
@@ -68,7 +68,8 @@ const StyledTextareaField = styled.div<{
 
 interface TextareaFieldProps {
   name: string;
-  label: string;
+  label?: string;
+  className?: string;
   placeholder?: string;
   disabled?: boolean;
   resize?: "none" | "both" | "horizontal" | "vertical";
@@ -78,6 +79,7 @@ interface TextareaFieldProps {
 export const TextareaField = ({
   name,
   label,
+  className,
   placeholder,
   disabled,
   resize,
@@ -88,11 +90,12 @@ export const TextareaField = ({
       {({ field, meta }: FieldProps) => {
         return (
           <StyledTextareaField
+            className={className}
             resize={resize}
             isInvalid={meta.touched && typeof meta.error == "string"}
             height={height}
           >
-            <FormLabel htmlFor={field.name} label={label} />
+            {label && <FormLabel htmlFor={field.name} label={label} />}
             <textarea
               id={field.name}
               name={field.name}

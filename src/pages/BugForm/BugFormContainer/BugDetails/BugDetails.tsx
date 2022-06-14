@@ -74,6 +74,12 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           noOptionsMessage={() => "No options"}
         />
       </div>
+      <TextareaField
+        className="aq-mb-3"
+        name="description"
+        label={"Step-by-step description"}
+        placeholder={"1.\n2.\n3."}
+      />
       <Field
         name="expected"
         type="text"
