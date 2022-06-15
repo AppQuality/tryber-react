@@ -52,7 +52,7 @@ export const FileCard = ({
       <Card className={`file-card ${status}`} bodyClass="file-card-body">
         <div className="file-card-left">
           {getPreview()}
-          <Text className="file-info aq-ml-4" small>
+          <Text title={filename} className="file-info aq-ml-4" small>
             {filename}
           </Text>
         </div>
