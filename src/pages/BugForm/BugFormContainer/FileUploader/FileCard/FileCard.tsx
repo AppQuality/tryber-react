@@ -8,26 +8,19 @@ import { Card, Text } from "@appquality/appquality-design-system";
 import { StyledFileCard, StyledUploading } from "./style";
 
 interface FileCardProps {
-  filename: string;
-  status: "success" | "failed" | "uploading";
-  fileType?: string;
-  mimeType?: string;
-  url?: string;
-  errorCode?: number;
+  fileElement: FileElement;
   className?: string;
   onDelete?: () => void;
 }
 
 export const FileCard = ({
-  filename,
-  status,
-  fileType,
-  mimeType,
-  url,
-  errorCode,
+  fileElement,
   className,
   onDelete,
 }: FileCardProps) => {
+  const { fileName, status, fileType, mimeType, previewUrl, errorCode } =
+    fileElement;
+
   const getPreview = () => {
     switch (fileType) {
       case "audio":
@@ -37,13 +30,13 @@ export const FileCard = ({
           mimeType === "video/ogg" ||
           mimeType === "video/webm" ? (
           <video>
-            <source src={url} type={mimeType} />
+            <source src={previewUrl} type={mimeType} />
           </video>
         ) : (
           <UploadVideo />
         );
       case "image":
-        return <img src={url} alt={filename} />;
+        return <img src={previewUrl} alt={fileName} />;
       default:
         return <UploadFile />;
     }
@@ -54,8 +47,8 @@ export const FileCard = ({
       <Card className={`file-card ${status}`} bodyClass="file-card-body">
         <div className="file-card-left">
           {getPreview()}
-          <Text title={filename} className="file-card-text aq-ml-3" small>
-            <div className="file-info">{filename}</div>
+          <Text title={fileName} className="file-card-text aq-ml-3" small>
+            <div className="file-info">{fileName}</div>
             <div className="file-error">
               {errorCode === 1 ? "File not supported" : ""}
             </div>

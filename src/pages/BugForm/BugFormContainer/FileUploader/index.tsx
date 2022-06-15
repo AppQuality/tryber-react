@@ -104,12 +104,7 @@ export const FileUploader = () => {
               <FileCard
                 key={f.fileName}
                 className="file-list-card"
-                filename={f.fileName}
-                fileType={f.fileType}
-                mimeType={f.mimeType}
-                status={f.status}
-                url={f.previewUrl}
-                errorCode={f.errorCode}
+                fileElement={f}
                 onDelete={
                   f.status !== "uploading"
                     ? () => dispatch(deleteMedia(f))
