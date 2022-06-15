@@ -1,5 +1,6 @@
 export const initialState: BugFormState = {
   mediaList: [],
+  showError: false,
 };
 
 export default (state = initialState, action: BugFormActions) => {
@@ -13,6 +14,11 @@ export default (state = initialState, action: BugFormActions) => {
       return {
         ...state,
         mediaList: [...state.mediaList, ...action.payload],
+      };
+    case "bugForm/setShowError":
+      return {
+        ...state,
+        showError: action.payload,
       };
     default:
       return state;

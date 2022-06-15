@@ -13,6 +13,7 @@ interface FileCardProps {
   fileType?: string;
   mimeType?: string;
   url?: string;
+  errorCode?: number;
   className?: string;
   onDelete?: () => void;
 }
@@ -23,6 +24,7 @@ export const FileCard = ({
   fileType,
   mimeType,
   url,
+  errorCode,
   className,
   onDelete,
 }: FileCardProps) => {
@@ -52,8 +54,11 @@ export const FileCard = ({
       <Card className={`file-card ${status}`} bodyClass="file-card-body">
         <div className="file-card-left">
           {getPreview()}
-          <Text title={filename} className="file-info aq-ml-4" small>
-            {filename}
+          <Text title={filename} className="file-card-text aq-ml-3" small>
+            <div className="file-info">{filename}</div>
+            <div className="file-error">
+              {errorCode === 1 ? "File not supported" : ""}
+            </div>
           </Text>
         </div>
         <div className="file-card-right">

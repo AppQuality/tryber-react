@@ -47,19 +47,23 @@ const StyledFilesTypes = styled.div`
   }
 `;
 
+// TODO Parametro da prendere dalle API ???
+export const MIN_FILES_NUMBER = 2;
+
 export const FileUploader = () => {
   const dispatch = useAppDispatch();
-  const { mediaList } = useSelector(
+  const { mediaList, showError } = useSelector(
     (state: GeneralState) => state.bugForm,
     shallowEqual
   );
 
   const uploadedMedia = mediaList.filter((f) => f.status === "success").length;
+  const showMinFilesError = uploadedMedia < MIN_FILES_NUMBER && showError;
 
   return (
     <Card title={"Uploading media"}>
       <Text className="aq-text-primaryVariant">
-        {"Load at least two media:"}
+        {`Upload a minimum number of ${MIN_FILES_NUMBER} files`}
       </Text>
       <StyledFilesTypes className="aq-mb-3">
         <FileType type="image" />
@@ -80,9 +84,19 @@ export const FileUploader = () => {
           dispatch(addedDiscardedMedia(checkFileName(mediaList, newFileList)));
         }}
       />
+      {showMinFilesError && (
+        <Text className="aq-mt-4 aq-text-danger" small>
+          {`You need to upload at least ${MIN_FILES_NUMBER} files`}
+        </Text>
+      )}
       {mediaList.length ? (
         <>
-          <Text className="aq-mt-3 aq-text-primary" small>
+          <Text
+            className={`${
+              showMinFilesError ? "aq-mt-2" : "aq-mt-3"
+            } aq-mb-3 aq-text-primary`}
+            small
+          >
             {`${uploadedMedia}/${mediaList.length} uploaded`}
           </Text>
           <StyledFileList>
@@ -95,6 +109,7 @@ export const FileUploader = () => {
                 mimeType={f.mimeType}
                 status={f.status}
                 url={f.previewUrl}
+                errorCode={f.errorCode}
                 onDelete={
                   f.status !== "uploading"
                     ? () => dispatch(deleteMedia(f))
