@@ -30,8 +30,8 @@ export const BugFormContainer = () => {
       .string()
       .required("This is a required field")
       .matches(
-        /\[(.+?)\] \- (.+?)/gi,
-        "The title must be in the format [Section] - Description"
+        /\[.+\] - .+/gm,
+        "Format should be [Phase / Section] - Briefly Issue description"
       ),
     description: yup.string().required("This is a required field"),
     expected: yup.string().required("This is a required field"),
