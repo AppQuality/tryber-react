@@ -12,7 +12,8 @@
   "<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?": "<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?",
   "<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve.": "<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve.",
   "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}": {
-    "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": "<bold>{{pointsToAdvance}}</bold> exp points para pasar al nivel {{nextLevel}}"
+    "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": "<bold>{{pointsToAdvance}}</bold> exp points para pasar al nivel {{nextLevel}}",
+    "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70_plural": ""
   },
   "<bold>{{pointsToKeepLevel}}</bold> points to keep level": {
     "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": "<bold>{{pointsToKeepLevel}}</bold> exp point para mantener el nivel {{level}}",
@@ -189,7 +190,8 @@
   "Gender option": {
     "Female": "Femenino",
     "Male": "Masculino",
-    "Not Specified": "No especificado"
+    "Not Specified": "No especificado",
+    "Other": ""
   },
   "Generic error": "Error genérico",
   "Getting Started": "Empezando",

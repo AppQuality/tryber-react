@@ -5,6 +5,82 @@ const eol = require("eol");
 const path = require("path");
 const VirtualFile = require("vinyl");
 
+function convertLineEndings(lineEndingOpt, text) {
+  const lineEnding = String(lineEndingOpt).toLowerCase();
+  if (lineEnding === "auto") {
+    return eol.auto(text);
+  }
+  if (lineEnding === "\r\n" || lineEnding === "crlf") {
+    return eol.crlf(text);
+  }
+  if (lineEnding === "\n" || lineEnding === "lf") {
+    return eol.lf(text);
+  }
+  if (lineEnding === "\r" || lineEnding === "cr") {
+    return eol.cr(text);
+  }
+  // Defaults to LF
+  return eol.lf(text);
+}
+
+function merge(namespace, resContent) {
+  const obj = mergeDeep(namespace, resContent);
+  // {
+  //   key: 'name',
+  //   'Gender option': { Female: '', Male: '', 'Not Specified': '', Other: '' }
+  //   key =  "name"
+  //   namespace[key] = "Nome"
+  // }
+  Object.keys(obj).forEach((key) => {
+    if (namespace[key] === undefined) {
+      delete obj[key];
+    }
+  });
+
+  return obj;
+}
+
+function getContent(resPath) {
+  try {
+    return JSON.parse(
+      fs
+        .readFileSync(fs.realpathSync(path.join("src", resPath)))
+        .toString("utf-8")
+    );
+  } catch (e) {
+    return {};
+  }
+}
+
+/**
+ * Simple object check.
+ * @param item
+ * @returns {boolean}
+ */
+function isObject(item) {
+  return item && typeof item === "object" && !Array.isArray(item);
+}
+
+/**
+ * Deep merge two objects.
+ */
+function mergeDeep(target, ...sources) {
+  if (!sources.length) return target;
+  const source = sources.shift();
+
+  if (isObject(target) && isObject(source)) {
+    for (const key in source) {
+      if (isObject(source[key])) {
+        if (!target[key]) Object.assign(target, { [key]: {} });
+        mergeDeep(target[key], source[key]);
+      } else {
+        Object.assign(target, { [key]: source[key] });
+      }
+    }
+  }
+
+  return mergeDeep(target, ...sources);
+}
 function flush(done) {
   const { parser } = this;
   const { options } = parser;
@@ -12,59 +88,23 @@ function flush(done) {
   // Flush to resource store
   const resStore = parser.get({ sort: options.sort });
   const { jsonIndent } = options.resource;
-  const lineEnding = String(options.resource.lineEnding).toLowerCase();
 
   Object.keys(resStore).forEach((lng) => {
     const namespaces = resStore[lng];
 
     Object.keys(namespaces).forEach((ns) => {
       const resPath = parser.formatResourceSavePath(lng, ns);
-      let resContent;
-      try {
-        resContent = JSON.parse(
-          fs
-            .readFileSync(fs.realpathSync(path.join("src", resPath)))
-            .toString("utf-8")
-        );
-      } catch (e) {
-        resContent = {};
-      }
-      const obj = { ...namespaces[ns], ...resContent };
-      console.log(namespaces[ns]);
-      Object.keys(obj).forEach((key) => {
-        if (namespaces[ns][key] === undefined) {
-          delete obj[key];
-        }
-      });
+      const resContent = getContent(resPath);
+
+      const obj = merge(namespaces[ns], resContent);
+
       let text = JSON.stringify(obj, null, jsonIndent) + "\n";
-
-      if (lineEnding === "auto") {
-        text = eol.auto(text);
-      } else if (lineEnding === "\r\n" || lineEnding === "crlf") {
-        text = eol.crlf(text);
-      } else if (lineEnding === "\n" || lineEnding === "lf") {
-        text = eol.lf(text);
-      } else if (lineEnding === "\r" || lineEnding === "cr") {
-        text = eol.cr(text);
-      } else {
-        // Defaults to LF
-        text = eol.lf(text);
-      }
-
-      let contents = null;
-
-      try {
-        // "Buffer.from(string[, encoding])" is added in Node.js v5.10.0
-        contents = Buffer.from(text);
-      } catch (e) {
-        // Fallback to "new Buffer(string[, encoding])" which is deprecated since Node.js v6.0.0
-        contents = new Buffer(text);
-      }
+      text = convertLineEndings(options.resource.lineEnding, text);
 
       this.push(
         new VirtualFile({
           path: resPath,
-          contents: contents,
+          contents: Buffer.from(text),
         })
       );
     });
@@ -72,6 +112,7 @@ function flush(done) {
 
   done();
 }
+
 module.exports = {
   input: ["src/**/*.{js,jsx,ts,tsx}"],
   removeUnusedKeys: true,
