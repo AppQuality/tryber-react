@@ -92,6 +92,7 @@ export const FileUploader = () => {
                 className="file-list-card"
                 filename={f.fileName}
                 fileType={f.fileType}
+                mimeType={f.mimeType}
                 status={f.status}
                 url={f.previewUrl}
                 onDelete={

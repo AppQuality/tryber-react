@@ -5,6 +5,7 @@ type BugFormState = {
 interface FileElement {
   fileName: string;
   fileType: string;
+  mimeType: string;
   status: "success" | "failed" | "uploading";
   previewUrl?: string;
   uploadedFileUrl?: string;

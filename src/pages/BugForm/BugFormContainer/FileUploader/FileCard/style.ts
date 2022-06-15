@@ -23,6 +23,7 @@ export const StyledFileCard = styled.div`
           width: 48px;
           height: 48px;
         }
+        video,
         img {
           border-radius: 6px;
           width: 55px;
@@ -64,6 +65,7 @@ export const StyledFileCard = styled.div`
       .file-card-body {
         .file-card-left {
           svg,
+          video,
           img {
             width: 27px;
             height: 27px;

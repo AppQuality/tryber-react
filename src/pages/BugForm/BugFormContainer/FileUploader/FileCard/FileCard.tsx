@@ -11,6 +11,7 @@ interface FileCardProps {
   filename: string;
   status: "success" | "failed" | "uploading";
   fileType?: string;
+  mimeType?: string;
   url?: string;
   className?: string;
   onDelete?: () => void;
@@ -20,6 +21,7 @@ export const FileCard = ({
   filename,
   status,
   fileType,
+  mimeType,
   url,
   className,
   onDelete,
@@ -29,7 +31,15 @@ export const FileCard = ({
       case "audio":
         return <UploadAudio />;
       case "video":
-        return <UploadVideo />;
+        return mimeType === "video/mp4" ||
+          mimeType === "video/ogg" ||
+          mimeType === "video/webm" ? (
+          <video>
+            <source src={url} type={mimeType} />
+          </video>
+        ) : (
+          <UploadVideo />
+        );
       case "image":
         return <img src={url} alt={filename} />;
       default:

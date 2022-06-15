@@ -8,8 +8,12 @@ export const createFilesElementList = (
     elements.push({
       fileName: f.name,
       fileType: type,
+      mimeType: f.type,
       status: status,
-      previewUrl: type === "image" ? URL.createObjectURL(f) : undefined,
+      previewUrl:
+        type === "image" || type === "video"
+          ? URL.createObjectURL(f)
+          : undefined,
     });
   });
   return elements;
