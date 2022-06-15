@@ -11,7 +11,8 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 
 import Page from "./Page";
-import Provider from "./redux/provider";
+import { Provider } from "react-redux";
+import { store } from "src/store";
 
 if (process.env.REACT_APP_GTM_ID) {
   const tagManagerArgs = {
@@ -24,7 +25,7 @@ if (process.env.REACT_APP_GTM_ID) {
 function App() {
   const { t } = useTranslation();
   return (
-    <Provider>
+    <Provider store={store}>
       <ThemeProvider theme={aqBootstrapTheme}>
         <GlobalStyle />
         <Helmet>
