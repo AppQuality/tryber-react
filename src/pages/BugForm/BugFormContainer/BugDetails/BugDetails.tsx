@@ -1,4 +1,13 @@
-import { Card, Field, Select } from "@appquality/appquality-design-system";
+import {
+  BSCol,
+  BSGrid,
+  Card,
+  Datepicker,
+  Field,
+  FormLabel,
+  Select,
+} from "@appquality/appquality-design-system";
+import i18n from "../../../../i18n";
 import { TextareaField } from "./TextareaField/TextareaField";
 
 interface BugDetailsProps {
@@ -79,6 +88,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         name="description"
         label={"Step-by-step description"}
         placeholder={"1.\n2.\n3."}
+        height="8.8rem"
       />
       <Field
         name="expected"
@@ -92,10 +102,38 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         label="Observed result"
         placeholder="Write what you found"
       />
-      <TextareaField
+      <BSGrid>
+        <BSCol size="col-lg-6" className="aq-mb-3">
+          <FormLabel htmlFor={"date"} label={"When did it happen"} />
+          <Datepicker
+            id={"date"}
+            locale={i18n.language}
+            placeholder={"Select date"}
+            setText={"Set"}
+            cancelText={"Cancel"}
+            onCancel={() => null}
+            onChange={() => null}
+          />
+        </BSCol>
+        {/* TODO Time Picker ??? */}
+        <BSCol size="col-lg-6">
+          <FormLabel htmlFor={"time"} label={"What time did it happen"} />
+          <Datepicker
+            id={"time"}
+            locale={i18n.language}
+            placeholder={"Select date"}
+            setText={"Set"}
+            cancelText={"Cancel"}
+            onCancel={() => null}
+            onChange={() => null}
+          />
+        </BSCol>
+      </BSGrid>
+      <Field
         name="notes"
-        label={"Additional comments"}
-        placeholder={"Anything else you'd like to add"}
+        type="text"
+        label="Additional comments"
+        placeholder="Anything else you'd like to add"
       />
     </Card>
   );
