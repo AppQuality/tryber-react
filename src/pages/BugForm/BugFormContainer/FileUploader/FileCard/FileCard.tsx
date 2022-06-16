@@ -42,6 +42,19 @@ export const FileCard = ({
     }
   };
 
+  const getError = () => {
+    switch (errorCode) {
+      case "FILE_TOO_BIG":
+        return "Maximum file size exceeded";
+      case "NOT_VALID_FILE_TYPE":
+        return "File not supported";
+      case "UPLOAD_ERROR":
+        return "Generic error";
+      default:
+        return "";
+    }
+  };
+
   return (
     <StyledFileCard className={className}>
       <Card className={`file-card ${status}`} bodyClass="file-card-body">
@@ -49,9 +62,7 @@ export const FileCard = ({
           {getPreview()}
           <Text title={fileName} className="file-card-text aq-ml-3" small>
             <div className="file-info">{fileName}</div>
-            <div className="file-error">
-              {errorCode === 1 ? "File not supported" : ""}
-            </div>
+            <div className="file-error">{getError()}</div>
           </Text>
         </div>
         <div className="file-card-right">

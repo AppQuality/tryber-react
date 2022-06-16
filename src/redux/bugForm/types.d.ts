@@ -8,7 +8,7 @@ interface FileElement {
   fileType: string;
   mimeType: string;
   status: "success" | "failed" | "uploading";
-  errorCode?: number;
+  errorCode?: "FILE_TOO_BIG" | "NOT_VALID_FILE_TYPE" | "UPLOAD_ERROR";
   previewUrl?: string;
   uploadedFileUrl?: string;
 }
