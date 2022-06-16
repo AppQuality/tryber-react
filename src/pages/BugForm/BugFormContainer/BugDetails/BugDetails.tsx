@@ -89,18 +89,23 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         label={"Step-by-step description"}
         placeholder={"1.\n2.\n3."}
         height="8.8rem"
+        resize="vertical"
       />
-      <Field
+      <TextareaField
+        className="aq-mb-3"
         name="expected"
-        type="text"
         label="Expected result"
         placeholder="Write what you expected"
+        height="7rem"
+        resize="vertical"
       />
-      <Field
+      <TextareaField
+        className="aq-mb-3"
         name="current"
-        type="text"
         label="Observed result"
         placeholder="Write what you found"
+        height="7rem"
+        resize="vertical"
       />
       <BSGrid>
         <BSCol size="col-6" className="aq-mb-3">
