@@ -13,7 +13,7 @@ export const BugFormContainer = () => {
 
   const initialBugValues: BugFormValues = {
     title: "",
-    description: "",
+    description: "1.\n2.\n3.",
     media: [],
     device: 0,
     severity: "LOW",
@@ -33,7 +33,14 @@ export const BugFormContainer = () => {
         /\[.+\] - .+/gm,
         "Format should be [Phase / Section] - Briefly Issue description"
       ),
-    description: yup.string().required("This is a required field"),
+    description: yup
+      .string()
+      .required("This is a required field")
+      .test(
+        "description",
+        "This is a required field",
+        (newValue) => newValue !== initialBugValues.description
+      ),
     expected: yup.string().required("This is a required field"),
     current: yup.string().required("This is a required field"),
   };
