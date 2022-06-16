@@ -103,12 +103,12 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         placeholder="Write what you found"
       />
       <BSGrid>
-        <BSCol size="col-lg-6" className="aq-mb-3">
+        <BSCol size="col-6" className="aq-mb-3">
           <FormLabel htmlFor={"date"} label={"When did it happen"} />
           <Datepicker
             id={"date"}
             locale={i18n.language}
-            placeholder={"Select date"}
+            placeholder={"Pick a date"}
             setText={"Set"}
             cancelText={"Cancel"}
             onCancel={() => null}
@@ -116,12 +116,12 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           />
         </BSCol>
         {/* TODO Time Picker ??? */}
-        <BSCol size="col-lg-6">
+        <BSCol size="col-6">
           <FormLabel htmlFor={"time"} label={"What time did it happen"} />
           <Datepicker
             id={"time"}
             locale={i18n.language}
-            placeholder={"Select date"}
+            placeholder={"Pick a time"}
             setText={"Set"}
             cancelText={"Cancel"}
             onCancel={() => null}
