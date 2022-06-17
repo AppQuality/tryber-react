@@ -50,6 +50,7 @@ export const uploadMedia =
             media.uploadId === uploadId
           )
             newMediaList[i].status = "failed";
+          newMediaList[i].errorCode = "UPLOAD_ERROR";
         });
       });
       dispatch({
