@@ -78,6 +78,7 @@ export const FileUploader = () => {
           fileRejections.forEach((f) => newFileList.push(f.file));
           dispatch(addedDiscardedMedia(newFileList));
         }}
+        danger={showMinFilesError}
       />
       {showMinFilesError && (
         <Text className="aq-mt-4 aq-text-danger" small>
