@@ -22,6 +22,7 @@ const Columns = ({
       dataIndex: "endDate",
       key: "endDate",
       isSortable: true,
+      maxWidth: "120px",
       onSort: (sorting: "ASC" | "DESC") => {
         setOrder(sorting);
         setOrderBy("end_date");
@@ -32,6 +33,7 @@ const Columns = ({
       dataIndex: "actions",
       key: "actions",
       align: "center",
+      maxWidth: "180px",
       role: "cta",
       hideIndex: true,
     },

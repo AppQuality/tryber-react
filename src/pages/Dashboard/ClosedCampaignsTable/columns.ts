@@ -22,6 +22,7 @@ const Columns = ({
       dataIndex: "closeDate",
       key: "closeDate",
       isSortable: true,
+      maxWidth: "120px",
       onSort: (sorting: OrderType) => {
         setOrder(sorting);
         setOrderBy("close_date");
