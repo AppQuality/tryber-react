@@ -48,9 +48,10 @@ export const uploadMedia =
           if (
             media.fileName === element.fileName &&
             media.uploadId === uploadId
-          )
+          ) {
             newMediaList[i].status = "failed";
-          newMediaList[i].errorCode = "UPLOAD_ERROR";
+            newMediaList[i].errorCode = "UPLOAD_ERROR";
+          }
         });
       });
       dispatch({
