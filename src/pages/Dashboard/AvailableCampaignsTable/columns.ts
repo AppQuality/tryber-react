@@ -51,6 +51,7 @@ const Columns = ({
       dataIndex: "actions",
       key: "actions",
       role: "cta",
+      maxWidth: "120px",
       hideIndex: true,
     },
   ];
