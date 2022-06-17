@@ -1,13 +1,15 @@
 import { ThunkAction } from "redux-thunk";
 import API from "../../utils/api";
 import { createFilesElementList } from "./utils";
+import { v4 as uuidv4 } from "uuid";
 
 export const uploadMedia =
   (
     files: File[]
   ): ThunkAction<Promise<any>, GeneralState, unknown, BugFormActions> =>
   async (dispatch, getState) => {
-    const elements = createFilesElementList(files, "uploading");
+    const uploadId = uuidv4();
+    const elements = createFilesElementList(files, "uploading", uploadId);
     dispatch({
       type: "bugForm/appendMediaList",
       payload: elements,
@@ -20,13 +22,15 @@ export const uploadMedia =
       const newMediaList = [...mediaList];
       newMediaList.forEach((media, i) => {
         data.files.forEach((file) => {
-          if (media.fileName === file.name) {
+          if (media.fileName === file.name && uploadId === media.uploadId) {
             newMediaList[i].status = "success";
             newMediaList[i].uploadedFileUrl = file.path;
           }
         });
         data.failed?.forEach((fail) => {
-          if (media.fileName === fail.name) newMediaList[i].status = "failed";
+          if (media.fileName === fail.name && uploadId === media.uploadId) {
+            newMediaList[i].status = "failed";
+          }
         });
       });
       dispatch({
@@ -41,7 +45,10 @@ export const uploadMedia =
       const newMediaList = [...mediaList];
       newMediaList.forEach((media, i) => {
         elements.forEach((element) => {
-          if (media.fileName === element.fileName)
+          if (
+            media.fileName === element.fileName &&
+            media.uploadId === uploadId
+          )
             newMediaList[i].status = "failed";
         });
       });
@@ -78,7 +85,7 @@ export const deleteMedia =
       }
       const newList = [...mediaList];
       newList.forEach((f, i) => {
-        if (f.fileName === media.fileName) newList.splice(i, 1);
+        if (f.id === media.id) newList.splice(i, 1);
       });
       dispatch({
         type: "bugForm/setMediaList",

@@ -1,11 +1,13 @@
 export const createFilesElementList = (
   files: File[],
-  status: "success" | "failed" | "uploading"
+  status: "success" | "failed" | "uploading",
+  uploadId?: string
 ) => {
   const elements: FileElement[] = [];
   files.forEach((f) => {
     const type = f.type.split("/")[0];
     elements.push({
+      id: `dropzone_id_${f.name}_${Date.now()}`,
       fileName: f.name,
       fileType: type,
       mimeType: f.type,
@@ -15,27 +17,10 @@ export const createFilesElementList = (
         type === "image" || type === "video"
           ? URL.createObjectURL(f)
           : undefined,
+      uploadId,
     });
   });
   return elements;
-};
-
-export const checkFileName = (mediaList: FileElement[], filesToAdd: File[]) => {
-  const newList = [...filesToAdd];
-  mediaList.forEach((media) => {
-    newList.forEach((f, i) => {
-      if (f.name === media.fileName) {
-        const newfile = new File(
-          [newList[i]],
-          f.name.replace(/(\.[\w\d_-]+)$/i, "_copy$1"),
-          { type: newList[i].type }
-        );
-        newList.splice(i, 1, newfile);
-      }
-    });
-  });
-
-  return newList;
 };
 
 export const BUG_FORM_SUPPORTED_TYPES = [

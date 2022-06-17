@@ -6,10 +6,7 @@ import {
   deleteMedia,
   uploadMedia,
 } from "../../../../redux/bugForm/actionCreator";
-import {
-  BUG_FORM_SUPPORTED_TYPES,
-  checkFileName,
-} from "../../../../redux/bugForm/utils";
+import { BUG_FORM_SUPPORTED_TYPES } from "../../../../redux/bugForm/utils";
 import { useAppDispatch } from "../../../../redux/provider";
 import { FileCard } from "./FileCard/FileCard";
 import { FileType } from "./FileType/FileType";
@@ -75,13 +72,11 @@ export const FileUploader = () => {
         accept={BUG_FORM_SUPPORTED_TYPES}
         disabled={false}
         maxFilesText="You have reached the maximum number of files you can upload"
-        onAccepted={(acceptedFiles) =>
-          dispatch(uploadMedia(checkFileName(mediaList, acceptedFiles)))
-        }
+        onAccepted={(acceptedFiles) => dispatch(uploadMedia(acceptedFiles))}
         onRejected={(fileRejections) => {
           const newFileList: File[] = [];
           fileRejections.forEach((f) => newFileList.push(f.file));
-          dispatch(addedDiscardedMedia(checkFileName(mediaList, newFileList)));
+          dispatch(addedDiscardedMedia(newFileList));
         }}
       />
       {showMinFilesError && (
@@ -102,7 +97,7 @@ export const FileUploader = () => {
           <StyledFileList>
             {mediaList.map((f) => (
               <FileCard
-                key={f.fileName}
+                key={f.id}
                 className="file-list-card"
                 fileElement={f}
                 onDelete={

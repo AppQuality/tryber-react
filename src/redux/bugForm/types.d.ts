@@ -4,6 +4,7 @@ type BugFormState = {
 };
 
 interface FileElement {
+  id: string;
   fileName: string;
   fileType: string;
   mimeType: string;
@@ -11,6 +12,7 @@ interface FileElement {
   errorCode?: "FILE_TOO_BIG" | "NOT_VALID_FILE_TYPE" | "UPLOAD_ERROR";
   previewUrl?: string;
   uploadedFileUrl?: string;
+  uploadId?: string;
 }
 
 type BugFormActions =
