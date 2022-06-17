@@ -4,6 +4,7 @@ import { BugDetails } from "./BugDetails/BugDetails";
 import { FileUploader } from "./FileUploader";
 import * as yup from "yup";
 import { FormikProps } from "formik";
+import FocusError from "./FocusError/FocusError";
 
 export const BugFormContainer = () => {
   const { mediaList } = useSelector(
@@ -13,7 +14,7 @@ export const BugFormContainer = () => {
 
   const initialBugValues: BugFormValues = {
     title: "",
-    description: "1.\n2.\n3.",
+    stepDescription: "1.\n2.\n3.",
     media: [],
     device: 0,
     severity: "LOW",
@@ -33,13 +34,13 @@ export const BugFormContainer = () => {
         /\[.+\] - .+/gm,
         "Format should be [Phase / Section] - Briefly Issue description"
       ),
-    description: yup
+    stepDescription: yup
       .string()
       .required("This is a required field")
       .test(
-        "description",
+        "stepDescription",
         "This is a required field",
-        (newValue) => newValue !== initialBugValues.description
+        (newValue) => newValue !== initialBugValues.stepDescription
       ),
     expected: yup.string().required("This is a required field"),
     current: yup.string().required("This is a required field"),
@@ -57,7 +58,7 @@ export const BugFormContainer = () => {
       onSubmit={async (values, helpers) => {
         const submitValues: BugFormValues = {
           title: values.title,
-          description: values.description,
+          stepDescription: values.stepDescription,
           media: urls,
           device: values.device,
           severity: values.severity,
@@ -81,11 +82,11 @@ export const BugFormContainer = () => {
               type="primary"
               htmlType="submit"
               size="block"
-              disabled={urls.length < 2 || !formikProps.isValid}
               flat
             >
               Submit this bug report
             </Button>
+            <FocusError />
           </Form>
         );
       }}

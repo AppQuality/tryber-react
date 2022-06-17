@@ -85,7 +85,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
       </div>
       <TextareaField
         className="aq-mb-3"
-        name="description"
+        name="stepDescription"
         label={"Step-by-step description"}
         placeholder={"1.\n2.\n3."}
         height="8.8rem"
