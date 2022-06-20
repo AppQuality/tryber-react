@@ -12,18 +12,19 @@
   "<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?": "<bold>This action is irreversible.</bold><br></br>Are you really sure you want to leave us?",
   "<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve.": "<bold>We are so very sorry that you are leaving us.</bold><br></br>Before you go, help us understand why you are leaving us and how we can improve.",
   "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}": {
-    "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": "<bold>{{pointsToAdvance}}</bold> exp points to reach {{nextLevel}} level"
+    "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": "<bold>{{pointsToAdvance}}</bold> exp points to reach {{nextLevel}} level",
+    "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70_plural": "<bold>{{pointsToAdvance}</bold> exp points to reach Bronze level {{nextLevel}}"
   },
   "<bold>{{pointsToKeepLevel}}</bold> points to keep level": {
-    "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": "<bold>{{pointsToKeepLevel}}</bold> exp point to hold {{level}} level",
+    "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": "<bold>{{pointsToKeepLevel}}</bold> exp points to hold {{level}} level",
     "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70_plural": "<bold>{{pointsToKeepLevel}}</bold> exp point to hold {{level}} level"
   },
   "<bold>{{points}}</bold> exp points": {
-    "__RANKING_PROGRESS_POINTS_MAX: 25": "<bold>{{points}}</bold> exp point",
+    "__RANKING_PROGRESS_POINTS_MAX: 25": "<bold>{{points}}</bold> exp points",
     "__RANKING_PROGRESS_POINTS_MAX: 25_plural": "<bold>{{points}}</bold> exp point"
   },
   "<bold>{{points}}</bold> total exp points": {
-    "__RANKING_EXP_POINTS_MAX:25": "<bold>{{points}}</bold> total exp point",
+    "__RANKING_EXP_POINTS_MAX:25": "<bold>{{points}}</bold> total exp points",
     "__RANKING_EXP_POINTS_MAX:25_plural": "<bold>{{points}}</bold> total exp point"
   },
   "<bold>{{rank}}</bold> in {{level}} ranking": {
@@ -189,7 +190,8 @@
   "Gender option": {
     "Female": "Female",
     "Male": "Male",
-    "Not Specified": "Not Specified"
+    "Not Specified": "Prefer not to answer",
+    "Other": "Non-conforming"
   },
   "Generic error": "Generic error",
   "Getting Started": "Getting Started",
@@ -308,8 +310,8 @@
   "Search here": "Search here",
   "Select a Fiscal Type please": "Select a Fiscal Type please",
   "Select a country": "Select a country",
-  "Select a gender": "Select a gender",
-  "Select a gender please": "Select a gender please",
+  "Select a gender": "Gender: how do you identify?",
+  "Select a gender please": "Gender: how do you identify?",
   "Select achievement date": "Select achievement date",
   "Select your birth date": "Select your birth date",
   "Send us your feedback!": "Send us your feedback!",
@@ -504,7 +506,6 @@
   "__RANKING_LEGEND_QUESTIONS_MAX: 70": "Any questions or doubts on how our ranking works?",
   "__RANKING_LEGEND_TITLE_MAX: 35": "How to level up",
   "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "Start from Basic to climb up in the ranking",
-  "__RANKING_PROGRESS_MESSAGE_MAX:50": "Become Legendary",
   "__RANKING_PROGRESS_MONTH_MAX: 35": "Real-time scores",
   "__RANKING_SUBTITLE_WELCOME_MAX: 125": "Check your progress, increase your chances of selection, outdo other Trybers and go to the top",
   "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Exp points",
