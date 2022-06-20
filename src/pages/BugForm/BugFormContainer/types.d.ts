@@ -11,4 +11,5 @@ type BugFormValues = {
   expected: string;
   current: string;
   notes: string;
+  additional: string;
 };

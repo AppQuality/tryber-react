@@ -6,6 +6,7 @@ import { FormikProps } from "formik";
 import FocusError from "./FocusError/FocusError";
 import { useAppDispatch } from "../../../redux/provider";
 import { FileUploader, MIN_FILES_NUMBER } from "./FileUploader";
+import { AdditionalFields } from "./AdditionalFields/AdditionalFields";
 
 export const BugFormContainer = () => {
   const dispatch = useAppDispatch();
@@ -27,6 +28,7 @@ export const BugFormContainer = () => {
     expected: "",
     current: "",
     notes: "",
+    additional: "",
   };
 
   const validationSchema = {
@@ -75,6 +77,7 @@ export const BugFormContainer = () => {
           expected: values.expected,
           current: values.current,
           notes: values.notes,
+          additional: values.additional,
         };
         console.info("submitValues", submitValues);
       }}
@@ -83,6 +86,7 @@ export const BugFormContainer = () => {
         return (
           <Form id="bugForm">
             <BugDetails className="aq-mb-3" />
+            <AdditionalFields className="aq-mb-3" />
             <FileUploader />
             <Button
               className="aq-mt-3"
