@@ -19,7 +19,17 @@ export const uploadMedia =
       const {
         bugForm: { mediaList },
       } = getState();
-      const newMediaList = [...mediaList];
+      const newMediaList = mediaList.map((media) => ({
+        id: media.id,
+        fileName: media.fileName,
+        fileType: media.fileType,
+        mimeType: media.mimeType,
+        status: media.status,
+        errorCode: media.errorCode,
+        previewUrl: media.previewUrl,
+        uploadedFileUrl: media.uploadedFileUrl,
+        uploadId: media.uploadId,
+      }));
       newMediaList.forEach((media, i) => {
         data.files.forEach((file) => {
           if (media.fileName === file.name && uploadId === media.uploadId) {
