@@ -52,17 +52,22 @@ export const uploadMedia =
       const {
         bugForm: { mediaList },
       } = getState();
-      const newMediaList = [...mediaList];
+      const newMediaList = mediaList.map((media) => ({
+        id: media.id,
+        fileName: media.fileName,
+        fileType: media.fileType,
+        mimeType: media.mimeType,
+        status: media.status,
+        errorCode: media.errorCode,
+        previewUrl: media.previewUrl,
+        uploadedFileUrl: media.uploadedFileUrl,
+        uploadId: media.uploadId,
+      }));
       newMediaList.forEach((media, i) => {
-        elements.forEach((element) => {
-          if (
-            media.fileName === element.fileName &&
-            media.uploadId === uploadId
-          ) {
-            newMediaList[i].status = "failed";
-            newMediaList[i].errorCode = "UPLOAD_ERROR";
-          }
-        });
+        if (media.uploadId === uploadId) {
+          newMediaList[i].status = "failed";
+          newMediaList[i].errorCode = "UPLOAD_ERROR";
+        }
       });
       dispatch({
         type: "bugForm/setMediaList",
