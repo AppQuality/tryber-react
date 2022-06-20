@@ -16,14 +16,25 @@ const PopupContainer = ({
 }) => {
   const { popups } = usePopups({ showExpired });
   const popupResolver = async () => {
-    const data = await API.me();
-    return {
-      Profile: {
-        name: data.name,
-        surname: data.surname,
-        id: data.id,
-      },
-    };
+    try {
+      const data = await API.me();
+      return {
+        Profile: {
+          name: data.name || "",
+          surname: data.surname || "",
+          id: data.id.toString() || "",
+        },
+      };
+    } catch (e) {
+      console.log(e);
+      return {
+        Profile: {
+          name: "",
+          surname: "",
+          id: "",
+        },
+      };
+    }
   };
   const { t } = useTranslation();
   if (!popups.length) return null;
@@ -42,6 +53,7 @@ const PopupContainer = ({
       {popups.map((p) => {
         return (
           <ModalBody
+            key={p.id}
             prevText={t("Previous")}
             nextText={i === popups.length ? t("Close") : t("Next")}
             onShow={() => p.id && p.once && expirePopup(p.id)}

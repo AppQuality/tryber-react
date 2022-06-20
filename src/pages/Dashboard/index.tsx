@@ -14,12 +14,13 @@ import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
 import useUser from "src/redux/user";
 import { fetchRankingSummary } from "../../redux/ranking/actionCreator";
 
+import ComingSoonHelpModal from "./ComingSoonHelpModal";
+import { FeedbackButton, FeedbackModal } from "./FeedbackModal";
+
 import ActiveCampaignsTable from "./ActiveCampaignsTable";
 import AvailableCampaignsTable from "./AvailableCampaignsTable";
 import ClosedCampaignsTable from "./ClosedCampaignsTable";
-import ComingSoonHelpModal from "./ComingSoonHelpModal";
-import CompletedCampaignsTable from "./CompletedCampaignsTable";
-import { FeedbackButton, FeedbackModal } from "./FeedbackModal";
+import CompletedCampaignsTable from "./FinishedCampaignsTable";
 import OnboardingModal from "./OnboardingModal";
 import PerformanceData from "./PerformanceData";
 import PopupContainer from "./PopupContainer";

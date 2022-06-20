@@ -1,8 +1,10 @@
 import { Button, Form, Formik } from "@appquality/appquality-design-system";
 import { shallowEqual, useSelector } from "react-redux";
-import { FileUploader } from "./FileUploader";
+import { useAppDispatch } from "../../../redux/provider";
+import { FileUploader, MIN_FILES_NUMBER } from "./FileUploader";
 
 export const BugFormContainer = () => {
+  const dispatch = useAppDispatch();
   const initialBugValues: BugFormValues = {
     media: [],
   };
@@ -21,6 +23,10 @@ export const BugFormContainer = () => {
     <Formik
       initialValues={initialBugValues}
       onSubmit={async (values, helpers) => {
+        dispatch({
+          type: "bugForm/setShowError",
+          payload: urls.length < MIN_FILES_NUMBER,
+        });
         const submitValues: BugFormValues = {
           media: urls,
         };
@@ -33,7 +39,6 @@ export const BugFormContainer = () => {
           type="primary"
           htmlType="submit"
           size="block"
-          disabled={urls.length < 2}
           flat
         >
           Submit

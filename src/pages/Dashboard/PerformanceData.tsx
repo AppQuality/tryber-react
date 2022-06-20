@@ -62,14 +62,17 @@ const PerformanceData = () => {
       ? [
           {
             icon: <Level level={summary?.level} hideName />,
-            text: t(
-              "level {{level}}:::__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20",
-              {
-                defaultValue: "Level {{level}}",
-                level: summary?.level.name,
-              }
-            ),
-            val: `${summary.rank}°`,
+            text:
+              summary.level.id === 0
+                ? summary.level.name
+                : t(
+                    "level {{level}}:::__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20",
+                    {
+                      defaultValue: "Level {{level}}",
+                      level: summary?.level.name,
+                    }
+                  ),
+            val: summary.level.id === 0 ? "" : `${summary.rank}°`,
           },
         ]
       : []),
