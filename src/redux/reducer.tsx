@@ -1,4 +1,3 @@
-import { combineReducers } from "redux";
 import menu from "./menu/reducer";
 import user from "./user/reducer";
 import dashboardHelpModal from "./dashboardHelpModal/reducer";
@@ -13,7 +12,7 @@ import myBugs from "./myBugs/reducer";
 import experiencePoints from "./experiencePoints/reducer";
 import bugForm from "./bugForm/reducer";
 
-export default combineReducers({
+export default {
   menu,
   user,
   dashboardHelpModal,
@@ -27,4 +26,4 @@ export default combineReducers({
   myBugs,
   experiencePoints,
   bugForm,
-});
+};

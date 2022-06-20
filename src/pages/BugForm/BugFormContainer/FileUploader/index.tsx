@@ -6,10 +6,7 @@ import {
   deleteMedia,
   uploadMedia,
 } from "../../../../redux/bugForm/actionCreator";
-import {
-  BUG_FORM_SUPPORTED_TYPES,
-  checkFileName,
-} from "../../../../redux/bugForm/utils";
+import { BUG_FORM_SUPPORTED_TYPES } from "../../../../redux/bugForm/utils";
 import { useAppDispatch } from "../../../../redux/provider";
 import { FileCard } from "./FileCard/FileCard";
 import { FileType } from "./FileType/FileType";
@@ -47,19 +44,23 @@ const StyledFilesTypes = styled.div`
   }
 `;
 
+// TODO Parametro da prendere dalle API ???
+export const MIN_FILES_NUMBER = 2;
+
 export const FileUploader = () => {
   const dispatch = useAppDispatch();
-  const { mediaList } = useSelector(
+  const { mediaList, showError } = useSelector(
     (state: GeneralState) => state.bugForm,
     shallowEqual
   );
 
   const uploadedMedia = mediaList.filter((f) => f.status === "success").length;
+  const showMinFilesError = uploadedMedia < MIN_FILES_NUMBER && showError;
 
   return (
     <Card title={"Uploading media"}>
       <Text className="aq-text-primaryVariant">
-        {"Load at least two media:"}
+        {`Upload a minimum number of ${MIN_FILES_NUMBER} files`}
       </Text>
       <StyledFilesTypes className="aq-mb-3">
         <FileType type="image" />
@@ -71,29 +72,35 @@ export const FileUploader = () => {
         accept={BUG_FORM_SUPPORTED_TYPES}
         disabled={false}
         maxFilesText="You have reached the maximum number of files you can upload"
-        onAccepted={(acceptedFiles) =>
-          dispatch(uploadMedia(checkFileName(mediaList, acceptedFiles)))
-        }
+        onAccepted={(acceptedFiles) => dispatch(uploadMedia(acceptedFiles))}
         onRejected={(fileRejections) => {
           const newFileList: File[] = [];
           fileRejections.forEach((f) => newFileList.push(f.file));
-          dispatch(addedDiscardedMedia(checkFileName(mediaList, newFileList)));
+          dispatch(addedDiscardedMedia(newFileList));
         }}
+        danger={showMinFilesError}
       />
+      {showMinFilesError && (
+        <Text className="aq-mt-4 aq-text-danger" small>
+          {`You need to upload at least ${MIN_FILES_NUMBER} files`}
+        </Text>
+      )}
       {mediaList.length ? (
         <>
-          <Text className="aq-mt-3 aq-text-primary" small>
+          <Text
+            className={`${
+              showMinFilesError ? "aq-mt-2" : "aq-mt-3"
+            } aq-mb-3 aq-text-primary`}
+            small
+          >
             {`${uploadedMedia}/${mediaList.length} uploaded`}
           </Text>
           <StyledFileList>
             {mediaList.map((f) => (
               <FileCard
-                key={f.fileName}
+                key={f.id}
                 className="file-list-card"
-                filename={f.fileName}
-                fileType={f.fileType}
-                status={f.status}
-                url={f.previewUrl}
+                fileElement={f}
                 onDelete={
                   f.status !== "uploading"
                     ? () => dispatch(deleteMedia(f))

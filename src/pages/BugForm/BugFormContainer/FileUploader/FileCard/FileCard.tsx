@@ -8,32 +8,50 @@ import { Card, Text } from "@appquality/appquality-design-system";
 import { StyledFileCard, StyledUploading } from "./style";
 
 interface FileCardProps {
-  filename: string;
-  status: "success" | "failed" | "uploading";
-  fileType?: string;
-  url?: string;
+  fileElement: FileElement;
   className?: string;
   onDelete?: () => void;
 }
 
 export const FileCard = ({
-  filename,
-  status,
-  fileType,
-  url,
+  fileElement,
   className,
   onDelete,
 }: FileCardProps) => {
+  const { fileName, status, fileType, mimeType, previewUrl, errorCode } =
+    fileElement;
+
   const getPreview = () => {
     switch (fileType) {
       case "audio":
         return <UploadAudio />;
       case "video":
-        return <UploadVideo />;
+        return mimeType === "video/mp4" ||
+          mimeType === "video/ogg" ||
+          mimeType === "video/webm" ? (
+          <video>
+            <source src={previewUrl} type={mimeType} />
+          </video>
+        ) : (
+          <UploadVideo />
+        );
       case "image":
-        return <img src={url} alt={filename} />;
+        return <img src={previewUrl} alt={fileName} />;
       default:
         return <UploadFile />;
+    }
+  };
+
+  const getError = () => {
+    switch (errorCode) {
+      case "FILE_TOO_BIG":
+        return "Maximum file size exceeded";
+      case "NOT_VALID_FILE_TYPE":
+        return "File not supported";
+      case "UPLOAD_ERROR":
+        return "Generic error";
+      default:
+        return "";
     }
   };
 
@@ -42,8 +60,9 @@ export const FileCard = ({
       <Card className={`file-card ${status}`} bodyClass="file-card-body">
         <div className="file-card-left">
           {getPreview()}
-          <Text className="file-info aq-ml-4" small>
-            {filename}
+          <Text title={fileName} className="file-card-text aq-ml-3" small>
+            <div className="file-info">{fileName}</div>
+            <div className="file-error">{getError()}</div>
           </Text>
         </div>
         <div className="file-card-right">

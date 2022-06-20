@@ -6,8 +6,7 @@ export const StyledFileCard = styled.div`
     margin-bottom: 0.3em;
 
     &.failed {
-      background: ${(p) =>
-        p.theme.variants.danger}26; /* background color with 15% opacity */
+      border-color: ${(p) => p.theme.variants.danger};
     }
 
     .file-card-body {
@@ -16,28 +15,45 @@ export const StyledFileCard = styled.div`
 
       .file-card-left {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         width: 70%;
 
+        video,
+        img,
         svg {
           width: 48px;
           height: 48px;
         }
+        video,
         img {
           border-radius: 6px;
-          width: 55px;
-          height: 55px;
         }
-        .file-info {
-          color: ${(p) => p.theme.variants.primary};
-          width: 100%;
-          height: 4.8em;
+        svg {
+          min-width: 48px;
+          min-height: 48px;
+        }
+        .file-card-text {
           overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-line-clamp: 4; /* number of lines to show */
-          line-clamp: 4;
-          -webkit-box-orient: vertical;
+          .file-info {
+            color: ${(p) => p.theme.variants.primary};
+            width: 100%;
+            height: 2.5em;
+            margin-bottom: 0.2em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* number of lines to show */
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+          .file-error {
+            color: ${(p) => p.theme.palette.danger};
+            width: 100%;
+            height: 1.3em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
         }
       }
 
@@ -63,18 +79,30 @@ export const StyledFileCard = styled.div`
     .file-card {
       .file-card-body {
         .file-card-left {
+          width: 85%;
           svg,
+          video,
           img {
-            width: 27px;
-            height: 27px;
+            width: 37px;
+            height: 37px;
           }
-          .file-info {
-            height: 2.4em;
-            -webkit-line-clamp: 2; /* number of lines to show */
-            line-clamp: 2;
+          svg {
+            min-width: 37px;
+            min-height: 37px;
+          }
+          .file-card-text {
+            .file-info {
+              height: 1.3em;
+              margin-bottom: 0.5em;
+              -webkit-line-clamp: 1; /* number of lines to show */
+              line-clamp: 1;
+            }
+            .file-error {
+            }
           }
         }
         .file-card-right {
+          width: 15%;
           svg {
             width: 21px;
             height: 21px;
