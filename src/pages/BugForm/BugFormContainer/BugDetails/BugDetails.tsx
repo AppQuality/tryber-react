@@ -120,12 +120,12 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
             onChange={() => null}
           />
         </BSCol>
-        {/* TODO Time Picker ??? */}
         <BSCol size="col-6">
           <FormLabel htmlFor={"time"} label={"What time did it happen"} />
           <Datepicker
             id={"time"}
             locale={i18n.language}
+            control="time"
             placeholder={"Pick a time"}
             setText={"Set"}
             cancelText={"Cancel"}
