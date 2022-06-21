@@ -1,4 +1,10 @@
-import { Button, Form, Formik } from "@appquality/appquality-design-system";
+import {
+  BSCol,
+  BSGrid,
+  Button,
+  Form,
+  Formik,
+} from "@appquality/appquality-design-system";
 import { shallowEqual, useSelector } from "react-redux";
 import { BugDetails } from "./BugDetails/BugDetails";
 import * as yup from "yup";
@@ -7,6 +13,7 @@ import FocusError from "./FocusError/FocusError";
 import { useAppDispatch } from "../../../redux/provider";
 import { FileUploader, MIN_FILES_NUMBER } from "./FileUploader";
 import { AdditionalFields } from "./AdditionalFields/AdditionalFields";
+import React from "react";
 
 export const BugFormContainer = () => {
   const dispatch = useAppDispatch();
@@ -84,21 +91,29 @@ export const BugFormContainer = () => {
     >
       {(formikProps: FormikProps<BugFormValues>) => {
         return (
-          <Form id="bugForm">
-            <BugDetails className="aq-mb-3" />
-            <AdditionalFields className="aq-mb-3" />
-            <FileUploader />
-            <Button
-              className="aq-mt-3"
-              type="primary"
-              htmlType="submit"
-              size="block"
-              flat
-            >
-              Submit this bug report
-            </Button>
-            <FocusError />
-          </Form>
+          <BSGrid>
+            <BSCol size="col-lg-7" className="aq-mb-3">
+              <Form id="bugForm">
+                <BugDetails className="aq-mb-3" />
+                <Button
+                  className="aq-mt-3"
+                  type="primary"
+                  htmlType="submit"
+                  size="block"
+                  flat
+                >
+                  Submit this bug report
+                </Button>
+                <FocusError />
+              </Form>
+            </BSCol>
+            <BSCol size="col-lg-5">
+              <div className="stick-to-header-lg">
+                <AdditionalFields className="aq-mb-3" />
+                <FileUploader />
+              </div>
+            </BSCol>
+          </BSGrid>
         );
       }}
     </Formik>
