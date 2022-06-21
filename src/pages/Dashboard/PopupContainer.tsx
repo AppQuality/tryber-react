@@ -53,6 +53,7 @@ const PopupContainer = ({
       {popups.map((p) => {
         return (
           <ModalBody
+            key={p.id}
             prevText={t("Previous")}
             nextText={i === popups.length ? t("Close") : t("Next")}
             onShow={() => p.id && p.once && expirePopup(p.id)}

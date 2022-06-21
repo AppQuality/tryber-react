@@ -96,6 +96,7 @@ const TabBase = () => {
     { label: t("Gender option:::Female"), value: "female" },
     { label: t("Gender option:::Male"), value: "male" },
     { label: t("Gender option:::Not Specified"), value: "not-specified" },
+    { label: t("Gender option:::Other"), value: "other" },
   ];
 
   if (loading) return <SkeletonTab />;
@@ -161,7 +162,6 @@ const TabBase = () => {
                 <FormikField name="name">
                   {({
                     field, // { name, value, onChange, onBlur }
-                    form,
                     meta,
                   }: FieldProps) => {
                     return (
@@ -188,7 +188,6 @@ const TabBase = () => {
                 <FormikField name="surname">
                   {({
                     field, // { name, value, onChange, onBlur }
-                    form,
                     meta,
                   }: FieldProps) => {
                     return (
