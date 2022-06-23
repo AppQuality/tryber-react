@@ -10,7 +10,7 @@ import { BugDetails } from "./BugDetails/BugDetails";
 import * as yup from "yup";
 import { FormikProps } from "formik";
 import FocusError from "./FocusError/FocusError";
-import { useAppDispatch } from "../../../redux/provider";
+import { useAppDispatch } from "src/redux/provider";
 import { FileUploader, MIN_FILES_NUMBER } from "./FileUploader";
 import { AdditionalFields } from "./AdditionalFields/AdditionalFields";
 import React from "react";
@@ -56,6 +56,7 @@ export const BugFormContainer = () => {
       ),
     expected: yup.string().required("This is a required field"),
     current: yup.string().required("This is a required field"),
+    media: yup.array().min(MIN_FILES_NUMBER),
   };
 
   const urls: string[] = [];
@@ -111,6 +112,15 @@ export const BugFormContainer = () => {
               <div className="stick-to-header-lg">
                 <AdditionalFields className="aq-mb-3" />
                 <FileUploader />
+                <Button
+                  className="aq-mt-3"
+                  type="primary"
+                  htmlType="submit"
+                  size="block"
+                  flat
+                >
+                  Submit this bug report
+                </Button>
               </div>
             </BSCol>
           </BSGrid>

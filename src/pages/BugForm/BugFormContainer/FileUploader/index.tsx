@@ -1,15 +1,22 @@
-import { Card, Dropzone, Text } from "@appquality/appquality-design-system";
+import {
+  Card,
+  Dropzone,
+  ErrorMessage,
+  Text,
+} from "@appquality/appquality-design-system";
 import { shallowEqual, useSelector } from "react-redux";
 import styled from "styled-components";
 import {
   addedDiscardedMedia,
   deleteMedia,
   uploadMedia,
-} from "../../../../redux/bugForm/actionCreator";
-import { BUG_FORM_SUPPORTED_TYPES } from "../../../../redux/bugForm/utils";
-import { useAppDispatch } from "../../../../redux/provider";
+} from "src/redux/bugForm/actionCreator";
+import { BUG_FORM_SUPPORTED_TYPES } from "src/redux/bugForm/utils";
+import { useAppDispatch } from "src/redux/provider";
 import { FileCard } from "./FileCard/FileCard";
 import { FileType } from "./FileType/FileType";
+import { useField } from "formik";
+import { useEffect, useState } from "react";
 
 const StyledFileList = styled.div`
   min-height: 6.5em;
@@ -53,10 +60,28 @@ export const FileUploader = () => {
     (state: GeneralState) => state.bugForm,
     shallowEqual
   );
+  const [uploadedMedia, setUploadedMedia] = useState(
+    mediaList.filter((f) => f.status === "success")
+  );
+  const [input, meta, helper] = useField("media");
 
-  const uploadedMedia = mediaList.filter((f) => f.status === "success").length;
-  const showMinFilesError = uploadedMedia < MIN_FILES_NUMBER && showError;
+  const showMinFilesError =
+    uploadedMedia.length < MIN_FILES_NUMBER && showError;
 
+  const getSuccessMedia = (aMediaList: FileElement[]) => {
+    return aMediaList.filter((f) => f.status === "success");
+  };
+  const getUploadedUrl = (aMediaList: FileElement[]) => {
+    return aMediaList.map((f) => f.uploadedFileUrl);
+  };
+  useEffect(() => {
+    setUploadedMedia(getSuccessMedia(mediaList));
+    helper.setValue(getUploadedUrl(getSuccessMedia(mediaList)), true);
+  }, [mediaList]);
+
+  const isInvalid = () => {
+    return typeof meta.error === "string" && meta.touched;
+  };
   return (
     <Card title={"Uploading media"}>
       <Text className="aq-text-primaryVariant">
@@ -78,13 +103,9 @@ export const FileUploader = () => {
           fileRejections.forEach((f) => newFileList.push(f.file));
           dispatch(addedDiscardedMedia(newFileList));
         }}
-        danger={showMinFilesError}
+        danger={isInvalid()}
       />
-      {showMinFilesError && (
-        <Text className="aq-mt-4 aq-text-danger" small>
-          {`You need to upload at least ${MIN_FILES_NUMBER} files`}
-        </Text>
-      )}
+      <ErrorMessage name={input.name} />
       {mediaList.length ? (
         <>
           <Text
@@ -93,7 +114,7 @@ export const FileUploader = () => {
             } aq-mb-3 aq-text-primary`}
             small
           >
-            {`${uploadedMedia}/${mediaList.length} uploaded`}
+            {`${uploadedMedia.length}/${mediaList.length} uploaded`}
           </Text>
           <StyledFileList>
             {mediaList.map((f) => (
