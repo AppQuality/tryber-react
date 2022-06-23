@@ -1,5 +1,6 @@
 import { Button, Text, Title } from "@appquality/appquality-design-system";
 import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import noDeviceBackground from "./assets/noDeviceBackground.svg";
 import noDeviceIcon from "./assets/noDeviceIcon.svg";
@@ -37,19 +38,23 @@ const StyledBugFormNoDevice = styled.div`
 `;
 
 export const BugFormNoDevice = () => {
+  const { t } = useTranslation();
+
   return (
     <StyledBugFormNoDevice>
       <img src={noDeviceBackground} alt="No device background" />
       <div className="no-device-empathy">
         <img className="aq-mb-3" src={noDeviceIcon} alt="No device icon" />
-        <Title size="ms">Add a device</Title>
-        <Text className="aq-text-primary aq-mt-3 aq-mb-2">
-          You don't have any devices saved: add at least one to be able to start
-          reporting bugs.
-        </Text>
-        <Text className="aq-text-primary aq-mb-3">
-          As soon as this is done, we will meet again here to continue the
-          campaign!
+        <Title size="ms">
+          {t("BUGFORM_EMPATHY_SAVEDEVICE_TITLE", {
+            defaultValue: "Add a device",
+          })}
+        </Title>
+        <Text className="aq-text-primary aq-mt-3 aq-mb-3">
+          {t("BUGFORM_EMPATHY_SAVEDEVICE_TXT", {
+            defaultValue:
+              "You don't have any devices saved: add at least one to be able to start reporting bugs.\n As soon as this is done, we will meet again here to continue the campaign!",
+          })}
         </Text>
         <Button
           href={`${
@@ -57,7 +62,9 @@ export const BugFormNoDevice = () => {
           }/personal-equipment/`}
           forwardedAs="a"
         >
-          Add a device
+          {t("BUGFORM_EMPATHY_SAVEDEVICE_CTA", {
+            defaultValue: "Add a device",
+          })}
         </Button>
       </div>
     </StyledBugFormNoDevice>
