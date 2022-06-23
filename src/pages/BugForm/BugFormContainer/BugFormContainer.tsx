@@ -14,6 +14,21 @@ import { useAppDispatch } from "src/redux/provider";
 import { FileUploader, MIN_FILES_NUMBER } from "./FileUploader";
 import { AdditionalFields } from "./AdditionalFields/AdditionalFields";
 import React from "react";
+import styled from "styled-components";
+
+const StyledForm = styled(Form)`
+  .hide-mobile {
+    display: none;
+    @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+      display: initial;
+    }
+  }
+  .hide-desktop {
+    @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+      display: none;
+    }
+  }
+`;
 
 export const BugFormContainer = () => {
   const dispatch = useAppDispatch();
@@ -92,12 +107,12 @@ export const BugFormContainer = () => {
     >
       {(formikProps: FormikProps<BugFormValues>) => {
         return (
-          <BSGrid>
-            <BSCol size="col-lg-7" className="aq-mb-3">
-              <Form id="bugForm">
+          <StyledForm id="bugForm">
+            <BSGrid>
+              <BSCol size="col-lg-7" className="aq-mb-3">
                 <BugDetails className="aq-mb-3" />
                 <Button
-                  className="aq-mt-3"
+                  className="aq-mt-3 hide-mobile"
                   type="primary"
                   htmlType="submit"
                   size="block"
@@ -106,24 +121,24 @@ export const BugFormContainer = () => {
                   Submit this bug report
                 </Button>
                 <FocusError />
-              </Form>
-            </BSCol>
-            <BSCol size="col-lg-5">
-              <div className="stick-to-header-lg">
-                <AdditionalFields className="aq-mb-3" />
-                <FileUploader />
-                <Button
-                  className="aq-mt-3"
-                  type="primary"
-                  htmlType="submit"
-                  size="block"
-                  flat
-                >
-                  Submit this bug report
-                </Button>
-              </div>
-            </BSCol>
-          </BSGrid>
+              </BSCol>
+              <BSCol size="col-lg-5">
+                <div className="stick-to-header-lg">
+                  <AdditionalFields className="aq-mb-3" />
+                  <FileUploader />
+                  <Button
+                    className="aq-mt-3 hide-desktop"
+                    type="primary"
+                    htmlType="submit"
+                    size="block"
+                    flat
+                  >
+                    Submit this bug report
+                  </Button>
+                </div>
+              </BSCol>
+            </BSGrid>
+          </StyledForm>
         );
       }}
     </Formik>
