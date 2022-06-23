@@ -1,5 +1,6 @@
 import { Button, Text, Title } from "@appquality/appquality-design-system";
 import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import unauthorizedBackground from "./assets/unauthorizedBackground.svg";
 import unauthorizedIcon from "./assets/unauthorizedIcon.svg";
@@ -37,6 +38,8 @@ const StyledBugFormUnauthorized = styled.div`
 `;
 
 export const BugFormUnauthorized = () => {
+  const { t } = useTranslation();
+
   return (
     <StyledBugFormUnauthorized>
       <img src={unauthorizedBackground} alt="Unauthorized background" />
@@ -46,11 +49,16 @@ export const BugFormUnauthorized = () => {
           src={unauthorizedIcon}
           alt="Unauthorized icon"
         />
-        <Title size="ms">There is nothing to see here</Title>
+        <Title size="ms">
+          {t("BUGFORM_EMPATHY_404_TITLE", {
+            defaultValue: "There is nothing to see here",
+          })}
+        </Title>
         <Text className="aq-text-primary aq-mt-3 aq-mb-3">
-          We couldn't find the URL you typed: this is a page that doesn't exist.
-          <br />
-          (Maybe that's why the Tryber is a little sad)
+          {t("BUGFORM_EMPATHY_404_TXT", {
+            defaultValue:
+              "We couldn't find the URL you typed: this is a page that doesn't exist.\n(Maybe that's why the Tryber is a little sad)",
+          })}
         </Text>
         <Button
           href={`${
@@ -58,7 +66,9 @@ export const BugFormUnauthorized = () => {
           }/my-dashboard/`}
           forwardedAs="a"
         >
-          Torna alla dashboard
+          {t("BUGFORM_EMPATHY_404_CTA", {
+            defaultValue: "Back to the dashboard",
+          })}
         </Button>
       </div>
     </StyledBugFormUnauthorized>
