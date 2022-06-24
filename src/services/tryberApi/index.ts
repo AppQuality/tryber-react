@@ -569,6 +569,24 @@ const injectedRtkApi = api.injectEndpoints({
     getLevels: build.query<GetLevelsApiResponse, GetLevelsApiArg>({
       query: () => ({ url: `/levels` }),
     }),
+    getUsersMeCampaignsByCampaignId: build.query<
+      GetUsersMeCampaignsByCampaignIdApiResponse,
+      GetUsersMeCampaignsByCampaignIdApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}`,
+      }),
+    }),
+    postUsersMeCampaignsByCampaignIdMedia: build.mutation<
+      PostUsersMeCampaignsByCampaignIdMediaApiResponse,
+      PostUsersMeCampaignsByCampaignIdMediaApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}/media`,
+        method: "POST",
+        body: queryArg.body,
+      }),
+    }),
   }),
   overrideExisting: false,
 });
@@ -830,6 +848,7 @@ export type PostMediaApiResponse = /** status 200 OK */ {
   }[];
   failed?: {
     name: string;
+    errorCode: string;
   }[];
 };
 export type PostMediaApiArg = {
@@ -1442,6 +1461,71 @@ export type DeletePaymentsByPaymentIdApiArg = {
 };
 export type GetLevelsApiResponse = /** status 200 OK */ LevelDefinition[];
 export type GetLevelsApiArg = void;
+export type GetUsersMeCampaignsByCampaignIdApiResponse = /** status 200 OK */ {
+  id: number;
+  title: string;
+  language?: {
+    code: string;
+    message: string;
+  };
+  titleRule?: boolean;
+  minimumMedia: number;
+  useCases: {
+    id: number;
+    name: string;
+  }[];
+  additionalFields?: ({
+    name: string;
+    slug: string;
+    error: string;
+  } & (
+    | {
+        type: "select";
+        options: string[];
+      }
+    | {
+        type: "text";
+        regex: string;
+      }
+  ))[];
+  bugTypes: {
+    valid: string[];
+    invalid: string[];
+  };
+  bugSeverity: {
+    valid: string[];
+    invalid: string[];
+  };
+  bugReplicability: {
+    valid: string[];
+    invalid: string[];
+  };
+  hasBugForm: boolean;
+  devices?: ({
+    id: number;
+  } & UserDevice)[];
+  validFileExtensions: string[];
+};
+export type GetUsersMeCampaignsByCampaignIdApiArg = {
+  campaignId: string;
+};
+export type PostUsersMeCampaignsByCampaignIdMediaApiResponse =
+  /** status 200 OK */ {
+    files?: {
+      name?: string;
+      path?: string;
+    }[];
+    failed?: {
+      name?: string;
+      errorCode?: string;
+    }[];
+  };
+export type PostUsersMeCampaignsByCampaignIdMediaApiArg = {
+  campaignId: string;
+  body: {
+    media?: {} | string[];
+  };
+};
 export type Project = {
   name?: string;
 };
@@ -1711,4 +1795,6 @@ export const {
   usePostPaymentsByPaymentIdMutation,
   useDeletePaymentsByPaymentIdMutation,
   useGetLevelsQuery,
+  useGetUsersMeCampaignsByCampaignIdQuery,
+  usePostUsersMeCampaignsByCampaignIdMediaMutation,
 } = injectedRtkApi;
