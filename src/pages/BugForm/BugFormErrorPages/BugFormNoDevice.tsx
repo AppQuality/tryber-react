@@ -1,50 +1,22 @@
 import { Button, Text, Title } from "@appquality/appquality-design-system";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import noDeviceBackground from "./assets/noDeviceBackground.svg";
+import background from "./assets/background.svg";
 import noDeviceIcon from "./assets/noDeviceIcon.svg";
-
-const StyledBugFormNoDevice = styled.div`
-  text-align: center;
-  position: relative;
-  margin: 4em 0;
-
-  .no-device-empathy {
-    position: absolute;
-    top: 15px;
-    left: 0;
-    right: 10px;
-    margin: auto;
-    width: 85%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    img {
-      width: 45%;
-    }
-  }
-
-  @media (min-width: ${(p) => p.theme.grid.breakpoints.md}) {
-    .no-device-empathy {
-      top: 110px;
-      width: 26em;
-      img {
-        width: auto;
-      }
-    }
-  }
-`;
+import { StyledBugFormError } from "./style";
 
 export const BugFormNoDevice = () => {
   const { t } = useTranslation();
 
   return (
-    <StyledBugFormNoDevice>
-      <img src={noDeviceBackground} alt="No device background" />
-      <div className="no-device-empathy">
-        <img className="aq-mb-3" src={noDeviceIcon} alt="No device icon" />
+    <StyledBugFormError>
+      <img src={background} alt="background" />
+      <div className="empathy-container">
+        <img
+          className="img-45 aq-mb-3"
+          src={noDeviceIcon}
+          alt="No device icon"
+        />
         <Title size="ms">
           {t("BUGFORM_EMPATHY_SAVEDEVICE_TITLE", {
             defaultValue: "Add a device",
@@ -67,6 +39,6 @@ export const BugFormNoDevice = () => {
           })}
         </Button>
       </div>
-    </StyledBugFormNoDevice>
+    </StyledBugFormError>
   );
 };

@@ -1,51 +1,19 @@
 import { Button, Text, Title } from "@appquality/appquality-design-system";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import unauthorizedBackground from "./assets/unauthorizedBackground.svg";
+import background from "./assets/background.svg";
 import unauthorizedIcon from "./assets/unauthorizedIcon.svg";
-
-const StyledBugFormUnauthorized = styled.div`
-  text-align: center;
-  position: relative;
-  margin: 4em 0;
-
-  .unauthorized-empathy {
-    position: absolute;
-    top: 15px;
-    left: 0;
-    right: 10px;
-    margin: auto;
-    width: 85%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    img {
-      width: 30%;
-    }
-  }
-
-  @media (min-width: ${(p) => p.theme.grid.breakpoints.md}) {
-    .unauthorized-empathy {
-      top: 110px;
-      width: 26em;
-      img {
-        width: auto;
-      }
-    }
-  }
-`;
+import { StyledBugFormError } from "./style";
 
 export const BugFormUnauthorized = () => {
   const { t } = useTranslation();
 
   return (
-    <StyledBugFormUnauthorized>
-      <img src={unauthorizedBackground} alt="Unauthorized background" />
-      <div className="unauthorized-empathy">
+    <StyledBugFormError>
+      <img src={background} alt="background" />
+      <div className="empathy-container">
         <img
-          className="aq-mb-3"
+          className="img-30 aq-mb-3"
           src={unauthorizedIcon}
           alt="Unauthorized icon"
         />
@@ -71,6 +39,6 @@ export const BugFormUnauthorized = () => {
           })}
         </Button>
       </div>
-    </StyledBugFormUnauthorized>
+    </StyledBugFormError>
   );
 };
