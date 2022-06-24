@@ -19,10 +19,11 @@ const StyledTextareaField = styled.div<{
   resize?: string;
   isInvalid?: boolean;
   height?: string;
+  autoResize?: boolean;
 }>`
   textarea {
     width: 100%;
-    height: ${(p) => (p.height ? p.height : "5.715rem")};
+    min-height: ${(p) => (p.height ? p.height : "5.715rem")};
     resize: ${(p) => (p.resize ? p.resize : "none")};
     padding: 0.5rem 0.75rem;
     color: ${(p) => p.theme.palette.primary};
@@ -35,6 +36,7 @@ const StyledTextareaField = styled.div<{
     line-height: 1.5;
     box-shadow: none;
     ${(props) => (props.isInvalid ? InvalidInputStyle : "")}
+    ${(p) => (p.autoResize ? "overflow: hidden;" : "")}
 
     &:focus,
     &:focus-visible {
@@ -74,6 +76,7 @@ interface TextareaFieldProps {
   disabled?: boolean;
   resize?: "none" | "both" | "horizontal" | "vertical";
   height?: string;
+  autoResize?: boolean;
 }
 
 export const TextareaField = ({
@@ -84,6 +87,7 @@ export const TextareaField = ({
   disabled,
   resize,
   height,
+  autoResize,
 }: TextareaFieldProps) => {
   return (
     <FormikField name={name}>
@@ -94,6 +98,7 @@ export const TextareaField = ({
             resize={resize}
             isInvalid={meta.touched && typeof meta.error == "string"}
             height={height}
+            autoResize={autoResize}
           >
             {label && <FormLabel htmlFor={field.name} label={label} />}
             <textarea
@@ -104,6 +109,15 @@ export const TextareaField = ({
               disabled={disabled}
               onChange={(e) => field.onChange(e)}
               onBlur={(e) => field.onBlur(e)}
+              onInput={
+                autoResize
+                  ? (e) => {
+                      e.currentTarget.style.height = "1px";
+                      e.currentTarget.style.height =
+                        e.currentTarget.scrollHeight + "px";
+                    }
+                  : undefined
+              }
             />
             <ErrorMessage name={field.name} />
           </StyledTextareaField>
