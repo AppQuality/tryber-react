@@ -1,4 +1,5 @@
 import {
+  aqBootstrapTheme,
   BSCol,
   BSGrid,
   Card,
@@ -15,6 +16,10 @@ interface BugDetailsProps {
 }
 
 export const BugDetails = ({ className }: BugDetailsProps) => {
+  const isDesktop = window.matchMedia(
+    `only screen and (min-width: ${aqBootstrapTheme.grid.breakpoints.lg})`
+  ).matches;
+
   return (
     <Card className={className} title={"Bug Details"}>
       <Field
@@ -89,7 +94,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         label={"Step-by-step description"}
         placeholder={"1.\n2.\n3."}
         height="8.8rem"
-        resize="vertical"
+        autoResize={isDesktop}
       />
       <TextareaField
         className="aq-mb-3"
@@ -97,7 +102,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         label="Expected result"
         placeholder="Write what you expected"
         height="7rem"
-        resize="vertical"
+        autoResize={isDesktop}
       />
       <TextareaField
         className="aq-mb-3"
@@ -105,7 +110,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         label="Observed result"
         placeholder="Write what you found"
         height="7rem"
-        resize="vertical"
+        autoResize={isDesktop}
       />
       <BSGrid>
         <BSCol size="col-6" className="aq-mb-3">
