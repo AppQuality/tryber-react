@@ -6,13 +6,13 @@ import {
   Formik,
 } from "@appquality/appquality-design-system";
 import { shallowEqual, useSelector } from "react-redux";
-import { BugDetails } from "./BugDetails/BugDetails";
+import { BugDetails } from "src/pages/BugForm/BugDetails/BugDetails";
 import * as yup from "yup";
 import { FormikProps } from "formik";
-import FocusError from "./FocusError/FocusError";
+import FocusError from "src/pages/BugForm/FocusError/FocusError";
 import { useAppDispatch } from "src/redux/provider";
-import { FileUploader, MIN_FILES_NUMBER } from "./FileUploader";
-import { AdditionalFields } from "./AdditionalFields/AdditionalFields";
+import { FileUploader, MIN_FILES_NUMBER } from "src/pages/BugForm/FileUploader";
+import { AdditionalFields } from "src/pages/BugForm/AdditionalFields/AdditionalFields";
 import React from "react";
 import styled from "styled-components";
 

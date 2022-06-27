@@ -1,7 +1,7 @@
 import React from "react";
 import { DatepickerGlobalStyle } from "@appquality/appquality-design-system";
-import { PageTemplate } from "../../features/PageTemplate";
-import { BugFormContainer } from "./BugFormContainer/BugFormContainer";
+import { PageTemplate } from "src/features/PageTemplate";
+import { BugFormContainer } from "src/pages/BugForm/BugFormContainer";
 
 export default function BugForm() {
   return (

@@ -7,8 +7,8 @@ import {
   FormLabel,
   Select,
 } from "@appquality/appquality-design-system";
-import i18n from "../../../../i18n";
-import { TextareaField } from "./TextareaField/TextareaField";
+import i18n from "src/i18n";
+import { TextareaField } from "src/pages/BugForm/BugDetails/TextareaField/TextareaField";
 
 interface BugDetailsProps {
   className?: string;
