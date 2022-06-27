@@ -21,8 +21,18 @@ const bugFormSlice = createSlice({
     appendMediaList(state, action: PayloadAction<FileElement[]>) {
       state.mediaList = state.mediaList.concat(action.payload);
     },
-    deleteMedia(state, action: PayloadAction<FileElement>) {
-      alert("delete media");
+    removeElementFromMedialist(
+      state,
+      action: PayloadAction<{ url?: string; id?: string }>
+    ) {
+      const { url, id } = action.payload;
+      if (url) {
+        state.mediaList = state.mediaList.filter(
+          (media) => media.uploadedFileUrl !== url
+        );
+      } else if (id) {
+        state.mediaList = state.mediaList.filter((media) => media.id !== id);
+      }
     },
     updateMediaList(
       state,
@@ -55,6 +65,10 @@ const bugFormSlice = createSlice({
 });
 
 const { actions, reducer } = bugFormSlice;
-export const { setMediaList, appendMediaList, updateMediaList, deleteMedia } =
-  actions;
+export const {
+  setMediaList,
+  appendMediaList,
+  updateMediaList,
+  removeElementFromMedialist,
+} = actions;
 export default reducer;
