@@ -3,7 +3,10 @@ import { Text } from "@appquality/appquality-design-system";
 import { FileCard } from "src/pages/BugForm/FileUploader/FileCard/FileCard";
 import { useField } from "formik";
 import { useAppDispatch, useAppSelector } from "src/store";
-import { deleteMedia } from "src/pages/BugForm/bugFormSlice";
+
+import { useDeleteMediaMutation } from "src/services/tryberApi";
+import { useEffect } from "react";
+import { removeElementFromMedialist } from "src/pages/BugForm/bugFormSlice";
 
 const StyledFileList = styled.div`
   min-height: 6.5em;
@@ -30,10 +33,32 @@ const StyledFileList = styled.div`
 export const FileList = () => {
   const { mediaList } = useAppSelector((state) => state.bugForm);
   const dispatch = useAppDispatch();
-  const [input, meta] = useField("media");
+  const [input, meta, helper] = useField("media");
   const isInvalid = () => {
     return typeof meta.error === "string" && meta.touched;
   };
+  const [deleteMedia, deleteMediaResults] = useDeleteMediaMutation();
+  const onDelete = async (fileElement: FileElement) => {
+    if (fileElement.status === "uploading") return;
+    if (
+      fileElement.status === "success" &&
+      typeof fileElement.uploadedFileUrl === "string"
+    ) {
+      deleteMedia({ body: { url: fileElement.uploadedFileUrl } });
+      return;
+    }
+    if (fileElement.status === "failed") {
+      dispatch(removeElementFromMedialist({ id: fileElement.id }));
+    }
+  };
+  useEffect(() => {
+    if (deleteMediaResults.status !== "fulfilled") return;
+    if (typeof deleteMediaResults?.originalArgs?.body.url !== "string") return;
+    const urlToRemove = deleteMediaResults?.originalArgs?.body.url;
+    helper.setValue(input.value.filter((url: string) => url !== urlToRemove));
+    dispatch(removeElementFromMedialist({ url: urlToRemove }));
+  }, [deleteMediaResults]);
+
   if (mediaList.length <= 0) return null;
   return (
     <>
@@ -51,11 +76,7 @@ export const FileList = () => {
             key={f.id}
             className="file-list-card"
             fileElement={f}
-            onDelete={
-              f.status !== "uploading"
-                ? () => dispatch(deleteMedia(f))
-                : undefined
-            }
+            onDelete={() => onDelete(f)}
           />
         ))}
       </StyledFileList>
