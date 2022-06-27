@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FileType } from "src/pages/BugForm/FileUploader/FileType/FileType";
 import { FileDropzone } from "src/pages/BugForm/FileUploader/FileDropzone";
 import { FileList } from "src/pages/BugForm/FileUploader/FileList";
+import useCampaignData from "src/pages/BugForm/useCampaignData";
 
 const StyledFilesTypes = styled.div`
   display: flex;
@@ -15,14 +16,12 @@ const StyledFilesTypes = styled.div`
   }
 `;
 
-// TODO Parametro da prendere dalle API ???
-export const MIN_FILES_NUMBER = 2;
-
 export const FileUploader = () => {
+  const { data } = useCampaignData();
   return (
     <Card title={"Uploading media"}>
       <Text className="aq-text-primaryVariant">
-        {`Upload a minimum number of ${MIN_FILES_NUMBER} files`}
+        {`Upload a minimum number of ${data?.minimumMedia || 0} files`}
       </Text>
       <StyledFilesTypes className="aq-mb-3">
         <FileType type="image" />

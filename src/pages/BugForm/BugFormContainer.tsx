@@ -11,7 +11,7 @@ import * as yup from "yup";
 import { FormikProps } from "formik";
 import FocusError from "src/pages/BugForm/FocusError/FocusError";
 import { useAppDispatch } from "src/redux/provider";
-import { FileUploader, MIN_FILES_NUMBER } from "src/pages/BugForm/FileUploader";
+import { FileUploader } from "src/pages/BugForm/FileUploader";
 import { AdditionalFields } from "src/pages/BugForm/AdditionalFields";
 import React from "react";
 import styled from "styled-components";
@@ -76,7 +76,7 @@ export const BugFormContainer = () => {
       ),
     expected: yup.string().required("This is a required field"),
     current: yup.string().required("This is a required field"),
-    media: yup.array().min(MIN_FILES_NUMBER),
+    media: yup.array().min(data?.minimumMedia || 0),
     additional: yup.object(),
   };
 
