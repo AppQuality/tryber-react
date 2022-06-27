@@ -1,11 +1,14 @@
-import { ReactComponent as UploadFile } from "./assets/uploadFile.svg";
-import { ReactComponent as UploadAudio } from "./assets/uploadAudio.svg";
-import { ReactComponent as UploadVideo } from "./assets/uploadVideo.svg";
-import { ReactComponent as UploadSuccess } from "./assets/uploadSuccess.svg";
-import { ReactComponent as UploadFailed } from "./assets/uploadFailed.svg";
-import { ReactComponent as UploadTrash } from "./assets/uploadTrash.svg";
+import { ReactComponent as UploadFile } from "src/pages/BugForm/FileUploader/FileCard/assets/uploadFile.svg";
+import { ReactComponent as UploadAudio } from "src/pages/BugForm/FileUploader/FileCard/assets/uploadAudio.svg";
+import { ReactComponent as UploadVideo } from "src/pages/BugForm/FileUploader/FileCard/assets/uploadVideo.svg";
+import { ReactComponent as UploadSuccess } from "src/pages/BugForm/FileUploader/FileCard/assets/uploadSuccess.svg";
+import { ReactComponent as UploadFailed } from "src/pages/BugForm/FileUploader/FileCard/assets/uploadFailed.svg";
+import { ReactComponent as UploadTrash } from "src/pages/BugForm/FileUploader/FileCard/assets/uploadTrash.svg";
 import { Card, Text } from "@appquality/appquality-design-system";
-import { StyledFileCard, StyledUploading } from "./style";
+import {
+  StyledFileCard,
+  StyledUploading,
+} from "src/pages/BugForm/FileUploader/FileCard/style";
 
 interface FileCardProps {
   fileElement: FileElement;

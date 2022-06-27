@@ -40,6 +40,7 @@ export const uploadMedia =
         data.failed?.forEach((fail) => {
           if (media.fileName === fail.name && uploadId === media.uploadId) {
             newMediaList[i].status = "failed";
+            newMediaList[i].errorCode = media.errorCode;
           }
         });
       });

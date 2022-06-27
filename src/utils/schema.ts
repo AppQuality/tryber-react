@@ -343,6 +343,22 @@ export interface paths {
     get: operations["get-levels"];
     parameters: {};
   };
+  "/users/me/campaigns/{campaignId}": {
+    get: operations["get-users-me-campaigns-campaignId"];
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+  };
+  "/users/me/campaigns/{campaignId}/media": {
+    post: operations["post-users-me-campaigns-campaignId-media"];
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+  };
 }
 
 export interface components {
@@ -1268,6 +1284,7 @@ export interface operations {
             }[];
             failed?: {
               name: string;
+              errorCode: string;
             }[];
           };
         };
@@ -1372,7 +1389,7 @@ export interface operations {
             onboarding_completed?: boolean;
             additional?: components["schemas"]["AdditionalField"][];
             /** @enum {string} */
-            gender?: "male" | "female" | "not-specified";
+            gender?: "male" | "female" | "not-specified" | "other";
             /** Format: date */
             birthDate?: string;
             phone?: string;
@@ -1461,7 +1478,7 @@ export interface operations {
             onboarding_completed?: boolean;
             additional?: components["schemas"]["AdditionalField"][];
             /** @enum {string} */
-            gender?: "male" | "female" | "not-specified";
+            gender?: "male" | "female" | "not-specified" | "other";
             /** Format: date */
             birthDate?: string;
             phone?: string;
@@ -1495,7 +1512,7 @@ export interface operations {
           onboarding_completed?: boolean;
           surname?: string;
           /** @enum {string} */
-          gender?: "male" | "female" | "not-specified";
+          gender?: "male" | "female" | "not-specified" | "other";
           birthDate?: string;
           phone?: string;
           education?: number;
@@ -2454,6 +2471,98 @@ export interface operations {
       };
       403: components["responses"]["NotAuthorized"];
       404: components["responses"]["NotFound"];
+    };
+  };
+  "get-users-me-campaigns-campaignId": {
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            title: string;
+            language?: {
+              code: string;
+              message: string;
+            };
+            titleRule?: boolean;
+            minimumMedia: number;
+            useCases: {
+              id: number;
+              name: string;
+            }[];
+            additionalFields?: ({
+              name: string;
+              slug: string;
+              error: string;
+            } & (
+              | {
+                  /** @enum {string} */
+                  type: "select";
+                  options: string[];
+                }
+              | {
+                  /** @enum {string} */
+                  type: "text";
+                  regex: string;
+                }
+            ))[];
+            bugTypes: {
+              valid: string[];
+              invalid: string[];
+            };
+            bugSeverity: {
+              valid: string[];
+              invalid: string[];
+            };
+            bugReplicability: {
+              valid: string[];
+              invalid: string[];
+            };
+            hasBugForm: boolean;
+            devices?: ({
+              id: number;
+            } & components["schemas"]["UserDevice"])[];
+            validFileExtensions: string[];
+          };
+        };
+      };
+    };
+  };
+  "post-users-me-campaigns-campaignId-media": {
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            files?: {
+              name?: string;
+              path?: string;
+            }[];
+            failed?: {
+              name?: string;
+              errorCode?: string;
+            }[];
+          };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "multipart/form-data": {
+          media?: string | string[];
+        };
+      };
     };
   };
 }

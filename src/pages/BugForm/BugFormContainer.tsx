@@ -6,14 +6,29 @@ import {
   Formik,
 } from "@appquality/appquality-design-system";
 import { shallowEqual, useSelector } from "react-redux";
-import { BugDetails } from "./BugDetails/BugDetails";
+import { BugDetails } from "src/pages/BugForm/BugDetails/BugDetails";
 import * as yup from "yup";
 import { FormikProps } from "formik";
-import FocusError from "./FocusError/FocusError";
-import { useAppDispatch } from "../../../redux/provider";
-import { FileUploader, MIN_FILES_NUMBER } from "./FileUploader";
-import { AdditionalFields } from "./AdditionalFields/AdditionalFields";
+import FocusError from "src/pages/BugForm/FocusError/FocusError";
+import { useAppDispatch } from "src/redux/provider";
+import { FileUploader, MIN_FILES_NUMBER } from "src/pages/BugForm/FileUploader";
+import { AdditionalFields } from "src/pages/BugForm/AdditionalFields/AdditionalFields";
 import React from "react";
+import styled from "styled-components";
+
+const StyledForm = styled(Form)`
+  .hide-mobile {
+    display: none;
+    @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+      display: initial;
+    }
+  }
+  .hide-desktop {
+    @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
+      display: none;
+    }
+  }
+`;
 
 export const BugFormContainer = () => {
   const dispatch = useAppDispatch();
@@ -56,6 +71,7 @@ export const BugFormContainer = () => {
       ),
     expected: yup.string().required("This is a required field"),
     current: yup.string().required("This is a required field"),
+    media: yup.array().min(MIN_FILES_NUMBER),
   };
 
   const urls: string[] = [];
@@ -91,12 +107,12 @@ export const BugFormContainer = () => {
     >
       {(formikProps: FormikProps<BugFormValues>) => {
         return (
-          <BSGrid>
-            <BSCol size="col-lg-7" className="aq-mb-3">
-              <Form id="bugForm">
+          <StyledForm id="bugForm">
+            <BSGrid>
+              <BSCol size="col-lg-7" className="aq-mb-3">
                 <BugDetails className="aq-mb-3" />
                 <Button
-                  className="aq-mt-3"
+                  className="aq-mt-3 hide-mobile"
                   type="primary"
                   htmlType="submit"
                   size="block"
@@ -105,15 +121,24 @@ export const BugFormContainer = () => {
                   Submit this bug report
                 </Button>
                 <FocusError />
-              </Form>
-            </BSCol>
-            <BSCol size="col-lg-5">
-              <div className="stick-to-header-lg">
-                <AdditionalFields className="aq-mb-3" />
-                <FileUploader />
-              </div>
-            </BSCol>
-          </BSGrid>
+              </BSCol>
+              <BSCol size="col-lg-5">
+                <div className="stick-to-header-lg">
+                  <AdditionalFields className="aq-mb-3" />
+                  <FileUploader />
+                  <Button
+                    className="aq-mt-3 hide-desktop"
+                    type="primary"
+                    htmlType="submit"
+                    size="block"
+                    flat
+                  >
+                    Submit this bug report
+                  </Button>
+                </div>
+              </BSCol>
+            </BSGrid>
+          </StyledForm>
         );
       }}
     </Formik>
