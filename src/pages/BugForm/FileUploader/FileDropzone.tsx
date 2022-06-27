@@ -13,7 +13,7 @@ import useCampaignData from "src/pages/BugForm/useCampaignData";
 export const FileDropzone = () => {
   const [createMedia, createMediaResults] =
     usePostUsersMeCampaignsByCampaignIdMediaMutation();
-  const { data } = useCampaignData();
+  const campaign = useCampaignData();
   const [input, meta, helper] = useField("media");
 
   const { mediaList } = useAppSelector((state) => state.bugForm);
@@ -50,19 +50,24 @@ export const FileDropzone = () => {
   const uploadMedia = async (files: File[]) => {
     const formData = new FormData();
     files.forEach((f) => formData.append("media", f));
-    // @ts-ignore
-    const data = createMedia({ campaignId: "3238", body: formData });
-    dispatch(
-      appendMediaList(
-        createFilesElementList(files, "uploading", data.requestId)
-      )
-    );
+    if (campaign.data) {
+      // @ts-ignore
+      const data = createMedia({
+        campaignId: campaign.data?.id.toString(),
+        body: formData,
+      });
+      dispatch(
+        appendMediaList(
+          createFilesElementList(files, "uploading", data.requestId)
+        )
+      );
+    }
   };
 
   return (
     <Dropzone
       description="Click here to upload your files or drag and drop!"
-      accept={data?.validFileExtensions}
+      accept={campaign.data?.validFileExtensions}
       disabled={false}
       maxFilesText="You have reached the maximum number of files you can upload"
       onAccepted={(acceptedFiles) => uploadMedia(acceptedFiles)}
