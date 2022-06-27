@@ -51,9 +51,9 @@ export const FileDropzone = () => {
     const formData = new FormData();
     files.forEach((f) => formData.append("media", f));
     if (campaign.data) {
-      // @ts-ignore
       const data = createMedia({
         campaignId: campaign.data?.id.toString(),
+        // @ts-ignore
         body: formData,
       });
       dispatch(
