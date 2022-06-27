@@ -1,5 +1,4 @@
 import { Dropzone } from "@appquality/appquality-design-system";
-import { BUG_FORM_SUPPORTED_TYPES } from "src/redux/bugForm/utils";
 import { useField } from "formik";
 import { useEffect } from "react";
 import { usePostUsersMeCampaignsByCampaignIdMediaMutation } from "src/services/tryberApi";
@@ -9,10 +8,12 @@ import {
   updateMediaList,
 } from "src/pages/BugForm/bugFormSlice";
 import { createFilesElementList } from "src/pages/BugForm/createFilesElementList";
+import useCampaignData from "src/pages/BugForm/useCampaignData";
 
 export const FileDropzone = () => {
   const [createMedia, createMediaResults] =
     usePostUsersMeCampaignsByCampaignIdMediaMutation();
+  const { data } = useCampaignData();
   const [input, meta, helper] = useField("media");
 
   const { mediaList } = useAppSelector((state) => state.bugForm);
@@ -61,7 +62,7 @@ export const FileDropzone = () => {
   return (
     <Dropzone
       description="Click here to upload your files or drag and drop!"
-      accept={BUG_FORM_SUPPORTED_TYPES}
+      accept={data?.validFileExtensions}
       disabled={false}
       maxFilesText="You have reached the maximum number of files you can upload"
       onAccepted={(acceptedFiles) => uploadMedia(acceptedFiles)}

@@ -11,7 +11,7 @@ import * as yup from "yup";
 import { FormikProps } from "formik";
 import FocusError from "src/pages/BugForm/FocusError/FocusError";
 import { useAppDispatch } from "src/redux/provider";
-import { FileUploader, MIN_FILES_NUMBER } from "src/pages/BugForm/FileUploader";
+import { FileUploader } from "src/pages/BugForm/FileUploader";
 import { AdditionalFields } from "src/pages/BugForm/AdditionalFields/AdditionalFields";
 import React from "react";
 import styled from "styled-components";
@@ -33,9 +33,6 @@ const StyledForm = styled(Form)`
 
 export const BugFormContainer = () => {
   const { data } = useCampaignData();
-
-  const dispatch = useAppDispatch();
-
   const { mediaList } = useSelector(
     (state: GeneralState) => state.bugForm,
     shallowEqual
@@ -74,7 +71,7 @@ export const BugFormContainer = () => {
       ),
     expected: yup.string().required("This is a required field"),
     current: yup.string().required("This is a required field"),
-    media: yup.array().min(MIN_FILES_NUMBER),
+    media: yup.array().min(data?.minimumMedia || 0),
   };
 
   const urls: string[] = [];
@@ -87,10 +84,6 @@ export const BugFormContainer = () => {
       initialValues={initialBugValues}
       validationSchema={yup.object(validationSchema)}
       onSubmit={async (values, helpers) => {
-        dispatch({
-          type: "bugForm/setShowError",
-          payload: urls.length < MIN_FILES_NUMBER,
-        });
         const submitValues: BugFormValues = {
           title: values.title,
           stepDescription: values.stepDescription,
