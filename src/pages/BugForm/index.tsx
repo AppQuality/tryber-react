@@ -1,7 +1,8 @@
 import React from "react";
 import { DatepickerGlobalStyle } from "@appquality/appquality-design-system";
-import { PageTemplate } from "src/features/PageTemplate";
+import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
 import { BugFormContainer } from "src/pages/BugForm/BugFormContainer";
+import { BugDetailsModal } from "src/pages/BugForm/BugDetails/BugDetailsModal/BugDetailsModal";
 import { BugFormUnauthorized } from "./BugFormErrorPages/BugFormUnauthorized";
 import useCampaignData from "./useCampaignData";
 import Loading from "src/features/Loading";
@@ -27,6 +28,9 @@ export default function BugForm() {
     <PageTemplate title={"Bug form"} route={"bug-form"} shouldBeLoggedIn>
       <DatepickerGlobalStyle />
       <BugFormContainer />
+      <OutsideContainer>
+        <BugDetailsModal />
+      </OutsideContainer>
     </PageTemplate>
   );
 }
