@@ -1,8 +1,8 @@
 import { Text } from "@appquality/appquality-design-system";
 import styled from "styled-components";
-import { ReactComponent as ImageIcon } from "./assets/imageIcon.svg";
-import { ReactComponent as DocumentIcon } from "./assets/documentIcon.svg";
-import { ReactComponent as VideoAudioIcon } from "./assets/videoAudioIcon.svg";
+import { ReactComponent as ImageIcon } from "src/pages/BugForm/FileUploader/FileType/assets/imageIcon.svg";
+import { ReactComponent as DocumentIcon } from "src/pages/BugForm/FileUploader/FileType/assets/documentIcon.svg";
+import { ReactComponent as VideoAudioIcon } from "src/pages/BugForm/FileUploader/FileType/assets/videoAudioIcon.svg";
 
 const StyledFileType = styled.div`
   .file-type {

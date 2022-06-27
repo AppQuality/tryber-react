@@ -1,4 +1,5 @@
 import {
+  aqBootstrapTheme,
   BSCol,
   BSGrid,
   Card,
@@ -8,10 +9,10 @@ import {
   Select,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import i18n from "../../../../i18n";
-import { useAppDispatch } from "../../../../redux/provider";
 import { LabelWithHelper } from "../LabelWithHelper/LabelWithHelper";
-import { TextareaField } from "./TextareaField/TextareaField";
+import i18n from "src/i18n";
+import { TextareaField } from "src/pages/BugForm/BugDetails/TextareaField/TextareaField";
+import { useAppDispatch } from "../../../redux/provider";
 
 interface BugDetailsProps {
   className?: string;
@@ -33,6 +34,9 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         type,
       },
     });
+  const isDesktop = window.matchMedia(
+    `only screen and (min-width: ${aqBootstrapTheme.grid.breakpoints.lg})`
+  ).matches;
 
   return (
     <Card
@@ -138,7 +142,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         label={"Step-by-step description"}
         placeholder={"1.\n2.\n3."}
         height="8.8rem"
-        resize="vertical"
+        autoResize={isDesktop}
       />
       <TextareaField
         className="aq-mb-3"
@@ -146,7 +150,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         label="Expected result"
         placeholder="Write what you expected"
         height="7rem"
-        resize="vertical"
+        autoResize={isDesktop}
       />
       <TextareaField
         className="aq-mb-3"
@@ -154,7 +158,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         label="Observed result"
         placeholder="Write what you found"
         height="7rem"
-        resize="vertical"
+        autoResize={isDesktop}
       />
       <BSGrid>
         <BSCol size="col-6" className="aq-mb-3">

@@ -6,15 +6,16 @@ import {
   Formik,
 } from "@appquality/appquality-design-system";
 import { shallowEqual, useSelector } from "react-redux";
-import { BugDetails } from "./BugDetails/BugDetails";
+import { BugDetails } from "src/pages/BugForm/BugDetails/BugDetails";
 import * as yup from "yup";
 import { FormikProps } from "formik";
-import FocusError from "./FocusError/FocusError";
+import FocusError from "src/pages/BugForm/FocusError/FocusError";
 import { useAppDispatch } from "src/redux/provider";
-import { FileUploader, MIN_FILES_NUMBER } from "./FileUploader";
-import { AdditionalFields } from "./AdditionalFields/AdditionalFields";
+import { FileUploader, MIN_FILES_NUMBER } from "src/pages/BugForm/FileUploader";
+import { AdditionalFields } from "src/pages/BugForm/AdditionalFields/AdditionalFields";
 import React from "react";
 import styled from "styled-components";
+import useCampaignData from "./useCampaignData";
 
 const StyledForm = styled(Form)`
   .hide-mobile {
@@ -31,6 +32,8 @@ const StyledForm = styled(Form)`
 `;
 
 export const BugFormContainer = () => {
+  const { data } = useCampaignData();
+
   const dispatch = useAppDispatch();
 
   const { mediaList } = useSelector(
@@ -124,7 +127,9 @@ export const BugFormContainer = () => {
               </BSCol>
               <BSCol size="col-lg-5">
                 <div className="stick-to-header-lg">
-                  <AdditionalFields className="aq-mb-3" />
+                  {data?.additionalFields ? (
+                    <AdditionalFields className="aq-mb-3" />
+                  ) : null}
                   <FileUploader />
                   <Button
                     className="aq-mt-3 hide-desktop"

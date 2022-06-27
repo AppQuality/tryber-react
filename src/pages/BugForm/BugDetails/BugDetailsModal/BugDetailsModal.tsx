@@ -1,6 +1,6 @@
 import { Modal, Text } from "@appquality/appquality-design-system";
 import { shallowEqual, useSelector } from "react-redux";
-import { useAppDispatch } from "../../../../../redux/provider";
+import { useAppDispatch } from "../../../../redux/provider";
 
 export const BugDetailsModal = () => {
   const dispatch = useAppDispatch();

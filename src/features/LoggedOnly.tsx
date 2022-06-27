@@ -1,11 +1,9 @@
-import TagManager from 'react-gtm-module';
-import { shallowEqual, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import TagManager from "react-gtm-module";
+import { shallowEqual, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-import { useLocalizeRoute } from '../hooks/useLocalizedRoute';
-import LoadingImg from './assets/tryber_loading.gif';
-
-
+import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
+import Loading from "./Loading";
 
 export default ({ children }: { children: React.ReactNode }) => {
   const history = useHistory();
@@ -25,23 +23,7 @@ export default ({ children }: { children: React.ReactNode }) => {
   );
 
   if (loading || typeof loading === "undefined") {
-    return (
-      <div id="appq-loading-content">
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <img
-            style={{ width: "280px" }}
-            src={LoadingImg}
-            alt="tryber loading"
-          />
-        </div>
-      </div>
-    );
+    return <Loading />;
   }
   TagManager.dataLayer({
     dataLayer: {

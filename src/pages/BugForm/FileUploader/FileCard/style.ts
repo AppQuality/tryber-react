@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledFileCard = styled.div`
   .file-card {
-    box-shadow: 0px 4px 6px -4px rgb(0 0 0 / 25%);
+    box-shadow: 0 4px 6px -4px rgb(0 0 0 / 25%);
     margin-bottom: 0.3em;
 
     &.failed {
