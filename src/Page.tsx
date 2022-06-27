@@ -155,7 +155,7 @@ function Page() {
         <Route path={`${base}/my-account`} component={Profile} />
         <Route path={`${base}/payments`} component={Wallet} />
         <Route path={`${base}/leaderboard`} component={Ranking} />
-        <Route path={`${base}/bug-form`} component={BugForm} />
+        <Route path={`${base}/campaign/:id/bugform`} component={BugForm} />
         <Route
           path={["/goodbye", "/it/goodbye", "/es/goodbye"]}
           exact
