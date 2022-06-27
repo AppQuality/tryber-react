@@ -9,6 +9,8 @@ import {
   Select,
 } from "@appquality/appquality-design-system";
 import i18n from "src/i18n";
+import { useTranslation } from "react-i18next";
+import { LabelWithHelper } from "src/pages/BugForm/LabelWithHelper/LabelWithHelper";
 import { TextareaField } from "src/pages/BugForm/BugDetails/TextareaField/TextareaField";
 
 interface BugDetailsProps {
@@ -16,12 +18,23 @@ interface BugDetailsProps {
 }
 
 export const BugDetails = ({ className }: BugDetailsProps) => {
+  const { t } = useTranslation();
   const isDesktop = window.matchMedia(
     `only screen and (min-width: ${aqBootstrapTheme.grid.breakpoints.lg})`
   ).matches;
 
   return (
-    <Card className={className} title={"Bug Details"}>
+    <Card
+      className={className}
+      title={
+        <LabelWithHelper
+          label="Bug Details"
+          href={t("Bug details help article", {
+            ns: "links",
+          })}
+        />
+      }
+    >
       <Field
         name="title"
         type="text"
@@ -45,7 +58,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           name="severity"
           value={[]}
           options={[]}
-          label={"Bug severity"}
+          label={<LabelWithHelper label="Bug severity" small />}
           placeholder={"Select severity"}
           menuTargetQuery="body"
           onChange={() => null}
@@ -57,7 +70,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           name="type"
           value={[]}
           options={[]}
-          label={"Bug type"}
+          label={<LabelWithHelper label="Bug type" small />}
           placeholder={"Select type"}
           menuTargetQuery="body"
           onChange={() => null}
@@ -69,7 +82,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           name="replicability"
           value={[]}
           options={[]}
-          label={"Bug replicability"}
+          label={<LabelWithHelper label="Bug replicability" small />}
           placeholder={"Select replicability"}
           menuTargetQuery="body"
           onChange={() => null}
