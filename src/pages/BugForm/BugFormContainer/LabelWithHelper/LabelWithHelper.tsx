@@ -30,7 +30,7 @@ export const LabelWithHelper = ({
   return (
     <StyledLabelWithHelper small={small}>
       <div>{label}</div>
-      <a href={href}>
+      <a href={href} target="_blank" rel="noreferrer">
         <QuestionMark className="question-mark" onClick={onClick} />
       </a>
     </StyledLabelWithHelper>

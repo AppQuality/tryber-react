@@ -9,6 +9,7 @@ import {
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import i18n from "../../../../i18n";
+import { useAppDispatch } from "../../../../redux/provider";
 import { LabelWithHelper } from "../LabelWithHelper/LabelWithHelper";
 import { TextareaField } from "./TextareaField/TextareaField";
 
@@ -18,6 +19,20 @@ interface BugDetailsProps {
 
 export const BugDetails = ({ className }: BugDetailsProps) => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+
+  const openBugDetailsModal = (
+    title: string,
+    type: "severity" | "type" | "replicability"
+  ) =>
+    dispatch({
+      type: "bugForm/setBugDetailsModal",
+      payload: {
+        open: true,
+        title,
+        type,
+      },
+    });
 
   return (
     <Card
@@ -54,7 +69,13 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           name="severity"
           value={[]}
           options={[]}
-          label={<LabelWithHelper label="Bug severity" small />}
+          label={
+            <LabelWithHelper
+              label="Bug severity"
+              onClick={() => openBugDetailsModal("Bug severity", "severity")}
+              small
+            />
+          }
           placeholder={"Select severity"}
           menuTargetQuery="body"
           onChange={() => null}
@@ -66,7 +87,13 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           name="type"
           value={[]}
           options={[]}
-          label={<LabelWithHelper label="Bug type" small />}
+          label={
+            <LabelWithHelper
+              label="Bug type"
+              onClick={() => openBugDetailsModal("Bug type", "type")}
+              small
+            />
+          }
           placeholder={"Select type"}
           menuTargetQuery="body"
           onChange={() => null}
@@ -78,7 +105,15 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           name="replicability"
           value={[]}
           options={[]}
-          label={<LabelWithHelper label="Bug replicability" small />}
+          label={
+            <LabelWithHelper
+              label="Bug replicability"
+              onClick={() =>
+                openBugDetailsModal("Bug replicability", "replicability")
+              }
+              small
+            />
+          }
           placeholder={"Select replicability"}
           menuTargetQuery="body"
           onChange={() => null}
