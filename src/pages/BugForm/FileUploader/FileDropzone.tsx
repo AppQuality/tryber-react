@@ -1,5 +1,4 @@
 import { Dropzone } from "@appquality/appquality-design-system";
-import { addedDiscardedMedia } from "src/redux/bugForm/actionCreator";
 import { BUG_FORM_SUPPORTED_TYPES } from "src/redux/bugForm/utils";
 import { useField } from "formik";
 import { useEffect } from "react";
@@ -69,7 +68,8 @@ export const FileDropzone = () => {
       onRejected={(fileRejections) => {
         const newFileList: File[] = [];
         fileRejections.forEach((f) => newFileList.push(f.file));
-        dispatch(addedDiscardedMedia(newFileList));
+        const elements = createFilesElementList(newFileList, "failed");
+        dispatch(appendMediaList(elements));
       }}
       danger={isInvalid()}
     />
