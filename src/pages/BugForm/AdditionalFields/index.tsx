@@ -17,7 +17,7 @@ export const AdditionalFields = ({ className }: AdditionalFieldsProps) => {
             return (
               <TextAdditionalField
                 key={field.slug}
-                name={field.slug}
+                name={`additional.${field.slug}`}
                 label={field.name}
                 validation={field.regex}
               />
@@ -27,7 +27,7 @@ export const AdditionalFields = ({ className }: AdditionalFieldsProps) => {
               <SelectAdditionalField
                 key={field.slug}
                 label={field.name}
-                name={field.slug}
+                name={`additional.${field.slug}`}
                 options={field.options}
               />
             );

@@ -33,9 +33,6 @@ const StyledForm = styled(Form)`
 
 export const BugFormContainer = () => {
   const { data } = useCampaignData();
-
-  const dispatch = useAppDispatch();
-
   const { mediaList } = useSelector(
     (state: GeneralState) => state.bugForm,
     shallowEqual
@@ -53,8 +50,13 @@ export const BugFormContainer = () => {
     expected: "",
     current: "",
     notes: "",
-    additional: "",
+    additional: {},
   };
+  if (data?.additionalFields) {
+    data.additionalFields.forEach(
+      (f) => (initialBugValues.additional[f.slug] = "")
+    );
+  }
 
   const validationSchema = {
     title: yup
@@ -75,6 +77,7 @@ export const BugFormContainer = () => {
     expected: yup.string().required("This is a required field"),
     current: yup.string().required("This is a required field"),
     media: yup.array().min(MIN_FILES_NUMBER),
+    additional: yup.object(),
   };
 
   const urls: string[] = [];
@@ -85,12 +88,9 @@ export const BugFormContainer = () => {
   return (
     <Formik
       initialValues={initialBugValues}
+      enableReinitialize
       validationSchema={yup.object(validationSchema)}
       onSubmit={async (values, helpers) => {
-        dispatch({
-          type: "bugForm/setShowError",
-          payload: urls.length < MIN_FILES_NUMBER,
-        });
         const submitValues: BugFormValues = {
           title: values.title,
           stepDescription: values.stepDescription,
