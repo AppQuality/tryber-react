@@ -77,7 +77,14 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           label={
             <LabelWithHelper
               label="Bug severity"
-              onClick={() => openBugDetailsModal("Bug severity", "severity")}
+              onClick={() =>
+                openBugDetailsModal(
+                  t("BUGFORM_SEVERITY_MODAL_TITLE", {
+                    defaultValue: "Bug severity",
+                  }),
+                  "severity"
+                )
+              }
               small
             />
           }
@@ -95,7 +102,14 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           label={
             <LabelWithHelper
               label="Bug type"
-              onClick={() => openBugDetailsModal("Bug type", "type")}
+              onClick={() =>
+                openBugDetailsModal(
+                  t("BUGFORM_TYPE_MODAL_TITLE", {
+                    defaultValue: "Bug type",
+                  }),
+                  "type"
+                )
+              }
               small
             />
           }
@@ -114,7 +128,12 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
             <LabelWithHelper
               label="Bug replicability"
               onClick={() =>
-                openBugDetailsModal("Bug replicability", "replicability")
+                openBugDetailsModal(
+                  t("BUGFORM_REPLICABILTY_MODAL_TITLE", {
+                    defaultValue: "Bug replicability",
+                  }),
+                  "replicability"
+                )
               }
               small
             />
