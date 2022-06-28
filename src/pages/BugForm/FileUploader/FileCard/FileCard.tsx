@@ -49,9 +49,9 @@ export const FileCard = ({
     switch (errorCode) {
       case "FILE_TOO_BIG":
         return "Maximum file size exceeded";
-      case "NOT_VALID_FILE_TYPE":
+      case "INVALID_FILE_EXTENSION":
         return "File not supported";
-      case "UPLOAD_ERROR":
+      case "GENERIC_ERROR":
         return "Generic error";
       default:
         return "";

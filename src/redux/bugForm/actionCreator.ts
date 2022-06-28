@@ -67,7 +67,7 @@ export const uploadMedia =
       newMediaList.forEach((media, i) => {
         if (media.uploadId === uploadId) {
           newMediaList[i].status = "failed";
-          newMediaList[i].errorCode = "UPLOAD_ERROR";
+          newMediaList[i].errorCode = "GENERIC_ERROR";
         }
       });
       dispatch({

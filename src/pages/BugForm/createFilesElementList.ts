@@ -12,7 +12,7 @@ export const createFilesElementList = (
       fileType: type,
       mimeType: f.type,
       status: status,
-      errorCode: status === "failed" ? "NOT_VALID_FILE_TYPE" : undefined,
+      errorCode: status === "failed" ? "INVALID_FILE_EXTENSION" : undefined,
       previewUrl:
         type === "image" || type === "video"
           ? URL.createObjectURL(f)

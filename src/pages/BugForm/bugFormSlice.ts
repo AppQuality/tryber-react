@@ -56,7 +56,7 @@ const bugFormSlice = createSlice({
         failed?.forEach((fail) => {
           if (media.fileName === fail.name && requestId === media.uploadId) {
             mediaList[i].status = "failed";
-            mediaList[i].errorCode = media.errorCode;
+            mediaList[i].errorCode = fail.errorCode;
           }
         });
       });
