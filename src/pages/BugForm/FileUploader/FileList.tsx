@@ -76,7 +76,7 @@ export const FileList = () => {
             key={f.id}
             className="file-list-card"
             fileElement={f}
-            onDelete={() => onDelete(f)}
+            onDelete={f.status !== "uploading" ? () => onDelete(f) : undefined}
           />
         ))}
       </StyledFileList>
