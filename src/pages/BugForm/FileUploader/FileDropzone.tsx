@@ -3,10 +3,7 @@ import { useField } from "formik";
 import { useEffect } from "react";
 import { usePostUsersMeCampaignsByCampaignIdMediaMutation } from "src/services/tryberApi";
 import { useAppDispatch, useAppSelector } from "src/store";
-import {
-  appendMediaList,
-  updateMediaList,
-} from "src/pages/BugForm/bugFormSlice";
+import { appendMediaList } from "src/pages/BugForm/bugFormSlice";
 import { createFilesElementList } from "src/pages/BugForm/createFilesElementList";
 import useCampaignData from "src/pages/BugForm/useCampaignData";
 
@@ -22,18 +19,6 @@ export const FileDropzone = () => {
   useEffect(() => {
     helper.setValue(getUploadedUrl(getSuccessMedia(mediaList)), true);
   }, [mediaList]);
-
-  useEffect(() => {
-    const { status, data, requestId } = createMediaResults;
-    if (status === "fulfilled" && typeof data !== "undefined" && requestId) {
-      dispatch(
-        updateMediaList({
-          data: data,
-          requestId: requestId,
-        })
-      );
-    }
-  }, [createMediaResults]);
 
   const getSuccessMedia = (aMediaList: FileElement[]) => {
     return aMediaList.filter((f) => f.status === "success");
@@ -67,7 +52,7 @@ export const FileDropzone = () => {
     <Dropzone
       description="Click here to upload your files or drag and drop!"
       accept={campaign.data?.validFileExtensions}
-      disabled={createMediaResults.isLoading}
+      disabled={false}
       maxFilesText="You have reached the maximum number of files you can upload"
       onAccepted={(acceptedFiles) => uploadMedia(acceptedFiles)}
       onRejected={(fileRejections) => {

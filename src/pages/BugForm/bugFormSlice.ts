@@ -1,5 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { PostUsersMeCampaignsByCampaignIdMediaApiResponse } from "src/services/tryberApi";
+import {
+  PostUsersMeCampaignsByCampaignIdMediaApiResponse,
+  tryberApi,
+} from "src/services/tryberApi";
 
 // Define a type for the slice state
 interface BugFormState {
@@ -10,7 +13,6 @@ interface BugFormState {
 const initialState: BugFormState = {
   mediaList: [],
 };
-
 const bugFormSlice = createSlice({
   name: "bugForm",
   initialState: initialState,
@@ -61,6 +63,20 @@ const bugFormSlice = createSlice({
         });
       });
     },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(
+      tryberApi.endpoints.postUsersMeCampaignsByCampaignIdMedia.matchFulfilled,
+      (state, { meta, payload, type }) => {
+        bugFormSlice.caseReducers.updateMediaList(state, {
+          payload: {
+            requestId: meta.requestId,
+            data: payload,
+          },
+          type: type,
+        });
+      }
+    );
   },
 });
 
