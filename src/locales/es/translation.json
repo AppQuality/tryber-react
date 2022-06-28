@@ -279,7 +279,7 @@
   "Manufacturer": "Productor",
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Productor: <bold>{{manufacturer}}</bold>",
   "Media field must have at least {{num}} items": {
-    "BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM": "Media field must have at least {{num}} items"
+    "BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM": ""
   },
   "Messages for you": "Tus mensajes",
   "Method": "Método",
@@ -627,6 +627,5 @@
   },
   "{{num}} uploaded": {
     "BUGFORM_UPLOAD_PROGRESS": ""
-  },
-  "BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM": ""
+  }
 }
