@@ -1512,12 +1512,12 @@ export type GetUsersMeCampaignsByCampaignIdApiArg = {
 export type PostUsersMeCampaignsByCampaignIdMediaApiResponse =
   /** status 200 OK */ {
     files?: {
-      name?: string;
-      path?: string;
+      name: string;
+      path: string;
     }[];
     failed?: {
-      name?: string;
-      errorCode?: string;
+      name: string;
+      errorCode: "FILE_TOO_BIG" | "INVALID_FILE_EXTENSION" | "GENERIC_ERROR";
     }[];
   };
 export type PostUsersMeCampaignsByCampaignIdMediaApiArg = {
