@@ -12,7 +12,7 @@ import { FormikProps } from "formik";
 import FocusError from "src/pages/BugForm/FocusError/FocusError";
 import { useAppDispatch } from "src/redux/provider";
 import { FileUploader, MIN_FILES_NUMBER } from "src/pages/BugForm/FileUploader";
-import { AdditionalFields } from "src/pages/BugForm/AdditionalFields/AdditionalFields";
+import { AdditionalFields } from "src/pages/BugForm/AdditionalFields";
 import React from "react";
 import styled from "styled-components";
 import useCampaignData from "./useCampaignData";
@@ -127,9 +127,9 @@ export const BugFormContainer = () => {
               </BSCol>
               <BSCol size="col-lg-5">
                 <div className="stick-to-header-lg">
-                  {data?.additionalFields ? (
+                  {data?.additionalFields && (
                     <AdditionalFields className="aq-mb-3" />
-                  ) : null}
+                  )}
                   <FileUploader />
                   <Button
                     className="aq-mt-3 hide-desktop"
