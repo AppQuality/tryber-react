@@ -50,18 +50,17 @@ export const FileDropzone = () => {
   const uploadMedia = async (files: File[]) => {
     const formData = new FormData();
     files.forEach((f) => formData.append("media", f));
-    if (campaign.data) {
-      const data = createMedia({
-        campaignId: campaign.data?.id.toString(),
-        // @ts-ignore
-        body: formData,
-      });
-      dispatch(
-        appendMediaList(
-          createFilesElementList(files, "uploading", data.requestId)
-        )
-      );
-    }
+    if (!campaign.data) return;
+    const data = createMedia({
+      campaignId: campaign.data.id.toString(),
+      // @ts-ignore
+      body: formData,
+    });
+    dispatch(
+      appendMediaList(
+        createFilesElementList(files, "uploading", data.requestId)
+      )
+    );
   };
 
   return (
