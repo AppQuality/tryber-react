@@ -58,30 +58,31 @@ export const BugFormContainer = () => {
   const validationSchema = {
     title: yup
       .string()
-      .required("This is a required field")
+      .required(t("This is a required field"))
       .matches(
         /\[.+\] - .+/gm,
         "Format should be [Phase / Section] - Briefly Issue description"
       ),
     stepDescription: yup
       .string()
-      .required("This is a required field")
+      .required(t("This is a required field"))
       .test(
         "stepDescription",
-        "This is a required field",
+        t("This is a required field"),
         (newValue) => newValue !== initialBugValues.stepDescription
       ),
-    expected: yup.string().required("This is a required field"),
-    current: yup.string().required("This is a required field"),
-    media: yup
-      .array()
-      .min(
-        data?.minimumMedia || 0,
-        t("BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM", {
+    expected: yup.string().required(t("This is a required field")),
+    current: yup.string().required(t("This is a required field")),
+    media: yup.array().min(
+      data?.minimumMedia || 0,
+      t(
+        "Media field must have at least {{num}} items:::BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM",
+        {
           defaultValue: "Media field must have at least {{num}} items",
           num: data?.minimumMedia || 0,
-        })
-      ),
+        }
+      )
+    ),
   };
 
   const urls: string[] = [];
