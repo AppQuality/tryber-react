@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "src/store";
 import { useDeleteMediaMutation } from "src/services/tryberApi";
 import { useEffect } from "react";
 import { removeElementFromMedialist } from "src/pages/BugForm/bugFormSlice";
+import { Trans } from "react-i18next";
 
 const StyledFileList = styled.div`
   min-height: 6.5em;
@@ -68,7 +69,13 @@ export const FileList = () => {
         } aq-mb-3 aq-text-primary`}
         small
       >
-        {`${input.value.length}/${mediaList.length} uploaded`}
+        <Trans
+          i18nKey="{{num}} uploaded:::BUGFORM_UPLOAD_PROGRESS"
+          values={{
+            num: `${input.value.length}/${mediaList.length}`,
+          }}
+          defaults={"{{num}} uploaded"}
+        />
       </Text>
       <StyledFileList>
         {mediaList.map((f) => (

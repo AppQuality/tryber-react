@@ -16,6 +16,7 @@ import { AdditionalFields } from "src/pages/BugForm/AdditionalFields/AdditionalF
 import React from "react";
 import styled from "styled-components";
 import useCampaignData from "./useCampaignData";
+import { useTranslation } from "react-i18next";
 
 const StyledForm = styled(Form)`
   .hide-mobile {
@@ -33,6 +34,7 @@ const StyledForm = styled(Form)`
 
 export const BugFormContainer = () => {
   const { data } = useCampaignData();
+  const { t } = useTranslation();
   const { mediaList } = useSelector(
     (state: GeneralState) => state.bugForm,
     shallowEqual
@@ -71,7 +73,15 @@ export const BugFormContainer = () => {
       ),
     expected: yup.string().required("This is a required field"),
     current: yup.string().required("This is a required field"),
-    media: yup.array().min(data?.minimumMedia || 0),
+    media: yup
+      .array()
+      .min(
+        data?.minimumMedia || 0,
+        t("BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM", {
+          defaultValue: "Media field must have at least {{num}} items",
+          num: data?.minimumMedia || 0,
+        })
+      ),
   };
 
   const urls: string[] = [];
@@ -114,7 +124,9 @@ export const BugFormContainer = () => {
                   size="block"
                   flat
                 >
-                  Submit this bug report
+                  {t("BUGFORM_CTA_SUBMIT", {
+                    defaultValue: "Submit this bug report",
+                  })}
                 </Button>
                 <FocusError />
               </BSCol>
@@ -131,7 +143,9 @@ export const BugFormContainer = () => {
                     size="block"
                     flat
                   >
-                    Submit this bug report
+                    {t("BUGFORM_CTA_SUBMIT", {
+                      defaultValue: "Submit this bug report",
+                    })}
                   </Button>
                 </div>
               </BSCol>

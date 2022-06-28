@@ -9,6 +9,7 @@ import {
   StyledFileCard,
   StyledUploading,
 } from "src/pages/BugForm/FileUploader/FileCard/style";
+import { useTranslation } from "react-i18next";
 
 interface FileCardProps {
   fileElement: FileElement;
@@ -23,6 +24,7 @@ export const FileCard = ({
 }: FileCardProps) => {
   const { fileName, status, fileType, mimeType, previewUrl, errorCode } =
     fileElement;
+  const { t } = useTranslation();
 
   const getPreview = () => {
     switch (fileType) {
@@ -50,7 +52,9 @@ export const FileCard = ({
       case "FILE_TOO_BIG":
         return "Maximum file size exceeded";
       case "NOT_VALID_FILE_TYPE":
-        return "File not supported";
+        return t("BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED", {
+          defaultValue: "File not supported",
+        });
       case "UPLOAD_ERROR":
         return "Generic error";
       default:

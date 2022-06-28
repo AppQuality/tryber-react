@@ -9,8 +9,10 @@ import {
 } from "src/pages/BugForm/bugFormSlice";
 import { createFilesElementList } from "src/pages/BugForm/createFilesElementList";
 import useCampaignData from "src/pages/BugForm/useCampaignData";
+import { useTranslation } from "react-i18next";
 
 export const FileDropzone = () => {
+  const { t } = useTranslation();
   const [createMedia, createMediaResults] =
     usePostUsersMeCampaignsByCampaignIdMediaMutation();
   const campaign = useCampaignData();
@@ -65,10 +67,11 @@ export const FileDropzone = () => {
 
   return (
     <Dropzone
-      description="Click here to upload your files or drag and drop!"
+      description={t("BUGFORM_UPLOAD_DRAGDROP_TXT", {
+        defaultValue: "Click here to upload your files or drag and drop!",
+      })}
       accept={campaign.data?.validFileExtensions}
       disabled={false}
-      maxFilesText="You have reached the maximum number of files you can upload"
       onAccepted={(acceptedFiles) => uploadMedia(acceptedFiles)}
       onRejected={(fileRejections) => {
         const newFileList: File[] = [];
