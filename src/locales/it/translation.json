@@ -100,10 +100,7 @@
   "BUGFORM_EMPATHY_SAVEDEVICE_TITLE": "",
   "BUGFORM_EMPATHY_SAVEDEVICE_TXT": "",
   "BUGFORM_REPLICABILTY_MODAL_TITLE": "",
-  "BUGFORM_REPLICABILTY_MODAL_TXT": "",
   "BUGFORM_SEVERITY_MODAL_TITLE": "",
-  "BUGFORM_SEVERITY_MODAL_TXT": "",
-  "BUGFORM_TYPE_MODAL_TEXT": "",
   "BUGFORM_TYPE_MODAL_TITLE": "",
   "Back": "Indietro",
   "Back to wallet": "Ritorna a Portafoglio",
@@ -544,6 +541,9 @@
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Scarica ricevuta",
   "address": "indirizzo",
   "available tags: <br>, <bold>": {
+    "BUGFORM_REPLICABILTY_MODAL_TXT": "",
+    "BUGFORM_SEVERITY_MODAL_TXT": "",
+    "BUGFORM_TYPE_MODAL_TEXT": "",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "Si vola!✌ Sei Legendary e lo sarai per sempre!\nContinua a guadagnare punti e resta in vetta in classifica.",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "Il cielo non è un limite! Il prossimo mese sarai Legendary,<br></br>il livello più alto di TRYBER."
   },
@@ -588,5 +588,8 @@
   "{{days}} days left to give your best!": {
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "Hai ancora {{days}} giorno per dare del tuo meglio!",
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "Hai ancora {{days}} giorni per dare del tuo meglio!"
-  }
+  },
+  "BUGFORM_REPLICABILTY_MODAL_TXT": "",
+  "BUGFORM_SEVERITY_MODAL_TXT": "",
+  "BUGFORM_TYPE_MODAL_TEXT": ""
 }

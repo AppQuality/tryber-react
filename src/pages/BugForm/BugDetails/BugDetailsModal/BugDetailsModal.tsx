@@ -23,11 +23,13 @@ export const BugDetailsModal = () => {
   const getContent = () => {
     switch (type) {
       case "severity":
-        return t("BUGFORM_SEVERITY_MODAL_TXT");
+        return t("available tags: <br>, <bold>:::BUGFORM_SEVERITY_MODAL_TXT");
       case "type":
-        return t("BUGFORM_TYPE_MODAL_TEXT");
+        return t("available tags: <br>, <bold>:::BUGFORM_TYPE_MODAL_TEXT");
       case "replicability":
-        return t("BUGFORM_REPLICABILTY_MODAL_TXT");
+        return t(
+          "available tags: <br>, <bold>:::BUGFORM_REPLICABILTY_MODAL_TXT"
+        );
       default:
         return <></>;
     }
