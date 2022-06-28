@@ -13,6 +13,7 @@ import { useAppDispatch } from "src/redux/provider";
 import { useTranslation } from "react-i18next";
 import { LabelWithHelper } from "src/pages/BugForm/LabelWithHelper/LabelWithHelper";
 import { TextareaField } from "src/pages/BugForm/BugDetails/TextareaField/TextareaField";
+import { setBugDetailsModal } from "src/pages/BugForm/bugFormSlice";
 
 interface BugDetailsProps {
   className?: string;
@@ -29,14 +30,13 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
     title: string,
     type: "severity" | "type" | "replicability"
   ) =>
-    dispatch({
-      type: "bugForm/setBugDetailsModal",
-      payload: {
+    dispatch(
+      setBugDetailsModal({
         open: true,
         title,
         type,
-      },
-    });
+      })
+    );
 
   return (
     <Card

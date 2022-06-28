@@ -1,11 +1,6 @@
 type BugFormState = {
   mediaList: FileElement[];
   showError: boolean;
-  bugDetailsModal: {
-    open: boolean;
-    title: string;
-    type: "severity" | "type" | "replicability" | "";
-  };
 };
 
 interface FileElement {
@@ -23,8 +18,7 @@ interface FileElement {
 type BugFormActions =
   | BugFormActions_SetMediaList
   | BugFormActions_AppendMediaList
-  | BugFormActions_SetShowError
-  | BugFormActions_SetBugDetailsModal;
+  | BugFormActions_SetShowError;
 
 /**
  *  Action types and their payloads
@@ -43,9 +37,4 @@ type BugFormActions_AppendMediaList = {
 type BugFormActions_SetShowError = {
   type: "bugForm/setShowError";
   payload: boolean;
-};
-
-type BugFormActions_SetBugDetailsModal = {
-  type: "bugForm/setBugDetailsModal";
-  payload: { open: boolean; content: React.ReactNode };
 };

@@ -7,11 +7,21 @@ import {
 // Define a type for the slice state
 interface BugFormState {
   mediaList: FileElement[];
+  bugDetailsModal: {
+    open: boolean;
+    title: string;
+    type: "severity" | "type" | "replicability" | "";
+  };
 }
 
 // Define the initial state using that type
 const initialState: BugFormState = {
   mediaList: [],
+  bugDetailsModal: {
+    open: false,
+    title: "",
+    type: "",
+  },
 };
 const bugFormSlice = createSlice({
   name: "bugForm",
@@ -63,6 +73,16 @@ const bugFormSlice = createSlice({
         });
       });
     },
+    setBugDetailsModal(
+      state,
+      action: PayloadAction<{
+        open: boolean;
+        title: string;
+        type: "severity" | "type" | "replicability" | "";
+      }>
+    ) {
+      state.bugDetailsModal = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(
@@ -97,5 +117,6 @@ export const {
   appendMediaList,
   updateMediaList,
   removeElementFromMedialist,
+  setBugDetailsModal,
 } = actions;
 export default reducer;

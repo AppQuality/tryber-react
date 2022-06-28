@@ -1,23 +1,21 @@
 import { Modal, Text } from "@appquality/appquality-design-system";
-import { shallowEqual, useSelector } from "react-redux";
-import { useAppDispatch } from "../../../../../redux/provider";
+import { useAppDispatch, useAppSelector } from "src/store";
+import { setBugDetailsModal } from "../../bugFormSlice";
 
 export const BugDetailsModal = () => {
   const dispatch = useAppDispatch();
-  const { open, title, type } = useSelector(
-    (state: GeneralState) => state.bugForm.bugDetailsModal,
-    shallowEqual
+  const { open, title, type } = useAppSelector(
+    (state) => state.bugForm.bugDetailsModal
   );
 
   const onClose = () =>
-    dispatch({
-      type: "bugForm/setBugDetailsModal",
-      payload: {
+    dispatch(
+      setBugDetailsModal({
         open: false,
         title: "",
         type: "",
-      },
-    });
+      })
+    );
 
   const getContent = () => {
     switch (type) {
