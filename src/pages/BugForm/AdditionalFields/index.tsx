@@ -16,6 +16,7 @@ export const AdditionalFields = ({ className }: AdditionalFieldsProps) => {
           case "text":
             return (
               <TextAdditionalField
+                key={field.slug}
                 name={field.slug}
                 label={field.name}
                 validation={field.regex}
@@ -24,6 +25,7 @@ export const AdditionalFields = ({ className }: AdditionalFieldsProps) => {
           case "select":
             return (
               <SelectAdditionalField
+                key={field.slug}
                 label={field.name}
                 name={field.slug}
                 options={field.options}
