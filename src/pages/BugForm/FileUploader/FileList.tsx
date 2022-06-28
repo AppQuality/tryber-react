@@ -39,6 +39,7 @@ export const FileList = () => {
   };
   const [deleteMedia, deleteMediaResults] = useDeleteMediaMutation();
   const onDelete = async (fileElement: FileElement) => {
+    if (deleteMediaResults.isLoading) return;
     if (fileElement.status === "uploading") return;
     if (
       fileElement.status === "success" &&
