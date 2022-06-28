@@ -4,11 +4,21 @@ import { PostUsersMeCampaignsByCampaignIdMediaApiResponse } from "src/services/t
 // Define a type for the slice state
 interface BugFormState {
   mediaList: FileElement[];
+  bugDetailsModal: {
+    open: boolean;
+    title: string;
+    type: "severity" | "type" | "replicability" | "";
+  };
 }
 
 // Define the initial state using that type
 const initialState: BugFormState = {
   mediaList: [],
+  bugDetailsModal: {
+    open: false,
+    title: "",
+    type: "",
+  },
 };
 
 const bugFormSlice = createSlice({
@@ -61,6 +71,16 @@ const bugFormSlice = createSlice({
         });
       });
     },
+    setBugDetailsModal(
+      state,
+      action: PayloadAction<{
+        open: boolean;
+        title: string;
+        type: "severity" | "type" | "replicability" | "";
+      }>
+    ) {
+      state.bugDetailsModal = action.payload;
+    },
   },
 });
 
@@ -70,5 +90,6 @@ export const {
   appendMediaList,
   updateMediaList,
   removeElementFromMedialist,
+  setBugDetailsModal,
 } = actions;
 export default reducer;

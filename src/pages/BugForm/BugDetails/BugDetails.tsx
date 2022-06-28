@@ -12,7 +12,8 @@ import { useTranslation } from "react-i18next";
 import { LabelWithHelper } from "../LabelWithHelper/LabelWithHelper";
 import i18n from "src/i18n";
 import { TextareaField } from "src/pages/BugForm/BugDetails/TextareaField/TextareaField";
-import { useAppDispatch } from "../../../redux/provider";
+import { useAppDispatch } from "src/store";
+import { setBugDetailsModal } from "../bugFormSlice";
 
 interface BugDetailsProps {
   className?: string;
@@ -26,14 +27,14 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
     title: string,
     type: "severity" | "type" | "replicability"
   ) =>
-    dispatch({
-      type: "bugForm/setBugDetailsModal",
-      payload: {
+    dispatch(
+      setBugDetailsModal({
         open: true,
         title,
         type,
-      },
-    });
+      })
+    );
+
   const isDesktop = window.matchMedia(
     `only screen and (min-width: ${aqBootstrapTheme.grid.breakpoints.lg})`
   ).matches;
