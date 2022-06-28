@@ -588,8 +588,5 @@
   "{{days}} days left to give your best!": {
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "You still have {{days}} day to try your best!",
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "You still have {{days}} days to try your best!"
-  },
-  "BUGFORM_REPLICABILTY_MODAL_TXT": "",
-  "BUGFORM_SEVERITY_MODAL_TXT": "",
-  "BUGFORM_TYPE_MODAL_TEXT": ""
+  }
 }
