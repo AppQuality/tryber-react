@@ -67,7 +67,7 @@ export const FileDropzone = () => {
     <Dropzone
       description="Click here to upload your files or drag and drop!"
       accept={campaign.data?.validFileExtensions}
-      disabled={false}
+      disabled={createMediaResults.isLoading}
       maxFilesText="You have reached the maximum number of files you can upload"
       onAccepted={(acceptedFiles) => uploadMedia(acceptedFiles)}
       onRejected={(fileRejections) => {
