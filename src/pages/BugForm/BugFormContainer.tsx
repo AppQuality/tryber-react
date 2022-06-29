@@ -10,7 +10,6 @@ import { BugDetails } from "src/pages/BugForm/BugDetails/BugDetails";
 import * as yup from "yup";
 import { FormikProps } from "formik";
 import FocusError from "src/pages/BugForm/FocusError/FocusError";
-import { useAppDispatch } from "src/redux/provider";
 import { FileUploader } from "src/pages/BugForm/FileUploader";
 import { AdditionalFields } from "src/pages/BugForm/AdditionalFields";
 import React from "react";
@@ -66,22 +65,30 @@ export const BugFormContainer = () => {
       .required(t("This is a required field"))
       .matches(
         /\[.+\] - .+/gm,
-        "Format should be [Phase / Section] - Briefly Issue description"
+        t(
+          "BUGFORM_BUGDTLS_BUGTITLE_ERROR",
+          "Format should be [Phase / Section] - Briefly Issue description"
+        )
       ),
     stepDescription: yup
       .string()
-      .required(t("This is a required field"))
+      .required(
+        t("BUGFORM_BUGDTLS_STEPBYSTEP_ERROR", "This is a required field")
+      )
       .test(
         "stepDescription",
-        t("This is a required field"),
+        t("BUGFORM_BUGDTLS_STEPBYSTEP_ERROR", "This is a required field"),
         (newValue) => newValue !== initialBugValues.stepDescription
       ),
+    type: yup
+      .string()
+      .required(t("BUGFORM_BUGDTLS_TYPE_ERROR", "This is a required field")),
     expected: yup.string().required(t("This is a required field")),
     current: yup.string().required(t("This is a required field")),
     media: yup.array().min(
       data?.minimumMedia || 0,
       t(
-        "Media field must have at least {{num}} items:::BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM",
+        "Media field must have at least {{num}} items:::BUGFORM_UPLOAD_ERROR_MINIMUMFILES",
         {
           defaultValue: "Media field must have at least {{num}} items",
           num: data?.minimumMedia || 0,

@@ -55,7 +55,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         type="text"
         label={t("BUGFORM_BUGDTLS_BUGTITLE", { defaultValue: "Bug title" })}
         placeholder={t("BUGFORM_BUGDTLS_BUGTITLE_PLACEHOLDER", {
-          defaultValue: "Some bug title",
+          defaultValue: "[Phase / Section] - Briefly Issue description",
         })}
       />
       <div className="aq-mb-3">

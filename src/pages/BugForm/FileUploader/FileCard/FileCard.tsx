@@ -50,13 +50,17 @@ export const FileCard = ({
   const getError = () => {
     switch (errorCode) {
       case "FILE_TOO_BIG":
-        return "Maximum file size exceeded";
+        return t("BUGFORM_UPLOAD_ERROR_FILETOOBIG", {
+          defaultValue: "Maximum file size exceeded",
+        });
       case "INVALID_FILE_EXTENSION":
         return t("BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED", {
           defaultValue: "File not supported",
         });
       case "GENERIC_ERROR":
-        return "Generic error";
+        return t("BUGFORM_UPLOAD_ERROR_GENERALERROR", {
+          defaultValue: "Generic error",
+        });
       default:
         return "";
     }
