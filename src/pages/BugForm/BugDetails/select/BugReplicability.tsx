@@ -3,6 +3,7 @@ import {
   FieldProps,
   FormikField,
   Select,
+  Text,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { LabelWithHelper } from "src/pages/BugForm/LabelWithHelper/LabelWithHelper";
@@ -19,9 +20,36 @@ export const BugReplicability = () => {
     value: option,
     label: option,
   }));
+  const getSelectInfoMessage = () => {
+    const { valid, invalid } = data.bugReplicability;
+    if (valid.length === 0 || invalid.length === 0) return null;
+    return (
+      <Text small>
+        {valid.length >= invalid.length
+          ? t(
+              "for this bug are only allowed replicability of type {{valid}}:::BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT",
+              {
+                defaultValue:
+                  "for this bug are only allowed replicability of type {{valid}}",
+                valid: valid.join(", "),
+                count: valid.length,
+              }
+            )
+          : t(
+              "for this bug this replicability are not allowed: {{invalid}}:::BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT",
+              {
+                defaultValue:
+                  "for this bug this replicability are not allowed: {{invalid}}",
+                invalid: invalid.join(", "),
+                count: invalid.length,
+              }
+            )}
+      </Text>
+    );
+  };
   return (
     <FormikField name="replicability">
-      {({ field, meta, form }: FieldProps) => (
+      {({ field, form }: FieldProps) => (
         <>
           <Select
             name={field.name}
@@ -60,6 +88,7 @@ export const BugReplicability = () => {
             noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
           />
           <ErrorMessage name={field.name} />
+          {getSelectInfoMessage()}
         </>
       )}
     </FormikField>

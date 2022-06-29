@@ -598,6 +598,30 @@
   "company": "company",
   "contact us": "contact us",
   "email must be the same": "Enter the same email address",
+  "for this bug are only allowed replicability of type {{valid}}": {
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "for this bug are only allowed replicability of type {{valid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT_plural": "for this bug are only allowed replicability of type {{valid}}"
+  },
+  "for this bug are only allowed severities of type {{valid}}": {
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT": "for this bug are only allowed severities of type {{valid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT_plural": "for this bug are only allowed severities of type {{valid}}"
+  },
+  "for this bug are only allowed type {{valid}}": {
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT": "for this bug are only allowed type {{valid}}",
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT_plural": "for this bug are only allowed type {{valid}}"
+  },
+  "for this bug this replicability are not allowed: {{invalid}}": {
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT": "for this bug this replicability are not allowed: {{invalid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT_plural": "for this bug this replicability are not allowed: {{invalid}}"
+  },
+  "for this bug this severities are not allowed: {{invalid}}": {
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT": "for this bug this severities are not allowed: {{invalid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT_plural": "for this bug this severities are not allowed: {{invalid}}"
+  },
+  "for this bug this types are not allowed: {{invalid}}": {
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "for this bug this types are not allowed: {{invalid}}",
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "for this bug this types are not allowed: {{invalid}}"
+  },
   "forgot your password?": "forgot your password?",
   "give your best to keep level {{level}}": {
     "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Try your best not to level down and to fight for {{level}}"

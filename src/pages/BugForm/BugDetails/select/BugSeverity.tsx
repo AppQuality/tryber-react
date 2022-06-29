@@ -3,6 +3,7 @@ import {
   FormikField,
   ErrorMessage,
   FieldProps,
+  Text,
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { LabelWithHelper } from "src/pages/BugForm/LabelWithHelper/LabelWithHelper";
@@ -19,10 +20,36 @@ export const BugSeverity = () => {
     value: option,
     label: option,
   }));
-
+  const getSelectInfoMessage = () => {
+    const { valid, invalid } = data.bugSeverity;
+    if (valid.length === 0 || invalid.length === 0) return null;
+    return (
+      <Text small>
+        {valid.length >= invalid.length
+          ? t(
+              "for this bug are only allowed severities of type {{valid}}:::BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT",
+              {
+                defaultValue:
+                  "for this bug are only allowed severities of type {{valid}}",
+                valid: valid.join(", "),
+                count: valid.length,
+              }
+            )
+          : t(
+              "for this bug this severities are not allowed: {{invalid}}:::BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT",
+              {
+                defaultValue:
+                  "for this bug this severities are not allowed: {{invalid}}",
+                invalid: invalid.join(", "),
+                count: invalid.length,
+              }
+            )}
+      </Text>
+    );
+  };
   return (
     <FormikField name="severity">
-      {({ field, meta, form }: FieldProps) => (
+      {({ field, form }: FieldProps) => (
         <>
           <Select
             name={field.name}
@@ -61,6 +88,7 @@ export const BugSeverity = () => {
             noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
           />
           <ErrorMessage name={field.name} />
+          {getSelectInfoMessage()}
         </>
       )}
     </FormikField>
