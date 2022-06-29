@@ -11,6 +11,7 @@ type GeneralState = {
   ranking: RankingState;
   myBugs: MyBugsState;
   experiencePoints: ExperiencePointsState;
+  bugForm: BugFormState;
 };
 
 type AppDispatch = typeof store.dispatch;

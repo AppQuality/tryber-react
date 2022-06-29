@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
-import TagManager from 'react-gtm-module';
-import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
-import { useLocalizeRoute } from 'src/hooks/useLocalizedRoute';
-import useUser from 'src/redux/user';
+import { useEffect, useState } from "react";
+import TagManager from "react-gtm-module";
+import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
+import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
+import useUser from "src/redux/user";
 
-import LoadingImg from './assets/tryber_loading.gif';
-
+import Loading from "./Loading";
 
 export default ({
   children,
@@ -37,23 +36,7 @@ export default ({
   }, [user]);
 
   if (isLoading || user) {
-    return (
-      <div id="appq-loading-content">
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <img
-            style={{ width: "280px" }}
-            src={LoadingImg}
-            alt="tryber loading"
-          />
-        </div>
-      </div>
-    );
+    return <Loading />;
   }
   TagManager.dataLayer({
     dataLayer: {

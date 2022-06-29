@@ -10,6 +10,7 @@ import wallet from "./wallet/reducer";
 import ranking from "./ranking/reducer";
 import myBugs from "./myBugs/reducer";
 import experiencePoints from "./experiencePoints/reducer";
+import bugForm from "./bugForm/reducer";
 
 export default {
   menu,
@@ -24,4 +25,5 @@ export default {
   ranking,
   myBugs,
   experiencePoints,
+  bugForm,
 };
