@@ -37,9 +37,8 @@ export const FileList = () => {
   const isInvalid = () => {
     return typeof meta.error === "string" && meta.touched;
   };
-  const [deleteMedia, deleteMediaResults] = useDeleteMediaMutation();
+  const [deleteMedia] = useDeleteMediaMutation();
   const onDelete = async (fileElement: FileElement) => {
-    if (deleteMediaResults.isLoading) return;
     if (fileElement.status === "uploading") return;
     if (
       fileElement.status === "success" &&

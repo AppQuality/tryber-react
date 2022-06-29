@@ -8,8 +8,7 @@ import { createFilesElementList } from "src/pages/BugForm/createFilesElementList
 import useCampaignData from "src/pages/BugForm/useCampaignData";
 
 export const FileDropzone = () => {
-  const [createMedia, createMediaResults] =
-    usePostUsersMeCampaignsByCampaignIdMediaMutation();
+  const [createMedia] = usePostUsersMeCampaignsByCampaignIdMediaMutation();
   const campaign = useCampaignData();
   const [input, meta, helper] = useField("media");
 
