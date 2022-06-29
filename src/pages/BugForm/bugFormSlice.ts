@@ -77,6 +77,17 @@ const bugFormSlice = createSlice({
         });
       }
     );
+    builder.addMatcher(
+      tryberApi.endpoints.deleteMedia.matchFulfilled,
+      (state, { meta, type }) => {
+        bugFormSlice.caseReducers.removeElementFromMedialist(state, {
+          payload: {
+            url: meta.arg.originalArgs.body.url,
+          },
+          type: type,
+        });
+      }
+    );
   },
 });
 

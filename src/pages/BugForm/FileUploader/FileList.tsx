@@ -53,12 +53,12 @@ export const FileList = () => {
     }
   };
   useEffect(() => {
-    if (deleteMediaResults.status !== "fulfilled") return;
-    if (typeof deleteMediaResults?.originalArgs?.body.url !== "string") return;
-    const urlToRemove = deleteMediaResults?.originalArgs?.body.url;
-    helper.setValue(input.value.filter((url: string) => url !== urlToRemove));
-    dispatch(removeElementFromMedialist({ url: urlToRemove }));
-  }, [deleteMediaResults]);
+    helper.setValue(
+      mediaList
+        .filter((media) => media.uploadedFileUrl)
+        .map((media) => media.uploadedFileUrl)
+    );
+  }, [mediaList]);
 
   if (mediaList.length <= 0) return null;
   return (
