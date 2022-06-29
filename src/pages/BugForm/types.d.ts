@@ -4,10 +4,10 @@ type BugFormValues = {
   stepDescription: string;
   media: string[];
   device: number;
-  severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
-  type: "TYPO";
-  replicability: "ONCE" | "SOMETIMES" | "NEVER";
-  usecase: number;
+  severity: string;
+  type: string;
+  replicability: string;
+  usecase: string;
   expected: string;
   current: string;
   notes: string;

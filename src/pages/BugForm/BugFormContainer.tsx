@@ -38,38 +38,28 @@ export const BugFormContainer = () => {
     (state: GeneralState) => state.bugForm,
     shallowEqual
   );
-
+  if (!data) return null;
   const initialBugValues: BugFormValues = {
     title: "",
     stepDescription: "1.\n2.\n3.",
     media: [],
     device: 0,
-    severity: "LOW",
-    type: "TYPO",
-    replicability: "ONCE",
-    usecase: 0,
+    severity: "",
+    type: "",
+    replicability: "",
+    usecase: "",
     expected: "",
     current: "",
     notes: "",
     additional: {},
   };
-  if (data?.additionalFields) {
-    data.additionalFields.forEach(
-      (f) => (initialBugValues.additional[f.slug] = "")
-    );
-  }
+
+  data.additionalFields?.forEach(
+    (f) => (initialBugValues.additional[f.slug] = "")
+  );
 
   const validationSchema = {
-    title: yup
-      .string()
-      .required(t("This is a required field"))
-      .matches(
-        /\[.+\] - .+/gm,
-        t(
-          "BUGFORM_BUGDTLS_BUGTITLE_ERROR",
-          "Format should be [Phase / Section] - Briefly Issue description"
-        )
-      ),
+    title: yup.string().required(t("This is a required field")),
     stepDescription: yup
       .string()
       .required(
@@ -97,6 +87,15 @@ export const BugFormContainer = () => {
     ),
     additional: yup.object(),
   };
+  if (data.titleRule) {
+    validationSchema.title = validationSchema.title.matches(
+      /\[.+\] - .+/gm,
+      t(
+        "BUGFORM_BUGDTLS_BUGTITLE_ERROR",
+        "Format should be [Phase / Section] - Briefly Issue description"
+      )
+    );
+  }
 
   const urls: string[] = [];
   mediaList.forEach((m) => {
