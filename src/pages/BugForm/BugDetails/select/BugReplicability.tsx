@@ -1,4 +1,9 @@
-import { Select } from "@appquality/appquality-design-system";
+import {
+  ErrorMessage,
+  FieldProps,
+  FormikField,
+  Select,
+} from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { LabelWithHelper } from "src/pages/BugForm/LabelWithHelper/LabelWithHelper";
 import { useAppDispatch } from "src/store";
@@ -15,35 +20,48 @@ export const BugReplicability = () => {
     label: option,
   }));
   return (
-    <Select
-      name="replicability"
-      value={[]}
-      options={options}
-      label={
-        <LabelWithHelper
-          label={t("BUGFORM_BUGDTLS_REPLICABILTY", {
-            defaultValue: "Bug replicability",
-          })}
-          onClick={() =>
-            dispatch(
-              setBugDetailsModal({
-                open: true,
-                title: t("BUGFORM_REPLICABILTY_MODAL_TITLE", {
+    <FormikField name="replicability">
+      {({ field, meta, form }: FieldProps) => (
+        <>
+          <Select
+            name={field.name}
+            options={options}
+            isClearable={false}
+            value={options.filter((o) => o.value === field.value)}
+            onBlur={() => {
+              form.setFieldTouched(field.name);
+            }}
+            onChange={(v) => {
+              form.setFieldValue(field.name, v.value);
+            }}
+            label={
+              <LabelWithHelper
+                label={t("BUGFORM_BUGDTLS_REPLICABILTY", {
                   defaultValue: "Bug replicability",
-                }),
-                type: "replicability",
-              })
-            )
-          }
-          small
-        />
-      }
-      placeholder={t("BUGFORM_BUGDTLS_REPLICABILTY_PLACEHOLDER", {
-        defaultValue: "Select replicability",
-      })}
-      menuTargetQuery="body"
-      onChange={() => null}
-      noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
-    />
+                })}
+                onClick={() =>
+                  dispatch(
+                    setBugDetailsModal({
+                      open: true,
+                      title: t("BUGFORM_REPLICABILTY_MODAL_TITLE", {
+                        defaultValue: "Bug replicability",
+                      }),
+                      type: "replicability",
+                    })
+                  )
+                }
+                small
+              />
+            }
+            placeholder={t("BUGFORM_BUGDTLS_REPLICABILTY_PLACEHOLDER", {
+              defaultValue: "Select replicability",
+            })}
+            menuTargetQuery="body"
+            noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
+          />
+          <ErrorMessage name={field.name} />
+        </>
+      )}
+    </FormikField>
   );
 };

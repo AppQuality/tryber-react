@@ -1,4 +1,9 @@
-import { Select } from "@appquality/appquality-design-system";
+import {
+  Select,
+  FormikField,
+  ErrorMessage,
+  FieldProps,
+} from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { LabelWithHelper } from "src/pages/BugForm/LabelWithHelper/LabelWithHelper";
 import { setBugDetailsModal } from "src/pages/BugForm/bugFormSlice";
@@ -16,35 +21,48 @@ export const BugSeverity = () => {
   }));
 
   return (
-    <Select
-      name="severity"
-      value={[]}
-      options={options}
-      label={
-        <LabelWithHelper
-          label={t("BUGFORM_BUGDTLS_SEVERITY", {
-            defaultValue: "Bug severity",
-          })}
-          onClick={() =>
-            dispatch(
-              setBugDetailsModal({
-                open: true,
-                title: t("BUGFORM_SEVERITY_MODAL_TITLE", {
+    <FormikField name="severity">
+      {({ field, meta, form }: FieldProps) => (
+        <>
+          <Select
+            name={field.name}
+            options={options}
+            isClearable={false}
+            value={options.filter((o) => o.value === field.value)}
+            onBlur={() => {
+              form.setFieldTouched(field.name);
+            }}
+            onChange={(v) => {
+              form.setFieldValue(field.name, v.value);
+            }}
+            label={
+              <LabelWithHelper
+                label={t("BUGFORM_BUGDTLS_SEVERITY", {
                   defaultValue: "Bug severity",
-                }),
-                type: "severity",
-              })
-            )
-          }
-          small
-        />
-      }
-      placeholder={t("BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER", {
-        defaultValue: "Select severity",
-      })}
-      menuTargetQuery="body"
-      onChange={() => null}
-      noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
-    />
+                })}
+                onClick={() =>
+                  dispatch(
+                    setBugDetailsModal({
+                      open: true,
+                      title: t("BUGFORM_SEVERITY_MODAL_TITLE", {
+                        defaultValue: "Bug severity",
+                      }),
+                      type: "severity",
+                    })
+                  )
+                }
+                small
+              />
+            }
+            placeholder={t("BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER", {
+              defaultValue: "Select severity",
+            })}
+            menuTargetQuery="body"
+            noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
+          />
+          <ErrorMessage name={field.name} />
+        </>
+      )}
+    </FormikField>
   );
 };
