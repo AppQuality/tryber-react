@@ -9,11 +9,13 @@ import {
   Select,
 } from "@appquality/appquality-design-system";
 import i18n from "src/i18n";
-import { useAppDispatch } from "src/redux/provider";
 import { useTranslation } from "react-i18next";
 import { LabelWithHelper } from "src/pages/BugForm/LabelWithHelper/LabelWithHelper";
 import { TextareaField } from "src/pages/BugForm/BugDetails/TextareaField/TextareaField";
-import { setBugDetailsModal } from "src/pages/BugForm/bugFormSlice";
+import { BugSeverity } from "src/pages/BugForm/BugDetails/select/BugSeverity";
+import { BugType } from "src/pages/BugForm/BugDetails/select/BugType";
+import { BugReplicability } from "src/pages/BugForm/BugDetails/select/BugReplicability";
+import { UseCase } from "src/pages/BugForm/BugDetails/select/UseCase";
 
 interface BugDetailsProps {
   className?: string;
@@ -24,19 +26,6 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
   const isDesktop = window.matchMedia(
     `only screen and (min-width: ${aqBootstrapTheme.grid.breakpoints.lg})`
   ).matches;
-  const dispatch = useAppDispatch();
-
-  const openBugDetailsModal = (
-    title: string,
-    type: "severity" | "type" | "replicability"
-  ) =>
-    dispatch(
-      setBugDetailsModal({
-        open: true,
-        title,
-        type,
-      })
-    );
 
   return (
     <Card
@@ -73,103 +62,16 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         />
       </div>
       <div className="aq-mb-3">
-        <Select
-          name="severity"
-          value={[]}
-          options={[]}
-          label={
-            <LabelWithHelper
-              label={t("BUGFORM_BUGDTLS_SEVERITY", {
-                defaultValue: "Bug severity",
-              })}
-              onClick={() =>
-                openBugDetailsModal(
-                  t("BUGFORM_SEVERITY_MODAL_TITLE", {
-                    defaultValue: "Bug severity",
-                  }),
-                  "severity"
-                )
-              }
-              small
-            />
-          }
-          placeholder={t("BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER", {
-            defaultValue: "Select severity",
-          })}
-          menuTargetQuery="body"
-          onChange={() => null}
-          noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
-        />
+        <BugSeverity />
       </div>
       <div className="aq-mb-3">
-        <Select
-          name="type"
-          value={[]}
-          options={[]}
-          label={
-            <LabelWithHelper
-              label={t("BUGFORM_BUGDTLS_TYPE", { defaultValue: "Bug type" })}
-              onClick={() =>
-                openBugDetailsModal(
-                  t("BUGFORM_TYPE_MODAL_TITLE", {
-                    defaultValue: "Bug type",
-                  }),
-                  "type"
-                )
-              }
-              small
-            />
-          }
-          placeholder={t("BUGFORM_BUGDTLS_TYPE_PLACEHOLDER", {
-            defaultValue: "Select type",
-          })}
-          menuTargetQuery="body"
-          onChange={() => null}
-          noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
-        />
+        <BugType />
       </div>
       <div className="aq-mb-3">
-        <Select
-          name="replicability"
-          value={[]}
-          options={[]}
-          label={
-            <LabelWithHelper
-              label={t("BUGFORM_BUGDTLS_REPLICABILTY", {
-                defaultValue: "Bug replicability",
-              })}
-              onClick={() =>
-                openBugDetailsModal(
-                  t("BUGFORM_REPLICABILTY_MODAL_TITLE", {
-                    defaultValue: "Bug replicability",
-                  }),
-                  "replicability"
-                )
-              }
-              small
-            />
-          }
-          placeholder={t("BUGFORM_BUGDTLS_REPLICABILTY_PLACEHOLDER", {
-            defaultValue: "Select replicability",
-          })}
-          menuTargetQuery="body"
-          onChange={() => null}
-          noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
-        />
+        <BugReplicability />
       </div>
       <div className="aq-mb-3">
-        <Select
-          name="usecase"
-          value={[]}
-          options={[]}
-          label={t("BUGFORM_BUGDTLS_USECASE", { defaultValue: "Usecase task" })}
-          placeholder={t("BUGFORM_BUGDTLS_USECASE_PLACEHOLDER", {
-            defaultValue: "Select usecase",
-          })}
-          menuTargetQuery="body"
-          onChange={() => null}
-          noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
-        />
+        <UseCase />
       </div>
       <TextareaField
         className="aq-mb-3"
