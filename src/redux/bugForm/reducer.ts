@@ -15,7 +15,11 @@ export default (state = initialState, action: BugFormActions) => {
         ...state,
         mediaList: [...state.mediaList, ...action.payload],
       };
-
+    case "bugForm/setShowError":
+      return {
+        ...state,
+        showError: action.payload,
+      };
     default:
       return state;
   }

@@ -3,7 +3,11 @@ import { Text } from "@appquality/appquality-design-system";
 import { FileCard } from "src/pages/BugForm/FileUploader/FileCard/FileCard";
 import { useField } from "formik";
 import { useAppDispatch, useAppSelector } from "src/store";
-import { deleteMedia } from "src/pages/BugForm/bugFormSlice";
+
+import { useDeleteMediaMutation } from "src/services/tryberApi";
+import { useEffect } from "react";
+import { removeElementFromMedialist } from "src/pages/BugForm/bugFormSlice";
+import { Trans } from "react-i18next";
 
 const StyledFileList = styled.div`
   min-height: 6.5em;
@@ -30,10 +34,32 @@ const StyledFileList = styled.div`
 export const FileList = () => {
   const { mediaList } = useAppSelector((state) => state.bugForm);
   const dispatch = useAppDispatch();
-  const [input, meta] = useField("media");
+  const [input, meta, helper] = useField("media");
   const isInvalid = () => {
     return typeof meta.error === "string" && meta.touched;
   };
+  const [deleteMedia] = useDeleteMediaMutation();
+  const onDelete = async (fileElement: FileElement) => {
+    if (fileElement.status === "uploading") return;
+    if (
+      fileElement.status === "success" &&
+      typeof fileElement.uploadedFileUrl === "string"
+    ) {
+      deleteMedia({ body: { url: fileElement.uploadedFileUrl } });
+      return;
+    }
+    if (fileElement.status === "failed") {
+      dispatch(removeElementFromMedialist({ id: fileElement.id }));
+    }
+  };
+  useEffect(() => {
+    helper.setValue(
+      mediaList
+        .filter((media) => media.uploadedFileUrl)
+        .map((media) => media.uploadedFileUrl)
+    );
+  }, [mediaList]);
+
   if (mediaList.length <= 0) return null;
   return (
     <>
@@ -43,7 +69,13 @@ export const FileList = () => {
         } aq-mb-3 aq-text-primary`}
         small
       >
-        {`${input.value.length}/${mediaList.length} uploaded`}
+        <Trans
+          i18nKey="{{num}} uploaded:::BUGFORM_UPLOAD_PROGRESS"
+          values={{
+            num: `${input.value.length}/${mediaList.length}`,
+          }}
+          defaults={"{{num}} uploaded"}
+        />
       </Text>
       <StyledFileList>
         {mediaList.map((f) => (
@@ -51,11 +83,7 @@ export const FileList = () => {
             key={f.id}
             className="file-list-card"
             fileElement={f}
-            onDelete={
-              f.status !== "uploading"
-                ? () => dispatch(deleteMedia(f))
-                : undefined
-            }
+            onDelete={f.status !== "uploading" ? () => onDelete(f) : undefined}
           />
         ))}
       </StyledFileList>

@@ -93,12 +93,56 @@
   },
   "Avalaible Campaigns": "Campagne Disponibili",
   "Awarded on": "Data",
+  "BBUGFORM_UPLOAD_IMG_ICON": "",
+  "BUGFORM_BUGDTLS_BUGTITLE": "",
+  "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "Format should be [Phase / Section] - Briefly Issue description",
+  "BUGFORM_BUGDTLS_BUGTITLE_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_COMMENTS": "",
+  "BUGFORM_BUGDTLS_COMMENTS_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_DAY": "",
+  "BUGFORM_BUGDTLS_DAY_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_EXPDRES": "",
+  "BUGFORM_BUGDTLS_EXPDRES_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_OSBRVDRES": "",
+  "BUGFORM_BUGDTLS_OSBRVDRES_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_REPLICABILTY": "",
+  "BUGFORM_BUGDTLS_REPLICABILTY_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_SEVERITY": "",
+  "BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_STEPBYSTEP": "",
+  "BUGFORM_BUGDTLS_STEPBYSTEP_ERROR": "This is a required field",
+  "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_TESTDVC": "",
+  "BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_TIME": "",
+  "BUGFORM_BUGDTLS_TIME_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_TITLE": "",
+  "BUGFORM_BUGDTLS_TYPE": "",
+  "BUGFORM_BUGDTLS_TYPE_ERROR": "This is a required field",
+  "BUGFORM_BUGDTLS_TYPE_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_USECASE": "",
+  "BUGFORM_BUGDTLS_USECASE_PLACEHOLDER": "",
+  "BUGFORM_CTA_SUBMIT": "",
   "BUGFORM_EMPATHY_404_CTA": "",
   "BUGFORM_EMPATHY_404_TITLE": "",
   "BUGFORM_EMPATHY_404_TXT": "",
   "BUGFORM_EMPATHY_SAVEDEVICE_CTA": "",
   "BUGFORM_EMPATHY_SAVEDEVICE_TITLE": "",
   "BUGFORM_EMPATHY_SAVEDEVICE_TXT": "",
+  "BUGFORM_MAINTITLE": "",
+  "BUGFORM_REPLICABILTY_MODAL_TITLE": "Bug replicability",
+  "BUGFORM_SEVERITY_MODAL_TITLE": "Bug severity",
+  "BUGFORM_TYPE_MODAL_TITLE": "Bug type",
+  "BUGFORM_UPLOAD_DOC_ICON": "",
+  "BUGFORM_UPLOAD_DOC_TXT": "",
+  "BUGFORM_UPLOAD_DRAGDROP_TXT": "",
+  "BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED": "",
+  "BUGFORM_UPLOAD_ERROR_FILETOOBIG": "Maximum file size exceeded",
+  "BUGFORM_UPLOAD_ERROR_GENERALERROR": "Generic error",
+  "BUGFORM_UPLOAD_IMG_TXT": "",
+  "BUGFORM_UPLOAD_TITLE": "",
+  "BUGFORM_UPLOAD_VIDAUDIO_ICON": "",
+  "BUGFORM_UPLOAD_VIDAUDIO_TXT": "",
   "Back": "Indietro",
   "Back to wallet": "Ritorna a Portafoglio",
   "Bank Transfer": "Bonifico bancario",
@@ -242,6 +286,10 @@
   "Male": "Uomo",
   "Manufacturer": "Produttore",
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Produttore: <bold>{{manufacturer}}</bold>",
+  "Media field must have at least {{num}} items": {
+    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "Media field must have at least {{num}} items",
+    "BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM": ""
+  },
   "Messages for you": "Messaggi per te",
   "Method": "Metodo",
   "Model": "Modello",
@@ -377,6 +425,9 @@
   "Type": "Tipo",
   "Type to search your city": "Digita per cercare la tua città",
   "Update your device list": "Aggiorna la tua lista dispositivi",
+  "Upload a minimum number of {{num}} files": {
+    "BUGFORM_UPLOAD_TXT": ""
+  },
   "Uploaded Bugs": "Bug caricati",
   "User mail validation": {
     "An Email has been sent to the provided address": "Un'email è stata inviata all'indirizzo fornito"
@@ -538,12 +589,39 @@
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Scarica ricevuta",
   "address": "indirizzo",
   "available tags: <br>, <bold>": {
+    "BUGFORM_REPLICABILTY_MODAL_TXT": "",
+    "BUGFORM_SEVERITY_MODAL_TXT": "",
+    "BUGFORM_TYPE_MODAL_TEXT": "",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "Si vola!✌ Sei Legendary e lo sarai per sempre!\nContinua a guadagnare punti e resta in vetta in classifica.",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "Il cielo non è un limite! Il prossimo mese sarai Legendary,<br></br>il livello più alto di TRYBER."
   },
   "company": "Società",
   "contact us": "Contattaci",
   "email must be the same": "Inserisci lo stesso indirizzo email",
+  "for this bug are only allowed replicability of type {{valid}}": {
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "for this bug are only allowed replicability of type {{valid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT_plural": "for this bug are only allowed replicability of type {{valid}}"
+  },
+  "for this bug are only allowed severities of type {{valid}}": {
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT": "for this bug are only allowed severities of type {{valid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT_plural": "for this bug are only allowed severities of type {{valid}}"
+  },
+  "for this bug are only allowed type {{valid}}": {
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT": "for this bug are only allowed type {{valid}}",
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT_plural": "for this bug are only allowed type {{valid}}"
+  },
+  "for this bug this replicability are not allowed: {{invalid}}": {
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT": "for this bug this replicability are not allowed: {{invalid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT_plural": "for this bug this replicability are not allowed: {{invalid}}"
+  },
+  "for this bug this severities are not allowed: {{invalid}}": {
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT": "for this bug this severities are not allowed: {{invalid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT_plural": "for this bug this severities are not allowed: {{invalid}}"
+  },
+  "for this bug this types are not allowed: {{invalid}}": {
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "for this bug this types are not allowed: {{invalid}}",
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "for this bug this types are not allowed: {{invalid}}"
+  },
   "forgot your password?": "hai dimenticato la password?",
   "give your best to keep level {{level}}": {
     "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Dai il tuo meglio per non retrocedere e continuare a essere {{level}}"
@@ -582,5 +660,8 @@
   "{{days}} days left to give your best!": {
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "Hai ancora {{days}} giorno per dare del tuo meglio!",
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "Hai ancora {{days}} giorni per dare del tuo meglio!"
+  },
+  "{{num}} uploaded": {
+    "BUGFORM_UPLOAD_PROGRESS": ""
   }
 }

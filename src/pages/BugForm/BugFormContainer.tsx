@@ -10,12 +10,12 @@ import { BugDetails } from "src/pages/BugForm/BugDetails/BugDetails";
 import * as yup from "yup";
 import { FormikProps } from "formik";
 import FocusError from "src/pages/BugForm/FocusError/FocusError";
-import { useAppDispatch } from "src/redux/provider";
-import { FileUploader, MIN_FILES_NUMBER } from "src/pages/BugForm/FileUploader";
+import { FileUploader } from "src/pages/BugForm/FileUploader";
 import { AdditionalFields } from "src/pages/BugForm/AdditionalFields";
 import React from "react";
 import styled from "styled-components";
 import useCampaignData from "./useCampaignData";
+import { useTranslation } from "react-i18next";
 
 const StyledForm = styled(Form)`
   .hide-mobile {
@@ -33,52 +33,72 @@ const StyledForm = styled(Form)`
 
 export const BugFormContainer = () => {
   const { data } = useCampaignData();
+  const { t } = useTranslation();
   const { mediaList } = useSelector(
     (state: GeneralState) => state.bugForm,
     shallowEqual
   );
-
+  if (!data) return null;
   const initialBugValues: BugFormValues = {
     title: "",
     stepDescription: "1.\n2.\n3.",
     media: [],
     device: 0,
-    severity: "LOW",
-    type: "TYPO",
-    replicability: "ONCE",
-    usecase: 0,
+    severity: "",
+    type: "",
+    replicability: "",
+    usecase: "",
     expected: "",
     current: "",
     notes: "",
     additional: {},
   };
-  if (data?.additionalFields) {
-    data.additionalFields.forEach(
-      (f) => (initialBugValues.additional[f.slug] = "")
-    );
-  }
+
+  data.additionalFields?.forEach(
+    (f) => (initialBugValues.additional[f.slug] = "")
+  );
 
   const validationSchema = {
-    title: yup
-      .string()
-      .required("This is a required field")
-      .matches(
-        /\[.+\] - .+/gm,
-        "Format should be [Phase / Section] - Briefly Issue description"
-      ),
+    title: yup.string().required(t("This is a required field")),
+    severity: yup.string().required(t("This is a required field")),
+    replicability: yup.string().required(t("This is a required field")),
+    useCase: yup.string().required(t("This is a required field")),
     stepDescription: yup
       .string()
-      .required("This is a required field")
+      .required(
+        t("BUGFORM_BUGDTLS_STEPBYSTEP_ERROR", "This is a required field")
+      )
       .test(
         "stepDescription",
-        "This is a required field",
+        t("BUGFORM_BUGDTLS_STEPBYSTEP_ERROR", "This is a required field"),
         (newValue) => newValue !== initialBugValues.stepDescription
       ),
-    expected: yup.string().required("This is a required field"),
-    current: yup.string().required("This is a required field"),
-    media: yup.array().min(MIN_FILES_NUMBER),
+    type: yup
+      .string()
+      .required(t("BUGFORM_BUGDTLS_TYPE_ERROR", "This is a required field")),
+    expected: yup.string().required(t("This is a required field")),
+    current: yup.string().required(t("This is a required field")),
+    media: yup.array().min(
+      data?.minimumMedia || 0,
+      t(
+        "Media field must have at least {{num}} items:::BUGFORM_UPLOAD_ERROR_MINIMUMFILES",
+        {
+          defaultValue: "Media field must have at least {{num}} items",
+          num: data?.minimumMedia || 0,
+        }
+      )
+    ),
     additional: yup.object(),
   };
+  if (data.titleRule) {
+    validationSchema.title = validationSchema.title.matches(
+      /\[.+\] - .+/gm,
+      t(
+        "BUGFORM_BUGDTLS_BUGTITLE_ERROR",
+        "Format should be [Phase / Section] - Briefly Issue description"
+      )
+    );
+  }
 
   const urls: string[] = [];
   mediaList.forEach((m) => {
@@ -121,7 +141,9 @@ export const BugFormContainer = () => {
                   size="block"
                   flat
                 >
-                  Submit this bug report
+                  {t("BUGFORM_CTA_SUBMIT", {
+                    defaultValue: "Submit this bug report",
+                  })}
                 </Button>
                 <FocusError />
               </BSCol>
@@ -138,7 +160,9 @@ export const BugFormContainer = () => {
                     size="block"
                     flat
                   >
-                    Submit this bug report
+                    {t("BUGFORM_CTA_SUBMIT", {
+                      defaultValue: "Submit this bug report",
+                    })}
                   </Button>
                 </div>
               </BSCol>

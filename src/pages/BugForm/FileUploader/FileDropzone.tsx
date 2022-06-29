@@ -1,19 +1,17 @@
 import { Dropzone } from "@appquality/appquality-design-system";
-import { addedDiscardedMedia } from "src/redux/bugForm/actionCreator";
-import { BUG_FORM_SUPPORTED_TYPES } from "src/redux/bugForm/utils";
 import { useField } from "formik";
 import { useEffect } from "react";
 import { usePostUsersMeCampaignsByCampaignIdMediaMutation } from "src/services/tryberApi";
 import { useAppDispatch, useAppSelector } from "src/store";
-import {
-  appendMediaList,
-  updateMediaList,
-} from "src/pages/BugForm/bugFormSlice";
+import { appendMediaList } from "src/pages/BugForm/bugFormSlice";
 import { createFilesElementList } from "src/pages/BugForm/createFilesElementList";
+import useCampaignData from "src/pages/BugForm/useCampaignData";
+import { useTranslation } from "react-i18next";
 
 export const FileDropzone = () => {
-  const [createMedia, createMediaResults] =
-    usePostUsersMeCampaignsByCampaignIdMediaMutation();
+  const { t } = useTranslation();
+  const [createMedia] = usePostUsersMeCampaignsByCampaignIdMediaMutation();
+  const campaign = useCampaignData();
   const [input, meta, helper] = useField("media");
 
   const { mediaList } = useAppSelector((state) => state.bugForm);
@@ -22,18 +20,6 @@ export const FileDropzone = () => {
   useEffect(() => {
     helper.setValue(getUploadedUrl(getSuccessMedia(mediaList)), true);
   }, [mediaList]);
-
-  useEffect(() => {
-    const { status, data, requestId } = createMediaResults;
-    if (status === "fulfilled" && typeof data !== "undefined" && requestId) {
-      dispatch(
-        updateMediaList({
-          data: data,
-          requestId: requestId,
-        })
-      );
-    }
-  }, [createMediaResults]);
 
   const getSuccessMedia = (aMediaList: FileElement[]) => {
     return aMediaList.filter((f) => f.status === "success");
@@ -50,8 +36,12 @@ export const FileDropzone = () => {
   const uploadMedia = async (files: File[]) => {
     const formData = new FormData();
     files.forEach((f) => formData.append("media", f));
-    // @ts-ignore
-    const data = createMedia({ campaignId: "3238", body: formData });
+    if (!campaign.data) return;
+    const data = createMedia({
+      campaignId: campaign.data.id.toString(),
+      // @ts-ignore
+      body: formData,
+    });
     dispatch(
       appendMediaList(
         createFilesElementList(files, "uploading", data.requestId)
@@ -61,15 +51,17 @@ export const FileDropzone = () => {
 
   return (
     <Dropzone
-      description="Click here to upload your files or drag and drop!"
-      accept={BUG_FORM_SUPPORTED_TYPES}
+      description={t("BUGFORM_UPLOAD_DRAGDROP_TXT", {
+        defaultValue: "Click here to upload your files or drag and drop!",
+      })}
+      accept={campaign.data?.validFileExtensions}
       disabled={false}
-      maxFilesText="You have reached the maximum number of files you can upload"
       onAccepted={(acceptedFiles) => uploadMedia(acceptedFiles)}
       onRejected={(fileRejections) => {
         const newFileList: File[] = [];
         fileRejections.forEach((f) => newFileList.push(f.file));
-        dispatch(addedDiscardedMedia(newFileList));
+        const elements = createFilesElementList(newFileList, "failed");
+        dispatch(appendMediaList(elements));
       }}
       danger={isInvalid()}
     />
