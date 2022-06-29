@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { ReactComponent as ImageIcon } from "src/pages/BugForm/FileUploader/FileType/assets/imageIcon.svg";
 import { ReactComponent as DocumentIcon } from "src/pages/BugForm/FileUploader/FileType/assets/documentIcon.svg";
 import { ReactComponent as VideoAudioIcon } from "src/pages/BugForm/FileUploader/FileType/assets/videoAudioIcon.svg";
+import { useTranslation } from "react-i18next";
 
 const StyledFileType = styled.div`
   .file-type {
@@ -29,27 +30,40 @@ interface FileTypeProps {
 }
 
 export const FileType = ({ type }: FileTypeProps) => {
+  const { t } = useTranslation();
+
   const getType = () => {
     switch (type) {
       case "image":
         return (
           <>
-            <ImageIcon className="aq-mr-2" />
-            Image
+            <ImageIcon
+              title={t("BBUGFORM_UPLOAD_IMG_ICON", { defaultValue: "Image" })}
+              className="aq-mr-2"
+            />
+            {t("BUGFORM_UPLOAD_IMG_TXT", { defaultValue: "Image" })}
           </>
         );
       case "audiovideo":
         return (
           <>
-            <VideoAudioIcon className="aq-mr-2" />
-            Video/Audio
+            <VideoAudioIcon
+              title={t("BUGFORM_UPLOAD_VIDAUDIO_ICON", {
+                defaultValue: "Video/Audio",
+              })}
+              className="aq-mr-2"
+            />
+            {t("BUGFORM_UPLOAD_VIDAUDIO_TXT", { defaultValue: "Video/Audio" })}
           </>
         );
       default:
         return (
           <>
-            <DocumentIcon className="aq-mr-2" />
-            Document
+            <DocumentIcon
+              title={t("BUGFORM_UPLOAD_DOC_ICON", { defaultValue: "Document" })}
+              className="aq-mr-2"
+            />
+            {t("BUGFORM_UPLOAD_DOC_TXT", { defaultValue: "Document" })}
           </>
         );
     }

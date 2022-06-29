@@ -43,7 +43,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
       className={className}
       title={
         <LabelWithHelper
-          label="Bug Details"
+          label={t("BUGFORM_BUGDTLS_TITLE", { defaultValue: "Bug Details" })}
           href={t("Bug details help article", {
             ns: "links",
           })}
@@ -53,19 +53,23 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
       <Field
         name="title"
         type="text"
-        label="Bug title"
-        placeholder="Some bug title"
+        label={t("BUGFORM_BUGDTLS_BUGTITLE", { defaultValue: "Bug title" })}
+        placeholder={t("BUGFORM_BUGDTLS_BUGTITLE_PLACEHOLDER", {
+          defaultValue: "Some bug title",
+        })}
       />
       <div className="aq-mb-3">
         <Select
           name="device"
           value={[]}
           options={[]}
-          label={"Test device"}
-          placeholder={"Select device"}
+          label={t("BUGFORM_BUGDTLS_TESTDVC", { defaultValue: "Test device" })}
+          placeholder={t("BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER", {
+            defaultValue: "Select device",
+          })}
           menuTargetQuery="body"
           onChange={() => null}
-          noOptionsMessage={() => "No options"}
+          noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
         />
       </div>
       <div className="aq-mb-3">
@@ -75,7 +79,9 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           options={[]}
           label={
             <LabelWithHelper
-              label="Bug severity"
+              label={t("BUGFORM_BUGDTLS_SEVERITY", {
+                defaultValue: "Bug severity",
+              })}
               onClick={() =>
                 openBugDetailsModal(
                   t("BUGFORM_SEVERITY_MODAL_TITLE", {
@@ -87,10 +93,12 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
               small
             />
           }
-          placeholder={"Select severity"}
+          placeholder={t("BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER", {
+            defaultValue: "Select severity",
+          })}
           menuTargetQuery="body"
           onChange={() => null}
-          noOptionsMessage={() => "No options"}
+          noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
         />
       </div>
       <div className="aq-mb-3">
@@ -100,7 +108,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           options={[]}
           label={
             <LabelWithHelper
-              label="Bug type"
+              label={t("BUGFORM_BUGDTLS_TYPE", { defaultValue: "Bug type" })}
               onClick={() =>
                 openBugDetailsModal(
                   t("BUGFORM_TYPE_MODAL_TITLE", {
@@ -112,10 +120,12 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
               small
             />
           }
-          placeholder={"Select type"}
+          placeholder={t("BUGFORM_BUGDTLS_TYPE_PLACEHOLDER", {
+            defaultValue: "Select type",
+          })}
           menuTargetQuery="body"
           onChange={() => null}
-          noOptionsMessage={() => "No options"}
+          noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
         />
       </div>
       <div className="aq-mb-3">
@@ -125,7 +135,9 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           options={[]}
           label={
             <LabelWithHelper
-              label="Bug replicability"
+              label={t("BUGFORM_BUGDTLS_REPLICABILTY", {
+                defaultValue: "Bug replicability",
+              })}
               onClick={() =>
                 openBugDetailsModal(
                   t("BUGFORM_REPLICABILTY_MODAL_TITLE", {
@@ -137,10 +149,12 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
               small
             />
           }
-          placeholder={"Select replicability"}
+          placeholder={t("BUGFORM_BUGDTLS_REPLICABILTY_PLACEHOLDER", {
+            defaultValue: "Select replicability",
+          })}
           menuTargetQuery="body"
           onChange={() => null}
-          noOptionsMessage={() => "No options"}
+          noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
         />
       </div>
       <div className="aq-mb-3">
@@ -148,59 +162,87 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           name="usecase"
           value={[]}
           options={[]}
-          label={"Usecase task"}
-          placeholder={"Select usecase"}
+          label={t("BUGFORM_BUGDTLS_USECASE", { defaultValue: "Usecase task" })}
+          placeholder={t("BUGFORM_BUGDTLS_USECASE_PLACEHOLDER", {
+            defaultValue: "Select usecase",
+          })}
           menuTargetQuery="body"
           onChange={() => null}
-          noOptionsMessage={() => "No options"}
+          noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
         />
       </div>
       <TextareaField
         className="aq-mb-3"
         name="stepDescription"
-        label={"Step-by-step description"}
-        placeholder={"1.\n2.\n3."}
+        label={t("BUGFORM_BUGDTLS_STEPBYSTEP", {
+          defaultValue: "Step-by-step description",
+        })}
+        placeholder={t("BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER", {
+          defaultValue: "1.\n2.\n3.",
+        })}
         height="8.8rem"
         autoResize={isDesktop}
       />
       <TextareaField
         className="aq-mb-3"
         name="expected"
-        label="Expected result"
-        placeholder="Write what you expected"
+        label={t("BUGFORM_BUGDTLS_EXPDRES", {
+          defaultValue: "Expected result",
+        })}
+        placeholder={t("BUGFORM_BUGDTLS_EXPDRES_PLACEHOLDER", {
+          defaultValue: "Write what you expected",
+        })}
         height="7rem"
         autoResize={isDesktop}
       />
       <TextareaField
         className="aq-mb-3"
         name="current"
-        label="Observed result"
-        placeholder="Write what you found"
+        label={t("BUGFORM_BUGDTLS_OSBRVDRES", {
+          defaultValue: "Observed result",
+        })}
+        placeholder={t("BUGFORM_BUGDTLS_OSBRVDRES_PLACEHOLDER", {
+          defaultValue: "Write what you found",
+        })}
         height="7rem"
         autoResize={isDesktop}
       />
       <BSGrid>
         <BSCol size="col-6" className="aq-mb-3">
-          <FormLabel htmlFor={"date"} label={"When did it happen"} />
+          <FormLabel
+            htmlFor={"date"}
+            label={t("BUGFORM_BUGDTLS_DAY", {
+              defaultValue: "When did it happen",
+            })}
+          />
           <Datepicker
             id={"date"}
             locale={i18n.language}
-            placeholder={"Pick a date"}
-            setText={"Set"}
-            cancelText={"Cancel"}
+            placeholder={t("BUGFORM_BUGDTLS_DAY_PLACEHOLDER", {
+              defaultValue: "Pick a date",
+            })}
+            setText={t("Set")}
+            cancelText={t("Cancel")}
             onCancel={() => null}
             onChange={() => null}
           />
         </BSCol>
         <BSCol size="col-6">
-          <FormLabel htmlFor={"time"} label={"What time did it happen"} />
+          <FormLabel
+            htmlFor={"time"}
+            label={t("BUGFORM_BUGDTLS_TIME", {
+              defaultValue: "What time did it happen",
+            })}
+          />
           <Datepicker
             id={"time"}
             locale={i18n.language}
             control="time"
-            placeholder={"Pick a time"}
-            setText={"Set"}
-            cancelText={"Cancel"}
+            placeholder={t("BUGFORM_BUGDTLS_TIME_PLACEHOLDER", {
+              defaultValue: "Pick a time",
+            })}
+            setText={t("Set")}
+            cancelText={t("Cancel")}
             onCancel={() => null}
             onChange={() => null}
           />
@@ -209,8 +251,12 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
       <Field
         name="notes"
         type="text"
-        label="Additional comments"
-        placeholder="Anything else you'd like to add"
+        label={t("BUGFORM_BUGDTLS_COMMENTS", {
+          defaultValue: "Additional comments",
+        })}
+        placeholder={t("BUGFORM_BUGDTLS_COMMENTS_PLACEHOLDER", {
+          defaultValue: "Anything else you'd like to add",
+        })}
       />
     </Card>
   );

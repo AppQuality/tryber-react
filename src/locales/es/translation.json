@@ -93,15 +93,51 @@
   },
   "Avalaible Campaigns": "Campañas Disponibles",
   "Awarded on": "Fecha",
+  "BBUGFORM_UPLOAD_IMG_ICON": "",
+  "BUGFORM_BUGDTLS_BUGTITLE": "",
+  "BUGFORM_BUGDTLS_BUGTITLE_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_COMMENTS": "",
+  "BUGFORM_BUGDTLS_COMMENTS_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_DAY": "",
+  "BUGFORM_BUGDTLS_DAY_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_EXPDRES": "",
+  "BUGFORM_BUGDTLS_EXPDRES_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_OSBRVDRES": "",
+  "BUGFORM_BUGDTLS_OSBRVDRES_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_REPLICABILTY": "",
+  "BUGFORM_BUGDTLS_REPLICABILTY_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_SEVERITY": "",
+  "BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_STEPBYSTEP": "",
+  "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_TESTDVC": "",
+  "BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_TIME": "",
+  "BUGFORM_BUGDTLS_TIME_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_TITLE": "",
+  "BUGFORM_BUGDTLS_TYPE": "",
+  "BUGFORM_BUGDTLS_TYPE_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_USECASE": "",
+  "BUGFORM_BUGDTLS_USECASE_PLACEHOLDER": "",
+  "BUGFORM_CTA_SUBMIT": "",
   "BUGFORM_EMPATHY_404_CTA": "",
   "BUGFORM_EMPATHY_404_TITLE": "",
   "BUGFORM_EMPATHY_404_TXT": "",
   "BUGFORM_EMPATHY_SAVEDEVICE_CTA": "",
   "BUGFORM_EMPATHY_SAVEDEVICE_TITLE": "",
   "BUGFORM_EMPATHY_SAVEDEVICE_TXT": "",
-  "BUGFORM_REPLICABILTY_MODAL_TITLE": "y",
-  "BUGFORM_SEVERITY_MODAL_TITLE": "",
-  "BUGFORM_TYPE_MODAL_TITLE": "",
+  "BUGFORM_MAINTITLE": "",
+  "BUGFORM_REPLICABILTY_MODAL_TITLE": "Bug replicability",
+  "BUGFORM_SEVERITY_MODAL_TITLE": "Bug severity",
+  "BUGFORM_TYPE_MODAL_TITLE": "Bug type",
+  "BUGFORM_UPLOAD_DOC_ICON": "",
+  "BUGFORM_UPLOAD_DOC_TXT": "",
+  "BUGFORM_UPLOAD_DRAGDROP_TXT": "",
+  "BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED": "",
+  "BUGFORM_UPLOAD_IMG_TXT": "",
+  "BUGFORM_UPLOAD_TITLE": "",
+  "BUGFORM_UPLOAD_VIDAUDIO_ICON": "",
+  "BUGFORM_UPLOAD_VIDAUDIO_TXT": "",
   "Back": "Atrás",
   "Back to wallet": "Volver a Monedero",
   "Bank Transfer": "Transferencia bancaria",
@@ -245,6 +281,9 @@
   "Male": "Masculino",
   "Manufacturer": "Productor",
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Productor: <bold>{{manufacturer}}</bold>",
+  "Media field must have at least {{num}} items": {
+    "BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM": ""
+  },
   "Messages for you": "Tus mensajes",
   "Method": "Método",
   "Model": "Modelo",
@@ -380,6 +419,9 @@
   "Type": "Tipo",
   "Type to search your city": "Escriba para buscar tu ciudad",
   "Update your device list": "Actualizar tu lista de dispositivos",
+  "Upload a minimum number of {{num}} files": {
+    "BUGFORM_UPLOAD_TXT": ""
+  },
   "Uploaded Bugs": "Bugs Cargados",
   "User mail validation": {
     "An Email has been sent to the provided address": "Se ha enviado un correo electrónico a la dirección proporcionada"
@@ -588,5 +630,8 @@
   "{{days}} days left to give your best!": {
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "¡Todavía tienes {{days}} día para dar lo mejor de ti!",
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "¡Todavía tienes {{days}} días para dar lo mejor de ti!"
+  },
+  "{{num}} uploaded": {
+    "BUGFORM_UPLOAD_PROGRESS": ""
   }
 }

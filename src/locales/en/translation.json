@@ -93,15 +93,51 @@
   },
   "Avalaible Campaigns": "Avalaible Campaigns",
   "Awarded on": "Awarded on",
+  "BBUGFORM_UPLOAD_IMG_ICON": "",
+  "BUGFORM_BUGDTLS_BUGTITLE": "",
+  "BUGFORM_BUGDTLS_BUGTITLE_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_COMMENTS": "",
+  "BUGFORM_BUGDTLS_COMMENTS_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_DAY": "",
+  "BUGFORM_BUGDTLS_DAY_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_EXPDRES": "",
+  "BUGFORM_BUGDTLS_EXPDRES_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_OSBRVDRES": "",
+  "BUGFORM_BUGDTLS_OSBRVDRES_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_REPLICABILTY": "",
+  "BUGFORM_BUGDTLS_REPLICABILTY_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_SEVERITY": "",
+  "BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_STEPBYSTEP": "",
+  "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_TESTDVC": "",
+  "BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_TIME": "",
+  "BUGFORM_BUGDTLS_TIME_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_TITLE": "",
+  "BUGFORM_BUGDTLS_TYPE": "",
+  "BUGFORM_BUGDTLS_TYPE_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_USECASE": "",
+  "BUGFORM_BUGDTLS_USECASE_PLACEHOLDER": "",
+  "BUGFORM_CTA_SUBMIT": "",
   "BUGFORM_EMPATHY_404_CTA": "",
   "BUGFORM_EMPATHY_404_TITLE": "",
   "BUGFORM_EMPATHY_404_TXT": "",
   "BUGFORM_EMPATHY_SAVEDEVICE_CTA": "",
   "BUGFORM_EMPATHY_SAVEDEVICE_TITLE": "",
   "BUGFORM_EMPATHY_SAVEDEVICE_TXT": "",
-  "BUGFORM_REPLICABILTY_MODAL_TITLE": "",
-  "BUGFORM_SEVERITY_MODAL_TITLE": "",
-  "BUGFORM_TYPE_MODAL_TITLE": "",
+  "BUGFORM_MAINTITLE": "",
+  "BUGFORM_REPLICABILTY_MODAL_TITLE": "Bug replicability",
+  "BUGFORM_SEVERITY_MODAL_TITLE": "Bug severity",
+  "BUGFORM_TYPE_MODAL_TITLE": "Bug type",
+  "BUGFORM_UPLOAD_DOC_ICON": "",
+  "BUGFORM_UPLOAD_DOC_TXT": "",
+  "BUGFORM_UPLOAD_DRAGDROP_TXT": "",
+  "BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED": "",
+  "BUGFORM_UPLOAD_IMG_TXT": "",
+  "BUGFORM_UPLOAD_TITLE": "",
+  "BUGFORM_UPLOAD_VIDAUDIO_ICON": "",
+  "BUGFORM_UPLOAD_VIDAUDIO_TXT": "",
   "Back": "Back",
   "Back to wallet": "Back to Wallet",
   "Bank Transfer": "Bank transfer",
@@ -245,6 +281,9 @@
   "Male": "Male",
   "Manufacturer": "Manufacturer",
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Manufacturer: <bold>{{manufacturer}}</bold>",
+  "Media field must have at least {{num}} items": {
+    "BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM": ""
+  },
   "Messages for you": "Messages for you",
   "Method": "Method",
   "Model": "Model",
@@ -380,6 +419,9 @@
   "Type": "Type",
   "Type to search your city": "Type to search your city",
   "Update your device list": "Update your device list",
+  "Upload a minimum number of {{num}} files": {
+    "BUGFORM_UPLOAD_TXT": ""
+  },
   "Uploaded Bugs": "Uploaded Bugs",
   "User mail validation": {
     "An Email has been sent to the provided address": "An Email has been sent to the provided address"
@@ -588,5 +630,8 @@
   "{{days}} days left to give your best!": {
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "You still have {{days}} day to try your best!",
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "You still have {{days}} days to try your best!"
+  },
+  "{{num}} uploaded": {
+    "BUGFORM_UPLOAD_PROGRESS": ""
   }
 }

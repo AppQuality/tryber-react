@@ -4,6 +4,7 @@ import { FileType } from "src/pages/BugForm/FileUploader/FileType/FileType";
 import { FileDropzone } from "src/pages/BugForm/FileUploader/FileDropzone";
 import { FileList } from "src/pages/BugForm/FileUploader/FileList";
 import useCampaignData from "src/pages/BugForm/useCampaignData";
+import { Trans, useTranslation } from "react-i18next";
 
 const StyledFilesTypes = styled.div`
   display: flex;
@@ -18,10 +19,20 @@ const StyledFilesTypes = styled.div`
 
 export const FileUploader = () => {
   const { data } = useCampaignData();
+  const { t } = useTranslation();
+
   return (
-    <Card title={"Uploading media"}>
+    <Card
+      title={t("BUGFORM_UPLOAD_TITLE", { defaultValue: "Uploading media" })}
+    >
       <Text className="aq-text-primaryVariant">
-        {`Upload a minimum number of ${data?.minimumMedia || 0} files`}
+        <Trans
+          i18nKey="Upload a minimum number of {{num}} files:::BUGFORM_UPLOAD_TXT"
+          values={{
+            num: data?.minimumMedia || 0,
+          }}
+          defaults={"Upload a minimum number of {{num}} files"}
+        />
       </Text>
       <StyledFilesTypes className="aq-mb-3">
         <FileType type="image" />
