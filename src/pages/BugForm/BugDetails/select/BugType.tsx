@@ -21,7 +21,7 @@ export const BugType = () => {
     label: option,
   }));
   const getSelectInfoMessage = () => {
-    const { valid, invalid } = data.bugSeverity;
+    const { valid, invalid } = data.bugTypes;
     if (valid.length === 0 || invalid.length === 0) return null;
     return (
       <Text small>
