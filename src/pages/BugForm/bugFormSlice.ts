@@ -3,6 +3,7 @@ import {
   PostUsersMeCampaignsByCampaignIdMediaApiResponse,
   tryberApi,
 } from "src/services/tryberApi";
+import { addMessage } from "../../redux/siteWideMessages/actionCreators";
 
 // Define a type for the slice state
 interface BugFormState {
@@ -73,6 +74,21 @@ const bugFormSlice = createSlice({
         });
       });
     },
+    rejectedForGenericError(
+      state,
+      action: PayloadAction<{
+        requestId: string;
+      }>
+    ) {
+      const { requestId } = action.payload;
+      const { mediaList } = state;
+      mediaList.forEach((media, i) => {
+        if (requestId === media.uploadId) {
+          mediaList[i].status = "failed";
+          mediaList[i].errorCode = "GENERIC_ERROR";
+        }
+      });
+    },
     setBugDetailsModal(
       state,
       action: PayloadAction<{
@@ -92,6 +108,17 @@ const bugFormSlice = createSlice({
           payload: {
             requestId: meta.requestId,
             data: payload,
+          },
+          type: type,
+        });
+      }
+    );
+    builder.addMatcher(
+      tryberApi.endpoints.postUsersMeCampaignsByCampaignIdMedia.matchRejected,
+      (state, { meta, type }) => {
+        bugFormSlice.caseReducers.rejectedForGenericError(state, {
+          payload: {
+            requestId: meta.requestId,
           },
           type: type,
         });
