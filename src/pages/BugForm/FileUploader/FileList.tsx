@@ -7,7 +7,8 @@ import { useAppDispatch, useAppSelector } from "src/store";
 import { useDeleteMediaMutation } from "src/services/tryberApi";
 import { useEffect } from "react";
 import { removeElementFromMedialist } from "src/pages/BugForm/bugFormSlice";
-import { Trans } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import { addMessage } from "../../../redux/siteWideMessages/actionCreators";
 
 const StyledFileList = styled.div`
   min-height: 6.5em;
@@ -34,6 +35,7 @@ const StyledFileList = styled.div`
 export const FileList = () => {
   const { mediaList } = useAppSelector((state) => state.bugForm);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
   const [input, meta, helper] = useField("media");
   const isInvalid = () => {
     return typeof meta.error === "string" && meta.touched;
@@ -45,7 +47,17 @@ export const FileList = () => {
       fileElement.status === "success" &&
       typeof fileElement.uploadedFileUrl === "string"
     ) {
-      deleteMedia({ body: { url: fileElement.uploadedFileUrl } });
+      const data = deleteMedia({ body: { url: fileElement.uploadedFileUrl } });
+      data.unwrap().catch((e) =>
+        dispatch(
+          addMessage(
+            t("BUGFORM_UPLOAD_ERROR_GENERALERROR", {
+              defaultValue: "Generic error",
+            }),
+            "danger"
+          )
+        )
+      );
       return;
     }
     if (fileElement.status === "failed") {
