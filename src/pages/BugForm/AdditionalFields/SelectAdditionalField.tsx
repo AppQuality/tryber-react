@@ -5,7 +5,7 @@ import {
 } from "@appquality/appquality-design-system";
 
 import { Field, FieldProps } from "formik";
-import { ChangeEvent } from "react";
+import { useMemo } from "react";
 export const SelectAdditionalField = ({
   label,
   options,
@@ -15,6 +15,14 @@ export const SelectAdditionalField = ({
   options: string[];
   name: string;
 }) => {
+  const selectOptions = useMemo(
+    () =>
+      options.map((option) => ({
+        label: option,
+        value: option,
+      })),
+    [options]
+  );
   return (
     <div className="aq-mb-3">
       <Field
@@ -34,12 +42,9 @@ export const SelectAdditionalField = ({
               <Select
                 key={name}
                 name={name}
-                value={[]}
-                options={options.map((option) => ({
-                  label: option,
-                  value: option,
-                }))}
-                onBlur={(e: ChangeEvent) => {
+                value={selectOptions.filter((o) => o.value === field.value)}
+                options={selectOptions}
+                onBlur={() => {
                   form.setFieldTouched(name);
                 }}
                 label={label}
