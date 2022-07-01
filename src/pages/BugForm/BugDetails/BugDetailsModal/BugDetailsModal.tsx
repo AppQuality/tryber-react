@@ -1,11 +1,10 @@
 import { Modal, Text } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/store";
 import { setBugDetailsModal } from "../../bugFormSlice";
 
 export const BugDetailsModal = () => {
   const dispatch = useAppDispatch();
-  const { t } = useTranslation();
 
   const { open, title, type } = useAppSelector(
     (state) => state.bugForm.bugDetailsModal
@@ -23,12 +22,37 @@ export const BugDetailsModal = () => {
   const getContent = () => {
     switch (type) {
       case "severity":
-        return t("available tags: <br>, <bold>:::BUGFORM_SEVERITY_MODAL_TXT");
+        return (
+          <Trans
+            i18nKey="available tags: <br>, <bold>:::BUGFORM_SEVERITY_MODAL_TXT"
+            components={{
+              br: <br />,
+              bold: <strong className="aq-text-primary" />,
+              b: <strong className="aq-text-primary" />,
+            }}
+          />
+        );
       case "type":
-        return t("available tags: <br>, <bold>:::BUGFORM_TYPE_MODAL_TEXT");
+        return (
+          <Trans
+            i18nKey="available tags: <br>, <bold>:::BUGFORM_TYPE_MODAL_TEXT"
+            components={{
+              br: <br />,
+              bold: <strong className="aq-text-primary" />,
+              b: <strong className="aq-text-primary" />,
+            }}
+          />
+        );
       case "replicability":
-        return t(
-          "available tags: <br>, <bold>:::BUGFORM_REPLICABILTY_MODAL_TXT"
+        return (
+          <Trans
+            i18nKey="available tags: <br>, <bold>:::BUGFORM_REPLICABILTY_MODAL_TXT"
+            components={{
+              br: <br />,
+              bold: <strong className="aq-text-primary" />,
+              b: <strong className="aq-text-primary" />,
+            }}
+          />
         );
       default:
         return <></>;
