@@ -1,5 +1,8 @@
 import { useParams } from "react-router-dom";
-import { useGetUsersMeCampaignsByCampaignIdQuery } from "src/services/tryberApi";
+import {
+  useGetUsersMeCampaignsByCampaignIdDevicesQuery,
+  useGetUsersMeCampaignsByCampaignIdQuery,
+} from "src/services/tryberApi";
 
 export default () => {
   const { id } = useParams<{ id: string }>();
@@ -7,5 +10,16 @@ export default () => {
   const { data, error, isFetching } = useGetUsersMeCampaignsByCampaignIdQuery({
     campaignId: id,
   });
-  return { data, isError: error || !data, isFetching };
+  const device = useGetUsersMeCampaignsByCampaignIdDevicesQuery({
+    campaignId: id,
+  });
+
+  return {
+    data,
+    device: device.data,
+    isError: error || !data,
+    noDevice: device.error,
+    isFetching: isFetching || device.isFetching,
+    campaignId: id,
+  };
 };

@@ -587,6 +587,14 @@ const injectedRtkApi = api.injectEndpoints({
         body: queryArg.body,
       }),
     }),
+    getUsersMeCampaignsByCampaignIdDevices: build.query<
+      GetUsersMeCampaignsByCampaignIdDevicesApiResponse,
+      GetUsersMeCampaignsByCampaignIdDevicesApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}/devices`,
+      }),
+    }),
   }),
   overrideExisting: false,
 });
@@ -1474,20 +1482,7 @@ export type GetUsersMeCampaignsByCampaignIdApiResponse = /** status 200 OK */ {
     id: number;
     name: string;
   }[];
-  additionalFields?: ({
-    name: string;
-    slug: string;
-    error: string;
-  } & (
-    | {
-        type: "select";
-        options: string[];
-      }
-    | {
-        type: "text";
-        regex: string;
-      }
-  ))[];
+  additionalFields?: CampaignAdditionalField[];
   bugTypes: {
     valid: string[];
     invalid: string[];
@@ -1525,6 +1520,11 @@ export type PostUsersMeCampaignsByCampaignIdMediaApiArg = {
   body: {
     media?: {} | string[];
   };
+};
+export type GetUsersMeCampaignsByCampaignIdDevicesApiResponse =
+  /** status 200 OK */ UserDevice[];
+export type GetUsersMeCampaignsByCampaignIdDevicesApiArg = {
+  campaignId: string;
 };
 export type Project = {
   name?: string;
@@ -1726,6 +1726,20 @@ export type LevelDefinition = {
   reach?: number;
   hold?: number;
 };
+export type CampaignAdditionalField = {
+  name: string;
+  slug: string;
+  error: string;
+} & (
+  | {
+      type: "select";
+      options: string[];
+    }
+  | {
+      type: "text";
+      regex: string;
+    }
+);
 export const {
   useGetQuery,
   usePostAuthenticateMutation,
@@ -1797,4 +1811,5 @@ export const {
   useGetLevelsQuery,
   useGetUsersMeCampaignsByCampaignIdQuery,
   usePostUsersMeCampaignsByCampaignIdMediaMutation,
+  useGetUsersMeCampaignsByCampaignIdDevicesQuery,
 } = injectedRtkApi;
