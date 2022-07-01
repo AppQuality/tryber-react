@@ -6,7 +6,6 @@ import {
   Datepicker,
   Field,
   FormLabel,
-  Select,
 } from "@appquality/appquality-design-system";
 import i18n from "src/i18n";
 import { useTranslation } from "react-i18next";
@@ -18,6 +17,7 @@ import { BugReplicability } from "src/pages/BugForm/BugDetails/select/BugReplica
 import { UseCase } from "src/pages/BugForm/BugDetails/select/UseCase";
 import useCampaignData from "src/pages/BugForm/useCampaignData";
 import { getLanguageMessage } from "src/pages/BugForm/BugDetails/getLanguageMessage";
+import { Devices } from "src/pages/BugForm/BugDetails/select/Devices";
 
 interface BugDetailsProps {
   className?: string;
@@ -55,18 +55,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         })}
       />
       <div className="aq-mb-3">
-        <Select
-          name="device"
-          value={[]}
-          options={[]}
-          label={t("BUGFORM_BUGDTLS_TESTDVC", { defaultValue: "Test device" })}
-          placeholder={t("BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER", {
-            defaultValue: "Select device",
-          })}
-          menuTargetQuery="body"
-          onChange={() => null}
-          noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
-        />
+        <Devices />
       </div>
       <div className="aq-mb-3">
         <BugSeverity />
