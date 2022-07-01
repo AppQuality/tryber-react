@@ -351,6 +351,16 @@ const injectedRtkApi = api.injectEndpoints({
         params: { showExpired: queryArg.showExpired, order: queryArg.order },
       }),
     }),
+    postUsersMeCampaignsByCampaignIdBugs: build.mutation<
+      PostUsersMeCampaignsByCampaignIdBugsApiResponse,
+      PostUsersMeCampaignsByCampaignIdBugsApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}/bugs`,
+        method: "POST",
+        body: queryArg.body,
+      }),
+    }),
     getUsersMePopupsByPopup: build.query<
       GetUsersMePopupsByPopupApiResponse,
       GetUsersMePopupsByPopupApiArg
@@ -1179,6 +1189,65 @@ export type GetUsersMePopupsApiArg = {
   /** How to order values (ASC, DESC) */
   order?: "ASC" | "DESC";
 };
+export type PostUsersMeCampaignsByCampaignIdBugsApiResponse =
+  /** status 200 OK */ {
+    id: number;
+    internalId?: string;
+    testerId: number;
+    title: string;
+    status: "PENDING" | "APPROVED" | "REFUSED" | "NEED-REVIEW";
+    description: string;
+    expected: string;
+    current: string;
+    severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+    replicability: "ONCE" | "SOMETIMES" | "ALWAYS";
+    type:
+      | "CRASH"
+      | "GRAPHIC"
+      | "MALFUNCTION"
+      | "OTHER"
+      | "PERFORMANCE"
+      | "SECURITY"
+      | "TYPO"
+      | "USABILITY";
+    notes: string;
+    usecase: string;
+    device: UserDevice;
+    media: string[];
+    additional?: {
+      slug: string;
+      value: string;
+    }[];
+  };
+export type PostUsersMeCampaignsByCampaignIdBugsApiArg = {
+  /** the campaign id */
+  campaignId: string;
+  body: {
+    title: string;
+    description: string;
+    expected: string;
+    current: string;
+    severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+    replicability: "ONCE" | "SOMETIMES" | "ALWAYS";
+    type:
+      | "CRASH"
+      | "GRAPHIC"
+      | "MALFUNCTION"
+      | "OTHER"
+      | "PERFORMANCE"
+      | "SECURITY"
+      | "TYPO"
+      | "USABILITY";
+    notes: string;
+    usecase: number;
+    device: number;
+    media: string[];
+    additional?: {
+      slug: string;
+      value: string;
+    }[];
+  };
+};
 export type GetUsersMePopupsByPopupApiResponse = /** status 200 OK */ {
   id?: number;
 } & Popup;
@@ -1785,6 +1854,7 @@ export const {
   usePutUsersMeFiscalMutation,
   useGetUsersMeCampaignsQuery,
   useGetUsersMePopupsQuery,
+  usePostUsersMeCampaignsByCampaignIdBugsMutation,
   useGetUsersMePopupsByPopupQuery,
   useGetUsersMeDevicesQuery,
   usePostUsersMeDevicesMutation,

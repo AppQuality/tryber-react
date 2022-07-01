@@ -219,6 +219,16 @@ export interface paths {
     /** Get all popup defined for your user */
     get: operations["get-users-me-popups"];
   };
+  "/users/me/campaigns/{campaignId}/bugs": {
+    /** Send a user bug on a specific campaign */
+    post: operations["post-users-me-campaigns-campaign-bugs"];
+    parameters: {
+      path: {
+        /** the campaign id */
+        campaignId: string;
+      };
+    };
+  };
   "/users/me/popups/{popup}": {
     /** Get a single popup. Will set the retrieved popup as expired */
     get: operations["get-users-me-popups-popup"];
@@ -353,6 +363,14 @@ export interface paths {
   };
   "/users/me/campaigns/{campaignId}/media": {
     post: operations["post-users-me-campaigns-campaignId-media"];
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+  };
+  "/users/me/campaigns/{campaignId}/devices": {
+    get: operations["get-users-me-campaigns-campaignId-devices"];
     parameters: {
       path: {
         campaignId: string;
@@ -591,6 +609,23 @@ export interface components {
       reach?: number;
       hold?: number;
     };
+    /** CampaignAdditionalField */
+    CampaignAdditionalField: {
+      name: string;
+      slug: string;
+      error: string;
+    } & (
+      | {
+          /** @enum {string} */
+          type: "select";
+          options: string[];
+        }
+      | {
+          /** @enum {string} */
+          type: "text";
+          regex: string;
+        }
+    );
   };
   responses: {
     /** A user */
@@ -1815,6 +1850,89 @@ export interface operations {
       };
     };
   };
+  /** Send a user bug on a specific campaign */
+  "post-users-me-campaigns-campaign-bugs": {
+    parameters: {
+      path: {
+        /** the campaign id */
+        campaignId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            internalId?: string;
+            testerId: number;
+            title: string;
+            /** @enum {string} */
+            status: "PENDING" | "APPROVED" | "REFUSED" | "NEED-REVIEW";
+            description: string;
+            expected: string;
+            current: string;
+            /** @enum {string} */
+            severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+            /** @enum {string} */
+            replicability: "ONCE" | "SOMETIMES" | "ALWAYS";
+            /** @enum {string} */
+            type:
+              | "CRASH"
+              | "GRAPHIC"
+              | "MALFUNCTION"
+              | "OTHER"
+              | "PERFORMANCE"
+              | "SECURITY"
+              | "TYPO"
+              | "USABILITY";
+            notes: string;
+            usecase: string;
+            device: components["schemas"]["UserDevice"];
+            media: string[];
+            additional?: {
+              slug: string;
+              value: string;
+            }[];
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          title: string;
+          description: string;
+          expected: string;
+          current: string;
+          /** @enum {string} */
+          severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+          /** @enum {string} */
+          replicability: "ONCE" | "SOMETIMES" | "ALWAYS";
+          /** @enum {string} */
+          type:
+            | "CRASH"
+            | "GRAPHIC"
+            | "MALFUNCTION"
+            | "OTHER"
+            | "PERFORMANCE"
+            | "SECURITY"
+            | "TYPO"
+            | "USABILITY";
+          notes: string;
+          usecase: number;
+          device: number;
+          media: string[];
+          additional?: {
+            slug: string;
+            value: string;
+          }[];
+        };
+      };
+    };
+  };
   /** Get a single popup. Will set the retrieved popup as expired */
   "get-users-me-popups-popup": {
     parameters: {
@@ -2496,22 +2614,7 @@ export interface operations {
               id: number;
               name: string;
             }[];
-            additionalFields?: ({
-              name: string;
-              slug: string;
-              error: string;
-            } & (
-              | {
-                  /** @enum {string} */
-                  type: "select";
-                  options: string[];
-                }
-              | {
-                  /** @enum {string} */
-                  type: "text";
-                  regex: string;
-                }
-            ))[];
+            additionalFields?: components["schemas"]["CampaignAdditionalField"][];
             bugTypes: {
               valid: string[];
               invalid: string[];
@@ -2567,6 +2670,23 @@ export interface operations {
           media?: string | string[];
         };
       };
+    };
+  };
+  "get-users-me-campaigns-campaignId-devices": {
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": components["schemas"]["UserDevice"][];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
     };
   };
 }
