@@ -132,10 +132,10 @@ export const BugFormContainer = () => {
         return (
           <StyledForm id="bugForm">
             <BSGrid>
-              <BSCol size="col-lg-7" className="aq-mb-3">
+              <BSCol size="col-lg-7">
                 <BugDetails className="aq-mb-3" />
                 <Button
-                  className="aq-mt-3 hide-mobile"
+                  className="hide-mobile"
                   type="primary"
                   htmlType="submit"
                   size="block"
