@@ -25,7 +25,7 @@ export const BugReplicability = () => {
     if (valid.length === 0 || invalid.length === 0) return null;
     return (
       <Text small>
-        {valid.length >= invalid.length
+        {valid.length <= invalid.length
           ? t(
               "for this bug are only allowed replicability of type {{valid}}:::BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT",
               {
