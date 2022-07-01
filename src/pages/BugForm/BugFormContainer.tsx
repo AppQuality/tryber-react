@@ -16,6 +16,7 @@ import styled from "styled-components";
 import useCampaignData from "./useCampaignData";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../../store";
+import { usePostUsersMeCampaignsByCampaignIdBugsMutation } from "../../services/tryberApi";
 
 const StyledForm = styled(Form)`
   .hide-mobile {
@@ -35,6 +36,8 @@ export const BugFormContainer = () => {
   const { data } = useCampaignData();
   const { t } = useTranslation();
   const { mediaList } = useAppSelector((state) => state.bugForm);
+  const [submitForm] = usePostUsersMeCampaignsByCampaignIdBugsMutation();
+
   if (!data) return null;
 
   const now = new Date();
@@ -106,6 +109,38 @@ export const BugFormContainer = () => {
     if (m.uploadedFileUrl) urls.push(m.uploadedFileUrl);
   });
 
+  const postForm = async (values: BugFormValues) => {
+    const additionalKeys = Object.keys(values.additional);
+    if (
+      values.severity !== "" &&
+      values.replicability !== "" &&
+      values.type !== ""
+    ) {
+      submitForm({
+        campaignId: data.id.toString(),
+        body: {
+          title: values.title,
+          description: values.stepDescription,
+          expected: values.expected,
+          current: values.current,
+          severity: values.severity,
+          replicability: values.replicability,
+          type: values.type,
+          notes: values.notes,
+          usecase: Number(values.useCase),
+          device: 0,
+          media: values.media,
+          additional: additionalKeys.map((k) => {
+            return {
+              slug: k,
+              value: values.additional[k],
+            };
+          }),
+        },
+      });
+    }
+  };
+
   return (
     <Formik
       initialValues={initialBugValues}
@@ -128,7 +163,7 @@ export const BugFormContainer = () => {
           date: values.date,
           time: values.time,
         };
-        console.info("submitValues", submitValues);
+        postForm(submitValues);
       }}
     >
       {(formikProps: FormikProps<BugFormValues>) => {
