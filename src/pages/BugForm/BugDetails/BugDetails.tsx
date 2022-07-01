@@ -16,6 +16,8 @@ import { BugSeverity } from "src/pages/BugForm/BugDetails/select/BugSeverity";
 import { BugType } from "src/pages/BugForm/BugDetails/select/BugType";
 import { BugReplicability } from "src/pages/BugForm/BugDetails/select/BugReplicability";
 import { UseCase } from "src/pages/BugForm/BugDetails/select/UseCase";
+import useCampaignData from "src/pages/BugForm/useCampaignData";
+import { getLanguageMessage } from "src/pages/BugForm/BugDetails/getLanguageMessage";
 
 interface BugDetailsProps {
   className?: string;
@@ -23,6 +25,7 @@ interface BugDetailsProps {
 
 export const BugDetails = ({ className }: BugDetailsProps) => {
   const { t } = useTranslation();
+  const { data } = useCampaignData();
   const isDesktop = window.matchMedia(
     `only screen and (min-width: ${aqBootstrapTheme.grid.breakpoints.lg})`
   ).matches;
@@ -39,6 +42,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         />
       }
     >
+      {getLanguageMessage(data?.language)}
       <Field
         name="title"
         type="text"
