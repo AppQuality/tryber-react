@@ -154,15 +154,16 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           />
         </BSCol>
       </BSGrid>
-      <Field
+      <TextareaField
         name="notes"
-        type="text"
         label={t("BUGFORM_BUGDTLS_COMMENTS", {
           defaultValue: "Additional comments",
         })}
         placeholder={t("BUGFORM_BUGDTLS_COMMENTS_PLACEHOLDER", {
           defaultValue: "Anything else you'd like to add",
         })}
+        height="7rem"
+        autoResize={isDesktop}
       />
     </Card>
   );
