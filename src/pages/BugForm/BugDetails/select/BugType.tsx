@@ -25,7 +25,7 @@ export const BugType = () => {
     if (valid.length === 0 || invalid.length === 0) return null;
     return (
       <Text small>
-        {valid.length >= invalid.length
+        {valid.length <= invalid.length
           ? t(
               "for this bug are only allowed type {{valid}}:::BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT",
               {
