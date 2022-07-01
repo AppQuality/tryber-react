@@ -67,6 +67,9 @@ export const BugSeverity = () => {
                 label={t("BUGFORM_BUGDTLS_SEVERITY", {
                   defaultValue: "Bug severity",
                 })}
+                title={t("BUGSEVERITY_TOOLTIP_TXT", {
+                  defaultValue: "Learn more",
+                })}
                 onClick={() =>
                   dispatch(
                     setBugDetailsModal({

@@ -36,6 +36,9 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
       title={
         <LabelWithHelper
           label={t("BUGFORM_BUGDTLS_TITLE", { defaultValue: "Bug Details" })}
+          title={t("BUGTITLEDETAILS_TOOLTIP_TXT", {
+            defaultValue: "Learn more",
+          })}
           href={t("Bug details help article", {
             ns: "links",
           })}

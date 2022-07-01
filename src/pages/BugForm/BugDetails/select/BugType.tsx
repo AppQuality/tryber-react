@@ -64,6 +64,7 @@ export const BugType = () => {
             label={
               <LabelWithHelper
                 label={t("BUGFORM_BUGDTLS_TYPE", { defaultValue: "Bug type" })}
+                title={t("BUGTYPE_TOOLTIP_TXT", { defaultValue: "Learn more" })}
                 onClick={() =>
                   dispatch(
                     setBugDetailsModal({

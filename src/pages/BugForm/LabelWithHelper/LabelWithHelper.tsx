@@ -18,6 +18,7 @@ interface LabelWithHelperProps {
   label: string;
   href?: string;
   small?: boolean;
+  title?: string;
   onClick?: () => void;
 }
 
@@ -25,13 +26,18 @@ export const LabelWithHelper = ({
   label,
   small,
   href,
+  title,
   onClick,
 }: LabelWithHelperProps) => {
   return (
     <StyledLabelWithHelper small={small}>
       <div>{label}</div>
       <a href={href} target="_blank" rel="noreferrer">
-        <QuestionMark className="question-mark" onClick={onClick} />
+        <QuestionMark
+          className="question-mark"
+          title={title}
+          onClick={onClick}
+        />
       </a>
     </StyledLabelWithHelper>
   );

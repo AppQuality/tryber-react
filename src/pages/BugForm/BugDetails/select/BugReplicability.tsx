@@ -67,6 +67,9 @@ export const BugReplicability = () => {
                 label={t("BUGFORM_BUGDTLS_REPLICABILTY", {
                   defaultValue: "Bug replicability",
                 })}
+                title={t("BUGREPLICABILITY_TOOLTIP_TXT", {
+                  defaultValue: "Learn more",
+                })}
                 onClick={() =>
                   dispatch(
                     setBugDetailsModal({
