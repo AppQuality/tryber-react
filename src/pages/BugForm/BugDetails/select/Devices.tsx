@@ -9,12 +9,16 @@ import useCampaignData from "src/pages/BugForm/useCampaignData";
 
 export const Devices = () => {
   const { t } = useTranslation();
-  const { data } = useCampaignData();
+  const { data, device } = useCampaignData();
   if (!data) return null;
   const options =
-    data.devices?.map((option) => ({
+    device?.map((option) => ({
       value: option.id.toString(),
-      label: option.type,
+      label: `${option.type} ${
+        "manufacturer" in option.device
+          ? option.device.manufacturer.concat(" ", option.device.model)
+          : ""
+      }${"pc_type" in option.device ? option.device.pc_type : ""}`,
     })) || [];
 
   return (

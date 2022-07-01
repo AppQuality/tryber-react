@@ -32,6 +32,8 @@ const StyledForm = styled(Form)`
   }
 `;
 
+const now = new Date();
+
 export const BugFormContainer = () => {
   const { data } = useCampaignData();
   const { t } = useTranslation();
@@ -40,12 +42,11 @@ export const BugFormContainer = () => {
 
   if (!data) return null;
 
-  const now = new Date();
   const initialBugValues: BugFormValues = {
     title: "",
     stepDescription: "1.\n2.\n3.",
     media: [],
-    device: 0,
+    device: "",
     severity: "",
     type: "",
     replicability: "",
@@ -65,6 +66,7 @@ export const BugFormContainer = () => {
   const validationSchema = {
     title: yup.string().required(t("This is a required field")),
     severity: yup.string().required(t("This is a required field")),
+    device: yup.string().required(t("This is a required field")),
     replicability: yup.string().required(t("This is a required field")),
     useCase: yup.string().required(t("This is a required field")),
     stepDescription: yup

@@ -94,55 +94,55 @@
   "Avalaible Campaigns": "Avalaible Campaigns",
   "Awarded on": "Awarded on",
   "BBUGFORM_UPLOAD_IMG_ICON": "",
-  "BUGFORM_BUGDTLS_BUGTITLE": "",
-  "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "Format should be [Phase / Section] - Briefly Issue description",
-  "BUGFORM_BUGDTLS_BUGTITLE_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_COMMENTS": "",
-  "BUGFORM_BUGDTLS_COMMENTS_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_DAY": "",
-  "BUGFORM_BUGDTLS_DAY_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_EXPDRES": "",
-  "BUGFORM_BUGDTLS_EXPDRES_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_OSBRVDRES": "",
-  "BUGFORM_BUGDTLS_OSBRVDRES_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_REPLICABILTY": "",
-  "BUGFORM_BUGDTLS_REPLICABILTY_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_SEVERITY": "",
-  "BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_STEPBYSTEP": "",
-  "BUGFORM_BUGDTLS_STEPBYSTEP_ERROR": "This is a required field",
-  "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_TESTDVC": "",
-  "BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_TIME": "",
-  "BUGFORM_BUGDTLS_TIME_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_TITLE": "",
-  "BUGFORM_BUGDTLS_TYPE": "",
-  "BUGFORM_BUGDTLS_TYPE_ERROR": "This is a required field",
-  "BUGFORM_BUGDTLS_TYPE_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_USECASE": "",
-  "BUGFORM_BUGDTLS_USECASE_PLACEHOLDER": "",
-  "BUGFORM_CTA_SUBMIT": "",
-  "BUGFORM_EMPATHY_404_CTA": "",
-  "BUGFORM_EMPATHY_404_TITLE": "",
-  "BUGFORM_EMPATHY_404_TXT": "",
-  "BUGFORM_EMPATHY_SAVEDEVICE_CTA": "",
-  "BUGFORM_EMPATHY_SAVEDEVICE_TITLE": "",
-  "BUGFORM_EMPATHY_SAVEDEVICE_TXT": "",
-  "BUGFORM_MAINTITLE": "",
+  "BUGFORM_BUGDTLS_BUGTITLE": "Bug title",
+  "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "The field should be filled this way: [Page or section where you found the bug] - The bug in a nutshell",
+  "BUGFORM_BUGDTLS_BUGTITLE_PLACEHOLDER": "[Page or section where you found the bug] - The bug in a nutshell",
+  "BUGFORM_BUGDTLS_COMMENTS": "Additional comments",
+  "BUGFORM_BUGDTLS_COMMENTS_PLACEHOLDER": "If there's anything else you'd like to add, here's the right place",
+  "BUGFORM_BUGDTLS_DAY": "When did you find the bug?",
+  "BUGFORM_BUGDTLS_DAY_PLACEHOLDER": "Pick a date",
+  "BUGFORM_BUGDTLS_EXPDRES": "Expected result",
+  "BUGFORM_BUGDTLS_EXPDRES_PLACEHOLDER": "Describe what you expected to happen after performing your last described step",
+  "BUGFORM_BUGDTLS_OSBRVDRES": "Actual result",
+  "BUGFORM_BUGDTLS_OSBRVDRES_PLACEHOLDER": "Describe the bug you found, its behaviour and all the necessary details to understand it",
+  "BUGFORM_BUGDTLS_REPLICABILTY": "Bug replicability",
+  "BUGFORM_BUGDTLS_REPLICABILTY_PLACEHOLDER": "Select replicability",
+  "BUGFORM_BUGDTLS_SEVERITY": "Bug severity",
+  "BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER": "Select severity",
+  "BUGFORM_BUGDTLS_STEPBYSTEP": "Step-by-step description",
+  "BUGFORM_BUGDTLS_STEPBYSTEP_ERROR": "Describe a separate action in each step and include every detail",
+  "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "1\n2\n3",
+  "BUGFORM_BUGDTLS_TESTDVC": "Campaign device",
+  "BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER": "Select device",
+  "BUGFORM_BUGDTLS_TIME": "At what time?",
+  "BUGFORM_BUGDTLS_TIME_PLACEHOLDER": "Pick a time",
+  "BUGFORM_BUGDTLS_TITLE": "Bug details",
+  "BUGFORM_BUGDTLS_TYPE": "Bug type",
+  "BUGFORM_BUGDTLS_TYPE_ERROR": "Select bug type: it's a key element for this campaign",
+  "BUGFORM_BUGDTLS_TYPE_PLACEHOLDER": "Select type",
+  "BUGFORM_BUGDTLS_USECASE": "Use case",
+  "BUGFORM_BUGDTLS_USECASE_PLACEHOLDER": "Select use case",
+  "BUGFORM_CTA_SUBMIT": "Submit this bug report",
+  "BUGFORM_EMPATHY_404_CTA": "Back to Dashboard",
+  "BUGFORM_EMPATHY_404_TITLE": "Nothing to see here",
+  "BUGFORM_EMPATHY_404_TXT": "We couldn't find the url you've typed: this page doesn't exist.\n(Maybe that's why our Tryber is a little sad)",
+  "BUGFORM_EMPATHY_SAVEDEVICE_CTA": "Add a device",
+  "BUGFORM_EMPATHY_SAVEDEVICE_TITLE": "Add a device",
+  "BUGFORM_EMPATHY_SAVEDEVICE_TXT": "You haven't saved any devices yet: add at least one to start submitting bugs.\nOnce you've done it, come back here and continue the campaign!",
+  "BUGFORM_MAINTITLE": "Submit a bug",
   "BUGFORM_REPLICABILTY_MODAL_TITLE": "Bug replicability",
   "BUGFORM_SEVERITY_MODAL_TITLE": "Bug severity",
   "BUGFORM_TYPE_MODAL_TITLE": "Bug type",
   "BUGFORM_UPLOAD_DOC_ICON": "",
-  "BUGFORM_UPLOAD_DOC_TXT": "",
-  "BUGFORM_UPLOAD_DRAGDROP_TXT": "",
-  "BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED": "",
-  "BUGFORM_UPLOAD_ERROR_FILETOOBIG": "Maximum file size exceeded",
-  "BUGFORM_UPLOAD_ERROR_GENERALERROR": "Generic error",
-  "BUGFORM_UPLOAD_IMG_TXT": "",
-  "BUGFORM_UPLOAD_TITLE": "",
+  "BUGFORM_UPLOAD_DOC_TXT": "File",
+  "BUGFORM_UPLOAD_DRAGDROP_TXT": "Choose files or drag them here.",
+  "BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED": "File not supported",
+  "BUGFORM_UPLOAD_ERROR_FILETOOBIG": "File too big. Reduce it and upload it again",
+  "BUGFORM_UPLOAD_ERROR_GENERALERROR": "An error occured while uploading your file",
+  "BUGFORM_UPLOAD_IMG_TXT": "Image",
+  "BUGFORM_UPLOAD_TITLE": "Upload files",
   "BUGFORM_UPLOAD_VIDAUDIO_ICON": "",
-  "BUGFORM_UPLOAD_VIDAUDIO_TXT": "",
+  "BUGFORM_UPLOAD_VIDAUDIO_TXT": "Video/Audio",
   "BUGREPLICABILITY_TOOLTIP_TXT": "Learn more",
   "BUGSEVERITY_TOOLTIP_TXT": "Learn more",
   "BUGTITLEDETAILS_TOOLTIP_TXT": "Learn more",
@@ -291,8 +291,8 @@
   "Manufacturer": "Manufacturer",
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Manufacturer: <bold>{{manufacturer}}</bold>",
   "Media field must have at least {{num}} items": {
-    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "Media field must have at least {{num}} items",
-    "BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM": ""
+    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "You must upload at least {{num}} files for this campaign",
+    "BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM": "You must upload at least {{num}} files for this campaign"
   },
   "Messages for you": "Messages for you",
   "Method": "Method",
@@ -416,7 +416,7 @@
   "This field is shared with the base section": "This field is shared with the base section",
   "This field is shared with the fiscal section": "This field is shared with the fiscal section",
   "This is a required field": "This is a required field",
-  "This is an invalid format": "",
+  "This is an invalid format": "File not supported",
   "This is an invalid format.": "This format is invalid.",
   "This is an invalid format. Should be formatted as +11000000000 or 0011000000000": "This is an invalid format. Should be formatted as +11000000000 or 0011000000000",
   "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!": "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!",
@@ -431,7 +431,7 @@
   "Type to search your city": "Type to search your city",
   "Update your device list": "Update your device list",
   "Upload a minimum number of {{num}} files": {
-    "BUGFORM_UPLOAD_TXT": ""
+    "BUGFORM_UPLOAD_TXT": "Upload at least {{num}} files"
   },
   "Uploaded Bugs": "Uploaded Bugs",
   "User mail validation": {
@@ -594,9 +594,9 @@
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Download receipt",
   "address": "address",
   "available tags: <br>, <bold>": {
-    "BUGFORM_REPLICABILTY_MODAL_TXT": "",
-    "BUGFORM_SEVERITY_MODAL_TXT": "",
-    "BUGFORM_TYPE_MODAL_TEXT": "",
+    "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Bug replicability</b><br>\n<br>\n<b>SOMETIMES</b><br>\nWith all conditions and processes being equal, the bug occurs sporadically/unpredictably, but it is always possible to reproduce it by making multiple attempts.<br>\n<br>\n<b>ALWAYS</b><br>\nWith all conditions and processes being equal, the bug occurs under the same conditions and processes, at each replication attempt. To be such, the bug must be successfully reproduced at least 3 out of 3 times.<br>\n<br>\n<b>ONCE</b><br>\nWith all conditions and processes being equal, the bug only occurred once and could not be replicated (at least 3 attempts needed).",
+    "BUGFORM_SEVERITY_MODAL_TXT": "<b>Bug severity</b><br>\n<br>\nSeverity is an estimate of the impact of the problem on the use of the tested product. This estimate is calculated by keeping in mind both the context where the problem occurs (primary or secondary sections of the core-business of the campaign object) and the conditions where it has been found compared to an average use. Severity must never be influenced by the assessment of replicability: what guides the choice is mainly the impact on the user, the context (importance of the section) and the presence or lack of a workaround.<br>\n<br>\n<b>LOW</b><br>\nIssues that have a minimal impact on the use of the product. The user is able to continue to use and test the product without great difficulties. Often these are USABILITY, TYPO or GRAPHIC bugs.<br>\n<br>\n<b>MEDIUM</b><br>\nIssues that have a limited impact on the use of the product. The user is still able to complete the process despite having encountered some difficulties. This can be any type of bug.<br>\n<br>\n<b>HIGH</b><br>\nIssues that have a significant impact in the use of the product. The user mainly finds them in the main sections and may not be able to continue using and testing the product as intended. Generally, the bug type is MALFUNCTION, CRASH, PERFORMANCE or SECURITY.<br>\n<br>\n<b>CRITICAL</b><br>\nIssues that prevent the user from completing the main tasks, often resulting in a system crash. The user is unable by any means to complete the task or continue using the test product. The bug types are either MALFUNCTION or CRASH bugs.<br>",
+    "BUGFORM_TYPE_MODAL_TEXT": "<b>Bug type</b><br>\n<br>\n<b>CRASH</b><br>\nIssues related to unresponsive and/or crashing software. The user needs to reset or relaunch it to keep using it. Some examples: apps closing unexpectedly, neverending loadings, 404 error pages.<br>\n<br>\n<b>GRAPHIC</b><br>\nIssues related to the visual aspect of the product. They could be overlapping elements, wrong contrast, incoherent elements, cut or blurry text or media, elements that are either out of the screen or partially not visible/overlapped.<br>\n<br>\n<b>PERFORMANCE</b><br>\nIssues strictly related to the contents load speed or the completion time processes/actions (lag, slowing down, delays). In the case of a never-ending loading (loop), the correct bug type is CRASH.<br>\n<br>\n<b>MALFUNCTION</b><br>\nIssues related to a wrong functioning or non functioning feature of the product. When the feature works, but the result is different from what the user expected, the bug type is USABILITY.<br>\n<br>\n<b>TYPO</b><br>\nIssues related to grammar mistakes such as spelling, semantics, lexicon, syntax, interrupted sentences (not a visual interruption), wrong or incomplete translations, nonsense sentences, visible programming code.<br>\n<br>\n<bold>OTHER</b><br>\nIssues not listed in the previous categories.<br>\n<br>\n<b>SECURITY</b><br>\nIssues solely related to the security and confidentiality of the stored data. This category includes sections with plaintext passwords, lack of login session expiration or even possibility of easily obtaining other users' data through SQL injection or XSS attacks.<br>\n<br>\n<b>USABILITY</b><br>\nIssues related to the use of the product, making it difficult for the user to perform a certain action or task due to long, complex, less than ideal or unintuitive paths. It happens when the actual functioning completely differs from the users' expectations. This category also includes absence of checks on data entered in forms; error messages not including any explanation of the specific issue (generic error).",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "Boo-yah!✌ You're Legendary and you'll always be!\nKeep earning points and stay on top of the ranking.",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "Sky is not the limit! You're going to be Legendary in the next month:<br></br>it's TRYBER's highest level."
   },
@@ -604,28 +604,28 @@
   "contact us": "contact us",
   "email must be the same": "Enter the same email address",
   "for this bug are only allowed replicability of type {{valid}}": {
-    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "for this bug are only allowed replicability of type {{valid}}",
-    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT_plural": "for this bug are only allowed replicability of type {{valid}}"
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "In this campaign we only allow bug replicability: {{valid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT_plural": "In this campaign we only allow bug replicability: {{valid}}"
   },
   "for this bug are only allowed severities of type {{valid}}": {
-    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT": "for this bug are only allowed severities of type {{valid}}",
-    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT_plural": "for this bug are only allowed severities of type {{valid}}"
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT": "In this campaign we only allow bug severity: {{valid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT_plural": "In this campaign we only allow bug severity: {{valid}}"
   },
   "for this bug are only allowed type {{valid}}": {
-    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT": "for this bug are only allowed type {{valid}}",
-    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT_plural": "for this bug are only allowed type {{valid}}"
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT": "In this campaign we only allow this bug type: {{valid}}",
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT_plural": "In this campaign we only allow these bug types: {{valid}}"
   },
   "for this bug this replicability are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT": "for this bug this replicability are not allowed: {{invalid}}",
-    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT_plural": "for this bug this replicability are not allowed: {{invalid}}"
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT": "In this campaign we don't allow bug replicability: {{invalid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT_plural": "In this campaign we don't allow bug replicability: {{invalid}}"
   },
   "for this bug this severities are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT": "for this bug this severities are not allowed: {{invalid}}",
-    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT_plural": "for this bug this severities are not allowed: {{invalid}}"
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT": "In this campaign we don't allow bug severity: {{invalid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT_plural": "In this campaign we don't allow bug severity: {{invalid}}"
   },
   "for this bug this types are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "for this bug this types are not allowed: {{invalid}}",
-    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "for this bug this types are not allowed: {{invalid}}"
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "In this campaign we don't allow this bug type: {{invalid}}",
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "In this campaign we don't allow these bug types: {{invalid}}"
   },
   "forgot your password?": "forgot your password?",
   "give your best to keep level {{level}}": {
@@ -667,6 +667,6 @@
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "You still have {{days}} days to try your best!"
   },
   "{{num}} uploaded": {
-    "BUGFORM_UPLOAD_PROGRESS": ""
+    "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploading"
   }
 }

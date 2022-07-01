@@ -3,7 +3,7 @@ type BugFormValues = {
   title: string;
   stepDescription: string;
   media: string[];
-  device: number;
+  device: string;
   severity:
     | ApiOperations["post-users-me-campaigns-campaign-bugs"]["responses"]["200"]["content"]["application/json"]["severity"]
     | "";
