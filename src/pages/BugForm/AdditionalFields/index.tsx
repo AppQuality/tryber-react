@@ -20,6 +20,7 @@ export const AdditionalFields = ({ className }: AdditionalFieldsProps) => {
                 name={`additional.${field.slug}`}
                 label={field.name}
                 validation={field.regex}
+                errorMessage={field.error}
               />
             );
           case "select":
@@ -29,6 +30,7 @@ export const AdditionalFields = ({ className }: AdditionalFieldsProps) => {
                 label={field.name}
                 name={`additional.${field.slug}`}
                 options={field.options}
+                errorMessage={field.error}
               />
             );
           default:

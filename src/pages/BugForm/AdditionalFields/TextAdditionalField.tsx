@@ -4,25 +4,27 @@ import {
   Input,
   ErrorMessage,
 } from "@appquality/appquality-design-system";
-import { Field, FieldProps, useFormikContext } from "formik";
+import { Field, FieldProps } from "formik";
+import { useTranslation } from "react-i18next";
 
 export const TextAdditionalField = ({
   label,
   name,
   validation,
+  errorMessage,
 }: {
   label: string;
   name: string;
   validation: string;
+  errorMessage: string;
 }) => {
-  const ctx = useFormikContext();
-
+  const { t } = useTranslation();
   const validate = (value: string) => {
     if (!value) {
-      return "Required";
+      return t("This is a required field");
     }
     if (!new RegExp(validation).test(value)) {
-      return "Invalid";
+      return errorMessage ? errorMessage : t("This is an invalid format");
     }
   };
 
