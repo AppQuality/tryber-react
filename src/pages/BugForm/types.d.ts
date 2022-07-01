@@ -12,4 +12,6 @@ type BugFormValues = {
   current: string;
   notes: string;
   additional: { [key: string]: any };
+  date: Date;
+  time: Date;
 };
