@@ -111,33 +111,55 @@ export const BugFormContainer = () => {
     if (m.uploadedFileUrl) urls.push(m.uploadedFileUrl);
   });
 
-  const postForm = async (values: BugFormValues) => {
-    const additionalKeys = Object.keys(values.additional);
-    if (
-      values.severity !== "" &&
-      values.replicability !== "" &&
-      values.type !== ""
-    ) {
+  const postForm = async ({
+    title,
+    stepDescription,
+    expected,
+    current,
+    severity,
+    replicability,
+    type,
+    notes,
+    useCase,
+    device,
+    media,
+    additional,
+    date,
+    time,
+  }: BugFormValues) => {
+    const additionalKeys = Object.keys(additional);
+    const serverAdditional = additionalKeys.map((k) => {
+      return {
+        slug: k,
+        value: additional[k],
+      };
+    });
+    const serverDate = new Date(
+      Date.UTC(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate(),
+        time.getHours(),
+        time.getMinutes()
+      )
+    ).toISOString();
+
+    if (severity !== "" && replicability !== "" && type !== "") {
       submitForm({
         campaignId: data.id.toString(),
         body: {
-          title: values.title,
-          description: values.stepDescription,
-          expected: values.expected,
-          current: values.current,
-          severity: values.severity,
-          replicability: values.replicability,
-          type: values.type,
-          notes: values.notes,
-          usecase: Number(values.useCase),
-          device: 0,
-          media: values.media,
-          additional: additionalKeys.map((k) => {
-            return {
-              slug: k,
-              value: values.additional[k],
-            };
-          }),
+          title,
+          description: stepDescription,
+          expected,
+          current,
+          severity,
+          replicability,
+          type,
+          notes,
+          usecase: Number(useCase),
+          device: Number(device),
+          media: media,
+          additional: serverAdditional,
         },
       });
     }
