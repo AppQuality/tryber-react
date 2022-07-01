@@ -17,6 +17,7 @@ import useCampaignData from "./useCampaignData";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../../store";
 import { usePostUsersMeCampaignsByCampaignIdBugsMutation } from "../../services/tryberApi";
+import { toISOStringWithTimezone } from "./toIsoStringWithTimezone";
 
 const StyledForm = styled(Form)`
   .hide-mobile {
@@ -134,15 +135,7 @@ export const BugFormContainer = () => {
         value: additional[k],
       };
     });
-    const serverDate = new Date(
-      Date.UTC(
-        date.getFullYear(),
-        date.getMonth(),
-        date.getDate(),
-        time.getHours(),
-        time.getMinutes()
-      )
-    ).toISOString();
+    const serverDate = toISOStringWithTimezone(date, time);
 
     if (severity !== "" && replicability !== "" && type !== "") {
       submitForm({
@@ -160,6 +153,7 @@ export const BugFormContainer = () => {
           device: Number(device),
           media: media,
           additional: serverAdditional,
+          lastSeen: serverDate,
         },
       });
     }
