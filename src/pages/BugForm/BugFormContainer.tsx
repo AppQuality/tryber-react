@@ -39,6 +39,8 @@ export const BugFormContainer = () => {
     shallowEqual
   );
   if (!data) return null;
+
+  const now = new Date();
   const initialBugValues: BugFormValues = {
     title: "",
     stepDescription: "1.\n2.\n3.",
@@ -52,6 +54,8 @@ export const BugFormContainer = () => {
     current: "",
     notes: "",
     additional: {},
+    date: now,
+    time: now,
   };
 
   data.additionalFields?.forEach(
@@ -124,6 +128,8 @@ export const BugFormContainer = () => {
           current: values.current,
           notes: values.notes,
           additional: values.additional,
+          date: values.date,
+          time: values.time,
         };
         console.info("submitValues", submitValues);
       }}

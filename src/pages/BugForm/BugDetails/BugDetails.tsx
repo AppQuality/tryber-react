@@ -5,6 +5,8 @@ import {
   Card,
   Datepicker,
   Field,
+  FieldProps,
+  FormikField,
   FormLabel,
   Select,
 } from "@appquality/appquality-design-system";
@@ -111,43 +113,69 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
       />
       <BSGrid>
         <BSCol size="col-6" className="aq-mb-3">
-          <FormLabel
-            htmlFor={"date"}
-            label={t("BUGFORM_BUGDTLS_DAY", {
-              defaultValue: "When did it happen",
-            })}
-          />
-          <Datepicker
-            id={"date"}
-            locale={i18n.language}
-            placeholder={t("BUGFORM_BUGDTLS_DAY_PLACEHOLDER", {
-              defaultValue: "Pick a date",
-            })}
-            setText={t("Set")}
-            cancelText={t("Cancel")}
-            onCancel={() => null}
-            onChange={() => null}
-          />
+          <FormikField name="date">
+            {({ field, form }: FieldProps) => (
+              <>
+                <FormLabel
+                  htmlFor={"date"}
+                  label={t("BUGFORM_BUGDTLS_DAY", {
+                    defaultValue: "When did it happen",
+                  })}
+                />
+                <Datepicker
+                  key={field.value}
+                  value={field.value}
+                  id={"date"}
+                  locale={i18n.language}
+                  placeholder={t("BUGFORM_BUGDTLS_DAY_PLACEHOLDER", {
+                    defaultValue: "Pick a date",
+                  })}
+                  setText={t("Set")}
+                  cancelText={t("Cancel")}
+                  onChange={(v: { value: Date }) =>
+                    form.setFieldValue(
+                      "date",
+                      v.value ? new Date(v.value) : new Date(),
+                      true
+                    )
+                  }
+                />
+              </>
+            )}
+          </FormikField>
         </BSCol>
         <BSCol size="col-6">
-          <FormLabel
-            htmlFor={"time"}
-            label={t("BUGFORM_BUGDTLS_TIME", {
-              defaultValue: "What time did it happen",
-            })}
-          />
-          <Datepicker
-            id={"time"}
-            locale={i18n.language}
-            control="time"
-            placeholder={t("BUGFORM_BUGDTLS_TIME_PLACEHOLDER", {
-              defaultValue: "Pick a time",
-            })}
-            setText={t("Set")}
-            cancelText={t("Cancel")}
-            onCancel={() => null}
-            onChange={() => null}
-          />
+          <FormikField name="time">
+            {({ field, form }: FieldProps) => (
+              <>
+                <FormLabel
+                  htmlFor={"time"}
+                  label={t("BUGFORM_BUGDTLS_TIME", {
+                    defaultValue: "What time did it happen",
+                  })}
+                />
+                <Datepicker
+                  key={field.value}
+                  value={field.value}
+                  id={"time"}
+                  locale={"it"}
+                  control="time"
+                  placeholder={t("BUGFORM_BUGDTLS_TIME_PLACEHOLDER", {
+                    defaultValue: "Pick a time",
+                  })}
+                  setText={t("Set")}
+                  cancelText={t("Cancel")}
+                  onChange={(v: { value: Date }) =>
+                    form.setFieldValue(
+                      "time",
+                      v.value ? new Date(v.value) : new Date(),
+                      true
+                    )
+                  }
+                />
+              </>
+            )}
+          </FormikField>
         </BSCol>
       </BSGrid>
       <Field
