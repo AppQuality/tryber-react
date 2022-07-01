@@ -5,7 +5,6 @@ import {
   Form,
   Formik,
 } from "@appquality/appquality-design-system";
-import { shallowEqual, useSelector } from "react-redux";
 import { BugDetails } from "src/pages/BugForm/BugDetails/BugDetails";
 import * as yup from "yup";
 import { FormikProps } from "formik";
@@ -16,6 +15,7 @@ import React from "react";
 import styled from "styled-components";
 import useCampaignData from "./useCampaignData";
 import { useTranslation } from "react-i18next";
+import { useAppSelector } from "../../store";
 
 const StyledForm = styled(Form)`
   .hide-mobile {
@@ -34,10 +34,7 @@ const StyledForm = styled(Form)`
 export const BugFormContainer = () => {
   const { data } = useCampaignData();
   const { t } = useTranslation();
-  const { mediaList } = useSelector(
-    (state: GeneralState) => state.bugForm,
-    shallowEqual
-  );
+  const { mediaList } = useAppSelector((state) => state.bugForm);
   if (!data) return null;
 
   const now = new Date();

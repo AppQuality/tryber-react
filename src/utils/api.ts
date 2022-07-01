@@ -9,7 +9,6 @@ import * as educationLevels from "./educationLevels";
 import * as customUserFields from "./customUserFields";
 import * as wallet from "./wallet";
 import * as ranking from "./ranking";
-import * as bugForm from "./bugForm";
 
 const API = {
   ...authenticate,
@@ -23,7 +22,6 @@ const API = {
   ...certifications,
   ...wallet,
   ...ranking,
-  ...bugForm,
 };
 
 export default API;
