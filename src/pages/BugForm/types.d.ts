@@ -7,7 +7,7 @@ type BugFormValues = {
   severity: string;
   type: string;
   replicability: string;
-  usecase: string;
+  useCase: string;
   expected: string;
   current: string;
   notes: string;
