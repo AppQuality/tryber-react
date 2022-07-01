@@ -35,9 +35,9 @@
     "call-me-maybe" "^1.0.1"
 
 "@appquality/appquality-design-system@^1.0.0", "@appquality/appquality-design-system@^1.0.37":
-  "integrity" "sha512-YMI1bKrBt7g8OXVGp4qR+zVglB0i7Wt++05DKfc7Q5KwMauTikBDq609rnNgXMoKXOomdY/x4qkGWFDinVscSQ=="
-  "resolved" "https://registry.npmjs.org/@appquality/appquality-design-system/-/appquality-design-system-1.0.37.tgz"
-  "version" "1.0.37"
+  "integrity" "sha512-yOQrmz8W6EpY5g9KL7/GyKYVbdIOcXisrsIIrvm0jJVtavuFpcyNfcD94P90ogssnJXLC3fUHz1R/VVomBn3eQ=="
+  "resolved" "https://registry.npmjs.org/@appquality/appquality-design-system/-/appquality-design-system-1.0.38.tgz"
+  "version" "1.0.38"
   dependencies:
     "@appquality/mobiscroll" "^5.10.1"
     "formik" "^2.2.9"
