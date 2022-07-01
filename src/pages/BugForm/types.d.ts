@@ -3,7 +3,7 @@ type BugFormValues = {
   title: string;
   stepDescription: string;
   media: string[];
-  device: number;
+  device: string;
   severity: string;
   type: string;
   replicability: string;

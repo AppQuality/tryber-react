@@ -11,8 +11,6 @@ export const Devices = () => {
   const { t } = useTranslation();
   const { data, device } = useCampaignData();
   if (!data) return null;
-  //@ts-ignore
-  console.log(device[0].device.model);
   const options =
     device?.map((option) => ({
       value: option.id.toString(),

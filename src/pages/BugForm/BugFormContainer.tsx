@@ -42,7 +42,7 @@ export const BugFormContainer = () => {
     title: "",
     stepDescription: "1.\n2.\n3.",
     media: [],
-    device: 0,
+    device: "",
     severity: "",
     type: "",
     replicability: "",
@@ -62,6 +62,7 @@ export const BugFormContainer = () => {
   const validationSchema = {
     title: yup.string().required(t("This is a required field")),
     severity: yup.string().required(t("This is a required field")),
+    device: yup.string().required(t("This is a required field")),
     replicability: yup.string().required(t("This is a required field")),
     useCase: yup.string().required(t("This is a required field")),
     stepDescription: yup
