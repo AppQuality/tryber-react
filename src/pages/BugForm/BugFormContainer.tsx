@@ -31,13 +31,14 @@ const StyledForm = styled(Form)`
   }
 `;
 
+const now = new Date();
+
 export const BugFormContainer = () => {
   const { data } = useCampaignData();
   const { t } = useTranslation();
   const { mediaList } = useAppSelector((state) => state.bugForm);
   if (!data) return null;
 
-  const now = new Date();
   const initialBugValues: BugFormValues = {
     title: "",
     stepDescription: "1.\n2.\n3.",
