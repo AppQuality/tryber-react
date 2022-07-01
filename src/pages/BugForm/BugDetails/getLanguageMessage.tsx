@@ -14,19 +14,19 @@ export const getLanguageMessage = (
   switch (language?.code) {
     case "IT":
       return (
-        <Text>
+        <Text className="aq-mb-3">
           <LanguageFlag src={IT} alt="it" /> {language?.message}
         </Text>
       );
     case "EN":
       return (
-        <Text>
+        <Text className="aq-mb-3">
           <LanguageFlag src={EN} alt="it" /> {language?.message}
         </Text>
       );
     case "ES":
       return (
-        <Text>
+        <Text className="aq-mb-3">
           <LanguageFlag src={ES} alt="it" /> {language?.message}
         </Text>
       );
