@@ -12,14 +12,22 @@ export const Devices = () => {
   const { data, device } = useCampaignData();
   if (!data) return null;
   const options =
-    device?.map((option) => ({
-      value: option.id.toString(),
-      label: `${option.type} ${
-        "manufacturer" in option.device
-          ? option.device.manufacturer.concat(" ", option.device.model)
-          : ""
-      }${"pc_type" in option.device ? option.device.pc_type : ""}`,
-    })) || [];
+    device?.map((option) => {
+      const isPC = (d: typeof option.device): d is { pc_type: string } => {
+        return d.hasOwnProperty("pc_type");
+      };
+      return {
+        value: option.id.toString(),
+        label:
+          (isPC(option.device)
+            ? option.device.pc_type
+            : option.device.manufacturer + " " + option.device.model) +
+          " " +
+          option.operating_system.platform +
+          " " +
+          option.operating_system.version,
+      };
+    }) || [];
 
   return (
     <FormikField name="device">
