@@ -39,7 +39,7 @@ export default function BugForm() {
   return (
     <PageTemplate
       title={t("BUGFORM_MAINTITLE", { defaultValue: "Bug form" })}
-      heading={data?.title}
+      heading={data ? `CP${data.id} - ${data.title}` : ""}
       route={route}
       shouldBeLoggedIn
     >
