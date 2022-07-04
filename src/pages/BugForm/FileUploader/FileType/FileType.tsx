@@ -10,26 +10,15 @@ const StyledFileType = styled.div`
     display: flex;
     align-items: center;
     min-width: max-content;
-    &:not(last-child) {
-      margin-right: 0.5em;
-    }
-  }
-
-  @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
-    .file-type {
-      min-width: 10em;
-      &:not(last-child) {
-        margin-right: 0;
-      }
-    }
   }
 `;
 
 interface FileTypeProps {
   type: "image" | "document" | "audiovideo";
+  className?: string;
 }
 
-export const FileType = ({ type }: FileTypeProps) => {
+export const FileType = ({ type, className }: FileTypeProps) => {
   const { t } = useTranslation();
 
   const getType = () => {
@@ -70,7 +59,7 @@ export const FileType = ({ type }: FileTypeProps) => {
   };
 
   return (
-    <StyledFileType>
+    <StyledFileType className={className}>
       <Text className="file-type aq-text-primary aq-mt-2" small>
         {getType()}
       </Text>
