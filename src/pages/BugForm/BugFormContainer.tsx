@@ -15,8 +15,8 @@ import React from "react";
 import styled from "styled-components";
 import useCampaignData from "./useCampaignData";
 import { useTranslation } from "react-i18next";
-import { useAppSelector } from "../../store";
-import { usePostUsersMeCampaignsByCampaignIdBugsMutation } from "../../services/tryberApi";
+import { useAppSelector } from "src/store";
+import { usePostUsersMeCampaignsByCampaignIdBugsMutation } from "src/services/tryberApi";
 import { toISOStringWithTimezone } from "./toIsoStringWithTimezone";
 
 const StyledForm = styled(Form)`
@@ -92,6 +92,7 @@ export const BugFormContainer = () => {
         {
           defaultValue: "Media field must have at least {{num}} items",
           num: data?.minimumMedia || 0,
+          count: data?.minimumMedia,
         }
       )
     ),

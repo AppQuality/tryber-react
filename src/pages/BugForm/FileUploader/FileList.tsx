@@ -8,7 +8,7 @@ import { useDeleteMediaMutation } from "src/services/tryberApi";
 import { useEffect } from "react";
 import { removeElementFromMedialist } from "src/pages/BugForm/bugFormSlice";
 import { Trans, useTranslation } from "react-i18next";
-import { addMessage } from "../../../redux/siteWideMessages/actionCreators";
+import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 
 const StyledFileList = styled.div`
   min-height: 6.5em;
@@ -86,6 +86,8 @@ export const FileList = () => {
           values={{
             num: `${input.value.length}/${mediaList.length}`,
           }}
+          tOptions={{ count: input.value.length / mediaList.length }}
+          count={input.value.length / mediaList.length}
           defaults={"{{num}} uploaded"}
         />
       </Text>

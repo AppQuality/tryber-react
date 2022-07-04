@@ -292,6 +292,7 @@
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Manufacturer: <bold>{{manufacturer}}</bold>",
   "Media field must have at least {{num}} items": {
     "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "You must upload at least {{num}} files for this campaign",
+    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES_plural": "Media field must have at least {{num}} items",
     "BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM": "You must upload at least {{num}} files for this campaign"
   },
   "Messages for you": "Messages for you",
@@ -431,7 +432,8 @@
   "Type to search your city": "Type to search your city",
   "Update your device list": "Update your device list",
   "Upload a minimum number of {{num}} files": {
-    "BUGFORM_UPLOAD_TXT": "Upload at least {{num}} files"
+    "BUGFORM_UPLOAD_TXT": "Upload at least {{num}} files",
+    "BUGFORM_UPLOAD_TXT_plural": ""
   },
   "Uploaded Bugs": "Uploaded Bugs",
   "User mail validation": {
@@ -667,6 +669,7 @@
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "You still have {{days}} days to try your best!"
   },
   "{{num}} uploaded": {
-    "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploading"
+    "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploading",
+    "BUGFORM_UPLOAD_PROGRESS_plural": ""
   }
 }
