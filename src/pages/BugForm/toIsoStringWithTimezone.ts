@@ -14,6 +14,8 @@ export const toISOStringWithTimezone = (date: Date, time: Date) => {
     pad(time.getUTCMinutes()) +
     ":" +
     pad(time.getUTCSeconds()) +
+    "." +
+    pad(time.getUTCMilliseconds()) +
     diff +
     pad(tzOffset / 60) +
     ":" +
