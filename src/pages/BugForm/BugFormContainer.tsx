@@ -189,7 +189,7 @@ export const BugFormContainer = () => {
                             i18next.language === "en"
                               ? ""
                               : "/" + i18next.language
-                          }/my-bugs/`}
+                          }/bugs/show/${payload.id}/`}
                           target="_blank"
                           rel="noreferrer"
                         />
