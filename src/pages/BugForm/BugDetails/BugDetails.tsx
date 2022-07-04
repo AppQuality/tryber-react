@@ -9,17 +9,17 @@ import {
   FormikField,
   FormLabel,
 } from "@appquality/appquality-design-system";
-import i18n from "src/i18n";
 import { useTranslation } from "react-i18next";
-import { LabelWithHelper } from "src/pages/BugForm/LabelWithHelper/LabelWithHelper";
-import { TextareaField } from "src/pages/BugForm/BugDetails/TextareaField/TextareaField";
+import i18n from "src/i18n";
+import { getLanguageMessage } from "src/pages/BugForm/BugDetails/getLanguageMessage";
+import { BugReplicability } from "src/pages/BugForm/BugDetails/select/BugReplicability";
 import { BugSeverity } from "src/pages/BugForm/BugDetails/select/BugSeverity";
 import { BugType } from "src/pages/BugForm/BugDetails/select/BugType";
-import { BugReplicability } from "src/pages/BugForm/BugDetails/select/BugReplicability";
-import { UseCase } from "src/pages/BugForm/BugDetails/select/UseCase";
-import useCampaignData from "src/pages/BugForm/useCampaignData";
-import { getLanguageMessage } from "src/pages/BugForm/BugDetails/getLanguageMessage";
 import { Devices } from "src/pages/BugForm/BugDetails/select/Devices";
+import { UseCase } from "src/pages/BugForm/BugDetails/select/UseCase";
+import { TextareaField } from "src/pages/BugForm/BugDetails/TextareaField/TextareaField";
+import { LabelWithHelper } from "src/pages/BugForm/LabelWithHelper/LabelWithHelper";
+import useCampaignData from "src/pages/BugForm/useCampaignData";
 
 interface BugDetailsProps {
   className?: string;
@@ -122,6 +122,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
                   key={field.value}
                   value={field.value}
                   id={"date"}
+                  maxDate={new Date()}
                   locale={i18n.language}
                   placeholder={t("BUGFORM_BUGDTLS_DAY_PLACEHOLDER", {
                     defaultValue: "Pick a date",
