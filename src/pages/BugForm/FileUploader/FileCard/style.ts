@@ -37,7 +37,7 @@ export const StyledFileCard = styled.div`
           .file-info {
             color: ${(p) => p.theme.variants.primary};
             width: 100%;
-            height: 2.5em;
+            height: 2.2em;
             margin-bottom: 0.2em;
             overflow: hidden;
             text-overflow: ellipsis;
