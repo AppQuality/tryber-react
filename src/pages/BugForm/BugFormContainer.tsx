@@ -19,7 +19,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/store";
 import { usePostUsersMeCampaignsByCampaignIdBugsMutation } from "src/services/tryberApi";
 import { toISOStringWithTimezone } from "./toIsoStringWithTimezone";
-import { addMessage } from "../../redux/siteWideMessages/actionCreators";
+import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 import { setMediaList } from "./bugFormSlice";
 import i18next from "i18next";
 
@@ -40,7 +40,7 @@ const StyledForm = styled(Form)`
 const now = new Date();
 
 export const BugFormContainer = () => {
-  const { data } = useCampaignData();
+  const { data, device } = useCampaignData();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { mediaList } = useAppSelector((state) => state.bugForm);
@@ -64,6 +64,10 @@ export const BugFormContainer = () => {
     date: now,
     time: now,
   };
+
+  if (device?.length === 1) {
+    initialBugValues.device = device[0].id.toString();
+  }
 
   data.additionalFields?.forEach(
     (f) => (initialBugValues.additional[f.slug] = "")
