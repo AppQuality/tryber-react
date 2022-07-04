@@ -32,6 +32,7 @@ export const BugFormNoDevice = () => {
           href={`${
             i18next.language === "en" ? "" : "/" + i18next.language
           }/personal-equipment/`}
+          target="_blank"
           forwardedAs="a"
         >
           {t("BUGFORM_EMPATHY_SAVEDEVICE_CTA", {
