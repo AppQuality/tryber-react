@@ -24,6 +24,7 @@ const StyledTextareaField = styled.div<{
   textarea {
     width: 100%;
     min-height: ${(p) => (p.height ? p.height : "5.715rem")};
+    height: ${(p) => (p.height ? p.height : "5.715rem")};
     resize: ${(p) => (p.resize ? p.resize : "none")};
     padding: 0.5rem 0.75rem;
     color: ${(p) => p.theme.palette.primary};
