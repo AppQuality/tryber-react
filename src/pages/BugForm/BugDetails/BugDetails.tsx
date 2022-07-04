@@ -80,7 +80,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         placeholder={t("BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER", {
           defaultValue: "1. \n2. \n3. ",
         })}
-        height="8.8rem"
+        height="5.65rem"
         autoResize={isDesktop}
       />
       <TextareaField
@@ -92,7 +92,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         placeholder={t("BUGFORM_BUGDTLS_EXPDRES_PLACEHOLDER", {
           defaultValue: "Write what you expected",
         })}
-        height="7rem"
+        height={isDesktop ? "2.65rem" : "5.65rem"}
         autoResize={isDesktop}
       />
       <TextareaField
@@ -104,7 +104,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         placeholder={t("BUGFORM_BUGDTLS_OSBRVDRES_PLACEHOLDER", {
           defaultValue: "Write what you found",
         })}
-        height="7rem"
+        height={isDesktop ? "2.65rem" : "5.65rem"}
         autoResize={isDesktop}
       />
       <BSGrid>
@@ -182,7 +182,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         placeholder={t("BUGFORM_BUGDTLS_COMMENTS_PLACEHOLDER", {
           defaultValue: "Anything else you'd like to add",
         })}
-        height="7rem"
+        height={isDesktop ? "2.65rem" : "5.65rem"}
         autoResize={isDesktop}
       />
     </Card>
