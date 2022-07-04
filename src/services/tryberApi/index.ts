@@ -1195,8 +1195,8 @@ export type PostUsersMeCampaignsByCampaignIdBugsApiResponse =
     internalId?: string;
     testerId: number;
     title: string;
-    status: "PENDING" | "APPROVED" | "REFUSED" | "NEED-REVIEW";
     description: string;
+    status: "PENDING" | "APPROVED" | "REFUSED" | "NEED-REVIEW";
     expected: string;
     current: string;
     severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
@@ -1239,6 +1239,7 @@ export type PostUsersMeCampaignsByCampaignIdBugsApiArg = {
       | "TYPO"
       | "USABILITY";
     notes: string;
+    lastSeen: string;
     usecase: number;
     device: number;
     media: string[];

@@ -1867,9 +1867,9 @@ export interface operations {
             internalId?: string;
             testerId: number;
             title: string;
+            description: string;
             /** @enum {string} */
             status: "PENDING" | "APPROVED" | "REFUSED" | "NEED-REVIEW";
-            description: string;
             expected: string;
             current: string;
             /** @enum {string} */
@@ -1922,6 +1922,7 @@ export interface operations {
             | "TYPO"
             | "USABILITY";
           notes: string;
+          lastSeen: string;
           usecase: number;
           device: number;
           media: string[];

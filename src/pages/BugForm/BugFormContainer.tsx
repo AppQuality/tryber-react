@@ -16,6 +16,8 @@ import styled from "styled-components";
 import useCampaignData from "./useCampaignData";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../../store";
+import { usePostUsersMeCampaignsByCampaignIdBugsMutation } from "../../services/tryberApi";
+import { toISOStringWithTimezone } from "./toIsoStringWithTimezone";
 
 const StyledForm = styled(Form)`
   .hide-mobile {
@@ -37,6 +39,8 @@ export const BugFormContainer = () => {
   const { data } = useCampaignData();
   const { t } = useTranslation();
   const { mediaList } = useAppSelector((state) => state.bugForm);
+  const [submitForm] = usePostUsersMeCampaignsByCampaignIdBugsMutation();
+
   if (!data) return null;
 
   const initialBugValues: BugFormValues = {
@@ -108,6 +112,53 @@ export const BugFormContainer = () => {
     if (m.uploadedFileUrl) urls.push(m.uploadedFileUrl);
   });
 
+  const postForm = async ({
+    title,
+    stepDescription,
+    expected,
+    current,
+    severity,
+    replicability,
+    type,
+    notes,
+    useCase,
+    device,
+    media,
+    additional,
+    date,
+    time,
+  }: BugFormValues) => {
+    const additionalKeys = Object.keys(additional);
+    const serverAdditional = additionalKeys.map((k) => {
+      return {
+        slug: k,
+        value: additional[k],
+      };
+    });
+    const serverDate = toISOStringWithTimezone(date, time);
+
+    if (severity !== "" && replicability !== "" && type !== "") {
+      submitForm({
+        campaignId: data.id.toString(),
+        body: {
+          title,
+          description: stepDescription,
+          expected,
+          current,
+          severity,
+          replicability,
+          type,
+          notes,
+          usecase: Number(useCase),
+          device: Number(device),
+          media: media,
+          additional: serverAdditional,
+          lastSeen: serverDate,
+        },
+      });
+    }
+  };
+
   return (
     <Formik
       initialValues={initialBugValues}
@@ -130,7 +181,7 @@ export const BugFormContainer = () => {
           date: values.date,
           time: values.time,
         };
-        console.info("submitValues", submitValues);
+        postForm(submitValues);
       }}
     >
       {(formikProps: FormikProps<BugFormValues>) => {
