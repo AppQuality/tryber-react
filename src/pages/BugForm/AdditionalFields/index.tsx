@@ -30,7 +30,6 @@ export const AdditionalFields = ({ className }: AdditionalFieldsProps) => {
                 label={field.name}
                 name={`additional.${field.slug}`}
                 options={field.options}
-                errorMessage={field.error}
               />
             );
           default:

@@ -11,12 +11,10 @@ export const SelectAdditionalField = ({
   label,
   options,
   name,
-  errorMessage,
 }: {
   label: string;
   options: string[];
   name: string;
-  errorMessage: string;
 }) => {
   const { t } = useTranslation();
   const selectOptions = useMemo(
@@ -33,7 +31,7 @@ export const SelectAdditionalField = ({
         name={name}
         validate={(value: string) => {
           if (!value) {
-            return errorMessage ? errorMessage : t("This is a required field");
+            return t("This is a required field");
           }
         }}
       >
