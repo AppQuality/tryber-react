@@ -78,7 +78,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           defaultValue: "Step-by-step description",
         })}
         placeholder={t("BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER", {
-          defaultValue: "1.\n2.\n3.",
+          defaultValue: "1. \n2. \n3. ",
         })}
         height="8.8rem"
         autoResize={isDesktop}

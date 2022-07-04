@@ -45,7 +45,7 @@ export const BugFormContainer = () => {
 
   const initialBugValues: BugFormValues = {
     title: "",
-    stepDescription: "1.\n2.\n3.",
+    stepDescription: "1. \n2. \n3. ",
     media: [],
     device: "",
     severity: "",
