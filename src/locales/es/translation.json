@@ -374,6 +374,9 @@
   "Select a gender": "Selecciona un género",
   "Select a gender please": "Seleccione un género por favor",
   "Select achievement date": "Selecciona una fecha de logro",
+  "Select placeholder": {
+    "Choose value": ""
+  },
   "Select your birth date": "Sleccione su fecha de nacimiento",
   "Send us your feedback!": "¡Envíenos tus comentarios!",
   "Set": "Establecer",

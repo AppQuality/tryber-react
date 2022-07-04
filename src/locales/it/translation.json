@@ -374,6 +374,9 @@
   "Select a gender": "Seleziona il genere in cui ti identifichi",
   "Select a gender please": "Seleziona il genere in cui ti identifichi",
   "Select achievement date": "Selezione la data di conseguimento",
+  "Select placeholder": {
+    "Choose value": ""
+  },
   "Select your birth date": "Seleziona la tua data di nascita",
   "Send us your feedback!": "Inviaci il tuo feedback!",
   "Set": "Conferma",

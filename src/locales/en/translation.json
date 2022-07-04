@@ -374,6 +374,9 @@
   "Select a gender": "Gender: how do you identify?",
   "Select a gender please": "Gender: how do you identify?",
   "Select achievement date": "Select achievement date",
+  "Select placeholder": {
+    "Choose value": ""
+  },
   "Select your birth date": "Select your birth date",
   "Send us your feedback!": "Send us your feedback!",
   "Set": "Set",

@@ -50,7 +50,7 @@ export const SelectAdditionalField = ({
                   form.setFieldTouched(name);
                 }}
                 label={label}
-                placeholder={"Choose value"}
+                placeholder={t("Select placeholder:::Choose value")}
                 menuTargetQuery="body"
                 noOptionsMessage={() => "No options"}
                 onChange={(v) => {
