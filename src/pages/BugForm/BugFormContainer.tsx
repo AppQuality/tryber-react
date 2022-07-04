@@ -12,7 +12,7 @@ import { FormikProps } from "formik";
 import FocusError from "src/pages/BugForm/FocusError/FocusError";
 import { FileUploader } from "src/pages/BugForm/FileUploader";
 import { AdditionalFields } from "src/pages/BugForm/AdditionalFields";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import useCampaignData from "./useCampaignData";
 import { Trans, useTranslation } from "react-i18next";
@@ -43,6 +43,7 @@ export const BugFormContainer = () => {
   const { data, device } = useCampaignData();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const [disableSubmit, setDisableSubmit] = useState(false);
   const { mediaList } = useAppSelector((state) => state.bugForm);
   const [submitForm] = usePostUsersMeCampaignsByCampaignIdBugsMutation();
 
@@ -207,10 +208,11 @@ export const BugFormContainer = () => {
               false
             )
           );
+          setDisableSubmit(false);
           resetForm();
           dispatch(setMediaList([]));
         })
-        .catch((e) =>
+        .catch((e) => {
           dispatch(
             addMessage(
               <div className="aq-text-primary">
@@ -224,8 +226,9 @@ export const BugFormContainer = () => {
               "danger",
               false
             )
-          )
-        );
+          );
+          setDisableSubmit(false);
+        });
     }
   };
 
@@ -251,6 +254,7 @@ export const BugFormContainer = () => {
           date: values.date,
           time: values.time,
         };
+        setDisableSubmit(true);
         postForm(submitValues, helpers.resetForm);
       }}
     >
@@ -265,6 +269,7 @@ export const BugFormContainer = () => {
                   type="primary"
                   htmlType="submit"
                   size="block"
+                  disabled={disableSubmit}
                   flat
                 >
                   {t("BUGFORM_CTA_SUBMIT", {
@@ -284,6 +289,7 @@ export const BugFormContainer = () => {
                     type="primary"
                     htmlType="submit"
                     size="block"
+                    disabled={disableSubmit}
                     flat
                   >
                     {t("BUGFORM_CTA_SUBMIT", {
