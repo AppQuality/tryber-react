@@ -10,10 +10,13 @@ const StyledFilesTypes = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-
+  .file-type-margin {
+    margin-right: 23.5px;
+  }
   @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
-    justify-content: flex-start;
+    .file-type-margin {
+      margin-right: 32px;
+    }
   }
 `;
 
@@ -37,8 +40,8 @@ export const FileUploader = () => {
         />
       </Text>
       <StyledFilesTypes className="aq-mb-3">
-        <FileType type="image" />
-        <FileType type="document" />
+        <FileType className="file-type-margin" type="image" />
+        <FileType className="file-type-margin" type="document" />
         <FileType type="audiovideo" />
       </StyledFilesTypes>
       <FileDropzone />
