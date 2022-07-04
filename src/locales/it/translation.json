@@ -88,6 +88,9 @@
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supporta le aziende nella creazione di esperienze memorabili grazie al potere della Community di TRYBER. <unguess_link>Scopri UNGUESS</unguess_link>"
   },
+  "Available tags: <bugs_link> (Link to bugs page)": {
+    "BUGFORM_CONFIRMUPLOAD_TXT": ""
+  },
   "Available tags: <tax_id_support_link> (article link for tax id explanation)": {
     "__FISCAL_PROFILE_TAX_ID_LINK": "Dubbi su come compilare questo campo? <tax_id_support_link>Qui</tax_id_support_link> ti spieghiamo tutto."
   },
@@ -122,6 +125,7 @@
   "BUGFORM_BUGDTLS_TYPE_PLACEHOLDER": "Seleziona tipologia",
   "BUGFORM_BUGDTLS_USECASE": "Caso d’uso",
   "BUGFORM_BUGDTLS_USECASE_PLACEHOLDER": "Seleziona caso d’uso",
+  "BUGFORM_CONFIRMUPLOAD_TITLE": "The bug you reported has been uploaded successfully!",
   "BUGFORM_CTA_SUBMIT": "Invia il bug report",
   "BUGFORM_EMPATHY_404_CTA": "Torna alla Dashboard",
   "BUGFORM_EMPATHY_404_TITLE": "Non c’è niente da vedere qui",
@@ -129,6 +133,7 @@
   "BUGFORM_EMPATHY_SAVEDEVICE_CTA": "Aggiungi un dispositivo",
   "BUGFORM_EMPATHY_SAVEDEVICE_TITLE": "Aggiungi un dispositivo",
   "BUGFORM_EMPATHY_SAVEDEVICE_TXT": "Non hai nessun dispositivo salvato: aggiungine almeno uno per poter iniziare a segnalare i bug.\nAppena fatto, ci rivediamo qui per continuare la campagna!",
+  "BUGFORM_ERRORUPLOADREPORT": "Something went wrong! Try resubmitting the bug",
   "BUGFORM_MAINTITLE": "Segnala un bug",
   "BUGFORM_REPLICABILTY_MODAL_TITLE": "Bug replicability",
   "BUGFORM_SEVERITY_MODAL_TITLE": "Bug severity",

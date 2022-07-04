@@ -88,6 +88,9 @@
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS apoya a las empresas en la creación de experiencias memorables gracias al poder de la Comunidad de TRYBER. <unguess_link>Descubre UNGUESS</unguess_link>"
   },
+  "Available tags: <bugs_link> (Link to bugs page)": {
+    "BUGFORM_CONFIRMUPLOAD_TXT": ""
+  },
   "Available tags: <tax_id_support_link> (article link for tax id explanation)": {
     "__FISCAL_PROFILE_TAX_ID_LINK": "¿Dudas sobre cómo rellenar este campo? <tax_id_support_link>Aquí</tax_id_support_link> te lo explicamos todo."
   },
@@ -122,6 +125,7 @@
   "BUGFORM_BUGDTLS_TYPE_PLACEHOLDER": "",
   "BUGFORM_BUGDTLS_USECASE": "",
   "BUGFORM_BUGDTLS_USECASE_PLACEHOLDER": "",
+  "BUGFORM_CONFIRMUPLOAD_TITLE": "The bug you reported has been uploaded successfully!",
   "BUGFORM_CTA_SUBMIT": "",
   "BUGFORM_EMPATHY_404_CTA": "",
   "BUGFORM_EMPATHY_404_TITLE": "",
@@ -129,6 +133,7 @@
   "BUGFORM_EMPATHY_SAVEDEVICE_CTA": "",
   "BUGFORM_EMPATHY_SAVEDEVICE_TITLE": "",
   "BUGFORM_EMPATHY_SAVEDEVICE_TXT": "",
+  "BUGFORM_ERRORUPLOADREPORT": "Something went wrong! Try resubmitting the bug",
   "BUGFORM_MAINTITLE": "",
   "BUGFORM_REPLICABILTY_MODAL_TITLE": "Bug replicability",
   "BUGFORM_SEVERITY_MODAL_TITLE": "Bug severity",
