@@ -8,19 +8,21 @@ import TesterSidebar from "./TesterSidebar";
 
 const ContentTemplate = ({
   title,
+  heading,
   subtitle,
   children,
   className,
 }: {
   title?: string;
   subtitle?: string;
+  heading?: string;
   children: React.ReactNode;
   className?: string;
 }) => {
   return (
     <Container className={className}>
       {title && (
-        <PageTitle as="h2" size="regular" subtitle={subtitle}>
+        <PageTitle as="h2" size="regular" subtitle={subtitle} heading={heading}>
           {title}
         </PageTitle>
       )}
@@ -41,6 +43,7 @@ export const PageTemplate = ({
   children,
   title,
   subtitle,
+  heading,
   shouldBeLoggedIn = false,
   showTitle = true,
   containerClass = "aq-pb-3",
@@ -49,6 +52,7 @@ export const PageTemplate = ({
   children: React.ReactNode;
   title?: string;
   subtitle?: string;
+  heading?: string;
   shouldBeLoggedIn?: boolean;
   containerClass?: string;
   showTitle?: boolean;
@@ -83,6 +87,7 @@ export const PageTemplate = ({
     <ContentTemplate
       className={containerClass}
       title={showTitle ? title : undefined}
+      heading={heading}
       subtitle={subtitle}
     >
       {pageChildren}
