@@ -16,8 +16,8 @@ import React from "react";
 import styled from "styled-components";
 import useCampaignData from "./useCampaignData";
 import { Trans, useTranslation } from "react-i18next";
-import { useAppDispatch, useAppSelector } from "../../store";
-import { usePostUsersMeCampaignsByCampaignIdBugsMutation } from "../../services/tryberApi";
+import { useAppDispatch, useAppSelector } from "src/store";
+import { usePostUsersMeCampaignsByCampaignIdBugsMutation } from "src/services/tryberApi";
 import { toISOStringWithTimezone } from "./toIsoStringWithTimezone";
 import { addMessage } from "../../redux/siteWideMessages/actionCreators";
 import { setMediaList } from "./bugFormSlice";
@@ -97,6 +97,7 @@ export const BugFormContainer = () => {
         {
           defaultValue: "Media field must have at least {{num}} items",
           num: data?.minimumMedia || 0,
+          count: data?.minimumMedia,
         }
       )
     ),

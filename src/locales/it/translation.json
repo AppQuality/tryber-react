@@ -98,7 +98,7 @@
   "Awarded on": "Data",
   "BBUGFORM_UPLOAD_IMG_ICON": "",
   "BUGFORM_BUGDTLS_BUGTITLE": "Titolo",
-  "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "Format should be [Phase / Section] - Briefly Issue description",
+  "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "Compila così questo campo: [Pagina o sezione dove hai trovato il bug] - Breve descrizione del bug",
   "BUGFORM_BUGDTLS_BUGTITLE_PLACEHOLDER": "[Pagina o sezione dove hai trovato il bug] - Breve descrizione del bug",
   "BUGFORM_BUGDTLS_COMMENTS": "Altri commenti",
   "BUGFORM_BUGDTLS_COMMENTS_PLACEHOLDER": "Se c’è qualcosa d’altro che vuoi aggiungere, questo è il posto giusto",
@@ -113,7 +113,7 @@
   "BUGFORM_BUGDTLS_SEVERITY": "Livello di gravità del bug",
   "BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER": "Seleziona livello",
   "BUGFORM_BUGDTLS_STEPBYSTEP": "Descrizione step by step",
-  "BUGFORM_BUGDTLS_STEPBYSTEP_ERROR": "This is a required field",
+  "BUGFORM_BUGDTLS_STEPBYSTEP_ERROR": "Descrivi per ogni step un’unica azione in modo preciso e dettagliato",
   "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "1\n2\n3",
   "BUGFORM_BUGDTLS_TESTDVC": "Dispositivo della campagna",
   "BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER": "Seleziona dispositivo",
@@ -121,7 +121,7 @@
   "BUGFORM_BUGDTLS_TIME_PLACEHOLDER": "Scegli l'orario",
   "BUGFORM_BUGDTLS_TITLE": "Dettagli del bug",
   "BUGFORM_BUGDTLS_TYPE": "Tipologia di bug",
-  "BUGFORM_BUGDTLS_TYPE_ERROR": "This is a required field",
+  "BUGFORM_BUGDTLS_TYPE_ERROR": "Seleziona la tipologia di bug: è un elemento importante per questa campagna",
   "BUGFORM_BUGDTLS_TYPE_PLACEHOLDER": "Seleziona tipologia",
   "BUGFORM_BUGDTLS_USECASE": "Caso d’uso",
   "BUGFORM_BUGDTLS_USECASE_PLACEHOLDER": "Seleziona caso d’uso",
@@ -142,16 +142,16 @@
   "BUGFORM_UPLOAD_DOC_TXT": "Documento",
   "BUGFORM_UPLOAD_DRAGDROP_TXT": "Seleziona i file da una cartella o trascinali qui",
   "BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED": "File non supportato",
-  "BUGFORM_UPLOAD_ERROR_FILETOOBIG": "Maximum file size exceeded",
-  "BUGFORM_UPLOAD_ERROR_GENERALERROR": "Generic error",
+  "BUGFORM_UPLOAD_ERROR_FILETOOBIG": "La dimensione del file è troppo grande. Riducilo e ricaricalo",
+  "BUGFORM_UPLOAD_ERROR_GENERALERROR": "Errore nel caricamento del file. Riprova",
   "BUGFORM_UPLOAD_IMG_TXT": "Immagine",
-  "BUGFORM_UPLOAD_TITLE": "",
+  "BUGFORM_UPLOAD_TITLE": "Carica i file",
   "BUGFORM_UPLOAD_VIDAUDIO_ICON": "",
-  "BUGFORM_UPLOAD_VIDAUDIO_TXT": "",
-  "BUGREPLICABILITY_TOOLTIP_TXT": "Learn more",
-  "BUGSEVERITY_TOOLTIP_TXT": "Learn more",
-  "BUGTITLEDETAILS_TOOLTIP_TXT": "Learn more",
-  "BUGTYPE_TOOLTIP_TXT": "Learn more",
+  "BUGFORM_UPLOAD_VIDAUDIO_TXT": "Video/Audio",
+  "BUGREPLICABILITY_TOOLTIP_TXT": "Ti diciamo di più",
+  "BUGSEVERITY_TOOLTIP_TXT": "Ti diciamo di più",
+  "BUGTITLEDETAILS_TOOLTIP_TXT": "Ti diciamo di più",
+  "BUGTYPE_TOOLTIP_TXT": "Ti diciamo di più",
   "Back": "Indietro",
   "Back to wallet": "Ritorna a Portafoglio",
   "Bank Transfer": "Bonifico bancario",
@@ -296,8 +296,8 @@
   "Manufacturer": "Produttore",
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Produttore: <bold>{{manufacturer}}</bold>",
   "Media field must have at least {{num}} items": {
-    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "Media field must have at least {{num}} items",
-    "BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM": ""
+    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "Per questa campagna è necessario caricare almeno {{num}} file",
+    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES_plural": "Media field must have at least {{num}} items"
   },
   "Messages for you": "Messaggi per te",
   "Method": "Metodo",
@@ -421,7 +421,7 @@
   "This field is shared with the base section": "Il campo è condiviso con la sezione base",
   "This field is shared with the fiscal section": "Il campo è condiviso con la sezione fiscale",
   "This is a required field": "Questo è un campo obbligatorio",
-  "This is an invalid format": "",
+  "This is an invalid format": "File non supportato",
   "This is an invalid format.": "Questo formato non è valido.",
   "This is an invalid format. Should be formatted as +11000000000 or 0011000000000": "Formato invalido. Deve essere formattato come +11000000000 o 0011000000000",
   "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!": "Questa è la tua dashboard personale. Da qui puoi controllare le tue statistiche, tenere d'occhio lo stato di avanzamento del tuo lavoro e trovare nuove campagne a cui candidarti. Divertiti!",
@@ -436,7 +436,8 @@
   "Type to search your city": "Digita per cercare la tua città",
   "Update your device list": "Aggiorna la tua lista dispositivi",
   "Upload a minimum number of {{num}} files": {
-    "BUGFORM_UPLOAD_TXT": ""
+    "BUGFORM_UPLOAD_TXT": "Carica almeno {{num}} file",
+    "BUGFORM_UPLOAD_TXT_plural": ""
   },
   "Uploaded Bugs": "Bug caricati",
   "User mail validation": {
@@ -609,28 +610,28 @@
   "contact us": "Contattaci",
   "email must be the same": "Inserisci lo stesso indirizzo email",
   "for this bug are only allowed replicability of type {{valid}}": {
-    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "for this bug are only allowed replicability of type {{valid}}",
-    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT_plural": "for this bug are only allowed replicability of type {{valid}}"
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "In questa campagna sono ammessi solo bug con replicabilità: {{valid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT_plural": "In questa campagna sono ammessi solo bug con replicabilità: {{valid}}"
   },
   "for this bug are only allowed severities of type {{valid}}": {
-    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT": "for this bug are only allowed severities of type {{valid}}",
-    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT_plural": "for this bug are only allowed severities of type {{valid}}"
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT": "In questa campagna sono ammessi solo bug di gravità: {{valid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT_plural": "In questa campagna sono ammessi solo bug di gravità: {{valid}}"
   },
   "for this bug are only allowed type {{valid}}": {
-    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT": "for this bug are only allowed type {{valid}}",
-    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT_plural": "for this bug are only allowed type {{valid}}"
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT": "In questa campagna sono ammessi solo bug di tipologia: {{valid}}",
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT_plural": "In questa campagna sono ammessi solo bug di tipologia: {{valid}}"
   },
   "for this bug this replicability are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT": "for this bug this replicability are not allowed: {{invalid}}",
-    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT_plural": "for this bug this replicability are not allowed: {{invalid}}"
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT": "In questa campagna non sono ammessi bug con replicabilità: {{invalid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT_plural": "In questa campagna non sono ammessi bug con replicabilità: {{invalid}}"
   },
   "for this bug this severities are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT": "for this bug this severities are not allowed: {{invalid}}",
-    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT_plural": "for this bug this severities are not allowed: {{invalid}}"
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT": "In questa campagna non sono ammessi bug di gravità: {{invalid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT_plural": "In questa campagna non sono ammessi bug di gravità: {{invalid}}"
   },
   "for this bug this types are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "for this bug this types are not allowed: {{invalid}}",
-    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "for this bug this types are not allowed: {{invalid}}"
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "In questa campagna non sono ammessi bug di tipologia: {{invalid}}",
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "In questa campagna non sono ammessi bug di tipologia: {{invalid}}"
   },
   "forgot your password?": "hai dimenticato la password?",
   "give your best to keep level {{level}}": {
@@ -672,6 +673,7 @@
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "Hai ancora {{days}} giorni per dare del tuo meglio!"
   },
   "{{num}} uploaded": {
-    "BUGFORM_UPLOAD_PROGRESS": ""
+    "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricati",
+    "BUGFORM_UPLOAD_PROGRESS_plural": ""
   }
 }

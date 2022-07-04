@@ -97,61 +97,61 @@
   "Avalaible Campaigns": "Campañas Disponibles",
   "Awarded on": "Fecha",
   "BBUGFORM_UPLOAD_IMG_ICON": "",
-  "BUGFORM_BUGDTLS_BUGTITLE": "",
+  "BUGFORM_BUGDTLS_BUGTITLE": "Título",
   "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "Format should be [Phase / Section] - Briefly Issue description",
-  "BUGFORM_BUGDTLS_BUGTITLE_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_COMMENTS": "",
-  "BUGFORM_BUGDTLS_COMMENTS_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_DAY": "",
-  "BUGFORM_BUGDTLS_DAY_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_EXPDRES": "",
-  "BUGFORM_BUGDTLS_EXPDRES_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_OSBRVDRES": "",
-  "BUGFORM_BUGDTLS_OSBRVDRES_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_REPLICABILTY": "",
-  "BUGFORM_BUGDTLS_REPLICABILTY_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_SEVERITY": "",
-  "BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_STEPBYSTEP": "",
-  "BUGFORM_BUGDTLS_STEPBYSTEP_ERROR": "This is a required field",
-  "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_TESTDVC": "",
-  "BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_TIME": "",
-  "BUGFORM_BUGDTLS_TIME_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_TITLE": "",
-  "BUGFORM_BUGDTLS_TYPE": "",
-  "BUGFORM_BUGDTLS_TYPE_ERROR": "This is a required field",
-  "BUGFORM_BUGDTLS_TYPE_PLACEHOLDER": "",
-  "BUGFORM_BUGDTLS_USECASE": "",
-  "BUGFORM_BUGDTLS_USECASE_PLACEHOLDER": "",
+  "BUGFORM_BUGDTLS_BUGTITLE_PLACEHOLDER": "El campo debe rellenarse así: [Página o sección en la que has encontrado el bug] - Breve descripción del bug",
+  "BUGFORM_BUGDTLS_COMMENTS": "Otros comentarios",
+  "BUGFORM_BUGDTLS_COMMENTS_PLACEHOLDER": "Si hay algo más que quieras añadir, este es el lugar adecuado",
+  "BUGFORM_BUGDTLS_DAY": "¿Qué día has encontrado el bug?",
+  "BUGFORM_BUGDTLS_DAY_PLACEHOLDER": "Selecciona la fecha",
+  "BUGFORM_BUGDTLS_EXPDRES": "Resultado esperado",
+  "BUGFORM_BUGDTLS_EXPDRES_PLACEHOLDER": "Cuéntanos qué esperabas que ocurriera después del último paso descrito",
+  "BUGFORM_BUGDTLS_OSBRVDRES": "Resultado efectivo",
+  "BUGFORM_BUGDTLS_OSBRVDRES_PLACEHOLDER": "Cuéntanos de forma detallada el bug que has encontrado y su comportamiento",
+  "BUGFORM_BUGDTLS_REPLICABILTY": "Replicabilidad del bug",
+  "BUGFORM_BUGDTLS_REPLICABILTY_PLACEHOLDER": "Selecciona replicabilidad",
+  "BUGFORM_BUGDTLS_SEVERITY": "Nivel de gravedad del bug",
+  "BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER": "Selecciona gravedad",
+  "BUGFORM_BUGDTLS_STEPBYSTEP": "Descripción paso a paso",
+  "BUGFORM_BUGDTLS_STEPBYSTEP_ERROR": "Describe una acción distinta en cada paso e incluye cada detalle",
+  "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "1\n2\n3",
+  "BUGFORM_BUGDTLS_TESTDVC": "Dispositivo de la campaña",
+  "BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER": "Selecciona dispositivo",
+  "BUGFORM_BUGDTLS_TIME": "¿A qué hora?",
+  "BUGFORM_BUGDTLS_TIME_PLACEHOLDER": "Selecciona el horario",
+  "BUGFORM_BUGDTLS_TITLE": "Detalles del bug",
+  "BUGFORM_BUGDTLS_TYPE": "Tipología de bug",
+  "BUGFORM_BUGDTLS_TYPE_ERROR": "Selecciona el tipo de bug: es un elemento clave para esta campaña",
+  "BUGFORM_BUGDTLS_TYPE_PLACEHOLDER": "Selecciona tipología",
+  "BUGFORM_BUGDTLS_USECASE": "Caso de uso",
+  "BUGFORM_BUGDTLS_USECASE_PLACEHOLDER": "Selecciona caso de uso",
   "BUGFORM_CONFIRMUPLOAD_TITLE": "The bug you reported has been uploaded successfully!",
-  "BUGFORM_CTA_SUBMIT": "",
-  "BUGFORM_EMPATHY_404_CTA": "",
-  "BUGFORM_EMPATHY_404_TITLE": "",
-  "BUGFORM_EMPATHY_404_TXT": "",
-  "BUGFORM_EMPATHY_SAVEDEVICE_CTA": "",
-  "BUGFORM_EMPATHY_SAVEDEVICE_TITLE": "",
-  "BUGFORM_EMPATHY_SAVEDEVICE_TXT": "",
-  "BUGFORM_ERRORUPLOADREPORT": "Something went wrong! Try resubmitting the bug",
-  "BUGFORM_MAINTITLE": "",
+  "BUGFORM_CTA_SUBMIT": "Enviar el bug report",
+  "BUGFORM_EMPATHY_404_CTA": "Volver a la Dashboard",
+  "BUGFORM_EMPATHY_404_TITLE": "No hay nada que ver aquí",
+  "BUGFORM_EMPATHY_404_TXT": "No hemos podido encontrar la url que introduciste: esta página no existe.\n(Quizás por eso el Tryber está un poco triste)",
+  "BUGFORM_EMPATHY_SAVEDEVICE_CTA": "Añadir dispositivo",
+  "BUGFORM_EMPATHY_SAVEDEVICE_TITLE": "Añadir dispositivo",
+  "BUGFORM_EMPATHY_SAVEDEVICE_TXT": "Todavía no tienes ningún dispositivo guardado: añade al menos un dispositivo para empezar a reportar bugs.\nUna vez que lo hayas hecho, ¡vuelve aquí y sigue con la campaña!",
+  "BUGFORM_ERRORUPLOADREPORT": "",
+  "BUGFORM_MAINTITLE": "Reporta un bug",
   "BUGFORM_REPLICABILTY_MODAL_TITLE": "Bug replicability",
   "BUGFORM_SEVERITY_MODAL_TITLE": "Bug severity",
   "BUGFORM_TYPE_MODAL_TITLE": "Bug type",
   "BUGFORM_UPLOAD_DOC_ICON": "",
-  "BUGFORM_UPLOAD_DOC_TXT": "",
-  "BUGFORM_UPLOAD_DRAGDROP_TXT": "",
-  "BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED": "",
-  "BUGFORM_UPLOAD_ERROR_FILETOOBIG": "Maximum file size exceeded",
-  "BUGFORM_UPLOAD_ERROR_GENERALERROR": "Generic error",
-  "BUGFORM_UPLOAD_IMG_TXT": "",
-  "BUGFORM_UPLOAD_TITLE": "",
+  "BUGFORM_UPLOAD_DOC_TXT": "Archivo",
+  "BUGFORM_UPLOAD_DRAGDROP_TXT": "Elige los archivos o arrástralos aquí.",
+  "BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED": "Archivo no compatible",
+  "BUGFORM_UPLOAD_ERROR_FILETOOBIG": "Archivo demasiado grande. Comprímelo y vuelve a subirlo",
+  "BUGFORM_UPLOAD_ERROR_GENERALERROR": "Se ha producido un error al subir el archivo. Intentar otra vez",
+  "BUGFORM_UPLOAD_IMG_TXT": "Imagen",
+  "BUGFORM_UPLOAD_TITLE": "Subir archivos",
   "BUGFORM_UPLOAD_VIDAUDIO_ICON": "",
-  "BUGFORM_UPLOAD_VIDAUDIO_TXT": "",
-  "BUGREPLICABILITY_TOOLTIP_TXT": "Learn more",
-  "BUGSEVERITY_TOOLTIP_TXT": "Learn more",
-  "BUGTITLEDETAILS_TOOLTIP_TXT": "Learn more",
-  "BUGTYPE_TOOLTIP_TXT": "Learn more",
+  "BUGFORM_UPLOAD_VIDAUDIO_TXT": "Vídeo/audio",
+  "BUGREPLICABILITY_TOOLTIP_TXT": "Más información",
+  "BUGSEVERITY_TOOLTIP_TXT": "Más información",
+  "BUGTITLEDETAILS_TOOLTIP_TXT": "Más información",
+  "BUGTYPE_TOOLTIP_TXT": "Más información",
   "Back": "Atrás",
   "Back to wallet": "Volver a Monedero",
   "Bank Transfer": "Transferencia bancaria",
@@ -297,7 +297,7 @@
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Productor: <bold>{{manufacturer}}</bold>",
   "Media field must have at least {{num}} items": {
     "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "Media field must have at least {{num}} items",
-    "BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM": ""
+    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES_plural": "Media field must have at least {{num}} items"
   },
   "Messages for you": "Tus mensajes",
   "Method": "Método",
@@ -421,7 +421,7 @@
   "This field is shared with the base section": "Este campo se comparte con la sección base",
   "This field is shared with the fiscal section": "Este campo se comparte con la sección fiscal",
   "This is a required field": "Campo requerido",
-  "This is an invalid format": "",
+  "This is an invalid format": "Archivo no compatible",
   "This is an invalid format.": "Este formato no es válido.",
   "This is an invalid format. Should be formatted as +11000000000 or 0011000000000": "Este es un formato no válido. Tiene que ser formateado como +11000000000 o 0011000000000",
   "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!": "Este es tu dashboard personal. Desde aquí puedes consultar tus estadísticas, el  progreso de tu trabajo y encontrar nuevas Campañas a las que postularte. ¡Diviértete!",
@@ -436,7 +436,8 @@
   "Type to search your city": "Escriba para buscar tu ciudad",
   "Update your device list": "Actualizar tu lista de dispositivos",
   "Upload a minimum number of {{num}} files": {
-    "BUGFORM_UPLOAD_TXT": ""
+    "BUGFORM_UPLOAD_TXT": "Sube al menos {{num}} archivos",
+    "BUGFORM_UPLOAD_TXT_plural": ""
   },
   "Uploaded Bugs": "Bugs Cargados",
   "User mail validation": {
@@ -609,28 +610,28 @@
   "contact us": "Contáctanos",
   "email must be the same": "Introduce el mismo correo electrónico",
   "for this bug are only allowed replicability of type {{valid}}": {
-    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "for this bug are only allowed replicability of type {{valid}}",
-    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT_plural": "for this bug are only allowed replicability of type {{valid}}"
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "En esta campaña solo se admiten bugs con replicabilidad: {{valid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT_plural": "En esta campaña solo se admiten bugs con replicabilidad: {{valid}}"
   },
   "for this bug are only allowed severities of type {{valid}}": {
-    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT": "for this bug are only allowed severities of type {{valid}}",
-    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT_plural": "for this bug are only allowed severities of type {{valid}}"
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT": "En esta campaña solo se admiten bugs de gravedad: {{valid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT_plural": "En esta campaña solo se admiten bugs de gravedad: {{valid}}"
   },
   "for this bug are only allowed type {{valid}}": {
-    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT": "for this bug are only allowed type {{valid}}",
-    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT_plural": "for this bug are only allowed type {{valid}}"
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT": "En esta campaña solo se admiten bugs de tipología: {{valid}}",
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT_plural": "En esta campaña solo se admiten bugs de tipología: {{valid}}"
   },
   "for this bug this replicability are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT": "for this bug this replicability are not allowed: {{invalid}}",
-    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT_plural": "for this bug this replicability are not allowed: {{invalid}}"
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT": "En esta campaña no se admiten bugs con replicabilidad: {{invalid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT_plural": "En esta campaña no se admiten bugs con replicabilidad: {{invalid}}"
   },
   "for this bug this severities are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT": "for this bug this severities are not allowed: {{invalid}}",
-    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT_plural": "for this bug this severities are not allowed: {{invalid}}"
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT": "En esta campaña no se admiten bugs de gravedad: {{invalid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT_plural": "En esta campaña no se admiten bugs de gravedad: {{invalid}}"
   },
   "for this bug this types are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "for this bug this types are not allowed: {{invalid}}",
-    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "for this bug this types are not allowed: {{invalid}}"
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "En esta campaña no se admiten bugs de tipología: {{invalid}}",
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "En esta campaña no se admiten bugs de tipología: {{invalid}}"
   },
   "forgot your password?": "¿Has olvidado tu password?",
   "give your best to keep level {{level}}": {
@@ -672,6 +673,7 @@
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "¡Todavía tienes {{days}} días para dar lo mejor de ti!"
   },
   "{{num}} uploaded": {
-    "BUGFORM_UPLOAD_PROGRESS": ""
+    "BUGFORM_UPLOAD_PROGRESS": "{{num}} subidos",
+    "BUGFORM_UPLOAD_PROGRESS_plural": ""
   }
 }

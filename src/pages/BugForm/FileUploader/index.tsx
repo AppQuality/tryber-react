@@ -31,6 +31,8 @@ export const FileUploader = () => {
           values={{
             num: data?.minimumMedia || 0,
           }}
+          tOptions={{ count: data?.minimumMedia }}
+          count={data?.minimumMedia}
           defaults={"Upload a minimum number of {{num}} files"}
         />
       </Text>

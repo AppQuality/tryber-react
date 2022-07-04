@@ -96,9 +96,9 @@
   },
   "Avalaible Campaigns": "Avalaible Campaigns",
   "Awarded on": "Awarded on",
-  "BBUGFORM_UPLOAD_IMG_ICON": "",
+  "BBUGFORM_UPLOAD_IMG_ICON": "Image",
   "BUGFORM_BUGDTLS_BUGTITLE": "Bug title",
-  "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "The field should be filled this way: [Page or section where you found the bug] - The bug in a nutshell",
+  "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "The field needs to be filled this way: [Page or section where you found the bug] - The bug in a nutshell",
   "BUGFORM_BUGDTLS_BUGTITLE_PLACEHOLDER": "[Page or section where you found the bug] - The bug in a nutshell",
   "BUGFORM_BUGDTLS_COMMENTS": "Additional comments",
   "BUGFORM_BUGDTLS_COMMENTS_PLACEHOLDER": "If there's anything else you'd like to add, here's the right place",
@@ -138,15 +138,15 @@
   "BUGFORM_REPLICABILTY_MODAL_TITLE": "Bug replicability",
   "BUGFORM_SEVERITY_MODAL_TITLE": "Bug severity",
   "BUGFORM_TYPE_MODAL_TITLE": "Bug type",
-  "BUGFORM_UPLOAD_DOC_ICON": "",
+  "BUGFORM_UPLOAD_DOC_ICON": "Document",
   "BUGFORM_UPLOAD_DOC_TXT": "File",
   "BUGFORM_UPLOAD_DRAGDROP_TXT": "Choose files or drag them here.",
   "BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED": "File not supported",
   "BUGFORM_UPLOAD_ERROR_FILETOOBIG": "File too big. Reduce it and upload it again",
-  "BUGFORM_UPLOAD_ERROR_GENERALERROR": "An error occured while uploading your file",
+  "BUGFORM_UPLOAD_ERROR_GENERALERROR": "An error occurred while uploading your file. Try again.",
   "BUGFORM_UPLOAD_IMG_TXT": "Image",
   "BUGFORM_UPLOAD_TITLE": "Upload files",
-  "BUGFORM_UPLOAD_VIDAUDIO_ICON": "",
+  "BUGFORM_UPLOAD_VIDAUDIO_ICON": "Video/Audio",
   "BUGFORM_UPLOAD_VIDAUDIO_TXT": "Video/Audio",
   "BUGREPLICABILITY_TOOLTIP_TXT": "Learn more",
   "BUGSEVERITY_TOOLTIP_TXT": "Learn more",
@@ -296,8 +296,8 @@
   "Manufacturer": "Manufacturer",
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Manufacturer: <bold>{{manufacturer}}</bold>",
   "Media field must have at least {{num}} items": {
-    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "You must upload at least {{num}} files for this campaign",
-    "BUGFORM_UPLOAD_ERROR_TWOFILESMINIMUM": "You must upload at least {{num}} files for this campaign"
+    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "You must upload at least {{num}} file for this campaign",
+    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES_plural": "You must upload at least {{num}} files for this campaign"
   },
   "Messages for you": "Messages for you",
   "Method": "Method",
@@ -436,7 +436,8 @@
   "Type to search your city": "Type to search your city",
   "Update your device list": "Update your device list",
   "Upload a minimum number of {{num}} files": {
-    "BUGFORM_UPLOAD_TXT": "Upload at least {{num}} files"
+    "BUGFORM_UPLOAD_TXT": "Upload at least {{num}} files",
+    "BUGFORM_UPLOAD_TXT_plural": ""
   },
   "Uploaded Bugs": "Uploaded Bugs",
   "User mail validation": {
@@ -601,7 +602,7 @@
   "available tags: <br>, <bold>": {
     "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Bug replicability</b><br>\n<br>\n<b>SOMETIMES</b><br>\nWith all conditions and processes being equal, the bug occurs sporadically/unpredictably, but it is always possible to reproduce it by making multiple attempts.<br>\n<br>\n<b>ALWAYS</b><br>\nWith all conditions and processes being equal, the bug occurs under the same conditions and processes, at each replication attempt. To be such, the bug must be successfully reproduced at least 3 out of 3 times.<br>\n<br>\n<b>ONCE</b><br>\nWith all conditions and processes being equal, the bug only occurred once and could not be replicated (at least 3 attempts needed).",
     "BUGFORM_SEVERITY_MODAL_TXT": "<bold>Bug severity</bold><br>\n<br/>\nSeverity is an estimate of the impact of the problem on the use of the tested product. This estimate is calculated by keeping in mind both the context where the problem occurs (primary or secondary sections of the core-business of the campaign object) and the conditions where it has been found compared to an average use. Severity must never be influenced by the assessment of replicability: what guides the choice is mainly the impact on the user, the context (importance of the section) and the presence or lack of a workaround.<br>\n<br>\n<b>LOW</b><br>\nIssues that have a minimal impact on the use of the product. The user is able to continue to use and test the product without great difficulties. Often these are USABILITY, TYPO or GRAPHIC bugs.<br>\n<br>\n<b>MEDIUM</b><br>\nIssues that have a limited impact on the use of the product. The user is still able to complete the process despite having encountered some difficulties. This can be any type of bug.<br>\n<br>\n<b>HIGH</b><br>\nIssues that have a significant impact in the use of the product. The user mainly finds them in the main sections and may not be able to continue using and testing the product as intended. Generally, the bug type is MALFUNCTION, CRASH, PERFORMANCE or SECURITY.<br>\n<br>\n<b>CRITICAL</b><br>\nIssues that prevent the user from completing the main tasks, often resulting in a system crash. The user is unable by any means to complete the task or continue using the test product. The bug types are either MALFUNCTION or CRASH bugs.<br>",
-    "BUGFORM_TYPE_MODAL_TEXT": "<b>Bug type</b><br>\n<br>\n<b>CRASH</b><br>\nIssues related to unresponsive and/or crashing software. The user needs to reset or relaunch it to keep using it. Some examples: apps closing unexpectedly, neverending loadings, 404 error pages.<br>\n<br>\n<b>GRAPHIC</b><br>\nIssues related to the visual aspect of the product. They could be overlapping elements, wrong contrast, incoherent elements, cut or blurry text or media, elements that are either out of the screen or partially not visible/overlapped.<br>\n<br>\n<b>PERFORMANCE</b><br>\nIssues strictly related to the contents load speed or the completion time processes/actions (lag, slowing down, delays). In the case of a never-ending loading (loop), the correct bug type is CRASH.<br>\n<br>\n<b>MALFUNCTION</b><br>\nIssues related to a wrong functioning or non functioning feature of the product. When the feature works, but the result is different from what the user expected, the bug type is USABILITY.<br>\n<br>\n<b>TYPO</b><br>\nIssues related to grammar mistakes such as spelling, semantics, lexicon, syntax, interrupted sentences (not a visual interruption), wrong or incomplete translations, nonsense sentences, visible programming code.<br>\n<br>\n<bold>OTHER</b><br>\nIssues not listed in the previous categories.<br>\n<br>\n<b>SECURITY</b><br>\nIssues solely related to the security and confidentiality of the stored data. This category includes sections with plaintext passwords, lack of login session expiration or even possibility of easily obtaining other users' data through SQL injection or XSS attacks.<br>\n<br>\n<b>USABILITY</b><br>\nIssues related to the use of the product, making it difficult for the user to perform a certain action or task due to long, complex, less than ideal or unintuitive paths. It happens when the actual functioning completely differs from the users' expectations. This category also includes absence of checks on data entered in forms; error messages not including any explanation of the specific issue (generic error).",
+    "BUGFORM_TYPE_MODAL_TEXT": "<b>Bug type</b><br>\n<br>\n<b>CRASH</b><br>\nIssues related to unresponsive and/or crashing software. The user needs to reset or relaunch it to keep using it. Some examples: apps closing unexpectedly, neverending loadings, 404 error pages.<br>\n<br>\n<b>GRAPHIC</b><br>\nIssues related to the visual aspect of the product. They could be overlapping elements, wrong contrast, incoherent elements, cut or blurry text or media, elements that are either out of the screen or partially not visible/overlapped.<br>\n<br>\n<b>PERFORMANCE</b><br>\nIssues strictly related to the contents load speed or the completion time processes/actions (lag, slowing down, delays). In the case of a never-ending loading (loop), the correct bug type is CRASH.<br>\n<br>\n<b>MALFUNCTION</b><br>\nIssues related to a wrong functioning or non functioning feature of the product. When the feature works, but the result is different from what the user expected, the bug type is USABILITY.<br>\n<br>\n<b>TYPO</b><br>\nIssues related to grammar mistakes such as spelling, semantics, lexicon, syntax, interrupted sentences (not a visual interruption), wrong or incomplete translations, nonsense sentences, visible programming code.<br>\n<br>\n<b>OTHER</b><br>\nIssues not listed in the previous categories.<br>\n<br>\n<b>SECURITY</b><br>\nIssues solely related to the security and confidentiality of the stored data. This category includes sections with plaintext passwords, lack of login session expiration or even possibility of easily obtaining other users' data through SQL injection or XSS attacks.<br>\n<br>\n<b>USABILITY</b><br>\nIssues related to the use of the product, making it difficult for the user to perform a certain action or task due to long, complex, less than ideal or unintuitive paths. It happens when the actual functioning completely differs from the users' expectations. This category also includes absence of checks on data entered in forms; error messages not including any explanation of the specific issue (generic error).",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "Boo-yah!✌ You're Legendary and you'll always be!\nKeep earning points and stay on top of the ranking.",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "Sky is not the limit! You're going to be Legendary in the next month:<br></br>it's TRYBER's highest level."
   },
@@ -672,6 +673,7 @@
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "You still have {{days}} days to try your best!"
   },
   "{{num}} uploaded": {
-    "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploading"
+    "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
+    "BUGFORM_UPLOAD_PROGRESS_plural": ""
   }
 }
