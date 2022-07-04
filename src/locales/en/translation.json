@@ -58,6 +58,9 @@
   "Added On": "Added on",
   "Adding more devices allows you to apply to more campaigns to earn more money and experience points.": "Adding more devices allows you to apply to more campaigns to earn more money and experience points.",
   "Additional Informations": "Additional Informations",
+  "Additional field default message": {
+    "This is an invalid format": "This format is invalid"
+  },
   "Additional fields": "Additional fields",
   "Address": "Address",
   "Advanced": "Advanced",
@@ -416,7 +419,6 @@
   "This field is shared with the base section": "This field is shared with the base section",
   "This field is shared with the fiscal section": "This field is shared with the fiscal section",
   "This is a required field": "This is a required field",
-  "This is an invalid format": "File not supported",
   "This is an invalid format.": "This format is invalid.",
   "This is an invalid format. Should be formatted as +11000000000 or 0011000000000": "This is an invalid format. Should be formatted as +11000000000 or 0011000000000",
   "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!": "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!",
@@ -670,5 +672,6 @@
   "{{num}} uploaded": {
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": ""
-  }
+  },
+  "This is an invalid format": "File not supported"
 }
