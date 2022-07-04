@@ -86,8 +86,6 @@ export const FileList = () => {
           values={{
             num: `${input.value.length}/${mediaList.length}`,
           }}
-          tOptions={{ count: input.value.length / mediaList.length }}
-          count={input.value.length / mediaList.length}
           defaults={"{{num}} uploaded"}
         />
       </Text>
