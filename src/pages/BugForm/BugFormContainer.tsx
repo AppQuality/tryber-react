@@ -6,22 +6,23 @@ import {
   Formik,
   Text,
 } from "@appquality/appquality-design-system";
-import { BugDetails } from "src/pages/BugForm/BugDetails/BugDetails";
-import * as yup from "yup";
 import { FormikProps } from "formik";
-import FocusError from "src/pages/BugForm/FocusError/FocusError";
-import { FileUploader } from "src/pages/BugForm/FileUploader";
-import { AdditionalFields } from "src/pages/BugForm/AdditionalFields";
-import React, { useState } from "react";
-import styled from "styled-components";
-import useCampaignData from "./useCampaignData";
-import { Trans, useTranslation } from "react-i18next";
-import { useAppDispatch, useAppSelector } from "src/store";
-import { usePostUsersMeCampaignsByCampaignIdBugsMutation } from "src/services/tryberApi";
-import { toISOStringWithTimezone } from "./toIsoStringWithTimezone";
-import { addMessage } from "src/redux/siteWideMessages/actionCreators";
-import { setMediaList } from "./bugFormSlice";
 import i18next from "i18next";
+import React, { useState } from "react";
+import { Trans, useTranslation } from "react-i18next";
+import { AdditionalFields } from "src/pages/BugForm/AdditionalFields";
+import { BugDetails } from "src/pages/BugForm/BugDetails/BugDetails";
+import { FileUploader } from "src/pages/BugForm/FileUploader";
+import FocusError from "src/pages/BugForm/FocusError/FocusError";
+import { addMessage } from "src/redux/siteWideMessages/actionCreators";
+import { usePostUsersMeCampaignsByCampaignIdBugsMutation } from "src/services/tryberApi";
+import { useAppDispatch, useAppSelector } from "src/store";
+import styled from "styled-components";
+import * as yup from "yup";
+
+import { setMediaList } from "./bugFormSlice";
+import { toISOStringWithTimezone } from "./toIsoStringWithTimezone";
+import useCampaignData from "./useCampaignData";
 
 const StyledForm = styled(Form)`
   .hide-mobile {
@@ -285,7 +286,7 @@ export const BugFormContainer = () => {
                   )}
                   <FileUploader />
                   <Button
-                    className="aq-mt-3 hide-desktop"
+                    className="aq-mt-3 hide-desktop aq-mb-4"
                     type="primary"
                     htmlType="submit"
                     size="block"
