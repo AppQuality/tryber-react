@@ -611,6 +611,9 @@
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "Si vola!✌ Sei Legendary e lo sarai per sempre!\nContinua a guadagnare punti e resta in vetta in classifica.",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "Il cielo non è un limite! Il prossimo mese sarai Legendary,<br></br>il livello più alto di TRYBER."
   },
+  "bugform usecase select option": {
+    "Not a specific usecase": ""
+  },
   "company": "Società",
   "contact us": "Contattaci",
   "email must be the same": "Inserisci lo stesso indirizzo email",

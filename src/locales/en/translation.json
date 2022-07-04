@@ -611,6 +611,9 @@
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "Boo-yah!✌ You're Legendary and you'll always be!\nKeep earning points and stay on top of the ranking.",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "Sky is not the limit! You're going to be Legendary in the next month:<br></br>it's TRYBER's highest level."
   },
+  "bugform usecase select option": {
+    "Not a specific usecase": ""
+  },
   "company": "company",
   "contact us": "contact us",
   "email must be the same": "Enter the same email address",

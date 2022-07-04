@@ -13,7 +13,10 @@ export const UseCase = () => {
   if (!data) return null;
   const options = data.useCases.map((option) => ({
     value: option.id.toString(),
-    label: option.name,
+    label:
+      option.id === -1
+        ? t("bugform usecase select option:::Not a specific usecase")
+        : option.name,
   }));
   return (
     <FormikField name="useCase">
