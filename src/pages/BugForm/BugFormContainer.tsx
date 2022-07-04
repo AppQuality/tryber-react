@@ -21,6 +21,7 @@ import { usePostUsersMeCampaignsByCampaignIdBugsMutation } from "../../services/
 import { toISOStringWithTimezone } from "./toIsoStringWithTimezone";
 import { addMessage } from "../../redux/siteWideMessages/actionCreators";
 import { setMediaList } from "./bugFormSlice";
+import i18next from "i18next";
 
 const StyledForm = styled(Form)`
   .hide-mobile {
@@ -183,9 +184,11 @@ export const BugFormContainer = () => {
                     components={{
                       bugs_link: (
                         <a
-                          href={t("bugs page", {
-                            ns: "links",
-                          })}
+                          href={`${
+                            i18next.language === "en"
+                              ? ""
+                              : "/" + i18next.language
+                          }/my-bugs/`}
                           target="_blank"
                           rel="noreferrer"
                         />
