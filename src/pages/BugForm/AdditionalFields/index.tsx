@@ -2,15 +2,17 @@ import { Card } from "@appquality/appquality-design-system";
 import useCampaignData from "../useCampaignData";
 import { TextAdditionalField } from "./TextAdditionalField";
 import { SelectAdditionalField } from "./SelectAdditionalField";
+import { useTranslation } from "react-i18next";
 interface AdditionalFieldsProps {
   className?: string;
 }
 
 export const AdditionalFields = ({ className }: AdditionalFieldsProps) => {
   const { data } = useCampaignData();
+  const { t } = useTranslation();
   if (!data?.additionalFields) return null;
   return (
-    <Card className={className} title={"Additional fields"}>
+    <Card className={className} title={t("Additional fields")}>
       {data.additionalFields.map((field) => {
         switch (field.type) {
           case "text":
