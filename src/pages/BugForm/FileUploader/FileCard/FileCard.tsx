@@ -4,7 +4,11 @@ import { ReactComponent as UploadVideo } from "src/pages/BugForm/FileUploader/Fi
 import { ReactComponent as UploadSuccess } from "src/pages/BugForm/FileUploader/FileCard/assets/uploadSuccess.svg";
 import { ReactComponent as UploadFailed } from "src/pages/BugForm/FileUploader/FileCard/assets/uploadFailed.svg";
 import { ReactComponent as UploadTrash } from "src/pages/BugForm/FileUploader/FileCard/assets/uploadTrash.svg";
-import { Card, Text } from "@appquality/appquality-design-system";
+import {
+  aqBootstrapTheme,
+  Card,
+  Text,
+} from "@appquality/appquality-design-system";
 import {
   StyledFileCard,
   StyledUploading,
@@ -25,15 +29,19 @@ export const FileCard = ({
   const { fileName, status, fileType, mimeType, previewUrl, errorCode } =
     fileElement;
   const { t } = useTranslation();
+  const isDesktop = window.matchMedia(
+    `only screen and (min-width: ${aqBootstrapTheme.grid.breakpoints.lg})`
+  ).matches;
 
   const getPreview = () => {
     switch (fileType) {
       case "audio":
         return <UploadAudio />;
       case "video":
-        return mimeType === "video/mp4" ||
+        return (mimeType === "video/mp4" ||
           mimeType === "video/ogg" ||
-          mimeType === "video/webm" ? (
+          mimeType === "video/webm") &&
+          isDesktop ? (
           <video>
             <source src={previewUrl} type={mimeType} />
           </video>
