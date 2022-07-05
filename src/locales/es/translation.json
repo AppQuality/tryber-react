@@ -582,8 +582,8 @@
     },
     "BBUGFORM_UPLOAD_IMG_ICON": "Imagen",
     "BUGFORM_BUGDTLS_BUGTITLE": "Título",
-    "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "Format should be [Phase / Section] - Briefly Issue description",
-    "BUGFORM_BUGDTLS_BUGTITLE_PLACEHOLDER": "El campo debe rellenarse así: [Página o sección en la que has encontrado el bug] - Breve descripción del bug",
+    "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "El campo debe rellenarse así: [Página o sección en la que has encontrado el bug] - Breve descripción del bug",
+    "BUGFORM_BUGDTLS_BUGTITLE_PLACEHOLDER": "[Página del bug] - Breve descripción",
     "BUGFORM_BUGDTLS_COMMENTS": "Otros comentarios",
     "BUGFORM_BUGDTLS_COMMENTS_PLACEHOLDER": "Si hay algo más que quieras añadir, este es el lugar adecuado",
     "BUGFORM_BUGDTLS_DAY": "¿Qué día has encontrado el bug?",
@@ -601,7 +601,7 @@
     "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "1\n2\n3",
     "BUGFORM_BUGDTLS_TESTDVC": "Dispositivo de la campaña",
     "BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER": "Selecciona dispositivo",
-    "BUGFORM_BUGDTLS_TIME": "¿A qué hora?",
+    "BUGFORM_BUGDTLS_TIME": "¿A qué hora lo has encontrado?",
     "BUGFORM_BUGDTLS_TIME_PLACEHOLDER": "Selecciona el horario",
     "BUGFORM_BUGDTLS_TITLE": "Detalles del bug",
     "BUGFORM_BUGDTLS_TYPE": "Tipología de bug",
@@ -625,7 +625,7 @@
     "BUGFORM_UPLOAD_DRAGDROP_TXT": "Elige los archivos o arrástralos aquí.",
     "BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED": "Archivo no compatible",
     "BUGFORM_UPLOAD_ERROR_FILETOOBIG": "Archivo demasiado grande. Comprímelo y vuelve a subirlo",
-    "BUGFORM_UPLOAD_ERROR_GENERALERROR": "Se ha producido un error al subir el archivo. Intentar otra vez",
+    "BUGFORM_UPLOAD_ERROR_GENERALERROR": "Se ha producido un error al subir el archivo. Vuelve a intentarlo",
     "BUGFORM_UPLOAD_IMG_TXT": "Imagen",
     "BUGFORM_UPLOAD_TITLE": "Subir archivos",
     "BUGFORM_UPLOAD_VIDAUDIO_ICON": "Vídeo/audio",
@@ -675,14 +675,14 @@
         "This is an invalid format": "Este formato no es válido."
     },
     "Select placeholder": {
-        "Choose value": ""
+        "Choose value": "Selecciona"
     },
     "Available tags: <bugs_link> (Link to bugs page)": {
-        "BUGFORM_CONFIRMUPLOAD_TXT": ""
+        "BUGFORM_CONFIRMUPLOAD_TXT": "Véalo en la <bugs_link>página del bug</bugs_link>."
     },
-    "BUGFORM_CONFIRMUPLOAD_TITLE": "The bug you reported has been uploaded successfully!",
-    "BUGFORM_ERRORUPLOADREPORT": "",
+    "BUGFORM_CONFIRMUPLOAD_TITLE": "¡Bug subido con éxito!",
+    "BUGFORM_ERRORUPLOADREPORT": "Se ha producido un error al enviar el bug report. Vuelve a intentarlo",
     "bugform usecase select option": {
-        "Not a specific usecase": ""
+        "Not a specific usecase": "No especificado"
     }
 }
