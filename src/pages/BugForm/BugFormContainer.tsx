@@ -21,6 +21,7 @@ import styled from "styled-components";
 import * as yup from "yup";
 
 import { setMediaList } from "./bugFormSlice";
+import { dateOrTimeIsFuture } from "./dateOrTimeIsFuture";
 import { toISOStringWithTimezone } from "./toIsoStringWithTimezone";
 import useCampaignData from "./useCampaignData";
 
@@ -150,6 +151,7 @@ export const BugFormContainer = () => {
         value: additional[k],
       };
     });
+
     const serverDate = toISOStringWithTimezone(date, time);
 
     if (severity !== "" && replicability !== "" && type !== "") {
@@ -255,8 +257,26 @@ export const BugFormContainer = () => {
           date: values.date,
           time: values.time,
         };
-        setDisableSubmit(true);
-        postForm(submitValues, helpers.resetForm);
+        if (dateOrTimeIsFuture(submitValues.date, submitValues.time)) {
+          dispatch(
+            addMessage(
+              <div className="aq-text-primary">
+                <strong>
+                  {t("BUGFORM_ERROR_FUTURE_DATE_OR_TIME", {
+                    defaultValue:
+                      "You can't upload bug with a future date or future time",
+                  })}
+                </strong>
+              </div>,
+              "danger",
+              false
+            )
+          );
+          setDisableSubmit(false);
+        } else {
+          setDisableSubmit(true);
+          postForm(submitValues, helpers.resetForm);
+        }
       }}
     >
       {(formikProps: FormikProps<BugFormValues>) => {

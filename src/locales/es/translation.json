@@ -137,6 +137,7 @@
   "BUGFORM_EMPATHY_SAVEDEVICE_TITLE": "Añadir dispositivo",
   "BUGFORM_EMPATHY_SAVEDEVICE_TXT": "Todavía no tienes ningún dispositivo guardado: añade al menos un dispositivo para empezar a reportar bugs.\nUna vez que lo hayas hecho, ¡vuelve aquí y sigue con la campaña!",
   "BUGFORM_ERRORUPLOADREPORT": "Se ha producido un error al enviar el bug report. Vuelve a intentarlo",
+  "BUGFORM_ERROR_FUTURE_DATE_OR_TIME": "You can't upload bug with a future date or future time",
   "BUGFORM_MAINTITLE": "Reporta un bug",
   "BUGFORM_REPLICABILTY_MODAL_TITLE": "Bug replicability",
   "BUGFORM_SEVERITY_MODAL_TITLE": "Bug severity",

@@ -122,7 +122,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
                   key={field.value}
                   value={field.value}
                   id={"date"}
-                  maxDate={new Date()}
+                  // maxDate={new Date()}
                   locale={i18n.language}
                   placeholder={t("BUGFORM_BUGDTLS_DAY_PLACEHOLDER", {
                     defaultValue: "Pick a date",
