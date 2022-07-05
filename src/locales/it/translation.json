@@ -675,14 +675,14 @@
         "This is an invalid format": "Questo formato non è valido"
     },
     "Select placeholder": {
-        "Choose value": ""
+        "Choose value": "Seleziona"
     },
     "Available tags: <bugs_link> (Link to bugs page)": {
-        "BUGFORM_CONFIRMUPLOAD_TXT": ""
+        "BUGFORM_CONFIRMUPLOAD_TXT": "Vai alla <bugs_link>pagina del bug</bugs_link> per vederlo."
     },
-    "BUGFORM_CONFIRMUPLOAD_TITLE": "The bug you reported has been uploaded successfully!",
-    "BUGFORM_ERRORUPLOADREPORT": "Something went wrong! Try resubmitting the bug",
+    "BUGFORM_CONFIRMUPLOAD_TITLE": "Il bug che hai segnalato è stato caricato con successo!",
+    "BUGFORM_ERRORUPLOADREPORT": "Errore nell'invio del bug report. Riprova",
     "bugform usecase select option": {
-        "Not a specific usecase": ""
+        "Not a specific usecase": "Non specificato"
     }
 }
