@@ -675,14 +675,14 @@
         "This is an invalid format": "This format is invalid"
     },
     "Select placeholder": {
-        "Choose value": ""
+        "Choose value": "Select"
     },
     "Available tags: <bugs_link> (Link to bugs page)": {
-        "BUGFORM_CONFIRMUPLOAD_TXT": ""
+        "BUGFORM_CONFIRMUPLOAD_TXT": "See it on to <bugs_link>bug page</bugs_link>."
     },
-    "BUGFORM_CONFIRMUPLOAD_TITLE": "The bug you reported has been uploaded successfully!",
-    "BUGFORM_ERRORUPLOADREPORT": "Something went wrong! Try resubmitting the bug",
+    "BUGFORM_CONFIRMUPLOAD_TITLE": "Bug uploaded successfully!",
+    "BUGFORM_ERRORUPLOADREPORT": "An error occurred while submitting the bug report. Try again",
     "bugform usecase select option": {
-        "Not a specific usecase": "Not a specific usecase"
+        "Not a specific usecase": "Not specified"
     }
 }
