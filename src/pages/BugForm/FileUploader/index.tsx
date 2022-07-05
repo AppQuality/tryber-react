@@ -41,8 +41,8 @@ export const FileUploader = () => {
       </Text>
       <StyledFilesTypes className="aq-mb-3">
         <FileType className="file-type-margin" type="image" />
-        <FileType className="file-type-margin" type="document" />
-        <FileType type="audiovideo" />
+        <FileType className="file-type-margin" type="audiovideo" />
+        <FileType type="document" />
       </StyledFilesTypes>
       <FileDropzone />
       <FileList />
