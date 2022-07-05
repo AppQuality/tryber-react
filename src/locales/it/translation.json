@@ -147,6 +147,7 @@
   "BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED": "File non supportato",
   "BUGFORM_UPLOAD_ERROR_FILETOOBIG": "La dimensione del file è troppo grande. Riducilo e ricaricalo",
   "BUGFORM_UPLOAD_ERROR_GENERALERROR": "Errore nel caricamento del file. Riprova",
+  "BUGFORM_UPLOAD_FILE": "Click here to upload your files!",
   "BUGFORM_UPLOAD_IMG_TXT": "Immagine",
   "BUGFORM_UPLOAD_TITLE": "Carica i file",
   "BUGFORM_UPLOAD_VIDAUDIO_ICON": "Video/Audio",
