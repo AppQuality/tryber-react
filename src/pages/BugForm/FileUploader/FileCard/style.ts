@@ -64,12 +64,14 @@ export const StyledFileCard = styled.div`
         justify-content: flex-end;
 
         svg {
-          width: 36px;
-          height: 36px;
+          width: 24px;
+          height: 24px;
         }
 
         .file-delete {
           cursor: pointer;
+          width: 36px;
+          height: 36px;
         }
       }
     }
@@ -104,8 +106,12 @@ export const StyledFileCard = styled.div`
         .file-card-right {
           width: 15%;
           svg {
-            width: 21px;
-            height: 21px;
+            width: 18px;
+            height: 18px;
+          }
+          .file-delete {
+            width: 22px;
+            height: 22px;
           }
         }
       }
