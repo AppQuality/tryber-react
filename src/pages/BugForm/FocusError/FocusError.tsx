@@ -8,7 +8,14 @@ const FocusError = () => {
     if (isSubmitting && !isValidating) {
       let keys = Object.keys(errors);
       if (keys.length > 0) {
-        const selector = `[name=${keys[0]}]`;
+        keys = keys.filter((k) => k !== "additional" && k !== "media");
+        const e = errors as any;
+        if (e.additional) {
+          let additionalKeys = Object.keys(e.additional);
+          additionalKeys = additionalKeys.map((a) => `additional.${a}`);
+          keys = keys.concat(additionalKeys);
+        }
+        const selector = `[id="${keys[0]}"]`;
         const errorElement = document.querySelector(selector) as HTMLElement;
         if (errorElement) {
           errorElement.scrollIntoView({ behavior: "smooth", block: "center" });
