@@ -39,7 +39,7 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const now = new Date();
+let now = new Date();
 
 export const BugFormContainer = () => {
   const { data, device } = useCampaignData();
@@ -211,6 +211,7 @@ export const BugFormContainer = () => {
               false
             )
           );
+          now = new Date();
           setDisableSubmit(false);
           resetForm();
           dispatch(setMediaList([]));
