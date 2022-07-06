@@ -1,7 +1,4 @@
-import {
-  aqBootstrapTheme,
-  Dropzone,
-} from "@appquality/appquality-design-system";
+import { Dropzone } from "@appquality/appquality-design-system";
 import { useField } from "formik";
 import { useEffect } from "react";
 import { usePostUsersMeCampaignsByCampaignIdMediaMutation } from "src/services/tryberApi";
@@ -16,10 +13,6 @@ export const FileDropzone = () => {
   const [createMedia] = usePostUsersMeCampaignsByCampaignIdMediaMutation();
   const campaign = useCampaignData();
   const [input, meta, helper] = useField("media");
-
-  const isDesktop = window.matchMedia(
-    `only screen and (min-width: ${aqBootstrapTheme.grid.breakpoints.lg})`
-  ).matches;
 
   const { mediaList } = useAppSelector((state) => state.bugForm);
   const dispatch = useAppDispatch();
@@ -58,15 +51,9 @@ export const FileDropzone = () => {
 
   return (
     <Dropzone
-      description={
-        isDesktop
-          ? t("BUGFORM_UPLOAD_DRAGDROP_TXT", {
-              defaultValue: "Click here to upload your files or drag and drop!",
-            })
-          : t("BUGFORM_UPLOAD_FILE", {
-              defaultValue: "Click here to upload your files!",
-            })
-      }
+      description={t("BUGFORM_UPLOAD_DRAGDROP_TXT", {
+        defaultValue: "Click here to upload your files or drag and drop!",
+      })}
       accept={campaign.data?.validFileExtensions}
       disabled={false}
       onAccepted={(acceptedFiles) => uploadMedia(acceptedFiles)}

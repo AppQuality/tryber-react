@@ -148,7 +148,6 @@
   "BUGFORM_UPLOAD_ERROR_FILENOTSUPPORTED": "File not supported",
   "BUGFORM_UPLOAD_ERROR_FILETOOBIG": "File too big. Reduce it and upload it again",
   "BUGFORM_UPLOAD_ERROR_GENERALERROR": "An error occurred while uploading your file. Try again.",
-  "BUGFORM_UPLOAD_FILE": "Click here to upload your files!",
   "BUGFORM_UPLOAD_IMG_TXT": "Image",
   "BUGFORM_UPLOAD_TITLE": "Upload files",
   "BUGFORM_UPLOAD_VIDAUDIO_ICON": "Video/Audio",
@@ -686,5 +685,6 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": ""
   },
+  "BUGFORM_UPLOAD_FILE": "Click here to upload your files!",
   "This is an invalid format": "File not supported"
 }
