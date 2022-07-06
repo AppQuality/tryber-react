@@ -1,8 +1,8 @@
 {
-  "/payment_conditions": "https://tryber.me/it/condizioni-di-pagamento/",
-  "Bug details help article": "",
-  "Fiscal type help article": "https://tryber.me/it/per-saperne-di-piu-pagamenti-privacy/",
-  "Ranking help article": "https://tryber.me/it/regolamento-della-nuova-classifica-di-tryber-edizione-2022/",
-  "Wallet help article": "https://tryber.me/it/portafoglio-come-funziona/",
-  "tax id help article": "https://tryber.me/it/cosa-e-il-codice-fiscale/"
+    "Fiscal type help article": "https://tryber.me/it/per-saperne-di-piu-pagamenti-privacy/",
+    "/payment_conditions": "https://tryber.me/it/condizioni-di-pagamento/",
+    "Wallet help article": "https://tryber.me/it/portafoglio-come-funziona/",
+    "tax id help article": "https://tryber.me/it/cosa-e-il-codice-fiscale/",
+    "Ranking help article": "https://tryber.me/it/regolamento-della-nuova-classifica-di-tryber-edizione-2022/",
+    "Bug details help article": "https://tryber.me/it/regole-di-scrittura-dei-bug/"
 }
