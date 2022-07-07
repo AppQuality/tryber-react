@@ -598,10 +598,10 @@
     "BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER": "Selecciona gravedad",
     "BUGFORM_BUGDTLS_STEPBYSTEP": "Descripción paso a paso",
     "BUGFORM_BUGDTLS_STEPBYSTEP_ERROR": "Describe una acción distinta en cada paso e incluye cada detalle",
-    "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "1\n2\n3",
+    "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "1. \n2. \n3. ",
     "BUGFORM_BUGDTLS_TESTDVC": "Dispositivo de la campaña",
     "BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER": "Selecciona dispositivo",
-    "BUGFORM_BUGDTLS_TIME": "¿A qué hora lo has encontrado?",
+    "BUGFORM_BUGDTLS_TIME": "¿A qué hora has encontrado el bug?",
     "BUGFORM_BUGDTLS_TIME_PLACEHOLDER": "Selecciona el horario",
     "BUGFORM_BUGDTLS_TITLE": "Detalles del bug",
     "BUGFORM_BUGDTLS_TYPE": "Tipología de bug",
@@ -617,9 +617,9 @@
     "BUGFORM_EMPATHY_SAVEDEVICE_TITLE": "Añadir dispositivo",
     "BUGFORM_EMPATHY_SAVEDEVICE_TXT": "Todavía no tienes ningún dispositivo guardado: añade al menos un dispositivo para empezar a reportar bugs.\nUna vez que lo hayas hecho, recarga esta página y sigue con la campaña!",
     "BUGFORM_MAINTITLE": "Reporta un bug",
-    "BUGFORM_REPLICABILTY_MODAL_TITLE": "Bug replicability",
-    "BUGFORM_SEVERITY_MODAL_TITLE": "Bug severity",
-    "BUGFORM_TYPE_MODAL_TITLE": "Bug type",
+    "BUGFORM_REPLICABILTY_MODAL_TITLE": "Replicabilidad del bug",
+    "BUGFORM_SEVERITY_MODAL_TITLE": "Nivel de gravedad del bug",
+    "BUGFORM_TYPE_MODAL_TITLE": "Tipología de bug",
     "BUGFORM_UPLOAD_DOC_ICON": "Archivo",
     "BUGFORM_UPLOAD_DOC_TXT": "Archivo",
     "BUGFORM_UPLOAD_DRAGDROP_TXT": "Elige los archivos o arrástralos aquí.",
@@ -663,8 +663,8 @@
         "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "En esta campaña no se admiten bugs de tipología: {{invalid}}"
     },
     "{{num}} uploaded": {
-        "BUGFORM_UPLOAD_PROGRESS": "{{num}} subidos",
-        "BUGFORM_UPLOAD_PROGRESS_plural": ""
+        "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
+        "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
     },
     "This is an invalid format": "Archivo no compatible",
     "BUGREPLICABILITY_TOOLTIP_TXT": "Más información",

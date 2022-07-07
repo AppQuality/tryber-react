@@ -598,10 +598,10 @@
     "BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER": "Select severity",
     "BUGFORM_BUGDTLS_STEPBYSTEP": "Step-by-step description",
     "BUGFORM_BUGDTLS_STEPBYSTEP_ERROR": "Describe a separate action in each step and include every detail",
-    "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "1\n2\n3",
+    "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "1. \n2. \n3. ",
     "BUGFORM_BUGDTLS_TESTDVC": "Campaign device",
     "BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER": "Select device",
-    "BUGFORM_BUGDTLS_TIME": "At what time did you find it?",
+    "BUGFORM_BUGDTLS_TIME": "At what time did you find the bug?",
     "BUGFORM_BUGDTLS_TIME_PLACEHOLDER": "Pick a time",
     "BUGFORM_BUGDTLS_TITLE": "Bug details",
     "BUGFORM_BUGDTLS_TYPE": "Bug type",
@@ -664,7 +664,7 @@
     },
     "{{num}} uploaded": {
         "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
-        "BUGFORM_UPLOAD_PROGRESS_plural": ""
+        "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
     },
     "This is an invalid format": "File not supported",
     "BUGREPLICABILITY_TOOLTIP_TXT": "Learn more",
@@ -678,7 +678,7 @@
         "Choose value": "Select"
     },
     "Available tags: <bugs_link> (Link to bugs page)": {
-        "BUGFORM_CONFIRMUPLOAD_TXT": "See it on to <bugs_link>bug page</bugs_link>."
+        "BUGFORM_CONFIRMUPLOAD_TXT": "See it on the <bugs_link>bug page</bugs_link>."
     },
     "BUGFORM_CONFIRMUPLOAD_TITLE": "Bug uploaded successfully!",
     "BUGFORM_ERRORUPLOADREPORT": "An error occurred while submitting the bug report. Try again",

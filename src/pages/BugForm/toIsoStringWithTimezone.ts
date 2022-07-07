@@ -5,15 +5,15 @@ export const toISOStringWithTimezone = (date: Date, time: Date) => {
   return (
     date.getFullYear() +
     "-" +
-    pad(date.getUTCMonth() + 1) +
+    pad(date.getMonth() + 1) +
     "-" +
-    pad(date.getUTCDate()) +
+    pad(date.getDate()) +
     "T" +
-    pad(time.getUTCHours()) +
+    pad(time.getHours()) +
     ":" +
-    pad(time.getUTCMinutes()) +
+    pad(time.getMinutes()) +
     ":" +
-    pad(time.getUTCSeconds()) +
+    pad(time.getSeconds()) +
     ".000" +
     diff +
     pad(tzOffset / 60) +

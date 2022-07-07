@@ -598,10 +598,10 @@
     "BUGFORM_BUGDTLS_SEVERITY_PLACEHOLDER": "Seleziona livello",
     "BUGFORM_BUGDTLS_STEPBYSTEP": "Descrizione step by step",
     "BUGFORM_BUGDTLS_STEPBYSTEP_ERROR": "Descrivi per ogni step un’unica azione in modo preciso e dettagliato",
-    "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "1\n2\n3",
+    "BUGFORM_BUGDTLS_STEPBYSTEP_PLACEHOLDER": "1. \n2. \n3. ",
     "BUGFORM_BUGDTLS_TESTDVC": "Dispositivo della campagna",
     "BUGFORM_BUGDTLS_TESTDVC_PLACEHOLDER": "Seleziona dispositivo",
-    "BUGFORM_BUGDTLS_TIME": "A che ora l'hai trovato?",
+    "BUGFORM_BUGDTLS_TIME": "A che ora hai trovato il bug?",
     "BUGFORM_BUGDTLS_TIME_PLACEHOLDER": "Scegli l'orario",
     "BUGFORM_BUGDTLS_TITLE": "Dettagli del bug",
     "BUGFORM_BUGDTLS_TYPE": "Tipologia di bug",
@@ -617,9 +617,9 @@
     "BUGFORM_EMPATHY_SAVEDEVICE_TITLE": "Aggiungi un dispositivo",
     "BUGFORM_EMPATHY_SAVEDEVICE_TXT": "Non hai nessun dispositivo salvato: aggiungine almeno uno per poter iniziare a segnalare i bug.\nAppena fatto, aggiorna questa pagina per continuare la campagna!",
     "BUGFORM_MAINTITLE": "Segnala un bug",
-    "BUGFORM_REPLICABILTY_MODAL_TITLE": "Bug replicability",
-    "BUGFORM_SEVERITY_MODAL_TITLE": "Bug severity",
-    "BUGFORM_TYPE_MODAL_TITLE": "Bug type",
+    "BUGFORM_REPLICABILTY_MODAL_TITLE": "Replicabilità del bug",
+    "BUGFORM_SEVERITY_MODAL_TITLE": "Livello di gravità del bug",
+    "BUGFORM_TYPE_MODAL_TITLE": "Tipologia di bug",
     "BUGFORM_UPLOAD_DOC_ICON": "Documento",
     "BUGFORM_UPLOAD_DOC_TXT": "Documento",
     "BUGFORM_UPLOAD_DRAGDROP_TXT": "Seleziona i file da una cartella o trascinali qui",
@@ -663,8 +663,8 @@
         "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "In questa campagna non sono ammessi bug di tipologia: {{invalid}}"
     },
     "{{num}} uploaded": {
-        "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricati",
-        "BUGFORM_UPLOAD_PROGRESS_plural": ""
+        "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
+        "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
     },
     "This is an invalid format": "File non supportato",
     "BUGREPLICABILITY_TOOLTIP_TXT": "Ti diciamo di più",
@@ -680,7 +680,7 @@
     "Available tags: <bugs_link> (Link to bugs page)": {
         "BUGFORM_CONFIRMUPLOAD_TXT": "Vai alla <bugs_link>pagina del bug</bugs_link> per vederlo."
     },
-    "BUGFORM_CONFIRMUPLOAD_TITLE": "Il bug che hai segnalato è stato caricato con successo!",
+    "BUGFORM_CONFIRMUPLOAD_TITLE": "Bug caricato con successo!",
     "BUGFORM_ERRORUPLOADREPORT": "Errore nell'invio del bug report. Riprova",
     "bugform usecase select option": {
         "Not a specific usecase": "Non specificato"
