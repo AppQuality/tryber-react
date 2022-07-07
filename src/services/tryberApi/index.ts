@@ -351,6 +351,16 @@ const injectedRtkApi = api.injectEndpoints({
         params: { showExpired: queryArg.showExpired, order: queryArg.order },
       }),
     }),
+    postUsersMeCampaignsByCampaignIdBugs: build.mutation<
+      PostUsersMeCampaignsByCampaignIdBugsApiResponse,
+      PostUsersMeCampaignsByCampaignIdBugsApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}/bugs`,
+        method: "POST",
+        body: queryArg.body,
+      }),
+    }),
     getUsersMePopupsByPopup: build.query<
       GetUsersMePopupsByPopupApiResponse,
       GetUsersMePopupsByPopupApiArg
@@ -568,6 +578,32 @@ const injectedRtkApi = api.injectEndpoints({
     }),
     getLevels: build.query<GetLevelsApiResponse, GetLevelsApiArg>({
       query: () => ({ url: `/levels` }),
+    }),
+    getUsersMeCampaignsByCampaignId: build.query<
+      GetUsersMeCampaignsByCampaignIdApiResponse,
+      GetUsersMeCampaignsByCampaignIdApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}`,
+      }),
+    }),
+    postUsersMeCampaignsByCampaignIdMedia: build.mutation<
+      PostUsersMeCampaignsByCampaignIdMediaApiResponse,
+      PostUsersMeCampaignsByCampaignIdMediaApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}/media`,
+        method: "POST",
+        body: queryArg.body,
+      }),
+    }),
+    getUsersMeCampaignsByCampaignIdDevices: build.query<
+      GetUsersMeCampaignsByCampaignIdDevicesApiResponse,
+      GetUsersMeCampaignsByCampaignIdDevicesApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}/devices`,
+      }),
     }),
   }),
   overrideExisting: false,
@@ -830,6 +866,7 @@ export type PostMediaApiResponse = /** status 200 OK */ {
   }[];
   failed?: {
     name: string;
+    errorCode: string;
   }[];
 };
 export type PostMediaApiArg = {
@@ -1152,6 +1189,66 @@ export type GetUsersMePopupsApiArg = {
   /** How to order values (ASC, DESC) */
   order?: "ASC" | "DESC";
 };
+export type PostUsersMeCampaignsByCampaignIdBugsApiResponse =
+  /** status 200 OK */ {
+    id: number;
+    internalId?: string;
+    testerId: number;
+    title: string;
+    description: string;
+    status: "PENDING" | "APPROVED" | "REFUSED" | "NEED-REVIEW";
+    expected: string;
+    current: string;
+    severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+    replicability: "ONCE" | "SOMETIMES" | "ALWAYS";
+    type:
+      | "CRASH"
+      | "GRAPHIC"
+      | "MALFUNCTION"
+      | "OTHER"
+      | "PERFORMANCE"
+      | "SECURITY"
+      | "TYPO"
+      | "USABILITY";
+    notes: string;
+    usecase: string;
+    device: UserDevice;
+    media: string[];
+    additional?: {
+      slug: string;
+      value: string;
+    }[];
+  };
+export type PostUsersMeCampaignsByCampaignIdBugsApiArg = {
+  /** the campaign id */
+  campaignId: string;
+  body: {
+    title: string;
+    description: string;
+    expected: string;
+    current: string;
+    severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+    replicability: "ONCE" | "SOMETIMES" | "ALWAYS";
+    type:
+      | "CRASH"
+      | "GRAPHIC"
+      | "MALFUNCTION"
+      | "OTHER"
+      | "PERFORMANCE"
+      | "SECURITY"
+      | "TYPO"
+      | "USABILITY";
+    notes: string;
+    lastSeen: string;
+    usecase: number;
+    device: number;
+    media: string[];
+    additional?: {
+      slug: string;
+      value: string;
+    }[];
+  };
+};
 export type GetUsersMePopupsByPopupApiResponse = /** status 200 OK */ {
   id?: number;
 } & Popup;
@@ -1442,6 +1539,63 @@ export type DeletePaymentsByPaymentIdApiArg = {
 };
 export type GetLevelsApiResponse = /** status 200 OK */ LevelDefinition[];
 export type GetLevelsApiArg = void;
+export type GetUsersMeCampaignsByCampaignIdApiResponse = /** status 200 OK */ {
+  id: number;
+  title: string;
+  language?: {
+    code: string;
+    message: string;
+  };
+  titleRule?: boolean;
+  minimumMedia: number;
+  useCases: {
+    id: number;
+    name: string;
+  }[];
+  additionalFields?: CampaignAdditionalField[];
+  bugTypes: {
+    valid: string[];
+    invalid: string[];
+  };
+  bugSeverity: {
+    valid: string[];
+    invalid: string[];
+  };
+  bugReplicability: {
+    valid: string[];
+    invalid: string[];
+  };
+  hasBugForm: boolean;
+  devices?: ({
+    id: number;
+  } & UserDevice)[];
+  validFileExtensions: string[];
+};
+export type GetUsersMeCampaignsByCampaignIdApiArg = {
+  campaignId: string;
+};
+export type PostUsersMeCampaignsByCampaignIdMediaApiResponse =
+  /** status 200 OK */ {
+    files?: {
+      name: string;
+      path: string;
+    }[];
+    failed?: {
+      name: string;
+      errorCode: "FILE_TOO_BIG" | "INVALID_FILE_EXTENSION" | "GENERIC_ERROR";
+    }[];
+  };
+export type PostUsersMeCampaignsByCampaignIdMediaApiArg = {
+  campaignId: string;
+  body: {
+    media?: {} | string[];
+  };
+};
+export type GetUsersMeCampaignsByCampaignIdDevicesApiResponse =
+  /** status 200 OK */ UserDevice[];
+export type GetUsersMeCampaignsByCampaignIdDevicesApiArg = {
+  campaignId: string;
+};
 export type Project = {
   name?: string;
 };
@@ -1642,6 +1796,20 @@ export type LevelDefinition = {
   reach?: number;
   hold?: number;
 };
+export type CampaignAdditionalField = {
+  name: string;
+  slug: string;
+  error: string;
+} & (
+  | {
+      type: "select";
+      options: string[];
+    }
+  | {
+      type: "text";
+      regex: string;
+    }
+);
 export const {
   useGetQuery,
   usePostAuthenticateMutation,
@@ -1687,6 +1855,7 @@ export const {
   usePutUsersMeFiscalMutation,
   useGetUsersMeCampaignsQuery,
   useGetUsersMePopupsQuery,
+  usePostUsersMeCampaignsByCampaignIdBugsMutation,
   useGetUsersMePopupsByPopupQuery,
   useGetUsersMeDevicesQuery,
   usePostUsersMeDevicesMutation,
@@ -1711,4 +1880,7 @@ export const {
   usePostPaymentsByPaymentIdMutation,
   useDeletePaymentsByPaymentIdMutation,
   useGetLevelsQuery,
+  useGetUsersMeCampaignsByCampaignIdQuery,
+  usePostUsersMeCampaignsByCampaignIdMediaMutation,
+  useGetUsersMeCampaignsByCampaignIdDevicesQuery,
 } = injectedRtkApi;
