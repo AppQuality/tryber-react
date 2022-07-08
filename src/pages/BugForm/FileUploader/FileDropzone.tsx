@@ -34,19 +34,21 @@ export const FileDropzone = () => {
   };
 
   const uploadMedia = async (files: File[]) => {
-    const formData = new FormData();
-    files.forEach((f) => formData.append("media", f));
-    if (!campaign.data) return;
-    const data = createMedia({
-      campaignId: campaign.data.id.toString(),
-      // @ts-ignore
-      body: formData,
+    files.forEach((f) => {
+      const formData = new FormData();
+      formData.append("media", f);
+      if (!campaign.data) return;
+      const data = createMedia({
+        campaignId: campaign.data.id.toString(),
+        // @ts-ignore
+        body: formData,
+      });
+      dispatch(
+        appendMediaList(
+          createFilesElementList([f], "uploading", data.requestId)
+        )
+      );
     });
-    dispatch(
-      appendMediaList(
-        createFilesElementList(files, "uploading", data.requestId)
-      )
-    );
   };
 
   return (
