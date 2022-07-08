@@ -222,6 +222,8 @@ export const BugFormContainer = () => {
           setDisableSubmit(false);
           resetForm();
           dispatch(setMediaList([]));
+          const elements = document.getElementsByTagName("body");
+          elements[0].scrollIntoView({ behavior: "smooth", block: "start" });
         })
         .catch((e) => {
           dispatch(
