@@ -60,10 +60,10 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
         <Devices />
       </div>
       <div className="aq-mb-3">
-        <BugSeverity />
+        <BugType />
       </div>
       <div className="aq-mb-3">
-        <BugType />
+        <BugSeverity />
       </div>
       <div className="aq-mb-3">
         <BugReplicability />
