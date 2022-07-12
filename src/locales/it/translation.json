@@ -416,6 +416,9 @@
   "The changes to your device were successfully saved": "Le modifiche al tuo dispositivo sono state salvate con successo",
   "The deletion of your account ({{testerId}}) <bold>will be irreversible</bold>.<br></br><br></br>You will not be able to continue earning money with us. <br></br>Are you sure you want to leave our community?": "La cancellazione dell'account ({{testerId}}) <bold>sarà irreversibile</bold>.<br></br><br></br>Non potrai continuare a guadagnare con noi. <br></br>Sei sicur* di voler lasciarci?",
   "The following informations are retrived from your fiscal profile and will be used to generate your receipt": "I dati seguenti provengono dal tuo profilo fiscale e li ritroverai nella ricevuta di pagamento.",
+  "The level reached by {{currentMonth}} {{lastDayMonth}} will be updated the following month": {
+    "__RANKING_RECAP_DESCRIPTION_": ""
+  },
   "The manual is coming soon!": "Il manuale è in arrivo!",
   "The password must be at least 6 characters long, contain an uppercase letter, a lowercase letter and a number.": "La password deve essere lunga almeno 6 caratteri, contenere una lettera maiuscola, una lettera minuscola e un numero.",
   "There are currently no completed campaigns. You can relax, finish the active ones or apply in the new available campaigns!": "Al momento non ci sono Campagne terminate. Puoi rilassarti, terminare quelle attive oppure candidarti nelle nuove Campagne disponibili!",
