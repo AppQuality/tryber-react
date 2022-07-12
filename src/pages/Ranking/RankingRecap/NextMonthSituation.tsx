@@ -1,4 +1,5 @@
 import { Text, Title } from "@appquality/appquality-design-system";
+import i18next from "i18next";
 import { ReactNode } from "react";
 import { ArrowLeftRight, ArrowRight } from "react-bootstrap-icons";
 import { Trans } from "react-i18next";
@@ -142,6 +143,15 @@ export const NextMonthSituation = ({
       />
     );
   };
+
+  const getCurrentMonth = () =>
+    new Date().toLocaleString(i18next.language, { month: "long" });
+
+  const getLastDayMonth = () => {
+    const today = new Date();
+    return new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+  };
+
   return (
     <StyledRecap>
       <Title size="s" className="aq-mb-2">
@@ -150,6 +160,16 @@ export const NextMonthSituation = ({
           defaults="your monthly progress"
         />
       </Title>
+      <Text className="aq-mb-3" small>
+        <Trans
+          i18nKey="The level reached by {{currentMonth}} {{lastDayMonth}} will be updated the following month:::__RANKING_RECAP_DESCRIPTION_"
+          defaults="Earn the experience points you need to not downgrade, keep your level and move on to the next one. The level reached by {{currentMonth}} {{lastDayMonth}} will be updated the following month."
+          values={{
+            lastDayMonth: getLastDayMonth(),
+            currentMonth: getCurrentMonth(),
+          }}
+        />
+      </Text>
       <Text className="aq-mb-2">
         <img
           src={starIcon}
