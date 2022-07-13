@@ -37,12 +37,6 @@ export const RankingInfo = () => {
       })}
       shadow
     >
-      <Text className="aq-mb-2">
-        {t("__RANKING_LEGEND_PARAGRAPH_MAX: 100", {
-          defaultValue:
-            "Earn a minimum number of exp each month to maintain or advance a level:",
-        })}
-      </Text>
       {expLegendConfig.map((exp) => (
         <Experience
           key={exp.description}
