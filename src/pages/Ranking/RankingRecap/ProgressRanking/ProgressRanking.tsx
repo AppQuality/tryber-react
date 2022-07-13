@@ -25,6 +25,9 @@ const StyledProgressRanking = styled.div<{
     &:not(:last-child) {
       margin-right: ${(p) => p.stepMargin};
     }
+    &:last-child {
+      margin-left: 0.45em;
+    }
     &:not(.no-after) {
       position: relative;
       &:after {
@@ -34,7 +37,7 @@ const StyledProgressRanking = styled.div<{
         width: 5px;
         height: 100%;
         top: 50%;
-        left: 9px;
+        left: 11px;
         background: ${(p) => p.theme.colors.gray100};
       }
     }
@@ -52,11 +55,14 @@ const StyledProgressRanking = styled.div<{
     padding-top: 0;
 
     .level-step {
+      &:last-child {
+        margin-left: 0;
+      }
       &:not(.no-after) {
         &:after {
           height: 5px;
           width: calc(100% + ${(p) => p.stepMargin});
-          top: 8px;
+          top: 12px;
           left: 50%;
         }
       }
