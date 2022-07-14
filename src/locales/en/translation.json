@@ -332,6 +332,7 @@
     "__RANKING_TITLE_LABEL_MONTH_MAX: 45": "Complete ranking | {{level}} level"
   },
   "PC Type: <bold>{{pc_type}}</bold>": "PC Type: <bold>{{pc_type}}</bold>",
+  "PROFILE_EMAIL_ALREADY_EXISTS": "Email already exists",
   "Page %current% / %total%": "Page %current% / %total%",
   "Paid": "Paid",
   "Paid On": "Paid on",

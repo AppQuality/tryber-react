@@ -332,6 +332,7 @@
     "__RANKING_TITLE_LABEL_MONTH_MAX: 45": "Clasificación total | Nivel {{level}}"
   },
   "PC Type: <bold>{{pc_type}}</bold>": "Tipo de PC: <bold>{{pc_type}}</bold>",
+  "PROFILE_EMAIL_ALREADY_EXISTS": "Email already exists",
   "Page %current% / %total%": "Página %actual% / %total%",
   "Paid": "Pagado",
   "Paid On": "Pagado el",

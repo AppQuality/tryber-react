@@ -24,7 +24,6 @@ import CitySelect from "src/features/CitySelect";
 import CountrySelect from "src/features/CountrySelect";
 import { HalfColumnButton } from "src/features/HalfColumnButton";
 import { SkeletonTab } from "src/pages/Profile/SkeletonTab";
-import siteWideMessages from "src/redux/siteWideMessages";
 import { updateProfile } from "src/redux/user/actions/updateProfile";
 import API from "src/utils/api";
 import * as yup from "yup";
@@ -41,7 +40,6 @@ const TabBase = () => {
     shallowEqual
   );
   const [languages, setLanguages] = useState<SelectType.Option[]>([]);
-  const { add } = siteWideMessages();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -114,41 +112,37 @@ const TabBase = () => {
       initialTouched={initialTouched}
       initialValues={initialUserValues}
       onSubmit={async (values, helpers) => {
-        try {
-          let newLanguages: number[] = [];
-          values.languages.forEach((val) => {
-            if (typeof val.value === "string") {
-              newLanguages.push(parseInt(val.value));
-            }
-          });
-          const profileDataToSend: any = { ...values };
-          if (profileDataToSend.email === user?.email) {
-            delete profileDataToSend.email;
+        let newLanguages: number[] = [];
+        values.languages.forEach((val) => {
+          if (typeof val.value === "string") {
+            newLanguages.push(parseInt(val.value));
           }
-          dispatch(
-            updateProfile(
-              {
-                profile: profileDataToSend,
-                languages: newLanguages,
-              },
-              t(
-                "Your profile doesn't match with your fiscal profile, please check your data"
-              ),
-              t("Your fiscal profile is now verified")
-            )
-          );
-          add({
-            message: t("Profile data correctly updated."),
-            type: "success",
-          });
-          helpers.setSubmitting(false);
-          helpers.resetForm({ values });
-        } catch (e) {
-          add({
-            message: t("We couldn't update your profile. Try again."),
-            type: "warning",
-          });
+        });
+        const profileDataToSend: any = { ...values };
+        if (profileDataToSend.email === user?.email) {
+          delete profileDataToSend.email;
         }
+        dispatch(
+          updateProfile(
+            {
+              profile: profileDataToSend,
+              languages: newLanguages,
+            },
+            t(
+              "Your profile doesn't match with your fiscal profile, please check your data"
+            ),
+            t("Your fiscal profile is now verified"),
+            t("Profile data correctly updated."),
+            t("We couldn't update your profile. Try again."),
+            t("PROFILE_EMAIL_ALREADY_EXISTS", {
+              defaultValue: "Email already exists",
+            }),
+            () => {
+              helpers.setSubmitting(false);
+              helpers.resetForm({ values });
+            }
+          )
+        );
       }}
     >
       {(formikProps: FormikProps<BaseFields>) => {
