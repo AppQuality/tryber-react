@@ -94,7 +94,7 @@ export default () => {
           width="500"
           height="294"
           allow="fullscreen"
-          src="https://www.youtube.com/embed/bPr1XILdV4g?rel=0"
+          src="https://www.youtube.com/watch?v=Qc9almPQc4w"
         ></iframe>
       </VideoContainer>
     </SlideContainer>
