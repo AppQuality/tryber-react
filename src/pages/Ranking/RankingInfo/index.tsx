@@ -31,6 +31,7 @@ export const RankingInfo = () => {
 
   return (
     <Card
+      className="ranking-info-card"
       title={t("__RANKING_LEGEND_TITLE_MAX: 35", {
         defaultValue: "How to level up",
       })}
