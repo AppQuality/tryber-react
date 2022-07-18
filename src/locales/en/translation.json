@@ -502,7 +502,7 @@
     "no data": "—",
     "<bold>{{pointsToAdvance}}</bold> points to advance to level {{nextLevel}}": {
         "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70": "<bold>{{pointsToAdvance}}</bold> exp points to reach {{nextLevel}} level",
-        "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70_plural": "<bold>{{pointsToAdvance}}</bold> exp points to reach Bronze level {{nextLevel}}"
+        "__RANKING_PROGRESS_NEXTLVL_POINTS_MAX: 70_plural": "<bold>{{pointsToAdvance}}</bold> exp points to reach {{nextLevel}} level"
     },
     "<bold>{{pointsToKeepLevel}}</bold> points to keep level": {
         "__RANKING_PROGRESS_HOLDLVL_POINTS_MAX: 70": "<bold>{{pointsToKeepLevel}}</bold> exp points to hold {{level}} level",
@@ -517,7 +517,7 @@
         "__RANKING_EXP_POINTS_MAX:25_plural": "<bold>{{points}}</bold> total exp points"
     },
     "<bold>{{rank}}</bold> in {{level}} ranking": {
-        "__RANKING_POSITION_MAX: 30": "<bold>{{rank}}</bold> in {{level}} ranking"
+        "__RANKING_POSITION_MAX: 30": "<bold>{{rank}}°</bold> in {{level}} ranking"
     },
     "last month ({{lastMonth}})": {
         "__RANKING_LAST_MONTH_MAX:25": "Last month ({{lastMonth}})"
