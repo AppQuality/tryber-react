@@ -20,6 +20,7 @@ export const RankingInfo = () => {
       description: t("__RANKING_LEGEND_HOLD_MAX: 15", {
         defaultValue: "Maintenance",
       }),
+      alignTop: true,
     },
     {
       icon: arrow,
@@ -43,6 +44,7 @@ export const RankingInfo = () => {
           icon={exp.icon}
           alt={exp.description}
           description={exp.description}
+          alignTop={exp.alignTop}
         />
       ))}
       <div className="aq-mt-3 aq-mb-2">
