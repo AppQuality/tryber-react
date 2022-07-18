@@ -517,7 +517,7 @@
         "__RANKING_EXP_POINTS_MAX:25_plural": "<bold>{{points}}</bold> exp points totale"
     },
     "<bold>{{rank}}</bold> in {{level}} ranking": {
-        "__RANKING_POSITION_MAX: 30": "<bold>{{rank}}</bold> in classifica {{level}}"
+        "__RANKING_POSITION_MAX: 30": "<bold>{{rank}}°</bold> in classifica {{level}}"
     },
     "last month ({{lastMonth}})": {
         "__RANKING_LAST_MONTH_MAX:25": "Ultimo mese ({{lastMonth}})"
