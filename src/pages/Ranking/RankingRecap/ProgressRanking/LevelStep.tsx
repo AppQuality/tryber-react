@@ -27,8 +27,8 @@ const StyledLevelStep = styled.div<{
   .level-step-icon {
     z-index: 1;
     display: inline-block;
-    width: ${(p) => (p.isBig ? "3em" : "1.5em")};
-    height: ${(p) => (p.isBig ? "3em" : "1.5em")};
+    width: ${(p) => (p.isBig ? "2.2em" : "1.65em")};
+    height: ${(p) => (p.isBig ? "2.2em" : "1.65em")};
     svg {
       width: 100%;
       height: 100%;
@@ -57,6 +57,10 @@ const StyledLevelStep = styled.div<{
     .level-step-name {
       margin-top: ${(p) => p.theme.grid.sizes[2]};
       margin-left: 0;
+    }
+    .level-step-icon {
+      width: ${(p) => (p.isBig ? "3em" : "2em")};
+      height: ${(p) => (p.isBig ? "3em" : "2em")};
     }
     .level-step-subtitle {
       width: auto;

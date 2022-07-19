@@ -1,4 +1,10 @@
-import { Text, Title } from "@appquality/appquality-design-system";
+import {
+  aqBootstrapTheme,
+  Button,
+  Text,
+  Title,
+} from "@appquality/appquality-design-system";
+import i18next from "i18next";
 import { ReactNode } from "react";
 import { ArrowLeftRight, ArrowRight } from "react-bootstrap-icons";
 import { Trans } from "react-i18next";
@@ -13,6 +19,10 @@ const StyledRecap = styled.div`
   margin-top: ${(p) => p.theme.grid.sizes["4"]};
   padding-top: ${(p) => p.theme.grid.sizes["3"]};
   text-align: center;
+
+  .pb0 {
+    padding-bottom: 0;
+  }
 
   @media (min-width: ${(p) => p.theme.grid.breakpoints.md}) {
     border-top: 0;
@@ -142,6 +152,19 @@ export const NextMonthSituation = ({
       />
     );
   };
+
+  const getCurrentMonth = () =>
+    new Date().toLocaleString(i18next.language, { month: "long" });
+
+  const getLastDayMonth = () => {
+    const today = new Date();
+    return new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+  };
+
+  const isDesktop = window.matchMedia(
+    `only screen and (min-width: ${aqBootstrapTheme.grid.breakpoints.lg})`
+  ).matches;
+
   return (
     <StyledRecap>
       <Title size="s" className="aq-mb-2">
@@ -150,6 +173,16 @@ export const NextMonthSituation = ({
           defaults="your monthly progress"
         />
       </Title>
+      <Text className="aq-mb-3" small>
+        <Trans
+          i18nKey="The level reached by {{currentMonth}} {{lastDayMonth}} will be updated the following month:::__RANKING_RECAP_DESCRIPTION_"
+          defaults="Earn the experience points you need to not downgrade, keep your level and move on to the next one. The level reached by {{currentMonth}} {{lastDayMonth}} will be updated the following month."
+          values={{
+            lastDayMonth: getLastDayMonth(),
+            currentMonth: getCurrentMonth(),
+          }}
+        />
+      </Text>
       <Text className="aq-mb-2">
         <img
           src={starIcon}
@@ -288,6 +321,25 @@ export const NextMonthSituation = ({
               )}
             </Text>
           </>
+        )}
+        {!isDesktop && (
+          <Button
+            className="aq-mt-4 pb0"
+            type="link"
+            onClick={() => {
+              const elements =
+                document.getElementsByClassName("ranking-info-card");
+              elements[0]?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }}
+          >
+            <Trans
+              i18nKey="__RANKING_PROGRESS_LEGEND_LINK"
+              defaults={"Read the levels legend"}
+            />
+          </Button>
         )}
       </>
     </StyledRecap>

@@ -20,6 +20,7 @@ export const RankingInfo = () => {
       description: t("__RANKING_LEGEND_HOLD_MAX: 15", {
         defaultValue: "Maintenance",
       }),
+      alignTop: true,
     },
     {
       icon: arrow,
@@ -31,23 +32,19 @@ export const RankingInfo = () => {
 
   return (
     <Card
+      className="ranking-info-card"
       title={t("__RANKING_LEGEND_TITLE_MAX: 35", {
         defaultValue: "How to level up",
       })}
       shadow
     >
-      <Text className="aq-mb-2">
-        {t("__RANKING_LEGEND_PARAGRAPH_MAX: 100", {
-          defaultValue:
-            "Earn a minimum number of exp each month to maintain or advance a level:",
-        })}
-      </Text>
       {expLegendConfig.map((exp) => (
         <Experience
           key={exp.description}
           icon={exp.icon}
           alt={exp.description}
           description={exp.description}
+          alignTop={exp.alignTop}
         />
       ))}
       <div className="aq-mt-3 aq-mb-2">

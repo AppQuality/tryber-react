@@ -76,6 +76,12 @@ export const BugFormContainer = () => {
     (f) => (initialBugValues.additional[f.slug] = "")
   );
 
+  if (localStorage.getItem(data.id.toString())) {
+    initialBugValues.additional = JSON.parse(
+      localStorage.getItem(data.id.toString()) || "{}"
+    );
+  }
+
   const validationSchema = {
     title: yup.string().required(t("This is a required field")),
     severity: yup.string().required(t("This is a required field")),
@@ -211,10 +217,13 @@ export const BugFormContainer = () => {
               false
             )
           );
+          localStorage.setItem(data.id.toString(), JSON.stringify(additional));
           now = new Date();
           setDisableSubmit(false);
           resetForm();
           dispatch(setMediaList([]));
+          const elements = document.getElementsByTagName("body");
+          elements[0].scrollIntoView({ behavior: "smooth", block: "start" });
         })
         .catch((e) => {
           dispatch(

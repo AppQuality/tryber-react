@@ -3,11 +3,11 @@ import { rankingTheme } from "src/pages/Ranking/rankingTheme";
 import React, { useEffect } from "react";
 import getGravatarUrlWithThemedFallbackInitials from "src/utils/getGravatarUrlWithThemedFallbackInitials";
 
-const badgeWidth = "60px";
-const badgeHeight = "67px";
+const badgeWidth = "54px";
+const badgeHeight = "54px";
 const avatarSize = "105px";
-const badgeWidthDesk = "32px";
-const badgeHeightDesk = "37px";
+const badgeWidthDesk = "36px";
+const badgeHeightDesk = "36px";
 const avatarSizeDesk = "62px";
 
 const StyledAvatar = styled.div<{ badgeColor: string }>`
@@ -29,7 +29,7 @@ const StyledAvatar = styled.div<{ badgeColor: string }>`
     font-size: 0.8rem;
     width: ${badgeWidth};
     height: ${badgeHeight};
-    transform: translateY(10px);
+    transform: translateY(5px);
     svg {
       width: 100%;
       height: 100%;

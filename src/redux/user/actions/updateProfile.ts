@@ -1,4 +1,5 @@
 import API from "../../../utils/api";
+import { addMessage } from "../../siteWideMessages/actionCreators";
 import * as actionTypes from "../actionTypes";
 import { updateFiscalProfile } from "./updateFiscalProfile";
 
@@ -8,7 +9,11 @@ export const updateProfile = (
     languages?: number[];
   },
   unverifiedFiscalProfileMessage?: string,
-  verifiedFiscalProfileMessage?: string
+  verifiedFiscalProfileMessage?: string,
+  profileUpdatedMessage?: string,
+  genericErrorMessage?: string,
+  emailErrorMessage?: string,
+  onSuccess?: () => void
 ) => {
   return async (dispatch: any, getState: () => GeneralState) => {
     try {
@@ -49,16 +54,18 @@ export const updateProfile = (
           );
         }
       }
-
+      dispatch(addMessage(profileUpdatedMessage, "success"));
+      onSuccess?.();
       dispatch({
         type: actionTypes.FETCH_PROFILE,
         data: response,
       });
-    } catch (err: unknown) {
-      dispatch({
-        type: actionTypes.FETCH_PROFILE_FAILED,
-        error: err as HttpError,
-      });
+    } catch (e: HttpError) {
+      if (e.statusCode === 412) {
+        dispatch(addMessage(emailErrorMessage, "danger"));
+      } else {
+        dispatch(addMessage(genericErrorMessage, "warning"));
+      }
     }
   };
 };
