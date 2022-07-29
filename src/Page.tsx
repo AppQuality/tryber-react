@@ -26,6 +26,7 @@ import {
 import referralStore from "./redux/referral";
 import { refreshUser } from "./redux/user/actions/refreshUser";
 import BugForm from "./pages/BugForm";
+import { useAppSelector } from "./store";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
   datadogLogs.init({
@@ -48,6 +49,8 @@ function Page() {
   const { search } = useLocation();
   const { setReferral } = referralStore();
   const dispatch = useDispatch();
+  const { isLoginPage } = useAppSelector((state) => state.loginPage);
+
   useEffect(() => {
     dispatch(refreshUser());
     const values = queryString.parse(search);
@@ -55,9 +58,10 @@ function Page() {
       setReferral(values.referral);
     }
   }, []);
+
   return (
     <div>
-      <SiteHeader />
+      {!isLoginPage && <SiteHeader />}
       <SiteWideMessages />
       <GenericModal />
       <Switch>
