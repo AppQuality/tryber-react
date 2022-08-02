@@ -31,7 +31,9 @@ export default ({ children }: { children: React.ReactNode }) => {
     },
   });
   if (error) {
-    if (error.statusCode !== 403) {
+    if (error.statusCode === 403) {
+      history.push(homeRoute);
+    } else {
       alert(error.message);
     }
     return null;
