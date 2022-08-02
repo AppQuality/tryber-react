@@ -8,7 +8,7 @@ import {
 } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import { useLocalizeRoute } from "../../hooks/useLocalizedRoute";
 import WPAPI from "../../utils/wpapi";
@@ -21,6 +21,7 @@ export const LoginPage = () => {
   const dispatch = useAppDispatch();
   const [error, setError] = useState<string | boolean>(false);
   const [cta, setCta] = useState<string>(t("login"));
+  const history = useHistory();
 
   const initialValues = {
     email: "",
@@ -36,13 +37,13 @@ export const LoginPage = () => {
   };
 
   const handleloginLn = () => {
-    window.location.href =
-      "/wp-admin/admin-ajax.php?loc=&action=linkedin_oauth_redirect";
+    const redirectUrl = `${history.location.pathname}${history.location?.search}`;
+    window.location.href = `/wp-admin/admin-ajax.php?loc=${redirectUrl}&action=linkedin_oauth_redirect`;
   };
 
   const handleloginFb = () => {
-    window.location.href =
-      "/wp-admin/admin-ajax.php?loc=&action=facebook_oauth_redirect";
+    const redirectUrl = `${history.location.pathname}${history.location?.search}`;
+    window.location.href = `/wp-admin/admin-ajax.php?loc=${redirectUrl}&action=facebook_oauth_redirect`;
   };
 
   const gettingStartedRoute = useLocalizeRoute("getting-started");
