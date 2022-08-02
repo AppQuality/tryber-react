@@ -37,12 +37,20 @@ export const LoginPage = () => {
   };
 
   const handleloginLn = () => {
-    const redirectUrl = `${history.location.pathname}${history.location?.search}`;
+    const redirectUrl =
+      `${history.location.pathname}${history.location?.search}`.replace(
+        /\?/g,
+        "&"
+      );
     window.location.href = `/wp-admin/admin-ajax.php?loc=${redirectUrl}&action=linkedin_oauth_redirect`;
   };
 
   const handleloginFb = () => {
-    const redirectUrl = `${history.location.pathname}${history.location?.search}`;
+    const redirectUrl =
+      `${history.location.pathname}${history.location?.search}`.replace(
+        /\?/g,
+        "&"
+      );
     window.location.href = `/wp-admin/admin-ajax.php?loc=${redirectUrl}&action=facebook_oauth_redirect`;
   };
 
