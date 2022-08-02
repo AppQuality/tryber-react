@@ -19,8 +19,6 @@ import {
   Wallet2,
 } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
-import { useLocalizeRoute } from "../../hooks/useLocalizedRoute";
 import useWindowSize from "../../hooks/useWindowSize";
 import menuStore from "../../redux/menu";
 import useUser from "../../redux/user";
@@ -70,8 +68,6 @@ const maxMobileSize = Number(
 const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
   const { user } = useUser();
   const { isOpen, open, close } = menuStore();
-  const history = useHistory();
-  const homeRoute = useLocalizeRoute("");
   const isAdmin =
     user && user.role
       ? ["administrator", "tester_lead"].includes(user.role)
@@ -85,7 +81,7 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       method: "GET",
     })
       .then(() => {
-        history.push(homeRoute);
+        window.location.reload();
       })
       .catch((e) => {
         alert(e.message);
