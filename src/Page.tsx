@@ -82,7 +82,7 @@ function Page() {
         history.push(homeRoute);
       }
     }
-  }, [user]);
+  }, [user, error]);
 
   return (
     <div>
