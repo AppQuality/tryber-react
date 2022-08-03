@@ -95,12 +95,9 @@ function Page() {
           <Redirect to="/it/getting-started" />
         </Route>
 
-        <Route path={`${base}/my-dashboard`} component={() => <Dashboard />} />
+        <Route path={`${base}/my-dashboard`} component={Dashboard} />
 
-        <Route
-          path={`${base}/personal-equipment`}
-          component={() => <Devices />}
-        />
+        <Route path={`${base}/personal-equipment`} component={Devices} />
         <Route
           path={`/it/i-miei-device`}
           component={({ location }: { location: Location }) => (
@@ -134,7 +131,7 @@ function Page() {
         <Route path={`${base}/my-bugs`} component={() => <MyBugs />} />
         <Route
           path={`${base}/experience-points`}
-          component={() => <ExperiencePoints />}
+          component={ExperiencePoints}
         />
         <Route
           path={`${base}/it/punti-esperienza`}
