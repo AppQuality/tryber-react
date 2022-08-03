@@ -128,7 +128,7 @@ function Page() {
           <Redirect to="/es/my-dashboard" />
         </Route>
 
-        <Route path={`${base}/my-bugs`} component={() => <MyBugs />} />
+        <Route path={`${base}/my-bugs`} component={MyBugs} />
         <Route
           path={`${base}/experience-points`}
           component={ExperiencePoints}
