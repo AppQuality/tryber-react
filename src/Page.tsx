@@ -59,7 +59,7 @@ function Page() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { isLoginPage } = useAppSelector((state) => state.loginPage);
-  const { user } = useUser();
+  const { user, error } = useUser();
   const homeRoute = useLocalizeRoute("");
 
   useEffect(() => {
@@ -74,7 +74,10 @@ function Page() {
     if (user?.id) {
       localStorage.setItem("isUserLogged", "true");
     } else {
-      if (localStorage.getItem("isUserLogged") === "true") {
+      if (
+        localStorage.getItem("isUserLogged") === "true" &&
+        error?.statusCode === 403
+      ) {
         localStorage.setItem("isUserLogged", "false");
         history.push(homeRoute);
       }
