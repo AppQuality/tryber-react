@@ -6,7 +6,13 @@ import queryString from "query-string";
 import { useEffect } from "react";
 import TagManager from "react-gtm-module";
 import { useDispatch } from "react-redux";
-import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import {
+  Redirect,
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 
 import GenericModal from "./features/GenericModal";
 import SiteHeader from "./features/SiteHeader";
@@ -27,6 +33,8 @@ import referralStore from "./redux/referral";
 import { refreshUser } from "./redux/user/actions/refreshUser";
 import BugForm from "./pages/BugForm";
 import { useAppSelector } from "./store";
+import useUser from "src/redux/user";
+import { useLocalizeRoute } from "./hooks/useLocalizedRoute";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
   datadogLogs.init({
@@ -49,7 +57,10 @@ function Page() {
   const { search } = useLocation();
   const { setReferral } = referralStore();
   const dispatch = useDispatch();
+  const history = useHistory();
   const { isLoginPage } = useAppSelector((state) => state.loginPage);
+  const { user } = useUser();
+  const homeRoute = useLocalizeRoute("");
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -58,6 +69,17 @@ function Page() {
       setReferral(values.referral);
     }
   }, []);
+
+  useEffect(() => {
+    if (user?.id) {
+      localStorage.setItem("isUserLogged", "true");
+    } else {
+      if (localStorage.getItem("isUserLogged") === "true") {
+        localStorage.setItem("isUserLogged", "false");
+        history.push(homeRoute);
+      }
+    }
+  }, [user]);
 
   return (
     <div>

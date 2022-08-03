@@ -19,7 +19,6 @@ export default ({
   const { t } = useTranslation();
   const [loadingMessage, setLoadingMessage] = useState<string>(t("Loading"));
   let redirectMessage = t("Redirecting to your dashboard...");
-  const homeRoute = useLocalizeRoute("");
 
   let redirectUrl = useLocalizeRoute("my-dashboard");
   if (redirect) {
@@ -31,9 +30,6 @@ export default ({
 
   useEffect(() => {
     if (user) {
-      if (user.id) {
-        localStorage.setItem("isUserLogged", "true");
-      }
       setLoadingMessage(redirectMessage);
       history.push(redirectUrl);
     }
@@ -47,16 +43,8 @@ export default ({
       event: "ApiLoaded",
     },
   });
-  if (error) {
-    const isUserLogged = localStorage.getItem("isUserLogged") === "true";
-    if (error.statusCode === 403) {
-      if (isUserLogged) {
-        localStorage.setItem("isUserLogged", "false");
-        history.push(homeRoute);
-      }
-    } else {
-      alert(error.message);
-    }
+  if (error && error.statusCode !== 403) {
+    alert(error.message);
   }
 
   return <>{children}</>;
