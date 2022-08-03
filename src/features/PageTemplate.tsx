@@ -116,7 +116,8 @@ export const PageTemplate = ({
       {history.location.pathname !== "/" &&
       shouldBeLoggedIn &&
       !user?.id &&
-      !loading ? (
+      !loading &&
+      localStorage.getItem("isUserLogged") === "false" ? (
         <LoginPage />
       ) : (
         <LoggedStatusWrapper>
