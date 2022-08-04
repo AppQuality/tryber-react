@@ -117,7 +117,8 @@ export const PageTemplate = ({
       shouldBeLoggedIn &&
       !user?.id &&
       !loading &&
-      localStorage.getItem("isUserLogged") === "false" ? (
+      (localStorage.getItem("isUserLogged") === "false" ||
+        localStorage.getItem("isUserLogged") === null) ? (
         <LoginPage />
       ) : (
         <LoggedStatusWrapper>
