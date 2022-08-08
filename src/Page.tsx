@@ -6,7 +6,13 @@ import queryString from "query-string";
 import { useEffect } from "react";
 import TagManager from "react-gtm-module";
 import { useDispatch } from "react-redux";
-import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import {
+  Redirect,
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 
 import GenericModal from "./features/GenericModal";
 import SiteHeader from "./features/SiteHeader";
@@ -26,6 +32,9 @@ import {
 import referralStore from "./redux/referral";
 import { refreshUser } from "./redux/user/actions/refreshUser";
 import BugForm from "./pages/BugForm";
+import { useAppSelector } from "./store";
+import useUser from "src/redux/user";
+import { useLocalizeRoute } from "./hooks/useLocalizedRoute";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
   datadogLogs.init({
@@ -48,6 +57,11 @@ function Page() {
   const { search } = useLocation();
   const { setReferral } = referralStore();
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { isLoginPage } = useAppSelector((state) => state.loginPage);
+  const { user, error } = useUser();
+  const homeRoute = useLocalizeRoute("");
+
   useEffect(() => {
     dispatch(refreshUser());
     const values = queryString.parse(search);
@@ -55,9 +69,24 @@ function Page() {
       setReferral(values.referral);
     }
   }, []);
+
+  useEffect(() => {
+    if (user?.id) {
+      localStorage.setItem("isUserLogged", "true");
+    } else {
+      if (
+        localStorage.getItem("isUserLogged") === "true" &&
+        error?.statusCode === 403
+      ) {
+        localStorage.setItem("isUserLogged", "false");
+        history.push(homeRoute);
+      }
+    }
+  }, [user, error]);
+
   return (
     <div>
-      <SiteHeader />
+      {!isLoginPage && <SiteHeader />}
       <SiteWideMessages />
       <GenericModal />
       <Switch>
@@ -66,12 +95,9 @@ function Page() {
           <Redirect to="/it/getting-started" />
         </Route>
 
-        <Route path={`${base}/my-dashboard`} component={() => <Dashboard />} />
+        <Route path={`${base}/my-dashboard`} component={Dashboard} />
 
-        <Route
-          path={`${base}/personal-equipment`}
-          component={() => <Devices />}
-        />
+        <Route path={`${base}/personal-equipment`} component={Devices} />
         <Route
           path={`/it/i-miei-device`}
           component={({ location }: { location: Location }) => (
@@ -102,10 +128,10 @@ function Page() {
           <Redirect to="/es/my-dashboard" />
         </Route>
 
-        <Route path={`${base}/my-bugs`} component={() => <MyBugs />} />
+        <Route path={`${base}/my-bugs`} component={MyBugs} />
         <Route
           path={`${base}/experience-points`}
-          component={() => <ExperiencePoints />}
+          component={ExperiencePoints}
         />
         <Route
           path={`${base}/it/punti-esperienza`}
