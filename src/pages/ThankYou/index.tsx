@@ -15,7 +15,10 @@ import i18next from "i18next";
 
 export default function ThankYouPage() {
   return (
-    <PageTemplate route={"thank-you"}>
+    <PageTemplate
+      route={"thank-you"}
+      shouldBeLoggedIn={localStorage.getItem("isUserLogged") === "true"}
+    >
       <BSGrid>
         <BSCol size="col-12">
           <StyledThankYouCard>
@@ -39,7 +42,7 @@ export default function ThankYouPage() {
                   <Button
                     href={`${
                       i18next.language === "en" ? "" : "/" + i18next.language
-                    }/my-account/?tab=advanced/`}
+                    }/my-account/?tab=advanced`}
                     forwardedAs="a"
                   >
                     GO TO PROFILE
