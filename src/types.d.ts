@@ -31,4 +31,8 @@ declare global {
   type SupportedLanguages = "es" | "it" | "en";
   type SelectOptionType = SelectType.Option;
   type OrderType = "DESC" | "ASC";
+
+  var _env_: {
+    REACT_APP_ENVIRONMENT: string;
+  };
 }

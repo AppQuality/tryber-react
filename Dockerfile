@@ -14,6 +14,7 @@ RUN npm run build
 FROM alpine:3.14 as web
 
 COPY --from=base /build /build
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 RUN apk add nginx
 COPY nginx.config /etc/nginx/http.d/default.conf
-CMD nginx -g 'daemon off;'
+CMD /docker-entrypoint.sh
