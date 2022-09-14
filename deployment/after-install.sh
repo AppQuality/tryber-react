@@ -43,6 +43,7 @@ services:
     environment:
       PORT: 80
       NODE_ENV: ${ENVIRONMENT}
+      REACT_APP_ENVIRONMENT: ${ENVIRONMENT}
     logging:
       driver: awslogs
       options:

@@ -139,6 +139,10 @@ export default () => {
           |{" "}
           <a href="/terms-and-conditions/" target="_blank">
             Terms of Services
+          </a>{" "}
+          |{" "}
+          <a href="/ethical-code/" target="_blank">
+            Ethical Code
           </a>
         </small>
       </div>

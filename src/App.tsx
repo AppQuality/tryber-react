@@ -40,6 +40,12 @@ function App() {
               "Becoming a part of Crowd AppQuality community is simple: It's not requested a particular profile, is the multiprofile our power."
             )}
           />
+          {_env_.REACT_APP_ENVIRONMENT !== "production" && (
+            <meta name="robots" content="noindex" />
+          )}
+          {_env_.REACT_APP_ENVIRONMENT !== "production" && (
+            <meta name="robots" content="nofollow" />
+          )}
         </Helmet>
         <BrowserRouter>
           <Page />
