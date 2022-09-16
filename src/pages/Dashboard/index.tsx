@@ -115,6 +115,11 @@ export default function Dashboard() {
                   <ClosedCampaignsTable />
                 </div>
               </Tab>
+              <Tab id="new" title={t("Una nuova tab")}>
+                <div className="aq-m-3">
+                  <Text className="aq-mb-3">nuova tab</Text>
+                </div>
+              </Tab>
             </Tabs>
           </Card>
           <Card className="aq-mb-3" title={t("Avalaible Campaigns")}>
