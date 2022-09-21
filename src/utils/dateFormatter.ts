@@ -1,6 +1,8 @@
 export default (unformatted: string) => {
-  let d = new Date(unformatted);
-  return d.toLocaleString("it", {
+  const d = new Date(unformatted);
+  const userTimezoneOffset = d.getTimezoneOffset() * 60000;
+  const dateWithTimezoneOffset = new Date(d.getTime() + userTimezoneOffset);
+  return dateWithTimezoneOffset.toLocaleString("it", {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
