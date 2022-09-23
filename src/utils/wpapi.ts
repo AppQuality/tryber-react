@@ -28,6 +28,11 @@ const WPAPI = {
     )
       .then((data) => data.json())
       .then((res) => {
+        if (res.error && res.error === "tfa") {
+          throw new Error(
+            JSON.stringify({ type: "tfa", message: "TFA required" })
+          );
+        }
         if (res.loggedin) {
           return true;
         }
