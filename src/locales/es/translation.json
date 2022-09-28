@@ -486,6 +486,7 @@
   "You need to select a street": "Necesitas seleccionar una calle",
   "You need to select a street code": "Necesitas seleccionar un código de calle",
   "You need to select a zip code": "Es necesario seleccionar un código postal",
+  "You need to set your two-factor authentication for this. Redirecting to the login page": "",
   "Your Performance": "Tu Performance",
   "Your current password is not correct": "Tu password actual no es correcta",
   "Your data are safe with us. You can ask them anytime you need. Upon your request, we will provide you a copy of your personal data at the email associated to your Tester ID.": "Tus datos están seguros con nosotros. Puedes preguntarlos cuando lo necesitas. Si los solicitas, te proporcionaremos una copia de tus datos personales en el correo electrónico asociado a tu ID de Tryber.",
