@@ -17,6 +17,9 @@ export default ({ edit }: { edit: boolean }) => {
   const { t, i18n } = useTranslation();
   const [osPlatforms, setOsPlatforms] = useState<SelectType.Option[]>([]);
   const [osVersions, setOsVersions] = useState<SelectType.Option[]>([]);
+  const isMobile = window.matchMedia(
+    "only screen and (max-width: 768px)"
+  ).matches;
 
   useEffect(() => {
     const getOsPlatforms = async () => {
@@ -107,6 +110,7 @@ export default ({ edit }: { edit: boolean }) => {
                 value: field.value,
               }}
               noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
+              isSearchable={!isMobile}
             />
           </div>
         )}
@@ -140,6 +144,7 @@ export default ({ edit }: { edit: boolean }) => {
                 form.setFieldValue("operating_system_id", osId, true);
               }}
               noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
+              isSearchable={!isMobile}
             />
             <Text color="info" className="aq-mt-2">
               <a href={osGuideUrl} target="_blank" rel="noreferrer">

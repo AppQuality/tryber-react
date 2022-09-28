@@ -26,6 +26,9 @@ const PCData = ({ edit }: { edit: boolean }) => {
       value: "Tablet PC / Hybrid",
     },
   ];
+  const isMobile = window.matchMedia(
+    "only screen and (max-width: 768px)"
+  ).matches;
   return (
     <>
       <Field name="pc_type" disabled={edit}>
@@ -53,6 +56,7 @@ const PCData = ({ edit }: { edit: boolean }) => {
                 form.setFieldValue("operating_system_version", "", true);
               }}
               noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
+              isSearchable={!isMobile}
             />
           </div>
         )}
