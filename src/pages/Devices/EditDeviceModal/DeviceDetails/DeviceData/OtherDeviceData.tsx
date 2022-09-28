@@ -14,6 +14,9 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
   >([]);
   const [manufacturers, setManufacturers] = useState<SelectType.Option[]>([]);
   const [models, setModels] = useState<SelectType.Option[]>([]);
+  const isMobile = window.matchMedia(
+    "only screen and (max-width: 768px)"
+  ).matches;
   useEffect(() => {
     const getModels = async () => {
       const res = await API.getModels({ deviceType: values.device_type });
@@ -84,6 +87,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
                   form.setFieldValue("operating_system_version", "", true);
                 }}
                 noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
+                isSearchable={!isMobile}
               />
             </div>
           );
@@ -120,6 +124,7 @@ const OtherDeviceData = ({ edit }: { edit: boolean }) => {
                   form.setFieldValue("operating_system_id", 0, true);
                 }}
                 noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
+                isSearchable={!isMobile}
               />
             </div>
           );
