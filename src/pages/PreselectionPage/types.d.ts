@@ -1,3 +1,3 @@
 type PreselectionFormValues = {
-  device?: string[];
+  device: string[];
 };

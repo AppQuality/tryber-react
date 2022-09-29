@@ -1,10 +1,12 @@
 import {
   ErrorMessage,
   FieldProps,
-  FormikField,
   Select,
   Text,
 } from "@appquality/appquality-design-system";
+import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
+import { Field } from "formik";
+import { useTranslation } from "react-i18next";
 
 const options = [
   { label: "Device 1", value: "1" },
@@ -12,8 +14,16 @@ const options = [
 ];
 
 export const AvailableDevices = () => {
+  const { t } = useTranslation();
   return (
-    <FormikField name="device">
+    <Field
+      name="device"
+      validate={(value: Option[]) => {
+        if (!value.length) {
+          return t("This is a required field");
+        }
+      }}
+    >
       {({ field, form }: FieldProps) => (
         <div className="aq-mb-3">
           <Select
@@ -43,6 +53,6 @@ export const AvailableDevices = () => {
           </Text>
         </div>
       )}
-    </FormikField>
+    </Field>
   );
 };
