@@ -26,12 +26,12 @@ export const TextPreselectionField = ({
       return errorMessage ? errorMessage : t("This is a required field");
     }
     if (validation && !new RegExp(validation).test(value)) {
-      return errorMessage ? errorMessage : "This is an invalid format";
+      return errorMessage ? errorMessage : t("This is an invalid format");
     }
   };
 
   return (
-    <Field name={name} validate={validation ? validate : undefined}>
+    <Field name={name} validate={validate}>
       {({ field, meta }: FieldProps) => {
         return (
           <FormGroup className="aq-mb-3">
