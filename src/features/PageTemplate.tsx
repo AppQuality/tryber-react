@@ -62,11 +62,6 @@ export const PageTemplate = ({
   route: string;
 }) => {
   const LoggedStatusWrapper = shouldBeLoggedIn ? LoggedOnly : NotLoggedOnly;
-  const history = useHistory();
-  const { user, loading } = useSelector(
-    (state: GeneralState) => state.user,
-    shallowEqual
-  );
 
   // map children and separate Modal components from the rest
   const [modalChildren, pageChildren] = React.Children.toArray(children).reduce(
@@ -113,23 +108,14 @@ export const PageTemplate = ({
             )
       }
     >
-      {history.location.pathname !== "/" &&
-      shouldBeLoggedIn &&
-      !user?.id &&
-      !loading &&
-      (localStorage.getItem("isUserLogged") === "false" ||
-        localStorage.getItem("isUserLogged") === null) ? (
-        <LoginPage />
-      ) : (
-        <LoggedStatusWrapper>
-          {modalChildren}
-          {shouldBeLoggedIn ? (
-            <TesterSidebar route={route}>{content}</TesterSidebar>
-          ) : (
-            content
-          )}
-        </LoggedStatusWrapper>
-      )}
+      <LoggedStatusWrapper>
+        {modalChildren}
+        {shouldBeLoggedIn ? (
+          <TesterSidebar route={route}>{content}</TesterSidebar>
+        ) : (
+          content
+        )}
+      </LoggedStatusWrapper>
     </GoogleTagManager>
   );
 };
