@@ -15,7 +15,7 @@ export const AvailableDevices = () => {
   return (
     <FormikField name="device">
       {({ field, form }: FieldProps) => (
-        <>
+        <div className="aq-mb-3">
           <Select
             name={field.name}
             options={options}
@@ -41,7 +41,7 @@ export const AvailableDevices = () => {
             Do you have an acceptable device not listed here? Add it to your
             profile.
           </Text>
-        </>
+        </div>
       )}
     </FormikField>
   );
