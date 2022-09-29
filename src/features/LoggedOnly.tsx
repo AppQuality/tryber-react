@@ -1,13 +1,9 @@
 import TagManager from "react-gtm-module";
 import { shallowEqual, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-
-import { useLocalizeRoute } from "../hooks/useLocalizedRoute";
 import Loading from "./Loading";
+import { LoginPage } from "./LoginPage";
 
 export default ({ children }: { children: React.ReactNode }) => {
-  const history = useHistory();
-  const homeRoute = useLocalizeRoute("");
   const {
     error,
     loading,
@@ -32,7 +28,7 @@ export default ({ children }: { children: React.ReactNode }) => {
   });
   if (error) {
     if (error.statusCode === 403) {
-      history.push(homeRoute);
+      return <LoginPage />;
     } else {
       alert(error.message);
     }

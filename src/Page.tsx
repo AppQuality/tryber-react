@@ -58,10 +58,7 @@ function Page() {
   const { search } = useLocation();
   const { setReferral } = referralStore();
   const dispatch = useDispatch();
-  const history = useHistory();
   const { isLoginPage } = useAppSelector((state) => state.loginPage);
-  const { user, error } = useUser();
-  const homeRoute = useLocalizeRoute("");
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -70,20 +67,6 @@ function Page() {
       setReferral(values.referral);
     }
   }, []);
-
-  useEffect(() => {
-    if (user?.id) {
-      localStorage.setItem("isUserLogged", "true");
-    } else {
-      if (
-        localStorage.getItem("isUserLogged") === "true" &&
-        error?.statusCode === 403
-      ) {
-        localStorage.setItem("isUserLogged", "false");
-        history.push(homeRoute);
-      }
-    }
-  }, [user, error]);
 
   return (
     <div>
