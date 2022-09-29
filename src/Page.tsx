@@ -36,6 +36,7 @@ import { useAppSelector } from "./store";
 import useUser from "src/redux/user";
 import { useLocalizeRoute } from "./hooks/useLocalizedRoute";
 import ThankYouPage from "./pages/ThankYou";
+import PreselectionPage from "./pages/PreselectionPage";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
   datadogLogs.init({
@@ -184,6 +185,11 @@ function Page() {
         <Route path={`${base}/leaderboard`} component={Ranking} />
         <Route path={`${base}/campaign/:id/bugform`} component={BugForm} />
         <Route path={`${base}/thank-you`} component={ThankYouPage} />
+        {/* TODO Temporary route */}
+        <Route
+          path={`${base}/campaign/preselection-form`}
+          component={PreselectionPage}
+        />
         <Route
           path={["/goodbye", "/it/goodbye", "/es/goodbye"]}
           exact
