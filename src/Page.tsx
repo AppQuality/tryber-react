@@ -157,7 +157,7 @@ function Page() {
         <Route path={`${base}/campaign/:id/bugform`} component={BugForm} />
         <Route path={`${base}/thank-you`} component={ThankYouPage} />
         <Route
-          path={`/preview-selection-form`}
+          path={`${base}/preview-selection-form`}
           component={PreviewSelectionForm}
         />
         <Route

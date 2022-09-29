@@ -1,5 +1,5 @@
 import { Container, PageTitle } from "@appquality/appquality-design-system";
-import React from "react";
+import React, { FC } from "react";
 
 import GoogleTagManager from "./GoogleTagManager";
 import LoggedOnly from "./LoggedOnly";
@@ -31,34 +31,31 @@ const ContentTemplate = ({
   );
 };
 
-export const OutsideContainer = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const OutsideContainer: FC = ({ children }) => {
   return <>{children}</>;
 };
 
-export const PageTemplate = ({
+export const PageTemplate: FC<{
+  title?: string;
+  subtitle?: string;
+  heading?: string;
+  shouldBeLoggedIn?: boolean;
+  showHeader?: boolean;
+  showSidebar?: boolean;
+  containerClass?: string;
+  showTitle?: boolean;
+  route: string;
+}> = ({
   children,
   title,
   subtitle,
   heading,
   shouldBeLoggedIn = false,
   showHeader = true,
+  showSidebar = true,
   showTitle = true,
   containerClass = "aq-pb-3",
   route,
-}: {
-  children: React.ReactNode;
-  title?: string;
-  subtitle?: string;
-  heading?: string;
-  shouldBeLoggedIn?: boolean;
-  showHeader?: boolean;
-  containerClass?: string;
-  showTitle?: boolean;
-  route: string;
 }) => {
   const LoggedStatusWrapper = shouldBeLoggedIn
     ? ({ children }: { children: React.ReactNode }) => (
@@ -113,7 +110,7 @@ export const PageTemplate = ({
     >
       <LoggedStatusWrapper>
         {modalChildren}
-        {shouldBeLoggedIn ? (
+        {shouldBeLoggedIn && showSidebar ? (
           <TesterSidebar route={route}>{content}</TesterSidebar>
         ) : (
           content

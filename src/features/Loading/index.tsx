@@ -1,10 +1,8 @@
 import LoadingImg from "./assets/tryber_loading.gif";
-import SiteHeader from "src/features/SiteHeader";
 
 export default () => {
   return (
     <>
-      <SiteHeader />
       <div id="appq-loading-content">
         <div
           style={{
