@@ -49,6 +49,17 @@ const WPAPI = {
         );
       });
   },
+  logout: () => {
+    fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout", {
+      method: "GET",
+    })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((e) => {
+        alert(e.message);
+      });
+  },
   getNonce: () => {
     return fetch(
       `${process.env.REACT_APP_CROWD_WP_URL}/wp-admin/admin-ajax.php`,
