@@ -21,6 +21,7 @@ import {
   Profile,
   Ranking,
   Wallet,
+  PreviewSelectionForm,
 } from "./pages";
 import referralStore from "./redux/referral";
 import { refreshUser } from "./redux/user/actions/refreshUser";
@@ -155,6 +156,10 @@ function Page() {
         <Route path={`${base}/leaderboard`} component={Ranking} />
         <Route path={`${base}/campaign/:id/bugform`} component={BugForm} />
         <Route path={`${base}/thank-you`} component={ThankYouPage} />
+        <Route
+          path={`/preview-selection-form`}
+          component={PreviewSelectionForm}
+        />
         <Route
           path={["/goodbye", "/it/goodbye", "/es/goodbye"]}
           exact
