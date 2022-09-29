@@ -4,7 +4,13 @@ import Loading from "./Loading";
 import { LoginPage } from "./LoginPage";
 import SiteHeader from "./SiteHeader";
 
-export default ({ children }: { children: React.ReactNode }) => {
+export default ({
+  children,
+  showHeader,
+}: {
+  children: React.ReactNode;
+  showHeader: boolean;
+}) => {
   const {
     error,
     loading,
@@ -38,7 +44,7 @@ export default ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <SiteHeader />
+      {showHeader ? <SiteHeader /> : null}
       {children}
     </>
   );
