@@ -1,8 +1,5 @@
 import { Container, PageTitle } from "@appquality/appquality-design-system";
 import React from "react";
-import { shallowEqual, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { LoginPage } from "./LoginPage";
 
 import GoogleTagManager from "./GoogleTagManager";
 import LoggedOnly from "./LoggedOnly";
@@ -48,6 +45,7 @@ export const PageTemplate = ({
   subtitle,
   heading,
   shouldBeLoggedIn = false,
+  showHeader = true,
   showTitle = true,
   containerClass = "aq-pb-3",
   route,
@@ -57,11 +55,16 @@ export const PageTemplate = ({
   subtitle?: string;
   heading?: string;
   shouldBeLoggedIn?: boolean;
+  showHeader?: boolean;
   containerClass?: string;
   showTitle?: boolean;
   route: string;
 }) => {
-  const LoggedStatusWrapper = shouldBeLoggedIn ? LoggedOnly : NotLoggedOnly;
+  const LoggedStatusWrapper = shouldBeLoggedIn
+    ? ({ children }: { children: React.ReactNode }) => (
+        <LoggedOnly showHeader={showHeader}>{children}</LoggedOnly>
+      )
+    : NotLoggedOnly;
 
   // map children and separate Modal components from the rest
   const [modalChildren, pageChildren] = React.Children.toArray(children).reduce(

@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
 import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import useUser from "src/redux/user";
+import { useHistory } from "react-router-dom";
 
 import Loading from "./Loading";
+import SiteHeader from "./SiteHeader";
 
 export default ({
   children,
@@ -14,10 +14,9 @@ export default ({
   children: React.ReactNode;
   redirect?: { url: string; message?: string };
 }) => {
-  const history = useHistory();
   const { user, error, isLoading } = useUser();
   const { t } = useTranslation();
-  const [loadingMessage, setLoadingMessage] = useState<string>(t("Loading"));
+  const history = useHistory();
   let redirectMessage = t("Redirecting to your dashboard...");
 
   let redirectUrl = useLocalizeRoute("my-dashboard");
@@ -28,15 +27,11 @@ export default ({
     }
   }
 
-  useEffect(() => {
-    if (user) {
-      setLoadingMessage(redirectMessage);
-      history.push(redirectUrl);
-    }
-  }, [user]);
-
-  if (isLoading || user) {
+  if (isLoading) {
     return <Loading />;
+  }
+  if (user) {
+    history.push(redirectUrl);
   }
   TagManager.dataLayer({
     dataLayer: {
@@ -47,5 +42,10 @@ export default ({
     alert(error.message);
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <SiteHeader />
+      {children}
+    </>
+  );
 };
