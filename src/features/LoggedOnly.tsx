@@ -2,6 +2,7 @@ import TagManager from "react-gtm-module";
 import { shallowEqual, useSelector } from "react-redux";
 import Loading from "./Loading";
 import { LoginPage } from "./LoginPage";
+import SiteHeader from "./SiteHeader";
 
 export default ({ children }: { children: React.ReactNode }) => {
   const {
@@ -35,5 +36,10 @@ export default ({ children }: { children: React.ReactNode }) => {
     return null;
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <SiteHeader />
+      {children}
+    </>
+  );
 };

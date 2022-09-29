@@ -1,8 +1,5 @@
 import { Container, PageTitle } from "@appquality/appquality-design-system";
 import React from "react";
-import { shallowEqual, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { LoginPage } from "./LoginPage";
 
 import GoogleTagManager from "./GoogleTagManager";
 import LoggedOnly from "./LoggedOnly";
