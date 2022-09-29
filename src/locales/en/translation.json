@@ -292,7 +292,6 @@
   "Learn More": "Learn More",
   "Learn more about how we calculate and attribute experience points.": "Learn more about how we calculate and attribute experience points.",
   "LinkedIn": "LinkedIn",
-  "Loading": "Loading",
   "Loading Data": "Loading Data",
   "Log in with an existing account": "Sign in faster",
   "Login": "Already a Tryber? Log in",
@@ -690,6 +689,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "Loading": "Loading",
   "__RANKING_LEGEND_PARAGRAPH_MAX: 100": "Earn a certain amount of exp to hold or to reach a level every month",
   "This is an invalid format": "File not supported",
   "BUGFORM_UPLOAD_FILE": "Click here to upload your files!"

@@ -292,7 +292,6 @@
   "Learn More": "Saber Más",
   "Learn more about how we calculate and attribute experience points.": "Aprende más sobre cómo calculamos y atribuimos los puntos de experiencia.",
   "LinkedIn": "LinkedIn",
-  "Loading": "Cargando",
   "Loading Data": "Cargando Datos",
   "Log in with an existing account": "Regístrate más rápido",
   "Login": "¿Ya eres un Tryber? Iniciar sesión",
@@ -690,6 +689,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
+  "Loading": "Cargando",
   "__RANKING_LEGEND_PARAGRAPH_MAX: 100": "Gana cada mes un número mínimo de exp para mantener o subir de nivel",
   "This is an invalid format": "Archivo no compatible",
   "BUGFORM_UPLOAD_FILE": "Click here to upload your files!"
