@@ -9,14 +9,16 @@ import { useTranslation } from "react-i18next";
 
 interface SelectPreselectionFieldProps {
   name: string;
-  label: string;
+  label?: string;
   options: string[];
+  placeholder?: string;
 }
 
 export const SelectPreselectionField = ({
   name,
   label,
   options,
+  placeholder,
 }: SelectPreselectionFieldProps) => {
   const { t } = useTranslation();
   const selectOptions = useMemo(
@@ -49,7 +51,7 @@ export const SelectPreselectionField = ({
                   form.setFieldTouched(name);
                 }}
                 label={label}
-                placeholder={"Choose value"}
+                placeholder={placeholder || "Choose value"}
                 menuTargetQuery="body"
                 noOptionsMessage={() => "No options"}
                 onChange={(v) => {
