@@ -27,7 +27,7 @@ export const AddressFields = ({
     useState<string>(countryCode);
 
   return (
-    <>
+    <div className="aq-mb-3">
       <FormikField name={countryField}>
         {({ form }: FieldProps) => {
           return (
@@ -87,6 +87,6 @@ export const AddressFields = ({
           );
         }}
       </FormikField>
-    </>
+    </div>
   );
 };

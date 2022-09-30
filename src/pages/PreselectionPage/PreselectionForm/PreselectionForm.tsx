@@ -1,8 +1,14 @@
 import { Button, Form, Formik } from "@appquality/appquality-design-system";
 import { FormikProps } from "formik";
 import * as yup from "yup";
+import {
+  CustomUserFieldsData,
+  useGetCustomUserFieldsQuery,
+} from "src/services/tryberApi";
 import { AvailableDevices } from "./AvailableDevices";
 import { PreselectionFields } from "./PreselectionFields";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type PreselectionField = {
   id: number;
@@ -45,14 +51,14 @@ const fields: PreselectionField[] = [
   {
     id: 5,
     question: "Con quali banche hai un conto?",
-    type: "cuf_22",
-    options: [1, 2, 3, 4],
-    value: [3, 4],
+    type: "cuf_4",
+    options: [299, 300, 301, 302],
+    value: [300, 302],
   },
   {
     id: 6,
     question: "Scrivi il tuo username telegram",
-    type: "cuf_15",
+    type: "cuf_22",
     value: "@pippo",
     validation: {
       regex: "^@[a-zA-Z]*$",
@@ -83,34 +89,69 @@ const fields: PreselectionField[] = [
       country: "Italy",
     },
   },
+  {
+    id: 10,
+    question: "Quanti sono i componenti del tuo nucleo familiare?",
+    type: "cuf_12",
+    options: [217, 218, 219, 220, 221, 222],
+    value: [217],
+  },
 ];
 
 export const PreselectionForm = () => {
+  const { t } = useTranslation();
+  const { data } = useGetCustomUserFieldsQuery();
+  const [cufList, setCufList] = useState<CustomUserFieldsData[]>([]);
+
+  const genderOptions = [
+    { label: t("Gender option:::Female"), value: "female" },
+    { label: t("Gender option:::Male"), value: "male" },
+    { label: t("Gender option:::Not Specified"), value: "not-specified" },
+    { label: t("Gender option:::Other"), value: "other" },
+  ];
+
   const initialFormValues: PreselectionFormValues = {
     device: [],
     questions: {},
   };
 
+  const validationSchema = {
+    questions: yup.object(),
+  };
+
   fields?.forEach((f) => {
     if (!f.value) initialFormValues.questions[f.id] = "";
-    else if (typeof f.value === "string")
-      initialFormValues.questions[f.id] = f.value;
-    else if (f.value && "city" in f.value && "country" in f.value)
+    else if (typeof f.value === "string") {
+      if (f.type === "gender") {
+        initialFormValues.questions[f.id] = genderOptions.find(
+          (gender) => f.value === gender.value
+        );
+      } else initialFormValues.questions[f.id] = f.value;
+    } else if (f.value && "city" in f.value && "country" in f.value) {
       initialFormValues.questions[f.id] = {
         city: f.value.city,
         country: f.value.country,
       };
-    // TODO ricavare la label del cuf
-    else
-      initialFormValues.questions[f.id] = f.value.map((v) => ({
-        label: v,
-        value: v,
-      }));
+    } else {
+      initialFormValues.questions[f.id] = f?.value?.map((v) => {
+        const cufId = parseInt(f.type.replace("cuf_", ""));
+        const currentCuf = cufList.find((cuf) => cuf.id === cufId);
+        const option = currentCuf?.options?.find((option) => v === option.id);
+        return {
+          label: option?.name || "",
+          value: option?.id?.toString() || "",
+        };
+      });
+    }
   });
 
-  const validationSchema = {
-    questions: yup.object(),
-  };
+  useEffect(() => {
+    const list: CustomUserFieldsData[] = [];
+    data?.forEach((d) => {
+      d.fields?.forEach((f) => list.push(f));
+    });
+    setCufList(list);
+  }, [data]);
 
   return (
     <Formik
@@ -125,7 +166,10 @@ export const PreselectionForm = () => {
         return (
           <Form id="preselectionForm">
             <AvailableDevices />
-            <PreselectionFields />
+            <PreselectionFields
+              genderOptions={genderOptions}
+              cufList={cufList}
+            />
             <Button
               className="aq-mt-3 aq-mb-4"
               type="primary"

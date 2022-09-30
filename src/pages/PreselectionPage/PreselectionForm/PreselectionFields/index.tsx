@@ -2,9 +2,10 @@ import { SelectPreselectionField } from "./SelectPreselectionField";
 import { MultiPreselectionField } from "./MultiPreselectionField";
 import { TextPreselectionField } from "./TextPreselectionField";
 import { RadioPreselectionField } from "./RadioPreselectionField";
-import { useTranslation } from "react-i18next";
 import { AddressFields } from "./AddressFields";
 import countries from "i18n-iso-countries";
+import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
+import { CustomUserFieldsData } from "src/services/tryberApi";
 
 type PreselectionField = {
   id: number;
@@ -47,14 +48,14 @@ const fields: PreselectionField[] = [
   {
     id: 5,
     question: "Con quali banche hai un conto?",
-    type: "cuf_22",
-    options: [1, 2, 3, 4],
-    value: [3, 4],
+    type: "cuf_4",
+    options: [299, 300, 301, 302],
+    value: [300, 302],
   },
   {
     id: 6,
     question: "Scrivi il tuo username telegram",
-    type: "cuf_15",
+    type: "cuf_22",
     value: "@pippo",
     validation: {
       regex: "^@[a-zA-Z]*$",
@@ -85,35 +86,49 @@ const fields: PreselectionField[] = [
       country: "Italy",
     },
   },
+  {
+    id: 10,
+    question: "Quanti sono i componenti del tuo nucleo familiare?",
+    type: "cuf_12",
+    options: [217, 218, 219, 220, 221, 222],
+    value: [217],
+  },
 ];
 
-export const PreselectionFields = () => {
-  const { t } = useTranslation();
+interface PreselectionFieldsProps {
+  genderOptions: Option[];
+  cufList: CustomUserFieldsData[];
+}
 
-  // TODO Cambiare logica e convertire in {label: string, value: string }
-  const getSelectOptions = (options?: string[] | number[]) =>
+export const PreselectionFields = ({
+  genderOptions,
+  cufList,
+}: PreselectionFieldsProps) => {
+  const getCufId = (type: string) => parseInt(type.replace("cuf_", ""));
+
+  const getCufType = (type: string) =>
+    cufList?.find((cuf) => cuf.id === getCufId(type))?.type;
+
+  const getSelectOptions = (type: string, options?: string[] | number[]) =>
     options?.map((opt) => {
-      if (typeof opt === "number") return opt.toString();
-      return opt;
+      if (typeof opt === "number") {
+        const currentCuf = cufList.find((cuf) => cuf.id === getCufId(type));
+        const option = currentCuf?.options?.find((option) => opt === option.id);
+        return {
+          label: option?.name || "",
+          value: option?.id?.toString() || "",
+        };
+      }
+      return { label: opt, value: opt };
     }) || [];
 
-  const getMultiOptions = (options?: string[] | number[]) =>
-    options?.map((opt) => {
-      if (typeof opt === "number")
-        return { value: opt.toString(), label: opt.toString() };
-      return { value: opt, label: opt };
-    }) || [];
-
-  const getCufType = (type: string) => {
-    // TODO
+  const getRadioOptions = (options?: string[] | number[]) => {
+    const radioOptions: string[] = [];
+    options?.forEach((opt) => {
+      typeof opt === "string" && radioOptions.push(opt);
+    });
+    return radioOptions;
   };
-
-  const genderOptions = [
-    { label: t("Gender option:::Female"), value: "female" },
-    { label: t("Gender option:::Male"), value: "male" },
-    { label: t("Gender option:::Not Specified"), value: "not-specified" },
-    { label: t("Gender option:::Other"), value: "other" },
-  ];
 
   const getCountryCode = (value?: any) => {
     if ("country" in value) return countries.getAlpha2Code(value.country, "en");
@@ -122,7 +137,7 @@ export const PreselectionFields = () => {
 
   return (
     <div>
-      {fields.map((field) => {
+      {fields?.map((field) => {
         const fieldType = field.type.startsWith("cuf_")
           ? getCufType(field.type)
           : field.type;
@@ -159,13 +174,8 @@ export const PreselectionFields = () => {
                 label={field.question}
                 options={
                   fieldType === "gender"
-                    ? [
-                        "Male",
-                        "Female",
-                        "Prefer not to answer",
-                        "Non-conforming",
-                      ]
-                    : getSelectOptions(field.options)
+                    ? genderOptions
+                    : getSelectOptions(field.type, field.options)
                 }
               />
             );
@@ -175,7 +185,7 @@ export const PreselectionFields = () => {
                 key={field.id}
                 name={`questions.${field.id}`}
                 label={field.question}
-                options={getMultiOptions(field.options)}
+                options={getSelectOptions(field.type, field.options)}
               />
             );
           case "radio":
@@ -184,7 +194,7 @@ export const PreselectionFields = () => {
                 key={field.id}
                 name={`questions.${field.id}`}
                 label={field.question}
-                options={getSelectOptions(field.options)}
+                options={getRadioOptions(field.options)}
               />
             );
           default:

@@ -4,13 +4,13 @@ import {
   Select,
 } from "@appquality/appquality-design-system";
 import { Field, FieldProps } from "formik";
-import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 
 interface SelectPreselectionFieldProps {
   name: string;
   label?: string;
-  options: string[];
+  options: Option[];
   placeholder?: string;
 }
 
@@ -21,20 +21,12 @@ export const SelectPreselectionField = ({
   placeholder,
 }: SelectPreselectionFieldProps) => {
   const { t } = useTranslation();
-  const selectOptions = useMemo(
-    () =>
-      options.map((option) => ({
-        label: option,
-        value: option,
-      })),
-    [options]
-  );
   return (
     <div className="aq-mb-3">
       <Field
         name={name}
-        validate={(value: string) => {
-          if (!value) {
+        validate={(option: Option) => {
+          if (!option.value) {
             return t("This is a required field");
           }
         }}
@@ -45,8 +37,8 @@ export const SelectPreselectionField = ({
               <Select
                 key={name}
                 name={name}
-                value={selectOptions.filter((o) => o.value === field.value)}
-                options={selectOptions}
+                value={field.value}
+                options={options}
                 onBlur={() => {
                   form.setFieldTouched(name);
                 }}
@@ -59,7 +51,7 @@ export const SelectPreselectionField = ({
                     v = { label: "", value: "" };
                   }
                   field.onChange(v.value);
-                  form.setFieldValue(name, v.value, true);
+                  form.setFieldValue(name, v, true);
                 }}
               />
               <ErrorMessage name={name} />
