@@ -3,6 +3,8 @@ import { MultiPreselectionField } from "./MultiPreselectionField";
 import { TextPreselectionField } from "./TextPreselectionField";
 import { RadioPreselectionField } from "./RadioPreselectionField";
 import { useTranslation } from "react-i18next";
+import { AddressFields } from "./AddressFields";
+import countries from "i18n-iso-countries";
 
 type PreselectionField = {
   id: number;
@@ -113,6 +115,11 @@ export const PreselectionFields = () => {
     { label: t("Gender option:::Other"), value: "other" },
   ];
 
+  const getCountryCode = (value?: any) => {
+    if ("country" in value) return countries.getAlpha2Code(value.country, "en");
+    return "";
+  };
+
   return (
     <div>
       {fields.map((field) => {
@@ -134,18 +141,12 @@ export const PreselectionFields = () => {
           case "address":
             return (
               <>
-                <SelectPreselectionField
-                  key={`${field.id}.city`}
-                  name={`questions.${field.id}.city`}
+                <AddressFields
+                  key={field.id}
                   label={field.question}
-                  placeholder="City"
-                  options={["Pesaro"]}
-                />
-                <SelectPreselectionField
-                  key={`${field.id}.country`}
-                  name={`questions.${field.id}.country`}
-                  placeholder="Country"
-                  options={["Italy"]}
+                  countryField={`questions.${field.id}.country`}
+                  cityField={`questions.${field.id}.city`}
+                  countryCode={getCountryCode(field.value)}
                 />
               </>
             );

@@ -11,16 +11,25 @@ const CitySelect = ({
   onBlur,
   onChange,
   countryRestrictions,
+  validate,
 }: {
   name: string;
   label: string;
   onBlur: () => void;
   onChange: (place?: google.maps.GeocoderResult) => void;
   countryRestrictions?: string | string[];
+  validate?: boolean;
 }) => {
   const { t, i18n } = useTranslation();
+
+  const onValidate = (value: string) => {
+    if (!value && validate) {
+      return t("This is a required field");
+    }
+  };
+
   return (
-    <FormikField name={name}>
+    <FormikField name={name} validate={onValidate}>
       {({ field }: FieldProps) => {
         return (
           <>
