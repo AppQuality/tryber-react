@@ -4,7 +4,7 @@ import Loading from "./Loading";
 import { LoginPage } from "./LoginPage";
 import SiteHeader from "./SiteHeader";
 
-export default ({
+const LoggedOnly = ({
   children,
   showHeader,
 }: {
@@ -49,3 +49,4 @@ export default ({
     </>
   );
 };
+export default LoggedOnly;

@@ -357,7 +357,6 @@
   "Read manual": "Leer Manual",
   "Reason": "Razón",
   "Received booty": "Saldo Recibido",
-  "Redirecting to your dashboard...": "Redireccionando a tu dashboard...",
   "Referral": "Referido",
   "Remove": "Eliminar",
   "Remove Certification": "Eliminar certificación",
@@ -689,6 +688,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
+  "Redirecting to your dashboard...": "Redireccionando a tu dashboard...",
   "Loading": "Cargando",
   "__RANKING_LEGEND_PARAGRAPH_MAX: 100": "Gana cada mes un número mínimo de exp para mantener o subir de nivel",
   "This is an invalid format": "Archivo no compatible",

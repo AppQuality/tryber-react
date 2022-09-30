@@ -6,7 +6,6 @@ import {
   DatepickerGlobalStyle,
   PageTitle,
 } from "@appquality/appquality-design-system";
-import React from "react";
 import { useTranslation } from "react-i18next";
 import GoogleTagManager from "src/features/GoogleTagManager";
 import { LangMenu } from "src/features/LangMenu";
@@ -19,7 +18,7 @@ export default function GettingStarted() {
   const redirectUrl = useLocalizeRoute("my-dashboard");
   return (
     <GoogleTagManager title={t("Getting Started")}>
-      <NotLoggedOnly>
+      <NotLoggedOnly redirect={{ url: useLocalizeRoute("my-dashboard") }}>
         <DatepickerGlobalStyle />
         <Container className="aq-pb-3">
           <LangMenu

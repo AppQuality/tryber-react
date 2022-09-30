@@ -61,7 +61,9 @@ export const PageTemplate: FC<{
     ? ({ children }: { children: React.ReactNode }) => (
         <LoggedOnly showHeader={showHeader}>{children}</LoggedOnly>
       )
-    : NotLoggedOnly;
+    : ({ children }: { children: React.ReactNode }) => (
+        <NotLoggedOnly>{children}</NotLoggedOnly>
+      );
 
   // map children and separate Modal components from the rest
   const [modalChildren, pageChildren] = React.Children.toArray(children).reduce(

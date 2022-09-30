@@ -1,13 +1,11 @@
 import TagManager from "react-gtm-module";
-import { useTranslation } from "react-i18next";
-import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import useUser from "src/redux/user";
 import { useHistory } from "react-router-dom";
 
 import Loading from "./Loading";
 import SiteHeader from "./SiteHeader";
 
-export default ({
+const NotLoggedOnly = ({
   children,
   redirect,
 }: {
@@ -15,23 +13,13 @@ export default ({
   redirect?: { url: string; message?: string };
 }) => {
   const { user, error, isLoading } = useUser();
-  const { t } = useTranslation();
   const history = useHistory();
-  let redirectMessage = t("Redirecting to your dashboard...");
-
-  let redirectUrl = useLocalizeRoute("my-dashboard");
-  if (redirect) {
-    redirectUrl = redirect.url;
-    if (redirect.message) {
-      redirectMessage = redirect.message;
-    }
-  }
 
   if (isLoading) {
     return <Loading />;
   }
-  if (user) {
-    history.push(redirectUrl);
+  if (user && redirect) {
+    history.push(redirect.url);
   }
   TagManager.dataLayer({
     dataLayer: {
@@ -49,3 +37,5 @@ export default ({
     </>
   );
 };
+
+export default NotLoggedOnly;

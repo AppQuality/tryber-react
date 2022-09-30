@@ -357,7 +357,6 @@
   "Read manual": "Leggi il manuale",
   "Reason": "Motivazione",
   "Received booty": "Guadagni ricevuti",
-  "Redirecting to your dashboard...": "Reindirizzamento alla dashboard in corso ...",
   "Referral": "Referral",
   "Remove": "Rimuovi",
   "Remove Certification": "Rimuovi certificazione",
@@ -689,6 +688,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Redirecting to your dashboard...": "Reindirizzamento alla dashboard in corso ...",
   "Loading": "Caricamento in corso...",
   "__RANKING_LEGEND_PARAGRAPH_MAX: 100": "Guadagna ogni mese un numero minimo di exp per mantenere o avanzare di livello",
   "This is an invalid format": "File non supportato",
