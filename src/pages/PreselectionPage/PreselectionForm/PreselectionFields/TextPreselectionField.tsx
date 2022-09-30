@@ -26,7 +26,7 @@ export const TextPreselectionField = ({
       return errorMessage ? errorMessage : t("This is a required field");
     }
     if (validation && !new RegExp(validation).test(value)) {
-      return errorMessage ? errorMessage : t("This is an invalid format");
+      return errorMessage ? errorMessage : "This is an invalid format";
     }
   };
 

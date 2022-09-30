@@ -432,7 +432,6 @@
   "This field is shared with the base section": "This field is shared with the base section",
   "This field is shared with the fiscal section": "This field is shared with the fiscal section",
   "This is a required field": "This is a required field",
-  "This is an invalid format": "File not supported",
   "This is an invalid format.": "This format is invalid.",
   "This is an invalid format. Should be formatted as +11000000000 or 0011000000000": "This is an invalid format. Should be formatted as +11000000000 or 0011000000000",
   "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!": "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!",
@@ -691,6 +690,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "This is an invalid format": "File not supported",
   "__RANKING_LEGEND_PARAGRAPH_MAX: 100": "Earn a certain amount of exp to hold or to reach a level every month",
   "BUGFORM_UPLOAD_FILE": "Click here to upload your files!"
 }
