@@ -6,6 +6,7 @@ import API from "src/utils/api";
 import HttpError from "src/utils/HttpError";
 import { operations } from "src/utils/schema";
 import { useAppSelector } from "src/store";
+import { useGetUsersMeDevicesQuery } from "src/services/tryberApi";
 
 interface FormProps {
   children: ReactNode;
@@ -16,6 +17,7 @@ interface FormProps {
 export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
   const { t } = useTranslation();
   const { current } = useAppSelector((state) => state.userDevices);
+  const { refetch } = useGetUsersMeDevicesQuery();
   const { add } = siteWideMessageStore();
   let device_type =
     current?.type === "Smartphone"
@@ -146,6 +148,7 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
             }
           }
         }
+        refetch();
         formikHelpers.setSubmitting(false);
       }}
       isInitialValid={false}

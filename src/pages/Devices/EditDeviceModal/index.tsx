@@ -24,7 +24,6 @@ export default () => {
   const [step, setStep] = useState(0);
   const { t } = useTranslation();
   const modalOpen = current ? isEditModalOpen : isAddModalOpen;
-  // Get the previous value
   const prevModalOpen: boolean = usePrevious<boolean>(modalOpen);
   const closeModal = () => {
     setStep(0);
