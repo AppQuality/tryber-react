@@ -3,7 +3,7 @@ import { tryberApi } from "src/services/tryberApi";
 import oldReducers from "src/redux/reducer";
 import { combineReducers } from "redux";
 import bugFormReducer from "src/pages/BugForm/bugFormSlice";
-import previewSelectionFormReducer from "src/pages/PreselectionPage/previewSelectionFormSlice";
+import previewSelectionFormReducer from "src/pages/PreviewSelectionForm/previewSelectionFormSlice";
 import loginPageReducer from "src/features/LoginPage/loginPageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";

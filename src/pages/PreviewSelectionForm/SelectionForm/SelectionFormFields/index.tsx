@@ -1,19 +1,19 @@
-import { SelectPreselectionField } from "./SelectPreselectionField";
-import { MultiPreselectionField } from "./MultiPreselectionField";
-import { TextPreselectionField } from "./TextPreselectionField";
-import { RadioPreselectionField } from "./RadioPreselectionField";
+import { SelectSelectionFormField } from "./SelectSelectionFormField";
+import { MultiSelectionFormField } from "./MultiSelectionFormField";
+import { TextSelectionFormField } from "./TextSelectionFormField";
+import { RadioSelectionFormField } from "./RadioSelectionFormField";
 import { AddressFields } from "./AddressFields";
 import countries from "i18n-iso-countries";
 import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import { useAppSelector } from "src/store";
 
-interface PreselectionFieldsProps {
+interface SelectionFormFieldsProps {
   genderOptions: Option[];
 }
 
-export const PreselectionFields = ({
+export const SelectionFormFields = ({
   genderOptions,
-}: PreselectionFieldsProps) => {
+}: SelectionFormFieldsProps) => {
   const { cufList, formData } = useAppSelector(
     (state) => state.previewSelectionForm
   );
@@ -60,7 +60,7 @@ export const PreselectionFields = ({
             case "text":
             case "phone_number":
               return (
-                <TextPreselectionField
+                <TextSelectionFormField
                   key={field.id}
                   name={`questions.${field.id}`}
                   label={field.question}
@@ -83,7 +83,7 @@ export const PreselectionFields = ({
             case "select":
             case "gender":
               return (
-                <SelectPreselectionField
+                <SelectSelectionFormField
                   key={field.id}
                   name={`questions.${field.id}`}
                   label={field.question}
@@ -98,7 +98,7 @@ export const PreselectionFields = ({
               );
             case "multiselect":
               return (
-                <MultiPreselectionField
+                <MultiSelectionFormField
                   key={field.id}
                   name={`questions.${field.id}`}
                   label={field.question}
@@ -111,7 +111,7 @@ export const PreselectionFields = ({
               );
             case "radio":
               return (
-                <RadioPreselectionField
+                <RadioSelectionFormField
                   key={field.id}
                   name={`questions.${field.id}`}
                   label={field.question}

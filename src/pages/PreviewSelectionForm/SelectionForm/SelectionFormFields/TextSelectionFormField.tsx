@@ -7,19 +7,19 @@ import {
 import { Field, FieldProps } from "formik";
 import { useTranslation } from "react-i18next";
 
-interface TextPreselectionFieldProps {
+interface TextSelectionFormFieldProps {
   label: string;
   name: string;
   validation?: string;
   errorMessage?: string;
 }
 
-export const TextPreselectionField = ({
+export const TextSelectionFormField = ({
   label,
   name,
   validation,
   errorMessage,
-}: TextPreselectionFieldProps) => {
+}: TextSelectionFormFieldProps) => {
   const { t } = useTranslation();
   const validate = (value: string) => {
     if (!value) {

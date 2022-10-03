@@ -7,17 +7,17 @@ import {
 import { Field, FieldProps } from "formik";
 import { useTranslation } from "react-i18next";
 
-interface RadioPreselectionFieldProps {
+interface RadioSelectionFormFieldProps {
   label: string;
   name: string;
   options: string[];
 }
 
-export const RadioPreselectionField = ({
+export const RadioSelectionFormField = ({
   label,
   name,
   options,
-}: RadioPreselectionFieldProps) => {
+}: RadioSelectionFormFieldProps) => {
   const { t } = useTranslation();
 
   return (

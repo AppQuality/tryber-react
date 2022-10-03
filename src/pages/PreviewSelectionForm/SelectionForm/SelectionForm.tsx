@@ -6,15 +6,15 @@ import {
   useGetCustomUserFieldsQuery,
   useGetUsersMeCampaignsByCampaignIdFormsQuery,
 } from "src/services/tryberApi";
-import { AvailableDevices } from "./AvailableDevices";
-import { PreselectionFields } from "./PreselectionFields";
-import { useEffect, useState } from "react";
+import { AvailableDevices } from "./SelectionFormFields/AvailableDevices";
+import { SelectionFormFields } from "./SelectionFormFields";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "src/store";
 import { setCufList, setformData } from "../previewSelectionFormSlice";
 
-export const PreselectionForm = () => {
+export const SelectionForm = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
@@ -35,7 +35,7 @@ export const PreselectionForm = () => {
     { label: t("Gender option:::Other"), value: "other" },
   ];
 
-  const initialFormValues: PreselectionFormValues = {
+  const initialFormValues: SelectionFormValues = {
     device: [],
     questions: {},
   };
@@ -104,11 +104,11 @@ export const PreselectionForm = () => {
         console.log(values);
       }}
     >
-      {(formikProps: FormikProps<PreselectionFormValues>) => {
+      {(formikProps: FormikProps<SelectionFormValues>) => {
         return (
-          <Form id="preselectionForm">
+          <Form id="selectionForm">
             <AvailableDevices />
-            <PreselectionFields genderOptions={genderOptions} />
+            <SelectionFormFields genderOptions={genderOptions} />
             <Button
               className="aq-mt-3 aq-mb-4"
               type="primary"

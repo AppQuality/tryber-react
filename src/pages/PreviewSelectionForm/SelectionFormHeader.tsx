@@ -1,12 +1,12 @@
-interface PreselectionHeaderProps {
+interface SelectionFormProps {
   title?: string;
   subtitle?: string;
 }
 
-export const PreselectionHeader = ({
+export const SelectionFormHeader = ({
   title,
   subtitle,
-}: PreselectionHeaderProps) => {
+}: SelectionFormProps) => {
   return (
     <div>
       <div>{title}</div>

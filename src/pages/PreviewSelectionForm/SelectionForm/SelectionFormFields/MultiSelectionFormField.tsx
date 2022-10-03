@@ -3,30 +3,28 @@ import {
   FormGroup,
   Select,
 } from "@appquality/appquality-design-system";
+import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import { Field, FieldProps } from "formik";
 import { useTranslation } from "react-i18next";
-import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 
-interface SelectPreselectionFieldProps {
+interface MultiSelectionFormFieldProps {
   name: string;
-  label?: string;
+  label: string;
   options: Option[];
-  placeholder?: string;
 }
 
-export const SelectPreselectionField = ({
+export const MultiSelectionFormField = ({
   name,
   label,
   options,
-  placeholder,
-}: SelectPreselectionFieldProps) => {
+}: MultiSelectionFormFieldProps) => {
   const { t } = useTranslation();
   return (
     <div className="aq-mb-3">
       <Field
         name={name}
-        validate={(option: Option) => {
-          if (!option.value) {
+        validate={(value: Option[]) => {
+          if (!value?.length) {
             return t("This is a required field");
           }
         }}
@@ -35,24 +33,24 @@ export const SelectPreselectionField = ({
           return (
             <FormGroup>
               <Select
-                key={name}
-                name={name}
-                value={field.value}
+                name={field.name}
                 options={options}
+                isClearable={false}
+                value={field.value}
                 onBlur={() => {
-                  form.setFieldTouched(name);
+                  form.setFieldTouched(field.name);
                 }}
-                label={label}
-                placeholder={placeholder || "Choose value"}
-                menuTargetQuery="body"
-                noOptionsMessage={() => "No options"}
                 onChange={(v) => {
                   if (v === null) {
                     v = { label: "", value: "" };
                   }
-                  field.onChange(v.value);
-                  form.setFieldValue(name, v, true);
+                  form.setFieldValue(field.name, v, true);
                 }}
+                label={label}
+                placeholder={"Choose value"}
+                menuTargetQuery="body"
+                noOptionsMessage={() => "No options"}
+                isMulti
               />
               <ErrorMessage name={name} />
             </FormGroup>
