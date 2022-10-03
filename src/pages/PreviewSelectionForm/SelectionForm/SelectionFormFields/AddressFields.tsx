@@ -14,6 +14,7 @@ interface AddressFieldsProps {
   countryField: string;
   cityField: string;
   countryCode: string;
+  containerId?: string;
 }
 
 export const AddressFields = ({
@@ -21,13 +22,14 @@ export const AddressFields = ({
   countryField,
   cityField,
   countryCode,
+  containerId,
 }: AddressFieldsProps) => {
   const { t } = useTranslation();
   const [currentCountryCode, setCurrentCountryCode] =
     useState<string>(countryCode);
 
   return (
-    <div className="aq-mb-3">
+    <div id={containerId} className="aq-mb-3">
       <FormikField name={countryField}>
         {({ form }: FieldProps) => {
           return (

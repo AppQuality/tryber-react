@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "src/store";
 import { setCufList, setformData } from "../previewSelectionFormSlice";
+import SelectionFocusError from "./SelectionFocusError";
 
 export const SelectionForm = () => {
   const { t } = useTranslation();
@@ -119,6 +120,7 @@ export const SelectionForm = () => {
             >
               Send Form and Apply
             </Button>
+            <SelectionFocusError />
           </Form>
         );
       }}

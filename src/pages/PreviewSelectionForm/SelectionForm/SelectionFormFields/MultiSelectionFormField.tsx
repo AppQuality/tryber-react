@@ -25,6 +25,7 @@ export const MultiSelectionFormField = ({
         name={name}
         validate={(value: Option[] | Option) => {
           if (
+            !value ||
             (value && "value" in value && value.value === "") ||
             (Array.isArray(value) && !value.length)
           ) {

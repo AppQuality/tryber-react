@@ -29,7 +29,6 @@ export const AvailableDevices = () => {
           <Select
             name={field.name}
             options={options}
-            isClearable={false}
             value={field.value}
             onBlur={() => {
               form.setFieldTouched(field.name);

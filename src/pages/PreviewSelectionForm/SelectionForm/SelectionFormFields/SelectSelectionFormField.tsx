@@ -53,6 +53,7 @@ export const SelectSelectionFormField = ({
                   field.onChange(v.value);
                   form.setFieldValue(name, v, true);
                 }}
+                isClearable
               />
               <ErrorMessage name={name} />
             </FormGroup>

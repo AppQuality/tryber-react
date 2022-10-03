@@ -80,6 +80,7 @@ export const SelectionFormFields = ({
               return (
                 <>
                   <AddressFields
+                    containerId={`questions.${field.id}`}
                     key={field.id}
                     label={field.question}
                     countryField={`questions.${field.id}.country`}
