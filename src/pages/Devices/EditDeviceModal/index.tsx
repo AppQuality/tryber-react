@@ -3,31 +3,34 @@ import { FormikProps } from "formik";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { usePrevious } from "src/hooks/usePrevious";
-import userDeviceStore from "src/redux/userDevices";
 import styled from "styled-components";
-import DeviceDetails from "./DeviceDetails";
+import { DeviceDetails } from "./DeviceDetails";
 import { DeviceModalFooter } from "./DeviceModalFooter";
 import { DeviceModalForm } from "./DeviceModalForm";
-import DeviceRecap from "./DeviceRecap";
+import { DeviceRecap } from "./DeviceRecap";
 import DeviceType from "./DeviceType";
-import { WizardStep } from "./types";
+import { useAppDispatch, useAppSelector } from "src/store";
+import {
+  closeEditDeviceModal,
+  closeAddDeviceModal,
+} from "src/pages/Devices/userDevicesSlice";
 
 export default () => {
-  const {
-    editModalOpen,
-    addModalOpen,
-    closeEditModal,
-    closeAddModal,
-    current,
-  } = userDeviceStore();
+  const { current } = useAppSelector((state) => state.userDevices);
+  const { isEditModalOpen, isAddModalOpen } = useAppSelector(
+    (state) => state.userDevices
+  );
+  const dispatch = useAppDispatch();
   const [step, setStep] = useState(0);
   const { t } = useTranslation();
-  const modalOpen = current ? editModalOpen : addModalOpen;
+  const modalOpen = current ? isEditModalOpen : isAddModalOpen;
   // Get the previous value
   const prevModalOpen: boolean = usePrevious<boolean>(modalOpen);
   const closeModal = () => {
     setStep(0);
-    current ? closeEditModal() : closeAddModal();
+    current
+      ? dispatch(closeEditDeviceModal())
+      : dispatch(closeAddDeviceModal());
   };
   let steps: WizardStep[] = [
     {

@@ -2,11 +2,10 @@ import { Formik } from "formik";
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import siteWideMessageStore from "src/redux/siteWideMessages";
-import userDeviceStore from "src/redux/userDevices";
 import API from "src/utils/api";
 import HttpError from "src/utils/HttpError";
 import { operations } from "src/utils/schema";
-import { DeviceFormInterface } from "./types";
+import { useAppSelector } from "src/store";
 
 interface FormProps {
   children: ReactNode;
@@ -16,20 +15,20 @@ interface FormProps {
 
 export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
   const { t } = useTranslation();
-  const { current, fetch } = userDeviceStore();
+  const { current } = useAppSelector((state) => state.userDevices);
   const { add } = siteWideMessageStore();
   let device_type =
-    current?.type == "Smartphone"
+    current?.type === "Smartphone"
       ? 0
-      : current?.type == "Tablet"
+      : current?.type === "Tablet"
       ? 1
-      : current?.type == "PC"
+      : current?.type === "PC"
       ? 2
-      : current?.type == "Console"
+      : current?.type === "Console"
       ? 3
-      : current?.type == "Smartwatch"
+      : current?.type === "Smartwatch"
       ? 4
-      : current?.type == "Smart-tv"
+      : current?.type === "Smart-tv"
       ? 5
       : -1;
 
@@ -37,7 +36,7 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
     device_type: device_type,
     pc_type:
       current?.device && "pc_type" in current.device
-        ? current.device.pc_type
+        ? (current.device.pc_type as PcType)
         : undefined,
     manufacturer:
       current?.device && "manufacturer" in current.device
@@ -69,7 +68,7 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
               deviceId: current.id,
               osId: osId,
             })
-              .then((res) => {
+              .then(() => {
                 add({
                   message: (
                     <div>
@@ -84,7 +83,6 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
                   type: "success",
                 });
                 closeModal();
-                fetch();
               })
               .catch((e) => {
                 if (e.statusCode === 304) {
@@ -122,7 +120,7 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
               : operating_system_id;
           if (newDeviceId !== -1) {
             try {
-              const res = await API.addMyDevice({
+              await API.addMyDevice({
                 newDevice: {
                   device: newDeviceId,
                   operating_system: osId,
@@ -142,7 +140,6 @@ export const DeviceModalForm = ({ children, step, closeModal }: FormProps) => {
                 type: "success",
               });
               closeModal();
-              fetch();
             } catch (e: unknown) {
               const { message } = e as HttpError;
               add({ message: message, type: "danger" });
