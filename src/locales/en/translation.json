@@ -266,7 +266,6 @@
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"",
   "History": "History",
-  "Home": "Home",
   "How do experience points work?": "How do experience points work?",
   "I agree to receive earning opportunity emails from AppQuality": "I agree to receive emails dedicated to the TRYBER community",
   "I don't receive testing campaigns": "I don't receive campaigns",
@@ -688,6 +687,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "Home": "Home",
   "Redirecting to your dashboard...": "Redirecting to your dashboard...",
   "Loading": "Loading",
   "__RANKING_LEGEND_PARAGRAPH_MAX: 100": "Earn a certain amount of exp to hold or to reach a level every month",

@@ -1,7 +1,6 @@
 import { Container, Text } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
 import { LangMenu } from "src/features/LangMenu";
-import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
+import { OutsideContainer } from "src/features/PageTemplate";
 import styled from "styled-components";
 
 import AboutUnguess from "./AboutUnguess";
@@ -13,6 +12,8 @@ import HowToJoinTryber from "./HowToJoinTryber";
 import OurCommunity from "./OurCommunity";
 import Reviews from "./Reviews";
 import WhyJoinTryber from "./WhyJoinTryber";
+import NotLoggedOnly from "src/features/NotLoggedOnly";
+import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 
 const StyledHome = styled.div`
   max-width: 100vw;
@@ -50,15 +51,8 @@ const StyledHome = styled.div`
   }
 `;
 export default function Home() {
-  const { t } = useTranslation();
   return (
-    <PageTemplate
-      containerClass=""
-      showTitle={false}
-      title={t("Home")}
-      route={"home"}
-      shouldBeLoggedIn={false}
-    >
+    <NotLoggedOnly redirect={{ url: useLocalizeRoute("my-dashboard") }}>
       <OutsideContainer>
         <StyledHome>
           <Container className="aq-pt-3">
@@ -99,6 +93,6 @@ export default function Home() {
           </Container>
         </StyledHome>
       </OutsideContainer>
-    </PageTemplate>
+    </NotLoggedOnly>
   );
 }

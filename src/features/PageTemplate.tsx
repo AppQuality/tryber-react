@@ -43,7 +43,6 @@ export const PageTemplate: FC<{
   showHeader?: boolean;
   showSidebar?: boolean;
   containerClass?: string;
-  showTitle?: boolean;
   route: string;
 }> = ({
   children,
@@ -53,7 +52,6 @@ export const PageTemplate: FC<{
   shouldBeLoggedIn = false,
   showHeader = true,
   showSidebar = true,
-  showTitle = true,
   containerClass = "aq-pb-3",
   route,
 }) => {
@@ -91,7 +89,7 @@ export const PageTemplate: FC<{
   const content = (
     <ContentTemplate
       className={containerClass}
-      title={showTitle ? title : undefined}
+      title={title}
       heading={heading}
       subtitle={subtitle}
     >
