@@ -8,6 +8,7 @@ import MyBugs from "./MyBugs";
 import Profile from "./Profile";
 import Wallet from "./Wallet";
 import Ranking from "./Ranking";
+import PreviewSelectionForm from "./PreviewSelectionForm";
 
 export {
   Dashboard,
@@ -20,4 +21,5 @@ export {
   GoodbyePage,
   Wallet,
   Ranking,
+  PreviewSelectionForm,
 };

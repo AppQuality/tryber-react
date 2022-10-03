@@ -266,7 +266,6 @@
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Aquí está la lista de todos tus dispositivos. Asegúrete de mantenerla actualizada para aumentar tus posibilidades de ser seleccionado para proyectos futuros.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Aquí solo puedes cambiar la versión de tu sistema operativo. Si deseas agregar otro dispositivo, haga clic en \"Agregar dispositivo\"",
   "History": "Cronología",
-  "Home": "Página de inicio",
   "How do experience points work?": "¿Cómo funcionan los puntos de experiencia?",
   "I agree to receive earning opportunity emails from AppQuality": "Acepto recibir correos electrónicos dedicados a la Comunidad de TRYBER",
   "I don't receive testing campaigns": "Nunca recibo campañas",
@@ -292,7 +291,6 @@
   "Learn More": "Saber Más",
   "Learn more about how we calculate and attribute experience points.": "Aprende más sobre cómo calculamos y atribuimos los puntos de experiencia.",
   "LinkedIn": "LinkedIn",
-  "Loading": "Cargando",
   "Loading Data": "Cargando Datos",
   "Log in with an existing account": "Regístrate más rápido",
   "Login": "¿Ya eres un Tryber? Iniciar sesión",
@@ -358,7 +356,6 @@
   "Read manual": "Leer Manual",
   "Reason": "Razón",
   "Received booty": "Saldo Recibido",
-  "Redirecting to your dashboard...": "Redireccionando a tu dashboard...",
   "Referral": "Referido",
   "Remove": "Eliminar",
   "Remove Certification": "Eliminar certificación",
@@ -690,7 +687,10 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
-  "This is an invalid format": "Archivo no compatible",
+  "Home": "Página de inicio",
+  "Redirecting to your dashboard...": "Redireccionando a tu dashboard...",
+  "Loading": "Cargando",
   "__RANKING_LEGEND_PARAGRAPH_MAX: 100": "Gana cada mes un número mínimo de exp para mantener o subir de nivel",
+  "This is an invalid format": "Archivo no compatible",
   "BUGFORM_UPLOAD_FILE": "Click here to upload your files!"
 }

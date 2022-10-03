@@ -22,6 +22,7 @@ import { useTranslation } from "react-i18next";
 import useWindowSize from "../../hooks/useWindowSize";
 import menuStore from "../../redux/menu";
 import useUser from "../../redux/user";
+import wpApi from "src/utils/wpapi";
 
 export interface TesterSidebarProps {
   route?: string;
@@ -31,15 +32,7 @@ export interface TesterSidebarProps {
 const TesterSidebarArgs: SidebarType.SidebarProps = {
   open: false,
   onLogout: () => {
-    fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout", {
-      method: "GET",
-    })
-      .then(() => {
-        window.location.reload();
-      })
-      .catch((e) => {
-        alert(e.message);
-      });
+    wpApi.logout();
   },
   languages: {
     current: { lang: "it" },
@@ -77,15 +70,7 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
   const languages = Object.keys(i18next.services.resourceStore.data);
 
   TesterSidebarArgs.onLogout = () => {
-    fetch("/wp-admin/admin-ajax.php?action=appq_wp_logout", {
-      method: "GET",
-    })
-      .then(() => {
-        window.location.reload();
-      })
-      .catch((e) => {
-        alert(e.message);
-      });
+    wpApi.logout();
   };
 
   TesterSidebarArgs.languages = {

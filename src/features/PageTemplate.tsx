@@ -1,8 +1,5 @@
 import { Container, PageTitle } from "@appquality/appquality-design-system";
-import React from "react";
-import { shallowEqual, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { LoginPage } from "./LoginPage";
+import React, { FC } from "react";
 
 import GoogleTagManager from "./GoogleTagManager";
 import LoggedOnly from "./LoggedOnly";
@@ -34,39 +31,37 @@ const ContentTemplate = ({
   );
 };
 
-export const OutsideContainer = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const OutsideContainer: FC = ({ children }) => {
   return <>{children}</>;
 };
 
-export const PageTemplate = ({
+export const PageTemplate: FC<{
+  title?: string;
+  subtitle?: string;
+  heading?: string;
+  shouldBeLoggedIn?: boolean;
+  showHeader?: boolean;
+  showSidebar?: boolean;
+  containerClass?: string;
+  route: string;
+}> = ({
   children,
   title,
   subtitle,
   heading,
   shouldBeLoggedIn = false,
-  showTitle = true,
+  showHeader = true,
+  showSidebar = true,
   containerClass = "aq-pb-3",
   route,
-}: {
-  children: React.ReactNode;
-  title?: string;
-  subtitle?: string;
-  heading?: string;
-  shouldBeLoggedIn?: boolean;
-  containerClass?: string;
-  showTitle?: boolean;
-  route: string;
 }) => {
-  const LoggedStatusWrapper = shouldBeLoggedIn ? LoggedOnly : NotLoggedOnly;
-  const history = useHistory();
-  const { user, loading } = useSelector(
-    (state: GeneralState) => state.user,
-    shallowEqual
-  );
+  const LoggedStatusWrapper = shouldBeLoggedIn
+    ? ({ children }: { children: React.ReactNode }) => (
+        <LoggedOnly showHeader={showHeader}>{children}</LoggedOnly>
+      )
+    : ({ children }: { children: React.ReactNode }) => (
+        <NotLoggedOnly>{children}</NotLoggedOnly>
+      );
 
   // map children and separate Modal components from the rest
   const [modalChildren, pageChildren] = React.Children.toArray(children).reduce(
@@ -94,7 +89,7 @@ export const PageTemplate = ({
   const content = (
     <ContentTemplate
       className={containerClass}
-      title={showTitle ? title : undefined}
+      title={title}
       heading={heading}
       subtitle={subtitle}
     >
@@ -113,23 +108,14 @@ export const PageTemplate = ({
             )
       }
     >
-      {history.location.pathname !== "/" &&
-      shouldBeLoggedIn &&
-      !user?.id &&
-      !loading &&
-      (localStorage.getItem("isUserLogged") === "false" ||
-        localStorage.getItem("isUserLogged") === null) ? (
-        <LoginPage />
-      ) : (
-        <LoggedStatusWrapper>
-          {modalChildren}
-          {shouldBeLoggedIn ? (
-            <TesterSidebar route={route}>{content}</TesterSidebar>
-          ) : (
-            content
-          )}
-        </LoggedStatusWrapper>
-      )}
+      <LoggedStatusWrapper>
+        {modalChildren}
+        {shouldBeLoggedIn && showSidebar ? (
+          <TesterSidebar route={route}>{content}</TesterSidebar>
+        ) : (
+          content
+        )}
+      </LoggedStatusWrapper>
     </GoogleTagManager>
   );
 };

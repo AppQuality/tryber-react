@@ -15,10 +15,7 @@ import i18next from "i18next";
 
 export default function ThankYouPage() {
   return (
-    <PageTemplate
-      route={"thank-you"}
-      shouldBeLoggedIn={localStorage.getItem("isUserLogged") === "true"}
-    >
+    <PageTemplate route={"thank-you"} shouldBeLoggedIn={false}>
       <BSGrid>
         <BSCol size="col-12">
           <StyledThankYouCard>
