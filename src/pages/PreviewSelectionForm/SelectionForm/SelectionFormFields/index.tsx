@@ -23,18 +23,26 @@ export const SelectionFormFields = ({
   const getCufType = (type: string) =>
     cufList?.find((cuf) => cuf.id === getCufId(type))?.type;
 
-  const getSelectOptions = (type: string, options?: string[] | number[]) =>
-    options?.map((opt) => {
-      if (typeof opt === "number") {
-        const currentCuf = cufList?.find((cuf) => cuf.id === getCufId(type));
-        const option = currentCuf?.options?.find((option) => opt === option.id);
-        return {
-          label: option?.name || "",
-          value: option?.id?.toString() || "",
-        };
-      }
-      return { label: opt, value: opt };
-    }) || [];
+  const getSelectOptions = (type: string, options?: string[] | number[]) => {
+    const selectOptions =
+      options?.map((opt) => {
+        if (typeof opt === "number") {
+          const currentCuf = cufList?.find((cuf) => cuf.id === getCufId(type));
+          const option = currentCuf?.options?.find(
+            (option) => opt === option.id
+          );
+          return {
+            label: option?.name || "",
+            value: option?.id?.toString() || "",
+          };
+        }
+        return { label: opt, value: opt };
+      }) || [];
+    if (options && typeof options[0] === "number") {
+      selectOptions.push({ label: "Nessuna delle precedenti", value: "-1" });
+    }
+    return selectOptions;
+  };
 
   const getRadioOptions = (options?: string[] | number[]) => {
     const radioOptions: string[] = [];
