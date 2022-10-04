@@ -6,15 +6,33 @@ import {
 } from "@appquality/appquality-design-system";
 import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import { Field } from "formik";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-
-const options = [
-  { label: "Device 1", value: "1" },
-  { label: "Device 2", value: "2" },
-];
+import { useParams } from "react-router-dom";
+import { useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery } from "src/services/tryberApi";
 
 export const AvailableDevices = () => {
   const { t } = useTranslation();
+  const { id } = useParams<{ id: string }>();
+  const { data } = useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery(
+    { campaign: id },
+    { skip: !id }
+  );
+  const [devices, setDevices] = useState<Option[]>([]);
+
+  useEffect(() => {
+    if (data)
+      setDevices(
+        data.map((d) => {
+          const label =
+            "manufacturer" in d.device
+              ? `${d.device.manufacturer} ${d.device.model} ${d.operating_system.platform} ${d.operating_system.version}`
+              : `${d.device.pc_type} ${d.operating_system.platform} ${d.operating_system.version}`;
+          return { label, value: d.id?.toString() };
+        })
+      );
+  }, [data]);
+
   return (
     <Field
       name="device"
@@ -28,7 +46,7 @@ export const AvailableDevices = () => {
         <div className="aq-mb-3">
           <Select
             name={field.name}
-            options={options}
+            options={devices}
             value={field.value}
             onBlur={() => {
               form.setFieldTouched(field.name);
