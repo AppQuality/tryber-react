@@ -1,9 +1,15 @@
-import { Button, Form, Formik } from "@appquality/appquality-design-system";
+import {
+  aqBootstrapTheme,
+  Button,
+  Form,
+  Formik,
+} from "@appquality/appquality-design-system";
 import { FormikProps } from "formik";
 import * as yup from "yup";
 import {
   CustomUserFieldsData,
   useGetCustomUserFieldsQuery,
+  useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery,
   useGetUsersMeCampaignsByCampaignIdFormsQuery,
 } from "src/services/tryberApi";
 import { AvailableDevices } from "./SelectionFormFields/AvailableDevices";
@@ -14,14 +20,24 @@ import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "src/store";
 import { setCufList, setformData } from "../previewSelectionFormSlice";
 import SelectionFocusError from "./SelectionFocusError";
+import styled from "styled-components";
+
+const StyledError = styled.div`
+  color: ${aqBootstrapTheme.colors.red800};
+  margin-bottom: 16px;
+`;
 
 export const SelectionForm = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
-  const { data } = useGetCustomUserFieldsQuery();
+  const cuf = useGetCustomUserFieldsQuery();
   const form = useGetUsersMeCampaignsByCampaignIdFormsQuery(
     { campaignId: id },
+    { skip: !id }
+  );
+  const devices = useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery(
+    { campaign: id },
     { skip: !id }
   );
 
@@ -86,15 +102,22 @@ export const SelectionForm = () => {
 
   useEffect(() => {
     const list: CustomUserFieldsData[] = [];
-    data?.forEach((d) => {
+    cuf?.data?.forEach((d) => {
       d.fields?.forEach((f) => list.push(f));
     });
     dispatch(setCufList(list));
-  }, [data]);
+  }, [cuf]);
 
   useEffect(() => {
     if (form?.data) dispatch(setformData(form.data));
   }, [form]);
+
+  if (
+    form.error ||
+    cuf.error ||
+    (devices.error && "status" in devices.error && devices.error.status !== 404)
+  )
+    return <StyledError>An error occurred while loading the form.</StyledError>;
 
   return (
     <Formik
@@ -115,7 +138,13 @@ export const SelectionForm = () => {
               type="primary"
               htmlType="submit"
               size="block"
-              disabled={formikProps.isSubmitting}
+              disabled={
+                formikProps.isSubmitting ||
+                cuf.isLoading ||
+                cuf.isFetching ||
+                form.isLoading ||
+                form.isFetching
+              }
               flat
             >
               Send Form and Apply

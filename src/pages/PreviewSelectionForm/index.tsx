@@ -28,7 +28,7 @@ export default function PreviewSelectionForm() {
         showSidebar={false}
       >
         <BSGrid>
-          <BSCol size="col-lg-9" className="aq-mb-3">
+          <BSCol size="col-lg-8" className="aq-mb-3">
             <SelectionForm />
           </BSCol>
         </BSGrid>

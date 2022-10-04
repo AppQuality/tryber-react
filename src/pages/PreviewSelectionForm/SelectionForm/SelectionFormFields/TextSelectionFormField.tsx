@@ -35,7 +35,7 @@ export const TextSelectionFormField = ({
       {({ field, meta }: FieldProps) => {
         return (
           <FormGroup className="aq-mb-3">
-            {label && <FormLabel htmlFor={name} label={label} />}
+            <FormLabel htmlFor={name} label={label} />
             <div className="input-group">
               <Input
                 id={name}

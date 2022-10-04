@@ -14,10 +14,11 @@ import { useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery } from "src/serv
 export const AvailableDevices = () => {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
-  const { data } = useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery(
-    { campaign: id },
-    { skip: !id }
-  );
+  const { data, isLoading } =
+    useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery(
+      { campaign: id },
+      { skip: !id }
+    );
   const [devices, setDevices] = useState<Option[]>([]);
 
   useEffect(() => {
@@ -32,6 +33,8 @@ export const AvailableDevices = () => {
         })
       );
   }, [data]);
+
+  if (isLoading) return <></>;
 
   return (
     <Field
