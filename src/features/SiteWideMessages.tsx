@@ -43,8 +43,8 @@ const SiteWideMessages = () => {
     <ToastrContainer>
       <BSGrid>
         <TransitionGroup className="toastr-container">
-          {messages.map((m) => (
-            <CSSTransition timeout={TIMEOUT} classNames="fade">
+          {messages.map((m, index) => (
+            <CSSTransition timeout={TIMEOUT} classNames="fade" key={index}>
               <Toastr
                 type={m.type}
                 className="aq-mb-3 fade"

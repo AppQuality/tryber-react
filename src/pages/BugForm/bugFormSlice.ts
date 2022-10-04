@@ -3,7 +3,6 @@ import {
   PostUsersMeCampaignsByCampaignIdMediaApiResponse,
   tryberApi,
 } from "src/services/tryberApi";
-import { addMessage } from "../../redux/siteWideMessages/actionCreators";
 
 // Define a type for the slice state
 interface BugFormState {

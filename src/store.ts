@@ -4,6 +4,7 @@ import oldReducers from "src/redux/reducer";
 import { combineReducers } from "redux";
 import bugFormReducer from "src/pages/BugForm/bugFormSlice";
 import previewSelectionFormReducer from "src/pages/PreviewSelectionForm/previewSelectionFormSlice";
+import userDevicesReducer from "src/pages/Devices/userDevicesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 
@@ -12,6 +13,7 @@ export const store = configureStore({
     ...oldReducers,
     bugForm: bugFormReducer,
     previewSelectionForm: previewSelectionFormReducer,
+    userDevices: userDevicesReducer,
     [tryberApi.reducerPath]: tryberApi.reducer,
   }),
   // Adding the api middleware enables caching, invalidation, polling,

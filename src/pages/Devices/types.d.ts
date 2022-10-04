@@ -1,6 +1,11 @@
-import { FormikErrors } from "formik";
-import { ReactNode } from "react";
-
+type DeviceItemPc = {
+  pc_type: PcType;
+};
+type DeviceItemOther = {
+  manufacturer: string;
+  model: string;
+  id?: number;
+};
 type PcType =
   | "Notebook"
   | "Desktop"

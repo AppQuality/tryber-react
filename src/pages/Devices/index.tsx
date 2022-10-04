@@ -7,15 +7,16 @@ import {
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
-import userDeviceStore from "src/redux/userDevices";
 
 import DeviceTable from "./DeviceTable";
 import EditDeviceModal from "./EditDeviceModal";
 import RemoveDeviceModal from "./RemoveDeviceModal";
+import { openAddDeviceModal } from "src/pages/Devices/userDevicesSlice";
+import { useAppDispatch } from "src/store";
 
 export default function Devices() {
   const { t } = useTranslation();
-  const { openAddModal } = userDeviceStore();
+  const dispatch = useAppDispatch();
   return (
     <PageTemplate
       title={t("Personal Equipment")}
@@ -49,7 +50,7 @@ export default function Devices() {
               )}
             </Text>
             <Button
-              onClick={() => openAddModal()}
+              onClick={() => dispatch(openAddDeviceModal())}
               flat={true}
               type="primary"
               size="block"

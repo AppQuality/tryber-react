@@ -5,7 +5,7 @@ import { Step0Method } from "src/pages/Wallet/paymentModal/Step0Method";
 import { Step1Data } from "src/pages/Wallet/paymentModal/Step1Data";
 import { FormWrapper } from "src/pages/Wallet/paymentModal/FormWrapper";
 import { FormikProps } from "formik";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { setPaymentModalOpen } from "src/redux/wallet/actionCreator";
 import { Step2Recap } from "src/pages/Wallet/paymentModal/Step2Recap";

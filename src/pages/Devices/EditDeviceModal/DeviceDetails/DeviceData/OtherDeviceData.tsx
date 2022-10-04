@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import API from "src/utils/api";
 import { operations } from "src/utils/schema";
-import { DeviceFormInterface } from "../../types";
 
 const OtherDeviceData = ({ edit }: { edit: boolean }) => {
   const { values } = useFormikContext<DeviceFormInterface>();
