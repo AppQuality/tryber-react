@@ -117,7 +117,13 @@ export const SelectionForm = () => {
     cuf.error ||
     (devices.error && "status" in devices.error && devices.error.status !== 404)
   )
-    return <StyledError>An error occurred while loading the form.</StyledError>;
+    return (
+      <StyledError>
+        {t("_FORM_GENERIC-ERROR_MESSAGES_", {
+          defaultValue: "An error occurred while loading the form.",
+        })}
+      </StyledError>
+    );
 
   return (
     <Formik
@@ -147,7 +153,9 @@ export const SelectionForm = () => {
               }
               flat
             >
-              Send Form and Apply
+              {t("_FORM_BUTTON_SEND-FORM_", {
+                defaultValue: "Send Form and Apply",
+              })}
             </Button>
             <SelectionFocusError />
           </Form>

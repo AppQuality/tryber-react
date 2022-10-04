@@ -7,9 +7,10 @@ import {
 import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import { Field } from "formik";
 import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery } from "src/services/tryberApi";
+import localizedUrl from "src/utils/localizedUrl";
 
 export const AvailableDevices = () => {
   const { t } = useTranslation();
@@ -60,16 +61,34 @@ export const AvailableDevices = () => {
               }
               form.setFieldValue(field.name, v, true);
             }}
-            label={"Devices"}
-            placeholder={"Select device"}
+            label={t("_FORM_LABEL_DEVICES_", {
+              defaultValue: "Devices",
+            })}
+            placeholder={t("_FORM_SELECT_DEVICES_", {
+              defaultValue: "Select devices",
+            })}
             menuTargetQuery="body"
             noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
             isMulti
           />
           <ErrorMessage name={field.name} />
           <Text small>
-            Do you have an acceptable device not listed here? Add it to your
-            profile.
+            <Trans
+              i18nKey={
+                "Available tags : <devices_link> (Link to fiscal devices):::_FORM_MESSAGES_ADD-DEVICES_"
+              }
+              components={{
+                devices_link: (
+                  <a
+                    href={localizedUrl(`/personal-equipment/`)}
+                    target="_blank"
+                  />
+                ),
+              }}
+              defaults={
+                "Do you have an acceptable device not listed here? <devices_link>Add it to your profile.</devices_link>"
+              }
+            />
           </Text>
         </div>
       )}

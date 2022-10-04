@@ -26,7 +26,11 @@ export const TextSelectionFormField = ({
       return errorMessage ? errorMessage : t("This is a required field");
     }
     if (validation && !new RegExp(validation).test(value)) {
-      return errorMessage ? errorMessage : "This is an invalid format";
+      return errorMessage
+        ? errorMessage
+        : t("_FORM_ERROR_MESSAGES_NUMBER-PHONE_", {
+            defaultValue: "This is an invalid format",
+          });
     }
   };
 

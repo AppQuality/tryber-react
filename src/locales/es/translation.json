@@ -78,6 +78,9 @@
   "Available tags \n<a> - Link to help article for fiscal type": {
     "@@Description for fiscal type@@": "<a>Haga clic aquí</a> para obtener más información"
   },
+  "Available tags : <devices_link> (Link to fiscal devices)": {
+    "_FORM_MESSAGES_ADD-DEVICES_": ""
+  },
   "Available tags : <entry_test_link> (Link to entry test)": {
     "__RANKING_MODAL_MESSAGE_MAX: 250": "Todavía no estás en la clasificación: completa el <entry_test_link>Entry Test</entry_test_link> para ganar los primeros puntos y llegar al nivel Basic"
   },
@@ -495,6 +498,13 @@
   "Your payment request was successful.<br />You will receive the payment <strong>within 10 working days.</strong>": "¡Listo! Tu solicitud de pago ha sido aceptada.\nRecibirás el pago en un plazo de 10 días laborables.",
   "Your profile doesn't match with your fiscal profile, please check your data": "Tu perfil no coincide con tu perfil fiscal, por favor revisa tus datos",
   "Zip code": "Código postal",
+  "_FORM_BUTTON_SEND-FORM_": "Send Form and Apply",
+  "_FORM_ERROR_MESSAGES_NUMBER-PHONE_": "This is an invalid format",
+  "_FORM_GENERIC-ERROR_MESSAGES_": "An error occurred while loading the form.",
+  "_FORM_LABEL_DEVICES_": "Devices",
+  "_FORM_PARAGRAPH_": "Between you and the campaign there is this form: fill it in all its fields to have more selection possibilities. We will save this data for future campaigns.",
+  "_FORM_SELECT_DEVICES_": "Select devices",
+  "_FORM_TITLE_": "It's your time, apply now",
   "__CARD_RECAP_DASHBOARD_CTA_MAX: 30": "Ve la clasificación",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-MENSILI_MAX: 25": "Exp points mensuales",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Exp points totales",
