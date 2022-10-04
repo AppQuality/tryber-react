@@ -43,9 +43,11 @@ export const SelectSelectionFormField = ({
                   form.setFieldTouched(name);
                 }}
                 label={label}
-                placeholder={placeholder || "Choose value"}
+                placeholder={
+                  placeholder || t("Select placeholder:::Choose value")
+                }
                 menuTargetQuery="body"
-                noOptionsMessage={() => "No options"}
+                noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
                 onChange={(v) => {
                   if (v === null) {
                     v = { label: "", value: "" };

@@ -60,9 +60,9 @@ export const MultiSelectionFormField = ({
                   form.setFieldValue(field.name, v, true);
                 }}
                 label={label}
-                placeholder={"Choose value"}
+                placeholder={t("Select placeholder:::Choose value")}
                 menuTargetQuery="body"
-                noOptionsMessage={() => "No options"}
+                noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
                 isMulti
               />
               <ErrorMessage name={name} />

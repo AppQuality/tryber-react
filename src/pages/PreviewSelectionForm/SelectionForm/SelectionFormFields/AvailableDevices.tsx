@@ -63,7 +63,7 @@ export const AvailableDevices = () => {
             label={"Devices"}
             placeholder={"Select device"}
             menuTargetQuery="body"
-            noOptionsMessage={() => "No options"}
+            noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}
             isMulti
           />
           <ErrorMessage name={field.name} />
