@@ -386,6 +386,14 @@ const injectedRtkApi = api.injectEndpoints({
         url: `/users/me/campaigns/${queryArg.campaignId}`,
       }),
     }),
+    getUsersMeCampaignsByCampaignCompatibleDevices: build.query<
+      GetUsersMeCampaignsByCampaignCompatibleDevicesApiResponse,
+      GetUsersMeCampaignsByCampaignCompatibleDevicesApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaign}/compatible_devices`,
+      }),
+    }),
     postUsersMeCampaignsByCampaignIdBugs: build.mutation<
       PostUsersMeCampaignsByCampaignIdBugsApiResponse,
       PostUsersMeCampaignsByCampaignIdBugsApiArg
@@ -1249,6 +1257,12 @@ export type GetUsersMeCampaignsByCampaignIdApiResponse = /** status 200 OK */ {
 export type GetUsersMeCampaignsByCampaignIdApiArg = {
   campaignId: string;
 };
+export type GetUsersMeCampaignsByCampaignCompatibleDevicesApiResponse =
+  /** status 200 OK */ UserDevice[];
+export type GetUsersMeCampaignsByCampaignCompatibleDevicesApiArg = {
+  /** A campaign id */
+  campaign: string;
+};
 export type PostUsersMeCampaignsByCampaignIdBugsApiResponse =
   /** status 200 OK */ {
     id: number;
@@ -1995,6 +2009,7 @@ export const {
   useGetUsersMeBugsQuery,
   useGetUsersMeCampaignsQuery,
   useGetUsersMeCampaignsByCampaignIdQuery,
+  useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery,
   usePostUsersMeCampaignsByCampaignIdBugsMutation,
   useGetUsersMeCampaignsByCampaignIdDevicesQuery,
   usePostUsersMeCampaignsByCampaignIdMediaMutation,
