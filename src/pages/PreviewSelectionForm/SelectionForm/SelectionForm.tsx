@@ -22,6 +22,8 @@ import { setCufList, setformData } from "../previewSelectionFormSlice";
 import SelectionFocusError from "./SelectionFocusError";
 import styled from "styled-components";
 import { useSubmitSelectionFormValues } from "./useSubmitSelectionFormValues";
+import { useMapFormDataToInitialValues } from "src/pages/PreviewSelectionForm/SelectionForm/mapFormDataToInitialValues";
+import useGenderOptions from "src/features/UseGenderOptions";
 
 const StyledError = styled.div`
   color: ${aqBootstrapTheme.colors.red800};
@@ -46,62 +48,17 @@ export const SelectionForm = () => {
     (state) => state.previewSelectionForm
   );
 
+  const initialFormValues: SelectionFormValues = useMapFormDataToInitialValues(
+    formData,
+    cufList
+  );
   const { submitValues } = useSubmitSelectionFormValues(id);
-
-  const genderOptions = [
-    { label: t("Gender option:::Female"), value: "female" },
-    { label: t("Gender option:::Male"), value: "male" },
-    { label: t("Gender option:::Not Specified"), value: "not-specified" },
-    { label: t("Gender option:::Other"), value: "other" },
-  ];
-
-  const initialFormValues: SelectionFormValues = {
-    device: [],
-    questions: {},
-  };
 
   const validationSchema = {
     questions: yup.object(),
   };
 
-  if (formData && cufList.length) {
-    formData?.forEach((f) => {
-      if (!f.value) {
-        initialFormValues.questions[f.id] = "";
-        return;
-      }
-      if (typeof f.value === "number") {
-        initialFormValues.questions[f.id] = f.value.toString();
-        return;
-      }
-      if (typeof f.value === "string") {
-        if (f.type === "gender") {
-          initialFormValues.questions[f.id] = genderOptions.find(
-            (gender) => f.value === gender.value
-          );
-        } else initialFormValues.questions[f.id] = f.value;
-        return;
-      }
-      if (f.value && "city" in f.value && "country" in f.value) {
-        initialFormValues.questions[f.id] = {
-          city: f.value.city,
-          country: f.value.country,
-        };
-        return;
-      }
-      if (Array.isArray(f.value)) {
-        initialFormValues.questions[f.id] = f.value.map((v) => {
-          const cufId = parseInt(f.type.replace("cuf_", ""));
-          const currentCuf = cufList.find((cuf) => cuf.id === cufId);
-          const option = currentCuf?.options?.find((option) => v === option.id);
-          return {
-            label: option?.name || "",
-            value: option?.id?.toString() || "",
-          };
-        });
-      }
-    });
-  }
+  const genderOptions = useGenderOptions();
 
   useEffect(() => {
     const list: CustomUserFieldsData[] = [];
