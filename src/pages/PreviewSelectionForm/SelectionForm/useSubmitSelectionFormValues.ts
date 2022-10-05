@@ -34,7 +34,7 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
     helpers: FormikHelpers<SelectionFormValues>
   ) => {
     helpers.setSubmitting(true);
-    const deviceIds = values.device.map((d) => d.value);
+    const deviceIds = values.device.map((d) => parseInt(d.value));
     const questionsKeys = Object.keys(values.questions);
 
     const formToSend = questionsKeys.map((k) => {
