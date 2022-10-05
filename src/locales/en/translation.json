@@ -501,6 +501,7 @@
   "_FORM_BUTTON_SEND-FORM_": "Send Form and Apply",
   "_FORM_ERROR_MESSAGES_NUMBER-PHONE_": "This is an invalid format",
   "_FORM_GENERIC-ERROR_MESSAGES_": "An error occurred while loading the form.",
+  "_FORM_INPUT-SELECT_NOT-ABOVE_": "Nessuna delle precedenti",
   "_FORM_LABEL_DEVICES_": "Devices",
   "_FORM_PARAGRAPH_": "Between you and the campaign there is this form: fill it in all its fields to have more selection possibilities. We will save this data for future campaigns.",
   "_FORM_SELECT_DEVICES_": "Select devices",

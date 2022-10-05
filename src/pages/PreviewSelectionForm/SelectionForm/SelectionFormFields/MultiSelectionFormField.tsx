@@ -6,6 +6,7 @@ import {
 import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import { Field, FieldProps } from "formik";
 import { useTranslation } from "react-i18next";
+import useNotAboveOption from "./useNotAboveOption";
 
 interface MultiSelectionFormFieldProps {
   name: string;
@@ -19,6 +20,7 @@ export const MultiSelectionFormField = ({
   options,
 }: MultiSelectionFormFieldProps) => {
   const { t } = useTranslation();
+  const notAboveOption = useNotAboveOption();
   return (
     <div className="aq-mb-3">
       <Field
@@ -52,8 +54,7 @@ export const MultiSelectionFormField = ({
                       (element) => element.value === "-1"
                     );
                     if (index !== -1 && v.length > 1) {
-                      if (v[v.length - 1].value === "-1")
-                        v = { label: "Nessuna delle precedenti", value: "-1" };
+                      if (v[v.length - 1].value === "-1") v = notAboveOption;
                       else v.splice(index, 1);
                     }
                   }

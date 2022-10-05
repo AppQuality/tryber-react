@@ -6,6 +6,7 @@ import { AddressFields } from "./AddressFields";
 import countries from "i18n-iso-countries";
 import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import { useAppSelector } from "src/store";
+import useNotAboveOption from "./useNotAboveOption";
 
 interface SelectionFormFieldsProps {
   genderOptions: Option[];
@@ -17,6 +18,7 @@ export const SelectionFormFields = ({
   const { cufList, formData } = useAppSelector(
     (state) => state.previewSelectionForm
   );
+  const notAboveOption = useNotAboveOption();
 
   const getCufId = (type: string) => parseInt(type.replace("cuf_", ""));
 
@@ -39,7 +41,7 @@ export const SelectionFormFields = ({
         return { label: opt, value: opt };
       }) || [];
     if (options && typeof options[0] === "number") {
-      selectOptions.push({ label: "Nessuna delle precedenti", value: "-1" });
+      selectOptions.push(notAboveOption);
     }
     return selectOptions;
   };
