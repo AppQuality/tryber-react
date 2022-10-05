@@ -80,16 +80,14 @@ export const SelectionFormFields = ({
               );
             case "address":
               return (
-                <>
-                  <AddressFields
-                    containerId={`questions.${field.id}`}
-                    key={field.id}
-                    label={field.question}
-                    countryField={`questions.${field.id}.country`}
-                    cityField={`questions.${field.id}.city`}
-                    countryCode={getCountryCode(field.value)}
-                  />
-                </>
+                <AddressFields
+                  containerId={`questions.${field.id}`}
+                  key={field.id}
+                  label={field.question}
+                  countryField={`questions.${field.id}.country`}
+                  cityField={`questions.${field.id}.city`}
+                  countryCode={getCountryCode(field.value)}
+                />
               );
             case "select":
             case "gender":
