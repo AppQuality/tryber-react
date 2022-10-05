@@ -29,6 +29,7 @@ import API from "src/utils/api";
 import * as yup from "yup";
 
 import { LanguageSelect } from "./LanguageSelect";
+import useGenderOptions from "src/features/UseGenderOptions";
 
 const TabBase = () => {
   const { t } = useTranslation();
@@ -90,12 +91,7 @@ const TabBase = () => {
     city: yup.string(),
     languages: yup.array(),
   };
-  const genderOptions = [
-    { label: t("Gender option:::Female"), value: "female" },
-    { label: t("Gender option:::Male"), value: "male" },
-    { label: t("Gender option:::Not Specified"), value: "not-specified" },
-    { label: t("Gender option:::Other"), value: "other" },
-  ];
+  const genderOptions = useGenderOptions();
 
   if (loading) return <SkeletonTab />;
 
