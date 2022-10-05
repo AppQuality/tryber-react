@@ -12,7 +12,7 @@ import { ThemeProvider } from "styled-components";
 
 import Page from "./Page";
 import { Provider } from "react-redux";
-import { store } from "src/store";
+import { setupStore } from "src/store";
 
 if (process.env.REACT_APP_GTM_ID) {
   const tagManagerArgs = {
@@ -25,7 +25,7 @@ if (process.env.REACT_APP_GTM_ID) {
 function App() {
   const { t } = useTranslation();
   return (
-    <Provider store={store}>
+    <Provider store={setupStore()}>
       <ThemeProvider theme={aqBootstrapTheme}>
         <GlobalStyle />
         <Helmet>

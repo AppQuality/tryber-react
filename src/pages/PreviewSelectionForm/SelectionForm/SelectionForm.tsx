@@ -13,7 +13,7 @@ import {
   useGetUsersMeCampaignsByCampaignIdFormsQuery,
 } from "src/services/tryberApi";
 import { AvailableDevices } from "./SelectionFormFields/AvailableDevices";
-import { SelectionFormFields } from "./SelectionFormFields";
+import { SelectionFormFields } from "src/pages/PreviewSelectionForm/SelectionForm/SelectionFormFields";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
