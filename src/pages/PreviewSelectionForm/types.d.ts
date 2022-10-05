@@ -1,4 +1,4 @@
 type SelectionFormValues = {
-  device: string[];
+  device: Option[];
   questions: { [key: string]: any };
 };

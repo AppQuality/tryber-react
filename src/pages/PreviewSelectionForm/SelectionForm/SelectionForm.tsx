@@ -21,6 +21,7 @@ import { useAppDispatch, useAppSelector } from "src/store";
 import { setCufList, setformData } from "../previewSelectionFormSlice";
 import SelectionFocusError from "./SelectionFocusError";
 import styled from "styled-components";
+import { useSubmitSelectionFormValues } from "./useSubmitSelectionFormValues";
 
 const StyledError = styled.div`
   color: ${aqBootstrapTheme.colors.red800};
@@ -44,6 +45,8 @@ export const SelectionForm = () => {
   const { cufList, formData } = useAppSelector(
     (state) => state.previewSelectionForm
   );
+
+  const { submitValues } = useSubmitSelectionFormValues(id);
 
   const genderOptions = [
     { label: t("Gender option:::Female"), value: "female" },
@@ -130,9 +133,7 @@ export const SelectionForm = () => {
       initialValues={initialFormValues}
       enableReinitialize
       validationSchema={yup.object(validationSchema)}
-      onSubmit={async (values, helpers) => {
-        console.log(values);
-      }}
+      onSubmit={submitValues}
     >
       {(formikProps: FormikProps<SelectionFormValues>) => {
         return (

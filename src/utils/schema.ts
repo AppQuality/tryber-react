@@ -2886,7 +2886,7 @@ export interface operations {
             };
             question: number;
           }[];
-          device?: number;
+          device?: number[];
         };
       };
     };

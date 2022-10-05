@@ -1727,7 +1727,7 @@ export type PostUsersMeCampaignsByCampaignIdFormsApiArg = {
       };
       question: number;
     }[];
-    device?: number;
+    device?: number[];
   };
 };
 export type BugSeverity = {
