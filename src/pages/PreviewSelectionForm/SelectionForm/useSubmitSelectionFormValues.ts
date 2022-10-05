@@ -9,24 +9,29 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
   const [createForm] = usePostUsersMeCampaignsByCampaignIdFormsMutation();
 
   const getQuestionValues = (
-    value: string | Option | Option[] | { city: string; country: string }
+    reply: string | Option | Option[] | { city: string; country: string }
   ) => {
-    if (typeof value === "string" || ("city" in value && "country" in value))
-      return { serialized: value };
-    if (Array.isArray(value)) {
+    if (
+      typeof reply === "string" ||
+      ("city" in reply && "country" in reply && !("label" in reply))
+    )
+      return { serialized: reply };
+    if (Array.isArray(reply)) {
       let id: number[] = [];
       let serialized: string[] = [];
-      value.forEach((v) => {
-        if (v.value) {
-          serialized.push(v.label);
-          v.value !== v.label && id.push(parseInt(v.value));
+      reply.forEach((r) => {
+        if (r.value) {
+          serialized.push(r.label);
+          r.value !== r.label && id.push(parseInt(r.value));
         }
       });
       return { ...(id.length ? { id } : undefined), serialized };
     }
-    return value.value?.toLowerCase() === value.label.toLowerCase()
-      ? { serialized: value.value }
-      : value.value && { id: parseInt(value.value), serialized: value.label };
+    return reply.value?.toLowerCase() === reply.label.toLowerCase()
+      ? { serialized: reply.value }
+      : reply.value
+      ? { id: parseInt(reply.value), serialized: reply.label }
+      : {};
   };
 
   const submitValues = async (
@@ -47,7 +52,6 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
     const args: PostUsersMeCampaignsByCampaignIdFormsApiArg = {
       campaignId,
       body: {
-        // @ts-ignore
         form: formToSend,
         device: deviceIds,
       },
