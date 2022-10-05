@@ -106,6 +106,7 @@
     "husky": "^6.0.0",
     "i18next-scanner": "^3.1.0",
     "i18next-scanner-typescript": "^1.0.6",
+    "jest-canvas-mock": "^2.4.0",
     "prettier": "^2.3.1",
     "react-scripts": "4.0.3"
   }
