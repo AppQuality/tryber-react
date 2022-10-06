@@ -29,7 +29,7 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
       let serialized: string[] = [];
       reply.forEach((r) => {
         if (r.value) {
-          r.value !== "-1" && serialized.push(r.label);
+          serialized.push(r.value !== "-1" ? r.label : "#");
           r.value !== r.label && id.push(parseInt(r.value));
         }
       });
@@ -44,7 +44,7 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
       : reply.value
       ? {
           id: parseInt(reply.value),
-          ...(reply.value !== "-1" ? { serialized: reply.label } : undefined),
+          serialized: reply.value !== "-1" ? reply.label : "#",
         }
       : {};
   };
