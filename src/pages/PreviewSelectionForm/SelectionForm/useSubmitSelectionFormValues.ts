@@ -32,7 +32,7 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
       : reply.value
       ? {
           id: parseInt(reply.value),
-          ...(reply.value !== "-1" ? { serialized: reply.label } : {}),
+          ...(reply.value !== "-1" ? { serialized: reply.label } : undefined),
         }
       : {};
   };
