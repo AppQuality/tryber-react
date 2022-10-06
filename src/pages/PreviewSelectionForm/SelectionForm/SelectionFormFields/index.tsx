@@ -59,85 +59,80 @@ export const SelectionFormFields = ({
     return "";
   };
 
+  if (!cufList || cufList.length < 1 || !formData) return null;
   return (
-    <div>
-      {cufList.length && formData ? (
-        formData.map((field) => {
-          const fieldType = field.type.startsWith("cuf_")
-            ? getCufType(field.type)
-            : field.type;
-          switch (fieldType) {
-            case "text":
-            case "phone_number":
-              return (
-                <TextSelectionFormField
-                  key={field.id}
-                  name={`questions.${field.id}`}
-                  label={field.question}
-                  validation={field.validation?.regex}
-                  errorMessage={field.validation?.error}
-                />
-              );
-            case "address":
-              return (
-                <>
-                  <AddressFields
-                    containerId={`questions.${field.id}`}
-                    key={field.id}
-                    label={field.question}
-                    countryField={`questions.${field.id}.country`}
-                    cityField={`questions.${field.id}.city`}
-                    countryCode={getCountryCode(field.value)}
-                  />
-                </>
-              );
-            case "select":
-            case "gender":
-              return (
-                <SelectSelectionFormField
-                  key={field.id}
-                  name={`questions.${field.id}`}
-                  label={field.question}
-                  options={
-                    fieldType === "gender"
-                      ? genderOptions
-                      : "options" in field
-                      ? getSelectOptions(field.type, field.options)
-                      : []
-                  }
-                />
-              );
-            case "multiselect":
-              return (
-                <MultiSelectionFormField
-                  key={field.id}
-                  name={`questions.${field.id}`}
-                  label={field.question}
-                  options={
-                    "options" in field
-                      ? getSelectOptions(field.type, field.options)
-                      : []
-                  }
-                />
-              );
-            case "radio":
-              return (
-                <RadioSelectionFormField
-                  key={field.id}
-                  name={`questions.${field.id}`}
-                  label={field.question}
-                  options={
-                    "options" in field ? getRadioOptions(field.options) : []
-                  }
-                />
-              );
-            default:
-              return <></>;
-          }
-        })
-      ) : (
-        <></>
-      )}
-    </div>
+    <>
+      {formData.map((field) => {
+        const fieldType = field.type.startsWith("cuf_")
+          ? getCufType(field.type)
+          : field.type;
+        switch (fieldType) {
+          case "text":
+          case "phone_number":
+            return (
+              <TextSelectionFormField
+                key={field.id}
+                name={`questions.${field.id}`}
+                label={field.question}
+                validation={field.validation?.regex}
+                errorMessage={field.validation?.error}
+              />
+            );
+          case "address":
+            return (
+              <AddressFields
+                containerId={`questions.${field.id}`}
+                key={field.id}
+                label={field.question}
+                countryField={`questions.${field.id}.country`}
+                cityField={`questions.${field.id}.city`}
+                countryCode={getCountryCode(field.value)}
+              />
+            );
+          case "select":
+          case "gender":
+            return (
+              <SelectSelectionFormField
+                key={field.id}
+                name={`questions.${field.id}`}
+                label={field.question}
+                options={
+                  fieldType === "gender"
+                    ? genderOptions
+                    : "options" in field
+                    ? getSelectOptions(field.type, field.options)
+                    : []
+                }
+              />
+            );
+          case "multiselect":
+            return (
+              <MultiSelectionFormField
+                key={field.id}
+                name={`questions.${field.id}`}
+                label={field.question}
+                options={
+                  "options" in field
+                    ? getSelectOptions(field.type, field.options)
+                    : []
+                }
+              />
+            );
+          case "radio":
+            return (
+              <RadioSelectionFormField
+                key={field.id}
+                name={`questions.${field.id}`}
+                label={field.question}
+                options={
+                  "options" in field ? getRadioOptions(field.options) : []
+                }
+              />
+            );
+          default:
+            return <></>;
+        }
+      })}
+    </>
   );
 };
