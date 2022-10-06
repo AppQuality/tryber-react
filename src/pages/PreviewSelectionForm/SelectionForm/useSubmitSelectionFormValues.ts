@@ -4,9 +4,14 @@ import {
   PostUsersMeCampaignsByCampaignIdFormsApiArg,
   usePostUsersMeCampaignsByCampaignIdFormsMutation,
 } from "src/services/tryberApi";
+import useGenderOptions from "src/features/UseGenderOptions";
 
 export const useSubmitSelectionFormValues = (campaignId: string) => {
   const [createForm] = usePostUsersMeCampaignsByCampaignIdFormsMutation();
+  const genderOptions = useGenderOptions();
+
+  const isGender = (value?: string) =>
+    genderOptions.map((g) => g.value === value);
 
   const getQuestionValues = (
     reply: string | Option | Option[] | { city: string; country: string }
@@ -30,7 +35,8 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
         ...(serialized.length ? { serialized } : undefined),
       };
     }
-    return reply.value?.toLowerCase() === reply.label.toLowerCase()
+    return reply.value?.toLowerCase() === reply.label.toLowerCase() ||
+      isGender(reply.value)
       ? { serialized: reply.value }
       : reply.value
       ? {
