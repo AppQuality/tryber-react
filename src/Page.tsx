@@ -1,5 +1,4 @@
 import "./i18n";
-
 import { datadogLogs } from "@datadog/browser-logs";
 import { Location } from "history";
 import queryString from "query-string";
@@ -156,8 +155,9 @@ function Page() {
         <Route path={`${base}/leaderboard`} component={Ranking} />
         <Route path={`${base}/campaign/:id/bugform`} component={BugForm} />
         <Route path={`${base}/thank-you`} component={ThankYouPage} />
+        {/* TODO Temporary route */}
         <Route
-          path={`${base}/preview-selection-form`}
+          path={`${base}/campaign/:id/preview-selection-form`}
           component={PreviewSelectionForm}
         />
         <Route

@@ -16,7 +16,7 @@ const DeviceIcon = ({
     case "Smartphone":
       return (
         <>
-          <Phone className={className} size={size} />
+          <Phone data-testid={device_type} className={className} size={size} />
           {showText ? (
             <div className="aq-text-primary">
               <strong>Smartphone</strong>
@@ -28,7 +28,7 @@ const DeviceIcon = ({
     case "Tablet":
       return (
         <>
-          <Tablet className={className} size={size} />
+          <Tablet data-testid={device_type} className={className} size={size} />
           {showText ? (
             <div className="aq-text-primary">
               <strong>Tablet</strong>
@@ -40,7 +40,7 @@ const DeviceIcon = ({
     case "PC":
       return (
         <>
-          <Laptop className={className} size={size} />
+          <Laptop data-testid={device_type} className={className} size={size} />
           {showText ? (
             <div className="aq-text-primary">
               <strong>Computer</strong>
@@ -52,7 +52,7 @@ const DeviceIcon = ({
     case "Smart-tv":
       return (
         <>
-          <Tv className={className} size={size} />
+          <Tv data-testid={device_type} className={className} size={size} />
           {showText ? (
             <div className="aq-text-primary">
               <strong>Smart TV & TV Box</strong>

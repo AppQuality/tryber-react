@@ -78,6 +78,9 @@
   "Available tags \n<a> - Link to help article for fiscal type": {
     "@@Description for fiscal type@@": "<a>Clicca qui</a> per maggiori informazioni"
   },
+  "Available tags : <devices_link> (Link to fiscal devices)": {
+    "_FORM_MESSAGES_ADD-DEVICES_": ""
+  },
   "Available tags : <entry_test_link> (Link to entry test)": {
     "__RANKING_MODAL_MESSAGE_MAX: 250": "Non sei ancora in classifica: completa l’<entry_test_link>Entry Test</entry_test_link> per guadagnare i primi punti e raggiungere il livello Basic"
   },
@@ -495,6 +498,15 @@
   "Your payment request was successful.<br />You will receive the payment <strong>within 10 working days.</strong>": "Ci siamo! La tua richiesta di pagamento è andata a buon fine.\nRiceverai il tuo compenso entro 10 giorni lavorativi.",
   "Your profile doesn't match with your fiscal profile, please check your data": "Il tuo profilo non combacia con il tuo codice fiscale, per favore controlla i tuoi dati",
   "Zip code": "CAP",
+  "_FORM_BUTTON_SEND-FORM_": "Send Form and Apply",
+  "_FORM_ERROR_MESSAGES_NUMBER-PHONE_": "This is an invalid format",
+  "_FORM_GENERIC-ERROR_MESSAGES_": "An error occurred while loading the form.",
+  "_FORM_INPUT-SELECT_NOT-ABOVE_": "Nessuna delle precedenti",
+  "_FORM_LABEL_DEVICES_": "Devices",
+  "_FORM_MESSAGE_ERROR-GENERIC_": "An error occurred while submitting the form. Try sending it again.",
+  "_FORM_PARAGRAPH_": "Between you and the campaign there is this form: fill it in all its fields to have more selection possibilities. We will save this data for future campaigns.",
+  "_FORM_SELECT_DEVICES_": "Select devices",
+  "_FORM_TITLE_": "It's your time, apply now",
   "__CARD_RECAP_DASHBOARD_CTA_MAX: 30": "Vedi tutta la classifica",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-MENSILI_MAX: 25": "Exp points mensili",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Exp points totali",
