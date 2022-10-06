@@ -21,7 +21,7 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
       let serialized: string[] = [];
       reply.forEach((r) => {
         if (r.value) {
-          serialized.push(r.label);
+          r.value !== "-1" && serialized.push(r.label);
           r.value !== r.label && id.push(parseInt(r.value));
         }
       });
@@ -30,7 +30,10 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
     return reply.value?.toLowerCase() === reply.label.toLowerCase()
       ? { serialized: reply.value }
       : reply.value
-      ? { id: parseInt(reply.value), serialized: reply.label }
+      ? {
+          id: parseInt(reply.value),
+          ...(reply.value !== "-1" ? { serialized: reply.label } : {}),
+        }
       : {};
   };
 
