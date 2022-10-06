@@ -63,11 +63,12 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
       },
     };
 
-    console.log(args);
-
     const res = await createForm(args);
 
-    console.info("response", res);
+    if ("data" in res) {
+      // refresh main page from iFrame (same domain)
+      window.top?.location.reload();
+    }
 
     helpers.setSubmitting(false);
   };
