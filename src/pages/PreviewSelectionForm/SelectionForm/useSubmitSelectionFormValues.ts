@@ -25,7 +25,10 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
           r.value !== r.label && id.push(parseInt(r.value));
         }
       });
-      return { ...(id.length ? { id } : undefined), serialized };
+      return {
+        ...(id.length ? { id } : undefined),
+        ...(serialized.length ? { serialized } : undefined),
+      };
     }
     return reply.value?.toLowerCase() === reply.label.toLowerCase()
       ? { serialized: reply.value }
