@@ -5,8 +5,11 @@ import {
   usePostUsersMeCampaignsByCampaignIdFormsMutation,
 } from "src/services/tryberApi";
 import useGenderOptions from "src/features/UseGenderOptions";
+import { useAppDispatch } from "src/store";
+import { setShowSubmitError } from "../previewSelectionFormSlice";
 
 export const useSubmitSelectionFormValues = (campaignId: string) => {
+  const dispatch = useAppDispatch();
   const [createForm] = usePostUsersMeCampaignsByCampaignIdFormsMutation();
   const genderOptions = useGenderOptions();
 
@@ -50,6 +53,7 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
     values: SelectionFormValues,
     helpers: FormikHelpers<SelectionFormValues>
   ) => {
+    dispatch(setShowSubmitError(false));
     helpers.setSubmitting(true);
     const deviceIds = values.device.map((d) => parseInt(d.value));
     const questionsKeys = Object.keys(values.questions);
@@ -74,6 +78,8 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
     if ("data" in res) {
       // refresh main page from iFrame (same domain)
       window.top?.location.reload();
+    } else {
+      dispatch(setShowSubmitError(true));
     }
 
     helpers.setSubmitting(false);

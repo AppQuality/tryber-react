@@ -7,10 +7,12 @@ import {
 interface PreviewSelectionFormState {
   cufList: CustomUserFieldsData[];
   formData?: GetUsersMeCampaignsByCampaignIdFormsApiResponse;
+  showSubmitError: boolean;
 }
 
 const initialState: PreviewSelectionFormState = {
   cufList: [],
+  showSubmitError: false,
 };
 const previewSelectionFormSlice = createSlice({
   name: "previewSelectionForm",
@@ -25,9 +27,12 @@ const previewSelectionFormSlice = createSlice({
     ) {
       state.formData = action.payload;
     },
+    setShowSubmitError(state, action: PayloadAction<boolean>) {
+      state.showSubmitError = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = previewSelectionFormSlice;
-export const { setCufList, setformData } = actions;
+export const { setCufList, setformData, setShowSubmitError } = actions;
 export default reducer;

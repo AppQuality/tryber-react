@@ -44,7 +44,7 @@ export const SelectionForm = () => {
     { skip: !id }
   );
 
-  const { cufList, formData } = useAppSelector(
+  const { cufList, formData, showSubmitError } = useAppSelector(
     (state) => state.previewSelectionForm
   );
 
@@ -94,11 +94,11 @@ export const SelectionForm = () => {
     >
       {(formikProps: FormikProps<SelectionFormValues>) => {
         return (
-          <Form id="selectionForm">
+          <Form id="selectionForm" className="aq-mb-4">
             <AvailableDevices />
             <SelectionFormFields genderOptions={genderOptions} />
             <Button
-              className="aq-mt-3 aq-mb-4"
+              className="aq-mt-3 aq-mb-1"
               type="primary"
               htmlType="submit"
               size="block"
@@ -115,6 +115,14 @@ export const SelectionForm = () => {
                 defaultValue: "Send Form and Apply",
               })}
             </Button>
+            {showSubmitError && (
+              <StyledError>
+                {t("_FORM_MESSAGE_ERROR-GENERIC_", {
+                  defaultValue:
+                    "An error occurred while submitting the form. Try sending it again.",
+                })}
+              </StyledError>
+            )}
             <SelectionFocusError />
           </Form>
         );
