@@ -88,6 +88,7 @@ export const SelectionForm = () => {
     <Formik
       // hack to prevent blur validation https://github.com/jaredpalmer/formik/issues/2457
       validateOnBlur={false}
+      validateOnMount
       initialValues={initialFormValues}
       enableReinitialize
       validationSchema={yup.object(validationSchema)}
