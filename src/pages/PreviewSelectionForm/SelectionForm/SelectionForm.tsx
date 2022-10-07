@@ -27,7 +27,6 @@ import useGenderOptions from "src/features/UseGenderOptions";
 
 const StyledError = styled.div`
   color: ${aqBootstrapTheme.colors.red800};
-  margin-bottom: 16px;
 `;
 
 export const SelectionForm = () => {
@@ -78,7 +77,7 @@ export const SelectionForm = () => {
     (devices.error && "status" in devices.error && devices.error.status !== 404)
   )
     return (
-      <StyledError>
+      <StyledError className="aq-mb-3">
         {t("_FORM_GENERIC-ERROR_MESSAGES_", {
           defaultValue: "An error occurred while loading the form.",
         })}
@@ -94,11 +93,11 @@ export const SelectionForm = () => {
     >
       {(formikProps: FormikProps<SelectionFormValues>) => {
         return (
-          <Form id="selectionForm" className="aq-mb-4">
+          <Form id="selectionForm">
             <AvailableDevices />
             <SelectionFormFields genderOptions={genderOptions} />
             <Button
-              className="aq-mt-3 aq-mb-1"
+              className="aq-mt-3"
               type="primary"
               htmlType="submit"
               size="block"
@@ -116,7 +115,7 @@ export const SelectionForm = () => {
               })}
             </Button>
             {showSubmitError && (
-              <StyledError>
+              <StyledError className="aq-mt-1">
                 {t("_FORM_MESSAGE_ERROR-GENERIC_", {
                   defaultValue:
                     "An error occurred while submitting the form. Try sending it again.",
