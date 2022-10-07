@@ -58,7 +58,11 @@ export const MultiSelectionFormField = ({
                       else v.splice(index, 1);
                     }
                   }
-                  form.setFieldValue(field.name, v, true);
+                  form.setFieldValue(
+                    field.name,
+                    v.value === "-1" ? [v] : v,
+                    true
+                  );
                 }}
                 label={label}
                 placeholder={t("Select placeholder:::Choose value")}

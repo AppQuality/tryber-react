@@ -14,7 +14,7 @@ export const useSubmitSelectionFormValues = (campaignId: string) => {
   const genderOptions = useGenderOptions();
 
   const isGender = (value?: string) =>
-    genderOptions.map((g) => g.value === value);
+    genderOptions.some((g) => g.value === value);
 
   const getQuestionValues = (
     reply: string | Option | Option[] | { city: string; country: string }
