@@ -499,7 +499,7 @@
   "Your profile doesn't match with your fiscal profile, please check your data": "Tu perfil no coincide con tu perfil fiscal, por favor revisa tus datos",
   "Zip code": "Código postal",
   "_FORM_BUTTON_SEND-FORM_": "Apúntate ahora",
-  "_FORM_ERROR_MESSAGES_DEFAULT_": "This is an invalid format",
+  "_FORM_ERROR_MESSAGES_DEFAULT_": "Formato no válido",
   "_FORM_ERROR_MESSAGES_NUMBER-PHONE_": "Número de teléfono con formato no válido. Verifícalo o introduce un número de teléfono correcto con el código de país",
   "_FORM_GENERIC-ERROR_MESSAGES_": "Se ha producido un error al subir el formulario. Vuelve a intentarlo",
   "_FORM_INPUT-SELECT_NOT-ABOVE_": "Ninguna de las anteriores",

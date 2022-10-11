@@ -499,7 +499,7 @@
   "Your profile doesn't match with your fiscal profile, please check your data": "Il tuo profilo non combacia con il tuo codice fiscale, per favore controlla i tuoi dati",
   "Zip code": "CAP",
   "_FORM_BUTTON_SEND-FORM_": "Candidati",
-  "_FORM_ERROR_MESSAGES_DEFAULT_": "This is an invalid format",
+  "_FORM_ERROR_MESSAGES_DEFAULT_": "Formato errato",
   "_FORM_ERROR_MESSAGES_NUMBER-PHONE_": "Numero di telefono non valido. Controllalo o inserisci un numero di telefono corretto con il prefisso del paese.",
   "_FORM_GENERIC-ERROR_MESSAGES_": "Errore nel caricamento del form. Riprova",
   "_FORM_INPUT-SELECT_NOT-ABOVE_": "Nessuna delle precedenti",
