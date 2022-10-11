@@ -15,10 +15,12 @@ import { ChangeEvent } from "react";
 const CountrySelect = ({
   name,
   label,
+  validate,
   onChange,
 }: {
   name: string;
   label: string;
+  validate?: boolean;
   onChange?: (v: SelectType.Option) => void;
 }) => {
   const { t } = useTranslation();
@@ -34,8 +36,14 @@ const CountrySelect = ({
       })),
     []
   );
+  const onValidate = (value: string) => {
+    if (!value && validate) {
+      return t("This is a required field");
+    }
+  };
+
   return (
-    <FormikField name={name}>
+    <FormikField name={name} validate={onValidate}>
       {({
         field, // { name, value, onChange, onBlur }
         form,

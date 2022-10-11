@@ -1,21 +1,13 @@
 import "./i18n";
-
 import { datadogLogs } from "@datadog/browser-logs";
 import { Location } from "history";
 import queryString from "query-string";
 import { useEffect } from "react";
 import TagManager from "react-gtm-module";
 import { useDispatch } from "react-redux";
-import {
-  Redirect,
-  Route,
-  Switch,
-  useHistory,
-  useLocation,
-} from "react-router-dom";
+import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 
 import GenericModal from "./features/GenericModal";
-import SiteHeader from "./features/SiteHeader";
 import SiteWideMessages from "./features/SiteWideMessages";
 import {
   Dashboard,
@@ -28,13 +20,11 @@ import {
   Profile,
   Ranking,
   Wallet,
+  PreviewSelectionForm,
 } from "./pages";
 import referralStore from "./redux/referral";
 import { refreshUser } from "./redux/user/actions/refreshUser";
 import BugForm from "./pages/BugForm";
-import { useAppSelector } from "./store";
-import useUser from "src/redux/user";
-import { useLocalizeRoute } from "./hooks/useLocalizedRoute";
 import ThankYouPage from "./pages/ThankYou";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
@@ -58,10 +48,6 @@ function Page() {
   const { search } = useLocation();
   const { setReferral } = referralStore();
   const dispatch = useDispatch();
-  const history = useHistory();
-  const { isLoginPage } = useAppSelector((state) => state.loginPage);
-  const { user, error } = useUser();
-  const homeRoute = useLocalizeRoute("");
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -71,23 +57,8 @@ function Page() {
     }
   }, []);
 
-  useEffect(() => {
-    if (user?.id) {
-      localStorage.setItem("isUserLogged", "true");
-    } else {
-      if (
-        localStorage.getItem("isUserLogged") === "true" &&
-        error?.statusCode === 403
-      ) {
-        localStorage.setItem("isUserLogged", "false");
-        history.push(homeRoute);
-      }
-    }
-  }, [user, error]);
-
   return (
     <div>
-      {!isLoginPage && <SiteHeader />}
       <SiteWideMessages />
       <GenericModal />
       <Switch>
@@ -184,6 +155,11 @@ function Page() {
         <Route path={`${base}/leaderboard`} component={Ranking} />
         <Route path={`${base}/campaign/:id/bugform`} component={BugForm} />
         <Route path={`${base}/thank-you`} component={ThankYouPage} />
+        {/* TODO Temporary route */}
+        <Route
+          path={`${base}/campaign/:id/preview-selection-form`}
+          component={PreviewSelectionForm}
+        />
         <Route
           path={["/goodbye", "/it/goodbye", "/es/goodbye"]}
           exact

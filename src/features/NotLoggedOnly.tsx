@@ -1,42 +1,25 @@
-import { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
-import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
-import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import useUser from "src/redux/user";
+import { useHistory } from "react-router-dom";
 
 import Loading from "./Loading";
+import SiteHeader from "./SiteHeader";
 
-export default ({
+const NotLoggedOnly = ({
   children,
   redirect,
 }: {
   children: React.ReactNode;
   redirect?: { url: string; message?: string };
 }) => {
-  const history = useHistory();
   const { user, error, isLoading } = useUser();
-  const { t } = useTranslation();
-  const [loadingMessage, setLoadingMessage] = useState<string>(t("Loading"));
-  let redirectMessage = t("Redirecting to your dashboard...");
+  const history = useHistory();
 
-  let redirectUrl = useLocalizeRoute("my-dashboard");
-  if (redirect) {
-    redirectUrl = redirect.url;
-    if (redirect.message) {
-      redirectMessage = redirect.message;
-    }
-  }
-
-  useEffect(() => {
-    if (user) {
-      setLoadingMessage(redirectMessage);
-      history.push(redirectUrl);
-    }
-  }, [user]);
-
-  if (isLoading || user) {
+  if (isLoading) {
     return <Loading />;
+  }
+  if (user && redirect) {
+    history.push(redirect.url);
   }
   TagManager.dataLayer({
     dataLayer: {
@@ -47,5 +30,12 @@ export default ({
     alert(error.message);
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <SiteHeader />
+      {children}
+    </>
+  );
 };
+
+export default NotLoggedOnly;

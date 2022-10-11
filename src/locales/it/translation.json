@@ -78,6 +78,9 @@
   "Available tags \n<a> - Link to help article for fiscal type": {
     "@@Description for fiscal type@@": "<a>Clicca qui</a> per maggiori informazioni"
   },
+  "Available tags : <devices_link> (Link to fiscal devices)": {
+    "_FORM_MESSAGES_ADD-DEVICES_": ""
+  },
   "Available tags : <entry_test_link> (Link to entry test)": {
     "__RANKING_MODAL_MESSAGE_MAX: 250": "Non sei ancora in classifica: completa l’<entry_test_link>Entry Test</entry_test_link> per guadagnare i primi punti e raggiungere il livello Basic"
   },
@@ -266,7 +269,6 @@
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Ecco la lista dei tuoi dispositivi. Assicurati di tenerla sempre aggiornata per aumentare le possibilità di essere selezionat* nei prossimi progetti.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Qui puoi solo cambiare la versione del tuo sistema operativo. Se vuoi aggiungere un altro dispositivo clicca su \"Aggiungi dispositivo\"",
   "History": "Cronologia",
-  "Home": "Home",
   "How do experience points work?": "Come funzionano i punti esperienza?",
   "I agree to receive earning opportunity emails from AppQuality": "Accetto di ricevere email dedicate alla community di TRYBER",
   "I don't receive testing campaigns": "Non ricevo Campagne",
@@ -292,7 +294,6 @@
   "Learn More": "Scopri di più",
   "Learn more about how we calculate and attribute experience points.": "Scopri di più su come calcoliamo e attribuiamo i punti esperienza",
   "LinkedIn": "LinkedIn",
-  "Loading": "Caricamento in corso...",
   "Loading Data": "Caricamento...",
   "Log in with an existing account": "Iscriviti più velocemente",
   "Login": "Già dei nostri? Accedi",
@@ -358,7 +359,6 @@
   "Read manual": "Leggi il manuale",
   "Reason": "Motivazione",
   "Received booty": "Guadagni ricevuti",
-  "Redirecting to your dashboard...": "Reindirizzamento alla dashboard in corso ...",
   "Referral": "Referral",
   "Remove": "Rimuovi",
   "Remove Certification": "Rimuovi certificazione",
@@ -498,6 +498,15 @@
   "Your payment request was successful.<br />You will receive the payment <strong>within 10 working days.</strong>": "Ci siamo! La tua richiesta di pagamento è andata a buon fine.\nRiceverai il tuo compenso entro 10 giorni lavorativi.",
   "Your profile doesn't match with your fiscal profile, please check your data": "Il tuo profilo non combacia con il tuo codice fiscale, per favore controlla i tuoi dati",
   "Zip code": "CAP",
+  "_FORM_BUTTON_SEND-FORM_": "Send Form and Apply",
+  "_FORM_ERROR_MESSAGES_NUMBER-PHONE_": "This is an invalid format",
+  "_FORM_GENERIC-ERROR_MESSAGES_": "An error occurred while loading the form.",
+  "_FORM_INPUT-SELECT_NOT-ABOVE_": "Nessuna delle precedenti",
+  "_FORM_LABEL_DEVICES_": "Devices",
+  "_FORM_MESSAGE_ERROR-GENERIC_": "An error occurred while submitting the form. Try sending it again.",
+  "_FORM_PARAGRAPH_": "Between you and the campaign there is this form: fill it in all its fields to have more selection possibilities. We will save this data for future campaigns.",
+  "_FORM_SELECT_DEVICES_": "Select devices",
+  "_FORM_TITLE_": "It's your time, apply now",
   "__CARD_RECAP_DASHBOARD_CTA_MAX: 30": "Vedi tutta la classifica",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-MENSILI_MAX: 25": "Exp points mensili",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Exp points totali",
@@ -690,6 +699,9 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Home": "Home",
+  "Redirecting to your dashboard...": "Reindirizzamento alla dashboard in corso ...",
+  "Loading": "Caricamento in corso...",
   "__RANKING_LEGEND_PARAGRAPH_MAX: 100": "Guadagna ogni mese un numero minimo di exp per mantenere o avanzare di livello",
   "This is an invalid format": "File non supportato",
   "BUGFORM_UPLOAD_FILE": "Click here to upload your files!"

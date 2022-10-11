@@ -1,99 +1,19 @@
-import { Button, Table, TableType } from "@appquality/appquality-design-system";
-import { useEffect } from "react";
+import { Table } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import userDeviceStore from "src/redux/userDevices";
-import DeviceIcon from "./DeviceIcon";
-import styled from "styled-components";
-import { Trash } from "react-bootstrap-icons";
-
-const DeviceActions = styled.div`
-  display: flex;
-  flex-flow: column;
-  .action-text { display: none;}
-    @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
-      display: block;
-      .action-text { display: block; }
-      .action-icon { display: none; }
-    }
-  }
-  ${Button} {
-    display: block;
-    @media (min-width: ${(p) => p.theme.grid.breakpoints.lg}) {
-      display: inline-block;
-    }
-  }
-`;
+import { useGetUsersMeDevicesQuery } from "src/services/tryberApi";
+import { useAppDispatch } from "src/store";
+import { getTableRows } from "src/pages/Devices/tableRows";
 
 const DeviceTable = () => {
   const { t } = useTranslation();
-  const { devices, loading, fetch, select, openEditModal, openDeleteModal } =
-    userDeviceStore();
-  useEffect(() => {
-    fetch();
-  }, []);
-  const data: TableType.Row[] = devices
-    ? devices.map((d) => {
-        let deviceName = "";
-        if ("pc_type" in d.device) {
-          deviceName = d.device.pc_type;
-        } else {
-          deviceName = `${d.device.manufacturer} ${d.device.model}`;
-        }
-        return {
-          key: d.id,
-          type: {
-            title: d.type,
-            content: (
-              <DeviceIcon
-                className="aq-text-secondary"
-                device_type={d.type}
-                size={20}
-              />
-            ),
-          },
-          device: deviceName,
-          os: d.operating_system.platform,
-          os_version: d.operating_system.version,
-          actions: {
-            title: "",
-            content: (
-              <DeviceActions>
-                <Button
-                  onClick={() => {
-                    select(d.id);
-                    openEditModal();
-                  }}
-                  type="link-hover"
-                  className="aq-nopadding aq-mr-3"
-                >
-                  <div title={t("Edit")}>{t("Edit")}</div>
-                </Button>
-                <Button
-                  onClick={() => {
-                    select(d.id);
-                    openDeleteModal();
-                  }}
-                  type="link-hover"
-                  className="aq-nopadding"
-                >
-                  <div className="action-text" title={t("Delete")}>
-                    {t("Delete")}
-                  </div>
-                  <div className="action-icon aq-mt-3">
-                    <Trash size={28} />
-                  </div>
-                </Button>
-              </DeviceActions>
-            ),
-          },
-        };
-      })
-    : [];
+  const { data, isFetching } = useGetUsersMeDevicesQuery();
+  const dispatch = useAppDispatch();
+  const tableRows = data ? getTableRows(data, dispatch, t) : [];
   return (
     <>
       <Table
-        dataSource={data}
-        isLoading={loading}
+        dataSource={tableRows || []}
+        isLoading={isFetching}
         isStriped={true}
         i18n={{
           loading: t("Loading Data"),

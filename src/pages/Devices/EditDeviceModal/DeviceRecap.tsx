@@ -2,9 +2,8 @@ import { useFormikContext } from "formik";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import DeviceIcon from "../DeviceIcon";
-import { DeviceFormInterface } from "./types";
 
-export default () => {
+export const DeviceRecap = () => {
   const { values } = useFormikContext<DeviceFormInterface>();
   const { t } = useTranslation();
   return (

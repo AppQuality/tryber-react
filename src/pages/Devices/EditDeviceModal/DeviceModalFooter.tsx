@@ -1,7 +1,6 @@
 import { Button } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import userDeviceStore from "src/redux/userDevices";
-import { WizardStep } from "./types";
+import { useAppSelector } from "src/store";
 
 interface ModalFooterProps {
   isValid: boolean;
@@ -19,7 +18,7 @@ export const DeviceModalFooter = ({
   onSubmit,
 }: ModalFooterProps) => {
   const { t } = useTranslation();
-  const { current } = userDeviceStore();
+  const { current } = useAppSelector((state) => state.userDevices);
   return (
     <div className="device-wizard-footer">
       {currentStep > 0 && (

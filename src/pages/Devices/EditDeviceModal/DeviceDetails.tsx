@@ -10,9 +10,8 @@ import { useTranslation } from "react-i18next";
 import API from "src/utils/api";
 import OtherDeviceData from "./DeviceDetails/DeviceData/OtherDeviceData";
 import PCData from "./DeviceDetails/DeviceData/PCData";
-import { DeviceFormInterface } from "./types";
 
-export default ({ edit }: { edit: boolean }) => {
+export const DeviceDetails = ({ edit }: { edit: boolean }) => {
   const { values } = useFormikContext<DeviceFormInterface>();
   const { t, i18n } = useTranslation();
   const [osPlatforms, setOsPlatforms] = useState<SelectType.Option[]>([]);
@@ -86,7 +85,6 @@ export default ({ edit }: { edit: boolean }) => {
         {({
           field, // { name, value, onChange, onBlur }
           form,
-          meta,
         }: FieldProps) => (
           <div className="aq-mb-3">
             <Select
@@ -120,7 +118,6 @@ export default ({ edit }: { edit: boolean }) => {
         {({
           field, // { name, value, onChange, onBlur }
           form, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-          meta,
         }: FieldProps) => (
           <div className="aq-mb-3">
             <Select

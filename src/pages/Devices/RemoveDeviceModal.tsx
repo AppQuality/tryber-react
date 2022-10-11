@@ -8,25 +8,37 @@ import {
 } from "@appquality/appquality-design-system";
 import { Trans, useTranslation } from "react-i18next";
 import siteWideMessageStore from "src/redux/siteWideMessages";
-import userDeviceStore from "src/redux/userDevices";
 import API from "src/utils/api";
+import { useAppDispatch, useAppSelector } from "src/store";
+import { closeDeleteDeviceModal } from "src/pages/Devices/userDevicesSlice";
+import { useGetUsersMeDevicesQuery } from "src/services/tryberApi";
 
 const RemoveDeviceModal = () => {
-  const { deleteModalOpen, closeDeleteModal, fetch, current } =
-    userDeviceStore();
+  const { current } = useAppSelector((state) => state.userDevices);
+  const { isDeleteModalOpen } = useAppSelector((state) => state.userDevices);
+  const dispatch = useAppDispatch();
   const { add } = siteWideMessageStore();
   const { t } = useTranslation();
+  const dispatchCloseModal = () => {
+    dispatch(closeDeleteDeviceModal());
+  };
+  const { refetch } = useGetUsersMeDevicesQuery();
   if (!current) return null;
   return (
     <Modal
       title={t("Remove device")}
-      isOpen={deleteModalOpen}
-      onClose={closeDeleteModal}
+      isOpen={isDeleteModalOpen}
+      onClose={dispatchCloseModal}
       size="small"
       footer={
         <BSGrid>
           <BSCol size="col-6">
-            <Button size="block" flat type="primary" onClick={closeDeleteModal}>
+            <Button
+              size="block"
+              flat
+              type="primary"
+              onClick={dispatchCloseModal}
+            >
               {t("Keep")}
             </Button>
           </BSCol>
@@ -51,8 +63,8 @@ const RemoveDeviceModal = () => {
                       ),
                       type: "success",
                     });
-                    fetch();
-                    closeDeleteModal();
+                    refetch();
+                    dispatchCloseModal();
                   })
                   .catch((e) => {
                     if (e.statusCode === 406) {
