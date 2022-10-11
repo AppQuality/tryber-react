@@ -21,6 +21,7 @@ export const TextSelectionFormField = ({
   errorMessage,
 }: TextSelectionFormFieldProps) => {
   const { t } = useTranslation();
+
   const validate = (value: string) => {
     if (!value) {
       return errorMessage ? errorMessage : t("This is a required field");
@@ -28,7 +29,7 @@ export const TextSelectionFormField = ({
     if (validation && !new RegExp(validation).test(value)) {
       return errorMessage
         ? errorMessage
-        : t("_FORM_ERROR_MESSAGES_NUMBER-PHONE_", {
+        : t("_FORM_ERROR_MESSAGES_DEFAULT_", {
             defaultValue: "This is an invalid format",
           });
     }
@@ -40,7 +41,7 @@ export const TextSelectionFormField = ({
         return (
           <FormGroup className="aq-mb-3">
             <FormLabel htmlFor={name} label={label} />
-            <div className="input-group">
+            <div className="input-group" data-testid="textSelectionFormField">
               <Input
                 id={name}
                 type="text"

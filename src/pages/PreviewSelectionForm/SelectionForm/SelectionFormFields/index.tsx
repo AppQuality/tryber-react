@@ -1,12 +1,13 @@
 import { SelectSelectionFormField } from "./SelectSelectionFormField";
 import { MultiSelectionFormField } from "./MultiSelectionFormField";
-import { TextSelectionFormField } from "./TextSelectionFormField";
+import { TextSelectionFormField } from "src/pages/PreviewSelectionForm/SelectionForm/SelectionFormFields/TextSelectionFormField";
 import { RadioSelectionFormField } from "./RadioSelectionFormField";
 import { AddressFields } from "./AddressFields";
 import countries from "i18n-iso-countries";
 import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import { useAppSelector } from "src/store";
 import useNotAboveOption from "./useNotAboveOption";
+import { useTranslation } from "react-i18next";
 
 interface SelectionFormFieldsProps {
   genderOptions: Option[];
@@ -18,6 +19,7 @@ export const SelectionFormFields = ({
   const { cufList, formData } = useAppSelector(
     (state) => state.previewSelectionForm
   );
+  const { t } = useTranslation();
   const notAboveOption = useNotAboveOption();
 
   const getCufId = (type: string) => parseInt(type.replace("cuf_", ""));
@@ -68,7 +70,6 @@ export const SelectionFormFields = ({
           : field.type;
         switch (fieldType) {
           case "text":
-          case "phone_number":
             return (
               <TextSelectionFormField
                 key={field.id}
@@ -76,6 +77,18 @@ export const SelectionFormFields = ({
                 label={field.question}
                 validation={field.validation?.regex}
                 errorMessage={field.validation?.error}
+              />
+            );
+          case "phone_number":
+            return (
+              <TextSelectionFormField
+                key={field.id}
+                name={`questions.${field.id}`}
+                label={field.question}
+                validation={field.validation?.regex}
+                errorMessage={t("_FORM_ERROR_MESSAGES_NUMBER-PHONE_", {
+                  defaultValue: "This is an invalid format",
+                })}
               />
             );
           case "address":
