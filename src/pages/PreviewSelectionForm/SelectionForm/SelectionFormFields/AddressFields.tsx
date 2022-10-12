@@ -29,11 +29,16 @@ export const AddressFields = ({
     useState<string>(countryCode);
 
   return (
-    <div id={containerId} className="aq-mb-3">
+    <div
+      id={containerId}
+      data-testid="preselectionForm-addressField"
+      className="aq-mb-3"
+    >
       <FormikField name={countryField}>
         {({ form }: FieldProps) => {
           return (
             <CountrySelect
+              data-testid="preselectionForm-addressField-country"
               key={countryField}
               name={countryField}
               label={label}
