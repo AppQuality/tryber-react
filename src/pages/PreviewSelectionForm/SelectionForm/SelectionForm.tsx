@@ -113,9 +113,11 @@ export const SelectionForm = () => {
               }
               flat
             >
-              {t("_FORM_BUTTON_SEND-FORM_", {
-                defaultValue: "Send Form and Apply",
-              })}
+              {formikProps.isSubmitting
+                ? t("wait...")
+                : t("_FORM_BUTTON_SEND-FORM_", {
+                    defaultValue: "Send Form and Apply",
+                  })}
             </Button>
             {showSubmitError && (
               <StyledError className="aq-mt-1">
