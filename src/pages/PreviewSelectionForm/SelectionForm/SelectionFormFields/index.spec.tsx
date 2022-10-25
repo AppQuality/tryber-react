@@ -4,16 +4,6 @@ import useGenderOptions from "src/features/UseGenderOptions";
 import { renderWithProviders } from "src/utils/test-utils";
 
 jest.mock("formik");
-jest.mock("react-i18next", () => ({
-  useTranslation: () => {
-    return {
-      t: (str: string) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-}));
 jest.mock(
   "src/pages/PreviewSelectionForm/SelectionForm/SelectionFormFields/AddressFields.tsx",
   () => ({
@@ -51,10 +41,7 @@ jest.mock(
   })
 );
 jest.mock(
-  "src/pages/PreviewSelectionForm/SelectionForm/SelectionFormFields/TextSelectionFormField.tsx",
-  () => ({
-    TextSelectionFormField: () => <div data-testid="TextSelectionFormField" />,
-  })
+  "src/pages/PreviewSelectionForm/SelectionForm/SelectionFormFields/TextSelectionFormField.tsx"
 );
 
 describe("selection form fields", () => {
@@ -66,6 +53,7 @@ describe("selection form fields", () => {
         preloadedState: {
           previewSelectionForm: {
             cufList: [],
+            showSubmitError: false,
           },
         },
       }
@@ -83,6 +71,7 @@ describe("selection form fields", () => {
             formData: [
               { id: 91, type: "text", question: "question", value: "val" },
             ],
+            showSubmitError: false,
           },
         },
       }
@@ -102,6 +91,7 @@ describe("selection form fields", () => {
             formData: [
               { id: 91, type: "text", question: "question", value: "val" },
             ],
+            showSubmitError: false,
           },
         },
       }
@@ -126,6 +116,7 @@ describe("selection form fields", () => {
                 value: "val",
               },
             ],
+            showSubmitError: false,
           },
         },
       }
@@ -148,6 +139,7 @@ describe("selection form fields", () => {
                 value: { country: "", city: "" },
               },
             ],
+            showSubmitError: false,
           },
         },
       }
@@ -163,6 +155,7 @@ describe("selection form fields", () => {
           previewSelectionForm: {
             cufList: [{ id: 1, type: "text", name: { it: "" } }],
             formData: [{ id: 1, type: "select", question: "", value: "" }],
+            showSubmitError: false,
           },
         },
       }
@@ -178,6 +171,7 @@ describe("selection form fields", () => {
           previewSelectionForm: {
             cufList: [{ id: 1, type: "text", name: { it: "" } }],
             formData: [{ id: 1, type: "gender", question: "", value: "" }],
+            showSubmitError: false,
           },
         },
       }
@@ -193,6 +187,7 @@ describe("selection form fields", () => {
           previewSelectionForm: {
             cufList: [{ id: 1, type: "text", name: { it: "" } }],
             formData: [{ id: 1, type: "multiselect", question: "", value: "" }],
+            showSubmitError: false,
           },
         },
       }
@@ -208,6 +203,7 @@ describe("selection form fields", () => {
           previewSelectionForm: {
             cufList: [{ id: 1, type: "text", name: { it: "" } }],
             formData: [{ id: 1, type: "radio", question: "", value: "" }],
+            showSubmitError: false,
           },
         },
       }

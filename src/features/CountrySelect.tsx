@@ -7,7 +7,6 @@ import {
   FormGroup,
 } from "@appquality/appquality-design-system";
 import { useMemo } from "react";
-import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import countries from "i18n-iso-countries";
 import { ChangeEvent } from "react";
@@ -23,12 +22,12 @@ const CountrySelect = ({
   validate?: boolean;
   onChange?: (v: SelectType.Option) => void;
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const enCountries = countries.getNames("en", { select: "official" });
   const options = useMemo(
     () =>
       Object.entries(
-        countries.getNames(i18next.language, { select: "official" })
+        countries.getNames(i18n.language, { select: "official" })
       ).map(([locale, name]) => ({
         label: name,
         code: locale,
