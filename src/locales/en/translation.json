@@ -458,7 +458,7 @@
     "Total booty": "Total booty",
     "Wallet": "Wallet",
     "We got it!": "We got it!",
-    "Your payment request was successful.<br />You will receive the payment <strong>within 10 working days.</strong>": "We got it! Your payment request was successful.\nYou will receive the payment within 10 working days.",
+    "Your payment request was successful.<br />You will receive the payment <strong>within 10 working days.</strong>": "We got it! Your payment request was successful.\nYou will receive the payment within 20 working days.",
     "__WALLET_CARD-GUIDES_CTA MAX: 20": "Read our guides",
     "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Discover how we manage your payment requests.",
     "__WALLET_CARD-GUIDES_TITLE MAX: 35": "Any questions on payment process?",
