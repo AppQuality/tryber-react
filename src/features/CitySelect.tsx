@@ -36,7 +36,7 @@ const CitySelect = ({
             <FormLabel label={label} htmlFor={field.name} />
             <PlacesAutocomplete
               placesProps={{
-                apiKey: process.env.REACT_APP_GOOGLE_APIKEY || "",
+                apiKey: "",
                 apiOptions: {
                   language: i18n.language,
                   region: i18n.language,
