@@ -50,7 +50,7 @@ export default () => {
     {
       name: t("testers"),
       icon: testerIcon,
-      text: "45.000",
+      text: "65.000",
     },
     {
       name: t("Countries covered"),
@@ -60,12 +60,12 @@ export default () => {
     {
       name: t("Campaigns delivered"),
       icon: campaignsIcon,
-      text: "3.500",
+      text: "4.800",
     },
     {
       name: t("Brands helped"),
       icon: brandsHelped,
-      text: "150",
+      text: "200",
     },
   ];
   return (
