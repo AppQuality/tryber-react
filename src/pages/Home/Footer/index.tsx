@@ -80,8 +80,8 @@ export default () => {
           {t("company")}
         </Title>
         <Text small>
-          AppQuality srl - P.IVA 01603290196 <br />
-          Capitale Sociale € 22.060,57, di cui € 19.174,11 i.v
+          UNGUESS srl - P.IVA 01603290196 <br />
+          Capitale Sociale € 39.309,64, di cui € 32.971,98 i.v.
         </Text>
       </div>
       <div className="grid-item address">
