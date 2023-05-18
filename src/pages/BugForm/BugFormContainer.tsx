@@ -49,6 +49,10 @@ export const BugFormContainer = () => {
   const { mediaList } = useAppSelector((state) => state.bugForm);
   const [submitForm] = usePostUsersMeCampaignsByCampaignIdBugsMutation();
 
+  const isPublicPage = useAppSelector(
+    (state) => state.publicUserPages.isPublic
+  );
+
   if (!data) return null;
 
   const initialBugValues: BugFormValues = {
@@ -182,41 +186,43 @@ export const BugFormContainer = () => {
       res
         .unwrap()
         .then((payload) => {
-          dispatch(
-            addMessage(
-              <Text className="aq-text-primary">
-                <strong>
-                  {t("BUGFORM_CONFIRMUPLOAD_TITLE", {
-                    defaultValue:
-                      "The bug you reported has been uploaded successfully!",
-                  })}
-                </strong>
-                <div>
-                  <Trans
-                    i18nKey={
-                      "Available tags: <bugs_link> (Link to bugs page):::BUGFORM_CONFIRMUPLOAD_TXT"
-                    }
-                    components={{
-                      bugs_link: (
-                        <a
-                          href={`${
-                            i18next.language === "en"
-                              ? ""
-                              : "/" + i18next.language
-                          }/bugs/show/${payload.id}/`}
-                          target="_blank"
-                          rel="noreferrer"
-                        />
-                      ),
-                    }}
-                    defaults="<bugs_link>Go to the Bugs page</bugs_link> to check all the bugs you have uploaded."
-                  />
-                </div>
-              </Text>,
-              "success",
-              false
-            )
-          );
+          if (!isPublicPage) {
+            dispatch(
+              addMessage(
+                <Text className="aq-text-primary">
+                  <strong>
+                    {t("BUGFORM_CONFIRMUPLOAD_TITLE", {
+                      defaultValue:
+                        "The bug you reported has been uploaded successfully!",
+                    })}
+                  </strong>
+                  <div>
+                    <Trans
+                      i18nKey={
+                        "Available tags: <bugs_link> (Link to bugs page):::BUGFORM_CONFIRMUPLOAD_TXT"
+                      }
+                      components={{
+                        bugs_link: (
+                          <a
+                            href={`${
+                              i18next.language === "en"
+                                ? ""
+                                : "/" + i18next.language
+                            }/bugs/show/${payload.id}/`}
+                            target="_blank"
+                            rel="noreferrer"
+                          />
+                        ),
+                      }}
+                      defaults="<bugs_link>Go to the Bugs page</bugs_link> to check all the bugs you have uploaded."
+                    />
+                  </div>
+                </Text>,
+                "success",
+                false
+              )
+            );
+          }
           localStorage.setItem(data.id.toString(), JSON.stringify(additional));
           now = new Date();
           setDisableSubmit(false);
