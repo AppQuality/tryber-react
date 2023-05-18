@@ -28,10 +28,12 @@ export const api = createApi({
       return urlps.toString();
     },
     prepareHeaders: (headers, { getState }) => {
-      const state = getState() as { publicUserPages: { isPublic: boolean } };
+      const { publicUserPages } = getState() as {
+        publicUserPages: { isPublic: boolean; token?: string };
+      };
 
-      if (state.publicUserPages.isPublic) {
-        headers.set("apikey", `123456789`);
+      if (publicUserPages.isPublic && publicUserPages.token) {
+        headers.set("apikey", publicUserPages.token);
       }
 
       if (process.env.REACT_APP_DEFAULT_TOKEN) {

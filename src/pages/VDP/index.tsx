@@ -1,22 +1,21 @@
 import { useParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "src/store";
+import { useAppSelector } from "src/store";
 import BugForm from "../BugForm";
-import { useEffect } from "react";
-import { setUserTokenPublic } from "src/redux/publicUserPages";
 import Loading from "src/features/Loading";
+import { PageTemplate } from "src/features/PageTemplate";
 
 export default function VdpPage() {
   const { id } = useParams<{ id: string }>();
-  const dispatch = useAppDispatch();
   const isPublic = useAppSelector((state) => state.publicUserPages.isPublic);
-
-  useEffect(() => {
-    dispatch(setUserTokenPublic());
-  }, []);
+  const route = `/vdp/${id}`;
 
   if (!isPublic) {
-    return <Loading />;
+    return (
+      <PageTemplate route={route} shouldBeLoggedIn={false}>
+        <Loading />
+      </PageTemplate>
+    );
   }
 
-  return <BugForm customRoute={`/vdp/${id}`} shouldBeLoggedIn={false} />;
+  return <BugForm customRoute={route} shouldBeLoggedIn={false} />;
 }

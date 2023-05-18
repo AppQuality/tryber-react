@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // Define a type for the slice state
 interface PublicUserState {
   isPublic: boolean;
+  token?: string;
 }
 
 // Define the initial state using that type
@@ -15,16 +16,18 @@ export const publicUserPagesSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    setUserTokenPublic: (state) => {
+    setUserTokenPublic: (state, action) => {
+      state.token = action.payload;
       state.isPublic = true;
     },
-    setUserTokenPrivate: (state) => {
+    resetUserToken: (state) => {
+      state.token = undefined;
       state.isPublic = false;
     },
   },
 });
 
-export const { setUserTokenPrivate, setUserTokenPublic } =
+export const { resetUserToken, setUserTokenPublic } =
   publicUserPagesSlice.actions;
 
 export default publicUserPagesSlice.reducer;

@@ -1,10 +1,13 @@
 import { Container, PageTitle } from "@appquality/appquality-design-system";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 
 import GoogleTagManager from "./GoogleTagManager";
 import LoggedOnly from "./LoggedOnly";
 import NotLoggedOnly from "./NotLoggedOnly";
 import TesterSidebar from "./TesterSidebar";
+import { useParams } from "react-router-dom";
+import { resetUserToken, setUserTokenPublic } from "src/redux/publicUserPages";
+import { useAppDispatch } from "src/store";
 
 const ContentTemplate = ({
   title,
@@ -55,6 +58,8 @@ export const PageTemplate: FC<{
   containerClass = "aq-pb-3",
   route,
 }) => {
+  const dispatch = useAppDispatch();
+
   const LoggedStatusWrapper = shouldBeLoggedIn
     ? ({ children }: { children: React.ReactNode }) => (
         <LoggedOnly showHeader={showHeader}>{children}</LoggedOnly>
@@ -62,6 +67,16 @@ export const PageTemplate: FC<{
     : ({ children }: { children: React.ReactNode }) => (
         <NotLoggedOnly>{children}</NotLoggedOnly>
       );
+
+  /**
+   * In the /VDP page we set the user token to public in order to allow the user to submit a bug report.
+   * Every other page should be private.
+   */
+  const { token } = useParams<{ token?: string }>();
+  useEffect(() => {
+    if (token) dispatch(setUserTokenPublic(token));
+    else dispatch(resetUserToken());
+  }, [token]);
 
   // map children and separate Modal components from the rest
   const [modalChildren, pageChildren] = React.Children.toArray(children).reduce(
