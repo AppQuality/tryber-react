@@ -3,6 +3,8 @@ import { shallowEqual, useSelector } from "react-redux";
 import Loading from "./Loading";
 import { LoginPage } from "./LoginPage";
 import SiteHeader from "./SiteHeader";
+import { useEffect } from "react";
+import { setUserTokenPrivate } from "src/redux/publicUserPages";
 
 const LoggedOnly = ({
   children,
@@ -24,6 +26,10 @@ const LoggedOnly = ({
     }),
     shallowEqual
   );
+
+  useEffect(() => {
+    setUserTokenPrivate();
+  }, []);
 
   if (loading || typeof loading === "undefined") {
     return <Loading />;
