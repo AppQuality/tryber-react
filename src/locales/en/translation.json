@@ -245,7 +245,8 @@
   "Fiscal Type": "Fiscal Type",
   "Fiscal residence": "Fiscal residence",
   "Fiscal types": {
-    "@@Not compatible regime@@": "Not compatible regime",
+    "@@Company@@": "Company",
+    "@@VAT@@": "VAT",
     "@@Witholding < 5000€@@": "Witholding < 5000€",
     "@@Witholding > 5000€@@": "Witholding > 5000€"
   },

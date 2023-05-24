@@ -59,8 +59,12 @@ const FiscalTypeArea = () => {
                         label: t("Fiscal types:::@@Witholding > 5000€@@"),
                       },
                       {
-                        value: "other",
-                        label: t("Fiscal types:::@@Not compatible regime@@"),
+                        value: "vat",
+                        label: t("Fiscal types:::@@VAT@@"),
+                      },
+                      {
+                        value: "company",
+                        label: t("Fiscal types:::@@Company@@"),
                       },
                     ]}
                     noOptionsMessage={() => t("__SELECT_DEFAULT_NO_OPTION")}

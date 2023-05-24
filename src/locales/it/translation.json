@@ -245,7 +245,8 @@
   "Fiscal Type": "Regime fiscale",
   "Fiscal residence": "Residenza fiscale",
   "Fiscal types": {
-    "@@Not compatible regime@@": "Regime non compatibile",
+    "@@Company@@": "Azienda",
+    "@@VAT@@": "Partita IVA",
     "@@Witholding < 5000€@@": "Trattenuta < 5000€",
     "@@Witholding > 5000€@@": "Trattenuta > 5000€"
   },
