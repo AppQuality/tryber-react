@@ -20,6 +20,7 @@ import { UseCase } from "src/pages/BugForm/BugDetails/select/UseCase";
 import { TextareaField } from "src/pages/BugForm/BugDetails/TextareaField/TextareaField";
 import { LabelWithHelper } from "src/pages/BugForm/LabelWithHelper/LabelWithHelper";
 import useCampaignData from "src/pages/BugForm/useCampaignData";
+import { useAppSelector } from "src/store";
 
 interface BugDetailsProps {
   className?: string;
@@ -31,6 +32,10 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
   const isDesktop = window.matchMedia(
     `only screen and (min-width: ${aqBootstrapTheme.grid.breakpoints.lg})`
   ).matches;
+
+  const isPublicPage = useAppSelector(
+    (state) => state.publicUserPages.isPublic
+  );
 
   return (
     <Card
@@ -56,9 +61,11 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           defaultValue: "[Phase / Section] - Briefly Issue description",
         })}
       />
-      <div className="aq-mb-3">
-        <Devices />
-      </div>
+      {!isPublicPage && (
+        <div className="aq-mb-3">
+          <Devices />
+        </div>
+      )}
       <div className="aq-mb-3">
         <BugType />
       </div>
@@ -68,9 +75,11 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
       <div className="aq-mb-3">
         <BugReplicability />
       </div>
-      <div className="aq-mb-3">
-        <UseCase />
-      </div>
+      {!isPublicPage && (
+        <div className="aq-mb-3">
+          <UseCase />
+        </div>
+      )}
       <TextareaField
         className="aq-mb-3"
         name="stepDescription"
