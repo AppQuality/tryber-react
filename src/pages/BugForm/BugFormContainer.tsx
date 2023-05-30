@@ -77,8 +77,10 @@ export const BugFormContainer = () => {
   }
 
   if (isPublicPage) {
-    // In a public page, we don't want to show the usecase selector,
-    // so we set it to the default value (not a specific usecase)
+    /**
+     * In a public page, we don't want to show the usecase selector,
+     * so we set it to the default value (not a specific usecase)
+     */
     initialBugValues.useCase = "-1";
   }
 
