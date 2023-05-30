@@ -76,6 +76,14 @@ export const BugFormContainer = () => {
     initialBugValues.device = device[0].id.toString();
   }
 
+  if (isPublicPage) {
+    /**
+     * In a public page, we don't want to show the usecase selector,
+     * so we set it to the default value (not a specific usecase)
+     */
+    initialBugValues.useCase = "-1";
+  }
+
   data.additionalFields?.forEach(
     (f) => (initialBugValues.additional[f.slug] = "")
   );
@@ -186,16 +194,16 @@ export const BugFormContainer = () => {
       res
         .unwrap()
         .then((payload) => {
-          if (!isPublicPage) {
-            dispatch(
-              addMessage(
-                <Text className="aq-text-primary">
-                  <strong>
-                    {t("BUGFORM_CONFIRMUPLOAD_TITLE", {
-                      defaultValue:
-                        "The bug you reported has been uploaded successfully!",
-                    })}
-                  </strong>
+          dispatch(
+            addMessage(
+              <Text className="aq-text-primary">
+                <strong>
+                  {t("BUGFORM_CONFIRMUPLOAD_TITLE", {
+                    defaultValue:
+                      "The bug you reported has been uploaded successfully!",
+                  })}
+                </strong>
+                {!isPublicPage && (
                   <div>
                     <Trans
                       i18nKey={
@@ -217,12 +225,13 @@ export const BugFormContainer = () => {
                       defaults="<bugs_link>Go to the Bugs page</bugs_link> to check all the bugs you have uploaded."
                     />
                   </div>
-                </Text>,
-                "success",
-                false
-              )
-            );
-          }
+                )}
+              </Text>,
+              "success",
+              false
+            )
+          );
+
           localStorage.setItem(data.id.toString(), JSON.stringify(additional));
           now = new Date();
           setDisableSubmit(false);

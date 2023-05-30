@@ -41,6 +41,14 @@ export const FileList = () => {
     return typeof meta.error === "string" && meta.touched;
   };
   const [deleteMedia] = useDeleteMediaMutation();
+
+  /**
+   * Hide delete action if the form is public
+   */
+  const hideDeleteAction = useAppSelector(
+    (state) => state.publicUserPages.isPublic
+  );
+
   const onDelete = async (fileElement: FileElement) => {
     if (fileElement.status === "uploading") return;
     if (
@@ -95,7 +103,11 @@ export const FileList = () => {
             key={f.id}
             className="file-list-card"
             fileElement={f}
-            onDelete={f.status !== "uploading" ? () => onDelete(f) : undefined}
+            onDelete={
+              !hideDeleteAction && f.status !== "uploading"
+                ? () => onDelete(f)
+                : undefined
+            }
           />
         ))}
       </StyledFileList>
