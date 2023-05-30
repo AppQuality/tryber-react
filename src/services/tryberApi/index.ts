@@ -25,7 +25,25 @@ const injectedRtkApi = api.injectEndpoints({
       }),
     }),
     getCampaigns: build.query<GetCampaignsApiResponse, GetCampaignsApiArg>({
-      query: () => ({ url: `/campaigns` }),
+      query: (queryArg) => ({
+        url: `/campaigns`,
+        params: {
+          fields: queryArg.fields,
+          start: queryArg.start,
+          limit: queryArg.limit,
+          mine: queryArg.mine,
+          search: queryArg.search,
+          order: queryArg.order,
+          orderBy: queryArg.orderBy,
+          filterBy: queryArg.filterBy,
+        },
+      }),
+    }),
+    getCampaignsOwners: build.query<
+      GetCampaignsOwnersApiResponse,
+      GetCampaignsOwnersApiArg
+    >({
+      query: () => ({ url: `/campaigns/owners` }),
     }),
     getCampaignsByCampaign: build.query<
       GetCampaignsByCampaignApiResponse,
@@ -43,6 +61,28 @@ const injectedRtkApi = api.injectEndpoints({
         body: queryArg.campaignOptional,
       }),
     }),
+    getCampaignsByCampaignBugs: build.query<
+      GetCampaignsByCampaignBugsApiResponse,
+      GetCampaignsByCampaignBugsApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/bugs`,
+        params: {
+          limit: queryArg.limit,
+          start: queryArg.start,
+          search: queryArg.search,
+          order: queryArg.order,
+          orderBy: queryArg.orderBy,
+          filterBy: queryArg.filterBy,
+        },
+      }),
+    }),
+    getCampaignsByCampaignGroups: build.query<
+      GetCampaignsByCampaignGroupsApiResponse,
+      GetCampaignsByCampaignGroupsApiArg
+    >({
+      query: (queryArg) => ({ url: `/campaigns/${queryArg.campaign}/groups` }),
+    }),
     postCampaignsByCampaignCandidates: build.mutation<
       PostCampaignsByCampaignCandidatesApiResponse,
       PostCampaignsByCampaignCandidatesApiArg
@@ -51,8 +91,28 @@ const injectedRtkApi = api.injectEndpoints({
         url: `/campaigns/${queryArg.campaign}/candidates`,
         method: "POST",
         body: queryArg.body,
-        params: { device: queryArg.device },
       }),
+    }),
+    getCampaignsByCampaignCandidates: build.query<
+      GetCampaignsByCampaignCandidatesApiResponse,
+      GetCampaignsByCampaignCandidatesApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/candidates`,
+        params: {
+          limit: queryArg.limit,
+          start: queryArg.start,
+          fields: queryArg.fields,
+          filterByInclude: queryArg.filterByInclude,
+          filterByExclude: queryArg.filterByExclude,
+        },
+      }),
+    }),
+    getCampaignsByCampaignPayouts: build.query<
+      GetCampaignsByCampaignPayoutsApiResponse,
+      GetCampaignsByCampaignPayoutsApiArg
+    >({
+      query: (queryArg) => ({ url: `/campaigns/${queryArg.campaign}/payouts` }),
     }),
     getCampaignsByCampaignTasks: build.query<
       GetCampaignsByCampaignTasksApiResponse,
@@ -128,6 +188,66 @@ const injectedRtkApi = api.injectEndpoints({
         body: queryArg.body,
       }),
     }),
+    getCampaignsByCampaignForms: build.query<
+      GetCampaignsByCampaignFormsApiResponse,
+      GetCampaignsByCampaignFormsApiArg
+    >({
+      query: (queryArg) => ({ url: `/campaigns/${queryArg.campaign}/forms` }),
+    }),
+    putCampaignsByCampaignProspectAndTesterId: build.mutation<
+      PutCampaignsByCampaignProspectAndTesterIdApiResponse,
+      PutCampaignsByCampaignProspectAndTesterIdApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/prospect/${queryArg.testerId}`,
+        method: "PUT",
+        body: queryArg.body,
+      }),
+    }),
+    getCampaignsByCampaignProspect: build.query<
+      GetCampaignsByCampaignProspectApiResponse,
+      GetCampaignsByCampaignProspectApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/prospect`,
+        params: {
+          filterByInclude: queryArg.filterByInclude,
+          filterByExclude: queryArg.filterByExclude,
+        },
+      }),
+    }),
+    putCampaignsByCampaignProspect: build.mutation<
+      PutCampaignsByCampaignProspectApiResponse,
+      PutCampaignsByCampaignProspectApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/prospect`,
+        method: "PUT",
+        body: queryArg.body,
+      }),
+    }),
+    patchCampaignsByCampaignProspect: build.mutation<
+      PatchCampaignsByCampaignProspectApiResponse,
+      PatchCampaignsByCampaignProspectApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/prospect`,
+        method: "PATCH",
+        body: queryArg.body,
+      }),
+    }),
+    getCampaignsByCampaignStats: build.query<
+      GetCampaignsByCampaignStatsApiResponse,
+      GetCampaignsByCampaignStatsApiArg
+    >({
+      query: (queryArg) => ({ url: `/campaigns/${queryArg.campaign}/stats` }),
+    }),
+    getCampaignTypes: build.query<
+      GetCampaignTypesApiResponse,
+      GetCampaignTypesApiArg
+    >({
+      query: () => ({ url: `/campaignTypes` }),
+    }),
     getCertifications: build.query<
       GetCertificationsApiResponse,
       GetCertificationsApiArg
@@ -148,32 +268,6 @@ const injectedRtkApi = api.injectEndpoints({
     }),
     getCustomers: build.query<GetCustomersApiResponse, GetCustomersApiArg>({
       query: () => ({ url: `/customers` }),
-    }),
-    postCustomers: build.mutation<
-      PostCustomersApiResponse,
-      PostCustomersApiArg
-    >({
-      query: (queryArg) => ({
-        url: `/customers`,
-        method: "POST",
-        body: queryArg.customer,
-      }),
-    }),
-    getCustomersByCustomer: build.query<
-      GetCustomersByCustomerApiResponse,
-      GetCustomersByCustomerApiArg
-    >({
-      query: (queryArg) => ({ url: `/customers/${queryArg.customer}` }),
-    }),
-    putCustomersByCustomer: build.mutation<
-      PutCustomersByCustomerApiResponse,
-      PutCustomersByCustomerApiArg
-    >({
-      query: (queryArg) => ({
-        url: `/customers/${queryArg.customer}`,
-        method: "PUT",
-        body: queryArg.body,
-      }),
     }),
     getCustomUserFields: build.query<
       GetCustomUserFieldsApiResponse,
@@ -606,6 +700,12 @@ const injectedRtkApi = api.injectEndpoints({
         },
       }),
     }),
+    getUsersMePermissions: build.query<
+      GetUsersMePermissionsApiResponse,
+      GetUsersMePermissionsApiArg
+    >({
+      query: () => ({ url: `/users/me/permissions` }),
+    }),
     getUsersMePopups: build.query<
       GetUsersMePopupsApiResponse,
       GetUsersMePopupsApiArg
@@ -687,18 +787,60 @@ export type PostCampaignsApiArg = {
   };
 };
 export type GetCampaignsApiResponse = /** status 200 OK */ {
-  id?: number;
-  name?: string;
-}[];
-export type GetCampaignsApiArg = void;
-export type GetCampaignsByCampaignApiResponse =
-  /** status 200 A single Campaigns with the Campaign id and Project data */ Campaign & {
-    id: number;
-  } & {
-    project?: Project & {
-      id?: number;
+  items?: {
+    id?: number;
+    name?: string;
+    customerTitle?: string;
+    startDate?: string;
+    endDate?: string;
+    status?: "running" | "closed" | "incoming";
+    visibility?: "admin" | "smallgroup" | "logged" | "public";
+    resultType?: "bug" | "bugparade" | "no";
+    csm?: {
+      id: number;
+      name: string;
+      surname: string;
     };
-  };
+    customer?: {
+      id?: number;
+      name: string;
+    };
+    type?: {
+      name: string;
+      area: "quality" | "experience";
+    };
+    project?: {
+      id?: number;
+      name: string;
+    };
+  }[];
+} & PaginationData;
+export type GetCampaignsApiArg = {
+  fields?: string;
+  /** Items to skip for pagination */
+  start?: number;
+  /** Max items to retrieve */
+  limit?: number;
+  /** Return only your campaign? */
+  mine?: "true";
+  /** A value to search in id or title */
+  search?: string;
+  /** How to order values (ASC, DESC) */
+  order?: "ASC" | "DESC";
+  /** The parameter to order by */
+  orderBy?: "id" | "startDate" | "endDate";
+  filterBy?: any;
+};
+export type GetCampaignsOwnersApiResponse = /** status 200 OK */ {
+  id: number;
+  name: string;
+  surname: string;
+}[];
+export type GetCampaignsOwnersApiArg = void;
+export type GetCampaignsByCampaignApiResponse = /** status 200 OK */ {
+  id: number;
+  title: string;
+};
 export type GetCampaignsByCampaignApiArg = {
   /** A campaign id */
   campaign: string;
@@ -717,20 +859,141 @@ export type PutCampaignsByCampaignApiArg = {
   /** The Campaign data to edit */
   campaignOptional: CampaignOptional;
 };
-export type PostCampaignsByCampaignCandidatesApiResponse =
-  /** status 200 OK */ {
-    tester_id: number;
-    accepted: boolean;
-    status: "ready" | "in-progress" | "completed" | "excluded" | "removed";
-    device: "any" | UserDevice;
-  };
+export type GetCampaignsByCampaignBugsApiResponse = /** status 200 OK */ {
+  items: {
+    id: number;
+    title: string;
+    internalId: string;
+    status: {
+      id: number;
+      name: string;
+    };
+    type: {
+      id: number;
+      name: string;
+    };
+    severity: {
+      id: number;
+      name: string;
+    };
+    tester: {
+      id: number;
+    };
+    tags?: BugTag[];
+    duplication: "father" | "unique" | "duplicated";
+    isFavourite: boolean;
+    created: string;
+    updated: string;
+  }[];
+} & PaginationData;
+export type GetCampaignsByCampaignBugsApiArg = {
+  /** A campaign id */
+  campaign: string;
+  /** Max items to retrieve */
+  limit?: number;
+  /** Items to skip for pagination */
+  start?: number;
+  /** The value to search for */
+  search?: string;
+  /** How to order values (ASC, DESC) */
+  order?: "ASC" | "DESC";
+  /** Order values by STATUS, TESTERID, SEVERITY, TYPE, ID */
+  orderBy?: "severity" | "testerId" | "status" | "type" | "id";
+  /** Key-value Array for item filtering */
+  filterBy?: object;
+};
+export type GetCampaignsByCampaignGroupsApiResponse = /** status 200 OK */ {
+  id: number;
+  name: string;
+}[];
+export type GetCampaignsByCampaignGroupsApiArg = {
+  /** A campaign id */
+  campaign: string;
+};
+export type PostCampaignsByCampaignCandidatesApiResponse /** status 200 OK */ =
+  | {
+      results: {
+        tester_id: number;
+        device?: {} | {};
+        campaignId?: number;
+      }[];
+    }
+  | /** status 207 Multi-Status (WebDAV) */ {
+      results: {
+        tester_id: number;
+        device?: "any" | number;
+        campaignId?: number;
+      }[];
+      invalidTesters?: number[];
+    };
 export type PostCampaignsByCampaignCandidatesApiArg = {
   /** A campaign id */
   campaign: string;
-  device?: string;
-  body: {
-    tester_id: number;
+  body:
+    | {
+        tester_id: number;
+        device?: {} | {};
+      }[]
+    | {
+        tester_id: number;
+        device?: {} | {};
+      };
+};
+export type GetCampaignsByCampaignCandidatesApiResponse = /** status 200 OK */ {
+  results?: {
+    id: number;
+    name: string;
+    surname: string;
+    experience: number;
+    level: string;
+    devices: {
+      manufacturer?: string;
+      model?: string;
+      os: string;
+      osVersion: string;
+      id: number;
+    }[];
+    questions?: {
+      id?: number;
+      title?: string;
+      value?: string;
+    }[];
+  }[];
+} & PaginationData;
+export type GetCampaignsByCampaignCandidatesApiArg = {
+  /** A campaign id */
+  campaign: string;
+  /** Max items to retrieve */
+  limit?: number;
+  /** Items to skip for pagination */
+  start?: number;
+  /** The fields to add to the results */
+  fields?: string;
+  /** Key-value Array for item filtering */
+  filterByInclude?: any;
+  /** Key-value Array for item filtering */
+  filterByExclude?: any;
+};
+export type GetCampaignsByCampaignPayoutsApiResponse = /** status 200 OK */ {
+  maxBonusBug: number;
+  completionRule: {
+    bugs?: number;
+    usecases?: number;
   };
+  testSuccess: {
+    payout: number;
+    points: number;
+    message: string;
+  };
+  testFailure: {
+    payout: number;
+    points: number;
+    message: string;
+  };
+};
+export type GetCampaignsByCampaignPayoutsApiArg = {
+  /** A campaign id */
+  campaign: string;
 };
 export type GetCampaignsByCampaignTasksApiResponse =
   /** status 200 A list of UseCase linked with the Campaign */ (Task & {
@@ -840,6 +1103,133 @@ export type PutCampaignsFormsByFormIdApiArg = {
     } & PreselectionFormQuestion)[];
   };
 };
+export type GetCampaignsByCampaignFormsApiResponse = /** status 200 OK */ {
+  id: number;
+  question: string;
+  shortName?: string;
+}[];
+export type GetCampaignsByCampaignFormsApiArg = {
+  campaign: string;
+};
+export type PutCampaignsByCampaignProspectAndTesterIdApiResponse =
+  /** status 200 OK */ {
+    payout: {
+      completion: number;
+      bugs: number;
+      refund: number;
+      extra: number;
+    };
+    experience: {
+      completion: number;
+      extra: number;
+    };
+    note: string;
+    completed: boolean;
+  };
+export type PutCampaignsByCampaignProspectAndTesterIdApiArg = {
+  /** A campaign id */
+  campaign: string;
+  testerId: string;
+  body: {
+    payout: {
+      completion: number;
+      bugs: number;
+      refund: number;
+      extra: number;
+    };
+    experience: {
+      completion: number;
+      extra: number;
+    };
+    note: string;
+    completed: boolean;
+  };
+};
+export type GetCampaignsByCampaignProspectApiResponse = /** status 200 OK */ {
+  items: {
+    tester: {
+      id: number;
+      name: string;
+      surname: string;
+      group: number;
+    };
+    usecases: {
+      completed: number;
+      required: number;
+    };
+    bugs: {
+      critical: number;
+      high: number;
+      medium: number;
+      low: number;
+    };
+    payout: {
+      completion: number;
+      bug: number;
+      refund: number;
+      extra: number;
+    };
+    experience: {
+      completion: number;
+      extra: number;
+    };
+    note: string;
+    status: "pending" | "done";
+    weightedBugs: number;
+    isCompleted: boolean;
+    isTopTester: boolean;
+  }[];
+  status: ProspectStatus;
+};
+export type GetCampaignsByCampaignProspectApiArg = {
+  campaign: string;
+  /** Key-value Array for item filtering */
+  filterByInclude?: any;
+  /** Key-value Array for item filtering */
+  filterByExclude?: any;
+};
+export type PutCampaignsByCampaignProspectApiResponse = unknown;
+export type PutCampaignsByCampaignProspectApiArg = {
+  campaign: string;
+  body: {
+    status: ProspectStatus;
+    items: {
+      tester: {
+        id: number;
+      };
+      experience: {
+        completion: number;
+        extra: number;
+      };
+      payout: {
+        completion: number;
+        bug: number;
+        extra: number;
+        refund: number;
+      };
+      note?: string;
+      completed: boolean;
+    }[];
+  };
+};
+export type PatchCampaignsByCampaignProspectApiResponse = unknown;
+export type PatchCampaignsByCampaignProspectApiArg = {
+  campaign: string;
+  body: {
+    status?: ProspectStatus;
+  };
+};
+export type GetCampaignsByCampaignStatsApiResponse = /** status 200 OK */ {
+  selected: number;
+};
+export type GetCampaignsByCampaignStatsApiArg = {
+  campaign: string;
+};
+export type GetCampaignTypesApiResponse = /** status 200  */ {
+  id: number;
+  name: string;
+}[];
+export type GetCampaignTypesApiArg = void;
 export type GetCertificationsApiResponse = /** status 200 OK */ {
   id: number;
   name: string;
@@ -859,28 +1249,11 @@ export type GetCountriesByCodeRegionApiArg = {
   languageCode?: string;
 };
 export type GetCustomersApiResponse =
-  /** status 200 An array of Customer objects */ (Customer & {
+  /** status 200 An array of Customer objects */ {
     id?: number;
-  })[];
+    name?: string;
+  }[];
 export type GetCustomersApiArg = void;
-export type PostCustomersApiResponse = /** status 201 Created */ undefined;
-export type PostCustomersApiArg = {
-  /** The customer you want to create */
-  customer: Customer;
-};
-export type GetCustomersByCustomerApiResponse =
-  /** status 200 The Customer data you requested */ Customer;
-export type GetCustomersByCustomerApiArg = {
-  /** A customer id */
-  customer: string;
-};
-export type PutCustomersByCustomerApiResponse = /** status 200 OK */ undefined;
-export type PutCustomersByCustomerApiArg = {
-  /** A customer id */
-  customer: string;
-  /** The Customer data to edit */
-  body: Customer;
-};
 export type GetCustomUserFieldsApiResponse = /** status 200 OK */ {
   group: {
     id: number;
@@ -1370,7 +1743,8 @@ export type DeleteUsersMeCertificationsByCertificationIdApiArg = {
 };
 export type GetUsersMeDevicesApiResponse = /** status 200 OK */ ({
   id?: number;
-} & UserDevice)[];
+} & UserDevice &
+  object)[];
 export type GetUsersMeDevicesApiArg = void;
 export type PostUsersMeDevicesApiResponse = /** status 201 Created */ {
   id?: number;
@@ -1652,6 +2026,14 @@ export type GetUsersMePendingBootyApiArg = {
   /** How to order values (ASC, DESC) */
   order?: "ASC" | "DESC";
 };
+export type GetUsersMePermissionsApiResponse = /** status 200 OK */ {
+  appq_bug?: Olp;
+  appq_campaign?: Olp;
+  appq_message_center?: Olp;
+  appq_prospect?: Olp;
+  appq_tester_selection?: Olp;
+};
+export type GetUsersMePermissionsApiArg = void;
 export type GetUsersMePopupsApiResponse = /** status 200 OK */ {
   id?: number;
   title?: string;
@@ -1807,23 +2189,15 @@ export type Campaign = CampaignOptional & CampaignRequired;
 export type Project = {
   name?: string;
 };
-export type UserDevice = {
-  type: string;
+export type PaginationData = {
+  start: number;
+  limit?: number;
+  size: number;
+  total?: number;
+};
+export type BugTag = {
   id: number;
-  device:
-    | {
-        manufacturer: string;
-        model: string;
-        id?: number;
-      }
-    | {
-        pc_type: string;
-      };
-  operating_system: {
-    id: number;
-    platform: string;
-    version: string;
-  };
+  name: string;
 };
 export type TaskOptional = {
   name?: string;
@@ -1857,9 +2231,7 @@ export type PreselectionFormQuestion = {
       type: "gender" | "phone_number" | "address";
     }
 );
-export type Customer = User & {
-  customer_name?: string;
-};
+export type ProspectStatus = "draft" | "confirmed" | "done";
 export type CustomUserFieldsType = "text" | "select" | "multiselect";
 export type CustomUserFieldsDataOption = {
   id: number;
@@ -1936,11 +2308,30 @@ export type CampaignAdditionalField = {
       regex: string;
     }
 );
+export type UserDevice = {
+  type: string;
+  id: number;
+  device:
+    | {
+        manufacturer: string;
+        model: string;
+        id?: number;
+      }
+    | {
+        pc_type: string;
+      };
+  operating_system: {
+    id: number;
+    platform: string;
+    version: string;
+  };
+};
 export type FiscalType =
   | "withholding"
   | "witholding-extra"
-  | "other"
-  | "non-italian";
+  | "non-italian"
+  | "vat"
+  | "company";
 export type FiscalBirthCity =
   | {
       city: string;
@@ -1949,6 +2340,7 @@ export type FiscalBirthCity =
   | {
       placeId: string;
     };
+export type Olp = number[] | boolean;
 export type MonthlyLevel = {
   id: number;
   name: string;
@@ -1965,9 +2357,14 @@ export const {
   usePostAuthenticateMutation,
   usePostCampaignsMutation,
   useGetCampaignsQuery,
+  useGetCampaignsOwnersQuery,
   useGetCampaignsByCampaignQuery,
   usePutCampaignsByCampaignMutation,
+  useGetCampaignsByCampaignBugsQuery,
+  useGetCampaignsByCampaignGroupsQuery,
   usePostCampaignsByCampaignCandidatesMutation,
+  useGetCampaignsByCampaignCandidatesQuery,
+  useGetCampaignsByCampaignPayoutsQuery,
   useGetCampaignsByCampaignTasksQuery,
   usePostCampaignsByCampaignTasksMutation,
   useGetCampaignsByCampaignTasksAndTaskQuery,
@@ -1976,12 +2373,16 @@ export const {
   useGetCampaignsFormsQuery,
   useGetCampaignsFormsByFormIdQuery,
   usePutCampaignsFormsByFormIdMutation,
+  useGetCampaignsByCampaignFormsQuery,
+  usePutCampaignsByCampaignProspectAndTesterIdMutation,
+  useGetCampaignsByCampaignProspectQuery,
+  usePutCampaignsByCampaignProspectMutation,
+  usePatchCampaignsByCampaignProspectMutation,
+  useGetCampaignsByCampaignStatsQuery,
+  useGetCampaignTypesQuery,
   useGetCertificationsQuery,
   useGetCountriesByCodeRegionQuery,
   useGetCustomersQuery,
-  usePostCustomersMutation,
-  useGetCustomersByCustomerQuery,
-  usePutCustomersByCustomerMutation,
   useGetCustomUserFieldsQuery,
   useGetDevicesByDeviceTypeModelsQuery,
   useGetDevicesByDeviceTypeOperatingSystemsQuery,
@@ -2031,6 +2432,7 @@ export const {
   usePostUsersMePaymentsMutation,
   useGetUsersMePaymentsByPaymentQuery,
   useGetUsersMePendingBootyQuery,
+  useGetUsersMePermissionsQuery,
   useGetUsersMePopupsQuery,
   useGetUsersMePopupsByPopupQuery,
   useGetUsersMeRankQuery,
