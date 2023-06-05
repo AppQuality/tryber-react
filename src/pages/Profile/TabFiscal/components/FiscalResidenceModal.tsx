@@ -23,7 +23,8 @@ const FiscalResidenceModal = ({ values }: { values: FiscalFormValues }) => {
         ? "Withholding tax annual < 5000€"
         : values.fiscalTypeSelect === "witholding-extra"
         ? "Withholding tax annual > 5000€"
-        : values.fiscalTypeSelect === "other"
+        : values.fiscalTypeSelect === "vat" ||
+          values.fiscalTypeSelect === "company"
         ? "Not compatible with previous ones"
         : ""
       : "",

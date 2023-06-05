@@ -82,14 +82,20 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
     zipCode: yup.string().required(t("You need to select a zip code")),
     fiscalTypeSelect: yup
       .string()
-      .oneOf(["withholding", "witholding-extra", "other"])
+      .oneOf(["withholding", "witholding-extra", "vat", "company"])
       .when("countryCode", {
         is: "IT",
         then: yup.string().required(t("This is a required field")),
       }),
     type: yup
       .string()
-      .oneOf(["non-italian", "withholding", "witholding-extra", "other"])
+      .oneOf([
+        "non-italian",
+        "withholding",
+        "witholding-extra",
+        "vat",
+        "company",
+      ])
       .required(t("This is a required field")),
     birthPlaceCity: yup.string().when("countryCode", {
       is: "IT",
