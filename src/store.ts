@@ -8,6 +8,7 @@ import oldReducers from "src/redux/reducer";
 import bugFormReducer from "src/pages/BugForm/bugFormSlice";
 import previewSelectionFormReducer from "src/pages/PreviewSelectionForm/previewSelectionFormSlice";
 import userDevicesReducer from "src/pages/Devices/userDevicesSlice";
+import publicUserPageReducer from "./redux/publicUserPages";
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   previewSelectionForm: previewSelectionFormReducer,
   userDevices: userDevicesReducer,
   [tryberApi.reducerPath]: tryberApi.reducer,
+  publicUserPages: publicUserPageReducer,
 });
 
 export function setupStore(preloadedState?: PreloadedState<RootState>) {

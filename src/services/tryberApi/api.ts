@@ -27,7 +27,15 @@ export const api = createApi({
       });
       return urlps.toString();
     },
-    prepareHeaders: (headers) => {
+    prepareHeaders: (headers, { getState }) => {
+      const { publicUserPages } = getState() as {
+        publicUserPages: { isPublic: boolean; token?: string };
+      };
+
+      if (publicUserPages.isPublic && publicUserPages.token) {
+        headers.set("apikey", publicUserPages.token);
+      }
+
       if (process.env.REACT_APP_DEFAULT_TOKEN) {
         const token = process.env.REACT_APP_DEFAULT_TOKEN;
         headers.set("Authorization", `Bearer ${token}`);

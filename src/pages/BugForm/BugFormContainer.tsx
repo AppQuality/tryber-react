@@ -49,6 +49,10 @@ export const BugFormContainer = () => {
   const { mediaList } = useAppSelector((state) => state.bugForm);
   const [submitForm] = usePostUsersMeCampaignsByCampaignIdBugsMutation();
 
+  const isPublicPage = useAppSelector(
+    (state) => state.publicUserPages.isPublic
+  );
+
   if (!data) return null;
 
   const initialBugValues: BugFormValues = {
@@ -70,6 +74,14 @@ export const BugFormContainer = () => {
 
   if (device?.length === 1) {
     initialBugValues.device = device[0].id.toString();
+  }
+
+  if (isPublicPage) {
+    /**
+     * In a public page, we don't want to show the usecase selector,
+     * so we set it to the default value (not a specific usecase)
+     */
+    initialBugValues.useCase = "-1";
   }
 
   data.additionalFields?.forEach(
@@ -191,32 +203,35 @@ export const BugFormContainer = () => {
                       "The bug you reported has been uploaded successfully!",
                   })}
                 </strong>
-                <div>
-                  <Trans
-                    i18nKey={
-                      "Available tags: <bugs_link> (Link to bugs page):::BUGFORM_CONFIRMUPLOAD_TXT"
-                    }
-                    components={{
-                      bugs_link: (
-                        <a
-                          href={`${
-                            i18next.language === "en"
-                              ? ""
-                              : "/" + i18next.language
-                          }/bugs/show/${payload.id}/`}
-                          target="_blank"
-                          rel="noreferrer"
-                        />
-                      ),
-                    }}
-                    defaults="<bugs_link>Go to the Bugs page</bugs_link> to check all the bugs you have uploaded."
-                  />
-                </div>
+                {!isPublicPage && (
+                  <div>
+                    <Trans
+                      i18nKey={
+                        "Available tags: <bugs_link> (Link to bugs page):::BUGFORM_CONFIRMUPLOAD_TXT"
+                      }
+                      components={{
+                        bugs_link: (
+                          <a
+                            href={`${
+                              i18next.language === "en"
+                                ? ""
+                                : "/" + i18next.language
+                            }/bugs/show/${payload.id}/`}
+                            target="_blank"
+                            rel="noreferrer"
+                          />
+                        ),
+                      }}
+                      defaults="<bugs_link>Go to the Bugs page</bugs_link> to check all the bugs you have uploaded."
+                    />
+                  </div>
+                )}
               </Text>,
               "success",
               false
             )
           );
+
           localStorage.setItem(data.id.toString(), JSON.stringify(additional));
           now = new Date();
           setDisableSubmit(false);

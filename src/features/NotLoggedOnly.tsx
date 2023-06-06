@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import Loading from "./Loading";
 import SiteHeader from "./SiteHeader";
+import { useAppSelector } from "src/store";
 
 const NotLoggedOnly = ({
   children,
@@ -14,6 +15,9 @@ const NotLoggedOnly = ({
 }) => {
   const { user, error, isLoading } = useUser();
   const history = useHistory();
+  const isPublicUser = useAppSelector(
+    (state) => state.publicUserPages.isPublic
+  );
 
   if (isLoading) {
     return <Loading />;
@@ -32,7 +36,7 @@ const NotLoggedOnly = ({
 
   return (
     <>
-      <SiteHeader />
+      {!isPublicUser && <SiteHeader />}
       {children}
     </>
   );

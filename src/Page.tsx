@@ -26,6 +26,7 @@ import referralStore from "./redux/referral";
 import { refreshUser } from "./redux/user/actions/refreshUser";
 import BugForm from "./pages/BugForm";
 import ThankYouPage from "./pages/ThankYou";
+import VdpPage from "./pages/VDP";
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
   datadogLogs.init({
@@ -101,6 +102,7 @@ function Page() {
         </Route>
 
         <Route path={`${base}/my-bugs`} component={MyBugs} />
+        <Route path={`${base}/vdp/:id/:token`} component={VdpPage} />
         <Route
           path={`${base}/experience-points`}
           component={ExperiencePoints}
