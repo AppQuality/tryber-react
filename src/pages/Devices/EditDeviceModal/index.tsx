@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from "src/store";
 import {
   closeEditDeviceModal,
   closeAddDeviceModal,
+  selectDevice,
 } from "src/pages/Devices/userDevicesSlice";
 
 export default () => {
@@ -25,11 +26,13 @@ export default () => {
   const { t } = useTranslation();
   const modalOpen = current ? isEditModalOpen : isAddModalOpen;
   const prevModalOpen: boolean = usePrevious<boolean>(modalOpen);
+  const closeEditModal = () => {
+    dispatch(selectDevice(undefined));
+    dispatch(closeEditDeviceModal());
+  };
   const closeModal = () => {
     setStep(0);
-    current
-      ? dispatch(closeEditDeviceModal())
-      : dispatch(closeAddDeviceModal());
+    current ? closeEditModal() : dispatch(closeAddDeviceModal());
   };
   let steps: WizardStep[] = [
     {
