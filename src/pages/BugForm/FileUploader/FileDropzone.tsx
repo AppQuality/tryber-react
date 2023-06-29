@@ -35,8 +35,12 @@ export const FileDropzone = () => {
 
   const uploadMedia = async (files: File[]) => {
     files.forEach((f) => {
+      // Normalizes accented characters in the file name (e.g. à becomes a)
+      const normalizedFileName = f.name
+        .normalize("NFD")
+        .replace(/\p{Diacritic}/gu, "");
       const formData = new FormData();
-      formData.append("media", f);
+      formData.append("media", f, normalizedFileName);
       if (!campaign.data) return;
       const data = createMedia({
         campaignId: campaign.data.id.toString(),
