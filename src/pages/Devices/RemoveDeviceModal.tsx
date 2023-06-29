@@ -10,7 +10,10 @@ import { Trans, useTranslation } from "react-i18next";
 import siteWideMessageStore from "src/redux/siteWideMessages";
 import API from "src/utils/api";
 import { useAppDispatch, useAppSelector } from "src/store";
-import { closeDeleteDeviceModal } from "src/pages/Devices/userDevicesSlice";
+import {
+  closeDeleteDeviceModal,
+  selectDevice,
+} from "src/pages/Devices/userDevicesSlice";
 import { useGetUsersMeDevicesQuery } from "src/services/tryberApi";
 
 const RemoveDeviceModal = () => {
@@ -20,6 +23,7 @@ const RemoveDeviceModal = () => {
   const { add } = siteWideMessageStore();
   const { t } = useTranslation();
   const dispatchCloseModal = () => {
+    dispatch(selectDevice(undefined));
     dispatch(closeDeleteDeviceModal());
   };
   const { refetch } = useGetUsersMeDevicesQuery();
