@@ -6,9 +6,12 @@ import { getTableRows } from "src/pages/Devices/tableRows";
 
 const DeviceTable = () => {
   const { t } = useTranslation();
-  const { data, isFetching } = useGetUsersMeDevicesQuery();
+  const { data, isFetching, error } = useGetUsersMeDevicesQuery();
   const dispatch = useAppDispatch();
-  const tableRows = data ? getTableRows(data, dispatch, t) : [];
+
+  const noDevice = error && "status" in error && error.status === 404;
+  const tableRows = data && !noDevice ? getTableRows(data, dispatch, t) : [];
+
   return (
     <>
       <Table

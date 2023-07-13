@@ -18,7 +18,7 @@ const userDevicesSlice = createSlice({
   name: "userDevices",
   initialState: initialState,
   reducers: {
-    selectDevice(state, action: PayloadAction<UserDevice>) {
+    selectDevice(state, action: PayloadAction<UserDevice | undefined>) {
       state.current = action.payload;
     },
     openEditDeviceModal(state) {

@@ -245,7 +245,8 @@
   "Fiscal Type": "Régimen fiscal",
   "Fiscal residence": "Residencia fiscal",
   "Fiscal types": {
-    "@@Not compatible regime@@": "Régimen no compatible",
+    "@@Company@@": "Empresa",
+    "@@VAT@@": "IVA",
     "@@Witholding < 5000€@@": "Dedución < 5000€",
     "@@Witholding > 5000€@@": "Dedución > 5000€"
   },
