@@ -8,13 +8,17 @@ import {
 import { useTranslation } from "react-i18next";
 import { LabelWithHelper } from "src/pages/BugForm/LabelWithHelper/LabelWithHelper";
 import { setBugDetailsModal } from "src/pages/BugForm/bugFormSlice";
-import { useAppDispatch } from "src/store";
+import { useAppDispatch, useAppSelector } from "src/store";
 import useCampaignData from "src/pages/BugForm/useCampaignData";
 
 export const BugType = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { data } = useCampaignData();
+  const isPublicPage = useAppSelector(
+    (state) => state.publicUserPages.isPublic
+  );
+
   if (!data) return null;
   const options = data.bugTypes.valid.map((option) => ({
     value: option,
@@ -77,6 +81,7 @@ export const BugType = () => {
                   )
                 }
                 small
+                hideHelper={isPublicPage}
               />
             }
             placeholder={t("BUGFORM_BUGDTLS_TYPE_PLACEHOLDER", {

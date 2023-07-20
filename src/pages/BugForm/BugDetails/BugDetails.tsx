@@ -49,6 +49,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
           href={t("Bug details help article", {
             ns: "links",
           })}
+          hideHelper={isPublicPage}
         />
       }
     >
