@@ -20,6 +20,7 @@ interface LabelWithHelperProps {
   small?: boolean;
   title?: string;
   onClick?: () => void;
+  hideHelper?: boolean;
 }
 
 export const LabelWithHelper = ({
@@ -28,17 +29,20 @@ export const LabelWithHelper = ({
   href,
   title,
   onClick,
+  hideHelper,
 }: LabelWithHelperProps) => {
   return (
     <StyledLabelWithHelper small={small}>
       <div>{label}</div>
-      <a href={href} target="_blank" rel="noreferrer">
-        <QuestionMark
-          className="question-mark"
-          title={title}
-          onClick={onClick}
-        />
-      </a>
+      {!hideHelper && (
+        <a href={href} target="_blank" rel="noreferrer">
+          <QuestionMark
+            className="question-mark"
+            title={title}
+            onClick={onClick}
+          />
+        </a>
+      )}
     </StyledLabelWithHelper>
   );
 };
