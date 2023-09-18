@@ -1,5 +1,6 @@
 export const initialState: WalletState = {
   booty: {
+    amount_gross: 0,
     amount: 0,
   },
   requestsList: {
