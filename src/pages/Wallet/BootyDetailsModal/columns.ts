@@ -37,6 +37,20 @@ export const bootyDetailsColumns = (
       },
     },
     {
+      title: t("Amount gross"),
+      dataIndex: "amount_gross",
+      key: "amount_gross",
+      isSortable: true,
+      role: "cta",
+      hideIndex: true,
+      onSort: (newOrder) => {
+        setIsLoading(true);
+        dispatch(
+          updateBootyDetailsSortingOptions(newOrder, "amount_gross")
+        ).then(() => setIsLoading(false));
+      },
+    },
+    {
       title: t("Amount"),
       dataIndex: "amount",
       role: "cta",

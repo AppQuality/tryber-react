@@ -53,6 +53,14 @@ export const BootyDetailsModal = () => {
               ? currencyTable[r.amount.currency]
               : r.amount.currency
           } ${r.amount.value?.toFixed(2)}`;
+
+          const formattedAmountGross = `${
+            r.amount_gross?.currency &&
+            r.amount_gross?.currency in currencyTable
+              ? currencyTable[r.amount_gross.currency]
+              : r.amount_gross?.currency
+          } ${r.amount_gross?.value?.toFixed(2)}`;
+
           return {
             key: r.id,
             activityName: {
@@ -69,6 +77,14 @@ export const BootyDetailsModal = () => {
               content: (
                 <Text className="aq-text-success ">
                   <b>{formattedAmount}</b>
+                </Text>
+              ),
+            },
+            amount_gross: {
+              title: formattedAmountGross,
+              content: (
+                <Text className="aq-text-success ">
+                  <b>{formattedAmountGross}</b>
                 </Text>
               ),
             },
