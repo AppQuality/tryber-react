@@ -9,7 +9,11 @@
       "type": "Test",
       "date": "2019-08-24",
       "activity": "Tryber Testing",
-      "amount": {
+      "net": {
+        "value": 10,
+        "currency": "EUR"
+      },
+      "gross": {
         "value": 10,
         "currency": "EUR"
       }

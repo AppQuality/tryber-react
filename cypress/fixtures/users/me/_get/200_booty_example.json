@@ -1,0 +1,14 @@
+{
+  "id": 10951,
+  "role": "administrator",
+  "booty": {
+    "net": {
+      "value": 10,
+      "currency": "EUR"
+    },
+    "gross": {
+      "value": 20,
+      "currency": "EUR"
+    }
+  }
+}

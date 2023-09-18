@@ -1,0 +1,18 @@
+{
+  "id": 10951,
+  "role": "administrator",
+  "pending_booty": {
+    "net": {
+      "value": 10,
+      "currency": "EUR"
+    },
+    "gross": {
+      "value": 20,
+      "currency": "EUR"
+    }
+  },
+  "booty_threshold": {
+    "value": 2,
+    "isOver": true
+  }
+}

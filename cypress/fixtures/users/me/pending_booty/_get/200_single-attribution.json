@@ -3,7 +3,11 @@
     {
       "id": 1,
       "name": "",
-      "amount": {
+      "net": {
+        "value": 10,
+        "currency": "EUR"
+      },
+      "gross": {
         "value": 10,
         "currency": "EUR"
       },

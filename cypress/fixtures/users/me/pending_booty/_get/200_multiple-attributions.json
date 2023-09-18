@@ -3,8 +3,12 @@
     {
       "id": 1,
       "name": "",
-      "amount": {
+      "net": {
         "value": 10,
+        "currency": "EUR"
+      },
+      "gross": {
+        "value": 11,
         "currency": "EUR"
       },
       "attributionDate": "2019-08-24"
@@ -12,8 +16,12 @@
     {
       "id": 2,
       "name": "",
-      "amount": {
+      "net": {
         "value": 12,
+        "currency": "EUR"
+      },
+      "gross": {
+        "value": 13,
         "currency": "EUR"
       },
       "attributionDate": "2019-08-24"
@@ -21,8 +29,12 @@
     {
       "id": 3,
       "name": "",
-      "amount": {
+      "net": {
         "value": 13,
+        "currency": "EUR"
+      },
+      "gross": {
+        "value": 14,
         "currency": "EUR"
       },
       "attributionDate": "2019-08-24"
@@ -30,8 +42,12 @@
     {
       "id": 4,
       "name": "",
-      "amount": {
+      "net": {
         "value": 14,
+        "currency": "EUR"
+      },
+      "gross": {
+        "value": 15,
         "currency": "EUR"
       },
       "attributionDate": "2019-08-24"
@@ -39,8 +55,12 @@
     {
       "id": 5,
       "name": "",
-      "amount": {
+      "net": {
         "value": 15,
+        "currency": "EUR"
+      },
+      "gross": {
+        "value": 16,
         "currency": "EUR"
       },
       "attributionDate": "2019-08-24"
@@ -48,8 +68,12 @@
     {
       "id": 6,
       "name": "",
-      "amount": {
+      "net": {
         "value": 16,
+        "currency": "EUR"
+      },
+      "gross": {
+        "value": 17,
         "currency": "EUR"
       },
       "attributionDate": "2019-08-24"
@@ -57,8 +81,12 @@
     {
       "id": 7,
       "name": "",
-      "amount": {
+      "net": {
         "value": 17,
+        "currency": "EUR"
+      },
+      "gross": {
+        "value": 18,
         "currency": "EUR"
       },
       "attributionDate": "2019-08-24"
@@ -66,8 +94,12 @@
     {
       "id": 8,
       "name": "",
-      "amount": {
+      "net": {
         "value": 18,
+        "currency": "EUR"
+      },
+      "gross": {
+        "value": 19,
         "currency": "EUR"
       },
       "attributionDate": "2019-08-24"
@@ -75,8 +107,12 @@
     {
       "id": 9,
       "name": "",
-      "amount": {
+      "net": {
         "value": 19,
+        "currency": "EUR"
+      },
+      "gross": {
+        "value": 20,
         "currency": "EUR"
       },
       "attributionDate": "2019-08-24"
@@ -84,8 +120,12 @@
     {
       "id": 10,
       "name": "",
-      "amount": {
+      "net": {
         "value": 20,
+        "currency": "EUR"
+      },
+      "gross": {
+        "value": 21,
         "currency": "EUR"
       },
       "attributionDate": "2019-08-24"
