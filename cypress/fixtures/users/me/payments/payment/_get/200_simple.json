@@ -1,0 +1,22 @@
+{
+  "results": [
+    {
+      "id": 1,
+      "campaign": {
+        "id": 123,
+        "name": "My campaign"
+      },
+      "type": "Test",
+      "date": "2019-08-24",
+      "activity": "Tryber Testing",
+      "amount": {
+        "value": 10,
+        "currency": "EUR"
+      }
+    }
+  ],
+  "limit": 10,
+  "size": 1,
+  "total": 1,
+  "start": 0
+}

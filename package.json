@@ -47,13 +47,14 @@
   "scripts": {
     "prepare": "npx husky install",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "generate-schema": ". ./.env.development; npx openapi-typescript $REACT_APP_API_URL/reference/ --output src/utils/schema.ts ",
     "start": "craco start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "prettier": "npx prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "translate": "i18next-scanner",
-    "generate-api": ". ./.env.development; API_URL=$REACT_APP_API_URL/reference/ npx @rtk-query/codegen-openapi src/services/tryberApi/config.ts"
+    "generate-schema": ". ./.env.development; npx openapi-typescript $REACT_APP_API_URL/reference/ --output src/utils/schema.ts ",
+    "generate-api": ". ./.env.development; API_URL=$REACT_APP_API_URL/reference/ npx @rtk-query/codegen-openapi src/services/tryberApi/config.ts",
+    "generate-fixtures": ". ./.env.development; API_URL=$REACT_APP_API_URL/reference/; npx @appquality/fixture-generator -u $API_URL"
   },
   "eslintConfig": {
     "extends": [
@@ -84,6 +85,7 @@
     ]
   },
   "devDependencies": {
+    "@appquality/fixture-generator": "^1.0.2",
     "@babel/core": "^7.13.0",
     "@craco/craco": "^6.4.2",
     "@redux-devtools/core": "^3.11.0",
