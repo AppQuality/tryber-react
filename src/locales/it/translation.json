@@ -68,6 +68,8 @@
   "All_female": "Tutte",
   "All_male": "Tutti",
   "Amount": "Importo",
+  "Amount gross": "",
+  "Amount to get": "",
   "Annual witholding < 5000€": "Trattenuta annua < 5000€",
   "Annual witholding > 5000": "Trattenuta annua > 5000€",
   "Apply now": "Candidati",
@@ -701,6 +703,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Amount Gross": "",
   "Home": "Home",
   "Loading": "Caricamento in corso...",
   "Redirecting to your dashboard...": "Reindirizzamento alla dashboard in corso ...",

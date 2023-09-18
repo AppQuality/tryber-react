@@ -23,6 +23,18 @@ export const walletColumns = (
       hideIndex: true,
     },
     {
+      title: t("Amount gross"),
+      dataIndex: "amount_gross",
+      key: "amount_gross",
+      isSortable: true,
+      onSort: (newOrder) => {
+        setIsLoading(true);
+        dispatch(updateSortingOptions(newOrder, "amount_gross")).then(() =>
+          setIsLoading(false)
+        );
+      },
+    },
+    {
       title: t("Amount"),
       dataIndex: "amount",
       key: "amount",

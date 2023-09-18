@@ -68,6 +68,8 @@
   "All_female": "Todas",
   "All_male": "Todos",
   "Amount": "Importe",
+  "Amount gross": "",
+  "Amount to get": "",
   "Annual witholding < 5000€": "Deducción anual < 5000€",
   "Annual witholding > 5000": "Deducción anual > 5000",
   "Apply now": "Apúntate ahora",
@@ -701,6 +703,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
+  "Amount Gross": "",
   "Home": "Página de inicio",
   "Loading": "Cargando",
   "Redirecting to your dashboard...": "Redireccionando a tu dashboard...",

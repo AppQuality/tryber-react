@@ -144,7 +144,18 @@ export const WalletManagment = () => {
                   : "aq-text-primary"
               }
             >
-              <strong>{booty.amount?.toFixed(2)}€</strong>
+              <strong>
+                {t("Amount to get")} {booty.amount?.toFixed(2)}€
+              </strong>
+            </Text>
+            <Text
+              className={
+                !isVerified || booty.amount === 0 || paymentInProcessing
+                  ? "aq-text-disabled-dark"
+                  : "aq-text-primary"
+              }
+            >
+              ({t("Amount gross")} {booty.amount_gross?.toFixed(2)}€)
             </Text>
           </div>
         </div>
