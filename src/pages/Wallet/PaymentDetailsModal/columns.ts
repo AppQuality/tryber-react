@@ -52,28 +52,28 @@ export const paymentDetailsColumns = (
     },
     {
       title: t("Amount gross"),
-      dataIndex: "amount_gross",
+      dataIndex: "gross",
       role: "cta",
-      key: "amount_gross",
+      key: "gross",
       hideIndex: true,
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);
-        dispatch(
-          updateDetailsSortingOptions(id, newOrder, "amount_gross")
-        ).then(() => setIsLoading(false));
+        dispatch(updateDetailsSortingOptions(id, newOrder, "gross")).then(() =>
+          setIsLoading(false)
+        );
       },
     },
     {
       title: t("Amount"),
-      dataIndex: "amount",
+      dataIndex: "net",
       role: "cta",
-      key: "amount",
+      key: "net",
       hideIndex: true,
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);
-        dispatch(updateDetailsSortingOptions(id, newOrder, "amount")).then(() =>
+        dispatch(updateDetailsSortingOptions(id, newOrder, "net")).then(() =>
           setIsLoading(false)
         );
       },
