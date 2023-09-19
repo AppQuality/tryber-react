@@ -6,8 +6,26 @@ export default () => {
   const [rank, setRank] = useState("0");
   const [cpCompleted, setCpCompleted] = useState(0);
   const [bugsApproved, setBugsApproved] = useState(0);
-  const [allBooty, setAllBooty] = useState(0);
-  const [pendingBooty, setPendingBooty] = useState(0);
+  const [allBooty, setAllBooty] = useState({
+    net: {
+      value: 0,
+      currency: "EUR",
+    },
+    gross: {
+      value: 0,
+      currency: "EUR",
+    },
+  });
+  const [pendingBooty, setPendingBooty] = useState({
+    net: {
+      value: 0,
+      currency: "EUR",
+    },
+    gross: {
+      value: 0,
+      currency: "EUR",
+    },
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,16 +40,56 @@ export default () => {
             rank: "N/A",
             cpCompleted: 0,
             bugsApproved: 0,
-            allBooty: 0,
-            pendingBooty: 0,
+            allBooty: {
+              net: {
+                value: 0,
+                currency: "EUR",
+              },
+              gross: {
+                value: 0,
+                currency: "EUR",
+              },
+            },
+            pendingBooty: {
+              net: {
+                value: 0,
+                currency: "EUR",
+              },
+              gross: {
+                value: 0,
+                currency: "EUR",
+              },
+            },
           };
         }
         setExpPoints(data.total_exp_pts || 0);
         setRank(data.rank || "N/A");
         setCpCompleted(data.attended_cp || 0);
         setBugsApproved(data.approved_bugs || 0);
-        setAllBooty(data.booty || 0);
-        setPendingBooty(data.pending_booty || 0);
+        setAllBooty(
+          data.booty || {
+            net: {
+              value: 0,
+              currency: "EUR",
+            },
+            gross: {
+              value: 0,
+              currency: "EUR",
+            },
+          }
+        );
+        setPendingBooty(
+          data.pending_booty || {
+            net: {
+              value: 0,
+              currency: "EUR",
+            },
+            gross: {
+              value: 0,
+              currency: "EUR",
+            },
+          }
+        );
       })
       .finally(() => setLoading(false));
   }, []);
