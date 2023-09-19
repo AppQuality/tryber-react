@@ -3,11 +3,17 @@ type WalletState = {
     total: number;
     limit: number;
     order: ApiComponents["parameters"]["order"];
-    orderBy: "amount" | "paidDate" | "amount_gross";
+    orderBy: "net" | "gross" | "paidDate";
   };
   booty: {
-    amount_gross: number;
-    amount: number;
+    gross: {
+      value: number;
+      currency: string;
+    };
+    net: {
+      value: number;
+      currency: string;
+    };
     bootyThreshold?: {
       value: number;
       isOver: boolean;
@@ -22,19 +28,14 @@ type WalletState = {
     total: number;
     limit: number;
     order: ApiComponents["parameters"]["order"];
-    orderBy: "date" | "type" | "activity" | "amount" | "amount_gross";
+    orderBy: "date" | "type" | "activity" | "net" | "gross";
   };
   isBootyDetailsModalOpen: boolean;
   bootyDetails: ApiOperations["get-users-me-pending-booty"]["responses"]["200"]["content"]["application/json"] & {
     total: number;
     limit: number;
     order: ApiComponents["parameters"]["order"];
-    orderBy:
-      | "attributionDate"
-      | "id"
-      | "amount"
-      | "activityName"
-      | "amount_gross";
+    orderBy: "attributionDate" | "id" | "activityName" | "net" | "gross";
   };
   paymentInProcessing: boolean;
 };
