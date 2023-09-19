@@ -3,13 +3,15 @@
     {
       "id": 2,
       "status": "processing",
-      "net": {
-        "value": 5,
-        "currency": "EUR"
-      },
-      "gross": {
-        "value": 10,
-        "currency": "EUR"
+      "amount": {
+        "net": {
+          "value": 5,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 10,
+          "currency": "EUR"
+        }
       },
       "paidDate": "-",
       "method": {
@@ -21,13 +23,15 @@
     {
       "id": 1,
       "status": "paid",
-      "net": {
-        "value": 10,
-        "currency": "EUR"
-      },
-      "gross": {
-        "value": 15,
-        "currency": "EUR"
+      "amount": {
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 15,
+          "currency": "EUR"
+        }
       },
       "paidDate": "2019-08-24",
       "method": {
