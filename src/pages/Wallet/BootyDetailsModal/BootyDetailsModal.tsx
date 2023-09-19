@@ -49,16 +49,17 @@ export const BootyDetailsModal = () => {
       setRows(
         results?.map((r) => {
           const formattedAmount = `${
-            r.net?.currency && r.net?.currency in currencyTable
-              ? currencyTable[r.net?.currency]
-              : r.net?.currency
-          } ${r.net?.value?.toFixed(2)}`;
+            r.amount.net?.currency && r.amount.net?.currency in currencyTable
+              ? currencyTable[r.amount.net?.currency]
+              : r.amount.net?.currency
+          } ${r.amount.net?.value?.toFixed(2)}`;
 
           const formattedAmountGross = `${
-            r.gross?.currency && r.gross?.currency in currencyTable
-              ? currencyTable[r.gross.currency]
-              : r.gross?.currency
-          } ${r.gross?.value?.toFixed(2)}`;
+            r.amount.gross?.currency &&
+            r.amount.gross?.currency in currencyTable
+              ? currencyTable[r.amount.gross.currency]
+              : r.amount.gross?.currency
+          } ${r.amount.gross?.value?.toFixed(2)}`;
 
           return {
             key: r.id,

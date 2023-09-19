@@ -68,27 +68,27 @@ export const PaymentDetailsModal = () => {
           },
           date: getPaidDate(r.date),
           net: {
-            title: `€ ` + r.net?.value,
+            title: `€ ` + r.amount.net?.value,
             content: (
               <Text className="aq-text-success ">
                 <b>
-                  {r.net?.currency in currencyTable
-                    ? currencyTable[r.net?.currency]
-                    : r.net?.currency}{" "}
-                  {r.net?.value?.toFixed(2)}
+                  {r.amount.net?.currency || "" in currencyTable
+                    ? currencyTable[r.amount.net?.currency || ""]
+                    : r.amount.net?.currency}{" "}
+                  {r.amount.net?.value?.toFixed(2)}
                 </b>
               </Text>
             ),
           },
           gross: {
-            title: `€ ` + r.gross?.value,
+            title: `€ ` + r.amount.gross?.value,
             content: (
               <Text className="aq-text-success ">
                 <b>
-                  {r.gross?.currency in currencyTable
-                    ? currencyTable[r.gross?.currency]
-                    : r.gross?.currency}{" "}
-                  {r.gross?.value?.toFixed(2)}
+                  {r.amount.gross?.currency || "" in currencyTable
+                    ? currencyTable[r.amount.gross?.currency || ""]
+                    : r.amount.gross?.currency}{" "}
+                  {r.amount.gross?.value?.toFixed(2)}
                 </b>
               </Text>
             ),
