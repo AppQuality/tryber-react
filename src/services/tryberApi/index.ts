@@ -1045,7 +1045,8 @@ export type GetCampaignsByCampaignGroupsApiArg = {
   /** A campaign id */
   campaign: string;
 };
-export type PostCampaignsByCampaignCandidatesApiResponse /** status 200 OK */ =
+export type PostCampaignsByCampaignCandidatesApiResponse =
+  /** status 200 OK */
   | {
       results: {
         tester_id: number;
