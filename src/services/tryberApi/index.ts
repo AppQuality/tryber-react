@@ -4,6 +4,51 @@ const injectedRtkApi = api.injectEndpoints({
     get: build.query<GetApiResponse, GetApiArg>({
       query: () => ({ url: `/` }),
     }),
+    getAgreements: build.query<GetAgreementsApiResponse, GetAgreementsApiArg>({
+      query: (queryArg) => ({
+        url: `/agreements`,
+        params: {
+          filterBy: queryArg.filterBy,
+          start: queryArg.start,
+          limit: queryArg.limit,
+        },
+      }),
+    }),
+    postAgreements: build.mutation<
+      PostAgreementsApiResponse,
+      PostAgreementsApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/agreements`,
+        method: "POST",
+        body: queryArg.body,
+      }),
+    }),
+    putAgreementsByAgreementId: build.mutation<
+      PutAgreementsByAgreementIdApiResponse,
+      PutAgreementsByAgreementIdApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/agreements/${queryArg.agreementId}`,
+        method: "PUT",
+        body: queryArg.body,
+      }),
+    }),
+    deleteAgreementsByAgreementId: build.mutation<
+      DeleteAgreementsByAgreementIdApiResponse,
+      DeleteAgreementsByAgreementIdApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/agreements/${queryArg.agreementId}`,
+        method: "DELETE",
+      }),
+    }),
+    getAgreementsByAgreementId: build.query<
+      GetAgreementsByAgreementIdApiResponse,
+      GetAgreementsByAgreementIdApiArg
+    >({
+      query: (queryArg) => ({ url: `/agreements/${queryArg.agreementId}` }),
+    }),
     postAuthenticate: build.mutation<
       PostAuthenticateApiResponse,
       PostAuthenticateApiArg
@@ -146,6 +191,39 @@ const injectedRtkApi = api.injectEndpoints({
         url: `/campaigns/${queryArg.campaign}/tasks/${queryArg.task}`,
         method: "PUT",
         body: queryArg.taskOptional,
+      }),
+    }),
+    getCampaignsByCampaignUx: build.query<
+      GetCampaignsByCampaignUxApiResponse,
+      GetCampaignsByCampaignUxApiArg
+    >({
+      query: (queryArg) => ({ url: `/campaigns/${queryArg.campaign}/ux` }),
+    }),
+    patchCampaignsByCampaignUx: build.mutation<
+      PatchCampaignsByCampaignUxApiResponse,
+      PatchCampaignsByCampaignUxApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/ux`,
+        method: "PATCH",
+        body: queryArg.body,
+      }),
+    }),
+    getCampaignsByCampaignClusters: build.query<
+      GetCampaignsByCampaignClustersApiResponse,
+      GetCampaignsByCampaignClustersApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/clusters`,
+      }),
+    }),
+    getCampaignsByCampaignObservations: build.query<
+      GetCampaignsByCampaignObservationsApiResponse,
+      GetCampaignsByCampaignObservationsApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/observations`,
+        params: { filterBy: queryArg.filterBy },
       }),
     }),
     postCampaignsForms: build.mutation<
@@ -757,6 +835,61 @@ const injectedRtkApi = api.injectEndpoints({
 export { injectedRtkApi as tryberApi };
 export type GetApiResponse = /** status 200 OK */ {};
 export type GetApiArg = void;
+export type GetAgreementsApiResponse = /** status 200 OK */ {
+  items: ({
+    id: number;
+  } & Agreement & {
+      customer: {
+        id: number;
+        company: string;
+      };
+    })[];
+} & PaginationData;
+export type GetAgreementsApiArg = {
+  /** Key-value Array for item filtering */
+  filterBy?: object;
+  /** Items to skip for pagination */
+  start?: number;
+  /** Max items to retrieve */
+  limit?: number;
+};
+export type PostAgreementsApiResponse = /** status 200 OK */ {
+  agreementId: number;
+};
+export type PostAgreementsApiArg = {
+  body: {
+    customerId: number;
+  } & Agreement;
+};
+export type PutAgreementsByAgreementIdApiResponse = /** status 200 OK */ {
+  id: number;
+} & Agreement & {
+    customer: {
+      id: number;
+      company: string;
+    };
+  };
+export type PutAgreementsByAgreementIdApiArg = {
+  agreementId: string;
+  body: Agreement & {
+    customerId: number;
+  };
+};
+export type DeleteAgreementsByAgreementIdApiResponse = /** status 200 OK */ {};
+export type DeleteAgreementsByAgreementIdApiArg = {
+  agreementId: string;
+};
+export type GetAgreementsByAgreementIdApiResponse = /** status 200 OK */ {
+  id: number;
+} & Agreement & {
+    customer: {
+      id: number;
+      company: string;
+    };
+  };
+export type GetAgreementsByAgreementIdApiArg = {
+  agreementId: string;
+};
 export type PostAuthenticateApiResponse =
   /** status 200 Authentication data. The token can be used to authenticate the protected requests */ {
     id?: number;
@@ -840,6 +973,8 @@ export type GetCampaignsOwnersApiArg = void;
 export type GetCampaignsByCampaignApiResponse = /** status 200 OK */ {
   id: number;
   title: string;
+  type: string;
+  typeDescription: string;
 };
 export type GetCampaignsByCampaignApiArg = {
   /** A campaign id */
@@ -1028,6 +1163,139 @@ export type PutCampaignsByCampaignTasksAndTaskApiArg = {
   task: string;
   /** The data to edit in the UseCase linked to the Campaign */
   taskOptional: TaskOptional;
+};
+export type GetCampaignsByCampaignUxApiResponse =
+  /** status 200 A UseCase linked with the Campaign */ {
+    status: "draft" | "published" | "draft-modified";
+    goal: string;
+    usersNumber: number;
+    insights?: {
+      id: number;
+      title: string;
+      severity: {
+        id: number;
+        name: string;
+      };
+      description: string;
+      clusters:
+        | "all"
+        | {
+            id: number;
+            name: string;
+          }[];
+      videoParts: {
+        id: number;
+        start: number;
+        end: number;
+        mediaId: number;
+        url: string;
+        streamUrl: string;
+        description: string;
+        poster?: string;
+      }[];
+    }[];
+    sentiments: {
+      id: number;
+      value: number;
+      comment: string;
+      cluster: {
+        id: number;
+        name: string;
+      };
+    }[];
+    methodology: {
+      name: string;
+      type: "qualitative" | "quantitative" | "quali-quantitative";
+      description: string;
+    };
+    questions: {
+      id: number;
+      name: string;
+    }[];
+  };
+export type GetCampaignsByCampaignUxApiArg = {
+  /** A campaign id */
+  campaign: string;
+};
+export type PatchCampaignsByCampaignUxApiResponse = /** status 200 OK */ {};
+export type PatchCampaignsByCampaignUxApiArg = {
+  /** A campaign id */
+  campaign: string;
+  body:
+    | {
+        goal: string;
+        usersNumber: number;
+        insights: {
+          id?: number;
+          title: string;
+          description: string;
+          severityId: number;
+          order: number;
+          clusterIds: number[] | "all";
+          videoParts: {
+            id?: number;
+            start: number;
+            end: number;
+            mediaId: number;
+            description: string;
+            order: number;
+          }[];
+        }[];
+        sentiments: {
+          id?: number;
+          clusterId: number;
+          value: number;
+          comment: string;
+        }[];
+        methodology: {
+          type: "qualitative" | "quantitative" | "quali-quantitative";
+          description: string;
+        };
+        questions: {
+          id?: number;
+          name: string;
+        }[];
+      }
+    | {
+        status: "publish";
+      };
+};
+export type GetCampaignsByCampaignClustersApiResponse =
+  /** status 200 A UseCase linked with the Campaign */ {
+    items: {
+      id: number;
+      name: string;
+    }[];
+  };
+export type GetCampaignsByCampaignClustersApiArg = {
+  /** A campaign id */
+  campaign: string;
+};
+export type GetCampaignsByCampaignObservationsApiResponse =
+  /** status 200 A UseCase linked with the Campaign */ {
+    items: {
+      id: number;
+      name: string;
+      time: number;
+      tester: {
+        id: number;
+        name: string;
+      };
+      cluster: {
+        id: number;
+        name: string;
+      };
+      media: {
+        id: number;
+        url: string;
+        streamUrl: string;
+      };
+    }[];
+  };
+export type GetCampaignsByCampaignObservationsApiArg = {
+  /** A campaign id */
+  campaign: string;
+  filterBy?: any;
 };
 export type PostCampaignsFormsApiResponse = /** status 201 Created */ {
   id: number;
@@ -1431,8 +1699,14 @@ export type GetUsersMeApiResponse = /** status 200 OK */ {
   is_verified?: boolean;
   rank?: string;
   total_exp_pts?: number;
-  booty?: number;
-  pending_booty?: number;
+  booty?: {
+    net?: Currency;
+    gross: Currency;
+  };
+  pending_booty?: {
+    net?: Currency;
+    gross: Currency;
+  };
   languages?: {
     id?: number;
     name?: string;
@@ -1486,8 +1760,14 @@ export type PatchUsersMeApiResponse = /** status 200 OK */ {
   is_verified?: boolean;
   rank?: string;
   total_exp_pts?: number;
-  booty?: number;
-  pending_booty?: number;
+  booty?: {
+    gross?: Currency;
+    net?: Currency;
+  };
+  pending_booty?: {
+    gross?: Currency;
+    net?: Currency;
+  };
   languages?: {
     id?: number;
     name?: string;
@@ -2006,8 +2286,8 @@ export type GetUsersMePendingBootyApiResponse = /** status 200 OK */ {
   } & {
     name: string;
     amount: {
-      value?: number;
-      currency?: string;
+      net?: Currency;
+      gross: Currency;
     };
     attributionDate: string;
   })[];
@@ -2112,6 +2392,21 @@ export type PostUsersMeCampaignsByCampaignIdFormsApiArg = {
     device?: number[];
   };
 };
+export type Agreement = {
+  title: string;
+  tokens: number;
+  unitPrice: number;
+  startDate: string;
+  expirationDate: string;
+  note?: string;
+  isTokenBased?: boolean;
+};
+export type PaginationData = {
+  start: number;
+  limit?: number;
+  size: number;
+  total?: number;
+};
 export type BugSeverity = {
   id?: number;
   name?: string;
@@ -2189,12 +2484,6 @@ export type Campaign = CampaignOptional & CampaignRequired;
 export type Project = {
   name?: string;
 };
-export type PaginationData = {
-  start: number;
-  limit?: number;
-  size: number;
-  total?: number;
-};
 export type BugTag = {
   id: number;
   name: string;
@@ -2265,6 +2554,10 @@ export type Popup = {
   once?: boolean;
   content?: string;
   title?: string;
+};
+export type Currency = {
+  value?: number;
+  currency?: string;
 };
 export type AdditionalField = {
   field_id: number;
@@ -2354,6 +2647,11 @@ export type RankingItem = {
 };
 export const {
   useGetQuery,
+  useGetAgreementsQuery,
+  usePostAgreementsMutation,
+  usePutAgreementsByAgreementIdMutation,
+  useDeleteAgreementsByAgreementIdMutation,
+  useGetAgreementsByAgreementIdQuery,
   usePostAuthenticateMutation,
   usePostCampaignsMutation,
   useGetCampaignsQuery,
@@ -2369,6 +2667,10 @@ export const {
   usePostCampaignsByCampaignTasksMutation,
   useGetCampaignsByCampaignTasksAndTaskQuery,
   usePutCampaignsByCampaignTasksAndTaskMutation,
+  useGetCampaignsByCampaignUxQuery,
+  usePatchCampaignsByCampaignUxMutation,
+  useGetCampaignsByCampaignClustersQuery,
+  useGetCampaignsByCampaignObservationsQuery,
   usePostCampaignsFormsMutation,
   useGetCampaignsFormsQuery,
   useGetCampaignsFormsByFormIdQuery,
