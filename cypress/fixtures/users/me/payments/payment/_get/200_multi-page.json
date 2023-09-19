@@ -9,11 +9,7 @@
       "type": "Test",
       "date": "2019-08-24",
       "activity": "Tryber Testing",
-      "net": {
-        "value": 10,
-        "currency": "EUR"
-      },
-      "gross": {
+      "amount": {
         "value": 10,
         "currency": "EUR"
       }
@@ -27,11 +23,7 @@
       "type": "Test",
       "date": "2019-08-24",
       "activity": "Tryber Testing",
-      "net": {
-        "value": 10,
-        "currency": "EUR"
-      },
-      "gross": {
+      "amount": {
         "value": 10,
         "currency": "EUR"
       }
@@ -45,11 +37,7 @@
       "type": "Test",
       "date": "2019-08-24",
       "activity": "Tryber Testing",
-      "net": {
-        "value": 10,
-        "currency": "EUR"
-      },
-      "gross": {
+      "amount": {
         "value": 10,
         "currency": "EUR"
       }
@@ -63,11 +51,7 @@
       "type": "Test",
       "date": "2019-08-24",
       "activity": "Tryber Testing",
-      "net": {
-        "value": 10,
-        "currency": "EUR"
-      },
-      "gross": {
+      "amount": {
         "value": 10,
         "currency": "EUR"
       }
@@ -81,11 +65,7 @@
       "type": "Test",
       "date": "2019-08-24",
       "activity": "Tryber Testing",
-      "net": {
-        "value": 10,
-        "currency": "EUR"
-      },
-      "gross": {
+      "amount": {
         "value": 10,
         "currency": "EUR"
       }
@@ -99,11 +79,7 @@
       "type": "Test",
       "date": "2019-08-24",
       "activity": "Tryber Testing",
-      "net": {
-        "value": 10,
-        "currency": "EUR"
-      },
-      "gross": {
+      "amount": {
         "value": 10,
         "currency": "EUR"
       }
@@ -117,11 +93,7 @@
       "type": "Community",
       "date": "2019-08-24",
       "activity": "Tryber Testing",
-      "net": {
-        "value": 10,
-        "currency": "EUR"
-      },
-      "gross": {
+      "amount": {
         "value": 10,
         "currency": "EUR"
       }
@@ -135,11 +107,7 @@
       "type": "Test",
       "date": "2019-08-24",
       "activity": "Tryber Testing",
-      "net": {
-        "value": 10,
-        "currency": "EUR"
-      },
-      "gross": {
+      "amount": {
         "value": 10,
         "currency": "EUR"
       }
@@ -153,11 +121,7 @@
       "type": "Test",
       "date": "2019-08-24",
       "activity": "Tryber Testing",
-      "net": {
-        "value": 10,
-        "currency": "EUR"
-      },
-      "gross": {
+      "amount": {
         "value": 10,
         "currency": "EUR"
       }
@@ -171,11 +135,7 @@
       "type": "Community",
       "date": "2019-08-24",
       "activity": "Tryber Testing",
-      "net": {
-        "value": 5,
-        "currency": "EUR"
-      },
-      "gross": {
+      "amount": {
         "value": 5,
         "currency": "EUR"
       }

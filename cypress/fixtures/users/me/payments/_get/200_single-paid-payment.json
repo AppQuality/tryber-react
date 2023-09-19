@@ -4,14 +4,8 @@
       "id": 1,
       "status": "paid",
       "amount": {
-        "net": {
-          "value": 10,
-          "currency": "EUR"
-        },
-        "gross": {
-          "value": 15,
-          "currency": "EUR"
-        }
+        "value": 10,
+        "currency": "EUR"
       },
       "paidDate": "2019-08-24",
       "method": {

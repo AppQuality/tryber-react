@@ -3,130 +3,146 @@
     {
       "id": 1,
       "name": "",
-      "net": {
-        "value": 10,
-        "currency": "EUR"
-      },
-      "gross": {
-        "value": 11,
-        "currency": "EUR"
+      "amount": {
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "attributionDate": "2019-08-24"
     },
     {
       "id": 2,
       "name": "",
-      "net": {
-        "value": 12,
-        "currency": "EUR"
-      },
-      "gross": {
-        "value": 13,
-        "currency": "EUR"
+      "amount": {
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "attributionDate": "2019-08-24"
     },
     {
       "id": 3,
       "name": "",
-      "net": {
-        "value": 13,
-        "currency": "EUR"
-      },
-      "gross": {
-        "value": 14,
-        "currency": "EUR"
+      "amount": {
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "attributionDate": "2019-08-24"
     },
     {
       "id": 4,
       "name": "",
-      "net": {
-        "value": 14,
-        "currency": "EUR"
-      },
-      "gross": {
-        "value": 15,
-        "currency": "EUR"
+      "amount": {
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "attributionDate": "2019-08-24"
     },
     {
       "id": 5,
       "name": "",
-      "net": {
-        "value": 15,
-        "currency": "EUR"
-      },
-      "gross": {
-        "value": 16,
-        "currency": "EUR"
+      "amount": {
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "attributionDate": "2019-08-24"
     },
     {
       "id": 6,
       "name": "",
-      "net": {
-        "value": 16,
-        "currency": "EUR"
-      },
-      "gross": {
-        "value": 17,
-        "currency": "EUR"
+      "amount": {
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "attributionDate": "2019-08-24"
     },
     {
       "id": 7,
       "name": "",
-      "net": {
-        "value": 17,
-        "currency": "EUR"
-      },
-      "gross": {
-        "value": 18,
-        "currency": "EUR"
+      "amount": {
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "attributionDate": "2019-08-24"
     },
     {
       "id": 8,
       "name": "",
-      "net": {
-        "value": 18,
-        "currency": "EUR"
-      },
-      "gross": {
-        "value": 19,
-        "currency": "EUR"
+      "amount": {
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "attributionDate": "2019-08-24"
     },
     {
       "id": 9,
       "name": "",
-      "net": {
-        "value": 19,
-        "currency": "EUR"
-      },
-      "gross": {
-        "value": 20,
-        "currency": "EUR"
+      "amount": {
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "attributionDate": "2019-08-24"
     },
     {
       "id": 10,
       "name": "",
-      "net": {
-        "value": 20,
-        "currency": "EUR"
-      },
-      "gross": {
-        "value": 21,
-        "currency": "EUR"
+      "amount": {
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "attributionDate": "2019-08-24"
     }
