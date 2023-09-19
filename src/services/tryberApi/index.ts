@@ -1817,8 +1817,8 @@ export type DeleteUsersMeApiArg = {
   };
 };
 export type PutUsersMeAdditionalsByFieldIdApiResponse =
-  | /** status 200 OK */ AdditionalField[]
-  | AdditionalField;
+  /** status 200 OK */
+  AdditionalField[] | AdditionalField;
 export type PutUsersMeAdditionalsByFieldIdApiArg = {
   /** The id of the field to edit */
   fieldId: number;
@@ -2000,7 +2000,8 @@ export type PostUsersMeCampaignsByCampaignIdMediaApiArg = {
   };
 };
 export type PostUsersMeCertificationsApiResponse =
-  | /** status 201 Created */ Certification
+  /** status 201 Created */
+  | Certification
   | {
       message: string;
     };
