@@ -23,7 +23,7 @@ export const Step2Recap = () => {
     (state: GeneralState) => state.user.fiscal,
     shallowEqual
   );
-  const { amount } = useSelector(
+  const { net, gross } = useSelector(
     (state: GeneralState) => state.wallet.booty,
     shallowEqual
   );
@@ -64,7 +64,7 @@ export const Step2Recap = () => {
         </div>
       )}
       <Text className="aq-text-center aq-mb-3 aq-text-primary">
-        {t("Total booty")}: <strong>€{amount}</strong>
+        {t("Total booty")}: <strong>€{net}</strong> (€{gross})
       </Text>
       <div style={{ maxWidth: "430px", margin: "0 auto" }}>
         {values.paymentMethod === "paypal" ? (
