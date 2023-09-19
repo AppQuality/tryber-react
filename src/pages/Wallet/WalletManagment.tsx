@@ -76,7 +76,7 @@ export const WalletManagment = () => {
         />
       );
     }
-    if (booty.amount === 0) {
+    if (booty.net?.value === 0) {
       return (
         <Trans i18nKey={"__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150"} />
       );
@@ -139,34 +139,29 @@ export const WalletManagment = () => {
             <Text>{t("__WALLET_CARD-YOUR_WALLET_MAX: 15")}</Text>
             <Text
               className={
-                !isVerified || booty.amount === 0 || paymentInProcessing
+                !isVerified || booty.net?.value === 0 || paymentInProcessing
                   ? "aq-text-disabled-dark"
                   : "aq-text-primary"
               }
             >
               <strong>
-                {t("Amount to get")} {booty.amount?.toFixed(2)}€
+                {t("Amount to get")} {booty.net?.value?.toFixed(2)}€
               </strong>
             </Text>
             <Text
               className={
-                !isVerified || booty.amount === 0 || paymentInProcessing
+                !isVerified || booty.net?.value === 0 || paymentInProcessing
                   ? "aq-text-disabled-dark"
                   : "aq-text-primary"
               }
             >
-              ({t("Amount gross")} {booty.amount_gross?.toFixed(2)}€)
+              ({t("Amount gross")} {booty.gross?.value?.toFixed(2)}€)
             </Text>
           </div>
         </div>
         <Button
-          className={
-            booty.amount === 0 ? "aq-text-disabled-dark cursor-default" : ""
-          }
           type="link"
-          onClick={() =>
-            booty.amount > 0 && dispatch(setBootyDetailsModalOpen(true))
-          }
+          onClick={() => dispatch(setBootyDetailsModalOpen(true))}
         >
           {t("__WALLET_CARD-REQUEST_CTA-LINK MAX: 15")}
         </Button>
