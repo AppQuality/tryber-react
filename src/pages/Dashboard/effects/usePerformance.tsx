@@ -6,21 +6,18 @@ export default () => {
   const [rank, setRank] = useState("0");
   const [cpCompleted, setCpCompleted] = useState(0);
   const [bugsApproved, setBugsApproved] = useState(0);
-  const [allBooty, setAllBooty] = useState({
-    net: {
-      value: 0,
-      currency: "EUR",
-    },
+  const [allBooty, setAllBooty] = useState<
+    ApiOperations["get-users-me"]["responses"]["200"]["content"]["application/json"]["booty"] &
+      ApiOperations["get-users-me"]["responses"]["200"]["content"]["application/json"]["pending_booty"]
+  >({
     gross: {
       value: 0,
       currency: "EUR",
     },
   });
-  const [pendingBooty, setPendingBooty] = useState({
-    net: {
-      value: 0,
-      currency: "EUR",
-    },
+  const [pendingBooty, setPendingBooty] = useState<
+    ApiOperations["get-users-me"]["responses"]["200"]["content"]["application/json"]["pending_booty"]
+  >({
     gross: {
       value: 0,
       currency: "EUR",
@@ -41,20 +38,12 @@ export default () => {
             cpCompleted: 0,
             bugsApproved: 0,
             allBooty: {
-              net: {
-                value: 0,
-                currency: "EUR",
-              },
               gross: {
                 value: 0,
                 currency: "EUR",
               },
             },
             pendingBooty: {
-              net: {
-                value: 0,
-                currency: "EUR",
-              },
               gross: {
                 value: 0,
                 currency: "EUR",
@@ -68,10 +57,6 @@ export default () => {
         setBugsApproved(data.approved_bugs || 0);
         setAllBooty(
           data.booty || {
-            net: {
-              value: 0,
-              currency: "EUR",
-            },
             gross: {
               value: 0,
               currency: "EUR",
@@ -80,10 +65,6 @@ export default () => {
         );
         setPendingBooty(
           data.pending_booty || {
-            net: {
-              value: 0,
-              currency: "EUR",
-            },
             gross: {
               value: 0,
               currency: "EUR",
