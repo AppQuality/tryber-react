@@ -49,17 +49,16 @@ export const BootyDetailsModal = () => {
       setRows(
         results?.map((r) => {
           const formattedAmount = `${
-            r.amount.currency && r.amount.currency in currencyTable
-              ? currencyTable[r.amount.currency]
-              : r.amount.currency
-          } ${r.amount.value?.toFixed(2)}`;
+            r.net?.currency && r.net?.currency in currencyTable
+              ? currencyTable[r.net?.currency]
+              : r.net?.currency
+          } ${r.net?.value?.toFixed(2)}`;
 
           const formattedAmountGross = `${
-            r.amount_gross?.currency &&
-            r.amount_gross?.currency in currencyTable
-              ? currencyTable[r.amount_gross.currency]
-              : r.amount_gross?.currency
-          } ${r.amount_gross?.value?.toFixed(2)}`;
+            r.gross?.currency && r.gross?.currency in currencyTable
+              ? currencyTable[r.gross.currency]
+              : r.gross?.currency
+          } ${r.gross?.value?.toFixed(2)}`;
 
           return {
             key: r.id,
@@ -72,7 +71,7 @@ export const BootyDetailsModal = () => {
               ),
             },
             attributionDate: getPaidDate(r.attributionDate),
-            amount: {
+            net: {
               title: formattedAmount,
               content: (
                 <Text className="aq-text-success ">
@@ -80,7 +79,7 @@ export const BootyDetailsModal = () => {
                 </Text>
               ),
             },
-            amount_gross: {
+            gross: {
               title: formattedAmountGross,
               content: (
                 <Text className="aq-text-success ">
