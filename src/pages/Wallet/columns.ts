@@ -24,24 +24,24 @@ export const walletColumns = (
     },
     {
       title: t("Amount gross"),
-      dataIndex: "amount_gross",
-      key: "amount_gross",
+      dataIndex: "gross",
+      key: "gross",
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);
-        dispatch(updateSortingOptions(newOrder, "amount_gross")).then(() =>
+        dispatch(updateSortingOptions(newOrder, "gross")).then(() =>
           setIsLoading(false)
         );
       },
     },
     {
       title: t("Amount"),
-      dataIndex: "amount",
-      key: "amount",
+      dataIndex: "net",
+      key: "net",
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);
-        dispatch(updateSortingOptions(newOrder, "amount")).then(() =>
+        dispatch(updateSortingOptions(newOrder, "net")).then(() =>
           setIsLoading(false)
         );
       },

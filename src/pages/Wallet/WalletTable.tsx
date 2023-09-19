@@ -138,14 +138,27 @@ export const WalletTable = () => {
               ),
             },
             paidDate: getPaidDate(req.paidDate),
-            amount: {
-              title: "€ " + req.amount.value,
+            net: {
+              title: "€ " + req.amount?.net?.value,
               content: (
                 <span>
-                  {req.amount.currency && req.amount.currency in currencyTable
-                    ? currencyTable[req.amount.currency]
-                    : req.amount.currency}{" "}
-                  {req.amount.value?.toFixed(2)}
+                  {req.amount?.net?.currency &&
+                  req.amount?.net?.currency in currencyTable
+                    ? currencyTable[req.amount?.net?.currency]
+                    : req.amount?.net?.currency}{" "}
+                  {req.amount?.net?.value?.toFixed(2)}
+                </span>
+              ),
+            },
+            gross: {
+              title: "€ " + req.amount?.gross?.value,
+              content: (
+                <span>
+                  {req.amount?.gross?.currency &&
+                  req.amount?.gross?.currency in currencyTable
+                    ? currencyTable[req.amount?.gross?.currency]
+                    : req.amount?.gross?.currency}{" "}
+                  {req.amount?.gross?.value?.toFixed(2)}
                 </span>
               ),
             },
@@ -218,7 +231,7 @@ export const WalletTable = () => {
         />
       )}
       <Table
-        className="aq-mb-3"
+        className="aq-mb-3 wallet-table"
         dataSource={rows}
         columns={columns}
         orderBy={orderBy}
