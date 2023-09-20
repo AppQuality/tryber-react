@@ -80,8 +80,13 @@ describe("Net and gross columns in wallet table", () => {
   });
 
   // esempio di uso fixture per testare il contenuto di una card
-  // viene da cypress/e2e/Ux-Dashboard/05-sentiment.cy.ts nella repo
+  // viene da cypress/e2e/Ux-Dashboard/05-sentiment.cy.ts nella repo tryber-backoffice
 
+  //  const numberOfColumns = 7;
+
+  // cy.dataQa("agreements-table")
+  //     .get(".tbody.cell")
+  //     .should("have.length", numberOfColumns * numberOfRows);
   // it("Should print sentiments in a recap card", () => {
   //   cy.fixture("campaigns/id/ux/_get/response/200_draft_with_sentiments").then(
   //     (response) => {

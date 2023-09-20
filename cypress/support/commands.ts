@@ -24,14 +24,30 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+
+export {};
+
+interface dataQaOptions {
+  startsWith?: boolean;
+}
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Custom command to select DOM element by data-qa attribute.
+       * @example cy.dataQa('greeting')
+       */
+      dataQa(
+        value: string,
+        options?: dataQaOptions
+      ): Chainable<JQuery<HTMLElement>>;
+    }
+  }
+}
+
+Cypress.Commands.add("dataQa", (value, options) => {
+  return options?.startsWith
+    ? cy.get(`[data-qa^=${value}]`)
+    : cy.get(`[data-qa=${value}]`);
+});
