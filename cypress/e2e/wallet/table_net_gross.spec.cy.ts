@@ -47,7 +47,18 @@ describe("Net and gross columns in wallet table", () => {
         statusCode: 200,
         fixture: "users/me/payments/_get/200_single-paid-payment",
       }
-    ).as("tablePayments");
+    ).as("singlePaidPayment");
+
+    cy.intercept(
+      "GET",
+      `${Cypress.env(
+        "REACT_APP_API_URL"
+      )}/users/me/payments/1?order=DESC&orderBy=date&limit=10&start=0`,
+      {
+        statusCode: 200,
+        fixture: "users/me/payments/payment/_get/200_simple",
+      }
+    ).as("singlePaidPayment");
 
     cy.visit("/payments");
   });
@@ -67,4 +78,28 @@ describe("Net and gross columns in wallet table", () => {
       cy.get(".tbody:nth-child(n+3)").should("not.be.empty");
     });
   });
+
+  // esempio di uso fixture per testare il contenuto di una card
+  // viene da cypress/e2e/Ux-Dashboard/05-sentiment.cy.ts nella repo
+
+  // it("Should print sentiments in a recap card", () => {
+  //   cy.fixture("campaigns/id/ux/_get/response/200_draft_with_sentiments").then(
+  //     (response) => {
+  //       cy.dataQa("sentiment-chart-section").within(() => {
+  //         cy.dataQa("sentiment-card-", { startsWith: true })
+  //           .should("have.length", response.sentiments.length)
+  //           .each((card, index) => {
+  //             cy.wrap(card)
+  //               .find(".aq-card-title")
+  //               .should("contain", `${index + 1}. UC ${index + 1}`);
+  //             // TODO: change this to the real sentiment but the value name is not in the fixture
+  //             cy.wrap(card).find(".aq-card-body").should("contain", "Molto");
+  //             cy.wrap(card)
+  //               .find(".aq-card-body")
+  //               .should("contain", response.sentiments[index].comment);
+  //           });
+  //       });
+  //     }
+  //   );
+  // });
 });

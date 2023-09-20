@@ -10,8 +10,14 @@
       "date": "2019-08-24",
       "activity": "Tryber Testing",
       "amount": {
-        "value": 10,
-        "currency": "EUR"
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       }
     }
   ],
