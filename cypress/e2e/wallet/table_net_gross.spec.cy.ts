@@ -9,12 +9,12 @@ describe("Net and gross columns in wallet table", () => {
         statusCode: 200,
         fixture: "users/me/_get/200_Example_1",
       }
-    );
+    ).as("userMeFields");
 
     cy.intercept("GET", `${Cypress.env("REACT_APP_API_URL")}/users/me/fiscal`, {
       statusCode: 200,
       fixture: "users/me/fiscal/_get/200_non_italian",
-    });
+    }).as("userMeFiscal");
 
     cy.intercept(
       "GET",
@@ -25,7 +25,7 @@ describe("Net and gross columns in wallet table", () => {
         statusCode: 200,
         fixture: "/users/me/pending_booty/_get/200_multiple-attributions",
       }
-    );
+    ).as("pendingBooty");
 
     cy.intercept(
       "GET",
@@ -36,7 +36,18 @@ describe("Net and gross columns in wallet table", () => {
         statusCode: 200,
         fixture: "users/me/payments/_get/200_multiple-pages",
       }
-    );
+    ).as("tablePayments");
+
+    cy.intercept(
+      "GET",
+      `${Cypress.env(
+        "REACT_APP_API_URL"
+      )}/users/me/payments?order=DESC&orderBy=paidDate&limit=1&start=0`,
+      {
+        statusCode: 200,
+        fixture: "users/me/payments/_get/200_single-paid-payment",
+      }
+    ).as("tablePayments");
 
     cy.visit("/payments");
   });
@@ -49,7 +60,7 @@ describe("Net and gross columns in wallet table", () => {
     });
   });
 
-  it.only("Should show net and gross values in wallet table", () => {
+  it("Should show net and gross values in wallet table", () => {
     cy.get(".wallet-table").within(() => {
       cy.get(".tbody").should("exist");
       cy.get(".tbody:nth-child(n+2)").should("not.be.empty");
