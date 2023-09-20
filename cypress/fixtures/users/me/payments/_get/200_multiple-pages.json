@@ -5,8 +5,14 @@
       "status": "processing",
       "paidDate": "-",
       "amount": {
-        "value": 5,
-        "currency": "EUR"
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "method": {
         "type": "paypal",
@@ -18,8 +24,14 @@
       "id": 1,
       "status": "paid",
       "amount": {
-        "value": 10,
-        "currency": "EUR"
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "paidDate": "2019-08-24",
       "method": {
@@ -32,8 +44,14 @@
       "id": 3,
       "status": "paid",
       "amount": {
-        "value": 5,
-        "currency": "EUR"
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "paidDate": "2019-08-24",
       "method": {
@@ -46,8 +64,14 @@
       "id": 4,
       "status": "paid",
       "amount": {
-        "value": 5,
-        "currency": "EUR"
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "paidDate": "2019-08-24",
       "method": {
@@ -60,8 +84,14 @@
       "id": 5,
       "status": "paid",
       "amount": {
-        "value": 5,
-        "currency": "EUR"
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "paidDate": "2019-08-24",
       "method": {
@@ -74,8 +104,14 @@
       "id": 6,
       "status": "paid",
       "amount": {
-        "value": 5,
-        "currency": "EUR"
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "paidDate": "2019-08-24",
       "method": {
@@ -88,8 +124,14 @@
       "id": 7,
       "status": "paid",
       "amount": {
-        "value": 5,
-        "currency": "EUR"
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "paidDate": "2019-08-24",
       "method": {
@@ -102,8 +144,14 @@
       "id": 8,
       "status": "paid",
       "amount": {
-        "value": 5,
-        "currency": "EUR"
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "paidDate": "2019-08-24",
       "method": {
@@ -116,8 +164,14 @@
       "id": 9,
       "status": "paid",
       "amount": {
-        "value": 5,
-        "currency": "EUR"
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "paidDate": "2019-08-24",
       "method": {
@@ -130,8 +184,14 @@
       "id": 10,
       "status": "paid",
       "amount": {
-        "value": 5,
-        "currency": "EUR"
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
       },
       "paidDate": "2019-08-24",
       "method": {

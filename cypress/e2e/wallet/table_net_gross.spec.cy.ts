@@ -7,7 +7,7 @@ describe("Net and gross columns in wallet table", () => {
       )}/users/me?fields=name%2Csurname%2Cimage%2Conboarding_completed%2Cemail%2Cwp_user_id`,
       {
         statusCode: 200,
-        fixture: "users/me/_get/200_Example_1.json",
+        fixture: "users/me/_get/200_Example_1",
       }
     );
 
@@ -15,6 +15,28 @@ describe("Net and gross columns in wallet table", () => {
       statusCode: 200,
       fixture: "users/me/fiscal/_get/200_non_italian",
     });
+
+    cy.intercept(
+      "GET",
+      `${Cypress.env(
+        "REACT_APP_API_URL"
+      )}/users/me?fields=pending_booty%2Cbooty_threshold`,
+      {
+        statusCode: 200,
+        fixture: "/users/me/pending_booty/_get/200_multiple-attributions",
+      }
+    );
+
+    cy.intercept(
+      "GET",
+      `${Cypress.env(
+        "REACT_APP_API_URL"
+      )}/users/me/payments?order=DESC&orderBy=paidDate&limit=10&start=0`,
+      {
+        statusCode: 200,
+        fixture: "users/me/payments/_get/200_multiple-pages",
+      }
+    );
 
     cy.visit("/payments");
   });
