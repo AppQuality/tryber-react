@@ -10,6 +10,7 @@ import {
   setBootyDetailsModalOpen,
   setPaymentModalOpen,
 } from "src/redux/wallet/actionCreator";
+import getCurrencySymbol from "src/utils/getCurrencySymbol";
 import localizedUrl from "src/utils/localizedUrl";
 import styled from "styled-components";
 
@@ -131,32 +132,40 @@ export const WalletManagment = () => {
       className="aq-mb-3"
       title={t("__WALLET_CARD-REQUEST_TITLE MAX: 40")}
       shadow
+      data-qa="wallet-management"
     >
       <WalletManagmentRow>
         <div className="wallet-amount-container">
           <PiggyBankFill size={"24"} className={"aq-text-successVariant"} />
           <div className="aq-ml-2">
             <Text>{t("__WALLET_CARD-YOUR_WALLET_MAX: 15")}</Text>
-            <Text
-              className={
-                !isVerified || booty.net?.value === 0 || paymentInProcessing
-                  ? "aq-text-disabled-dark"
-                  : "aq-text-primary"
-              }
-            >
-              <strong>
-                {t("Amount to get")} {booty.net?.value?.toFixed(2)}€
-              </strong>
-            </Text>
-            <Text
-              className={
-                !isVerified || booty.net?.value === 0 || paymentInProcessing
-                  ? "aq-text-disabled-dark"
-                  : "aq-text-primary"
-              }
-            >
-              ({t("Amount gross")} {booty.gross?.value?.toFixed(2)}€)
-            </Text>
+            {booty.net && (
+              <>
+                <Text
+                  className={
+                    !isVerified || booty.net.value === 0 || paymentInProcessing
+                      ? "aq-text-disabled-dark"
+                      : "aq-text-primary"
+                  }
+                >
+                  <strong data-qa="net-booty">
+                    {t("Amount to get")} {booty.net.value.toFixed(2)}
+                    {getCurrencySymbol(booty.net.currency)}
+                  </strong>
+                </Text>
+                <Text
+                  className={
+                    !isVerified || booty.net.value === 0 || paymentInProcessing
+                      ? "aq-text-disabled-dark"
+                      : "aq-text-primary"
+                  }
+                  data-qa="gross-booty"
+                >
+                  ({t("Amount gross")} {booty.gross.value.toFixed(2)}
+                  {getCurrencySymbol(booty.gross.currency)})
+                </Text>
+              </>
+            )}
           </div>
         </div>
         <Button
@@ -167,6 +176,7 @@ export const WalletManagment = () => {
         </Button>
       </WalletManagmentRow>
       <Button
+        data-qa="request-payment-cta"
         className="aq-mt-3"
         type="primary"
         size="block"

@@ -8,6 +8,7 @@ import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { useAppDispatch } from "src/redux/provider";
 import { getProfile } from "src/redux/user/actions/getProfile";
 import dateFormatter from "src/utils/dateFormatter";
+import getCurrencySymbol from "src/utils/getCurrencySymbol";
 
 const iconStyle = {
   verticalAlign: "middle",
@@ -64,7 +65,16 @@ export const Step2Recap = () => {
         </div>
       )}
       <Text className="aq-text-center aq-mb-3 aq-text-primary">
-        {t("Total booty")}: <strong>€{net}</strong> (€{gross})
+        {t("Net Receivable")}:{" "}
+        <strong data-qa="payment-modal-net-booty">
+          {getCurrencySymbol(net.currency)}
+          {net.value.toFixed(2)}
+        </strong>
+        <br />
+        <span data-qa="payment-modal-gross-booty">
+          ({getCurrencySymbol(gross.currency)}
+          {gross.value.toFixed(2)})
+        </span>
       </Text>
       <div style={{ maxWidth: "430px", margin: "0 auto" }}>
         {values.paymentMethod === "paypal" ? (

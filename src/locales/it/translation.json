@@ -319,6 +319,7 @@
   "Must contain at least a number": "Deve contenere almeno un numero",
   "Must contain at least an uppercase letter": "Deve contenere almeno una lettera maiuscola",
   "Name": "Nome",
+  "Net Receivable": "",
   "New password": "Nuova password",
   "Next": "Continua",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "Nessuna campagna è stata ancora conclusa. È arrivato il momento di mettersi al lavoro: termina quelle attive o candidati nelle Campagne disponibili!",
@@ -443,7 +444,6 @@
   "Top 3 | level {{level}}": {
     "__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25": "Top 3 | Livello {{level}}"
   },
-  "Total booty": "Guadagni totali",
   "Try again.": "Riprova",
   "Type": "Tipo",
   "Type to search your city": "Digita per cercare la tua città",
@@ -703,6 +703,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Total booty": "Guadagni totali",
   "Amount Gross": "",
   "Home": "Home",
   "Loading": "Caricamento in corso...",
