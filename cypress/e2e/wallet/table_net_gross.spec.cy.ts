@@ -1,4 +1,6 @@
 describe("Net and gross columns in wallet table", () => {
+  const numberOfColumns = 7;
+
   beforeEach(() => {
     cy.intercept(
       "GET",
@@ -65,7 +67,7 @@ describe("Net and gross columns in wallet table", () => {
 
   it("Should show columns net and gross in wallet table", () => {
     cy.get(".wallet-table").within(() => {
-      cy.get(".thead").should("have.length", 7);
+      cy.get(".thead").should("have.length", numberOfColumns);
       cy.get(".thead").contains("net", { matchCase: false });
       cy.get(".thead").contains("gross", { matchCase: false });
     });
@@ -74,37 +76,83 @@ describe("Net and gross columns in wallet table", () => {
   it("Should show net and gross values in wallet table", () => {
     cy.get(".wallet-table").within(() => {
       cy.get(".tbody").should("exist");
-      cy.get(".tbody:nth-child(n+2)").should("not.be.empty");
-      cy.get(".tbody:nth-child(n+3)").should("not.be.empty");
+      return cy
+        .fixture("users/me/payments/_get/200_multiple-pages")
+        .then((response) => {
+          cy.get(".tbody.cell").should(
+            "have.length",
+            response.results.length * numberOfColumns
+          );
+          cy.get(".tbody.cell").each((cell, index) => {
+            if (index % numberOfColumns === 2) {
+              cy.wrap(cell).should("exist");
+              cy.wrap(cell).should("not.be.empty");
+              cy.wrap(cell).should(
+                "contain",
+                response.results[index % numberOfColumns].amount.gross.value
+              );
+            }
+            if (index % numberOfColumns === 3) {
+              cy.wrap(cell).should("exist");
+              cy.wrap(cell).should("not.be.empty");
+              cy.wrap(cell).should(
+                "contain",
+                response.results[index % numberOfColumns].amount.net.value
+              );
+            }
+          });
+        });
     });
   });
 
-  // esempio di uso fixture per testare il contenuto di una card
-  // viene da cypress/e2e/Ux-Dashboard/05-sentiment.cy.ts nella repo tryber-backoffice
+  it("Should show a non empty table in the payment detail modal", () => {
+    cy.wait(1000);
+    cy.get(".wallet-table").within(() => {
+      cy.get(".tbody.cell").each((cell, index) => {
+        if (index + 1 === numberOfColumns * 2) {
+          // Second row last cell (with fixture)
+          cy.wrap(cell).within(() => {
+            cy.get(".action-details").as("btn").click();
+            cy.wait(1000);
+            cy.document().its("body").find(".modal").should("exist");
+            cy.document()
+              .its("body")
+              .find(".modal")
+              .within(() => {
+                cy.get(".thead").should("exist");
+                cy.get(".thead").should("have.length", 4);
+                cy.get(".thead").should("contain", "gross");
+                cy.get(".tbody").should("exist");
+                cy.get(".tbody.cell").should("exist");
+                cy.get(".tbody.cell").should("not.be.empty");
+              });
+          });
+        }
+      });
+    });
+  });
 
-  //  const numberOfColumns = 7;
-
-  // cy.dataQa("agreements-table")
-  //     .get(".tbody.cell")
-  //     .should("have.length", numberOfColumns * numberOfRows);
-  // it("Should print sentiments in a recap card", () => {
-  //   cy.fixture("campaigns/id/ux/_get/response/200_draft_with_sentiments").then(
-  //     (response) => {
-  //       cy.dataQa("sentiment-chart-section").within(() => {
-  //         cy.dataQa("sentiment-card-", { startsWith: true })
-  //           .should("have.length", response.sentiments.length)
-  //           .each((card, index) => {
-  //             cy.wrap(card)
-  //               .find(".aq-card-title")
-  //               .should("contain", `${index + 1}. UC ${index + 1}`);
-  //             // TODO: change this to the real sentiment but the value name is not in the fixture
-  //             cy.wrap(card).find(".aq-card-body").should("contain", "Molto");
-  //             cy.wrap(card)
-  //               .find(".aq-card-body")
-  //               .should("contain", response.sentiments[index].comment);
-  //           });
-  //       });
-  //     }
-  //   );
-  // });
+  it("Should show empty state if no payments", () => {
+    cy.wait(1000);
+    cy.get(".wallet-table").within(() => {
+      cy.get(".tbody.cell").each((cell, index) => {
+        if (index + 1 === numberOfColumns) {
+          // First row (no fixture)
+          cy.wrap(cell).within(() => {
+            cy.get(".action-details").as("btn").click();
+            cy.wait(1000);
+            cy.document().its("body").find(".modal").should("exist");
+            cy.document()
+              .its("body")
+              .find(".modal")
+              .within((modal) => {
+                cy.get(".thead").should("exist");
+                cy.get(".tbody").should("not.exist");
+                cy.wrap(modal).should("contain", "no data");
+              });
+          });
+        }
+      });
+    });
+  });
 });
