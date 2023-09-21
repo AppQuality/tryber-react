@@ -200,11 +200,16 @@ export const WalletTable = () => {
                       title={t("__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:")}
                     />
                   </a>
-                  <div
+                  <button
                     className="action-details"
                     title={t("__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:")}
                     onClick={() => {
                       dispatch(openPaymentDetailsModal(req.id));
+                    }}
+                    style={{
+                      appearance: "none",
+                      border: 0,
+                      backgroundColor: "transparent",
                     }}
                   />
                 </ActionsCell>
