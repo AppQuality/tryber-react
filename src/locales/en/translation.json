@@ -268,6 +268,7 @@
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
     "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Great, you're going to be {{level}} in the next month!<br></br>Now try your best and reach {{nextLevel}}!"
   },
+  "Gross amount": "Gross amount",
   "Have fun!": "Don't forget to have a good time!",
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"",
@@ -319,7 +320,7 @@
   "Must contain at least a number": "Must contain at least a number",
   "Must contain at least an uppercase letter": "Must contain at least an uppercase letter",
   "Name": "First name",
-  "Net Receivable": "",
+  "Net receivable": "Net receivable",
   "New password": "New password",
   "Next": "Next",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!",

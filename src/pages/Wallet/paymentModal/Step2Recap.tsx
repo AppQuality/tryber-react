@@ -65,20 +65,29 @@ export const Step2Recap = () => {
         </div>
       )}
       <Text className="aq-text-center aq-mb-3 aq-text-primary">
+        <>
+          {net ? t("Net receivable") : t("Gross amount")}:{" "}
+          <strong>
+            {net ? (
+              <span data-qa="payment-modal-net-booty">
+                {getCurrencySymbol(net.currency)}
+                {net.value.toFixed(2)}
+              </span>
+            ) : (
+              <span data-qa="payment-modal-gross-booty">
+                {getCurrencySymbol(gross.currency)}
+                {gross.value.toFixed(2)}
+              </span>
+            )}
+          </strong>
+          <br />
+        </>
         {net && (
-          <>
-            {t("Net Receivable")}:{" "}
-            <strong data-qa="payment-modal-net-booty">
-              {getCurrencySymbol(net.currency)}
-              {net.value.toFixed(2)}
-            </strong>
-            <br />
-          </>
+          <span data-qa="payment-modal-gross-booty">
+            ({t("Gross amount")}: {getCurrencySymbol(gross.currency)}
+            {gross.value.toFixed(2)})
+          </span>
         )}
-        <span data-qa="payment-modal-gross-booty">
-          {t("Amount gross")}: ({getCurrencySymbol(gross.currency)}
-          {gross.value.toFixed(2)})
-        </span>
       </Text>
       <div style={{ maxWidth: "430px", margin: "0 auto" }}>
         {values.paymentMethod === "paypal" ? (

@@ -146,18 +146,27 @@ export const WalletManagment = () => {
                   : "aq-text-primary"
               }
             >
+              <div>
+                <strong>
+                  {booty.net ? (
+                    <span data-qa="net-booty">
+                      {t("Amount to get")} {booty.net.value.toFixed(2)}
+                      {getCurrencySymbol(booty.net.currency)}
+                    </span>
+                  ) : (
+                    <span data-qa="gross-booty">
+                      {t("Gross amount")} {booty.gross.value.toFixed(2)}
+                      {getCurrencySymbol(booty.gross.currency)}
+                    </span>
+                  )}
+                </strong>
+              </div>
               {booty.net && (
-                <div>
-                  <strong data-qa="net-booty">
-                    {t("Amount to get")} {booty.net.value.toFixed(2)}
-                    {getCurrencySymbol(booty.net.currency)}
-                  </strong>
+                <div data-qa="gross-booty">
+                  ({t("Gross amount")} {booty.gross.value.toFixed(2)}
+                  {getCurrencySymbol(booty.gross.currency)})
                 </div>
               )}
-              <div data-qa="gross-booty">
-                ({t("Amount gross")} {booty.gross.value.toFixed(2)}
-                {getCurrencySymbol(booty.gross.currency)})
-              </div>
             </Text>
           </div>
         </div>
