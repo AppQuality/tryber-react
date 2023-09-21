@@ -23,7 +23,7 @@ describe("Net and gross columns in wallet table", () => {
       )}/users/me?fields=pending_booty%2Cbooty_threshold`,
       {
         statusCode: 200,
-        fixture: "/users/me/pending_booty/_get/200_multiple-attributions",
+        fixture: "/users/me/_get/200_booty_net",
       }
     ).as("pendingBooty");
 
