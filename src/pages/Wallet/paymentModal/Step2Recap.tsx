@@ -65,14 +65,18 @@ export const Step2Recap = () => {
         </div>
       )}
       <Text className="aq-text-center aq-mb-3 aq-text-primary">
-        {t("Net Receivable")}:{" "}
-        <strong data-qa="payment-modal-net-booty">
-          {getCurrencySymbol(net.currency)}
-          {net.value.toFixed(2)}
-        </strong>
-        <br />
+        {net && (
+          <>
+            {t("Net Receivable")}:{" "}
+            <strong data-qa="payment-modal-net-booty">
+              {getCurrencySymbol(net.currency)}
+              {net.value.toFixed(2)}
+            </strong>
+            <br />
+          </>
+        )}
         <span data-qa="payment-modal-gross-booty">
-          ({getCurrencySymbol(gross.currency)}
+          {t("Amount gross")}: ({getCurrencySymbol(gross.currency)}
           {gross.value.toFixed(2)})
         </span>
       </Text>

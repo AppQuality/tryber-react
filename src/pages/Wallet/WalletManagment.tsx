@@ -139,33 +139,26 @@ export const WalletManagment = () => {
           <PiggyBankFill size={"24"} className={"aq-text-successVariant"} />
           <div className="aq-ml-2">
             <Text>{t("__WALLET_CARD-YOUR_WALLET_MAX: 15")}</Text>
-            {booty.net && (
-              <>
-                <Text
-                  className={
-                    !isVerified || booty.net.value === 0 || paymentInProcessing
-                      ? "aq-text-disabled-dark"
-                      : "aq-text-primary"
-                  }
-                >
+            <Text
+              className={
+                !isVerified || booty.net?.value === 0 || paymentInProcessing
+                  ? "aq-text-disabled-dark"
+                  : "aq-text-primary"
+              }
+            >
+              {booty.net && (
+                <div>
                   <strong data-qa="net-booty">
                     {t("Amount to get")} {booty.net.value.toFixed(2)}
                     {getCurrencySymbol(booty.net.currency)}
                   </strong>
-                </Text>
-                <Text
-                  className={
-                    !isVerified || booty.net.value === 0 || paymentInProcessing
-                      ? "aq-text-disabled-dark"
-                      : "aq-text-primary"
-                  }
-                  data-qa="gross-booty"
-                >
-                  ({t("Amount gross")} {booty.gross.value.toFixed(2)}
-                  {getCurrencySymbol(booty.gross.currency)})
-                </Text>
-              </>
-            )}
+                </div>
+              )}
+              <div data-qa="gross-booty">
+                ({t("Amount gross")} {booty.gross.value.toFixed(2)}
+                {getCurrencySymbol(booty.gross.currency)})
+              </div>
+            </Text>
           </div>
         </div>
         <Button

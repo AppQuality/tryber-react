@@ -78,7 +78,7 @@ describe("If api response have net value", () => {
           )}${user.pending_booty.net.value.toFixed(2)}`
         );
         cy.dataQa("payment-modal-gross-booty").should(
-          "have.text",
+          "contain",
           `${getCurrencySymbol(
             user.pending_booty.gross.currency
           )}${user.pending_booty.gross.value.toFixed(2)}`
@@ -129,18 +129,39 @@ describe("If api response does not have net value", () => {
     ).as("tablePayments");
     cy.visit("/payments");
   });
-  it.only("payment request card should display only gross values", () => {
-    return cy.fixture("/users/me/_get/200_booty_net").then((user) => {
+  it("payment request card should display only gross values", () => {
+    return cy.fixture("/users/me/_get/200_booty_gross").then((user) => {
       cy.dataQa("wallet-management").within(() => {
-        cy.dataQa("net-booty").should(
+        cy.dataQa("net-booty").should("not.exist");
+        cy.dataQa("gross-booty").should(
           "contain",
-          `${user.pending_booty.net.value.toFixed(2)}${getCurrencySymbol(
-            user.pending_booty.net.currency
+          `${user.pending_booty.gross.value.toFixed(2)}${getCurrencySymbol(
+            user.pending_booty.gross.currency
           )}`
         );
-        cy.dataQa("gross-booty").should("not.exist");
       });
     });
   });
-  it("payment request modal should open a modal showing only gross value", () => {});
+  it("payment request modal should open a modal showing only gross value", () => {
+    return cy.fixture("/users/me/_get/200_booty_gross").then((user) => {
+      cy.dataQa("wallet-management").within(() => {
+        cy.dataQa("request-payment-cta").click();
+      });
+      cy.get(".modal").within(() => {
+        cy.get("#paymentMethod-pp").click();
+        cy.get("#termsAcceptance").click();
+        cy.dataQa("payment-modal-next").click();
+        cy.get("#ppAccountOwner").type("e@mail.com");
+        cy.get("#confirmEmail").type("e@mail.com");
+        cy.dataQa("payment-modal-next").click();
+        cy.dataQa("payment-modal-net-booty").should("not.exist");
+        cy.dataQa("payment-modal-gross-booty").should(
+          "contain",
+          `${getCurrencySymbol(
+            user.pending_booty.gross.currency
+          )}${user.pending_booty.gross.value.toFixed(2)}`
+        );
+      });
+    });
+  });
 });

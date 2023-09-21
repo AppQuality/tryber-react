@@ -10,7 +10,7 @@ type WalletState = {
       value: number;
       currency: string;
     };
-    net: {
+    net?: {
       value: number;
       currency: string;
     };
