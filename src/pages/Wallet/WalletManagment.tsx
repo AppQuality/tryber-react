@@ -172,6 +172,7 @@ export const WalletManagment = () => {
         </div>
         <Button
           type="link"
+          data-qa="booty-details-cta"
           onClick={() => dispatch(setBootyDetailsModalOpen(true))}
         >
           {t("__WALLET_CARD-REQUEST_CTA-LINK MAX: 15")}

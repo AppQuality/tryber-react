@@ -165,3 +165,54 @@ describe("If api response does not have net value", () => {
     });
   });
 });
+describe("Booty details table", () => {
+  beforeEach(() => {
+    cy.intercept(
+      "GET",
+      `${Cypress.env(
+        "REACT_APP_API_URL"
+      )}/users/me?fields=name%2Csurname%2Cimage%2Conboarding_completed%2Cemail%2Cwp_user_id`,
+      {
+        statusCode: 200,
+        fixture: "users/me/_get/200_Example_1",
+      }
+    ).as("userMeFields");
+
+    cy.intercept("GET", `${Cypress.env("REACT_APP_API_URL")}/users/me/fiscal`, {
+      statusCode: 200,
+      fixture: "users/me/fiscal/_get/200_non_italian",
+    }).as("userMeFiscal");
+
+    cy.intercept(
+      "GET",
+      `${Cypress.env(
+        "REACT_APP_API_URL"
+      )}/users/me?fields=pending_booty%2Cbooty_threshold`,
+      {
+        statusCode: 200,
+        fixture: "/users/me/_get/200_booty_net",
+      }
+    ).as("pendingBooty");
+
+    cy.intercept(
+      "GET",
+      `${Cypress.env(
+        "REACT_APP_API_URL"
+      )}/users/me/pending_booty?order=DESC&orderBy=attributionDate&limit=10&start=0`,
+      {
+        statusCode: 200,
+        fixture: "users/me/pending_booty/_get/200_multiple-attributions",
+      }
+    ).as("bootyDetails");
+    cy.visit("/payments");
+  });
+  it("should only show tot gross and not net amount", () => {
+    cy.dataQa("wallet-management").within(() => {
+      cy.dataQa("booty-details-cta").click();
+    });
+    cy.get(".modal").within(() => {
+      cy.get(".thead").should("contain", "Tot. gross");
+      cy.get(".thead").should("not.contain", "Net");
+    });
+  });
+});

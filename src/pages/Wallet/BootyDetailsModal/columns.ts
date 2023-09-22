@@ -50,19 +50,5 @@ export const bootyDetailsColumns = (
         );
       },
     },
-    {
-      title: t("Amount"),
-      dataIndex: "net",
-      role: "cta",
-      key: "net",
-      hideIndex: true,
-      isSortable: true,
-      onSort: (newOrder) => {
-        setIsLoading(true);
-        dispatch(updateBootyDetailsSortingOptions(newOrder, "net")).then(() =>
-          setIsLoading(false)
-        );
-      },
-    },
   ];
 };

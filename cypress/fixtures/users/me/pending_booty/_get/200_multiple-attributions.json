@@ -2,7 +2,7 @@
   "results": [
     {
       "id": 1,
-      "name": "",
+      "name": "[CP-1] Campagna test bug form",
       "amount": {
         "net": {
           "value": 10,
@@ -17,7 +17,7 @@
     },
     {
       "id": 2,
-      "name": "",
+      "name": "[CP-2] Campagna test bug form",
       "amount": {
         "net": {
           "value": 10,
@@ -32,7 +32,7 @@
     },
     {
       "id": 3,
-      "name": "",
+      "name": "[CP-3] Campagna test bug form",
       "amount": {
         "net": {
           "value": 10,
@@ -47,7 +47,7 @@
     },
     {
       "id": 4,
-      "name": "",
+      "name": "[CP-4] Campagna test bug form",
       "amount": {
         "net": {
           "value": 10,
@@ -62,7 +62,7 @@
     },
     {
       "id": 5,
-      "name": "",
+      "name": "[CP-5] Campagna test bug form",
       "amount": {
         "net": {
           "value": 10,
@@ -77,7 +77,7 @@
     },
     {
       "id": 6,
-      "name": "",
+      "name": "[CP-6] Campagna test bug form",
       "amount": {
         "net": {
           "value": 10,
@@ -92,7 +92,7 @@
     },
     {
       "id": 7,
-      "name": "",
+      "name": "[CP-7] Campagna test bug form",
       "amount": {
         "net": {
           "value": 10,
@@ -107,7 +107,7 @@
     },
     {
       "id": 8,
-      "name": "",
+      "name": "[CP-8] Campagna test bug form",
       "amount": {
         "net": {
           "value": 10,
@@ -122,7 +122,7 @@
     },
     {
       "id": 9,
-      "name": "",
+      "name": "[CP-9] Campagna test bug form",
       "amount": {
         "net": {
           "value": 10,
@@ -137,7 +137,7 @@
     },
     {
       "id": 10,
-      "name": "",
+      "name": "[CP-10] Campagna test bug form",
       "amount": {
         "gross": {
           "value": 13.5,
