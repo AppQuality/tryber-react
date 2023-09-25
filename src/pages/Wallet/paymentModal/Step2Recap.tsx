@@ -84,7 +84,7 @@ export const Step2Recap = () => {
         </>
         {net && (
           <span data-qa="payment-modal-gross-booty">
-            ({t("Gross amount")}: {getCurrencySymbol(gross.currency)}
+            ({t("Gross")}: {getCurrencySymbol(gross.currency)}
             {gross.value.toFixed(2)})
           </span>
         )}

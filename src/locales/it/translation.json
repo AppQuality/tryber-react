@@ -67,7 +67,6 @@
   "All your certifications were successfully removed": "Tutte le tue certificazioni sono state rimosse con successo",
   "All_female": "Tutte",
   "All_male": "Tutti",
-  "Amount": "Importo",
   "Amount gross": "Tot. Lordo",
   "Amount to get": "Netto a ricevere",
   "Annual witholding < 5000€": "Trattenuta annua < 5000€",
@@ -268,6 +267,7 @@
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
     "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Grande, il prossimo mese sarai {{level}}!<br></br>Dai il tuo meglio e conquista {{nextLevel}}!"
   },
+  "Gross": "Lordo",
   "Gross amount": "Lordo",
   "Have fun!": "Ricordati di divertirti!",
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Ecco la lista dei tuoi dispositivi. Assicurati di tenerla sempre aggiornata per aumentare le possibilità di essere selezionat* nei prossimi progetti.",
@@ -321,6 +321,7 @@
   "Must contain at least an uppercase letter": "Deve contenere almeno una lettera maiuscola",
   "Name": "Nome",
   "Net receivable": "Netto",
+  "Net received": "Netto ricevuto",
   "New password": "Nuova password",
   "Next": "Continua",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "Nessuna campagna è stata ancora conclusa. È arrivato il momento di mettersi al lavoro: termina quelle attive o candidati nelle Campagne disponibili!",
@@ -704,8 +705,8 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Amount": "Importo",
   "Total booty": "Guadagni totali",
-  "Amount Gross": "",
   "Home": "Home",
   "Loading": "Caricamento in corso...",
   "Redirecting to your dashboard...": "Reindirizzamento alla dashboard in corso ...",

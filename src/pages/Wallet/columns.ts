@@ -35,7 +35,7 @@ export const walletColumns = (
       },
     },
     {
-      title: t("Amount"),
+      title: t("Net received"),
       dataIndex: "net",
       key: "net",
       isSortable: true,

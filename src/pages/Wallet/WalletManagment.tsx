@@ -155,7 +155,7 @@ export const WalletManagment = () => {
                     </span>
                   ) : (
                     <span data-qa="gross-booty">
-                      {t("Gross amount")} {booty.gross.value.toFixed(2)}
+                      {t("Gross")} {booty.gross.value.toFixed(2)}
                       {getCurrencySymbol(booty.gross.currency)}
                     </span>
                   )}
@@ -163,7 +163,7 @@ export const WalletManagment = () => {
               </div>
               {booty.net && (
                 <div data-qa="gross-booty">
-                  ({t("Gross amount")} {booty.gross.value.toFixed(2)}
+                  ({t("Gross")} {booty.gross.value.toFixed(2)}
                   {getCurrencySymbol(booty.gross.currency)})
                 </div>
               )}
