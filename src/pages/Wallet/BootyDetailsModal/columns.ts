@@ -30,7 +30,13 @@ export const bootyDetailsColumns = (
       key: "activityType",
       maxWidth: "10em",
       hideIndex: true,
-      isSortable: false,
+      isSortable: true,
+      onSort: (newOrder) => {
+        setIsLoading(true);
+        dispatch(updateBootyDetailsSortingOptions(newOrder, "activity")).then(
+          () => setIsLoading(false)
+        );
+      },
     },
     {
       title: t("Awarded on"),

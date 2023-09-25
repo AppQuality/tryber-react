@@ -40,6 +40,7 @@ describe("If api response have net value", () => {
       }
     ).as("tablePayments");
     cy.visit("/payments");
+    cy.wait("@pendingBooty");
   });
   it("payment request card should display both net and gross values", () => {
     return cy.fixture("/users/me/_get/200_booty_net").then((user) => {
@@ -128,6 +129,7 @@ describe("If api response does not have net value", () => {
       }
     ).as("tablePayments");
     cy.visit("/payments");
+    cy.wait("@pendingBooty");
   });
   it("payment request card should display only gross values", () => {
     return cy.fixture("/users/me/_get/200_booty_gross").then((user) => {
@@ -142,7 +144,7 @@ describe("If api response does not have net value", () => {
       });
     });
   });
-  it("payment request modal should open a modal showing only gross value", () => {
+  it("payment request button should open a modal showing only gross value", () => {
     return cy.fixture("/users/me/_get/200_booty_gross").then((user) => {
       cy.dataQa("wallet-management").within(() => {
         cy.dataQa("request-payment-cta").click();
@@ -205,6 +207,7 @@ describe("Booty details table", () => {
       }
     ).as("bootyDetails");
     cy.visit("/payments");
+    cy.wait("@pendingBooty");
   });
   it("should only show tot gross and not net amount", () => {
     cy.dataQa("wallet-management").within(() => {

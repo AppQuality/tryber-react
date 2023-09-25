@@ -35,7 +35,9 @@ type WalletState = {
     total: number;
     limit: number;
     order: ApiComponents["parameters"]["order"];
-    orderBy: "attributionDate" | "id" | "activityName" | "net" | "gross";
+    orderBy: NonNullable<
+      ApiOperations["get-users-me-pending-booty"]["parameters"]["query"]["orderBy"]
+    >;
   };
   paymentInProcessing: boolean;
 };
@@ -104,7 +106,7 @@ type WalletActions_UpdateBootyDetails = {
 
 type WalletActions_UpdateBootyDetailsQuery = {
   type: "wallet/updateBootyDetailsQuery";
-  payload: ApiOperationsApiOperations["get-users-me-pending-booty"]["parameters"]["query"];
+  payload: ApiOperations["get-users-me-pending-booty"]["parameters"]["query"];
 };
 
 type WalletActions_ResetBootyDetails = {
