@@ -13,7 +13,7 @@ export const bootyDetailsColumns = (
       title: t("Activity name"),
       dataIndex: "activityName",
       key: "activityName",
-      maxWidth: "36em",
+      maxWidth: "26em",
       role: "title",
       hideIndex: true,
       isSortable: true,
@@ -23,6 +23,14 @@ export const bootyDetailsColumns = (
           updateBootyDetailsSortingOptions(newOrder, "activityName")
         ).then(() => setIsLoading(false));
       },
+    },
+    {
+      title: t("Activity"),
+      dataIndex: "activityType",
+      key: "activityType",
+      maxWidth: "10em",
+      hideIndex: true,
+      isSortable: false,
     },
     {
       title: t("Awarded on"),

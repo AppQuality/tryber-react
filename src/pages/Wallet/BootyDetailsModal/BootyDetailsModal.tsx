@@ -71,6 +71,14 @@ export const BootyDetailsModal = () => {
                 </Text>
               ),
             },
+            activityType: {
+              title: r.activity,
+              content: (
+                <Text as="div" style={activityStyle}>
+                  <b className="aq-text-primary">{r.activity}</b>
+                </Text>
+              ),
+            },
             attributionDate: getPaidDate(r.attributionDate),
             net: {
               title: formattedAmount,

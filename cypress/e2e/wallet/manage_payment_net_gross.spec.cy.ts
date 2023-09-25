@@ -215,4 +215,13 @@ describe("Booty details table", () => {
       cy.get(".thead").should("not.contain", "Net");
     });
   });
+  it("should show activity name and type", () => {
+    cy.dataQa("wallet-management").within(() => {
+      cy.dataQa("booty-details-cta").click();
+    });
+    cy.get(".modal").within(() => {
+      cy.get(".thead").contains(/^Activity$/);
+      cy.get(".thead").contains(/^Activity name$/);
+    });
+  });
 });

@@ -1762,11 +1762,11 @@ export type PatchUsersMeApiResponse = /** status 200 OK */ {
   rank?: string;
   total_exp_pts?: number;
   booty?: {
-    gross?: Currency;
+    gross: Currency;
     net?: Currency;
   };
   pending_booty?: {
-    gross?: Currency;
+    gross: Currency;
     net?: Currency;
   };
   languages?: {
@@ -2211,8 +2211,8 @@ export type GetUsersMePaymentsApiResponse = /** status 200 OK */ {
   } & {
     status: "paid" | "processing";
     amount: {
-      value?: number;
-      currency?: string;
+      net: Currency;
+      gross: Currency;
     };
     paidDate: any | "-";
     method: {
@@ -2260,8 +2260,8 @@ export type GetUsersMePaymentsByPaymentApiResponse = /** status 200 OK */ {
   } & {
     type: string;
     amount: {
-      value: number;
-      currency: string;
+      net?: Currency;
+      gross: Currency;
     };
     date: string;
     activity: string;
@@ -2280,7 +2280,7 @@ export type GetUsersMePaymentsByPaymentApiArg = {
   /** How to order values (ASC, DESC) */
   order?: "ASC" | "DESC";
   /** The value to order by */
-  orderBy?: "amount" | "type" | "date" | "activity";
+  orderBy?: "type" | "date" | "activity" | "net" | "gross";
 };
 export type GetUsersMePendingBootyApiResponse = /** status 200 OK */ {
   results?: ({
@@ -2292,6 +2292,7 @@ export type GetUsersMePendingBootyApiResponse = /** status 200 OK */ {
       gross: Currency;
     };
     attributionDate: string;
+    activity: string;
   })[];
   limit?: number;
   size: number;
@@ -2304,7 +2305,13 @@ export type GetUsersMePendingBootyApiArg = {
   /** Max items to retrieve */
   limit?: number;
   /** The field for item order */
-  orderBy?: "id" | "attributionDate" | "amount" | "activityName";
+  orderBy?:
+    | "id"
+    | "attributionDate"
+    | "activityName"
+    | "net"
+    | "gross"
+    | "activity";
   /** How to order values (ASC, DESC) */
   order?: "ASC" | "DESC";
 };
@@ -2558,8 +2565,8 @@ export type Popup = {
   title?: string;
 };
 export type Currency = {
-  value?: number;
-  currency?: string;
+  value: number;
+  currency: string;
 };
 export type AdditionalField = {
   field_id: number;
