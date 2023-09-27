@@ -46,7 +46,10 @@ export const PaymentModal = () => {
                 />
               }
             >
-              <ModalBody>
+              <ModalBody
+                data-qa="payment-request-modal"
+                id="payment-request-modal"
+              >
                 <Steps current={step} className="aq-mb-3">
                   <Steps.Step
                     isCompleted={completedSteps[0]}

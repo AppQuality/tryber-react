@@ -1,6 +1,13 @@
 export const initialState: WalletState = {
   booty: {
-    amount: 0,
+    gross: {
+      value: 0,
+      currency: "EUR",
+    },
+    net: {
+      value: 0,
+      currency: "EUR",
+    },
   },
   requestsList: {
     start: 0,
@@ -57,7 +64,8 @@ export default (state = initialState, action: WalletActions) => {
       return {
         ...state,
         booty: {
-          amount: action.payload.pending_booty,
+          net: action.payload.pending_booty?.net,
+          gross: action.payload.pending_booty?.gross,
           bootyThreshold: action.payload.booty_threshold,
         },
       };

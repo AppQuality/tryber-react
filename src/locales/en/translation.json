@@ -67,7 +67,8 @@
   "All your certifications were successfully removed": "All your certifications were successfully removed",
   "All_female": "All",
   "All_male": "All",
-  "Amount": "Amount",
+  "Amount gross": "Tot. gross",
+  "Amount to get": "Net to be received",
   "Annual witholding < 5000€": "Annual witholding < 5000€",
   "Annual witholding > 5000": "Annual witholding > 5000",
   "Apply now": "Apply now",
@@ -266,6 +267,8 @@
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
     "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Great, you're going to be {{level}} in the next month!<br></br>Now try your best and reach {{nextLevel}}!"
   },
+  "Gross": "Gross",
+  "Gross amount": "Gross amount",
   "Have fun!": "Don't forget to have a good time!",
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"",
@@ -317,6 +320,8 @@
   "Must contain at least a number": "Must contain at least a number",
   "Must contain at least an uppercase letter": "Must contain at least an uppercase letter",
   "Name": "First name",
+  "Net receivable": "Net receivable",
+  "Net received": "Net received",
   "New password": "New password",
   "Next": "Next",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!",
@@ -441,7 +446,6 @@
   "Top 3 | level {{level}}": {
     "__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25": "Top 3 | {{level}} level"
   },
-  "Total booty": "Total booty",
   "Try again.": "Try again.",
   "Type": "Type",
   "Type to search your city": "Type to search your city",
@@ -701,6 +705,8 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "Amount": "Net received",
+  "Total booty": "Total booty",
   "Home": "Home",
   "Loading": "Loading",
   "Redirecting to your dashboard...": "Redirecting to your dashboard...",

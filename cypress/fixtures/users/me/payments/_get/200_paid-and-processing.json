@@ -1,0 +1,36 @@
+{
+  "results": [
+    {
+      "id": 2,
+      "status": "processing",
+      "amount": {
+        "value": 5,
+        "currency": "EUR"
+      },
+      "paidDate": "-",
+      "method": {
+        "type": "paypal",
+        "note": "me@example.com"
+      },
+      "receipt": "http://example.com"
+    },
+    {
+      "id": 1,
+      "status": "paid",
+      "amount": {
+        "value": 10,
+        "currency": "EUR"
+      },
+      "paidDate": "2019-08-24",
+      "method": {
+        "type": "paypal",
+        "note": "me@example.com"
+      },
+      "receipt": "http://example.com"
+    }
+  ],
+  "limit": 10,
+  "size": 2,
+  "start": 0,
+  "total": 2
+}

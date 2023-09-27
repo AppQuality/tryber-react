@@ -9,6 +9,26 @@ export interface paths {
     get: operations["get-root"];
     parameters: {};
   };
+  "/agreements": {
+    /** Retrive all agreements */
+    get: operations["get-agreements"];
+    /** Create a new Agreement */
+    post: operations["post-agreements"];
+    parameters: {};
+  };
+  "/agreements/{agreementId}": {
+    /** Get a specific Agreement */
+    get: operations["get-agreements-agreement-id"];
+    /** Put a specific Agreement */
+    put: operations["put-agreements-agreement-id"];
+    /** Delete a specific Agreement */
+    delete: operations["delete-agreements-agreement-id"];
+    parameters: {
+      path: {
+        agreementId: string;
+      };
+    };
+  };
   "/authenticate": {
     /** A request to login with your username and password */
     post: operations["post-authenticate"];
@@ -99,6 +119,37 @@ export interface paths {
         campaign: components["parameters"]["campaign"];
         /** A task id */
         task: components["parameters"]["task"];
+      };
+    };
+  };
+  "/campaigns/{campaign}/ux": {
+    /** Get the data of a UseCase in a Campaign */
+    get: operations["get-campaigns-campaign-ux"];
+    patch: operations["patch-campaigns-campaign-ux"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+  };
+  "/campaigns/{campaign}/clusters": {
+    /** Get all clusters for  a specific campaign */
+    get: operations["get-campaigns-campaign-clusters"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+  };
+  "/campaigns/{campaign}/observations": {
+    /** Get observations for a campaign */
+    get: operations["get-campaigns-campaign-observations"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
       };
     };
   };
@@ -407,11 +458,13 @@ export interface paths {
     };
   };
   "/users/me/payments": {
+    /** Return all payment requests */
     get: operations["get-users-me-payments"];
     post: operations["post-users-me-payments"];
     parameters: {};
   };
   "/users/me/payments/{payment}": {
+    /** Return all attributions of a specific request */
     get: operations["get-users-me-payments-payment"];
     parameters: {
       path: {
@@ -468,6 +521,16 @@ export interface components {
       value: string;
       text?: string;
       is_candidate?: boolean;
+    };
+    Agreement: {
+      title: string;
+      tokens: number;
+      unitPrice: number;
+      startDate: string;
+      expirationDate: string;
+      note?: string;
+      /** @default false */
+      isTokenBased?: boolean;
     };
     /** Bug */
     Bug: {
@@ -598,6 +661,11 @@ export interface components {
      * @enum {string}
      */
     CustomUserFieldsType: "text" | "select" | "multiselect";
+    /** Currency */
+    Currency: {
+      value: number;
+      currency: string;
+    };
     /** FiscalBirthCity */
     FiscalBirthCity:
       | {
@@ -855,6 +923,139 @@ export interface operations {
       };
     };
   };
+  /** Retrive all agreements */
+  "get-agreements": {
+    parameters: {
+      query: {
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+        /** Items to skip for pagination */
+        start?: components["parameters"]["start"];
+        /** Max items to retrieve */
+        limit?: components["parameters"]["limit"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            items: ({
+              id: number;
+            } & components["schemas"]["Agreement"] & {
+                customer: {
+                  id: number;
+                  company: string;
+                };
+              })[];
+          } & components["schemas"]["PaginationData"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+    };
+  };
+  /** Create a new Agreement */
+  "post-agreements": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            agreementId: number;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      /** Internal Server Error */
+      500: unknown;
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          customerId: number;
+        } & components["schemas"]["Agreement"];
+      };
+    };
+  };
+  /** Get a specific Agreement */
+  "get-agreements-agreement-id": {
+    parameters: {
+      path: {
+        agreementId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+          } & components["schemas"]["Agreement"] & {
+              customer: {
+                id: number;
+                company: string;
+              };
+            };
+        };
+      };
+      403: components["responses"]["Authentication"];
+      /** Internal Server Error */
+      500: unknown;
+    };
+  };
+  /** Put a specific Agreement */
+  "put-agreements-agreement-id": {
+    parameters: {
+      path: {
+        agreementId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+          } & components["schemas"]["Agreement"] & {
+              customer: {
+                id: number;
+                company: string;
+              };
+            };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      /** Internal Server Error */
+      500: unknown;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["Agreement"] & {
+          customerId: number;
+        };
+      };
+    };
+  };
+  /** Delete a specific Agreement */
+  "delete-agreements-agreement-id": {
+    parameters: {
+      path: {
+        agreementId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": { [key: string]: unknown };
+        };
+      };
+      403: components["responses"]["NotFound"];
+      /** Internal Server Error */
+      500: unknown;
+    };
+  };
   /** A request to login with your username and password */
   "post-authenticate": {
     parameters: {};
@@ -989,6 +1190,8 @@ export interface operations {
           "application/json": {
             id: number;
             title: string;
+            type: string;
+            typeDescription: string;
           };
         };
       };
@@ -1322,6 +1525,201 @@ export interface operations {
       content: {
         "application/json": components["schemas"]["TaskOptional"];
       };
+    };
+  };
+  /** Get the data of a UseCase in a Campaign */
+  "get-campaigns-campaign-ux": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** A UseCase linked with the Campaign */
+      200: {
+        content: {
+          "application/json": {
+            /** @enum {string} */
+            status: "draft" | "published" | "draft-modified";
+            goal: string;
+            usersNumber: number;
+            insights?: {
+              id: number;
+              title: string;
+              severity: {
+                id: number;
+                name: string;
+              };
+              description: string;
+              clusters:
+                | "all"
+                | {
+                    id: number;
+                    name: string;
+                  }[];
+              videoParts: {
+                id: number;
+                start: number;
+                end: number;
+                mediaId: number;
+                url: string;
+                streamUrl: string;
+                description: string;
+                poster?: string;
+              }[];
+            }[];
+            sentiments: {
+              id: number;
+              value: number;
+              comment: string;
+              cluster: {
+                id: number;
+                name: string;
+              };
+            }[];
+            methodology: {
+              name: string;
+              /** @enum {string} */
+              type: "qualitative" | "quantitative" | "quali-quantitative";
+              description: string;
+            };
+            questions: {
+              id: number;
+              name: string;
+            }[];
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "patch-campaigns-campaign-ux": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": { [key: string]: unknown };
+        };
+      };
+      403: components["responses"]["Authentication"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json":
+          | {
+              goal: string;
+              usersNumber: number;
+              insights: {
+                id?: number;
+                title: string;
+                description: string;
+                severityId: number;
+                order: number;
+                clusterIds: number[] | "all";
+                videoParts: {
+                  id?: number;
+                  start: number;
+                  end: number;
+                  mediaId: number;
+                  description: string;
+                  order: number;
+                }[];
+              }[];
+              sentiments: {
+                id?: number;
+                clusterId: number;
+                value: number;
+                comment: string;
+              }[];
+              methodology: {
+                /** @enum {string} */
+                type: "qualitative" | "quantitative" | "quali-quantitative";
+                description: string;
+              };
+              questions: {
+                id?: number;
+                name: string;
+              }[];
+            }
+          | {
+              /** @enum {string} */
+              status: "publish";
+            };
+      };
+    };
+  };
+  /** Get all clusters for  a specific campaign */
+  "get-campaigns-campaign-clusters": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** A UseCase linked with the Campaign */
+      200: {
+        content: {
+          "application/json": {
+            items: {
+              id: number;
+              name: string;
+            }[];
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Get observations for a campaign */
+  "get-campaigns-campaign-observations": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+      query: {
+        filterBy?: unknown;
+      };
+    };
+    responses: {
+      /** A UseCase linked with the Campaign */
+      200: {
+        content: {
+          "application/json": {
+            items: {
+              id: number;
+              name: string;
+              time: number;
+              tester: {
+                id: number;
+                name: string;
+              };
+              cluster: {
+                id: number;
+                name: string;
+              };
+              media: {
+                id: number;
+                url: string;
+                streamUrl: string;
+              };
+            }[];
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
     };
   };
   "get-campaigns-forms": {
@@ -1738,7 +2136,7 @@ export interface operations {
           }[];
         };
       };
-      403: components["responses"]["NotAuthorized"];
+      403: components["responses"]["NotFound"];
     };
   };
   "get-customUserFields": {
@@ -2211,8 +2609,14 @@ export interface operations {
             is_verified?: boolean;
             rank?: string;
             total_exp_pts?: number;
-            booty?: number;
-            pending_booty?: number;
+            booty?: {
+              net?: components["schemas"]["Currency"];
+              gross: components["schemas"]["Currency"];
+            };
+            pending_booty?: {
+              net?: components["schemas"]["Currency"];
+              gross: components["schemas"]["Currency"];
+            };
             languages?: {
               id?: number;
               name?: string;
@@ -2299,8 +2703,14 @@ export interface operations {
             is_verified?: boolean;
             rank?: string;
             total_exp_pts?: number;
-            booty?: number;
-            pending_booty?: number;
+            booty?: {
+              gross: components["schemas"]["Currency"];
+              net?: components["schemas"]["Currency"];
+            };
+            pending_booty?: {
+              gross: components["schemas"]["Currency"];
+              net?: components["schemas"]["Currency"];
+            };
             languages?: {
               id?: number;
               name?: string;
@@ -3090,6 +3500,7 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
+  /** Return all payment requests */
   "get-users-me-payments": {
     parameters: {
       query: {
@@ -3114,8 +3525,8 @@ export interface operations {
               /** @enum {string} */
               status: "paid" | "processing";
               amount: {
-                value?: number;
-                currency?: string;
+                net: components["schemas"]["Currency"];
+                gross: components["schemas"]["Currency"];
               };
               paidDate: string;
               method: {
@@ -3171,6 +3582,7 @@ export interface operations {
       };
     };
   };
+  /** Return all attributions of a specific request */
   "get-users-me-payments-payment": {
     parameters: {
       path: {
@@ -3184,7 +3596,7 @@ export interface operations {
         /** How to order values (ASC, DESC) */
         order?: components["parameters"]["order"];
         /** The value to order by */
-        orderBy?: "amount" | "type" | "date" | "activity";
+        orderBy?: "type" | "date" | "activity" | "net" | "gross";
       };
     };
     responses: {
@@ -3197,8 +3609,8 @@ export interface operations {
             } & {
               type: string;
               amount: {
-                value: number;
-                currency: string;
+                net?: components["schemas"]["Currency"];
+                gross: components["schemas"]["Currency"];
               };
               /** Format: date */
               date: string;
@@ -3224,7 +3636,13 @@ export interface operations {
         /** Max items to retrieve */
         limit?: components["parameters"]["limit"];
         /** The field for item order */
-        orderBy?: "id" | "attributionDate" | "amount" | "activityName";
+        orderBy?:
+          | "id"
+          | "attributionDate"
+          | "activityName"
+          | "net"
+          | "gross"
+          | "activity";
         /** How to order values (ASC, DESC) */
         order?: components["parameters"]["order"];
       };
@@ -3239,11 +3657,12 @@ export interface operations {
             } & {
               name: string;
               amount: {
-                value?: number;
-                currency?: string;
+                net?: components["schemas"]["Currency"];
+                gross: components["schemas"]["Currency"];
               };
               /** Format: date */
               attributionDate: string;
+              activity: string;
             })[];
             limit?: number;
             size: number;
@@ -3272,6 +3691,7 @@ export interface operations {
           };
         };
       };
+      403: components["responses"]["NotAuthorized"];
       /** Internal Server Error */
       500: unknown;
     };
