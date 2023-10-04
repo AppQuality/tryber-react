@@ -58,19 +58,16 @@ const PerformanceData = () => {
           pendingBooty.gross.value
         }`
     : undefined;
-
   const bootyDataGross =
     allBooty && allBooty.net
       ? `${getCurrencySymbol(allBooty.gross.currency)}${allBooty.gross.value}`
       : undefined;
-
   const pendingBootyDataGross =
     pendingBooty && pendingBooty.net
       ? `${getCurrencySymbol(pendingBooty.gross.currency)}${
           pendingBooty.gross.value
         }`
       : undefined;
-
   const performanceData = [
     {
       icon: <StarFill size={"21"} className={"aq-text-warningVariant"} />,
@@ -142,7 +139,7 @@ const PerformanceData = () => {
           <p>{t("Net received")}</p> {bootyDataNet}
         </div>
       ),
-      gross: `${t("Gross")} ${bootyDataGross}`,
+      gross: bootyDataGross ? `${t("Gross")} ${bootyDataGross}` : null,
       booty: true,
     },
     {
@@ -157,7 +154,9 @@ const PerformanceData = () => {
           <p>{t("Amount to get")}</p> {pendingBootyDataNet}
         </div>
       ),
-      gross: `${t("Gross")} ${pendingBootyDataGross}`,
+      gross: pendingBootyDataGross
+        ? `${t("Gross")} ${pendingBootyDataGross}`
+        : null,
     },
     {
       icon: <ArrowRight size={"21"} />,
