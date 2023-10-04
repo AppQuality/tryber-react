@@ -10,7 +10,8 @@ import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import styled from "styled-components";
 import { Level } from "../Ranking/Level";
 import usePerformance from "./effects/usePerformance";
-import { GoToBlock, Statistic } from "./performanceRow";
+import { BootyStatistic, GoToBlock, Statistic } from "./performanceRow";
+import getCurrencySymbol from "src/utils/getCurrencySymbol";
 
 const StyledIcon = styled.div`
   .dark-disabled-font {
@@ -42,7 +43,31 @@ const PerformanceData = () => {
     (state: GeneralState) => state.ranking,
     shallowEqual
   );
+  const bootyDataNet = allBooty
+    ? allBooty.net
+      ? `${getCurrencySymbol(allBooty.net.currency)}${allBooty.net.value}`
+      : `${getCurrencySymbol(allBooty.gross.currency)}${allBooty.gross.value}`
+    : undefined;
 
+  const pendingBootyDataNet = pendingBooty
+    ? pendingBooty.net
+      ? `${getCurrencySymbol(pendingBooty.net.currency)}${
+          pendingBooty.net.value
+        }`
+      : `${getCurrencySymbol(pendingBooty.gross.currency)}${
+          pendingBooty.gross.value
+        }`
+    : undefined;
+  const bootyDataGross =
+    allBooty && allBooty.net
+      ? `${getCurrencySymbol(allBooty.gross.currency)}${allBooty.gross.value}`
+      : undefined;
+  const pendingBootyDataGross =
+    pendingBooty && pendingBooty.net
+      ? `${getCurrencySymbol(pendingBooty.gross.currency)}${
+          pendingBooty.gross.value
+        }`
+      : undefined;
   const performanceData = [
     {
       icon: <StarFill size={"21"} className={"aq-text-warningVariant"} />,
@@ -109,7 +134,13 @@ const PerformanceData = () => {
     {
       icon: <CashCoin size={"21"} className={"aq-text-success"} />,
       text: t("Received booty"),
-      val: allBooty + "€",
+      net: (
+        <div className="booty">
+          <p>{t("Net received")}</p> {bootyDataNet}
+        </div>
+      ),
+      gross: `${t("Gross")} ${bootyDataGross}`,
+      booty: true,
     },
     {
       icon: (
@@ -118,7 +149,12 @@ const PerformanceData = () => {
         </StyledIcon>
       ),
       text: t("Available booty"),
-      val: pendingBooty + "€",
+      net: (
+        <div className="booty">
+          <p>{t("Amount to get")}</p> {pendingBootyDataNet}
+        </div>
+      ),
+      gross: `${t("Gross")} ${pendingBootyDataGross}`,
     },
     {
       icon: <ArrowRight size={"21"} />,
@@ -145,6 +181,8 @@ const PerformanceData = () => {
       {performanceData.map((item, index) =>
         item.link ? (
           <GoToBlock item={item} key={index} />
+        ) : item.net ? (
+          <BootyStatistic item={item} key={index} />
         ) : (
           <Statistic item={item} key={index} />
         )
