@@ -9,6 +9,8 @@ interface PerformanceRowProps extends BaseProps {
     text: React.ReactNode;
     val?: React.ReactNode;
     link?: string;
+    net?: React.ReactNode;
+    gross?: React.ReactNode;
   };
 }
 
@@ -24,6 +26,23 @@ const StatisticComponent = ({ item, className }: PerformanceRowProps) => {
   );
 };
 
+const BootyComponent = ({ item, className }: PerformanceRowProps) => {
+  return (
+    <div className={`${className} aq-mb-3`}>
+      {item.icon && <div className="performance-icon aq-mr-3">{item.icon}</div>}
+      <Text className="performance-text aq-mr-3">{item.text}</Text>
+      <Text className="performance-val">
+        <strong>{item.net}</strong>
+      </Text>
+      {item.gross && (
+        <Text className="performance-val">
+          <small>({item.gross})</small>
+        </Text>
+      )}
+    </div>
+  );
+};
+
 const GoToBlockComponent = ({ item, className }: PerformanceRowProps) => {
   return (
     <a href={item.link} className={`${className} `}>
@@ -35,6 +54,7 @@ const GoToBlockComponent = ({ item, className }: PerformanceRowProps) => {
 
 export const Statistic = styled(StatisticComponent)`
   display: flex;
+  flex-wrap: wrap;
   .performance-icon {
     flex: 0 0 21px;
   }
@@ -45,6 +65,33 @@ export const Statistic = styled(StatisticComponent)`
     text-align: right;
     flex: 1 0 auto;
     color: ${(props) => props.theme.palette.primary};
+  }
+`;
+
+export const BootyStatistic = styled(BootyComponent)`
+  display: flex;
+  flex-wrap: wrap;
+  .performance-icon {
+    flex: 0 0 21px;
+  }
+  .performance-text {
+    flex: 1 1 auto;
+  }
+  .performance-val {
+    text-align: right;
+    flex: 1 0 100%;
+    color: ${(props) => props.theme.palette.primary};
+    .booty {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      p {
+        margin-left: 37px;
+      }
+      strong {
+        text-align: right;
+      }
+    }
   }
 `;
 
