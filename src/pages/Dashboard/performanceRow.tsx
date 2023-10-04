@@ -52,11 +52,13 @@ const GoToBlockComponent = ({ item, className }: PerformanceRowProps) => {
   );
 };
 
+const iconWidth = "21px";
+
 export const Statistic = styled(StatisticComponent)`
   display: flex;
   flex-wrap: wrap;
   .performance-icon {
-    flex: 0 0 21px;
+    flex: 0 0 ${iconWidth};
   }
   .performance-text {
     flex: 1 1 auto;
@@ -67,12 +69,11 @@ export const Statistic = styled(StatisticComponent)`
     color: ${(props) => props.theme.palette.primary};
   }
 `;
-
 export const BootyStatistic = styled(BootyComponent)`
   display: flex;
   flex-wrap: wrap;
   .performance-icon {
-    flex: 0 0 21px;
+    flex: 0 0 ${iconWidth};
   }
   .performance-text {
     flex: 1 1 auto;
@@ -84,9 +85,13 @@ export const BootyStatistic = styled(BootyComponent)`
     .booty {
       display: flex;
       justify-content: space-between;
+      gap: ${(props) => props.theme.grid.sizes[2]};
       width: 100%;
       p {
-        margin-left: 37px;
+        text-align: left;
+        margin-left: calc(
+          ${(props) => props.theme.grid.sizes[3]} + ${iconWidth}
+        );
       }
       strong {
         text-align: right;

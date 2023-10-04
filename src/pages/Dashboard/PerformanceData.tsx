@@ -135,11 +135,15 @@ const PerformanceData = () => {
       icon: <CashCoin size={"21"} className={"aq-text-success"} />,
       text: t("Received booty"),
       net: (
-        <div className="booty">
+        <div className="booty" data-qa="booty-received-net">
           <p>{t("Net received")}</p> {bootyDataNet}
         </div>
       ),
-      gross: bootyDataGross ? `${t("Gross")} ${bootyDataGross}` : null,
+      gross: bootyDataGross ? (
+        <span data-qa="booty-received-gross">
+          {t("Gross")} {bootyDataGross}
+        </span>
+      ) : null,
       booty: true,
     },
     {
@@ -150,13 +154,15 @@ const PerformanceData = () => {
       ),
       text: t("Available booty"),
       net: (
-        <div className="booty">
+        <div className="booty" data-qa="pending-booty-net">
           <p>{t("Amount to get")}</p> {pendingBootyDataNet}
         </div>
       ),
-      gross: pendingBootyDataGross
-        ? `${t("Gross")} ${pendingBootyDataGross}`
-        : null,
+      gross: pendingBootyDataGross ? (
+        <span data-qa="pending-booty-gross">
+          {t("Gross")} {pendingBootyDataGross}
+        </span>
+      ) : null,
     },
     {
       icon: <ArrowRight size={"21"} />,

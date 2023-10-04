@@ -20,5 +20,7 @@ export default defineConfig({
     video: false,
     screenshotOnRunFailure: false,
     testIsolation: true,
+    viewportHeight: 768,
+    viewportWidth: 1366,
   },
 });
