@@ -136,12 +136,13 @@ const PerformanceData = () => {
       text: t("Received booty"),
       net: (
         <div className="booty" data-qa="booty-received-net">
-          <p>{t("Net received")}</p> {bootyDataNet}
+          <p>{allBooty?.net ? t("Net received") : t("Gross")}</p> {bootyDataNet}
         </div>
       ),
       gross: bootyDataGross ? (
         <span data-qa="booty-received-gross">
-          {t("Gross")} {bootyDataGross}
+          {t("Gross")}
+          {bootyDataGross}
         </span>
       ) : null,
       booty: true,
@@ -155,7 +156,8 @@ const PerformanceData = () => {
       text: t("Available booty"),
       net: (
         <div className="booty" data-qa="pending-booty-net">
-          <p>{t("Amount to get")}</p> {pendingBootyDataNet}
+          <p>{pendingBooty?.net ? t("Amount to get") : t("Gross")}</p>{" "}
+          {pendingBootyDataNet}
         </div>
       ),
       gross: pendingBootyDataGross ? (
