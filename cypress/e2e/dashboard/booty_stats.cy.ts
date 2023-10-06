@@ -34,26 +34,30 @@ describe("The dahsboard statistics card", () => {
   });
   it("should display both net and gross values if API response has net value", () => {
     cy.fixture("users/me/_get/200_dashboard_fields_net").then((response) => {
-      cy.dataQa("booty-received-net").contains(
-        `${getCurrencySymbol(response.booty.net.currency)}${
-          response.booty.net.value
-        }`
-      );
-      cy.dataQa("booty-received-gross").contains(
-        `Gross ${getCurrencySymbol(response.booty.gross.currency)}${
-          response.booty.gross.value
-        }`
-      );
-      cy.dataQa("pending-booty-net").contains(
-        `${getCurrencySymbol(response.pending_booty.net.currency)}${
-          response.pending_booty.net.value
-        }`
-      );
-      cy.dataQa("pending-booty-gross").contains(
-        `Gross ${getCurrencySymbol(response.pending_booty.gross.currency)}${
-          response.pending_booty.gross.value
-        }`
-      );
+      cy.dataQa("received-booty").within(() => {
+        cy.dataQa("net-booty").contains(
+          `${getCurrencySymbol(response.booty.net.currency)}${
+            response.booty.net.value
+          }`
+        );
+        cy.dataQa("gross-booty").contains(
+          `Gross ${getCurrencySymbol(response.booty.gross.currency)}${
+            response.booty.gross.value
+          }`
+        );
+      });
+      cy.dataQa("pending-booty").within(() => {
+        cy.dataQa("net-booty").contains(
+          `${getCurrencySymbol(response.pending_booty.net.currency)}${
+            response.pending_booty.net.value
+          }`
+        );
+        cy.dataQa("gross-booty").contains(
+          `Gross ${getCurrencySymbol(response.pending_booty.gross.currency)}${
+            response.pending_booty.gross.value
+          }`
+        );
+      });
     });
   });
 });
@@ -92,18 +96,22 @@ describe("The dahsboard statistics card", () => {
   it("should display only gross value if API response does not have net value", () => {
     cy.fixture("users/me/_get/200_dashboard_fields_gross_only").then(
       (response) => {
-        cy.dataQa("booty-received-net").contains(
-          `${getCurrencySymbol(response.booty.gross.currency)}${
-            response.booty.gross.value
-          }`
-        );
-        cy.dataQa("booty-received-gross").should("not.exist");
-        cy.dataQa("pending-booty-net").contains(
-          `${getCurrencySymbol(response.pending_booty.gross.currency)}${
-            response.pending_booty.gross.value
-          }`
-        );
-        cy.dataQa("pending-booty-gross").should("not.exist");
+        cy.dataQa("received-booty").within(() => {
+          cy.dataQa("gross-booty").contains(
+            `${getCurrencySymbol(response.booty.gross.currency)}${
+              response.booty.gross.value
+            }`
+          );
+          cy.dataQa("net-booty").should("not.exist");
+        });
+        cy.dataQa("pending-booty").within(() => {
+          cy.dataQa("gross-booty").contains(
+            `${getCurrencySymbol(response.pending_booty.gross.currency)}${
+              response.pending_booty.gross.value
+            }`
+          );
+          cy.dataQa("net-booty").should("not.exist");
+        });
       }
     );
   });

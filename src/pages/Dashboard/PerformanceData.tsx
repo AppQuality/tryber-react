@@ -43,29 +43,32 @@ const PerformanceData = () => {
     (state: GeneralState) => state.ranking,
     shallowEqual
   );
-  const BootyComponent = ({ booty }: { booty: typeof allBooty }) => {
+  const BootyComponent = ({ booty, ...props }: { booty: typeof allBooty }) => {
     if (!booty) return <span>-</span>;
-    if (booty.net)
-      return (
-        <>
-          <strong data-qa="booty-received-net" className="booty">
-            <span className="left">{t("Net received")}</span>
-            <span className="right">
-              {`${getCurrencySymbol(booty.net.currency)}${booty.net.value}`}
-            </span>
-          </strong>
-          <span data-qa="booty-received-gross">
-            ({t("Gross")}{" "}
-            {`${getCurrencySymbol(booty.gross.currency)}${booty.gross.value}`})
-          </span>
-        </>
-      );
     return (
-      <div className="booty" data-qa="booty-received-gross">
-        <strong className="left">{t("Gross")}</strong>
-        <strong className="right">
-          {`${getCurrencySymbol(booty.gross.currency)}${booty.gross.value}`}
-        </strong>
+      <div {...props}>
+        {booty.net ? (
+          <>
+            <strong className="booty" data-qa="net-booty">
+              <span className="left">{t("Net received")}</span>
+              <span className="right">
+                {`${getCurrencySymbol(booty.net.currency)}${booty.net.value}`}
+              </span>
+            </strong>
+            <span data-qa="gross-booty">
+              ({t("Gross")}{" "}
+              {`${getCurrencySymbol(booty.gross.currency)}${booty.gross.value}`}
+              )
+            </span>
+          </>
+        ) : (
+          <div className="booty" data-qa="gross-booty">
+            <strong className="left">{t("Gross")}</strong>
+            <strong className="right">
+              {`${getCurrencySymbol(booty.gross.currency)}${booty.gross.value}`}
+            </strong>
+          </div>
+        )}
       </div>
     );
   };
@@ -92,9 +95,9 @@ const PerformanceData = () => {
               summary.level.id === 0
                 ? summary.level.name
                 : t(
-                    "level {{level}}:::__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20",
+                    "level {{ level }}:::__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20",
                     {
-                      defaultValue: "Level {{level}}",
+                      defaultValue: "Level {{ level }}",
                       level: summary?.level.name,
                     }
                   ),
@@ -135,7 +138,7 @@ const PerformanceData = () => {
     {
       icon: <CashCoin size={"21"} className={"aq-text-success"} />,
       text: t("Received booty"),
-      booty: <BootyComponent booty={allBooty} />,
+      booty: <BootyComponent booty={allBooty} data-qa="received-booty" />,
     },
     {
       icon: (
@@ -144,7 +147,7 @@ const PerformanceData = () => {
         </StyledIcon>
       ),
       text: t("Available booty"),
-      booty: <BootyComponent booty={pendingBooty} />,
+      booty: <BootyComponent booty={pendingBooty} data-qa="pending-booty" />,
     },
     {
       icon: <ArrowRight size={"21"} />,
