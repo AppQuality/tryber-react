@@ -10,7 +10,7 @@ import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import styled from "styled-components";
 import { Level } from "../Ranking/Level";
 import usePerformance from "./effects/usePerformance";
-import { BootyStatistic, GoToBlock, Statistic } from "./performanceRow";
+import { GoToBlock, Statistic } from "./performanceRow";
 import getCurrencySymbol from "src/utils/getCurrencySymbol";
 
 const StyledIcon = styled.div`
@@ -43,31 +43,32 @@ const PerformanceData = () => {
     (state: GeneralState) => state.ranking,
     shallowEqual
   );
-  const bootyDataNet = allBooty
-    ? allBooty.net
-      ? `${getCurrencySymbol(allBooty.net.currency)}${allBooty.net.value}`
-      : `${getCurrencySymbol(allBooty.gross.currency)}${allBooty.gross.value}`
-    : undefined;
-
-  const pendingBootyDataNet = pendingBooty
-    ? pendingBooty.net
-      ? `${getCurrencySymbol(pendingBooty.net.currency)}${
-          pendingBooty.net.value
-        }`
-      : `${getCurrencySymbol(pendingBooty.gross.currency)}${
-          pendingBooty.gross.value
-        }`
-    : undefined;
-  const bootyDataGross =
-    allBooty && allBooty.net
-      ? `${getCurrencySymbol(allBooty.gross.currency)}${allBooty.gross.value}`
-      : undefined;
-  const pendingBootyDataGross =
-    pendingBooty && pendingBooty.net
-      ? `${getCurrencySymbol(pendingBooty.gross.currency)}${
-          pendingBooty.gross.value
-        }`
-      : undefined;
+  const BootyComponent = ({ booty }: { booty: typeof allBooty }) => {
+    if (!booty) return <span>-</span>;
+    if (booty.net)
+      return (
+        <>
+          <strong data-qa="booty-received-net" className="booty">
+            <span className="left">{t("Net received")}</span>
+            <span className="right">
+              {`${getCurrencySymbol(booty.net.currency)}${booty.net.value}`}
+            </span>
+          </strong>
+          <span data-qa="booty-received-gross">
+            ({t("Gross")}{" "}
+            {`${getCurrencySymbol(booty.gross.currency)}${booty.gross.value}`})
+          </span>
+        </>
+      );
+    return (
+      <div className="booty" data-qa="booty-received-gross">
+        <strong className="left">{t("Gross")}</strong>
+        <strong className="right">
+          {`${getCurrencySymbol(booty.gross.currency)}${booty.gross.value}`}
+        </strong>
+      </div>
+    );
+  };
   const performanceData = [
     {
       icon: <StarFill size={"21"} className={"aq-text-warningVariant"} />,
@@ -134,18 +135,7 @@ const PerformanceData = () => {
     {
       icon: <CashCoin size={"21"} className={"aq-text-success"} />,
       text: t("Received booty"),
-      net: (
-        <div className="booty" data-qa="booty-received-net">
-          <p>{allBooty?.net ? t("Net received") : t("Gross")}</p> {bootyDataNet}
-        </div>
-      ),
-      gross: bootyDataGross ? (
-        <span data-qa="booty-received-gross">
-          {t("Gross")}
-          {bootyDataGross}
-        </span>
-      ) : null,
-      booty: true,
+      booty: <BootyComponent booty={allBooty} />,
     },
     {
       icon: (
@@ -154,17 +144,7 @@ const PerformanceData = () => {
         </StyledIcon>
       ),
       text: t("Available booty"),
-      net: (
-        <div className="booty" data-qa="pending-booty-net">
-          <p>{pendingBooty?.net ? t("Amount to get") : t("Gross")}</p>{" "}
-          {pendingBootyDataNet}
-        </div>
-      ),
-      gross: pendingBootyDataGross ? (
-        <span data-qa="pending-booty-gross">
-          {t("Gross")} {pendingBootyDataGross}
-        </span>
-      ) : null,
+      booty: <BootyComponent booty={pendingBooty} />,
     },
     {
       icon: <ArrowRight size={"21"} />,
@@ -188,15 +168,13 @@ const PerformanceData = () => {
   }
   return (
     <div>
-      {performanceData.map((item, index) =>
-        item.link ? (
+      {performanceData.map((item, index) => {
+        return item.link ? (
           <GoToBlock item={item} key={index} />
-        ) : item.net ? (
-          <BootyStatistic item={item} key={index} />
         ) : (
-          <Statistic item={item} key={index} />
-        )
-      )}
+          <Statistic item={item} key={index} hasSecondRow={!!item.booty} />
+        );
+      })}
     </div>
   );
 };
