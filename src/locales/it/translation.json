@@ -673,11 +673,11 @@
   "let's see what tryber you are with the <entry_test_link>entry test</entry_test_link>": {
     "__RANKING_PROGRESS_NOLEVEL_MAX: 60": "Facci vedere subito che Tryber sei con l'<entry_test_link>Entry Test</entry_test_link>!"
   },
+  "level {{ level }}": {
+    "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Level {{ level }}"
+  },
   "level {{levelName}}": {
     "__RANKING_NAME_LEVEL_MAX:25": "Livello {{levelName}}"
-  },
-  "level {{level}}": {
-    "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Livello {{level}}"
   },
   "login": "accedi",
   "login with your credentials": "accedi con le tue credenziali",
@@ -704,6 +704,9 @@
   "{{num}} uploaded": {
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
+  },
+  "level {{level}}": {
+    "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Livello {{level}}"
   },
   "Amount": "Importo",
   "Total booty": "Guadagni totali",
