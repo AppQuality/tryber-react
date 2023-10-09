@@ -4,10 +4,6 @@ export const initialState: WalletState = {
       value: 0,
       currency: "EUR",
     },
-    net: {
-      value: 0,
-      currency: "EUR",
-    },
   },
   requestsList: {
     start: 0,
