@@ -1,6 +1,6 @@
-import { Card, Text, Title } from '@appquality/appquality-design-system';
-import { useTranslation } from 'react-i18next';
-import { shallowEqual, useSelector } from 'react-redux';
+import { Card, Text, Title } from "@appquality/appquality-design-system";
+import { useTranslation } from "react-i18next";
+import { shallowEqual, useSelector } from "react-redux";
 
 export const FiscalProfileReport = () => {
   const fiscalData = useSelector(
@@ -39,12 +39,18 @@ const EmptyFiscalProfile = () => {
 const UnVerifiedFiscalProfile = () => {
   const { t } = useTranslation();
   return (
-    <Card className="stick-to-header-lg aq-mb-3" shadow={true}>
+    <Card
+      data-qa="fiscal-profile-state"
+      className="stick-to-header-lg aq-mb-3"
+      shadow={true}
+    >
       <Title size="xs" className="aq-mb-2">
         {t("Status of user fiscal profile:::Fiscal Profile Report")}
       </Title>
       <Text variant={false} color="warning">
-        <strong>{t("Invalid fiscal profile")}</strong>
+        <strong data-qa="invalid-fiscal-profile">
+          {t("Invalid fiscal profile")}
+        </strong>
       </Text>
       <Text className="aq-mb-3">
         {t("We couldn't validate your tax id.")}
