@@ -56,9 +56,7 @@ describe("tab fiscal profile", () => {
 
     cy.get("#name").clear();
     cy.get("#name").type("string edited");
-    cy.dataQa("submit-base-info-cta").click();
-    // forst click does not trigger anything!!
-    cy.dataQa("submit-base-info-cta").click();
+    cy.dataQa("submit-base-info-cta").trigger("click");
     cy.wait(1000).then(() => expect(spy).not.to.have.been.called);
     cy.dataQa("invalid-fiscal-profile").should("not.exist");
   });
