@@ -2103,7 +2103,7 @@ export type GetUsersMeFiscalApiResponse = /** status 200 OK */ {
     streetNumber?: string;
     cityCode: string;
   };
-  type: FiscalType;
+  type: FiscalType | "internal";
   birthPlace: {
     city?: string;
     province?: string;
