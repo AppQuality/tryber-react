@@ -18,7 +18,7 @@ describe("The dahsboard statistics card", () => {
     }).as("userMeRank");
     cy.intercept("GET", `${Cypress.env("REACT_APP_API_URL")}/users/me/popups`, {
       statusCode: 200,
-      fixture: "popups/_get/404_no_popups_found.json",
+      fixture: "popups/_get/404_not-found.json",
     }).as("popups");
     cy.intercept(
       "GET",
@@ -79,7 +79,7 @@ describe("The dahsboard statistics card", () => {
     }).as("userMeRank");
     cy.intercept("GET", `${Cypress.env("REACT_APP_API_URL")}/users/me/popups`, {
       statusCode: 200,
-      fixture: "popups/_get/404_no_popups_found.json",
+      fixture: "popups/_get/404_not-found.json",
     }).as("popups");
     cy.intercept(
       "GET",

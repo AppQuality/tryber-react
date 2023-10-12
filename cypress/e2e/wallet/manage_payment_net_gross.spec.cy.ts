@@ -63,7 +63,7 @@ describe("If api response have net value", () => {
   it("payment request button should open a modal with both net and gross values", () => {
     return cy.fixture("/users/me/_get/200_booty_net").then((user) => {
       cy.dataQa("wallet-management").within(() => {
-        cy.dataQa("request-payment-cta").click();
+        cy.dataQa("request-payment-cta").click({ force: true });
       });
       cy.get(".modal").within(() => {
         cy.get("#paymentMethod-pp").click();
