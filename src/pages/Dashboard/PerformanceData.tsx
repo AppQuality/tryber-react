@@ -7,11 +7,11 @@ import i18n from "i18next";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
+import getCurrencySymbol from "src/utils/getCurrencySymbol";
 import styled from "styled-components";
 import { Level } from "../Ranking/Level";
 import usePerformance from "./effects/usePerformance";
 import { GoToBlock, Statistic } from "./performanceRow";
-import getCurrencySymbol from "src/utils/getCurrencySymbol";
 
 const StyledIcon = styled.div`
   .dark-disabled-font {
@@ -43,27 +43,34 @@ const PerformanceData = () => {
     (state: GeneralState) => state.ranking,
     shallowEqual
   );
-  const BootyComponent = ({ booty, ...props }: { booty: typeof allBooty }) => {
+  const BootyComponent = ({
+    booty,
+    i18n,
+    ...props
+  }: {
+    booty: typeof allBooty;
+    i18n: { net: string; gross: string };
+  }) => {
     if (!booty) return <span>-</span>;
     return (
       <div {...props}>
         {booty.net ? (
           <>
             <strong className="booty" data-qa="net-booty">
-              <span className="left">{t("Net received")}</span>
+              <span className="left">{i18n.net}</span>
               <span className="right">
                 {`${getCurrencySymbol(booty.net.currency)}${booty.net.value}`}
               </span>
             </strong>
             <span data-qa="gross-booty">
-              ({t("Gross")}{" "}
+              ({i18n.gross}{" "}
               {`${getCurrencySymbol(booty.gross.currency)}${booty.gross.value}`}
               )
             </span>
           </>
         ) : (
           <div className="booty" data-qa="gross-booty">
-            <strong className="left">{t("Gross")}</strong>
+            <strong className="left">{i18n.gross}</strong>
             <strong className="right">
               {`${getCurrencySymbol(booty.gross.currency)}${booty.gross.value}`}
             </strong>
@@ -138,7 +145,13 @@ const PerformanceData = () => {
     {
       icon: <CashCoin size={"21"} className={"aq-text-success"} />,
       text: t("Received booty"),
-      booty: <BootyComponent booty={allBooty} data-qa="received-booty" />,
+      booty: (
+        <BootyComponent
+          i18n={{ net: t("Net received"), gross: t("Gross") }}
+          booty={allBooty}
+          data-qa="received-booty"
+        />
+      ),
     },
     {
       icon: (
@@ -147,7 +160,13 @@ const PerformanceData = () => {
         </StyledIcon>
       ),
       text: t("Available booty"),
-      booty: <BootyComponent booty={pendingBooty} data-qa="pending-booty" />,
+      booty: (
+        <BootyComponent
+          i18n={{ net: t("Amount to get"), gross: t("Gross") }}
+          booty={pendingBooty}
+          data-qa="pending-booty"
+        />
+      ),
     },
     {
       icon: <ArrowRight size={"21"} />,
