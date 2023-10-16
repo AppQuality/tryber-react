@@ -162,7 +162,7 @@ const PerformanceData = () => {
       text: t("Available booty"),
       booty: (
         <BootyComponent
-          i18n={{ net: t("Net to be received"), gross: t("Gross") }}
+          i18n={{ net: t("Amount to get"), gross: t("Gross") }}
           booty={pendingBooty}
           data-qa="pending-booty"
         />

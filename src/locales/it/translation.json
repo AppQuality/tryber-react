@@ -322,7 +322,6 @@
   "Name": "Nome",
   "Net receivable": "Netto",
   "Net received": "Netto ricevuto",
-  "Net to be received": "",
   "New password": "Nuova password",
   "Next": "Continua",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "Nessuna campagna è stata ancora conclusa. È arrivato il momento di mettersi al lavoro: termina quelle attive o candidati nelle Campagne disponibili!",
@@ -706,6 +705,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Net to be received": "",
   "level {{level}}": {
     "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Livello {{level}}"
   },
