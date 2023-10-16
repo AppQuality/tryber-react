@@ -51,15 +51,15 @@ export const paymentDetailsColumns = (
       },
     },
     {
-      title: t("Amount"),
-      dataIndex: "amount",
+      title: t("Amount gross"),
+      dataIndex: "gross",
       role: "cta",
-      key: "amount",
+      key: "gross",
       hideIndex: true,
       isSortable: true,
       onSort: (newOrder) => {
         setIsLoading(true);
-        dispatch(updateDetailsSortingOptions(id, newOrder, "amount")).then(() =>
+        dispatch(updateDetailsSortingOptions(id, newOrder, "gross")).then(() =>
           setIsLoading(false)
         );
       },

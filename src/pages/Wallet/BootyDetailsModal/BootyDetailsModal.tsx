@@ -49,10 +49,18 @@ export const BootyDetailsModal = () => {
       setRows(
         results?.map((r) => {
           const formattedAmount = `${
-            r.amount.currency && r.amount.currency in currencyTable
-              ? currencyTable[r.amount.currency]
-              : r.amount.currency
-          } ${r.amount.value?.toFixed(2)}`;
+            r.amount.net?.currency && r.amount.net?.currency in currencyTable
+              ? currencyTable[r.amount.net?.currency]
+              : r.amount.net?.currency
+          } ${r.amount.net?.value?.toFixed(2)}`;
+
+          const formattedAmountGross = `${
+            r.amount.gross?.currency &&
+            r.amount.gross?.currency in currencyTable
+              ? currencyTable[r.amount.gross.currency]
+              : r.amount.gross?.currency
+          } ${r.amount.gross?.value?.toFixed(2)}`;
+
           return {
             key: r.id,
             activityName: {
@@ -63,12 +71,28 @@ export const BootyDetailsModal = () => {
                 </Text>
               ),
             },
+            activityType: {
+              title: r.activity,
+              content: (
+                <Text as="div" style={activityStyle}>
+                  <b className="aq-text-primary">{r.activity}</b>
+                </Text>
+              ),
+            },
             attributionDate: getPaidDate(r.attributionDate),
-            amount: {
+            net: {
               title: formattedAmount,
               content: (
                 <Text className="aq-text-success ">
                   <b>{formattedAmount}</b>
+                </Text>
+              ),
+            },
+            gross: {
+              title: formattedAmountGross,
+              content: (
+                <Text className="aq-text-success ">
+                  <b>{formattedAmountGross}</b>
                 </Text>
               ),
             },

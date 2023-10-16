@@ -13,7 +13,7 @@ export const bootyDetailsColumns = (
       title: t("Activity name"),
       dataIndex: "activityName",
       key: "activityName",
-      maxWidth: "36em",
+      maxWidth: "26em",
       role: "title",
       hideIndex: true,
       isSortable: true,
@@ -22,6 +22,20 @@ export const bootyDetailsColumns = (
         dispatch(
           updateBootyDetailsSortingOptions(newOrder, "activityName")
         ).then(() => setIsLoading(false));
+      },
+    },
+    {
+      title: t("Activity"),
+      dataIndex: "activityType",
+      key: "activityType",
+      maxWidth: "10em",
+      hideIndex: true,
+      isSortable: true,
+      onSort: (newOrder) => {
+        setIsLoading(true);
+        dispatch(updateBootyDetailsSortingOptions(newOrder, "activity")).then(
+          () => setIsLoading(false)
+        );
       },
     },
     {
@@ -37,16 +51,16 @@ export const bootyDetailsColumns = (
       },
     },
     {
-      title: t("Amount"),
-      dataIndex: "amount",
-      role: "cta",
-      key: "amount",
-      hideIndex: true,
+      title: t("Amount gross"),
+      dataIndex: "gross",
+      key: "gross",
       isSortable: true,
+      role: "cta",
+      hideIndex: true,
       onSort: (newOrder) => {
         setIsLoading(true);
-        dispatch(updateBootyDetailsSortingOptions(newOrder, "amount")).then(
-          () => setIsLoading(false)
+        dispatch(updateBootyDetailsSortingOptions(newOrder, "gross")).then(() =>
+          setIsLoading(false)
         );
       },
     },

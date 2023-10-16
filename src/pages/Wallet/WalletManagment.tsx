@@ -10,6 +10,7 @@ import {
   setBootyDetailsModalOpen,
   setPaymentModalOpen,
 } from "src/redux/wallet/actionCreator";
+import getCurrencySymbol from "src/utils/getCurrencySymbol";
 import localizedUrl from "src/utils/localizedUrl";
 import styled from "styled-components";
 
@@ -76,7 +77,7 @@ export const WalletManagment = () => {
         />
       );
     }
-    if (booty.amount === 0) {
+    if (booty.net?.value === 0) {
       return (
         <Trans i18nKey={"__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150"} />
       );
@@ -131,6 +132,7 @@ export const WalletManagment = () => {
       className="aq-mb-3"
       title={t("__WALLET_CARD-REQUEST_TITLE MAX: 40")}
       shadow
+      data-qa="wallet-management"
     >
       <WalletManagmentRow>
         <div className="wallet-amount-container">
@@ -139,28 +141,45 @@ export const WalletManagment = () => {
             <Text>{t("__WALLET_CARD-YOUR_WALLET_MAX: 15")}</Text>
             <Text
               className={
-                !isVerified || booty.amount === 0 || paymentInProcessing
+                !isVerified || booty.net?.value === 0 || paymentInProcessing
                   ? "aq-text-disabled-dark"
                   : "aq-text-primary"
               }
             >
-              <strong>{booty.amount?.toFixed(2)}€</strong>
+              <div>
+                <strong>
+                  {booty.net ? (
+                    <span data-qa="net-booty">
+                      {t("Amount to get")} {booty.net.value.toFixed(2)}
+                      {getCurrencySymbol(booty.net.currency)}
+                    </span>
+                  ) : (
+                    <span data-qa="gross-booty">
+                      {t("Gross")} {booty.gross.value.toFixed(2)}
+                      {getCurrencySymbol(booty.gross.currency)}
+                    </span>
+                  )}
+                </strong>
+              </div>
+              {booty.net && (
+                <div data-qa="gross-booty">
+                  ({t("Gross")} {booty.gross.value.toFixed(2)}
+                  {getCurrencySymbol(booty.gross.currency)})
+                </div>
+              )}
             </Text>
           </div>
         </div>
         <Button
-          className={
-            booty.amount === 0 ? "aq-text-disabled-dark cursor-default" : ""
-          }
           type="link"
-          onClick={() =>
-            booty.amount > 0 && dispatch(setBootyDetailsModalOpen(true))
-          }
+          data-qa="booty-details-cta"
+          onClick={() => dispatch(setBootyDetailsModalOpen(true))}
         >
           {t("__WALLET_CARD-REQUEST_CTA-LINK MAX: 15")}
         </Button>
       </WalletManagmentRow>
       <Button
+        data-qa="request-payment-cta"
         className="aq-mt-3"
         type="primary"
         size="block"

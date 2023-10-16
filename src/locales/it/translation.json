@@ -67,7 +67,8 @@
   "All your certifications were successfully removed": "Tutte le tue certificazioni sono state rimosse con successo",
   "All_female": "Tutte",
   "All_male": "Tutti",
-  "Amount": "Importo",
+  "Amount gross": "Tot. Lordo",
+  "Amount to get": "Netto da ricevere",
   "Annual witholding < 5000€": "Trattenuta annua < 5000€",
   "Annual witholding > 5000": "Trattenuta annua > 5000€",
   "Apply now": "Candidati",
@@ -266,6 +267,8 @@
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
     "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Grande, il prossimo mese sarai {{level}}!<br></br>Dai il tuo meglio e conquista {{nextLevel}}!"
   },
+  "Gross": "Lordo",
+  "Gross amount": "Lordo",
   "Have fun!": "Ricordati di divertirti!",
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Ecco la lista dei tuoi dispositivi. Assicurati di tenerla sempre aggiornata per aumentare le possibilità di essere selezionat* nei prossimi progetti.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Qui puoi solo cambiare la versione del tuo sistema operativo. Se vuoi aggiungere un altro dispositivo clicca su \"Aggiungi dispositivo\"",
@@ -317,6 +320,8 @@
   "Must contain at least a number": "Deve contenere almeno un numero",
   "Must contain at least an uppercase letter": "Deve contenere almeno una lettera maiuscola",
   "Name": "Nome",
+  "Net receivable": "Netto",
+  "Net received": "Netto ricevuto",
   "New password": "Nuova password",
   "Next": "Continua",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "Nessuna campagna è stata ancora conclusa. È arrivato il momento di mettersi al lavoro: termina quelle attive o candidati nelle Campagne disponibili!",
@@ -441,7 +446,6 @@
   "Top 3 | level {{level}}": {
     "__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25": "Top 3 | Livello {{level}}"
   },
-  "Total booty": "Guadagni totali",
   "Try again.": "Riprova",
   "Type": "Tipo",
   "Type to search your city": "Digita per cercare la tua città",
@@ -669,11 +673,11 @@
   "let's see what tryber you are with the <entry_test_link>entry test</entry_test_link>": {
     "__RANKING_PROGRESS_NOLEVEL_MAX: 60": "Facci vedere subito che Tryber sei con l'<entry_test_link>Entry Test</entry_test_link>!"
   },
+  "level {{ level }}": {
+    "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Level {{ level }}"
+  },
   "level {{levelName}}": {
     "__RANKING_NAME_LEVEL_MAX:25": "Livello {{levelName}}"
-  },
-  "level {{level}}": {
-    "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Livello {{level}}"
   },
   "login": "accedi",
   "login with your credentials": "accedi con le tue credenziali",
@@ -701,6 +705,11 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "level {{level}}": {
+    "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Livello {{level}}"
+  },
+  "Amount": "Importo",
+  "Total booty": "Guadagni totali",
   "Home": "Home",
   "Loading": "Caricamento in corso...",
   "Redirecting to your dashboard...": "Reindirizzamento alla dashboard in corso ...",

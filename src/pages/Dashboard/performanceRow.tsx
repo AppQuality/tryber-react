@@ -9,6 +9,7 @@ interface PerformanceRowProps extends BaseProps {
     text: React.ReactNode;
     val?: React.ReactNode;
     link?: string;
+    booty?: React.ReactNode;
   };
 }
 
@@ -18,7 +19,7 @@ const StatisticComponent = ({ item, className }: PerformanceRowProps) => {
       {item.icon && <div className="performance-icon aq-mr-3">{item.icon}</div>}
       <Text className="performance-text aq-mr-3">{item.text}</Text>
       <Text className="performance-val">
-        <strong>{item.val}</strong>
+        {item.val ? <strong>{item.val}</strong> : item.booty}
       </Text>
     </div>
   );
@@ -33,18 +34,36 @@ const GoToBlockComponent = ({ item, className }: PerformanceRowProps) => {
   );
 };
 
-export const Statistic = styled(StatisticComponent)`
+const iconWidth = "21px";
+
+export const Statistic = styled(StatisticComponent)<{ hasSecondRow?: boolean }>`
   display: flex;
+  flex-wrap: wrap;
   .performance-icon {
-    flex: 0 0 21px;
+    flex: 0 0 ${iconWidth};
   }
   .performance-text {
     flex: 1 1 auto;
   }
   .performance-val {
     text-align: right;
-    flex: 1 0 auto;
+    flex: ${(props) => (props.hasSecondRow ? "1 0 100%" : "1 0 auto")};
     color: ${(props) => props.theme.palette.primary};
+    .booty {
+      display: flex;
+      justify-content: space-between;
+      gap: ${(props) => props.theme.grid.sizes[2]};
+      width: 100%;
+      .left {
+        text-align: left;
+        margin-left: calc(
+          ${(props) => props.theme.grid.sizes[3]} + ${iconWidth}
+        );
+      }
+      .right {
+        text-align: right;
+      }
+    }
   }
 `;
 

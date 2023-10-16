@@ -1,0 +1,23 @@
+{
+  "results": [
+    {
+      "id": 1,
+      "name": "",
+      "amount": {
+        "net": {
+          "value": 10,
+          "currency": "EUR"
+        },
+        "gross": {
+          "value": 13.5,
+          "currency": "EUR"
+        }
+      },
+      "attributionDate": "2019-08-24"
+    }
+  ],
+  "limit": 10,
+  "size": 1,
+  "start": 0,
+  "total": 1
+}

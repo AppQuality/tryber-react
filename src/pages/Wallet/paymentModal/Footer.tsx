@@ -71,12 +71,13 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
           onClick={onClickBack}
           className="aq-mr-3"
           disabled={isSubmitting}
+          data-qa="payment-modal-back"
         >
           {step === 3 ? t("Back to wallet") : t("Back")}
         </Button>
       )}
       {step < 2 && (
-        <Button flat onClick={incrementStep}>
+        <Button flat onClick={incrementStep} data-qa="payment-modal-next">
           {t("Next")}
         </Button>
       )}
@@ -86,6 +87,7 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
           htmlType="submit"
           disabled={isSubmitting}
           onClick={() => setCompletedSteps([true, true, true])}
+          data-qa="payment-modal-submit"
         >
           {isSubmitting ? t("...wait") : t("Request payment")}
         </Button>
