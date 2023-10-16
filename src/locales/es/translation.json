@@ -68,7 +68,6 @@
   "All_female": "Todas",
   "All_male": "Todos",
   "Amount gross": "Tot. Bruto",
-  "Amount to get": "Neto a recibir",
   "Annual witholding < 5000€": "Deducción anual < 5000€",
   "Annual witholding > 5000": "Deducción anual > 5000",
   "Apply now": "Apúntate ahora",
@@ -320,7 +319,7 @@
   "Must contain at least a number": "Debe contener al menos un número",
   "Must contain at least an uppercase letter": "Debe contener al menos una letra minúscula",
   "Name": "Nombre",
-  "Net receivable": "Neto a recibir",
+  "Net receivable": "Neto por recibir",
   "Net received": "Neto recibido",
   "New password": "Nueva password",
   "Next": "Siguiente",
@@ -705,6 +704,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
+  "Amount to get": "Neto a recibir",
   "level {{level}}": {
     "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Nivel {{level}}"
   },

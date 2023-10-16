@@ -45,11 +45,11 @@ const PerformanceData = () => {
   );
   const BootyComponent = ({
     booty,
-    i18n,
+    title,
     ...props
   }: {
     booty: typeof allBooty;
-    i18n: { net: string; gross: string };
+    title: string;
   }) => {
     if (!booty) return <span>-</span>;
     return (
@@ -57,7 +57,7 @@ const PerformanceData = () => {
         {booty.net ? (
           <>
             <strong className="booty" data-qa="net-booty">
-              <span className="left">{i18n.net}</span>
+              <span className="left">{title}</span>
               <span className="right">
                 {`${getCurrencySymbol(booty.net.currency)}${booty.net.value}`}
               </span>
@@ -147,7 +147,7 @@ const PerformanceData = () => {
       text: t("Received booty"),
       booty: (
         <BootyComponent
-          i18n={{ net: t("Net received"), gross: t("Gross") }}
+          title={t("Net received")}
           booty={allBooty}
           data-qa="received-booty"
         />
@@ -162,7 +162,7 @@ const PerformanceData = () => {
       text: t("Available booty"),
       booty: (
         <BootyComponent
-          i18n={{ net: t("Amount to get"), gross: t("Gross") }}
+          title={t("Net receivable")}
           booty={pendingBooty}
           data-qa="pending-booty"
         />

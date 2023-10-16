@@ -68,7 +68,6 @@
   "All_female": "Tutte",
   "All_male": "Tutti",
   "Amount gross": "Tot. Lordo",
-  "Amount to get": "Netto da ricevere",
   "Annual witholding < 5000€": "Trattenuta annua < 5000€",
   "Annual witholding > 5000": "Trattenuta annua > 5000€",
   "Apply now": "Candidati",
@@ -320,7 +319,7 @@
   "Must contain at least a number": "Deve contenere almeno un numero",
   "Must contain at least an uppercase letter": "Deve contenere almeno una lettera maiuscola",
   "Name": "Nome",
-  "Net receivable": "Netto",
+  "Net receivable": "Netto da ricevere",
   "Net received": "Netto ricevuto",
   "New password": "Nuova password",
   "Next": "Continua",
@@ -705,6 +704,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Amount to get": "Netto da ricevere",
   "level {{level}}": {
     "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Livello {{level}}"
   },

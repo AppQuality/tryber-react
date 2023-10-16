@@ -68,7 +68,6 @@
   "All_female": "All",
   "All_male": "All",
   "Amount gross": "Tot. gross",
-  "Amount to get": "Net to be received",
   "Annual witholding < 5000€": "Annual witholding < 5000€",
   "Annual witholding > 5000": "Annual witholding > 5000",
   "Apply now": "Apply now",
@@ -705,6 +704,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "Amount to get": "Net to be received",
   "level {{level}}": {
     "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "{{level}} level"
   },
