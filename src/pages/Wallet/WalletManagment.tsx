@@ -150,7 +150,7 @@ export const WalletManagment = () => {
                 <strong>
                   {booty.net ? (
                     <span data-qa="net-booty">
-                      {t("Amount to get")} {booty.net.value.toFixed(2)}
+                      {t("Net receivable")} {booty.net.value.toFixed(2)}
                       {getCurrencySymbol(booty.net.currency)}
                     </span>
                   ) : (

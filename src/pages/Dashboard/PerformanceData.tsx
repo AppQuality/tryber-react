@@ -43,14 +43,21 @@ const PerformanceData = () => {
     (state: GeneralState) => state.ranking,
     shallowEqual
   );
-  const BootyComponent = ({ booty, ...props }: { booty: typeof allBooty }) => {
+  const BootyComponent = ({
+    booty,
+    title,
+    ...props
+  }: {
+    booty: typeof allBooty;
+    title: string;
+  }) => {
     if (!booty) return <span>-</span>;
     return (
       <div {...props}>
         {booty.net ? (
           <>
             <strong className="booty" data-qa="net-booty">
-              <span className="left">{t("Net received")}</span>
+              <span className="left">{title}</span>
               <span className="right">
                 {`${getCurrencySymbol(booty.net.currency)}${booty.net.value}`}
               </span>
@@ -138,7 +145,13 @@ const PerformanceData = () => {
     {
       icon: <CashCoin size={"21"} className={"aq-text-success"} />,
       text: t("Received booty"),
-      booty: <BootyComponent booty={allBooty} data-qa="received-booty" />,
+      booty: (
+        <BootyComponent
+          title={t("Net received")}
+          booty={allBooty}
+          data-qa="received-booty"
+        />
+      ),
     },
     {
       icon: (
@@ -147,7 +160,13 @@ const PerformanceData = () => {
         </StyledIcon>
       ),
       text: t("Available booty"),
-      booty: <BootyComponent booty={pendingBooty} data-qa="pending-booty" />,
+      booty: (
+        <BootyComponent
+          title={t("Net receivable")}
+          booty={pendingBooty}
+          data-qa="pending-booty"
+        />
+      ),
     },
     {
       icon: <ArrowRight size={"21"} />,
