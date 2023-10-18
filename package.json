@@ -110,7 +110,7 @@
     "@types/react-select-country-list": "^2.2.0",
     "@types/styled-components": "^5.1.9",
     "@types/uuid": "^8.3.1",
-    "cypress": "^13.2.0",
+    "cypress": "^13.3.1",
     "file-loader": "^6.2.0",
     "husky": "^6.0.0",
     "i18next-scanner": "^3.1.0",
