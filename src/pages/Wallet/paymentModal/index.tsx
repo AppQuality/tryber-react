@@ -12,7 +12,11 @@ const PaymentModal = () => {
   );
   return (
     <div data-qa="payment-modal">
-      {fiscalType === "withholding" || "foreign" ? <Automatic /> : <Manual />}
+      {fiscalType === "withholding" || fiscalType === "non-italian" ? (
+        <Automatic />
+      ) : (
+        <Manual />
+      )}
     </div>
   );
 };
