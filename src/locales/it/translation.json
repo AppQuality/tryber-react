@@ -88,9 +88,6 @@
     "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150": "Useremo i dati presenti nel tuo profilo fiscale per il pagamento. Fai un veloce controllo e aggiornali se necessario.",
     "__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150": "Completa il <fiscal_profile_link>profilo fiscale</fiscal_profile_link> e verifica che i dati siano corretti per poter richiedere il pagamento."
   },
-  "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
-    "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Il tuo regime fiscale non è valido (ad es. sei partita IVA o superi 5.000 lordi € / anno con prestazioni occasionali). <mail_link>Scrivici</mail_link> per richiedere il pagamento."
-  },
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supporta le aziende nella creazione di esperienze memorabili grazie al potere della Community di TRYBER. <unguess_link>Scopri UNGUESS</unguess_link>"
   },
@@ -704,7 +701,9 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
-  "Amount to get": "Netto da ricevere",
+  "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
+    "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Il tuo regime fiscale non è valido (ad es. sei partita IVA o superi 5.000 lordi € / anno con prestazioni occasionali). <mail_link>Scrivici</mail_link> per richiedere il pagamento."
+  },
   "level {{level}}": {
     "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Livello {{level}}"
   },

@@ -88,9 +88,6 @@
     "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150": "We will use the information in your tax profile for the payment. Do a quick check and update them if necessary.",
     "__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150": "Complete your <fiscal_profile_link>tax profile</fiscal_profile_link> and ensure all information is correct in order to request a payment."
   },
-  "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
-    "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Your fiscal type is not valid (e.g. you are VAT registered or you exceed € 5,000 gross / year with occasional services). <mail_link>Write to us</mail_link> to request payment."
-  },
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supports companies in creating memorable experiences thanks to the power of the TRYBER Community. <unguess_link>Discover UNGUESS</unguess_link>"
   },
@@ -704,7 +701,9 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
-  "Amount to get": "Net to be received",
+  "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
+    "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Your fiscal type is not valid (e.g. you are VAT registered or you exceed € 5,000 gross / year with occasional services). <mail_link>Write to us</mail_link> to request payment."
+  },
   "level {{level}}": {
     "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "{{level}} level"
   },
