@@ -1,4 +1,4 @@
-import { Button, CSSGrid } from "@appquality/appquality-design-system";
+import { Button } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { useFormikContext } from "formik";
 import styled from "styled-components";
