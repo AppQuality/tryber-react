@@ -34,7 +34,7 @@ const WalletManagmentRow = styled.div`
 export const WalletManagment = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const { fiscalStatus, fiscalType } = useSelector(
+  const { fiscalStatus } = useSelector(
     (state: GeneralState) => ({
       fiscalStatus: state.user.fiscal.data?.fiscalStatus,
       fiscalType: state.user.fiscal.data?.type,
@@ -52,8 +52,6 @@ export const WalletManagment = () => {
 
   const isVerified = fiscalStatus === "Verified";
   const isValidAmount = booty.bootyThreshold?.isOver;
-  const isValidFiscalType =
-    fiscalType && ["withholding", "non-italian"].includes(fiscalType);
 
   const getInfoText = () => {
     if (paymentInProcessing) {
@@ -80,20 +78,6 @@ export const WalletManagment = () => {
     if (booty.net?.value === 0) {
       return (
         <Trans i18nKey={"__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150"} />
-      );
-    }
-    if (!isValidFiscalType) {
-      return (
-        <Trans
-          i18nKey={
-            "Available tags : <mail_link> (Email link for unsupported fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150"
-          }
-          components={{
-            mail_link: (
-              <a href="mailto:administration@tryber.me" target="_blank" />
-            ),
-          }}
-        />
       );
     }
     if (!isValidAmount) {
@@ -183,12 +167,7 @@ export const WalletManagment = () => {
         className="aq-mt-3"
         type="primary"
         size="block"
-        disabled={
-          !isVerified ||
-          !isValidAmount ||
-          paymentInProcessing ||
-          !isValidFiscalType
-        }
+        disabled={!isVerified || !isValidAmount || paymentInProcessing}
         onClick={openPaymentModal}
         flat
       >

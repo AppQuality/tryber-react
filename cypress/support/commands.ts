@@ -42,9 +42,27 @@ declare global {
         value: string,
         options?: dataQaOptions
       ): Chainable<JQuery<HTMLElement>>;
+      /**
+       * Custom command to login user.
+       * @example cy.loggedIn()
+       */
+      loggedIn();
     }
   }
 }
+
+Cypress.Commands.add("loggedIn", () => {
+  cy.intercept(
+    "GET",
+    `${Cypress.env(
+      "REACT_APP_API_URL"
+    )}/users/me?fields=name%2Csurname%2Cimage%2Conboarding_completed%2Cemail%2Cwp_user_id`,
+    {
+      statusCode: 200,
+      fixture: "users/me/_get/200_Example_1",
+    }
+  ).as("loggedIn");
+});
 
 Cypress.Commands.add("dataQa", (value, options) => {
   return options?.startsWith
