@@ -96,7 +96,7 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
             iban: values.iban,
           };
     try {
-      const results = await API.postPaymentRequest({
+      await API.postPaymentRequest({
         method: method,
       });
       formikHelper.setFieldValue("step", 3);
