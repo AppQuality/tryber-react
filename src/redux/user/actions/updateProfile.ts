@@ -25,6 +25,7 @@ export const updateProfile = (
       }
       if (
         state.user.fiscal.data &&
+        state.user.fiscal.data.type !== "internal" &&
         unverifiedFiscalProfileMessage &&
         verifiedFiscalProfileMessage
       ) {

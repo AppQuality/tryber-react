@@ -117,8 +117,9 @@
     "i18next-scanner-typescript": "^1.0.6",
     "jest-canvas-mock": "^2.4.0",
     "msw": "^0.47.4",
+    "openapi-typescript": "^5.1.1",
     "prettier": "^2.3.1",
     "react-scripts": "4.0.3",
-    "openapi-typescript": "^5.1.1"
+    "start-server-and-test": "^2.0.1"
   }
 }

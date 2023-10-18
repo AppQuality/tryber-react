@@ -19,17 +19,10 @@ type FiscalFormValues = {
   streetNumber?: string; //"1",
   zipCode?: string; //"19017"
   fiscalTypeSelect?:
-    | "withholding"
-    | "witholding-extra"
-    | "vat"
-    | "company"
+    | ApiOperations["get-users-me-fiscal"]["responses"]["200"]["content"]["application/json"]["type"]
     | "";
   type?:
-    | "non-italian"
-    | "withholding"
-    | "witholding-extra"
-    | "vat"
-    | "company"
+    | ApiOperations["get-users-me-fiscal"]["responses"]["200"]["content"]["application/json"]["type"]
     | "";
   birthPlaceId?: string;
   birthPlaceCity?: string;

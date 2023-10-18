@@ -60,7 +60,7 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
   };
   return (
     <CSSGrid gutter="50px" rowGap="0" min="220px">
-      <div>
+      <div data-qa="fiscal-data-show">
         <Title size="xs" className="aq-mb-3">
           {t("Your fiscal data")}
         </Title>
@@ -81,7 +81,7 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
           {dateFormatter(userData.birthDate)}
         </ShowItem>
       </div>
-      <div>
+      <div data-qa="fiscal-data-show">
         <ShowItem Icon={CashCoin} label={t("Fiscal Type")}>
           {fiscalData?.type === "withholding"
             ? t(`Annual witholding < 5000€`)
@@ -89,6 +89,8 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
             ? t("Annual witholding > 5000")
             : fiscalData?.type == "non-italian"
             ? t("Foreign")
+            : fiscalData?.type === "internal"
+            ? "Employee"
             : t("Different rate scheme")}
         </ShowItem>
         <ShowItem
@@ -112,7 +114,14 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
 
         <BSGrid>
           <BSCol size="col-6">
-            <Button size="block" type="primary" flat onClick={handleEditClick}>
+            <Button
+              data-qa="edit-fiscal-data-cta"
+              size="block"
+              type="primary"
+              flat
+              onClick={handleEditClick}
+              disabled={fiscalData?.type === "internal"}
+            >
               {t("Edit")}
             </Button>
           </BSCol>
