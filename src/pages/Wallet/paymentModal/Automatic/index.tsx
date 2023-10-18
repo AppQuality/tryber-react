@@ -47,28 +47,27 @@ const Automatic = () => {
                 />
               }
             >
-              <ModalBody
-                data-qa="payment-request-modal"
-                id="payment-request-modal"
-              >
-                <Steps current={step} className="aq-mb-3">
-                  <Steps.Step
-                    isCompleted={completedSteps[0]}
-                    title={t("Method")}
-                  />
-                  <Steps.Step
-                    isCompleted={completedSteps[1]}
-                    title={t("Data")}
-                  />
-                  <Steps.Step
-                    isCompleted={completedSteps[2]}
-                    title={t("Confirm")}
-                  />
-                </Steps>
-                {step === 0 && <Step0Method />}
-                {step === 1 && <Step1Data />}
-                {step === 2 && <Step2Recap />}
-                {step === 3 && <Step3Feedback />}
+              <ModalBody>
+                <div data-qa="payment-request-modal" id="payment-request-modal">
+                  <Steps current={step} className="aq-mb-3">
+                    <Steps.Step
+                      isCompleted={completedSteps[0]}
+                      title={t("Method")}
+                    />
+                    <Steps.Step
+                      isCompleted={completedSteps[1]}
+                      title={t("Data")}
+                    />
+                    <Steps.Step
+                      isCompleted={completedSteps[2]}
+                      title={t("Confirm")}
+                    />
+                  </Steps>
+                  {step === 0 && <Step0Method />}
+                  {step === 1 && <Step1Data />}
+                  {step === 2 && <Step2Recap />}
+                  {step === 3 && <Step3Feedback />}
+                </div>
               </ModalBody>
             </Modal>
           </form>
