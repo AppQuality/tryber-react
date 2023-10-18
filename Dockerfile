@@ -1,15 +1,16 @@
-FROM alpine:3.14 as base
+FROM node:16.19-alpine3.17 as base
 
-RUN apk add nodejs npm
+
+COPY package.json ./
+COPY yarn.lock ./
 ARG NPM_TOKEN  
 RUN echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
-COPY package*.json ./
-RUN npm install
+RUN ["yarn", "install", "--frozen-lockfile", "--ignore-scripts"]
 RUN rm -f .npmrc
 
 COPY . .
 
-RUN npm run build
+RUN ["yarn", "build"]
 
 FROM alpine:3.14 as web
 
