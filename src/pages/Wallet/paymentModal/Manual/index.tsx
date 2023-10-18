@@ -24,7 +24,6 @@ const Manual = () => {
           <form
             onSubmit={formikProps.handleSubmit}
             onReset={formikProps.handleReset}
-            data-qa="automatic-payment-modal"
           >
             <Modal
               isOpen={isPaymentModalOpen}
@@ -32,11 +31,8 @@ const Manual = () => {
               title={t("Request a payment")}
               footer={"footer"}
             >
-              <ModalBody
-                data-qa="payment-request-modal"
-                id="payment-request-modal"
-              >
-                manual
+              <ModalBody>
+                <div data-qa="manual-payment-modal">manual</div>
               </ModalBody>
             </Modal>
           </form>
