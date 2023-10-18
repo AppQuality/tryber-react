@@ -24,6 +24,8 @@ const rootReducer = combineReducers({
 export function setupStore(preloadedState?: PreloadedState<RootState>) {
   return configureStore({
     reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(tryberApi.middleware),
     preloadedState,
   });
 }
