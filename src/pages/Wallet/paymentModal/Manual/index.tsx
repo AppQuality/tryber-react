@@ -1,21 +1,22 @@
-import { shallowEqual, useSelector } from "react-redux";
 import {
+  Checkbox,
+  Field,
+  FormGroup,
   Formik,
+  FormikField,
   Modal,
   ModalBody,
   Text,
-  Field,
-  FormGroup,
-  Checkbox,
-  FormikField,
 } from "@appquality/appquality-design-system";
-import { setPaymentModalOpen } from "src/redux/wallet/actionCreator";
-import { useAppDispatch } from "src/redux/provider";
-import { Trans, useTranslation } from "react-i18next";
-import * as yup from "yup";
 import { ErrorMessage, FieldProps, FormikHelpers } from "formik";
 import { BaseSyntheticEvent } from "react";
+import { Trans, useTranslation } from "react-i18next";
+import { shallowEqual, useSelector } from "react-redux";
+import { useAppDispatch } from "src/redux/provider";
+import { setPaymentModalOpen } from "src/redux/wallet/actionCreator";
+import * as yup from "yup";
 import { Footer } from "./Footer";
+import { Step0FiscalProfileRecap } from "./Step0FiscalProfileRecap";
 
 const Manual = () => {
   const dispatch = useAppDispatch();
@@ -29,11 +30,13 @@ const Manual = () => {
     termsAcceptance: boolean;
     bankaccountOwner: string;
     iban: string;
+    step: number;
   };
   const initialValues: PaymentFormType = {
     termsAcceptance: false,
     bankaccountOwner: "",
     iban: "",
+    step: 0,
   };
   const validationSchema = yup.object({
     termsAcceptance: yup
@@ -70,6 +73,7 @@ const Manual = () => {
       validationSchema={validationSchema}
     >
       {(formikProps) => {
+        const { step } = formikProps.values;
         const closeModal = () => {
           formikProps.resetForm();
           dispatch(setPaymentModalOpen(false));
@@ -87,64 +91,69 @@ const Manual = () => {
             >
               <ModalBody>
                 <div data-qa="manual-payment-modal">
-                  <Text data-qa="manual-payment-modal-introduction-text">
-                    {t("__MODAL_MANUAL_PAYMENT_INTRODUCTION_TEXT__")}
-                  </Text>
-                  <Field
-                    name="bankaccountOwner"
-                    type="text"
-                    label={t("Account Holder")}
-                    placeholder={t("name")}
-                    data-qa="manual-payment-modal-account-holder"
-                  />
-                  <Field
-                    name="iban"
-                    type="text"
-                    label={t("IBAN")}
-                    placeholder="OT2T26635625325382772"
-                    data-qa="manual-payment-modal-iban"
-                  />
-                  <FormikField name="termsAcceptance" className="aq-mb-3">
-                    {({ field, form, meta }: FieldProps) => {
-                      const onCheckChange = (e: BaseSyntheticEvent) => {
-                        field.onChange(e);
-                        form.setFieldValue(field.name, e.target.checked);
-                      };
-                      return (
-                        <FormGroup data-qa="manual-payment-modal-terms">
-                          <Checkbox
-                            id="termsAcceptance"
-                            name={field.name}
-                            onChange={onCheckChange}
-                            checked={field.value}
-                            label={
-                              <strong className="aq-text-primary">
-                                <Trans
-                                  i18nKey={
-                                    "Accept the <terms_and_conditions_link>conditions</terms_and_conditions_link> before proceeding"
-                                  }
-                                  components={{
-                                    terms_and_conditions_link: (
-                                      <a
-                                        data-qa="manual-payment-modal-terms-and-conditions-link"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        href={t("/payment_conditions", {
-                                          ns: "links",
-                                        })}
-                                      />
-                                    ),
-                                  }}
-                                />
-                              </strong>
-                            }
-                            onBlur={field.onBlur}
-                          />
-                          <ErrorMessage name={field.name} />
-                        </FormGroup>
-                      );
-                    }}
-                  </FormikField>
+                  {step === 0 && <Step0FiscalProfileRecap />}
+                  {step === 1 && (
+                    <div data-qa="manual-payment-modal-step-1">
+                      <Text data-qa="manual-payment-modal-introduction-text">
+                        {t("__MODAL_MANUAL_PAYMENT_INTRODUCTION_TEXT__")}
+                      </Text>
+                      <Field
+                        name="bankaccountOwner"
+                        type="text"
+                        label={t("Account Holder")}
+                        placeholder={t("name")}
+                        data-qa="manual-payment-modal-account-holder"
+                      />
+                      <Field
+                        name="iban"
+                        type="text"
+                        label={t("IBAN")}
+                        placeholder="OT2T26635625325382772"
+                        data-qa="manual-payment-modal-iban"
+                      />
+                      <FormikField name="termsAcceptance" className="aq-mb-3">
+                        {({ field, form, meta }: FieldProps) => {
+                          const onCheckChange = (e: BaseSyntheticEvent) => {
+                            field.onChange(e);
+                            form.setFieldValue(field.name, e.target.checked);
+                          };
+                          return (
+                            <FormGroup data-qa="manual-payment-modal-terms">
+                              <Checkbox
+                                id="termsAcceptance"
+                                name={field.name}
+                                onChange={onCheckChange}
+                                checked={field.value}
+                                label={
+                                  <strong className="aq-text-primary">
+                                    <Trans
+                                      i18nKey={
+                                        "Accept the <terms_and_conditions_link>conditions</terms_and_conditions_link> before proceeding"
+                                      }
+                                      components={{
+                                        terms_and_conditions_link: (
+                                          <a
+                                            data-qa="manual-payment-modal-terms-and-conditions-link"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            href={t("/payment_conditions", {
+                                              ns: "links",
+                                            })}
+                                          />
+                                        ),
+                                      }}
+                                    />
+                                  </strong>
+                                }
+                                onBlur={field.onBlur}
+                              />
+                              <ErrorMessage name={field.name} />
+                            </FormGroup>
+                          );
+                        }}
+                      </FormikField>
+                    </div>
+                  )}
                 </div>
               </ModalBody>
             </Modal>
