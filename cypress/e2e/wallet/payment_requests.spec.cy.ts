@@ -105,7 +105,7 @@ describe("Payment request", () => {
         );
       });
 
-      it("clicking on next button, if the iban field is empty, should print an error under the field", () => {
+      it("in the second step, clicking on next button, if the iban field is empty, should print an error under the field", () => {
         cy.dataQa("request-payment-cta").click();
         cy.dataQa("payment-modal-next").should("be.visible");
         cy.dataQa("payment-modal-next").click();
@@ -120,7 +120,7 @@ describe("Payment request", () => {
         );
       });
 
-      it("clicking on next button, if the terms and condition checkbox is not checked, should print an error under the field", () => {
+      it("in the second step, clicking on next button, if the terms and condition checkbox is not checked, should print an error under the field", () => {
         cy.dataQa("request-payment-cta").click();
         cy.dataQa("payment-modal-next").click();
 
@@ -133,16 +133,16 @@ describe("Payment request", () => {
           "You need to accept terms and conditions"
         );
       });
-      it("clicking on next button, if the name is filled, the iban is filled with a valid iban and the checkbox is checked, should go to the second step", () => {});
+      it("in the second step, clicking on next button, if the name is filled, the iban is filled with a valid iban and the checkbox is checked, should go to the third step", () => {});
 
-      it("in the second step is visible the amount gross, an explanatory text, a button to go back and a button to start the payment process", () => {});
-      it("in the second step if the back button is pressed, should go to the first step", () => {});
-      it("in the second step if the process payment is pressed, should call the POST /users/me/payment with the iban and the account name in the body", () => {});
-      it("in the second step if the process payment is pressed, while the api call is being executed, the process payment button (????and back???) is disabled and there is a loading text", () => {});
+      it("in the third step is visible the amount gross, an explanatory text, a button to go back and a button to start the payment process", () => {});
+      it("in the third step if the back button is pressed, should go to the first step", () => {});
+      it("in the third step if the process payment is pressed, should call the POST /users/me/payment with the iban and the account name in the body", () => {});
+      it("in the third step if the process payment is pressed, while the api call is being executed, the process payment button (????and back???) is disabled and there is a loading text", () => {});
 
-      it("in the second step if the process payment is pressed, if the api call is successful, should show the third step", () => {});
-      it("in the second step if the process payment is pressed, if the api call is not successful, show a toastr and reenable the button", () => {});
-      it("in the third step is visible an explanatory text", () => {});
+      it("in the third step if the process payment is pressed, if the api call is successful, should show the third step", () => {});
+      it("in the third step if the process payment is pressed, if the api call is not successful, show a toastr and reenable the button", () => {});
+      it("in the fourth step is visible an explanatory text", () => {});
       it("if the payment is successful, the table should be refetched (??? too low level ???)", () => {});
     });
   });
