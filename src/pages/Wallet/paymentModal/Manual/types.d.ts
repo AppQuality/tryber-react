@@ -1,4 +1,4 @@
-type PaymentFormType = {
+export type PaymentFormType = {
   termsAcceptance: boolean;
   bankaccountOwner: string;
   iban: string;
