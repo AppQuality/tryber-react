@@ -9,6 +9,7 @@ import FormWrapper from "./FormWrapper";
 import { Step0FiscalProfileRecap } from "./Step0FiscalProfileRecap";
 import { Step1Iban } from "./Step1Iban";
 import { Step2PaymentRequestRecap } from "./Step2PaymentRequestRecap";
+import { Step3Success } from "./Step3Success";
 import { PaymentFormType } from "./types.d";
 
 const Manual = () => {
@@ -43,6 +44,7 @@ const Manual = () => {
                   {step === 0 && <Step0FiscalProfileRecap />}
                   {step === 1 && <Step1Iban />}
                   {step === 2 && <Step2PaymentRequestRecap />}
+                  {step === 3 && <Step3Success />}
                 </div>
               </ModalBody>
             </Modal>
