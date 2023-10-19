@@ -1,16 +1,16 @@
 import {
-  configureStore,
-  combineReducers,
   PreloadedState,
+  combineReducers,
+  configureStore,
 } from "@reduxjs/toolkit";
-import { tryberApi } from "src/services/tryberApi";
-import oldReducers from "src/redux/reducer";
-import bugFormReducer from "src/pages/BugForm/bugFormSlice";
-import previewSelectionFormReducer from "src/pages/PreviewSelectionForm/previewSelectionFormSlice";
-import userDevicesReducer from "src/pages/Devices/userDevicesSlice";
-import publicUserPageReducer from "./redux/publicUserPages";
-import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import bugFormReducer from "src/pages/BugForm/bugFormSlice";
+import userDevicesReducer from "src/pages/Devices/userDevicesSlice";
+import previewSelectionFormReducer from "src/pages/PreviewSelectionForm/previewSelectionFormSlice";
+import oldReducers from "src/redux/reducer";
+import { tryberApi } from "src/services/tryberApi/apiWithTags";
+import publicUserPageReducer from "./redux/publicUserPages";
 
 const rootReducer = combineReducers({
   ...oldReducers,
