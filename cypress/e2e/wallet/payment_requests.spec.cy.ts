@@ -241,8 +241,50 @@ describe("Payment request", () => {
         });
       });
       describe("Payment request modal fourth step", () => {
-        it("in the fourth step is visible an explanatory text", () => {});
-        it("if the payment is successful, a get to the /users/me/payments should be executed", () => {});
+        beforeEach(() => {
+          cy.intercept(
+            "POST",
+            `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
+            {
+              statusCode: 200,
+              fixture: "users/me/payments/_post/200",
+            }
+          ).as("postUserMePayment");
+          cy.intercept(
+            "GET",
+            `${Cypress.env("REACT_APP_API_URL")}/users/me/payments*`,
+            {
+              statusCode: 200,
+              fixture: "users/me/payments/_get/200_single-paid-payment",
+            }
+          ).as("getUserMePayment");
+
+          cy.wait("@getUserMePayment");
+          cy.dataQa("request-payment-cta").click();
+          cy.dataQa("payment-modal-next").should("be.visible");
+          cy.dataQa("payment-modal-next").click();
+          cy.get("input#bankaccountOwner").clear().type("ciccio paguro");
+          cy.get("input#iban").clear().type("IT60X0542811101000000123456");
+          cy.get("#termsAcceptance").check();
+          cy.dataQa("payment-modal-next").click();
+          cy.dataQa("payment-modal-next").click();
+        });
+        it("is visible an explanatory text", () => {
+          cy.dataQa("manual-payment-modal-step-4").should("be.visible");
+          cy.dataQa("manual-payment-modal-success-text").should("be.visible");
+        });
+        it("there should not be next and back buttons", () => {
+          cy.dataQa("manual-payment-modal-step-4").should("be.visible");
+          cy.dataQa("manual-payment-modal-success-text").should("be.visible");
+          cy.dataQa("payment-modal-next").should("not.exist");
+          cy.dataQa("payment-modal-back").should("not.exist");
+        });
+        it.only("if the payment is successful, a get to the /users/me/payments should be executed", () => {
+          cy.dataQa("manual-payment-modal-step-4").should("be.visible");
+          cy.wait("@getUserMePayment");
+
+          cy.get("@getUserMePayment").should("have.been.called");
+        });
       });
     });
   });
