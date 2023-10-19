@@ -42,6 +42,8 @@ export const Footer = () => {
     }
   };
 
+  if (values.step === 3) return null;
+
   return (
     <StyledFooter>
       {values.step === 2 && (
