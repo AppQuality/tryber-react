@@ -220,7 +220,7 @@ describe("Payment request", () => {
           });
         });
 
-        describe.only("after a unsuccessful api call", () => {
+        describe("after a unsuccessful api call", () => {
           beforeEach(() => {
             cy.intercept(
               "POST",
@@ -242,7 +242,7 @@ describe("Payment request", () => {
       });
       describe("Payment request modal fourth step", () => {
         it("in the fourth step is visible an explanatory text", () => {});
-        it("if the payment is successful, the table should be refetched (??? too low level ???)", () => {});
+        it("if the payment is successful, a get to the /users/me/payments should be executed", () => {});
       });
     });
   });
