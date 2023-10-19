@@ -19,8 +19,14 @@ const StyledFooter = styled.div`
 
 export const Footer = () => {
   const { t } = useTranslation();
-  const { setFieldTouched, validateForm, values, setValues } =
-    useFormikContext<PaymentFormType>();
+  const {
+    setFieldTouched,
+    validateForm,
+    values,
+    setValues,
+    submitForm,
+    isSubmitting,
+  } = useFormikContext<PaymentFormType>();
   const handleNext = async (e: BaseSyntheticEvent) => {
     if (values.step === 0) {
       setValues({ ...values, step: values.step + 1 });
@@ -38,13 +44,24 @@ export const Footer = () => {
 
   return (
     <StyledFooter>
+      {values.step === 2 && (
+        <Button
+          htmlType="button"
+          onClick={() => setValues({ ...values, step: values.step - 1 })}
+          flat
+          data-qa="payment-modal-back"
+        >
+          {t("Back")}
+        </Button>
+      )}
       <Button
         htmlType="button"
-        onClick={handleNext}
+        onClick={values.step === 2 ? submitForm : handleNext}
+        disabled={isSubmitting}
         flat
         data-qa="payment-modal-next"
       >
-        {t("Next")}
+        {isSubmitting ? t("Loading...") : t("Next")}
       </Button>
     </StyledFooter>
   );
