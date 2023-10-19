@@ -1,11 +1,13 @@
 import { Formik } from "@appquality/appquality-design-system";
 import { FormikHelpers } from "formik";
 import { useTranslation } from "react-i18next";
+import { usePostUsersMePaymentsMutation } from "src/services/tryberApi";
 import * as yup from "yup";
 import { PaymentFormType } from "./types.d";
 
 const FormWrapper = ({ children }: { children: React.ReactNode }) => {
   const { t } = useTranslation();
+  const [postUsersMePayments] = usePostUsersMePaymentsMutation();
 
   const initialValues: PaymentFormType = {
     termsAcceptance: false,
@@ -39,6 +41,15 @@ const FormWrapper = ({ children }: { children: React.ReactNode }) => {
     formikHelper: FormikHelpers<PaymentFormType>
   ) => {
     formikHelper.setSubmitting(true);
+    await postUsersMePayments({
+      body: {
+        method: {
+          type: "iban" as const,
+          accountHolderName: values.bankaccountOwner,
+          iban: values.iban,
+        },
+      },
+    }).unwrap();
     formikHelper.setSubmitting(false);
   };
   return (
