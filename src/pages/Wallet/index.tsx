@@ -1,9 +1,9 @@
 import { BSCol, BSGrid, Card } from "@appquality/appquality-design-system";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
-import PaymentModal from "src/pages/Wallet/PaymentModal";
+import PaymentModal from "src/pages/Wallet/paymentModal";
 import { getFiscalProfile } from "src/redux/user/actions/getFiscalProfile";
 import { BootyDetailsModal } from "./BootyDetailsModal/BootyDetailsModal";
 import { PaymentDetailsModal } from "./PaymentDetailsModal/PaymentDetailsModal";
