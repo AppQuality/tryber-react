@@ -36,8 +36,24 @@ describe("Payment request", () => {
         cy.dataQa("request-payment-cta").click();
         cy.dataQa("manual-payment-modal").should("be.visible");
       });
-      it("in the modal is visible an explanatory text, name field, iban field, terms acceptance checkbox and a contiunue btn", () => {
+
+      it("in first step is visible a recap of your fiscal profile and a next button", () => {
         cy.dataQa("request-payment-cta").click();
+        cy.dataQa("manual-payment-fiscal-profile-recap").should("be.visible");
+        cy.dataQa("payment-modal-next").should("be.visible");
+      });
+
+      it("in first step, clicking on the next button should show the second step", () => {
+        cy.dataQa("request-payment-cta").click();
+        cy.dataQa("payment-modal-next").should("be.visible");
+        cy.dataQa("payment-modal-next").click();
+        cy.dataQa("manual-payment-modal-step-1").should("be.visible");
+      });
+
+      it("in the second step is visible an explanatory text, name field, iban field, terms acceptance checkbox and a contiunue btn", () => {
+        cy.dataQa("request-payment-cta").click();
+        cy.dataQa("payment-modal-next").should("be.visible");
+        cy.dataQa("payment-modal-next").click();
         cy.dataQa("manual-payment-modal-introduction-text").should(
           "be.visible"
         );
@@ -47,8 +63,10 @@ describe("Payment request", () => {
         cy.dataQa("payment-modal-next").should("be.visible");
       });
 
-      it('click on the link "Terms and conditions" open a link in a new tab', () => {
+      it('in the second step, click on the link "Terms and conditions" open a link in a new tab', () => {
         cy.dataQa("request-payment-cta").click();
+        cy.dataQa("payment-modal-next").should("be.visible");
+        cy.dataQa("payment-modal-next").click();
         cy.dataQa("manual-payment-modal-terms-and-conditions-link").should(
           "be.visible"
         );
@@ -56,8 +74,11 @@ describe("Payment request", () => {
           .should("have.attr", "target")
           .and("include", "_blank");
       });
-      it("clicking on next button, if the name field is empty, should print an error under the field", () => {
+
+      it("in the second step, clicking on next button, if the name field is empty, should print an error under the field", () => {
         cy.dataQa("request-payment-cta").click();
+        cy.dataQa("payment-modal-next").should("be.visible");
+        cy.dataQa("payment-modal-next").click();
         cy.dataQa("payment-modal-next").click();
         cy.get("input#iban").clear().type("IT60X0542811101000000123456");
         cy.get("#termsAcceptance").check();
@@ -67,8 +88,11 @@ describe("Payment request", () => {
           "This is a required field"
         );
       });
-      it("clicking on next button, if the iban field is not a valid iban, should print an error under the field", () => {
+
+      it("in the second step, clicking on next button, if the iban field is not a valid iban, should print an error under the field", () => {
         cy.dataQa("request-payment-cta").click();
+        cy.dataQa("payment-modal-next").should("be.visible");
+        cy.dataQa("payment-modal-next").click();
         cy.dataQa("payment-modal-next").click();
 
         cy.get("input#bankaccountOwner").clear().type("ciccio paguro");
@@ -80,8 +104,11 @@ describe("Payment request", () => {
           "This format is invalid"
         );
       });
+
       it("clicking on next button, if the iban field is empty, should print an error under the field", () => {
         cy.dataQa("request-payment-cta").click();
+        cy.dataQa("payment-modal-next").should("be.visible");
+        cy.dataQa("payment-modal-next").click();
         cy.dataQa("payment-modal-next").click();
 
         cy.get("input#bankaccountOwner").clear().type("ciccio paguro");
@@ -92,6 +119,7 @@ describe("Payment request", () => {
           "This is a required field"
         );
       });
+
       it("clicking on next button, if the terms and condition checkbox is not checked, should print an error under the field", () => {
         cy.dataQa("request-payment-cta").click();
         cy.dataQa("payment-modal-next").click();
