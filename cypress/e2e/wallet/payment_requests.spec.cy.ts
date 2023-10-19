@@ -138,7 +138,6 @@ describe("Payment request", () => {
             "POST",
             `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
             {
-              delayMs: 4000,
               statusCode: 200,
               fixture: "users/me/payments/_post/200",
             }
@@ -177,14 +176,63 @@ describe("Payment request", () => {
               },
             });
         });
-        it("in the third step if the process payment is pressed, while the api call is being executed, the process payment button (????and back???) is disabled and there is a loading text", () => {
-          cy.dataQa("payment-modal-next").click();
-          cy.dataQa("payment-modal-next").should("be.disabled");
-          cy.dataQa("payment-modal-next").should("contain", "Loading...");
+
+        describe("during the api call", () => {
+          beforeEach(() => {
+            cy.intercept(
+              "POST",
+              `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
+              {
+                delayMs: 4000,
+                statusCode: 200,
+                fixture: "users/me/payments/_post/200",
+              }
+            ).as("postUserMePayment");
+          });
+          it("in the third step if the process payment is pressed, while the api call is being executed, the process payment button and back button are disabled and there is a loading text", () => {
+            cy.dataQa("payment-modal-next").click();
+            cy.dataQa("payment-modal-next").should("be.disabled");
+            cy.dataQa("payment-modal-back").should("be.disabled");
+            cy.dataQa("payment-modal-next").should("contain", "Loading...");
+          });
         });
 
-        it("in the third step if the process payment is pressed, if the api call is successful, should show the third step", () => {});
-        it("in the third step if the process payment is pressed, if the api call is not successful, show a toastr and reenable the button", () => {});
+        describe("after a successful api call", () => {
+          beforeEach(() => {
+            cy.intercept(
+              "POST",
+              `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
+              {
+                statusCode: 200,
+                fixture: "users/me/payments/_post/200",
+              }
+            ).as("postUserMePayment");
+          });
+          it("in the third step if the process payment is pressed, if the api call is successful, should show the third step", () => {
+            cy.dataQa("payment-modal-next").click();
+            cy.dataQa("manual-payment-modal-step-4").should("be.visible");
+          });
+        });
+
+        describe.only("after a unsuccessful api call", () => {
+          beforeEach(() => {
+            cy.intercept(
+              "POST",
+              `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
+              {
+                statusCode: 403,
+                fixture: "users/me/payments/_post/200",
+              }
+            ).as("postUserMePayment");
+          });
+          it("in the third step if the process payment is pressed, if the api call is not successful, show a toastr and reenable the button", () => {
+            cy.dataQa("payment-modal-next").click();
+            cy.dataQa("manual-payment-modal-step-4").should("not.exist");
+            cy.dataQa("manual-payment-error-toastr").should("be.visible");
+            cy.dataQa("payment-modal-next").should("not.be.disabled");
+            cy.dataQa("payment-modal-back").should("not.be.disabled");
+          });
+        });
       });
       describe("Payment request modal fourth step", () => {
         it("in the fourth step is visible an explanatory text", () => {});
