@@ -279,11 +279,14 @@ describe("Payment request", () => {
           cy.dataQa("payment-modal-next").should("not.exist");
           cy.dataQa("payment-modal-back").should("not.exist");
         });
-        it.only("if the payment is successful, a get to the /users/me/payments should be executed", () => {
+        it("if the payment is successful, a get to the /users/me/payments should be executed", () => {
           cy.dataQa("manual-payment-modal-step-4").should("be.visible");
-          cy.wait("@getUserMePayment");
-
-          cy.get("@getUserMePayment").should("have.been.called");
+          cy.wait("@getUserMePayment").then((interception) => {
+            assert.isNotNull(
+              interception.response.body,
+              "API call to get the payment should be executed"
+            );
+          });
         });
       });
     });
