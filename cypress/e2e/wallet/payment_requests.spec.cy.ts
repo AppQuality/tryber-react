@@ -5,10 +5,12 @@ describe("Payment request", () => {
     // "witholding-extra",
     // "company"
   ];
+  beforeEach(() => {
+    cy.loggedIn();
+  });
   fiscalTypes.forEach((fiscalType) => {
     describe(` for fiscal type ${fiscalType.name}`, () => {
       beforeEach(() => {
-        cy.loggedIn();
         cy.intercept(
           "GET",
           `${Cypress.env("REACT_APP_API_URL")}/users/me/fiscal`,
@@ -288,6 +290,36 @@ describe("Payment request", () => {
             );
           });
         });
+      });
+    });
+  });
+
+  describe("No fiscal profile", () => {
+    beforeEach(() => {
+      cy.intercept(
+        "GET",
+        `${Cypress.env("REACT_APP_API_URL")}/users/me/fiscal`,
+        {
+          statusCode: 404,
+          fixture: `users/me/fiscal/_get/404_not-found`,
+        }
+      ).as("userMeFiscal");
+      cy.intercept(
+        "GET",
+        `${Cypress.env(
+          "REACT_APP_API_URL"
+        )}/users/me?fields=pending_booty%2Cbooty_threshold`,
+        {
+          statusCode: 200,
+          fixture: "/users/me/_get/200_booty_gross",
+        }
+      ).as("pendingBooty");
+      cy.visit("/payments");
+    });
+
+    describe("Payment request button", () => {
+      it(`The button to request payments is disabled`, () => {
+        cy.dataQa("request-payment-cta").should("be.disabled");
       });
     });
   });
