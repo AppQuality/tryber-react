@@ -16,12 +16,10 @@ import pdfHoverIcon from "src/pages/Wallet/assets/pdfHover.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { walletColumns } from "src/pages/Wallet/columns";
 import { useAppDispatch } from "src/redux/provider";
-import {
-  fetchPaymentRequests,
-  updatePagination,
-} from "src/redux/wallet/actionCreator";
+import { updatePagination } from "src/redux/wallet/actionCreator";
 import { openPaymentDetailsModal } from "src/redux/wallet/actions/openPaymentDetailsModal";
 import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
+import { useGetUsersMePaymentsQuery } from "src/services/tryberApi";
 import styled from "styled-components";
 
 const ActionsCell = styled.div`
@@ -100,7 +98,6 @@ const StyledMethodContainer = styled.div`
 export const WalletTable = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
@@ -108,18 +105,23 @@ export const WalletTable = () => {
     (state: GeneralState) => state.wallet,
     shallowEqual
   );
-  const { results, limit, total, start, order, orderBy } = requestsList;
+  const { limit, start, order, orderBy } = requestsList;
+  const { data, isLoading } = useGetUsersMePaymentsQuery({
+    limit,
+    start,
+    order,
+    orderBy,
+  });
   // initial requests
   useEffect(() => {
-    const cols = walletColumns(setIsLoading, dispatch, t);
+    const cols = walletColumns(dispatch, t);
     setcolumns(cols);
-    dispatch(fetchPaymentRequests()).then(() => setIsLoading(false));
   }, []);
   // update datasource for the table
   useEffect(() => {
-    if (typeof results !== "undefined") {
+    if (typeof data?.results !== "undefined") {
       setRows(
-        results.map((req) => {
+        data.results.map((req) => {
           return {
             key: req.id,
             reqId: req.id,
@@ -219,11 +221,10 @@ export const WalletTable = () => {
         })
       );
     }
-  }, [requestsList]);
+  }, [data]);
   const changePagination = (newPage: number) => {
-    setIsLoading(true);
     const newStart = limit * (newPage - 1);
-    dispatch(updatePagination(newStart)).then(() => setIsLoading(false));
+    dispatch(updatePagination(newStart));
   };
   return (
     <>
@@ -252,7 +253,7 @@ export const WalletTable = () => {
         className="aq-pt-3"
         onPageChange={changePagination}
         current={start / limit + 1}
-        maxPages={Math.ceil(total / limit)}
+        maxPages={Math.ceil((data?.total || 0) / limit)}
         mobileText={(current, total) =>
           t(`Page %current% / %total%`)
             .replace("%current%", current.toString())
