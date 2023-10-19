@@ -129,10 +129,16 @@ describe("Payment request", () => {
             "You need to accept terms and conditions"
           );
         });
-        it("clicking on next button, if the name is filled, the iban is filled with a valid iban and the checkbox is checked, should go to the third step", () => {});
+        it("clicking on next button, if the name is filled, the iban is filled with a valid iban and the checkbox is checked, should go to the third step", () => {
+          cy.get("input#bankaccountOwner").clear().type("ciccio paguro");
+          cy.get("input#iban").clear().type("IT60X0542811101000000123456");
+          cy.get("#termsAcceptance").check();
+          cy.dataQa("payment-modal-next").click();
+          cy.dataQa("manual-payment-modal-step-3").should("be.visible");
+        });
       });
 
-      describe.only("Payment request modal third step", () => {
+      describe("Payment request modal third step", () => {
         beforeEach(() => {
           cy.intercept(
             "POST",
