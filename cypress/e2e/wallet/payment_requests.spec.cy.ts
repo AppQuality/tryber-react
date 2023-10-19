@@ -41,7 +41,7 @@ describe("Payment request", () => {
         cy.dataQa("manual-payment-modal-introduction-text").should(
           "be.visible"
         );
-        cy.dataQa("input#bankaccountOwner").should("be.visible");
+        cy.get("input#bankaccountOwner").should("be.visible");
         cy.get("input#iban").should("be.visible");
         cy.get("input[name='termsAcceptance']").should("be.visible");
         cy.dataQa("payment-modal-next").should("be.visible");
