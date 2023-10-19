@@ -1,11 +1,14 @@
 import { Formik } from "@appquality/appquality-design-system";
 import { FormikHelpers } from "formik";
 import { useTranslation } from "react-i18next";
+import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 import { usePostUsersMePaymentsMutation } from "src/services/tryberApi";
+import { useAppDispatch } from "src/store";
 import * as yup from "yup";
 import { PaymentFormType } from "./types.d";
 
 const FormWrapper = ({ children }: { children: React.ReactNode }) => {
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const [postUsersMePayments] = usePostUsersMePaymentsMutation();
 
@@ -41,16 +44,27 @@ const FormWrapper = ({ children }: { children: React.ReactNode }) => {
     formikHelper: FormikHelpers<PaymentFormType>
   ) => {
     formikHelper.setSubmitting(true);
-    await postUsersMePayments({
-      body: {
-        method: {
-          type: "iban" as const,
-          accountHolderName: values.bankaccountOwner,
-          iban: values.iban,
+    try {
+      await postUsersMePayments({
+        body: {
+          method: {
+            type: "iban" as const,
+            accountHolderName: values.bankaccountOwner,
+            iban: values.iban,
+          },
         },
-      },
-    }).unwrap();
-    formikHelper.setSubmitting(false);
+      }).unwrap();
+      formikHelper.setValues({ ...values, step: values.step + 1 });
+    } catch (e) {
+      dispatch(
+        addMessage(
+          <div data-qa="manual-payment-error-toastr">Error</div>,
+          "danger"
+        )
+      );
+    } finally {
+      formikHelper.setSubmitting(false);
+    }
   };
   return (
     <Formik

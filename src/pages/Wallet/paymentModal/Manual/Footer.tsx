@@ -49,6 +49,7 @@ export const Footer = () => {
           htmlType="button"
           onClick={() => setValues({ ...values, step: values.step - 1 })}
           flat
+          disabled={isSubmitting}
           data-qa="payment-modal-back"
         >
           {t("Back")}
