@@ -19,14 +19,20 @@ const StyledFooter = styled.div`
 
 export const Footer = () => {
   const { t } = useTranslation();
-  const { setFieldTouched, validateForm } = useFormikContext();
+  const { setFieldTouched, validateForm, values, setValues } =
+    useFormikContext<PaymentFormType>();
   const handleNext = async (e: BaseSyntheticEvent) => {
-    setFieldTouched("termsAcceptance");
-    setFieldTouched("bankaccountOwner");
-    setFieldTouched("iban");
-    const errors = await validateForm();
-    if (Object.keys(errors).length === 0) {
-      alert("next step");
+    if (values.step === 0) {
+      setValues({ ...values, step: values.step + 1 });
+    }
+    if (values.step === 1) {
+      setFieldTouched("termsAcceptance");
+      setFieldTouched("bankaccountOwner");
+      setFieldTouched("iban");
+      const errors = await validateForm();
+      if (Object.keys(errors).length === 0) {
+        setValues({ ...values, step: values.step + 1 });
+      }
     }
   };
 
