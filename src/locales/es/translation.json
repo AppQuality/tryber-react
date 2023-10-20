@@ -186,6 +186,7 @@
   "Close Date": "Fecha de Cierre",
   "Closed": "Cerrado",
   "Coming soon": "Próximamente",
+  "Company rate scheme": "",
   "Complete the Basic Course": "Empieza por el Curso Básico",
   "Completed campaigns": "Campañas completadas",
   "Computer type": "Tipo de computer",
@@ -459,6 +460,7 @@
   "User mail validation": {
     "An Email has been sent to the provided address": "Se ha enviado un correo electrónico a la dirección proporcionada"
   },
+  "VAT rate scheme": "",
   "Valid tax profile": "Perfil fiscal válido",
   "Version": "Versión",
   "View": "Ver",
