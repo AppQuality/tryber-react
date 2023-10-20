@@ -1,6 +1,6 @@
 import { shallowEqual, useSelector } from "react-redux";
-import Manual from "./Manual";
-import Automatic from "./Automatic";
+import Manual from "src/pages/Wallet/PaymentModal/Manual";
+import Automatic from "src/pages/Wallet/PaymentModal/Automatic";
 
 const PaymentModal = () => {
   const { fiscalType } = useSelector(

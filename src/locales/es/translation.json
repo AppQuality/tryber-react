@@ -259,6 +259,7 @@
     "Other": "No binario"
   },
   "Generic error": "Error genérico",
+  "Get Email": "",
   "Getting Started": "Empezando",
   "Great job!": "¡Buen Trabajo!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
@@ -283,6 +284,7 @@
   "Improve your chances of being selected in test campaigns by completing your profile.": "Mejora tus posibilidades de ser seleccionado en campañas completando tu perfil.",
   "Inbox": "Inbox",
   "Informations": "Informaciones",
+  "Insert Data": "",
   "Insert Name and surname separated by space": "Insertar nombre y apellido separados por espacio",
   "Institute": "Instituto",
   "Institute is a required field.": "El instituto es un campo obligatorio",
@@ -397,6 +399,7 @@
   "Signup now": "Regístrese ahora",
   "Spoken languages": "Idiomas hablados",
   "Start Date": "Fecha de Inicio",
+  "Start Here": "",
   "State / Province": "Estado / Provincia",
   "Status": "Estado",
   "Status of user fiscal profile": {
