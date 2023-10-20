@@ -634,8 +634,8 @@
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "Il cielo non è un limite! Il prossimo mese sarai Legendary,<br></br>il livello più alto di TRYBER."
   },
   "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
-    "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP": "",
-    "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": ""
+    "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": "",
+    "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP": ""
   },
   "bugform usecase select option": {
     "Not a specific usecase": "Nessuno di questi casi d'uso"
@@ -710,6 +710,8 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Company rate scheme": "",
+  "VAT rate scheme": "",
   "__MODAL_MANUAL_PAYMENT_INTRODUCTION_TEXT__": "",
   "Fiscal profile recap": "",
   "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
