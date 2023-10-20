@@ -37,7 +37,6 @@ export const WalletManagment = () => {
   const { fiscalStatus } = useSelector(
     (state: GeneralState) => ({
       fiscalStatus: state.user.fiscal.data?.fiscalStatus,
-      fiscalType: state.user.fiscal.data?.type,
     }),
     shallowEqual
   );
