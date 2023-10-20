@@ -4,6 +4,7 @@ import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { shallowEqual, useSelector } from "react-redux";
 import getCurrencySymbol from "src/utils/getCurrencySymbol";
 import { useFormikContext } from "formik";
+import { useGetUsersMeFiscalQuery } from "src/services/tryberApi";
 
 const iconStyle = {
   verticalAlign: "middle",
@@ -57,12 +58,23 @@ const RequestAmount = () => {
 };
 const IntroductoryText = () => {
   const { values } = useFormikContext<PaymentFormType>();
-  const { fiscalType } = useSelector(
-    (state: GeneralState) => ({
-      fiscalType: state.user.fiscal.data?.type,
-    }),
-    shallowEqual
-  );
+  const { t } = useTranslation();
+  const { data, isLoading } = useGetUsersMeFiscalQuery();
+  if (isLoading || !data) {
+    return null;
+  }
+  const getFiscalTypeText = () => {
+    switch (data.type) {
+      case "vat":
+        return t("VAT rate scheme");
+      case "witholding-extra":
+        return t("Annual witholding > 5000");
+      case "company":
+        return t("Company rate scheme");
+      default:
+        throw new Error("Invalid fiscal type");
+    }
+  };
   return (
     <div data-qa="manual-payment-modal-intro-text">
       <Text>
@@ -71,7 +83,7 @@ const IntroductoryText = () => {
           values={{
             accountHolder: values.bankaccountOwner,
             iban: values.iban,
-            fiscalType: fiscalType,
+            fiscalType: getFiscalTypeText(),
           }}
           components={{
             br: <br />,
