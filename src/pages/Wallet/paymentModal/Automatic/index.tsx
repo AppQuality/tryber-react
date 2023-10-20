@@ -3,12 +3,12 @@ import { FormikProps } from "formik";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
-import { Footer } from "src/pages/Wallet/PaymentModal/Automatic/Footer";
-import { FormWrapper } from "src/pages/Wallet/PaymentModal/Automatic/FormWrapper";
-import { Step0Method } from "src/pages/Wallet/PaymentModal/Automatic/Step0Method";
-import { Step1Data } from "src/pages/Wallet/PaymentModal/Automatic/Step1Data";
-import { Step2Recap } from "src/pages/Wallet/PaymentModal/Automatic/Step2Recap";
-import { Step3Feedback } from "src/pages/Wallet/PaymentModal/Automatic/Step3Feedback";
+import { Footer } from "src/pages/Wallet/paymentModal/Automatic/Footer";
+import { FormWrapper } from "src/pages/Wallet/paymentModal/Automatic/FormWrapper";
+import { Step0Method } from "src/pages/Wallet/paymentModal/Automatic/Step0Method";
+import { Step1Data } from "src/pages/Wallet/paymentModal/Automatic/Step1Data";
+import { Step2Recap } from "src/pages/Wallet/paymentModal/Automatic/Step2Recap";
+import { Step3Feedback } from "src/pages/Wallet/paymentModal/Automatic/Step3Feedback";
 import { useAppDispatch } from "src/redux/provider";
 import { setPaymentModalOpen } from "src/redux/wallet/actionCreator";
 
