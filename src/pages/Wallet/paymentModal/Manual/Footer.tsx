@@ -50,14 +50,22 @@ export const Footer = ({
     }
   };
 
+  const handleBack = () => {
+    const { step } = values;
+    setValues({ ...values, step: step - 1 });
+    completedSteps[step] = false;
+    setCompletedSteps(completedSteps);
+  };
+
   if (values.step === 3) return null;
 
   return (
     <StyledFooter>
-      {values.step === 2 && (
+      {values.step >= 1 && (
         <Button
           htmlType="button"
-          onClick={() => setValues({ ...values, step: values.step - 1 })}
+          className="aq-mr-2"
+          onClick={handleBack}
           flat
           disabled={isSubmitting}
           data-qa="payment-modal-back"
@@ -67,9 +75,9 @@ export const Footer = ({
       )}
       <Button
         htmlType="button"
+        type="primary"
         onClick={values.step === 2 ? submitForm : handleNext}
         disabled={isSubmitting}
-        flat
         data-qa="payment-modal-next"
       >
         {isSubmitting ? t("Loading...") : t("Next")}
