@@ -589,7 +589,6 @@
   "__HOME_USER_QUALIFICATION_ADVICE6 MAX:30": "Qualified Tryber, Student",
   "__HOME_USER_QUALIFICATION_ADVICE7 MAX:30": "Qualified Tryber, Student",
   "__HOME_USER_QUALIFICATION_ADVICE8 MAX:30": "Certified ISTQB professional tester",
-  "__MODAL_MANUAL_PAYMENT_INTRODUCTION_TEXT__": "",
   "__PAYMENT-METHOD-BANK": "Bonifico bancario",
   "__RANKING_LEGEND_BASIC_SPEC_MAX: 35": "Il livello di partenza",
   "__RANKING_LEGEND_EXP_NEXT": "exp",
@@ -710,6 +709,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "__MODAL_MANUAL_PAYMENT_INTRODUCTION_TEXT__": "",
   "Fiscal profile recap": "",
   "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
     "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Il tuo regime fiscale non è valido (ad es. sei partita IVA o superi 5.000 lordi € / anno con prestazioni occasionali). <mail_link>Scrivici</mail_link> per richiedere il pagamento."

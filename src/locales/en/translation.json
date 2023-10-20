@@ -589,7 +589,6 @@
   "__HOME_USER_QUALIFICATION_ADVICE6 MAX:30": "Qualified Tryber, Student",
   "__HOME_USER_QUALIFICATION_ADVICE7 MAX:30": "Qualified Tryber, Student",
   "__HOME_USER_QUALIFICATION_ADVICE8 MAX:30": "Certified ISTQB professional tester",
-  "__MODAL_MANUAL_PAYMENT_INTRODUCTION_TEXT__": "",
   "__PAYMENT-METHOD-BANK": "Bank transfer",
   "__RANKING_LEGEND_BASIC_SPEC_MAX: 35": "Your starting level",
   "__RANKING_LEGEND_EXP_NEXT": "exp",
@@ -710,6 +709,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "__MODAL_MANUAL_PAYMENT_INTRODUCTION_TEXT__": "",
   "Fiscal profile recap": "",
   "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
     "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Your fiscal type is not valid (e.g. you are VAT registered or you exceed € 5,000 gross / year with occasional services). <mail_link>Write to us</mail_link> to request payment."
