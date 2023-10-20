@@ -17,7 +17,10 @@ const StyledFooter = styled.div`
   }
 `;
 
-export const Footer = () => {
+export const Footer = ({
+  completedSteps,
+  setCompletedSteps,
+}: PaymentModalFooterProps) => {
   const { t } = useTranslation();
   const {
     setFieldTouched,
@@ -28,16 +31,21 @@ export const Footer = () => {
     isSubmitting,
   } = useFormikContext<PaymentFormType>();
   const handleNext = async (e: BaseSyntheticEvent) => {
-    if (values.step === 0) {
-      setValues({ ...values, step: values.step + 1 });
+    const { step } = values;
+    if (step === 0) {
+      setValues({ ...values, step: step + 1 });
+      completedSteps[step] = true;
+      setCompletedSteps(completedSteps);
     }
-    if (values.step === 1) {
+    if (step === 1) {
       setFieldTouched("termsAcceptance");
       setFieldTouched("bankaccountOwner");
       setFieldTouched("iban");
       const errors = await validateForm();
       if (Object.keys(errors).length === 0) {
-        setValues({ ...values, step: values.step + 1 });
+        setValues({ ...values, step: step + 1 });
+        completedSteps[step] = true;
+        setCompletedSteps(completedSteps);
       }
     }
   };
