@@ -1,4 +1,4 @@
-import { Modal, ModalBody } from "@appquality/appquality-design-system";
+import { Modal, ModalBody, Steps } from "@appquality/appquality-design-system";
 import { FormikProps } from "formik";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
@@ -11,10 +11,12 @@ import { Step1Iban } from "./Step1Iban";
 import { Step2PaymentRequestRecap } from "./Step2PaymentRequestRecap";
 import { Step3Success } from "./Step3Success";
 import { PaymentFormType } from "./types.d";
+import { useState } from "react";
 
 const Manual = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
+  const [completedSteps, setCompletedSteps] = useState([false, false, false]);
 
   const { isPaymentModalOpen } = useSelector(
     (state: GeneralState) => state.wallet,
@@ -37,9 +39,28 @@ const Manual = () => {
               isOpen={isPaymentModalOpen}
               onClose={closeModal}
               title={t("Request a payment")}
-              footer={<Footer />}
+              footer={
+                <Footer
+                  completedSteps={completedSteps}
+                  setCompletedSteps={setCompletedSteps}
+                />
+              }
             >
               <ModalBody>
+                <Steps current={step} className="aq-mb-3">
+                  <Steps.Step
+                    isCompleted={completedSteps[0]}
+                    title={t("Start Here")}
+                  />
+                  <Steps.Step
+                    isCompleted={completedSteps[1]}
+                    title={t("Insert Data")}
+                  />
+                  <Steps.Step
+                    isCompleted={completedSteps[2]}
+                    title={t("Get Email")}
+                  />
+                </Steps>
                 <div data-qa="manual-payment-modal">
                   {step === 0 && <Step0FiscalProfileRecap />}
                   {step === 1 && <Step1Iban />}
