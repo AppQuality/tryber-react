@@ -13,9 +13,6 @@ export const Step1Iban = () => {
   const { t } = useTranslation();
   return (
     <div data-qa="manual-payment-modal-step-1">
-      <Text data-qa="manual-payment-modal-introduction-text">
-        {t("__MODAL_MANUAL_PAYMENT_INTRODUCTION_TEXT__")}
-      </Text>
       <Field
         name="bankaccountOwner"
         type="text"
