@@ -1,27 +1,45 @@
 import { Trans, useTranslation } from "react-i18next";
-import { shallowEqual, useSelector } from "react-redux";
 import { Text, Title } from "@appquality/appquality-design-system";
+import { useGetUsersMeFiscalQuery } from "src/services/tryberApi";
+import localizedUrl from "src/utils/localizedUrl";
 
 export const Step0FiscalProfileRecap = () => {
-  const { fiscalType } = useSelector(
-    (state: GeneralState) => ({
-      fiscalType: state.user.fiscal.data?.type,
-    }),
-    shallowEqual
-  );
+  const { t } = useTranslation();
+
+  const { data, isLoading } = useGetUsersMeFiscalQuery();
+  if (isLoading || !data) {
+    return null;
+  }
+  const getFiscalTypeText = () => {
+    switch (data.type) {
+      case "vat":
+        return <>{t("VAT rate scheme")}</>;
+      case "witholding-extra":
+        return <>{t("Annual witholding > 5000")}</>;
+      case "company":
+        return <>{t("Company rate scheme")}</>;
+      default:
+        throw new Error("Invalid fiscal type");
+    }
+  };
   return (
     <div data-qa="manual-payment-fiscal-profile-recap">
       <div className="aq-mb-1">
         <Text>
           <Trans
             i18nKey="available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>:::PAYMENTS_MODAL_INVOICE_STEP_1_RECAP"
-            values={{ fiscalType: fiscalType }}
+            values={{ fiscalType: getFiscalTypeText() }}
             components={{
               br: <br />,
               p: <p className="aq-mb-2" />,
               title: <Title size="xs" className="aq-mb-1" />,
               strong: <strong className="aq-text-primary" />,
-              fiscalprofilelink: <a href="/my-account/?tab=fiscal" />,
+              fiscalprofilelink: (
+                <a
+                  target="_blank"
+                  href={localizedUrl("/my-account/?tab=fiscal")}
+                />
+              ),
               ul: <ul />,
               li: <li />,
             }}
