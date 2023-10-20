@@ -1,9 +1,21 @@
 //For Users with profile type witholding > 5K, VAT, Company and internal
 describe("Payment request", () => {
   const fiscalTypes = [
-    { key: "vat", name: "Partita IVA Forfettaria" },
-    { key: "witholding-extra", name: ">5k" },
-    { key: "company", name: "Partita IVA Ordinaria" },
+    {
+      key: "vat",
+      name: "Partita IVA Forfettaria",
+      translationKey: `VAT rate scheme`,
+    },
+    {
+      key: "witholding-extra",
+      name: ">5k",
+      translationKey: `Annual witholding > 5000`,
+    },
+    {
+      key: "company",
+      name: "Partita IVA Ordinaria",
+      translationKey: `Company rate scheme`,
+    },
   ];
   beforeEach(() => {
     cy.loggedIn();
@@ -56,6 +68,13 @@ describe("Payment request", () => {
           cy.dataQa("payment-modal-next").should("be.visible");
           cy.dataQa("payment-modal-next").click();
           cy.dataQa("manual-payment-modal-step-1").should("be.visible");
+        });
+
+        it("should contain fiscal profile name", () => {
+          cy.dataQa("manual-payment-fiscal-profile-recap").should(
+            "contain",
+            fiscalType.translationKey
+          );
         });
       });
 
