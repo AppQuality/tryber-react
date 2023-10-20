@@ -186,6 +186,7 @@
   "Close Date": "Fecha de Cierre",
   "Closed": "Cerrado",
   "Coming soon": "Próximamente",
+  "Company rate scheme": "",
   "Complete the Basic Course": "Empieza por el Curso Básico",
   "Completed campaigns": "Campañas completadas",
   "Computer type": "Tipo de computer",
@@ -458,6 +459,7 @@
   "User mail validation": {
     "An Email has been sent to the provided address": "Se ha enviado un correo electrónico a la dirección proporcionada"
   },
+  "VAT rate scheme": "",
   "Valid tax profile": "Perfil fiscal válido",
   "Version": "Versión",
   "View": "Ver",
@@ -634,8 +636,8 @@
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "¡El cielo no es el límite! El próximo mes serás Legendary,<br></br>el nivel más alto de TRYBER."
   },
   "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
-    "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": "",
-    "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP": ""
+    "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP": "",
+    "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": ""
   },
   "bugform usecase select option": {
     "Not a specific usecase": "Ninguno de esos casos de uso"
@@ -710,8 +712,6 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
-  "Company rate scheme": "",
-  "VAT rate scheme": "",
   "__MODAL_MANUAL_PAYMENT_INTRODUCTION_TEXT__": "",
   "Fiscal profile recap": "",
   "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
