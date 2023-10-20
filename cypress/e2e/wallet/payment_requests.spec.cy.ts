@@ -66,13 +66,14 @@ describe("Payment request", () => {
           cy.dataQa("payment-modal-next").click();
         });
 
-        it("is visible an explanatory text, name field, iban field, terms acceptance checkbox and a contiunue btn", () => {
+        it("is visible an explanatory text, name field, iban field, terms acceptance checkbox, a back and a contiunue btn", () => {
           cy.dataQa("manual-payment-modal-introduction-text").should(
             "be.visible"
           );
           cy.get("input#bankaccountOwner").should("be.visible");
           cy.get("input#iban").should("be.visible");
           cy.get("input[name='termsAcceptance']").should("be.visible");
+          cy.dataQa("payment-modal-back").should("be.visible");
           cy.dataQa("payment-modal-next").should("be.visible");
         });
 
