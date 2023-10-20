@@ -1,5 +1,6 @@
 import { Modal, ModalBody, Steps } from "@appquality/appquality-design-system";
 import { FormikProps } from "formik";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { useAppDispatch } from "src/redux/provider";
@@ -10,8 +11,7 @@ import { Step0FiscalProfileRecap } from "./Step0FiscalProfileRecap";
 import { Step1Iban } from "./Step1Iban";
 import { Step2PaymentRequestRecap } from "./Step2PaymentRequestRecap";
 import { Step3Success } from "./Step3Success";
-import { PaymentFormType } from "./types.d";
-import { useState } from "react";
+import { PaymentFormType } from "./types";
 
 const Manual = () => {
   const dispatch = useAppDispatch();

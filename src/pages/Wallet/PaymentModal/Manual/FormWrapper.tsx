@@ -6,7 +6,7 @@ import { fetchPaymentRequests } from "src/redux/wallet/actionCreator";
 import { usePostUsersMePaymentsMutation } from "src/services/tryberApi";
 import { useAppDispatch } from "src/store";
 import * as yup from "yup";
-import { PaymentFormType } from "./types.d";
+import { PaymentFormType } from "./types";
 
 const FormWrapper = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useAppDispatch();
