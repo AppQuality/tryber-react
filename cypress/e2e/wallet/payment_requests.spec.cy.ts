@@ -85,10 +85,7 @@ describe("Payment request", () => {
           cy.dataQa("payment-modal-next").click();
         });
 
-        it("is visible an explanatory text, name field, iban field, terms acceptance checkbox, a back and a contiunue btn", () => {
-          cy.dataQa("manual-payment-modal-introduction-text").should(
-            "be.visible"
-          );
+        it("is visible an explanatory text, name field, iban field, terms acceptance checkbox, a back and a continue btn", () => {
           cy.get("input#bankaccountOwner").should("be.visible");
           cy.get("input#iban").should("be.visible");
           cy.get("input[name='termsAcceptance']").should("be.visible");
@@ -125,7 +122,7 @@ describe("Payment request", () => {
           cy.dataQa("payment-modal-next").click();
           cy.dataQa("manual-payment-modal-iban").should(
             "contain",
-            "This format is invalid"
+            "This is an invalid format."
           );
         });
 
@@ -148,7 +145,7 @@ describe("Payment request", () => {
           cy.dataQa("payment-modal-next").click();
           cy.dataQa("manual-payment-modal-terms").should(
             "contain",
-            "You need to accept terms and conditions"
+            "you must accept terms and conditions"
           );
         });
         it("clicking on next button, if the name is filled, the iban is filled with a valid iban and the checkbox is checked, should go to the third step", () => {
