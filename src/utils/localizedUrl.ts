@@ -1,5 +1,9 @@
 import i18next from "i18next";
 
-export default (url: string) => {
-  return `${i18next.language === "en" ? "" : "/" + i18next.language}${url}`;
+const localizedUrl = (url: string) => {
+  return `${
+    ["en", "cimode"].includes(i18next.language) ? "" : "/" + i18next.language
+  }${url}`;
 };
+
+export default localizedUrl;
