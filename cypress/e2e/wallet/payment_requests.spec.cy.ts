@@ -2,8 +2,8 @@
 describe("Payment request", () => {
   const fiscalTypes = [
     { key: "vat", name: "Partita IVA Forfettaria" },
-    // { key: "witholding-extra", name: ">5k" },
-    // { key: "company", name: "Partita IVA Ordinaria" },
+    { key: "witholding-extra", name: ">5k" },
+    { key: "company", name: "Partita IVA Ordinaria" },
   ];
   beforeEach(() => {
     cy.loggedIn();
