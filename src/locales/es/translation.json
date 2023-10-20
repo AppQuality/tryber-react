@@ -321,6 +321,7 @@
   "Must contain at least a number": "Debe contener al menos un número",
   "Must contain at least an uppercase letter": "Debe contener al menos una letra minúscula",
   "Name": "Nombre",
+  "Need to update your fiscal type? Go to <profile_fiscal_link>your profile</profile_fiscal_link> before proceeding.": "",
   "Net receivable": "Neto por recibir",
   "Net received": "Neto recibido",
   "New password": "Nueva password",

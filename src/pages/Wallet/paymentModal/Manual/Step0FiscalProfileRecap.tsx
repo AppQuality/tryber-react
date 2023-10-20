@@ -1,8 +1,9 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import {
   GetUsersMeFiscalApiResponse,
   useGetUsersMeFiscalQuery,
 } from "src/services/tryberApi";
+import localizedUrl from "src/utils/localizedUrl";
 
 const FiscalTypeItem = ({
   type,
@@ -23,6 +24,27 @@ const FiscalTypeItem = ({
   }
 };
 
+const UpdateFiscalProfile = () => {
+  const { t } = useTranslation();
+
+  return (
+    <Trans
+      i18nKey={
+        "Need to update your fiscal type? Go to <profile_fiscal_link>your profile</profile_fiscal_link> before proceeding."
+      }
+      components={{
+        profile_fiscal_link: (
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href={localizedUrl("/my-account/?tab=fiscal")}
+          />
+        ),
+      }}
+    />
+  );
+};
+
 export const Step0FiscalProfileRecap = () => {
   const { data, isLoading } = useGetUsersMeFiscalQuery();
   const { t } = useTranslation();
@@ -33,6 +55,7 @@ export const Step0FiscalProfileRecap = () => {
       <div className="aq-mb-1">
         <strong className="aq-text-primary">{t("Fiscal profile recap")}</strong>
         <FiscalTypeItem type={data.type} />
+        <UpdateFiscalProfile />
       </div>
     </div>
   );

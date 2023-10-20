@@ -70,11 +70,17 @@ describe("Payment request", () => {
           cy.dataQa("manual-payment-modal-step-1").should("be.visible");
         });
 
-        it.only("should contain fiscal profile name", () => {
+        it("should contain fiscal profile name", () => {
           cy.dataQa("manual-payment-fiscal-profile-recap").should(
             "contain",
             fiscalType.translationKey
           );
+        });
+        it("should contain link to your profile, tab fiscal", () => {
+          cy.dataQa("manual-payment-fiscal-profile-recap")
+            .find("a")
+            .should("have.attr", "target", "_blank")
+            .should("have.attr", "href", "/my-account/?tab=fiscal");
         });
       });
 
