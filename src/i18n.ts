@@ -44,8 +44,12 @@ i18n
     returnEmptyString: false,
     nsSeparator: false,
     resources,
-    supportedLngs: ["it", "en", "es"],
-    fallbackLng: "en",
+    supportedLngs: (window as unknown as { Cypress: any }).Cypress
+      ? ["cimode"]
+      : ["it", "en", "es"],
+    fallbackLng: (window as unknown as { Cypress: any }).Cypress
+      ? "cimode"
+      : "en",
     keySeparator: ":::",
     interpolation: {
       escapeValue: false, // react already safes from xss
