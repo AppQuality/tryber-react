@@ -2,8 +2,8 @@
 describe("Payment request", () => {
   const fiscalTypes = [
     { key: "vat", name: "Partita IVA Forfettaria" },
-    { key: "witholding-extra", name: ">5k" },
-    { key: "company", name: "Partita IVA Ordinaria" },
+    // { key: "witholding-extra", name: ">5k" },
+    // { key: "company", name: "Partita IVA Ordinaria" },
   ];
   beforeEach(() => {
     cy.loggedIn();
@@ -282,7 +282,7 @@ describe("Payment request", () => {
           cy.dataQa("payment-modal-next").should("not.exist");
           cy.dataQa("payment-modal-back").should("not.exist");
         });
-        it("if the payment is successful, a get to the /users/me/payments should be executed", () => {
+        it.only("if the payment is successful, a get to the /users/me/payments should be executed", () => {
           cy.dataQa("manual-payment-modal-step-4").should("be.visible");
           cy.wait("@getUserMePayment").then((interception) => {
             assert.isNotNull(

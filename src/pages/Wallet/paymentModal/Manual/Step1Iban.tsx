@@ -3,7 +3,6 @@ import {
   Field,
   FormGroup,
   FormikField,
-  Text,
 } from "@appquality/appquality-design-system";
 import { ErrorMessage, FieldProps } from "formik";
 import { BaseSyntheticEvent } from "react";
