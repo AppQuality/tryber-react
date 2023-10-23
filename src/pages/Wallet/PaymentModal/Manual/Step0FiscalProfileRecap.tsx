@@ -27,7 +27,7 @@ export const Step0FiscalProfileRecap = () => {
       <div className="aq-mb-1">
         <Text>
           <Trans
-            i18nKey="available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>:::PAYMENTS_MODAL_INVOICE_STEP_1_RECAP"
+            i18nKey="available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>:::PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}"
             values={{ fiscalType: getFiscalTypeText() }}
             components={{
               br: <br />,
