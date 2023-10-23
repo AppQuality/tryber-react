@@ -71,6 +71,8 @@ const IntroductoryText = () => {
         return t("Annual witholding > 5000");
       case "company":
         return t("Company rate scheme");
+      case "internal":
+        return t("Internal employee");
       default:
         throw new Error("Invalid fiscal type");
     }
