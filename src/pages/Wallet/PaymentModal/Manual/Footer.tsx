@@ -80,7 +80,11 @@ export const Footer = ({
         disabled={isSubmitting}
         data-qa="payment-modal-next"
       >
-        {isSubmitting ? t("Loading...") : t("Next")}
+        {isSubmitting
+          ? t("...wait")
+          : values.step === 2
+          ? t("Request payment")
+          : t("Next")}
       </Button>
     </StyledFooter>
   );

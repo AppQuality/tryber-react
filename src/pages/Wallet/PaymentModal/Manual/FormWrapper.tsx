@@ -1,4 +1,4 @@
-import { Formik } from "@appquality/appquality-design-system";
+import { Formik, Text } from "@appquality/appquality-design-system";
 import { FormikHelpers } from "formik";
 import { useTranslation } from "react-i18next";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
@@ -61,7 +61,16 @@ const FormWrapper = ({ children }: { children: React.ReactNode }) => {
     } catch (e) {
       dispatch(
         addMessage(
-          <div data-qa="manual-payment-error-toastr">Error</div>,
+          <Text
+            data-qa="manual-payment-error-toastr"
+            className="aq-text-primary"
+          >
+            <strong>{t("Something went wrong")}</strong>
+            {t("PAYMENTS_MODAL_INVOICE_STEP_4_ERROR", {
+              defaultValue:
+                "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
+            })}
+          </Text>,
           "danger"
         )
       );

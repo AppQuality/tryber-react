@@ -15,7 +15,7 @@ const SuccessMessage = () => {
             b: <strong className="aq-text-primary" />,
           }}
           defaults={
-            "<bold>Almost there!</bold><br />You will receive an email with the payment details. <br> Thank you for your collaboration!"
+            "<bold>We're (almost) there!</bold><br />We have sent you an email to your TRYBER account address.<br />In the email you will find all the information you need to create your invoice, including the address you need to submit it to."
           }
         />
       </Text>
