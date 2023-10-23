@@ -1,5 +1,5 @@
 import { Button, Card, Text } from "@appquality/appquality-design-system";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { PiggyBankFill } from "react-bootstrap-icons";
 import { Trans, useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import {
   setBootyDetailsModalOpen,
   setPaymentModalOpen,
 } from "src/redux/wallet/actionCreator";
+import { useGetUsersMePaymentsQuery } from "src/services/tryberApi";
 import getCurrencySymbol from "src/utils/getCurrencySymbol";
 import localizedUrl from "src/utils/localizedUrl";
 import styled from "styled-components";
@@ -34,6 +35,8 @@ const WalletManagmentRow = styled.div`
 export const WalletManagment = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const [paymentInProcessing, setPaymentInProcessing] =
+    useState<boolean>(false);
   const { fiscalStatus } = useSelector(
     (state: GeneralState) => ({
       fiscalStatus: state.user.fiscal.data?.fiscalStatus,
@@ -44,10 +47,14 @@ export const WalletManagment = () => {
     (state: GeneralState) => state.wallet.booty,
     shallowEqual
   );
-  const paymentInProcessing = useSelector(
-    (state: GeneralState) => state.wallet.paymentInProcessing,
-    shallowEqual
-  );
+  const { data } = useGetUsersMePaymentsQuery({});
+
+  useEffect(() => {
+    const paymentInProcessing =
+      data?.results?.some((payment) => payment.status === "processing") ||
+      false;
+    setPaymentInProcessing(paymentInProcessing);
+  }, [data]);
 
   const isVerified = fiscalStatus === "Verified";
   const isValidAmount = booty.bootyThreshold?.isOver;
