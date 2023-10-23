@@ -93,15 +93,13 @@ export const PaymentDetailsModal = () => {
   }, [results]);
 
   useEffect(() => {
-    if (paymentId) {
-      const cols = paymentDetailsColumns(paymentId, dispatch, t);
-      setcolumns(cols);
-    }
+    const cols = paymentDetailsColumns(dispatch, t);
+    setcolumns(cols);
   }, []);
 
   const changePagination = (newPage: number) => {
     const newStart = limit * (newPage - 1);
-    paymentId && dispatch(updateDetailsPagination(paymentId, newStart));
+    paymentId && dispatch(updateDetailsPagination(newStart));
   };
 
   return (

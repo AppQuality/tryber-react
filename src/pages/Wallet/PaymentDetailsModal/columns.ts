@@ -4,7 +4,6 @@ import { TFunction } from "react-i18next";
 import { updateDetailsSortingOptions } from "../../../redux/wallet/actionCreator";
 
 export const paymentDetailsColumns = (
-  id: number,
   dispatch: AppDispatch,
   t: TFunction<"translation">
 ): Column[] => {
@@ -18,7 +17,7 @@ export const paymentDetailsColumns = (
       isSortable: true,
       hideIndex: true,
       onSort: (newOrder) => {
-        dispatch(updateDetailsSortingOptions(id, newOrder, "activity"));
+        dispatch(updateDetailsSortingOptions(newOrder, "activity"));
       },
     },
     {
@@ -27,7 +26,7 @@ export const paymentDetailsColumns = (
       key: "type",
       isSortable: true,
       onSort: (newOrder) => {
-        dispatch(updateDetailsSortingOptions(id, newOrder, "type"));
+        dispatch(updateDetailsSortingOptions(newOrder, "type"));
       },
     },
     {
@@ -36,7 +35,7 @@ export const paymentDetailsColumns = (
       key: "date",
       isSortable: true,
       onSort: (newOrder) => {
-        dispatch(updateDetailsSortingOptions(id, newOrder, "date"));
+        dispatch(updateDetailsSortingOptions(newOrder, "date"));
       },
     },
     {
@@ -47,7 +46,7 @@ export const paymentDetailsColumns = (
       hideIndex: true,
       isSortable: true,
       onSort: (newOrder) => {
-        dispatch(updateDetailsSortingOptions(id, newOrder, "gross"));
+        dispatch(updateDetailsSortingOptions(newOrder, "gross"));
       },
     },
   ];
