@@ -27,7 +27,7 @@ describe("tab fiscal profile", () => {
 
     cy.intercept("GET", `${Cypress.env("REACT_APP_API_URL")}/users/me/fiscal`, {
       statusCode: 200,
-      fixture: "users/me/fiscal/_get/200_internal_fiscal_profile",
+      fixture: "users/me/fiscal/_get/200_internal",
     }).as("usersMeFiscal");
 
     cy.visit("/my-account/?tab=base");
