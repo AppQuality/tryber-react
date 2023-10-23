@@ -87,7 +87,7 @@ const IntroductoryText = () => {
           }}
           components={{
             br: <br />,
-            p: <p className="aq-mb-2" />,
+            p: <p className="aq-mb-3" />,
             title: <Title size="xs" className="aq-mb-1" />,
             strong: <strong className="aq-text-primary" />,
           }}

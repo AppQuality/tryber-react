@@ -16,6 +16,11 @@ describe("Payment request", () => {
       name: "Partita IVA Ordinaria",
       translationKey: `Company rate scheme`,
     },
+    {
+      key: "internal",
+      name: "Dipendente",
+      translationKey: `Internal employee`,
+    },
   ];
   beforeEach(() => {
     cy.loggedIn();
