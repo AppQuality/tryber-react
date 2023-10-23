@@ -1,12 +1,10 @@
 import { Text } from "@appquality/appquality-design-system";
 import { useFormikContext } from "formik";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
-import { useAppDispatch } from "src/redux/provider";
-import { getProfile } from "src/redux/user/actions/getProfile";
+import { useGetUsersMeQuery } from "src/services/tryberApi";
 import dateFormatter from "src/utils/dateFormatter";
 import getCurrencySymbol from "src/utils/getCurrencySymbol";
 
@@ -17,30 +15,24 @@ const iconStyle = {
 };
 export const Step2Recap = () => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
 
   const { values } = useFormikContext<PaymentFormType>();
-  const { data, loading } = useSelector(
+  const { data } = useSelector(
     (state: GeneralState) => state.user.fiscal,
     shallowEqual
   );
-  const { net, gross } = useSelector(
-    (state: GeneralState) => state.wallet.booty,
-    shallowEqual
-  );
-  const { birthDate } = useSelector(
-    (state: GeneralState) => state.user.user,
-    shallowEqual
-  );
+  const { data: booty } = useGetUsersMeQuery({
+    fields: "pending_booty,birthDate",
+  });
+  const net = booty?.pending_booty?.net;
+  const gross = booty?.pending_booty?.gross;
+  const birthDate = booty?.birthDate || "";
   const fiscalType =
     data?.type === "withholding"
       ? t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20")
       : data?.type === "non-italian"
       ? t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20")
       : t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20");
-  useEffect(() => {
-    dispatch(getProfile());
-  }, []);
   return (
     <>
       {values.paymentMethod === "paypal" ? (
@@ -75,8 +67,8 @@ export const Step2Recap = () => {
               </span>
             ) : (
               <span data-qa="payment-modal-gross-booty">
-                {getCurrencySymbol(gross.currency)}
-                {gross.value.toFixed(2)}
+                {getCurrencySymbol(gross?.currency || "")}
+                {gross?.value.toFixed(2)}
               </span>
             )}
           </strong>
@@ -84,8 +76,8 @@ export const Step2Recap = () => {
         </>
         {net && (
           <span data-qa="payment-modal-gross-booty">
-            ({t("Gross")}: {getCurrencySymbol(gross.currency)}
-            {gross.value.toFixed(2)})
+            ({t("Gross")}: {getCurrencySymbol(gross?.currency || "")}
+            {gross?.value.toFixed(2)})
           </span>
         )}
       </Text>
