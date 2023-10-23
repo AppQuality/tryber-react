@@ -223,7 +223,7 @@ describe("Payment request", () => {
             cy.dataQa("payment-modal-next").click();
             cy.dataQa("payment-modal-next").should("be.disabled");
             cy.dataQa("payment-modal-back").should("be.disabled");
-            cy.dataQa("payment-modal-next").should("contain", "Loading...");
+            cy.dataQa("payment-modal-next").should("contain", "wait");
           });
         });
 

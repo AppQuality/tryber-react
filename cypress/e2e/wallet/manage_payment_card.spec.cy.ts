@@ -161,7 +161,7 @@ describe("Manage your payment card:", () => {
         cy.dataQa("booty-details-cta").click();
       });
       cy.get(".modal").within(() => {
-        cy.get(".thead").should("contain", "Tot. gross");
+        cy.get(".thead").should("contain", "Amount gross");
         cy.get(".thead").should("not.contain", "Net");
       });
     });
