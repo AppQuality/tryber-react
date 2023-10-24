@@ -42,7 +42,7 @@ export const Step0FiscalProfileRecap = () => {
                   href={localizedUrl("/my-account/?tab=fiscal")}
                 />
               ),
-              ul: <ul />,
+              ul: <ul className="aq-mb-3" />,
               li: <li />,
             }}
             defaults={`
