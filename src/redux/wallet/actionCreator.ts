@@ -1,46 +1,6 @@
 import { ThunkAction } from "redux-thunk";
-import API from "src/utils/api";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
-
-export const fetchPaymentRequests =
-  (): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
-  async (dispatch, getState) => {
-    const {
-      wallet: { requestsList },
-    } = getState();
-    try {
-      const query: ApiOperations["get-users-me-payments"]["parameters"]["query"] =
-        {
-          order: requestsList.order,
-          orderBy: requestsList.orderBy,
-          limit: requestsList.limit,
-          start: requestsList.start,
-        };
-      const data = await API.getUserPaymentRequests(query);
-      return dispatch({
-        type: "wallet/updateRequestsList",
-        payload: data,
-      });
-    } catch (e) {
-      const error = e as HttpError;
-      if (error.statusCode === 404) {
-        const { start, limit, size } = requestsList;
-        if (start - limit >= 0) {
-          dispatch(updatePagination(start - limit));
-        }
-        return dispatch({
-          type: "wallet/updateRequestsList",
-          payload: {
-            size: size,
-            start: start,
-            results: [],
-          },
-        });
-      } else {
-        addMessage(error.message, "danger", false);
-      }
-    }
-  };
+import API from "src/utils/api";
 
 // update some query for payments requests and then update the list of item
 export const updatePagination =
@@ -52,7 +12,6 @@ export const updatePagination =
       type: "wallet/updateReqsQuery",
       payload: { start: newStart },
     });
-    return dispatch(fetchPaymentRequests());
   };
 
 export const updateSortingOptions =
@@ -65,7 +24,6 @@ export const updateSortingOptions =
       type: "wallet/updateReqsQuery",
       payload: { order: order, orderBy: orderBy },
     });
-    return dispatch(fetchPaymentRequests());
   };
 
 export const fetchBooty =
@@ -123,7 +81,7 @@ export const fetchPaymentDetails =
       if (error.statusCode === 404) {
         const { start, limit, size } = paymentDetails;
         if (start - limit >= 0) {
-          dispatch(updateDetailsPagination(id, start - limit));
+          dispatch(updateDetailsPagination(start - limit));
         }
         return dispatch({
           type: "wallet/updatePaymentDetails",
@@ -141,29 +99,25 @@ export const fetchPaymentDetails =
 
 export const updateDetailsPagination =
   (
-    id: number,
     newStart: number
   ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
   async (dispatch) => {
-    dispatch({
+    return dispatch({
       type: "wallet/updatePaymentDetailsQuery",
       payload: { start: newStart },
     });
-    return dispatch(fetchPaymentDetails(id));
   };
 
 export const updateDetailsSortingOptions =
   (
-    id: number,
     order: WalletState["paymentDetails"]["order"],
     orderBy: WalletState["paymentDetails"]["orderBy"]
   ): ThunkAction<Promise<any>, GeneralState, unknown, WalletActions> =>
   async (dispatch) => {
-    dispatch({
+    return dispatch({
       type: "wallet/updatePaymentDetailsQuery",
       payload: { order: order, orderBy: orderBy },
     });
-    return dispatch(fetchPaymentDetails(id));
   };
 
 export const resetPaymentDetails =

@@ -1,10 +1,8 @@
-import { updateSortingOptions } from "src/redux/wallet/actionCreator";
-import React from "react";
 import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
 import { TFunction } from "react-i18next";
+import { updateSortingOptions } from "src/redux/wallet/actionCreator";
 
 export const walletColumns = (
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
   dispatch: AppDispatch,
   t: TFunction<"translation">
 ): Column[] => {
@@ -28,10 +26,7 @@ export const walletColumns = (
       key: "gross",
       isSortable: true,
       onSort: (newOrder) => {
-        setIsLoading(true);
-        dispatch(updateSortingOptions(newOrder, "gross")).then(() =>
-          setIsLoading(false)
-        );
+        dispatch(updateSortingOptions(newOrder, "gross"));
       },
     },
     {
@@ -40,10 +35,7 @@ export const walletColumns = (
       key: "net",
       isSortable: true,
       onSort: (newOrder) => {
-        setIsLoading(true);
-        dispatch(updateSortingOptions(newOrder, "net")).then(() =>
-          setIsLoading(false)
-        );
+        dispatch(updateSortingOptions(newOrder, "net"));
       },
     },
     {
@@ -52,10 +44,7 @@ export const walletColumns = (
       key: "paidDate",
       isSortable: true,
       onSort: (newOrder: OrderType) => {
-        setIsLoading(true);
-        dispatch(updateSortingOptions(newOrder, "paidDate")).then(() =>
-          setIsLoading(false)
-        );
+        dispatch(updateSortingOptions(newOrder, "paidDate"));
       },
     },
     {

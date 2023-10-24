@@ -2,7 +2,6 @@ import { Formik, Text } from "@appquality/appquality-design-system";
 import { FormikHelpers } from "formik";
 import { useTranslation } from "react-i18next";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
-import { fetchPaymentRequests } from "src/redux/wallet/actionCreator";
 import { usePostUsersMePaymentsMutation } from "src/services/tryberApi";
 import { useAppDispatch } from "src/store";
 import * as yup from "yup";
@@ -55,7 +54,6 @@ const FormWrapper = ({ children }: { children: React.ReactNode }) => {
           },
         },
       }).unwrap();
-      dispatch(fetchPaymentRequests());
 
       formikHelper.setValues({ ...values, step: values.step + 1 });
     } catch (e) {
