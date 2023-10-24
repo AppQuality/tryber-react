@@ -259,7 +259,7 @@
     "Other": "Non-conforming"
   },
   "Generic error": "Generic error",
-  "Get Email": "",
+  "Get email_MANUAL_PAYMENT_STEP_TITLE": "Get email",
   "Getting Started": "Getting Started",
   "Great job!": "Great job!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
@@ -284,8 +284,8 @@
   "Improve your chances of being selected in test campaigns by completing your profile.": "Improve your chances of being selected in campaigns by completing your profile.",
   "Inbox": "Inbox",
   "Informations": "Informations",
-  "Insert Data": "",
   "Insert Name and surname separated by space": "Insert name and surname separated by space",
+  "Insert details_MANUAL_PAYMENT_STEP_TITLE": "Insert details",
   "Institute": "Institute",
   "Institute is a required field.": "Institute is a required field.",
   "Internal employee": "",
@@ -401,7 +401,7 @@
   "Something went wrong": "Something went wrong",
   "Spoken languages": "Spoken languages",
   "Start Date": "Start Date",
-  "Start Here": "",
+  "Start here_MANUAL_PAYMENT_STEP_TITLE": "Start here",
   "State / Province": "State / Province",
   "Status": "Status",
   "Status of user fiscal profile": {
@@ -637,9 +637,11 @@
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "Boo-yah!✌ You're Legendary and you'll always be!\nKeep earning points and stay on top of the ranking.",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "Sky is not the limit! You're going to be Legendary in the next month:<br></br>it's TRYBER's highest level."
   },
-  "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
-    "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}": "<title>How it works</title>\n<p>\nInsert and confirm your personal information and bank details to request your payment by bank transfer. You will get a confirmation email with the gross amount and the net receivable: use these details to create the invoice you will need to send us\n</p>\n<title>What you have to do now</title>\n<p>\n<ul>\n<li>Check that your fiscal type is correct</li>\n<li>Insert your personal information and bank details and accept the conditions</li>\n<li>Send your payment request</li>\n</ul>\n</p>\n<title>Your fiscal type is:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>Need to update your fiscal type? Go to <fiscalprofilelink>your profile</fiscalprofilelink> before proceeding.</strong>",
+  "available tags: <br>, <p>, <strong>, <title>": {
     "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": "<title>Before you get the email</title>\n<p>\nCheck that everything is okay and confirm these details: you will also find them in the email we will send you after this step.\n</p>\n<p>\nAccount holder: <strong>{{accountHolder}}</strong>\n</p>\n<p>\nIBAN: <strong>{{iban}}</strong>\n</p>\n<p>\nFiscal type: <strong>{{fiscalType}}</strong>\n</p>"
+  },
+  "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
+    "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}": "<title>How it works</title>\n<p>\nInsert and confirm your personal information and bank details to request your payment by bank transfer. You will get a confirmation email with the gross amount and the net receivable: use these details to create the invoice you will need to send us\n</p>\n<title>What you have to do now</title>\n<p>\n<ul>\n<li>Check that your fiscal type is correct</li>\n<li>Insert your personal information and bank details and accept the conditions</li>\n<li>Send your payment request</li>\n</ul>\n</p>\n<title>Your fiscal type is:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>Need to update your fiscal type? Go to <fiscalprofilelink>your profile</fiscalprofilelink> before proceeding.</strong>"
   },
   "bugform usecase select option": {
     "Not a specific usecase": "None of these use cases"
@@ -714,8 +716,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
-  "Loading...": "",
-  "Fiscal profile recap": "",
+  "Insert Data_MANUAL_PAYMENT_STEP": "Insert details",
   "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
     "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Your fiscal type is not valid (e.g. you are VAT registered or you exceed € 5,000 gross / year with occasional services). <mail_link>Write to us</mail_link> to request payment."
   },
