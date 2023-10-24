@@ -15,11 +15,12 @@ const iconStyle = {
 };
 const RequestAmount = () => {
   const { data: booty } = useGetUsersMeQuery({
-    fields: "pending_booty,birthDate",
+    fields: "pending_booty",
   });
-  const net = booty?.pending_booty?.net;
-  const gross = booty?.pending_booty?.gross;
   const { t } = useTranslation();
+  if (!booty || !booty.pending_booty) return null;
+  const net = booty.pending_booty.net;
+  const gross = booty?.pending_booty.gross;
   return (
     <>
       <div className="aq-text-center aq-mb-2">
@@ -42,8 +43,8 @@ const RequestAmount = () => {
               </span>
             ) : (
               <span data-qa="payment-modal-gross-booty">
-                {getCurrencySymbol(gross?.currency || "")}
-                {gross?.value.toFixed(2)}
+                {getCurrencySymbol(gross.currency || "")}
+                {gross.value.toFixed(2)}
               </span>
             )}
           </strong>
