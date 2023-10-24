@@ -13,19 +13,16 @@ describe("Net and gross columns in wallet table", () => {
       }
     ).as("userMeFields");
 
-    cy.intercept("GET", `**/users/me/fiscal`, {
+    cy.intercept("GET", `${Cypress.env("REACT_APP_API_URL")}/users/me/fiscal`, {
       statusCode: 200,
       fixture: "users/me/fiscal/_get/200_non_italian",
     }).as("userMeFiscal");
 
     cy.intercept(
-      {
-        method: "GET",
-        pathname: `**/users/me`,
-        query: {
-          fields: "pending_booty,booty_threshold",
-        },
-      },
+      "GET",
+      `${Cypress.env(
+        "REACT_APP_API_URL"
+      )}/users/me?fields=pending_booty%2Cbooty_threshold`,
       {
         statusCode: 200,
         fixture: "/users/me/_get/200_booty_net",
@@ -33,16 +30,10 @@ describe("Net and gross columns in wallet table", () => {
     ).as("pendingBooty");
 
     cy.intercept(
-      {
-        method: "GET",
-        pathname: `**/users/me/payments`,
-        query: {
-          order: "DESC",
-          orderBy: "paidDate",
-          limit: "10",
-          start: "0",
-        },
-      },
+      "GET",
+      `${Cypress.env(
+        "REACT_APP_API_URL"
+      )}/users/me/payments?order=DESC&orderBy=paidDate&limit=10&start=0`,
       {
         statusCode: 200,
         fixture: "users/me/payments/_get/200_multiple-pages",
@@ -50,16 +41,10 @@ describe("Net and gross columns in wallet table", () => {
     ).as("tablePayments");
 
     cy.intercept(
-      {
-        method: "GET",
-        pathname: `**/users/me/payments`,
-        query: {
-          order: "DESC",
-          orderBy: "paidDate",
-          limit: "1",
-          start: "0",
-        },
-      },
+      "GET",
+      `${Cypress.env(
+        "REACT_APP_API_URL"
+      )}/users/me/payments?order=DESC&orderBy=paidDate&limit=1&start=0`,
       {
         statusCode: 200,
         fixture: "users/me/payments/_get/200_single-paid-payment",
@@ -67,16 +52,10 @@ describe("Net and gross columns in wallet table", () => {
     ).as("singlePaidPayment");
 
     cy.intercept(
-      {
-        method: "GET",
-        pathname: `**/users/me/payments/1`,
-        query: {
-          order: "DESC",
-          orderBy: "date",
-          limit: "10",
-          start: "0",
-        },
-      },
+      "GET",
+      `${Cypress.env(
+        "REACT_APP_API_URL"
+      )}/users/me/payments/1?order=DESC&orderBy=date&limit=10&start=0`,
       {
         statusCode: 200,
         fixture: "users/me/payments/payment/_get/200_simple",

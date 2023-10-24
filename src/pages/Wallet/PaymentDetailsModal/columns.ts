@@ -1,9 +1,12 @@
 import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
+import React from "react";
 import { TFunction } from "react-i18next";
 
 import { updateDetailsSortingOptions } from "../../../redux/wallet/actionCreator";
 
 export const paymentDetailsColumns = (
+  id: number,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
   dispatch: AppDispatch,
   t: TFunction<"translation">
 ): Column[] => {
@@ -17,7 +20,10 @@ export const paymentDetailsColumns = (
       isSortable: true,
       hideIndex: true,
       onSort: (newOrder) => {
-        dispatch(updateDetailsSortingOptions(newOrder, "activity"));
+        setIsLoading(true);
+        dispatch(updateDetailsSortingOptions(id, newOrder, "activity")).then(
+          () => setIsLoading(false)
+        );
       },
     },
     {
@@ -26,7 +32,10 @@ export const paymentDetailsColumns = (
       key: "type",
       isSortable: true,
       onSort: (newOrder) => {
-        dispatch(updateDetailsSortingOptions(newOrder, "type"));
+        setIsLoading(true);
+        dispatch(updateDetailsSortingOptions(id, newOrder, "type")).then(() =>
+          setIsLoading(false)
+        );
       },
     },
     {
@@ -35,7 +44,10 @@ export const paymentDetailsColumns = (
       key: "date",
       isSortable: true,
       onSort: (newOrder) => {
-        dispatch(updateDetailsSortingOptions(newOrder, "date"));
+        setIsLoading(true);
+        dispatch(updateDetailsSortingOptions(id, newOrder, "date")).then(() =>
+          setIsLoading(false)
+        );
       },
     },
     {
@@ -46,7 +58,10 @@ export const paymentDetailsColumns = (
       hideIndex: true,
       isSortable: true,
       onSort: (newOrder) => {
-        dispatch(updateDetailsSortingOptions(newOrder, "gross"));
+        setIsLoading(true);
+        dispatch(updateDetailsSortingOptions(id, newOrder, "gross")).then(() =>
+          setIsLoading(false)
+        );
       },
     },
   ];

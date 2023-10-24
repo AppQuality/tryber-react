@@ -1,12 +1,10 @@
-import { Text, Title } from "@appquality/appquality-design-system";
-import { useFormikContext } from "formik";
 import { Trans, useTranslation } from "react-i18next";
+import { Text, Title } from "@appquality/appquality-design-system";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
-import {
-  useGetUsersMeFiscalQuery,
-  useGetUsersMeQuery,
-} from "src/services/tryberApi";
+import { shallowEqual, useSelector } from "react-redux";
 import getCurrencySymbol from "src/utils/getCurrencySymbol";
+import { useFormikContext } from "formik";
+import { useGetUsersMeFiscalQuery } from "src/services/tryberApi";
 
 const iconStyle = {
   verticalAlign: "middle",
@@ -14,11 +12,10 @@ const iconStyle = {
   height: "33px",
 };
 const RequestAmount = () => {
-  const { data: booty } = useGetUsersMeQuery({
-    fields: "pending_booty,birthDate",
-  });
-  const net = booty?.pending_booty?.net;
-  const gross = booty?.pending_booty?.gross;
+  const { net, gross } = useSelector(
+    (state: GeneralState) => state.wallet.booty,
+    shallowEqual
+  );
   const { t } = useTranslation();
   return (
     <>
@@ -42,8 +39,8 @@ const RequestAmount = () => {
               </span>
             ) : (
               <span data-qa="payment-modal-gross-booty">
-                {getCurrencySymbol(gross?.currency || "")}
-                {gross?.value.toFixed(2)}
+                {getCurrencySymbol(gross.currency)}
+                {gross.value.toFixed(2)}
               </span>
             )}
           </strong>
@@ -51,8 +48,8 @@ const RequestAmount = () => {
         </>
         {net && (
           <span data-qa="payment-modal-gross-booty">
-            ({t("Gross")}: {getCurrencySymbol(gross?.currency || "")}
-            {gross?.value.toFixed(2)})
+            ({t("Gross")}: {getCurrencySymbol(gross.currency)}
+            {gross.value.toFixed(2)})
           </span>
         )}
       </Text>

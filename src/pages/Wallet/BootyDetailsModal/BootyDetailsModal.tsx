@@ -11,8 +11,9 @@ import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { useAppDispatch } from "src/redux/provider";
 import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
-import { useGetUsersMePendingBootyQuery } from "src/services/tryberApi";
 import {
+  fetchBootyDetails,
+  resetBootyDetails,
   setBootyDetailsModalOpen,
   updateBootyDetailsPagination,
 } from "../../../redux/wallet/actionCreator";
@@ -28,26 +29,20 @@ const activityStyle = {
 export const BootyDetailsModal = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
-  const { limit, start, order, orderBy } = useSelector(
+  const bootyDetails = useSelector(
     (state: GeneralState) => state.wallet.bootyDetails,
     shallowEqual
   );
-  const { data, isLoading } = useGetUsersMePendingBootyQuery({
-    limit,
-    start,
-    order,
-    orderBy,
-  });
-
-  const { results, total } = data || {};
-
   const open = useSelector(
     (state: GeneralState) => state.wallet.isBootyDetailsModalOpen,
     shallowEqual
   );
+
+  const { results, limit, total, start, order, orderBy } = bootyDetails;
 
   useEffect(() => {
     if (typeof results !== "undefined") {
@@ -105,16 +100,25 @@ export const BootyDetailsModal = () => {
         })
       );
     }
-  }, [results]);
+  }, [bootyDetails]);
 
   useEffect(() => {
-    const cols = bootyDetailsColumns(dispatch, t);
-    setcolumns(cols);
-  }, []);
+    if (open) {
+      const cols = bootyDetailsColumns(setIsLoading, dispatch, t);
+      setcolumns(cols);
+      dispatch(fetchBootyDetails()).then(() => setIsLoading(false));
+    } else {
+      setIsLoading(true);
+      dispatch(resetBootyDetails());
+    }
+  }, [open]);
 
   const changePagination = (newPage: number) => {
+    setIsLoading(true);
     const newStart = limit * (newPage - 1);
-    dispatch(updateBootyDetailsPagination(newStart));
+    dispatch(updateBootyDetailsPagination(newStart)).then(() =>
+      setIsLoading(false)
+    );
   };
 
   return (
@@ -144,7 +148,7 @@ export const BootyDetailsModal = () => {
         className="aq-pt-3"
         onPageChange={changePagination}
         current={start / limit + 1}
-        maxPages={Math.ceil((total || 0) / limit)}
+        maxPages={Math.ceil(total / limit)}
         mobileText={(current, total) =>
           t(`Page %current% / %total%`)
             .replace("%current%", current.toString())

@@ -242,21 +242,6 @@ describe("Payment request", () => {
             cy.dataQa("payment-modal-next").click();
             cy.dataQa("manual-payment-modal-step-4").should("be.visible");
           });
-          it("the request a payment button should be disabled", () => {
-            cy.intercept(
-              "GET",
-              `${Cypress.env("REACT_APP_API_URL")}/users/me/payments*`,
-              {
-                statusCode: 200,
-                fixture: "users/me/payments/_get/200_paid-and-processing",
-              }
-            ).as("getUserMePayment");
-            cy.dataQa("payment-modal-next").click();
-            cy.dataQa("manual-payment-modal-step-4").should("be.visible");
-            cy.dataQa("payment-modal").find(".modal-close").click();
-
-            cy.dataQa("request-payment-cta").should("be.disabled");
-          });
         });
 
         describe("after a unsuccessful api call", () => {

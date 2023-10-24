@@ -1,7 +1,7 @@
 import { api } from "./api";
 const injectedRtkApi = api.injectEndpoints({
   endpoints: (build) => ({
-    $get: build.query<$getApiResponse, $getApiArg>({
+    get: build.query<GetApiResponse, GetApiArg>({
       query: () => ({ url: `/` }),
     }),
     getAgreements: build.query<GetAgreementsApiResponse, GetAgreementsApiArg>({
@@ -833,8 +833,8 @@ const injectedRtkApi = api.injectEndpoints({
   overrideExisting: false,
 });
 export { injectedRtkApi as tryberApi };
-export type $getApiResponse = /** status 200 OK */ {};
-export type $getApiArg = void;
+export type GetApiResponse = /** status 200 OK */ {};
+export type GetApiArg = void;
 export type GetAgreementsApiResponse = /** status 200 OK */ {
   items: ({
     id: number;
@@ -1140,7 +1140,7 @@ export type GetCampaignsByCampaignTasksApiArg = {
   campaign: string;
 };
 export type PostCampaignsByCampaignTasksApiResponse =
-  /** status 201 Created */ void;
+  /** status 201 Created */ undefined;
 export type PostCampaignsByCampaignTasksApiArg = {
   /** A campaign id */
   campaign: string;
@@ -1595,7 +1595,7 @@ export type PostMediaApiArg = {
     media?: {} | Blob[];
   };
 };
-export type DeleteMediaApiResponse = /** status 200 OK */ void;
+export type DeleteMediaApiResponse = /** status 200 OK */ undefined;
 export type DeleteMediaApiArg = {
   body: {
     url: string;
@@ -1637,11 +1637,12 @@ export type GetPaymentsApiArg = {
   /** Key-value Array for item filtering */
   filterBy?: object;
 };
-export type PostPaymentsByPaymentIdApiResponse = /** status 200 OK */ void;
+export type PostPaymentsByPaymentIdApiResponse = /** status 200 OK */ undefined;
 export type PostPaymentsByPaymentIdApiArg = {
   paymentId: string;
 };
-export type DeletePaymentsByPaymentIdApiResponse = /** status 200 OK */ void;
+export type DeletePaymentsByPaymentIdApiResponse =
+  /** status 200 OK */ undefined;
 export type DeletePaymentsByPaymentIdApiArg = {
   paymentId: string;
 };
@@ -1809,7 +1810,7 @@ export type PatchUsersMeApiArg = {
     oldPassword?: string;
   };
 };
-export type DeleteUsersMeApiResponse = /** status 200 OK */ void;
+export type DeleteUsersMeApiResponse = /** status 200 OK */ undefined;
 export type DeleteUsersMeApiArg = {
   body: {
     reason: string;
@@ -2380,7 +2381,7 @@ export type GetUsersMeCampaignsByCampaignIdFormsApiArg = {
   campaignId: string;
 };
 export type PostUsersMeCampaignsByCampaignIdFormsApiResponse =
-  /** status 200 OK */ void;
+  /** status 200 OK */ undefined;
 export type PostUsersMeCampaignsByCampaignIdFormsApiArg = {
   campaignId: string;
   body: {
@@ -2654,7 +2655,7 @@ export type RankingItem = {
   monthly_exp: number;
 };
 export const {
-  use$getQuery,
+  useGetQuery,
   useGetAgreementsQuery,
   usePostAgreementsMutation,
   usePutAgreementsByAgreementIdMutation,

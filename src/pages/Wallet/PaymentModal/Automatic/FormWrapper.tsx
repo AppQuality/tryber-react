@@ -4,9 +4,10 @@ import { useAppDispatch } from "src/redux/provider";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 import {
   fetchBooty,
+  fetchPaymentRequests,
   setPaymentModalOpen,
 } from "src/redux/wallet/actionCreator";
-import { usePostUsersMePaymentsMutation } from "src/services/tryberApi";
+import API from "src/utils/api";
 import * as yup from "yup";
 
 export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
@@ -14,7 +15,6 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
 }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const [postUsersMePayments] = usePostUsersMePaymentsMutation();
   const initialValues: PaymentFormType = {
     step: 0,
     paymentMethod: "",
@@ -96,13 +96,12 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
             iban: values.iban,
           };
     try {
-      await postUsersMePayments({
-        body: {
-          method: method,
-        },
-      }).unwrap();
+      await API.postPaymentRequest({
+        method: method,
+      });
       formikHelper.setFieldValue("step", 3);
       dispatch(fetchBooty());
+      dispatch(fetchPaymentRequests());
     } catch (e) {
       const err = e as HttpError;
       formikHelper.resetForm();
