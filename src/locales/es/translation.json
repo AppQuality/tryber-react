@@ -259,7 +259,7 @@
     "Other": "No binario"
   },
   "Generic error": "Error genérico",
-  "Get Email": "",
+  "Get email_MANUAL_PAYMENT_STEP_TITLE": "Recibe correo",
   "Getting Started": "Empezando",
   "Great job!": "¡Buen Trabajo!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
@@ -284,8 +284,8 @@
   "Improve your chances of being selected in test campaigns by completing your profile.": "Mejora tus posibilidades de ser seleccionado en campañas completando tu perfil.",
   "Inbox": "Inbox",
   "Informations": "Informaciones",
-  "Insert Data": "",
   "Insert Name and surname separated by space": "Insertar nombre y apellido separados por espacio",
+  "Insert details_MANUAL_PAYMENT_STEP_TITLE": "Introduce datos",
   "Institute": "Instituto",
   "Institute is a required field.": "El instituto es un campo obligatorio",
   "Internal employee": "",
@@ -401,7 +401,7 @@
   "Something went wrong": "Parece que algo salió mal",
   "Spoken languages": "Idiomas hablados",
   "Start Date": "Fecha de Inicio",
-  "Start Here": "",
+  "Start here_MANUAL_PAYMENT_STEP_TITLE": "Empieza aquí",
   "State / Province": "Estado / Provincia",
   "Status": "Estado",
   "Status of user fiscal profile": {
@@ -637,9 +637,11 @@
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "¡A tope!✌ ¡Eres Legendary y siempre lo serás!\nSigue ganando puntos y mantente en lo más alto de la clasificación.",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "¡El cielo no es el límite! El próximo mes serás Legendary,<br></br>el nivel más alto de TRYBER."
   },
-  "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
-    "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}": "<title>Cómo funciona</title>\n<p>\nPara solicitar el pago por transferencia bancaria, introduce y confirma tus datos personales y bancarios. Recibirás un correo electrónico de confirmación con los importes, tanto brutos como netos: utilízalos para crear la factura o recibo que tendrás que enviarnos.\n</p>\n<title>Siguiente paso</title>\n<p>\n<ul>\n<li>Comprueba si tu régimen fiscal es correcto</li>\n<li>Introduce los datos para la transferencia y acepta las condiciones de pago</li>\n<li>Envía tu solicitud</li>\n</ul>\n</p>\n<title>Aquí tu régimen fiscal:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>¿Necesitas actualizarlo? Entra en <fiscalprofilelink>tu perfil</fiscalprofilelink> antes de continuar con la solicitud de pago.</strong>",
+  "available tags: <br>, <p>, <strong>, <title>": {
     "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": "<title>Antes de recibir el correo</title>\n<p>\nComprueba si está todo correcto y confirma los datos: también los encontrarás en el correo electrónico que te enviaremos después de este paso.\n</p>\n<p>\nTitular de la cuenta: <strong>{{accountHolder}}</strong>\n</p>\n<p>\nIBAN: <strong>{{iban}}</strong>\n</p>\n<p>\nRégimen fiscal: <strong>{{fiscalType}}</strong>\n</p>"
+  },
+  "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
+    "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}": "<title>Cómo funciona</title>\n<p>\nPara solicitar el pago por transferencia bancaria, introduce y confirma tus datos personales y bancarios. Recibirás un correo electrónico de confirmación con los importes, tanto brutos como netos: utilízalos para crear la factura o recibo que tendrás que enviarnos.\n</p>\n<title>Siguiente paso</title>\n<p>\n<ul>\n<li>Comprueba si tu régimen fiscal es correcto</li>\n<li>Introduce los datos para la transferencia y acepta las condiciones de pago</li>\n<li>Envía tu solicitud</li>\n</ul>\n</p>\n<title>Aquí tu régimen fiscal:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>¿Necesitas actualizarlo? Entra en <fiscalprofilelink>tu perfil</fiscalprofilelink> antes de continuar con la solicitud de pago.</strong>"
   },
   "bugform usecase select option": {
     "Not a specific usecase": "Ninguno de esos casos de uso"
@@ -714,8 +716,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
-  "Loading...": "",
-  "Fiscal profile recap": "",
+  "Get Email": "Recibe correo",
   "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
     "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Tu régimen fiscal no es válido (estás registrado a efectos del IVA o superas los 5.000 brutos €/ año con servicios ocasionales). <mail_link>Escríbenos</mail_link> para solicitar el pago."
   },

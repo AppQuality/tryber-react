@@ -85,7 +85,7 @@ const IntroductoryText = () => {
     <div data-qa="manual-payment-modal-intro-text">
       <Text>
         <Trans
-          i18nKey="available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>:::PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL"
+          i18nKey="available tags: <br>, <p>, <strong>, <title>:::PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL"
           values={{
             accountHolder: values.bankaccountOwner,
             iban: values.iban,
