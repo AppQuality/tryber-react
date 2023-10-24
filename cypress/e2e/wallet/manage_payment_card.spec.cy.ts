@@ -29,6 +29,16 @@ describe("Manage your payment card:", () => {
           fixture: "/users/me/_get/200_booty_net",
         }
       ).as("pendingBooty");
+      cy.intercept(
+        "GET",
+        `${Cypress.env(
+          "REACT_APP_API_URL"
+        )}/users/me?fields=pending_booty%2CbirthDate`,
+        {
+          statusCode: 200,
+          fixture: "/users/me/_get/200_booty_net",
+        }
+      ).as("pendingBootyRecap");
       cy.visit("/payments");
       cy.wait("@pendingBooty");
     });
@@ -91,6 +101,16 @@ describe("Manage your payment card:", () => {
           fixture: "/users/me/_get/200_booty_gross",
         }
       ).as("pendingBooty");
+      cy.intercept(
+        "GET",
+        `${Cypress.env(
+          "REACT_APP_API_URL"
+        )}/users/me?fields=pending_booty%2CbirthDate`,
+        {
+          statusCode: 200,
+          fixture: "/users/me/_get/200_booty_gross",
+        }
+      ).as("pendingBootyRecap");
       cy.visit("/payments");
       cy.wait("@pendingBooty");
     });
