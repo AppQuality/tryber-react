@@ -54,6 +54,15 @@ describe("Payment request", () => {
             fixture: "/users/me/_get/200_booty_gross",
           }
         ).as("pendingBooty");
+
+        cy.intercept(
+          "GET",
+          `${Cypress.env("REACT_APP_API_URL")}/users/me/payments*`,
+          {
+            statusCode: 200,
+            fixture: "users/me/payments/_get/200_single-paid-payment",
+          }
+        ).as("getUserMePayment");
         cy.visit("/payments");
       });
 
@@ -297,14 +306,6 @@ describe("Payment request", () => {
               fixture: "users/me/payments/_post/200",
             }
           ).as("postUserMePayment");
-          cy.intercept(
-            "GET",
-            `${Cypress.env("REACT_APP_API_URL")}/users/me/payments*`,
-            {
-              statusCode: 200,
-              fixture: "users/me/payments/_get/200_single-paid-payment",
-            }
-          ).as("getUserMePayment");
 
           cy.wait("@getUserMePayment");
           cy.dataQa("request-payment-cta").click();
