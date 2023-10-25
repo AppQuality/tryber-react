@@ -15,7 +15,7 @@ export const Step1Iban = () => {
       <Field
         name="bankaccountOwner"
         type="text"
-        label={t("Account Holder")}
+        label={t("Account holder")}
         placeholder={t("name")}
         data-qa="manual-payment-modal-account-holder"
       />
