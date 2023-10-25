@@ -4,22 +4,22 @@ describe("Payment request", () => {
     {
       key: "vat",
       name: "Partita IVA Forfettaria",
-      translationKey: `VAT rate scheme`,
+      translationKey: `Fiscal types:::VAT`,
     },
     {
       key: "witholding-extra",
       name: ">5k",
-      translationKey: `Annual witholding > 5000`,
+      translationKey: `Fiscal types:::Witholding > 5000€`,
     },
     {
       key: "company",
       name: "Partita IVA Ordinaria",
-      translationKey: `Company rate scheme`,
+      translationKey: `Fiscal types:::Company`,
     },
     {
       key: "internal",
       name: "Dipendente",
-      translationKey: `Internal employee`,
+      translationKey: `Fiscal types:::Internal employee`,
     },
   ];
   beforeEach(() => {
