@@ -70,13 +70,13 @@ const IntroductoryText = () => {
   const getFiscalTypeText = () => {
     switch (data.type) {
       case "vat":
-        return t("VAT rate scheme");
+        return t("Fiscal types:::VAT");
       case "witholding-extra":
-        return t("Annual witholding > 5000");
+        return t("Fiscal types:::Witholding > 5000€");
       case "company":
-        return t("Company rate scheme");
+        return t("Fiscal types:::Company");
       case "internal":
-        return t("Internal employee");
+        return t("Fiscal types:::Internal employee");
       default:
         throw new Error("Invalid fiscal type");
     }

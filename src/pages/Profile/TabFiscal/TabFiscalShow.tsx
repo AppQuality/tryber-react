@@ -84,13 +84,17 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
       <div data-qa="fiscal-data-show">
         <ShowItem Icon={CashCoin} label={t("Fiscal Type")}>
           {fiscalData?.type === "withholding"
-            ? t(`Annual witholding < 5000€`)
+            ? t(`Fiscal types:::Witholding < 5000€`)
             : fiscalData?.type === "witholding-extra"
-            ? t("Annual witholding > 5000")
-            : fiscalData?.type == "non-italian"
-            ? t("Foreign")
+            ? t("Fiscal types:::Witholding > 5000€")
+            : fiscalData?.type === "non-italian"
+            ? t("Fiscal types:::Foreign")
             : fiscalData?.type === "internal"
-            ? "Employee"
+            ? t("Fiscal types:::Internal employee")
+            : fiscalData?.type === "vat"
+            ? t("Fiscal types:::VAT")
+            : fiscalData?.type === "company"
+            ? t("Fiscal types:::Company")
             : t("Different rate scheme")}
         </ShowItem>
         <ShowItem

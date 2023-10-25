@@ -68,8 +68,6 @@
   "All_female": "All",
   "All_male": "All",
   "Amount gross": "Tot. gross",
-  "Annual witholding < 5000€": "Annual witholding < 5000€",
-  "Annual witholding > 5000": "Annual witholding > 5000",
   "Apply now": "Apply now",
   "Approved bugs": "Approved bugs",
   "Area is a required field.": "Area is a required field.",
@@ -186,7 +184,6 @@
   "Close Date": "Close Date",
   "Closed": "Closed",
   "Coming soon": "Coming soon",
-  "Company rate scheme": "",
   "Complete the Basic Course": "Start with the Basic Course",
   "Completed campaigns": "Completed campaigns",
   "Computer type": "Computer type",
@@ -243,14 +240,15 @@
   "Fiscal Type": "Fiscal Type",
   "Fiscal residence": "Fiscal residence",
   "Fiscal types": {
-    "@@Company@@": "Company",
-    "@@VAT@@": "VAT",
-    "@@Witholding < 5000€@@": "Witholding < 5000€",
-    "@@Witholding > 5000€@@": "Witholding > 5000€"
+    "Company": "Standard Vat Scheme (or company)",
+    "Foreign": "Not resident in Italy",
+    "Internal employee": "UG Employees",
+    "VAT": "Flat Rate Vat Scheme",
+    "Witholding < 5000€": "Witholding < 5000€",
+    "Witholding > 5000€": "Witholding > 5000€"
   },
   "For a secure password we recommend: Minimum 6  characters. An uppercase character. A numerical digit. A lowercase character.": "For a secure password we recommend: minimum 6  characters, an uppercase character, a numerical digit, a lowercase character.",
   "For tax reasons we are obliged to tie this choice to binary options only": "For tax reasons we are obliged to tie this choice to binary options only",
-  "Foreign": "Foreign",
   "Gender": "Gender",
   "Gender option": {
     "Female": "Female",
@@ -288,7 +286,6 @@
   "Insert details_MANUAL_PAYMENT_STEP_TITLE": "Insert details",
   "Institute": "Institute",
   "Institute is a required field.": "Institute is a required field.",
-  "Internal employee": "",
   "Invalid fiscal profile": "Invalid fiscal profile",
   "Invalid tax profile.": "Invalid tax profile.",
   "Keep": "Keep",
@@ -461,7 +458,6 @@
   "User mail validation": {
     "An Email has been sent to the provided address": "An Email has been sent to the provided address"
   },
-  "VAT rate scheme": "",
   "Valid tax profile": "Valid tax profile",
   "Version": "Version",
   "View": "View",

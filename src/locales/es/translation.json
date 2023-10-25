@@ -68,8 +68,6 @@
   "All_female": "Todas",
   "All_male": "Todos",
   "Amount gross": "Tot. Bruto",
-  "Annual witholding < 5000€": "Deducción anual < 5000€",
-  "Annual witholding > 5000": "Deducción anual > 5000",
   "Apply now": "Apúntate ahora",
   "Approved bugs": "Bugs aprobados",
   "Area is a required field.": "El área / La esfera es un campo obligatorio",
@@ -186,7 +184,6 @@
   "Close Date": "Fecha de Cierre",
   "Closed": "Cerrado",
   "Coming soon": "Próximamente",
-  "Company rate scheme": "",
   "Complete the Basic Course": "Empieza por el Curso Básico",
   "Completed campaigns": "Campañas completadas",
   "Computer type": "Tipo de computer",
@@ -243,14 +240,15 @@
   "Fiscal Type": "Régimen fiscal",
   "Fiscal residence": "Residencia fiscal",
   "Fiscal types": {
-    "@@Company@@": "Empresa",
-    "@@VAT@@": "IVA",
-    "@@Witholding < 5000€@@": "Dedución < 5000€",
-    "@@Witholding > 5000€@@": "Dedución > 5000€"
+    "Company": "Régimen de IVA ordinario o empresa",
+    "Foreign": "No residente en Italia",
+    "Internal employee": "Empleados UG",
+    "VAT": "Régimen de IVA a tanto alzado",
+    "Witholding < 5000€": "Dedución < 5000€",
+    "Witholding > 5000€": "Dedución > 5000€"
   },
   "For a secure password we recommend: Minimum 6  characters. An uppercase character. A numerical digit. A lowercase character.": "Para una password segura recomendamos: mínimo 6 caracteres, un carácter en mayúsculas, un número, un carácter en minúscula",
   "For tax reasons we are obliged to tie this choice to binary options only": "Por razones fiscales estamos obligados a vincular esta elección a las opciones binarias sólo",
-  "Foreign": "Extranjero",
   "Gender": "Género",
   "Gender option": {
     "Female": "Mujer",
@@ -288,7 +286,6 @@
   "Insert details_MANUAL_PAYMENT_STEP_TITLE": "Introduce datos",
   "Institute": "Instituto",
   "Institute is a required field.": "El instituto es un campo obligatorio",
-  "Internal employee": "",
   "Invalid fiscal profile": "Perfil fiscal inválido",
   "Invalid tax profile.": "Perfil fiscal inválido",
   "Keep": "Mantener",
@@ -461,7 +458,6 @@
   "User mail validation": {
     "An Email has been sent to the provided address": "Se ha enviado un correo electrónico a la dirección proporcionada"
   },
-  "VAT rate scheme": "",
   "Valid tax profile": "Perfil fiscal válido",
   "Version": "Versión",
   "View": "Ver",
@@ -716,7 +712,6 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
-  "Get Email": "Recibe correo",
   "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
     "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Tu régimen fiscal no es válido (estás registrado a efectos del IVA o superas los 5.000 brutos €/ año con servicios ocasionales). <mail_link>Escríbenos</mail_link> para solicitar el pago."
   },
