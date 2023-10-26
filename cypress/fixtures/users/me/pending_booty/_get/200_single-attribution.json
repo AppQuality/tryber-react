@@ -2,7 +2,8 @@
   "results": [
     {
       "id": 1,
-      "name": "",
+      "name": "[CP-3882] test release",
+      "activity": "TEST API CON BUG",
       "amount": {
         "net": {
           "value": 10,

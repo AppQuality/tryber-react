@@ -1,10 +1,8 @@
-import React from "react";
 import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
 import { TFunction } from "react-i18next";
 import { updateBootyDetailsSortingOptions } from "../../../redux/wallet/actionCreator";
 
 export const bootyDetailsColumns = (
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
   dispatch: AppDispatch,
   t: TFunction<"translation">
 ): Column[] => {
@@ -18,10 +16,7 @@ export const bootyDetailsColumns = (
       hideIndex: true,
       isSortable: true,
       onSort: (newOrder) => {
-        setIsLoading(true);
-        dispatch(
-          updateBootyDetailsSortingOptions(newOrder, "activityName")
-        ).then(() => setIsLoading(false));
+        dispatch(updateBootyDetailsSortingOptions(newOrder, "activityName"));
       },
     },
     {
@@ -32,10 +27,7 @@ export const bootyDetailsColumns = (
       hideIndex: true,
       isSortable: true,
       onSort: (newOrder) => {
-        setIsLoading(true);
-        dispatch(updateBootyDetailsSortingOptions(newOrder, "activity")).then(
-          () => setIsLoading(false)
-        );
+        dispatch(updateBootyDetailsSortingOptions(newOrder, "activity"));
       },
     },
     {
@@ -44,10 +36,7 @@ export const bootyDetailsColumns = (
       key: "attributionDate",
       isSortable: true,
       onSort: (newOrder) => {
-        setIsLoading(true);
-        dispatch(
-          updateBootyDetailsSortingOptions(newOrder, "attributionDate")
-        ).then(() => setIsLoading(false));
+        dispatch(updateBootyDetailsSortingOptions(newOrder, "attributionDate"));
       },
     },
     {
@@ -58,10 +47,7 @@ export const bootyDetailsColumns = (
       role: "cta",
       hideIndex: true,
       onSort: (newOrder) => {
-        setIsLoading(true);
-        dispatch(updateBootyDetailsSortingOptions(newOrder, "gross")).then(() =>
-          setIsLoading(false)
-        );
+        dispatch(updateBootyDetailsSortingOptions(newOrder, "gross"));
       },
     },
   ];

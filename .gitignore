@@ -27,6 +27,6 @@ yarn-error.log*
 
 src/config.json
 build-storybook.log
-generate-devel-token.json
+generate-devel-token*.json
 .env
 /lib-update.sh

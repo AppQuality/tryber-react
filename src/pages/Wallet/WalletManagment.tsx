@@ -1,15 +1,17 @@
 import { Button, Card, Text } from "@appquality/appquality-design-system";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { PiggyBankFill } from "react-bootstrap-icons";
 import { Trans, useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { useAppDispatch } from "src/redux/provider";
 import {
-  checkPaymentInProcessing,
-  fetchBooty,
   setBootyDetailsModalOpen,
   setPaymentModalOpen,
 } from "src/redux/wallet/actionCreator";
+import {
+  useGetUsersMePaymentsQuery,
+  useGetUsersMeQuery,
+} from "src/services/tryberApi";
 import getCurrencySymbol from "src/utils/getCurrencySymbol";
 import localizedUrl from "src/utils/localizedUrl";
 import styled from "styled-components";
@@ -34,26 +36,28 @@ const WalletManagmentRow = styled.div`
 export const WalletManagment = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const { fiscalStatus, fiscalType } = useSelector(
+  const [paymentInProcessing, setPaymentInProcessing] =
+    useState<boolean>(false);
+  const { fiscalStatus } = useSelector(
     (state: GeneralState) => ({
       fiscalStatus: state.user.fiscal.data?.fiscalStatus,
-      fiscalType: state.user.fiscal.data?.type,
     }),
     shallowEqual
   );
-  const booty = useSelector(
-    (state: GeneralState) => state.wallet.booty,
-    shallowEqual
-  );
-  const paymentInProcessing = useSelector(
-    (state: GeneralState) => state.wallet.paymentInProcessing,
-    shallowEqual
-  );
+  const { data: booty } = useGetUsersMeQuery({
+    fields: "pending_booty,booty_threshold",
+  });
+  const { data } = useGetUsersMePaymentsQuery({});
+
+  useEffect(() => {
+    const paymentInProcessing =
+      data?.results?.some((payment) => payment.status === "processing") ||
+      false;
+    setPaymentInProcessing(paymentInProcessing);
+  }, [data]);
 
   const isVerified = fiscalStatus === "Verified";
-  const isValidAmount = booty.bootyThreshold?.isOver;
-  const isValidFiscalType =
-    fiscalType && ["withholding", "non-italian"].includes(fiscalType);
+  const isValidAmount = booty?.booty_threshold?.isOver;
 
   const getInfoText = () => {
     if (paymentInProcessing) {
@@ -77,23 +81,9 @@ export const WalletManagment = () => {
         />
       );
     }
-    if (booty.net?.value === 0) {
+    if (booty?.pending_booty?.net?.value === 0) {
       return (
         <Trans i18nKey={"__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150"} />
-      );
-    }
-    if (!isValidFiscalType) {
-      return (
-        <Trans
-          i18nKey={
-            "Available tags : <mail_link> (Email link for unsupported fiscal profile):::__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150"
-          }
-          components={{
-            mail_link: (
-              <a href="mailto:administration@tryber.me" target="_blank" />
-            ),
-          }}
-        />
       );
     }
     if (!isValidAmount) {
@@ -117,12 +107,6 @@ export const WalletManagment = () => {
     );
   };
 
-  // initial requests
-  useEffect(() => {
-    dispatch(fetchBooty());
-    dispatch(checkPaymentInProcessing());
-  }, []);
-
   const openPaymentModal = () => {
     dispatch(setPaymentModalOpen(true));
   };
@@ -141,30 +125,36 @@ export const WalletManagment = () => {
             <Text>{t("__WALLET_CARD-YOUR_WALLET_MAX: 15")}</Text>
             <Text
               className={
-                !isVerified || booty.net?.value === 0 || paymentInProcessing
+                !isVerified ||
+                booty?.pending_booty?.net?.value === 0 ||
+                paymentInProcessing
                   ? "aq-text-disabled-dark"
                   : "aq-text-primary"
               }
             >
               <div>
                 <strong>
-                  {booty.net ? (
+                  {booty?.pending_booty?.net ? (
                     <span data-qa="net-booty">
-                      {t("Amount to get")} {booty.net.value.toFixed(2)}
-                      {getCurrencySymbol(booty.net.currency)}
+                      {t("Net receivable")}{" "}
+                      {booty?.pending_booty?.net.value.toFixed(2)}
+                      {getCurrencySymbol(booty?.pending_booty?.net.currency)}
                     </span>
                   ) : (
                     <span data-qa="gross-booty">
-                      {t("Gross")} {booty.gross.value.toFixed(2)}
-                      {getCurrencySymbol(booty.gross.currency)}
+                      {t("Gross")}{" "}
+                      {booty?.pending_booty?.gross.value.toFixed(2)}
+                      {getCurrencySymbol(
+                        booty?.pending_booty?.gross.currency || ""
+                      )}
                     </span>
                   )}
                 </strong>
               </div>
-              {booty.net && (
+              {booty?.pending_booty?.net && (
                 <div data-qa="gross-booty">
-                  ({t("Gross")} {booty.gross.value.toFixed(2)}
-                  {getCurrencySymbol(booty.gross.currency)})
+                  ({t("Gross")} {booty?.pending_booty?.gross.value.toFixed(2)}
+                  {getCurrencySymbol(booty?.pending_booty?.gross.currency)})
                 </div>
               )}
             </Text>
@@ -183,12 +173,7 @@ export const WalletManagment = () => {
         className="aq-mt-3"
         type="primary"
         size="block"
-        disabled={
-          !isVerified ||
-          !isValidAmount ||
-          paymentInProcessing ||
-          !isValidFiscalType
-        }
+        disabled={!isVerified || !isValidAmount || paymentInProcessing}
         onClick={openPaymentModal}
         flat
       >

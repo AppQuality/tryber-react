@@ -342,6 +342,7 @@ const TabBase = () => {
                     size="block"
                     htmlType="submit"
                     id="signup-simple"
+                    data-qa="submit-base-info-cta"
                     flat
                     disabled={
                       !formikProps.isValid ||

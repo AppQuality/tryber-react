@@ -37,8 +37,7 @@
   "A list of the campaigns that are currently available on the platform. Check the details and apply!": "La lista delle Campagne attualmente disponibili in piattaforma: controlla le caratteristiche richieste e prova a candidarti!",
   "A new device was successfully added to your device list": "Un nuovo dispositivo è stato aggiunto con successo all'elenco dei dispositivi",
   "Accept the <terms_and_conditions_link>conditions</terms_and_conditions_link> before proceeding": "Accetta le <terms_and_conditions_link>condizioni</terms_and_conditions_link> e continua la richiesta",
-  "Account Holder": "Intestatario del conto",
-  "Account holder": "Intestatario del conto",
+  "Account holder": "A chi è intestato il conto",
   "Achievement Date": "Data di conseguimento",
   "Achievement Date is a required field.": "La data di conseguimento è un campo obbligatorio",
   "Action": "Azione",
@@ -68,9 +67,6 @@
   "All_female": "Tutte",
   "All_male": "Tutti",
   "Amount gross": "Tot. Lordo",
-  "Amount to get": "Netto da ricevere",
-  "Annual witholding < 5000€": "Trattenuta annua < 5000€",
-  "Annual witholding > 5000": "Trattenuta annua > 5000€",
   "Apply now": "Candidati",
   "Approved bugs": "Bug approvati",
   "Area is a required field.": "L'area è un campo obbligatorio",
@@ -88,9 +84,6 @@
   "Available tags : <fiscal_profile_link> (Link to fiscal profile)": {
     "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150": "Useremo i dati presenti nel tuo profilo fiscale per il pagamento. Fai un veloce controllo e aggiornali se necessario.",
     "__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150": "Completa il <fiscal_profile_link>profilo fiscale</fiscal_profile_link> e verifica che i dati siano corretti per poter richiedere il pagamento."
-  },
-  "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
-    "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Il tuo regime fiscale non è valido (ad es. sei partita IVA o superi 5.000 lordi € / anno con prestazioni occasionali). <mail_link>Scrivici</mail_link> per richiedere il pagamento."
   },
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supporta le aziende nella creazione di esperienze memorabili grazie al potere della Community di TRYBER. <unguess_link>Scopri UNGUESS</unguess_link>"
@@ -246,14 +239,15 @@
   "Fiscal Type": "Regime fiscale",
   "Fiscal residence": "Residenza fiscale",
   "Fiscal types": {
-    "@@Company@@": "Azienda",
-    "@@VAT@@": "Partita IVA",
-    "@@Witholding < 5000€@@": "Trattenuta < 5000€",
-    "@@Witholding > 5000€@@": "Trattenuta > 5000€"
+    "Company": "Partita Iva Ordinaria (o azienda)",
+    "Foreign": "Non residente in Italia",
+    "Internal employee": "Dipendenti UG",
+    "VAT": "Partita Iva Forfettaria",
+    "Witholding < 5000€": "Ritenuta < 5000€",
+    "Witholding > 5000€": "Ritenuta > 5000€"
   },
   "For a secure password we recommend: Minimum 6  characters. An uppercase character. A numerical digit. A lowercase character.": "Per una password sicura suggeriamo: minimo 6 caratteri, un carattere maiuscolo, una cifra numerica, un carattere minuscolo",
   "For tax reasons we are obliged to tie this choice to binary options only": "Per motivi fiscali siamo obbligati a legare questa scelta alle sole opzioni binarie",
-  "Foreign": "Straniero",
   "Gender": "Genere",
   "Gender option": {
     "Female": "Femmina",
@@ -262,6 +256,7 @@
     "Other": "Non binario"
   },
   "Generic error": "Errore generico",
+  "Get email_MANUAL_PAYMENT_STEP_TITLE": "Ricevi email",
   "Getting Started": "Iniziare",
   "Great job!": "Ottimo lavoro!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
@@ -287,6 +282,7 @@
   "Inbox": "Archivio messaggi",
   "Informations": "Informazioni",
   "Insert Name and surname separated by space": "Inserisci nome e cognome separati da spazi",
+  "Insert details_MANUAL_PAYMENT_STEP_TITLE": "Inserisci dati",
   "Institute": "Istituto",
   "Institute is a required field.": "L'istituto è un campo obbligatorio",
   "Invalid fiscal profile": "Profilo fiscale invalido",
@@ -320,7 +316,7 @@
   "Must contain at least a number": "Deve contenere almeno un numero",
   "Must contain at least an uppercase letter": "Deve contenere almeno una lettera maiuscola",
   "Name": "Nome",
-  "Net receivable": "Netto",
+  "Net receivable": "Netto da ricevere",
   "Net received": "Netto ricevuto",
   "New password": "Nuova password",
   "Next": "Continua",
@@ -338,6 +334,7 @@
   "Overall ranking | level {{level}}": {
     "__RANKING_TITLE_LABEL_MONTH_MAX: 45": "Classifica completa | Livello {{level}}"
   },
+  "PAYMENTS_MODAL_INVOICE_STEP_4_ERROR": "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
   "PC Type: <bold>{{pc_type}}</bold>": "Tipo PC: <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "Questo indirizzo email è già in uso, inseriscine un altro.",
   "Page %current% / %total%": "Pagina %current% / %total%",
@@ -373,7 +370,7 @@
   "Request a payment with your preferred method and keep an eye on your booty and payment history in detail.": "Richiedi un pagamento col metodo che preferisci e tieni sotto controllo nel dettaglio i tuoi guadagni e la cronologia dei pagamenti.",
   "Request data": "Richiedi i dati",
   "Request now": "Richiedi ora",
-  "Request payment": "Richiedi un pagamento",
+  "Request payment": "Richiedi pagamento",
   "Request your data": "Richiedi i tuoi dati",
   "Reset password": "Resetta la password",
   "Review the manual": "Rivedi il manuale",
@@ -397,8 +394,10 @@
   "Severity": "Gravità",
   "Should be exactly 16 characters": "Deve contenere esattamente 16 caratteri",
   "Signup now": "Iscriviti ora",
+  "Something went wrong": "È successo qualcosa",
   "Spoken languages": "Lingue parlate",
   "Start Date": "Inizio",
+  "Start here_MANUAL_PAYMENT_STEP_TITLE": "Inizia qui",
   "State / Province": "Stato / Provincia",
   "Status": "Stato",
   "Status of user fiscal profile": {
@@ -629,8 +628,15 @@
     "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Replicabilità del bug</b><br>\n<br>\n<b>SOMETIMES</b><br>\nIl bug si verifica, a parità di condizioni e processi, in modo sporadico/imprevedibile, ma è sempre possibile riprodurlo eseguendo più tentativi.<br>\n<br>\n<b>ALWAYS</b><br>\nIl bug si verifica, a parità di condizioni e processi, a ogni tentativo di replica. Per essere tale, il bug deve essere riprodotto con successo almeno 3 volte su 3.<br>\n<br>\n<b>ONCE</b><br>\nIl bug si è verificato soltanto una volta e non è stato possibile riprodurlo ulteriormente nonostante sia stato replicato almeno 3 volte.<br>",
     "BUGFORM_SEVERITY_MODAL_TXT": "<b>Livello di gravità del bug</b><br>\n<br>\nIl livello di gravità è una stima dell’impatto del problema sull’utilizzo del prodotto. Per calcolarlo, si tiene conto del contesto in cui il problema si verifica (sezioni primarie o secondarie rispetto al core business dell'oggetto della campagna), ma anche delle condizioni in cui è stato riscontrato rispetto a un utilizzo medio. La valutazione della replicabilità non deve in alcun modo influenzare il livello di gravità: a guidare nella scelta del tipo di livello di gravità sono l’impatto sull'utente, il contesto (importanza della sezione) e la presenza o meno di un workaround.<br>\n<br>\n<b>LOW</b><br>\nProblemi che hanno un impatto minimo nell’utilizzo del prodotto. L'utente può portare a termine l’azione senza grandi difficoltà. Spesso si tratta di bug di tipologia USABILITY, TYPO o GRAPHIC.<br>\n<br>\n<b>MEDIUM</b><br>\nProblemi che hanno un impatto contenuto nell'utilizzo del prodotto. L’utente riesce comunque a completare il processo nonostante aver riscontrato alcune difficoltà. Può trattarsi di ogni tipologia di bug.<br>\n<br>\n<b>HIGH</b><br>\nProblemi che hanno un impatto significativo nell’utilizzo del prodotto. L’utente li riscontra prevalentemente nelle sezioni principali e potrebbe non essere in grado di portare a termine l’azione o la campagna nel modo previsto. Generalmente si tratta di bug di tipologia MALFUNCTION, CRASH, PERFORMANCE o SECURITY.<br>\n<br>\n<b>CRITICAL</b><br>\nProblemi che impediscono il completamento delle azioni principali e che spesso comportano un blocco del sistema. L'utente non è in nessun modo in grado di portare a termine l’azione o la campagna. Si tratta prevalentemente di bug di tipologia MALFUNCTION o CRASH.",
     "BUGFORM_TYPE_MODAL_TEXT": "<b>Tipologia di bug</b><br>\n<br>\n<b>CRASH</b><br>\nProblemi che comportano la chiusura o la non responsività del prodotto e che obbligano l'utente a un riavvio per continuare a utilizzare il prodotto. Qualche esempio: un’applicazione che si chiude, caricamenti lunghi o infiniti, pagine 404.<br>\n<br>\n<b>GRAPHIC</b><br>\nProblemi legati all’aspetto estetico del prodotto. Possono essere sovrapposizioni di elementi, contrasti errati, incoerenza tra elementi simili in uno stesso contesto, immagini o testi tagliati, sfocati, fuori schermo, parzialmente non visibili o sovrapposti.<br>\n<br>\n<b>PERFORMANCE</b><br>\nProblemi strettamente legati alla velocità di caricamento dei contenuti o al completamento dei processi del prodotto della campagna (lag, rallentamenti, ritardi). Nel caso in cui il caricamento non dovesse mai concludersi (loop), allora il problema è riconducibile a un CRASH.<br>\n<br>\n<b>MALFUNCTION</b><br>\nProblemi relativi al mancato o errato funzionamento di una feature presente all'interno del prodotto. Nel caso in cui il funzionamento sia generalmente corretto ma diverso dalle aspettative dell'utente, allora il problema è riconducibile alla tipologia USABILITY.<br>\n<br>\n<b>TYPO</b><br>\nProblemi legati a errori grammaticali, ortografici, semantici, lessicali o sintattici, traduzioni errate o incomplete, frasi incomplete (non tagliate dalla grafica) o prive di senso, codice in vista o non comprensibile.<br>\n<br>\n<b>OTHER</b><br>\nTutti i problemi che non appartengono alle categorie precedenti.<br>\n<br>\n<b>SECURITY</b><br>\nProblemi unicamente legati alla sicurezza e al mantenimento della riservatezza dei dati salvati. Questa categoria include sezioni con password in chiaro, mancata scadenza dei login o libera possibilità di ottenimento di dati di altri utenti tramite SQL injection o attacchi XSS.<br>\n<br>\n<b>USABILITY</b><br>\nProblemi legati all’utilizzo del prodotto, che rendono all'utente difficile svolgere una certa azione o compito a causa di percorsi lunghi, complessi, non ideali o poco intuitivi. Questa categoria include casi in cui il funzionamento differisce completamente dalle aspettative dell'utente. Rientrano inoltre anche l'assenza di controlli sull'inserimento di dati nei campi e i problemi legati a messaggi di errore con testo non contestualizzato rispetto al reale problema presente (errore generico).",
+    "PAYMENTS_MODAL_INVOICE_STEP_4_SUCCESS": "<bold>Ci siamo (quasi)! </bold><br />Ti abbiamo inviato una email all’indirizzo del tuo account TRYBER.<br />Troverai i dati e gli importi corretti per creare la tua fattura o la ritenuta.<br />Nell’email ti diciamo a chi inviarla per completare la richiesta di pagamento.",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "Si vola!✌ Sei Legendary e lo sarai per sempre!\nContinua a guadagnare punti e resta in vetta in classifica.",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "Il cielo non è un limite! Il prossimo mese sarai Legendary,<br></br>il livello più alto di TRYBER."
+  },
+  "available tags: <br>, <p>, <strong>, <title>": {
+    "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": "<title>Prima di ricevere l’email</title>\n<p>\nControlla che sia tutto ok e conferma questi dati: li troverai anche nell’email che ti invieremo dopo questo passaggio.\n</p>\n<p>\nA chi è intestato il conto: <strong>{{accountHolder}}</strong>\n</p>\n<p>\nIBAN: <strong>{{iban}}</strong>\n</p>\n<p>\nRegime fiscale: <strong>{{fiscalType}}</strong>\n</p>"
+  },
+  "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
+    "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}": "<title>Come funziona</title>\n<p>\nPer richiedere il pagamento con bonifico bancario, inserisci e conferma i tuoi dati personali e bancari. Riceverai un’email di conferma con gli importi, lordo e netto: usali per creare la fattura o la ritenuta che dovrai inviarci.\n</p>\n<title>Cosa farai ora</title>\n<p>\n<ul>\n<li>Controlla che il tuo regime fiscale sia corretto</li>\n<li>Inserisci i dati per il bonifico e accetta le condizioni di pagamento </li>\n<li>Invia la richiesta</li>\n</ul>\n</p>\n<title>Ecco il tuo regime fiscale:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>Devi aggiornarlo? Vai nel <fiscalprofilelink>tuo profilo</fiscalprofilelink> prima di continuare la richiesta di pagamento.</strong>"
   },
   "bugform usecase select option": {
     "Not a specific usecase": "Nessuno di questi casi d'uso"
@@ -704,6 +710,9 @@
   "{{num}} uploaded": {
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
+  },
+  "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
+    "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Il tuo regime fiscale non è valido (ad es. sei partita IVA o superi 5.000 lordi € / anno con prestazioni occasionali). <mail_link>Scrivici</mail_link> per richiedere il pagamento."
   },
   "level {{level}}": {
     "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Livello {{level}}"

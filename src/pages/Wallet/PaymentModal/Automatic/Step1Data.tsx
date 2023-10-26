@@ -27,7 +27,7 @@ export const Step1Data = () => {
           <Field
             name="bankaccountOwner"
             type="text"
-            label={t("Account Holder")}
+            label={t("Account holder")}
             placeholder={t("name")}
           />
           <Field
