@@ -63,14 +63,14 @@ const PerformanceData = () => {
               </span>
             </strong>
             <span data-qa="gross-booty">
-              ({i18n.gross}{" "}
+              ({t("Gross")}{" "}
               {`${getCurrencySymbol(booty.gross.currency)}${booty.gross.value}`}
               )
             </span>
           </>
         ) : (
           <div className="booty" data-qa="gross-booty">
-            <strong className="left">{i18n.gross}</strong>
+            <strong className="left">{t("Gross")}</strong>
             <strong className="right">
               {`${getCurrencySymbol(booty.gross.currency)}${booty.gross.value}`}
             </strong>
