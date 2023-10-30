@@ -1,6 +1,6 @@
 import TagManager from "react-gtm-module";
 import { Helmet } from "react-helmet";
-import { useSelector } from "react-redux";
+import { useGetUsersMeQuery } from "src/services/tryberApi";
 
 const tagManagerArgs = {
   dataLayer: {
@@ -10,8 +10,7 @@ const tagManagerArgs = {
     is_admin_page: false,
   },
 };
-
-export default ({
+const GoogleTagManager = ({
   title,
   children,
   isAdminPage = false,
@@ -20,13 +19,7 @@ export default ({
   children: React.ReactNode;
   isAdminPage?: boolean;
 }) => {
-  const { user } = useSelector((state: GeneralState) => ({
-    user: {
-      id: state.user.user?.id,
-      role: state.user.user?.role,
-      wp_user_id: state.user.user?.wp_user_id,
-    },
-  }));
+  const { data: user } = useGetUsersMeQuery({});
   const helmet = () => {
     return (
       <Helmet>
@@ -53,3 +46,5 @@ export default ({
     </>
   );
 };
+
+export default GoogleTagManager;
