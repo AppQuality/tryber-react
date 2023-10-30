@@ -20,8 +20,7 @@ jobs:
         run: |
           BRANCH=$(echo ${GITHUB_REF#refs/heads/})
           if [ "$BRANCH" = "master" ]; then
-              timestamp=$(date +%s)
-              TAG="$timestamp,latest"
+              TAG="latest"
           else
               TAG="$BRANCH"
           fi
