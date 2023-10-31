@@ -34,7 +34,7 @@ export const Step2Recap = () => {
       ? t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20")
       : t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20");
   return (
-    <>
+    <div data-qa="automatic-payment-modal-step-3">
       {values.paymentMethod === "paypal" ? (
         <div className="aq-text-center aq-mb-2">
           <img
@@ -122,6 +122,6 @@ export const Step2Recap = () => {
           </strong>
         </Text>
       </div>
-    </>
+    </div>
   );
 };

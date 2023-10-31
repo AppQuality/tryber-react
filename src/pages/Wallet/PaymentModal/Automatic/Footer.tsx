@@ -47,11 +47,11 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
   const incrementStep = async () => {
     if (step === 0) {
       setFieldTouched("paymentMethod");
-      //setFieldTouched("termsAcceptance");
     }
     if (step === 1 && paymentMethod === "paypal") {
       setFieldTouched("ppAccountOwner");
       setFieldTouched("confirmEmail");
+      setFieldTouched("termsAcceptance");
     } else if (step === 1 && paymentMethod === "bank") {
       setFieldTouched("bankaccountOwner");
       setFieldTouched("iban");
