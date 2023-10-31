@@ -1,6 +1,6 @@
 //For Users with profile type witholding > 5K, VAT, Company and internal
 describe("Payment request", () => {
-  const fiscalTypes = [
+  const fiscalTypes_forManualPayments = [
     {
       key: "vat",
       name: "Partita IVA Forfettaria",
@@ -22,10 +22,22 @@ describe("Payment request", () => {
       translationKey: `Fiscal types:::Internal employee`,
     },
   ];
+  const fiscalTypes_forAutomaticPayments = [
+    // {
+    //   key: "non_italian",
+    //   name: "Straniero",
+    //   translationKey: `Fiscal types:::non-italian`,
+    // },
+    {
+      key: "withholding",
+      name: ">5k",
+      translationKey: `Fiscal types:::Witholding < 5000€`,
+    },
+  ];
   beforeEach(() => {
     cy.loggedIn();
   });
-  fiscalTypes.forEach((fiscalType) => {
+  fiscalTypes_forManualPayments.forEach((fiscalType) => {
     describe(` for fiscal type ${fiscalType.name}`, () => {
       beforeEach(() => {
         cy.intercept(
@@ -296,6 +308,7 @@ describe("Payment request", () => {
           });
         });
       });
+
       describe("Payment request modal fourth step", () => {
         beforeEach(() => {
           cy.intercept(
@@ -335,6 +348,84 @@ describe("Payment request", () => {
               "API call to get the payment should be executed"
             );
           });
+        });
+      });
+    });
+  });
+  fiscalTypes_forAutomaticPayments.forEach((fiscalType) => {
+    describe(` for fiscal type ${fiscalType.name}`, () => {
+      beforeEach(() => {
+        cy.intercept(
+          "GET",
+          `${Cypress.env("REACT_APP_API_URL")}/users/me/fiscal`,
+          {
+            statusCode: 200,
+            fixture: `users/me/fiscal/_get/200_${fiscalType.key}`,
+          }
+        ).as("userMeFiscal");
+        cy.intercept(
+          "GET",
+          `${Cypress.env(
+            "REACT_APP_API_URL"
+          )}/users/me?fields=pending_booty%2Cbooty_threshold`,
+          {
+            statusCode: 200,
+            fixture: "/users/me/_get/200_booty_net",
+          }
+        ).as("pendingBooty");
+        cy.intercept(
+          "GET",
+          `${Cypress.env("REACT_APP_API_URL")}/users/me?fields=pending_booty`,
+          {
+            statusCode: 200,
+            fixture: "/users/me/_get/200_booty_net",
+          }
+        ).as("pendingBooty");
+
+        cy.intercept(
+          "GET",
+          `${Cypress.env("REACT_APP_API_URL")}/users/me/payments*`,
+          {
+            statusCode: 200,
+            fixture: "users/me/payments/_get/200_single-paid-payment",
+          }
+        ).as("getUserMePayment");
+        cy.visit("/payments");
+      });
+
+      describe("Payment request button", () => {
+        it(`The button to request payments is enabled`, () => {
+          cy.dataQa("request-payment-cta").should("be.enabled");
+        });
+        it("clicking on the button an automatic payment request is opened", () => {
+          cy.dataQa("request-payment-cta").click();
+          cy.dataQa("automatic-payment-modal").should("be.visible");
+        });
+      });
+      describe("Payment request modal first step", () => {
+        beforeEach(() => {
+          cy.dataQa("request-payment-cta").click();
+        });
+
+        it("in first step is visible a list of next steps, fields to chose from available payments methods, a recap of your fiscal profile and a next button", () => {
+          cy.dataQa("automatic-payment-next-steps").should("be.visible");
+          cy.get("[name='paymentMethod']").should("be.visible");
+          cy.dataQa("automatic-payment-fiscal-profile").should("be.visible");
+          cy.dataQa("payment-modal-next").should("be.visible");
+        });
+
+        it("should contain fiscal profile name", () => {
+          cy.dataQa("automatic-payment-fiscal-profile").should(
+            "contain",
+            fiscalType.translationKey
+          );
+        });
+
+        it("in first step, selecting a payment method and clicking on the next button should show the second step", () => {
+          cy.dataQa("payment-modal-next").should("be.visible");
+          cy.get("[name='paymentMethod'][value='paypal']").click();
+          cy.dataQa("payment-modal-next").click();
+          cy.dataQa("automatic-payment-modal-step-1").should("be.visible");
         });
       });
     });

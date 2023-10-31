@@ -54,19 +54,19 @@ const Manual = () => {
                     <Steps.Step
                       isCompleted={completedSteps[0]}
                       title={t("Start here", {
-                        context: "MANUAL_PAYMENT_STEP_TITLE",
+                        context: "MODAL_PAYMENT_STEP_TITLE",
                       })}
                     />
                     <Steps.Step
                       isCompleted={completedSteps[1]}
                       title={t("Insert details", {
-                        context: "MANUAL_PAYMENT_STEP_TITLE",
+                        context: "MODAL_PAYMENT_STEP_TITLE",
                       })}
                     />
                     <Steps.Step
                       isCompleted={completedSteps[2]}
                       title={t("Get email", {
-                        context: "MANUAL_PAYMENT_STEP_TITLE",
+                        context: "MODAL_PAYMENT_STEP_TITLE",
                       })}
                     />
                   </Steps>

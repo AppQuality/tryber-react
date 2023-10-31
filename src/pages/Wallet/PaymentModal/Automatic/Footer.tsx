@@ -47,7 +47,7 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
   const incrementStep = async () => {
     if (step === 0) {
       setFieldTouched("paymentMethod");
-      setFieldTouched("termsAcceptance");
+      //setFieldTouched("termsAcceptance");
     }
     if (step === 1 && paymentMethod === "paypal") {
       setFieldTouched("ppAccountOwner");
@@ -77,7 +77,7 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
         </Button>
       )}
       {step < 2 && (
-        <Button flat onClick={incrementStep} data-qa="payment-modal-next">
+        <Button onClick={incrementStep} data-qa="payment-modal-next">
           {t("Next")}
         </Button>
       )}

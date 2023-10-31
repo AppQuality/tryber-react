@@ -6,9 +6,9 @@ export const Step1Data = () => {
   const { t } = useTranslation();
   const { values } = useFormikContext<PaymentFormType>();
   return (
-    <>
+    <div data-qa="automatic-payment-modal-step-1">
       {values.paymentMethod === "paypal" ? (
-        <div>
+        <div data-qa="automatic-payment-bank">
           <Field
             name="ppAccountOwner"
             type="email"
@@ -23,7 +23,7 @@ export const Step1Data = () => {
           />
         </div>
       ) : (
-        <div>
+        <div data-qa="automatic-payment-pp">
           <Field
             name="bankaccountOwner"
             type="text"
@@ -38,6 +38,6 @@ export const Step1Data = () => {
           />
         </div>
       )}
-    </>
+    </div>
   );
 };
