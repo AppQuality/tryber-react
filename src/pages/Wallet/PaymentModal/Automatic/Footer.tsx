@@ -55,6 +55,7 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
     } else if (step === 1 && paymentMethod === "bank") {
       setFieldTouched("bankaccountOwner");
       setFieldTouched("iban");
+      setFieldTouched("termsAcceptance");
     }
     const errors = await validateForm();
     if (Object.keys(errors).length === 0) {

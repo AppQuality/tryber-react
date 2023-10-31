@@ -430,7 +430,7 @@ describe("Payment request", () => {
       });
 
       describe("Payment request modal second step", () => {
-        describe.only("Paypal", () => {
+        describe("Paypal", () => {
           beforeEach(() => {
             cy.dataQa("request-payment-cta").click();
             cy.get("[name='paymentMethod'][value='paypal']").click();
@@ -441,23 +441,21 @@ describe("Payment request", () => {
             cy.dataQa("automatic-payment-modal-step-1").should("be.visible");
             cy.get("[name='ppAccountOwner']").should("be.visible");
             cy.get("[name='confirmEmail']").should("be.visible");
-            cy.get("[name='termsAcceptance']").should("be.visible");
+            cy.get("#termsAcceptance").should("be.visible");
             cy.dataQa("payment-modal-back").should("be.visible");
             cy.dataQa("payment-modal-next").should("be.visible");
           });
 
           it('click on the link "Terms and conditions" open a link in a new tab', () => {
-            cy.dataQa("automatic-payment-terms-and-conditions").should(
-              "be.visible"
-            );
-            cy.dataQa("automatic-payment-terms-and-conditions")
+            cy.dataQa("automatic-payment-modal-terms").should("be.visible");
+            cy.dataQa("automatic-payment-modal-terms-link")
               .should("have.attr", "target")
               .and("include", "_blank");
           });
 
           it("clicking on next button, if the email field is empty, should print an error under the field", () => {
             cy.get("[name='confirmEmail']").clear().type("e@mail.it");
-            cy.get("[name='termsAcceptance']").click({ force: true });
+            cy.get("#termsAcceptance").click({ force: true });
             cy.dataQa("payment-modal-next").click();
             cy.dataQa("automatic-payment-modal").should(
               "contain",
@@ -467,7 +465,7 @@ describe("Payment request", () => {
 
           it("clicking on next button, if the confirm email field is empty, should print an error under the field", () => {
             cy.get("[name='ppAccountOwner']").clear().type("e@mail.it");
-            cy.get("[name='termsAcceptance']").click({ force: true });
+            cy.get("#termsAcceptance").click({ force: true });
             cy.dataQa("payment-modal-next").click();
             cy.dataQa("automatic-payment-modal").should(
               "contain",
@@ -478,7 +476,7 @@ describe("Payment request", () => {
           it("clicking on next button, if the confirm email is different, should print an error under the field", () => {
             cy.get("[name='ppAccountOwner']").clear().type("e@mail.it");
             cy.get("[name='confirmEmail']").clear().type("m@il.it");
-            cy.get("[name='termsAcceptance']").click({ force: true });
+            cy.get("#termsAcceptance").click({ force: true });
             cy.dataQa("payment-modal-next").click();
             cy.dataQa("automatic-payment-modal").should(
               "contain",
@@ -499,7 +497,7 @@ describe("Payment request", () => {
           it("clicking on next button, if emails are filled and the checkbox is checked, should go to the third step", () => {
             cy.get("[name='ppAccountOwner']").clear().type("e@mail.it");
             cy.get("[name='confirmEmail']").clear().type("e@mail.it");
-            cy.get("[name='termsAcceptance']").click({ force: true });
+            cy.get("#termsAcceptance").check();
             cy.dataQa("payment-modal-next").click();
             cy.dataQa("automatic-payment-modal-step-3").should("be.visible");
           });
@@ -509,6 +507,72 @@ describe("Payment request", () => {
             cy.dataQa("request-payment-cta").click();
             cy.get("[name='paymentMethod'][value='bank']").click();
             cy.dataQa("payment-modal-next").click();
+          });
+
+          it("is visible a name field, an iban field, terms acceptance checkbox, a back and a continue btn", () => {
+            cy.dataQa("automatic-payment-modal-step-1").should("be.visible");
+            cy.get("[name='bankaccountOwner']").should("be.visible");
+            cy.get("[name='iban']").should("be.visible");
+            cy.get("#termsAcceptance").should("be.visible");
+            cy.dataQa("payment-modal-back").should("be.visible");
+            cy.dataQa("payment-modal-next").should("be.visible");
+          });
+
+          it('click on the link "Terms and conditions" open a link in a new tab', () => {
+            cy.dataQa("automatic-payment-modal-terms").should("be.visible");
+            cy.dataQa("automatic-payment-modal-terms-link")
+              .should("have.attr", "target")
+              .and("include", "_blank");
+          });
+
+          it("clicking on next button, if the name field is empty, should print an error under the field", () => {
+            cy.get("input#iban").clear().type("IT60X0542811101000000123456");
+            cy.get("#termsAcceptance").check();
+            cy.dataQa("payment-modal-next").click();
+            cy.dataQa("automatic-payment-bank").should(
+              "contain",
+              "This is a required field"
+            );
+          });
+
+          it("clicking on next button, if the iban field is not a valid iban, should print an error under the field", () => {
+            cy.get("input#bankaccountOwner").clear().type("ciccio paguro");
+            cy.get("input#iban").clear().type("wrong iban");
+            cy.get("#termsAcceptance").check();
+            cy.dataQa("payment-modal-next").click();
+            cy.dataQa("automatic-payment-bank").should(
+              "contain",
+              "This is an invalid format."
+            );
+          });
+
+          it("clicking on next button, if the iban field is empty, should print an error under the field", () => {
+            cy.get("input#bankaccountOwner").clear().type("ciccio paguro");
+            cy.get("#termsAcceptance").check();
+            cy.dataQa("payment-modal-next").click();
+            cy.dataQa("automatic-payment-bank").should(
+              "contain",
+              "This is a required field"
+            );
+          });
+
+          it("clicking on next button, if the terms and condition checkbox is not checked, should print an error under the field", () => {
+            cy.get("input#bankaccountOwner").clear().type("ciccio paguro");
+            cy.get("input#iban").clear().type("IT60X0542811101000000123456");
+
+            cy.dataQa("payment-modal-next").click();
+            cy.dataQa("automatic-payment-modal-terms").should(
+              "contain",
+              "you must accept terms and conditions"
+            );
+          });
+
+          it("clicking on next button, if the name is filled, the iban is filled with a valid iban and the checkbox is checked, should go to the third step", () => {
+            cy.get("input#bankaccountOwner").clear().type("ciccio paguro");
+            cy.get("input#iban").clear().type("IT60X0542811101000000123456");
+            cy.get("#termsAcceptance").check();
+            cy.dataQa("payment-modal-next").click();
+            cy.dataQa("automatic-payment-modal-step-3").should("be.visible");
           });
         });
       });

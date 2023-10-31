@@ -68,7 +68,7 @@ export const Step1Data = () => {
                         terms_and_conditions_link: (
                           <a
                             target="_blank"
-                            data-qa="automatic-payment-terms-and-conditions"
+                            data-qa="automatic-payment-modal-terms-link"
                             href={t("/payment_conditions", { ns: "links" })}
                           />
                         ),
