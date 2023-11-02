@@ -23,14 +23,14 @@ describe("Payment request", () => {
     },
   ];
   const fiscalTypes_forAutomaticPayments = [
-    // {
-    //   key: "non_italian",
-    //   name: "Straniero",
-    //   translationKey: `Fiscal types:::non-italian`,
-    // },
+    {
+      key: "non-italian",
+      name: "Straniero",
+      translationKey: `Fiscal types:::Foreign`,
+    },
     {
       key: "withholding",
-      name: ">5k",
+      name: "less than € 5.000 gross / year with occasional services",
       translationKey: `Fiscal types:::Witholding < 5000€`,
     },
   ];
@@ -88,7 +88,7 @@ describe("Payment request", () => {
         });
       });
 
-      describe("Payment request modal first step", () => {
+      describe("Manual Payment request modal first step", () => {
         beforeEach(() => {
           cy.dataQa("request-payment-cta").click();
         });
@@ -112,7 +112,7 @@ describe("Payment request", () => {
         });
       });
 
-      describe("Payment request modal second step", () => {
+      describe("Manual Payment request modal second step", () => {
         beforeEach(() => {
           cy.dataQa("request-payment-cta").click();
           cy.dataQa("payment-modal-next").should("be.visible");
@@ -191,7 +191,7 @@ describe("Payment request", () => {
         });
       });
 
-      describe("Payment request modal third step", () => {
+      describe("Manual Payment request modal third step", () => {
         beforeEach(() => {
           cy.intercept(
             "POST",
@@ -309,7 +309,7 @@ describe("Payment request", () => {
         });
       });
 
-      describe("Payment request modal fourth step", () => {
+      describe("Manual Payment request modal fourth step", () => {
         beforeEach(() => {
           cy.intercept(
             "POST",
@@ -402,7 +402,7 @@ describe("Payment request", () => {
           cy.dataQa("automatic-payment-modal").should("be.visible");
         });
       });
-      describe("Payment request modal first step", () => {
+      describe("Automatic Payment request modal first step", () => {
         beforeEach(() => {
           cy.dataQa("request-payment-cta").click();
         });
@@ -429,7 +429,7 @@ describe("Payment request", () => {
         });
       });
 
-      describe("Payment request modal second step", () => {
+      describe("Automatic Payment request modal second step", () => {
         describe("Paypal", () => {
           beforeEach(() => {
             cy.dataQa("request-payment-cta").click();
@@ -573,6 +573,258 @@ describe("Payment request", () => {
             cy.get("#termsAcceptance").check();
             cy.dataQa("payment-modal-next").click();
             cy.dataQa("automatic-payment-modal-step-3").should("be.visible");
+          });
+        });
+      });
+
+      describe("Automatic Payment request modal third step", () => {
+        beforeEach(() => {
+          cy.intercept(
+            "POST",
+            `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
+            {
+              statusCode: 200,
+              fixture: "users/me/payments/_post/200",
+            }
+          ).as("postUserMePayment");
+          cy.dataQa("request-payment-cta").click();
+          cy.intercept(
+            "GET",
+            `${Cypress.env(
+              "REACT_APP_API_URL"
+            )}/users/me?fields=pending_booty%2CbirthDate`,
+            {
+              statusCode: 200,
+              fixture: "users/me/_get/200_pendingbooty_birthdate",
+            }
+          ).as("getUsersMeBootyBirthdate");
+        });
+        describe("Paypal", () => {
+          beforeEach(() => {
+            cy.get("[name='paymentMethod'][value='paypal']").click();
+            cy.dataQa("payment-modal-next").click();
+            cy.get("[name='ppAccountOwner']").clear().type("e@mail.it");
+            cy.get("[name='confirmEmail']").clear().type("e@mail.it");
+            cy.get("#termsAcceptance").check();
+            cy.dataQa("payment-modal-next").click();
+          });
+
+          it("In the third step is visible amount gross and net, paypal email and reacp of fiscal profile informations", () => {
+            cy.dataQa("automatic-payment-modal-step-3").within(() => {
+              cy.dataQa("payment-modal-net-booty").should("be.visible");
+              cy.dataQa("pp-email").should("be.visible");
+              cy.dataQa(`fiscalType-${fiscalType.key}`).should(
+                "contain",
+                fiscalType.translationKey
+              );
+              cy.dataQa("taxID-number").should("be.visible");
+              cy.dataQa("birthDate").should("be.visible");
+              cy.dataQa("fiscalAddress").should("be.visible");
+            });
+          });
+          it("in the third step if the back button is pressed, should go to the first step", () => {
+            cy.dataQa("payment-modal-back").click();
+            cy.dataQa("automatic-payment-modal-step-1").should("be.visible");
+          });
+          it("in the third step if the process payment is pressed, should call the POST /users/me/payment with the email in the body", () => {
+            cy.dataQa("payment-modal-submit").click();
+
+            // expect the api call to be called with the correct body
+            cy.get("@postUserMePayment")
+              .its("request.body")
+              .should("deep.equal", {
+                method: {
+                  type: "paypal",
+                  email: "e@mail.it",
+                },
+              });
+          });
+
+          describe("during the api call", () => {
+            beforeEach(() => {
+              cy.intercept(
+                "POST",
+                `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
+                {
+                  delayMs: 4000,
+                  statusCode: 200,
+                  fixture: "users/me/payments/_post/200",
+                }
+              ).as("postUserMePayment");
+            });
+            it("in the third step if the process payment is pressed, while the api call is being executed, the process payment button and back button are disabled and there is a loading text", () => {
+              cy.dataQa("payment-modal-submit").click();
+              cy.dataQa("payment-modal-submit").should("be.disabled");
+              cy.dataQa("payment-modal-back").should("be.disabled");
+              cy.dataQa("payment-modal-submit").should("contain", "wait");
+            });
+          });
+
+          describe("after a successful api call", () => {
+            beforeEach(() => {
+              cy.intercept(
+                "POST",
+                `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
+                {
+                  statusCode: 200,
+                  fixture: "users/me/payments/_post/200",
+                }
+              ).as("postUserMePayment");
+            });
+            it("in the third step if the process payment is pressed, if the api call is successful, should show the third step", () => {
+              cy.dataQa("payment-modal-submit").click();
+              cy.dataQa("automatic-payment-modal-step-4").should("be.visible");
+            });
+            it("the request a payment button should be disabled", () => {
+              cy.intercept(
+                "GET",
+                `${Cypress.env("REACT_APP_API_URL")}/users/me/payments*`,
+                {
+                  statusCode: 200,
+                  fixture: "users/me/payments/_get/200_paid-and-processing",
+                }
+              ).as("getUserMePayment");
+              cy.dataQa("payment-modal-submit").click();
+              cy.dataQa("automatic-payment-modal-step-4").should("be.visible");
+              cy.dataQa("payment-modal").find(".modal-close").click();
+
+              cy.dataQa("request-payment-cta").should("be.disabled");
+            });
+          });
+
+          describe("after a unsuccessful api call", () => {
+            beforeEach(() => {
+              cy.intercept(
+                "POST",
+                `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
+                {
+                  statusCode: 403,
+                  fixture: "users/me/payments/_post/200",
+                }
+              ).as("postUserMePayment");
+            });
+            it("in the third step if the process payment is pressed, if the api call is not successful, show a toastr and reenable the button", () => {
+              cy.dataQa("payment-modal-submit").click();
+              cy.dataQa("automatic-payment-modal-step-4").should("not.exist");
+              cy.dataQa("modal-payment-error-toastr").should("be.visible");
+              cy.dataQa("payment-modal-submit").should("not.be.disabled");
+              cy.dataQa("payment-modal-back").should("not.be.disabled");
+            });
+          });
+        });
+        describe("Bank Account", () => {
+          beforeEach(() => {
+            cy.get("[name='paymentMethod'][value='bank']").click();
+            cy.dataQa("payment-modal-next").click();
+            cy.get("input#bankaccountOwner").clear().type("ciccio paguro");
+            cy.get("input#iban").clear().type("IT60X0542811101000000123456");
+            cy.get("#termsAcceptance").check();
+            cy.dataQa("payment-modal-next").click();
+          });
+
+          it("In the third step is visible amount gross and net, bank account holder, iban, and reacp of fiscal profile informations", () => {
+            cy.dataQa("automatic-payment-modal-step-3").within(() => {
+              cy.dataQa("payment-modal-net-booty").should("be.visible");
+              cy.dataQa("bankAccount-owner").should("be.visible");
+              cy.dataQa("bankAccount-iban").should("be.visible");
+              cy.dataQa(`fiscalType-${fiscalType.key}`).should(
+                "contain",
+                fiscalType.translationKey
+              );
+              cy.dataQa("taxID-number").should("be.visible");
+              cy.dataQa("birthDate").should("be.visible");
+              cy.dataQa("fiscalAddress").should("be.visible");
+            });
+          });
+          it("in the third step if the back button is pressed, should go to the first step", () => {
+            cy.dataQa("payment-modal-back").click();
+            cy.dataQa("automatic-payment-modal-step-1").should("be.visible");
+          });
+          it("in the third step if the process payment is pressed, should call the POST /users/me/payment with the email in the body", () => {
+            cy.dataQa("payment-modal-submit").click();
+
+            // expect the api call to be called with the correct body
+            cy.get("@postUserMePayment")
+              .its("request.body")
+              .should("deep.equal", {
+                method: {
+                  type: "iban",
+                  iban: "IT60X0542811101000000123456",
+                  accountHolderName: "ciccio paguro",
+                },
+              });
+          });
+
+          describe("during the api call", () => {
+            beforeEach(() => {
+              cy.intercept(
+                "POST",
+                `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
+                {
+                  delayMs: 4000,
+                  statusCode: 200,
+                  fixture: "users/me/payments/_post/200",
+                }
+              ).as("postUserMePayment");
+            });
+            it("in the third step if the process payment is pressed, while the api call is being executed, the process payment button and back button are disabled and there is a loading text", () => {
+              cy.dataQa("payment-modal-submit").click();
+              cy.dataQa("payment-modal-submit").should("be.disabled");
+              cy.dataQa("payment-modal-back").should("be.disabled");
+              cy.dataQa("payment-modal-submit").should("contain", "wait");
+            });
+          });
+
+          describe("after a successful api call", () => {
+            beforeEach(() => {
+              cy.intercept(
+                "POST",
+                `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
+                {
+                  statusCode: 200,
+                  fixture: "users/me/payments/_post/200",
+                }
+              ).as("postUserMePayment");
+            });
+            it("in the third step if the process payment is pressed, if the api call is successful, should show the third step", () => {
+              cy.dataQa("payment-modal-submit").click();
+              cy.dataQa("automatic-payment-modal-step-4").should("be.visible");
+            });
+            it("the request a payment button should be disabled", () => {
+              cy.intercept(
+                "GET",
+                `${Cypress.env("REACT_APP_API_URL")}/users/me/payments*`,
+                {
+                  statusCode: 200,
+                  fixture: "users/me/payments/_get/200_paid-and-processing",
+                }
+              ).as("getUserMePayment");
+              cy.dataQa("payment-modal-submit").click();
+              cy.dataQa("automatic-payment-modal-step-4").should("be.visible");
+              cy.dataQa("payment-modal").find(".modal-close").click();
+
+              cy.dataQa("request-payment-cta").should("be.disabled");
+            });
+          });
+
+          describe("after a unsuccessful api call", () => {
+            beforeEach(() => {
+              cy.intercept(
+                "POST",
+                `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
+                {
+                  statusCode: 403,
+                  fixture: "users/me/payments/_post/200",
+                }
+              ).as("postUserMePayment");
+            });
+            it("in the third step if the process payment is pressed, if the api call is not successful, show a toastr and reenable the button", () => {
+              cy.dataQa("payment-modal-submit").click();
+              cy.dataQa("automatic-payment-modal-step-4").should("not.exist");
+              cy.dataQa("modal-payment-error-toastr").should("be.visible");
+              cy.dataQa("payment-modal-submit").should("not.be.disabled");
+              cy.dataQa("payment-modal-back").should("not.be.disabled");
+            });
           });
         });
       });

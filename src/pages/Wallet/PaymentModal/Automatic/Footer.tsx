@@ -30,19 +30,12 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
     isSubmitting,
     validateForm,
     setFieldTouched,
-    resetForm,
   } = useFormikContext<PaymentFormType>();
   const onClickBack = () => {
-    if (step === 3) {
-      resetForm();
-      setCompletedSteps([false, false, false]);
-      dispatch(setPaymentModalOpen(false));
-    } else {
-      // decrement step
-      completedSteps[step] = false;
-      setCompletedSteps(completedSteps);
-      setFieldValue("step", step - 1);
-    }
+    // decrement step
+    completedSteps[step] = false;
+    setCompletedSteps(completedSteps);
+    setFieldValue("step", step - 1);
   };
   const incrementStep = async () => {
     if (step === 0) {
@@ -74,7 +67,7 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
           disabled={isSubmitting}
           data-qa="payment-modal-back"
         >
-          {step === 3 ? t("Back to wallet") : t("Back")}
+          {t("Back")}
         </Button>
       )}
       {step < 2 && (
@@ -84,7 +77,6 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
       )}
       {step === 2 && (
         <Button
-          flat
           htmlType="submit"
           disabled={isSubmitting}
           onClick={() => setCompletedSteps([true, true, true])}

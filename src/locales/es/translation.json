@@ -154,7 +154,6 @@
   "BUGTITLEDETAILS_TOOLTIP_TXT": "Más información",
   "BUGTYPE_TOOLTIP_TXT": "Más información",
   "Back": "Atrás",
-  "Back to wallet": "Volver a Monedero",
   "Bank Transfer": "Transferencia bancaria",
   "Base": "Base",
   "Become an AppQuality Tester": "Conviértete en un Tryber",
@@ -237,6 +236,7 @@
   "Fiscal Address": "Domicilio fiscal",
   "Fiscal Type": "Régimen fiscal",
   "Fiscal residence": "Residencia fiscal",
+  "Fiscal type": "",
   "Fiscal types": {
     "Company": "Régimen de IVA ordinario o empresa",
     "Foreign": "No residente en Italia",
@@ -714,6 +714,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
+  "Back to wallet": "Volver a Monedero",
   "Confirm": "Confirmación",
   "Data": "Datos",
   "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {

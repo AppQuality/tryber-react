@@ -41,33 +41,37 @@ const Automatic = () => {
               onClose={closeModal}
               title={t("Request a payment")}
               footer={
-                <Footer
-                  completedSteps={completedSteps}
-                  setCompletedSteps={setCompletedSteps}
-                />
+                step <= 2 && (
+                  <Footer
+                    completedSteps={completedSteps}
+                    setCompletedSteps={setCompletedSteps}
+                  />
+                )
               }
             >
               <ModalBody>
-                <Steps current={step} className="aq-mb-3">
-                  <Steps.Step
-                    isCompleted={completedSteps[0]}
-                    title={t("Start here", {
-                      context: "MODAL_PAYMENT_STEP_TITLE",
-                    })}
-                  />
-                  <Steps.Step
-                    isCompleted={completedSteps[1]}
-                    title={t("Insert details", {
-                      context: "MODAL_PAYMENT_STEP_TITLE",
-                    })}
-                  />
-                  <Steps.Step
-                    isCompleted={completedSteps[2]}
-                    title={t("Confirm", {
-                      context: "MODAL_PAYMENT_STEP_TITLE",
-                    })}
-                  />
-                </Steps>
+                {step <= 2 && (
+                  <Steps current={step} className="aq-mb-3">
+                    <Steps.Step
+                      isCompleted={completedSteps[0]}
+                      title={t("Start here", {
+                        context: "MODAL_PAYMENT_STEP_TITLE",
+                      })}
+                    />
+                    <Steps.Step
+                      isCompleted={completedSteps[1]}
+                      title={t("Insert details", {
+                        context: "MODAL_PAYMENT_STEP_TITLE",
+                      })}
+                    />
+                    <Steps.Step
+                      isCompleted={completedSteps[2]}
+                      title={t("Confirm", {
+                        context: "MODAL_PAYMENT_STEP_TITLE",
+                      })}
+                    />
+                  </Steps>
+                )}
                 <div data-qa="automatic-payment-modal">
                   {step === 0 && <Step0Method />}
                   {step === 1 && <Step1Data />}

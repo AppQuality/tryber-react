@@ -154,7 +154,6 @@
   "BUGTITLEDETAILS_TOOLTIP_TXT": "Ti diciamo di più",
   "BUGTYPE_TOOLTIP_TXT": "Ti diciamo di più",
   "Back": "Indietro",
-  "Back to wallet": "Ritorna a Portafoglio",
   "Bank Transfer": "Bonifico bancario",
   "Base": "Base",
   "Become an AppQuality Tester": "Diventa un Tryber",
@@ -237,6 +236,7 @@
   "Fiscal Address": "Indirizzo fiscale",
   "Fiscal Type": "Regime fiscale",
   "Fiscal residence": "Residenza fiscale",
+  "Fiscal type": "",
   "Fiscal types": {
     "Company": "Partita Iva Ordinaria (o azienda)",
     "Foreign": "Non residente in Italia",
@@ -714,6 +714,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Back to wallet": "Ritorna a Portafoglio",
   "Confirm": "Conferma",
   "Data": "Dati",
   "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {

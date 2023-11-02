@@ -33,6 +33,20 @@ export const Step2Recap = () => {
       : data?.type === "non-italian"
       ? t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20")
       : t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20");
+
+  if (!data) {
+    return null;
+  }
+  const getFiscalTypeText = () => {
+    switch (data.type) {
+      case "withholding":
+        return t("Fiscal types:::Witholding < 5000€");
+      case "non-italian":
+        return t("Fiscal types:::Foreign");
+      default:
+        throw new Error("Invalid fiscal type");
+    }
+  };
   return (
     <div data-qa="automatic-payment-modal-step-3">
       {values.paymentMethod === "paypal" ? (
@@ -83,15 +97,21 @@ export const Step2Recap = () => {
       </Text>
       <div style={{ maxWidth: "430px", margin: "0 auto" }}>
         {values.paymentMethod === "paypal" ? (
-          <Text className="aq-mb-2 aq-text-primary">
+          <Text className="aq-mb-2 aq-text-primary" data-qa="pp-email">
             Email Paypal: <strong>{values.ppAccountOwner}</strong>
           </Text>
         ) : (
           <>
-            <Text className="aq-mb-2 aq-text-primary">
+            <Text
+              className="aq-mb-2 aq-text-primary"
+              data-qa="bankAccount-owner"
+            >
               {t("Account holder")}: <strong>{values.bankaccountOwner}</strong>
             </Text>
-            <Text className="aq-mb-2 aq-text-primary">
+            <Text
+              className="aq-mb-2 aq-text-primary"
+              data-qa="bankAccount-iban"
+            >
               {t("IBAN")}: <strong>{values.iban}</strong>
             </Text>
           </>
@@ -103,17 +123,20 @@ export const Step2Recap = () => {
             )}
           </strong>
         </div>
-        <Text className="aq-mb-2 aq-text-primary">
+        <Text
+          className="aq-mb-2 aq-text-primary"
+          data-qa={`fiscalType-${data?.type}`}
+        >
+          {t("Fiscal type")}: <strong>{getFiscalTypeText()}</strong>
+        </Text>
+        <Text className="aq-mb-2 aq-text-primary" data-qa="taxID-number">
           {t("Tax identification number:::Tax ID")}:{" "}
           <strong>{data?.fiscalId}</strong>
         </Text>
-        <Text className="aq-mb-2 aq-text-primary">
-          {t("Fiscal Type")}: <strong>{fiscalType}</strong>
-        </Text>
-        <Text className="aq-mb-2 aq-text-primary">
+        <Text className="aq-mb-2 aq-text-primary" data-qa="birthDate">
           {t("Birth date")}: <strong>{dateFormatter(birthDate)}</strong>
         </Text>
-        <Text className="aq-text-primary">
+        <Text className="aq-text-primary" data-qa="fiscalAddress">
           {t("Address")}:{" "}
           <strong>
             {data?.address.street} {data?.address.streetNumber},{" "}

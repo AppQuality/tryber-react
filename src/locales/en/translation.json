@@ -154,7 +154,6 @@
   "BUGTITLEDETAILS_TOOLTIP_TXT": "Learn more",
   "BUGTYPE_TOOLTIP_TXT": "Learn more",
   "Back": "Back",
-  "Back to wallet": "Back to Wallet",
   "Bank Transfer": "Bank transfer",
   "Base": "Base",
   "Become an AppQuality Tester": "Become a Tryber",
@@ -237,12 +236,13 @@
   "Fiscal Address": "Fiscal Address",
   "Fiscal Type": "Fiscal Type",
   "Fiscal residence": "Fiscal residence",
+  "Fiscal type": "",
   "Fiscal types": {
     "Company": "Standard Vat Scheme (or company)",
     "Foreign": "Not resident in Italy",
     "Internal employee": "UG Employees",
     "VAT": "Flat Rate Vat Scheme",
-    "Witholding < 5000€": "Witholding < 5000€",
+    "Witholding < 5000€": "Less than € 5.000 gross / year with occasional services",
     "Witholding > 5000€": "Witholding > 5000€"
   },
   "For a secure password we recommend: Minimum 6  characters. An uppercase character. A numerical digit. A lowercase character.": "For a secure password we recommend: minimum 6  characters, an uppercase character, a numerical digit, a lowercase character.",
@@ -714,6 +714,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "Back to wallet": "Back to Wallet",
   "Confirm": "Confirm",
   "Data": "Data",
   "Insert Data_MANUAL_PAYMENT_STEP": "Insert details",
