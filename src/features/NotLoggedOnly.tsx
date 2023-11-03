@@ -1,10 +1,10 @@
 import TagManager from "react-gtm-module";
-import useUser from "src/redux/user";
 import { useHistory } from "react-router-dom";
 
+import { useGetUsersMeQuery } from "src/services/tryberApi";
+import { useAppSelector } from "src/store";
 import Loading from "./Loading";
 import SiteHeader from "./SiteHeader";
-import { useAppSelector } from "src/store";
 
 const NotLoggedOnly = ({
   children,
@@ -13,7 +13,7 @@ const NotLoggedOnly = ({
   children: React.ReactNode;
   redirect?: { url: string; message?: string };
 }) => {
-  const { user, error, isLoading } = useUser();
+  const { data: user, error, isLoading } = useGetUsersMeQuery({});
   const history = useHistory();
   const isPublicUser = useAppSelector(
     (state) => state.publicUserPages.isPublic
@@ -30,7 +30,12 @@ const NotLoggedOnly = ({
       event: "ApiLoaded",
     },
   });
-  if (error && error.statusCode !== 403) {
+  if (
+    error &&
+    "status" in error &&
+    "message" in error &&
+    error.status !== 403
+  ) {
     alert(error.message);
   }
 
