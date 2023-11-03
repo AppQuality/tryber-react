@@ -9,7 +9,7 @@ export const Step3Feedback = () => {
       className="aq-text-center aq-pb-4"
       data-qa="automatic-payment-modal-step-4"
     >
-      <div>
+      <div className="aq-mb-3">
         <Check2Circle color={aqBootstrapTheme.palette.success} size={33} />
       </div>
       <strong className="aq-text-primary">{t("We got it!")}</strong>

@@ -27,12 +27,6 @@ export const Step2Recap = () => {
   const net = booty?.pending_booty?.net;
   const gross = booty?.pending_booty?.gross;
   const birthDate = booty?.birthDate || "";
-  const fiscalType =
-    data?.type === "withholding"
-      ? t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20")
-      : data?.type === "non-italian"
-      ? t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20")
-      : t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20");
 
   if (!data) {
     return null;
@@ -95,7 +89,7 @@ export const Step2Recap = () => {
           </span>
         )}
       </Text>
-      <div style={{ maxWidth: "430px", margin: "0 auto" }}>
+      <div style={{ margin: "0 auto" }}>
         {values.paymentMethod === "paypal" ? (
           <Text className="aq-mb-2 aq-text-primary" data-qa="pp-email">
             Email Paypal: <strong>{values.ppAccountOwner}</strong>
@@ -116,7 +110,7 @@ export const Step2Recap = () => {
             </Text>
           </>
         )}
-        <div className="aq-mb-2 aq-pt-2 aq-text-primary">
+        <div className="aq-mb-2 aq-text-primary">
           <strong>
             {t(
               "The following informations are retrived from your fiscal profile and will be used to generate your receipt"

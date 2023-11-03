@@ -187,7 +187,6 @@
   "Computer type": "Tipo de computer",
   "Confirm email": "Confirma tu correo electrónico",
   "Confirm password": "Confirma tu password",
-  "Confirm_MODAL_PAYMENT_STEP_TITLE": "",
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Conecte Tryber a una de tus account, esto lo hará más fácil para acceder a su dashboard",
   "Countries covered": "Países alcanzados",
   "Country": "País de residencia",
@@ -236,14 +235,14 @@
   "Fiscal Address": "Domicilio fiscal",
   "Fiscal Type": "Régimen fiscal",
   "Fiscal residence": "Residencia fiscal",
-  "Fiscal type": "",
+  "Fiscal type": "Régimen fiscal",
   "Fiscal types": {
     "Company": "Régimen de IVA ordinario o empresa",
     "Foreign": "No residente en Italia",
     "Internal employee": "Empleados UG",
     "VAT": "Régimen de IVA a tanto alzado",
-    "Witholding < 5000€": "Dedución < 5000€",
-    "Witholding > 5000€": "Dedución > 5000€"
+    "Witholding < 5000€": "Menos de 5.000 brutos € / año con servicios ocasionales",
+    "Witholding > 5000€": "Mas de 5.000 brutos € / año con servicios ocasionales"
   },
   "For a secure password we recommend: Minimum 6  characters. An uppercase character. A numerical digit. A lowercase character.": "Para una password segura recomendamos: mínimo 6 caracteres, un carácter en mayúsculas, un número, un carácter en minúscula",
   "For tax reasons we are obliged to tie this choice to binary options only": "Por razones fiscales estamos obligados a vincular esta elección a las opciones binarias sólo",
@@ -255,7 +254,6 @@
     "Other": "No binario"
   },
   "Generic error": "Error genérico",
-  "Get email_MODAL_PAYMENT_STEP_TITLE": "Recibe correo",
   "Getting Started": "Empezando",
   "Great job!": "¡Buen Trabajo!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
@@ -281,7 +279,6 @@
   "Inbox": "Inbox",
   "Informations": "Informaciones",
   "Insert Name and surname separated by space": "Insertar nombre y apellido separados por espacio",
-  "Insert details_MODAL_PAYMENT_STEP_TITLE": "Introduce datos",
   "Institute": "Instituto",
   "Institute is a required field.": "El instituto es un campo obligatorio",
   "Invalid fiscal profile": "Perfil fiscal inválido",
@@ -296,6 +293,12 @@
   "Loading Data": "Cargando Datos",
   "Log in with an existing account": "Regístrate más rápido",
   "Login": "¿Ya eres un Tryber? Iniciar sesión",
+  "MODAL_PAYMENT_STEP_TITLE": {
+    "Confirm": "Confirmación",
+    "Get email": "Recibe correo",
+    "Insert details": "Introduce datos",
+    "Start here": "Empieza aquí"
+  },
   "Male": "Masculino",
   "Manufacturer": "Productor",
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Productor: <bold>{{manufacturer}}</bold>",
@@ -333,7 +336,7 @@
   "Overall ranking | level {{level}}": {
     "__RANKING_TITLE_LABEL_MONTH_MAX: 45": "Clasificación total | Nivel {{level}}"
   },
-  "PAYMENTS_MODAL_INVOICE_STEP_4_ERROR": "Non abbiamo ricevuto i tuoi dati. Forse è stato un problema di connessione. Riprova adesso.",
+  "PAYMENTS_MODAL_STEP_4_ERROR": "Non abbiamo ricevuto i tuoi dati. Forse è stato un problema di connessione. Riprova adesso.",
   "PC Type: <bold>{{pc_type}}</bold>": "Tipo de PC: <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "Este correo electrónico ya está en uso. Por favor, introduce otro.",
   "Page %current% / %total%": "Página %actual% / %total%",
@@ -396,7 +399,6 @@
   "Something went wrong": "Parece que algo salió mal",
   "Spoken languages": "Idiomas hablados",
   "Start Date": "Fecha de Inicio",
-  "Start here_MODAL_PAYMENT_STEP_TITLE": "Empieza aquí",
   "State / Province": "Estado / Provincia",
   "Status": "Estado",
   "Status of user fiscal profile": {
@@ -617,9 +619,6 @@
   "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Gestiona el pago",
   "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Tu monedero",
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Aún no has solicitado ningun pago. Cuando lo harás, podrás ver tus pagos aquí.",
-  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "IVA registrado o más de 5.000 brutos € / año con servicios ocasionales",
-  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "otro (no italiano)",
-  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "menos de 5.000 brutos € / año con servicios ocasionales",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Ver detalles",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Descargar recibo",
   "address": "dirección",
@@ -635,11 +634,11 @@
     "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": "<title>Antes de recibir el correo</title>\n<p>\nComprueba si está todo correcto y confirma los datos: también los encontrarás en el correo electrónico que te enviaremos después de este paso.\n</p>\n<p>\nTitular de la cuenta: <strong>{{accountHolder}}</strong>\n</p>\n<p>\nIBAN: <strong>{{iban}}</strong>\n</p>\n<p>\nRégimen fiscal: <strong>{{fiscalType}}</strong>\n</p>"
   },
   "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
-    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP{{fiscalType}}": "",
+    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP{{fiscalType}}": "<title>Aquí tu régimen fiscal:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>¿Necesitas actualizarlo? Entra en <fiscalprofilelink>tu perfil</fiscalprofilelink> antes de continuar con la solicitud de pago.</strong>",
     "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}": "<title>Cómo funciona</title>\n<p>\nPara solicitar el pago por transferencia bancaria, introduce y confirma tus datos personales y bancarios. Recibirás un correo electrónico de confirmación con los importes, tanto brutos como netos: utilízalos para crear la factura o recibo que tendrás que enviarnos.\n</p>\n<title>Siguiente paso</title>\n<p>\n<ul>\n<li>Comprueba si tu régimen fiscal es correcto</li>\n<li>Introduce los datos para la transferencia y acepta las condiciones de pago</li>\n<li>Envía tu solicitud</li>\n</ul>\n</p>\n<title>Aquí tu régimen fiscal:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>¿Necesitas actualizarlo? Entra en <fiscalprofilelink>tu perfil</fiscalprofilelink> antes de continuar con la solicitud de pago.</strong>"
   },
   "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
-    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": ""
+    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>Siguiente paso</title>\n<ul>\n<li>Elige el método de pago y comprueba si tu régimen fiscal es correcto</li>\n<li>Introduce los datos y acepta las condiciones de pago </li>\n<li>Envía tu solicitud</li>\n</ul>"
   },
   "bugform usecase select option": {
     "Not a specific usecase": "Ninguno de esos casos de uso"
@@ -714,6 +713,9 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
+  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "IVA registrado o más de 5.000 brutos € / año con servicios ocasionales",
+  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "otro (no italiano)",
+  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "menos de 5.000 brutos € / año con servicios ocasionales",
   "Back to wallet": "Volver a Monedero",
   "Confirm": "Confirmación",
   "Data": "Datos",

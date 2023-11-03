@@ -114,10 +114,12 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
             className="aq-text-primary"
           >
             <strong>{t("Something went wrong")}</strong>
-            {t("PAYMENTS_MODAL_INVOICE_STEP_4_ERROR", {
-              defaultValue:
-                "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
-            })}
+            <p>
+              {t("PAYMENTS_MODAL_STEP_4_ERROR", {
+                defaultValue:
+                  "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
+              })}
+            </p>
           </Text>,
           "danger"
         )

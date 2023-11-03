@@ -53,25 +53,19 @@ const Manual = () => {
                   <Steps current={step} className="aq-mb-3">
                     <Steps.Step
                       isCompleted={completedSteps[0]}
-                      title={t("Start here", {
-                        context: "MODAL_PAYMENT_STEP_TITLE",
-                      })}
+                      title={t("MODAL_PAYMENT_STEP_TITLE:::Start here")}
                     />
                     <Steps.Step
                       isCompleted={completedSteps[1]}
-                      title={t("Insert details", {
-                        context: "MODAL_PAYMENT_STEP_TITLE",
-                      })}
+                      title={t("MODAL_PAYMENT_STEP_TITLE:::Insert details")}
                     />
                     <Steps.Step
                       isCompleted={completedSteps[2]}
-                      title={t("Get email", {
-                        context: "MODAL_PAYMENT_STEP_TITLE",
-                      })}
+                      title={t("MODAL_PAYMENT_STEP_TITLE:::Get email")}
                     />
                   </Steps>
                 )}
-                <div data-qa="manual-payment-modal">
+                <div className="aq-pt-3" data-qa="manual-payment-modal">
                   {step === 0 && <Step0FiscalProfileRecap />}
                   {step === 1 && <Step1Iban />}
                   {step === 2 && <Step2PaymentRequestRecap />}
