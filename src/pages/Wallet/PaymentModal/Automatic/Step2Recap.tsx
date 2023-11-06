@@ -35,8 +35,7 @@ export const Step2Recap = () => {
     switch (data.type) {
       case "withholding":
         return t("Fiscal types:::Witholding < 5000€");
-      case "non-italian":
-        return t("Fiscal types:::Foreign");
+
       default:
         throw new Error("Invalid fiscal type");
     }
