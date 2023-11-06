@@ -46,12 +46,8 @@ function App() {
               "Becoming a part of Crowd AppQuality community is simple: It's not requested a particular profile, is the multiprofile our power."
             )}
           />
-          {isStagingEnvironment() && (
-            <>
-              <meta name="robots" content="noindex" />
-              <meta name="robots" content="nofollow" />
-            </>
-          )}
+          {isStagingEnvironment() && <meta name="robots" content="noindex" />}
+          {isStagingEnvironment() && <meta name="robots" content="nofollow" />}
         </Helmet>
         <BrowserRouter>
           <Page />
