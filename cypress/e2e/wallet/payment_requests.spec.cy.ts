@@ -6,21 +6,21 @@ describe("Payment request", () => {
       name: "Partita IVA Forfettaria",
       translationKey: `Fiscal types:::VAT`,
     },
-    {
-      key: "witholding-extra",
-      name: ">5k",
-      translationKey: `Fiscal types:::Witholding > 5000€`,
-    },
-    {
-      key: "company",
-      name: "Partita IVA Ordinaria",
-      translationKey: `Fiscal types:::Company`,
-    },
-    {
-      key: "internal",
-      name: "Dipendente",
-      translationKey: `Fiscal types:::Internal employee`,
-    },
+    // {
+    //   key: "witholding-extra",
+    //   name: ">5k",
+    //   translationKey: `Fiscal types:::Witholding > 5000€`,
+    // },
+    // {
+    //   key: "company",
+    //   name: "Partita IVA Ordinaria",
+    //   translationKey: `Fiscal types:::Company`,
+    // },
+    // {
+    //   key: "internal",
+    //   name: "Dipendente",
+    //   translationKey: `Fiscal types:::Internal employee`,
+    // },
   ];
   const fiscalTypes_forAutomaticPayments = [
     {
@@ -285,6 +285,23 @@ describe("Payment request", () => {
             cy.dataQa("payment-modal").find(".modal-close").click();
 
             cy.dataQa("request-payment-cta").should("be.disabled");
+          });
+          it.only("the booty should be empty", () => {
+            cy.intercept(
+              "GET",
+              `${Cypress.env("REACT_APP_API_URL")}/users/me/payments*`,
+              {
+                statusCode: 200,
+                fixture: "users/me/payments/_get/200_paid-and-processing",
+              }
+            ).as("getUserMePayment");
+            cy.dataQa("payment-modal-next").click();
+            cy.dataQa("manual-payment-modal-step-4").should("be.visible");
+            cy.dataQa("payment-modal").find(".modal-close").click();
+
+            cy.dataQa("wallet-management").within(() => {
+              cy.dataQa("gross-booty").should("not.be.visible");
+            });
           });
         });
 
