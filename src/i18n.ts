@@ -45,12 +45,10 @@ i18n
     nsSeparator: false,
     resources,
     supportedLngs: (window as unknown as { Cypress: any }).Cypress
-      ? // ? ["cimode"]
-        ["it", "en", "es"]
+      ? ["cimode"]
       : ["it", "en", "es"],
     fallbackLng: (window as unknown as { Cypress: any }).Cypress
-      ? // ? "cimode"
-        "en"
+      ? "cimode"
       : "en",
     keySeparator: ":::",
     interpolation: {
