@@ -6,21 +6,21 @@ describe("Payment request", () => {
       name: "Partita IVA Forfettaria",
       translationKey: `Fiscal types:::VAT`,
     },
-    // {
-    //   key: "witholding-extra",
-    //   name: ">5k",
-    //   translationKey: `Fiscal types:::Witholding > 5000€`,
-    // },
-    // {
-    //   key: "company",
-    //   name: "Partita IVA Ordinaria",
-    //   translationKey: `Fiscal types:::Company`,
-    // },
-    // {
-    //   key: "internal",
-    //   name: "Dipendente",
-    //   translationKey: `Fiscal types:::Internal employee`,
-    // },
+    {
+      key: "witholding-extra",
+      name: ">5k",
+      translationKey: `Fiscal types:::Witholding > 5000€`,
+    },
+    {
+      key: "company",
+      name: "Partita IVA Ordinaria",
+      translationKey: `Fiscal types:::Company`,
+    },
+    {
+      key: "internal",
+      name: "Dipendente",
+      translationKey: `Fiscal types:::Internal employee`,
+    },
   ];
   const fiscalTypes_forAutomaticPayments = [
     {
@@ -286,7 +286,7 @@ describe("Payment request", () => {
 
             cy.dataQa("request-payment-cta").should("be.disabled");
           });
-          it.only("the booty should be empty", () => {
+          it("the booty should be empty", () => {
             cy.intercept(
               "GET",
               `${Cypress.env("REACT_APP_API_URL")}/users/me/payments*`,
@@ -295,12 +295,28 @@ describe("Payment request", () => {
                 fixture: "users/me/payments/_get/200_paid-and-processing",
               }
             ).as("getUserMePayment");
+            cy.intercept(
+              "GET",
+              `${Cypress.env(
+                "REACT_APP_API_URL"
+              )}/users/me?fields=pending_booty%2Cbooty_threshold`,
+              {
+                statusCode: 200,
+                fixture: "/users/me/_get/200_zero-booty-gross",
+              }
+            ).as("emptyPendingBooty");
             cy.dataQa("payment-modal-next").click();
             cy.dataQa("manual-payment-modal-step-4").should("be.visible");
             cy.dataQa("payment-modal").find(".modal-close").click();
 
             cy.dataQa("wallet-management").within(() => {
-              cy.dataQa("gross-booty").should("not.be.visible");
+              cy.dataQa("net-booty").should("not.exist");
+              cy.dataQa("gross-booty").should("be.visible");
+              cy.dataQa("gross-booty").should("contain", "0.00");
+              cy.dataQa("wallet-pending-booty").should(
+                "have.class",
+                "aq-text-disabled-dark"
+              );
             });
           });
         });

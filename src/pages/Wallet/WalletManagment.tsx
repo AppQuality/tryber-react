@@ -124,6 +124,7 @@ export const WalletManagment = () => {
           <div className="aq-ml-2">
             <Text>{t("__WALLET_CARD-YOUR_WALLET_MAX: 15")}</Text>
             <Text
+              data-qa="wallet-pending-booty"
               className={
                 !isVerified ||
                 booty?.pending_booty?.net?.value === 0 ||

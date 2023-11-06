@@ -3,24 +3,26 @@ import { tryberApi } from ".";
 tryberApi.enhanceEndpoints({
   endpoints: {
     postUsersMePayments: {
-      invalidatesTags: ["UserPayments"],
+      invalidatesTags: [
+        "UserPayments",
+        "UserPendingBooty",
+        "UserBootyThreshold",
+      ],
     },
     getUsersMePayments: {
       providesTags: ["UserPayments"],
     },
     getUsersMe: {
       providesTags: (result, error, arg, meta) => {
-        if (
-          result &&
-          !error &&
-          "fields" in arg &&
-          arg.fields?.includes("pending_booty") &&
-          arg.fields?.includes("booty_threshold")
-        ) {
-          return ["UserPendingBooty", "UserBootyThreshold", "User"];
-        }
-        return ["User"];
-        // {fields: "pending_booty,booty_threshold"}
+        return [
+          "User",
+          ...(arg.fields?.includes("pending_booty")
+            ? ["UserPendingBooty" as const]
+            : []),
+          ...(arg.fields?.includes("booty_threshold")
+            ? ["UserBootyThreshold" as const]
+            : []),
+        ];
       },
     },
   },
