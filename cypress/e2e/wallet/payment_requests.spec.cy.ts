@@ -723,6 +723,40 @@ describe("Payment request", () => {
 
               cy.dataQa("request-payment-cta").should("be.disabled");
             });
+            it("the booty should be empty", () => {
+              cy.intercept(
+                "GET",
+                `${Cypress.env("REACT_APP_API_URL")}/users/me/payments*`,
+                {
+                  statusCode: 200,
+                  fixture: "users/me/payments/_get/200_paid-and-processing",
+                }
+              ).as("getUserMePayment");
+              cy.intercept(
+                "GET",
+                `${Cypress.env(
+                  "REACT_APP_API_URL"
+                )}/users/me?fields=pending_booty%2Cbooty_threshold`,
+                {
+                  statusCode: 200,
+                  fixture: "/users/me/_get/200_zero-booty-net",
+                }
+              ).as("emptyPendingBooty");
+              cy.dataQa("payment-modal-submit").click();
+              cy.dataQa("automatic-payment-modal-step-4").should("be.visible");
+              cy.dataQa("payment-modal").find(".modal-close").click();
+
+              cy.dataQa("wallet-management").within(() => {
+                cy.dataQa("net-booty").should("be.visible");
+                cy.dataQa("net-booty").should("contain", "0.00");
+                cy.dataQa("gross-booty").should("be.visible");
+                cy.dataQa("gross-booty").should("contain", "0.00");
+                cy.dataQa("wallet-pending-booty").should(
+                  "have.class",
+                  "aq-text-disabled-dark"
+                );
+              });
+            });
           });
 
           describe("after a unsuccessful api call", () => {
@@ -837,6 +871,40 @@ describe("Payment request", () => {
               cy.dataQa("payment-modal").find(".modal-close").click();
 
               cy.dataQa("request-payment-cta").should("be.disabled");
+            });
+            it("the booty should be empty", () => {
+              cy.intercept(
+                "GET",
+                `${Cypress.env("REACT_APP_API_URL")}/users/me/payments*`,
+                {
+                  statusCode: 200,
+                  fixture: "users/me/payments/_get/200_paid-and-processing",
+                }
+              ).as("getUserMePayment");
+              cy.intercept(
+                "GET",
+                `${Cypress.env(
+                  "REACT_APP_API_URL"
+                )}/users/me?fields=pending_booty%2Cbooty_threshold`,
+                {
+                  statusCode: 200,
+                  fixture: "/users/me/_get/200_zero-booty-net",
+                }
+              ).as("emptyPendingBooty");
+              cy.dataQa("payment-modal-submit").click();
+              cy.dataQa("automatic-payment-modal-step-4").should("be.visible");
+              cy.dataQa("payment-modal").find(".modal-close").click();
+
+              cy.dataQa("wallet-management").within(() => {
+                cy.dataQa("net-booty").should("be.visible");
+                cy.dataQa("net-booty").should("contain", "0.00");
+                cy.dataQa("gross-booty").should("be.visible");
+                cy.dataQa("gross-booty").should("contain", "0.00");
+                cy.dataQa("wallet-pending-booty").should(
+                  "have.class",
+                  "aq-text-disabled-dark"
+                );
+              });
             });
           });
 
