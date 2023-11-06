@@ -154,7 +154,6 @@
   "BUGTITLEDETAILS_TOOLTIP_TXT": "Learn more",
   "BUGTYPE_TOOLTIP_TXT": "Learn more",
   "Back": "Back",
-  "Back to wallet": "Back to Wallet",
   "Bank Transfer": "Bank transfer",
   "Base": "Base",
   "Become an AppQuality Tester": "Become a Tryber",
@@ -186,7 +185,6 @@
   "Complete the Basic Course": "Start with the Basic Course",
   "Completed campaigns": "Completed campaigns",
   "Computer type": "Computer type",
-  "Confirm": "Confirm",
   "Confirm email": "Confirm email",
   "Confirm password": "Confirm password",
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Connect Tryber to one of your accounts, this will make it easier for you to access your dashboard",
@@ -196,7 +194,6 @@
   "Create an account": "Create an account",
   "Current password": "Current password",
   "Dashboard": "Dashboard",
-  "Data": "Data",
   "Date": "Date",
   "Date of birth": "Date of birth",
   "Delete": "Delete",
@@ -238,13 +235,14 @@
   "Fiscal Address": "Fiscal Address",
   "Fiscal Type": "Fiscal Type",
   "Fiscal residence": "Fiscal residence",
+  "Fiscal type": "Fiscal type",
   "Fiscal types": {
     "Company": "Standard Vat Scheme (or company)",
     "Foreign": "Not resident in Italy",
     "Internal employee": "UG Employees",
     "VAT": "Flat Rate Vat Scheme",
-    "Witholding < 5000€": "Witholding < 5000€",
-    "Witholding > 5000€": "Witholding > 5000€"
+    "Witholding < 5000€": "Less than € 5.000 gross / year with occasional services",
+    "Witholding > 5000€": "More than € 5.000 gross / year with occasional services"
   },
   "For a secure password we recommend: Minimum 6  characters. An uppercase character. A numerical digit. A lowercase character.": "For a secure password we recommend: minimum 6  characters, an uppercase character, a numerical digit, a lowercase character.",
   "For tax reasons we are obliged to tie this choice to binary options only": "For tax reasons we are obliged to tie this choice to binary options only",
@@ -256,7 +254,6 @@
     "Other": "Non-conforming"
   },
   "Generic error": "Generic error",
-  "Get email_MANUAL_PAYMENT_STEP_TITLE": "Get email",
   "Getting Started": "Getting Started",
   "Great job!": "Great job!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
@@ -282,7 +279,6 @@
   "Inbox": "Inbox",
   "Informations": "Informations",
   "Insert Name and surname separated by space": "Insert name and surname separated by space",
-  "Insert details_MANUAL_PAYMENT_STEP_TITLE": "Insert details",
   "Institute": "Institute",
   "Institute is a required field.": "Institute is a required field.",
   "Invalid fiscal profile": "Invalid fiscal profile",
@@ -297,6 +293,12 @@
   "Loading Data": "Loading Data",
   "Log in with an existing account": "Sign in faster",
   "Login": "Already a Tryber? Log in",
+  "MODAL_PAYMENT_STEP_TITLE": {
+    "Confirm": "Confirm",
+    "Get email": "Get email",
+    "Insert details": "Insert details",
+    "Start here": "Start here"
+  },
   "Male": "Male",
   "Manufacturer": "Manufacturer",
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Manufacturer: <bold>{{manufacturer}}</bold>",
@@ -334,7 +336,7 @@
   "Overall ranking | level {{level}}": {
     "__RANKING_TITLE_LABEL_MONTH_MAX: 45": "Complete ranking | {{level}} level"
   },
-  "PAYMENTS_MODAL_INVOICE_STEP_4_ERROR": "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
+  "PAYMENTS_MODAL_STEP_4_ERROR": "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
   "PC Type: <bold>{{pc_type}}</bold>": "PC Type: <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "This email address is already in use. Please try with another one.",
   "Page %current% / %total%": "Page %current% / %total%",
@@ -397,7 +399,6 @@
   "Something went wrong": "Something went wrong",
   "Spoken languages": "Spoken languages",
   "Start Date": "Start Date",
-  "Start here_MANUAL_PAYMENT_STEP_TITLE": "Start here",
   "State / Province": "State / Province",
   "Status": "Status",
   "Status of user fiscal profile": {
@@ -618,9 +619,6 @@
   "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Manage your payment",
   "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Your wallet",
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Your payment history is now empty. When you start requesting your payments, you will view them here.",
-  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "VAT registred or more than € 5,000 gross / year with occasional services",
-  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "other (not Italian)",
-  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "less than € 5,000 gross / year with occasional services",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "View details",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Download receipt",
   "address": "address",
@@ -636,7 +634,11 @@
     "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": "<title>Before you get the email</title>\n<p>\nCheck that everything is okay and confirm these details: you will also find them in the email we will send you after this step.\n</p>\n<p>\nAccount holder: <strong>{{accountHolder}}</strong>\n</p>\n<p>\nIBAN: <strong>{{iban}}</strong>\n</p>\n<p>\nFiscal type: <strong>{{fiscalType}}</strong>\n</p>"
   },
   "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
+    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP{{fiscalType}}": "<title>Your fiscal type is:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>Need to update your fiscal type? Go to <fiscalprofilelink>your profile</fiscalprofilelink> before proceeding.</strong>",
     "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}": "<title>How it works</title>\n<p>\nInsert and confirm your personal information and bank details to request your payment by bank transfer. You will get a confirmation email with the gross amount and the net receivable: use these details to create the invoice you will need to send us\n</p>\n<title>What you have to do now</title>\n<p>\n<ul>\n<li>Check that your fiscal type is correct</li>\n<li>Insert your personal information and bank details and accept the conditions</li>\n<li>Send your payment request</li>\n</ul>\n</p>\n<title>Your fiscal type is:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>Need to update your fiscal type? Go to <fiscalprofilelink>your profile</fiscalprofilelink> before proceeding.</strong>"
+  },
+  "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
+    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>What you have to do now</title>\n<ul>\n<li>Choose the payment method and check that your fiscal type is correct</li>\n<li>Insert your personal information and accept the conditions</li>\n<li>Send your payment request</li>\n</ul>"
   },
   "bugform usecase select option": {
     "Not a specific usecase": "None of these use cases"
@@ -711,6 +713,12 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "VAT registred or more than € 5,000 gross / year with occasional services",
+  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "other (not Italian)",
+  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "less than € 5,000 gross / year with occasional services",
+  "Back to wallet": "Back to Wallet",
+  "Confirm": "Confirm",
+  "Data": "Data",
   "Insert Data_MANUAL_PAYMENT_STEP": "Insert details",
   "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
     "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Your fiscal type is not valid (e.g. you are VAT registered or you exceed € 5,000 gross / year with occasional services). <mail_link>Write to us</mail_link> to request payment."

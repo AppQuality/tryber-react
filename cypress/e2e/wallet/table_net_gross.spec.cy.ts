@@ -15,7 +15,7 @@ describe("Net and gross columns in wallet table", () => {
 
     cy.intercept("GET", `**/users/me/fiscal`, {
       statusCode: 200,
-      fixture: "users/me/fiscal/_get/200_non_italian",
+      fixture: "users/me/fiscal/_get/200_non-italian",
     }).as("userMeFiscal");
 
     cy.intercept(

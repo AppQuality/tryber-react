@@ -5,8 +5,11 @@ import { Trans, useTranslation } from "react-i18next";
 export const Step3Feedback = () => {
   const { t } = useTranslation();
   return (
-    <div className="aq-text-center">
-      <div>
+    <div
+      className="aq-text-center aq-pb-4"
+      data-qa="automatic-payment-modal-step-4"
+    >
+      <div className="aq-mb-3">
         <Check2Circle color={aqBootstrapTheme.palette.success} size={33} />
       </div>
       <strong className="aq-text-primary">{t("We got it!")}</strong>

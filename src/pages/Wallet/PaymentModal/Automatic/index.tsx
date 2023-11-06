@@ -41,28 +41,32 @@ const Automatic = () => {
               onClose={closeModal}
               title={t("Request a payment")}
               footer={
-                <Footer
-                  completedSteps={completedSteps}
-                  setCompletedSteps={setCompletedSteps}
-                />
+                step <= 2 && (
+                  <Footer
+                    completedSteps={completedSteps}
+                    setCompletedSteps={setCompletedSteps}
+                  />
+                )
               }
             >
               <ModalBody>
-                <div data-qa="payment-request-modal" id="payment-request-modal">
+                {step <= 2 && (
                   <Steps current={step} className="aq-mb-3">
                     <Steps.Step
                       isCompleted={completedSteps[0]}
-                      title={t("Method")}
+                      title={t("MODAL_PAYMENT_STEP_TITLE:::Start here")}
                     />
                     <Steps.Step
                       isCompleted={completedSteps[1]}
-                      title={t("Data")}
+                      title={t("MODAL_PAYMENT_STEP_TITLE:::Insert details")}
                     />
                     <Steps.Step
                       isCompleted={completedSteps[2]}
-                      title={t("Confirm")}
+                      title={t("MODAL_PAYMENT_STEP_TITLE:::Confirm")}
                     />
                   </Steps>
+                )}
+                <div className="aq-pt-3" data-qa="automatic-payment-modal">
                   {step === 0 && <Step0Method />}
                   {step === 1 && <Step1Data />}
                   {step === 2 && <Step2Recap />}
