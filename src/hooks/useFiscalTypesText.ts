@@ -1,10 +1,10 @@
 import { useTranslation } from "react-i18next";
+import { useGetUsersMeFiscalQuery } from "src/services/tryberApi";
 
-export default function useFiscalTypesText(
-  type: ApiComponents["schemas"]["FiscalType"] & "internal"
-) {
+function useFiscalTypesText() {
   const { t } = useTranslation();
-  switch (type) {
+  const { data } = useGetUsersMeFiscalQuery();
+  switch (data?.type) {
     case "withholding":
       return t("Fiscal types:::Witholding < 5000€");
     case "non-italian":
@@ -18,6 +18,8 @@ export default function useFiscalTypesText(
     case "internal":
       return t("Fiscal types:::Internal employee");
     default:
-      throw new Error("Invalid fiscal type");
+      return "";
   }
 }
+
+export default useFiscalTypesText;

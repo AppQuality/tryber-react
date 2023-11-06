@@ -1,11 +1,9 @@
 import { Text, Title } from "@appquality/appquality-design-system";
 import { useFormikContext } from "formik";
 import { Trans, useTranslation } from "react-i18next";
+import useFiscalTypesText from "src/hooks/useFiscalTypesText";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
-import {
-  useGetUsersMeFiscalQuery,
-  useGetUsersMeQuery,
-} from "src/services/tryberApi";
+import { useGetUsersMeQuery } from "src/services/tryberApi";
 import getCurrencySymbol from "src/utils/getCurrencySymbol";
 
 const iconStyle = {
@@ -62,25 +60,7 @@ const RequestAmount = () => {
 };
 const IntroductoryText = () => {
   const { values } = useFormikContext<PaymentFormType>();
-  const { t } = useTranslation();
-  const { data, isLoading } = useGetUsersMeFiscalQuery();
-  if (isLoading || !data) {
-    return null;
-  }
-  const getFiscalTypeText = () => {
-    switch (data.type) {
-      case "vat":
-        return t("Fiscal types:::VAT");
-      case "witholding-extra":
-        return t("Fiscal types:::Witholding > 5000€");
-      case "company":
-        return t("Fiscal types:::Company");
-      case "internal":
-        return t("Fiscal types:::Internal employee");
-      default:
-        throw new Error("Invalid fiscal type");
-    }
-  };
+  const fiscalTypeText = useFiscalTypesText();
   return (
     <div data-qa="manual-payment-modal-intro-text">
       <Text>
@@ -89,7 +69,7 @@ const IntroductoryText = () => {
           values={{
             accountHolder: values.bankaccountOwner,
             iban: values.iban,
-            fiscalType: getFiscalTypeText(),
+            fiscalType: fiscalTypeText,
           }}
           components={{
             br: <br />,
