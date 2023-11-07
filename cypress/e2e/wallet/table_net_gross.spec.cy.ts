@@ -2,16 +2,7 @@ describe("Net and gross columns in wallet table", () => {
   const numberOfColumns = 7;
 
   beforeEach(() => {
-    cy.intercept(
-      "GET",
-      `${Cypress.env(
-        "REACT_APP_API_URL"
-      )}/users/me?fields=name%2Csurname%2Cimage%2Conboarding_completed%2Cemail%2Cwp_user_id`,
-      {
-        statusCode: 200,
-        fixture: "users/me/_get/200_Example_1",
-      }
-    ).as("userMeFields");
+    cy.loggedIn();
 
     cy.intercept("GET", `**/users/me/fiscal`, {
       statusCode: 200,

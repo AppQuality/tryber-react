@@ -2,16 +2,7 @@ import getCurrencySymbol from "../../../src/utils/getCurrencySymbol";
 
 describe("The dahsboard statistics card", () => {
   beforeEach(() => {
-    cy.intercept(
-      "GET",
-      `${Cypress.env(
-        "REACT_APP_API_URL"
-      )}/users/me?fields=name%2Csurname%2Cimage%2Conboarding_completed%2Cemail%2Cwp_user_id`,
-      {
-        statusCode: 200,
-        fixture: "users/me/_get/200_Example_1",
-      }
-    ).as("userMeFields");
+    cy.loggedIn();
     cy.intercept("GET", `${Cypress.env("REACT_APP_API_URL")}/users/me/rank`, {
       statusCode: 200,
       fixture: "users/me/rank/_get/200_stay-gold",
@@ -63,16 +54,7 @@ describe("The dahsboard statistics card", () => {
 });
 describe("The dahsboard statistics card", () => {
   beforeEach(() => {
-    cy.intercept(
-      "GET",
-      `${Cypress.env(
-        "REACT_APP_API_URL"
-      )}/users/me?fields=name%2Csurname%2Cimage%2Conboarding_completed%2Cemail%2Cwp_user_id`,
-      {
-        statusCode: 200,
-        fixture: "users/me/_get/200_Example_1",
-      }
-    ).as("userMeFields");
+    cy.loggedIn();
     cy.intercept("GET", `${Cypress.env("REACT_APP_API_URL")}/users/me/rank`, {
       statusCode: 200,
       fixture: "users/me/rank/_get/200_stay-gold",
