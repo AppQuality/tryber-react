@@ -1,36 +1,17 @@
-import { Trans, useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
 import { Text, Title } from "@appquality/appquality-design-system";
-import { useGetUsersMeFiscalQuery } from "src/services/tryberApi";
 import localizedUrl from "src/utils/localizedUrl";
+import useFiscalTypesText from "src/hooks/useFiscalTypesText";
 
 export const Step0FiscalProfileRecap = () => {
-  const { t } = useTranslation();
-
-  const { data, isLoading } = useGetUsersMeFiscalQuery();
-  if (isLoading || !data) {
-    return null;
-  }
-  const getFiscalTypeText = () => {
-    switch (data.type) {
-      case "vat":
-        return t("Fiscal types:::VAT");
-      case "witholding-extra":
-        return t("Fiscal types:::Witholding > 5000€");
-      case "company":
-        return t("Fiscal types:::Company");
-      case "internal":
-        return t("Fiscal types:::Internal employee");
-      default:
-        throw new Error("Invalid fiscal type");
-    }
-  };
+  const fiscalTypeText = useFiscalTypesText();
   return (
     <div data-qa="manual-payment-fiscal-profile-recap">
       <div className="aq-mb-1">
         <Text>
           <Trans
             i18nKey="available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>:::PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}"
-            values={{ fiscalType: getFiscalTypeText() }}
+            values={{ fiscalType: fiscalTypeText }}
             components={{
               br: <br />,
               p: <p className="aq-mb-3" />,

@@ -1,5 +1,4 @@
 import {
-  Checkbox,
   ErrorMessage,
   FormGroup,
   FormikField,
@@ -8,27 +7,13 @@ import {
   Title,
 } from "@appquality/appquality-design-system";
 import { FieldProps } from "formik";
-import { BaseSyntheticEvent } from "react";
-import { useGetUsersMeFiscalQuery } from "src/services/tryberApi";
+import useFiscalTypeText from "src/hooks/useFiscalTypesText";
 import { Trans, useTranslation } from "react-i18next";
 import localizedUrl from "src/utils/localizedUrl";
 
 export const Step0Method = () => {
-  const { data, isLoading } = useGetUsersMeFiscalQuery();
   const { t } = useTranslation();
-  if (isLoading || !data) {
-    return null;
-  }
-  const getFiscalTypeText = () => {
-    switch (data.type) {
-      case "withholding":
-        return t("Fiscal types:::Witholding < 5000€");
-      case "non-italian":
-        return t("Fiscal types:::Foreign");
-      default:
-        throw new Error("Invalid fiscal type");
-    }
-  };
+  const fiscalTypeText = useFiscalTypeText();
   return (
     <div>
       <div className="aq-mb-1" data-qa="automatic-payment-next-steps">
@@ -92,7 +77,7 @@ export const Step0Method = () => {
         <Text>
           <Trans
             i18nKey="available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>:::PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP{{fiscalType}}"
-            values={{ fiscalType: getFiscalTypeText() }}
+            values={{ fiscalType: fiscalTypeText }}
             components={{
               br: <br />,
               p: <p className="aq-mb-3" />,

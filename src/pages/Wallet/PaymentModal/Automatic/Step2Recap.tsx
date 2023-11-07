@@ -5,6 +5,7 @@ import { shallowEqual, useSelector } from "react-redux";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { useGetUsersMeQuery } from "src/services/tryberApi";
+import useFiscalTypeText from "src/hooks/useFiscalTypesText";
 import dateFormatter from "src/utils/dateFormatter";
 import getCurrencySymbol from "src/utils/getCurrencySymbol";
 
@@ -28,19 +29,8 @@ export const Step2Recap = () => {
   const gross = booty?.pending_booty?.gross;
   const birthDate = booty?.birthDate || "";
 
-  if (!data) {
-    return null;
-  }
-  const getFiscalTypeText = () => {
-    switch (data.type) {
-      case "withholding":
-        return t("Fiscal types:::Witholding < 5000€");
-      case "non-italian":
-        return t("Fiscal types:::Foreign");
-      default:
-        throw new Error("Invalid fiscal type");
-    }
-  };
+  const fiscalTypeText = useFiscalTypeText();
+
   return (
     <div data-qa="automatic-payment-modal-step-3">
       {values.paymentMethod === "paypal" ? (
@@ -121,7 +111,7 @@ export const Step2Recap = () => {
           className="aq-mb-2 aq-text-primary"
           data-qa={`fiscalType-${data?.type}`}
         >
-          {t("Fiscal type")}: <strong>{getFiscalTypeText()}</strong>
+          {t("Fiscal type")}: <strong>{fiscalTypeText}</strong>
         </Text>
         <Text className="aq-mb-2 aq-text-primary" data-qa="taxID-number">
           {t("Tax identification number:::Tax ID")}:{" "}
