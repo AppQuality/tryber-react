@@ -30,3 +30,8 @@ build-storybook.log
 generate-devel-token*.json
 .env
 /lib-update.sh
+
+cypress/videos
+cypress/screenshots
+cypress/reports
+cypress/downloads

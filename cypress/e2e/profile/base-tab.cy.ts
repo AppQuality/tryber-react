@@ -1,15 +1,6 @@
 describe("tab fiscal profile", () => {
   beforeEach(() => {
-    cy.intercept(
-      "GET",
-      `${Cypress.env(
-        "REACT_APP_API_URL"
-      )}/users/me?fields=name%2Csurname%2Cimage%2Conboarding_completed%2Cemail%2Cwp_user_id`,
-      {
-        statusCode: 200,
-        fixture: "users/me/_get/200_Example_1",
-      }
-    ).as("refreshUser");
+    cy.loggedIn();
 
     cy.intercept(
       "GET",
@@ -20,6 +11,22 @@ describe("tab fiscal profile", () => {
       }
     ).as("userAllfields");
 
+    cy.intercept(
+      "GET",
+      `${Cypress.env("REACT_APP_API_URL")}/custom_user_fields`,
+      {
+        statusCode: 200,
+        fixture: "custom_user_fields/_get/200_Example-1",
+      }
+    ).as("customUserFields");
+    cy.intercept("GET", `${Cypress.env("REACT_APP_API_URL")}/education`, {
+      statusCode: 200,
+      fixture: "education/_get/200_Example-1",
+    }).as("education");
+    cy.intercept("GET", `${Cypress.env("REACT_APP_API_URL")}/employments`, {
+      statusCode: 200,
+      fixture: "employments/_get/200_Example-1",
+    }).as("employments");
     cy.intercept("GET", `${Cypress.env("REACT_APP_API_URL")}/languages`, {
       statusCode: 200,
       fixture: "languages/_get/200_All-languages",

@@ -4,7 +4,7 @@ describe("Manage your payment card:", () => {
     cy.loggedIn();
     cy.intercept("GET", `${Cypress.env("REACT_APP_API_URL")}/users/me/fiscal`, {
       statusCode: 200,
-      fixture: "users/me/fiscal/_get/200_non_italian",
+      fixture: "users/me/fiscal/_get/200_non-italian",
     }).as("userMeFiscal");
     cy.intercept(
       "GET",
@@ -67,10 +67,10 @@ describe("Manage your payment card:", () => {
         });
         cy.get(".modal").within(() => {
           cy.get("#paymentMethod-pp").click();
-          cy.get("#termsAcceptance").click();
           cy.dataQa("payment-modal-next").click();
           cy.get("#ppAccountOwner").type("e@mail.com");
           cy.get("#confirmEmail").type("e@mail.com");
+          cy.get("#termsAcceptance").click();
           cy.dataQa("payment-modal-next").click();
           cy.dataQa("payment-modal-net-booty").should(
             "have.text",
@@ -134,10 +134,10 @@ describe("Manage your payment card:", () => {
         });
         cy.get(".modal").within(() => {
           cy.get("#paymentMethod-pp").click();
-          cy.get("#termsAcceptance").click();
           cy.dataQa("payment-modal-next").click();
           cy.get("#ppAccountOwner").type("e@mail.com");
           cy.get("#confirmEmail").type("e@mail.com");
+          cy.get("#termsAcceptance").click();
           cy.dataQa("payment-modal-next").click();
           cy.dataQa("payment-modal-net-booty").should("not.exist");
           cy.dataQa("payment-modal-gross-booty").should(
