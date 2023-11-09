@@ -1,5 +1,5 @@
 import TagManager from "react-gtm-module";
-import { shallowEqual, useSelector } from "react-redux";
+import { useGetUsersMeQuery } from "src/services/tryberApi";
 import Loading from "./Loading";
 import { LoginPage } from "./LoginPage";
 import SiteHeader from "./SiteHeader";
@@ -11,21 +11,9 @@ const LoggedOnly = ({
   children: React.ReactNode;
   showHeader: boolean;
 }) => {
-  const {
-    error,
-    loading,
-  }: {
-    error?: any;
-    loading?: boolean;
-  } = useSelector(
-    (state: GeneralState) => ({
-      loading: state.user.loading,
-      error: state.user.error,
-    }),
-    shallowEqual
-  );
+  const { error, isLoading } = useGetUsersMeQuery({});
 
-  if (loading || typeof loading === "undefined") {
+  if (isLoading) {
     return <Loading />;
   }
   TagManager.dataLayer({
@@ -34,10 +22,10 @@ const LoggedOnly = ({
     },
   });
   if (error) {
-    if (error.statusCode === 403) {
+    if ("status" in error && error.status === 403) {
       return <LoginPage />;
     } else {
-      alert(error.message);
+      if ("message" in error) alert(error.message);
     }
     return null;
   }

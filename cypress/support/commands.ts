@@ -61,7 +61,11 @@ Cypress.Commands.add("loggedIn", () => {
       statusCode: 200,
       fixture: "users/me/_get/200_Example_1",
     }
-  ).as("loggedIn");
+  ).as("usersMeFields");
+  cy.intercept("GET", `${Cypress.env("REACT_APP_API_URL")}/users/me?`, {
+    statusCode: 200,
+    fixture: "users/me/_get/200_Example_1",
+  }).as("usersMe");
 });
 
 Cypress.Commands.add("dataQa", (value, options) => {

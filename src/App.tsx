@@ -10,16 +10,22 @@ import { useTranslation } from "react-i18next";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 
-import Page from "./Page";
 import { Provider } from "react-redux";
 import { setupStore } from "src/store";
+import Page from "./Page";
+
+import isStagingEnvironment from "./features/isStagingEnvironment";
 
 if (process.env.REACT_APP_GTM_ID) {
-  const tagManagerArgs = {
+  TagManager.initialize({
     gtmId: process.env.REACT_APP_GTM_ID,
-  };
-
-  TagManager.initialize(tagManagerArgs);
+    ...(isStagingEnvironment()
+      ? {
+          auth: "ectL1CLYWcmhRB38LCkZ7w",
+          preview: "env-110",
+        }
+      : {}),
+  });
 }
 
 function App() {
@@ -40,12 +46,8 @@ function App() {
               "Becoming a part of Crowd AppQuality community is simple: It's not requested a particular profile, is the multiprofile our power."
             )}
           />
-          {_env_.REACT_APP_ENVIRONMENT !== "production" && (
-            <meta name="robots" content="noindex" />
-          )}
-          {_env_.REACT_APP_ENVIRONMENT !== "production" && (
-            <meta name="robots" content="nofollow" />
-          )}
+          {isStagingEnvironment() && <meta name="robots" content="noindex" />}
+          {isStagingEnvironment() && <meta name="robots" content="nofollow" />}
         </Helmet>
         <BrowserRouter>
           <Page />

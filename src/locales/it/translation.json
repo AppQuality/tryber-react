@@ -154,7 +154,6 @@
   "BUGTITLEDETAILS_TOOLTIP_TXT": "Ti diciamo di più",
   "BUGTYPE_TOOLTIP_TXT": "Ti diciamo di più",
   "Back": "Indietro",
-  "Back to wallet": "Ritorna a Portafoglio",
   "Bank Transfer": "Bonifico bancario",
   "Base": "Base",
   "Become an AppQuality Tester": "Diventa un Tryber",
@@ -186,7 +185,6 @@
   "Complete the Basic Course": "Inizia dal Corso Base",
   "Completed campaigns": "Campagne completate",
   "Computer type": "Tipo di computer",
-  "Confirm": "Conferma",
   "Confirm email": "Conferma indirizzo email",
   "Confirm password": "Conferma la password",
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Collega Tryber a uno dei tuoi account, in questo modo sarà più facile accedere alla dashboard",
@@ -196,7 +194,6 @@
   "Create an account": "Crea un account",
   "Current password": "Password attuale",
   "Dashboard": "Dashboard",
-  "Data": "Dati",
   "Date": "Data",
   "Date of birth": "Data di nascita",
   "Delete": "Rimuovi",
@@ -238,13 +235,14 @@
   "Fiscal Address": "Indirizzo fiscale",
   "Fiscal Type": "Regime fiscale",
   "Fiscal residence": "Residenza fiscale",
+  "Fiscal type": "Regime fiscale",
   "Fiscal types": {
     "Company": "Partita Iva Ordinaria (o azienda)",
     "Foreign": "Non residente in Italia",
     "Internal employee": "Dipendenti UG",
     "VAT": "Partita Iva Forfettaria",
-    "Witholding < 5000€": "Ritenuta < 5000€",
-    "Witholding > 5000€": "Ritenuta > 5000€"
+    "Witholding < 5000€": "meno di € 5.000 lordi / anno con prestazioni occasionali",
+    "Witholding > 5000€": "più di € 5.000 lordi / anno con prestazioni occasionali"
   },
   "For a secure password we recommend: Minimum 6  characters. An uppercase character. A numerical digit. A lowercase character.": "Per una password sicura suggeriamo: minimo 6 caratteri, un carattere maiuscolo, una cifra numerica, un carattere minuscolo",
   "For tax reasons we are obliged to tie this choice to binary options only": "Per motivi fiscali siamo obbligati a legare questa scelta alle sole opzioni binarie",
@@ -256,7 +254,6 @@
     "Other": "Non binario"
   },
   "Generic error": "Errore generico",
-  "Get email_MANUAL_PAYMENT_STEP_TITLE": "Ricevi email",
   "Getting Started": "Iniziare",
   "Great job!": "Ottimo lavoro!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
@@ -282,7 +279,6 @@
   "Inbox": "Archivio messaggi",
   "Informations": "Informazioni",
   "Insert Name and surname separated by space": "Inserisci nome e cognome separati da spazi",
-  "Insert details_MANUAL_PAYMENT_STEP_TITLE": "Inserisci dati",
   "Institute": "Istituto",
   "Institute is a required field.": "L'istituto è un campo obbligatorio",
   "Invalid fiscal profile": "Profilo fiscale invalido",
@@ -297,6 +293,12 @@
   "Loading Data": "Caricamento...",
   "Log in with an existing account": "Iscriviti più velocemente",
   "Login": "Già dei nostri? Accedi",
+  "MODAL_PAYMENT_STEP_TITLE": {
+    "Confirm": "Conferma",
+    "Get email": "Ricevi email",
+    "Insert details": "Inserisci dati",
+    "Start here": "Inizia qui"
+  },
   "Male": "Uomo",
   "Manufacturer": "Produttore",
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Produttore: <bold>{{manufacturer}}</bold>",
@@ -334,7 +336,7 @@
   "Overall ranking | level {{level}}": {
     "__RANKING_TITLE_LABEL_MONTH_MAX: 45": "Classifica completa | Livello {{level}}"
   },
-  "PAYMENTS_MODAL_INVOICE_STEP_4_ERROR": "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
+  "PAYMENTS_MODAL_STEP_4_ERROR": "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
   "PC Type: <bold>{{pc_type}}</bold>": "Tipo PC: <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "Questo indirizzo email è già in uso, inseriscine un altro.",
   "Page %current% / %total%": "Pagina %current% / %total%",
@@ -397,7 +399,6 @@
   "Something went wrong": "È successo qualcosa",
   "Spoken languages": "Lingue parlate",
   "Start Date": "Inizio",
-  "Start here_MANUAL_PAYMENT_STEP_TITLE": "Inizia qui",
   "State / Province": "Stato / Provincia",
   "Status": "Stato",
   "Status of user fiscal profile": {
@@ -618,9 +619,6 @@
   "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Gestisci il pagamento",
   "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Il tuo portafoglio",
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Per ora non hai ancora richiesto un pagamento. Quando inizierai a richiederne, compariranno qui.",
-  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "partita IVA o più di € 5,000 lordi / anno con prestazioni occasionali",
-  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "estero",
-  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "meno di € 5.000 lordi / anno con prestazioni occasionali",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Vedi dettagli",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Scarica ricevuta",
   "address": "indirizzo",
@@ -636,7 +634,11 @@
     "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": "<title>Prima di ricevere l’email</title>\n<p>\nControlla che sia tutto ok e conferma questi dati: li troverai anche nell’email che ti invieremo dopo questo passaggio.\n</p>\n<p>\nA chi è intestato il conto: <strong>{{accountHolder}}</strong>\n</p>\n<p>\nIBAN: <strong>{{iban}}</strong>\n</p>\n<p>\nRegime fiscale: <strong>{{fiscalType}}</strong>\n</p>"
   },
   "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
+    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP{{fiscalType}}": "<title>Ecco il tuo regime fiscale:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>Devi aggiornarlo? Vai nel <fiscalprofilelink>tuo profilo</fiscalprofilelink> prima di continuare la richiesta di pagamento.</strong>",
     "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}": "<title>Come funziona</title>\n<p>\nPer richiedere il pagamento con bonifico bancario, inserisci e conferma i tuoi dati personali e bancari. Riceverai un’email di conferma con gli importi, lordo e netto: usali per creare la fattura o la ritenuta che dovrai inviarci.\n</p>\n<title>Cosa farai ora</title>\n<p>\n<ul>\n<li>Controlla che il tuo regime fiscale sia corretto</li>\n<li>Inserisci i dati per il bonifico e accetta le condizioni di pagamento </li>\n<li>Invia la richiesta</li>\n</ul>\n</p>\n<title>Ecco il tuo regime fiscale:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>Devi aggiornarlo? Vai nel <fiscalprofilelink>tuo profilo</fiscalprofilelink> prima di continuare la richiesta di pagamento.</strong>"
+  },
+  "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
+    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>Cosa farai ora</title>\n<ul>\n<li>Scegli il metodo di pagamento e controlla che il tuo regime fiscale sia corretto</li>\n<li>Inserisci i dati richiesti e accetta le condizioni di pagamento</li>\n<li>Invia la richiesta</li>\n</ul>"
   },
   "bugform usecase select option": {
     "Not a specific usecase": "Nessuno di questi casi d'uso"
@@ -711,6 +713,12 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "partita IVA o più di € 5,000 lordi / anno con prestazioni occasionali",
+  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "estero",
+  "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "meno di € 5.000 lordi / anno con prestazioni occasionali",
+  "Back to wallet": "Ritorna a Portafoglio",
+  "Confirm": "Conferma",
+  "Data": "Dati",
   "Available tags : <mail_link> (Email link for unsupported fiscal profile)": {
     "__WALLET_CARD-REQUEST_DISCLAIMER-UNSUPPORTED_FISCAL MAX: 150": "Il tuo regime fiscale non è valido (ad es. sei partita IVA o superi 5.000 lordi € / anno con prestazioni occasionali). <mail_link>Scrivici</mail_link> per richiedere il pagamento."
   },

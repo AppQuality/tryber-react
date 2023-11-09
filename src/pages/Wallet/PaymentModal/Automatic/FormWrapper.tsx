@@ -2,10 +2,7 @@ import { Formik, FormikHelpers } from "formik";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch } from "src/redux/provider";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
-import {
-  fetchBooty,
-  setPaymentModalOpen,
-} from "src/redux/wallet/actionCreator";
+import { Text } from "@appquality/appquality-design-system";
 import { usePostUsersMePaymentsMutation } from "src/services/tryberApi";
 import * as yup from "yup";
 
@@ -29,10 +26,13 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
       .string()
       .required(t("This is a required field"))
       .oneOf(["paypal", "bank"]),
-    termsAcceptance: yup
-      .boolean()
-      .required(t("This is a required field"))
-      .oneOf([true], t("you must accept terms and conditions")),
+    termsAcceptance: yup.boolean().when("step", {
+      is: 1,
+      then: yup
+        .boolean()
+        .required(t("This is a required field"))
+        .oneOf([true], t("you must accept terms and conditions")),
+    }),
     ppAccountOwner: yup.string().when("step", {
       is: 1,
       then: yup.string().when("paymentMethod", {
@@ -95,21 +95,38 @@ export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
             accountHolderName: values.bankaccountOwner,
             iban: values.iban,
           };
+
+    formikHelper.setSubmitting(true);
+
     try {
       await postUsersMePayments({
         body: {
           method: method,
         },
       }).unwrap();
-      formikHelper.setFieldValue("step", 3);
-      dispatch(fetchBooty());
+
+      formikHelper.setValues({ ...values, step: values.step + 1 });
     } catch (e) {
-      const err = e as HttpError;
-      formikHelper.resetForm();
-      dispatch(setPaymentModalOpen(false));
-      dispatch(addMessage(err.message || err.statusCode, "danger", false));
+      dispatch(
+        addMessage(
+          <Text
+            data-qa="modal-payment-error-toastr"
+            className="aq-text-primary"
+          >
+            <strong>{t("Something went wrong")}</strong>
+            <p>
+              {t("PAYMENTS_MODAL_STEP_4_ERROR", {
+                defaultValue:
+                  "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
+              })}
+            </p>
+          </Text>,
+          "danger"
+        )
+      );
+    } finally {
+      formikHelper.setSubmitting(false);
     }
-    formikHelper.setSubmitting(false);
   };
   return (
     <Formik

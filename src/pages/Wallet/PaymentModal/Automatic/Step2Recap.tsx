@@ -5,6 +5,7 @@ import { shallowEqual, useSelector } from "react-redux";
 import paypalIcon from "src/pages/Wallet/assets/paypal.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { useGetUsersMeQuery } from "src/services/tryberApi";
+import useFiscalTypeText from "src/hooks/useFiscalTypesText";
 import dateFormatter from "src/utils/dateFormatter";
 import getCurrencySymbol from "src/utils/getCurrencySymbol";
 
@@ -27,14 +28,11 @@ export const Step2Recap = () => {
   const net = booty?.pending_booty?.net;
   const gross = booty?.pending_booty?.gross;
   const birthDate = booty?.birthDate || "";
-  const fiscalType =
-    data?.type === "withholding"
-      ? t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20")
-      : data?.type === "non-italian"
-      ? t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20")
-      : t("__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20");
+
+  const fiscalTypeText = useFiscalTypeText();
+
   return (
-    <>
+    <div data-qa="automatic-payment-modal-step-3">
       {values.paymentMethod === "paypal" ? (
         <div className="aq-text-center aq-mb-2">
           <img
@@ -81,39 +79,48 @@ export const Step2Recap = () => {
           </span>
         )}
       </Text>
-      <div style={{ maxWidth: "430px", margin: "0 auto" }}>
+      <div style={{ margin: "0 auto" }}>
         {values.paymentMethod === "paypal" ? (
-          <Text className="aq-mb-2 aq-text-primary">
+          <Text className="aq-mb-2 aq-text-primary" data-qa="pp-email">
             Email Paypal: <strong>{values.ppAccountOwner}</strong>
           </Text>
         ) : (
           <>
-            <Text className="aq-mb-2 aq-text-primary">
+            <Text
+              className="aq-mb-2 aq-text-primary"
+              data-qa="bankAccount-owner"
+            >
               {t("Account holder")}: <strong>{values.bankaccountOwner}</strong>
             </Text>
-            <Text className="aq-mb-2 aq-text-primary">
+            <Text
+              className="aq-mb-2 aq-text-primary"
+              data-qa="bankAccount-iban"
+            >
               {t("IBAN")}: <strong>{values.iban}</strong>
             </Text>
           </>
         )}
-        <div className="aq-mb-2 aq-pt-2 aq-text-primary">
+        <div className="aq-mb-2 aq-text-primary">
           <strong>
             {t(
               "The following informations are retrived from your fiscal profile and will be used to generate your receipt"
             )}
           </strong>
         </div>
-        <Text className="aq-mb-2 aq-text-primary">
+        <Text
+          className="aq-mb-2 aq-text-primary"
+          data-qa={`fiscalType-${data?.type}`}
+        >
+          {t("Fiscal type")}: <strong>{fiscalTypeText}</strong>
+        </Text>
+        <Text className="aq-mb-2 aq-text-primary" data-qa="taxID-number">
           {t("Tax identification number:::Tax ID")}:{" "}
           <strong>{data?.fiscalId}</strong>
         </Text>
-        <Text className="aq-mb-2 aq-text-primary">
-          {t("Fiscal Type")}: <strong>{fiscalType}</strong>
-        </Text>
-        <Text className="aq-mb-2 aq-text-primary">
+        <Text className="aq-mb-2 aq-text-primary" data-qa="birthDate">
           {t("Birth date")}: <strong>{dateFormatter(birthDate)}</strong>
         </Text>
-        <Text className="aq-text-primary">
+        <Text className="aq-text-primary" data-qa="fiscalAddress">
           {t("Address")}:{" "}
           <strong>
             {data?.address.street} {data?.address.streetNumber},{" "}
@@ -122,6 +129,6 @@ export const Step2Recap = () => {
           </strong>
         </Text>
       </div>
-    </>
+    </div>
   );
 };
