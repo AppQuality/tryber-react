@@ -109,7 +109,7 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
         i18next.language === "en" ? "" : "/" + i18next.language
       }/personal-equipment/`,
       icon: <Laptop />,
-      active: route === "personal-equipments",
+      active: route === "personal-equipment",
       text: t("Devices"),
       last: true,
     },
@@ -118,7 +118,7 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
         i18next.language === "en" ? "" : "/" + i18next.language
       }/payments/`,
       icon: <Wallet2 />,
-      active: route === "Payments",
+      active: route === "payments",
       text: t("Payments"),
     },
     {
