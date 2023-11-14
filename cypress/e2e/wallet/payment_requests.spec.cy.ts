@@ -198,7 +198,7 @@ describe("Payment request", () => {
             `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
             {
               statusCode: 200,
-              fixture: "users/me/payments/_post/200",
+              fixture: "users/me/payments/_post/200_Example_1",
             }
           ).as("postUserMePayment");
 
@@ -244,7 +244,7 @@ describe("Payment request", () => {
               {
                 delayMs: 4000,
                 statusCode: 200,
-                fixture: "users/me/payments/_post/200",
+                fixture: "users/me/payments/_post/200_Example_1",
               }
             ).as("postUserMePayment");
           });
@@ -263,7 +263,7 @@ describe("Payment request", () => {
               `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
               {
                 statusCode: 200,
-                fixture: "users/me/payments/_post/200",
+                fixture: "users/me/payments/_post/200_Example_1",
               }
             ).as("postUserMePayment");
           });
@@ -328,7 +328,7 @@ describe("Payment request", () => {
               `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
               {
                 statusCode: 403,
-                fixture: "users/me/payments/_post/200",
+                fixture: "users/me/payments/_post/200_Example_1",
               }
             ).as("postUserMePayment");
           });
@@ -349,7 +349,7 @@ describe("Payment request", () => {
             `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
             {
               statusCode: 200,
-              fixture: "users/me/payments/_post/200",
+              fixture: "users/me/payments/_post/200_Example_1",
             }
           ).as("postUserMePayment");
 
@@ -617,7 +617,7 @@ describe("Payment request", () => {
             `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
             {
               statusCode: 200,
-              fixture: "users/me/payments/_post/200",
+              fixture: "users/me/payments/_post/200_Example_1",
             }
           ).as("postUserMePayment");
           cy.dataQa("request-payment-cta").click();
@@ -681,7 +681,7 @@ describe("Payment request", () => {
                 {
                   delayMs: 4000,
                   statusCode: 200,
-                  fixture: "users/me/payments/_post/200",
+                  fixture: "users/me/payments/_post/200_Example_1",
                 }
               ).as("postUserMePayment");
             });
@@ -700,7 +700,7 @@ describe("Payment request", () => {
                 `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
                 {
                   statusCode: 200,
-                  fixture: "users/me/payments/_post/200",
+                  fixture: "users/me/payments/_post/200_Example_1",
                 }
               ).as("postUserMePayment");
             });
@@ -766,7 +766,7 @@ describe("Payment request", () => {
                 `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
                 {
                   statusCode: 403,
-                  fixture: "users/me/payments/_post/200",
+                  fixture: "users/me/payments/_post/200_Example_1",
                 }
               ).as("postUserMePayment");
             });
@@ -830,7 +830,7 @@ describe("Payment request", () => {
                 {
                   delayMs: 4000,
                   statusCode: 200,
-                  fixture: "users/me/payments/_post/200",
+                  fixture: "users/me/payments/_post/200_Example_1",
                 }
               ).as("postUserMePayment");
             });
@@ -849,7 +849,7 @@ describe("Payment request", () => {
                 `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
                 {
                   statusCode: 200,
-                  fixture: "users/me/payments/_post/200",
+                  fixture: "users/me/payments/_post/200_Example_1",
                 }
               ).as("postUserMePayment");
             });
@@ -915,7 +915,7 @@ describe("Payment request", () => {
                 `${Cypress.env("REACT_APP_API_URL")}/users/me/payments`,
                 {
                   statusCode: 403,
-                  fixture: "users/me/payments/_post/200",
+                  fixture: "users/me/payments/_post/200_Example_1",
                 }
               ).as("postUserMePayment");
             });
