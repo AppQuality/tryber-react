@@ -94,6 +94,7 @@
     "@babel/core": "^7.13.0",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@craco/craco": "^6.4.2",
+    "@playwright/test": "^1.39.0",
     "@redux-devtools/core": "^3.11.0",
     "@rtk-query/codegen-openapi": "^1.0.0-alpha.1",
     "@sentry/cli": "^2.23.0",

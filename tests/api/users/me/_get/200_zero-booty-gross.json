@@ -1,0 +1,14 @@
+{
+  "id": 15550,
+  "pending_booty": {
+    "gross": {
+      "value": 0,
+      "currency": "EUR"
+    }
+  },
+  "booty_threshold": {
+    "value": 2,
+    "isOver": false
+  },
+  "role": "tester"
+}

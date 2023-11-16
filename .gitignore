@@ -38,3 +38,7 @@ cypress/downloads
 
 # Sentry Config File
 .sentryclirc
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
