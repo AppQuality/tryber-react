@@ -10,7 +10,7 @@ export class WalletPage extends LoggedIn {
   }
 
   async visit() {
-    await this.page.goto("/payments/");
+    await this.page.goto("/payments");
   }
 
   async noFiscalType() {
@@ -65,7 +65,7 @@ export class WalletPage extends LoggedIn {
   async witholdingFiscalType() {
     await this.page.route("*/**/api/users/me/fiscal", async (route) => {
       await route.fulfill({
-        path: "tests/api/users/me/fiscal/_get/200_witholding.json",
+        path: "tests/api/users/me/fiscal/_get/200_withholding.json",
       });
     });
   }
@@ -162,15 +162,6 @@ export class WalletPage extends LoggedIn {
       }
     );
   }
-  async requestPayment() {
-    const walletManagement = this.page.getByTestId("wallet-management");
-    await walletManagement.getByTestId("request-payment-cta").click();
-  }
-
-  async openBootyDetails() {
-    const walletManagement = this.page.getByTestId("wallet-management");
-    await walletManagement.getByTestId("booty-details-cta").click();
-  }
 
   async postUsersMePayments(options?: { delay?: number; fail?: number }) {
     await this.page.route("*/**/api/users/me/payments", async (route) => {
@@ -190,7 +181,7 @@ export class WalletPage extends LoggedIn {
     });
   }
 
-  async emptyPendingBooty() {
+  async emptyGrossPendingBooty() {
     await this.page.route(
       "*/**/api/users/me?fields=pending_booty*",
       async (route) => {
@@ -199,5 +190,26 @@ export class WalletPage extends LoggedIn {
         });
       }
     );
+  }
+
+  async emptyNetPendingBooty() {
+    await this.page.route(
+      "*/**/api/users/me?fields=pending_booty*",
+      async (route) => {
+        await route.fulfill({
+          path: "tests/api/users/me/_get/200_zero-booty-net.json",
+        });
+      }
+    );
+  }
+
+  async requestPayment() {
+    const walletManagement = this.page.getByTestId("wallet-management");
+    await walletManagement.getByTestId("request-payment-cta").click();
+  }
+
+  async openBootyDetails() {
+    const walletManagement = this.page.getByTestId("wallet-management");
+    await walletManagement.getByTestId("booty-details-cta").click();
   }
 }

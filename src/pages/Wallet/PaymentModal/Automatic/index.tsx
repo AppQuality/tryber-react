@@ -34,7 +34,6 @@ const Automatic = () => {
           <form
             onSubmit={formikProps.handleSubmit}
             onReset={formikProps.handleReset}
-            data-qa="automatic-payment-modal"
           >
             <Modal
               isOpen={isPaymentModalOpen}
