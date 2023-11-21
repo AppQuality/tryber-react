@@ -58,7 +58,7 @@
     "translate": "i18next-scanner",
     "generate-schema": ". ./.env.development; npx openapi-typescript $REACT_APP_API_URL/reference/ --output src/utils/schema.ts ",
     "generate-api": ". ./.env.development; API_URL=$REACT_APP_API_URL/reference/ npx @rtk-query/codegen-openapi src/services/tryberApi/config.ts",
-    "generate-fixtures": ". ./.env.development; API_URL=$REACT_APP_API_URL/reference/; npx @appquality/fixture-generator -u $API_URL && npx prettier --write 'cypress/fixtures/**/*.json'",
+    "generate-fixtures": ". ./.env.development; API_URL=$REACT_APP_API_URL/reference/; npx @appquality/fixture-generator -u $API_URL && npx prettier --write 'tests/api/**/*.json'",
     "sentry:sourcemaps": "sentry-cli sourcemaps inject --org appquality-srl --project tryber-react ./build && sentry-cli sourcemaps upload --org appquality-srl --project tryber-react ./build"
   },
   "eslintConfig": {
@@ -110,7 +110,6 @@
     "@types/react-select-country-list": "^2.2.0",
     "@types/styled-components": "^5.1.9",
     "@types/uuid": "^8.3.1",
-    "cypress": "^13.3.1",
     "file-loader": "^6.2.0",
     "husky": "^6.0.0",
     "i18next-scanner": "^3.1.0",
