@@ -5,17 +5,19 @@ import {
 } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { RankingColumns } from "../columns";
-import starIcon from "src/pages/Ranking/assets/star.svg";
 import { shallowEqual, useSelector } from "react-redux";
+import starIcon from "src/pages/Ranking/assets/star.svg";
+import { useGetUsersMeQuery } from "src/services/tryberApi";
 import getGravatarUrlWithColoredFallbackInitials from "../../../../utils/getGravatarUrlWithThemedFallbackInitials";
 import { rankingTheme } from "../../rankingTheme";
-import { TopTitle } from "../TopTitle";
+import { RankingColumns } from "../columns";
 import { StyledAvatar, StyledExp, StyledRanking } from "../style";
+import { TopTitle } from "../TopTitle";
 
 export const MyRankingTable = () => {
   const { t } = useTranslation();
-  const [columns, setcolumns] = useState<TableType.Column[]>(RankingColumns(t));
+  const { data: user } = useGetUsersMeQuery({});
+  const [columns] = useState<TableType.Column[]>(RankingColumns(t));
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
   const peers = useSelector(
@@ -27,10 +29,7 @@ export const MyRankingTable = () => {
     shallowEqual
   );
 
-  const userId = useSelector(
-    (state: GeneralState) => state.user.user.id,
-    shallowEqual
-  );
+  const userId = user ? user.id : undefined;
 
   const level = useSelector(
     (state: GeneralState) => state.ranking.summary?.level,
@@ -80,7 +79,7 @@ export const MyRankingTable = () => {
         };
       })
     );
-  }, [peers]);
+  }, [peers, level?.id, userId]);
 
   return (
     <StyledRanking>
