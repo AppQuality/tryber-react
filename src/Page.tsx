@@ -28,10 +28,10 @@ import BugForm from "./pages/BugForm";
 import ThankYouPage from "./pages/ThankYou";
 import VdpPage from "./pages/VDP";
 import * as Sentry from "@sentry/react";
+import isStagingEnvironment from "./features/isStagingEnvironment";
 
 // Create Custom Sentry Route component
 const SentryRoute = Sentry.withSentryRouting(Route);
-
 const history = createBrowserHistory();
 
 Sentry.init({
@@ -41,17 +41,21 @@ Sentry.init({
       routingInstrumentation: Sentry.reactRouterV5Instrumentation(history),
     }),
   ],
-
-  // We recommend adjusting this value in production, or using tracesSampler
-  // for finer control
-  tracesSampleRate: 1.0,
+  environment: _env_.REACT_APP_ENVIRONMENT,
+  // trace all staging and locale traces and 70% of production traces
+  tracesSampleRate: isStagingEnvironment() ? 1.0 : 0.7,
   // Set `tracePropagationTargets` to control for which URLs distributed tracing should be enabled
-  tracePropagationTargets: ["localhost", /^https:\/\/tryber\.me\/api/],
+  tracePropagationTargets: [
+    "localhost",
+    /^https:\/\/dev\.tryber\.me\/api/,
+    /^https:\/\/tryber\.me\/api/,
+  ],
 
   // Capture Replay for 10% of all sessions,
   // plus for 100% of sessions with an error
-  replaysSessionSampleRate: 0.1,
-  replaysOnErrorSampleRate: 1.0,
+  // do not capture for staging and locale
+  replaysSessionSampleRate: isStagingEnvironment() ? 0.0 : 0.1,
+  replaysOnErrorSampleRate: isStagingEnvironment() ? 0.0 : 1.0,
 });
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {

@@ -8,6 +8,7 @@ import TesterSidebar from "./TesterSidebar";
 import { useParams } from "react-router-dom";
 import { resetUserToken, setUserTokenPublic } from "src/redux/publicUserPages";
 import { useAppDispatch } from "src/store";
+import SentryWrapper from "./SentryWrapper";
 
 const ContentTemplate = ({
   title,
@@ -123,14 +124,16 @@ export const PageTemplate: FC<{
             )
       }
     >
-      <LoggedStatusWrapper>
-        {modalChildren}
-        {shouldBeLoggedIn && showSidebar ? (
-          <TesterSidebar route={route}>{content}</TesterSidebar>
-        ) : (
-          content
-        )}
-      </LoggedStatusWrapper>
+      <SentryWrapper>
+        <LoggedStatusWrapper>
+          {modalChildren}
+          {shouldBeLoggedIn && showSidebar ? (
+            <TesterSidebar route={route}>{content}</TesterSidebar>
+          ) : (
+            content
+          )}
+        </LoggedStatusWrapper>
+      </SentryWrapper>
     </GoogleTagManager>
   );
 };
