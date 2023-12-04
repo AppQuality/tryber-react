@@ -35,7 +35,7 @@ const SentryRoute = Sentry.withSentryRouting(Route);
 const history = createBrowserHistory();
 
 Sentry.init({
-  dsn: "https://examplePublicKey@o0.ingest.sentry.io/0",
+  dsn: "https://84fe7a6107da4c0058197b52ce74743d@o1087982.ingest.sentry.io/4506337899511808",
   integrations: [
     new Sentry.BrowserTracing({
       routingInstrumentation: Sentry.reactRouterV5Instrumentation(history),
