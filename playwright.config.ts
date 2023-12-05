@@ -76,8 +76,8 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: process.env.CI
-      ? "export NODE_OPTIONS=--openssl-legacy-provider && yarn start"
-      : "yarn start",
+      ? "export NODE_OPTIONS=--openssl-legacy-provider && export NODE_ENV=test && yarn start"
+      : "export NODE_ENV=test && yarn start",
     url: "http://127.0.0.1:3000",
     reuseExistingServer: !process.env.CI,
   },
