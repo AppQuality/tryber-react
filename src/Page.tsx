@@ -51,7 +51,7 @@ if (process.env.NODE_ENV !== "test") {
       /^https:\/\/dev\.tryber\.me\/api/,
       /^https:\/\/tryber\.me\/api/,
     ],
-
+    release: _env_.REACT_APP_VERSION,
     // Capture Replay for 10% of all sessions,
     // plus for 100% of sessions with an error
     // do not capture for staging and locale

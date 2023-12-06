@@ -34,5 +34,6 @@ declare global {
 
   var _env_: {
     REACT_APP_ENVIRONMENT: string;
+    REACT_APP_VERSION: string;
   };
 }
