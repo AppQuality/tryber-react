@@ -1,6 +1,5 @@
 import { Container, PageTitle } from "@appquality/appquality-design-system";
 import React, { FC, useEffect } from "react";
-
 import GoogleTagManager from "./GoogleTagManager";
 import LoggedOnly from "./LoggedOnly";
 import NotLoggedOnly from "./NotLoggedOnly";
@@ -8,7 +7,6 @@ import TesterSidebar from "./TesterSidebar";
 import { useParams } from "react-router-dom";
 import { resetUserToken, setUserTokenPublic } from "src/redux/publicUserPages";
 import { useAppDispatch } from "src/store";
-import SentryWrapper from "./SentryWrapper";
 
 const ContentTemplate = ({
   title,
@@ -124,16 +122,14 @@ export const PageTemplate: FC<{
             )
       }
     >
-      <SentryWrapper>
-        <LoggedStatusWrapper>
-          {modalChildren}
-          {shouldBeLoggedIn && showSidebar ? (
-            <TesterSidebar route={route}>{content}</TesterSidebar>
-          ) : (
-            content
-          )}
-        </LoggedStatusWrapper>
-      </SentryWrapper>
+      <LoggedStatusWrapper>
+        {modalChildren}
+        {shouldBeLoggedIn && showSidebar ? (
+          <TesterSidebar route={route}>{content}</TesterSidebar>
+        ) : (
+          content
+        )}
+      </LoggedStatusWrapper>
     </GoogleTagManager>
   );
 };
