@@ -3,7 +3,6 @@ import { datadogLogs } from "@datadog/browser-logs";
 import { Location, createBrowserHistory } from "history";
 import queryString from "query-string";
 import { useEffect } from "react";
-import TagManager from "react-gtm-module";
 import { useDispatch } from "react-redux";
 import { Redirect, Route, Router, Switch, useLocation } from "react-router-dom";
 
