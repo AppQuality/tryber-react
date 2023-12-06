@@ -42,13 +42,6 @@ if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
     sampleRate: 100,
   });
 }
-if (process.env.REACT_APP_GTM_ID) {
-  const tagManagerArgs = {
-    gtmId: process.env.REACT_APP_GTM_ID,
-  };
-
-  TagManager.initialize(tagManagerArgs);
-}
 const base = "/:locale(en|it|es)?";
 
 function Page() {
