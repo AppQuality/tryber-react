@@ -17,7 +17,7 @@ const LoggedOnly = ({
     error,
     isLoading,
   } = useGetUsersMeQuery({
-    fields: "id, email, username, wp_user_id, role",
+    fields: "id,email,username,wp_user_id,role",
   });
 
   if (isLoading) {
