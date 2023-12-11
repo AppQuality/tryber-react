@@ -1,6 +1,5 @@
 import { Container, PageTitle } from "@appquality/appquality-design-system";
 import React, { FC, useEffect } from "react";
-
 import GoogleTagManager from "./GoogleTagManager";
 import LoggedOnly from "./LoggedOnly";
 import NotLoggedOnly from "./NotLoggedOnly";

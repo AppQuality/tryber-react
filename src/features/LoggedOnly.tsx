@@ -3,6 +3,7 @@ import { useGetUsersMeQuery } from "src/services/tryberApi";
 import Loading from "./Loading";
 import { LoginPage } from "./LoginPage";
 import SiteHeader from "./SiteHeader";
+import * as Sentry from "@sentry/react";
 
 const LoggedOnly = ({
   children,
@@ -11,7 +12,13 @@ const LoggedOnly = ({
   children: React.ReactNode;
   showHeader: boolean;
 }) => {
-  const { error, isLoading } = useGetUsersMeQuery({});
+  const {
+    data: user,
+    error,
+    isLoading,
+  } = useGetUsersMeQuery({
+    fields: "id,email,username,wp_user_id,role",
+  });
 
   if (isLoading) {
     return <Loading />;
@@ -21,6 +28,14 @@ const LoggedOnly = ({
       event: "ApiLoaded",
     },
   });
+  Sentry.setUser({
+    id: user?.id ?? 0,
+    email: user?.email ?? "unknown",
+    username: user?.username ?? "unknown",
+    wp_user_id: user?.wp_user_id ?? 0,
+    role: user?.role ?? "unknown",
+  });
+
   if (error) {
     if ("status" in error && error.status === 403) {
       return <LoginPage />;
