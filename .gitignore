@@ -35,3 +35,6 @@ cypress/videos
 cypress/screenshots
 cypress/reports
 cypress/downloads
+
+# Sentry Config File
+.sentryclirc
