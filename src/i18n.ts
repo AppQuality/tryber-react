@@ -1,5 +1,5 @@
 import countries from "i18n-iso-countries";
-import i18n from "i18next";
+import i18n, { InitOptions } from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 import enLinks from "./locales/en/links.json";
@@ -20,6 +20,25 @@ const resources = {
   es: { translation: es, links: esLinks },
 };
 
+export const i18nOptions: InitOptions = {
+  detection: {
+    order: ["querystring", "path", "subdomain"],
+  },
+  contextSeparator: "_",
+  ns: ["common", "translation", "links"],
+  defaultNS: "translation",
+  returnEmptyString: false,
+  nsSeparator: false,
+  resources,
+  supportedLngs: ["it", "en", "es"],
+  fallbackLng: "en",
+  keySeparator: ":::",
+  interpolation: {
+    escapeValue: false, // react already safes from xss
+  },
+  postProcess: "test",
+};
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next) // passes i18n down to react-i18next
@@ -34,27 +53,6 @@ i18n
       return value;
     },
   })
-  .init({
-    detection: {
-      order: ["querystring", "path", "subdomain"],
-    },
-    contextSeparator: "_",
-    ns: ["common", "translation", "links"],
-    defaultNS: "translation",
-    returnEmptyString: false,
-    nsSeparator: false,
-    resources,
-    supportedLngs: (window as unknown as { Cypress: any }).Cypress
-      ? ["cimode"]
-      : ["it", "en", "es"],
-    fallbackLng: (window as unknown as { Cypress: any }).Cypress
-      ? "cimode"
-      : "en",
-    keySeparator: ":::",
-    interpolation: {
-      escapeValue: false, // react already safes from xss
-    },
-    postProcess: "test",
-  });
+  .init(i18nOptions);
 
 export default i18n;
