@@ -1,10 +1,9 @@
 import { test, expect } from "@playwright/test";
 import { GettingStarted } from "../../fixtures/GettingStarted";
-import { describe } from "node:test";
 
 let gettingStarted: GettingStarted;
 
-describe("if the user is logged in", () => {
+test.describe("if the user is logged in", () => {
   test("the url /getting-started should redirect to the dashboard", async ({
     page,
   }) => {});
@@ -16,7 +15,7 @@ describe("if the user is logged in", () => {
   }) => {});
 });
 
-describe("if the user is logged out", () => {
+test.describe("if the user is logged out", () => {
   test("/getting-started should show the signup choice page", async ({
     page,
   }) => {});
