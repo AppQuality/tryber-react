@@ -1,7 +1,7 @@
 import { type Page } from "@playwright/test";
-import { LoggedIn } from "./LoggedIn";
+import { TryberPage } from "./TryberPage";
 
-export class WalletPage extends LoggedIn {
+export class WalletPage extends TryberPage {
   readonly page: Page;
 
   constructor(page: Page) {
