@@ -6,11 +6,11 @@ on:
     branches: [main, master, develop]
 jobs:
   basicTests:
-    # strategy:
-    # fail-fast: false
-    # matrix:
-    # run 3 copies of the job in parallel
-    # shard: [1, 2, 3]
+    strategy:
+      fail-fast: false
+      matrix:
+        # run 3 copies of the job in parallel
+        shard: [1, 2, 3]
 
     name: "Playwright Tests - pwc"
     timeout-minutes: 10
@@ -42,8 +42,6 @@ jobs:
         run: |
           echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} > .npmrc
           npm install -g yarn && yarn install --frozen-lockfile
-          npx playwright install chrome
-          npx playwright install
 
       - name: Run Tests
         continue-on-error: false
@@ -52,4 +50,4 @@ jobs:
           CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
 
         run: |
-          npx pwc --ci-build-id ${{ steps.extract_commit.outputs.commit }}
+          npx pwc --ci-build-id ${{ steps.extract_commit.outputs.commit }} --shard=${{ matrix.shard }}/${{ strategy.job-total }}
