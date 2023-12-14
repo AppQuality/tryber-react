@@ -45,7 +45,7 @@ jobs:
 
       - name: Run Tests
         continue-on-error: false
-        working-directory: ./tests
+        working-directory: ./
         env:
           CURRENTS_PROJECT_ID: ${{ secrets.CURRENTS_PROJECT_ID }}
           CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
