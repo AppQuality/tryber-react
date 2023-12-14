@@ -33,7 +33,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          yarn install --frozen-lockfile
+          echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} > .npmrc
+          npm install -g yarn && yarn install --frozen-lockfile
           npx playwright install chrome
           npx playwright install
 
