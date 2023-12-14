@@ -28,7 +28,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     // trace: "on-first-retry",
-    trace: process.env.CI ? "on" : "on-first-retry",
+    trace: "on",
     video: process.env.CI ? "on" : "off",
     screenshot: process.env.CI ? "on" : "off",
     testIdAttribute: "data-qa",
