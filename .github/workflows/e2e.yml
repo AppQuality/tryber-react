@@ -27,6 +27,13 @@ jobs:
           echo "$GITHUB_WORKSPACE"
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
+      - name: Extract hash commit
+        shell: bash
+        run: |
+          COMMIT=$(git rev-parse --short "$GITHUB_SHA")
+          echo "##[set-output name=commit;]$COMMIT"
+        id: extract_commit
+
       - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
@@ -38,7 +45,7 @@ jobs:
           npx playwright install chrome
           npx playwright install
 
-      - name: Run Basic Tests
+      - name: Run Tests
         continue-on-error: false
         working-directory: ./tests
         env:
@@ -46,4 +53,4 @@ jobs:
           CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
 
         run: |
-          npx pwc --ci-build-id hello-currents
+          npx pwc --ci-build-id ${{ steps.extract_commit.outputs.commit }}
