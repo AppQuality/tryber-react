@@ -42,6 +42,7 @@ jobs:
         run: |
           echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} > .npmrc
           npm install -g yarn && yarn install --frozen-lockfile
+          npx playwright install chrome
 
       - name: Run Tests
         continue-on-error: false
