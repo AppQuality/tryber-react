@@ -47,10 +47,9 @@ jobs:
 
       - name: Run Tests
         continue-on-error: false
-        working-directory: ./tests
         env:
           CURRENTS_PROJECT_ID: ${{ secrets.CURRENTS_PROJECT_ID }}
           CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
 
         run: |
-          npx pwc --config=../playwright.config.ts --ci-build-id ${{ steps.extract_commit.outputs.commit }}
+          npx pwc --ci-build-id ${{ steps.extract_commit.outputs.commit }}
