@@ -46,4 +46,4 @@ jobs:
           CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
 
         run: |
-          npx pwc --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+          npx pwc --ci-build-id hello-currents
