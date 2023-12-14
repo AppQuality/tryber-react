@@ -30,7 +30,7 @@ jobs:
       - name: Extract hash commit
         shell: bash
         run: |
-          COMMIT=$(git rev-parse --short "$GITHUB_SHA")
+          COMMIT=$(git rev-parse --short HEAD)
           echo "##[set-output name=commit;]$COMMIT"
         id: extract_commit
 
@@ -53,4 +53,4 @@ jobs:
           CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
 
         run: |
-          npx pwc --ci-build-id ${{ steps.extract_commit.outputs.commit }}
+          npx pwc --shard=${{ matrix.shard }}/${{ strategy.job-total }} --ci-build-id ${{ steps.extract_commit.outputs.commit }}
