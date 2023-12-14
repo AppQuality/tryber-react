@@ -3,6 +3,7 @@ import { TryberPage } from "./TryberPage";
 
 export class DashboardPage extends TryberPage {
   readonly page: Page;
+  readonly url = "/my-dashboard";
 
   constructor(page: Page) {
     super(page);
@@ -10,7 +11,7 @@ export class DashboardPage extends TryberPage {
   }
 
   async visit() {
-    await this.page.goto("/my-dashboard");
+    await this.page.goto(this.url);
   }
 
   async stayGold() {
