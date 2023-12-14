@@ -6,7 +6,11 @@ let gettingStarted: GettingStarted;
 test.describe("if the user is logged in", () => {
   test("the url /getting-started should redirect to the dashboard", async ({
     page,
-  }) => {});
+  }) => {
+    gettingStarted = new GettingStarted(page);
+    await gettingStarted.visitSignupChoicePage();
+    expect(page.url()).toBe("http://localhost:3000/dashboard");
+  });
   test("the url /getting-started/mail-signup should redirect to the dashboard", async ({
     page,
   }) => {});
