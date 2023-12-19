@@ -1,47 +1,32 @@
 import { test, expect } from "@playwright/test";
-import { GettingStarted } from "../../fixtures/GettingStarted";
+import {
+  GettingStarted,
+  confirmationUrl,
+  gettingStartedUrl,
+  signupUrl,
+} from "../../fixtures/GettingStarted";
 import { DashboardPage } from "../../fixtures/DashboardPage";
 
 let gettingStarted: GettingStarted;
 let dashboard: DashboardPage;
 
 test.describe("if the user is logged in", () => {
-  test(`the url /getting-started should redirect to the dashboard`, async ({
+  test(`the url ${gettingStartedUrl} should redirect to the dashboard`, async ({
     page,
   }) => {
-    gettingStarted = new GettingStarted(page);
     await gettingStarted.visitSignupChoicePage();
     expect(page.url()).toContain(dashboard.url);
   });
-  test(`the url ${gettingStarted.signupUrl} should redirect to the dashboard`, async ({
-    page,
-  }) => {});
-  test(`the url ${gettingStarted.confirmationUrl} should redirect to the dashboard`, async ({
-    page,
-  }) => {});
 });
 
 test.describe("if the user is logged out", () => {
-  test(`${gettingStarted.mainUrl} should display the signup choice page`, async ({
+  test(`${gettingStartedUrl} should display the getting started page`, async ({
     page,
   }) => {});
-  test(`${gettingStarted.signupUrl} should redirect to ${gettingStarted.mainUrl}`, async ({
-    page,
-  }) => {});
-  test(`${gettingStarted.confirmationUrl} should redirect to ${gettingStarted.mainUrl} if the user doesn't come from a succesfull signup`, async ({
-    page,
-  }) => {});
-  test(`${gettingStarted.confirmationUrl} should display a confirmation message if the user succesfully signed up`, async ({
-    page,
-  }) => {
-    // can't develop this test because the signup process is not implemented yet
-  });
 });
 
-test.describe("The signup choice page", () => {
+test.describe("The getting started page", () => {
   test(`should display a navigation to change language`, async ({}) => {});
-  test(`should display in bold the current language`, async ({}) => {});
-  test(`if the user click on a language link should change language`, async ({}) => {});
   test(`should display a button to signup with facebook`, async ({}) => {});
   test(`if the user click to facebook login is redirected to facebook login page`, async ({}) => {});
   test(`should display a button to signup with linkedin`, async ({}) => {});
@@ -55,5 +40,5 @@ test.describe("The signup choice page", () => {
   test(`should display a link to the login page`, async ({}) => {});
   test(`if the user click the login link navigato to /login in the current language`, async ({}) => {});
   test(`should display a button to signup with mail`, async ({}) => {});
-  test(`if the user click the signup with mail button navigate to ${gettingStarted.signupUrl} in the current language`, async ({}) => {});
+  test(`if the user click the signup with mail button navigate to ${signupUrl} in the current language`, async ({}) => {});
 });

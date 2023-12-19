@@ -1,6 +1,7 @@
 import { type Page } from "@playwright/test";
 import { TryberPage } from "./TryberPage";
 
+export const dashboardUrl = "/my-dashboard";
 export class DashboardPage extends TryberPage {
   readonly page: Page;
   readonly url = "/my-dashboard";
@@ -11,7 +12,7 @@ export class DashboardPage extends TryberPage {
   }
 
   async visit() {
-    await this.page.goto(this.url);
+    await this.page.goto(dashboardUrl);
   }
 
   async stayGold() {
