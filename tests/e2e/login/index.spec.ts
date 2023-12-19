@@ -19,6 +19,7 @@ test.describe("if the user is logged out", () => {
 });
 
 test.describe("the login page ", () => {
+  test("should display a navigation to change language", async ({}) => {});
   test("should display the login button with facebook", async ({ page }) => {});
   test("should display the login button with linkedin", async ({ page }) => {});
   test("should display the email input", async ({ page }) => {});
@@ -29,17 +30,16 @@ test.describe("the login page ", () => {
     page,
   }) => {});
 
-  test("should display a navigation to change language", async ({}) => {});
-  test("should display in bold the current language", async ({}) => {});
-  test("if the user clicks on a language link should change language", async ({}) => {});
-  test("if the user clicks on Login and fields are valid should navigate to the dashboard", async ({}) => {});
+  // todo: component testing LagNav component
+  // test("should display in bold the current language", async ({}) => {});
+  // test("if the user clicks on a language link should change language", async ({}) => {});
   test("if the user clicks the submit button and the mail is empty should display an error message", async ({}) => {});
   test("if the user clicks the submit button and the mail is not valid should display an error message", async ({}) => {});
   test("if the user clicks the submit button and the password is empty should display an error message", async ({}) => {});
   test("if the user clicks the submit button and the ajax response is false should display an error message", async ({}) => {
     // the error message should be "Email or password are wrong"
   });
-  test("if the user clicks the submit button and the code response is 500", async ({}) => {
+  test("if the user clicks the submit button and the code response is 500 should display an error message that propmt the user to retry", async ({}) => {
     // the error message should be "Something went wrong, please try again"
   });
 });
