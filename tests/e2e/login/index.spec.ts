@@ -1,5 +1,5 @@
-import { test, expect } from "@playwright/test";
 import { Login } from "../../fixtures/Login";
+import { test, expect } from "../../fixtures/I18n";
 
 let login: Login;
 
@@ -27,12 +27,20 @@ test.describe("if the user is logged out", () => {
 });
 
 test.describe("the login page ", () => {
+  test.beforeEach(async ({ page }) => {
+    login = new Login(page);
+    await login.loggedOut();
+    await login.visitLoginPage();
+  });
   test("should display a navigation to change language", async ({}) => {});
+
   test("should display the login page title in current language", async ({
     page,
+    i18n,
   }) => {
-    login = new Login(page);
-    await login.visitLoginPage();
+    await expect(
+      page.getByRole("heading", { name: i18n.t("login page title") })
+    ).toBeVisible();
     expect(await login.getTitle()).toContain("Log in to Tryber");
     await login.visitLoginPage("en");
     expect(await login.getTitle()).toContain("Log in to Tryber");
