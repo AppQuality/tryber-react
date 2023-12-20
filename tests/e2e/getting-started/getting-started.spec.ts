@@ -5,11 +5,9 @@ import {
   signupUrl,
 } from "../../fixtures/GettingStarted";
 import { expect, test } from "../../fixtures/I18n";
-import { Login } from "../../fixtures/Login";
 
 let gettingStarted: GettingStarted;
 let dashboard: DashboardPage;
-let loginPage: Login;
 
 test.describe("if the user is logged in", () => {
   test(`the url ${gettingStartedUrl} should redirect to the dashboard`, async ({
@@ -76,7 +74,7 @@ test.describe("The getting started page", () => {
   test(`if the user click to facebook login is redirected to facebook login page`, async ({
     page,
   }) => {
-    const facebookSignup = await page.getByTestId("facebook-signup");
+    const facebookSignup = page.getByTestId("facebook-signup");
     await facebookSignup.click();
     expect(page.url()).toContain("admin-ajax.php");
     expect(page.url()).toContain("action=facebook_oauth_redirect");
@@ -93,7 +91,7 @@ test.describe("The getting started page", () => {
   test(`if the user click to linkedin login is redirected to linkedin login page`, async ({
     page,
   }) => {
-    const linkedinSignup = await page.getByTestId("linkedin-signup");
+    const linkedinSignup = page.getByTestId("linkedin-signup");
     await linkedinSignup.click();
     expect(page.url()).toContain("admin-ajax.php");
     expect(page.url()).toContain("action=linkedin_oauth_redirect");
@@ -183,7 +181,7 @@ test.describe("The getting started page", () => {
   test(`if the user click the signup with mail button navigate to ${signupUrl} in the current language`, async ({
     page,
   }) => {
-    const emailSignup = await page.getByTestId("email-signup");
+    const emailSignup = page.getByTestId("email-signup");
     await emailSignup.click();
     expect(page.url()).toContain(signupUrl);
   });
