@@ -3,6 +3,7 @@ import { TryberPage } from "./TryberPage";
 
 export class Login extends TryberPage {
   readonly page: Page;
+  readonly url = "/login";
 
   constructor(page: Page) {
     super(page);

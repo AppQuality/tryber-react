@@ -1,6 +1,7 @@
 {
   "...wait": "Cargando...",
   "/discover-experience-points/": "/es/puntos-de-experiencia-que-son/",
+  "/ethical-code/": "",
   "/faq/": "/es/faq-es/",
   "/my-account/": "/perfil/",
   "/terms-and-conditions/": "/terms-and-conditions/",
@@ -188,6 +189,9 @@
   "Confirm email": "Confirma tu correo electrónico",
   "Confirm password": "Confirma tu password",
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Conecte Tryber a una de tus account, esto lo hará más fácil para acceder a su dashboard",
+  "Continue with Facebook": "",
+  "Continue with LinkedIn": "",
+  "Continue with email": "",
   "Countries covered": "Países alcanzados",
   "Country": "País de residencia",
   "Courses": "Cursos",
@@ -222,6 +226,7 @@
   "Email {{email}} already registered": "Email {{email}} già presente",
   "Employment": "Empleo",
   "End Date": "Fecha Final",
+  "Ethical Code": "",
   "Experience Points": "Puntos de Experiencia",
   "Extra Award": "Recompensa Extra",
   "FAQ": "Preguntas Frecuentes",
@@ -290,6 +295,7 @@
   "Learn more about how we calculate and attribute experience points.": "Aprende más sobre cómo calculamos y atribuimos los puntos de experiencia.",
   "LinkedIn": "LinkedIn",
   "Loading Data": "Cargando Datos",
+  "Log in": "",
   "Log in with an existing account": "Regístrate más rápido",
   "Login": "¿Ya eres un Tryber? Iniciar sesión",
   "MODAL_PAYMENT_STEP_TITLE": {
@@ -355,6 +361,7 @@
   "Points": "Puntos",
   "Points Fix": "Puntos Fijos",
   "Previous": "Anterior",
+  "Privacy Policy": "",
   "Processing": "En proceso",
   "Profession": "Trabajo",
   "Profile": "Perfil",
@@ -394,6 +401,7 @@
   "Settings": "Configuraciones",
   "Severity": "Gravedad",
   "Should be exactly 16 characters": "Debe tener exactamente 16 caracteres",
+  "Signup for Tryber": "",
   "Signup now": "Regístrese ahora",
   "Something went wrong": "Parece que algo salió mal",
   "Spoken languages": "Idiomas hablados",
@@ -416,6 +424,7 @@
   "Tax regime options select label": {
     "Fiscal Type": "Régimen fiscal"
   },
+  "Terms and Conditions": "",
   "Testing Campaigns are not clear and I'm not able to finished them": "Las campañas no son claras y no soy capaz de terminarlas",
   "Testing University": "Universidad de Tryber",
   "The account holder name should contain latin character only": "El nombre del titular de la cuenta debe contener solo caracteres latinos",

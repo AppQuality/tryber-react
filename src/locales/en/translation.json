@@ -1,6 +1,7 @@
 {
   "...wait": "Loading",
   "/discover-experience-points/": "/discover-experience-points/",
+  "/ethical-code/": "",
   "/faq/": "/faq/",
   "/my-account/": "/my-account/",
   "/terms-and-conditions/": "/terms-and-conditions/",
@@ -188,6 +189,9 @@
   "Confirm email": "Confirm email",
   "Confirm password": "Confirm password",
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Connect Tryber to one of your accounts, this will make it easier for you to access your dashboard",
+  "Continue with Facebook": "",
+  "Continue with LinkedIn": "",
+  "Continue with email": "",
   "Countries covered": "Countries covered",
   "Country": "Country of residence",
   "Courses": "Courses",
@@ -222,6 +226,7 @@
   "Email {{email}} already registered": "Email {{email}} already registered",
   "Employment": "Employment",
   "End Date": "End Date",
+  "Ethical Code": "",
   "Experience Points": "Experience Points",
   "Extra Award": "Extra Award",
   "FAQ": "FAQ",
@@ -290,6 +295,7 @@
   "Learn more about how we calculate and attribute experience points.": "Learn more about how we calculate and attribute experience points.",
   "LinkedIn": "LinkedIn",
   "Loading Data": "Loading Data",
+  "Log in": "",
   "Log in with an existing account": "Sign in faster",
   "Login": "Already a Tryber? Log in",
   "MODAL_PAYMENT_STEP_TITLE": {
@@ -355,6 +361,7 @@
   "Points": "Points",
   "Points Fix": "Points Fix",
   "Previous": "Previous",
+  "Privacy Policy": "",
   "Processing": "Processing",
   "Profession": "Profession",
   "Profile": "Profile",
@@ -394,6 +401,7 @@
   "Settings": "Settings",
   "Severity": "Severity",
   "Should be exactly 16 characters": "Should be exactly 16 characters",
+  "Signup for Tryber": "",
   "Signup now": "Signup now",
   "Something went wrong": "Something went wrong",
   "Spoken languages": "Spoken languages",
@@ -416,6 +424,7 @@
   "Tax regime options select label": {
     "Fiscal Type": "Fiscal Type"
   },
+  "Terms and Conditions": "",
   "Testing Campaigns are not clear and I'm not able to finished them": "Campaigns are not clear and I'm not able to finished them",
   "Testing University": "Tryber University",
   "The account holder name should contain latin character only": "The account holder name should contain latin characters only",
