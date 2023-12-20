@@ -10,7 +10,11 @@ export class Login extends TryberPage {
     this.page = page;
   }
 
-  async visitLoginPage() {
-    await this.page.goto("/login");
+  async visitLoginPage(locale: "en" | "it" | "es" | undefined = undefined) {
+    await this.page.goto(`${locale ? "/" + locale : ""}/login`);
+  }
+
+  async getTitle() {
+    return await this.page.textContent("h1");
   }
 }

@@ -718,6 +718,7 @@
     "__RANKING_NAME_LEVEL_MAX:25": "Livello {{levelName}}"
   },
   "login": "accedi",
+  "login page title": "Accedi a Tryber",
   "login with your credentials": "accedi con le tue credenziali",
   "minimum of 6 characters": "",
   "name": "Nome",
@@ -744,7 +745,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
-  "Getting Started": "Iniziare",
+  "login-page-title": "",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "partita IVA o più di € 5,000 lordi / anno con prestazioni occasionali",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "estero",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "meno di € 5.000 lordi / anno con prestazioni occasionali",

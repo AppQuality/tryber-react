@@ -718,6 +718,7 @@
     "__RANKING_NAME_LEVEL_MAX:25": "Nivel {{levelName}}\n"
   },
   "login": "Login",
+  "login page title": "Iniciar sesión en Tryber",
   "login with your credentials": "Inicia sesión con tus credenciales",
   "minimum of 6 characters": "",
   "name": "Nombre",
@@ -744,7 +745,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
-  "Getting Started": "Empezando",
+  "login-page-title": "",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "IVA registrado o más de 5.000 brutos € / año con servicios ocasionales",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "otro (no italiano)",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "menos de 5.000 brutos € / año con servicios ocasionales",

@@ -718,6 +718,7 @@
     "__RANKING_NAME_LEVEL_MAX:25": "{{levelName}} level"
   },
   "login": "login",
+  "login page title": "Log in to Tryber",
   "login with your credentials": "login with your credentials",
   "minimum of 6 characters": "",
   "name": "Name",
@@ -744,7 +745,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
-  "Getting Started": "Getting Started",
+  "login-page-title": "",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "VAT registred or more than € 5,000 gross / year with occasional services",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "other (not Italian)",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "less than € 5,000 gross / year with occasional services",

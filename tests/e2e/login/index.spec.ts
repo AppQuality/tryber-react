@@ -15,7 +15,12 @@ test.describe("if the user is logged in", () => {
 });
 
 test.describe("if the user is logged out", () => {
-  test("/login should display the login form", async ({ page }) => {});
+  test("/login should display the login form", async ({ page }) => {
+    login = new Login(page);
+    await login.loggedOut();
+    await login.visitLoginPage();
+    expect(page.url()).toContain("/login");
+  });
   test("if tries to access a logged only page should see login component", async ({
     page,
   }) => {});
@@ -23,6 +28,19 @@ test.describe("if the user is logged out", () => {
 
 test.describe("the login page ", () => {
   test("should display a navigation to change language", async ({}) => {});
+  test("should display the login page title in current language", async ({
+    page,
+  }) => {
+    login = new Login(page);
+    await login.visitLoginPage();
+    expect(await login.getTitle()).toContain("Log in to Tryber");
+    await login.visitLoginPage("en");
+    expect(await login.getTitle()).toContain("Log in to Tryber");
+    await login.visitLoginPage("es");
+    expect(await login.getTitle()).toContain("Iniciar sesión en Tryber");
+    await login.visitLoginPage("it");
+    expect(await login.getTitle()).toContain("Accedi a Tryber");
+  });
   test("should display the login button with facebook", async ({ page }) => {});
   test("should display the login button with linkedin", async ({ page }) => {});
   test("should display the email input", async ({ page }) => {});
