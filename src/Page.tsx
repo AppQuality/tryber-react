@@ -18,6 +18,7 @@ import {
   MyBugs,
   Profile,
   Ranking,
+  Signup,
   Wallet,
   PreviewSelectionForm,
 } from "./pages";
@@ -62,6 +63,10 @@ function Page() {
       <GenericModal />
       <Router history={history}>
         <Switch>
+          <SentryRoute
+            path={`${base}/getting-started/signup`}
+            component={Signup}
+          />
           <SentryRoute
             path={`${base}/getting-started`}
             component={GettingStarted}

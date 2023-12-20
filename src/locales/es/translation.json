@@ -382,6 +382,10 @@
   "Request your data": "Solicitas tus datos",
   "Reset password": "Restablecer password",
   "Review the manual": "Revisar el manual",
+  "SIGNUP_STEP_TITLE": {
+    "Account info": "",
+    "Personal info": ""
+  },
   "Save": "Guardar",
   "Save changes": "Guardar los cambios",
   "Search": "Buscar",

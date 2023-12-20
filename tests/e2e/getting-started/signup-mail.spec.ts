@@ -3,15 +3,31 @@ import { GettingStarted } from "../../fixtures/GettingStarted";
 
 let gettingStarted: GettingStarted;
 
+test(`if the user is logged in The signup mail page should redirect to the dashboard`, async ({
+  page,
+}) => {
+  gettingStarted = new GettingStarted(page);
+  await gettingStarted.loggedIn();
+  await gettingStarted.visitMailSignupPage();
+  expect(await page.url()).toContain("my-dashboard");
+});
 test.describe("The signup mail page", () => {
+  test.beforeEach(async ({ page }) => {
+    gettingStarted = new GettingStarted(page);
+    await gettingStarted.loggedOut();
+    await gettingStarted.visitMailSignupPage();
+  });
   test(`if the user is logged out should display the page to signup with email`, async ({
     page,
-  }) => {});
-  test(`if the user is logged in should redirect to the dashboard`, async ({
-    page,
-  }) => {});
-  test("should display a navigation to change language", async ({}) => {});
-  test("should display a stepper component", async ({}) => {});
+  }) => {
+    await expect(page.getByTestId("tryber-mail-signup")).toBeVisible();
+  });
+  test("should display a navigation to change language", async ({ page }) => {
+    await expect(page.getByTestId("language-switcher")).toBeVisible();
+  });
+  test("should display a stepper component", async ({ page }) => {
+    await expect(page.getByTestId("signup-stepper")).toBeVisible();
+  });
   // todo: test stepper component
   test("should display a mail field", async ({}) => {});
   test("should display a password field", async ({}) => {});
