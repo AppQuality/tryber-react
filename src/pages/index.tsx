@@ -7,10 +7,10 @@ import Signup from "./GettingStarted/NewSignupForm";
 import GoodbyePage from "./GoodbyePage";
 import Home from "./Home";
 import MyBugs from "./MyBugs";
-import PreviewSelectionForm from "./PreviewSelectionForm";
 import Profile from "./Profile";
 import Ranking from "./Ranking";
-import Wallet from "./Wallet";
+import PreviewSelectionForm from "./PreviewSelectionForm";
+import Login from "./Login";
 
 export {
   Dashboard,
@@ -23,6 +23,6 @@ export {
   PreviewSelectionForm,
   Profile,
   Ranking,
-  Wallet,
   Signup,
+  Login,
 };

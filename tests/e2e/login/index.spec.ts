@@ -4,10 +4,13 @@ import { Login } from "../../fixtures/Login";
 let login: Login;
 
 test.describe("if the user is logged in", () => {
-  test("the url /login should redirect to the dashboard", async ({ page }) => {
+  test("the url /login should redirect to the dashboard in current language", async ({
+    page,
+  }) => {
     login = new Login(page);
+    await login.loggedIn();
     await login.visitLoginPage();
-    expect(page.url()).toBe("/my-dashboard");
+    expect(page.url()).toContain("/my-dashboard");
   });
 });
 

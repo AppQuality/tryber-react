@@ -21,6 +21,7 @@ import {
   Signup,
   Wallet,
   PreviewSelectionForm,
+  Login,
 } from "./pages";
 import referralStore from "./redux/referral";
 import { refreshUser } from "./redux/user/actions/refreshUser";
@@ -74,6 +75,8 @@ function Page() {
           <SentryRoute path={`/it/getting-started-2`}>
             <Redirect to="/it/getting-started" />
           </SentryRoute>
+
+          <SentryRoute path={`${base}/login`} component={Login} />
 
           <SentryRoute path={`${base}/my-dashboard`} component={Dashboard} />
 
