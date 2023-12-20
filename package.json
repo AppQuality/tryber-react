@@ -120,6 +120,7 @@
   },
   "resolutions": {
     "@types/react": "17.0.9",
+    "react-error-overlay": "6.0.9",
     "@types/react-dom": "17.0.9"
   }
 }
