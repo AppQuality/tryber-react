@@ -254,7 +254,6 @@
     "Other": "Non-conforming"
   },
   "Generic error": "Generic error",
-  "Getting Started": "Getting Started",
   "Great job!": "Great job!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
     "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Great, you're going to be {{level}} in the next month!<br></br>Now try your best and reach {{nextLevel}}!"
@@ -713,6 +712,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "Getting Started": "Getting Started",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "VAT registred or more than € 5,000 gross / year with occasional services",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "other (not Italian)",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "less than € 5,000 gross / year with occasional services",

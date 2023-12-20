@@ -1,7 +1,6 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../../fixtures/I18n";
 import {
   GettingStarted,
-  confirmationUrl,
   gettingStartedUrl,
   signupUrl,
 } from "../../fixtures/GettingStarted";
@@ -26,6 +25,16 @@ test.describe("if the user is logged out", () => {
 });
 
 test.describe("The getting started page", () => {
+  test.beforeEach(async ({ page }) => {
+    gettingStarted = new GettingStarted(page);
+    await gettingStarted.loggedOut();
+    await gettingStarted.visitSignupChoicePage();
+  });
+  test(`should display a title`, async ({ page, i18n }) => {
+    await expect(
+      page.getByRole("heading", { name: i18n.t("Become an AppQuality Tester") })
+    ).toBeVisible();
+  });
   test(`should display a navigation to change language`, async ({}) => {});
   test(`should display a button to signup with facebook`, async ({}) => {});
   test(`if the user click to facebook login is redirected to facebook login page`, async ({}) => {});
