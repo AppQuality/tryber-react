@@ -69,34 +69,30 @@ const LoginForm = ({
     >
       {(props) => (
         <Form className={className}>
-          suca
-          <div className="aq-mb-3">
-            <Text className="aq-text-center">
-              <div className="capitalize-first aq-text-primary">
-                <strong>{t("login with your credentials")}</strong>
-              </div>
-              <div>
-                <Trans i18nKey="or <1>create an account</1>">
-                  or
-                  <Link
-                    className="aq-text-secondary capitalize-first"
-                    style={{ display: "inline-block" }}
-                    to={gettingStartedRoute}
-                    onClick={
-                      onRegisterLinkClick ? onRegisterLinkClick : undefined
-                    }
-                  >
-                    create an account
-                  </Link>
-                </Trans>
-              </div>
-            </Text>
-            {error && (
-              <Text className="aq-text-left aq-pt-1" color="danger" small>
-                {error}
-              </Text>
-            )}
-          </div>
+          <Button
+            className="aq-mb-3"
+            onClick={() => {
+              window.location.href =
+                "/wp-admin/admin-ajax.php?loc=&action=facebook_oauth_redirect";
+            }}
+          >
+            <img alt="login with facebook" src="/static/FB.svg" />
+            {t("Continue with Facebook")}
+          </Button>
+          <Button
+            className="aq-mb-3"
+            onClick={() => {
+              window.location.href =
+                "/wp-admin/admin-ajax.php?loc=&action=linkedin_oauth_redirect";
+            }}
+          >
+            <img alt="login with linkedin" src="/static/LN.svg" />
+            {t("Continue with LinkedIn")}
+          </Button>
+          <Text className="capitalize-first aq-text-center aq-mb-3">
+            {t("or log in with email and password")}
+          </Text>
+
           <Field type="email" name="email" label={t("Email")} />
           <Field type="password" name="password" label={t("Password")} />
           <Text className="aq-text-center aq-mb-3 capitalize-first">
@@ -119,28 +115,27 @@ const LoginForm = ({
           >
             {props.isSubmitting ? t("wait...") : cta}
           </Button>
-          <Text className="capitalize-first aq-text-center aq-mb-3">
-            {t("or login with")}
-          </Text>
-          <div className="login-social aq-text-center">
-            <div
-              className="aq-mx-2"
-              onClick={() => {
-                window.location.href =
-                  "/wp-admin/admin-ajax.php?loc=&action=linkedin_oauth_redirect";
-              }}
-            >
-              <img alt="login with linkedin" src="/static/linkedin-logo.svg" />
-            </div>
-            <div
-              className="aq-mx-2"
-              onClick={() => {
-                window.location.href =
-                  "/wp-admin/admin-ajax.php?loc=&action=facebook_oauth_redirect";
-              }}
-            >
-              <img alt="login with facebook" src="/static/facebook-logo.svg" />
-            </div>
+          <div className="aq-mb-3">
+            <Text className="aq-text-center">
+              <Trans i18nKey="New to TRYBER? <1><strong>Sign up</strong></1>">
+                or
+                <Link
+                  className="aq-text-secondary capitalize-first"
+                  style={{ display: "inline-block" }}
+                  to={gettingStartedRoute}
+                  onClick={
+                    onRegisterLinkClick ? onRegisterLinkClick : undefined
+                  }
+                >
+                  create an account
+                </Link>
+              </Trans>
+            </Text>
+            {error && (
+              <Text className="aq-text-left aq-pt-1" color="danger" small>
+                {error}
+              </Text>
+            )}
           </div>
         </Form>
       )}

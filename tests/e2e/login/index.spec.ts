@@ -52,7 +52,11 @@ test.describe("the login page ", () => {
     await login.visitLoginPage("it");
     expect(await login.getTitle()).toContain("Accedi a Tryber");
   });
-  test("should display the login button with facebook", async ({ page }) => {});
+  test("should display the login button with facebook", async ({ page }) => {
+    expect(
+      await page.waitForSelector(".login-facebook", { state: "visible" })
+    ).toBeTruthy();
+  });
   test("should display the login button with linkedin", async ({ page }) => {});
   test("should display the email input", async ({ page }) => {});
   test("should display the password input", async ({ page }) => {});

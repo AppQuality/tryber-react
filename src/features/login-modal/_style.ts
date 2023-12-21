@@ -19,7 +19,6 @@ export const StyledLoginModal = styled.div`
       padding: 0 32px;
     }
     .modal-body {
-      background: url("/static/login-modal-art.png") right center no-repeat;
       min-height: 400px;
     }
     .login-social {

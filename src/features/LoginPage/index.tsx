@@ -1,14 +1,13 @@
 import { Card } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
 import { StyledLoginCard } from "./_style";
 import LoginForm from "../LoginForm";
 
 export const LoginPage = () => {
-  const { t } = useTranslation();
   return (
     <StyledLoginCard>
-      <Card className="login-card" title={t("Login")}>
+      <Card className="login-card">
         <div className="card-body">
+          <img src="/static/trybers-login.svg" alt=""></img>
           <LoginForm className="card-login-form" />
         </div>
       </Card>
