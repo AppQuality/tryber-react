@@ -16,7 +16,6 @@ import styled from "styled-components";
 const StyledButton = styled(Button)`
   border: 1px solid ${({ theme }) => theme.palette.primary};
   @media (min-width: ${({ theme }) => theme.grid.breakpoints.md}) {
-    max-width: 290px;
     margin: 0 auto;
   }
   .button-left-img {
@@ -120,12 +119,30 @@ const LoginForm = ({
             />
             <span className="button-text">{t("Continue with LinkedIn")}</span>
           </StyledButton>
-          <Text className="capitalize-first aq-text-center aq-mb-3">
+          <Text className="aq-text-center aq-mb-3">
             {t("or log in with email and password")}
           </Text>
 
-          <Field type="email" name="email" label={t("Email")} />
-          <Field type="password" name="password" label={t("Password")} />
+          <Field
+            type="email"
+            name="email"
+            label={
+              <div className="aq-text-left">
+                {t("Email")}
+                <span aria-hidden>*</span>
+              </div>
+            }
+          />
+          <Field
+            type="password"
+            name="password"
+            label={
+              <div className="aq-text-left">
+                {t("Password")}
+                <span aria-hidden>*</span>
+              </div>
+            }
+          />
           <Text className="aq-text-center aq-mb-3 capitalize-first">
             <strong>
               <a
@@ -142,7 +159,6 @@ const LoginForm = ({
             size="block"
             flat
             type="submit"
-            disabled={props.isSubmitting || !props.dirty || !props.isValid}
           >
             {props.isSubmitting ? t("wait...") : cta}
           </Button>
@@ -154,13 +170,24 @@ const LoginForm = ({
                   className="aq-text-secondary capitalize-first"
                   style={{ display: "inline-block" }}
                   to={gettingStartedRoute}
-                  onClick={
-                    onRegisterLinkClick ? onRegisterLinkClick : undefined
-                  }
                 >
                   create an account
                 </Link>
               </Trans>
+              {/* <Trans
+                i18nKey="available tags: <strong>, <signuplink>:::LOGIN_SIGNUP_LINK"
+                components={{
+                  strong: <strong className="aq-text-primary" />,
+                  signuplink: (
+                    <Link
+                      className="aq-text-secondary"
+                      style={{ display: "inline-block" }}
+                      to={gettingStartedRoute}
+                    />
+                  ),
+                }}
+                defaults={`New to TRYBER? <signuplink><strong>Sign up</strong></signuplink>`}
+              /> */}
             </Text>
             {error && (
               <Text className="aq-text-left aq-pt-1" color="danger" small>
