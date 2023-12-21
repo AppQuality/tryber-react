@@ -16,8 +16,10 @@ import Step0 from "./Step0";
 import Step1 from "./Step1";
 
 const Wrapper = styled.div`
-  width: 75%;
-  margin: 0 auto;
+  @media (min-width: ${(p) => p.theme.grid.breakpoints.md}) {
+    max-width: 650px;
+    margin: 0 auto;
+  }
 `;
 
 const SignupForm = ({}) => {
