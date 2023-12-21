@@ -1,4 +1,4 @@
-import { type Page } from "@playwright/test";
+import { type Locator, type Page } from "@playwright/test";
 import { TryberPage } from "./TryberPage";
 
 export const gettingStartedUrl = "/getting-started";
@@ -29,18 +29,21 @@ export class GettingStarted extends TryberPage {
     await this.page.goto(confirmationUrl);
   }
 
-  elements = {
-    emailInput: () => this.page.getByTestId(this.selectors.byTestId.emailInput),
-    passwordInput: () =>
-      this.page.getByTestId(this.selectors.byTestId.passwordInput),
-  };
+  elements(): Record<string, () => Locator> {
+    return {
+      emailInput: () =>
+        this.page.getByTestId(this.selectors.byTestId.emailInput),
+      passwordInput: () =>
+        this.page.getByTestId(this.selectors.byTestId.passwordInput),
+    };
+  }
 
   async fillEmailWith(email: string) {
-    const mailInput = this.elements.emailInput();
+    const mailInput = this.elements().emailInput();
     await mailInput.fill(email);
   }
   async fillPasswordWith(password: string) {
-    const mailInput = this.elements.passwordInput();
+    const mailInput = this.elements().passwordInput();
     await mailInput.fill(password);
   }
 
