@@ -70,7 +70,7 @@ const LoginForm = ({
       {(props) => (
         <Form className={className}>
           <Button
-            className="aq-mb-3"
+            className="aq-mb-3 login-facebook-button"
             onClick={() => {
               window.location.href =
                 "/wp-admin/admin-ajax.php?loc=&action=facebook_oauth_redirect";
@@ -80,7 +80,7 @@ const LoginForm = ({
             {t("Continue with Facebook")}
           </Button>
           <Button
-            className="aq-mb-3"
+            className="aq-mb-3 login-linkedin-button"
             onClick={() => {
               window.location.href =
                 "/wp-admin/admin-ajax.php?loc=&action=linkedin_oauth_redirect";
@@ -98,7 +98,7 @@ const LoginForm = ({
           <Text className="aq-text-center aq-mb-3 capitalize-first">
             <strong>
               <a
-                className="aq-text-secondary"
+                className="aq-text-secondary lost-password-anchor"
                 href="/wp-login.php?action=lostpassword"
               >
                 {t("forgot your password?")}
