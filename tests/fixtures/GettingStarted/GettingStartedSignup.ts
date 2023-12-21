@@ -34,6 +34,8 @@ export class GettingStartedSignup extends GettingStarted {
       ...super.elements(),
       emailInput: () => this.page.getByTestId("email-input"),
       passwordInput: () => this.page.getByTestId("password-input"),
+      nextButton: () =>
+        this.page.getByRole("button", { name: this.i18n.t("Next") }),
     };
   }
 
@@ -49,5 +51,10 @@ export class GettingStartedSignup extends GettingStarted {
   async fillEmailAndPasswordWithValidData() {
     await this.fillEmailWith("test@example.com");
     await this.fillPasswordWith("Password1!");
+  }
+
+  async goToSecondStep() {
+    await this.fillEmailAndPasswordWithValidData();
+    await this.elements().nextButton().click();
   }
 }
