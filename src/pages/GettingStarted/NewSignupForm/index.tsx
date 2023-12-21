@@ -5,16 +5,15 @@ import {
   Steps,
   Title,
 } from "@appquality/appquality-design-system";
-import { useState } from "react";
+import { FormikProps } from "formik";
 import { useTranslation } from "react-i18next";
 import { LangMenu } from "src/features/LangMenu";
-import FormProvider, { SignupFormType } from "./FormProvider";
 import { PageTemplate } from "src/features/PageTemplate";
 import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import styled from "styled-components";
+import FormProvider, { SignupFormType } from "./FormProvider";
 import Step0 from "./Step0";
-import Step1 from "./Step0";
-import { FormikProps } from "formik";
+import Step1 from "./Step1";
 
 const Wrapper = styled.div`
   width: 75%;
@@ -43,24 +42,25 @@ const SignupForm = ({}) => {
             <FormProvider>
               {(formikProps: FormikProps<SignupFormType>) => {
                 const { step } = formikProps.values;
-                <Steps
-                  current={step}
-                  className="aq-mb-3"
-                  data-qa="signup-stepper"
-                >
-                  <Steps.Step
-                    title={t("SIGNUP_STEP_TITLE:::Account info")}
-                    isCompleted={step > 0}
-                  />
-                  <Steps.Step title={t("SIGNUP_STEP_TITLE:::Personal info")} />
-                </Steps>;
-
-                {
-                  step === 0 && <Step0 />;
-                }
-                {
-                  step === 1 && <Step1 />;
-                }
+                return (
+                  <>
+                    <Steps
+                      current={step}
+                      className="aq-mb-3"
+                      data-qa="signup-stepper"
+                    >
+                      <Steps.Step
+                        title={t("SIGNUP_STEP_TITLE:::Account info")}
+                        isCompleted={step > 0}
+                      />
+                      <Steps.Step
+                        title={t("SIGNUP_STEP_TITLE:::Personal info")}
+                      />
+                    </Steps>
+                    {step === 0 && <Step0 />}
+                    {step === 1 && <Step1 />}
+                  </>
+                );
               }}
             </FormProvider>
           </Card>
