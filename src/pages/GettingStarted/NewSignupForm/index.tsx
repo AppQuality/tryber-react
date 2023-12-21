@@ -8,11 +8,13 @@ import {
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LangMenu } from "src/features/LangMenu";
+import FormProvider, { SignupFormType } from "./FormProvider";
 import { PageTemplate } from "src/features/PageTemplate";
 import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import styled from "styled-components";
 import Step0 from "./Step0";
 import Step1 from "./Step0";
+import { FormikProps } from "formik";
 
 const Wrapper = styled.div`
   width: 75%;
@@ -23,7 +25,6 @@ const SignupForm = ({}) => {
   const { t } = useTranslation();
   const dashboard = useLocalizeRoute("my-dashboard");
   const emailSignup = useLocalizeRoute("getting-started/signup");
-  const [step, setStep] = useState(0);
   return (
     <PageTemplate route={emailSignup}>
       <DatepickerGlobalStyle />
@@ -39,16 +40,29 @@ const SignupForm = ({}) => {
             {t("Signup for Tryber")}
           </Title>
           <Card data-qa="tryber-mail-signup">
-            <Steps current={step} className="aq-mb-3" data-qa="signup-stepper">
-              <Steps.Step
-                title={t("SIGNUP_STEP_TITLE:::Account info")}
-                isCompleted={step > 0}
-              />
-              <Steps.Step title={t("SIGNUP_STEP_TITLE:::Personal info")} />
-            </Steps>
+            <FormProvider>
+              {(formikProps: FormikProps<SignupFormType>) => {
+                const { step } = formikProps.values;
+                <Steps
+                  current={step}
+                  className="aq-mb-3"
+                  data-qa="signup-stepper"
+                >
+                  <Steps.Step
+                    title={t("SIGNUP_STEP_TITLE:::Account info")}
+                    isCompleted={step > 0}
+                  />
+                  <Steps.Step title={t("SIGNUP_STEP_TITLE:::Personal info")} />
+                </Steps>;
 
-            {step === 0 && <Step0 setStep={setStep} />}
-            {step === 1 && <Step1 setStep={setStep} />}
+                {
+                  step === 0 && <Step0 />;
+                }
+                {
+                  step === 1 && <Step1 />;
+                }
+              }}
+            </FormProvider>
           </Card>
         </Wrapper>
       </Container>
