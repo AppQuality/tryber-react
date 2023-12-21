@@ -184,7 +184,6 @@
   "Closed": "Chiuse",
   "Coming soon": "Coming soon",
   "Complete the Basic Course": "Inizia dal Corso Base",
-  "Complete your profile": "",
   "Completed campaigns": "Campagne completate",
   "Computer type": "Tipo di computer",
   "Confirm email": "Conferma indirizzo email",
@@ -233,7 +232,6 @@
   "FAQ": "Domande frequenti",
   "Facebook": "Facebook",
   "Female": "Donna",
-  "Fields marked with asterisk (*) are required.": "",
   "Fill in your profile details": "Completa il tuo profilo",
   "Filters": "Filtri",
   "Finished": "Terminate",
@@ -384,6 +382,9 @@
   "Request your data": "Richiedi i tuoi dati",
   "Reset password": "Resetta la password",
   "Review the manual": "Rivedi il manuale",
+  "SIGNUP_STEP": {
+    "continue": ""
+  },
   "SIGNUP_STEP_TITLE": {
     "Account info": "",
     "Personal info": ""
@@ -727,6 +728,8 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Complete your profile": "",
+  "Fields marked with asterisk (*) are required.": "",
   "Getting Started": "Iniziare",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "partita IVA o più di € 5,000 lordi / anno con prestazioni occasionali",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "estero",
