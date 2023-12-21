@@ -46,24 +46,73 @@ test.describe("The signup mail page", () => {
     throw new Error("Not implemented");
   });
   test("should display a submit button", async ({}) => {
-    throw new Error("Not implemented");
+    await expect(gettingStarted.elements().nextButton()).toBeVisible();
   });
-  test("if the user click the submit button and the mail is empty should display an error message", async ({}) => {
-    throw new Error("Not implemented");
+  test("if the user click the submit button and the mail is empty should display an error message", async ({
+    page,
+    i18n,
+  }) => {
+    await gettingStarted.fillEmailAndPasswordWithValidData();
+    await gettingStarted.fillEmailWith("");
+    await gettingStarted.elements().nextButton().click();
+    await expect(
+      page.getByText(i18n.t("This is a required field"))
+    ).toBeVisible();
   });
-  test("if the user click the submit button and the mail is not valid should display an error message", async ({}) => {
-    throw new Error("Not implemented");
+  test("if the user click the submit button and the mail is not valid should display an error message", async ({
+    page,
+    i18n,
+  }) => {
+    await gettingStarted.fillEmailAndPasswordWithValidData();
+    await gettingStarted.fillEmailWith("notvalidmail");
+    await gettingStarted.elements().nextButton().click();
+    await expect(
+      page.getByText(i18n.t("Email must be a valid email"))
+    ).toBeVisible();
   });
-  test("if the user click the submit button and the password is empty should display an error message", async ({}) => {
-    throw new Error("Not implemented");
+  test("if the user click the submit button and the password is empty should display an error message", async ({
+    page,
+    i18n,
+  }) => {
+    await gettingStarted.fillEmailAndPasswordWithValidData();
+    await gettingStarted.fillPasswordWith("");
+    await gettingStarted.elements().nextButton().click();
+    await expect(
+      page.getByText(i18n.t("This is a required field"))
+    ).toBeVisible();
   });
-  test("if the user click the submit button and the password is not valid should display an error message", async ({}) => {
-    throw new Error("Not implemented");
+  test("if the user click the submit button and the password is not valid should display an error message", async ({
+    page,
+    i18n,
+  }) => {
+    await gettingStarted.fillEmailAndPasswordWithValidData();
+    await gettingStarted.fillPasswordWith("pass");
+    await gettingStarted.elements().nextButton().click();
+    await expect(
+      page.getByText(i18n.t("Must be at least 6 character long"))
+    ).toBeVisible();
+    await gettingStarted.fillPasswordWith("password");
+    await gettingStarted.elements().nextButton().click();
+    await expect(
+      page.getByText(i18n.t("Must contain at least a number"))
+    ).toBeVisible();
+    await gettingStarted.fillPasswordWith("password1");
+    await gettingStarted.elements().nextButton().click();
+    await expect(
+      page.getByText(i18n.t("Must contain at least an uppercase letter"))
+    ).toBeVisible();
+    await gettingStarted.fillPasswordWith("PASSWORD1");
+    await gettingStarted.elements().nextButton().click();
+    await expect(
+      page.getByText(i18n.t("Must contain at least a lowercase letter"))
+    ).toBeVisible();
   });
   test("if the user click the submit but mail is already present in db an error notification should appear", async ({}) => {
     throw new Error("Not implemented");
   });
   test("if the user click the submit button and mail and password are valid should display the second step (profile data)", async ({}) => {
+    await gettingStarted.fillEmailAndPasswordWithValidData();
+    await gettingStarted.elements().nextButton().click();
     throw new Error("Not implemented");
   });
 });

@@ -35,7 +35,9 @@ export class GettingStartedSignup extends GettingStarted {
       emailInput: () => this.page.getByTestId("email-input"),
       passwordInput: () => this.page.getByTestId("password-input"),
       nextButton: () =>
-        this.page.getByRole("button", { name: this.i18n.t("Next") }),
+        this.page.getByRole("button", {
+          name: this.i18n.t("SIGNUP_STEP:::continue"),
+        }),
     };
   }
 
