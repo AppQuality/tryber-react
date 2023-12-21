@@ -29,11 +29,25 @@ test.describe("The signup mail page", () => {
     await expect(page.getByTestId("signup-stepper")).toBeVisible();
   });
   // todo: test stepper component
-  test("should display a mail field", async ({}) => {
-    throw new Error("Not implemented");
+  test("should display a mail field", async ({ page }) => {
+    await expect(
+      page.getByTestId(gettingStarted.selectors.byTestId.emailInput)
+    ).toBeVisible();
+    await gettingStarted.fillEmailWith("test@example.com");
+    const mailInput = page.getByTestId(
+      gettingStarted.selectors.byTestId.emailInput
+    );
+    expect(await mailInput.inputValue()).toBe("test@example.com");
   });
-  test("should display a password field", async ({}) => {
-    throw new Error("Not implemented");
+  test("should display a password field", async ({ page }) => {
+    await expect(
+      page.getByTestId(gettingStarted.selectors.byTestId.passwordInput)
+    ).toBeVisible();
+    await gettingStarted.fillPasswordWith("Password1!");
+    const passwordInput = page.getByTestId(
+      gettingStarted.selectors.byTestId.passwordInput
+    );
+    expect(await passwordInput.inputValue()).toBe("Password1!");
   });
   test("should display a list of password requirements", async ({}) => {
     throw new Error("Not implemented");

@@ -7,6 +7,13 @@ export const confirmationUrl = "/getting-started/confirmation";
 export class GettingStarted extends TryberPage {
   readonly page: Page;
 
+  readonly selectors = {
+    byTestId: {
+      emailInput: "email-input",
+      passwordInput: "password-input",
+    },
+  };
+
   constructor(page: Page) {
     super(page);
     this.page = page;
@@ -20,5 +27,21 @@ export class GettingStarted extends TryberPage {
   }
   async visitConfirmationPage() {
     await this.page.goto(confirmationUrl);
+  }
+
+  async fillEmailWith(email: string) {
+    const mailInput = this.page.getByTestId(this.selectors.byTestId.emailInput);
+    await mailInput.fill(email);
+  }
+  async fillPasswordWith(password: string) {
+    const mailInput = this.page.getByTestId(
+      this.selectors.byTestId.passwordInput
+    );
+    await mailInput.fill(password);
+  }
+
+  async fillEmailAndPasswordWithValidData() {
+    await this.fillEmailWith("test@example.com");
+    await this.fillPasswordWith("Password1!");
   }
 }
