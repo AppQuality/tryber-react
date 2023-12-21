@@ -12,12 +12,12 @@ export const Login = () => {
         itLink="/it/login"
         enLink="/en/login"
         esLink="/es/login"
-        className="aq-my-4 lang-navigation"
+        className="aq-my-3 lang-navigation"
       />
-      <Title size="l" as={"h1"} className="aq-my-4 aq-text-center">
+      <Title size="l" as={"h1"} className="aq-mb-3 aq-text-center">
         {t("login page title")}
       </Title>
-      {LoginPage()};
+      <LoginPage />
     </PageTemplate>
   );
 };
