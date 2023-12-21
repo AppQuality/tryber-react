@@ -11,6 +11,25 @@ import { useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const StyledButton = styled(Button)`
+  border: 1px solid ${({ theme }) => theme.palette.primary};
+  @media (min-width: ${({ theme }) => theme.grid.breakpoints.md}) {
+    max-width: 290px;
+    margin: 0 auto;
+  }
+  .button-left-img {
+    height: 24px;
+    width: 24px;
+  }
+  display: flex;
+  align-items: center;
+  .button-text {
+    text-align: center;
+    flex-grow: 1;
+  }
+`;
 
 const LoginForm = ({
   className,
@@ -69,26 +88,38 @@ const LoginForm = ({
     >
       {(props) => (
         <Form className={className}>
-          <Button
-            className="aq-mb-3 login-facebook-button"
+          <StyledButton
+            className="aq-mb-3"
+            size="block"
+            type="light"
             onClick={() => {
               window.location.href =
                 "/wp-admin/admin-ajax.php?loc=&action=facebook_oauth_redirect";
             }}
           >
-            <img alt="login with facebook" src="/static/FB.svg" />
-            {t("Continue with Facebook")}
-          </Button>
-          <Button
-            className="aq-mb-3 login-linkedin-button"
+            <img
+              alt="login with facebook"
+              src="/static/FB.svg"
+              className="button-left-img"
+            />
+            <span className="button-text">{t("Continue with Facebook")}</span>
+          </StyledButton>
+          <StyledButton
+            className="aq-mb-3"
+            size="block"
+            type="light"
             onClick={() => {
               window.location.href =
                 "/wp-admin/admin-ajax.php?loc=&action=linkedin_oauth_redirect";
             }}
           >
-            <img alt="login with linkedin" src="/static/LN.svg" />
-            {t("Continue with LinkedIn")}
-          </Button>
+            <img
+              alt="login with linkedin"
+              src="/static/LN.svg"
+              className="button-left-img"
+            />
+            <span className="button-text">{t("Continue with LinkedIn")}</span>
+          </StyledButton>
           <Text className="capitalize-first aq-text-center aq-mb-3">
             {t("or log in with email and password")}
           </Text>

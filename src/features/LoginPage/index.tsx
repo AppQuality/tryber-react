@@ -14,7 +14,12 @@ export const LoginPage = () => {
   return (
     <StyledCard className="login-card">
       <div className="card-body aq-text-center">
-        <img src="/static/trybers-login.svg" alt=""></img>
+        <img
+          aria-hidden
+          src="/static/trybers-login.svg"
+          alt="tryber-login"
+          className="aq-mb-4"
+        />
         <LoginForm className="card-login-form" />
       </div>
     </StyledCard>
