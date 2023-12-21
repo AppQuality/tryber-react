@@ -192,7 +192,6 @@
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Conecte Tryber a una de tus account, esto lo hará más fácil para acceder a su dashboard",
   "Continue with Facebook": "",
   "Continue with LinkedIn": "",
-  "Continue with email": "",
   "Countries covered": "Países alcanzados",
   "Country": "País de residencia",
   "Courses": "Cursos",
@@ -331,6 +330,7 @@
   "Net receivable": "Neto por recibir",
   "Net received": "Neto recibido",
   "New password": "Nueva password",
+  "New to TRYBER? <1><strong>Sign up</strong></1>": "or<1>create an account</1>",
   "Next": "Siguiente",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "Ninguna campaña ha sido completado todavía. Es hora de trabajar: termina las campañas activas o aplica en las que están disponibles",
   "Not available": "No disponibles",
@@ -719,8 +719,6 @@
   },
   "login": "Login",
   "login page title": "Iniciar sesión en Tryber",
-  "login with your credentials": "Inicia sesión con tus credenciales",
-  "minimum of 6 characters": "",
   "name": "Nombre",
   "no data": "—",
   "not calculated": {
@@ -730,8 +728,7 @@
   "not in ranking": {
     "__RANKING_POSITION_NOLeVEL_MAX: 30": "No level"
   },
-  "or <1>create an account</1>": "o <1>crear una cuenta</1>",
-  "or login with": "o inicie sesión con",
+  "or log in with email and password": "",
   "redirecting": "redireccionando",
   "social": "social",
   "testers": "Tryber activos",
@@ -745,6 +742,10 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
+  "New to TRYBER? <1>Sign up</1>": "",
+  "or login with": "o inicie sesión con",
+  "login with your credentials": "Inicia sesión con tus credenciales",
+  "or <1>create an account</1>": "o <1>crear una cuenta</1>",
   "login-page-title": "",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "IVA registrado o más de 5.000 brutos € / año con servicios ocasionales",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "otro (no italiano)",

@@ -192,7 +192,6 @@
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Collega Tryber a uno dei tuoi account, in questo modo sarà più facile accedere alla dashboard",
   "Continue with Facebook": "",
   "Continue with LinkedIn": "",
-  "Continue with email": "",
   "Countries covered": "Paesi raggiunti",
   "Country": "Paese di residenza",
   "Courses": "Corsi",
@@ -331,6 +330,7 @@
   "Net receivable": "Netto da ricevere",
   "Net received": "Netto ricevuto",
   "New password": "Nuova password",
+  "New to TRYBER? <1><strong>Sign up</strong></1>": "or<1>create an account</1>",
   "Next": "Continua",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "Nessuna campagna è stata ancora conclusa. È arrivato il momento di mettersi al lavoro: termina quelle attive o candidati nelle Campagne disponibili!",
   "Not available": "Non disponibile",
@@ -719,8 +719,6 @@
   },
   "login": "accedi",
   "login page title": "Accedi a Tryber",
-  "login with your credentials": "accedi con le tue credenziali",
-  "minimum of 6 characters": "",
   "name": "Nome",
   "no data": "—",
   "not calculated": {
@@ -730,8 +728,7 @@
   "not in ranking": {
     "__RANKING_POSITION_NOLeVEL_MAX: 30": "No level"
   },
-  "or <1>create an account</1>": "o <1>crea un account</1>",
-  "or login with": "o accedi con",
+  "or log in with email and password": "",
   "redirecting": "reindirizzamento",
   "social": "social",
   "testers": "Tryber attivi",
@@ -745,6 +742,10 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "New to TRYBER? <1>Sign up</1>": "",
+  "or login with": "o accedi con",
+  "login with your credentials": "accedi con le tue credenziali",
+  "or <1>create an account</1>": "o <1>crea un account</1>",
   "login-page-title": "",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "partita IVA o più di € 5,000 lordi / anno con prestazioni occasionali",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "estero",

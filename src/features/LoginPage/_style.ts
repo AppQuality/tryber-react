@@ -2,7 +2,7 @@ import { aqBootstrapTheme } from "@appquality/appquality-design-system";
 import styled from "styled-components";
 
 export const StyledLoginCard = styled.div`
-  display flex;
+  display: flex;
   align-items: center;
   height: calc(100vh + 32px);
   margin: auto;
@@ -29,12 +29,12 @@ export const StyledLoginCard = styled.div`
       }
     }
   }
-  
+
   @media (min-width: ${aqBootstrapTheme.grid.breakpoints.md}) {
     padding: 0;
     width: 600px;
     height: 100vh;
-    
+
     .aq-card-body {
       margin: 16px 0 16px 16px !important;
     }
