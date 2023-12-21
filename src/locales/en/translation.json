@@ -184,6 +184,7 @@
   "Closed": "Closed",
   "Coming soon": "Coming soon",
   "Complete the Basic Course": "Start with the Basic Course",
+  "Complete your profile": "",
   "Completed campaigns": "Completed campaigns",
   "Computer type": "Computer type",
   "Confirm email": "Confirm email",
@@ -200,6 +201,7 @@
   "Dashboard": "Dashboard",
   "Date": "Date",
   "Date of birth": "Date of birth",
+  "Date of birth (dd/mm/yyyy)": "",
   "Delete": "Delete",
   "Delete account": "Delete account",
   "Delete your account": "Delete your account",
@@ -232,6 +234,7 @@
   "FAQ": "FAQ",
   "Facebook": "Facebook",
   "Female": "Female",
+  "Fields marked with asterisk (*) are required.": "",
   "Fill in your profile details": "Fill in your profile",
   "Filters": "Filters",
   "Finished": "Finished",
@@ -408,6 +411,7 @@
   "Settings": "Settings",
   "Severity": "Severity",
   "Should be exactly 16 characters": "Should be exactly 16 characters",
+  "Sign up": "",
   "Signup for Tryber": "",
   "Signup now": "Signup now",
   "Something went wrong": "Something went wrong",
@@ -637,6 +641,9 @@
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "View details",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Download receipt",
   "address": "address",
+  "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {
+    "DISCLAIMER_SIGNUP_PAGE": ""
+  },
   "available tags: <br>, <bold>": {
     "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Bug replicability</b><br>\n<br>\n<b>SOMETIMES</b><br>\nWith all conditions and processes being equal, the bug occurs sporadically/unpredictably, but it is always possible to reproduce it by making multiple attempts.<br>\n<br>\n<b>ALWAYS</b><br>\nWith all conditions and processes being equal, the bug occurs under the same conditions and processes, at each replication attempt. To be such, the bug must be successfully reproduced at least 3 out of 3 times.<br>\n<br>\n<b>ONCE</b><br>\nWith all conditions and processes being equal, the bug only occurred once and could not be replicated (at least 3 attempts needed).",
     "BUGFORM_SEVERITY_MODAL_TXT": "<bold>Bug severity</bold><br>\n<br/>\nSeverity is an estimate of the impact of the problem on the use of the tested product. This estimate is calculated by keeping in mind both the context where the problem occurs (primary or secondary sections of the core-business of the campaign object) and the conditions where it has been found compared to an average use. Severity must never be influenced by the assessment of replicability: what guides the choice is mainly the impact on the user, the context (importance of the section) and the presence or lack of a workaround.<br>\n<br>\n<b>LOW</b><br>\nIssues that have a minimal impact on the use of the product. The user is able to continue to use and test the product without great difficulties. Often these are USABILITY, TYPO or GRAPHIC bugs.<br>\n<br>\n<b>MEDIUM</b><br>\nIssues that have a limited impact on the use of the product. The user is still able to complete the process despite having encountered some difficulties. This can be any type of bug.<br>\n<br>\n<b>HIGH</b><br>\nIssues that have a significant impact in the use of the product. The user mainly finds them in the main sections and may not be able to continue using and testing the product as intended. Generally, the bug type is MALFUNCTION, CRASH, PERFORMANCE or SECURITY.<br>\n<br>\n<b>CRITICAL</b><br>\nIssues that prevent the user from completing the main tasks, often resulting in a system crash. The user is unable by any means to complete the task or continue using the test product. The bug types are either MALFUNCTION or CRASH bugs.<br>",
@@ -728,8 +735,6 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
-  "Complete your profile": "",
-  "Fields marked with asterisk (*) are required.": "",
   "Getting Started": "Getting Started",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "VAT registred or more than € 5,000 gross / year with occasional services",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "other (not Italian)",

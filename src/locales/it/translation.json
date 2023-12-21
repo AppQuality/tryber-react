@@ -184,6 +184,7 @@
   "Closed": "Chiuse",
   "Coming soon": "Coming soon",
   "Complete the Basic Course": "Inizia dal Corso Base",
+  "Complete your profile": "",
   "Completed campaigns": "Campagne completate",
   "Computer type": "Tipo di computer",
   "Confirm email": "Conferma indirizzo email",
@@ -200,6 +201,7 @@
   "Dashboard": "Dashboard",
   "Date": "Data",
   "Date of birth": "Data di nascita",
+  "Date of birth (dd/mm/yyyy)": "",
   "Delete": "Rimuovi",
   "Delete account": "Elimina account",
   "Delete your account": "Elimina il tuo account",
@@ -232,6 +234,7 @@
   "FAQ": "Domande frequenti",
   "Facebook": "Facebook",
   "Female": "Donna",
+  "Fields marked with asterisk (*) are required.": "",
   "Fill in your profile details": "Completa il tuo profilo",
   "Filters": "Filtri",
   "Finished": "Terminate",
@@ -408,6 +411,7 @@
   "Settings": "Impostazioni",
   "Severity": "Gravità",
   "Should be exactly 16 characters": "Deve contenere esattamente 16 caratteri",
+  "Sign up": "",
   "Signup for Tryber": "",
   "Signup now": "Iscriviti ora",
   "Something went wrong": "È successo qualcosa",
@@ -637,6 +641,9 @@
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Vedi dettagli",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Scarica ricevuta",
   "address": "indirizzo",
+  "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {
+    "DISCLAIMER_SIGNUP_PAGE": ""
+  },
   "available tags: <br>, <bold>": {
     "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Replicabilità del bug</b><br>\n<br>\n<b>SOMETIMES</b><br>\nIl bug si verifica, a parità di condizioni e processi, in modo sporadico/imprevedibile, ma è sempre possibile riprodurlo eseguendo più tentativi.<br>\n<br>\n<b>ALWAYS</b><br>\nIl bug si verifica, a parità di condizioni e processi, a ogni tentativo di replica. Per essere tale, il bug deve essere riprodotto con successo almeno 3 volte su 3.<br>\n<br>\n<b>ONCE</b><br>\nIl bug si è verificato soltanto una volta e non è stato possibile riprodurlo ulteriormente nonostante sia stato replicato almeno 3 volte.<br>",
     "BUGFORM_SEVERITY_MODAL_TXT": "<b>Livello di gravità del bug</b><br>\n<br>\nIl livello di gravità è una stima dell’impatto del problema sull’utilizzo del prodotto. Per calcolarlo, si tiene conto del contesto in cui il problema si verifica (sezioni primarie o secondarie rispetto al core business dell'oggetto della campagna), ma anche delle condizioni in cui è stato riscontrato rispetto a un utilizzo medio. La valutazione della replicabilità non deve in alcun modo influenzare il livello di gravità: a guidare nella scelta del tipo di livello di gravità sono l’impatto sull'utente, il contesto (importanza della sezione) e la presenza o meno di un workaround.<br>\n<br>\n<b>LOW</b><br>\nProblemi che hanno un impatto minimo nell’utilizzo del prodotto. L'utente può portare a termine l’azione senza grandi difficoltà. Spesso si tratta di bug di tipologia USABILITY, TYPO o GRAPHIC.<br>\n<br>\n<b>MEDIUM</b><br>\nProblemi che hanno un impatto contenuto nell'utilizzo del prodotto. L’utente riesce comunque a completare il processo nonostante aver riscontrato alcune difficoltà. Può trattarsi di ogni tipologia di bug.<br>\n<br>\n<b>HIGH</b><br>\nProblemi che hanno un impatto significativo nell’utilizzo del prodotto. L’utente li riscontra prevalentemente nelle sezioni principali e potrebbe non essere in grado di portare a termine l’azione o la campagna nel modo previsto. Generalmente si tratta di bug di tipologia MALFUNCTION, CRASH, PERFORMANCE o SECURITY.<br>\n<br>\n<b>CRITICAL</b><br>\nProblemi che impediscono il completamento delle azioni principali e che spesso comportano un blocco del sistema. L'utente non è in nessun modo in grado di portare a termine l’azione o la campagna. Si tratta prevalentemente di bug di tipologia MALFUNCTION o CRASH.",
@@ -728,8 +735,6 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
-  "Complete your profile": "",
-  "Fields marked with asterisk (*) are required.": "",
   "Getting Started": "Iniziare",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "partita IVA o più di € 5,000 lordi / anno con prestazioni occasionali",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "estero",
