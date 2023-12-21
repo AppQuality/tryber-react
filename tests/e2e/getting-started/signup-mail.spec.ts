@@ -118,8 +118,14 @@ test.describe("The signup mail page", () => {
 });
 
 test.describe("The signup mail page second step", () => {
-  test("should display a stepper component at the second step", async ({}) => {
-    throw new Error("Not implemented");
+  test.beforeEach(async ({ page, i18n }) => {
+    gettingStarted = new GettingStartedSignup({ page, i18n });
+    await gettingStarted.loggedOut();
+    await gettingStarted.visitMailSignupPage();
+    await gettingStarted.goToSecondStep();
+  });
+  test("should display a stepper component at the second step", async () => {
+    await expect(gettingStarted.elements().languageSwitcher()).toBeVisible();
   });
   test("should display a required name field", async ({}) => {
     throw new Error("Not implemented");
