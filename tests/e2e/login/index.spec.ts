@@ -32,8 +32,11 @@ test.describe("the login page ", () => {
     await login.loggedOut();
     await login.visitLoginPage();
   });
-  test("should display a navigation to change language", async ({}) => {});
-
+  test("should display a navigation to change language", async ({ page }) => {
+    expect(
+      await page.waitForSelector(".lang-navigation", { state: "visible" })
+    ).toBeTruthy();
+  });
   test("should display the login page title in current language", async ({
     page,
     i18n,
