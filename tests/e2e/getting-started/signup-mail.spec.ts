@@ -1,21 +1,22 @@
-import { expect, test } from "@playwright/test";
-import { GettingStarted } from "../../fixtures/GettingStarted";
+import { GettingStartedSignup } from "../../fixtures/GettingStarted/GettingStartedSignup";
+import { expect, test } from "../../fixtures/I18n";
 
-let gettingStarted: GettingStarted;
+let gettingStarted: GettingStartedSignup;
 
 test(`if the user is logged in The signup mail page should redirect to the dashboard`, async ({
   page,
+  i18n,
 }) => {
-  gettingStarted = new GettingStarted(page);
+  gettingStarted = new GettingStartedSignup({ page, i18n });
   await gettingStarted.loggedIn();
-  await gettingStarted.visitMailSignupPage();
+  await gettingStarted.visit();
   expect(await page.url()).toContain("my-dashboard");
 });
 test.describe("The signup mail page", () => {
-  test.beforeEach(async ({ page }) => {
-    gettingStarted = new GettingStarted(page);
+  test.beforeEach(async ({ page, i18n }) => {
+    gettingStarted = new GettingStartedSignup({ page, i18n });
     await gettingStarted.loggedOut();
-    await gettingStarted.visitMailSignupPage();
+    await gettingStarted.visit();
   });
   test(`if the user is logged out should display the page to signup with email`, async ({
     page,
@@ -23,7 +24,7 @@ test.describe("The signup mail page", () => {
     await expect(page.getByTestId("tryber-mail-signup")).toBeVisible();
   });
   test("should display a navigation to change language", async ({ page }) => {
-    await expect(page.getByTestId("language-switcher")).toBeVisible();
+    await expect(gettingStarted.elements().languageSwitcher()).toBeVisible();
   });
   test("should display a stepper component", async ({ page }) => {
     await expect(page.getByTestId("signup-stepper")).toBeVisible();
