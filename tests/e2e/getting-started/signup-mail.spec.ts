@@ -113,7 +113,7 @@ test.describe("The signup mail page", () => {
   test("if the user click the submit button and mail and password are valid should display the second step (profile data)", async ({}) => {
     await gettingStarted.fillEmailAndPasswordWithValidData();
     await gettingStarted.elements().nextButton().click();
-    throw new Error("Not implemented");
+    await expect(gettingStarted.elements().secondStepContainer()).toBeVisible();
   });
 });
 

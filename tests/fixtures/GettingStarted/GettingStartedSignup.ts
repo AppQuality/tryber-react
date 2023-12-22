@@ -38,6 +38,8 @@ export class GettingStartedSignup extends GettingStarted {
         this.page.getByRole("button", {
           name: this.i18n.t("SIGNUP_STEP:::continue"),
         }),
+      secondStepContainer: () =>
+        this.page.getByTestId("mail-signup-second-step"),
     };
   }
 
