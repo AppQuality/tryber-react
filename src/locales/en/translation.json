@@ -262,6 +262,7 @@
     "Other": "Non-conforming"
   },
   "Generic error": "Generic error",
+  "Go back and choose another email address or <login_link>log in</login_link>.": "",
   "Great job!": "Great job!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
     "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Great, you're going to be {{level}} in the next month!<br></br>Now try your best and reach {{nextLevel}}!"
@@ -454,6 +455,7 @@
   "There was an error removing your certification": "There was an error removing your certification",
   "There was an error removing your certifications": "There was an error removing your certifications",
   "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth": "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth",
+  "This email is already in use.": "",
   "This field is shared with the base section": "This field is shared with the base section",
   "This field is shared with the fiscal section": "This field is shared with the fiscal section",
   "This is a required field": "This is a required field",
@@ -667,6 +669,9 @@
   },
   "company": "company",
   "contact us": "contact us",
+  "contain a lowercase letter ": "",
+  "contain a number": "",
+  "contain an uppercase letter": "",
   "email must be the same": "Enter the same email address",
   "for this bug are only allowed replicability of type {{valid}}": {
     "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "In this campaign we only allow bug replicability: {{valid}}",
@@ -711,6 +716,7 @@
   },
   "login": "login",
   "login with your credentials": "login with your credentials",
+  "minimum of 6 characters": "",
   "name": "Name",
   "no data": "—",
   "not calculated": {

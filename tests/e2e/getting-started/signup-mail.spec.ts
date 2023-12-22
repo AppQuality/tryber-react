@@ -42,8 +42,70 @@ test.describe("The signup mail page", () => {
     const passwordInput = gettingStarted.elements().passwordInput();
     expect(await passwordInput.inputValue()).toBe("Password1!");
   });
-  test("should display a list of password requirements", async ({}) => {
-    throw new Error("Not implemented");
+  test("should display a list of password requirements", async ({ page }) => {
+    await expect(
+      gettingStarted.elements().passwordRequirements()
+    ).toBeVisible();
+
+    await expect(page.getByTestId("password-requirement-length")).toBeVisible();
+    await gettingStarted.fillPasswordWith("pass");
+    await expect(
+      page
+        .getByTestId("password-requirement-length")
+        .getByTestId("password-requirement-error")
+    ).toBeVisible();
+    await gettingStarted.fillPasswordWith("password");
+    await expect(
+      page
+        .getByTestId("password-requirement-length")
+        .getByTestId("password-requirement-success")
+    ).toBeVisible();
+
+    await expect(page.getByTestId("password-requirement-number")).toBeVisible();
+    await gettingStarted.fillPasswordWith("password");
+    await expect(
+      page
+        .getByTestId("password-requirement-number")
+        .getByTestId("password-requirement-error")
+    ).toBeVisible();
+    await gettingStarted.fillPasswordWith("password1");
+    await expect(
+      page
+        .getByTestId("password-requirement-number")
+        .getByTestId("password-requirement-success")
+    ).toBeVisible();
+
+    await expect(
+      page.getByTestId("password-requirement-uppercase")
+    ).toBeVisible();
+    await gettingStarted.fillPasswordWith("password");
+    await expect(
+      page
+        .getByTestId("password-requirement-uppercase")
+        .getByTestId("password-requirement-error")
+    ).toBeVisible();
+    await gettingStarted.fillPasswordWith("PASSWORD");
+    await expect(
+      page
+        .getByTestId("password-requirement-uppercase")
+        .getByTestId("password-requirement-success")
+    ).toBeVisible();
+
+    await expect(
+      page.getByTestId("password-requirement-lowercase")
+    ).toBeVisible();
+    await gettingStarted.fillPasswordWith("PASSWORD");
+    await expect(
+      page
+        .getByTestId("password-requirement-lowercase")
+        .getByTestId("password-requirement-error")
+    ).toBeVisible();
+    await gettingStarted.fillPasswordWith("password");
+    await expect(
+      page
+        .getByTestId("password-requirement-lowercase")
+        .getByTestId("password-requirement-success")
+    ).toBeVisible();
   });
   test("should display a submit button", async ({}) => {
     await expect(gettingStarted.elements().nextButton()).toBeVisible();
@@ -107,8 +169,12 @@ test.describe("The signup mail page", () => {
       page.getByText(i18n.t("Must contain at least a lowercase letter"))
     ).toBeVisible();
   });
-  test("if the user click the submit but mail is already present in db an error notification should appear", async ({}) => {
-    throw new Error("Not implemented");
+  test("if the user click the submit but mail is already present in db an error notification should appear", async ({
+    page,
+  }) => {
+    await gettingStarted.fillEmailAndPasswordWithExistingEmail();
+    await gettingStarted.elements().nextButton().click();
+    await expect(page.getByTestId("email-already-exists-toastr")).toBeVisible();
   });
   test("if the user click the submit button and mail and password are valid should display the second step (profile data)", async ({}) => {
     await gettingStarted.fillEmailAndPasswordWithValidData();

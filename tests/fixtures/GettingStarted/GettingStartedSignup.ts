@@ -34,6 +34,8 @@ export class GettingStartedSignup extends GettingStarted {
       ...super.elements(),
       emailInput: () => this.page.getByTestId("email-input"),
       passwordInput: () => this.page.getByTestId("password-input"),
+      passwordRequirements: () =>
+        this.page.getByTestId("password-requirements"),
       nextButton: () =>
         this.page.getByRole("button", {
           name: this.i18n.t("SIGNUP_STEP:::continue"),
@@ -53,6 +55,13 @@ export class GettingStartedSignup extends GettingStarted {
   }
 
   async fillEmailAndPasswordWithValidData() {
+    await this.mockMailDoesNotExist({ email: "test@example.com" });
+    await this.fillEmailWith("test@example.com");
+    await this.fillPasswordWith("Password1!");
+  }
+
+  async fillEmailAndPasswordWithExistingEmail() {
+    await this.mockMailExist({ email: "test@example.com" });
     await this.fillEmailWith("test@example.com");
     await this.fillPasswordWith("Password1!");
   }
@@ -60,5 +69,22 @@ export class GettingStartedSignup extends GettingStarted {
   async goToSecondStep() {
     await this.fillEmailAndPasswordWithValidData();
     await this.elements().nextButton().click();
+  }
+
+  async mockMailExist({ email }: { email: string }) {
+    await this.page.route(`*/**/api/users/by-email/${email}`, async (route) => {
+      await route.fulfill({
+        body: "{}",
+        status: 200,
+      });
+    });
+  }
+  async mockMailDoesNotExist({ email }: { email: string }) {
+    await this.page.route(`*/**/api/users/by-email/${email}`, async (route) => {
+      await route.fulfill({
+        body: "{}",
+        status: 404,
+      });
+    });
   }
 }

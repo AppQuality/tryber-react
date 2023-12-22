@@ -262,6 +262,7 @@
     "Other": "Non binario"
   },
   "Generic error": "Errore generico",
+  "Go back and choose another email address or <login_link>log in</login_link>.": "",
   "Great job!": "Ottimo lavoro!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
     "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Grande, il prossimo mese sarai {{level}}!<br></br>Dai il tuo meglio e conquista {{nextLevel}}!"
@@ -454,6 +455,7 @@
   "There was an error removing your certification": "Si è presentato un errore nella rimozione della tua certificazione",
   "There was an error removing your certifications": "Si è presentato un errore nella rimozione delle tue certificazioni",
   "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth": "C'è stato un errore durante la validazione del tuo identificativo fiscale. Per favore controlla il tuo nome, cognome, genere, data di nascita o città di nascita",
+  "This email is already in use.": "",
   "This field is shared with the base section": "Il campo è condiviso con la sezione base",
   "This field is shared with the fiscal section": "Il campo è condiviso con la sezione fiscale",
   "This is a required field": "Questo è un campo obbligatorio",
@@ -667,6 +669,9 @@
   },
   "company": "Società",
   "contact us": "Contattaci",
+  "contain a lowercase letter ": "",
+  "contain a number": "",
+  "contain an uppercase letter": "",
   "email must be the same": "Inserisci lo stesso indirizzo email",
   "for this bug are only allowed replicability of type {{valid}}": {
     "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "In questa campagna sono ammessi solo bug con replicabilità: {{valid}}",
@@ -711,6 +716,7 @@
   },
   "login": "accedi",
   "login with your credentials": "accedi con le tue credenziali",
+  "minimum of 6 characters": "",
   "name": "Nome",
   "no data": "—",
   "not calculated": {
