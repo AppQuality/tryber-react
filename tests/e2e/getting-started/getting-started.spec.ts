@@ -25,8 +25,8 @@ test.describe("if the user is logged out", () => {
 });
 
 test.describe("The getting started page", () => {
-  test.beforeEach(async ({ page }) => {
-    gettingStarted = new GettingStarted(page);
+  test.beforeEach(async ({ page, i18n }) => {
+    gettingStarted = new GettingStarted({ page, i18n });
     await gettingStarted.loggedOut();
     await gettingStarted.visitSignupChoicePage();
   });
