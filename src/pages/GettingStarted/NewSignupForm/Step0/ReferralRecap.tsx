@@ -7,7 +7,7 @@ const ReferralRecap = () => {
   const { values } = useFormikContext<FormValues>();
   if (!values.referral) return null;
   return (
-    <Title size="xs">
+    <Title size="xs" className="aq-mb-2">
       {t("You are creating your account with referral ID {{referral}}", {
         referral: values.referral,
       })}

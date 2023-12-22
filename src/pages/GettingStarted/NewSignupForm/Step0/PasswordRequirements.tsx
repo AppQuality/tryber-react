@@ -1,4 +1,4 @@
-import { icons } from "@appquality/appquality-design-system";
+import { icons, Text } from "@appquality/appquality-design-system";
 import { useFormikContext } from "formik";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
@@ -25,7 +25,7 @@ const PasswordRequirement = ({
       ) : (
         <X data-qa="password-requirement-error" size={16} />
       )}
-      {children}
+      <Text small>{children}</Text>
     </div>
   );
 };
@@ -35,7 +35,10 @@ const PasswordRequirements = () => {
   const { t } = useTranslation();
 
   return (
-    <div data-qa="password-requirements">
+    <div data-qa="password-requirements" className="aq-mb-3">
+      <Text small className="aq-mb-1">
+        {t("Password requirements:")}
+      </Text>
       <PasswordRequirement
         data-qa="password-requirement-length"
         check={() => values.password.length >= 6}
