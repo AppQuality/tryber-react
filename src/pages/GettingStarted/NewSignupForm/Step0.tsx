@@ -19,7 +19,14 @@ const Step0 = () => {
       <FormikField name="email">
         {({ field }: FieldProps) => (
           <>
-            <FormLabel htmlFor={field.name} label={`${t("Email")} *`} />
+            <FormLabel
+              htmlFor={field.name}
+              label={
+                <span>
+                  {t("Email")} <span aria-hidden>*</span>
+                </span>
+              }
+            />
             <Input
               extra={{ ...field, "data-qa": "email-input" }}
               value={field.value}
@@ -34,7 +41,14 @@ const Step0 = () => {
       <FormikField name="password">
         {({ field }: FieldProps) => (
           <>
-            <FormLabel htmlFor={field.name} label={`${t("Password")} *`} />
+            <FormLabel
+              htmlFor={field.name}
+              label={
+                <span>
+                  {t("Password")} <span aria-hidden>*</span>
+                </span>
+              }
+            />{" "}
             <Input
               extra={{ ...field, "data-qa": "password-input" }}
               value={field.value}
