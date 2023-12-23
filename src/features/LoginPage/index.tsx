@@ -1,5 +1,4 @@
 import { Card } from "@appquality/appquality-design-system";
-import { StyledLoginCard } from "./_style";
 import LoginForm from "../LoginForm";
 import styled from "styled-components";
 
