@@ -127,6 +127,7 @@ const LoginForm = ({
           <Field
             type="email"
             name="email"
+            placeholder="email@example.com"
             label={
               <div className="aq-text-left aq-text-primary">
                 <strong>
@@ -139,6 +140,7 @@ const LoginForm = ({
           <Field
             type="password"
             name="password"
+            placeholder="********"
             label={
               <div className="aq-text-left  aq-text-primary">
                 <strong> {t("Password")}</strong>
@@ -165,30 +167,22 @@ const LoginForm = ({
           </Button>
           <div className="aq-mb-3">
             <Text className="aq-text-center aq-text-primary">
-              <Trans i18nKey="New to TRYBER? <1><strong>Sign up</strong></1>">
-                or
-                <Link
-                  className="aq-text-secondary capitalize-first"
-                  style={{ display: "inline-block" }}
-                  to={gettingStartedRoute}
-                >
-                  create an account
-                </Link>
-              </Trans>
-              {/* <Trans
+              <Trans
                 i18nKey="available tags: <strong>, <signuplink>:::LOGIN_SIGNUP_LINK"
                 components={{
-                  strong: <strong className="aq-text-primary" />,
+                  strong: <strong className="aq-text-secondary" />,
                   signuplink: (
                     <Link
-                      className="aq-text-secondary"
-                      style={{ display: "inline-block" }}
+                      style={{
+                        display: "inline-block",
+                        textDecoration: "none",
+                      }}
                       to={gettingStartedRoute}
                     />
                   ),
                 }}
                 defaults={`New to TRYBER? <signuplink><strong>Sign up</strong></signuplink>`}
-              /> */}
+              />
             </Text>
             {error && (
               <Text className="aq-text-left aq-pt-1" color="danger" small>

@@ -190,8 +190,8 @@
   "Confirm email": "Confirma tu correo electrónico",
   "Confirm password": "Confirma tu password",
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Conecte Tryber a una de tus account, esto lo hará más fácil para acceder a su dashboard",
-  "Continue with Facebook": "",
-  "Continue with LinkedIn": "",
+  "Continue with Facebook": "Inicia sesión con Facebook",
+  "Continue with LinkedIn": "Inicia sesión con LinkedIn",
   "Countries covered": "Países alcanzados",
   "Country": "País de residencia",
   "Courses": "Cursos",
@@ -221,7 +221,7 @@
   "Edit": "Modificar",
   "Edit device": "Modificar dispositivo",
   "Education level": "Nivel de educación",
-  "Email": "Correo Electrónico",
+  "Email": "Correo electrónico",
   "Email Status": "Estado de correo electrónico",
   "Email confirmed": "Correo electrónico confirmado",
   "Email must be a valid email": "Introduce una dirección de correo electrónico válida",
@@ -330,7 +330,6 @@
   "Net receivable": "Neto por recibir",
   "Net received": "Neto recibido",
   "New password": "Nueva password",
-  "New to TRYBER? <1><strong>Sign up</strong></1>": "or<1>create an account</1>",
   "Next": "Siguiente",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "Ninguna campaña ha sido completado todavía. Es hora de trabajar: termina las campañas activas o aplica en las que están disponibles",
   "Not available": "No disponibles",
@@ -352,7 +351,7 @@
   "Page %current% / %total%": "Página %actual% / %total%",
   "Paid": "Pagado",
   "Paid On": "Pagado el",
-  "Password": "Password",
+  "Password": "Contraseña",
   "Password confirmation doesn't match": "La confirmación de la password no coincide",
   "Password correctly updated, you will be logged out": "Password correctamente actualizada, se cerrará la sesión",
   "Password requirements:": "",
@@ -667,6 +666,9 @@
   "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
     "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>Siguiente paso</title>\n<ul>\n<li>Elige el método de pago y comprueba si tu régimen fiscal es correcto</li>\n<li>Introduce los datos y acepta las condiciones de pago </li>\n<li>Envía tu solicitud</li>\n</ul>"
   },
+  "available tags: <strong>, <signuplink>": {
+    "LOGIN_SIGNUP_LINK": "¿Primera vez aquí? <signuplink><strong>Regístrate</strong></signuplink>"
+  },
   "bugform usecase select option": {
     "Not a specific usecase": "Ninguno de esos casos de uso"
   },
@@ -700,7 +702,7 @@
     "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "En esta campaña no se admiten bugs de tipología: {{invalid}}",
     "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "En esta campaña no se admiten bugs de tipología: {{invalid}}"
   },
-  "forgot your password?": "¿Has olvidado tu password?",
+  "forgot your password?": "¿Contraseña olvidada?",
   "give your best to keep level {{level}}": {
     "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Estás bajando de nivel: haz lo posible para seguir siendo {{level}}"
   },
@@ -717,8 +719,8 @@
   "level {{levelName}}": {
     "__RANKING_NAME_LEVEL_MAX:25": "Nivel {{levelName}}\n"
   },
-  "login": "Login",
-  "login page title": "Iniciar sesión en Tryber",
+  "login": "Iniciar sesión",
+  "login page title": "Inicia sesión en Tryber",
   "name": "Nombre",
   "no data": "—",
   "not calculated": {
@@ -728,7 +730,7 @@
   "not in ranking": {
     "__RANKING_POSITION_NOLeVEL_MAX: 30": "No level"
   },
-  "or log in with email and password": "",
+  "or log in with email and password": "o inicia sesión con correo y contraseña",
   "redirecting": "redireccionando",
   "social": "social",
   "testers": "Tryber activos",

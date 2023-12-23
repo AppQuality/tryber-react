@@ -48,25 +48,52 @@ test.describe("the login page ", () => {
     await login.visitLoginPage("en");
     expect(await login.getTitle()).toContain("Log in to Tryber");
     await login.visitLoginPage("es");
-    expect(await login.getTitle()).toContain("Iniciar sesión en Tryber");
+    expect(await login.getTitle()).toContain("Inicia sesión en Tryber");
     await login.visitLoginPage("it");
     expect(await login.getTitle()).toContain("Accedi a Tryber");
   });
   test("should display the login button with facebook", async ({ page }) => {
     expect(
-      await page.waitForSelector(".login-facebook", { state: "visible" })
+      await page.waitForSelector(".login-facebook-button", { state: "visible" })
     ).toBeTruthy();
   });
-  test("should display the login button with linkedin", async ({ page }) => {});
-  test("should display the email input", async ({ page }) => {});
-  test("should display the password input", async ({ page }) => {});
-  test("should display the login button", async ({ page }) => {});
-  test("should display the link to lost-password page", async ({ page }) => {});
+  test("should display the login button with linkedin", async ({ page }) => {
+    expect(
+      await page.waitForSelector(".login-linkedin-button", { state: "visible" })
+    ).toBeTruthy();
+  });
+  test("should display the email input", async ({ page }) => {
+    expect(
+      await page.waitForSelector("#email", { state: "visible" })
+    ).toBeTruthy();
+  });
+  test("should display the password input", async ({ page }) => {
+    expect(
+      await page.waitForSelector("#password", { state: "visible" })
+    ).toBeTruthy();
+  });
+  test("should display the login button", async ({ page, i18n }) => {
+    await expect(
+      page.getByRole("button", { name: i18n.t("Continue with Facebook") })
+    ).toBeVisible();
+  });
+  test("should display the link to lost-password page", async ({
+    page,
+    i18n,
+  }) => {
+    const link = page.getByRole("link", {
+      name: i18n.t("forgot your password?"),
+    });
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute(
+      "href",
+      "/wp-login.php?action=lostpassword"
+    );
+  });
   test("should display the link to the getting-started page", async ({
     page,
   }) => {});
 
-  // todo: component testing LagNav component
   // test("should display in bold the current language", async ({}) => {});
   // test("if the user clicks on a language link should change language", async ({}) => {});
   test("if the user clicks the submit button and the mail is empty should display an error message", async ({}) => {});

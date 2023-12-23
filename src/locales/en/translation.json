@@ -330,7 +330,6 @@
   "Net receivable": "Net receivable",
   "Net received": "Net received",
   "New password": "New password",
-  "New to TRYBER? <1><strong>Sign up</strong></1>": "New to TRYBER? <1><strong>Sign up</strong></1>",
   "Next": "Next",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!",
   "Not available": "Not available",
@@ -666,6 +665,9 @@
   },
   "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
     "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>What you have to do now</title>\n<ul>\n<li>Choose the payment method and check that your fiscal type is correct</li>\n<li>Insert your personal information and accept the conditions</li>\n<li>Send your payment request</li>\n</ul>"
+  },
+  "available tags: <strong>, <signuplink>": {
+    "LOGIN_SIGNUP_LINK": "New to TRYBER? <signuplink><strong>Sign up</strong></signuplink>"
   },
   "bugform usecase select option": {
     "Not a specific usecase": "None of these use cases"

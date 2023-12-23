@@ -190,8 +190,8 @@
   "Confirm email": "Conferma indirizzo email",
   "Confirm password": "Conferma la password",
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Collega Tryber a uno dei tuoi account, in questo modo sarà più facile accedere alla dashboard",
-  "Continue with Facebook": "",
-  "Continue with LinkedIn": "",
+  "Continue with Facebook": "Continua con Facebook",
+  "Continue with LinkedIn": "Continua con LinkedIn",
   "Countries covered": "Paesi raggiunti",
   "Country": "Paese di residenza",
   "Courses": "Corsi",
@@ -221,7 +221,7 @@
   "Edit": "Modifica",
   "Edit device": "Modifica dispositivo",
   "Education level": "Livello di educazione",
-  "Email": "E-mail",
+  "Email": "Email",
   "Email Status": "Stato dell'email",
   "Email confirmed": "Email confermata",
   "Email must be a valid email": "Inserisci un indirizzo email valido",
@@ -330,7 +330,6 @@
   "Net receivable": "Netto da ricevere",
   "Net received": "Netto ricevuto",
   "New password": "Nuova password",
-  "New to TRYBER? <1><strong>Sign up</strong></1>": "or<1>create an account</1>",
   "Next": "Continua",
   "No campaign has been completed yet. It's time to get to work: finish the active ones or apply in the available campaigns!": "Nessuna campagna è stata ancora conclusa. È arrivato il momento di mettersi al lavoro: termina quelle attive o candidati nelle Campagne disponibili!",
   "Not available": "Non disponibile",
@@ -667,6 +666,9 @@
   "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
     "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>Cosa farai ora</title>\n<ul>\n<li>Scegli il metodo di pagamento e controlla che il tuo regime fiscale sia corretto</li>\n<li>Inserisci i dati richiesti e accetta le condizioni di pagamento</li>\n<li>Invia la richiesta</li>\n</ul>"
   },
+  "available tags: <strong>, <signuplink>": {
+    "LOGIN_SIGNUP_LINK": "Prima volta su TRYBER? <signuplink><strong>Registrati</strong></signuplink>"
+  },
   "bugform usecase select option": {
     "Not a specific usecase": "Nessuno di questi casi d'uso"
   },
@@ -700,7 +702,7 @@
     "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "In questa campagna non sono ammessi bug di tipologia: {{invalid}}",
     "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "In questa campagna non sono ammessi bug di tipologia: {{invalid}}"
   },
-  "forgot your password?": "hai dimenticato la password?",
+  "forgot your password?": "Password dimenticata?",
   "give your best to keep level {{level}}": {
     "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Stai retrocedendo: dai il tuo meglio per continuare a essere {{level}}"
   },
@@ -728,7 +730,7 @@
   "not in ranking": {
     "__RANKING_POSITION_NOLeVEL_MAX: 30": "No level"
   },
-  "or log in with email and password": "",
+  "or log in with email and password": "oppure accedi con email e password",
   "redirecting": "reindirizzamento",
   "social": "social",
   "testers": "Tryber attivi",
@@ -742,7 +744,6 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
-  "New to TRYBER? <1>Sign up</1>": "",
   "or login with": "o accedi con",
   "login with your credentials": "accedi con le tue credenziali",
   "or <1>create an account</1>": "o <1>crea un account</1>",
