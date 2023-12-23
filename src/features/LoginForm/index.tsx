@@ -29,6 +29,7 @@ const StyledButton = styled(Button)`
     flex-grow: 1;
   }
 `;
+const styledField = styled(Field)``;
 
 const LoginForm = ({
   className,
@@ -119,7 +120,7 @@ const LoginForm = ({
             />
             <span className="button-text">{t("Continue with LinkedIn")}</span>
           </StyledButton>
-          <Text className="aq-text-center aq-mb-3">
+          <Text className="aq-text-center aq-mb-3 aq-text-primary">
             {t("or log in with email and password")}
           </Text>
 
@@ -127,9 +128,11 @@ const LoginForm = ({
             type="email"
             name="email"
             label={
-              <div className="aq-text-left">
-                {t("Email")}
-                <span aria-hidden>*</span>
+              <div className="aq-text-left aq-text-primary">
+                <strong>
+                  {t("Email")}
+                  <span aria-hidden> *</span>
+                </strong>
               </div>
             }
           />
@@ -137,21 +140,19 @@ const LoginForm = ({
             type="password"
             name="password"
             label={
-              <div className="aq-text-left">
-                {t("Password")}
-                <span aria-hidden>*</span>
+              <div className="aq-text-left  aq-text-primary">
+                <strong> {t("Password")}</strong>
+                <span aria-hidden> *</span>
               </div>
             }
           />
-          <Text className="aq-text-center aq-mb-3 capitalize-first">
-            <strong>
-              <a
-                className="aq-text-secondary lost-password-anchor"
-                href="/wp-login.php?action=lostpassword"
-              >
-                {t("forgot your password?")}
-              </a>
-            </strong>
+          <Text className="aq-text-right aq-mb-3 capitalize-first">
+            <a
+              className="aq-text-secondary lost-password-anchor"
+              href="/wp-login.php?action=lostpassword"
+            >
+              {t("forgot your password?")}
+            </a>
           </Text>
           <Button
             className="aq-mb-3 capitalize-first"
@@ -163,7 +164,7 @@ const LoginForm = ({
             {props.isSubmitting ? t("wait...") : cta}
           </Button>
           <div className="aq-mb-3">
-            <Text className="aq-text-center">
+            <Text className="aq-text-center aq-text-primary">
               <Trans i18nKey="New to TRYBER? <1><strong>Sign up</strong></1>">
                 or
                 <Link
