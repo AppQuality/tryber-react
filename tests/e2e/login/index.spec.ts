@@ -10,6 +10,9 @@ test.describe("if the user is logged in", () => {
     login = new Login(page);
     await login.loggedIn();
     await login.visitLoginPage();
+    expect(page.url()).toContain("/login");
+    //redirect to dashboard
+    await page.waitForURL("**/my-dashboard");
     expect(page.url()).toContain("/my-dashboard");
   });
 });

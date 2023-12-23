@@ -30,6 +30,7 @@ import ThankYouPage from "./pages/ThankYou";
 import VdpPage from "./pages/VDP";
 import * as Sentry from "@sentry/react";
 import SentryWrapper from "./features/SentryWrapper";
+import useUser from "./redux/user";
 
 // Create Custom Sentry Route component
 const SentryRoute = Sentry.withSentryRouting(Route);
@@ -49,6 +50,7 @@ function Page() {
   const { search } = useLocation();
   const { setReferral } = referralStore();
   const dispatch = useDispatch();
+  const { user } = useUser();
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -76,7 +78,21 @@ function Page() {
             <Redirect to="/it/getting-started" />
           </SentryRoute>
 
-          <SentryRoute path={`${base}/login`} component={Login} />
+          <SentryRoute
+            path={`${base}/login`}
+            component={
+              !user
+                ? Login
+                : ({ location }: { location: Location }) => (
+                    <Redirect
+                      to={{
+                        ...location,
+                        pathname: `/my-dashboard`,
+                      }}
+                    />
+                  )
+            }
+          />
 
           <SentryRoute path={`${base}/my-dashboard`} component={Dashboard} />
 
