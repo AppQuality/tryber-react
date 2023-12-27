@@ -39,7 +39,7 @@ const LoginForm = ({
   onRegisterLinkClick?: () => void;
 }) => {
   const { t } = useTranslation();
-  const gettingStartedRoute = useLocalizeRoute("getting-started");
+  const signupRoute = useLocalizeRoute("getting-started/signup");
 
   const [error, setError] = useState<string | boolean>(false);
   const [cta, setCta] = useState<string>(t("login"));
@@ -177,7 +177,7 @@ const LoginForm = ({
                         display: "inline-block",
                         textDecoration: "none",
                       }}
-                      to={gettingStartedRoute}
+                      to={signupRoute}
                     />
                   ),
                 }}

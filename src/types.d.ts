@@ -6,7 +6,6 @@ import { components, operations } from "src/utils/schema";
 
 export type CrowdRoutes =
   | "getting-started"
-  | "login"
   | "my-dashboard"
   | "personal-equipment"
   | "my-bugs"
