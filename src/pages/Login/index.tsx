@@ -1,7 +1,7 @@
 import { Title } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { LangMenu } from "src/features/LangMenu";
-import { LoginPage } from "src/features/LoginPage";
+import { LoginCard } from "src/features/LoginCard";
 import { PageTemplate } from "src/features/PageTemplate";
 
 export const Login = () => {
@@ -17,7 +17,7 @@ export const Login = () => {
       <Title size="l" as={"h1"} className="aq-mb-3 aq-text-center">
         {t("login page title")}
       </Title>
-      <LoginPage />
+      <LoginCard />
     </PageTemplate>
   );
 };

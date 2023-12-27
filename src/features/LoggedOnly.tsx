@@ -1,9 +1,10 @@
 import TagManager from "react-gtm-module";
 import { useGetUsersMeQuery } from "src/services/tryberApi";
 import Loading from "./Loading";
-import { LoginPage } from "./LoginPage";
+import { LoginCard } from "./LoginCard";
 import SiteHeader from "./SiteHeader";
 import * as Sentry from "@sentry/react";
+import Login from "src/pages/Login";
 
 const LoggedOnly = ({
   children,
@@ -38,7 +39,7 @@ const LoggedOnly = ({
 
   if (error) {
     if ("status" in error && error.status === 403) {
-      return <LoginPage />;
+      return <LoginCard />;
     } else {
       if ("message" in error) alert(error.message);
     }

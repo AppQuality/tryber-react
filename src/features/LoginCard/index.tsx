@@ -13,7 +13,7 @@ const StyledCard = styled(Card)`
   }
 `;
 
-export const LoginPage = () => {
+export const LoginCard = () => {
   return (
     <StyledCard className="login-card">
       <div className="card-body aq-text-center">
