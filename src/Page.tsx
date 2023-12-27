@@ -94,6 +94,18 @@ function Page() {
             }
           />
 
+          <SentryRoute
+            path={`*/login`}
+            component={({ location }: { location: Location }) => (
+              <Redirect
+                to={{
+                  ...location,
+                  pathname: `/login`,
+                }}
+              />
+            )}
+          />
+
           <SentryRoute path={`${base}/my-dashboard`} component={Dashboard} />
 
           <SentryRoute
