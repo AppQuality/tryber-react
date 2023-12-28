@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import menuStore from "../redux/menu";
 import userStore from "../redux/user";
-import { LoginModal } from "./login-modal/LoginModal";
+import localizedUrl from "src/utils/localizedUrl";
+import { useHistory } from "react-router-dom";
 
 const SiteHeader = () => {
   const menu = menuStore();
@@ -13,6 +14,8 @@ const SiteHeader = () => {
   const { i18n, t } = useTranslation();
 
   const homeUrl = i18n.language === "en" ? "/" : `/${i18n.language}/`;
+  const isLoginPage = window.location.pathname.includes("/login");
+  const history = useHistory();
   return (
     <>
       <Header
@@ -22,9 +25,9 @@ const SiteHeader = () => {
         user={user}
         isMenuOpen={isOpen}
         toggleMenu={toggle}
-        loginText={t("login")}
+        loginText={isLoginPage ? "" : t("login")}
       />
-      <LoginModal isOpen={login} onClose={() => setLogin(false)} />
+      {login && history.push(localizedUrl("login"))}
     </>
   );
 };

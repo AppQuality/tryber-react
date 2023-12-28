@@ -301,7 +301,6 @@
   "Loading Data": "Caricamento...",
   "Log in": "",
   "Log in with an existing account": "Iscriviti più velocemente",
-  "Login": "Già dei nostri? Accedi",
   "MODAL_PAYMENT_STEP_TITLE": {
     "Confirm": "Conferma",
     "Get email": "Ricevi email",
@@ -745,6 +744,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Login": "Già dei nostri? Accedi",
   "or login with": "o accedi con",
   "login with your credentials": "accedi con le tue credenziali",
   "or <1>create an account</1>": "o <1>crea un account</1>",

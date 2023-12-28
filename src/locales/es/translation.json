@@ -301,7 +301,6 @@
   "Loading Data": "Cargando Datos",
   "Log in": "",
   "Log in with an existing account": "Regístrate más rápido",
-  "Login": "¿Ya eres un Tryber? Iniciar sesión",
   "MODAL_PAYMENT_STEP_TITLE": {
     "Confirm": "Confirmación",
     "Get email": "Recibe correo",
@@ -745,6 +744,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
+  "Login": "¿Ya eres un Tryber? Iniciar sesión",
   "New to TRYBER? <1>Sign up</1>": "",
   "or login with": "o inicie sesión con",
   "login with your credentials": "Inicia sesión con tus credenciales",
