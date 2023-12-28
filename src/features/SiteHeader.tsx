@@ -27,7 +27,7 @@ const SiteHeader = () => {
         toggleMenu={toggle}
         loginText={isLoginPage ? "" : t("login")}
       />
-      {login && history.push(localizedUrl("login"))}
+      {login && history.push(localizedUrl("/login"))}
     </>
   );
 };
