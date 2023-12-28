@@ -4,7 +4,10 @@ import Loading from "./Loading";
 import { LoginCard } from "./LoginCard";
 import SiteHeader from "./SiteHeader";
 import * as Sentry from "@sentry/react";
-import Login from "src/pages/Login";
+import { LangMenu } from "./LangMenu";
+import { Container, Title } from "@appquality/appquality-design-system";
+import { useTranslation } from "react-i18next";
+import getUnlocalizedUrl from "./getUnlocalizedUrl";
 
 const LoggedOnly = ({
   children,
@@ -13,6 +16,7 @@ const LoggedOnly = ({
   children: React.ReactNode;
   showHeader: boolean;
 }) => {
+  const { t } = useTranslation();
   const {
     data: user,
     error,
@@ -39,7 +43,24 @@ const LoggedOnly = ({
 
   if (error) {
     if ("status" in error && error.status === 403) {
-      return <LoginCard />;
+      const unlocalizedUrl = getUnlocalizedUrl(window.location.pathname);
+      return (
+        <>
+          <SiteHeader />
+          <Container>
+            <LangMenu
+              itLink={`/it${unlocalizedUrl}`}
+              enLink={`/en${unlocalizedUrl}`}
+              esLink={`/es${unlocalizedUrl}`}
+              className="aq-my-3 lang-navigation"
+            />
+            <Title size="l" as={"h1"} className="aq-mb-3 aq-text-center">
+              {t("login to continue")}
+            </Title>
+            <LoginCard />
+          </Container>
+        </>
+      );
     } else {
       if ("message" in error) alert(error.message);
     }
