@@ -29,7 +29,6 @@ const StyledButton = styled(Button)`
     flex-grow: 1;
   }
 `;
-const styledField = styled(Field)``;
 
 const LoginForm = ({
   className,
