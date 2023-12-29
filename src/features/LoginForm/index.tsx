@@ -176,8 +176,8 @@ const LoginForm = ({
                     isInvalid={meta.touched && typeof meta.error == "string"}
                     extra={{ required: true, ...field }}
                     i18n={{
-                      showPassword: t("Show password"),
-                      hidePassword: t("Hide password"),
+                      showPassword: t("Login input password:::Show password"),
+                      hidePassword: t("Login input password:::Hide password"),
                     }}
                   />
                 </div>
