@@ -68,7 +68,7 @@ export default function GettingStarted() {
               forwardedAs="a"
               data-qa="terms-and-conditions"
               href={t("/terms-and-conditions/")}
-              type="link"
+              kind="link"
               target="_blank"
             >
               {t("Terms and Conditions")}
@@ -77,7 +77,7 @@ export default function GettingStarted() {
               forwardedAs="a"
               data-qa="privacy-policy"
               href={t("https://www.iubenda.com/privacy-policy/7934311")}
-              type="link"
+              kind="link"
               target="_blank"
             >
               {t("Privacy Policy")}
@@ -86,12 +86,12 @@ export default function GettingStarted() {
               forwardedAs="a"
               data-qa="ethical-code"
               href={t("/ethical-code/")}
-              type="link"
+              kind="link"
               target="_blank"
             >
               {t("Ethical Code")}
             </Button>
-            <Button forwardedAs="a" data-qa="login" href={login} type="link">
+            <Button forwardedAs="a" data-qa="login" href={login} kind="link">
               {t("Log in")}
             </Button>
           </Card>

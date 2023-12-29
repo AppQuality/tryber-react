@@ -166,7 +166,7 @@ const Step1 = () => {
         <Button size="block" flat onClick={onBackClick}>
           {t("Back")}
         </Button>
-        <Button size="block" htmlType="submit">
+        <Button size="block" type="submit">
           {t("Sign up")}
         </Button>
       </ButtonWrapper>

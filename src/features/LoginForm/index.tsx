@@ -97,7 +97,7 @@ const LoginForm = ({
           <StyledButton
             className="aq-mb-3"
             size="block"
-            type="light"
+            kind="light"
             onClick={() => {
               window.location.href =
                 "/wp-admin/admin-ajax.php?loc=&action=facebook_oauth_redirect";
@@ -114,7 +114,7 @@ const LoginForm = ({
           <StyledButton
             className="aq-mb-3"
             size="block"
-            type="light"
+            kind="light"
             onClick={() => {
               window.location.href =
                 "/wp-admin/admin-ajax.php?loc=&action=linkedin_oauth_redirect";

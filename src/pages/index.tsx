@@ -5,6 +5,7 @@ import GettingStarted from "./GettingStarted";
 // import GettingStarted from "./GettingStarted/new";
 import Signup from "./GettingStarted/NewSignupForm";
 import GoodbyePage from "./GoodbyePage";
+import Wallet from "./Wallet";
 import Home from "./Home";
 import MyBugs from "./MyBugs";
 import Profile from "./Profile";
@@ -20,6 +21,7 @@ export {
   GoodbyePage,
   Home,
   MyBugs,
+  Wallet,
   PreviewSelectionForm,
   Profile,
   Ranking,
