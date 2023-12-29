@@ -102,6 +102,7 @@ const LoginForm = ({
             }}
           >
             <img
+              aria-hidden
               alt="login with facebook"
               src="/static/FB.svg"
               className="button-left-img"
@@ -118,6 +119,7 @@ const LoginForm = ({
             }}
           >
             <img
+              aria-hidden
               alt="login with linkedin"
               src="/static/LN.svg"
               className="button-left-img"
@@ -131,7 +133,7 @@ const LoginForm = ({
             {({ meta, field }: FieldProps) => (
               <FormGroup>
                 <FormLabel
-                  className="aq-text-left"
+                  className="aq-text-left aq-text-primary"
                   htmlFor={field.name}
                   label={
                     <span>
@@ -156,6 +158,7 @@ const LoginForm = ({
             {({ meta, field }: FieldProps) => (
               <FormGroup>
                 <FormLabel
+                  className="aq-text-left aq-text-primary"
                   htmlFor={field.name}
                   label={
                     <span>
