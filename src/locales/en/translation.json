@@ -272,7 +272,6 @@
   "Have fun!": "Don't forget to have a good time!",
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"",
-  "Hide password": "",
   "History": "History",
   "How do experience points work?": "How do experience points work?",
   "I agree to receive earning opportunity emails from AppQuality": "I agree to receive emails dedicated to the TRYBER community",
@@ -302,6 +301,10 @@
   "Loading Data": "Loading Data",
   "Log in": "",
   "Log in with an existing account": "Sign in faster",
+  "Login input password": {
+    "Hide password": "Hide password",
+    "Show password": "Show password"
+  },
   "MODAL_PAYMENT_STEP_TITLE": {
     "Confirm": "Confirm",
     "Get email": "Get email",
@@ -413,8 +416,6 @@
   "Settings": "Settings",
   "Severity": "Severity",
   "Should be exactly 16 characters": "Should be exactly 16 characters",
-  "Sign up": "",
-  "Signup for Tryber": "",
   "Signup now": "Signup now",
   "Something went wrong": "Something went wrong",
   "Spoken languages": "Spoken languages",

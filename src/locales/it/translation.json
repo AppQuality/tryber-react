@@ -272,7 +272,6 @@
   "Have fun!": "Ricordati di divertirti!",
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Ecco la lista dei tuoi dispositivi. Assicurati di tenerla sempre aggiornata per aumentare le possibilità di essere selezionat* nei prossimi progetti.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Qui puoi solo cambiare la versione del tuo sistema operativo. Se vuoi aggiungere un altro dispositivo clicca su \"Aggiungi dispositivo\"",
-  "Hide password": "",
   "History": "Cronologia",
   "How do experience points work?": "Come funzionano i punti esperienza?",
   "I agree to receive earning opportunity emails from AppQuality": "Accetto di ricevere email dedicate alla community di TRYBER",
@@ -302,6 +301,10 @@
   "Loading Data": "Caricamento...",
   "Log in": "",
   "Log in with an existing account": "Iscriviti più velocemente",
+  "Login input password": {
+    "Hide password": "Nascondi password",
+    "Show password": "Mostra password"
+  },
   "MODAL_PAYMENT_STEP_TITLE": {
     "Confirm": "Conferma",
     "Get email": "Ricevi email",
@@ -413,8 +416,6 @@
   "Settings": "Impostazioni",
   "Severity": "Gravità",
   "Should be exactly 16 characters": "Deve contenere esattamente 16 caratteri",
-  "Sign up": "",
-  "Signup for Tryber": "",
   "Signup now": "Iscriviti ora",
   "Something went wrong": "È successo qualcosa",
   "Spoken languages": "Lingue parlate",
