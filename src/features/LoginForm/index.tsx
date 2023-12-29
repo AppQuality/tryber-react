@@ -2,9 +2,14 @@ import * as yup from "yup";
 import WPAPI from "src/utils/wpapi";
 import {
   Button,
-  Field,
+  ErrorMessage,
+  FieldProps,
   Form,
+  FormGroup,
+  FormLabel,
   Formik,
+  FormikField,
+  Input,
   Text,
 } from "@appquality/appquality-design-system";
 import { useState } from "react";
@@ -122,31 +127,59 @@ const LoginForm = ({
           <Text className="aq-text-center aq-mb-3 aq-text-primary">
             {t("or log in with email and password")}
           </Text>
-
-          <Field
-            type="email"
-            name="email"
-            placeholder="email@example.com"
-            label={
-              <div className="aq-text-left aq-text-primary">
-                <strong>
-                  {t("Email")}
-                  <span aria-hidden> *</span>
-                </strong>
-              </div>
-            }
-          />
-          <Field
-            type="password"
-            name="password"
-            placeholder="********"
-            label={
-              <div className="aq-text-left  aq-text-primary">
-                <strong> {t("Password")}</strong>
-                <span aria-hidden> *</span>
-              </div>
-            }
-          />
+          <FormikField name="email">
+            {({ meta, field }: FieldProps) => (
+              <FormGroup>
+                <FormLabel
+                  className="aq-text-left"
+                  htmlFor={field.name}
+                  label={
+                    <span>
+                      {t("Email")} <span aria-hidden>*</span>
+                    </span>
+                  }
+                />
+                <div className="input-group">
+                  <Input
+                    id={field.name}
+                    type="email"
+                    placeholder="mail@example.com"
+                    isInvalid={meta.touched && typeof meta.error == "string"}
+                    extra={{ required: true, ...field }}
+                  />
+                </div>
+                <ErrorMessage name={field.name} />
+              </FormGroup>
+            )}
+          </FormikField>
+          <FormikField name="password">
+            {({ meta, field }: FieldProps) => (
+              <FormGroup>
+                <FormLabel
+                  htmlFor={field.name}
+                  label={
+                    <span>
+                      {t("Password")} <span aria-hidden>*</span>
+                    </span>
+                  }
+                />
+                <div className="input-group">
+                  <Input
+                    id={field.name}
+                    type="password"
+                    placeholder="*****"
+                    isInvalid={meta.touched && typeof meta.error == "string"}
+                    extra={{ required: true, ...field }}
+                    i18n={{
+                      showPassword: t("Show password"),
+                      hidePassword: t("Hide password"),
+                    }}
+                  />
+                </div>
+                <ErrorMessage name={field.name} />
+              </FormGroup>
+            )}
+          </FormikField>
           <Text className="aq-text-right aq-mb-3 capitalize-first">
             <a
               className="aq-text-secondary lost-password-anchor"
@@ -161,6 +194,7 @@ const LoginForm = ({
             size="block"
             flat
             type="submit"
+            formNoValidate
           >
             {props.isSubmitting ? t("wait...") : cta}
           </Button>
