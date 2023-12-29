@@ -197,7 +197,6 @@ const LoginForm = ({
             className="aq-mb-3 capitalize-first"
             kind="primary"
             size="block"
-            flat
             type="submit"
             formNoValidate
           >
