@@ -49,8 +49,8 @@ const Certifications = () => {
             <div className="remove-certification aq-text-right">
               <Button
                 className="aq-text-danger"
-                type="link"
-                htmlType="button"
+                kind="link"
+                type="button"
                 flat
                 size="sm"
                 onClick={() => {
@@ -73,8 +73,8 @@ const Certifications = () => {
         ))}
       <CSSGrid min="50%" gutter="0" fill="true">
         <HalfColumnButton
-          type="primary"
-          htmlType="button"
+          kind="primary"
+          type="button"
           flat={true}
           disabled={false}
           onClick={() => {

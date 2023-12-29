@@ -42,7 +42,7 @@ const DeleteUserArea = () => {
             <Button
               flat
               size="block"
-              type="danger"
+              kind="danger"
               onClick={() => {
                 openDeleteModal();
               }}

@@ -105,8 +105,8 @@ const TabAdvanced = () => {
               ) : null}
               <CSSGrid min="50%" gutter="0" fill="true">
                 <HalfColumnButton
-                  type="primary"
-                  htmlType="submit"
+                  kind="primary"
+                  type="submit"
                   flat
                   disabled={
                     !formikProps.isValid ||

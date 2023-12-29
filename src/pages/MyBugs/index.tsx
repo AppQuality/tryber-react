@@ -94,7 +94,7 @@ export default function MyBugs() {
                 href={`${window.location.origin}/${
                   i18n.language !== "en" ? `${i18n.language}/` : ""
                 }bugs/show/${res.id}`}
-                type="link-hover"
+                kind="link-hover"
                 size="sm"
               >
                 {t("View more")}

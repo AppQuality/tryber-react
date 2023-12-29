@@ -63,7 +63,7 @@ export const Footer = ({
     <StyledFooter>
       {values.step >= 1 && (
         <Button
-          htmlType="button"
+          type="button"
           className="aq-mr-2"
           onClick={handleBack}
           flat
@@ -74,8 +74,8 @@ export const Footer = ({
         </Button>
       )}
       <Button
-        htmlType="button"
-        type="primary"
+        type="button"
+        kind="primary"
         onClick={values.step === 2 ? submitForm : handleNext}
         disabled={isSubmitting}
         data-qa="payment-modal-next"

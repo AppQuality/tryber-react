@@ -121,7 +121,7 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
             <Button
               data-qa="edit-fiscal-data-cta"
               size="block"
-              type="primary"
+              kind="primary"
               flat
               onClick={handleEditClick}
               disabled={fiscalData?.type === "internal"}

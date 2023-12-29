@@ -29,7 +29,7 @@ const ResetPasswordArea = () => {
         </Text>
         <Button
           forwardedAs="a"
-          type="link"
+          kind="link"
           size="block"
           target="_blank"
           href="/wp-login.php?action=lostpassword"

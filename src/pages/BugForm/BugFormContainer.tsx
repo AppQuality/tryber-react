@@ -314,8 +314,8 @@ export const BugFormContainer = () => {
                 <BugDetails className="aq-mb-3" />
                 <Button
                   className="hide-mobile"
-                  type="primary"
-                  htmlType="submit"
+                  kind="primary"
+                  type="submit"
                   size="block"
                   disabled={disableSubmit}
                   flat
@@ -334,8 +334,8 @@ export const BugFormContainer = () => {
                   <FileUploader />
                   <Button
                     className="aq-mt-3 hide-desktop aq-mb-4"
-                    type="primary"
-                    htmlType="submit"
+                    kind="primary"
+                    type="submit"
                     size="block"
                     disabled={disableSubmit}
                     flat

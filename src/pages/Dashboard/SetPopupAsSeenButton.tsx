@@ -20,7 +20,7 @@ export default ({ id }: { id: number }) => {
   return (
     <Button
       forwardedAs="a"
-      type="link"
+      kind="link"
       flat
       size="block"
       disabled={seen}

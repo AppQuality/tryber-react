@@ -100,7 +100,7 @@ export default () => {
         <Button
           forwardedAs="a"
           href="https://www.facebook.com/tryber.me"
-          type="link"
+          kind="link"
           className="aq-nopadding aq-mr-4"
           target="_blank"
         >
@@ -109,7 +109,7 @@ export default () => {
         <Button
           forwardedAs="a"
           href="https://instagram.com/tryber.me?utm_medium=copy_link"
-          type="link"
+          kind="link"
           className="aq-nopadding aq-mr-4"
           target="_blank"
         >
@@ -118,7 +118,7 @@ export default () => {
         <Button
           forwardedAs="a"
           href="https://t.me/Tryber_me"
-          type="link"
+          kind="link"
           className="aq-nopadding aq-mr-4"
           target="_blank"
         >

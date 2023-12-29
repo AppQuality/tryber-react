@@ -45,7 +45,7 @@ export const SignupMailSocial = ({ redirectUrl }: SignupMailSocialProps) => {
             </Text>
             <CSSGrid min="50%" max="75%" gutter="0" fill="true">
               <HalfColumnButton
-                type="primary"
+                kind="primary"
                 size="block"
                 id="signup-with-fb"
                 className="aq-mb-3"
@@ -57,7 +57,7 @@ export const SignupMailSocial = ({ redirectUrl }: SignupMailSocialProps) => {
             </CSSGrid>
             <CSSGrid min="50%" max="75%" gutter="0" fill="true">
               <HalfColumnButton
-                type="info"
+                kind="info"
                 size="block"
                 id="signup-with-ln"
                 className="aq-mb-3"

@@ -39,7 +39,7 @@ export const FeedbackButton = ({
 }) => {
   return (
     <StyledButton onClick={handleClick}>
-      <Button type="secondary" className="feedback-icon">
+      <Button kind="secondary" className="feedback-icon">
         <ChatLeftDots />
       </Button>
     </StyledButton>

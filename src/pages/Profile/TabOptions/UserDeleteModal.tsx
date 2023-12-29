@@ -36,7 +36,7 @@ const GenericModal = () => {
       footer={
         <UserDeleteModalFooter>
           <Button
-            type="primary"
+            kind="primary"
             flat
             className="aq-mr-3"
             onClick={() => {
@@ -48,7 +48,7 @@ const GenericModal = () => {
           </Button>
           <Button
             disabled={!deletionReason || !deletionReason.length}
-            type="danger"
+            kind="danger"
             flat
             onClick={() =>
               deleteUser(i18n.language === "en" ? "" : `${i18n.language}/`)

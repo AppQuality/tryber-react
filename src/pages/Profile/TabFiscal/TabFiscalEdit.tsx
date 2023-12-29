@@ -353,8 +353,8 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
               <CSSGrid min="40%" fill="true">
                 {fiscalData?.fiscalStatus.toLowerCase() === "verified" && (
                   <HalfColumnButton
-                    type="primary"
-                    htmlType="reset"
+                    kind="primary"
+                    type="reset"
                     flat
                     disabled={isValidating}
                   >
@@ -362,8 +362,8 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                   </HalfColumnButton>
                 )}
                 <HalfColumnButton
-                  type="primary"
-                  htmlType="submit"
+                  kind="primary"
+                  type="submit"
                   flat
                   disabled={!isValid || isValidating || !dirty}
                 >
@@ -375,8 +375,8 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                   "If you have problems filling in your fiscal informations please"
                 )}{" "}
                 <Button
-                  type="link"
-                  htmlType="button"
+                  kind="link"
+                  type="button"
                   className="aq-text-secondary"
                   flat
                   style={{ padding: 0, fontWeight: 400 }}

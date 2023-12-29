@@ -90,7 +90,7 @@ export default () => {
                     className="aq-nopadding"
                     forwardedAs="a"
                     href={`${window.location.origin}${manualLink}`}
-                    type="link-hover"
+                    kind="link-hover"
                     size="sm"
                   >
                     {t("Read manual")}
