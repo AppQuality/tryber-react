@@ -325,7 +325,7 @@ export const NextMonthSituation = ({
         {!isDesktop && (
           <Button
             className="aq-mt-4 pb0"
-            type="link"
+            kind="link"
             onClick={() => {
               const elements =
                 document.getElementsByClassName("ranking-info-card");

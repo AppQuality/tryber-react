@@ -40,7 +40,7 @@ const RemoveDeviceModal = () => {
             <Button
               size="block"
               flat
-              type="primary"
+              kind="primary"
               onClick={dispatchCloseModal}
             >
               {t("Keep")}
@@ -50,7 +50,7 @@ const RemoveDeviceModal = () => {
             <Button
               size="block"
               flat
-              type="danger"
+              kind="danger"
               onClick={() => {
                 API.deleteDevice({ deviceId: current.id })
                   .then(() => {

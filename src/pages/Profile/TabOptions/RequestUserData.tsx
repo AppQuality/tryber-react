@@ -19,9 +19,9 @@ const RequestUserData = () => {
       </Text>
       <CSSGrid min="50%" gutter="0" fill="true">
         <HalfColumnButton
-          type="primary"
+          kind="primary"
           size="block"
-          htmlType="submit"
+          type="submit"
           flat={true}
           onClick={async () => {
             WPAPI.requestUserData(i18n.language)

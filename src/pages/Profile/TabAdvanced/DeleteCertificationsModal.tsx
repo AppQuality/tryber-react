@@ -73,7 +73,7 @@ export const DeleteCertificationsModalFooter = ({
   return (
     <CSSGrid min="40%">
       <Button
-        type="secondary"
+        kind="secondary"
         flat={true}
         onClick={() => {
           close();
@@ -82,7 +82,7 @@ export const DeleteCertificationsModalFooter = ({
       >
         {t("Keep")}
       </Button>
-      <Button type="danger" flat={true} onClick={handleDeleteCertification}>
+      <Button kind="danger" flat={true} onClick={handleDeleteCertification}>
         {t("Remove")}
       </Button>
     </CSSGrid>

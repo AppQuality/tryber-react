@@ -15,7 +15,7 @@ const JoinInButton = ({
 
   return (
     <Button
-      type="secondary"
+      kind="secondary"
       flat={flat}
       className={`${className} aq-mb-4`}
       forwardedAs="a"

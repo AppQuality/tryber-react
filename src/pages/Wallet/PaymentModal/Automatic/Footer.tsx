@@ -77,7 +77,7 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
       )}
       {step === 2 && (
         <Button
-          htmlType="submit"
+          type="submit"
           disabled={isSubmitting}
           onClick={() => setCompletedSteps([true, true, true])}
           data-qa="payment-modal-submit"

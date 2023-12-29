@@ -162,7 +162,7 @@ export const WalletManagment = () => {
           </div>
         </div>
         <Button
-          type="link"
+          kind="link"
           data-qa="booty-details-cta"
           onClick={() => dispatch(setBootyDetailsModalOpen(true))}
         >
@@ -172,7 +172,7 @@ export const WalletManagment = () => {
       <Button
         data-qa="request-payment-cta"
         className="aq-mt-3"
-        type="primary"
+        kind="primary"
         size="block"
         disabled={!isVerified || !isValidAmount || paymentInProcessing}
         onClick={openPaymentModal}

@@ -50,7 +50,7 @@ export default ({ onClose }: { onClose: () => void }) => {
         <div className="onboardingCTA">
           <Button
             flat
-            type="success"
+            kind="success"
             onClick={() => {
               API.setOnboardingComplete();
               onClose();

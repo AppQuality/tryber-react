@@ -110,10 +110,10 @@ const LoginForm = ({
           </Text>
           <Button
             className="aq-mb-3 capitalize-first"
-            type="primary"
+            kind="primary"
             size="block"
             flat
-            htmlType="submit"
+            type="submit"
             disabled={props.isSubmitting || !props.dirty || !props.isValid}
           >
             {props.isSubmitting ? t("wait...") : cta}

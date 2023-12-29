@@ -45,7 +45,7 @@ export const getTableRows = (
                 dispatch(selectDevice(d));
                 dispatch(openEditDeviceModal());
               }}
-              type="link-hover"
+              kind="link-hover"
               className="aq-nopadding aq-mr-3"
             >
               <div title={t("Edit")}>{t("Edit")}</div>
@@ -55,7 +55,7 @@ export const getTableRows = (
                 dispatch(selectDevice(d));
                 dispatch(openDeleteDeviceModal());
               }}
-              type="link-hover"
+              kind="link-hover"
               className="aq-nopadding"
             >
               <div className="action-text" title={t("Delete")}>

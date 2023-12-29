@@ -72,7 +72,7 @@ export default () => {
                   disabled={previewLink === "#"}
                   forwardedAs="a"
                   href={previewLink}
-                  type="link-hover"
+                  kind="link-hover"
                   size="sm"
                 >
                   {previewLink === "#"

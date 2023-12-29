@@ -70,8 +70,8 @@ export const NewCertificationModalFooter = () => {
   return (
     <div className="aq-text-right">
       <Button
-        type="primary"
-        htmlType="submit"
+        kind="primary"
+        type="submit"
         flat={true}
         form="newCertificationForm"
         disabled={false}

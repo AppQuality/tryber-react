@@ -187,9 +187,9 @@ export const SignupForm = ({
             <Button
               className="aq-mb-3"
               style={{ gridColumn: "auto / span 3" }}
-              type="success"
+              kind="success"
               size="block"
-              htmlType="submit"
+              type="submit"
               id="signup-simple"
               flat
               disabled={props.isSubmitting || !props.dirty || !props.isValid}

@@ -84,7 +84,7 @@ export const RankingInfo = () => {
           ns: "links",
         })}
         forwardedAs="a"
-        type="info"
+        kind="info"
         size="block"
         target="_blank"
         flat

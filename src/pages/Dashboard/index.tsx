@@ -139,7 +139,7 @@ export default function Dashboard() {
               <Card shadow={true} className="aq-mb-3">
                 <Button
                   flat
-                  type="info"
+                  kind="info"
                   size="block"
                   onClick={() =>
                     setIsPopupArchiveModalOpen(!isPopupArchiveModalOpen)
