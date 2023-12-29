@@ -14,18 +14,22 @@ const SiteHeader = () => {
   const { i18n, t } = useTranslation();
 
   const homeUrl = i18n.language === "en" ? "/" : `/${i18n.language}/`;
-  const isLoginPage = window.location.pathname.includes("/login");
+  const isHomePage =
+    window.location.pathname === "/" ||
+    window.location.pathname === "/en" ||
+    window.location.pathname === "/it" ||
+    window.location.pathname === "/es";
   const history = useHistory();
   return (
     <>
       <Header
-        onLogin={() => setLogin(true)}
+        onLogin={isHomePage ? () => setLogin(true) : undefined}
         isLoading={isLoading}
         logoUrl={homeUrl}
         user={user}
         isMenuOpen={isOpen}
         toggleMenu={toggle}
-        loginText={isLoginPage ? "" : t("login")}
+        loginText={t("login")}
       />
       {login && history.push(localizedUrl("/login"))}
     </>
