@@ -59,6 +59,8 @@ const LoginForm = ({
             security: nonce,
           });
           setCta(`${t("redirecting")}...`);
+          ///if queryparam redirectTo  then redirect to
+          //elsemy-dashboard/
           window.location.reload();
         } catch (e: unknown) {
           const { message } = e as Error;
