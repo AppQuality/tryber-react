@@ -1,5 +1,3 @@
-import * as yup from "yup";
-import WPAPI from "src/utils/wpapi";
 import {
   Button,
   ErrorMessage,
@@ -7,16 +5,17 @@ import {
   Form,
   FormGroup,
   FormLabel,
-  Formik,
   FormikField,
   Input,
   Text,
 } from "@appquality/appquality-design-system";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import FormProvider from "./FormProvider";
+import { useFormikContext } from "formik";
 
 const StyledButton = styled(Button)`
   border: 1px solid ${({ theme }) => theme.palette.primary};
@@ -43,193 +42,171 @@ const LoginForm = ({
   onRegisterLinkClick?: () => void;
 }) => {
   const { t } = useTranslation();
-  const signupRoute = useLocalizeRoute("getting-started/signup");
-
   const [error, setError] = useState<string | boolean>(false);
   const [cta, setCta] = useState<string>(t("login"));
+
   return (
-    <Formik
-      onSubmit={async (values, actions) => {
-        setError(false);
-        try {
-          const nonce = await WPAPI.getNonce();
-          await WPAPI.login({
-            username: values.email,
-            password: values.password,
-            security: nonce,
-          });
-          setCta(`${t("redirecting")}...`);
-          ///if queryparam redirectTo  then redirect to
-          //elsemy-dashboard/
-          window.location.reload();
-        } catch (e: unknown) {
-          const { message } = e as Error;
-          const error = JSON.parse(message);
-          if (error.type === "invalid") {
-            setError(`${t("Wrong username or password.")}`);
-          } else if (error.type === "tfa") {
-            setError(
-              `${t(
-                "You need to set your two-factor authentication for this. Redirecting to the login page"
-              )}`
-            );
-            window.location.href = "/wp-login.php";
-          } else {
-            window.location.reload();
-          }
-        }
-        actions.setSubmitting(false);
-      }}
-      validationSchema={yup.object({
-        email: yup
-          .string()
-          .email(t("Email must be a valid email"))
-          .required(t("This is a required field")),
-        password: yup.string().required(t("This is a required field")),
-      })}
-      initialValues={{
-        email: "",
-        password: "",
-      }}
-    >
-      {(props) => (
-        <Form className={className}>
-          <StyledButton
-            className="aq-mb-3"
-            size="block"
-            kind="light"
-            onClick={() => {
-              window.location.href =
-                "/wp-admin/admin-ajax.php?loc=&action=facebook_oauth_redirect";
-            }}
-          >
-            <img
-              aria-hidden
-              alt="login with facebook"
-              src="/static/FB.svg"
-              className="button-left-img"
+    <FormProvider setCta={setCta} setError={setError}>
+      <Form className={className}>
+        <LoginFields cta={cta} error={error} />
+      </Form>
+    </FormProvider>
+  );
+};
+
+interface LoginFieldsProps {
+  cta: string;
+  error: string | boolean;
+}
+const LoginFields = ({ cta, error }: LoginFieldsProps) => {
+  const { isSubmitting, errors } = useFormikContext();
+  const { t } = useTranslation();
+  const signupRoute = useLocalizeRoute("getting-started/signup");
+  useEffect(() => {
+    const errorsKeys = Object.keys(errors);
+    if (errorsKeys.length > 0 && isSubmitting) {
+      const inputElement = document.querySelector(
+        `input[name="${errorsKeys[0]}"]`
+      ) as HTMLInputElement;
+      inputElement?.focus();
+    }
+  }, [errors, isSubmitting]);
+  return (
+    <>
+      <StyledButton
+        className="aq-mb-3"
+        size="block"
+        kind="light"
+        onClick={() => {
+          window.location.href =
+            "/wp-admin/admin-ajax.php?loc=&action=facebook_oauth_redirect";
+        }}
+      >
+        <img
+          aria-hidden
+          alt="login with facebook"
+          src="/static/FB.svg"
+          className="button-left-img"
+        />
+        <span className="button-text">{t("Continue with Facebook")}</span>
+      </StyledButton>
+      <StyledButton
+        className="aq-mb-3"
+        size="block"
+        kind="light"
+        onClick={() => {
+          window.location.href =
+            "/wp-admin/admin-ajax.php?loc=&action=linkedin_oauth_redirect";
+        }}
+      >
+        <img
+          aria-hidden
+          alt="login with linkedin"
+          src="/static/LN.svg"
+          className="button-left-img"
+        />
+        <span className="button-text">{t("Continue with LinkedIn")}</span>
+      </StyledButton>
+      <Text className="aq-text-center aq-mb-3 aq-text-primary">
+        {t("or log in with email and password")}
+      </Text>
+      <FormikField name="email">
+        {({ meta, field }: FieldProps) => (
+          <FormGroup>
+            <FormLabel
+              className="aq-text-left aq-text-primary"
+              htmlFor={field.name}
+              label={
+                <span>
+                  {t("Email")} <span aria-hidden>*</span>
+                </span>
+              }
             />
-            <span className="button-text">{t("Continue with Facebook")}</span>
-          </StyledButton>
-          <StyledButton
-            className="aq-mb-3"
-            size="block"
-            kind="light"
-            onClick={() => {
-              window.location.href =
-                "/wp-admin/admin-ajax.php?loc=&action=linkedin_oauth_redirect";
-            }}
-          >
-            <img
-              aria-hidden
-              alt="login with linkedin"
-              src="/static/LN.svg"
-              className="button-left-img"
-            />
-            <span className="button-text">{t("Continue with LinkedIn")}</span>
-          </StyledButton>
-          <Text className="aq-text-center aq-mb-3 aq-text-primary">
-            {t("or log in with email and password")}
-          </Text>
-          <FormikField name="email">
-            {({ meta, field }: FieldProps) => (
-              <FormGroup>
-                <FormLabel
-                  className="aq-text-left aq-text-primary"
-                  htmlFor={field.name}
-                  label={
-                    <span>
-                      {t("Email")} <span aria-hidden>*</span>
-                    </span>
-                  }
-                />
-                <div className="input-group">
-                  <Input
-                    id={field.name}
-                    type="email"
-                    placeholder="mail@example.com"
-                    isInvalid={meta.touched && typeof meta.error == "string"}
-                    extra={{ required: true, ...field }}
-                  />
-                </div>
-                <ErrorMessage name={field.name} />
-              </FormGroup>
-            )}
-          </FormikField>
-          <FormikField name="password">
-            {({ meta, field }: FieldProps) => (
-              <FormGroup>
-                <FormLabel
-                  className="aq-text-left aq-text-primary"
-                  htmlFor={field.name}
-                  label={
-                    <span>
-                      {t("Password")} <span aria-hidden>*</span>
-                    </span>
-                  }
-                />
-                <div className="input-group">
-                  <Input
-                    id={field.name}
-                    type="password"
-                    placeholder="*****"
-                    isInvalid={meta.touched && typeof meta.error == "string"}
-                    extra={{ required: true, ...field }}
-                    i18n={{
-                      showPassword: t("Login input password:::Show password"),
-                      hidePassword: t("Login input password:::Hide password"),
-                    }}
-                  />
-                </div>
-                <ErrorMessage name={field.name} />
-              </FormGroup>
-            )}
-          </FormikField>
-          <Text className="aq-text-right aq-mb-3 capitalize-first">
-            <a
-              className="aq-text-secondary lost-password-anchor"
-              href="/wp-login.php?action=lostpassword"
-            >
-              {t("forgot your password?")}
-            </a>
-          </Text>
-          <Button
-            className="aq-mb-3 capitalize-first"
-            kind="primary"
-            size="block"
-            type="submit"
-            formNoValidate
-          >
-            {props.isSubmitting ? t("wait...") : cta}
-          </Button>
-          <div className="aq-mb-3">
-            <Text className="aq-text-center aq-text-primary">
-              <Trans
-                i18nKey="available tags: <strong>, <signuplink>:::LOGIN_SIGNUP_LINK"
-                components={{
-                  strong: <strong className="aq-text-secondary" />,
-                  signuplink: (
-                    <Link
-                      style={{
-                        display: "inline-block",
-                        textDecoration: "none",
-                      }}
-                      to={signupRoute}
-                    />
-                  ),
-                }}
-                defaults={`New to TRYBER? <signuplink><strong>Sign up</strong></signuplink>`}
+            <div className="input-group">
+              <Input
+                id={field.name}
+                type="email"
+                placeholder="mail@example.com"
+                isInvalid={meta.touched && typeof meta.error == "string"}
+                extra={{ required: true, ...field }}
               />
-            </Text>
-            {error && (
-              <Text className="aq-text-left aq-pt-1" color="danger" small>
-                {error}
-              </Text>
-            )}
-          </div>
-        </Form>
-      )}
-    </Formik>
+            </div>
+            <ErrorMessage name={field.name} />
+          </FormGroup>
+        )}
+      </FormikField>
+      <FormikField name="password">
+        {({ meta, field }: FieldProps) => (
+          <FormGroup>
+            <FormLabel
+              className="aq-text-left aq-text-primary"
+              htmlFor={field.name}
+              label={
+                <span>
+                  {t("Password")} <span aria-hidden>*</span>
+                </span>
+              }
+            />
+            <div className="input-group">
+              <Input
+                id={field.name}
+                type="password"
+                placeholder="*****"
+                isInvalid={meta.touched && typeof meta.error == "string"}
+                extra={{ required: true, ...field }}
+                i18n={{
+                  showPassword: t("Login input password:::Show password"),
+                  hidePassword: t("Login input password:::Hide password"),
+                }}
+              />
+            </div>
+            <ErrorMessage name={field.name} />
+          </FormGroup>
+        )}
+      </FormikField>
+      <Text className="aq-text-right aq-mb-3 capitalize-first">
+        <a
+          className="aq-text-secondary lost-password-anchor"
+          href="/wp-login.php?action=lostpassword"
+        >
+          {t("forgot your password?")}
+        </a>
+      </Text>
+      <Button
+        className="aq-mb-3 capitalize-first"
+        kind="primary"
+        size="block"
+        type="submit"
+        formNoValidate
+      >
+        {isSubmitting ? t("wait...") : cta}
+      </Button>
+      <div className="aq-mb-3">
+        <Text className="aq-text-center aq-text-primary">
+          <Trans
+            i18nKey="available tags: <strong>, <signuplink>:::LOGIN_SIGNUP_LINK"
+            components={{
+              strong: <strong className="aq-text-secondary" />,
+              signuplink: (
+                <Link
+                  style={{
+                    display: "inline-block",
+                    textDecoration: "none",
+                  }}
+                  to={signupRoute}
+                />
+              ),
+            }}
+            defaults={`New to TRYBER? <signuplink><strong>Sign up</strong></signuplink>`}
+          />
+        </Text>
+        {error && (
+          <Text className="aq-text-left aq-pt-1" color="danger" small>
+            {error}
+          </Text>
+        )}
+      </div>
+    </>
   );
 };
 
