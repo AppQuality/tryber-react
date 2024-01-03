@@ -2,6 +2,7 @@ import { Formik } from "@appquality/appquality-design-system";
 import * as yup from "yup";
 import WPAPI from "src/utils/wpapi";
 import { useTranslation } from "react-i18next";
+import getValidRedirect from "../getValidRedirect";
 
 interface FormProps {
   children: React.ReactNode;
@@ -24,8 +25,14 @@ const FormProvider = ({ children, setCta, setError }: FormProps) => {
             security: nonce,
           });
           setCta(`${t("redirecting")}...`);
-          ///if queryparam redirectTo  then redirect to
-          //elsemy-dashboard/
+
+          const url = new URL(window.location.href);
+          const queryParams = new URLSearchParams(url.search);
+          if (queryParams && getValidRedirect(queryParams).length) {
+            console.log(getValidRedirect(queryParams));
+            window.location.href = getValidRedirect(queryParams);
+          }
+
           window.location.reload();
         } catch (e: unknown) {
           const { message } = e as Error;
