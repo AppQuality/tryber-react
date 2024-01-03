@@ -1,6 +1,7 @@
 import {
   Button,
   ErrorMessage,
+  ErrorMessageWrapper,
   FieldProps,
   FormGroup,
   FormLabel,
@@ -89,6 +90,9 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
       <Text className="aq-text-center aq-mb-3 aq-text-primary">
         {t("or log in with email and password")}
       </Text>
+      <div role="alert" aria-live="polite">
+        {error && <ErrorMessageWrapper>{error}</ErrorMessageWrapper>}
+      </div>
       <FormikField name="email">
         {({ meta, field }: FieldProps) => (
           <FormGroup>
@@ -107,7 +111,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
                 type="email"
                 placeholder="mail@example.com"
                 isInvalid={meta.touched && typeof meta.error == "string"}
-                extra={{ required: true, ...field }}
+                extra={{ required: true, ariaRequired: true, ...field }}
               />
             </div>
             <ErrorMessage name={field.name} />
@@ -132,7 +136,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
                 type="password"
                 placeholder="*****"
                 isInvalid={meta.touched && typeof meta.error == "string"}
-                extra={{ required: true, ...field }}
+                extra={{ required: true, ariaRequired: true, ...field }}
                 i18n={{
                   showPassword: t("Login input password:::Show password"),
                   hidePassword: t("Login input password:::Hide password"),
@@ -179,11 +183,6 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
             defaults={`New to TRYBER? <signuplink><strong>Sign up</strong></signuplink>`}
           />
         </Text>
-        {error && (
-          <Text className="aq-text-left aq-pt-1" color="danger" small>
-            {error}
-          </Text>
-        )}
       </div>
     </>
   );
