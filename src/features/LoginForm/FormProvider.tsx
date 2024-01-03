@@ -30,7 +30,8 @@ const FormProvider = ({ children, setCta, setError }: FormProps) => {
           const queryParams = new URLSearchParams(url.search);
           if (queryParams && getValidRedirect(queryParams).length) {
             console.log(getValidRedirect(queryParams));
-            window.location.href = getValidRedirect(queryParams);
+            console.log(queryParams.get("redirect"));
+            window.location.href = queryParams.get("redirect") as string;
           }
 
           window.location.reload();
