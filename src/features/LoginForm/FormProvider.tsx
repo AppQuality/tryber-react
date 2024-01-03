@@ -1,8 +1,9 @@
-import { Formik } from "@appquality/appquality-design-system";
+import { Formik, Text } from "@appquality/appquality-design-system";
 import * as yup from "yup";
 import WPAPI from "src/utils/wpapi";
 import { useTranslation } from "react-i18next";
 import getValidRedirect from "../getValidRedirect";
+import siteWideMessageStore from "src/redux/siteWideMessages";
 
 interface FormProps {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ interface FormProps {
 
 const FormProvider = ({ children, setCta, setError }: FormProps) => {
   const { t } = useTranslation();
+  const { add } = siteWideMessageStore();
   return (
     <Formik
       validateOnBlur={false}
@@ -44,7 +46,15 @@ const FormProvider = ({ children, setCta, setError }: FormProps) => {
             );
             window.location.href = "/wp-login.php";
           } else {
-            window.location.reload();
+            add({
+              message: (
+                <Text className="aq-text-primary">
+                  <strong>{t("Something went wrong")}</strong>
+                  <p>{t("try again to login")}</p>
+                </Text>
+              ),
+              type: "danger",
+            });
           }
         }
         actions.setSubmitting(false);
