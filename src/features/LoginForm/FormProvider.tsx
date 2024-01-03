@@ -30,9 +30,7 @@ const FormProvider = ({ children, setCta, setError }: FormProps) => {
           const queryParams = new URLSearchParams(url.search);
           if (queryParams && getValidRedirect(queryParams).length) {
             window.location.href = queryParams.get("redirectTo") as string;
-          }
-
-          window.location.reload();
+          } else window.location.reload();
         } catch (e: unknown) {
           const { message } = e as Error;
           const error = JSON.parse(message);
