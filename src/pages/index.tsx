@@ -2,7 +2,6 @@ import Dashboard from "./Dashboard";
 import Devices from "./Devices";
 import ExperiencePoints from "./ExperiencePoints";
 import GettingStarted from "./GettingStarted";
-// import GettingStarted from "./GettingStarted/new";
 import Signup from "./GettingStarted/NewSignupForm";
 import GoodbyePage from "./GoodbyePage";
 import Wallet from "./Wallet";

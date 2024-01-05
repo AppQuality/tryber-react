@@ -15,23 +15,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import { Link } from "react-router-dom";
 import { useFormikContext } from "formik";
-
-const StyledButton = styled(Button)`
-  border: 1px solid ${({ theme }) => theme.palette.primary};
-  @media (min-width: ${({ theme }) => theme.grid.breakpoints.md}) {
-    margin: 0 auto;
-  }
-  .button-left-img {
-    height: 24px;
-    width: 24px;
-  }
-  display: flex;
-  align-items: center;
-  .button-text {
-    text-align: center;
-    flex-grow: 1;
-  }
-`;
+import { ButtonWithIcon } from "../ButtonWithIcon";
 
 interface LoginFieldsProps {
   cta: string;
@@ -53,7 +37,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
   }, [errors, isSubmitting]);
   return (
     <>
-      <StyledButton
+      <ButtonWithIcon
         className="aq-mb-3"
         size="block"
         kind="light"
@@ -69,8 +53,8 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
           className="button-left-img"
         />
         <span className="button-text">{t("Continue with Facebook")}</span>
-      </StyledButton>
-      <StyledButton
+      </ButtonWithIcon>
+      <ButtonWithIcon
         className="aq-mb-3"
         size="block"
         kind="light"
@@ -86,7 +70,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
           className="button-left-img"
         />
         <span className="button-text">{t("Continue with LinkedIn")}</span>
-      </StyledButton>
+      </ButtonWithIcon>
       <Text className="aq-text-center aq-mb-3 aq-text-primary">
         {t("or log in with email and password")}
       </Text>
