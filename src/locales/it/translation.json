@@ -192,7 +192,7 @@
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Collega Tryber a uno dei tuoi account, in questo modo sarà più facile accedere alla dashboard",
   "Continue with Facebook": "Continua con Facebook",
   "Continue with LinkedIn": "Continua con LinkedIn",
-  "Continue with email": "",
+  "Continue with email": "Continua con email",
   "Countries covered": "Paesi raggiunti",
   "Country": "Paese di residenza",
   "Courses": "Corsi",
@@ -389,7 +389,7 @@
   "Request your data": "Richiedi i tuoi dati",
   "Reset password": "Resetta la password",
   "Review the manual": "Rivedi il manuale",
-  "SIGNUP_LOGIN_CTA": "",
+  "SIGNUP_LOGIN_CTA": "Hai già un account? <login_link><strong>Accedi</strong></login_link>",
   "SIGNUP_STEP": {
     "continue": ""
   },
@@ -397,7 +397,7 @@
     "Account info": "",
     "Personal info": ""
   },
-  "SIGNUP_TERMS_DISCLAIMER": "",
+  "SIGNUP_TERMS_DISCLAIMER": "Quando continui con Facebook o LinkedIn, accetti i <terms_link>Termini di utilizzo</terms_link>, <privacy_link>la Privacy Policy</privacy_link> e <ethical_link>il Codice Etico</ethical_link> di TRYBER.",
   "Save": "Salva",
   "Save changes": "Salva le modifiche",
   "Search": "Cerca",
@@ -418,7 +418,7 @@
   "Severity": "Gravità",
   "Should be exactly 16 characters": "Deve contenere esattamente 16 caratteri",
   "Sign up": "",
-  "Signup for Tryber": "",
+  "Signup for Tryber": "Iscriviti a TRYBER",
   "Signup now": "Iscriviti ora",
   "Signup success": "",
   "Something went wrong": "È successo qualcosa",
@@ -739,7 +739,7 @@
     "__RANKING_POSITION_NOLeVEL_MAX: 30": "No level"
   },
   "or log in with email and password": "oppure accedi con email e password",
-  "or you can": "",
+  "or you can": "Oppure",
   "redirecting": "reindirizzamento",
   "social": "social",
   "testers": "Tryber attivi",

@@ -192,7 +192,7 @@
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Connect Tryber to one of your accounts, this will make it easier for you to access your dashboard",
   "Continue with Facebook": "",
   "Continue with LinkedIn": "",
-  "Continue with email": "",
+  "Continue with email": "Continue with email",
   "Countries covered": "Countries covered",
   "Country": "Country of residence",
   "Courses": "Courses",
@@ -389,7 +389,7 @@
   "Request your data": "Request your data",
   "Reset password": "Reset password",
   "Review the manual": "Review the manual",
-  "SIGNUP_LOGIN_CTA": "",
+  "SIGNUP_LOGIN_CTA": "Already have an account? <login_link><strong>Login</strong></login_link>",
   "SIGNUP_STEP": {
     "continue": ""
   },
@@ -397,7 +397,7 @@
     "Account info": "",
     "Personal info": ""
   },
-  "SIGNUP_TERMS_DISCLAIMER": "",
+  "SIGNUP_TERMS_DISCLAIMER": "By clicking “Signup with”, you accept the <terms_link>Terms</terms_link>, <privacy_link>Privacy Policy</privacy_link> and <ethical_link>Ethical Code</ethical_link> of tryber.me",
   "Save": "Save",
   "Save changes": "Save changes",
   "Search": "Search",
@@ -418,7 +418,7 @@
   "Severity": "Severity",
   "Should be exactly 16 characters": "Should be exactly 16 characters",
   "Sign up": "",
-  "Signup for Tryber": "",
+  "Signup for Tryber": "Signup for Tryber",
   "Signup now": "Signup now",
   "Signup success": "",
   "Something went wrong": "Something went wrong",
@@ -739,7 +739,7 @@
     "__RANKING_POSITION_NOLeVEL_MAX: 30": "No level"
   },
   "or log in with email and password": "",
-  "or you can": "",
+  "or you can": "or you can",
   "redirecting": "redirecting",
   "social": "social",
   "testers": "Active Trybers",

@@ -190,9 +190,9 @@
   "Confirm email": "Confirma tu correo electrónico",
   "Confirm password": "Confirma tu password",
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Conecte Tryber a una de tus account, esto lo hará más fácil para acceder a su dashboard",
-  "Continue with Facebook": "Inicia sesión con Facebook",
-  "Continue with LinkedIn": "Inicia sesión con LinkedIn",
-  "Continue with email": "",
+  "Continue with Facebook": "Continúa con Facebook",
+  "Continue with LinkedIn": "Continúa con LinkedIn",
+  "Continue with email": "Regístrate con tu correo",
   "Countries covered": "Países alcanzados",
   "Country": "País de residencia",
   "Courses": "Cursos",
@@ -389,7 +389,7 @@
   "Request your data": "Solicitas tus datos",
   "Reset password": "Restablecer password",
   "Review the manual": "Revisar el manual",
-  "SIGNUP_LOGIN_CTA": "",
+  "SIGNUP_LOGIN_CTA": "¿Ya tienes una cuenta? <login_link><strong>Inicia sesión</strong></login_link>",
   "SIGNUP_STEP": {
     "continue": ""
   },
@@ -397,7 +397,7 @@
     "Account info": "",
     "Personal info": ""
   },
-  "SIGNUP_TERMS_DISCLAIMER": "",
+  "SIGNUP_TERMS_DISCLAIMER": "Al continuar con Facebook o LinkedIn, aceptas los <terms_link>Términos de uso</terms_link>, la <privacy_link>Política de privacidad</privacy_link> y el <ethical_link>Código ético</ethical_link> de TRYBER.",
   "Save": "Guardar",
   "Save changes": "Guardar los cambios",
   "Search": "Buscar",
@@ -418,7 +418,7 @@
   "Severity": "Gravedad",
   "Should be exactly 16 characters": "Debe tener exactamente 16 caracteres",
   "Sign up": "",
-  "Signup for Tryber": "",
+  "Signup for Tryber": "Regístrate en TRYBER",
   "Signup now": "Regístrese ahora",
   "Signup success": "",
   "Something went wrong": "Parece que algo salió mal",
@@ -739,7 +739,7 @@
     "__RANKING_POSITION_NOLeVEL_MAX: 30": "No level"
   },
   "or log in with email and password": "o inicia sesión con correo y contraseña",
-  "or you can": "",
+  "or you can": "o bien",
   "redirecting": "redireccionando",
   "social": "social",
   "testers": "Tryber activos",
