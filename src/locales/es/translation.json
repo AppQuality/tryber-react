@@ -263,6 +263,7 @@
   },
   "Generic error": "Error genérico",
   "Go back and choose another email address or <login_link>log in</login_link>.": "",
+  "Go to dashboard": "Ve al dashboard",
   "Great job!": "¡Buen Trabajo!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
     "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Genial, el próximo mes serás {{level}}!<br></br>Da lo mejor de ti y llega al nivel {{nextLevel}}"
@@ -419,6 +420,7 @@
   "Sign up": "",
   "Signup for Tryber": "",
   "Signup now": "Regístrese ahora",
+  "Signup success": "",
   "Something went wrong": "Parece que algo salió mal",
   "Spoken languages": "Idiomas hablados",
   "Start Date": "Fecha de Inicio",
@@ -495,7 +497,9 @@
   "We got it!": "¡Listo!",
   "We successfully removed a device from your device list": "Hemos eliminado con éxito un dispositivo de tu lista de dispositivos",
   "We've received your request. You'll get an email in a few days.": "Hemos recibido tu solicitud. Recibirás un correo electrónico en unos días.",
+  "Welcome aboard!": "¡Te damos la bienvenida a bordo!",
   "Welcome in AppQuality": "¡Te damos la bienvenida a TRYBER!",
+  "Welcome signup message": "Te hemos enviado un correo de bienvenida a la dirección que indicaste durante la registración. Descubre el universo TRYBER: elige entre los cursos de Tryber University, apúntate a las campañas de test y toma parte en la comunidad.",
   "What operating system am i using?": "¿Qué sistema operativo estoy utilizando?",
   "What you are starting is a path, made of test campaigns, courses, bugs, questionnaires, experience points... but above all you are becoming part of a Community formed by thousands of people from all over the world, who want to grow and contribute to improve the services and digital products we use in everyday life.\n            <br />\n            To support your growth, you'll find free and continuously updated training content in the University of Testing.\n            If you don't know where to start, we recommend:\n            <ul>\n              <li>this short guide on how to start your adventure as a Tester: <a target='_blank' href='/aq-instructions-for-use/'>AQ - Instructions for use.</a></li>\n              <li>the <a target='_blank' href='/faq/'>FAQ</a> where all the most common doubts are collected!</li>\n            </ul>\n            For any doubt, question or advice do not hesitate to contact us at <a href='mailto:crowd@app-quality.com'>crowd@app-quality.com</a>, the official email for tester support.": "Unirse a TRYBER significa formar parte de una Comunidad internacional de miles de personas, pero también significa sentirse orgulloso de completar las campañas, encontrar bugs y ganar puntos de experiencia. Hacemos todo esto juntos para mejorar los servicios y los productos digitales que usamos a diario. \n            <br />\n            Queremos que mejores tus competencias con cursos y contenidos gratuitos y actualizados que puedes encontrar en la sección Universidad Tryber. Para empezar de la mejor manera, explora:\n            <ul>\n              <li> una <a target='_blank' href='/es/tryber-instrucciones-de-uso/'>breve guía</a> con instrucciones de uso </li>\n              <li> las <a target='_blank' href='/faq/'>FAQ</a> con todas las respuestas a tus preguntas. </li>\n            </ul>\n            ¿Quieres preguntarnos algo? Estamos siempre a tu lado con el correo electrónico dedicado a la asistencia de nuestros Tryber: <a href='mailto:support@tryber.me'>support@tryber.me</a>.",
   "Why do you want to delete your account?": "¿Por qué quieres eliminar tu account?",
@@ -517,6 +521,7 @@
   "You need to select a street code": "Necesitas seleccionar un código de calle",
   "You need to select a zip code": "Es necesario seleccionar un código postal",
   "You need to set your two-factor authentication for this. Redirecting to the login page": "",
+  "You're a Tryber now": "Ya eres parte de TRYBER",
   "Your Performance": "Tu Performance",
   "Your current password is not correct": "Tu password actual no es correcta",
   "Your data are safe with us. You can ask them anytime you need. Upon your request, we will provide you a copy of your personal data at the email associated to your Tester ID.": "Tus datos están seguros con nosotros. Puedes preguntarlos cuando lo necesitas. Si los solicitas, te proporcionaremos una copia de tus datos personales en el correo electrónico asociado a tu ID de Tryber.",

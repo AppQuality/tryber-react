@@ -6,11 +6,12 @@ import { components, operations } from "src/utils/schema";
 
 export type CrowdRoutes =
   | "getting-started"
+  | "getting-started/signup"
+  | "getting-started/confirmation"
+  | "login"
   | "my-dashboard"
   | "personal-equipment"
   | "my-bugs"
-  | "getting-started/signup"
-  | "login"
   | "experience-points"
   | "";
 

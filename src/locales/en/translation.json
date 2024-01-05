@@ -263,6 +263,7 @@
   },
   "Generic error": "Generic error",
   "Go back and choose another email address or <login_link>log in</login_link>.": "",
+  "Go to dashboard": "Go to dashboard",
   "Great job!": "Great job!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
     "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Great, you're going to be {{level}} in the next month!<br></br>Now try your best and reach {{nextLevel}}!"
@@ -419,6 +420,7 @@
   "Sign up": "",
   "Signup for Tryber": "",
   "Signup now": "Signup now",
+  "Signup success": "",
   "Something went wrong": "Something went wrong",
   "Spoken languages": "Spoken languages",
   "Start Date": "Start Date",
@@ -495,7 +497,9 @@
   "We got it!": "We got it!",
   "We successfully removed a device from your device list": "We successfully removed a device from your device list",
   "We've received your request. You'll get an email in a few days.": "We've received your request. You'll get an email in a few days.",
+  "Welcome aboard!": "Welcome aboard!",
   "Welcome in AppQuality": "Welcome to TRYBER",
+  "Welcome signup message": "We have sent you a welcome email to the address you used in the sign up process. Now it’s time to explore the TRYBER universe: choose among our University courses, apply for test campaigns and join our community!",
   "What operating system am i using?": "What operating system am I using?",
   "What you are starting is a path, made of test campaigns, courses, bugs, questionnaires, experience points... but above all you are becoming part of a Community formed by thousands of people from all over the world, who want to grow and contribute to improve the services and digital products we use in everyday life.\n            <br />\n            To support your growth, you'll find free and continuously updated training content in the University of Testing.\n            If you don't know where to start, we recommend:\n            <ul>\n              <li>this short guide on how to start your adventure as a Tester: <a target='_blank' href='/aq-instructions-for-use/'>AQ - Instructions for use.</a></li>\n              <li>the <a target='_blank' href='/faq/'>FAQ</a> where all the most common doubts are collected!</li>\n            </ul>\n            For any doubt, question or advice do not hesitate to contact us at <a href='mailto:crowd@app-quality.com'>crowd@app-quality.com</a>, the official email for tester support.": "Joining TRYBER is to be part of an international Community of thousands of people but also to feel proud of having completed campaigns, found bugs and gained experience points. Let's improve the digital services and products we use every day, together.\n            <br />\n            We want to enhance your skills with free courses and guides always available and updated in the Tryber University section. For a good start, explore:\n            <ul>\n              <li>a <a target='_blank' href='/tryber-instructions-for-use/'>short guide</a> with all the instructions</li>\n              <li>the <a target='_blank' href='/faq/'>FAQ</a> with the answers to your doubts</li>\n            </ul>\n            Any questions for us? We are always by your side with the email address dedicated to Tryber support: <a href='mailto:support@tryber.me'>support@tryber.me</a>.",
   "Why do you want to delete your account?": "Why do you want to delete your account?",
@@ -517,6 +521,7 @@
   "You need to select a street code": "You need to select a street code",
   "You need to select a zip code": "You need to select a zip code",
   "You need to set your two-factor authentication for this. Redirecting to the login page": "",
+  "You're a Tryber now": "You're a Tryber now",
   "Your Performance": "Your Performance",
   "Your current password is not correct": "Your current password is not correct",
   "Your data are safe with us. You can ask them anytime you need. Upon your request, we will provide you a copy of your personal data at the email associated to your Tester ID.": "Your data are safe with us. You can ask them anytime you need. Upon your request, we will provide you a copy of your personal data at the email associated to your Tryber ID.",

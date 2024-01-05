@@ -31,6 +31,7 @@ import VdpPage from "./pages/VDP";
 import * as Sentry from "@sentry/react";
 import SentryWrapper from "./features/SentryWrapper";
 import useUser from "./redux/user";
+import SignupSuccess from "./pages/SignupSuccess";
 
 // Create Custom Sentry Route component
 const SentryRoute = Sentry.withSentryRouting(Route);
@@ -69,6 +70,10 @@ function Page() {
           <SentryRoute
             path={`${base}/getting-started/signup`}
             component={Signup}
+          />
+                    <SentryRoute
+            path={`${base}/getting-started/confirmation`}
+            component={SignupSuccess}
           />
           <SentryRoute
             path={`${base}/getting-started`}
