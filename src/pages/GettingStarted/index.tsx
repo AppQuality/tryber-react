@@ -125,7 +125,13 @@ export default function GettingStarted() {
               <Trans
                 i18nKey={"SIGNUP_LOGIN_CTA"}
                 components={{
-                  login_link: <Link to={login} data-qa="login" />,
+                  login_link: (
+                    <Link
+                      to={login}
+                      data-qa="login"
+                      style={{ textDecoration: "none" }}
+                    />
+                  ),
                   strong: <strong />,
                 }}
                 defaults="Already have an account? <login_link><strong>Login</strong></login_link>"
