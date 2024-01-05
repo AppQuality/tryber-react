@@ -27,7 +27,7 @@ const FormProvider = ({ children }: FormProviderProps) => {
   const { t } = useTranslation();
   // const dispatch = useAppDispatch();
   const initialValues: SignupFormType = {
-    step: 0,
+    step: 1,
     email: "",
     password: "",
     name: "",

@@ -1,6 +1,7 @@
 import { FieldProps, useFormikContext } from "formik";
 import { Trans, useTranslation } from "react-i18next";
 import { SignupFormType } from "./FormProvider";
+import { parse, isDate, isValid } from "date-fns";
 import {
   Checkbox,
   ErrorMessage,
@@ -12,7 +13,6 @@ import {
   Title,
   DateInput,
   Button,
-  CSSGrid,
 } from "@appquality/appquality-design-system";
 import CountrySelect from "src/features/CountrySelect";
 import styled from "styled-components";
@@ -27,11 +27,23 @@ const ButtonWrapper = styled.div`
 `;
 const Step1 = () => {
   const { t, i18n } = useTranslation();
-  const { setFieldValue } = useFormikContext<SignupFormType>();
+  const { setFieldValue, values, errors, setFieldError, touched } =
+    useFormikContext<SignupFormType>();
   const now = new Date();
   const maxDate = new Date(
     Date.UTC(now.getFullYear() - 18, now.getMonth(), now.getDate())
   );
+  function validateDateString(value: string) {
+    let error;
+    const parsedDate = isDate(value)
+      ? value
+      : parse(value, "dd/MM/yyyy", new Date());
+
+    if (!isValid(parsedDate)) {
+      error = t("Invalid date");
+    }
+    return error;
+  }
   const onBackClick = () => {
     setFieldValue("step", 0);
   };
@@ -92,7 +104,7 @@ const Step1 = () => {
           </FormGroup>
         )}
       </FormikField>
-      <FormikField name="birthday">
+      <FormikField name="birthdate" validate={validateDateString}>
         {({ meta, field, form }: FieldProps) => (
           <FormGroup>
             <FormLabel
@@ -122,6 +134,7 @@ const Step1 = () => {
                   field.onChange(event.target.value);
                   form.setFieldValue(field.name, event.target.value, true);
                 }}
+                inputProps={{ onBlur: () => form.setFieldTouched(field.name) }}
               />
             </div>
             <ErrorMessage name={field.name} />

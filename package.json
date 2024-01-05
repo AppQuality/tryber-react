@@ -3,11 +3,12 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@appquality/appquality-design-system": "^1.0.59",
+    "@appquality/appquality-design-system": "^1.0.60",
     "@appquality/craft-blocks": "^0.1.27",
     "@datadog/browser-logs": "^3.4.1",
     "@reduxjs/toolkit": "^1.8.2",
     "@sentry/react": "^7.83.0",
+    "date-fns": "^2.30.0",
     "formik": "^2.2.6",
     "i18n-iso-countries": "^6.7.0",
     "i18next": "^20.2.2",
@@ -115,7 +116,6 @@
     "playwright-i18next-fixture": "^1.0.0",
     "prettier": "^2.3.1",
     "react-scripts": "4.0.3",
-    "start-server-and-test": "^2.0.1",
     "typescript": "4.9.5"
   },
   "resolutions": {
