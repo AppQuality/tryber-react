@@ -7,6 +7,7 @@ export const ButtonWithIcon = styled(Button)`
     margin: 0 auto;
   }
   .button-left-img {
+    margin-top: 0;
     height: 24px;
     width: 24px;
   }

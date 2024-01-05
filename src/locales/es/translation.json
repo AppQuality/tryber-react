@@ -229,7 +229,6 @@
   "Email {{email}} already registered": "Email {{email}} già presente",
   "Employment": "Empleo",
   "End Date": "Fecha Final",
-  "Ethical Code": "",
   "Experience Points": "Puntos de Experiencia",
   "Extra Award": "Recompensa Extra",
   "FAQ": "Preguntas Frecuentes",
@@ -300,7 +299,6 @@
   "Learn more about how we calculate and attribute experience points.": "Aprende más sobre cómo calculamos y atribuimos los puntos de experiencia.",
   "LinkedIn": "LinkedIn",
   "Loading Data": "Cargando Datos",
-  "Log in": "",
   "Log in with an existing account": "Regístrate más rápido",
   "Login input password": {
     "Hide password": "Contraseña oculta",
@@ -370,7 +368,6 @@
   "Points": "Puntos",
   "Points Fix": "Puntos Fijos",
   "Previous": "Anterior",
-  "Privacy Policy": "",
   "Processing": "En proceso",
   "Profession": "Trabajo",
   "Profile": "Perfil",
@@ -391,6 +388,7 @@
   "Request your data": "Solicitas tus datos",
   "Reset password": "Restablecer password",
   "Review the manual": "Revisar el manual",
+  "SIGNUP_LOGIN_CTA": "",
   "SIGNUP_STEP": {
     "continue": ""
   },
@@ -398,6 +396,7 @@
     "Account info": "",
     "Personal info": ""
   },
+  "SIGNUP_TERMS_DISCLAIMER": "",
   "Save": "Guardar",
   "Save changes": "Guardar los cambios",
   "Search": "Buscar",
@@ -441,7 +440,6 @@
   "Tax regime options select label": {
     "Fiscal Type": "Régimen fiscal"
   },
-  "Terms and Conditions": "",
   "Testing Campaigns are not clear and I'm not able to finished them": "Las campañas no son claras y no soy capaz de terminarlas",
   "Testing University": "Universidad de Tryber",
   "The account holder name should contain latin character only": "El nombre del titular de la cuenta debe contener solo caracteres latinos",
@@ -752,6 +750,10 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
+  "Ethical Code": "",
+  "Log in": "",
+  "Privacy Policy": "",
+  "Terms and Conditions": "",
   "Login": "¿Ya eres un Tryber? Iniciar sesión",
   "New to TRYBER? <1>Sign up</1>": "",
   "or login with": "o inicie sesión con",

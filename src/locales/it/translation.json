@@ -229,7 +229,6 @@
   "Email {{email}} already registered": "Email {{email}} già presente",
   "Employment": "Occupazione",
   "End Date": "Fine",
-  "Ethical Code": "",
   "Experience Points": "Punti esperienza",
   "Extra Award": "Premio extra",
   "FAQ": "Domande frequenti",
@@ -300,7 +299,6 @@
   "Learn more about how we calculate and attribute experience points.": "Scopri di più su come calcoliamo e attribuiamo i punti esperienza",
   "LinkedIn": "LinkedIn",
   "Loading Data": "Caricamento...",
-  "Log in": "",
   "Log in with an existing account": "Iscriviti più velocemente",
   "Login input password": {
     "Hide password": "Nascondi password",
@@ -370,7 +368,6 @@
   "Points": "Punti",
   "Points Fix": "Correzione punti",
   "Previous": "Precedente",
-  "Privacy Policy": "",
   "Processing": "In lavorazione",
   "Profession": "Professione",
   "Profile": "Profilo",
@@ -391,6 +388,7 @@
   "Request your data": "Richiedi i tuoi dati",
   "Reset password": "Resetta la password",
   "Review the manual": "Rivedi il manuale",
+  "SIGNUP_LOGIN_CTA": "",
   "SIGNUP_STEP": {
     "continue": ""
   },
@@ -398,6 +396,7 @@
     "Account info": "",
     "Personal info": ""
   },
+  "SIGNUP_TERMS_DISCLAIMER": "",
   "Save": "Salva",
   "Save changes": "Salva le modifiche",
   "Search": "Cerca",
@@ -441,7 +440,6 @@
   "Tax regime options select label": {
     "Fiscal Type": "Tipo fiscale"
   },
-  "Terms and Conditions": "",
   "Testing Campaigns are not clear and I'm not able to finished them": "Le Campagne non sono chiare e non riesco a completarle",
   "Testing University": "Università del Tryber",
   "The account holder name should contain latin character only": "Il nome dell'intestatario del conto può contenere solo caratteri latini",
@@ -752,6 +750,10 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Ethical Code": "",
+  "Log in": "",
+  "Privacy Policy": "",
+  "Terms and Conditions": "",
   "Login": "Già dei nostri? Accedi",
   "or login with": "o accedi con",
   "login with your credentials": "accedi con le tue credenziali",

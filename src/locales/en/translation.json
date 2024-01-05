@@ -229,7 +229,6 @@
   "Email {{email}} already registered": "Email {{email}} already registered",
   "Employment": "Employment",
   "End Date": "End Date",
-  "Ethical Code": "",
   "Experience Points": "Experience Points",
   "Extra Award": "Extra Award",
   "FAQ": "FAQ",
@@ -300,7 +299,6 @@
   "Learn more about how we calculate and attribute experience points.": "Learn more about how we calculate and attribute experience points.",
   "LinkedIn": "LinkedIn",
   "Loading Data": "Loading Data",
-  "Log in": "",
   "Log in with an existing account": "Sign in faster",
   "Login input password": {
     "Hide password": "Hide password",
@@ -370,7 +368,6 @@
   "Points": "Points",
   "Points Fix": "Points Fix",
   "Previous": "Previous",
-  "Privacy Policy": "",
   "Processing": "Processing",
   "Profession": "Profession",
   "Profile": "Profile",
@@ -391,6 +388,7 @@
   "Request your data": "Request your data",
   "Reset password": "Reset password",
   "Review the manual": "Review the manual",
+  "SIGNUP_LOGIN_CTA": "",
   "SIGNUP_STEP": {
     "continue": ""
   },
@@ -398,6 +396,7 @@
     "Account info": "",
     "Personal info": ""
   },
+  "SIGNUP_TERMS_DISCLAIMER": "",
   "Save": "Save",
   "Save changes": "Save changes",
   "Search": "Search",
@@ -441,7 +440,6 @@
   "Tax regime options select label": {
     "Fiscal Type": "Fiscal Type"
   },
-  "Terms and Conditions": "",
   "Testing Campaigns are not clear and I'm not able to finished them": "Campaigns are not clear and I'm not able to finished them",
   "Testing University": "Tryber University",
   "The account holder name should contain latin character only": "The account holder name should contain latin characters only",
@@ -752,6 +750,10 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "Ethical Code": "",
+  "Log in": "",
+  "Privacy Policy": "",
+  "Terms and Conditions": "",
   "Login": "Already a Tryber? Log in",
   "New to TRYBER? <1>Sign up</1>": "New to TRYBER? <1>Sign up</1>",
   "or login with": "or login with",
