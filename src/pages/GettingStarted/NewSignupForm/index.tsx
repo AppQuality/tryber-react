@@ -24,10 +24,9 @@ const Wrapper = styled.div`
 
 const SignupForm = ({}) => {
   const { t } = useTranslation();
-  const dashboard = useLocalizeRoute("my-dashboard");
   const emailSignup = useLocalizeRoute("getting-started/signup");
   return (
-    <PageTemplate route={emailSignup}>
+    <PageTemplate shouldBeLoggedIn={false} route={emailSignup}>
       <DatepickerGlobalStyle />
       <Container className="aq-pb-3">
         <LangMenu
