@@ -37,6 +37,10 @@
   "A list of all the campaigns you participated in that we successfully evaluated and that are now closed.": "Una lista de todas las campañas que has participado que evaluamos exitosamente y ahora están cerradas.",
   "A list of the campaigns that are currently available on the platform. Check the details and apply!": "Lista de campañas que están disponibles en la plataforma. ¡Revisa los detalles y aplica!",
   "A new device was successfully added to your device list": "Se ha añadido con éxito un nuevo dispositivo a tu lista de dispositivos",
+  "API_ERROR_MESSAGE": {
+    "Click on \"Sign up\" and try again.": "Vuelve a \"Regístrate\" e inténtalo de nuevo.",
+    "Something went wrong": "Algo salió mal"
+  },
   "Accept the <terms_and_conditions_link>conditions</terms_and_conditions_link> before proceeding": "Acepta las <terms_and_conditions_link>condiciones</terms_and_conditions_link> antes de continuar",
   "Account holder": "Titular de la cuenta",
   "Achievement Date": "Fecha de consecución",
@@ -190,7 +194,6 @@
   "Chose a payment method": "Elige el método de pago",
   "City": "Ciudad",
   "City of birth": "Ciudad de nacimiento",
-  "Click on “Sign up” and try again.": "",
   "Close": "Cerrar",
   "Close Date": "Fecha de Cierre",
   "Closed": "Cerrado",
@@ -275,7 +278,7 @@
     "Other": "No binario"
   },
   "Generic error": "Error genérico",
-  "Go back and choose another email address or <login_link>log in</login_link>.": "",
+  "Go back and choose another email address or <login_link>log in</login_link>.": "Vuelve atrás e introduce un correo diferente o <login_link>inicia sesión</login_link>.",
   "Go to dashboard": "Ve al dashboard",
   "Great job!": "¡Buen Trabajo!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
@@ -362,6 +365,13 @@
   "Overall ranking | level {{level}}": {
     "__RANKING_TITLE_LABEL_MONTH_MAX: 45": "Clasificación total | Nivel {{level}}"
   },
+  "PASSWORD_VALIDATOR": {
+    "Password requirements:": "La contraseña debe:",
+    "contain a lowercase letter": "contener una letra minúscula",
+    "contain a number": "contener un número",
+    "contain an uppercase letter": "contener una letra mayúscula",
+    "minimum of 6 characters": "contener al menos 6 caracteres"
+  },
   "PAYMENTS_MODAL_STEP_4_ERROR": "Non abbiamo ricevuto i tuoi dati. Forse è stato un problema di connessione. Riprova adesso.",
   "PC Type: <bold>{{pc_type}}</bold>": "Tipo de PC: <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "Este correo electrónico ya está en uso. Por favor, introduce otro.",
@@ -371,7 +381,6 @@
   "Password": "Contraseña",
   "Password confirmation doesn't match": "La confirmación de la password no coincide",
   "Password correctly updated, you will be logged out": "Password correctamente actualizada, se cerrará la sesión",
-  "Password requirements:": "",
   "Payment Request ID": "Solicitud de pago #",
   "Payment details": "Detalles de pagos",
   "Payments": "Monedero",
@@ -404,8 +413,20 @@
   "Reset password": "Restablecer password",
   "Review the manual": "Revisar el manual",
   "SIGNUP_FORM": {
-    "Invalid date": "",
-    "You must be at least 18 years old": ""
+    "Birthday is required": "Introduce tu fecha de nacimiento: este campo es obligatorio.",
+    "Country is required": "Introduce tu país de residencia: este campo es obligatorio.",
+    "Email is required": "Introduce tu correo electrónico: este campo es obligatorio.",
+    "Email must be a valid email": "Comprueba tu correo electrónico",
+    "Invalid date": "Introduce tu fecha de nacimiento en formato día/mes/año",
+    "Name is required": "Introduce tu nombre: este campo es obligatorio.",
+    "Password is a required field": "Introduce la contraseña: este campo es obligatorio.",
+    "Password must be at least 6 character long": "",
+    "Password must contain at least a lowercase letter": "",
+    "Password must contain at least a number": "",
+    "Password must contain at least an uppercase letter": "",
+    "Surname is required": "Introduce tu apellido: este campo es obligatorio.",
+    "You must accept terms and conditions": "Debes aceptar los términos y condiciones",
+    "You must be at least 18 years old": "De momento, TRYBER es para mayores de 18 años"
   },
   "SIGNUP_LOGIN_CTA": "¿Ya tienes una cuenta? <login_link><strong>Inicia sesión</strong></login_link>",
   "SIGNUP_STEP": {
@@ -479,7 +500,7 @@
   "There was an error removing your certification": "Hubo un error al eliminar tu certificación",
   "There was an error removing your certifications": "Hubo un error al eliminar tsu certificaciones",
   "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth": "Hubo un error al validar su identificación fiscal. Por favor verifique su nombre, apellido, género, fecha de nacimiento o ciudad de nacimiento",
-  "This email is already in use.": "",
+  "This email is already in use.": "Este correo ya está vinculado a otra cuenta.",
   "This field is shared with the base section": "Este campo se comparte con la sección base",
   "This field is shared with the fiscal section": "Este campo se comparte con la sección fiscal",
   "This is a required field": "Campo obligatorio",
@@ -696,9 +717,6 @@
   },
   "company": "Empresa",
   "contact us": "Contáctanos",
-  "contain a lowercase letter ": "",
-  "contain a number": "",
-  "contain an uppercase letter": "",
   "email must be the same": "Introduce el mismo correo electrónico",
   "for this bug are only allowed replicability of type {{valid}}": {
     "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "En esta campaña solo se admiten bugs con replicabilidad: {{valid}}",
@@ -744,7 +762,6 @@
   "login": "Iniciar sesión",
   "login page title": "Inicia sesión en Tryber",
   "login to continue": "Inicia sesión en TRYBER",
-  "minimum of 6 characters": "",
   "no data": "—",
   "not calculated": {
     "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "No incluido",
@@ -769,6 +786,9 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
+  "API_ERROR_MESSAGE::Click on \"Sign up\" and try again.": "",
+  "API_ERROR_MESSAGE::Something went wrong": "",
+  "Click on \"Sign up\" and try again.": "",
   "Invalid date": "",
   "Sign up": "Regístrate ahora",
   "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {

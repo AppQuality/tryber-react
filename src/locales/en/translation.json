@@ -37,6 +37,10 @@
   "A list of all the campaigns you participated in that we successfully evaluated and that are now closed.": "A list of all the campaigns you participated in that we successfully evaluated and that are now closed.",
   "A list of the campaigns that are currently available on the platform. Check the details and apply!": "A list of the campaigns that are currently available on the platform. Check the details and apply!",
   "A new device was successfully added to your device list": "A new device was successfully added to your device list",
+  "API_ERROR_MESSAGE": {
+    "Click on \"Sign up\" and try again.": "Click on \"Sign up\" and try again.",
+    "Something went wrong": "Something went wrong"
+  },
   "Accept the <terms_and_conditions_link>conditions</terms_and_conditions_link> before proceeding": "Accept the <terms_and_conditions_link>conditions</terms_and_conditions_link> before proceeding",
   "Account holder": "Account holder",
   "Achievement Date": "Achievement Date",
@@ -190,7 +194,6 @@
   "Chose a payment method": "Choose the payment method",
   "City": "City",
   "City of birth": "City of birth",
-  "Click on “Sign up” and try again.": "",
   "Close": "Close",
   "Close Date": "Close Date",
   "Closed": "Closed",
@@ -275,7 +278,7 @@
     "Other": "Non-conforming"
   },
   "Generic error": "Generic error",
-  "Go back and choose another email address or <login_link>log in</login_link>.": "",
+  "Go back and choose another email address or <login_link>log in</login_link>.": "Go back and choose another email address or <login_link>log in</login_link>.",
   "Go to dashboard": "Go to dashboard",
   "Great job!": "Great job!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
@@ -362,6 +365,13 @@
   "Overall ranking | level {{level}}": {
     "__RANKING_TITLE_LABEL_MONTH_MAX: 45": "Complete ranking | {{level}} level"
   },
+  "PASSWORD_VALIDATOR": {
+    "Password requirements:": "Password requirements:",
+    "contain a lowercase letter": "contain a lowercase letter",
+    "contain a number": "contain a number",
+    "contain an uppercase letter": "contain an uppercase letter",
+    "minimum of 6 characters": "minimum of 6 characters"
+  },
   "PAYMENTS_MODAL_STEP_4_ERROR": "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
   "PC Type: <bold>{{pc_type}}</bold>": "PC Type: <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "This email address is already in use. Please try with another one.",
@@ -371,7 +381,6 @@
   "Password": "Password",
   "Password confirmation doesn't match": "Password confirmation doesn't match",
   "Password correctly updated, you will be logged out": "Password correctly updated, you will be logged out",
-  "Password requirements:": "",
   "Payment Request ID": "Payment request #",
   "Payment details": "Payment details",
   "Payments": "Wallet",
@@ -404,8 +413,20 @@
   "Reset password": "Reset password",
   "Review the manual": "Review the manual",
   "SIGNUP_FORM": {
-    "Invalid date": "",
-    "You must be at least 18 years old": ""
+    "Birthday is required": "Enter your birthdate: this field is required.",
+    "Country is required": "Enter the country where you live: this field is required.",
+    "Email is required": "Enter your email address: this field is required.",
+    "Email must be a valid email": "Check if your email is valid",
+    "Invalid date": "Enter your birthdate in this format: day/month/year",
+    "Name is required": "Enter your name: this field is required.",
+    "Password is a required field": "Enter your password: this field is required.",
+    "Password must be at least 6 character long": "",
+    "Password must contain at least a lowercase letter": "",
+    "Password must contain at least a number": "",
+    "Password must contain at least an uppercase letter": "",
+    "Surname is required": "Enter your surname: this field is required.",
+    "You must accept terms and conditions": "You need to accept terms and conditions",
+    "You must be at least 18 years old": "TRYBER is dedicated to those over 18 years old, at least for now."
   },
   "SIGNUP_LOGIN_CTA": "Already have an account? <login_link><strong>Login</strong></login_link>",
   "SIGNUP_STEP": {
@@ -479,7 +500,7 @@
   "There was an error removing your certification": "There was an error removing your certification",
   "There was an error removing your certifications": "There was an error removing your certifications",
   "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth": "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth",
-  "This email is already in use.": "",
+  "This email is already in use.": "This email is already in use.",
   "This field is shared with the base section": "This field is shared with the base section",
   "This field is shared with the fiscal section": "This field is shared with the fiscal section",
   "This is a required field": "This is a required field",
@@ -696,9 +717,6 @@
   },
   "company": "company",
   "contact us": "contact us",
-  "contain a lowercase letter ": "",
-  "contain a number": "",
-  "contain an uppercase letter": "",
   "email must be the same": "Enter the same email address",
   "for this bug are only allowed replicability of type {{valid}}": {
     "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "In this campaign we only allow bug replicability: {{valid}}",
@@ -744,7 +762,6 @@
   "login": "login",
   "login page title": "Log in to Tryber",
   "login to continue": "Log in to continue",
-  "minimum of 6 characters": "",
   "no data": "—",
   "not calculated": {
     "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "Not counted",
@@ -769,6 +786,9 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "API_ERROR_MESSAGE::Click on \"Sign up\" and try again.": "",
+  "API_ERROR_MESSAGE::Something went wrong": "",
+  "Click on \"Sign up\" and try again.": "",
   "Invalid date": "",
   "Sign up": "Sign up",
   "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {

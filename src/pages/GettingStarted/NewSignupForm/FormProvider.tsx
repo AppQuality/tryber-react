@@ -48,37 +48,46 @@ const FormProvider = ({ children }: FormProviderProps) => {
   const validationSchema = {
     email: yup
       .string()
-      .required(t("This is a required field"))
-      .email(t("Email must be a valid email")),
+      .required(t("SIGNUP_FORM:::Email is required"))
+      .email(t("SIGNUP_FORM:::Email must be a valid email")),
     password: yup
       .string()
-      .min(6, t("Must be at least 6 character long"))
-      .matches(/[0-9]/, t("Must contain at least a number"))
-      .matches(/[A-Z]/, t("Must contain at least an uppercase letter"))
-      .matches(/[a-z]/, t("Must contain at least a lowercase letter"))
-      .required(t("This is a required field")),
+      .min(6, t("SIGNUP_FORM:::Password must be at least 6 character long"))
+      .matches(
+        /[0-9]/,
+        t("SIGNUP_FORM:::Password must contain at least a number")
+      )
+      .matches(
+        /[A-Z]/,
+        t("SIGNUP_FORM:::Password must contain at least an uppercase letter")
+      )
+      .matches(
+        /[a-z]/,
+        t("SIGNUP_FORM:::Password must contain at least a lowercase letter")
+      )
+      .required(t("SIGNUP_FORM:::Password is a required field")),
     name: yup.string().when("step", {
       is: 1,
-      then: yup.string().required(t("This is a required field")),
+      then: yup.string().required(t("SIGNUP_FORM:::Name is required")),
     }),
     surname: yup.string().when("step", {
       is: 1,
-      then: yup.string().required(t("This is a required field")),
+      then: yup.string().required(t("SIGNUP_FORM:::Surname is required")),
     }),
     birthdate: yup.string().when("step", {
       is: 1,
-      then: yup.string().required(t("This is a required field")),
+      then: yup.string().required(t("SIGNUP_FORM:::Birthday is required")),
     }),
     country: yup.string().when("step", {
       is: 1,
-      then: yup.string().required(t("This is a required field")),
+      then: yup.string().required(t("SIGNUP_FORM:::Country is required")),
     }),
     termsAcceptance: yup.boolean().when("step", {
       is: 1,
       then: yup
         .boolean()
-        .required(t("This is a required field"))
-        .oneOf([true], t("you must accept terms and conditions")),
+        .required(t("SIGNUP_FORM:::You must accept terms and conditions"))
+        .oneOf([true], t("SIGNUP_FORM:::You must accept terms and conditions")),
     }),
     referral: yup.string(),
   };
@@ -121,8 +130,10 @@ const FormProvider = ({ children }: FormProviderProps) => {
         add({
           message: (
             <Text className="aq-text-primary">
-              <strong>{t("Something went wrong")}</strong>
-              <p>{t("Click on “Sign up” and try again.")}</p>
+              <strong>{t("API_ERROR_MESSAGE:::Something went wrong")}</strong>
+              <p>
+                {t('API_ERROR_MESSAGE:::Click on "Sign up" and try again.')}
+              </p>
             </Text>
           ),
           type: "danger",

@@ -37,31 +37,31 @@ const PasswordRequirements = () => {
   return (
     <div data-qa="password-requirements" className="aq-mb-3">
       <Text small className="aq-mb-1">
-        {t("Password requirements:")}
+        {t("PASSWORD_VALIDATOR:::Password requirements:")}
       </Text>
       <PasswordRequirement
         data-qa="password-requirement-length"
         check={() => values.password.length >= 6}
       >
-        {t("minimum of 6 characters")}
+        {t("PASSWORD_VALIDATOR:::minimum of 6 characters")}
       </PasswordRequirement>
       <PasswordRequirement
         data-qa="password-requirement-uppercase"
         check={() => values.password.match(/[A-Z]/) !== null}
       >
-        {t("contain an uppercase letter")}
+        {t("PASSWORD_VALIDATOR:::contain an uppercase letter")}
       </PasswordRequirement>
       <PasswordRequirement
         data-qa="password-requirement-lowercase"
         check={() => values.password.match(/[a-z]/) !== null}
       >
-        {t("contain a lowercase letter ")}
+        {t("PASSWORD_VALIDATOR:::contain a lowercase letter")}
       </PasswordRequirement>
       <PasswordRequirement
         data-qa="password-requirement-number"
         check={() => values.password.match(/[0-9]/) !== null}
       >
-        {t("contain a number")}
+        {t("PASSWORD_VALIDATOR:::contain a number")}
       </PasswordRequirement>
     </div>
   );

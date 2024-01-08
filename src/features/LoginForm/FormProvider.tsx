@@ -49,7 +49,9 @@ const FormProvider = ({ children, setCta, setError }: FormProps) => {
             add({
               message: (
                 <Text className="aq-text-primary">
-                  <strong>{t("Something went wrong")}</strong>
+                  <strong>
+                    {t("API_ERROR_MESSAGE:::Something went wrong")}
+                  </strong>
                   <p>{t("try again to login")}</p>
                 </Text>
               ),

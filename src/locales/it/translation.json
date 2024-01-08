@@ -37,6 +37,10 @@
   "A list of all the campaigns you participated in that we successfully evaluated and that are now closed.": "La lista di tutte le Campagne a cui hai partecipato, che abbiamo correttamente valutato e che ora sono chiuse.",
   "A list of the campaigns that are currently available on the platform. Check the details and apply!": "La lista delle Campagne attualmente disponibili in piattaforma: controlla le caratteristiche richieste e prova a candidarti!",
   "A new device was successfully added to your device list": "Un nuovo dispositivo è stato aggiunto con successo all'elenco dei dispositivi",
+  "API_ERROR_MESSAGE": {
+    "Click on \"Sign up\" and try again.": "Riprova ad accedere.",
+    "Something went wrong": "Qualcosa è andato storto"
+  },
   "Accept the <terms_and_conditions_link>conditions</terms_and_conditions_link> before proceeding": "Accetta le <terms_and_conditions_link>condizioni</terms_and_conditions_link> e continua la richiesta",
   "Account holder": "A chi è intestato il conto",
   "Achievement Date": "Data di conseguimento",
@@ -190,7 +194,6 @@
   "Chose a payment method": "Scegli il metodo di pagamento",
   "City": "Città",
   "City of birth": "Città di nascita",
-  "Click on “Sign up” and try again.": "",
   "Close": "Chiudi",
   "Close Date": "Chiusa",
   "Closed": "Chiuse",
@@ -275,7 +278,7 @@
     "Other": "Non binario"
   },
   "Generic error": "Errore generico",
-  "Go back and choose another email address or <login_link>log in</login_link>.": "",
+  "Go back and choose another email address or <login_link>log in</login_link>.": "Torna indietro e inserisci un’email diversa oppure <login_link>accedi</login_link>.",
   "Go to dashboard": "Vai alladashboard",
   "Great job!": "Ottimo lavoro!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
@@ -362,6 +365,13 @@
   "Overall ranking | level {{level}}": {
     "__RANKING_TITLE_LABEL_MONTH_MAX: 45": "Classifica completa | Livello {{level}}"
   },
+  "PASSWORD_VALIDATOR": {
+    "Password requirements:": "La tua password deve rispettare questi criteri:",
+    "contain a lowercase letter": "contenere una lettera minuscola",
+    "contain a number": "contenere un numero",
+    "contain an uppercase letter": "contenere una lettera maiuscola",
+    "minimum of 6 characters": "essere lunga almeno 6 caratteri"
+  },
   "PAYMENTS_MODAL_STEP_4_ERROR": "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
   "PC Type: <bold>{{pc_type}}</bold>": "Tipo PC: <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "Questo indirizzo email è già in uso, inseriscine un altro.",
@@ -371,7 +381,6 @@
   "Password": "Password",
   "Password confirmation doesn't match": "La conferma della password non corrisponde",
   "Password correctly updated, you will be logged out": "Password modificata correttamente, verrai disconnesso",
-  "Password requirements:": "",
   "Payment Request ID": "Richiesta di pagamento #",
   "Payment details": "Dettagli di pagamento",
   "Payments": "Portafoglio",
@@ -404,8 +413,20 @@
   "Reset password": "Resetta la password",
   "Review the manual": "Rivedi il manuale",
   "SIGNUP_FORM": {
-    "Invalid date": "",
-    "You must be at least 18 years old": ""
+    "Birthday is required": "Inserisci la tua data di nascita: questo campo è obbligatorio",
+    "Country is required": "Inserisci il paese dove risiedi: questo campo è obbligatorio",
+    "Email is required": "Inserisci la tua email: questo campo è obbligatorio",
+    "Email must be a valid email": "Controlla che la tua email sia corretta",
+    "Invalid date": "Inserisci la data di nascita nel formato giorno/mese/anno",
+    "Name is required": "Inserisci il tuo nome: questo campo è obbligatorio",
+    "Password is a required field": "Inserisci la password: questo campo è obbligatorio",
+    "Password must be at least 6 character long": "",
+    "Password must contain at least a lowercase letter": "",
+    "Password must contain at least a number": "",
+    "Password must contain at least an uppercase letter": "",
+    "Surname is required": "Inserisci il tuo cognome: questo campo è obbligatorio",
+    "You must accept terms and conditions": "Accetta \"Termini e Condizioni\" per continuare",
+    "You must be at least 18 years old": "Per ora TRYBER è dedicato a chi ha più di 18 anni"
   },
   "SIGNUP_LOGIN_CTA": "Hai già un account? <login_link><strong>Accedi</strong></login_link>",
   "SIGNUP_STEP": {
@@ -479,7 +500,7 @@
   "There was an error removing your certification": "Si è presentato un errore nella rimozione della tua certificazione",
   "There was an error removing your certifications": "Si è presentato un errore nella rimozione delle tue certificazioni",
   "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth": "C'è stato un errore durante la validazione del tuo identificativo fiscale. Per favore controlla il tuo nome, cognome, genere, data di nascita o città di nascita",
-  "This email is already in use.": "",
+  "This email is already in use.": "Questa email è già collegata a un account esistente.",
   "This field is shared with the base section": "Il campo è condiviso con la sezione base",
   "This field is shared with the fiscal section": "Il campo è condiviso con la sezione fiscale",
   "This is a required field": "Questo è un campo obbligatorio",
@@ -696,9 +717,6 @@
   },
   "company": "Società",
   "contact us": "Contattaci",
-  "contain a lowercase letter ": "",
-  "contain a number": "",
-  "contain an uppercase letter": "",
   "email must be the same": "Inserisci lo stesso indirizzo email",
   "for this bug are only allowed replicability of type {{valid}}": {
     "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "In questa campagna sono ammessi solo bug con replicabilità: {{valid}}",
@@ -744,7 +762,6 @@
   "login": "accedi",
   "login page title": "Accedi a Tryber",
   "login to continue": "Accedi per continuare",
-  "minimum of 6 characters": "",
   "no data": "—",
   "not calculated": {
     "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "Non conteggiato",
@@ -769,6 +786,9 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "API_ERROR_MESSAGE::Click on \"Sign up\" and try again.": "",
+  "API_ERROR_MESSAGE::Something went wrong": "",
+  "Click on \"Sign up\" and try again.": "",
   "Invalid date": "",
   "Sign up": "Iscriviti ora",
   "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {
