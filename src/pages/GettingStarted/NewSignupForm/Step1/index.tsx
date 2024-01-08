@@ -71,7 +71,12 @@ const Step1 = () => {
                 type="text"
                 placeholder="Mario"
                 isInvalid={meta.touched && typeof meta.error == "string"}
-                extra={{ required: true, ...field }}
+                extra={{
+                  ...field,
+                  required: true,
+                  "aria-required": true,
+                  "data-qa": "input-name",
+                }}
               />
             </div>
             <ErrorMessage name={field.name} />
@@ -96,7 +101,12 @@ const Step1 = () => {
                 placeholder="Rossi"
                 onChange={field.onChange}
                 isInvalid={meta.touched && typeof meta.error == "string"}
-                extra={{ required: true, ...field }}
+                extra={{
+                  ...field,
+                  required: true,
+                  "aria-required": true,
+                  "data-qa": "input-surname",
+                }}
               />
             </div>
             <ErrorMessage name={field.name} />
@@ -136,6 +146,7 @@ const Step1 = () => {
                 }}
                 inputProps={{
                   required: true,
+                  "aria-required": true,
                   onBlur: () => form.setFieldTouched(field.name),
                 }}
               />

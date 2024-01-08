@@ -202,17 +202,29 @@ test.describe("The signup mail page second step", () => {
     await expect(gettingStarted.elements().nameInput()).toHaveAttribute(
       "required"
     );
+    await expect(gettingStarted.elements().nameInput()).toHaveAttribute(
+      "aria-required",
+      "true"
+    );
   });
   test("should display a required last name field", async ({}) => {
     await expect(gettingStarted.elements().surnameInput()).toBeVisible();
     await expect(gettingStarted.elements().surnameInput()).toHaveAttribute(
-      "aria-required"
+      "required"
+    );
+    await expect(gettingStarted.elements().surnameInput()).toHaveAttribute(
+      "aria-required",
+      "true"
     );
   });
   test("should display a required birthdate field", async ({}) => {
     await expect(gettingStarted.elements().birthdateInput()).toBeVisible();
     await expect(gettingStarted.elements().birthdateInput()).toHaveAttribute(
-      "aria-required"
+      "required"
+    );
+    await expect(gettingStarted.elements().birthdateInput()).toHaveAttribute(
+      "aria-required",
+      "true"
     );
   });
   test("should display a required country field", async ({}) => {
