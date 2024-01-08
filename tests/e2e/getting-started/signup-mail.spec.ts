@@ -124,6 +124,15 @@ test.describe("The signup mail page", () => {
       page.getByText(i18n.t("This is a required field"))
     ).toBeVisible();
   });
+  test("if the user click the submit button without doing anything should display an error message", async ({
+    page,
+    i18n,
+  }) => {
+    await gettingStarted.elements().nextButton().click();
+    await expect(
+      page.getByText(i18n.t("This is a required field")).first()
+    ).toBeVisible();
+  });
   test("if the user click the submit button and the mail is not valid should display an error message", async ({
     page,
     i18n,

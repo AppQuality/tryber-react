@@ -9,39 +9,42 @@ import { useAppDispatch } from "src/store";
 
 const useNextStep = () => {
   const login = useLocalizeRoute("login");
-  const { values, errors, validateForm, setFieldValue } =
+  const { values, validateForm, setFieldValue, setFieldTouched } =
     useFormikContext<FormValues>();
   const [checkEmail] = useHeadUsersByEmailByEmailMutation();
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   return () => {
-    validateForm();
-    checkEmail({ email: values.email }).then((res) => {
-      if ("data" in res) {
-        dispatch(
-          addMessage(
-            <Text
-              data-qa="email-already-exists-toastr"
-              className="aq-text-primary"
-            >
-              <strong>{t("This email is already in use.")}</strong>
-              <p>
-                <Trans
-                  i18nKey="Go back and choose another email address or <login_link>log in</login_link>."
-                  components={{
-                    login_link: <a href={login} />,
-                  }}
-                />
-              </p>
-            </Text>,
-            "danger"
-          )
-        );
-      } else {
-        if (Object.keys(errors).length) return;
-        setFieldValue("step", 1);
-      }
+    setFieldTouched("email");
+    setFieldTouched("password");
+    validateForm().then((errors) => {
+      checkEmail({ email: values.email }).then((res) => {
+        if ("data" in res) {
+          dispatch(
+            addMessage(
+              <Text
+                data-qa="email-already-exists-toastr"
+                className="aq-text-primary"
+              >
+                <strong>{t("This email is already in use.")}</strong>
+                <p>
+                  <Trans
+                    i18nKey="Go back and choose another email address or <login_link>log in</login_link>."
+                    components={{
+                      login_link: <a href={login} />,
+                    }}
+                  />
+                </p>
+              </Text>,
+              "danger"
+            )
+          );
+        } else {
+          if (Object.keys(errors).length) return;
+          setFieldValue("step", 1);
+        }
+      });
     });
   };
 };
