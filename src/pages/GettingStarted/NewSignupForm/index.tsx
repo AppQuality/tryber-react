@@ -26,7 +26,11 @@ const SignupForm = ({}) => {
   const { t } = useTranslation();
   const emailSignup = useLocalizeRoute("getting-started/signup");
   return (
-    <PageTemplate shouldBeLoggedIn={false} route={emailSignup}>
+    <PageTemplate
+      shouldBeLoggedIn={false}
+      route={emailSignup}
+      title={t("Signup for Tryber")}
+    >
       <DatepickerGlobalStyle />
       <Container className="aq-pb-3">
         <LangMenu
