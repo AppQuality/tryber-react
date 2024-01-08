@@ -91,7 +91,7 @@ const FormProvider = ({ children }: FormProviderProps) => {
       // post
       await postUsers({
         body: {
-          email: values.email,
+          email: values.email.split("/").join("-"),
           password: values.password,
           name: values.name,
           surname: values.surname,

@@ -1,6 +1,5 @@
 import { Trans, useTranslation } from "react-i18next";
 import { PageTemplate } from "src/features/PageTemplate";
-import i18n from "../../i18n";
 import { LangMenu } from "src/features/LangMenu";
 import {
   Button,

@@ -27,9 +27,13 @@ const ButtonWrapper = styled.div`
 `;
 const Step1 = () => {
   const { t } = useTranslation();
-  const { setFieldValue } = useFormikContext<SignupFormType>();
+  const { setFieldValue, errors, submitForm } =
+    useFormikContext<SignupFormType>();
   const onBackClick = () => {
     setFieldValue("step", 0);
+  };
+  const onSubmitClick = () => {
+    submitForm();
   };
   return (
     <div data-qa="mail-signup-second-step">
@@ -100,7 +104,7 @@ const Step1 = () => {
       </FormikField>
       <BirthdayInput />
       <CountrySelect name="country" label={t("COUNTRY:::Signup form Step1")} />
-      <FormikField name={"subscribe"}>
+      <FormikField name={"termsAcceptance"}>
         {({
           field: { name, onChange, onBlur, value }, // { name, value, onChange, onBlur }
           meta,
@@ -161,7 +165,12 @@ const Step1 = () => {
         <Button size="block" flat onClick={onBackClick}>
           {t("SIGNUP_STEP:::back")}
         </Button>
-        <Button size="block" type="submit">
+        {Object.keys(errors).map((e) => (
+          <Text key={e} className="aq-mb-3 aq-text-danger">
+            {errors[e as keyof SignupFormType]}
+          </Text>
+        ))}
+        <Button size="block" type="submit" onClick={onSubmitClick}>
           {t("SIGNUP_STEP:::submit")}
         </Button>
       </ButtonWrapper>
