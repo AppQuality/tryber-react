@@ -91,11 +91,11 @@ const FormProvider = ({ children }: FormProviderProps) => {
       // post
       await postUsers({
         body: {
-          email: values.email.split("/").join("-"),
+          email: values.email,
           password: values.password,
           name: values.name,
           surname: values.surname,
-          birthDate: values.birthdate,
+          birthDate: values.birthdate.split("/").join("-"),
           country: values.country,
           referral: values.referral,
         },
