@@ -508,7 +508,7 @@
   "View bugs page": "View bugs page",
   "View more": "View more",
   "View payments page": "View wallet page",
-  "WELCOME_SIGNUP_MESSAGE": "",
+  "WELCOME_SIGNUP_MESSAGE": "<strong>Welcome aboard!</strong><br />We have sent you a welcome email to the address you used in the sign up process.Now it’s time to explore the TRYBER universe: choose among our University courses, apply for test campaigns and join our community!",
   "Wallet": "Wallet",
   "We couldn't find a city with that name, please search again": "We couldn't find a city with that name, please search again",
   "We couldn't update your profile. Try again.": "We couldn't update your profile. Try again.",

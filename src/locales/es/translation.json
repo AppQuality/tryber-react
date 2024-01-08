@@ -508,7 +508,7 @@
   "View bugs page": "Ver página de bugs",
   "View more": "Ver más",
   "View payments page": "Ver página de monedero",
-  "WELCOME_SIGNUP_MESSAGE": "",
+  "WELCOME_SIGNUP_MESSAGE": "<strong>¡Te damos la bienvenida a bordo!</strong><br />Te hemos enviado un correo de bienvenida a la dirección que indicaste durante la registración. Descubre el universo TRYBER: elige entre los cursos de Tryber University, apúntate a las campañas de test y toma parte en la comunidad.",
   "Wallet": "Monedero",
   "We couldn't find a city with that name, please search again": "No pudimos encontrar una ciudad con ese nombre, por favor busca de nuevo",
   "We couldn't update your profile. Try again.": "No pudimos actualizar tu perfil. Inténtalo de nuevo.",
