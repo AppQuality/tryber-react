@@ -165,7 +165,7 @@ test.describe("The getting started page", () => {
   });
   test(`should display a link to the login page`, async ({ page, i18n }) => {
     await expect(page.getByTestId("login")).toBeVisible();
-    await expect(page.getByTestId("login")).toHaveText(i18n.t("Log in"));
+    await expect(page.getByTestId("login")).toHaveText("Login");
   });
   test(`if the user click the login link navigato to /login in the current language`, async ({
     page,
