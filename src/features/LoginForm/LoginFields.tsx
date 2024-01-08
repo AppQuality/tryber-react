@@ -9,12 +9,11 @@ import {
   Input,
   Text,
 } from "@appquality/appquality-design-system";
-import styled from "styled-components";
+import { useFormikContext } from "formik";
 import { useEffect } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import { Link } from "react-router-dom";
-import { useFormikContext } from "formik";
+import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import { ButtonWithIcon } from "../ButtonWithIcon";
 
 interface LoginFieldsProps {
@@ -41,6 +40,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
         className="aq-mb-3"
         size="block"
         kind="light"
+        data-qa="login-facebook-button"
         onClick={() => {
           window.location.href =
             "/wp-admin/admin-ajax.php?loc=&action=facebook_oauth_redirect";
@@ -58,6 +58,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
         className="aq-mb-3"
         size="block"
         kind="light"
+        data-qa="login-linkedin-button"
         onClick={() => {
           window.location.href =
             "/wp-admin/admin-ajax.php?loc=&action=linkedin_oauth_redirect";

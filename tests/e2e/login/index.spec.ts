@@ -1,5 +1,5 @@
+import { expect, test } from "../../fixtures/I18n";
 import { Login } from "../../fixtures/Login";
-import { test, expect } from "../../fixtures/I18n";
 
 let login: Login;
 
@@ -56,14 +56,10 @@ test.describe("the login page ", () => {
     expect(await login.getTitle()).toContain("Accedi a Tryber");
   });
   test("should display the login button with facebook", async ({ page }) => {
-    expect(
-      await page.waitForSelector(".login-facebook-button", { state: "visible" })
-    ).toBeTruthy();
+    await expect(page.getByTestId("login-facebook-button")).toBeVisible();
   });
   test("should display the login button with linkedin", async ({ page }) => {
-    expect(
-      await page.waitForSelector(".login-linkedin-button", { state: "visible" })
-    ).toBeTruthy();
+    await expect(page.getByTestId("login-linkedin-button")).toBeVisible();
   });
   test("should display the email input", async ({ page }) => {
     expect(
