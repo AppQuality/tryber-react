@@ -27,7 +27,8 @@ const ButtonWrapper = styled.div`
 `;
 const Step1 = () => {
   const { t } = useTranslation();
-  const { setFieldValue, submitForm } = useFormikContext<SignupFormType>();
+  const { setFieldValue, submitForm, isSubmitting } =
+    useFormikContext<SignupFormType>();
   const onBackClick = () => {
     setFieldValue("step", 0);
   };
@@ -164,7 +165,12 @@ const Step1 = () => {
         <Button size="block" flat onClick={onBackClick}>
           {t("SIGNUP_STEP:::back")}
         </Button>
-        <Button size="block" type="submit" onClick={onSubmitClick}>
+        <Button
+          size="block"
+          type="submit"
+          disabled={isSubmitting}
+          onClick={onSubmitClick}
+        >
           {t("SIGNUP_STEP:::submit")}
         </Button>
       </ButtonWrapper>
