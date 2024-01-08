@@ -37,7 +37,7 @@ export default function SignupSuccess() {
       <Title size="l" as={"h1"} className="aq-mb-3 aq-text-center">
         {t("You're a Tryber now")}
       </Title>
-      <Card className="aq-mb-3">
+      <Card className="aq-mb-3" data-qa="signup-success">
         <Check2Circle
           size="32"
           style={{ verticalAlign: "sub", orizontalAlign: "center" }}
