@@ -403,7 +403,8 @@
   "Reset password": "Reset password",
   "Review the manual": "Review the manual",
   "SIGNUP_FORM": {
-    "Invalid date": ""
+    "Invalid date": "",
+    "You must be at least 18 years old": ""
   },
   "SIGNUP_LOGIN_CTA": "Already have an account? <login_link><strong>Login</strong></login_link>",
   "SIGNUP_STEP": {

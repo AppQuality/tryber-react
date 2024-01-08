@@ -1,7 +1,7 @@
 import { FieldProps, useFormikContext } from "formik";
 import { Trans, useTranslation } from "react-i18next";
 import { SignupFormType } from "../FormProvider";
-import { parse, isDate, isValid } from "date-fns";
+
 import {
   Checkbox,
   ErrorMessage,
@@ -11,11 +11,11 @@ import {
   Input,
   Text,
   Title,
-  DateInput,
   Button,
 } from "@appquality/appquality-design-system";
 import CountrySelect from "src/features/CountrySelect";
 import styled from "styled-components";
+import BirthdayInput from "./BirthdayInput";
 
 const ButtonWrapper = styled.div`
   gap: 1rem;
@@ -26,23 +26,8 @@ const ButtonWrapper = styled.div`
   }
 `;
 const Step1 = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { setFieldValue } = useFormikContext<SignupFormType>();
-  const now = new Date();
-  const maxDate = new Date(
-    Date.UTC(now.getFullYear() - 18, now.getMonth(), now.getDate())
-  );
-  function validateDateString(value: string) {
-    let error;
-    const parsedDate = isDate(value)
-      ? value
-      : parse(value, "dd/MM/yyyy", new Date());
-
-    if (!isValid(parsedDate)) {
-      error = t("Invalid date");
-    }
-    return error;
-  }
   const onBackClick = () => {
     setFieldValue("step", 0);
   };
@@ -113,48 +98,7 @@ const Step1 = () => {
           </FormGroup>
         )}
       </FormikField>
-      <FormikField name="birthdate" validate={validateDateString}>
-        {({ meta, field, form }: FieldProps) => (
-          <FormGroup>
-            <FormLabel
-              htmlFor={field.name}
-              label={
-                <span>
-                  {t("DATE_OF_BIRTH:::SignupFrom Step1")}{" "}
-                  <span aria-hidden>*</span>
-                </span>
-              }
-            />
-            <div className="input-group">
-              <DateInput
-                id={field.name}
-                name={field.name}
-                value={field.value}
-                maxDate={maxDate}
-                i18n={{
-                  locale: i18n.language,
-                  dateFormat: "DD/MM/YYYY",
-                  placeholder: "29/11/1991",
-                  setText: t("Set"),
-                  cancelText: t("Cancel"),
-                  buttonTitle: t("Select your birth date"),
-                }}
-                onCancel={() => form.setFieldTouched(field.name)}
-                onChange={(event) => {
-                  field.onChange(event.target.value);
-                  form.setFieldValue(field.name, event.target.value, true);
-                }}
-                inputProps={{
-                  required: true,
-                  "aria-required": true,
-                  onBlur: () => form.setFieldTouched(field.name),
-                }}
-              />
-            </div>
-            <ErrorMessage name={field.name} />
-          </FormGroup>
-        )}
-      </FormikField>
+      <BirthdayInput />
       <CountrySelect name="country" label={t("COUNTRY:::Signup form Step1")} />
       <FormikField name={"subscribe"}>
         {({
