@@ -44,6 +44,7 @@ const BirthdayInput = () => {
             }
           />
           <DateInput
+            isInvalid={meta.touched && typeof meta.error == "string"}
             id={field.name}
             name={field.name}
             value={field.value}

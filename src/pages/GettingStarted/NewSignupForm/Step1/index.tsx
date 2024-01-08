@@ -117,7 +117,7 @@ const Step1 = () => {
                 onChange={onChange}
                 onBlur={onBlur}
                 value={value}
-                isInvalid={meta.touched && !!meta.error}
+                isInvalid={meta.touched && typeof meta.error == "string"}
                 label={
                   <span>
                     {t(
