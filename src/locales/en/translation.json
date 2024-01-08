@@ -430,9 +430,9 @@
   },
   "SIGNUP_LOGIN_CTA": "Already have an account? <login_link><strong>Login</strong></login_link>",
   "SIGNUP_STEP": {
-    "back": "",
-    "continue": "",
-    "submit": ""
+    "back": "Back",
+    "continue": "Next",
+    "submit": "Sign up"
   },
   "SIGNUP_STEP_TITLE": {
     "Account info": "Account info",
