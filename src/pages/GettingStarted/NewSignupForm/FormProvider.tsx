@@ -1,5 +1,5 @@
-import React from "react";
 import { Formik, FormikHelpers } from "formik";
+import React from "react";
 import { useTranslation } from "react-i18next";
 // import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 import referralStore from "src/redux/referral";
@@ -27,7 +27,7 @@ const FormProvider = ({ children }: FormProviderProps) => {
   const { t } = useTranslation();
   // const dispatch = useAppDispatch();
   const initialValues: SignupFormType = {
-    step: 1,
+    step: 0,
     email: "",
     password: "",
     name: "",
