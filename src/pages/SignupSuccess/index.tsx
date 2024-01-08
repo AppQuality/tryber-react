@@ -54,27 +54,29 @@ export default function SignupSuccess() {
               color={aqBootstrapTheme.palette.success}
               className="aq-mb-3"
             />
-            <Text className="aq-mb-4 aq-text-primary">
-              <Trans
-                i18nKey={"WELCOME_SIGNUP_MESSAGE"}
-                components={{
-                  strong: <strong />,
-                  br: <br />,
-                }}
-                defaults="<strong>Welcome aboard!</strong><br />
+            <div style={{ maxWidth: "560px", margin: "0 auto" }}>
+              <Text className="aq-mb-4 aq-text-primary">
+                <Trans
+                  i18nKey={"WELCOME_SIGNUP_MESSAGE"}
+                  components={{
+                    strong: <strong />,
+                    br: <br />,
+                  }}
+                  defaults="<strong>Welcome aboard!</strong><br />
                 We have sent you a welcome email to the address you used in the sign up process.<br />
                 Now it’s time to explore the TRYBER universe: choose among our University courses, apply for test campaigns and join our community!"
-              />
-            </Text>{" "}
-            <Button
-              className="aq-mb-3"
-              style={{ gridColumn: "auto / span 3" }}
-              kind="primary"
-              size="block"
-              onClick={goToDashboard}
-            >
-              {t("Go to dashboard")}
-            </Button>
+                />
+              </Text>{" "}
+              <Button
+                className="aq-mb-3"
+                style={{ gridColumn: "auto / span 3" }}
+                kind="primary"
+                size="block"
+                onClick={goToDashboard}
+              >
+                {t("Go to dashboard")}
+              </Button>
+            </div>
           </Card>
         </Wrapper>
       </Container>
