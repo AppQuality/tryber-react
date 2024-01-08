@@ -1,8 +1,9 @@
 import { Container, Text } from "@appquality/appquality-design-system";
 import { LangMenu } from "src/features/LangMenu";
-import { OutsideContainer } from "src/features/PageTemplate";
+import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
 import styled from "styled-components";
 
+import { useTranslation } from "react-i18next";
 import AboutUnguess from "./AboutUnguess";
 import BannerTop from "./BannerTop";
 import Brands from "./Brands";
@@ -12,8 +13,6 @@ import HowToJoinTryber from "./HowToJoinTryber";
 import OurCommunity from "./OurCommunity";
 import Reviews from "./Reviews";
 import WhyJoinTryber from "./WhyJoinTryber";
-import NotLoggedOnly from "src/features/NotLoggedOnly";
-import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 
 const StyledHome = styled.div`
   max-width: 100vw;
@@ -51,8 +50,13 @@ const StyledHome = styled.div`
   }
 `;
 export default function Home() {
+  const { t } = useTranslation();
   return (
-    <NotLoggedOnly redirect={{ url: useLocalizeRoute("my-dashboard") }}>
+    <PageTemplate
+      shouldBeLoggedIn={false}
+      route="home"
+      title={`Tryber - ${t("Earn money using your devices")}`}
+    >
       <OutsideContainer>
         <StyledHome>
           <Container className="aq-pt-3">
@@ -93,6 +97,6 @@ export default function Home() {
           </Container>
         </StyledHome>
       </OutsideContainer>
-    </NotLoggedOnly>
+    </PageTemplate>
   );
 }

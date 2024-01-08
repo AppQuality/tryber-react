@@ -1,18 +1,18 @@
 import {
-  Text,
+  Container,
   DatepickerGlobalStyle,
+  Text,
   Title,
   aqBootstrapTheme,
-  Container,
 } from "@appquality/appquality-design-system";
-import { Trans, useTranslation } from "react-i18next";
 import { EnvelopeFill } from "react-bootstrap-icons";
+import { Trans, useTranslation } from "react-i18next";
+import { Link, useHistory } from "react-router-dom";
 import { ButtonWithIcon } from "src/features/ButtonWithIcon";
 import { CenteredCard } from "src/features/CenteredCard";
 import { LangMenu } from "src/features/LangMenu";
-import NotLoggedOnly from "src/features/NotLoggedOnly";
+import { PageTemplate } from "src/features/PageTemplate";
 import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
-import { Link, useHistory } from "react-router-dom";
 
 export default function GettingStarted() {
   const { t } = useTranslation();
@@ -24,7 +24,11 @@ export default function GettingStarted() {
     history.push(emailSignup);
   };
   return (
-    <NotLoggedOnly redirect={{ url: dashboard }}>
+    <PageTemplate
+      shouldBeLoggedIn={false}
+      route={"getting-started/signup"}
+      title={t("Signup for Tryber")}
+    >
       <DatepickerGlobalStyle />
       <Container>
         <LangMenu
@@ -140,6 +144,6 @@ export default function GettingStarted() {
           </div>
         </CenteredCard>
       </Container>
-    </NotLoggedOnly>
+    </PageTemplate>
   );
 }
