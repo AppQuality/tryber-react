@@ -116,10 +116,10 @@ export const SignupForm = ({
           <Title className="aq-mb-2" size="xs" as="h5">
             {t("Create an account")}
           </Title>
-          <Field type="text" name="name" label={t("Name")} />
+          <Field type="text" name="name" label={t("First Name")} />
           <Field type="text" name="surname" label={t("Surname")} />
           <Field type="email" name="email" label={t("Email")} />
-          <CountrySelect name="country" label={t("Country")} />
+          <CountrySelect name="country" label={t("COUNTRY:::SignupForm")} />
           <FormikField name="birthDate">
             {({
               field, // { name, value, onChange, onBlur }

@@ -283,7 +283,7 @@ const TabBase = () => {
                 </Title>
                 <CountrySelect
                   name="country"
-                  label={t("Country")}
+                  label={t("COUNTRY:::Profile TabBase")}
                   onChange={(v: SelectType.Option) => {
                     formikProps.setFieldValue("city", "");
                     formikProps.setFieldTouched("city");

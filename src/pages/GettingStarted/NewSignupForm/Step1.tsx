@@ -111,7 +111,8 @@ const Step1 = () => {
               htmlFor={field.name}
               label={
                 <span>
-                  {t("Date of birth (dd/mm/yyyy)")} <span aria-hidden>*</span>
+                  {t("DATE_OF_BIRTH:::SignupFrom Step1")}{" "}
+                  <span aria-hidden>*</span>
                 </span>
               }
             />
@@ -141,7 +142,7 @@ const Step1 = () => {
           </FormGroup>
         )}
       </FormikField>
-      <CountrySelect name="country" label={t("Country")} />
+      <CountrySelect name="country" label={t("COUNTRY:::Signup form Step1")} />
       <FormikField name={"subscribe"}>
         {({
           field: { name, onChange, onBlur, value }, // { name, value, onChange, onBlur }
@@ -177,7 +178,7 @@ const Step1 = () => {
       </Text>
       <ButtonWrapper>
         <Button size="block" flat onClick={onBackClick}>
-          {t("Back")}
+          {t("BACK:::Signup form Step1")}
         </Button>
         <Button size="block" type="submit">
           {t("Sign up")}

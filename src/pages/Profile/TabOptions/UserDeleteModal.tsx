@@ -44,7 +44,7 @@ const GenericModal = () => {
               updateDeletionReason("");
             }}
           >
-            {t("Back")}
+            {t("BACK:::UserDeleteModal")}
           </Button>
           <Button
             disabled={!deletionReason || !deletionReason.length}

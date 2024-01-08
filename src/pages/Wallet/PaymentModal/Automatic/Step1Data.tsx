@@ -35,7 +35,7 @@ export const Step1Data = () => {
             name="bankaccountOwner"
             type="text"
             label={t("Account holder")}
-            placeholder={t("name")}
+            placeholder={t("First Name")}
           />
           <Field
             name="iban"

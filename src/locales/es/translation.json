@@ -97,6 +97,12 @@
   },
   "Avalaible Campaigns": "Campañas Disponibles",
   "Awarded on": "Fecha",
+  "BACK": {
+    "DeviceModalFooter": "Atrás",
+    "PaymentModalFooter": "Atrás",
+    "Signup form Step1": "Anterior",
+    "UserDeleteModal": "Atrás"
+  },
   "BBUGFORM_UPLOAD_IMG_ICON": "Imagen",
   "BUGFORM_BUGDTLS_BUGTITLE": "Título",
   "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "El campo debe rellenarse así: [Página o sección en la que has encontrado el bug] - Breve descripción del bug",
@@ -154,7 +160,6 @@
   "BUGSEVERITY_TOOLTIP_TXT": "Más información",
   "BUGTITLEDETAILS_TOOLTIP_TXT": "Más información",
   "BUGTYPE_TOOLTIP_TXT": "Más información",
-  "Back": "Atrás",
   "Bank Transfer": "Transferencia bancaria",
   "Base": "Base",
   "Become an AppQuality Tester": "Conviértete en un Tryber",
@@ -166,6 +171,12 @@
   "Brands helped": "Marcas ayudaron",
   "Bug Evaluation": "Evaluación del Bug",
   "By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>": "Al registrarte en TRYBER, aceptas las <1>condiciones de uso</1> y <3>política de privacidad</3>",
+  "COUNTRY": {
+    "Profile TabBase": "País de residencia",
+    "Profile TabFiscal": "País de residencia",
+    "Signup form Step1": "País de residencia *",
+    "SignupForm": "País de residencia *"
+  },
   "Campaign": "Campaña",
   "Campaign Completion": "Finalización de Campaña",
   "Campaigns delivered": "Campañas enviadas",
@@ -184,7 +195,7 @@
   "Closed": "Cerrado",
   "Coming soon": "Próximamente",
   "Complete the Basic Course": "Empieza por el Curso Básico",
-  "Complete your profile": "",
+  "Complete your profile": "Crea una cuenta",
   "Completed campaigns": "Campañas completadas",
   "Computer type": "Tipo de computer",
   "Confirm email": "Confirma tu correo electrónico",
@@ -194,15 +205,16 @@
   "Continue with LinkedIn": "Continúa con LinkedIn",
   "Continue with email": "Regístrate con tu correo",
   "Countries covered": "Países alcanzados",
-  "Country": "País de residencia",
   "Courses": "Cursos",
   "Create an account": "Crear una cuenta",
   "Create your account": "",
   "Current password": "Password actual",
+  "DATE_OF_BIRTH": {
+    "BitrhdayPicker": "Fecha de nacimiento",
+    "SignupFrom Step1": "Fecha de nacimiento (dd/mm/aaaa)"
+  },
   "Dashboard": "Dashboard",
   "Date": "Fecha",
-  "Date of birth": "Fecha de nacimiento",
-  "Date of birth (dd/mm/yyyy)": "",
   "Delete": "Eliminar",
   "Delete account": "Elímina account",
   "Delete your account": "Elímina tu account ",
@@ -234,7 +246,7 @@
   "FAQ": "Preguntas Frecuentes",
   "Facebook": "Facebook",
   "Female": "Femenino",
-  "Fields marked with asterisk (*) are required.": "",
+  "Fields marked with asterisk (*) are required.": "Los campos marcados con un asterisco (*) son obligatorios.",
   "Fill in your profile details": "Completa tu perfil",
   "Filters": "Filtros",
   "Finished": "Finalizado",
@@ -395,8 +407,8 @@
     "continue": ""
   },
   "SIGNUP_STEP_TITLE": {
-    "Account info": "",
-    "Personal info": ""
+    "Account info": "Info cuenta",
+    "Personal info": "Info personal"
   },
   "SIGNUP_TERMS_DISCLAIMER": "Al continuar con Facebook o LinkedIn, aceptas los <terms_link>Términos de uso</terms_link>, la <privacy_link>Política de privacidad</privacy_link> y el <ethical_link>Código ético</ethical_link> de TRYBER.",
   "Save": "Guardar",
@@ -418,7 +430,7 @@
   "Settings": "Configuraciones",
   "Severity": "Gravedad",
   "Should be exactly 16 characters": "Debe tener exactamente 16 caracteres",
-  "Sign up": "",
+  "Sign up": "Regístrate ahora",
   "Signup for Tryber": "Regístrate en TRYBER",
   "Signup now": "Regístrese ahora",
   "Signup success": "",
@@ -434,7 +446,7 @@
   "Street": "Calle",
   "Street N°": "Número de casa",
   "Submitted bugs": "Bugs enviados",
-  "Surname": "Apellido",
+  "Surname": "Apellido(s)",
   "Take me to the dashboard": "Que empiece la aventura",
   "Take part in the Basic Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become an AppQuality world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community.": "Todo comienza aquí: solo cuando hayas completado el Curso Básico TRYBER te invitaremos a partecipar en las campañas. Además, ganarás 200 puntos de experiencia, conocerás el mundo de TRYBER, te convertirás en un miembro cualificado y recibirás una certificación que podrás compartir en LinkedIn.",
   "Tax identification number": {
@@ -653,7 +665,7 @@
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Descargar recibo",
   "address": "dirección",
   "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {
-    "DISCLAIMER_SIGNUP_PAGE": ""
+    "DISCLAIMER_SIGNUP_PAGE": "Al inscribirte, aceptas los <termsLink>Términos de uso</termsLink>, <privacyLink>la Política de privacidad</privacyLink> y el <ethicalCodeLink>Código ético</ethicalCodeLink> y recibir correos para la comunidad de TRYBER."
   },
   "available tags: <br>, <bold>": {
     "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Replicabilidad del bug</b><br>\n<br>\n<b>SOMETIMES</b><br>\nEn igualdad de condiciones y procesos, el bug se produce de forma esporádica o impredecible, pero siempre es posible reproducirlo realizando múltiples intentos.<br>\n<br>\n<b>ALWAYS</b><br>\nEn igualdad de condiciones y procesos, el bug se produce con cada intento de replicación. Para que sea así, el bug debe reproducirse con éxito al menos 3 de cada 3 veces.<br>\n<br>\n<b>ONCE</b><br>\nEn igualdad de condiciones y procesos, el bug solo se ha producido una vez y no se ha podido replicar (se necesitan al menos 3 intentos).",
@@ -730,7 +742,6 @@
   "login page title": "Inicia sesión en Tryber",
   "login to continue": "Inicia sesión en TRYBER",
   "minimum of 6 characters": "",
-  "name": "Nombre",
   "no data": "—",
   "not calculated": {
     "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "No incluido",
@@ -755,6 +766,11 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
+  "Back": "Atrás",
+  "Country": "País de residencia",
+  "name": "Nombre",
+  "Date of birth": "Fecha de nacimiento",
+  "Date of birth (dd/mm/yyyy)": "",
   "Welcome aboard!": "¡Te damos la bienvenida a bordo!",
   "Welcome signup message": "Te hemos enviado un correo de bienvenida a la dirección que indicaste durante la registración. Descubre el universo TRYBER: elige entre los cursos de Tryber University, apúntate a las campañas de test y toma parte en la comunidad.",
   "Ethical Code": "",

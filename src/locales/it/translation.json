@@ -97,6 +97,12 @@
   },
   "Avalaible Campaigns": "Campagne Disponibili",
   "Awarded on": "Data",
+  "BACK": {
+    "DeviceModalFooter": "Indietro",
+    "PaymentModalFooter": "Indietro",
+    "Signup form Step1": "Indietro",
+    "UserDeleteModal": "Indietro"
+  },
   "BBUGFORM_UPLOAD_IMG_ICON": "Immagine",
   "BUGFORM_BUGDTLS_BUGTITLE": "Titolo",
   "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "Compila così questo campo: [Pagina o sezione dove hai trovato il bug] - Breve descrizione del bug",
@@ -154,7 +160,6 @@
   "BUGSEVERITY_TOOLTIP_TXT": "Ti diciamo di più",
   "BUGTITLEDETAILS_TOOLTIP_TXT": "Ti diciamo di più",
   "BUGTYPE_TOOLTIP_TXT": "Ti diciamo di più",
-  "Back": "Indietro",
   "Bank Transfer": "Bonifico bancario",
   "Base": "Base",
   "Become an AppQuality Tester": "Diventa un Tryber",
@@ -166,6 +171,12 @@
   "Brands helped": "Aziende aiutate",
   "Bug Evaluation": "Valutazione Bug",
   "By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>": "Iscrivendoti a TRYBER, accetti i <1>Termini d'utilizzo</1> e la <3>Privacy Policy</3>",
+  "COUNTRY": {
+    "Profile TabBase": "Paese di residenza",
+    "Profile TabFiscal": "Paese di residenza",
+    "Signup form Step1": "Paese di residenza *",
+    "SignupForm": "Paese di residenza *"
+  },
   "Campaign": "Campagna",
   "Campaign Completion": "Completamento campagna",
   "Campaigns delivered": "Campagne completate",
@@ -184,7 +195,7 @@
   "Closed": "Chiuse",
   "Coming soon": "Coming soon",
   "Complete the Basic Course": "Inizia dal Corso Base",
-  "Complete your profile": "",
+  "Complete your profile": "Crea il tuo account",
   "Completed campaigns": "Campagne completate",
   "Computer type": "Tipo di computer",
   "Confirm email": "Conferma indirizzo email",
@@ -194,15 +205,16 @@
   "Continue with LinkedIn": "Continua con LinkedIn",
   "Continue with email": "Continua con email",
   "Countries covered": "Paesi raggiunti",
-  "Country": "Paese di residenza",
   "Courses": "Corsi",
   "Create an account": "Crea un account",
   "Create your account": "",
   "Current password": "Password attuale",
+  "DATE_OF_BIRTH": {
+    "BitrhdayPicker": "Data di nascita",
+    "SignupFrom Step1": "Data di nascita (gg/mm/aaaa)"
+  },
   "Dashboard": "Dashboard",
   "Date": "Data",
-  "Date of birth": "Data di nascita",
-  "Date of birth (dd/mm/yyyy)": "",
   "Delete": "Rimuovi",
   "Delete account": "Elimina account",
   "Delete your account": "Elimina il tuo account",
@@ -234,7 +246,7 @@
   "FAQ": "Domande frequenti",
   "Facebook": "Facebook",
   "Female": "Donna",
-  "Fields marked with asterisk (*) are required.": "",
+  "Fields marked with asterisk (*) are required.": "I campi con l’asterisco (*) sono obbligatori.",
   "Fill in your profile details": "Completa il tuo profilo",
   "Filters": "Filtri",
   "Finished": "Terminate",
@@ -275,7 +287,7 @@
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Qui puoi solo cambiare la versione del tuo sistema operativo. Se vuoi aggiungere un altro dispositivo clicca su \"Aggiungi dispositivo\"",
   "History": "Cronologia",
   "How do experience points work?": "Come funzionano i punti esperienza?",
-  "I agree to receive earning opportunity emails from AppQuality": "Accetto di ricevere email dedicate alla community di TRYBER",
+  "I agree to receive earning opportunity emails from AppQuality": "Accetto di ricevere email per la community di TRYBER",
   "I don't receive testing campaigns": "Non ricevo Campagne",
   "I don’t have enough time to take part in the campaigns": "Non ho abbastanza tempo per svolgere le Campagne",
   "I get too many emails": "Ricevo troppe email",
@@ -395,8 +407,8 @@
     "continue": ""
   },
   "SIGNUP_STEP_TITLE": {
-    "Account info": "",
-    "Personal info": ""
+    "Account info": "Dati account",
+    "Personal info": "Dati personali"
   },
   "SIGNUP_TERMS_DISCLAIMER": "Quando continui con Facebook o LinkedIn, accetti i <terms_link>Termini di utilizzo</terms_link>, <privacy_link>la Privacy Policy</privacy_link> e <ethical_link>il Codice Etico</ethical_link> di TRYBER.",
   "Save": "Salva",
@@ -418,7 +430,7 @@
   "Settings": "Impostazioni",
   "Severity": "Gravità",
   "Should be exactly 16 characters": "Deve contenere esattamente 16 caratteri",
-  "Sign up": "",
+  "Sign up": "Iscriviti ora",
   "Signup for Tryber": "Iscriviti a TRYBER",
   "Signup now": "Iscriviti ora",
   "Signup success": "",
@@ -653,7 +665,7 @@
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Scarica ricevuta",
   "address": "indirizzo",
   "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {
-    "DISCLAIMER_SIGNUP_PAGE": ""
+    "DISCLAIMER_SIGNUP_PAGE": "Quando ti iscrivi, accetti i <termsLink>Termini di utilizzo</termsLink>, la <privacyLink>Privacy Policy</privacyLink> e il <ethicalCodeLink>Codice Etico</ethicalCodeLink> e di ricevere email per la community di TRYBER."
   },
   "available tags: <br>, <bold>": {
     "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Replicabilità del bug</b><br>\n<br>\n<b>SOMETIMES</b><br>\nIl bug si verifica, a parità di condizioni e processi, in modo sporadico/imprevedibile, ma è sempre possibile riprodurlo eseguendo più tentativi.<br>\n<br>\n<b>ALWAYS</b><br>\nIl bug si verifica, a parità di condizioni e processi, a ogni tentativo di replica. Per essere tale, il bug deve essere riprodotto con successo almeno 3 volte su 3.<br>\n<br>\n<b>ONCE</b><br>\nIl bug si è verificato soltanto una volta e non è stato possibile riprodurlo ulteriormente nonostante sia stato replicato almeno 3 volte.<br>",
@@ -730,7 +742,6 @@
   "login page title": "Accedi a Tryber",
   "login to continue": "Accedi per continuare",
   "minimum of 6 characters": "",
-  "name": "Nome",
   "no data": "—",
   "not calculated": {
     "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "Non conteggiato",
@@ -755,6 +766,9 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Back": "Indietro",
+  "Country": "Paese di residenza",
+  "name": "Nome",
   "Welcome aboard!": "È bello averti tra noi",
   "Welcome signup message": "Ti abbiamo inviato una email di benvenuto all’indirizzo che hai indicato durante la registrazione. Scopri l’universo di TRYBER: scegli tra i corsi della nostra University, candidati a campagne di test e prendi parte alla community.",
   "Ethical Code": "",

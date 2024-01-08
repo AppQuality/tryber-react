@@ -97,6 +97,12 @@
   },
   "Avalaible Campaigns": "Avalaible Campaigns",
   "Awarded on": "Awarded on",
+  "BACK": {
+    "DeviceModalFooter": "Back",
+    "PaymentModalFooter": "Back",
+    "Signup form Step1": "Back",
+    "UserDeleteModal": "Back"
+  },
   "BBUGFORM_UPLOAD_IMG_ICON": "Image",
   "BUGFORM_BUGDTLS_BUGTITLE": "Bug title",
   "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "The field needs to be filled this way: [Page or section where you found the bug] - The bug in a nutshell",
@@ -154,7 +160,6 @@
   "BUGSEVERITY_TOOLTIP_TXT": "Learn more",
   "BUGTITLEDETAILS_TOOLTIP_TXT": "Learn more",
   "BUGTYPE_TOOLTIP_TXT": "Learn more",
-  "Back": "Back",
   "Bank Transfer": "Bank transfer",
   "Base": "Base",
   "Become an AppQuality Tester": "Become a Tryber",
@@ -166,6 +171,12 @@
   "Brands helped": "Brands helped",
   "Bug Evaluation": "Bug Evaluation",
   "By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>": "By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>",
+  "COUNTRY": {
+    "Profile TabBase": "Country of residence",
+    "Profile TabFiscal": "Country of residence",
+    "Signup form Step1": "Country of residence *",
+    "SignupForm": "Country of residence *"
+  },
   "Campaign": "Campaign",
   "Campaign Completion": "Campaign Completion",
   "Campaigns delivered": "Campaigns delivered",
@@ -184,7 +195,7 @@
   "Closed": "Closed",
   "Coming soon": "Coming soon",
   "Complete the Basic Course": "Start with the Basic Course",
-  "Complete your profile": "",
+  "Complete your profile": "Create your account",
   "Completed campaigns": "Completed campaigns",
   "Computer type": "Computer type",
   "Confirm email": "Confirm email",
@@ -194,15 +205,16 @@
   "Continue with LinkedIn": "",
   "Continue with email": "Continue with email",
   "Countries covered": "Countries covered",
-  "Country": "Country of residence",
   "Courses": "Courses",
   "Create an account": "Create an account",
   "Create your account": "",
   "Current password": "Current password",
+  "DATE_OF_BIRTH": {
+    "BitrhdayPicker": "Date of birth",
+    "SignupFrom Step1": "Date of birth (dd/mm/yyyy)"
+  },
   "Dashboard": "Dashboard",
   "Date": "Date",
-  "Date of birth": "Date of birth",
-  "Date of birth (dd/mm/yyyy)": "",
   "Delete": "Delete",
   "Delete account": "Delete account",
   "Delete your account": "Delete your account",
@@ -234,7 +246,7 @@
   "FAQ": "FAQ",
   "Facebook": "Facebook",
   "Female": "Female",
-  "Fields marked with asterisk (*) are required.": "",
+  "Fields marked with asterisk (*) are required.": "Fields marked with asterisk (*) are required.",
   "Fill in your profile details": "Fill in your profile",
   "Filters": "Filters",
   "Finished": "Finished",
@@ -330,7 +342,7 @@
   "Must contain at least a lowercase letter": "Must contain at least a lowercase letter",
   "Must contain at least a number": "Must contain at least a number",
   "Must contain at least an uppercase letter": "Must contain at least an uppercase letter",
-  "Name": "First name",
+  "Name": "Name",
   "Net receivable": "Net receivable",
   "Net received": "Net received",
   "New password": "New password",
@@ -395,8 +407,8 @@
     "continue": ""
   },
   "SIGNUP_STEP_TITLE": {
-    "Account info": "",
-    "Personal info": ""
+    "Account info": "Account info",
+    "Personal info": "Personal info"
   },
   "SIGNUP_TERMS_DISCLAIMER": "By clicking “Signup with”, you accept the <terms_link>Terms</terms_link>, <privacy_link>Privacy Policy</privacy_link> and <ethical_link>Ethical Code</ethical_link> of tryber.me",
   "Save": "Save",
@@ -418,7 +430,7 @@
   "Settings": "Settings",
   "Severity": "Severity",
   "Should be exactly 16 characters": "Should be exactly 16 characters",
-  "Sign up": "",
+  "Sign up": "Sign up",
   "Signup for Tryber": "Signup for Tryber",
   "Signup now": "Signup now",
   "Signup success": "",
@@ -434,7 +446,7 @@
   "Street": "Street",
   "Street N°": "Street N°",
   "Submitted bugs": "Submitted bugs",
-  "Surname": "Last name",
+  "Surname": "Surname",
   "Take me to the dashboard": "Let the adventure begin",
   "Take part in the Basic Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become an AppQuality world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community.": "Everything starts from here: only after completing the Basic TRYBER Course you will be eligible for the campaigns. And that is not all, you'll earn 200 experience points, get an overview of the world of TRYBER, be part of qualified members and receive a certification that you can share on LinkedIn. ",
   "Tax identification number": {
@@ -653,7 +665,7 @@
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Download receipt",
   "address": "address",
   "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {
-    "DISCLAIMER_SIGNUP_PAGE": ""
+    "DISCLAIMER_SIGNUP_PAGE": "By signing up, you accept the <termsLink>Terms</termsLink>, <privacyLink>Privacy Policy</privacyLink> and <ethicalCodeLink>Ethical Code</ethicalCodeLink> and you agree to receive email for the TRYBER community."
   },
   "available tags: <br>, <bold>": {
     "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Bug replicability</b><br>\n<br>\n<b>SOMETIMES</b><br>\nWith all conditions and processes being equal, the bug occurs sporadically/unpredictably, but it is always possible to reproduce it by making multiple attempts.<br>\n<br>\n<b>ALWAYS</b><br>\nWith all conditions and processes being equal, the bug occurs under the same conditions and processes, at each replication attempt. To be such, the bug must be successfully reproduced at least 3 out of 3 times.<br>\n<br>\n<b>ONCE</b><br>\nWith all conditions and processes being equal, the bug only occurred once and could not be replicated (at least 3 attempts needed).",
@@ -730,7 +742,6 @@
   "login page title": "Log in to Tryber",
   "login to continue": "Log in to continue",
   "minimum of 6 characters": "",
-  "name": "Name",
   "no data": "—",
   "not calculated": {
     "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "Not counted",
@@ -755,6 +766,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "name": "Name",
   "Welcome aboard!": "Welcome aboard!",
   "Welcome signup message": "We have sent you a welcome email to the address you used in the sign up process. Now it’s time to explore the TRYBER universe: choose among our University courses, apply for test campaigns and join our community!",
   "Ethical Code": "",
