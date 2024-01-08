@@ -39,7 +39,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
       <ButtonWithIcon
         className="aq-mb-3"
         size="block"
-        kind="light"
+        flat
         data-qa="login-facebook-button"
         onClick={() => {
           window.location.href =
@@ -57,7 +57,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
       <ButtonWithIcon
         className="aq-mb-3"
         size="block"
-        kind="light"
+        flat
         data-qa="login-linkedin-button"
         onClick={() => {
           window.location.href =
