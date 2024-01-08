@@ -107,7 +107,7 @@ test.describe("The getting started page", () => {
   }) => {
     await expect(page.getByTestId("terms-and-conditions")).toBeVisible();
     await expect(page.getByTestId("terms-and-conditions")).toHaveText(
-      i18n.t("Terms and Conditions")
+      i18n.t("Terms")
     );
   });
   test(`if the user click the terms and conditions link another tab is opened to /terms-and-conditions in the current language`, async ({
