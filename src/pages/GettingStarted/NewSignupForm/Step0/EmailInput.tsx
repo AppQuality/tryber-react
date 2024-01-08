@@ -12,7 +12,7 @@ const EmailInput = ({ className }: { className?: string }) => {
   return (
     <div className={className}>
       <FormikField name="email">
-        {({ field }: FieldProps) => (
+        {({ field, meta }: FieldProps) => (
           <>
             <FormLabel
               htmlFor={field.name}
@@ -28,6 +28,7 @@ const EmailInput = ({ className }: { className?: string }) => {
                 "data-qa": "email-input",
                 "aria-required": true,
               }}
+              isInvalid={meta.touched && typeof meta.error == "string"}
               value={field.value}
               id={field.name}
               type="text"

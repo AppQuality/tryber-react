@@ -12,7 +12,7 @@ const PasswordInput = ({ className }: { className?: string }) => {
   return (
     <div className={className}>
       <FormikField name="password">
-        {({ field }: FieldProps) => (
+        {({ field, meta }: FieldProps) => (
           <>
             <FormLabel
               htmlFor={field.name}
@@ -25,6 +25,7 @@ const PasswordInput = ({ className }: { className?: string }) => {
             <Input
               extra={{ ...field, "data-qa": "password-input" }}
               value={field.value}
+              isInvalid={meta.touched && typeof meta.error == "string"}
               id={field.name}
               type="password"
               placeholder="********"
