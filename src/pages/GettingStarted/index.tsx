@@ -27,7 +27,7 @@ export default function GettingStarted() {
     <PageTemplate
       shouldBeLoggedIn={false}
       route={"getting-started/signup"}
-      title={t("Signup for Tryber")}
+      pageTitle={t("Signup for Tryber")}
     >
       <DatepickerGlobalStyle />
       <Container>
