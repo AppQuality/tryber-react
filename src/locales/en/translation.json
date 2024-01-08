@@ -302,7 +302,6 @@
   "Insert Name and surname separated by space": "Insert name and surname separated by space",
   "Institute": "Institute",
   "Institute is a required field.": "Institute is a required field.",
-  "Invalid date": "",
   "Invalid fiscal profile": "Invalid fiscal profile",
   "Invalid tax profile.": "Invalid tax profile.",
   "Keep": "Keep",
@@ -403,6 +402,9 @@
   "Request your data": "Request your data",
   "Reset password": "Reset password",
   "Review the manual": "Review the manual",
+  "SIGNUP_FORM": {
+    "Invalid date": ""
+  },
   "SIGNUP_LOGIN_CTA": "Already have an account? <login_link><strong>Login</strong></login_link>",
   "SIGNUP_STEP": {
     "back": "",
@@ -765,6 +767,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "Invalid date": "",
   "Sign up": "Sign up",
   "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {
     "DISCLAIMER_SIGNUP_PAGE": "By signing up, you accept the <termsLink>Terms</termsLink>, <privacyLink>Privacy Policy</privacyLink> and <ethicalCodeLink>Ethical Code</ethicalCodeLink> and you agree to receive email for the TRYBER community."
