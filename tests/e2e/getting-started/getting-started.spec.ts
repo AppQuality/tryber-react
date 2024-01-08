@@ -10,11 +10,16 @@ let gettingStarted: GettingStarted;
 let dashboard: DashboardPage;
 
 test.describe("if the user is logged in", () => {
+  test.beforeEach(async ({ page, i18n }) => {
+    gettingStarted = new GettingStarted({ page, i18n });
+    gettingStarted.loggedIn();
+    dashboard = new DashboardPage(page);
+  });
   test(`the url ${gettingStartedUrl} should redirect to the dashboard`, async ({
     page,
   }) => {
     await gettingStarted.visitSignupChoicePage();
-    expect(page.url()).toContain(dashboard.url);
+    await expect(page).toHaveURL(new RegExp(`${dashboard.url}/$`));
   });
 });
 
