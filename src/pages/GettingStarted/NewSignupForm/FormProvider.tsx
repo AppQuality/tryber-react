@@ -95,7 +95,7 @@ const FormProvider = ({ children }: FormProviderProps) => {
           password: values.password,
           name: values.name,
           surname: values.surname,
-          birthDate: values.birthdate.split("/").join("-"),
+          birthDate: values.birthdate.split("/").reverse().join("-"),
           country: values.country,
           referral: values.referral,
         },
