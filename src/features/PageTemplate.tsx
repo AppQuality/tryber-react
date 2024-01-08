@@ -41,6 +41,7 @@ export const OutsideContainer: FC = ({ children }) => {
 export const PageTemplate: FC<
   {
     title?: string;
+    pageTitle?: string;
     subtitle?: string;
     heading?: string;
     showHeader?: boolean;
@@ -62,6 +63,7 @@ export const PageTemplate: FC<
 > = ({
   children,
   title,
+  pageTitle,
   subtitle,
   heading,
   shouldBeLoggedIn = false,
@@ -137,7 +139,9 @@ export const PageTemplate: FC<
   return (
     <GoogleTagManager
       title={
-        title
+        pageTitle
+          ? pageTitle
+          : title
           ? title
           : (route.charAt(0).toUpperCase() + route.slice(1)).replaceAll(
               "-",

@@ -29,7 +29,7 @@ const SignupForm = ({}) => {
     <PageTemplate
       shouldBeLoggedIn={false}
       route={emailSignup}
-      title={t("Signup for Tryber")}
+      pageTitle={t("Signup for Tryber")}
     >
       <DatepickerGlobalStyle />
       <Container className="aq-pb-3">
