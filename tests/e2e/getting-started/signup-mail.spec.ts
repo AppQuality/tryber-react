@@ -1,7 +1,9 @@
+import { DashboardPage } from "../../fixtures/DashboardPage";
 import { GettingStartedSignup } from "../../fixtures/GettingStarted/GettingStartedSignup";
 import { expect, test } from "../../fixtures/I18n";
 
 let gettingStarted: GettingStartedSignup;
+let dashboard: DashboardPage;
 
 test(`if the user is logged in The signup mail page should redirect to the dashboard`, async ({
   page,
@@ -10,7 +12,8 @@ test(`if the user is logged in The signup mail page should redirect to the dashb
   gettingStarted = new GettingStartedSignup({ page, i18n });
   await gettingStarted.loggedIn();
   await gettingStarted.visit();
-  expect(await page.url()).toContain("my-dashboard");
+  dashboard = new DashboardPage(page);
+  await expect(page).toHaveURL(new RegExp(`${dashboard.url}/$`));
 });
 test.describe("The signup mail page", () => {
   test.beforeEach(async ({ page, i18n }) => {
