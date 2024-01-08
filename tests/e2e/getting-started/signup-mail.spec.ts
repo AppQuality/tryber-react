@@ -351,7 +351,9 @@ test.describe("The signup mail page second step", () => {
     );
   });
   test("if the user click to submit and all required fields are correctly filled goes to the confirmation step", async ({}) => {
-    throw new Error("Not implemented");
+    await gettingStarted.fillSecondStepWithValidData();
+    await gettingStarted.elements().submitButton().click();
+    await expect(gettingStarted.elements().confirmationStep()).toBeVisible();
   });
   test("if the user click to submit and api answer with a generic error should display a generic error notification to retry", async ({}) => {
     throw new Error("Not implemented");

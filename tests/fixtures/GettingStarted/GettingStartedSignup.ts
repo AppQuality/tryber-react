@@ -36,6 +36,7 @@ export class GettingStartedSignup extends GettingStarted {
       passwordInput: () => this.page.getByTestId("password-input"),
       nameInput: () => this.page.getByTestId("input-name"),
       surnameInput: () => this.page.getByTestId("input-surname"),
+      confirmationStep: () => this.page.getByTestId("signup-success"),
       birthdateInput: () =>
         this.page.getByLabel(this.i18n.t("Date of birth (dd/mm/yyyy)")),
       countryInput: () => this.page.getByTestId("select-country"),
