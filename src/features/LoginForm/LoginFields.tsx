@@ -24,7 +24,7 @@ interface LoginFieldsProps {
 const LoginFields = ({ cta, error }: LoginFieldsProps) => {
   const { isSubmitting, errors } = useFormikContext();
   const { t } = useTranslation();
-  const signupRoute = useLocalizeRoute("getting-started/signup");
+  const signupRoute = useLocalizeRoute("getting-started");
   useEffect(() => {
     const errorsKeys = Object.keys(errors);
     if (errorsKeys.length > 0 && isSubmitting) {
