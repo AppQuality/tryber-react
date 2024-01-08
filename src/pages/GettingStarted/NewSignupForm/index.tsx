@@ -40,7 +40,12 @@ const SignupForm = ({}) => {
           enLink="/getting-started/signup"
         />
         <Wrapper>
-          <Title style={{ textAlign: "center" }} size="l" as={"h1"}>
+          <Title
+            style={{ textAlign: "center" }}
+            size="l"
+            as={"h1"}
+            className="aq-mb-3 aq-pt-3"
+          >
             {t("Signup for Tryber")}
           </Title>
           <Card data-qa="tryber-mail-signup">
