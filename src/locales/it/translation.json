@@ -100,8 +100,8 @@
   "BACK": {
     "DeviceModalFooter": "Indietro",
     "PaymentModalFooter": "Indietro",
-    "Signup form Step1": "Indietro",
-    "UserDeleteModal": "Indietro"
+    "UserDeleteModal": "Indietro",
+    "Signup form Step1": "Indietro"
   },
   "BBUGFORM_UPLOAD_IMG_ICON": "Immagine",
   "BUGFORM_BUGDTLS_BUGTITLE": "Titolo",
@@ -318,6 +318,7 @@
     "Hide password": "Nascondi password",
     "Show password": "Mostra password"
   },
+  "MAIL_SIGNUP_TERMS_DISCLAIMER": "",
   "MODAL_PAYMENT_STEP_TITLE": {
     "Confirm": "Conferma",
     "Get email": "Ricevi email",
@@ -404,7 +405,9 @@
   "Review the manual": "Rivedi il manuale",
   "SIGNUP_LOGIN_CTA": "Hai già un account? <login_link><strong>Accedi</strong></login_link>",
   "SIGNUP_STEP": {
-    "continue": ""
+    "back": "",
+    "continue": "",
+    "submit": ""
   },
   "SIGNUP_STEP_TITLE": {
     "Account info": "Dati account",
@@ -430,7 +433,6 @@
   "Settings": "Impostazioni",
   "Severity": "Gravità",
   "Should be exactly 16 characters": "Deve contenere esattamente 16 caratteri",
-  "Sign up": "Iscriviti ora",
   "Signup for Tryber": "Iscriviti a TRYBER",
   "Signup now": "Iscriviti ora",
   "Signup success": "",
@@ -664,9 +666,6 @@
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Vedi dettagli",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Scarica ricevuta",
   "address": "indirizzo",
-  "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {
-    "DISCLAIMER_SIGNUP_PAGE": "Quando ti iscrivi, accetti i <termsLink>Termini di utilizzo</termsLink>, la <privacyLink>Privacy Policy</privacyLink> e il <ethicalCodeLink>Codice Etico</ethicalCodeLink> e di ricevere email per la community di TRYBER."
-  },
   "available tags: <br>, <bold>": {
     "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Replicabilità del bug</b><br>\n<br>\n<b>SOMETIMES</b><br>\nIl bug si verifica, a parità di condizioni e processi, in modo sporadico/imprevedibile, ma è sempre possibile riprodurlo eseguendo più tentativi.<br>\n<br>\n<b>ALWAYS</b><br>\nIl bug si verifica, a parità di condizioni e processi, a ogni tentativo di replica. Per essere tale, il bug deve essere riprodotto con successo almeno 3 volte su 3.<br>\n<br>\n<b>ONCE</b><br>\nIl bug si è verificato soltanto una volta e non è stato possibile riprodurlo ulteriormente nonostante sia stato replicato almeno 3 volte.<br>",
     "BUGFORM_SEVERITY_MODAL_TXT": "<b>Livello di gravità del bug</b><br>\n<br>\nIl livello di gravità è una stima dell’impatto del problema sull’utilizzo del prodotto. Per calcolarlo, si tiene conto del contesto in cui il problema si verifica (sezioni primarie o secondarie rispetto al core business dell'oggetto della campagna), ma anche delle condizioni in cui è stato riscontrato rispetto a un utilizzo medio. La valutazione della replicabilità non deve in alcun modo influenzare il livello di gravità: a guidare nella scelta del tipo di livello di gravità sono l’impatto sull'utente, il contesto (importanza della sezione) e la presenza o meno di un workaround.<br>\n<br>\n<b>LOW</b><br>\nProblemi che hanno un impatto minimo nell’utilizzo del prodotto. L'utente può portare a termine l’azione senza grandi difficoltà. Spesso si tratta di bug di tipologia USABILITY, TYPO o GRAPHIC.<br>\n<br>\n<b>MEDIUM</b><br>\nProblemi che hanno un impatto contenuto nell'utilizzo del prodotto. L’utente riesce comunque a completare il processo nonostante aver riscontrato alcune difficoltà. Può trattarsi di ogni tipologia di bug.<br>\n<br>\n<b>HIGH</b><br>\nProblemi che hanno un impatto significativo nell’utilizzo del prodotto. L’utente li riscontra prevalentemente nelle sezioni principali e potrebbe non essere in grado di portare a termine l’azione o la campagna nel modo previsto. Generalmente si tratta di bug di tipologia MALFUNCTION, CRASH, PERFORMANCE o SECURITY.<br>\n<br>\n<b>CRITICAL</b><br>\nProblemi che impediscono il completamento delle azioni principali e che spesso comportano un blocco del sistema. L'utente non è in nessun modo in grado di portare a termine l’azione o la campagna. Si tratta prevalentemente di bug di tipologia MALFUNCTION o CRASH.",
@@ -765,6 +764,10 @@
   "{{num}} uploaded": {
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
+  },
+  "Sign up": "Iscriviti ora",
+  "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {
+    "DISCLAIMER_SIGNUP_PAGE": "Quando ti iscrivi, accetti i <termsLink>Termini di utilizzo</termsLink>, la <privacyLink>Privacy Policy</privacyLink> e il <ethicalCodeLink>Codice Etico</ethicalCodeLink> e di ricevere email per la community di TRYBER."
   },
   "Back": "Indietro",
   "Country": "Paese di residenza",

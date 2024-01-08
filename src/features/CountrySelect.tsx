@@ -50,6 +50,7 @@ const CountrySelect = ({
         return (
           <FormGroup>
             <Select
+              data-qa={`select-${name}`}
               name={name}
               label={label}
               placeholder={t("Select a country")}

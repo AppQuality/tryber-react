@@ -1,6 +1,6 @@
 import { FieldProps, useFormikContext } from "formik";
 import { Trans, useTranslation } from "react-i18next";
-import { SignupFormType } from "./FormProvider";
+import { SignupFormType } from "../FormProvider";
 import { parse, isDate, isValid } from "date-fns";
 import {
   Checkbox,
@@ -27,8 +27,7 @@ const ButtonWrapper = styled.div`
 `;
 const Step1 = () => {
   const { t, i18n } = useTranslation();
-  const { setFieldValue, values, errors, setFieldError, touched } =
-    useFormikContext<SignupFormType>();
+  const { setFieldValue } = useFormikContext<SignupFormType>();
   const now = new Date();
   const maxDate = new Date(
     Date.UTC(now.getFullYear() - 18, now.getMonth(), now.getDate())
@@ -135,7 +134,10 @@ const Step1 = () => {
                   field.onChange(event.target.value);
                   form.setFieldValue(field.name, event.target.value, true);
                 }}
-                inputProps={{ onBlur: () => form.setFieldTouched(field.name) }}
+                inputProps={{
+                  required: true,
+                  onBlur: () => form.setFieldTouched(field.name),
+                }}
               />
             </div>
             <ErrorMessage name={field.name} />
@@ -152,36 +154,60 @@ const Step1 = () => {
             <div className="aq-mb-3">
               <Checkbox
                 name={name}
+                id={name}
                 onChange={onChange}
                 onBlur={onBlur}
                 value={value}
                 isInvalid={meta.touched && !!meta.error}
-                label={t(
-                  "I agree to receive earning opportunity emails from AppQuality"
-                )}
+                label={
+                  <span>
+                    {t(
+                      "I agree to receive earning opportunity emails from AppQuality"
+                    )}{" "}
+                    <span aria-hidden>*</span>
+                  </span>
+                }
               />
               <ErrorMessage name={name} />
             </div>
           );
         }}
       </FormikField>
-      <Text small className="aq-mb-3">
+      <Text className="aq-mb-3 aq-text-primary">
         <Trans
-          i18nKey="available tags <termsLink>, <privacyLink> and <ethicalCodeLink>:::DISCLAIMER_SIGNUP_PAGE"
+          i18nKey={"MAIL_SIGNUP_TERMS_DISCLAIMER"}
           components={{
-            termsLink: <a href="" target="_blank" />,
-            privacyLink: <a href="" target="_blank" />,
-            ethicalCodeLink: <a href="" target="_blank" />,
+            terms_link: (
+              <a
+                data-qa="terms-and-conditions"
+                href={t("/terms-and-conditions/")}
+                target="_blank"
+              />
+            ),
+            privacy_link: (
+              <a
+                data-qa="privacy-policy"
+                href={t("https://www.iubenda.com/privacy-policy/7934311")}
+                target="_blank"
+              />
+            ),
+            ethical_link: (
+              <a
+                data-qa="ethical-code"
+                href={t("/ethical-code/")}
+                target="_blank"
+              />
+            ),
           }}
-          defaults="By signing up, you accept the <termsLink>Terms</termsLink>, <privacyLink>Privacy Policy</privacyLink> and <ethicalCodeLink>Ethical Code</ethicalCodeLink> and you agree to receive email for the TRYBER community."
+          defaults="By signing up, you also accept the the <terms_link>Terms</terms_link>, <privacy_link>Privacy Policy</privacy_link> and <ethical_link>Ethical Code</ethical_link> of tryber.me"
         />
       </Text>
       <ButtonWrapper>
         <Button size="block" flat onClick={onBackClick}>
-          {t("BACK:::Signup form Step1")}
+          {t("SIGNUP_STEP:::back")}
         </Button>
         <Button size="block" type="submit">
-          {t("Sign up")}
+          {t("SIGNUP_STEP:::submit")}
         </Button>
       </ButtonWrapper>
     </div>

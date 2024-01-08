@@ -34,11 +34,33 @@ export class GettingStartedSignup extends GettingStarted {
       ...super.elements(),
       emailInput: () => this.page.getByTestId("email-input"),
       passwordInput: () => this.page.getByTestId("password-input"),
+      nameInput: () => this.page.getByLabel(this.i18n.t("Name")),
+      surnameInput: () => this.page.getByLabel(this.i18n.t("Surname")),
+      birthdateInput: () =>
+        this.page.getByLabel(this.i18n.t("Date of birth (dd/mm/yyyy)")),
+      countryInput: () => this.page.getByTestId("select-country"),
+      mailCheckbox: () =>
+        this.page.getByLabel(
+          this.i18n.t(
+            "I agree to receive earning opportunity emails from AppQuality"
+          )
+        ),
+      termsLink: () => this.page.getByTestId("terms-and-conditions"),
+      privacyLink: () => this.page.getByTestId("privacy-policy"),
+      ethicalLink: () => this.page.getByTestId("ethical-code"),
       passwordRequirements: () =>
         this.page.getByTestId("password-requirements"),
       nextButton: () =>
         this.page.getByRole("button", {
           name: this.i18n.t("SIGNUP_STEP:::continue"),
+        }),
+      backButton: () =>
+        this.page.getByRole("button", {
+          name: this.i18n.t("SIGNUP_STEP:::back"),
+        }),
+      submitButton: () =>
+        this.page.getByRole("button", {
+          name: this.i18n.t("SIGNUP_STEP:::submit"),
         }),
       secondStepContainer: () =>
         this.page.getByTestId("mail-signup-second-step"),
@@ -52,6 +74,35 @@ export class GettingStartedSignup extends GettingStarted {
   async fillPasswordWith(password: string) {
     const mailInput = this.elements().passwordInput();
     await mailInput.fill(password);
+  }
+
+  async fillSecondStepWithValidData() {
+    await this.fillNameWith("Test");
+    await this.fillSurnameWith("User");
+    await this.fillBirthdateWith("01/01/1990");
+    await this.fillCountryWith("Italy");
+    await this.elements().mailCheckbox().click();
+  }
+
+  async fillNameWith(name: string) {
+    const nameInput = this.elements().nameInput();
+    await nameInput.fill(name);
+  }
+
+  async fillSurnameWith(surname: string) {
+    const surnameInput = this.elements().surnameInput();
+    await surnameInput.fill(surname);
+  }
+
+  async fillBirthdateWith(birthdate: string) {
+    const birthdateInput = this.elements().birthdateInput();
+    await birthdateInput.fill(birthdate);
+  }
+
+  async fillCountryWith(country: string) {
+    const countryInput = this.elements().countryInput();
+    await countryInput.click();
+    await countryInput.getByText(country).click();
   }
 
   async fillEmailAndPasswordWithValidData() {

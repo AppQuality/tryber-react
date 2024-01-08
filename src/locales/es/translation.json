@@ -100,8 +100,8 @@
   "BACK": {
     "DeviceModalFooter": "Atrás",
     "PaymentModalFooter": "Atrás",
-    "Signup form Step1": "Anterior",
-    "UserDeleteModal": "Atrás"
+    "UserDeleteModal": "Atrás",
+    "Signup form Step1": "Anterior"
   },
   "BBUGFORM_UPLOAD_IMG_ICON": "Imagen",
   "BUGFORM_BUGDTLS_BUGTITLE": "Título",
@@ -318,6 +318,7 @@
     "Hide password": "Contraseña oculta",
     "Show password": "Mostrar contraseña"
   },
+  "MAIL_SIGNUP_TERMS_DISCLAIMER": "",
   "MODAL_PAYMENT_STEP_TITLE": {
     "Confirm": "Confirmación",
     "Get email": "Recibe correo",
@@ -404,7 +405,9 @@
   "Review the manual": "Revisar el manual",
   "SIGNUP_LOGIN_CTA": "¿Ya tienes una cuenta? <login_link><strong>Inicia sesión</strong></login_link>",
   "SIGNUP_STEP": {
-    "continue": ""
+    "back": "",
+    "continue": "",
+    "submit": ""
   },
   "SIGNUP_STEP_TITLE": {
     "Account info": "Info cuenta",
@@ -430,7 +433,6 @@
   "Settings": "Configuraciones",
   "Severity": "Gravedad",
   "Should be exactly 16 characters": "Debe tener exactamente 16 caracteres",
-  "Sign up": "Regístrate ahora",
   "Signup for Tryber": "Regístrate en TRYBER",
   "Signup now": "Regístrese ahora",
   "Signup success": "",
@@ -664,9 +666,6 @@
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Ver detalles",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Descargar recibo",
   "address": "dirección",
-  "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {
-    "DISCLAIMER_SIGNUP_PAGE": "Al inscribirte, aceptas los <termsLink>Términos de uso</termsLink>, <privacyLink>la Política de privacidad</privacyLink> y el <ethicalCodeLink>Código ético</ethicalCodeLink> y recibir correos para la comunidad de TRYBER."
-  },
   "available tags: <br>, <bold>": {
     "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Replicabilidad del bug</b><br>\n<br>\n<b>SOMETIMES</b><br>\nEn igualdad de condiciones y procesos, el bug se produce de forma esporádica o impredecible, pero siempre es posible reproducirlo realizando múltiples intentos.<br>\n<br>\n<b>ALWAYS</b><br>\nEn igualdad de condiciones y procesos, el bug se produce con cada intento de replicación. Para que sea así, el bug debe reproducirse con éxito al menos 3 de cada 3 veces.<br>\n<br>\n<b>ONCE</b><br>\nEn igualdad de condiciones y procesos, el bug solo se ha producido una vez y no se ha podido replicar (se necesitan al menos 3 intentos).",
     "BUGFORM_SEVERITY_MODAL_TXT": "<b>Nivel de gravedad del bug</b><br>\n<br>\nEl nivel de gravedad es una estimación del impacto del problema en el uso del producto. Para calcularlo, se tiene en cuenta tanto el contexto en el que se produce el problema (secciones primarias o secundarias de la actividad principal del objeto de la campaña), como las condiciones en las que se ha encontrado con respecto al uso promedio. La evaluación de la replicabilidad no debe influir en absoluto en el nivel de gravedad: el impacto en el usuario, el contexto (importancia de la sección) y la presencia o ausencia de un paliativo deben guiar la elección del nivel de gravedad.<br>\n<br>\n<b>LOW</b><br>\nProblemas que tienen un impacto mínimo en el uso del producto. El usuario puede llevar a cabo la acción sin gran dificultad. Suelen ser bugs de tipología USABILITY, TYPO o GRAPHIC.<br>\n<br>\n<b>MEDIUM</b><br>\nProblemas que tienen un impacto limitado en el uso del producto. El usuario consigue completar el proceso a pesar de experimentar algunas dificultades. Puede tratarse de cualquier tipología de bug.<br>\n<br>\n<b>HIGH</b><br>\nProblemas que tienen un impacto significativo en el uso del producto. El usuario los encuentra principalmente en las secciones principales y puede no ser capaz de completar la acción o la campaña como se esperaba. Por lo general, se trata de bugs de tipología MALFUNCTION, CRASH, PERFORMANCE o SECURITY.<br>\n<br>\n<b>CRITICAL</b><br>\nProblemas que impiden la finalización de las acciones principales y que a menudo provocan la caída del sistema. El usuario no puede completar la acción o la campaña de ninguna manera. Se trata principalmente de bugs de tipología MALFUNCTION o CRASH.",
@@ -765,6 +764,10 @@
   "{{num}} uploaded": {
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
+  },
+  "Sign up": "Regístrate ahora",
+  "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {
+    "DISCLAIMER_SIGNUP_PAGE": "Al inscribirte, aceptas los <termsLink>Términos de uso</termsLink>, <privacyLink>la Política de privacidad</privacyLink> y el <ethicalCodeLink>Código ético</ethicalCodeLink> y recibir correos para la comunidad de TRYBER."
   },
   "Back": "Atrás",
   "Country": "País de residencia",

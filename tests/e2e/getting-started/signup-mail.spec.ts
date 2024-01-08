@@ -195,51 +195,136 @@ test.describe("The signup mail page second step", () => {
   });
   test("should display a stepper component at the second step", async () => {
     await expect(gettingStarted.elements().languageSwitcher()).toBeVisible();
+    // todo: update stepper component to expose current step
   });
   test("should display a required name field", async ({}) => {
-    throw new Error("Not implemented");
+    await expect(gettingStarted.elements().nameInput()).toBeVisible();
+    await expect(gettingStarted.elements().nameInput()).toHaveAttribute(
+      "required"
+    );
   });
   test("should display a required last name field", async ({}) => {
-    throw new Error("Not implemented");
+    await expect(gettingStarted.elements().surnameInput()).toBeVisible();
+    await expect(gettingStarted.elements().surnameInput()).toHaveAttribute(
+      "aria-required"
+    );
   });
   test("should display a required birthdate field", async ({}) => {
-    throw new Error("Not implemented");
+    await expect(gettingStarted.elements().birthdateInput()).toBeVisible();
+    await expect(gettingStarted.elements().birthdateInput()).toHaveAttribute(
+      "aria-required"
+    );
   });
   test("should display a required country field", async ({}) => {
-    throw new Error("Not implemented");
+    await expect(gettingStarted.elements().countryInput()).toBeVisible();
+    // todo: change select component in des system to expose required attribute
+    // await expect(gettingStarted.elements().birthdateInput()).toHaveAttribute("required");
   });
-  test("should display a link privacy policy", async ({}) => {
-    throw new Error("Not implemented");
+  test("should display a required checkbox to accept mail", async ({}) => {
+    await expect(gettingStarted.elements().mailCheckbox()).toBeVisible();
+    // todo: change checkbox component in des system to expose required attribute
+    // await expect(gettingStarted.elements().birthdateInput()).toHaveAttribute("required");
   });
-  test("should display a link to ethical code", async ({}) => {
-    throw new Error("Not implemented");
+  test("should display a link to terms and conditions", async ({}) => {
+    await expect(gettingStarted.elements().termsLink()).toBeVisible();
+  });
+  test("should display a target _blank link to privacy policy", async ({}) => {
+    await expect(gettingStarted.elements().privacyLink()).toBeVisible();
+    await expect(gettingStarted.elements().privacyLink()).toHaveAttribute(
+      "target",
+      "_blank"
+    );
+  });
+  test("should display a target _blank link to ethical code", async ({}) => {
+    await expect(gettingStarted.elements().ethicalLink()).toBeVisible();
+    await expect(gettingStarted.elements().ethicalLink()).toHaveAttribute(
+      "target",
+      "_blank"
+    );
   });
   test("should display a button to go back to the first step", async ({}) => {
-    throw new Error("Not implemented");
+    await expect(gettingStarted.elements().backButton()).toBeVisible();
   });
   test("should display a button to submit", async ({}) => {
-    throw new Error("Not implemented");
+    await expect(gettingStarted.elements().submitButton()).toBeVisible();
   });
 
-  test("if the user click the terms and conditions link another tab is opened to /terms-and-conditions in the current language", async ({}) => {
-    throw new Error("Not implemented");
+  test("if the user click the terms and conditions link another tab is opened to /terms-and-conditions in the current language", async ({
+    context,
+    i18n,
+  }) => {
+    const pagePromise = context.waitForEvent("page");
+    const termsAndConditions = gettingStarted.elements().termsLink();
+    await expect(termsAndConditions).toHaveAttribute("target", "_blank");
+    await termsAndConditions.click();
+    const newPage = await pagePromise;
+    await newPage.waitForLoadState();
+    expect(newPage.url()).toContain(i18n.t("/terms-and-conditions/"));
   });
-  test("if the user click the privacy policy link another tab is opened to https://www.iubenda.com/privacy-policy/7934311", async ({}) => {
-    throw new Error("Not implemented");
+  test("if the user click the privacy policy link another tab is opened to https://www.iubenda.com/privacy-policy/7934311", async ({
+    context,
+    i18n,
+  }) => {
+    const pagePromise = context.waitForEvent("page");
+    const termsAndConditions = gettingStarted.elements().privacyLink();
+    await expect(termsAndConditions).toHaveAttribute("target", "_blank");
+    await termsAndConditions.click();
+    const newPage = await pagePromise;
+    await newPage.waitForLoadState();
+    expect(newPage.url()).toContain(
+      i18n.t(i18n.t("https://www.iubenda.com/privacy-policy/7934311"))
+    );
   });
-  test("if the user click the ethical code link another tab is opened to /ethical-code in the current language", async ({}) => {
-    throw new Error("Not implemented");
+  test("if the user click the ethical code link another tab is opened to /ethical-code in the current language", async ({
+    context,
+    i18n,
+  }) => {
+    const pagePromise = context.waitForEvent("page");
+    const termsAndConditions = gettingStarted.elements().ethicalLink();
+    await expect(termsAndConditions).toHaveAttribute("target", "_blank");
+    await termsAndConditions.click();
+    const newPage = await pagePromise;
+    await newPage.waitForLoadState();
+    expect(newPage.url()).toContain(i18n.t("/ethical-code/"));
   });
 
   test("if the user click to the back button got to the first step (precompiled)", async ({}) => {
-    throw new Error("Not implemented");
+    await gettingStarted.elements().backButton().click();
+    await expect(gettingStarted.elements().emailInput()).toHaveAttribute(
+      "value",
+      "test@example.com"
+    );
+    await expect(gettingStarted.elements().passwordInput()).toHaveAttribute(
+      "value",
+      "Password1!"
+    );
   });
   test("if the user change mail or password in the first step and proceed the data are precompiled", async ({}) => {
-    throw new Error("Not implemented");
+    await gettingStarted.fillSecondStepWithValidData();
+    await gettingStarted.elements().backButton().click();
+    await gettingStarted.fillEmailWith("another@valid.email");
+    await gettingStarted.elements().nextButton().click();
+    await expect(gettingStarted.elements().nameInput()).toHaveAttribute(
+      "value",
+      "Test"
+    );
+    await expect(gettingStarted.elements().surnameInput()).toHaveAttribute(
+      "value",
+      "User"
+    );
+    await expect(gettingStarted.elements().birthdateInput()).toHaveAttribute(
+      "value",
+      "01/01/1990"
+    );
+    await expect(gettingStarted.elements().countryInput()).toHaveText("Italy");
   });
 
   test("on focus out of the date field if the format is not gg/mm/aaaa an error is shown", async ({}) => {
-    throw new Error("Not implemented");
+    await gettingStarted.elements().birthdateInput().fill("91/01/1990");
+    await gettingStarted.elements().nameInput().click();
+    await expect(gettingStarted.elements().birthdateInput()).toHaveText(
+      "error"
+    );
   });
   test("if the user click to submit and all required fields are correctly filled goes to the confirmation step", async ({}) => {
     throw new Error("Not implemented");

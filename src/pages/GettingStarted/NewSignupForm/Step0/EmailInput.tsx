@@ -23,7 +23,11 @@ const EmailInput = ({ className }: { className?: string }) => {
               }
             />
             <Input
-              extra={{ ...field, "data-qa": "email-input" }}
+              extra={{
+                ...field,
+                "data-qa": "email-input",
+                "aria-required": true,
+              }}
               value={field.value}
               id={field.name}
               type="text"
