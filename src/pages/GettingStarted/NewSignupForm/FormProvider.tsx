@@ -86,8 +86,8 @@ const FormProvider = ({ children }: FormProviderProps) => {
       is: 1,
       then: yup
         .boolean()
-        .required(t("SIGNUP_FORM:::You must accept terms and conditions"))
-        .oneOf([true], t("SIGNUP_FORM:::You must accept terms and conditions")),
+        .required(t("SIGNUP_FORM:::You must accept to receive emails"))
+        .oneOf([true], t("SIGNUP_FORM:::You must accept to receive emails")),
     }),
     referral: yup.string(),
   };

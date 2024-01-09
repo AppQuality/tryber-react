@@ -417,6 +417,7 @@
     "Country is required": "Introduce tu país de residencia: este campo es obligatorio.",
     "Email is required": "Introduce tu correo electrónico: este campo es obligatorio.",
     "Email must be a valid email": "Comprueba tu correo electrónico",
+    "I agree to receive earning opportunity emails from AppQuality": "Acepto recibir correos para la comunidad de TRYBER.",
     "Invalid date": "Introduce tu fecha de nacimiento en formato día/mes/año",
     "Name is required": "Introduce tu nombre: este campo es obligatorio.",
     "Password is a required field": "Introduce la contraseña: este campo es obligatorio.",
@@ -425,7 +426,7 @@
     "Password must contain at least a number": "La contraseña debe contener al menos un número",
     "Password must contain at least an uppercase letter": "La contraseña debe contener al menos una letra mayúscula",
     "Surname is required": "Introduce tu apellido: este campo es obligatorio.",
-    "You must accept terms and conditions": "Debes aceptar los términos y condiciones",
+    "You must accept to receive emails": "Antes de registrarte, debes aceptar recibir correos de TRYBER.",
     "You must be at least 18 years old": "De momento, TRYBER es para mayores de 18 años"
   },
   "SIGNUP_LOGIN_CTA": "¿Ya tienes una cuenta? <login_link><strong>Inicia sesión</strong></login_link>",

@@ -121,7 +121,7 @@ const Step1 = () => {
                 label={
                   <span>
                     {t(
-                      "I agree to receive earning opportunity emails from AppQuality"
+                      "SIGNUP_FORM:::I agree to receive earning opportunity emails from AppQuality"
                     )}{" "}
                     <span aria-hidden>*</span>
                   </span>
