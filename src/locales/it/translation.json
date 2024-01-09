@@ -279,7 +279,7 @@
   },
   "Generic error": "Errore generico",
   "Go back and choose another email address or <login_link>log in</login_link>.": "Torna indietro e inserisci un’email diversa oppure <login_link>accedi</login_link>.",
-  "Go to dashboard": "Vai all adashboard",
+  "Go to dashboard": "Vai alla dashboard",
   "Great job!": "Ottimo lavoro!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
     "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Grande, il prossimo mese sarai {{level}}!<br></br>Dai il tuo meglio e conquista {{nextLevel}}!"
