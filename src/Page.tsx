@@ -1,12 +1,14 @@
-import "./i18n";
 import { datadogLogs } from "@datadog/browser-logs";
 import { Location, createBrowserHistory } from "history";
 import queryString from "query-string";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Redirect, Route, Router, Switch, useLocation } from "react-router-dom";
+import "./i18n";
 
+import * as Sentry from "@sentry/react";
 import GenericModal from "./features/GenericModal";
+import SentryWrapper from "./features/SentryWrapper";
 import SiteWideMessages from "./features/SiteWideMessages";
 import {
   Dashboard,
@@ -15,23 +17,20 @@ import {
   GettingStarted,
   GoodbyePage,
   Home,
+  Login,
   MyBugs,
+  PreviewSelectionForm,
   Profile,
   Ranking,
   Signup,
   Wallet,
-  PreviewSelectionForm,
-  Login,
 } from "./pages";
-import referralStore from "./redux/referral";
-import { refreshUser } from "./redux/user/actions/refreshUser";
 import BugForm from "./pages/BugForm";
+import SignupSuccess from "./pages/SignupSuccess";
 import ThankYouPage from "./pages/ThankYou";
 import VdpPage from "./pages/VDP";
-import * as Sentry from "@sentry/react";
-import SentryWrapper from "./features/SentryWrapper";
-import useUser from "./redux/user";
-import SignupSuccess from "./pages/SignupSuccess";
+import referralStore from "./redux/referral";
+import { refreshUser } from "./redux/user/actions/refreshUser";
 
 // Create Custom Sentry Route component
 const SentryRoute = Sentry.withSentryRouting(Route);
@@ -51,7 +50,6 @@ function Page() {
   const { search } = useLocation();
   const { setReferral } = referralStore();
   const dispatch = useDispatch();
-  const { user } = useUser();
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -71,7 +69,7 @@ function Page() {
             path={`${base}/getting-started/signup`}
             component={Signup}
           />
-                    <SentryRoute
+          <SentryRoute
             path={`${base}/getting-started/confirmation`}
             component={SignupSuccess}
           />
@@ -83,21 +81,7 @@ function Page() {
             <Redirect to="/it/getting-started" />
           </SentryRoute>
 
-          <SentryRoute
-            path={`${base}/login`}
-            component={
-              !user
-                ? Login
-                : ({ location }: { location: Location }) => (
-                    <Redirect
-                      to={{
-                        ...location,
-                        pathname: `/my-dashboard`,
-                      }}
-                    />
-                  )
-            }
-          />
+          <SentryRoute path={`${base}/login`} component={Login} />
 
           <SentryRoute
             path={`*/login`}
