@@ -17,7 +17,6 @@ import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 export default function GettingStarted() {
   const { t } = useTranslation();
   let history = useHistory();
-  const dashboard = useLocalizeRoute("my-dashboard");
   const emailSignup = useLocalizeRoute("getting-started/signup");
   const login = useLocalizeRoute("login");
   const signupSuccess = useLocalizeRoute("getting-started/confirmation");
