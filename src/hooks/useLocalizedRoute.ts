@@ -7,5 +7,5 @@ export function useLocalizeRoute(route: CrowdRoutes): string {
     i18n.language === "en" ? `/${route}` : `/${i18n.language}/${route}`;
   // in case of base route ("") we already have a forward slash
   let re = /\/$/;
-  return re.test(localizedRoute) ? localizedRoute : `${localizedRoute}/`;
+  return re.test(localizedRoute) ? localizedRoute : `${localizedRoute}`;
 }
