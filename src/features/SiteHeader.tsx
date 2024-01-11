@@ -17,8 +17,11 @@ const SiteHeader = () => {
   const isHomePage =
     window.location.pathname === "/" ||
     window.location.pathname === "/en" ||
+    window.location.pathname === "/en/" ||
     window.location.pathname === "/it" ||
-    window.location.pathname === "/es";
+    window.location.pathname === "/it/" ||
+    window.location.pathname === "/es" ||
+    window.location.pathname === "/es/";
   const history = useHistory();
   return (
     <>
