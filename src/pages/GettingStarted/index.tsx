@@ -20,6 +20,7 @@ export default function GettingStarted() {
   const dashboard = useLocalizeRoute("my-dashboard");
   const emailSignup = useLocalizeRoute("getting-started/signup");
   const login = useLocalizeRoute("login");
+  const signupSuccess = useLocalizeRoute("getting-started/confirmation");
   const onEmailSignupClick = () => {
     history.push(emailSignup);
   };
@@ -50,7 +51,7 @@ export default function GettingStarted() {
             />
             <ButtonWithIcon
               forwardedAs="a"
-              href={`/wp-admin/admin-ajax.php?loc=${dashboard}&action=facebook_oauth_redirect&log=0`}
+              href={`/wp-admin/admin-ajax.php?loc=${signupSuccess}&action=facebook_oauth_redirect&log=0`}
               data-qa="facebook-signup"
               className="aq-mb-3"
               size="block"
@@ -66,7 +67,7 @@ export default function GettingStarted() {
             </ButtonWithIcon>
             <ButtonWithIcon
               forwardedAs="a"
-              href={`/wp-admin/admin-ajax.php?loc=${dashboard}&action=linkedin_oauth_redirect&log=0`}
+              href={`/wp-admin/admin-ajax.php?loc=${signupSuccess}&action=linkedin_oauth_redirect&log=0`}
               data-qa="linkedin-signup"
               className="aq-mb-3"
               size="block"
