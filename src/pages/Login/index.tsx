@@ -3,18 +3,18 @@ import { useTranslation } from "react-i18next";
 import { LangMenu } from "src/features/LangMenu";
 import { LoginCard } from "src/features/LoginCard";
 import { PageTemplate } from "src/features/PageTemplate";
-import getValidRedirect from "src/features/getValidRedirect";
+import { getRedirectTo } from "src/features/getValidRedirect";
 
 export const Login = () => {
   const { t } = useTranslation();
-  const url = new URL(window.location.href);
-  const queryParams = new URLSearchParams(url.search);
+  const redirectTo = getRedirectTo();
+
   return (
     <PageTemplate route={"login"} shouldBeLoggedIn={false}>
       <LangMenu
-        itLink={`/it/login${getValidRedirect(queryParams)}`}
-        enLink={`/en/login${getValidRedirect(queryParams)}`}
-        esLink={`/es/login${getValidRedirect(queryParams)}`}
+        itLink={`/it/login${redirectTo ? `?redirectTo=${redirectTo}` : ""}`}
+        enLink={`/login${redirectTo ? `?redirectTo=${redirectTo}` : ""}`}
+        esLink={`/es/login${redirectTo ? `?redirectTo=${redirectTo}` : ""}`}
         className="aq-my-3 lang-navigation"
       />
       <Title size="l" as={"h1"} className="aq-mb-3 aq-text-center">

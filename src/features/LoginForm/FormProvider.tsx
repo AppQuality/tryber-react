@@ -1,9 +1,9 @@
 import { Formik, Text } from "@appquality/appquality-design-system";
-import * as yup from "yup";
-import WPAPI from "src/utils/wpapi";
 import { useTranslation } from "react-i18next";
-import getValidRedirect from "../getValidRedirect";
 import siteWideMessageStore from "src/redux/siteWideMessages";
+import WPAPI from "src/utils/wpapi";
+import * as yup from "yup";
+import { getRedirectTo } from "../getValidRedirect";
 
 interface FormProps {
   children: React.ReactNode;
@@ -28,16 +28,18 @@ const FormProvider = ({ children, setCta, setError }: FormProps) => {
           });
           setCta(`${t("redirecting")}...`);
 
-          const url = new URL(window.location.href);
-          const queryParams = new URLSearchParams(url.search);
-          if (queryParams && getValidRedirect(queryParams).length) {
-            window.location.href = queryParams.get("redirectTo") as string;
-          } else window.location.reload();
+          const redirectTo = getRedirectTo();
+          if (redirectTo) {
+            window.location.href = redirectTo;
+          } else {
+            window.location.reload();
+          }
         } catch (e: unknown) {
           const { message } = e as Error;
           const error = JSON.parse(message);
           if (error.type === "invalid") {
             setError(`${t("Wrong username or password.")}`);
+            return;
           } else if (error.type === "tfa") {
             setError(
               `${t(

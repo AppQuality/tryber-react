@@ -1,27 +1,3 @@
-export default (queryParams: URLSearchParams) => {
-  if (queryParams.has("redirectTo")) {
-    if (redirectIsValid(queryParams)) return `?${queryParams.toString()}`;
-    else {
-      queryParams.delete("redirectTo");
-      return `?${queryParams.toString()}`;
-    }
-  }
-  if (queryParams.size) return `?${queryParams.toString()}`;
-  return "";
-};
-
-function redirectIsValid(params: URLSearchParams) {
-  const redirect = params.get("redirectTo") ?? "";
-
-  if (!redirect.length) {
-    return false;
-  }
-  if (!urlIsValid(redirect)) {
-    return false;
-  }
-  return domainIsAllowed(redirect);
-}
-
 function urlIsValid(url: string) {
   const urlRegex =
     /^(https?:\/\/)?([\w-]+\.)*([\w-]+\.[a-z]{2,})(:\d{2,5})?(\/[^\s]*)?(\?.*)?$/;
@@ -34,3 +10,16 @@ function domainIsAllowed(url: string) {
     parsedURL.hostname === "dev.tryber.me" || parsedURL.hostname === "tryber.me"
   );
 }
+
+export const getRedirectTo = () => {
+  const url = new URL(window.location.href);
+  const queryParams = new URLSearchParams(url.search);
+  const redirect = queryParams.get("redirectTo");
+  if (redirect === null) return false;
+  const redirectTo = decodeURI(redirect);
+  if (urlIsValid(redirectTo) && domainIsAllowed(redirectTo)) {
+    return redirectTo;
+  }
+
+  return false;
+};
