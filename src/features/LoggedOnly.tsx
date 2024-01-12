@@ -1,20 +1,22 @@
+import { Container, Title } from "@appquality/appquality-design-system";
+import * as Sentry from "@sentry/react";
 import TagManager from "react-gtm-module";
+import { useTranslation } from "react-i18next";
 import { useGetUsersMeQuery } from "src/services/tryberApi";
+import { LangMenu } from "./LangMenu";
 import Loading from "./Loading";
 import { LoginCard } from "./LoginCard";
 import SiteHeader from "./SiteHeader";
-import * as Sentry from "@sentry/react";
-import { LangMenu } from "./LangMenu";
-import { Container, Title } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
 import getUnlocalizedUrl from "./getUnlocalizedUrl";
 
 const LoggedOnly = ({
   children,
   showHeader,
+  route,
 }: {
   children: React.ReactNode;
   showHeader: boolean;
+  route: string;
 }) => {
   const { t } = useTranslation();
   const {
@@ -46,7 +48,7 @@ const LoggedOnly = ({
       const unlocalizedUrl = getUnlocalizedUrl(window.location.pathname);
       return (
         <>
-          <SiteHeader />
+          <SiteHeader route={route} />
           <Container>
             <LangMenu
               itLink={`/it${unlocalizedUrl}`}
@@ -69,7 +71,7 @@ const LoggedOnly = ({
 
   return (
     <>
-      {showHeader ? <SiteHeader /> : null}
+      {showHeader ? <SiteHeader route={route} /> : null}
       {children}
     </>
   );

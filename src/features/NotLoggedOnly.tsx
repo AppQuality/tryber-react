@@ -10,7 +10,9 @@ import SiteHeader from "./SiteHeader";
 const NotLoggedOnly = ({
   children,
   redirect,
+  route,
 }: {
+  route: string;
   children: React.ReactNode;
   redirect?: { url: string; message?: string };
 }) => {
@@ -55,7 +57,7 @@ const NotLoggedOnly = ({
 
   return (
     <>
-      {!isPublicUser && <SiteHeader />}
+      {!isPublicUser && <SiteHeader route={route} />}
       {children}
     </>
   );

@@ -78,10 +78,13 @@ export const PageTemplate: FC<
 
   const LoggedStatusWrapper = shouldBeLoggedIn
     ? ({ children }: { children: React.ReactNode }) => (
-        <LoggedOnly showHeader={showHeader}>{children}</LoggedOnly>
+        <LoggedOnly route={route} showHeader={showHeader}>
+          {children}
+        </LoggedOnly>
       )
     : ({ children }: { children: React.ReactNode }) => (
         <NotLoggedOnly
+          route={route}
           redirect={
             "redirect" in props && props.redirect
               ? props.redirect
