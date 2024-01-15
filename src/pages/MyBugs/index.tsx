@@ -122,9 +122,6 @@ export default function MyBugs() {
             shadow={true}
           >
             <MyBugsFilters
-              selectedCampaign={selectedCampaign}
-              selectedSeverity={selectedSeverity}
-              selectedStatus={selectedStatus}
               order={order}
               setPage={changePagination}
               orderBy={orderBy}
