@@ -3,18 +3,15 @@ import {
   BSGrid,
   Button,
   Card,
-  TableType,
 } from "@appquality/appquality-design-system";
 import queryString from "query-string";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { PageTemplate } from "src/features/PageTemplate";
 import i18n from "../../i18n";
 import {
-  fetchMyBugs,
-  fetchMyBugsFilters,
   setSelectedCampaign,
   setSelectedStatus,
   updateMybugsPagination,
@@ -29,16 +26,8 @@ export default function MyBugs() {
   const { search } = useLocation();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const [columns, setcolumns] = useState<TableType.Column[]>(
-    MyBugsColumns(dispatch, t)
-  );
-  const [rows, setRows] = useState<TableType.Row[]>([]);
-
   const { selectedCampaign, selectedSeverity, selectedStatus } = useSelector(
     (state: GeneralState) => ({
-      campaigns: state.myBugs.campaigns,
-      severities: state.myBugs.severities,
-      status: state.myBugs.status,
       selectedCampaign: state.myBugs.selectedCampaign,
       selectedSeverity: state.myBugs.selectedSeverity,
       selectedStatus: state.myBugs.selectedStatus,
@@ -46,10 +35,9 @@ export default function MyBugs() {
     shallowEqual
   );
 
-  const { limit, total, start, order, orderBy } = useSelector(
+  const { limit, start, order, orderBy } = useSelector(
     (state: GeneralState) => ({
       limit: state.myBugs.bugsList.limit,
-      total: state.myBugs.bugsList.total,
       start: state.myBugs.bugsList.start,
       order: state.myBugs.bugsList.order,
       orderBy: state.myBugs.bugsList.orderBy,
@@ -62,13 +50,13 @@ export default function MyBugs() {
     limit: limit,
     orderBy: orderBy,
     order: order,
-    // filterBy: {
-    //   campaign: selectedCampaign?.value,
-    //   severity: selectedSeverity?.value,
-    //   status: selectedStatus?.value,
-    // },
+    filterBy: {
+      campaign: selectedCampaign?.value,
+      severity: selectedSeverity?.value,
+      status: selectedStatus?.value,
+    },
   });
-  const results = data?.results || [];
+  const { results, total } = data || {};
 
   const changePagination = (newPage: number) => {
     const newStart = limit * (newPage - 1);
@@ -87,60 +75,45 @@ export default function MyBugs() {
     }
   }, [queryString]);
 
-  useEffect(() => {
-    setRows(
-      results.map((res) => {
-        let status = res.status
-          ? {
-              title: res.status.name,
-              content: (
-                <span className={coloredStatus(res.status.id)}>
-                  {res.status.name}
-                </span>
-              ),
-            }
-          : "unknown";
-        return {
-          key: res.id,
-          id: res.id,
-          severity: res.severity?.name,
-          status: status,
-          title: res.title?.replace(/\\(.)/gm, "$1"),
-          action: {
-            title: `${window.location.origin}/${
+  const rows = (results || []).map((res) => {
+    let status = res.status
+      ? {
+          title: res.status.name,
+          content: (
+            <span className={coloredStatus(res.status.id)}>
+              {res.status.name}
+            </span>
+          ),
+        }
+      : "unknown";
+    return {
+      key: res.id,
+      id: res.id,
+      severity: res.severity?.name,
+      status: status,
+      title: res.title?.replace(/\\(.)/gm, "$1"),
+      action: {
+        title: `${window.location.origin}/${
+          i18n.language !== "en" ? `${i18n.language}/` : ""
+        }bugs/show/${res.id}`,
+        content: (
+          <Button
+            className="aq-nopadding"
+            forwardedAs="a"
+            href={`${window.location.origin}/${
               i18n.language !== "en" ? `${i18n.language}/` : ""
-            }bugs/show/${res.id}`,
-            content: (
-              <Button
-                className="aq-nopadding"
-                forwardedAs="a"
-                href={`${window.location.origin}/${
-                  i18n.language !== "en" ? `${i18n.language}/` : ""
-                }bugs/show/${res.id}`}
-                kind="link-hover"
-                size="sm"
-              >
-                {t("View more")}
-              </Button>
-            ),
-          },
-        };
-      })
-    );
-  }, [results]);
+            }bugs/show/${res.id}`}
+            kind="link-hover"
+            size="sm"
+          >
+            {t("View more")}
+          </Button>
+        ),
+      },
+    };
+  });
 
-  useEffect(() => {
-    if (selectedCampaign || selectedSeverity || selectedStatus) {
-      changePagination(1);
-      dispatch(fetchMyBugsFilters());
-    }
-  }, [selectedCampaign, selectedSeverity, selectedStatus]);
-
-  useEffect(() => {
-    dispatch(fetchMyBugs());
-    dispatch(fetchMyBugsFilters());
-  }, []);
-
+  const columns = MyBugsColumns(dispatch, t);
   return (
     <PageTemplate title={t("Uploaded Bugs")} route={"my-bugs"} shouldBeLoggedIn>
       <BSGrid>
@@ -150,7 +123,7 @@ export default function MyBugs() {
               data={rows}
               page={(start || 0) / limit + 1}
               setPage={changePagination}
-              totalBugs={total}
+              totalBugs={total ?? 0}
               limit={limit}
               loading={isLoading}
               columns={columns}
@@ -165,17 +138,15 @@ export default function MyBugs() {
             title={t("Filters")}
             shadow={true}
           >
-            {/* <MyBugsFilters
-              campaigns={campaigns}
-              severities={severities}
-              status={status}
+            <MyBugsFilters
               selectedCampaign={selectedCampaign}
               selectedSeverity={selectedSeverity}
               selectedStatus={selectedStatus}
               order={order}
+              setPage={changePagination}
               orderBy={orderBy}
               columns={columns}
-            /> */}
+            />
           </Card>
         </BSCol>
       </BSGrid>
