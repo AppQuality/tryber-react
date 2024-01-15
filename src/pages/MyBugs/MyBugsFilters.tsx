@@ -40,7 +40,7 @@ const MyBugsFilters = ({
   let campaignValue = { label: allCampaign };
   let severityValue = { label: allSeverity };
   let statusValue = { label: allStatus };
-
+  // GET by RTK the BUGS and use campaigns, severities and status here
   if (
     selectedCampaign &&
     campaigns.map((c) => c.value).includes(selectedCampaign.value)
@@ -65,7 +65,10 @@ const MyBugsFilters = ({
       <div className="aq-mb-3">
         <Select
           label={t("Campaign")}
-          onChange={(value) => dispatch(setSelectedCampaign(value))}
+          onChange={(value) =>
+            //changePagination(1);
+            dispatch(setSelectedCampaign(value))
+          }
           name="campaign"
           options={[{ label: allCampaign }, ...campaigns]}
           value={campaignValue}
@@ -78,7 +81,10 @@ const MyBugsFilters = ({
       <div className="aq-mb-3">
         <Select
           label={t("Severity")}
-          onChange={(value) => dispatch(setSelectedSeverity(value))}
+          onChange={(value) =>
+            //changePagination(1);
+            dispatch(setSelectedSeverity(value))
+          }
           name="severity"
           options={[{ label: allSeverity }, ...severities]}
           value={severityValue}
@@ -91,7 +97,10 @@ const MyBugsFilters = ({
       <div className="aq-mb-3">
         <Select
           label={t("Status")}
-          onChange={(value) => dispatch(setSelectedStatus(value))}
+          onChange={(value) =>
+            //changePagination(1);
+            dispatch(setSelectedStatus(value))
+          }
           name="status"
           options={[{ label: allStatus }, ...status]}
           value={statusValue}

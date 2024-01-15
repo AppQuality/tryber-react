@@ -11,7 +11,6 @@ import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { PageTemplate } from "src/features/PageTemplate";
-import { useGetUsersMeBugsQuery } from "src/services/tryberApi";
 import i18n from "../../i18n";
 import {
   fetchMyBugs,
@@ -24,7 +23,7 @@ import { coloredStatus } from "../../redux/myBugs/utils";
 import { useAppDispatch } from "../../redux/provider";
 import MyBugsFilters from "./MyBugsFilters";
 import MyBugsTable from "./MyBugsTable";
-import { MyBugsColumns } from "./columns";
+import { useGetUsersMeBugsQuery } from "src/services/tryberApi";
 
 export default function MyBugs() {
   const { search } = useLocation();
@@ -35,20 +34,41 @@ export default function MyBugs() {
   );
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
-  const {
-    bugsList,
-    campaigns,
-    severities,
-    status,
-    selectedCampaign,
-    selectedSeverity,
-    selectedStatus,
-    // isLoading,
-  } = useSelector((state: GeneralState) => state.myBugs, shallowEqual);
+  const { selectedCampaign, selectedSeverity, selectedStatus } = useSelector(
+    (state: GeneralState) => ({
+      campaigns: state.myBugs.campaigns,
+      severities: state.myBugs.severities,
+      status: state.myBugs.status,
+      selectedCampaign: state.myBugs.selectedCampaign,
+      selectedSeverity: state.myBugs.selectedSeverity,
+      selectedStatus: state.myBugs.selectedStatus,
+    }),
+    shallowEqual
+  );
 
-  const { isLoading, data } = useGetUsersMeBugsQuery({});
+  const { limit, total, start, order, orderBy } = useSelector(
+    (state: GeneralState) => ({
+      limit: state.myBugs.bugsList.limit,
+      total: state.myBugs.bugsList.total,
+      start: state.myBugs.bugsList.start,
+      order: state.myBugs.bugsList.order,
+      orderBy: state.myBugs.bugsList.orderBy,
+    }),
+    shallowEqual
+  );
 
-  const { results, limit, total, start, order, orderBy } = bugsList;
+  const { data, isLoading } = useGetUsersMeBugsQuery({
+    start: start,
+    limit: limit,
+    orderBy: orderBy,
+    order: order,
+    // filterBy: {
+    //   campaign: selectedCampaign?.value,
+    //   severity: selectedSeverity?.value,
+    //   status: selectedStatus?.value,
+    // },
+  });
+  const results = data?.results || [];
 
   const changePagination = (newPage: number) => {
     const newStart = limit * (newPage - 1);
@@ -145,7 +165,7 @@ export default function MyBugs() {
             title={t("Filters")}
             shadow={true}
           >
-            <MyBugsFilters
+            {/* <MyBugsFilters
               campaigns={campaigns}
               severities={severities}
               status={status}
@@ -155,7 +175,7 @@ export default function MyBugs() {
               order={order}
               orderBy={orderBy}
               columns={columns}
-            />
+            /> */}
           </Card>
         </BSCol>
       </BSGrid>
