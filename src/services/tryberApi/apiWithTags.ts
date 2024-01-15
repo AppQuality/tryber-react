@@ -25,6 +25,12 @@ tryberApi.enhanceEndpoints({
         ];
       },
     },
+    patchUsersMe: {
+      invalidatesTags: ["User"],
+    },
+    putUsersMeLanguages: {
+      invalidatesTags: ["User"],
+    },
   },
 });
 

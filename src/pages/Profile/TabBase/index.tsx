@@ -24,24 +24,33 @@ import CitySelect from "src/features/CitySelect";
 import CountrySelect from "src/features/CountrySelect";
 import { HalfColumnButton } from "src/features/HalfColumnButton";
 import { SkeletonTab } from "src/pages/Profile/SkeletonTab";
-import { updateProfile } from "src/redux/user/actions/updateProfile";
 import API from "src/utils/api";
 import * as yup from "yup";
 
-import { LanguageSelect } from "./LanguageSelect";
 import useGenderOptions from "src/features/UseGenderOptions";
+import { addMessage } from "src/redux/siteWideMessages/actionCreators";
+import { updateFiscalProfile } from "src/redux/user/actions/updateFiscalProfile";
+import {
+  useGetUsersMeQuery,
+  usePatchUsersMeMutation,
+  usePutUsersMeLanguagesMutation,
+} from "src/services/tryberApi";
+import { LanguageSelect } from "./LanguageSelect";
 
 const TabBase = () => {
   const { t } = useTranslation();
-  const { user, loading } = useSelector(
-    (state: GeneralState) => ({
-      user: state.user.user,
-      loading: state.user.loadingProfile,
-    }),
-    shallowEqual
-  );
+  const { data: user, isLoading: loading } = useGetUsersMeQuery({
+    fields: "all",
+  });
+  const [updateProfileNew] = usePatchUsersMeMutation();
+  const [updateLanguages] = usePutUsersMeLanguagesMutation();
+  const genderOptions = useGenderOptions();
   const [languages, setLanguages] = useState<SelectType.Option[]>([]);
   const dispatch = useDispatch();
+  const { fiscal } = useSelector(
+    (state: GeneralState) => state.user,
+    shallowEqual
+  );
 
   useEffect(() => {
     const getLanguages = async () => {
@@ -61,7 +70,7 @@ const TabBase = () => {
     phone: user?.phone || "",
     email: user?.email || "",
     country: user?.country || "",
-    countryCode: countries.getAlpha2Code(user?.country, "en"),
+    countryCode: countries.getAlpha2Code(user?.country || "Italy", "en"),
     city: user?.city || "",
     languages:
       user?.languages?.map((l: any) => ({
@@ -91,7 +100,6 @@ const TabBase = () => {
     city: yup.string(),
     languages: yup.array(),
   };
-  const genderOptions = useGenderOptions();
 
   if (loading) return <SkeletonTab />;
 
@@ -118,27 +126,70 @@ const TabBase = () => {
         if (profileDataToSend.email === user?.email) {
           delete profileDataToSend.email;
         }
-        dispatch(
-          updateProfile(
-            {
-              profile: profileDataToSend,
-              languages: newLanguages,
+        try {
+          await updateLanguages({
+            body: newLanguages,
+          }).unwrap();
+          await updateProfileNew({
+            body: {
+              ...profileDataToSend,
             },
-            t(
-              "Your profile doesn't match with your fiscal profile, please check your data"
-            ),
-            t("Your fiscal profile is now verified"),
-            t("Profile data correctly updated."),
-            t("We couldn't update your profile. Try again."),
-            t("PROFILE_EMAIL_ALREADY_EXISTS", {
-              defaultValue: "Email already exists",
-            }),
-            () => {
-              helpers.setSubmitting(false);
-              helpers.resetForm({ values });
+          }).unwrap();
+
+          dispatch(addMessage(t("Profile data correctly updated."), "success"));
+
+          if (fiscal.data && fiscal.data.type !== "internal") {
+            if (
+              user &&
+              (user.name !== profileDataToSend.name ||
+                user.surname !== profileDataToSend.surname ||
+                user.birthDate !== profileDataToSend.birthDate)
+            ) {
+              const submitValues = {
+                address: fiscal.data?.address,
+                type: fiscal.data?.type,
+                birthPlace: {
+                  city: fiscal.data?.birthPlace?.city,
+                  province: fiscal.data?.birthPlace?.province,
+                },
+                fiscalId: fiscal.data?.fiscalId,
+                gender: fiscal.data?.gender,
+              };
+              dispatch(
+                updateFiscalProfile(submitValues as UserData, {
+                  verifiedMessage:
+                    fiscal.data.fiscalStatus === "Unverified"
+                      ? t("Your fiscal profile is now verified")
+                      : false,
+                  unverifiedMessage: t(
+                    "Your profile doesn't match with your fiscal profile, please check your data"
+                  ),
+                })
+              );
             }
-          )
-        );
+          }
+        } catch (e: HttpError) {
+          if (e.status === 412) {
+            dispatch(
+              addMessage(
+                t("PROFILE_EMAIL_ALREADY_EXISTS", {
+                  defaultValue: "Email already exists",
+                }),
+                "danger"
+              )
+            );
+          } else {
+            dispatch(
+              addMessage(
+                t("We couldn't update your profile. Try again."),
+                "warning"
+              )
+            );
+          }
+        }
+
+        helpers.setSubmitting(false);
+        helpers.resetForm({ values });
       }}
     >
       {(formikProps: FormikProps<BaseFields>) => {
