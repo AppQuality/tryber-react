@@ -1,11 +1,9 @@
 import { ModalBody } from "@appquality/appquality-design-system";
-import { useSelector } from "react-redux";
+import { useGetUsersMeQuery } from "src/services/tryberApi";
 
 const FiscalResidenceModal = ({ values }: { values: FiscalFormValues }) => {
-  const { id, email } = useSelector((state: GeneralState) => ({
-    id: state.user.user.id,
-    email: state.user.user.email,
-  }));
+  const { data } = useGetUsersMeQuery({ fields: "all" });
+  const { id, email } = data || {};
 
   const iFrameStyle = {
     height: "100%",

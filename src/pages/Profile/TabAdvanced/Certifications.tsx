@@ -3,11 +3,10 @@ import {
   Button,
   CSSGrid,
 } from "@appquality/appquality-design-system";
-import React from "react";
 import { useTranslation } from "react-i18next";
-import { shallowEqual, useSelector } from "react-redux";
 import { HalfColumnButton } from "src/features/HalfColumnButton";
 import modalStore from "src/redux/modal";
+import { useGetUsersMeQuery } from "src/services/tryberApi";
 import { components } from "src/utils/schema";
 import {
   DeleteCertificationsModal,
@@ -22,12 +21,10 @@ import SingleCertification from "./SingleCertification";
 const Certifications = () => {
   const { t } = useTranslation();
   const { open } = modalStore();
+  const { data } = useGetUsersMeQuery({ fields: "all" });
 
   const userCertifications: components["schemas"]["Certification"][] | boolean =
-    useSelector(
-      (state: GeneralState) => state.user.user?.certifications || [],
-      shallowEqual
-    );
+    data?.certifications || false;
 
   return (
     <>
