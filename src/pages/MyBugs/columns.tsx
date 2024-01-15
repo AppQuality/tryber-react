@@ -1,11 +1,11 @@
 import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
-import { TFunction } from "react-i18next";
+import { useTranslation } from "react-i18next";
+import { useAppDispatch } from "src/store";
 import { updateMybugsSortingOptions } from "../../redux/myBugs/actionCreator";
 
-export const MyBugsColumns = (
-  dispatch: AppDispatch,
-  t: TFunction<"translation">
-): Column[] => {
+export const useBugColumns = (): Column[] => {
+  const { t } = useTranslation();
+  const dispatch = useAppDispatch();
   return [
     {
       title: "Id",

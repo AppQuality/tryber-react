@@ -14,12 +14,13 @@ import { coloredStatus } from "../../redux/myBugs/utils";
 import { useAppDispatch } from "../../redux/provider";
 import MyBugsFilters from "./MyBugsFilters";
 import MyBugsTable from "./MyBugsTable";
-import { MyBugsColumns } from "./columns";
+import { useBugColumns } from "./columns";
 import { useQueryStringFilters } from "./useQueryStringFilters";
 
 export default function MyBugs() {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const columns = useBugColumns();
   useQueryStringFilters();
   const { selectedCampaign, selectedSeverity, selectedStatus } = useSelector(
     (state: GeneralState) => ({
@@ -29,7 +30,6 @@ export default function MyBugs() {
     }),
     shallowEqual
   );
-
   const { limit, start, order, orderBy } = useSelector(
     (state: GeneralState) => ({
       limit: state.myBugs.bugsList.limit,
@@ -96,7 +96,6 @@ export default function MyBugs() {
     };
   });
 
-  const columns = MyBugsColumns(dispatch, t);
   return (
     <PageTemplate title={t("Uploaded Bugs")} route={"my-bugs"} shouldBeLoggedIn>
       <BSGrid>
