@@ -43,7 +43,7 @@ export class GettingStartedSignup extends GettingStarted {
       mailCheckbox: () =>
         this.page.getByLabel(
           this.i18n.t(
-            "I agree to receive earning opportunity emails from AppQuality"
+            "SIGNUP_FORM:::I agree to receive earning opportunity emails from AppQuality"
           )
         ),
       termsLink: () => this.page.getByTestId("terms-and-conditions"),
