@@ -5,13 +5,16 @@ import {
   Text,
   Title,
 } from "@appquality/appquality-design-system";
-import React from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { HalfColumnButton } from "src/features/HalfColumnButton";
 import { SkeletonTab } from "src/pages/Profile/SkeletonTab";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
-import { updateAdvancedProfile } from "src/redux/user/actions/updateAdvancedProfile";
+import {
+  useGetUsersMeQuery,
+  usePatchUsersMeMutation,
+  usePutUsersMeAdditionalsByFieldIdMutation,
+} from "src/services/tryberApi";
 import * as yup from "yup";
 import Certifications from "./Certifications";
 import { CustomUserFields } from "./CustomUserFields";
@@ -21,11 +24,11 @@ import { MapCufValues, PrepareUserCuf } from "./MapCufValues";
 
 const TabAdvanced = () => {
   const { t } = useTranslation();
-  const { initialUserValues, validationSchema } = MapCufValues();
-  const isLoading = useSelector(
-    (state: GeneralState) => state.user.loadingProfile
-  );
+  const { isLoading } = useGetUsersMeQuery({ fields: "all" });
   const dispatch = useDispatch();
+  const [updateProfile] = usePatchUsersMeMutation();
+  const [updateCuf] = usePutUsersMeAdditionalsByFieldIdMutation();
+  const { initialUserValues, validationSchema } = MapCufValues();
 
   if (isLoading) return <SkeletonTab />;
   return (
@@ -34,36 +37,34 @@ const TabAdvanced = () => {
       initialValues={initialUserValues}
       validationSchema={yup.object(validationSchema)}
       onSubmit={async (values, helpers) => {
+        helpers.setSubmitting(true);
         const readyCuf = PrepareUserCuf(values);
 
-        dispatch(
-          updateAdvancedProfile(
-            {
-              cuf: readyCuf,
-              profile: {
-                profession: parseInt(values.employment),
-                education: parseInt(values.education),
-              },
-              deleteCertificate:
-                values.certificationsRadio === "false" ? true : undefined,
+        try {
+          await updateProfile({
+            body: {
+              profession: parseInt(values.employment),
+              education: parseInt(values.education),
             },
-            {
-              onSuccess: () => {
-                dispatch(
-                  addMessage(t("Profile data correctly updated."), "success")
-                );
-              },
-              onFailure: () => {
-                dispatch(
-                  addMessage(
-                    t("Profile data not saved. Please try again."),
-                    "warning"
-                  )
-                );
-              },
-            }
-          )
-        );
+          }).unwrap();
+
+          await Promise.all(
+            readyCuf.map((cuf) => {
+              return updateCuf({
+                fieldId: Number(cuf.id),
+                body: cuf.values,
+              }).unwrap();
+            })
+          );
+          dispatch(addMessage(t("Profile data correctly updated."), "success"));
+        } catch (e) {
+          dispatch(
+            addMessage(
+              t("Profile data not saved. Please try again."),
+              "warning"
+            )
+          );
+        }
 
         helpers.setSubmitting(false);
         helpers.resetForm({ values });
