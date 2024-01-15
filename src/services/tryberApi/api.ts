@@ -43,6 +43,12 @@ export const api = createApi({
       return headers;
     },
   }),
-  tagTypes: ["UserPayments", "UserPendingBooty", "UserBootyThreshold", "User"],
+  tagTypes: [
+    "UserPayments",
+    "UserLanguages",
+    "UserPendingBooty",
+    "UserBootyThreshold",
+    "User",
+  ],
   endpoints: () => ({}), // auto generated npm run generate-api
 });

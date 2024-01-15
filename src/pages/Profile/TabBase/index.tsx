@@ -42,6 +42,9 @@ const TabBase = () => {
   const { data: user, isLoading: loading } = useGetUsersMeQuery({
     fields: "all",
   });
+  const { data: userLanguages } = useGetUsersMeQuery({
+    fields: "languages",
+  });
   const [updateProfile] = usePatchUsersMeMutation();
   const [updateLanguages] = usePutUsersMeLanguagesMutation();
   const genderOptions = useGenderOptions();
@@ -73,7 +76,7 @@ const TabBase = () => {
     countryCode: countries.getAlpha2Code(user?.country || "Italy", "en"),
     city: user?.city || "",
     languages:
-      user?.languages?.map((l: any) => ({
+      (userLanguages?.languages || [])?.map((l: any) => ({
         label: l.name,
         value: l.id.toString(),
       })) || [],
@@ -189,7 +192,6 @@ const TabBase = () => {
         }
 
         helpers.setSubmitting(false);
-        helpers.resetForm({ values });
       }}
     >
       {(formikProps: FormikProps<BaseFields>) => {
