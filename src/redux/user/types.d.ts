@@ -1,17 +1,9 @@
 type User = undefined | UserData;
 
 interface UserStatus {
-  refresh: (additionalFields?: string) => void;
   login: (data: UserLoginData) => void;
-  getProfile: () => void;
-  updateProfile: (data: UserData) => void;
   getFiscalProfile: () => void;
   updateFiscalProfile: (data: UserData) => void;
-  user: User;
-  customUserFields?: CustomUserFields;
-  isLoading: boolean;
-  isProfileLoading: boolean;
-  error: HttpError;
   deletion: {
     deletionReason?: string;
     deleteUser: (lang: string) => void;

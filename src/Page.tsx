@@ -2,7 +2,6 @@ import { datadogLogs } from "@datadog/browser-logs";
 import { Location, createBrowserHistory } from "history";
 import queryString from "query-string";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { Redirect, Route, Router, Switch, useLocation } from "react-router-dom";
 import "./i18n";
 
@@ -30,7 +29,6 @@ import SignupSuccess from "./pages/SignupSuccess";
 import ThankYouPage from "./pages/ThankYou";
 import VdpPage from "./pages/VDP";
 import referralStore from "./redux/referral";
-import { refreshUser } from "./redux/user/actions/refreshUser";
 
 // Create Custom Sentry Route component
 const SentryRoute = Sentry.withSentryRouting(Route);
@@ -49,10 +47,8 @@ const base = "/:locale(en|it|es)?";
 function Page() {
   const { search } = useLocation();
   const { setReferral } = referralStore();
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(refreshUser());
     const values = queryString.parse(search);
     if (values.referral && typeof values.referral === "string") {
       setReferral(values.referral);

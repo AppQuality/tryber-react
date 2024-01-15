@@ -1,23 +1,21 @@
 import { BSCol, BSGrid, Card } from "@appquality/appquality-design-system";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { PageTemplate } from "src/features/PageTemplate";
-import { RankingRecap } from "./RankingRecap/RankingRecap";
-import { RankingTables } from "./RankingTables";
 import {
   fetchLevelInfo,
   fetchRankingSummary,
 } from "src/redux/ranking/actionCreator";
-import { useDispatch } from "react-redux";
-import { getProfile } from "src/redux/user/actions/getProfile";
 import { RankingInfo } from "./RankingInfo";
+import { RankingRecap } from "./RankingRecap/RankingRecap";
+import { RankingTables } from "./RankingTables";
 
 export default function Ranking() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRankingSummary());
-    dispatch(getProfile());
     dispatch(fetchLevelInfo());
   }, []);
   return (
