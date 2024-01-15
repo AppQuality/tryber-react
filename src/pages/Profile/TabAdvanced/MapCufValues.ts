@@ -10,7 +10,7 @@ import * as yup from "yup";
 import { AdvancedFormValues } from "./types";
 
 export const MapCufValues = () => {
-  const { data } = useGetUsersMeQuery({ fields: "all" });
+  const { data, isLoading } = useGetUsersMeQuery({ fields: "all" });
   const { data: customUserFields } = useGetCustomUserFieldsQuery();
   const { additional, profession, education } = data || {};
   const { t } = useTranslation();
@@ -104,7 +104,7 @@ export const MapCufValues = () => {
     });
     setInitialUserValues({ ...initialUserValues, ...values });
     setValidationSchema({ ...validationSchema, ...schema });
-  }, [customUserFields]);
+  }, [customUserFields, isLoading]);
   return {
     initialUserValues: initialUserValues,
     validationSchema: validationSchema,
