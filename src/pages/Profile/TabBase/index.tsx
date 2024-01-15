@@ -42,7 +42,7 @@ const TabBase = () => {
   const { data: user, isLoading: loading } = useGetUsersMeQuery({
     fields: "all",
   });
-  const [updateProfileNew] = usePatchUsersMeMutation();
+  const [updateProfile] = usePatchUsersMeMutation();
   const [updateLanguages] = usePutUsersMeLanguagesMutation();
   const genderOptions = useGenderOptions();
   const [languages, setLanguages] = useState<SelectType.Option[]>([]);
@@ -130,7 +130,7 @@ const TabBase = () => {
           await updateLanguages({
             body: newLanguages,
           }).unwrap();
-          await updateProfileNew({
+          await updateProfile({
             body: {
               ...profileDataToSend,
             },
