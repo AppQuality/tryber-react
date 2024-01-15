@@ -67,7 +67,7 @@ export const Footer: React.FunctionComponent<PaymentModalFooterProps> = ({
           disabled={isSubmitting}
           data-qa="payment-modal-back"
         >
-          {t("Back")}
+          {t("BACK:::PaymentModalFooter")}
         </Button>
       )}
       {step < 2 && (

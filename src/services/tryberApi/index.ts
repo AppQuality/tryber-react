@@ -479,6 +479,15 @@ const injectedRtkApi = api.injectEndpoints({
         body: queryArg.body,
       }),
     }),
+    headUsersByEmailByEmail: build.mutation<
+      HeadUsersByEmailByEmailApiResponse,
+      HeadUsersByEmailByEmailApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/by-email/${queryArg.email}`,
+        method: "HEAD",
+      }),
+    }),
     getUsersMe: build.query<GetUsersMeApiResponse, GetUsersMeApiArg>({
       query: (queryArg) => ({
         url: `/users/me`,
@@ -1675,7 +1684,9 @@ export type PatchPopupsByPopupApiArg = {
 };
 export type GetUsersApiResponse = /** status 200 OK */ User[];
 export type GetUsersApiArg = void;
-export type PostUsersApiResponse = /** status 200 OK */ User;
+export type PostUsersApiResponse = /** status 201 Created */ {
+  id: number;
+};
 export type PostUsersApiArg = {
   body: {
     name: string;
@@ -1686,6 +1697,10 @@ export type PostUsersApiArg = {
     birthDate: string;
     referral?: string;
   };
+};
+export type HeadUsersByEmailByEmailApiResponse = unknown;
+export type HeadUsersByEmailByEmailApiArg = {
+  email: string;
 };
 export type GetUsersMeApiResponse = /** status 200 OK */ {
   username?: string;
@@ -2712,6 +2727,7 @@ export const {
   usePatchPopupsByPopupMutation,
   useGetUsersQuery,
   usePostUsersMutation,
+  useHeadUsersByEmailByEmailMutation,
   useGetUsersMeQuery,
   usePutUsersMeMutation,
   usePatchUsersMeMutation,

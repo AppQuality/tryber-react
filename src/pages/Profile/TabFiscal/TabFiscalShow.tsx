@@ -64,7 +64,7 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
         <Title size="xs" className="aq-mb-3">
           {t("Your fiscal data")}
         </Title>
-        <ShowItem Icon={Person} label={t("Name")}>
+        <ShowItem Icon={Person} label={t("First Name")}>
           {userData.name}
         </ShowItem>
         <ShowItem Icon={Person} label={t("Surname")}>

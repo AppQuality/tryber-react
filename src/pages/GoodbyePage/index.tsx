@@ -12,7 +12,7 @@ export default function GoodbyePage() {
   const { t } = useTranslation();
 
   return (
-    <PageTemplate route="goodbye">
+    <PageTemplate shouldBeLoggedIn={false} route="goodbye">
       <BSGrid>
         <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
           <Card className="aq-my-3">

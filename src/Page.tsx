@@ -1,12 +1,14 @@
-import "./i18n";
 import { datadogLogs } from "@datadog/browser-logs";
 import { Location, createBrowserHistory } from "history";
 import queryString from "query-string";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Redirect, Route, Router, Switch, useLocation } from "react-router-dom";
+import "./i18n";
 
+import * as Sentry from "@sentry/react";
 import GenericModal from "./features/GenericModal";
+import SentryWrapper from "./features/SentryWrapper";
 import SiteWideMessages from "./features/SiteWideMessages";
 import {
   Dashboard,
@@ -15,19 +17,20 @@ import {
   GettingStarted,
   GoodbyePage,
   Home,
+  Login,
   MyBugs,
+  PreviewSelectionForm,
   Profile,
   Ranking,
+  Signup,
   Wallet,
-  PreviewSelectionForm,
 } from "./pages";
-import referralStore from "./redux/referral";
-import { refreshUser } from "./redux/user/actions/refreshUser";
 import BugForm from "./pages/BugForm";
+import SignupSuccess from "./pages/SignupSuccess";
 import ThankYouPage from "./pages/ThankYou";
 import VdpPage from "./pages/VDP";
-import * as Sentry from "@sentry/react";
-import SentryWrapper from "./features/SentryWrapper";
+import referralStore from "./redux/referral";
+import { refreshUser } from "./redux/user/actions/refreshUser";
 
 // Create Custom Sentry Route component
 const SentryRoute = Sentry.withSentryRouting(Route);
@@ -63,12 +66,34 @@ function Page() {
       <Router history={history}>
         <Switch>
           <SentryRoute
+            path={`${base}/getting-started/signup`}
+            component={Signup}
+          />
+          <SentryRoute
+            path={`${base}/getting-started/confirmation`}
+            component={SignupSuccess}
+          />
+          <SentryRoute
             path={`${base}/getting-started`}
             component={GettingStarted}
           />
           <SentryRoute path={`/it/getting-started-2`}>
             <Redirect to="/it/getting-started" />
           </SentryRoute>
+
+          <SentryRoute path={`${base}/login`} component={Login} />
+
+          <SentryRoute
+            path={`*/login`}
+            component={({ location }: { location: Location }) => (
+              <Redirect
+                to={{
+                  ...location,
+                  pathname: `/login`,
+                }}
+              />
+            )}
+          />
 
           <SentryRoute path={`${base}/my-dashboard`} component={Dashboard} />
 

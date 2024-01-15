@@ -1,8 +1,10 @@
 import { type Page } from "@playwright/test";
-import { LoggedIn } from "./LoggedIn";
+import { TryberPage } from "./TryberPage";
 
-export class DashboardPage extends LoggedIn {
+export const dashboardUrl = "/my-dashboard";
+export class DashboardPage extends TryberPage {
   readonly page: Page;
+  readonly url = "/my-dashboard";
 
   constructor(page: Page) {
     super(page);
@@ -10,7 +12,7 @@ export class DashboardPage extends LoggedIn {
   }
 
   async visit() {
-    await this.page.goto("/my-dashboard");
+    await this.page.goto(dashboardUrl);
   }
 
   async stayGold() {

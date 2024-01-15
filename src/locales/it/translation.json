@@ -1,6 +1,7 @@
 {
   "...wait": "Un momento...",
   "/discover-experience-points/": "/it/come-funzionano-i-punti-esperienza/",
+  "/ethical-code/": "",
   "/faq/": "/it/domande-frequenti/",
   "/my-account/": "/it/il-mio-account/",
   "/terms-and-conditions/": "/it/termini-e-condizioni/",
@@ -36,6 +37,10 @@
   "A list of all the campaigns you participated in that we successfully evaluated and that are now closed.": "La lista di tutte le Campagne a cui hai partecipato, che abbiamo correttamente valutato e che ora sono chiuse.",
   "A list of the campaigns that are currently available on the platform. Check the details and apply!": "La lista delle Campagne attualmente disponibili in piattaforma: controlla le caratteristiche richieste e prova a candidarti!",
   "A new device was successfully added to your device list": "Un nuovo dispositivo è stato aggiunto con successo all'elenco dei dispositivi",
+  "API_ERROR_MESSAGE": {
+    "Click on \"Sign up\" and try again.": "Riprova ad accedere.",
+    "Something went wrong": "Qualcosa è andato storto"
+  },
   "Accept the <terms_and_conditions_link>conditions</terms_and_conditions_link> before proceeding": "Accetta le <terms_and_conditions_link>condizioni</terms_and_conditions_link> e continua la richiesta",
   "Account holder": "A chi è intestato il conto",
   "Achievement Date": "Data di conseguimento",
@@ -96,6 +101,12 @@
   },
   "Avalaible Campaigns": "Campagne Disponibili",
   "Awarded on": "Data",
+  "BACK": {
+    "DeviceModalFooter": "Indietro",
+    "PaymentModalFooter": "Indietro",
+    "UserDeleteModal": "Indietro",
+    "Signup form Step1": "Indietro"
+  },
   "BBUGFORM_UPLOAD_IMG_ICON": "Immagine",
   "BUGFORM_BUGDTLS_BUGTITLE": "Titolo",
   "BUGFORM_BUGDTLS_BUGTITLE_ERROR": "Compila così questo campo: [Pagina o sezione dove hai trovato il bug] - Breve descrizione del bug",
@@ -153,7 +164,6 @@
   "BUGSEVERITY_TOOLTIP_TXT": "Ti diciamo di più",
   "BUGTITLEDETAILS_TOOLTIP_TXT": "Ti diciamo di più",
   "BUGTYPE_TOOLTIP_TXT": "Ti diciamo di più",
-  "Back": "Indietro",
   "Bank Transfer": "Bonifico bancario",
   "Base": "Base",
   "Become an AppQuality Tester": "Diventa un Tryber",
@@ -165,6 +175,12 @@
   "Brands helped": "Aziende aiutate",
   "Bug Evaluation": "Valutazione Bug",
   "By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>": "Iscrivendoti a TRYBER, accetti i <1>Termini d'utilizzo</1> e la <3>Privacy Policy</3>",
+  "COUNTRY": {
+    "Profile TabBase": "Paese di residenza",
+    "Profile TabFiscal": "Paese di residenza",
+    "Signup form Step1": "Paese di residenza *",
+    "SignupForm": "Paese di residenza *"
+  },
   "Campaign": "Campagna",
   "Campaign Completion": "Completamento campagna",
   "Campaigns delivered": "Campagne completate",
@@ -183,19 +199,26 @@
   "Closed": "Chiuse",
   "Coming soon": "Coming soon",
   "Complete the Basic Course": "Inizia dal Corso Base",
+  "Complete your profile": "Crea il tuo account",
   "Completed campaigns": "Campagne completate",
   "Computer type": "Tipo di computer",
   "Confirm email": "Conferma indirizzo email",
   "Confirm password": "Conferma la password",
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Collega Tryber a uno dei tuoi account, in questo modo sarà più facile accedere alla dashboard",
+  "Continue with Facebook": "Continua con Facebook",
+  "Continue with LinkedIn": "Continua con LinkedIn",
+  "Continue with email": "Continua con email",
   "Countries covered": "Paesi raggiunti",
-  "Country": "Paese di residenza",
   "Courses": "Corsi",
   "Create an account": "Crea un account",
+  "Create your account": "Crea un nuovo account",
   "Current password": "Password attuale",
+  "DATE_OF_BIRTH": {
+    "BitrhdayPicker": "Data di nascita",
+    "SignupFrom Step1": "Data di nascita (gg/mm/aaaa)"
+  },
   "Dashboard": "Dashboard",
   "Date": "Data",
-  "Date of birth": "Data di nascita",
   "Delete": "Rimuovi",
   "Delete account": "Elimina account",
   "Delete your account": "Elimina il tuo account",
@@ -215,7 +238,7 @@
   "Edit": "Modifica",
   "Edit device": "Modifica dispositivo",
   "Education level": "Livello di educazione",
-  "Email": "E-mail",
+  "Email": "Email",
   "Email Status": "Stato dell'email",
   "Email confirmed": "Email confermata",
   "Email must be a valid email": "Inserisci un indirizzo email valido",
@@ -227,6 +250,7 @@
   "FAQ": "Domande frequenti",
   "Facebook": "Facebook",
   "Female": "Donna",
+  "Fields marked with asterisk (*) are required.": "I campi contrassegnati dall’asterisco (*) sono obbligatori.",
   "Fill in your profile details": "Completa il tuo profilo",
   "Filters": "Filtri",
   "Finished": "Terminate",
@@ -254,7 +278,8 @@
     "Other": "Non binario"
   },
   "Generic error": "Errore generico",
-  "Getting Started": "Iniziare",
+  "Go back and choose another email address or <login_link>log in</login_link>.": "Torna indietro e inserisci un’email diversa oppure <login_link>accedi</login_link>.",
+  "Go to dashboard": "Vai alla dashboard",
   "Great job!": "Ottimo lavoro!",
   "Great, next month you'll be {{level}}, give your best and conquer {{nextLevel}}": {
     "__RANKING_PROGRESS_MESSAGE_OVER_MAX:70": "Grande, il prossimo mese sarai {{level}}!<br></br>Dai il tuo meglio e conquista {{nextLevel}}!"
@@ -266,7 +291,7 @@
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Qui puoi solo cambiare la versione del tuo sistema operativo. Se vuoi aggiungere un altro dispositivo clicca su \"Aggiungi dispositivo\"",
   "History": "Cronologia",
   "How do experience points work?": "Come funzionano i punti esperienza?",
-  "I agree to receive earning opportunity emails from AppQuality": "Accetto di ricevere email dedicate alla community di TRYBER",
+  "I agree to receive earning opportunity emails from AppQuality": "Accetto di ricevere email per la community di TRYBER",
   "I don't receive testing campaigns": "Non ricevo Campagne",
   "I don’t have enough time to take part in the campaigns": "Non ho abbastanza tempo per svolgere le Campagne",
   "I get too many emails": "Ricevo troppe email",
@@ -292,7 +317,11 @@
   "LinkedIn": "LinkedIn",
   "Loading Data": "Caricamento...",
   "Log in with an existing account": "Iscriviti più velocemente",
-  "Login": "Già dei nostri? Accedi",
+  "Login input password": {
+    "Hide password": "Nascondi password",
+    "Show password": "Mostra password"
+  },
+  "MAIL_SIGNUP_TERMS_DISCLAIMER": "",
   "MODAL_PAYMENT_STEP_TITLE": {
     "Confirm": "Conferma",
     "Get email": "Ricevi email",
@@ -336,6 +365,13 @@
   "Overall ranking | level {{level}}": {
     "__RANKING_TITLE_LABEL_MONTH_MAX: 45": "Classifica completa | Livello {{level}}"
   },
+  "PASSWORD_VALIDATOR": {
+    "Password requirements:": "La tua password deve rispettare questi criteri:",
+    "contain a lowercase letter": "contenere una lettera minuscola",
+    "contain a number": "contenere un numero",
+    "contain an uppercase letter": "contenere una lettera maiuscola",
+    "minimum of 6 characters": "essere lunga almeno 6 caratteri"
+  },
   "PAYMENTS_MODAL_STEP_4_ERROR": "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
   "PC Type: <bold>{{pc_type}}</bold>": "Tipo PC: <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "Questo indirizzo email è già in uso, inseriscine un altro.",
@@ -376,6 +412,34 @@
   "Request your data": "Richiedi i tuoi dati",
   "Reset password": "Resetta la password",
   "Review the manual": "Rivedi il manuale",
+  "SIGNUP_FORM": {
+    "Birthday is required": "Inserisci la tua data di nascita: questo campo è obbligatorio",
+    "Country is required": "Inserisci il paese dove risiedi: questo campo è obbligatorio",
+    "Email is required": "Inserisci la tua email: questo campo è obbligatorio",
+    "Email must be a valid email": "Controlla che la tua email sia corretta",
+    "I agree to receive earning opportunity emails from AppQuality": "Accetto di ricevere email per la community di TRYBER.",
+    "Invalid date": "Inserisci la data di nascita nel formato giorno/mese/anno",
+    "Name is required": "Inserisci il tuo nome: questo campo è obbligatorio",
+    "Password is a required field": "Inserisci la password: questo campo è obbligatorio",
+    "Password must be at least 6 character long": "La password deve essere di almeno 6 caratteri",
+    "Password must contain at least a lowercase letter": "La password deve contenere almeno una lettera minuscola",
+    "Password must contain at least a number": "La password deve contenere almeno un numero",
+    "Password must contain at least an uppercase letter": "La password deve contenere almeno una lettera maiuscola",
+    "Surname is required": "Inserisci il tuo cognome: questo campo è obbligatorio",
+    "You must accept to receive emails": "Prima di iscriverti devi accettare di ricevere le email da TRYBER.",
+    "You must be at least 18 years old": "Per ora TRYBER è dedicato a chi ha più di 18 anni"
+  },
+  "SIGNUP_LOGIN_CTA": "Hai già un account? <login_link><strong>Accedi</strong></login_link>",
+  "SIGNUP_STEP": {
+    "back": "Indietro",
+    "continue": "Continua",
+    "submit": "Iscriviti ora"
+  },
+  "SIGNUP_STEP_TITLE": {
+    "Account info": "Dati account",
+    "Personal info": "Dati personali"
+  },
+  "SIGNUP_TERMS_DISCLAIMER": "Quando continui con Facebook o LinkedIn, accetti i <terms_link>Termini di utilizzo</terms_link>, <privacy_link>la Privacy Policy</privacy_link> e <ethical_link>il Codice Etico</ethical_link> di TRYBER.",
   "Save": "Salva",
   "Save changes": "Salva le modifiche",
   "Search": "Cerca",
@@ -395,7 +459,9 @@
   "Settings": "Impostazioni",
   "Severity": "Gravità",
   "Should be exactly 16 characters": "Deve contenere esattamente 16 caratteri",
+  "Signup for Tryber": "Iscriviti a TRYBER",
   "Signup now": "Iscriviti ora",
+  "Signup success": "",
   "Something went wrong": "È successo qualcosa",
   "Spoken languages": "Lingue parlate",
   "Start Date": "Inizio",
@@ -435,6 +501,7 @@
   "There was an error removing your certification": "Si è presentato un errore nella rimozione della tua certificazione",
   "There was an error removing your certifications": "Si è presentato un errore nella rimozione delle tue certificazioni",
   "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth": "C'è stato un errore durante la validazione del tuo identificativo fiscale. Per favore controlla il tuo nome, cognome, genere, data di nascita o città di nascita",
+  "This email is already in use.": "Questa email è già collegata a un account esistente.",
   "This field is shared with the base section": "Il campo è condiviso con la sezione base",
   "This field is shared with the fiscal section": "Il campo è condiviso con la sezione fiscale",
   "This is a required field": "Questo è un campo obbligatorio",
@@ -464,6 +531,7 @@
   "View bugs page": "Vedi i bug caricati",
   "View more": "Visualizza",
   "View payments page": "Vedi la pagina del portafoglio",
+  "WELCOME_SIGNUP_MESSAGE": "<strong>È bello averti tra noi</strong><br />Ti abbiamo inviato una email di benvenuto all’indirizzo che hai indicato durante la registrazione. Scopri l’universo di TRYBER: scegli tra i corsi della nostra University, candidati a campagne di test e prendi parte alla community.",
   "Wallet": "Portafoglio",
   "We couldn't find a city with that name, please search again": "Non è stato possibile trovare una città con quel nome, per favore riprova",
   "We couldn't update your profile. Try again.": "Non è stato possibile aggiornare il tuo profilo. Riprova",
@@ -476,7 +544,8 @@
   "What you are starting is a path, made of test campaigns, courses, bugs, questionnaires, experience points... but above all you are becoming part of a Community formed by thousands of people from all over the world, who want to grow and contribute to improve the services and digital products we use in everyday life.\n            <br />\n            To support your growth, you'll find free and continuously updated training content in the University of Testing.\n            If you don't know where to start, we recommend:\n            <ul>\n              <li>this short guide on how to start your adventure as a Tester: <a target='_blank' href='/aq-instructions-for-use/'>AQ - Instructions for use.</a></li>\n              <li>the <a target='_blank' href='/faq/'>FAQ</a> where all the most common doubts are collected!</li>\n            </ul>\n            For any doubt, question or advice do not hesitate to contact us at <a href='mailto:crowd@app-quality.com'>crowd@app-quality.com</a>, the official email for tester support.": "Unirsi a TRYBER significa far parte di una Community internazionale di migliaia di persone ma vuol dire anche sentirsi fieri di aver completato delle campagne, trovato dei bug e accumulato punti esperienza. Facciamo tutto questo insieme per migliorare i servizi e prodotti digitali che usiamo ogni giorno.\n<br />\nVogliamo farti crescere con corsi e contenuti gratuiti sempre aggiornati che troverai nella sezione Università del Tryber. Per iniziare al meglio, esplora:\n <ul>\n  <li> una <a target='_blank' href='/it/tryber-istruzioni-per-luso/'>breve guida</a> con le istruzioni per l'uso:\n</li>le <a target='_blank' href='/faq/'>FAQ</a> con tutte le risposte ai tuoi dubbi</li>\n            </ul>\nHai delle domande da farci? Rimaniamo sempre al tuo fianco con l'email dedicata al supporto dei Tryber: <a href='mailto:support@tryber.me'>support@tryber.me</a>.",
   "Why do you want to delete your account?": "Perché vuoi eliminare il tuo account?",
   "With your work you can unlock cash prizes and/or experience points.\n Before each activity you will be informed of the expected prize, which will vary depending on the effort required: from a few euros to hundreds.\n Remember that you can unlock it only by completing the activity! In the payment section you can view your situation and request at any time the payout accumulated via Paypal or bank transfer.": "I tuoi sforzi saranno ripagati: con il tuo lavoro puoi ottenere premi in denaro o punti esperienza. A ogni attività è legato un premio che può variare in base al tipo di lavoro e all'impegno previsto. Solo quando completerai l'attività, sbloccherai il premio. Tieni tutto sotto controllo e richiedi i premi in denaro dalla sezione Portafoglio.",
-  "Wrong username or password.": "Username o password errati.",
+  "Wrong username or password.": "Controlla che email e password siano corrette oppure vai su Password dimenticata per reimpostarla.",
+  "You are creating your account with referral ID {{referral}}": "Stai creando il tuo account con codice referral ID {{referral}}",
   "You are few steps away from making your experience memorable in the AppQuality Community World!": "5 veloci step per cominciare alla grande la tua esperienza nella nostra Community. Iniziamo!",
   "You are not currently selected for any campaigns. Apply in available campaigns to participate in upcoming ones!": "Al momento non sei stato selezionato per nessuna campagna. Candidati nelle Campagne disponibili per partecipare alle prossime!",
   "You can add more in the certifications section": "Puoi aggiungere altro nella sezione delle certificazioni",
@@ -492,6 +561,7 @@
   "You need to select a street code": "Devi selezionare un codice stradale",
   "You need to select a zip code": "Devi selezionare un CAP",
   "You need to set your two-factor authentication for this. Redirecting to the login page": "",
+  "You're a Tryber now": "Ora fai parte di TRYBER",
   "Your Performance": "Le tue Statistiche",
   "Your current password is not correct": "La tua password attuale non è corretta",
   "Your data are safe with us. You can ask them anytime you need. Upon your request, we will provide you a copy of your personal data at the email associated to your Tester ID.": "I tuoi dati sono al sicuro con noi. Puoi richiederli ogni volta che ne hai bisogno. Su tua richiesta, ti forniremo una copia dei tuoi dati personali all'email associata al tuo Tryber ID",
@@ -640,6 +710,9 @@
   "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
     "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>Cosa farai ora</title>\n<ul>\n<li>Scegli il metodo di pagamento e controlla che il tuo regime fiscale sia corretto</li>\n<li>Inserisci i dati richiesti e accetta le condizioni di pagamento</li>\n<li>Invia la richiesta</li>\n</ul>"
   },
+  "available tags: <strong>, <signuplink>": {
+    "LOGIN_SIGNUP_LINK": "Prima volta su TRYBER? <signuplink><strong>Registrati</strong></signuplink>"
+  },
   "bugform usecase select option": {
     "Not a specific usecase": "Nessuno di questi casi d'uso"
   },
@@ -670,7 +743,7 @@
     "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "In questa campagna non sono ammessi bug di tipologia: {{invalid}}",
     "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "In questa campagna non sono ammessi bug di tipologia: {{invalid}}"
   },
-  "forgot your password?": "hai dimenticato la password?",
+  "forgot your password?": "Password dimenticata?",
   "give your best to keep level {{level}}": {
     "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Stai retrocedendo: dai il tuo meglio per continuare a essere {{level}}"
   },
@@ -688,8 +761,8 @@
     "__RANKING_NAME_LEVEL_MAX:25": "Livello {{levelName}}"
   },
   "login": "accedi",
-  "login with your credentials": "accedi con le tue credenziali",
-  "name": "Nome",
+  "login page title": "Accedi a Tryber",
+  "login to continue": "Accedi per continuare",
   "no data": "—",
   "not calculated": {
     "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "Non conteggiato",
@@ -698,11 +771,12 @@
   "not in ranking": {
     "__RANKING_POSITION_NOLeVEL_MAX: 30": "No level"
   },
-  "or <1>create an account</1>": "o <1>crea un account</1>",
-  "or login with": "o accedi con",
+  "or log in with email and password": "oppure accedi con email e password",
+  "or you can": "Oppure",
   "redirecting": "reindirizzamento",
   "social": "social",
   "testers": "Tryber attivi",
+  "try again to login": "Riprova ad accedere.",
   "wait...": "attendi...",
   "you must accept terms and conditions": "Accetta le condizioni per continuare",
   "{{days}} days left to give your best!": {
@@ -713,6 +787,28 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "API_ERROR_MESSAGE::Click on \"Sign up\" and try again.": "",
+  "API_ERROR_MESSAGE::Something went wrong": "",
+  "Click on \"Sign up\" and try again.": "",
+  "Invalid date": "",
+  "Sign up": "Iscriviti ora",
+  "available tags <termsLink>, <privacyLink> and <ethicalCodeLink>": {
+    "DISCLAIMER_SIGNUP_PAGE": "Quando ti iscrivi, accetti i <termsLink>Termini di utilizzo</termsLink>, la <privacyLink>Privacy Policy</privacyLink> e il <ethicalCodeLink>Codice Etico</ethicalCodeLink> e di ricevere email per la community di TRYBER."
+  },
+  "Back": "Indietro",
+  "Country": "Paese di residenza",
+  "name": "Nome",
+  "Welcome aboard!": "È bello averti tra noi",
+  "Welcome signup message": "Ti abbiamo inviato una email di benvenuto all’indirizzo che hai indicato durante la registrazione. Scopri l’universo di TRYBER: scegli tra i corsi della nostra University, candidati a campagne di test e prendi parte alla community.",
+  "Ethical Code": "",
+  "Log in": "",
+  "Privacy Policy": "",
+  "Terms and Conditions": "",
+  "Login": "Già dei nostri? Accedi",
+  "or login with": "o accedi con",
+  "login with your credentials": "accedi con le tue credenziali",
+  "or <1>create an account</1>": "o <1>crea un account</1>",
+  "login-page-title": "",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_INVALID MAX: 20": "partita IVA o più di € 5,000 lordi / anno con prestazioni occasionali",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_NON_ITALIAN MAX: 20": "estero",
   "__WALLET_MODAL-REQUEST_FISCAL-TYPE_WITHHOLDING MAX: 20": "meno di € 5.000 lordi / anno con prestazioni occasionali",

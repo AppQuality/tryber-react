@@ -70,7 +70,7 @@ export const Footer = ({
           disabled={isSubmitting}
           data-qa="payment-modal-back"
         >
-          {t("Back")}
+          {t("BACK:::PaymentModalFooter")}
         </Button>
       )}
       <Button

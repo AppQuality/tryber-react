@@ -20,7 +20,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   // workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI ? "dot" : "list",
+  reporter: process.env.CI ? "github" : "list",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -37,6 +37,7 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    // update e2e.yml github action if you change supported browsers
     // {
     //   name: "chromium",
     //   use: { ...devices["Desktop Chrome"] },

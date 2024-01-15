@@ -28,7 +28,7 @@ export const DeviceModalFooter = ({
           onClick={() => setStep(currentStep - 1)}
           disabled={currentStep === 0}
         >
-          {t("Back")}
+          {t("BACK:::DeviceModalFooter")}
         </Button>
       )}
       {currentStep === steps.length - 1 ? (
