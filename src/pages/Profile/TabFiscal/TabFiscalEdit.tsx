@@ -20,9 +20,12 @@ import { HalfColumnButton } from "src/features/HalfColumnButton";
 import { SkeletonTab } from "src/pages/Profile/SkeletonTab";
 import modalStore from "src/redux/modal";
 import { updateFiscalProfile } from "src/redux/user/actions/updateFiscalProfile";
-import { updateProfile } from "src/redux/user/actions/updateProfile";
 import * as yup from "yup";
 
+import {
+  useGetUsersMeQuery,
+  usePatchUsersMeMutation,
+} from "src/services/tryberApi";
 import FiscalAddress from "./components/FiscalAddress";
 import FiscalResidenceModal from "./components/FiscalResidenceModal";
 import FiscalTypeArea from "./components/FiscalTypeArea";
@@ -30,12 +33,10 @@ import FiscalTypeArea from "./components/FiscalTypeArea";
 export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
   const { t } = useTranslation();
   const { open } = modalStore();
+  const { data } = useGetUsersMeQuery({ fields: "all" });
+  const [updateProfile] = usePatchUsersMeMutation();
   const fiscalData = useSelector(
     (state: GeneralState) => state.user.fiscal.data,
-    shallowEqual
-  );
-  const userData = useSelector(
-    (state: GeneralState) => state.user.user,
     shallowEqual
   );
   const isProfileLoading = useSelector(
@@ -45,8 +46,8 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
   const dispatch = useDispatch();
 
   const initialUserValues: FiscalFormValues = {
-    name: userData.name,
-    surname: userData.surname,
+    name: data?.name || "",
+    surname: data?.surname || "",
     gender: fiscalData?.gender || "",
     fiscalId: fiscalData?.fiscalId || "",
     type: fiscalData?.type || "",
@@ -54,7 +55,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
       fiscalData?.type === "non-italian" ? "" : fiscalData?.type,
     birthPlaceCity: fiscalData?.birthPlace?.city,
     birthPlaceId: "",
-    birthDate: userData.birthDate,
+    birthDate: data?.birthDate || "",
     birthPlaceProvince: fiscalData?.birthPlace?.province,
     countryCode: fiscalData?.address?.country,
     province: fiscalData?.address?.province,
@@ -176,6 +177,13 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
             province: values.birthPlaceProvince,
           };
         }
+        await updateProfile({
+          body: {
+            name: values.name,
+            surname: values.surname,
+            birthDate: values.birthDate,
+          },
+        }).unwrap();
         dispatch(
           updateFiscalProfile(submitValues as UserData, {
             verifiedMessage: (
@@ -197,21 +205,6 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
               </>
             ),
           })
-        );
-        dispatch(
-          updateProfile(
-            {
-              profile: {
-                name: values.name,
-                surname: values.surname,
-                birthDate: values.birthDate,
-              },
-            },
-            t(
-              "Your profile doesn't match with your fiscal profile, please check your data"
-            ),
-            t("Your fiscal profile is now verified")
-          )
         );
         helpers.setSubmitting(false);
         helpers.resetForm({ values });
