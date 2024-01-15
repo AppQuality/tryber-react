@@ -4,28 +4,23 @@ import {
   Button,
   Card,
 } from "@appquality/appquality-design-system";
-import queryString from "query-string";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 import { PageTemplate } from "src/features/PageTemplate";
+import { useGetUsersMeBugsQuery } from "src/services/tryberApi";
 import i18n from "../../i18n";
-import {
-  setSelectedCampaign,
-  setSelectedStatus,
-  updateMybugsPagination,
-} from "../../redux/myBugs/actionCreator";
+import { updateMybugsPagination } from "../../redux/myBugs/actionCreator";
 import { coloredStatus } from "../../redux/myBugs/utils";
 import { useAppDispatch } from "../../redux/provider";
 import MyBugsFilters from "./MyBugsFilters";
 import MyBugsTable from "./MyBugsTable";
-import { useGetUsersMeBugsQuery } from "src/services/tryberApi";
+import { MyBugsColumns } from "./columns";
+import { useQueryStringFilters } from "./useQueryStringFilters";
 
 export default function MyBugs() {
-  const { search } = useLocation();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  useQueryStringFilters();
   const { selectedCampaign, selectedSeverity, selectedStatus } = useSelector(
     (state: GeneralState) => ({
       selectedCampaign: state.myBugs.selectedCampaign,
@@ -62,18 +57,6 @@ export default function MyBugs() {
     const newStart = limit * (newPage - 1);
     dispatch(updateMybugsPagination(newStart));
   };
-
-  useEffect(() => {
-    const values = queryString.parse(search);
-    if (values.cp) {
-      dispatch(setSelectedCampaign({ value: values.cp.toString(), label: "" }));
-    }
-    if (values.status) {
-      dispatch(
-        setSelectedStatus({ value: values.status.toString(), label: "" })
-      );
-    }
-  }, [queryString]);
 
   const rows = (results || []).map((res) => {
     let status = res.status
