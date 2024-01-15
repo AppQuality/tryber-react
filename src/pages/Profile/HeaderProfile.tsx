@@ -12,9 +12,9 @@ import {
   StarFill,
 } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
-import { shallowEqual, useSelector } from "react-redux";
 import { SkeletonHeader } from "src/pages/Profile/SkeletonHeader";
 import siteWideMessageStore from "src/redux/siteWideMessages";
+import { useGetUsersMeQuery } from "src/services/tryberApi";
 import WPAPI from "src/utils/wpapi";
 import styled from "styled-components";
 
@@ -22,18 +22,14 @@ export const HeaderProfile = () => {
   const [submittingMailConfirm, setSubmittingMailConfirm] = useState(false);
   const { add } = siteWideMessageStore();
   const { t } = useTranslation();
-  const { user, loading } = useSelector(
-    (state: GeneralState) => ({
-      user: state.user.user,
-      loading: state.user.loading,
-    }),
-    shallowEqual
-  );
+  const { data: user, isLoading: loading } = useGetUsersMeQuery({
+    fields: "all",
+  });
 
   const handleMailConfirm = async () => {
     try {
       setSubmittingMailConfirm(true);
-      const data = await WPAPI.sendMailConfirmation();
+      await WPAPI.sendMailConfirmation();
       add({
         message: t(
           "User mail validation:::An Email has been sent to the provided address"
