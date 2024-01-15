@@ -33,14 +33,10 @@ import FiscalTypeArea from "./components/FiscalTypeArea";
 export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
   const { t } = useTranslation();
   const { open } = modalStore();
-  const { data } = useGetUsersMeQuery({ fields: "all" });
+  const { data, isLoading } = useGetUsersMeQuery({ fields: "all" });
   const [updateProfile] = usePatchUsersMeMutation();
   const fiscalData = useSelector(
     (state: GeneralState) => state.user.fiscal.data,
-    shallowEqual
-  );
-  const isProfileLoading = useSelector(
-    (state: GeneralState) => state.user.loadingProfile,
     shallowEqual
   );
   const dispatch = useDispatch();
@@ -139,7 +135,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
     initialTouched[k] = true;
   });
 
-  if (isProfileLoading) return <SkeletonTab />;
+  if (isLoading) return <SkeletonTab />;
   return (
     <Formik
       enableReinitialize

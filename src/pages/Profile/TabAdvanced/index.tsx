@@ -67,7 +67,6 @@ const TabAdvanced = () => {
         }
 
         helpers.setSubmitting(false);
-        helpers.resetForm({ values });
       }}
     >
       {(formikProps) => (

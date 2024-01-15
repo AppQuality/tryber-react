@@ -22,6 +22,12 @@ tryberApi.enhanceEndpoints({
           ...(arg.fields?.includes("booty_threshold")
             ? ["UserBootyThreshold" as const]
             : []),
+          ...(arg.fields?.includes("languages")
+            ? ["UserLanguages" as const]
+            : []),
+          ...(arg.fields?.includes("certifications")
+            ? ["UserCertifications" as const]
+            : []),
         ];
       },
     },
@@ -29,7 +35,13 @@ tryberApi.enhanceEndpoints({
       invalidatesTags: ["User"],
     },
     putUsersMeLanguages: {
-      invalidatesTags: ["User"],
+      invalidatesTags: ["UserLanguages"],
+    },
+    deleteUsersMeCertificationsByCertificationId: {
+      invalidatesTags: ["UserCertifications"],
+    },
+    postUsersMeCertifications: {
+      invalidatesTags: ["UserCertifications"],
     },
   },
 });

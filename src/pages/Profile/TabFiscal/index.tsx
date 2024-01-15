@@ -1,6 +1,7 @@
 import { Ref, useEffect, useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { SkeletonTab } from "src/pages/Profile/SkeletonTab";
+import { useGetUsersMeQuery } from "src/services/tryberApi";
 import { TabFiscalEdit } from "./TabFiscalEdit";
 import { TabFiscalShow } from "./TabFiscalShow";
 
@@ -9,10 +10,7 @@ const TabFiscal = ({ inputRef }: { inputRef?: Ref<HTMLInputElement> }) => {
     (state: GeneralState) => state.user?.fiscal,
     shallowEqual
   );
-  const isProfileLoading = useSelector(
-    (state: GeneralState) => state.user.loadingProfile,
-    shallowEqual
-  );
+  const { isLoading } = useGetUsersMeQuery({ fields: "all" });
   const [isEdit, setIsEdit] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   useEffect(() => {
@@ -20,7 +18,7 @@ const TabFiscal = ({ inputRef }: { inputRef?: Ref<HTMLInputElement> }) => {
   }, [userFiscal]);
   return (
     <div className="aq-p-3">
-      {isProfileLoading || userFiscal.loading ? (
+      {isLoading || userFiscal.loading ? (
         <SkeletonTab />
       ) : isEdit || !isVerified ? (
         <TabFiscalEdit setEdit={setIsEdit} inputRef={inputRef} />
