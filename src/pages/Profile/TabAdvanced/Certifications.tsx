@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 import { HalfColumnButton } from "src/features/HalfColumnButton";
 import modalStore from "src/redux/modal";
 import { useGetUsersMeQuery } from "src/services/tryberApi";
-import { components } from "src/utils/schema";
 import {
   DeleteCertificationsModal,
   DeleteCertificationsModalFooter,
@@ -21,10 +20,9 @@ import SingleCertification from "./SingleCertification";
 const Certifications = () => {
   const { t } = useTranslation();
   const { open } = modalStore();
-  const { data } = useGetUsersMeQuery({ fields: "all" });
+  const { data } = useGetUsersMeQuery({ fields: "certifications" });
 
-  const userCertifications: components["schemas"]["Certification"][] | boolean =
-    data?.certifications || false;
+  const userCertifications = data?.certifications || false;
 
   return (
     <>

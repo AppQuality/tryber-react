@@ -48,6 +48,7 @@ export const api = createApi({
     "UserLanguages",
     "UserPendingBooty",
     "UserBootyThreshold",
+    "UserCertifications",
     "User",
   ],
   endpoints: () => ({}), // auto generated npm run generate-api

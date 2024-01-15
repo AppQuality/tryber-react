@@ -25,6 +25,9 @@ tryberApi.enhanceEndpoints({
           ...(arg.fields?.includes("languages")
             ? ["UserLanguages" as const]
             : []),
+          ...(arg.fields?.includes("certifications")
+            ? ["UserCertifications" as const]
+            : []),
         ];
       },
     },
@@ -33,6 +36,12 @@ tryberApi.enhanceEndpoints({
     },
     putUsersMeLanguages: {
       invalidatesTags: ["UserLanguages"],
+    },
+    deleteUsersMeCertificationsByCertificationId: {
+      invalidatesTags: ["UserCertifications"],
+    },
+    postUsersMeCertifications: {
+      invalidatesTags: ["UserCertifications"],
     },
   },
 });
