@@ -43,7 +43,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
         data-qa="login-facebook-button"
         onClick={() => {
           window.location.href =
-            "/wp-admin/admin-ajax.php?loc=&action=facebook_oauth_redirect";
+            "/wp-admin/admin-ajax.php?loc=/my-bugs&action=facebook_oauth_redirect";
         }}
       >
         <img
