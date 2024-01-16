@@ -2,23 +2,17 @@ import { FormikValues } from "formik";
 import i18n from "i18next";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { shallowEqual, useSelector } from "react-redux";
+import {
+  useGetCustomUserFieldsQuery,
+  useGetUsersMeQuery,
+} from "src/services/tryberApi";
 import * as yup from "yup";
 import { AdvancedFormValues } from "./types";
 
 export const MapCufValues = () => {
-  const { additional, profession, education } = useSelector(
-    (state: GeneralState) => ({
-      additional: state.user.user?.additional,
-      profession: state.user.user?.profession,
-      education: state.user.user?.education,
-    }),
-    shallowEqual
-  );
-  const customUserFields = useSelector(
-    (state: GeneralState) => state.user.customUserFields,
-    shallowEqual
-  );
+  const { data, isLoading } = useGetUsersMeQuery({ fields: "all" });
+  const { data: customUserFields } = useGetCustomUserFieldsQuery();
+  const { additional, profession, education } = data || {};
   const { t } = useTranslation();
   const [initialUserValues, setInitialUserValues] =
     useState<AdvancedFormValues>({
@@ -65,7 +59,7 @@ export const MapCufValues = () => {
                 : [];
               schema["cuf_" + field.id] = yup.object();
               values["cuf_" + field.id] =
-                selectValue && selectValue.hasOwnProperty("value")
+                selectValue && "value" in selectValue
                   ? {
                       ...selectValue,
                       label: selectValue.text,
@@ -80,9 +74,7 @@ export const MapCufValues = () => {
                   )
                 : [];
               values["cuf_" + field.id] =
-                textValue && textValue.hasOwnProperty("value")
-                  ? textValue.value
-                  : "";
+                textValue && "value" in textValue ? textValue.value : "";
               const formatData = field.format ? field.format.split(";") : false;
               const format = formatData ? new RegExp(formatData[0]) : false;
               const lang = (i18n.language as SupportedLanguages) || "it";
@@ -112,7 +104,7 @@ export const MapCufValues = () => {
     });
     setInitialUserValues({ ...initialUserValues, ...values });
     setValidationSchema({ ...validationSchema, ...schema });
-  }, [customUserFields]);
+  }, [customUserFields, isLoading]);
   return {
     initialUserValues: initialUserValues,
     validationSchema: validationSchema,

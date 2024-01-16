@@ -1,11 +1,10 @@
 import { Button, CSSGrid, Text } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
-import React from "react";
-import { components } from "src/utils/schema";
-import modalStore from "src/redux/modal";
-import { deleteCertification } from "src/redux/user/actions/deleteCertification";
 import { useDispatch } from "react-redux";
-import { addCertification } from "src/redux/user/actions/addCertification";
+import modalStore from "src/redux/modal";
+import { addMessage } from "src/redux/siteWideMessages/actionCreators";
+import { useDeleteUsersMeCertificationsByCertificationIdMutation } from "src/services/tryberApi";
+import { components } from "src/utils/schema";
 import SingleCertification from "./SingleCertification";
 
 export const DeleteCertificationsModal = ({
@@ -38,35 +37,35 @@ export const DeleteCertificationsModal = ({
 
 export const DeleteCertificationsModalFooter = ({
   certification,
-  onSubmit,
   onClose,
 }: {
   certification?: components["schemas"]["Certification"];
-  onSubmit?: () => void;
   onClose?: () => void;
 }) => {
+  const [deleteCertification] =
+    useDeleteUsersMeCertificationsByCertificationIdMutation();
   const { close } = modalStore();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const handleDeleteCertification = () => {
+  const handleDeleteCertification = async () => {
     if (certification) {
       if (!certification.id) return;
-      dispatch(
-        deleteCertification(
-          certification.id,
-          t("Certification successfully removed"),
-          t("There was an error removing your certification")
-        )
-      );
-    } else {
-      dispatch(
-        addCertification(
-          { certifications: false },
-          t("All your certifications were successfully removed"),
-          t("There was an error removing your certifications")
-        )
-      );
-      if (onSubmit) onSubmit();
+      try {
+        await deleteCertification({
+          certificationId: certification.id,
+        }).unwrap();
+        dispatch(
+          addMessage(t("Certification successfully removed"), "success")
+        );
+      } catch (e) {
+        dispatch(
+          addMessage(
+            t("There was an error removing your certification"),
+            "danger"
+          )
+        );
+        return;
+      }
     }
     close();
   };

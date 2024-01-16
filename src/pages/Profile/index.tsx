@@ -6,12 +6,11 @@ import {
   Tab,
   Tabs,
 } from "@appquality/appquality-design-system";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
 import { getFiscalProfile } from "src/redux/user/actions/getFiscalProfile";
-import { getProfile } from "src/redux/user/actions/getProfile";
 
 import useTabFragment from "./effects/useTabFragment";
 import { FiscalProfileReport } from "./FiscalProfileReport";
@@ -28,7 +27,6 @@ export default function Profile() {
   const { activeTab, setActiveTab } = useTabFragment();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProfile());
     dispatch(getFiscalProfile());
   }, []);
 

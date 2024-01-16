@@ -15,13 +15,14 @@ import { FieldProps, FormikProps } from "formik";
 import { useTranslation } from "react-i18next";
 import { HalfColumnButton } from "src/features/HalfColumnButton";
 import siteWideMessageStore from "src/redux/siteWideMessages";
-import API from "src/utils/api";
+import { usePatchUsersMeMutation } from "src/services/tryberApi";
 import * as yup from "yup";
 import ResetPasswordArea from "./ResetPasswordArea";
 
 const EditPassword = () => {
   const { t } = useTranslation();
   const { add } = siteWideMessageStore();
+  const [updateProfile] = usePatchUsersMeMutation();
   const initialUserValues = {
     currentPassword: "",
     newPassword: "",
@@ -51,10 +52,12 @@ const EditPassword = () => {
         })}
         onSubmit={async (values, { resetForm }) => {
           try {
-            await API.changePassword({
-              oldPass: values.currentPassword,
-              newPass: values.newPasswordConfirm,
-            });
+            await updateProfile({
+              body: {
+                oldPassword: values.currentPassword,
+                password: values.newPassword,
+              },
+            }).unwrap();
             resetForm();
             add({
               message: t("Password correctly updated, you will be logged out"),
@@ -62,7 +65,7 @@ const EditPassword = () => {
             });
             window.location.reload();
           } catch (e: HttpError) {
-            if (e.statusCode === 417) {
+            if (e.status === 417) {
               add({
                 message: t("Your current password is not correct"),
                 type: "danger",

@@ -1,24 +1,16 @@
 import { Accordion, Skeleton } from "@appquality/appquality-design-system";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getCustomUserFields } from "src/redux/user/actions/getCustomUserFields";
-import { operations } from "src/utils/schema";
+import { useGetCustomUserFieldsQuery } from "src/services/tryberApi";
 import CufField from "./CufField";
 
 export const CustomUserFields = () => {
   const { i18n } = useTranslation();
   const dispatch = useDispatch();
-  const {
-    customUserFields,
-  }: {
-    customUserFields?: operations["get-customUserFields"]["responses"]["200"]["content"]["application/json"];
-  } = useSelector(
-    (state: GeneralState) => ({
-      customUserFields: state.user.customUserFields,
-    }),
-    shallowEqual
-  );
+  const { data: customUserFields } = useGetCustomUserFieldsQuery();
+
   const [isLoading, setIsLoading] = useState(true);
   const [groupOfFieldsWithoutGroup, setGroupOfFieldsWithoutGroup] = useState<
     typeof customUserFields

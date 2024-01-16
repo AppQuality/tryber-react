@@ -1,6 +1,4 @@
-import API from "../../../utils/api";
 import { addMessage } from "../../siteWideMessages/actionCreators";
-import * as actionTypes from "../actionTypes";
 import { updateFiscalProfile } from "./updateFiscalProfile";
 
 export const updateProfile = (
@@ -18,11 +16,6 @@ export const updateProfile = (
   return async (dispatch: any, getState: () => GeneralState) => {
     try {
       const state = getState();
-      if (data.languages) await API.myLanguages(data.languages);
-      const response = await API.patchMe(data.profile);
-      if (!response.languages) {
-        response.languages = [];
-      }
       if (
         state.user.fiscal.data &&
         state.user.fiscal.data.type !== "internal" &&
@@ -57,10 +50,6 @@ export const updateProfile = (
       }
       dispatch(addMessage(profileUpdatedMessage, "success"));
       onSuccess?.();
-      dispatch({
-        type: actionTypes.FETCH_PROFILE,
-        data: response,
-      });
     } catch (e: HttpError) {
       if (e.statusCode === 412) {
         dispatch(addMessage(emailErrorMessage, "danger"));
