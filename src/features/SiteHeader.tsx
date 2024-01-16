@@ -24,16 +24,20 @@ const SiteHeader = ({ route }: { route: string }) => {
       }
       isLoading={isLoading}
       logoUrl={homeUrl}
-      user={{
-        wp_user_id: user?.wp_user_id || 0,
-        id: user?.id || 0,
-        name: user?.name || "",
-        surname: user?.surname || "",
-        role: user?.role || "unknown",
-        username: user?.username || "",
-        email: user?.email || "",
-        image: user?.image || "",
-      }}
+      user={
+        user
+          ? {
+              wp_user_id: user?.wp_user_id || 0,
+              id: user?.id || 0,
+              name: user?.name || "",
+              surname: user?.surname || "",
+              role: user?.role || "unknown",
+              username: user?.username || "",
+              email: user?.email || "",
+              image: user?.image || "",
+            }
+          : undefined
+      }
       isMenuOpen={isOpen}
       toggleMenu={toggle}
       loginText={t("login")}
