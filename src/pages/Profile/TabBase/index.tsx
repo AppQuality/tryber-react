@@ -16,7 +16,6 @@ import {
 } from "@appquality/appquality-design-system";
 import { FormikProps } from "formik";
 import countries from "i18n-iso-countries";
-import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import BirthdayPicker from "src/features/BirthdayPicker";
@@ -24,7 +23,6 @@ import CitySelect from "src/features/CitySelect";
 import CountrySelect from "src/features/CountrySelect";
 import { HalfColumnButton } from "src/features/HalfColumnButton";
 import { SkeletonTab } from "src/pages/Profile/SkeletonTab";
-import API from "src/utils/api";
 import * as yup from "yup";
 
 import useGenderOptions from "src/features/UseGenderOptions";
@@ -42,28 +40,14 @@ const TabBase = () => {
   const { data: user, isLoading: loading } = useGetUsersMeQuery({
     fields: "all",
   });
-  const { data: userLanguages } = useGetUsersMeQuery({
-    fields: "languages",
-  });
   const [updateProfile] = usePatchUsersMeMutation();
   const [updateLanguages] = usePutUsersMeLanguagesMutation();
   const genderOptions = useGenderOptions();
-  const [languages, setLanguages] = useState<SelectType.Option[]>([]);
   const dispatch = useDispatch();
   const { fiscal } = useSelector(
     (state: GeneralState) => state.user,
     shallowEqual
   );
-
-  useEffect(() => {
-    const getLanguages = async () => {
-      const results = await API.languages();
-      setLanguages(
-        results.map((item) => ({ label: item.name, value: item.id.toString() }))
-      );
-    };
-    getLanguages();
-  }, []);
 
   const initialUserValues: BaseFields = {
     name: user?.name || "",
@@ -76,7 +60,7 @@ const TabBase = () => {
     countryCode: countries.getAlpha2Code(user?.country || "Italy", "en"),
     city: user?.city || "",
     languages:
-      (userLanguages?.languages || [])?.map((l: any) => ({
+      (user?.languages || [])?.map((l: any) => ({
         label: l.name,
         value: l.id.toString(),
       })) || [],
@@ -386,7 +370,6 @@ const TabBase = () => {
                 <LanguageSelect
                   name="languages"
                   label={t("Spoken languages")}
-                  options={languages}
                 />
                 <CSSGrid min="50%" gutter="0" fill="true">
                   <HalfColumnButton
