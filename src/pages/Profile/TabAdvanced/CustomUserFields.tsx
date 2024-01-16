@@ -1,13 +1,11 @@
 import { Accordion, Skeleton } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
 import { useGetCustomUserFieldsQuery } from "src/services/tryberApi";
 import CufField from "./CufField";
 
 export const CustomUserFields = () => {
   const { i18n } = useTranslation();
-  const dispatch = useDispatch();
   const { data: customUserFields } = useGetCustomUserFieldsQuery();
 
   const [isLoading, setIsLoading] = useState(true);

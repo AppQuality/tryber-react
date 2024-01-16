@@ -110,12 +110,29 @@ export const MapCufValues = () => {
     validationSchema: validationSchema,
   };
 };
-export const PrepareUserCuf = (values: FormikValues) => {
+export const PrepareUserCuf = (
+  values: FormikValues,
+  initialUserValues: FormikValues
+) => {
   const cufToSave: {
     id: string;
     values: ApiOperations["put-users-me-additionals-fieldId"]["requestBody"]["content"]["application/json"];
   }[] = [];
-  Object.keys(values).forEach((key) => {
+
+  const changedCufValues = Object.entries(values).reduce(
+    (acc, [key, value]) => {
+      const hasChanged =
+        JSON.stringify(initialUserValues[key]) !== JSON.stringify(value);
+
+      if (hasChanged) {
+        acc[key] = value;
+      }
+
+      return acc;
+    },
+    {} as any
+  );
+  Object.keys(changedCufValues).forEach((key) => {
     //key == cuf_n, certifications, certificationRadio, education, employment
     if (key.includes("cuf_")) {
       if (typeof values[key] === "string") {

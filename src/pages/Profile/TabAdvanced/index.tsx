@@ -38,8 +38,7 @@ const TabAdvanced = () => {
       validationSchema={yup.object(validationSchema)}
       onSubmit={async (values, helpers) => {
         helpers.setSubmitting(true);
-        const readyCuf = PrepareUserCuf(values);
-
+        const readyCuf = PrepareUserCuf(values, initialUserValues);
         try {
           await updateProfile({
             body: {
