@@ -5,18 +5,30 @@ import {
   SelectType,
 } from "@appquality/appquality-design-system";
 import { FieldProps } from "formik";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import API from "src/utils/api";
 
 export const LanguageSelect = ({
   name,
   label,
-  options,
 }: {
   name: string;
   label: string;
-  options: SelectType.Option[];
 }) => {
+  const [languages, setLanguages] = useState<SelectType.Option[]>([]);
+
+  useEffect(() => {
+    const getLanguages = async () => {
+      const results = await API.languages();
+      setLanguages(
+        results.map((item) => ({ label: item.name, value: item.id.toString() }))
+      );
+    };
+    getLanguages();
+  }, []);
   const { t } = useTranslation();
+
   return (
     <FormikField name={name}>
       {({ field, form, meta }: FieldProps) => (
@@ -27,7 +39,7 @@ export const LanguageSelect = ({
             isMulti
             label={label}
             value={field.value}
-            options={options}
+            options={languages}
             onBlur={() => {
               form.setFieldTouched(field.name);
             }}
