@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { rankingTheme } from "src/pages/Ranking/rankingTheme";
 import React, { useEffect } from "react";
+import { rankingTheme } from "src/pages/Ranking/rankingTheme";
 import getGravatarUrlWithThemedFallbackInitials from "src/utils/getGravatarUrlWithThemedFallbackInitials";
+import styled from "styled-components";
 
 const badgeWidth = "54px";
 const badgeHeight = "54px";
@@ -48,7 +48,7 @@ export const AvatarWithRank = ({ user, rankingSummary }: UserRankProps) => {
   const [avatarUrl, setAvatarUrl] = React.useState<string>("");
   useEffect(() => {
     setAvatarUrl(
-      getGravatarUrlWithThemedFallbackInitials(user.image, badgeColor)
+      getGravatarUrlWithThemedFallbackInitials(user.image || "", badgeColor)
     );
   }, [user.image, badgeColor]);
   return (
