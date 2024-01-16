@@ -16,6 +16,8 @@ import { Link } from "react-router-dom";
 import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import { ButtonWithIcon } from "../ButtonWithIcon";
 
+import { useLocation } from "react-router-dom";
+
 interface LoginFieldsProps {
   cta: string;
   error: string | boolean;
@@ -34,6 +36,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
       inputElement?.focus();
     }
   }, [errors, isSubmitting]);
+  const { pathname } = useLocation();
   return (
     <>
       <ButtonWithIcon
@@ -42,8 +45,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
         flat
         data-qa="login-facebook-button"
         onClick={() => {
-          window.location.href =
-            "/wp-admin/admin-ajax.php?loc=/my-bugs&action=facebook_oauth_redirect";
+          window.location.href = `/wp-admin/admin-ajax.php?loc=${pathname}&action=facebook_oauth_redirect`;
         }}
       >
         <img
@@ -60,8 +62,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
         flat
         data-qa="login-linkedin-button"
         onClick={() => {
-          window.location.href =
-            "/wp-admin/admin-ajax.php?loc=&action=linkedin_oauth_redirect";
+          window.location.href = `/wp-admin/admin-ajax.php?loc=${pathname}&action=linkedin_oauth_redirect`;
         }}
       >
         <img
