@@ -19,10 +19,10 @@ import {
   Wallet2,
 } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
+import { useGetUsersMeQuery } from "src/services/tryberApi";
+import wpApi from "src/utils/wpapi";
 import useWindowSize from "../../hooks/useWindowSize";
 import menuStore from "../../redux/menu";
-import useUser from "../../redux/user";
-import wpApi from "src/utils/wpapi";
 
 export interface TesterSidebarProps {
   route?: string;
@@ -59,7 +59,7 @@ const maxMobileSize = Number(
 );
 
 const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
-  const { user } = useUser();
+  const { data: user } = useGetUsersMeQuery({});
   const { isOpen, open, close } = menuStore();
   const isAdmin =
     user && user.role

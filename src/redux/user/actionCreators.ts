@@ -1,13 +1,9 @@
 import API from "../../utils/api";
 import * as actionTypes from "./actionTypes";
 
-export * from "./actions/getCustomUserFields";
 export * from "./actions/getFiscalProfile";
-export * from "./actions/getProfile";
 export * from "./actions/loginUser";
-export * from "./actions/refreshUser";
 export * from "./actions/updateFiscalProfile";
-export * from "./actions/updateProfile";
 
 export const updateDeletionReason = (reason: string) => {
   return async (dispatch: UserDispatchType) => {

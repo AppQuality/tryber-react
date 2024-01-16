@@ -6,6 +6,7 @@ import {
   Title,
 } from "@appquality/appquality-design-system";
 import { Trans, useTranslation } from "react-i18next";
+import { useGetUsersMeQuery } from "src/services/tryberApi";
 import styled from "styled-components";
 import UserStore from "../../../redux/user";
 import LeaveCrowd from "./LeaveCrowd";
@@ -19,7 +20,10 @@ const DeleteUserAreaGrid = styled.div`
 
 const DeleteUserArea = () => {
   const { t } = useTranslation();
-  const { deletion, user } = UserStore();
+  const { data: user } = useGetUsersMeQuery({
+    fields: "id",
+  });
+  const { deletion } = UserStore();
   const { openDeleteModal } = deletion;
   return (
     <DeleteUserAreaGrid>

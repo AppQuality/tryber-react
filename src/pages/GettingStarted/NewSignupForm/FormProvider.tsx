@@ -1,14 +1,13 @@
+import { Text } from "@appquality/appquality-design-system";
 import { Formik, FormikHelpers } from "formik";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
 import referralStore from "src/redux/referral";
-import { Text } from "@appquality/appquality-design-system";
-import * as yup from "yup";
 import siteWideMessageStore from "src/redux/siteWideMessages";
 import { usePostUsersMutation } from "src/services/tryberApi";
 import WPAPI from "src/utils/wpapi";
-import { useHistory } from "react-router-dom";
-import { useLocalizeRoute } from "src/hooks/useLocalizedRoute";
+import * as yup from "yup";
 
 interface FormProviderProps {
   children: React.ReactNode;
@@ -29,11 +28,9 @@ export type SignupFormType = {
 const FormProvider = ({ children }: FormProviderProps) => {
   const { referral } = referralStore();
   const [postUsers] = usePostUsersMutation();
-  let history = useHistory();
   const successUrl = useLocalizeRoute("getting-started/confirmation");
   const { t } = useTranslation();
   const { add } = siteWideMessageStore();
-  // const dispatch = useAppDispatch();
   const initialValues: SignupFormType = {
     step: 0,
     email: "",
@@ -115,7 +112,7 @@ const FormProvider = ({ children }: FormProviderProps) => {
         password: values.password,
         security: nonce,
       });
-      history.push(successUrl);
+      window.location.href = successUrl;
     } catch (error) {
       const e = error as any;
       // dispatch error message

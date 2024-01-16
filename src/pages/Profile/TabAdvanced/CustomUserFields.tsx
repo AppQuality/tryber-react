@@ -2,7 +2,6 @@ import { Accordion, Skeleton } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { getCustomUserFields } from "src/redux/user/actions/getCustomUserFields";
 import { useGetCustomUserFieldsQuery } from "src/services/tryberApi";
 import CufField from "./CufField";
 
@@ -26,10 +25,6 @@ export const CustomUserFields = () => {
     setGroupOfFields(customUserFields?.filter((g) => g.group.id !== 0));
     if (customUserFields?.length) setIsLoading(false);
   }, [customUserFields]);
-
-  useEffect(() => {
-    dispatch(getCustomUserFields());
-  }, []);
 
   if (isLoading)
     return (

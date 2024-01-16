@@ -11,12 +11,12 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
-import useUser from "src/redux/user";
 import { fetchRankingSummary } from "../../redux/ranking/actionCreator";
 
 import ComingSoonHelpModal from "./ComingSoonHelpModal";
 import { FeedbackButton, FeedbackModal } from "./FeedbackModal";
 
+import { useGetUsersMeQuery } from "src/services/tryberApi";
 import ActiveCampaignsTable from "./ActiveCampaignsTable";
 import AvailableCampaignsTable from "./AvailableCampaignsTable";
 import ClosedCampaignsTable from "./ClosedCampaignsTable";
@@ -26,8 +26,9 @@ import PerformanceData from "./PerformanceData";
 import PopupContainer from "./PopupContainer";
 
 export default function Dashboard() {
-  const { user } = useUser();
-  const onboardingComplete = user && user.onboarding_completed;
+  const { data: user, isLoading } = useGetUsersMeQuery({
+    fields: "onboarding_completed",
+  });
   const [isPopupModalOpen, setIsPopupModalOpen] = useState(true);
   const [isPopupArchiveModalOpen, setIsPopupArchiveModalOpen] = useState(false);
   const [isOnboardingModalOpen, setIsOnboardingModalOpen] = useState(true);
@@ -40,6 +41,8 @@ export default function Dashboard() {
     dispatch(fetchRankingSummary());
   }, []);
 
+  if (isLoading) return null;
+  const onboardingComplete = user && user.onboarding_completed;
   return (
     <PageTemplate
       title={t("Dashboard")}
