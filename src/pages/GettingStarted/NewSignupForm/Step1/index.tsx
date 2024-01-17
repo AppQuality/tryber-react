@@ -16,6 +16,7 @@ import {
 import CountrySelect from "src/features/CountrySelect";
 import styled from "styled-components";
 import BirthdayInput from "./BirthdayInput";
+import { useEffect } from "react";
 
 const ButtonWrapper = styled.div`
   gap: 1rem;
@@ -27,7 +28,7 @@ const ButtonWrapper = styled.div`
 `;
 const Step1 = () => {
   const { t } = useTranslation();
-  const { setFieldValue, submitForm, isSubmitting } =
+  const { setFieldValue, submitForm, isSubmitting, errors } =
     useFormikContext<SignupFormType>();
   const onBackClick = () => {
     setFieldValue("step", 0);
@@ -35,6 +36,15 @@ const Step1 = () => {
   const onSubmitClick = () => {
     submitForm();
   };
+  useEffect(() => {
+    const errorsKeys = Object.keys(errors);
+    if (errorsKeys.length > 0 && isSubmitting) {
+      const inputElement = document.querySelector(
+        `input[name="${errorsKeys[0]}"]`
+      ) as HTMLInputElement;
+      inputElement?.focus();
+    }
+  }, [errors, isSubmitting]);
   return (
     <div data-qa="mail-signup-second-step">
       <Title size="s" className="aq-mb-2">
@@ -65,10 +75,12 @@ const Step1 = () => {
                   required: true,
                   "aria-required": true,
                   "data-qa": "input-name",
+                  "aria-invalid": meta.touched && typeof meta.error == "string",
+                  "aria-errormessage": `${field.name}-error`,
                 }}
               />
             </div>
-            <ErrorMessage name={field.name} />
+            <ErrorMessage id={`${field.name}-error`} name={field.name} />
           </FormGroup>
         )}
       </FormikField>
@@ -95,10 +107,12 @@ const Step1 = () => {
                   required: true,
                   "aria-required": true,
                   "data-qa": "input-surname",
+                  "aria-invalid": meta.touched && typeof meta.error == "string",
+                  "aria-errormessage": `${field.name}-error`,
                 }}
               />
             </div>
-            <ErrorMessage name={field.name} />
+            <ErrorMessage id={`${field.name}-error`} name={field.name} />
           </FormGroup>
         )}
       </FormikField>
@@ -127,7 +141,7 @@ const Step1 = () => {
                   </span>
                 }
               />
-              <ErrorMessage name={name} />
+              <ErrorMessage id={`${name}-error`} name={name} />
             </div>
           );
         }}
