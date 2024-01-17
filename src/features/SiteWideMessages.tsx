@@ -2,6 +2,7 @@ import { Toastr, BSGrid } from "@appquality/appquality-design-system";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import siteWideMessageStore from "../redux/siteWideMessages";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 const TIMEOUT = 200;
 const ToastrContainer = styled.div`
@@ -38,7 +39,7 @@ const ToastrContainer = styled.div`
 
 const SiteWideMessages = () => {
   const { messages, remove } = siteWideMessageStore();
-
+  const { t } = useTranslation();
   return (
     <ToastrContainer>
       <BSGrid>
@@ -47,6 +48,13 @@ const SiteWideMessages = () => {
             <CSSTransition timeout={TIMEOUT} classNames="fade" key={index}>
               <Toastr
                 type={m.type}
+                a11y={{
+                  successLabel: t("Success"),
+                  infoLabel: t("Info"),
+                  warningLabel: t("Warning"),
+                  dangerLabel: t("Error"),
+                  closeLabel: t("Close dialog"),
+                }}
                 className="aq-mb-3 fade"
                 onClose={m.expire ? undefined : () => remove({ uuid: m.uuid })}
               >
