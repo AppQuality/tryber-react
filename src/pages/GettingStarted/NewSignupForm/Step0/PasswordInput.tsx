@@ -23,14 +23,20 @@ const PasswordInput = ({ className }: { className?: string }) => {
               }
             />{" "}
             <Input
-              extra={{ ...field, "data-qa": "password-input" }}
+              extra={{
+                ...field,
+                "data-qa": "password-input",
+                "aria-required": true,
+                "aria-invalid": meta.touched && typeof meta.error == "string",
+                "aria-errormessage": `${field.name}-error`,
+              }}
               value={field.value}
               isInvalid={meta.touched && typeof meta.error == "string"}
               id={field.name}
               type="password"
               placeholder="********"
             />
-            <ErrorMessage name={field.name} />
+            <ErrorMessage id={`${field.name}-error`} name={field.name} />
           </>
         )}
       </FormikField>

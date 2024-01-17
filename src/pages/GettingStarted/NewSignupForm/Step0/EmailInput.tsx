@@ -27,6 +27,8 @@ const EmailInput = ({ className }: { className?: string }) => {
                 ...field,
                 "data-qa": "email-input",
                 "aria-required": true,
+                "aria-invalid": meta.touched && typeof meta.error == "string",
+                "aria-errormessage": `${field.name}-error`,
               }}
               isInvalid={meta.touched && typeof meta.error == "string"}
               value={field.value}
@@ -34,7 +36,7 @@ const EmailInput = ({ className }: { className?: string }) => {
               type="text"
               placeholder="mail@example.com"
             />
-            <ErrorMessage name={field.name} />
+            <ErrorMessage id={`${field.name}-error`} name={field.name} />
           </>
         )}
       </FormikField>
