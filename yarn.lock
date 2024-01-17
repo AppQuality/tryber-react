@@ -47,7 +47,7 @@
     ajv-draft-04 "^1.0.0"
     call-me-maybe "^1.0.1"
 
-"@appquality/appquality-design-system@^1.0.65":
+"@appquality/appquality-design-system@^1.0.67":
   version "1.0.66"
   resolved "https://registry.yarnpkg.com/@appquality/appquality-design-system/-/appquality-design-system-1.0.66.tgz#1a42092b7f50dd4b19ec05029358e287c558cffb"
   integrity sha512-X9dW5Ipd7QDHmLdwONia4LaBr3Wo5lzJHD+kNBCzGtEAA1lLRe3siomIWZGAEA/FGCAPp0tngy/PK5ZnknYsOw==
