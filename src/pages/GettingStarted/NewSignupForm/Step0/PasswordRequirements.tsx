@@ -21,9 +21,13 @@ const PasswordRequirement = ({
   return (
     <li data-qa={dataQa} style={{ display: "flex", alignItems: "center" }}>
       {check() ? (
-        <GreenCheck data-qa="password-requirement-success" size={16} />
+        <GreenCheck
+          aria-hidden="true"
+          data-qa="password-requirement-success"
+          size={16}
+        />
       ) : (
-        <X data-qa="password-requirement-error" size={16} />
+        <X aria-hidden="true" data-qa="password-requirement-error" size={16} />
       )}
       <Text small>{children}</Text>
     </li>
