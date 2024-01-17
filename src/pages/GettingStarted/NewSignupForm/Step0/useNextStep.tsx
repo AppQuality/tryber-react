@@ -42,7 +42,13 @@ const useNextStep = () => {
             )
           );
         } else {
-          if (Object.keys(errors).length) return;
+          if (Object.keys(errors).length) {
+            const inputElement = document.querySelector(
+              `input[name="${Object.keys(errors)[0]}"]`
+            ) as HTMLInputElement;
+            inputElement?.focus();
+            return;
+          }
           setFieldValue("step", 1);
         }
       });
