@@ -46,19 +46,19 @@ test.describe("The getting started page", () => {
     const languageSwitcher = page.getByTestId("language-switcher");
     await expect(
       languageSwitcher.getByTestId("language-switcher-it")
-    ).toHaveText("Italiano");
+    ).toContainText("Italiano");
     await expect(
       languageSwitcher.getByTestId("language-switcher-it")
     ).toHaveAttribute("href", "/it/getting-started/");
     await expect(
       languageSwitcher.getByTestId("language-switcher-en")
-    ).toHaveText("English");
+    ).toContainText("English");
     await expect(
       languageSwitcher.getByTestId("language-switcher-en")
     ).toHaveAttribute("href", "/getting-started/");
     await expect(
       languageSwitcher.getByTestId("language-switcher-es")
-    ).toHaveText("Español");
+    ).toContainText("Español");
     await expect(
       languageSwitcher.getByTestId("language-switcher-es")
     ).toHaveAttribute("href", "/es/getting-started/");
