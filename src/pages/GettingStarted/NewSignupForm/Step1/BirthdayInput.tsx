@@ -65,10 +65,12 @@ const BirthdayInput = () => {
             inputProps={{
               required: true,
               "aria-required": true,
+              "aria-invalid": meta.touched && typeof meta.error == "string",
+              "aria-errormessage": `${field.name}-error`,
               onBlur: () => form.setFieldTouched(field.name),
             }}
           />
-          <ErrorMessage name={field.name} />
+          <ErrorMessage id={`${field.name}-error`} name={field.name} />
         </FormGroup>
       )}
     </FormikField>
