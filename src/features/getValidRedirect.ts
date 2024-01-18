@@ -7,7 +7,8 @@ function urlIsValid(url: string) {
 function domainIsAllowed(url: string) {
   const parsedURL = new URL(url);
   return (
-    parsedURL.hostname === "dev.tryber.me" || parsedURL.hostname === "tryber.me"
+    parsedURL.hostname === "dev.tryber.me" ||
+    parsedURL.hostname === "app.tryber.me"
   );
 }
 
