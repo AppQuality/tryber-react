@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { PageTemplate } from "src/features/PageTemplate";
+import { useGetUsersMeExperienceQuery } from "src/services/tryberApi";
 import {
   fetchExperiencePoints,
   fetchExperiencePointsFilters,
@@ -18,9 +19,9 @@ import {
 import { mapActivityName } from "../../redux/experiencePoints/utils";
 import { useAppDispatch } from "../../redux/provider";
 import dateFormatter from "../../utils/dateFormatter";
-import { ExperiencePointsColumns } from "./columns";
 import ExperiencePointsFilters from "./ExperiencePointsFilters";
 import ExperiencePointsTable from "./ExperiencePointsTable";
+import { ExperiencePointsColumns } from "./columns";
 
 export default function ExperiencePoints() {
   const { t } = useTranslation();
@@ -29,6 +30,8 @@ export default function ExperiencePoints() {
     ExperiencePointsColumns(dispatch, t)
   );
   const [rows, setRows] = useState<TableType.Row[]>([]);
+
+  const { data } = useGetUsersMeExperienceQuery({});
 
   const {
     expList,
