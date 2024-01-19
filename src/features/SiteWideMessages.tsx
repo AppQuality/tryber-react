@@ -49,11 +49,11 @@ const SiteWideMessages = () => {
               <Toastr
                 type={m.type}
                 a11y={{
-                  successLabel: t("Success"),
-                  infoLabel: t("Info"),
-                  warningLabel: t("Warning"),
-                  dangerLabel: t("Error"),
-                  closeLabel: t("Close dialog"),
+                  successLabel: t("TOASTR_LABEL:::Success"),
+                  infoLabel: t("TOASTR_LABEL:::Info"),
+                  warningLabel: t("TOASTR_LABEL:::Warning"),
+                  dangerLabel: t("TOASTR_LABEL:::Error"),
+                  closeLabel: t("TOASTR_LABEL:::Close dialog"),
                 }}
                 className="aq-mb-3 fade"
                 onClose={m.expire ? undefined : () => remove({ uuid: m.uuid })}

@@ -318,7 +318,11 @@ test.describe("The signup mail page second step", () => {
     await termsAndConditions.click();
     const newPage = await pagePromise;
     await newPage.waitForLoadState();
-    expect(newPage.url()).toContain(i18n.t("/ethical-code/"));
+    expect(newPage.url()).toContain(
+      i18n.t("/ethical-code/", {
+        ns: "links",
+      })
+    );
   });
 
   test("if the user click to the back button got to the first step (precompiled)", async ({}) => {
