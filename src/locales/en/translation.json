@@ -88,9 +88,6 @@
     "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150": "We will use the information in your tax profile for the payment. Do a quick check and update them if necessary.",
     "__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150": "Complete your <fiscal_profile_link>tax profile</fiscal_profile_link> and ensure all information is correct in order to request a payment."
   },
-  "Available tags : <unguess_link> (Link to unguess), <line_break>": {
-    "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supports companies in creating memorable experiences thanks to the power of the TRYBER Community. <unguess_link>Discover UNGUESS</unguess_link>"
-  },
   "Available tags: <bugs_link> (Link to bugs page)": {
     "BUGFORM_CONFIRMUPLOAD_TXT": "See it on the <bugs_link>bug page</bugs_link>."
   },
@@ -170,7 +167,6 @@
   "Birth city": "Birth city",
   "Birth date": "Birth date",
   "Booty details": "Booty details",
-  "Brands helped": "Brands helped",
   "Bug Evaluation": "Bug Evaluation",
   "By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>": "By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>",
   "COUNTRY": {
@@ -181,7 +177,6 @@
   },
   "Campaign": "Campaign",
   "Campaign Completion": "Campaign Completion",
-  "Campaigns delivered": "Campaigns delivered",
   "Cancel": "Cancel",
   "Certification": "Certification",
   "Certification is a required field.": "Certification is a required field.",
@@ -206,7 +201,6 @@
   "Continue with Facebook": "Continue with Facebook",
   "Continue with LinkedIn": "Continue with LinkedIn",
   "Continue with email": "Continue with email",
-  "Countries covered": "Countries covered",
   "Courses": "Courses",
   "Create an account": "Create an account",
   "Create your account": "Create your account",
@@ -593,6 +587,136 @@
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-MENSILI_MAX: 25": "Monthly exp points",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Total exp points",
   "__FISCAL_PROFILE_TAX_ID_DISCLAIMER": "Everytime you change any of your personal data, you will need to re-enter the Tax ID Number.",
+  "__PAYMENT-METHOD-BANK": "Bank transfer",
+  "__RANKING_LEGEND_BASIC_SPEC_MAX: 35": "Your starting level",
+  "__RANKING_LEGEND_EXP_NEXT": "exp",
+  "__RANKING_LEGEND_HOLD_MAX: 15": "Exp points to hold the level",
+  "__RANKING_LEGEND_LEGENDARY_SPEC_MAX: 70": "The highest level: 100.000 exp and it will be yours forever!",
+  "__RANKING_LEGEND_NEXT_MAX: 15": "Exp points to level up",
+  "__RANKING_LEGEND_QUESTIONS_CTA_MAX: 25": "Read our guidelines",
+  "__RANKING_LEGEND_QUESTIONS_MAX: 70": "Any questions or doubts on how our ranking works?",
+  "__RANKING_LEGEND_TITLE_MAX: 35": "How to level up",
+  "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "Start from Basic to climb up in the ranking",
+  "__RANKING_PROGRESS_LEGEND_LINK": "How levels work",
+  "__RANKING_PROGRESS_MONTH_MAX: 35": "Your month at a glance",
+  "__RANKING_SUBTITLE_WELCOME_MAX: 125": "Check your progress, increase your chances of selection, outdo other Trybers and go to the top",
+  "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Exp points",
+  "__RANKING_TITLE_LABEL_ID_MAX: 10": "Tryber ID",
+  "__RANKING_TITLE_LABEL_NAME_MAX: 20": "Name",
+  "__RANKING_TITLE_LABEL_POSITION_MAX: 15": "Position",
+  "__RANKING_TITLE_WELCOM_MAX: 20": "Ranking",
+  "__SELECT_DEFAULT_NO_OPTION": "No options",
+  "__WALLET_CARD-GUIDES_CTA MAX: 20": "Read our guides",
+  "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Discover how we manage your payment requests.",
+  "__WALLET_CARD-GUIDES_TITLE MAX: 35": "Any questions on payment process?",
+  "__WALLET_CARD-REQUEST_CTA MAX: 25": "Request a payment",
+  "__WALLET_CARD-REQUEST_CTA-LINK MAX: 15": "Details",
+  "__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150": "You have no available payments to request at the moment. Don't miss the next campaigns!",
+  "__WALLET_CARD-REQUEST_DISCLAIMER-NOREQUEST MAX: 150": "You can request a payment starting from 3 euros. Don't miss the next campaigns!",
+  "__WALLET_CARD-REQUEST_DISCLAIMER-PROCESSING MAX: 150": "You can request only one payment at a time: you alreay have a payment in process, this may take up to 20 working days.",
+  "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Manage your payment",
+  "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Your wallet",
+  "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Your payment history is now empty. When you start requesting your payments, you will view them here.",
+  "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "View details",
+  "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Download receipt",
+  "available tags: <br>, <bold>": {
+    "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Bug replicability</b><br>\n<br>\n<b>SOMETIMES</b><br>\nWith all conditions and processes being equal, the bug occurs sporadically/unpredictably, but it is always possible to reproduce it by making multiple attempts.<br>\n<br>\n<b>ALWAYS</b><br>\nWith all conditions and processes being equal, the bug occurs under the same conditions and processes, at each replication attempt. To be such, the bug must be successfully reproduced at least 3 out of 3 times.<br>\n<br>\n<b>ONCE</b><br>\nWith all conditions and processes being equal, the bug only occurred once and could not be replicated (at least 3 attempts needed).",
+    "BUGFORM_SEVERITY_MODAL_TXT": "<bold>Bug severity</bold><br>\n<br/>\nSeverity is an estimate of the impact of the problem on the use of the tested product. This estimate is calculated by keeping in mind both the context where the problem occurs (primary or secondary sections of the core-business of the campaign object) and the conditions where it has been found compared to an average use. Severity must never be influenced by the assessment of replicability: what guides the choice is mainly the impact on the user, the context (importance of the section) and the presence or lack of a workaround.<br>\n<br>\n<b>LOW</b><br>\nIssues that have a minimal impact on the use of the product. The user is able to continue to use and test the product without great difficulties. Often these are USABILITY, TYPO or GRAPHIC bugs.<br>\n<br>\n<b>MEDIUM</b><br>\nIssues that have a limited impact on the use of the product. The user is still able to complete the process despite having encountered some difficulties. This can be any type of bug.<br>\n<br>\n<b>HIGH</b><br>\nIssues that have a significant impact in the use of the product. The user mainly finds them in the main sections and may not be able to continue using and testing the product as intended. Generally, the bug type is MALFUNCTION, CRASH, PERFORMANCE or SECURITY.<br>\n<br>\n<b>CRITICAL</b><br>\nIssues that prevent the user from completing the main tasks, often resulting in a system crash. The user is unable by any means to complete the task or continue using the test product. The bug types are either MALFUNCTION or CRASH bugs.<br>",
+    "BUGFORM_TYPE_MODAL_TEXT": "<b>Bug type</b><br>\n<br>\n<b>CRASH</b><br>\nIssues related to unresponsive and/or crashing software. The user needs to reset or relaunch it to keep using it. Some examples: apps closing unexpectedly, neverending loadings, 404 error pages.<br>\n<br>\n<b>GRAPHIC</b><br>\nIssues related to the visual aspect of the product. They could be overlapping elements, wrong contrast, incoherent elements, cut or blurry text or media, elements that are either out of the screen or partially not visible/overlapped.<br>\n<br>\n<b>PERFORMANCE</b><br>\nIssues strictly related to the contents load speed or the completion time processes/actions (lag, slowing down, delays). In the case of a never-ending loading (loop), the correct bug type is CRASH.<br>\n<br>\n<b>MALFUNCTION</b><br>\nIssues related to a wrong functioning or non functioning feature of the product. When the feature works, but the result is different from what the user expected, the bug type is USABILITY.<br>\n<br>\n<b>TYPO</b><br>\nIssues related to grammar mistakes such as spelling, semantics, lexicon, syntax, interrupted sentences (not a visual interruption), wrong or incomplete translations, nonsense sentences, visible programming code.<br>\n<br>\n<b>OTHER</b><br>\nIssues not listed in the previous categories.<br>\n<br>\n<b>SECURITY</b><br>\nIssues solely related to the security and confidentiality of the stored data. This category includes sections with plaintext passwords, lack of login session expiration or even possibility of easily obtaining other users' data through SQL injection or XSS attacks.<br>\n<br>\n<b>USABILITY</b><br>\nIssues related to the use of the product, making it difficult for the user to perform a certain action or task due to long, complex, less than ideal or unintuitive paths. It happens when the actual functioning completely differs from the users' expectations. This category also includes absence of checks on data entered in forms; error messages not including any explanation of the specific issue (generic error).",
+    "PAYMENTS_MODAL_INVOICE_STEP_4_SUCCESS": "<bold>We're (almost) there!</bold><br />We have sent you an email to your TRYBER account address.<br />In the email you will find all the information you need to create your invoice, including the address you need to submit it to.",
+    "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "Boo-yah!✌ You're Legendary and you'll always be!\nKeep earning points and stay on top of the ranking.",
+    "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "Sky is not the limit! You're going to be Legendary in the next month:<br></br>it's TRYBER's highest level."
+  },
+  "available tags: <br>, <p>, <strong>, <title>": {
+    "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": "<title>Before you get the email</title>\n<p>\nCheck that everything is okay and confirm these details: you will also find them in the email we will send you after this step.\n</p>\n<p>\nAccount holder: <strong>{{accountHolder}}</strong>\n</p>\n<p>\nIBAN: <strong>{{iban}}</strong>\n</p>\n<p>\nFiscal type: <strong>{{fiscalType}}</strong>\n</p>"
+  },
+  "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
+    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP{{fiscalType}}": "<title>Your fiscal type is:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>Need to update your fiscal type? Go to <fiscalprofilelink>your profile</fiscalprofilelink> before proceeding.</strong>",
+    "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}": "<title>How it works</title>\n<p>\nInsert and confirm your personal information and bank details to request your payment by bank transfer. You will get a confirmation email with the gross amount and the net receivable: use these details to create the invoice you will need to send us\n</p>\n<title>What you have to do now</title>\n<p>\n<ul>\n<li>Check that your fiscal type is correct</li>\n<li>Insert your personal information and bank details and accept the conditions</li>\n<li>Send your payment request</li>\n</ul>\n</p>\n<title>Your fiscal type is:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>Need to update your fiscal type? Go to <fiscalprofilelink>your profile</fiscalprofilelink> before proceeding.</strong>"
+  },
+  "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
+    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>What you have to do now</title>\n<ul>\n<li>Choose the payment method and check that your fiscal type is correct</li>\n<li>Insert your personal information and accept the conditions</li>\n<li>Send your payment request</li>\n</ul>"
+  },
+  "available tags: <strong>, <signuplink>": {
+    "LOGIN_SIGNUP_LINK": "New to TRYBER? <signuplink><strong>Sign up</strong></signuplink>"
+  },
+  "bugform usecase select option": {
+    "Not a specific usecase": "None of these use cases"
+  },
+  "contact us": "contact us",
+  "email must be the same": "Enter the same email address",
+  "for this bug are only allowed replicability of type {{valid}}": {
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "In this campaign we only allow bug replicability: {{valid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT_plural": "In this campaign we only allow bug replicability: {{valid}}"
+  },
+  "for this bug are only allowed severities of type {{valid}}": {
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT": "In this campaign we only allow bug severity: {{valid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT_plural": "In this campaign we only allow bug severity: {{valid}}"
+  },
+  "for this bug are only allowed type {{valid}}": {
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT": "In this campaign we only allow this bug type: {{valid}}",
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT_plural": "In this campaign we only allow these bug types: {{valid}}"
+  },
+  "for this bug this replicability are not allowed: {{invalid}}": {
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT": "In this campaign we don't allow bug replicability: {{invalid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT_plural": "In this campaign we don't allow bug replicability: {{invalid}}"
+  },
+  "for this bug this severities are not allowed: {{invalid}}": {
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT": "In this campaign we don't allow bug severity: {{invalid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT_plural": "In this campaign we don't allow bug severity: {{invalid}}"
+  },
+  "for this bug this types are not allowed: {{invalid}}": {
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "In this campaign we don't allow this bug type: {{invalid}}",
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "In this campaign we don't allow these bug types: {{invalid}}"
+  },
+  "forgot your password?": "forgot your password?",
+  "give your best to keep level {{level}}": {
+    "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "You're leveling down: try your best and fight for {{level}}"
+  },
+  "https://www.iubenda.com/privacy-policy/7934311": "https://www.iubenda.com/privacy-policy/7934311",
+  "last month ({{lastMonth}})": {
+    "__RANKING_LAST_MONTH_MAX:25": "Last month ({{lastMonth}})"
+  },
+  "let's see what tryber you are with the <entry_test_link>entry test</entry_test_link>": {
+    "__RANKING_PROGRESS_NOLEVEL_MAX: 60": "Let's see what kind of Tryber you are: try our <entry_test_link>Entry Test</entry_test_link>!"
+  },
+  "level {{ level }}": {
+    "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Level {{ level }}"
+  },
+  "level {{levelName}}": {
+    "__RANKING_NAME_LEVEL_MAX:25": "{{levelName}} level"
+  },
+  "login": "login",
+  "login page title": "Log in to Tryber",
+  "login to continue": "Log in to continue",
+  "no data": "—",
+  "not calculated": {
+    "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "Not counted",
+    "__RANKING_PROGRESS_NOLVEL_NEXTLVL_MAX: 20": "Not counted"
+  },
+  "not in ranking": {
+    "__RANKING_POSITION_NOLeVEL_MAX: 30": "No level"
+  },
+  "or log in with email and password": "or log in with email and password",
+  "or you can": "or you can",
+  "redirecting": "redirecting",
+  "try again to login": "Try again to login.",
+  "wait...": "wait...",
+  "you must accept terms and conditions": "You need to accept terms and conditions",
+  "{{days}} days left to give your best!": {
+    "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "You still have {{days}} day to try your best!",
+    "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "You still have {{days}} days to try your best!"
+  },
+  "{{num}} uploaded": {
+    "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
+    "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
+  },
+  "Available tags : <unguess_link> (Link to unguess), <line_break>": {
+    "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supports companies in creating memorable experiences thanks to the power of the TRYBER Community. <unguess_link>Discover UNGUESS</unguess_link>"
+  },
+  "Brands helped": "Brands helped",
+  "Campaigns delivered": "Campaigns delivered",
+  "Countries covered": "Countries covered",
   "__HOME_CAROUSEL_CTA_BUG MAX:25": "Train with us",
   "__HOME_CAROUSEL_CTA_CYBER MAX:25": "Test yourself",
   "__HOME_CAROUSEL_CTA_UX MAX:25": "Voice your opinion",
@@ -665,134 +789,10 @@
   "__HOME_USER_QUALIFICATION_ADVICE6 MAX:30": "Qualified Tryber, Student",
   "__HOME_USER_QUALIFICATION_ADVICE7 MAX:30": "Qualified Tryber, Student",
   "__HOME_USER_QUALIFICATION_ADVICE8 MAX:30": "Certified ISTQB professional tester",
-  "__PAYMENT-METHOD-BANK": "Bank transfer",
-  "__RANKING_LEGEND_BASIC_SPEC_MAX: 35": "Your starting level",
-  "__RANKING_LEGEND_EXP_NEXT": "exp",
-  "__RANKING_LEGEND_HOLD_MAX: 15": "Exp points to hold the level",
-  "__RANKING_LEGEND_LEGENDARY_SPEC_MAX: 70": "The highest level: 100.000 exp and it will be yours forever!",
-  "__RANKING_LEGEND_NEXT_MAX: 15": "Exp points to level up",
-  "__RANKING_LEGEND_QUESTIONS_CTA_MAX: 25": "Read our guidelines",
-  "__RANKING_LEGEND_QUESTIONS_MAX: 70": "Any questions or doubts on how our ranking works?",
-  "__RANKING_LEGEND_TITLE_MAX: 35": "How to level up",
-  "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "Start from Basic to climb up in the ranking",
-  "__RANKING_PROGRESS_LEGEND_LINK": "How levels work",
-  "__RANKING_PROGRESS_MONTH_MAX: 35": "Your month at a glance",
-  "__RANKING_SUBTITLE_WELCOME_MAX: 125": "Check your progress, increase your chances of selection, outdo other Trybers and go to the top",
-  "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Exp points",
-  "__RANKING_TITLE_LABEL_ID_MAX: 10": "Tryber ID",
-  "__RANKING_TITLE_LABEL_NAME_MAX: 20": "Name",
-  "__RANKING_TITLE_LABEL_POSITION_MAX: 15": "Position",
-  "__RANKING_TITLE_WELCOM_MAX: 20": "Ranking",
-  "__SELECT_DEFAULT_NO_OPTION": "No options",
-  "__WALLET_CARD-GUIDES_CTA MAX: 20": "Read our guides",
-  "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Discover how we manage your payment requests.",
-  "__WALLET_CARD-GUIDES_TITLE MAX: 35": "Any questions on payment process?",
-  "__WALLET_CARD-REQUEST_CTA MAX: 25": "Request a payment",
-  "__WALLET_CARD-REQUEST_CTA-LINK MAX: 15": "Details",
-  "__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150": "You have no available payments to request at the moment. Don't miss the next campaigns!",
-  "__WALLET_CARD-REQUEST_DISCLAIMER-NOREQUEST MAX: 150": "You can request a payment starting from 3 euros. Don't miss the next campaigns!",
-  "__WALLET_CARD-REQUEST_DISCLAIMER-PROCESSING MAX: 150": "You can request only one payment at a time: you alreay have a payment in process, this may take up to 20 working days.",
-  "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Manage your payment",
-  "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Your wallet",
-  "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Your payment history is now empty. When you start requesting your payments, you will view them here.",
-  "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "View details",
-  "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Download receipt",
   "address": "address",
-  "available tags: <br>, <bold>": {
-    "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Bug replicability</b><br>\n<br>\n<b>SOMETIMES</b><br>\nWith all conditions and processes being equal, the bug occurs sporadically/unpredictably, but it is always possible to reproduce it by making multiple attempts.<br>\n<br>\n<b>ALWAYS</b><br>\nWith all conditions and processes being equal, the bug occurs under the same conditions and processes, at each replication attempt. To be such, the bug must be successfully reproduced at least 3 out of 3 times.<br>\n<br>\n<b>ONCE</b><br>\nWith all conditions and processes being equal, the bug only occurred once and could not be replicated (at least 3 attempts needed).",
-    "BUGFORM_SEVERITY_MODAL_TXT": "<bold>Bug severity</bold><br>\n<br/>\nSeverity is an estimate of the impact of the problem on the use of the tested product. This estimate is calculated by keeping in mind both the context where the problem occurs (primary or secondary sections of the core-business of the campaign object) and the conditions where it has been found compared to an average use. Severity must never be influenced by the assessment of replicability: what guides the choice is mainly the impact on the user, the context (importance of the section) and the presence or lack of a workaround.<br>\n<br>\n<b>LOW</b><br>\nIssues that have a minimal impact on the use of the product. The user is able to continue to use and test the product without great difficulties. Often these are USABILITY, TYPO or GRAPHIC bugs.<br>\n<br>\n<b>MEDIUM</b><br>\nIssues that have a limited impact on the use of the product. The user is still able to complete the process despite having encountered some difficulties. This can be any type of bug.<br>\n<br>\n<b>HIGH</b><br>\nIssues that have a significant impact in the use of the product. The user mainly finds them in the main sections and may not be able to continue using and testing the product as intended. Generally, the bug type is MALFUNCTION, CRASH, PERFORMANCE or SECURITY.<br>\n<br>\n<b>CRITICAL</b><br>\nIssues that prevent the user from completing the main tasks, often resulting in a system crash. The user is unable by any means to complete the task or continue using the test product. The bug types are either MALFUNCTION or CRASH bugs.<br>",
-    "BUGFORM_TYPE_MODAL_TEXT": "<b>Bug type</b><br>\n<br>\n<b>CRASH</b><br>\nIssues related to unresponsive and/or crashing software. The user needs to reset or relaunch it to keep using it. Some examples: apps closing unexpectedly, neverending loadings, 404 error pages.<br>\n<br>\n<b>GRAPHIC</b><br>\nIssues related to the visual aspect of the product. They could be overlapping elements, wrong contrast, incoherent elements, cut or blurry text or media, elements that are either out of the screen or partially not visible/overlapped.<br>\n<br>\n<b>PERFORMANCE</b><br>\nIssues strictly related to the contents load speed or the completion time processes/actions (lag, slowing down, delays). In the case of a never-ending loading (loop), the correct bug type is CRASH.<br>\n<br>\n<b>MALFUNCTION</b><br>\nIssues related to a wrong functioning or non functioning feature of the product. When the feature works, but the result is different from what the user expected, the bug type is USABILITY.<br>\n<br>\n<b>TYPO</b><br>\nIssues related to grammar mistakes such as spelling, semantics, lexicon, syntax, interrupted sentences (not a visual interruption), wrong or incomplete translations, nonsense sentences, visible programming code.<br>\n<br>\n<b>OTHER</b><br>\nIssues not listed in the previous categories.<br>\n<br>\n<b>SECURITY</b><br>\nIssues solely related to the security and confidentiality of the stored data. This category includes sections with plaintext passwords, lack of login session expiration or even possibility of easily obtaining other users' data through SQL injection or XSS attacks.<br>\n<br>\n<b>USABILITY</b><br>\nIssues related to the use of the product, making it difficult for the user to perform a certain action or task due to long, complex, less than ideal or unintuitive paths. It happens when the actual functioning completely differs from the users' expectations. This category also includes absence of checks on data entered in forms; error messages not including any explanation of the specific issue (generic error).",
-    "PAYMENTS_MODAL_INVOICE_STEP_4_SUCCESS": "<bold>We're (almost) there!</bold><br />We have sent you an email to your TRYBER account address.<br />In the email you will find all the information you need to create your invoice, including the address you need to submit it to.",
-    "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "Boo-yah!✌ You're Legendary and you'll always be!\nKeep earning points and stay on top of the ranking.",
-    "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "Sky is not the limit! You're going to be Legendary in the next month:<br></br>it's TRYBER's highest level."
-  },
-  "available tags: <br>, <p>, <strong>, <title>": {
-    "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": "<title>Before you get the email</title>\n<p>\nCheck that everything is okay and confirm these details: you will also find them in the email we will send you after this step.\n</p>\n<p>\nAccount holder: <strong>{{accountHolder}}</strong>\n</p>\n<p>\nIBAN: <strong>{{iban}}</strong>\n</p>\n<p>\nFiscal type: <strong>{{fiscalType}}</strong>\n</p>"
-  },
-  "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
-    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP{{fiscalType}}": "<title>Your fiscal type is:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>Need to update your fiscal type? Go to <fiscalprofilelink>your profile</fiscalprofilelink> before proceeding.</strong>",
-    "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}": "<title>How it works</title>\n<p>\nInsert and confirm your personal information and bank details to request your payment by bank transfer. You will get a confirmation email with the gross amount and the net receivable: use these details to create the invoice you will need to send us\n</p>\n<title>What you have to do now</title>\n<p>\n<ul>\n<li>Check that your fiscal type is correct</li>\n<li>Insert your personal information and bank details and accept the conditions</li>\n<li>Send your payment request</li>\n</ul>\n</p>\n<title>Your fiscal type is:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>Need to update your fiscal type? Go to <fiscalprofilelink>your profile</fiscalprofilelink> before proceeding.</strong>"
-  },
-  "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
-    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>What you have to do now</title>\n<ul>\n<li>Choose the payment method and check that your fiscal type is correct</li>\n<li>Insert your personal information and accept the conditions</li>\n<li>Send your payment request</li>\n</ul>"
-  },
-  "available tags: <strong>, <signuplink>": {
-    "LOGIN_SIGNUP_LINK": "New to TRYBER? <signuplink><strong>Sign up</strong></signuplink>"
-  },
-  "bugform usecase select option": {
-    "Not a specific usecase": "None of these use cases"
-  },
   "company": "company",
-  "contact us": "contact us",
-  "email must be the same": "Enter the same email address",
-  "for this bug are only allowed replicability of type {{valid}}": {
-    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "In this campaign we only allow bug replicability: {{valid}}",
-    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT_plural": "In this campaign we only allow bug replicability: {{valid}}"
-  },
-  "for this bug are only allowed severities of type {{valid}}": {
-    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT": "In this campaign we only allow bug severity: {{valid}}",
-    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT_plural": "In this campaign we only allow bug severity: {{valid}}"
-  },
-  "for this bug are only allowed type {{valid}}": {
-    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT": "In this campaign we only allow this bug type: {{valid}}",
-    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT_plural": "In this campaign we only allow these bug types: {{valid}}"
-  },
-  "for this bug this replicability are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT": "In this campaign we don't allow bug replicability: {{invalid}}",
-    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT_plural": "In this campaign we don't allow bug replicability: {{invalid}}"
-  },
-  "for this bug this severities are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT": "In this campaign we don't allow bug severity: {{invalid}}",
-    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT_plural": "In this campaign we don't allow bug severity: {{invalid}}"
-  },
-  "for this bug this types are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "In this campaign we don't allow this bug type: {{invalid}}",
-    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "In this campaign we don't allow these bug types: {{invalid}}"
-  },
-  "forgot your password?": "forgot your password?",
-  "give your best to keep level {{level}}": {
-    "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "You're leveling down: try your best and fight for {{level}}"
-  },
-  "https://www.iubenda.com/privacy-policy/7934311": "https://www.iubenda.com/privacy-policy/7934311",
-  "last month ({{lastMonth}})": {
-    "__RANKING_LAST_MONTH_MAX:25": "Last month ({{lastMonth}})"
-  },
-  "let's see what tryber you are with the <entry_test_link>entry test</entry_test_link>": {
-    "__RANKING_PROGRESS_NOLEVEL_MAX: 60": "Let's see what kind of Tryber you are: try our <entry_test_link>Entry Test</entry_test_link>!"
-  },
-  "level {{ level }}": {
-    "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Level {{ level }}"
-  },
-  "level {{levelName}}": {
-    "__RANKING_NAME_LEVEL_MAX:25": "{{levelName}} level"
-  },
-  "login": "login",
-  "login page title": "Log in to Tryber",
-  "login to continue": "Log in to continue",
-  "no data": "—",
-  "not calculated": {
-    "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "Not counted",
-    "__RANKING_PROGRESS_NOLVEL_NEXTLVL_MAX: 20": "Not counted"
-  },
-  "not in ranking": {
-    "__RANKING_POSITION_NOLeVEL_MAX: 30": "No level"
-  },
-  "or log in with email and password": "or log in with email and password",
-  "or you can": "or you can",
-  "redirecting": "redirecting",
   "social": "social",
   "testers": "Active Trybers",
-  "try again to login": "Try again to login.",
-  "wait...": "wait...",
-  "you must accept terms and conditions": "You need to accept terms and conditions",
-  "{{days}} days left to give your best!": {
-    "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "You still have {{days}} day to try your best!",
-    "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "You still have {{days}} days to try your best!"
-  },
-  "{{num}} uploaded": {
-    "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
-    "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
-  },
   "All your certifications were successfully removed": "All your certifications were successfully removed",
   "There was an error removing your certifications": "There was an error removing your certifications",
   "Sign up": "Sign up",
