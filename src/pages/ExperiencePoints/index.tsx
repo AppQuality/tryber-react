@@ -21,6 +21,7 @@ import dateFormatter from "../../utils/dateFormatter";
 import { ExperiencePointsColumns } from "./columns";
 import ExperiencePointsFilters from "./ExperiencePointsFilters";
 import ExperiencePointsTable from "./ExperiencePointsTable";
+import { useGetUsersMeExperienceQuery } from "src/services/tryberApi";
 
 export default function ExperiencePoints() {
   const { t } = useTranslation();
@@ -30,22 +31,45 @@ export default function ExperiencePoints() {
   );
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
-  const {
+  /*   const {
     expList,
-    campaigns,
-    activities,
-    dates,
-    selectedCampaign,
-    selectedActivity,
-    selectedDate,
-    search,
-    isLoading,
+    //campaigns,
+    //activities,
+    //dates,
+    //selectedCampaign,
+    //selectedActivity,
+    //selectedDate,
+    //search,
+    //isLoading,
   } = useSelector(
     (state: GeneralState) => state.experiencePoints,
     shallowEqual
+  ); */
+
+  const { selectedActivity, selectedCampaign, selectedDate } = useSelector(
+    (state: GeneralState) => state.experiencePoints,
+    shallowEqual
+  );
+  const { limit, start, order, orderBy } = useSelector(
+    (state: GeneralState) => state.experiencePoints.expList
   );
 
-  const { results, limit, total, start, order, orderBy } = expList;
+  const { data, isLoading } = useGetUsersMeExperienceQuery({
+    limit: limit,
+    start: start,
+    order: order,
+    orderBy: orderBy,
+    filterBy: {
+      campaign: selectedCampaign?.value,
+      activity: selectedActivity?.value,
+      dates: selectedDate?.value,
+    },
+  });
+  const { results, total } = data || {};
+
+  const search = useSelector(
+    (state: GeneralState) => state.experiencePoints.search
+  );
 
   const changePagination = (newPage: number) => {
     const newStart = limit * (newPage - 1);
@@ -53,31 +77,32 @@ export default function ExperiencePoints() {
   };
 
   useEffect(() => {
-    setRows(
-      results.map((res) => {
-        return {
-          key: res.id,
-          amount: {
-            title: `${res.amount > 0 ? `+${res.amount}` : res.amount}pts`,
-            content:
-              res.amount === 0 ? (
-                <b className="aq-text-primary">{res.amount}pts</b>
-              ) : res.amount > 0 ? (
-                <b className="aq-text-success">+{res.amount}pts</b>
-              ) : (
-                <b className="aq-text-danger">{res.amount}pts</b>
-              ),
-          },
-          date: dateFormatter(res.date),
-          activity: mapActivityName(res.activity.id, t),
-          campaign:
-            res.campaign.title && res.campaign.id > 0
-              ? `CP${res.campaign.id}`
-              : `-`,
-          note: res.note?.replace(/\\(.)/gm, "$1"),
-        };
-      })
-    );
+    if (results)
+      setRows(
+        results.map((res) => {
+          return {
+            key: res.id,
+            amount: {
+              title: `${res.amount > 0 ? `+${res.amount}` : res.amount}pts`,
+              content:
+                res.amount === 0 ? (
+                  <b className="aq-text-primary">{res.amount}pts</b>
+                ) : res.amount > 0 ? (
+                  <b className="aq-text-success">+{res.amount}pts</b>
+                ) : (
+                  <b className="aq-text-danger">{res.amount}pts</b>
+                ),
+            },
+            date: dateFormatter(res.date),
+            activity: mapActivityName(res.activity.id, t),
+            campaign:
+              res.campaign.title && res.campaign.id > 0
+                ? `CP${res.campaign.id}`
+                : `-`,
+            note: res.note?.replace(/\\(.)/gm, "$1"),
+          };
+        })
+      );
   }, [results]);
 
   useEffect(() => {
@@ -91,7 +116,7 @@ export default function ExperiencePoints() {
       changePagination(1);
       dispatch(fetchExperiencePointsFilters(t));
     }
-  }, [selectedCampaign, selectedActivity, selectedDate, search]);
+  }, [selectedCampaign, selectedActivity, selectedDate]);
 
   useEffect(() => {
     dispatch(fetchExperiencePoints());
@@ -111,7 +136,7 @@ export default function ExperiencePoints() {
               data={rows}
               page={(start || 0) / limit + 1}
               setPage={changePagination}
-              totalEntries={total}
+              totalEntries={total || 0}
               limit={limit}
               loading={isLoading}
               columns={columns}
@@ -124,10 +149,10 @@ export default function ExperiencePoints() {
           <div className="stick-to-header-lg ">
             <Card className="aq-mb-3" title={t("Filters")} shadow={true}>
               <ExperiencePointsFilters
-                search={search}
-                campaigns={campaigns}
+                //search={search}
+                /* campaigns={campaigns}
                 activities={activities}
-                dates={dates}
+                dates={dates} */
                 selectedCampaign={selectedCampaign}
                 selectedActivity={selectedActivity}
                 selectedDate={selectedDate}
@@ -157,4 +182,15 @@ export default function ExperiencePoints() {
       </BSGrid>
     </PageTemplate>
   );
+}
+
+function useInputValues(
+  arg0: (state: GeneralState) => {
+    selectedActivity: any;
+    selectedCampaign: any;
+    selectedDate: any;
+  },
+  shallowEqual: <T>(left: T, right: any) => boolean
+): { selectedActivity: any; selectedCampaign: any; selectedDate: any } {
+  throw new Error("Function not implemented.");
 }

@@ -13,30 +13,123 @@ import {
   setSelectedDate,
 } from "../../redux/experiencePoints/actionCreator";
 import { useAppDispatch } from "../../redux/provider";
+import { useGetUsersMeExperienceQuery } from "src/services/tryberApi";
 
 interface ExperiencePointsFiltersProps {
-  campaigns: SelectType.Option[];
+  /* campaigns: SelectType.Option[];
   activities: SelectType.Option[];
-  dates: SelectType.Option[];
+  dates: SelectType.Option[]; */
+  selectedCampaign?: SelectType.Option;
+  selectedActivity?: SelectType.Option;
+  selectedDate?: SelectType.Option;
+}
+
+const useSelectValues = ({
+  selectedCampaign,
+  selectedActivity,
+  selectedDate,
+}: {
   selectedCampaign?: SelectType.Option;
   selectedActivity?: SelectType.Option;
   selectedDate?: SelectType.Option;
   search?: string;
-}
+}) => {
+  const { data, isLoading } = useGetUsersMeExperienceQuery({
+    filterBy: {
+      campaign: selectedCampaign?.value,
+      activity: selectedActivity?.value,
+      date: selectedDate?.value,
+    },
+  });
+  if (isLoading || !data) return { campaigns: [], activities: [], dates: [] };
+
+  const campaigns: SelectType.Option[] = data.results
+    .filter(
+      (
+        r
+      ): r is {
+        id: number;
+        activity: { id: number };
+        campaign: { id: number; title?: string | undefined };
+        date: string;
+        amount: number;
+        note?: string | undefined;
+      } => typeof r.campaign !== "undefined"
+    )
+    .map((r) => {
+      return {
+        value: r.campaign.id.toString(),
+        label: `CP${r.campaign.id} - ${r.campaign.title}`,
+      };
+    })
+    .filter(
+      (value, index, self) =>
+        index === self.findIndex((t) => t.value === value.value)
+    );
+
+  const activities: SelectType.Option[] = data.results
+    .filter(
+      (
+        r
+      ): r is {
+        id: number;
+        activity: { id: number };
+        campaign: { id: number; title?: string | undefined };
+        date: string;
+        amount: number;
+        note?: string | undefined;
+      } => typeof r.activity !== "undefined"
+    )
+    .map((r) => {
+      return {
+        value: r.activity.id.toString(),
+        label: r.activity.id.toString(),
+      };
+    })
+    .filter(
+      (value, index, self) =>
+        index === self.findIndex((t) => t.value === value.value)
+    );
+
+  const dates: SelectType.Option[] = data.results
+    .filter(
+      (
+        r
+      ): r is {
+        id: number;
+        activity: { id: number };
+        campaign: { id: number; title?: string | undefined };
+        date: string;
+        amount: number;
+        note?: string | undefined;
+      } => typeof r.date !== "undefined"
+    )
+    .map((r) => {
+      return { value: r.date, label: r.date };
+    })
+    .filter(
+      (value, index, self) =>
+        index === self.findIndex((t) => t.value === value.value)
+    );
+
+  return { campaigns, activities, dates };
+};
 
 const ExperiencePointsFilters = ({
-  search,
-  campaigns,
-  dates,
-  activities,
   selectedCampaign,
   selectedActivity,
   selectedDate,
 }: ExperiencePointsFiltersProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const [currentSearch, setCurrentSearch] = useState(search);
-  const debouncedSearch = useDebounce(currentSearch, 500);
+  /* const [currentSearch, setCurrentSearch] = useState("");
+  const debouncedSearch = useDebounce(currentSearch, 500); */
+
+  const { campaigns, activities, dates } = useSelectValues({
+    selectedCampaign,
+    selectedActivity,
+    selectedDate,
+  });
 
   const allCampaign = t("All", { context: "female" });
   const allActivities = t("All", { context: "female" });
@@ -61,12 +154,12 @@ const ExperiencePointsFilters = ({
     dateValue = selectedDate;
   }
 
-  useEffect(() => {
+  /*   useEffect(() => {
     dispatch({
       type: "experiencePoints/setSearch",
       payload: debouncedSearch,
     });
-  }, [debouncedSearch]);
+  }, [debouncedSearch]); */
 
   return (
     <div>
@@ -76,7 +169,7 @@ const ExperiencePointsFilters = ({
           placeholder={t("Search here")}
           type="search"
           id="search"
-          onChange={setCurrentSearch}
+          //onChange={setCurrentSearch}
         />
       </div>
       <div className="aq-mb-3">
