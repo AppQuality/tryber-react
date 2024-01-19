@@ -103,21 +103,30 @@ export default function GettingStarted() {
                   terms_link: (
                     <a
                       data-qa="terms-and-conditions"
-                      href={t("/terms-and-conditions/")}
+                      href={t("/terms-and-conditions/", {
+                        ns: "links",
+                      })}
                       target="_blank"
                     />
                   ),
                   privacy_link: (
                     <a
                       data-qa="privacy-policy"
-                      href={t("https://www.iubenda.com/privacy-policy/7934311")}
+                      href={t(
+                        "https://www.iubenda.com/privacy-policy/7934311",
+                        {
+                          ns: "links",
+                        }
+                      )}
                       target="_blank"
                     />
                   ),
                   ethical_link: (
                     <a
                       data-qa="ethical-code"
-                      href={t("/ethical-code/")}
+                      href={t("/ethical-code/", {
+                        ns: "links",
+                      })}
                       target="_blank"
                     />
                   ),

@@ -19,14 +19,18 @@ const PasswordRequirement = ({
   "data-qa"?: string;
 }) => {
   return (
-    <div data-qa={dataQa} style={{ display: "flex", alignItems: "center" }}>
+    <li data-qa={dataQa} style={{ display: "flex", alignItems: "center" }}>
       {check() ? (
-        <GreenCheck data-qa="password-requirement-success" size={16} />
+        <GreenCheck
+          aria-hidden="true"
+          data-qa="password-requirement-success"
+          size={16}
+        />
       ) : (
-        <X data-qa="password-requirement-error" size={16} />
+        <X aria-hidden="true" data-qa="password-requirement-error" size={16} />
       )}
       <Text small>{children}</Text>
-    </div>
+    </li>
   );
 };
 
@@ -39,30 +43,32 @@ const PasswordRequirements = () => {
       <Text small className="aq-mb-1">
         {t("PASSWORD_VALIDATOR:::Password requirements:")}
       </Text>
-      <PasswordRequirement
-        data-qa="password-requirement-length"
-        check={() => values.password.length >= 6}
-      >
-        {t("PASSWORD_VALIDATOR:::minimum of 6 characters")}
-      </PasswordRequirement>
-      <PasswordRequirement
-        data-qa="password-requirement-uppercase"
-        check={() => values.password.match(/[A-Z]/) !== null}
-      >
-        {t("PASSWORD_VALIDATOR:::contain an uppercase letter")}
-      </PasswordRequirement>
-      <PasswordRequirement
-        data-qa="password-requirement-lowercase"
-        check={() => values.password.match(/[a-z]/) !== null}
-      >
-        {t("PASSWORD_VALIDATOR:::contain a lowercase letter")}
-      </PasswordRequirement>
-      <PasswordRequirement
-        data-qa="password-requirement-number"
-        check={() => values.password.match(/[0-9]/) !== null}
-      >
-        {t("PASSWORD_VALIDATOR:::contain a number")}
-      </PasswordRequirement>
+      <ul>
+        <PasswordRequirement
+          data-qa="password-requirement-length"
+          check={() => values.password.length >= 6}
+        >
+          {t("PASSWORD_VALIDATOR:::minimum of 6 characters")}
+        </PasswordRequirement>
+        <PasswordRequirement
+          data-qa="password-requirement-uppercase"
+          check={() => values.password.match(/[A-Z]/) !== null}
+        >
+          {t("PASSWORD_VALIDATOR:::contain an uppercase letter")}
+        </PasswordRequirement>
+        <PasswordRequirement
+          data-qa="password-requirement-lowercase"
+          check={() => values.password.match(/[a-z]/) !== null}
+        >
+          {t("PASSWORD_VALIDATOR:::contain a lowercase letter")}
+        </PasswordRequirement>
+        <PasswordRequirement
+          data-qa="password-requirement-number"
+          check={() => values.password.match(/[0-9]/) !== null}
+        >
+          {t("PASSWORD_VALIDATOR:::contain a number")}
+        </PasswordRequirement>
+      </ul>
     </div>
   );
 };

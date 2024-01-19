@@ -83,7 +83,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
       <Text className="aq-text-center aq-mb-3 aq-text-primary">
         {t("or log in with email and password")}
       </Text>
-      <div role="alert" aria-live="polite">
+      <div role="alert" aria-live="polite" className="aq-mb-3 aq-text-left">
         {error && <ErrorMessageWrapper>{error}</ErrorMessageWrapper>}
       </div>
       <FormikField name="email">

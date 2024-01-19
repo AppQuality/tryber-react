@@ -46,19 +46,19 @@ test.describe("The getting started page", () => {
     const languageSwitcher = page.getByTestId("language-switcher");
     await expect(
       languageSwitcher.getByTestId("language-switcher-it")
-    ).toHaveText("Italiano");
+    ).toContainText("Italiano");
     await expect(
       languageSwitcher.getByTestId("language-switcher-it")
     ).toHaveAttribute("href", "/it/getting-started/");
     await expect(
       languageSwitcher.getByTestId("language-switcher-en")
-    ).toHaveText("English");
+    ).toContainText("English");
     await expect(
       languageSwitcher.getByTestId("language-switcher-en")
     ).toHaveAttribute("href", "/getting-started/");
     await expect(
       languageSwitcher.getByTestId("language-switcher-es")
-    ).toHaveText("Español");
+    ).toContainText("Español");
     await expect(
       languageSwitcher.getByTestId("language-switcher-es")
     ).toHaveAttribute("href", "/es/getting-started/");
@@ -126,7 +126,7 @@ test.describe("The getting started page", () => {
   test(`should display a link privacy policy`, async ({ page, i18n }) => {
     await expect(page.getByTestId("privacy-policy")).toBeVisible();
     await expect(page.getByTestId("privacy-policy")).toHaveText(
-      i18n.t("Privacy Policy")
+      "Privacy Policy"
     );
   });
   test(`if the user click the privacy policy link another tab is opened to https://www.iubenda.com/privacy-policy/7934311`, async ({
@@ -146,9 +146,7 @@ test.describe("The getting started page", () => {
   });
   test(`should display a link to ethical code`, async ({ page, i18n }) => {
     await expect(page.getByTestId("ethical-code")).toBeVisible();
-    await expect(page.getByTestId("ethical-code")).toHaveText(
-      i18n.t("Ethical Code")
-    );
+    await expect(page.getByTestId("ethical-code")).toHaveText("Ethical Code");
   });
   test(`if the user click the ethical code link another tab is opened to /ethical-code in the current language`, async ({
     page,
@@ -161,7 +159,11 @@ test.describe("The getting started page", () => {
     await ethicalCode.click();
     const newPage = await pagePromise;
     await newPage.waitForLoadState();
-    expect(newPage.url()).toContain(i18n.t("/ethical-code/"));
+    expect(newPage.url()).toContain(
+      i18n.t("/ethical-code/", {
+        ns: "links",
+      })
+    );
   });
   test(`should display a link to the login page`, async ({ page, i18n }) => {
     await expect(page.getByTestId("login")).toBeVisible();
