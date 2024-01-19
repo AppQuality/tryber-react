@@ -15,7 +15,6 @@ import {
   ExperiencePoints,
   GettingStarted,
   GoodbyePage,
-  Home,
   Login,
   MyBugs,
   PreviewSelectionForm,
@@ -197,11 +196,15 @@ function Page() {
               exact
               component={GoodbyePage}
             />
-            <SentryRoute
-              path={["/", "/it", "/es"]}
-              exact
-              component={() => <Home />}
-            />
+            <SentryRoute path={"/"} exact>
+              <Redirect to="/my-dashboard" />
+            </SentryRoute>
+            <SentryRoute path={"/it"} exact>
+              <Redirect to="/it/my-dashboard" />
+            </SentryRoute>
+            <SentryRoute path={"/es"} exact>
+              <Redirect to="/es/my-dashboard" />
+            </SentryRoute>
           </Switch>
         </Router>
       </div>
