@@ -31,7 +31,7 @@ export default function ExperiencePoints() {
   );
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
-  const { data } = useGetUsersMeExperienceQuery({});
+  const { data, isLoading } = useGetUsersMeExperienceQuery({});
 
   const {
     expList,
@@ -100,6 +100,8 @@ export default function ExperiencePoints() {
     dispatch(fetchExperiencePoints());
     dispatch(fetchExperiencePointsFilters(t));
   }, []);
+
+  if (isLoading) return null;
 
   return (
     <PageTemplate
