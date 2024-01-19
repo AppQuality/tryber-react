@@ -110,6 +110,7 @@ export default function ExperiencePoints() {
       <BSGrid>
         <BSCol size="col-lg-9 ">
           <Card className="aq-mb-3" title={t("History")}>
+            <Button onClick={() => alert("ciao")}>ciao</Button>
             <ExperiencePointsTable
               data={rows}
               page={(start || 0) / limit + 1}
