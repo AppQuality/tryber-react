@@ -14,14 +14,14 @@ import {
 } from "../../redux/experiencePoints/actionCreator";
 import { useAppDispatch } from "../../redux/provider";
 import { useGetUsersMeExperienceQuery } from "src/services/tryberApi";
+import { mapActivityName } from "src/redux/experiencePoints/utils";
+import dateFormatter from "src/utils/dateFormatter";
 
 interface ExperiencePointsFiltersProps {
-  /* campaigns: SelectType.Option[];
-  activities: SelectType.Option[];
-  dates: SelectType.Option[]; */
   selectedCampaign?: SelectType.Option;
   selectedActivity?: SelectType.Option;
   selectedDate?: SelectType.Option;
+  search: string | undefined;
 }
 
 const useSelectValues = ({
@@ -32,8 +32,8 @@ const useSelectValues = ({
   selectedCampaign?: SelectType.Option;
   selectedActivity?: SelectType.Option;
   selectedDate?: SelectType.Option;
-  search?: string;
 }) => {
+  const { t } = useTranslation();
   const { data, isLoading } = useGetUsersMeExperienceQuery({
     filterBy: {
       campaign: selectedCampaign?.value,
@@ -54,7 +54,7 @@ const useSelectValues = ({
         date: string;
         amount: number;
         note?: string | undefined;
-      } => typeof r.campaign !== "undefined"
+      } => typeof r.campaign.title !== "undefined"
     )
     .map((r) => {
       return {
@@ -83,7 +83,7 @@ const useSelectValues = ({
     .map((r) => {
       return {
         value: r.activity.id.toString(),
-        label: r.activity.id.toString(),
+        label: mapActivityName(r.activity.id, t) || " ",
       };
     })
     .filter(
@@ -105,7 +105,10 @@ const useSelectValues = ({
       } => typeof r.date !== "undefined"
     )
     .map((r) => {
-      return { value: r.date, label: r.date };
+      return {
+        value: r.date,
+        label: dateFormatter(r.date),
+      };
     })
     .filter(
       (value, index, self) =>
@@ -122,8 +125,8 @@ const ExperiencePointsFilters = ({
 }: ExperiencePointsFiltersProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  /* const [currentSearch, setCurrentSearch] = useState("");
-  const debouncedSearch = useDebounce(currentSearch, 500); */
+  const [currentSearch, setCurrentSearch] = useState("");
+  const debouncedSearch = useDebounce(currentSearch, 500);
 
   const { campaigns, activities, dates } = useSelectValues({
     selectedCampaign,
@@ -154,12 +157,12 @@ const ExperiencePointsFilters = ({
     dateValue = selectedDate;
   }
 
-  /*   useEffect(() => {
+  useEffect(() => {
     dispatch({
       type: "experiencePoints/setSearch",
       payload: debouncedSearch,
     });
-  }, [debouncedSearch]); */
+  }, [debouncedSearch]);
 
   return (
     <div>
@@ -169,7 +172,7 @@ const ExperiencePointsFilters = ({
           placeholder={t("Search here")}
           type="search"
           id="search"
-          //onChange={setCurrentSearch}
+          onChange={setCurrentSearch}
         />
       </div>
       <div className="aq-mb-3">

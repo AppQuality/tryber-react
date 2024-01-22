@@ -10,11 +10,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { PageTemplate } from "src/features/PageTemplate";
-import {
-  fetchExperiencePoints,
-  fetchExperiencePointsFilters,
-  updateExperiencePointsPagination,
-} from "../../redux/experiencePoints/actionCreator";
+import { updateExperiencePointsPagination } from "../../redux/experiencePoints/actionCreator";
 import { mapActivityName } from "../../redux/experiencePoints/utils";
 import { useAppDispatch } from "../../redux/provider";
 import dateFormatter from "../../utils/dateFormatter";
@@ -31,26 +27,12 @@ export default function ExperiencePoints() {
   );
   const [rows, setRows] = useState<TableType.Row[]>([]);
 
-  /*   const {
-    expList,
-    //campaigns,
-    //activities,
-    //dates,
-    //selectedCampaign,
-    //selectedActivity,
-    //selectedDate,
-    //search,
-    //isLoading,
-  } = useSelector(
-    (state: GeneralState) => state.experiencePoints,
-    shallowEqual
-  ); */
+  const limit = 25;
 
-  const { selectedActivity, selectedCampaign, selectedDate } = useSelector(
-    (state: GeneralState) => state.experiencePoints,
-    shallowEqual
-  );
-  const { limit, start, order, orderBy } = useSelector(
+  const { selectedActivity, selectedCampaign, selectedDate, search } =
+    useSelector((state: GeneralState) => state.experiencePoints, shallowEqual);
+
+  const { start, order, orderBy } = useSelector(
     (state: GeneralState) => state.experiencePoints.expList
   );
 
@@ -59,17 +41,15 @@ export default function ExperiencePoints() {
     start: start,
     order: order,
     orderBy: orderBy,
+    search: search,
+    searchBy: search && "note",
     filterBy: {
       campaign: selectedCampaign?.value,
       activity: selectedActivity?.value,
-      dates: selectedDate?.value,
+      date: selectedDate?.value,
     },
   });
   const { results, total } = data || {};
-
-  const search = useSelector(
-    (state: GeneralState) => state.experiencePoints.search
-  );
 
   const changePagination = (newPage: number) => {
     const newStart = limit * (newPage - 1);
@@ -114,14 +94,8 @@ export default function ExperiencePoints() {
       search === ""
     ) {
       changePagination(1);
-      dispatch(fetchExperiencePointsFilters(t));
     }
   }, [selectedCampaign, selectedActivity, selectedDate]);
-
-  useEffect(() => {
-    dispatch(fetchExperiencePoints());
-    dispatch(fetchExperiencePointsFilters(t));
-  }, []);
 
   return (
     <PageTemplate
@@ -149,10 +123,11 @@ export default function ExperiencePoints() {
           <div className="stick-to-header-lg ">
             <Card className="aq-mb-3" title={t("Filters")} shadow={true}>
               <ExperiencePointsFilters
-                //search={search}
-                /* campaigns={campaigns}
+                search={search}
+                /*
+                campaigns={campaigns}
                 activities={activities}
-                dates={dates} */
+                dates={dates}  */
                 selectedCampaign={selectedCampaign}
                 selectedActivity={selectedActivity}
                 selectedDate={selectedDate}
@@ -182,15 +157,4 @@ export default function ExperiencePoints() {
       </BSGrid>
     </PageTemplate>
   );
-}
-
-function useInputValues(
-  arg0: (state: GeneralState) => {
-    selectedActivity: any;
-    selectedCampaign: any;
-    selectedDate: any;
-  },
-  shallowEqual: <T>(left: T, right: any) => boolean
-): { selectedActivity: any; selectedCampaign: any; selectedDate: any } {
-  throw new Error("Function not implemented.");
 }

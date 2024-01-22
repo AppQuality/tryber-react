@@ -107,7 +107,7 @@ export const updateExperiencePointsSortingOptions =
     return dispatch(fetchExperiencePoints());
   };
 
-export const fetchExperiencePointsFilters =
+/* export const fetchExperiencePointsFilters =
   (
     t: TFunction
   ): ThunkAction<
@@ -205,7 +205,7 @@ export const fetchExperiencePointsFilters =
       type: "experiencePoints/setIsLoading",
       payload: false,
     });
-  };
+  }; */
 
 export const setSelectedCampaign =
   (
