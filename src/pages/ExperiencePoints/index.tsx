@@ -32,8 +32,9 @@ export default function ExperiencePoints() {
   const { selectedActivity, selectedCampaign, selectedDate, search } =
     useSelector((state: GeneralState) => state.experiencePoints, shallowEqual);
 
-  const { start, order, orderBy } = useSelector(
-    (state: GeneralState) => state.experiencePoints.expList
+  const { order, orderBy, start } = useSelector(
+    (state: GeneralState) => state.experiencePoints.expList,
+    shallowEqual
   );
 
   const { data, isLoading } = useGetUsersMeExperienceQuery({
@@ -42,14 +43,14 @@ export default function ExperiencePoints() {
     order: order,
     orderBy: orderBy,
     search: search,
-    searchBy: search && "note",
+    searchBy: "note",
     filterBy: {
       campaign: selectedCampaign?.value,
       activity: selectedActivity?.value,
       date: selectedDate?.value,
     },
   });
-  const { results, total } = data || {};
+  const { results, total } = data ?? {};
 
   const changePagination = (newPage: number) => {
     const newStart = limit * (newPage - 1);
@@ -108,9 +109,9 @@ export default function ExperiencePoints() {
           <Card className="aq-mb-3" title={t("History")}>
             <ExperiencePointsTable
               data={rows}
-              page={(start || 0) / limit + 1}
+              page={(start ?? 0) / limit + 1}
               setPage={changePagination}
-              totalEntries={total || 0}
+              totalEntries={total ?? 0}
               limit={limit}
               loading={isLoading}
               columns={columns}
@@ -124,10 +125,6 @@ export default function ExperiencePoints() {
             <Card className="aq-mb-3" title={t("Filters")} shadow={true}>
               <ExperiencePointsFilters
                 search={search}
-                /*
-                campaigns={campaigns}
-                activities={activities}
-                dates={dates}  */
                 selectedCampaign={selectedCampaign}
                 selectedActivity={selectedActivity}
                 selectedDate={selectedDate}

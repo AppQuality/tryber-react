@@ -16,6 +16,7 @@ import { useAppDispatch } from "../../redux/provider";
 import { useGetUsersMeExperienceQuery } from "src/services/tryberApi";
 import { mapActivityName } from "src/redux/experiencePoints/utils";
 import dateFormatter from "src/utils/dateFormatter";
+import { shallowEqual, useSelector } from "react-redux";
 
 interface ExperiencePointsFiltersProps {
   selectedCampaign?: SelectType.Option;
@@ -34,6 +35,7 @@ const useSelectValues = ({
   selectedDate?: SelectType.Option;
 }) => {
   const { t } = useTranslation();
+
   const { data, isLoading } = useGetUsersMeExperienceQuery({
     filterBy: {
       campaign: selectedCampaign?.value,
@@ -122,10 +124,17 @@ const ExperiencePointsFilters = ({
   selectedCampaign,
   selectedActivity,
   selectedDate,
+  search,
 }: ExperiencePointsFiltersProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const [currentSearch, setCurrentSearch] = useState("");
+
+  search = useSelector(
+    (state: GeneralState) => state.experiencePoints.search,
+    shallowEqual
+  );
+
+  const [currentSearch, setCurrentSearch] = useState(search);
   const debouncedSearch = useDebounce(currentSearch, 500);
 
   const { campaigns, activities, dates } = useSelectValues({
