@@ -107,7 +107,6 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
                 placeholder="mail@example.com"
                 isInvalid={meta.touched && typeof meta.error == "string"}
                 extra={{ required: true, ariaRequired: true, ...field }}
-                data-tracking="login-email"
               />
             </div>
             <ErrorMessage name={field.name} />
@@ -137,7 +136,6 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
                   showPassword: t("Login input password:::Show password"),
                   hidePassword: t("Login input password:::Hide password"),
                 }}
-                data-tracking="login-password"
               />
             </div>
             <ErrorMessage name={field.name} />
