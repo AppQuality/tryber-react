@@ -105,6 +105,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
                 placeholder="mail@example.com"
                 isInvalid={meta.touched && typeof meta.error == "string"}
                 extra={{ required: true, ariaRequired: true, ...field }}
+                data-qa="login-email-input"
               />
             </div>
             <ErrorMessage name={field.name} />
@@ -134,6 +135,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
                   showPassword: t("Login input password:::Show password"),
                   hidePassword: t("Login input password:::Hide password"),
                 }}
+                data-qa="login-password-input"
               />
             </div>
             <ErrorMessage name={field.name} />
@@ -154,6 +156,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
         size="block"
         type="submit"
         formNoValidate
+        data-qa="login-submit-button"
       >
         {isSubmitting ? t("wait...") : cta}
       </Button>
