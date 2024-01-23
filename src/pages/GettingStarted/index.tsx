@@ -55,6 +55,7 @@ export default function GettingStarted() {
               className="aq-mb-3"
               size="block"
               flat
+              data-tracking="facebook-signup-cta"
             >
               <img
                 aria-hidden
@@ -71,6 +72,7 @@ export default function GettingStarted() {
               className="aq-mb-3"
               size="block"
               flat
+              data-tracking="linkedin-signup-cta"
             >
               <img
                 aria-hidden
@@ -86,6 +88,7 @@ export default function GettingStarted() {
               size="block"
               data-qa="email-signup"
               onClick={onEmailSignupClick}
+              data-tracking="email-signup-cta"
             >
               <EnvelopeFill
                 aria-hidden
@@ -107,6 +110,7 @@ export default function GettingStarted() {
                         ns: "links",
                       })}
                       target="_blank"
+                      data-tracking="terms-condictions-link"
                     />
                   ),
                   privacy_link: (
@@ -119,6 +123,7 @@ export default function GettingStarted() {
                         }
                       )}
                       target="_blank"
+                      data-tracking="privacy-policy-link"
                     />
                   ),
                   ethical_link: (
@@ -128,6 +133,7 @@ export default function GettingStarted() {
                         ns: "links",
                       })}
                       target="_blank"
+                      data-tracking="ethical-code-link"
                     />
                   ),
                 }}
@@ -143,6 +149,7 @@ export default function GettingStarted() {
                       to={login}
                       data-qa="login"
                       style={{ textDecoration: "none" }}
+                      data-tracking="login-link"
                     />
                   ),
                   strong: <strong />,

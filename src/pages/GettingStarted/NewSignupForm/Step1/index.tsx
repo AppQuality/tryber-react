@@ -124,7 +124,10 @@ const Step1 = () => {
           meta,
         }: FieldProps) => {
           return (
-            <div className="aq-mb-3">
+            <div
+              className="aq-mb-3"
+              data-tracking="signup-agree-to-receive-email"
+            >
               <Checkbox
                 name={name}
                 id={name}
@@ -182,7 +185,12 @@ const Step1 = () => {
         />
       </Text>
       <ButtonWrapper>
-        <Button size="block" flat onClick={onBackClick}>
+        <Button
+          size="block"
+          flat
+          onClick={onBackClick}
+          data-tracking="signup-back-cta"
+        >
           {t("SIGNUP_STEP:::back")}
         </Button>
         <Button
@@ -190,6 +198,7 @@ const Step1 = () => {
           type="submit"
           disabled={isSubmitting}
           onClick={onSubmitClick}
+          data-tracking="signup-submit-cta"
         >
           {t("SIGNUP_STEP:::submit")}
         </Button>

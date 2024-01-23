@@ -24,7 +24,12 @@ const Step0 = () => {
       <EmailInput className="aq-mb-3" />
       <PasswordInput className="aq-mb-2" />
       <PasswordRequirements />
-      <Button size="block" kind="primary" onClick={goToNextStep}>
+      <Button
+        size="block"
+        kind="primary"
+        onClick={goToNextStep}
+        data-tracking="signup-next-cta"
+      >
         {t("SIGNUP_STEP:::continue")}
       </Button>
     </div>

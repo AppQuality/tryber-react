@@ -55,6 +55,7 @@ export const LangMenu = ({
         <li>
           <a
             data-qa="language-switcher-it"
+            data-tracking="lang-switcher-it"
             href={itLink}
             className={`${
               i18n.language === "it" ? "current " : ""
@@ -69,6 +70,7 @@ export const LangMenu = ({
         <li>
           <a
             data-qa="language-switcher-en"
+            data-tracking="lang-switcher-en"
             href={enLink}
             className={`${
               i18n.language === "en" ? "current " : ""
@@ -83,6 +85,7 @@ export const LangMenu = ({
         <li>
           <a
             data-qa="language-switcher-es"
+            data-tracking="lang-switcher-es"
             href={esLink}
             className={`${
               i18n.language === "es" ? "current " : ""
