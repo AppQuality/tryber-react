@@ -37,7 +37,7 @@ export default function ExperiencePoints() {
     shallowEqual
   );
 
-  const { data, isLoading } = useGetUsersMeExperienceQuery({
+  const { data, error, isLoading } = useGetUsersMeExperienceQuery({
     limit: limit,
     start: start,
     order: order,
@@ -50,6 +50,7 @@ export default function ExperiencePoints() {
       date: selectedDate?.value,
     },
   });
+
   const { results, total } = data ?? {};
 
   const changePagination = (newPage: number) => {
@@ -58,7 +59,7 @@ export default function ExperiencePoints() {
   };
 
   useEffect(() => {
-    if (results)
+    if (!error && results)
       setRows(
         results.map((res) => {
           return {
@@ -84,7 +85,8 @@ export default function ExperiencePoints() {
           };
         })
       );
-  }, [results]);
+    else setRows([]);
+  }, [results, error, t]);
 
   useEffect(() => {
     if (

@@ -36,7 +36,14 @@ const useSelectValues = ({
 }) => {
   const { t } = useTranslation();
 
+  const { search } = useSelector(
+    (state: GeneralState) => state.experiencePoints,
+    shallowEqual
+  );
+
   const { data, isLoading } = useGetUsersMeExperienceQuery({
+    searchBy: "note",
+    search: search,
     filterBy: {
       campaign: selectedCampaign?.value,
       activity: selectedActivity?.value,
