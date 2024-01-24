@@ -4,13 +4,12 @@ import ExperiencePoints from "./ExperiencePoints";
 import GettingStarted from "./GettingStarted";
 import Signup from "./GettingStarted/NewSignupForm";
 import GoodbyePage from "./GoodbyePage";
-import Wallet from "./Wallet";
-import Home from "./Home";
+import Login from "./Login";
 import MyBugs from "./MyBugs";
+import PreviewSelectionForm from "./PreviewSelectionForm";
 import Profile from "./Profile";
 import Ranking from "./Ranking";
-import PreviewSelectionForm from "./PreviewSelectionForm";
-import Login from "./Login";
+import Wallet from "./Wallet";
 
 export {
   Dashboard,
@@ -18,12 +17,11 @@ export {
   ExperiencePoints,
   GettingStarted,
   GoodbyePage,
-  Home,
+  Login,
   MyBugs,
-  Wallet,
   PreviewSelectionForm,
   Profile,
   Ranking,
   Signup,
-  Login,
+  Wallet,
 };

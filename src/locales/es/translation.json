@@ -88,9 +88,6 @@
     "__WALLET_CARD-REQUEST_DISCLAIMER-CHECKPROFILE MAX: 150": "Utilizaremos los datos de tu perfil fiscal para el pago. Verifícalos rápidamente y actualízalos si es necesario.",
     "__WALLET_CARD-REQUEST_DISCLAIMER-NOTCOMPLETED MAX: 150": "Completa tu <fiscal_profile_link>perfil fiscal</fiscal_profile_link> y verifica que los datos sean correctos para poder solicitar el pago."
   },
-  "Available tags : <unguess_link> (Link to unguess), <line_break>": {
-    "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS apoya a las empresas en la creación de experiencias memorables gracias al poder de la Comunidad de TRYBER. <unguess_link>Descubre UNGUESS</unguess_link>"
-  },
   "Available tags: <bugs_link> (Link to bugs page)": {
     "BUGFORM_CONFIRMUPLOAD_TXT": "Véalo en la <bugs_link>página del bug</bugs_link>."
   },
@@ -170,7 +167,6 @@
   "Birth city": "Ciudad de nacimiento",
   "Birth date": "Fecha de nacimiento:",
   "Booty details": "Detalles de ingresos",
-  "Brands helped": "Marcas ayudaron",
   "Bug Evaluation": "Evaluación del Bug",
   "By clicking this button, you accept the <1>Terms</1> and <3>Privacy Policy</3>": "Al registrarte en TRYBER, aceptas las <1>condiciones de uso</1> y <3>política de privacidad</3>",
   "COUNTRY": {
@@ -181,7 +177,6 @@
   },
   "Campaign": "Campaña",
   "Campaign Completion": "Finalización de Campaña",
-  "Campaigns delivered": "Campañas enviadas",
   "Cancel": "Cancelar",
   "Certification": "Certificación",
   "Certification is a required field.": "La certificación es un campo obligatorio",
@@ -206,7 +201,6 @@
   "Continue with Facebook": "Continúa con Facebook",
   "Continue with LinkedIn": "Continúa con LinkedIn",
   "Continue with email": "Regístrate con tu correo",
-  "Countries covered": "Países alcanzados",
   "Courses": "Cursos",
   "Create an account": "Crear una cuenta",
   "Create your account": "Crea una cuenta",
@@ -593,6 +587,136 @@
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-MENSILI_MAX: 25": "Exp points mensuales",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Exp points totales",
   "__FISCAL_PROFILE_TAX_ID_DISCLAIMER": "Cuando cambies alguno de tus datos personales, tendrás que volver a introducir tu número de identificación fiscal.",
+  "__PAYMENT-METHOD-BANK": "Transferencia bancaria",
+  "__RANKING_LEGEND_BASIC_SPEC_MAX: 35": "El nivel inicial",
+  "__RANKING_LEGEND_EXP_NEXT": "exp",
+  "__RANKING_LEGEND_HOLD_MAX: 15": "Exp points para mantener el nivel",
+  "__RANKING_LEGEND_LEGENDARY_SPEC_MAX: 70": "El nivel más alto: 100.000 exp y es tuyo de por vida!",
+  "__RANKING_LEGEND_NEXT_MAX: 15": "Exp points para subir de nivel",
+  "__RANKING_LEGEND_QUESTIONS_CTA_MAX: 25": "Lee nuestra guía",
+  "__RANKING_LEGEND_QUESTIONS_MAX: 70": "¿Dudas o preguntas sobre cómo funciona la clasificación?",
+  "__RANKING_LEGEND_TITLE_MAX: 35": "Cómo subir de nivel",
+  "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "Empieza por el nivel Basic y ve subiendo",
+  "__RANKING_PROGRESS_LEGEND_LINK": "Cómo funcionan los niveles",
+  "__RANKING_PROGRESS_MONTH_MAX: 35": "Cómo te está yendo este mes",
+  "__RANKING_SUBTITLE_WELCOME_MAX: 125": "Consulta tus progresos, aumenta tus posibilidades de selección, supera a los demás Tryber y obtén el primer puesto",
+  "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Exp points",
+  "__RANKING_TITLE_LABEL_ID_MAX: 10": "Tryber ID",
+  "__RANKING_TITLE_LABEL_NAME_MAX: 20": "Nombre",
+  "__RANKING_TITLE_LABEL_POSITION_MAX: 15": "Posición",
+  "__RANKING_TITLE_WELCOM_MAX: 20": "Clasificación",
+  "__SELECT_DEFAULT_NO_OPTION": "sin opciones",
+  "__WALLET_CARD-GUIDES_CTA MAX: 20": "Nuestras guías",
+  "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Descubre cómo gestionamos tus solicitudes de pago",
+  "__WALLET_CARD-GUIDES_TITLE MAX: 35": "¿Dudas sobre el proceso de pago?",
+  "__WALLET_CARD-REQUEST_CTA MAX: 25": "Solicitar un pago",
+  "__WALLET_CARD-REQUEST_CTA-LINK MAX: 15": "Detalles",
+  "__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150": "En este momento no tienes pagos pendientes. ¡No te pierdas las próximas campañas!",
+  "__WALLET_CARD-REQUEST_DISCLAIMER-NOREQUEST MAX: 150": "Puedes solicitar un pago a partir de 3 euros. ¡No te pierdas las próximas campañas!",
+  "__WALLET_CARD-REQUEST_DISCLAIMER-PROCESSING MAX: 150": "Solo puedes solicitar un pago a la vez: ya tienes una solicitud pendiente, ésta puede tardar hasta 20 días laborables.",
+  "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Gestiona el pago",
+  "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Tu monedero",
+  "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Aún no has solicitado ningun pago. Cuando lo harás, podrás ver tus pagos aquí.",
+  "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Ver detalles",
+  "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Descargar recibo",
+  "available tags: <br>, <bold>": {
+    "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Replicabilidad del bug</b><br>\n<br>\n<b>SOMETIMES</b><br>\nEn igualdad de condiciones y procesos, el bug se produce de forma esporádica o impredecible, pero siempre es posible reproducirlo realizando múltiples intentos.<br>\n<br>\n<b>ALWAYS</b><br>\nEn igualdad de condiciones y procesos, el bug se produce con cada intento de replicación. Para que sea así, el bug debe reproducirse con éxito al menos 3 de cada 3 veces.<br>\n<br>\n<b>ONCE</b><br>\nEn igualdad de condiciones y procesos, el bug solo se ha producido una vez y no se ha podido replicar (se necesitan al menos 3 intentos).",
+    "BUGFORM_SEVERITY_MODAL_TXT": "<b>Nivel de gravedad del bug</b><br>\n<br>\nEl nivel de gravedad es una estimación del impacto del problema en el uso del producto. Para calcularlo, se tiene en cuenta tanto el contexto en el que se produce el problema (secciones primarias o secundarias de la actividad principal del objeto de la campaña), como las condiciones en las que se ha encontrado con respecto al uso promedio. La evaluación de la replicabilidad no debe influir en absoluto en el nivel de gravedad: el impacto en el usuario, el contexto (importancia de la sección) y la presencia o ausencia de un paliativo deben guiar la elección del nivel de gravedad.<br>\n<br>\n<b>LOW</b><br>\nProblemas que tienen un impacto mínimo en el uso del producto. El usuario puede llevar a cabo la acción sin gran dificultad. Suelen ser bugs de tipología USABILITY, TYPO o GRAPHIC.<br>\n<br>\n<b>MEDIUM</b><br>\nProblemas que tienen un impacto limitado en el uso del producto. El usuario consigue completar el proceso a pesar de experimentar algunas dificultades. Puede tratarse de cualquier tipología de bug.<br>\n<br>\n<b>HIGH</b><br>\nProblemas que tienen un impacto significativo en el uso del producto. El usuario los encuentra principalmente en las secciones principales y puede no ser capaz de completar la acción o la campaña como se esperaba. Por lo general, se trata de bugs de tipología MALFUNCTION, CRASH, PERFORMANCE o SECURITY.<br>\n<br>\n<b>CRITICAL</b><br>\nProblemas que impiden la finalización de las acciones principales y que a menudo provocan la caída del sistema. El usuario no puede completar la acción o la campaña de ninguna manera. Se trata principalmente de bugs de tipología MALFUNCTION o CRASH.",
+    "BUGFORM_TYPE_MODAL_TEXT": "<b>Tipología de bug</b><br>\n<br>\n<b>CRASH</b><br>\nProblemas relacionados con la falta de respuesta y/o el bloqueo del software. El usuario tiene que reiniciar el producto para poder seguir utilizándolo. Algunos ejemplos: aplicaciones que se cierran inesperadamente, tiempo de carga infinito, páginas de error 404.<br>\n<br>\n<b>GRAPHIC</b><br>\nProblemas relacionados con el aspecto visual del producto. Puede tratarse de superposición de elementos, contrastes erróneos, incoherencia entre elementos similares en el mismo contexto, imágenes o textos recortados, borrosos, fuera de la pantalla, parcialmente no visibles o superpuestos.<br>\n<br>\n<b>PERFORMANCE</b><br>\nProblemas directamente relacionados con la velocidad de carga de los contenidos o de finalización de los procesos del producto de la campaña (lag, ralentizaciones, retrasos). En el caso de que la carga no termine nunca (bucle), el problema puede atribuirse a un CRASH.<br>\n<br>\n<b>MALFUNCTION</b><br>\nProblemas relacionados con el mal funcionamiento de una característica del producto. Si el funcionamiento es correcto, pero el resultado difiere de las expectativas del usuario, se trata de un error de la tipología USABILITY.<br>\n<br>\n<b>TYPO</b><br>\nProblemas relacionados con errores gramaticales, ortográficos, semánticos, léxicos o sintácticos, traducciones incorrectas o parciales, frases incompletas (no cortadas por los elementos gráficos) o sin sentido, código de programación visible o incomprensible.<br>\n<br>\n<b>OTHER</b><br>\nTodos los problemas no incluidos en las categorías anteriores.<br>\n<br>\n<b>SECURITY</b><br>\nProblemas relacionados exclusivamente con la seguridad y la confidencialidad de los datos guardados. Esta categoría incluye las secciones con contraseñas sin cifrar, la falta de caducidad de los inicios de sesión o incluso la posibilidad de obtener fácilmente los datos de otros usuarios a través de inyección SQL o ataques XSS.<br>\n<br>\n<b>USABILITY</b><br>\nProblemas relacionados con el uso del producto por parte del usuario. Complican la realización de una determinada acción o tarea debido a rutas largas, complejas, no ideales o poco intuitivas. Esta categoría incluye los casos en los que el funcionamiento difiere completamente de las expectativas del usuario. También destaca la ausencia de controles en la introducción de datos en los campos y los problemas relacionados con los mensajes de error que carecen de una explicación del problema en cuestión (error genérico).",
+    "PAYMENTS_MODAL_INVOICE_STEP_4_SUCCESS": "<bold>¡Ya (casi) está!</bold><br />Te hemos enviado un correo electrónico a la dirección de tu cuenta TRYBER.<br />Encontrarás los datos e importes correctos para crear tu factura o recibo.<br />En el correo te indicamos a quién debes remitirla para completar la solicitud de pago.",
+    "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "¡A tope!✌ ¡Eres Legendary y siempre lo serás!\nSigue ganando puntos y mantente en lo más alto de la clasificación.",
+    "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "¡El cielo no es el límite! El próximo mes serás Legendary,<br></br>el nivel más alto de TRYBER."
+  },
+  "available tags: <br>, <p>, <strong>, <title>": {
+    "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": "<title>Antes de recibir el correo</title>\n<p>\nComprueba si está todo correcto y confirma los datos: también los encontrarás en el correo electrónico que te enviaremos después de este paso.\n</p>\n<p>\nTitular de la cuenta: <strong>{{accountHolder}}</strong>\n</p>\n<p>\nIBAN: <strong>{{iban}}</strong>\n</p>\n<p>\nRégimen fiscal: <strong>{{fiscalType}}</strong>\n</p>"
+  },
+  "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
+    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP{{fiscalType}}": "<title>Aquí tu régimen fiscal:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>¿Necesitas actualizarlo? Entra en <fiscalprofilelink>tu perfil</fiscalprofilelink> antes de continuar con la solicitud de pago.</strong>",
+    "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}": "<title>Cómo funciona</title>\n<p>\nPara solicitar el pago por transferencia bancaria, introduce y confirma tus datos personales y bancarios. Recibirás un correo electrónico de confirmación con los importes, tanto brutos como netos: utilízalos para crear la factura o recibo que tendrás que enviarnos.\n</p>\n<title>Siguiente paso</title>\n<p>\n<ul>\n<li>Comprueba si tu régimen fiscal es correcto</li>\n<li>Introduce los datos para la transferencia y acepta las condiciones de pago</li>\n<li>Envía tu solicitud</li>\n</ul>\n</p>\n<title>Aquí tu régimen fiscal:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>¿Necesitas actualizarlo? Entra en <fiscalprofilelink>tu perfil</fiscalprofilelink> antes de continuar con la solicitud de pago.</strong>"
+  },
+  "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
+    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>Siguiente paso</title>\n<ul>\n<li>Elige el método de pago y comprueba si tu régimen fiscal es correcto</li>\n<li>Introduce los datos y acepta las condiciones de pago </li>\n<li>Envía tu solicitud</li>\n</ul>"
+  },
+  "available tags: <strong>, <signuplink>": {
+    "LOGIN_SIGNUP_LINK": "¿Primera vez aquí? <signuplink><strong>Regístrate</strong></signuplink>"
+  },
+  "bugform usecase select option": {
+    "Not a specific usecase": "Ninguno de esos casos de uso"
+  },
+  "contact us": "Contáctanos",
+  "email must be the same": "Introduce el mismo correo electrónico",
+  "for this bug are only allowed replicability of type {{valid}}": {
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "En esta campaña solo se admiten bugs con replicabilidad: {{valid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT_plural": "En esta campaña solo se admiten bugs con replicabilidad: {{valid}}"
+  },
+  "for this bug are only allowed severities of type {{valid}}": {
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT": "En esta campaña solo se admiten bugs de gravedad: {{valid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT_plural": "En esta campaña solo se admiten bugs de gravedad: {{valid}}"
+  },
+  "for this bug are only allowed type {{valid}}": {
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT": "En esta campaña solo se admiten bugs de tipología: {{valid}}",
+    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT_plural": "En esta campaña solo se admiten bugs de tipología: {{valid}}"
+  },
+  "for this bug this replicability are not allowed: {{invalid}}": {
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT": "En esta campaña no se admiten bugs con replicabilidad: {{invalid}}",
+    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT_plural": "En esta campaña no se admiten bugs con replicabilidad: {{invalid}}"
+  },
+  "for this bug this severities are not allowed: {{invalid}}": {
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT": "En esta campaña no se admiten bugs de gravedad: {{invalid}}",
+    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT_plural": "En esta campaña no se admiten bugs de gravedad: {{invalid}}"
+  },
+  "for this bug this types are not allowed: {{invalid}}": {
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "En esta campaña no se admiten bugs de tipología: {{invalid}}",
+    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "En esta campaña no se admiten bugs de tipología: {{invalid}}"
+  },
+  "forgot your password?": "¿Contraseña olvidada?",
+  "give your best to keep level {{level}}": {
+    "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Estás bajando de nivel: haz lo posible para seguir siendo {{level}}"
+  },
+  "https://www.iubenda.com/privacy-policy/7934311": "\nhttps://www.iubenda.com/privacy-policy/7934311",
+  "last month ({{lastMonth}})": {
+    "__RANKING_LAST_MONTH_MAX:25": "Último mes ({{lastMonth}})"
+  },
+  "let's see what tryber you are with the <entry_test_link>entry test</entry_test_link>": {
+    "__RANKING_PROGRESS_NOLEVEL_MAX: 60": "Muéstranos qué tipo de Tryber eres con el <entry_test_link>Entry Test</entry_test_link>!"
+  },
+  "level {{ level }}": {
+    "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Level {{ level }}"
+  },
+  "level {{levelName}}": {
+    "__RANKING_NAME_LEVEL_MAX:25": "Nivel {{levelName}}\n"
+  },
+  "login": "Iniciar sesión",
+  "login page title": "Inicia sesión en Tryber",
+  "login to continue": "Inicia sesión en TRYBER",
+  "no data": "—",
+  "not calculated": {
+    "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "No incluido",
+    "__RANKING_PROGRESS_NOLVEL_NEXTLVL_MAX: 20": "No incluido"
+  },
+  "not in ranking": {
+    "__RANKING_POSITION_NOLeVEL_MAX: 30": "No level"
+  },
+  "or log in with email and password": "o inicia sesión con correo y contraseña",
+  "or you can": "o bien",
+  "redirecting": "redireccionando",
+  "try again to login": "Intenta iniciar sesión de nuevo.",
+  "wait...": "espere...",
+  "you must accept terms and conditions": "Debes aceptar los términos y condiciones",
+  "{{days}} days left to give your best!": {
+    "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "¡Todavía tienes {{days}} día para dar lo mejor de ti!",
+    "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "¡Todavía tienes {{days}} días para dar lo mejor de ti!"
+  },
+  "{{num}} uploaded": {
+    "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
+    "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
+  },
+  "Available tags : <unguess_link> (Link to unguess), <line_break>": {
+    "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS apoya a las empresas en la creación de experiencias memorables gracias al poder de la Comunidad de TRYBER. <unguess_link>Descubre UNGUESS</unguess_link>"
+  },
+  "Brands helped": "Marcas ayudaron",
+  "Campaigns delivered": "Campañas enviadas",
+  "Countries covered": "Países alcanzados",
   "__HOME_CAROUSEL_CTA_BUG MAX:25": "Entrénate con nosotros",
   "__HOME_CAROUSEL_CTA_CYBER MAX:25": "Ponte a prueba",
   "__HOME_CAROUSEL_CTA_UX MAX:25": "Expresa tu opinión",
@@ -665,134 +789,10 @@
   "__HOME_USER_QUALIFICATION_ADVICE6 MAX:30": "Qualified Tryber, Student",
   "__HOME_USER_QUALIFICATION_ADVICE7 MAX:30": "Qualified Tryber, Student",
   "__HOME_USER_QUALIFICATION_ADVICE8 MAX:30": "Certified ISTQB professional tester",
-  "__PAYMENT-METHOD-BANK": "Transferencia bancaria",
-  "__RANKING_LEGEND_BASIC_SPEC_MAX: 35": "El nivel inicial",
-  "__RANKING_LEGEND_EXP_NEXT": "exp",
-  "__RANKING_LEGEND_HOLD_MAX: 15": "Exp points para mantener el nivel",
-  "__RANKING_LEGEND_LEGENDARY_SPEC_MAX: 70": "El nivel más alto: 100.000 exp y es tuyo de por vida!",
-  "__RANKING_LEGEND_NEXT_MAX: 15": "Exp points para subir de nivel",
-  "__RANKING_LEGEND_QUESTIONS_CTA_MAX: 25": "Lee nuestra guía",
-  "__RANKING_LEGEND_QUESTIONS_MAX: 70": "¿Dudas o preguntas sobre cómo funciona la clasificación?",
-  "__RANKING_LEGEND_TITLE_MAX: 35": "Cómo subir de nivel",
-  "__RANKING_PROGRESS_BASIC_HOLDLVL_MAX: 50": "Empieza por el nivel Basic y ve subiendo",
-  "__RANKING_PROGRESS_LEGEND_LINK": "Cómo funcionan los niveles",
-  "__RANKING_PROGRESS_MONTH_MAX: 35": "Cómo te está yendo este mes",
-  "__RANKING_SUBTITLE_WELCOME_MAX: 125": "Consulta tus progresos, aumenta tus posibilidades de selección, supera a los demás Tryber y obtén el primer puesto",
-  "__RANKING_TITLE_LABEL_EXP_MAX: 15": "Exp points",
-  "__RANKING_TITLE_LABEL_ID_MAX: 10": "Tryber ID",
-  "__RANKING_TITLE_LABEL_NAME_MAX: 20": "Nombre",
-  "__RANKING_TITLE_LABEL_POSITION_MAX: 15": "Posición",
-  "__RANKING_TITLE_WELCOM_MAX: 20": "Clasificación",
-  "__SELECT_DEFAULT_NO_OPTION": "sin opciones",
-  "__WALLET_CARD-GUIDES_CTA MAX: 20": "Nuestras guías",
-  "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Descubre cómo gestionamos tus solicitudes de pago",
-  "__WALLET_CARD-GUIDES_TITLE MAX: 35": "¿Dudas sobre el proceso de pago?",
-  "__WALLET_CARD-REQUEST_CTA MAX: 25": "Solicitar un pago",
-  "__WALLET_CARD-REQUEST_CTA-LINK MAX: 15": "Detalles",
-  "__WALLET_CARD-REQUEST_DISCLAIMER-NOMONEY MAX: 150": "En este momento no tienes pagos pendientes. ¡No te pierdas las próximas campañas!",
-  "__WALLET_CARD-REQUEST_DISCLAIMER-NOREQUEST MAX: 150": "Puedes solicitar un pago a partir de 3 euros. ¡No te pierdas las próximas campañas!",
-  "__WALLET_CARD-REQUEST_DISCLAIMER-PROCESSING MAX: 150": "Solo puedes solicitar un pago a la vez: ya tienes una solicitud pendiente, ésta puede tardar hasta 20 días laborables.",
-  "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Gestiona el pago",
-  "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Tu monedero",
-  "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Aún no has solicitado ningun pago. Cuando lo harás, podrás ver tus pagos aquí.",
-  "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Ver detalles",
-  "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Descargar recibo",
   "address": "dirección",
-  "available tags: <br>, <bold>": {
-    "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Replicabilidad del bug</b><br>\n<br>\n<b>SOMETIMES</b><br>\nEn igualdad de condiciones y procesos, el bug se produce de forma esporádica o impredecible, pero siempre es posible reproducirlo realizando múltiples intentos.<br>\n<br>\n<b>ALWAYS</b><br>\nEn igualdad de condiciones y procesos, el bug se produce con cada intento de replicación. Para que sea así, el bug debe reproducirse con éxito al menos 3 de cada 3 veces.<br>\n<br>\n<b>ONCE</b><br>\nEn igualdad de condiciones y procesos, el bug solo se ha producido una vez y no se ha podido replicar (se necesitan al menos 3 intentos).",
-    "BUGFORM_SEVERITY_MODAL_TXT": "<b>Nivel de gravedad del bug</b><br>\n<br>\nEl nivel de gravedad es una estimación del impacto del problema en el uso del producto. Para calcularlo, se tiene en cuenta tanto el contexto en el que se produce el problema (secciones primarias o secundarias de la actividad principal del objeto de la campaña), como las condiciones en las que se ha encontrado con respecto al uso promedio. La evaluación de la replicabilidad no debe influir en absoluto en el nivel de gravedad: el impacto en el usuario, el contexto (importancia de la sección) y la presencia o ausencia de un paliativo deben guiar la elección del nivel de gravedad.<br>\n<br>\n<b>LOW</b><br>\nProblemas que tienen un impacto mínimo en el uso del producto. El usuario puede llevar a cabo la acción sin gran dificultad. Suelen ser bugs de tipología USABILITY, TYPO o GRAPHIC.<br>\n<br>\n<b>MEDIUM</b><br>\nProblemas que tienen un impacto limitado en el uso del producto. El usuario consigue completar el proceso a pesar de experimentar algunas dificultades. Puede tratarse de cualquier tipología de bug.<br>\n<br>\n<b>HIGH</b><br>\nProblemas que tienen un impacto significativo en el uso del producto. El usuario los encuentra principalmente en las secciones principales y puede no ser capaz de completar la acción o la campaña como se esperaba. Por lo general, se trata de bugs de tipología MALFUNCTION, CRASH, PERFORMANCE o SECURITY.<br>\n<br>\n<b>CRITICAL</b><br>\nProblemas que impiden la finalización de las acciones principales y que a menudo provocan la caída del sistema. El usuario no puede completar la acción o la campaña de ninguna manera. Se trata principalmente de bugs de tipología MALFUNCTION o CRASH.",
-    "BUGFORM_TYPE_MODAL_TEXT": "<b>Tipología de bug</b><br>\n<br>\n<b>CRASH</b><br>\nProblemas relacionados con la falta de respuesta y/o el bloqueo del software. El usuario tiene que reiniciar el producto para poder seguir utilizándolo. Algunos ejemplos: aplicaciones que se cierran inesperadamente, tiempo de carga infinito, páginas de error 404.<br>\n<br>\n<b>GRAPHIC</b><br>\nProblemas relacionados con el aspecto visual del producto. Puede tratarse de superposición de elementos, contrastes erróneos, incoherencia entre elementos similares en el mismo contexto, imágenes o textos recortados, borrosos, fuera de la pantalla, parcialmente no visibles o superpuestos.<br>\n<br>\n<b>PERFORMANCE</b><br>\nProblemas directamente relacionados con la velocidad de carga de los contenidos o de finalización de los procesos del producto de la campaña (lag, ralentizaciones, retrasos). En el caso de que la carga no termine nunca (bucle), el problema puede atribuirse a un CRASH.<br>\n<br>\n<b>MALFUNCTION</b><br>\nProblemas relacionados con el mal funcionamiento de una característica del producto. Si el funcionamiento es correcto, pero el resultado difiere de las expectativas del usuario, se trata de un error de la tipología USABILITY.<br>\n<br>\n<b>TYPO</b><br>\nProblemas relacionados con errores gramaticales, ortográficos, semánticos, léxicos o sintácticos, traducciones incorrectas o parciales, frases incompletas (no cortadas por los elementos gráficos) o sin sentido, código de programación visible o incomprensible.<br>\n<br>\n<b>OTHER</b><br>\nTodos los problemas no incluidos en las categorías anteriores.<br>\n<br>\n<b>SECURITY</b><br>\nProblemas relacionados exclusivamente con la seguridad y la confidencialidad de los datos guardados. Esta categoría incluye las secciones con contraseñas sin cifrar, la falta de caducidad de los inicios de sesión o incluso la posibilidad de obtener fácilmente los datos de otros usuarios a través de inyección SQL o ataques XSS.<br>\n<br>\n<b>USABILITY</b><br>\nProblemas relacionados con el uso del producto por parte del usuario. Complican la realización de una determinada acción o tarea debido a rutas largas, complejas, no ideales o poco intuitivas. Esta categoría incluye los casos en los que el funcionamiento difiere completamente de las expectativas del usuario. También destaca la ausencia de controles en la introducción de datos en los campos y los problemas relacionados con los mensajes de error que carecen de una explicación del problema en cuestión (error genérico).",
-    "PAYMENTS_MODAL_INVOICE_STEP_4_SUCCESS": "<bold>¡Ya (casi) está!</bold><br />Te hemos enviado un correo electrónico a la dirección de tu cuenta TRYBER.<br />Encontrarás los datos e importes correctos para crear tu factura o recibo.<br />En el correo te indicamos a quién debes remitirla para completar la solicitud de pago.",
-    "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "¡A tope!✌ ¡Eres Legendary y siempre lo serás!\nSigue ganando puntos y mantente en lo más alto de la clasificación.",
-    "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "¡El cielo no es el límite! El próximo mes serás Legendary,<br></br>el nivel más alto de TRYBER."
-  },
-  "available tags: <br>, <p>, <strong>, <title>": {
-    "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": "<title>Antes de recibir el correo</title>\n<p>\nComprueba si está todo correcto y confirma los datos: también los encontrarás en el correo electrónico que te enviaremos después de este paso.\n</p>\n<p>\nTitular de la cuenta: <strong>{{accountHolder}}</strong>\n</p>\n<p>\nIBAN: <strong>{{iban}}</strong>\n</p>\n<p>\nRégimen fiscal: <strong>{{fiscalType}}</strong>\n</p>"
-  },
-  "available tags: <br>, <p>, <strong>, <title>, <fiscalprofilelink>, <ul>, <li>": {
-    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP{{fiscalType}}": "<title>Aquí tu régimen fiscal:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>¿Necesitas actualizarlo? Entra en <fiscalprofilelink>tu perfil</fiscalprofilelink> antes de continuar con la solicitud de pago.</strong>",
-    "PAYMENTS_MODAL_INVOICE_STEP_1_RECAP{{fiscalType}}": "<title>Cómo funciona</title>\n<p>\nPara solicitar el pago por transferencia bancaria, introduce y confirma tus datos personales y bancarios. Recibirás un correo electrónico de confirmación con los importes, tanto brutos como netos: utilízalos para crear la factura o recibo que tendrás que enviarnos.\n</p>\n<title>Siguiente paso</title>\n<p>\n<ul>\n<li>Comprueba si tu régimen fiscal es correcto</li>\n<li>Introduce los datos para la transferencia y acepta las condiciones de pago</li>\n<li>Envía tu solicitud</li>\n</ul>\n</p>\n<title>Aquí tu régimen fiscal:</title>\n<p>\n{{fiscalType}}\n</p>\n<strong>¿Necesitas actualizarlo? Entra en <fiscalprofilelink>tu perfil</fiscalprofilelink> antes de continuar con la solicitud de pago.</strong>"
-  },
-  "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
-    "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>Siguiente paso</title>\n<ul>\n<li>Elige el método de pago y comprueba si tu régimen fiscal es correcto</li>\n<li>Introduce los datos y acepta las condiciones de pago </li>\n<li>Envía tu solicitud</li>\n</ul>"
-  },
-  "available tags: <strong>, <signuplink>": {
-    "LOGIN_SIGNUP_LINK": "¿Primera vez aquí? <signuplink><strong>Regístrate</strong></signuplink>"
-  },
-  "bugform usecase select option": {
-    "Not a specific usecase": "Ninguno de esos casos de uso"
-  },
   "company": "Empresa",
-  "contact us": "Contáctanos",
-  "email must be the same": "Introduce el mismo correo electrónico",
-  "for this bug are only allowed replicability of type {{valid}}": {
-    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT": "En esta campaña solo se admiten bugs con replicabilidad: {{valid}}",
-    "BUGFORM_BUGDTLS_REPLICABILITY_VALID_INFOTXT_plural": "En esta campaña solo se admiten bugs con replicabilidad: {{valid}}"
-  },
-  "for this bug are only allowed severities of type {{valid}}": {
-    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT": "En esta campaña solo se admiten bugs de gravedad: {{valid}}",
-    "BUGFORM_BUGDTLS_SEVERITY_VALID_INFOTXT_plural": "En esta campaña solo se admiten bugs de gravedad: {{valid}}"
-  },
-  "for this bug are only allowed type {{valid}}": {
-    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT": "En esta campaña solo se admiten bugs de tipología: {{valid}}",
-    "BUGFORM_BUGDTLS_TYPE_VALID_INFOTXT_plural": "En esta campaña solo se admiten bugs de tipología: {{valid}}"
-  },
-  "for this bug this replicability are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT": "En esta campaña no se admiten bugs con replicabilidad: {{invalid}}",
-    "BUGFORM_BUGDTLS_REPLICABILITY_NOT_VALID_INFOTXT_plural": "En esta campaña no se admiten bugs con replicabilidad: {{invalid}}"
-  },
-  "for this bug this severities are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT": "En esta campaña no se admiten bugs de gravedad: {{invalid}}",
-    "BUGFORM_BUGDTLS_SEVERITY_NOT_VALID_INFOTXT_plural": "En esta campaña no se admiten bugs de gravedad: {{invalid}}"
-  },
-  "for this bug this types are not allowed: {{invalid}}": {
-    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT": "En esta campaña no se admiten bugs de tipología: {{invalid}}",
-    "BUGFORM_BUGDTLS_TYPE_NOT_VALID_INFOTXT_plural": "En esta campaña no se admiten bugs de tipología: {{invalid}}"
-  },
-  "forgot your password?": "¿Contraseña olvidada?",
-  "give your best to keep level {{level}}": {
-    "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Estás bajando de nivel: haz lo posible para seguir siendo {{level}}"
-  },
-  "https://www.iubenda.com/privacy-policy/7934311": "\nhttps://www.iubenda.com/privacy-policy/7934311",
-  "last month ({{lastMonth}})": {
-    "__RANKING_LAST_MONTH_MAX:25": "Último mes ({{lastMonth}})"
-  },
-  "let's see what tryber you are with the <entry_test_link>entry test</entry_test_link>": {
-    "__RANKING_PROGRESS_NOLEVEL_MAX: 60": "Muéstranos qué tipo de Tryber eres con el <entry_test_link>Entry Test</entry_test_link>!"
-  },
-  "level {{ level }}": {
-    "__CARD_RECAP_DASHBOARD_LABEL_LIVELLO_MAX: 20": "Level {{ level }}"
-  },
-  "level {{levelName}}": {
-    "__RANKING_NAME_LEVEL_MAX:25": "Nivel {{levelName}}\n"
-  },
-  "login": "Iniciar sesión",
-  "login page title": "Inicia sesión en Tryber",
-  "login to continue": "Inicia sesión en TRYBER",
-  "no data": "—",
-  "not calculated": {
-    "__RANKING_PROGRESS_NOLVEL_HOLDLVL_MAX: 20": "No incluido",
-    "__RANKING_PROGRESS_NOLVEL_NEXTLVL_MAX: 20": "No incluido"
-  },
-  "not in ranking": {
-    "__RANKING_POSITION_NOLeVEL_MAX: 30": "No level"
-  },
-  "or log in with email and password": "o inicia sesión con correo y contraseña",
-  "or you can": "o bien",
-  "redirecting": "redireccionando",
   "social": "social",
   "testers": "Tryber activos",
-  "try again to login": "Intenta iniciar sesión de nuevo.",
-  "wait...": "espere...",
-  "you must accept terms and conditions": "Debes aceptar los términos y condiciones",
-  "{{days}} days left to give your best!": {
-    "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "¡Todavía tienes {{days}} día para dar lo mejor de ti!",
-    "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "¡Todavía tienes {{days}} días para dar lo mejor de ti!"
-  },
-  "{{num}} uploaded": {
-    "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
-    "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
-  },
   "All your certifications were successfully removed": "Todas tus certificaciones fueron eliminadas con éxito",
   "There was an error removing your certifications": "Hubo un error al eliminar tsu certificaciones",
   "Sign up": "Regístrate ahora",
