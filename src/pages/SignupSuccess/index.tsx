@@ -73,6 +73,7 @@ export default function SignupSuccess() {
                 kind="primary"
                 size="block"
                 onClick={goToDashboard}
+                data-tracking="go-to-dashboard-cta"
               >
                 {t("Go to dashboard")}
               </Button>

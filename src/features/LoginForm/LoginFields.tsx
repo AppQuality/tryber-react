@@ -47,6 +47,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
         size="block"
         flat
         data-qa="login-facebook-button"
+        data-tracking="facebook-login-cta"
         onClick={() => {
           window.location.href = `/wp-admin/admin-ajax.php?loc=${
             redirectTo ? redirectTo : pathname
@@ -66,6 +67,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
         size="block"
         flat
         data-qa="login-linkedin-button"
+        data-tracking="linkedin-login-cta"
         onClick={() => {
           window.location.href = `/wp-admin/admin-ajax.php?loc=${
             redirectTo ? redirectTo : pathname
@@ -144,6 +146,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
         <a
           className="aq-text-secondary lost-password-anchor"
           href="/wp-login.php?action=lostpassword"
+          data-tracking="forgot-password-link"
         >
           {t("forgot your password?")}
         </a>
@@ -154,6 +157,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
         size="block"
         type="submit"
         formNoValidate
+        data-tracking="email-pass-login-cta"
       >
         {isSubmitting ? t("wait...") : cta}
       </Button>
@@ -165,6 +169,7 @@ const LoginFields = ({ cta, error }: LoginFieldsProps) => {
               strong: <strong className="aq-text-secondary" />,
               signuplink: (
                 <Link
+                  data-tracking="signup-link"
                   style={{
                     display: "inline-block",
                     textDecoration: "none",
