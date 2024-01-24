@@ -160,6 +160,7 @@ const Step1 = () => {
                   ns: "links",
                 })}
                 target="_blank"
+                data-tracking="terms-condictions-link"
               />
             ),
             privacy_link: (
@@ -169,6 +170,7 @@ const Step1 = () => {
                   ns: "links",
                 })}
                 target="_blank"
+                data-tracking="privacy-policy-link"
               />
             ),
             ethical_link: (
@@ -178,6 +180,7 @@ const Step1 = () => {
                   ns: "links",
                 })}
                 target="_blank"
+                data-tracking="ethical-code-link"
               />
             ),
           }}
