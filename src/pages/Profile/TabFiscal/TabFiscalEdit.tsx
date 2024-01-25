@@ -20,9 +20,12 @@ import { HalfColumnButton } from "src/features/HalfColumnButton";
 import { SkeletonTab } from "src/pages/Profile/SkeletonTab";
 import modalStore from "src/redux/modal";
 import { updateFiscalProfile } from "src/redux/user/actions/updateFiscalProfile";
-import { updateProfile } from "src/redux/user/actions/updateProfile";
 import * as yup from "yup";
 
+import {
+  useGetUsersMeQuery,
+  usePatchUsersMeMutation,
+} from "src/services/tryberApi";
 import FiscalAddress from "./components/FiscalAddress";
 import FiscalResidenceModal from "./components/FiscalResidenceModal";
 import FiscalTypeArea from "./components/FiscalTypeArea";
@@ -30,23 +33,17 @@ import FiscalTypeArea from "./components/FiscalTypeArea";
 export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
   const { t } = useTranslation();
   const { open } = modalStore();
+  const { data, isLoading } = useGetUsersMeQuery({ fields: "all" });
+  const [updateProfile] = usePatchUsersMeMutation();
   const fiscalData = useSelector(
     (state: GeneralState) => state.user.fiscal.data,
-    shallowEqual
-  );
-  const userData = useSelector(
-    (state: GeneralState) => state.user.user,
-    shallowEqual
-  );
-  const isProfileLoading = useSelector(
-    (state: GeneralState) => state.user.loadingProfile,
     shallowEqual
   );
   const dispatch = useDispatch();
 
   const initialUserValues: FiscalFormValues = {
-    name: userData.name,
-    surname: userData.surname,
+    name: data?.name || "",
+    surname: data?.surname || "",
     gender: fiscalData?.gender || "",
     fiscalId: fiscalData?.fiscalId || "",
     type: fiscalData?.type || "",
@@ -54,7 +51,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
       fiscalData?.type === "non-italian" ? "" : fiscalData?.type,
     birthPlaceCity: fiscalData?.birthPlace?.city,
     birthPlaceId: "",
-    birthDate: userData.birthDate,
+    birthDate: data?.birthDate || "",
     birthPlaceProvince: fiscalData?.birthPlace?.province,
     countryCode: fiscalData?.address?.country,
     province: fiscalData?.address?.province,
@@ -138,7 +135,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
     initialTouched[k] = true;
   });
 
-  if (isProfileLoading) return <SkeletonTab />;
+  if (isLoading) return <SkeletonTab />;
   return (
     <Formik
       enableReinitialize
@@ -176,6 +173,13 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
             province: values.birthPlaceProvince,
           };
         }
+        await updateProfile({
+          body: {
+            name: values.name,
+            surname: values.surname,
+            birthDate: values.birthDate,
+          },
+        }).unwrap();
         dispatch(
           updateFiscalProfile(submitValues as UserData, {
             verifiedMessage: (
@@ -197,21 +201,6 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
               </>
             ),
           })
-        );
-        dispatch(
-          updateProfile(
-            {
-              profile: {
-                name: values.name,
-                surname: values.surname,
-                birthDate: values.birthDate,
-              },
-            },
-            t(
-              "Your profile doesn't match with your fiscal profile, please check your data"
-            ),
-            t("Your fiscal profile is now verified")
-          )
         );
         helpers.setSubmitting(false);
         helpers.resetForm({ values });
@@ -353,8 +342,8 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
               <CSSGrid min="40%" fill="true">
                 {fiscalData?.fiscalStatus.toLowerCase() === "verified" && (
                   <HalfColumnButton
-                    type="primary"
-                    htmlType="reset"
+                    kind="primary"
+                    type="reset"
                     flat
                     disabled={isValidating}
                   >
@@ -362,8 +351,8 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                   </HalfColumnButton>
                 )}
                 <HalfColumnButton
-                  type="primary"
-                  htmlType="submit"
+                  kind="primary"
+                  type="submit"
                   flat
                   disabled={!isValid || isValidating || !dirty}
                 >
@@ -375,8 +364,8 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                   "If you have problems filling in your fiscal informations please"
                 )}{" "}
                 <Button
-                  type="link"
-                  htmlType="button"
+                  kind="link"
+                  type="button"
                   className="aq-text-secondary"
                   flat
                   style={{ padding: 0, fontWeight: 400 }}

@@ -1,15 +1,16 @@
 import { Button, Formik } from "@appquality/appquality-design-system";
 import { FormikProps } from "formik";
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import modalStore from "src/redux/modal";
-import { addCertification } from "src/redux/user/actions/addCertification";
+import { addMessage } from "src/redux/siteWideMessages/actionCreators";
+import { usePostUsersMeCertificationsMutation } from "src/services/tryberApi";
 import * as yup from "yup";
 import { CertificationFields } from "../types";
 import NewCertificationModalForm from "./NewCertificationModalForm";
 
 export const NewCertificationModal = () => {
+  const [addCertification] = usePostUsersMeCertificationsMutation();
   const { close } = modalStore();
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -33,28 +34,40 @@ export const NewCertificationModal = () => {
           .required(t("Achievement Date is a required field.")),
       })}
       onSubmit={async (values) => {
-        dispatch(
-          addCertification(
-            {
+        try {
+          await addCertification({
+            body: {
               certification_id: parseInt(values.certificationId),
               achievement_date: values.achievementDate,
             },
-            <div>
+          }).unwrap();
+
+          dispatch(
+            addMessage(
               <div>
-                <strong>{t("Certification uploaded correctly.")}</strong>
-              </div>
-              <div>{t("You can add more in the certifications section")}</div>
-            </div>,
-            <div>
+                <div>
+                  <strong>{t("Certification uploaded correctly.")}</strong>
+                </div>
+                <div>{t("You can add more in the certifications section")}</div>
+              </div>,
+              "success"
+            )
+          );
+        } catch (e) {
+          dispatch(
+            addMessage(
               <div>
-                <strong>
-                  {t("There was an error adding this certification.")}
-                </strong>
-              </div>
-              <div>{t("Try again.")}</div>
-            </div>
-          )
-        );
+                <div>
+                  <strong>
+                    {t("There was an error adding this certification.")}
+                  </strong>
+                </div>
+                <div>{t("Try again.")}</div>
+              </div>,
+              "danger"
+            )
+          );
+        }
         close();
       }}
     >
@@ -70,8 +83,8 @@ export const NewCertificationModalFooter = () => {
   return (
     <div className="aq-text-right">
       <Button
-        type="primary"
-        htmlType="submit"
+        kind="primary"
+        type="submit"
         flat={true}
         form="newCertificationForm"
         disabled={false}

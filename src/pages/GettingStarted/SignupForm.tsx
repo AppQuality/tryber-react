@@ -116,10 +116,10 @@ export const SignupForm = ({
           <Title className="aq-mb-2" size="xs" as="h5">
             {t("Create an account")}
           </Title>
-          <Field type="text" name="name" label={t("Name")} />
+          <Field type="text" name="name" label={t("First Name")} />
           <Field type="text" name="surname" label={t("Surname")} />
           <Field type="email" name="email" label={t("Email")} />
-          <CountrySelect name="country" label={t("Country")} />
+          <CountrySelect name="country" label={t("COUNTRY:::SignupForm")} />
           <FormikField name="birthDate">
             {({
               field, // { name, value, onChange, onBlur }
@@ -187,9 +187,9 @@ export const SignupForm = ({
             <Button
               className="aq-mb-3"
               style={{ gridColumn: "auto / span 3" }}
-              type="success"
+              kind="success"
               size="block"
-              htmlType="submit"
+              type="submit"
               id="signup-simple"
               flat
               disabled={props.isSubmitting || !props.dirty || !props.isValid}

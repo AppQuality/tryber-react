@@ -101,8 +101,8 @@ export const SelectionForm = () => {
             <SelectionFormFields genderOptions={genderOptions} />
             <Button
               className="aq-mt-3"
-              type="primary"
-              htmlType="submit"
+              kind="primary"
+              type="submit"
               size="block"
               disabled={
                 formikProps.isSubmitting ||

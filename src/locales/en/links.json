@@ -1,8 +1,11 @@
 {
-  "/payment_conditions": "https://tryber.me/payment-conditions/",
-  "Bug details help article": "https://tryber.me/bug-reporting-rules/",
-  "Fiscal type help article": "https://tryber.me/it/per-saperne-di-piu-pagamenti-privacy/",
-  "Ranking help article": "https://tryber.me/tryber-new-ranking-rules-2022-edition/",
-  "Wallet help article": "https://tryber.me/wallet-how-does-it-work/",
-  "tax id help article": "https://tryber.me/whats-tax-id-number/"
+  "/ethical-code/": "/ethical-code/",
+  "/payment_conditions": "https://app.tryber.me/payment-conditions/",
+  "/terms-and-conditions/": "/terms-and-conditions/",
+  "Bug details help article": "https://app.tryber.me/bug-reporting-rules/",
+  "Fiscal type help article": "https://app.tryber.me/it/per-saperne-di-piu-pagamenti-privacy/",
+  "Ranking help article": "https://app.tryber.me/tryber-new-ranking-rules-2022-edition/",
+  "Wallet help article": "https://app.tryber.me/wallet-how-does-it-work/",
+  "https://www.iubenda.com/privacy-policy/7934311": "https://www.iubenda.com/privacy-policy/7934311",
+  "tax id help article": "https://app.tryber.me/whats-tax-id-number/"
 }

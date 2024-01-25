@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { PageTemplate } from "src/features/PageTemplate";
+import { useGetUsersMeBugsQuery } from "src/services/tryberApi";
 import i18n from "../../i18n";
 import {
   fetchMyBugs,
@@ -21,9 +22,9 @@ import {
 } from "../../redux/myBugs/actionCreator";
 import { coloredStatus } from "../../redux/myBugs/utils";
 import { useAppDispatch } from "../../redux/provider";
-import { MyBugsColumns } from "./columns";
 import MyBugsFilters from "./MyBugsFilters";
 import MyBugsTable from "./MyBugsTable";
+import { MyBugsColumns } from "./columns";
 
 export default function MyBugs() {
   const { search } = useLocation();
@@ -42,8 +43,10 @@ export default function MyBugs() {
     selectedCampaign,
     selectedSeverity,
     selectedStatus,
-    isLoading,
+    // isLoading,
   } = useSelector((state: GeneralState) => state.myBugs, shallowEqual);
+
+  const { isLoading, data } = useGetUsersMeBugsQuery({});
 
   const { results, limit, total, start, order, orderBy } = bugsList;
 
@@ -94,7 +97,7 @@ export default function MyBugs() {
                 href={`${window.location.origin}/${
                   i18n.language !== "en" ? `${i18n.language}/` : ""
                 }bugs/show/${res.id}`}
-                type="link-hover"
+                kind="link-hover"
                 size="sm"
               >
                 {t("View more")}

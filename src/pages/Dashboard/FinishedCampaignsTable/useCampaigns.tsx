@@ -41,7 +41,7 @@ const useCampaigns = ({ page, order, orderBy }: CampaignsTableProps) => {
                 ? "#"
                 : `${window.location.origin}${manualLink}`
             }
-            type="link-hover"
+            kind="link-hover"
             size="sm"
           >
             {t("Review the manual")}

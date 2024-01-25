@@ -22,7 +22,7 @@ export const WalletHelp = () => {
         href={t("Wallet help article", {
           ns: "links",
         })}
-        type="info"
+        kind="info"
         size="block"
         target="_blank"
         flat

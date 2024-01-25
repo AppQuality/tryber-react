@@ -145,7 +145,7 @@ export default function ExperiencePoints() {
               <Button
                 forwardedAs="a"
                 href={`${t("/discover-experience-points/")}`}
-                type="info"
+                kind="info"
                 size="block"
                 flat={true}
               >

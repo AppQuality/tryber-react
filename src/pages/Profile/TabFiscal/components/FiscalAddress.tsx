@@ -50,7 +50,7 @@ const FiscalAddress = () => {
             <FormGroup>
               <Select
                 name={field.name}
-                label={t("Country")}
+                label={t("COUNTRY:::Profile TabFiscal")}
                 placeholder={t("Select a country")}
                 value={countryOptions.filter(
                   (opt) => opt.value === field.value

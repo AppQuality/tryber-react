@@ -20,7 +20,7 @@ const BirthdayPicker = ({
 
   return (
     <>
-      <FormLabel htmlFor={name} label={t("Date of birth")} />
+      <FormLabel htmlFor={name} label={t("DATE_OF_BIRTH:::BitrhdayPicker")} />
       <Datepicker
         value={initialValue}
         id={name}

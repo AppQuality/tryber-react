@@ -67,7 +67,7 @@ const useCampaigns = ({ page, order, orderBy }: CampaignsTableProps) => {
             className="aq-nopadding"
             forwardedAs="a"
             href={href}
-            type="link-hover"
+            kind="link-hover"
             size="sm"
           >
             {t("Read manual")}

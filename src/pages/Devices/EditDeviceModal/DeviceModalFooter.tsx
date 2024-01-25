@@ -23,18 +23,18 @@ export const DeviceModalFooter = ({
     <div className="device-wizard-footer">
       {currentStep > 0 && (
         <Button
-          type="primary"
+          kind="primary"
           flat={true}
           onClick={() => setStep(currentStep - 1)}
           disabled={currentStep === 0}
         >
-          {t("Back")}
+          {t("BACK:::DeviceModalFooter")}
         </Button>
       )}
       {currentStep === steps.length - 1 ? (
         <Button
-          type="primary"
-          htmlType="submit"
+          kind="primary"
+          type="submit"
           onClick={onSubmit}
           flat={true}
           disabled={currentStep > steps.length - 1}
@@ -43,7 +43,7 @@ export const DeviceModalFooter = ({
         </Button>
       ) : (
         <Button
-          type="primary"
+          kind="primary"
           onClick={() => {
             setStep(currentStep + 1);
           }}

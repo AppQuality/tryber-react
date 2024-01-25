@@ -7,6 +7,6 @@ interface BaseFields {
   email: string;
   country: string;
   countryCode?: string;
-  city: SelectOptionType;
+  city: string;
   languages: SelectOptionType[];
 }

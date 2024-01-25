@@ -52,7 +52,7 @@ export default function Devices() {
             <Button
               onClick={() => dispatch(openAddDeviceModal())}
               flat={true}
-              type="primary"
+              kind="primary"
               size="block"
             >
               {t("Add device")}

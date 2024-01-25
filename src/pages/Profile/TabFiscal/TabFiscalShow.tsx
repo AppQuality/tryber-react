@@ -10,6 +10,7 @@ import {
 import { Icon } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
+import { useGetUsersMeQuery } from "src/services/tryberApi";
 import dateFormatter from "../../../utils/dateFormatter";
 
 const ShowItem = ({
@@ -47,10 +48,7 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
     Building,
     Compass,
   } = icons;
-  const userData = useSelector(
-    (state: GeneralState) => state.user.user,
-    shallowEqual
-  );
+  const { data: userData } = useGetUsersMeQuery({ fields: "all" });
   const fiscalData = useSelector(
     (state: GeneralState) => state.user.fiscal.data,
     shallowEqual
@@ -64,11 +62,11 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
         <Title size="xs" className="aq-mb-3">
           {t("Your fiscal data")}
         </Title>
-        <ShowItem Icon={Person} label={t("Name")}>
-          {userData.name}
+        <ShowItem Icon={Person} label={t("First Name")}>
+          {userData?.name || ""}
         </ShowItem>
         <ShowItem Icon={Person} label={t("Surname")}>
-          {userData.surname}
+          {userData?.surname || ""}
         </ShowItem>
         <ShowItem Icon={GenderAmbiguous} label={t("Gender")}>
           {fiscalData?.gender === "male"
@@ -78,7 +76,7 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
             : t("Not specified")}
         </ShowItem>
         <ShowItem Icon={Calendar2Date} label={t("Birth Date")}>
-          {dateFormatter(userData.birthDate)}
+          {dateFormatter(userData?.birthDate || "")}
         </ShowItem>
       </div>
       <div data-qa="fiscal-data-show">
@@ -121,7 +119,7 @@ export const TabFiscalShow = ({ setEdit }: TabCommonProps) => {
             <Button
               data-qa="edit-fiscal-data-cta"
               size="block"
-              type="primary"
+              kind="primary"
               flat
               onClick={handleEditClick}
               disabled={fiscalData?.type === "internal"}

@@ -2,10 +2,13 @@ import {
   aqBootstrapTheme,
   SelectType,
 } from "@appquality/appquality-design-system";
-import { operations, components } from "src/utils/schema";
+import { components, operations } from "src/utils/schema";
 
 export type CrowdRoutes =
   | "getting-started"
+  | "getting-started/signup"
+  | "getting-started/confirmation"
+  | "login"
   | "my-dashboard"
   | "personal-equipment"
   | "my-bugs"
