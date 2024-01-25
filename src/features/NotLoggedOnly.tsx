@@ -31,7 +31,7 @@ const NotLoggedOnly = ({
   if (isLoading) {
     return <Loading />;
   }
-  if (user && redirect) {
+  if (user && redirect && !isPublicUser) {
     Sentry.setUser({
       id: user?.id ?? 0,
       email: user?.email ?? "unknown",
