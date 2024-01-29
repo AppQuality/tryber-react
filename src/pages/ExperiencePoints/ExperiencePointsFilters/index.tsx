@@ -6,40 +6,23 @@ import {
 } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { shallowEqual, useSelector } from "react-redux";
 import useDebounce from "src/hooks/useDebounce";
 import {
   setSelectedActivity,
   setSelectedCampaign,
   setSelectedDate,
-} from "../../redux/experiencePoints/actionCreator";
-import { useAppDispatch } from "../../redux/provider";
-import { useGetUsersMeExperienceQuery } from "src/services/tryberApi";
+} from "src/redux/experiencePoints/actionCreator";
 import { mapActivityName } from "src/redux/experiencePoints/utils";
+import { useAppDispatch } from "src/redux/provider";
+import { useGetUsersMeExperienceQuery } from "src/services/tryberApi";
 import dateFormatter from "src/utils/dateFormatter";
-import { shallowEqual, useSelector } from "react-redux";
 
-interface ExperiencePointsFiltersProps {
-  selectedCampaign?: SelectType.Option;
-  selectedActivity?: SelectType.Option;
-  selectedDate?: SelectType.Option;
-  search: string | undefined;
-}
-
-const useSelectValues = ({
-  selectedCampaign,
-  selectedActivity,
-  selectedDate,
-}: {
-  selectedCampaign?: SelectType.Option;
-  selectedActivity?: SelectType.Option;
-  selectedDate?: SelectType.Option;
-}) => {
+const useSelectValues = () => {
   const { t } = useTranslation();
 
-  const { search } = useSelector(
-    (state: GeneralState) => state.experiencePoints,
-    shallowEqual
-  );
+  const { selectedActivity, selectedCampaign, selectedDate, search } =
+    useSelector((state: GeneralState) => state.experiencePoints, shallowEqual);
 
   const { data, isLoading } = useGetUsersMeExperienceQuery({
     searchBy: "note",
@@ -127,23 +110,16 @@ const useSelectValues = ({
   return { campaigns, activities, dates };
 };
 
-const ExperiencePointsFilters = ({
-  selectedCampaign,
-  selectedActivity,
-  selectedDate,
-  search,
-}: ExperiencePointsFiltersProps) => {
+const ExperiencePointsFilters = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
+  const { selectedActivity, selectedCampaign, selectedDate, search } =
+    useSelector((state: GeneralState) => state.experiencePoints, shallowEqual);
   const [currentSearch, setCurrentSearch] = useState(search);
   const debouncedSearch = useDebounce(currentSearch, 500);
 
-  const { campaigns, activities, dates } = useSelectValues({
-    selectedCampaign,
-    selectedActivity,
-    selectedDate,
-  });
+  const { campaigns, activities, dates } = useSelectValues();
 
   const allCampaign = t("All", { context: "female" });
   const allActivities = t("All", { context: "female" });
