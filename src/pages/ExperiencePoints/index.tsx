@@ -57,29 +57,33 @@ export default function ExperiencePoints() {
     dispatch(updateExperiencePointsPagination(newStart));
   };
 
-  const rows = (results ?? []).map((res) => {
-    return {
-      key: res.id,
-      amount: {
-        title: `${res.amount > 0 ? `+${res.amount}` : res.amount}pts`,
-        content:
-          res.amount === 0 ? (
-            <b className="aq-text-primary">{res.amount}pts</b>
-          ) : res.amount > 0 ? (
-            <b className="aq-text-success">+{res.amount}pts</b>
-          ) : (
-            <b className="aq-text-danger">{res.amount}pts</b>
-          ),
-      },
-      date: dateFormatter(res.date),
-      activity: mapActivityName(res.activity.id, t),
-      campaign:
-        res.campaign.title && res.campaign.id > 0
-          ? `CP${res.campaign.id}`
-          : `-`,
-      note: res.note?.replace(/\\(.)/gm, "$1"),
-    };
-  });
+  const rows = error
+    ? []
+    : (results ?? []).map((res) => {
+        return {
+          key: res.id,
+          amount: {
+            title: `${res.amount > 0 ? `+${res.amount}` : res.amount}pts`,
+            content:
+              res.amount === 0 ? (
+                <b className="aq-text-primary">{res.amount}pts</b>
+              ) : res.amount > 0 ? (
+                <b className="aq-text-success">+{res.amount}pts</b>
+              ) : (
+                <b className="aq-text-danger">{res.amount}pts</b>
+              ),
+          },
+          date: dateFormatter(res.date),
+          activity: mapActivityName(res.activity.id, t),
+          campaign:
+            res.campaign.title && res.campaign.id > 0
+              ? `CP${res.campaign.id}`
+              : `-`,
+          note: res.note?.replace(/\\(.)/gm, "$1"),
+        };
+      });
+
+  const totalResults = error ? 1 : total ?? 0;
 
   useEffect(() => {
     if (
@@ -104,10 +108,10 @@ export default function ExperiencePoints() {
         <BSCol size="col-lg-9 ">
           <Card className="aq-mb-3" title={t("History")}>
             <ExperiencePointsTable
-              data={!error ? rows : []}
+              data={rows}
               page={(start ?? 0) / limit + 1}
               setPage={changePagination}
-              totalEntries={error ? 1 : total ?? 0}
+              totalEntries={totalResults}
               limit={limit}
               loading={isLoading}
               columns={columns}
