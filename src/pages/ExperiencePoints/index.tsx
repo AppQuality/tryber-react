@@ -92,7 +92,7 @@ export default function ExperiencePoints() {
     ) {
       changePagination(1);
     }
-  }, [selectedCampaign, selectedActivity, selectedDate]);
+  }, [selectedCampaign, selectedActivity, selectedDate, search]);
 
   return (
     <PageTemplate
