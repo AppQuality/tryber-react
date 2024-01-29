@@ -25,7 +25,6 @@ export default function ExperiencePoints() {
   const [columns, setcolumns] = useState<TableType.Column[]>(
     ExperiencePointsColumns(dispatch, t)
   );
-  const [rows, setRows] = useState<TableType.Row[]>([]);
 
   const limit = 25;
 
@@ -58,35 +57,29 @@ export default function ExperiencePoints() {
     dispatch(updateExperiencePointsPagination(newStart));
   };
 
-  useEffect(() => {
-    if (!error && results)
-      setRows(
-        results.map((res) => {
-          return {
-            key: res.id,
-            amount: {
-              title: `${res.amount > 0 ? `+${res.amount}` : res.amount}pts`,
-              content:
-                res.amount === 0 ? (
-                  <b className="aq-text-primary">{res.amount}pts</b>
-                ) : res.amount > 0 ? (
-                  <b className="aq-text-success">+{res.amount}pts</b>
-                ) : (
-                  <b className="aq-text-danger">{res.amount}pts</b>
-                ),
-            },
-            date: dateFormatter(res.date),
-            activity: mapActivityName(res.activity.id, t),
-            campaign:
-              res.campaign.title && res.campaign.id > 0
-                ? `CP${res.campaign.id}`
-                : `-`,
-            note: res.note?.replace(/\\(.)/gm, "$1"),
-          };
-        })
-      );
-    else setRows([]);
-  }, [results, error, t]);
+  const rows = (results ?? []).map((res) => {
+    return {
+      key: res.id,
+      amount: {
+        title: `${res.amount > 0 ? `+${res.amount}` : res.amount}pts`,
+        content:
+          res.amount === 0 ? (
+            <b className="aq-text-primary">{res.amount}pts</b>
+          ) : res.amount > 0 ? (
+            <b className="aq-text-success">+{res.amount}pts</b>
+          ) : (
+            <b className="aq-text-danger">{res.amount}pts</b>
+          ),
+      },
+      date: dateFormatter(res.date),
+      activity: mapActivityName(res.activity.id, t),
+      campaign:
+        res.campaign.title && res.campaign.id > 0
+          ? `CP${res.campaign.id}`
+          : `-`,
+      note: res.note?.replace(/\\(.)/gm, "$1"),
+    };
+  });
 
   useEffect(() => {
     if (
@@ -94,7 +87,8 @@ export default function ExperiencePoints() {
       selectedActivity ||
       selectedDate ||
       search ||
-      search === ""
+      search === "" ||
+      error
     ) {
       changePagination(1);
     }
@@ -110,10 +104,10 @@ export default function ExperiencePoints() {
         <BSCol size="col-lg-9 ">
           <Card className="aq-mb-3" title={t("History")}>
             <ExperiencePointsTable
-              data={rows}
+              data={!error ? rows : []}
               page={(start ?? 0) / limit + 1}
               setPage={changePagination}
-              totalEntries={total ?? 0}
+              totalEntries={error ? 1 : total ?? 0}
               limit={limit}
               loading={isLoading}
               columns={columns}

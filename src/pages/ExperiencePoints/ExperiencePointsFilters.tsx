@@ -136,11 +136,6 @@ const ExperiencePointsFilters = ({
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
-  search = useSelector(
-    (state: GeneralState) => state.experiencePoints.search,
-    shallowEqual
-  );
-
   const [currentSearch, setCurrentSearch] = useState(search);
   const debouncedSearch = useDebounce(currentSearch, 500);
 
