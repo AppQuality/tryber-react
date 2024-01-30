@@ -58,10 +58,13 @@ export const experiencePointsSlice = createSlice({
     setCampaigns: (state, action) => {
       state.campaigns = action.payload;
     },
-    /* updateExperiencePointsSortingOptions: (state, action) => {
+    updateExperiencePointsSortingOptions: (state, action) => {
       state.expList.orderBy = action.payload.orderBy;
       state.expList.order = action.payload.order;
-    } */
+    },
+    updateExperiencePointsPagination: (state, action) => {
+      state.expList.start = action.payload;
+    },
   },
 });
 
@@ -77,4 +80,6 @@ export const {
   setActivities,
   setCampaigns,
   setIsLoading,
+  updateExperiencePointsSortingOptions,
+  updateExperiencePointsPagination,
 } = experiencePointsSlice.actions;

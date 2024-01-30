@@ -5,7 +5,7 @@ import {
 } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
-import { updateExperiencePointsPagination } from "src/redux/experiencePoints/actionCreator";
+import { updateExperiencePointsPagination } from "src/redux/experiencePoints/experiencePointsSlice";
 import { useAppDispatch } from "src/store";
 import { useExperiencePointsColumns } from "../columns";
 import { useResetPaginationOnFilterChange } from "./useResetPaginationOnFilterChange";
