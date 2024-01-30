@@ -1,4 +1,3 @@
-import { SelectType } from "@appquality/appquality-design-system";
 import { ThunkAction } from "redux-thunk";
 
 export const updateExperiencePointsPagination =
@@ -33,7 +32,7 @@ export const updateExperiencePointsSortingOptions =
       payload: { order: order, orderBy: orderBy },
     });
   };
-
+/* 
 export const setSelectedCampaign =
   (
     campaign: SelectType.Option
@@ -49,35 +48,4 @@ export const setSelectedCampaign =
       payload: campaign,
     });
   };
-
-export const setSelectedActivity =
-  (
-    activity: SelectType.Option
-  ): ThunkAction<
-    Promise<any>,
-    GeneralState,
-    unknown,
-    ExperiencePointsActions
-  > =>
-  async (dispatch) => {
-    dispatch({
-      type: "experiencePoints/setSelectedActivity",
-      payload: activity,
-    });
-  };
-
-export const setSelectedDate =
-  (
-    date: SelectType.Option
-  ): ThunkAction<
-    Promise<any>,
-    GeneralState,
-    unknown,
-    ExperiencePointsActions
-  > =>
-  async (dispatch) => {
-    dispatch({
-      type: "experiencePoints/setSelectedDate",
-      payload: date,
-    });
-  };
+*/

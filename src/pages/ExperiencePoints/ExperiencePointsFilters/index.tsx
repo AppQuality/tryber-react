@@ -12,7 +12,7 @@ import {
   setSelectedActivity,
   setSelectedCampaign,
   setSelectedDate,
-} from "src/redux/experiencePoints/actionCreator";
+} from "src/redux/experiencePoints/experiencePointsSlice";
 import { mapActivityName } from "src/redux/experiencePoints/utils";
 import { useAppDispatch } from "src/redux/provider";
 import { useGetUsersMeExperienceQuery } from "src/services/tryberApi";
