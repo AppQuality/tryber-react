@@ -1,29 +1,29 @@
-import {
-  Select,
-  SortTableSelect,
-  SortTableSelectProps,
-} from "@appquality/appquality-design-system";
+import { Select, SortTableSelect } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
+import { shallowEqual, useSelector } from "react-redux";
 import {
   setSelectedCampaign,
   setSelectedSeverity,
   setSelectedStatus,
 } from "src/redux/myBugs/actionCreator";
 import { useAppDispatch } from "src/redux/provider";
+import { useBugColumns } from "../columns";
+import { usePage } from "../usePage";
 import { useSelectValues } from "./useSelectValues";
 
-interface MyBugsFiltersProps extends SortTableSelectProps<BugsOrderByType> {
-  setPage: (page: number) => void;
-}
-
-const MyBugsFilters = ({
-  order,
-  orderBy,
-  setPage,
-  columns,
-}: MyBugsFiltersProps) => {
+const MyBugsFilters = () => {
   const { t } = useTranslation();
+  const columns = useBugColumns();
+  const { setPage } = usePage();
   const dispatch = useAppDispatch();
+
+  const { order, orderBy } = useSelector(
+    (state: GeneralState) => ({
+      order: state.myBugs.bugsList.order,
+      orderBy: state.myBugs.bugsList.orderBy,
+    }),
+    shallowEqual
+  );
   const { campaigns, severities, status } = useSelectValues();
 
   return (

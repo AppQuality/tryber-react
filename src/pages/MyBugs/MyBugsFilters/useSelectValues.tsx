@@ -43,7 +43,10 @@ const useSelectValues = () => {
     .filter(
       (value, index, self) =>
         index === self.findIndex((t) => t.value === value.value)
-    );
+    )
+    .sort((a, b) => {
+      return Number(b.value) - Number(a.value);
+    });
 
   const severities: SelectType.Option[] = data.results
     .filter(
@@ -60,7 +63,10 @@ const useSelectValues = () => {
     .filter(
       (value, index, self) =>
         index === self.findIndex((t) => t.value === value.value)
-    );
+    )
+    .sort((a, b) => {
+      return Number(a.value) - Number(b.value);
+    });
 
   const status: SelectType.Option[] = data.results
     .filter(
