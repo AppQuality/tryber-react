@@ -6,37 +6,120 @@ import {
 } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { shallowEqual, useSelector } from "react-redux";
 import useDebounce from "src/hooks/useDebounce";
 import {
   setSelectedActivity,
   setSelectedCampaign,
   setSelectedDate,
-} from "../../redux/experiencePoints/actionCreator";
-import { useAppDispatch } from "../../redux/provider";
+} from "src/redux/experiencePoints/actionCreator";
+import { mapActivityName } from "src/redux/experiencePoints/utils";
+import { useAppDispatch } from "src/redux/provider";
+import { useGetUsersMeExperienceQuery } from "src/services/tryberApi";
+import dateFormatter from "src/utils/dateFormatter";
 
-interface ExperiencePointsFiltersProps {
-  campaigns: SelectType.Option[];
-  activities: SelectType.Option[];
-  dates: SelectType.Option[];
-  selectedCampaign?: SelectType.Option;
-  selectedActivity?: SelectType.Option;
-  selectedDate?: SelectType.Option;
-  search?: string;
-}
+const useSelectValues = () => {
+  const { t } = useTranslation();
 
-const ExperiencePointsFilters = ({
-  search,
-  campaigns,
-  dates,
-  activities,
-  selectedCampaign,
-  selectedActivity,
-  selectedDate,
-}: ExperiencePointsFiltersProps) => {
+  const { selectedActivity, selectedCampaign, selectedDate, search } =
+    useSelector((state: GeneralState) => state.experiencePoints, shallowEqual);
+
+  const { data, isLoading } = useGetUsersMeExperienceQuery({
+    searchBy: "note",
+    search: search,
+    filterBy: {
+      campaign: selectedCampaign?.value,
+      activity: selectedActivity?.value,
+      date: selectedDate?.value,
+    },
+  });
+  if (isLoading || !data) return { campaigns: [], activities: [], dates: [] };
+
+  const campaigns: SelectType.Option[] = data.results
+    .filter(
+      (
+        r
+      ): r is {
+        id: number;
+        activity: { id: number };
+        campaign: { id: number; title?: string | undefined };
+        date: string;
+        amount: number;
+        note?: string | undefined;
+      } => typeof r.campaign.title !== "undefined"
+    )
+    .map((r) => {
+      return {
+        value: r.campaign.id.toString(),
+        label: `CP${r.campaign.id} - ${r.campaign.title}`,
+      };
+    })
+    .filter(
+      (value, index, self) =>
+        index === self.findIndex((t) => t.value === value.value)
+    );
+
+  const activities: SelectType.Option[] = data.results
+    .filter(
+      (
+        r
+      ): r is {
+        id: number;
+        activity: { id: number };
+        campaign: { id: number; title?: string | undefined };
+        date: string;
+        amount: number;
+        note?: string | undefined;
+      } => typeof r.activity !== "undefined"
+    )
+    .map((r) => {
+      return {
+        value: r.activity.id.toString(),
+        label: mapActivityName(r.activity.id, t) || " ",
+      };
+    })
+    .filter(
+      (value, index, self) =>
+        index === self.findIndex((t) => t.value === value.value)
+    );
+
+  const dates: SelectType.Option[] = data.results
+    .filter(
+      (
+        r
+      ): r is {
+        id: number;
+        activity: { id: number };
+        campaign: { id: number; title?: string | undefined };
+        date: string;
+        amount: number;
+        note?: string | undefined;
+      } => typeof r.date !== "undefined"
+    )
+    .map((r) => {
+      return {
+        value: r.date,
+        label: dateFormatter(r.date),
+      };
+    })
+    .filter(
+      (value, index, self) =>
+        index === self.findIndex((t) => t.value === value.value)
+    );
+
+  return { campaigns, activities, dates };
+};
+
+const ExperiencePointsFilters = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+
+  const { selectedActivity, selectedCampaign, selectedDate, search } =
+    useSelector((state: GeneralState) => state.experiencePoints, shallowEqual);
   const [currentSearch, setCurrentSearch] = useState(search);
   const debouncedSearch = useDebounce(currentSearch, 500);
+
+  const { campaigns, activities, dates } = useSelectValues();
 
   const allCampaign = t("All", { context: "female" });
   const allActivities = t("All", { context: "female" });

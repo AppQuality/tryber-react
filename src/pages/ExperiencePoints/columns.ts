@@ -1,11 +1,11 @@
 import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
-import { TFunction } from "react-i18next";
+import { useTranslation } from "react-i18next";
+import { useAppDispatch } from "src/store";
 import { updateExperiencePointsSortingOptions } from "../../redux/experiencePoints/actionCreator";
 
-export const ExperiencePointsColumns = (
-  dispatch: AppDispatch,
-  t: TFunction<"translation">
-): Column[] => {
+export const useExperiencePointsColumns = (): Column[] => {
+  const { t } = useTranslation("translation");
+  const dispatch = useAppDispatch();
   return [
     {
       title: t("Points"),
