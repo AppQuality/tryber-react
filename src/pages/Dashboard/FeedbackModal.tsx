@@ -1,17 +1,17 @@
 import { Button, Modal, ModalBody } from "@appquality/appquality-design-system";
 import { ChatLeftDots } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
+import { useGetUsersMeQuery } from "src/services/tryberApi";
 import styled from "styled-components";
 
 export const FeedbackModal = ({
   open = true,
   onClose,
-  user,
 }: {
   open?: boolean;
   onClose: () => void;
-  user?: UserData;
 }) => {
+  const { data: user, isLoading } = useGetUsersMeQuery({ fields: "id,email" });
   const { t } = useTranslation();
 
   const iFrameStyle = {
@@ -20,10 +20,13 @@ export const FeedbackModal = ({
     minHeight: "400px",
     border: "none",
   };
+
+  if (isLoading) return null;
   return (
     <Modal isOpen={open} onClose={onClose} title={t("Send us your feedback!")}>
       <ModalBody>
         <iframe
+          title="Feedback form"
           src={`https://form.jotform.com/213364740407351?testerId=T${user?.id}&email=${user?.email}`}
           style={iFrameStyle}
         />

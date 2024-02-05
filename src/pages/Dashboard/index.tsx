@@ -78,7 +78,6 @@ export default function Dashboard() {
             <FeedbackModal
               onClose={() => setFeedbackModalOpen(false)}
               open={isFeedbackModalOpen}
-              user={user}
             />
             <FeedbackButton handleClick={() => setFeedbackModalOpen(true)} />
           </>
