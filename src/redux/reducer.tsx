@@ -8,7 +8,7 @@ import addResidenceAddressModal from "./addResidenceAddressModal/reducer";
 import wallet from "./wallet/reducer";
 import ranking from "./ranking/reducer";
 import myBugs from "./myBugs/reducer";
-import experiencePoints from "./experiencePoints/reducer";
+import experiencePoints from "./experiencePoints/experiencePointsSlice";
 
 const reducers = {
   menu,
