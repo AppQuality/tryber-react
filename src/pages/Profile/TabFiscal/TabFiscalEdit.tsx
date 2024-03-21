@@ -206,7 +206,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
         helpers.resetForm({ values });
       }}
     >
-      {({ isValid, isValidating, dirty, values, errors }) => (
+      {({ isValid, isValidating, isSubmitting, dirty, values, errors }) => (
         <Form id="fiscalProfileForm">
           <CSSGrid gutter="50px" rowGap="1rem" min="220px">
             <div className="user-info">
@@ -354,7 +354,7 @@ export const TabFiscalEdit = ({ setEdit, inputRef }: TabCommonProps) => {
                   kind="primary"
                   type="submit"
                   flat
-                  disabled={!isValid || isValidating || !dirty}
+                  disabled={!isValid || isValidating || !dirty || isSubmitting}
                 >
                   {t("Save")}
                 </HalfColumnButton>
