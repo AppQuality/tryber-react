@@ -47,10 +47,10 @@
     ajv-draft-04 "^1.0.0"
     call-me-maybe "^1.0.1"
 
-"@appquality/appquality-design-system@1.0.55-canary":
-  version "1.0.55-canary"
-  resolved "https://registry.yarnpkg.com/@appquality/appquality-design-system/-/appquality-design-system-1.0.55-canary.tgz#6abc1dcd4ee83791b96007a8dd20b9bb91303f08"
-  integrity sha512-lvDm7K70OSEF86mV4S9DtH4ITIJLW1AqW9JvUYq2QRyW54+L37sgVFbDsJ8YXXquN79zyil1wf1zymGKjugwGg==
+"@appquality/appquality-design-system@1.0.56-canary":
+  version "1.0.56-canary"
+  resolved "https://registry.yarnpkg.com/@appquality/appquality-design-system/-/appquality-design-system-1.0.56-canary.tgz#5c9f30763ea0a6d850dbbb77a8d759ae0168996c"
+  integrity sha512-RqW9B1oqMs2MdVfUFNpYPvFhaNsDZios5FAsi8aoII4+8DITZ2j6rOPJbE5CO4lvEMO6Zyy646xkqpzwrOfVow==
   dependencies:
     formik "^2.2.9"
     react-bootstrap-icons "^1.5.0"
