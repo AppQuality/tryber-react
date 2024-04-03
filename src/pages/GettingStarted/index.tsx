@@ -1,6 +1,5 @@
 import {
   Container,
-  DatepickerGlobalStyle,
   Text,
   Title,
   aqBootstrapTheme,
@@ -29,7 +28,6 @@ export default function GettingStarted() {
       route={"getting-started/signup"}
       pageTitle={t("Signup for Tryber")}
     >
-      <DatepickerGlobalStyle />
       <Container>
         <LangMenu
           className="aq-pt-3"

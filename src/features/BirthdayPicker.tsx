@@ -31,17 +31,17 @@ const BirthdayPicker = ({
         cancelText={t("Cancel")}
         onCancel={onCancel}
         onChange={(v: { value: Date }) => {
-          onChange(
-            v.value
-              ? new Date(
-                  Date.UTC(
-                    v.value.getFullYear(),
-                    v.value.getMonth(),
-                    v.value.getDate()
-                  )
+          const date = v.value
+            ? new Date(
+                Date.UTC(
+                  v.value.getFullYear(),
+                  v.value.getMonth() - 1,
+                  v.value.getDate()
                 )
-              : maxDate
-          );
+              )
+            : maxDate;
+          if (isNaN(date.getTime())) return;
+          onChange(date);
         }}
       />
     </>

@@ -2,7 +2,6 @@ import {
   BSCol,
   BSGrid,
   Card,
-  DatepickerGlobalStyle,
   Tab,
   Tabs,
 } from "@appquality/appquality-design-system";
@@ -35,7 +34,6 @@ export default function Profile() {
       <OutsideContainer>
         <UserDeleteModal />
       </OutsideContainer>
-      <DatepickerGlobalStyle />
       <BSGrid>
         <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
           <Card className="aq-mb-3" bodyClass="">
