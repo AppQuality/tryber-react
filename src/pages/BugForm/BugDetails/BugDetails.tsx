@@ -163,7 +163,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
                   })}
                 />
                 <Datepicker
-                  key={field.value}
+                  key={field.name}
                   value={field.value}
                   id={"time"}
                   locale={"it"}
@@ -173,13 +173,14 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
                   })}
                   setText={t("Set")}
                   cancelText={t("Cancel")}
-                  onChange={(v: { value: Date }) =>
+                  onChange={(v: { value: Date }) => {
+                    if (isNaN(v.value.getTime())) return;
                     form.setFieldValue(
                       "time",
                       v.value ? new Date(v.value) : new Date(),
                       true
-                    )
-                  }
+                    );
+                  }}
                 />
               </>
             )}
