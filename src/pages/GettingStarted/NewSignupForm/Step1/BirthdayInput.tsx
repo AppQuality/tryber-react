@@ -19,7 +19,7 @@ const BirthdayInput = () => {
     let error;
     const parsedDate = isDate(value)
       ? value
-      : parse(value, "dd/MM/yyyy", new Date());
+      : parse(value, "yyyy-MM-dd", new Date());
 
     if (!isValid(parsedDate)) {
       error = t("SIGNUP_FORM:::Invalid date");
