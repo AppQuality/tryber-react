@@ -35,7 +35,7 @@ const BirthdayPicker = ({
             ? new Date(
                 Date.UTC(
                   v.value.getFullYear(),
-                  v.value.getMonth() - 1,
+                  v.value.getMonth(),
                   v.value.getDate()
                 )
               )
