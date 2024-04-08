@@ -5,7 +5,7 @@ export const toISOStringWithTimezone = (date: Date, time: Date) => {
   return (
     date.getFullYear() +
     "-" +
-    pad(date.getMonth() + 1) +
+    pad(date.getMonth()) +
     "-" +
     pad(date.getDate()) +
     "T" +

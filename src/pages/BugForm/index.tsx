@@ -1,13 +1,11 @@
-import React from "react";
-import { DatepickerGlobalStyle } from "@appquality/appquality-design-system";
-import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
-import { BugFormContainer } from "src/pages/BugForm/BugFormContainer";
-import { BugDetailsModal } from "src/pages/BugForm/BugDetails/BugDetailsModal/BugDetailsModal";
-import { BugFormUnauthorized } from "./BugFormErrorPages/BugFormUnauthorized";
-import { BugFormNoDevice } from "./BugFormErrorPages/BugFormNoDevice";
-import useCampaignData from "./useCampaignData";
-import Loading from "src/features/Loading";
 import { useTranslation } from "react-i18next";
+import Loading from "src/features/Loading";
+import { OutsideContainer, PageTemplate } from "src/features/PageTemplate";
+import { BugDetailsModal } from "src/pages/BugForm/BugDetails/BugDetailsModal/BugDetailsModal";
+import { BugFormContainer } from "src/pages/BugForm/BugFormContainer";
+import { BugFormNoDevice } from "./BugFormErrorPages/BugFormNoDevice";
+import { BugFormUnauthorized } from "./BugFormErrorPages/BugFormUnauthorized";
+import useCampaignData from "./useCampaignData";
 
 export default function BugForm({
   shouldBeLoggedIn = true,
@@ -49,7 +47,6 @@ export default function BugForm({
       route={route}
       shouldBeLoggedIn={shouldBeLoggedIn}
     >
-      <DatepickerGlobalStyle />
       <BugFormContainer />
       <OutsideContainer>
         <BugDetailsModal />
