@@ -8,16 +8,21 @@ import esLinks from "./locales/es/links.json";
 import es from "./locales/es/translation.json";
 import itLinks from "./locales/it/links.json";
 import it from "./locales/it/translation.json";
+import frLinks from "./locales/fr/links.json";
+import fr from "./locales/fr/translation.json";
 
 // the translations
 // (tip move them in a JSON file and import them)
 countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
 countries.registerLocale(require("i18n-iso-countries/langs/it.json"));
 countries.registerLocale(require("i18n-iso-countries/langs/es.json"));
+countries.registerLocale(require("i18n-iso-countries/langs/fr.json"));
+
 const resources = {
   en: { translation: en, links: enLinks },
   it: { translation: it, links: itLinks },
   es: { translation: es, links: esLinks },
+  fr: { translation: fr, links: frLinks },
 };
 
 export const i18nOptions: InitOptions = {
@@ -30,7 +35,7 @@ export const i18nOptions: InitOptions = {
   returnEmptyString: false,
   nsSeparator: false,
   resources,
-  supportedLngs: ["it", "en", "es"],
+  supportedLngs: ["it", "en", "es", "fr"],
   fallbackLng: "en",
   keySeparator: ":::",
   interpolation: {

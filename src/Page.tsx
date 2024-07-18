@@ -41,7 +41,7 @@ if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
     sampleRate: 100,
   });
 }
-const base = "/:locale(en|it|es)?";
+const base = "/:locale(en|it|es|fr)?";
 
 function Page() {
   const { search } = useLocation();
@@ -119,12 +119,26 @@ function Page() {
                 />
               )}
             />
+            <SentryRoute
+              path={`/fr/mes-equipements`}
+              component={({ location }: { location: Location }) => (
+                <Redirect
+                  to={{
+                    ...location,
+                    pathname: "/fr/personal-equipment",
+                  }}
+                />
+              )}
+            />
 
             <SentryRoute path={`/it/la-mia-dashboard`}>
               <Redirect to="/it/my-dashboard" />
             </SentryRoute>
             <SentryRoute path={`/es/tablero`}>
               <Redirect to="/es/my-dashboard" />
+            </SentryRoute>
+            <SentryRoute path={`/fr/mon-dashboard`}>
+              <Redirect to="/fr/my-dashboard" />
             </SentryRoute>
 
             <SentryRoute path={`${base}/my-bugs`} component={MyBugs} />
@@ -156,6 +170,18 @@ function Page() {
               )}
             />
             <SentryRoute
+              path={`${base}/fr/points-d-experience`}
+              component={({ location }: { location: Location }) => (
+                <Redirect
+                  to={{
+                    ...location,
+                    pathname: "/fr/experience-points",
+                  }}
+                />
+              )}
+            />
+
+            <SentryRoute
               path={`${base}/it/i-miei-bug`}
               component={({ location }: { location: Location }) => (
                 <Redirect
@@ -177,6 +203,17 @@ function Page() {
                 />
               )}
             />
+            <SentryRoute
+              path={`${base}/fr/mes-bugs`}
+              component={({ location }: { location: Location }) => (
+                <Redirect
+                  to={{
+                    ...location,
+                    pathname: "/fr/my-bugs",
+                  }}
+                />
+              )}
+            />
 
             <SentryRoute path={`${base}/my-account`} component={Profile} />
             <SentryRoute path={`${base}/payments`} component={Wallet} />
@@ -192,7 +229,7 @@ function Page() {
               component={PreviewSelectionForm}
             />
             <SentryRoute
-              path={["/goodbye", "/it/goodbye", "/es/goodbye"]}
+              path={["/goodbye", "/it/goodbye", "/es/goodbye", "/fr/goodbye"]}
               exact
               component={GoodbyePage}
             />
@@ -204,6 +241,9 @@ function Page() {
             </SentryRoute>
             <SentryRoute path={"/es"} exact>
               <Redirect to="/es/my-dashboard" />
+            </SentryRoute>
+            <SentryRoute path={"/fr"} exact>
+              <Redirect to="/fr/my-dashboard" />
             </SentryRoute>
           </Switch>
         </Router>
