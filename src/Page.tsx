@@ -119,26 +119,12 @@ function Page() {
                 />
               )}
             />
-            <SentryRoute
-              path={`/fr/mes-equipements`}
-              component={({ location }: { location: Location }) => (
-                <Redirect
-                  to={{
-                    ...location,
-                    pathname: "/fr/personal-equipment",
-                  }}
-                />
-              )}
-            />
 
             <SentryRoute path={`/it/la-mia-dashboard`}>
               <Redirect to="/it/my-dashboard" />
             </SentryRoute>
             <SentryRoute path={`/es/tablero`}>
               <Redirect to="/es/my-dashboard" />
-            </SentryRoute>
-            <SentryRoute path={`/fr/mon-dashboard`}>
-              <Redirect to="/fr/my-dashboard" />
             </SentryRoute>
 
             <SentryRoute path={`${base}/my-bugs`} component={MyBugs} />
@@ -169,17 +155,6 @@ function Page() {
                 />
               )}
             />
-            <SentryRoute
-              path={`${base}/fr/points-d-experience`}
-              component={({ location }: { location: Location }) => (
-                <Redirect
-                  to={{
-                    ...location,
-                    pathname: "/fr/experience-points",
-                  }}
-                />
-              )}
-            />
 
             <SentryRoute
               path={`${base}/it/i-miei-bug`}
@@ -199,17 +174,6 @@ function Page() {
                   to={{
                     ...location,
                     pathname: "/es/my-bugs",
-                  }}
-                />
-              )}
-            />
-            <SentryRoute
-              path={`${base}/fr/mes-bugs`}
-              component={({ location }: { location: Location }) => (
-                <Redirect
-                  to={{
-                    ...location,
-                    pathname: "/fr/my-bugs",
                   }}
                 />
               )}
