@@ -1,6 +1,6 @@
 {
   "name": "project-template-react",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "dependencies": {
     "@appquality/appquality-design-system": "2.0.1",
