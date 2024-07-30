@@ -33,12 +33,14 @@ interface LangMenuProps extends BaseProps {
   itLink: string;
   enLink: string;
   esLink: string;
+  frLink?: string;
 }
 
 export const LangMenu = ({
   itLink,
   enLink,
   esLink,
+  frLink,
   className,
 }: LangMenuProps) => {
   const { i18n, t } = useTranslation();
@@ -95,6 +97,21 @@ export const LangMenu = ({
               <span className="sr-only">{t("Current Page")}:</span>
             )}
             Español
+          </a>
+        </li>
+        <li>
+          <a
+            data-qa="language-switcher-fr"
+            data-tracking="lang-switcher-fr"
+            href={esLink}
+            className={`${
+              i18n.language === "fr" ? "current " : ""
+            }lang-navLink`}
+          >
+            {i18n.language === "fr" && (
+              <span className="sr-only">{t("Current Page")}:</span>
+            )}
+            Français
           </a>
         </li>
       </ul>

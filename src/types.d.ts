@@ -13,6 +13,8 @@ export type CrowdRoutes =
   | "personal-equipment"
   | "my-bugs"
   | "experience-points"
+  | "leaderboard"
+  | "payments"
   | "";
 
 export type User = undefined | UserData;

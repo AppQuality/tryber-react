@@ -2,7 +2,6 @@
   "...wait": "Loading",
   "/discover-experience-points/": "/discover-experience-points/",
   "/faq/": "/faq/",
-  "/my-account/": "/my-account/",
   "/terms-and-conditions/": "/terms-and-conditions/",
   "/testing-school/": "/testing-school/",
   "<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>": {
@@ -711,6 +710,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "/my-account/": "/my-account/",
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supports companies in creating memorable experiences thanks to the power of the TRYBER Community. <unguess_link>Discover UNGUESS</unguess_link>"
   },

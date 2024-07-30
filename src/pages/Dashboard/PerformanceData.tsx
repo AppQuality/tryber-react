@@ -117,13 +117,7 @@ const PerformanceData = () => {
       text: t("__CARD_RECAP_DASHBOARD_CTA_MAX: 30", {
         defaultValue: "View ranking page",
       }),
-      link: `/${
-        i18n.language === "en"
-          ? "leaderboard"
-          : i18n.language === "it"
-          ? "it/leaderboard-2/"
-          : "es/tabla-de-classificacion/"
-      }`,
+      link: `${useLocalizeRoute("leaderboard")}`,
     },
     {
       icon: (
@@ -171,13 +165,7 @@ const PerformanceData = () => {
     {
       icon: <ArrowRight size={"21"} />,
       text: t("View payments page"),
-      link: `${window.location.origin}/${
-        i18n.language === "en"
-          ? "payments"
-          : i18n.language === "it"
-          ? "it/pagamenti/"
-          : "es/pagos"
-      }`,
+      link: `${useLocalizeRoute("payments")}`,
     },
   ];
 

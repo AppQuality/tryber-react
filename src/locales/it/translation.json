@@ -2,7 +2,6 @@
   "...wait": "Un momento...",
   "/discover-experience-points/": "/it/come-funzionano-i-punti-esperienza/",
   "/faq/": "/it/domande-frequenti/",
-  "/my-account/": "/it/il-mio-account/",
   "/terms-and-conditions/": "/it/termini-e-condizioni/",
   "/testing-school/": "/it/universita-del-test/",
   "<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>": {
@@ -711,6 +710,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "/my-account/": "/it/il-mio-account/",
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supporta le aziende nella creazione di esperienze memorabili grazie al potere della Community di TRYBER. <unguess_link>Scopri UNGUESS</unguess_link>"
   },
