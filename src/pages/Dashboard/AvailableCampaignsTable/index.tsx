@@ -12,7 +12,7 @@ const CampaignsTable = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(1);
   const defaultOrder = "ASC";
-  const defaultOrderby = "end_date";
+  const defaultOrderby = "visibility";
   const [order, setOrder] = useState<CampaignOrder>(defaultOrder);
   const [orderBy, setOrderBy] = useState<OrderBy>(defaultOrderby);
   const limit = 10;

@@ -84,12 +84,6 @@ const injectedRtkApi = api.injectEndpoints({
         },
       }),
     }),
-    getCampaignsOwners: build.query<
-      GetCampaignsOwnersApiResponse,
-      GetCampaignsOwnersApiArg
-    >({
-      query: () => ({ url: `/campaigns/owners` }),
-    }),
     getCampaignsByCampaign: build.query<
       GetCampaignsByCampaignApiResponse,
       GetCampaignsByCampaignApiArg
@@ -122,12 +116,6 @@ const injectedRtkApi = api.injectEndpoints({
         },
       }),
     }),
-    getCampaignsByCampaignGroups: build.query<
-      GetCampaignsByCampaignGroupsApiResponse,
-      GetCampaignsByCampaignGroupsApiArg
-    >({
-      query: (queryArg) => ({ url: `/campaigns/${queryArg.campaign}/groups` }),
-    }),
     postCampaignsByCampaignCandidates: build.mutation<
       PostCampaignsByCampaignCandidatesApiResponse,
       PostCampaignsByCampaignCandidatesApiArg
@@ -150,7 +138,38 @@ const injectedRtkApi = api.injectEndpoints({
           fields: queryArg.fields,
           filterByInclude: queryArg.filterByInclude,
           filterByExclude: queryArg.filterByExclude,
+          filterByAge: queryArg.filterByAge,
+          show: queryArg.show,
         },
+      }),
+    }),
+    getCampaignsByCampaignClusters: build.query<
+      GetCampaignsByCampaignClustersApiResponse,
+      GetCampaignsByCampaignClustersApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/clusters`,
+      }),
+    }),
+    getCampaignsByCampaignForms: build.query<
+      GetCampaignsByCampaignFormsApiResponse,
+      GetCampaignsByCampaignFormsApiArg
+    >({
+      query: (queryArg) => ({ url: `/campaigns/${queryArg.campaign}/forms` }),
+    }),
+    getCampaignsByCampaignGroups: build.query<
+      GetCampaignsByCampaignGroupsApiResponse,
+      GetCampaignsByCampaignGroupsApiArg
+    >({
+      query: (queryArg) => ({ url: `/campaigns/${queryArg.campaign}/groups` }),
+    }),
+    getCampaignsByCampaignObservations: build.query<
+      GetCampaignsByCampaignObservationsApiResponse,
+      GetCampaignsByCampaignObservationsApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/observations`,
+        params: { filterBy: queryArg.filterBy },
       }),
     }),
     getCampaignsByCampaignPayouts: build.query<
@@ -158,6 +177,54 @@ const injectedRtkApi = api.injectEndpoints({
       GetCampaignsByCampaignPayoutsApiArg
     >({
       query: (queryArg) => ({ url: `/campaigns/${queryArg.campaign}/payouts` }),
+    }),
+    getCampaignsByCampaignProspect: build.query<
+      GetCampaignsByCampaignProspectApiResponse,
+      GetCampaignsByCampaignProspectApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/prospect`,
+        params: {
+          filterByInclude: queryArg.filterByInclude,
+          filterByExclude: queryArg.filterByExclude,
+        },
+      }),
+    }),
+    putCampaignsByCampaignProspect: build.mutation<
+      PutCampaignsByCampaignProspectApiResponse,
+      PutCampaignsByCampaignProspectApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/prospect`,
+        method: "PUT",
+        body: queryArg.body,
+      }),
+    }),
+    patchCampaignsByCampaignProspect: build.mutation<
+      PatchCampaignsByCampaignProspectApiResponse,
+      PatchCampaignsByCampaignProspectApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/prospect`,
+        method: "PATCH",
+        body: queryArg.body,
+      }),
+    }),
+    putCampaignsByCampaignProspectAndTesterId: build.mutation<
+      PutCampaignsByCampaignProspectAndTesterIdApiResponse,
+      PutCampaignsByCampaignProspectAndTesterIdApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/prospect/${queryArg.testerId}`,
+        method: "PUT",
+        body: queryArg.body,
+      }),
+    }),
+    getCampaignsByCampaignStats: build.query<
+      GetCampaignsByCampaignStatsApiResponse,
+      GetCampaignsByCampaignStatsApiArg
+    >({
+      query: (queryArg) => ({ url: `/campaigns/${queryArg.campaign}/stats` }),
     }),
     getCampaignsByCampaignTasks: build.query<
       GetCampaignsByCampaignTasksApiResponse,
@@ -209,23 +276,6 @@ const injectedRtkApi = api.injectEndpoints({
         body: queryArg.body,
       }),
     }),
-    getCampaignsByCampaignClusters: build.query<
-      GetCampaignsByCampaignClustersApiResponse,
-      GetCampaignsByCampaignClustersApiArg
-    >({
-      query: (queryArg) => ({
-        url: `/campaigns/${queryArg.campaign}/clusters`,
-      }),
-    }),
-    getCampaignsByCampaignObservations: build.query<
-      GetCampaignsByCampaignObservationsApiResponse,
-      GetCampaignsByCampaignObservationsApiArg
-    >({
-      query: (queryArg) => ({
-        url: `/campaigns/${queryArg.campaign}/observations`,
-        params: { filterBy: queryArg.filterBy },
-      }),
-    }),
     postCampaignsForms: build.mutation<
       PostCampaignsFormsApiResponse,
       PostCampaignsFormsApiArg
@@ -266,59 +316,11 @@ const injectedRtkApi = api.injectEndpoints({
         body: queryArg.body,
       }),
     }),
-    getCampaignsByCampaignForms: build.query<
-      GetCampaignsByCampaignFormsApiResponse,
-      GetCampaignsByCampaignFormsApiArg
+    getCampaignsOwners: build.query<
+      GetCampaignsOwnersApiResponse,
+      GetCampaignsOwnersApiArg
     >({
-      query: (queryArg) => ({ url: `/campaigns/${queryArg.campaign}/forms` }),
-    }),
-    putCampaignsByCampaignProspectAndTesterId: build.mutation<
-      PutCampaignsByCampaignProspectAndTesterIdApiResponse,
-      PutCampaignsByCampaignProspectAndTesterIdApiArg
-    >({
-      query: (queryArg) => ({
-        url: `/campaigns/${queryArg.campaign}/prospect/${queryArg.testerId}`,
-        method: "PUT",
-        body: queryArg.body,
-      }),
-    }),
-    getCampaignsByCampaignProspect: build.query<
-      GetCampaignsByCampaignProspectApiResponse,
-      GetCampaignsByCampaignProspectApiArg
-    >({
-      query: (queryArg) => ({
-        url: `/campaigns/${queryArg.campaign}/prospect`,
-        params: {
-          filterByInclude: queryArg.filterByInclude,
-          filterByExclude: queryArg.filterByExclude,
-        },
-      }),
-    }),
-    putCampaignsByCampaignProspect: build.mutation<
-      PutCampaignsByCampaignProspectApiResponse,
-      PutCampaignsByCampaignProspectApiArg
-    >({
-      query: (queryArg) => ({
-        url: `/campaigns/${queryArg.campaign}/prospect`,
-        method: "PUT",
-        body: queryArg.body,
-      }),
-    }),
-    patchCampaignsByCampaignProspect: build.mutation<
-      PatchCampaignsByCampaignProspectApiResponse,
-      PatchCampaignsByCampaignProspectApiArg
-    >({
-      query: (queryArg) => ({
-        url: `/campaigns/${queryArg.campaign}/prospect`,
-        method: "PATCH",
-        body: queryArg.body,
-      }),
-    }),
-    getCampaignsByCampaignStats: build.query<
-      GetCampaignsByCampaignStatsApiResponse,
-      GetCampaignsByCampaignStatsApiArg
-    >({
-      query: (queryArg) => ({ url: `/campaigns/${queryArg.campaign}/stats` }),
+      query: () => ({ url: `/campaigns/owners` }),
     }),
     getCampaignTypes: build.query<
       GetCampaignTypesApiResponse,
@@ -346,6 +348,16 @@ const injectedRtkApi = api.injectEndpoints({
     }),
     getCustomers: build.query<GetCustomersApiResponse, GetCustomersApiArg>({
       query: () => ({ url: `/customers` }),
+    }),
+    postCustomers: build.mutation<
+      PostCustomersApiResponse,
+      PostCustomersApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/customers`,
+        method: "POST",
+        body: queryArg.body,
+      }),
     }),
     getCustomUserFields: build.query<
       GetCustomUserFieldsApiResponse,
@@ -388,6 +400,30 @@ const injectedRtkApi = api.injectEndpoints({
       GetEmploymentsApiArg
     >({
       query: () => ({ url: `/employments` }),
+    }),
+    postJotformsByCampaign: build.mutation<
+      PostJotformsByCampaignApiResponse,
+      PostJotformsByCampaignApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/jotforms/${queryArg.campaign}`,
+        method: "POST",
+        body: queryArg.body,
+      }),
+    }),
+    getJotformsForms: build.query<
+      GetJotformsFormsApiResponse,
+      GetJotformsFormsApiArg
+    >({
+      query: () => ({ url: `/jotforms/forms` }),
+    }),
+    getJotformsFormsByFormIdQuestions: build.query<
+      GetJotformsFormsByFormIdQuestionsApiResponse,
+      GetJotformsFormsByFormIdQuestionsApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/jotforms/forms/${queryArg.formId}/questions`,
+      }),
     }),
     getLanguages: build.query<GetLanguagesApiResponse, GetLanguagesApiArg>({
       query: () => ({ url: `/languages` }),
@@ -591,6 +627,24 @@ const injectedRtkApi = api.injectEndpoints({
     >({
       query: (queryArg) => ({
         url: `/users/me/campaigns/${queryArg.campaignId}/devices`,
+      }),
+    }),
+    getUsersMeCampaignsByCampaignIdForms: build.query<
+      GetUsersMeCampaignsByCampaignIdFormsApiResponse,
+      GetUsersMeCampaignsByCampaignIdFormsApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}/forms`,
+      }),
+    }),
+    postUsersMeCampaignsByCampaignIdForms: build.mutation<
+      PostUsersMeCampaignsByCampaignIdFormsApiResponse,
+      PostUsersMeCampaignsByCampaignIdFormsApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}/forms`,
+        method: "POST",
+        body: queryArg.body,
       }),
     }),
     postUsersMeCampaignsByCampaignIdMedia: build.mutation<
@@ -820,21 +874,72 @@ const injectedRtkApi = api.injectEndpoints({
     >({
       query: () => ({ url: `/users/me/rank/list` }),
     }),
-    getUsersMeCampaignsByCampaignIdForms: build.query<
-      GetUsersMeCampaignsByCampaignIdFormsApiResponse,
-      GetUsersMeCampaignsByCampaignIdFormsApiArg
-    >({
+    postDossiers: build.mutation<PostDossiersApiResponse, PostDossiersApiArg>({
       query: (queryArg) => ({
-        url: `/users/me/campaigns/${queryArg.campaignId}/forms`,
+        url: `/dossiers`,
+        method: "POST",
+        body: queryArg.body,
       }),
     }),
-    postUsersMeCampaignsByCampaignIdForms: build.mutation<
-      PostUsersMeCampaignsByCampaignIdFormsApiResponse,
-      PostUsersMeCampaignsByCampaignIdFormsApiArg
+    putDossiersByCampaign: build.mutation<
+      PutDossiersByCampaignApiResponse,
+      PutDossiersByCampaignApiArg
     >({
       query: (queryArg) => ({
-        url: `/users/me/campaigns/${queryArg.campaignId}/forms`,
+        url: `/dossiers/${queryArg.campaign}`,
+        method: "PUT",
+        body: queryArg.dossierCreationData,
+      }),
+    }),
+    getDossiersByCampaign: build.query<
+      GetDossiersByCampaignApiResponse,
+      GetDossiersByCampaignApiArg
+    >({
+      query: (queryArg) => ({ url: `/dossiers/${queryArg.campaign}` }),
+    }),
+    getCustomersByCustomerProjects: build.query<
+      GetCustomersByCustomerProjectsApiResponse,
+      GetCustomersByCustomerProjectsApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/customers/${queryArg.customer}/projects`,
+      }),
+    }),
+    postCustomersByCustomerProjects: build.mutation<
+      PostCustomersByCustomerProjectsApiResponse,
+      PostCustomersByCustomerProjectsApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/customers/${queryArg.customer}/projects`,
         method: "POST",
+        body: queryArg.body,
+      }),
+    }),
+    getUsersByRoleByRole: build.query<
+      GetUsersByRoleByRoleApiResponse,
+      GetUsersByRoleByRoleApiArg
+    >({
+      query: (queryArg) => ({ url: `/users/by-role/${queryArg.role}` }),
+    }),
+    getBrowsers: build.query<GetBrowsersApiResponse, GetBrowsersApiArg>({
+      query: () => ({ url: `/browsers` }),
+    }),
+    getProductTypes: build.query<
+      GetProductTypesApiResponse,
+      GetProductTypesApiArg
+    >({
+      query: () => ({ url: `/productTypes` }),
+    }),
+    getPhases: build.query<GetPhasesApiResponse, GetPhasesApiArg>({
+      query: () => ({ url: `/phases` }),
+    }),
+    putDossiersByCampaignPhases: build.mutation<
+      PutDossiersByCampaignPhasesApiResponse,
+      PutDossiersByCampaignPhasesApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/dossiers/${queryArg.campaign}/phases`,
+        method: "PUT",
         body: queryArg.body,
       }),
     }),
@@ -906,6 +1011,8 @@ export type PostAuthenticateApiResponse =
     lastName?: string;
     token?: string;
     username?: string;
+    iat?: number;
+    exp?: number;
   };
 export type PostAuthenticateApiArg = {
   /** A JSON containing username and password */
@@ -936,7 +1043,7 @@ export type GetCampaignsApiResponse = /** status 200 OK */ {
     startDate?: string;
     endDate?: string;
     status?: "running" | "closed" | "incoming";
-    visibility?: "admin" | "smallgroup" | "logged" | "public";
+    visibility?: "admin" | "smallgroup" | "logged" | "public" | "target";
     resultType?: "bug" | "bugparade" | "no";
     csm?: {
       id: number;
@@ -955,6 +1062,21 @@ export type GetCampaignsApiResponse = /** status 200 OK */ {
       id?: number;
       name: string;
     };
+    phase?: {
+      id: number;
+      name: string;
+    };
+    roles?: {
+      role: {
+        id: number;
+        name: string;
+      };
+      user: {
+        id: number;
+        name: string;
+        surname: string;
+      };
+    }[];
   }[];
 } & PaginationData;
 export type GetCampaignsApiArg = {
@@ -973,17 +1095,12 @@ export type GetCampaignsApiArg = {
   orderBy?: "id" | "startDate" | "endDate";
   filterBy?: any;
 };
-export type GetCampaignsOwnersApiResponse = /** status 200 OK */ {
-  id: number;
-  name: string;
-  surname: string;
-}[];
-export type GetCampaignsOwnersApiArg = void;
 export type GetCampaignsByCampaignApiResponse = /** status 200 OK */ {
   id: number;
   title: string;
   type: string;
   typeDescription: string;
+  preselectionFormId?: number;
 };
 export type GetCampaignsByCampaignApiArg = {
   /** A campaign id */
@@ -1046,14 +1163,6 @@ export type GetCampaignsByCampaignBugsApiArg = {
   /** Key-value Array for item filtering */
   filterBy?: object;
 };
-export type GetCampaignsByCampaignGroupsApiResponse = /** status 200 OK */ {
-  id: number;
-  name: string;
-}[];
-export type GetCampaignsByCampaignGroupsApiArg = {
-  /** A campaign id */
-  campaign: string;
-};
 export type PostCampaignsByCampaignCandidatesApiResponse =
   /** status 200 OK */
   | {
@@ -1089,8 +1198,15 @@ export type GetCampaignsByCampaignCandidatesApiResponse = /** status 200 OK */ {
     id: number;
     name: string;
     surname: string;
+    gender: Gender;
+    age: number;
     experience: number;
-    level: string;
+    businessCps: number;
+    businessCpsLastMonth: number;
+    levels: {
+      bugHunting: string;
+      metal: string;
+    };
     devices: {
       manufacturer?: string;
       model?: string;
@@ -1103,6 +1219,7 @@ export type GetCampaignsByCampaignCandidatesApiResponse = /** status 200 OK */ {
       title?: string;
       value?: string;
     }[];
+    status?: "candidate" | "excluded" | "selected";
   }[];
 } & PaginationData;
 export type GetCampaignsByCampaignCandidatesApiArg = {
@@ -1118,6 +1235,63 @@ export type GetCampaignsByCampaignCandidatesApiArg = {
   filterByInclude?: any;
   /** Key-value Array for item filtering */
   filterByExclude?: any;
+  /** Array with min and max */
+  filterByAge?: any;
+  /** Show accepted/candidates or both */
+  show?: "onlyAccepted" | "onlyCandidates" | "all" | "candidatesAndExcluded";
+};
+export type GetCampaignsByCampaignClustersApiResponse =
+  /** status 200 A UseCase linked with the Campaign */ {
+    items: {
+      id: number;
+      name: string;
+    }[];
+  };
+export type GetCampaignsByCampaignClustersApiArg = {
+  /** A campaign id */
+  campaign: string;
+};
+export type GetCampaignsByCampaignFormsApiResponse = /** status 200 OK */ {
+  id: number;
+  question: string;
+  shortName?: string;
+}[];
+export type GetCampaignsByCampaignFormsApiArg = {
+  campaign: string;
+};
+export type GetCampaignsByCampaignGroupsApiResponse = /** status 200 OK */ {
+  id: number;
+  name: string;
+}[];
+export type GetCampaignsByCampaignGroupsApiArg = {
+  /** A campaign id */
+  campaign: string;
+};
+export type GetCampaignsByCampaignObservationsApiResponse =
+  /** status 200 A UseCase linked with the Campaign */ {
+    items: {
+      id: number;
+      name: string;
+      time: number;
+      tester: {
+        id: number;
+        name: string;
+      };
+      cluster: {
+        id: number;
+        name: string;
+      };
+      media: {
+        id: number;
+        url: string;
+        streamUrl: string;
+      };
+    }[];
+  };
+export type GetCampaignsByCampaignObservationsApiArg = {
+  /** A campaign id */
+  campaign: string;
+  filterBy?: any;
 };
 export type GetCampaignsByCampaignPayoutsApiResponse = /** status 200 OK */ {
   maxBonusBug: number;
@@ -1138,6 +1312,120 @@ export type GetCampaignsByCampaignPayoutsApiResponse = /** status 200 OK */ {
 };
 export type GetCampaignsByCampaignPayoutsApiArg = {
   /** A campaign id */
+  campaign: string;
+};
+export type GetCampaignsByCampaignProspectApiResponse = /** status 200 OK */ {
+  items: {
+    tester: {
+      id: number;
+      name: string;
+      surname: string;
+      group: number;
+    };
+    usecases: {
+      completed: number;
+      required: number;
+    };
+    bugs: {
+      critical: number;
+      high: number;
+      medium: number;
+      low: number;
+    };
+    payout: {
+      completion: number;
+      bug: number;
+      refund: number;
+      extra: number;
+    };
+    experience: {
+      completion: number;
+      extra: number;
+    };
+    note: string;
+    status: "pending" | "done";
+    weightedBugs: number;
+    isCompleted: boolean;
+    isTopTester: boolean;
+  }[];
+  status: ProspectStatus;
+};
+export type GetCampaignsByCampaignProspectApiArg = {
+  campaign: string;
+  /** Key-value Array for item filtering */
+  filterByInclude?: any;
+  /** Key-value Array for item filtering */
+  filterByExclude?: any;
+};
+export type PutCampaignsByCampaignProspectApiResponse = unknown;
+export type PutCampaignsByCampaignProspectApiArg = {
+  campaign: string;
+  body: {
+    status: ProspectStatus;
+    items: {
+      tester: {
+        id: number;
+      };
+      experience: {
+        completion: number;
+        extra: number;
+      };
+      payout: {
+        completion: number;
+        bug: number;
+        extra: number;
+        refund: number;
+      };
+      note?: string;
+      completed: boolean;
+    }[];
+  };
+};
+export type PatchCampaignsByCampaignProspectApiResponse = unknown;
+export type PatchCampaignsByCampaignProspectApiArg = {
+  campaign: string;
+  body: {
+    status?: ProspectStatus;
+  };
+};
+export type PutCampaignsByCampaignProspectAndTesterIdApiResponse =
+  /** status 200 OK */ {
+    payout: {
+      completion: number;
+      bugs: number;
+      refund: number;
+      extra: number;
+    };
+    experience: {
+      completion: number;
+      extra: number;
+    };
+    note: string;
+    completed: boolean;
+  };
+export type PutCampaignsByCampaignProspectAndTesterIdApiArg = {
+  /** A campaign id */
+  campaign: string;
+  testerId: string;
+  body: {
+    payout: {
+      completion: number;
+      bugs: number;
+      refund: number;
+      extra: number;
+    };
+    experience: {
+      completion: number;
+      extra: number;
+    };
+    note: string;
+    completed: boolean;
+  };
+};
+export type GetCampaignsByCampaignStatsApiResponse = /** status 200 OK */ {
+  selected: number;
+};
+export type GetCampaignsByCampaignStatsApiArg = {
   campaign: string;
 };
 export type GetCampaignsByCampaignTasksApiResponse =
@@ -1270,43 +1558,6 @@ export type PatchCampaignsByCampaignUxApiArg = {
         status: "publish";
       };
 };
-export type GetCampaignsByCampaignClustersApiResponse =
-  /** status 200 A UseCase linked with the Campaign */ {
-    items: {
-      id: number;
-      name: string;
-    }[];
-  };
-export type GetCampaignsByCampaignClustersApiArg = {
-  /** A campaign id */
-  campaign: string;
-};
-export type GetCampaignsByCampaignObservationsApiResponse =
-  /** status 200 A UseCase linked with the Campaign */ {
-    items: {
-      id: number;
-      name: string;
-      time: number;
-      tester: {
-        id: number;
-        name: string;
-      };
-      cluster: {
-        id: number;
-        name: string;
-      };
-      media: {
-        id: number;
-        url: string;
-        streamUrl: string;
-      };
-    }[];
-  };
-export type GetCampaignsByCampaignObservationsApiArg = {
-  /** A campaign id */
-  campaign: string;
-  filterBy?: any;
-};
 export type PostCampaignsFormsApiResponse = /** status 201 Created */ {
   id: number;
   name: string;
@@ -1323,6 +1574,7 @@ export type PostCampaignsFormsApiArg = {
     name: string;
     fields: PreselectionFormQuestion[];
     campaign?: number;
+    creationDate?: string;
   };
 };
 export type GetCampaignsFormsApiResponse = /** status 200 OK */ {
@@ -1381,131 +1633,19 @@ export type PutCampaignsFormsByFormIdApiArg = {
     } & PreselectionFormQuestion)[];
   };
 };
-export type GetCampaignsByCampaignFormsApiResponse = /** status 200 OK */ {
+export type GetCampaignsOwnersApiResponse = /** status 200 OK */ {
   id: number;
-  question: string;
-  shortName?: string;
+  name: string;
+  surname: string;
 }[];
-export type GetCampaignsByCampaignFormsApiArg = {
-  campaign: string;
-};
-export type PutCampaignsByCampaignProspectAndTesterIdApiResponse =
-  /** status 200 OK */ {
-    payout: {
-      completion: number;
-      bugs: number;
-      refund: number;
-      extra: number;
-    };
-    experience: {
-      completion: number;
-      extra: number;
-    };
-    note: string;
-    completed: boolean;
-  };
-export type PutCampaignsByCampaignProspectAndTesterIdApiArg = {
-  /** A campaign id */
-  campaign: string;
-  testerId: string;
-  body: {
-    payout: {
-      completion: number;
-      bugs: number;
-      refund: number;
-      extra: number;
-    };
-    experience: {
-      completion: number;
-      extra: number;
-    };
-    note: string;
-    completed: boolean;
-  };
-};
-export type GetCampaignsByCampaignProspectApiResponse = /** status 200 OK */ {
-  items: {
-    tester: {
-      id: number;
-      name: string;
-      surname: string;
-      group: number;
-    };
-    usecases: {
-      completed: number;
-      required: number;
-    };
-    bugs: {
-      critical: number;
-      high: number;
-      medium: number;
-      low: number;
-    };
-    payout: {
-      completion: number;
-      bug: number;
-      refund: number;
-      extra: number;
-    };
-    experience: {
-      completion: number;
-      extra: number;
-    };
-    note: string;
-    status: "pending" | "done";
-    weightedBugs: number;
-    isCompleted: boolean;
-    isTopTester: boolean;
-  }[];
-  status: ProspectStatus;
-};
-export type GetCampaignsByCampaignProspectApiArg = {
-  campaign: string;
-  /** Key-value Array for item filtering */
-  filterByInclude?: any;
-  /** Key-value Array for item filtering */
-  filterByExclude?: any;
-};
-export type PutCampaignsByCampaignProspectApiResponse = unknown;
-export type PutCampaignsByCampaignProspectApiArg = {
-  campaign: string;
-  body: {
-    status: ProspectStatus;
-    items: {
-      tester: {
-        id: number;
-      };
-      experience: {
-        completion: number;
-        extra: number;
-      };
-      payout: {
-        completion: number;
-        bug: number;
-        extra: number;
-        refund: number;
-      };
-      note?: string;
-      completed: boolean;
-    }[];
-  };
-};
-export type PatchCampaignsByCampaignProspectApiResponse = unknown;
-export type PatchCampaignsByCampaignProspectApiArg = {
-  campaign: string;
-  body: {
-    status?: ProspectStatus;
-  };
-};
-export type GetCampaignsByCampaignStatsApiResponse = /** status 200 OK */ {
-  selected: number;
-};
-export type GetCampaignsByCampaignStatsApiArg = {
-  campaign: string;
-};
+export type GetCampaignsOwnersApiArg = void;
 export type GetCampaignTypesApiResponse = /** status 200  */ {
   id: number;
   name: string;
+  customRoles: {
+    roleId: number;
+    userIds: number[];
+  }[];
 }[];
 export type GetCampaignTypesApiArg = void;
 export type GetCertificationsApiResponse = /** status 200 OK */ {
@@ -1532,6 +1672,15 @@ export type GetCustomersApiResponse =
     name?: string;
   }[];
 export type GetCustomersApiArg = void;
+export type PostCustomersApiResponse = /** status 200 OK */ {
+  id: number;
+  name: string;
+};
+export type PostCustomersApiArg = {
+  body: {
+    name: string;
+  };
+};
 export type GetCustomUserFieldsApiResponse = /** status 200 OK */ {
   group: {
     id: number;
@@ -1555,8 +1704,9 @@ export type GetDevicesByDeviceTypeModelsApiArg = {
 };
 export type GetDevicesByDeviceTypeOperatingSystemsApiResponse =
   /** status 200 OK */ {
-    id?: number;
-    name?: string;
+    id: number;
+    name: string;
+    type: string;
   }[];
 export type GetDevicesByDeviceTypeOperatingSystemsApiArg = {
   deviceType: string;
@@ -1582,6 +1732,32 @@ export type GetEmploymentsApiResponse = /** status 200 OK */ {
   name: string;
 }[];
 export type GetEmploymentsApiArg = void;
+export type PostJotformsByCampaignApiResponse = /** status 200 OK */ {};
+export type PostJotformsByCampaignApiArg = {
+  /** A campaign id */
+  campaign: string;
+  body: {
+    formId: string;
+    testerIdColumn: string;
+  };
+};
+export type GetJotformsFormsApiResponse = /** status 200 OK */ {
+  id: string;
+  name: string;
+  createdAt: string;
+}[];
+export type GetJotformsFormsApiArg = void;
+export type GetJotformsFormsByFormIdQuestionsApiResponse =
+  /** status 200 OK */ {
+    id: string;
+    name: string;
+    title: string;
+    description?: string;
+    type: string;
+  }[];
+export type GetJotformsFormsByFormIdQuestionsApiArg = {
+  formId: string;
+};
 export type GetLanguagesApiResponse = /** status 200 OK */ {
   id: number;
   name: string;
@@ -1888,7 +2064,7 @@ export type GetUsersMeCampaignsApiArg = {
   /** How to order values (ASC, DESC) */
   order?: "ASC" | "DESC";
   /** The field for item order */
-  orderBy?: "name" | "start_date" | "end_date" | "close_date";
+  orderBy?: "name" | "start_date" | "end_date" | "close_date" | "visibility";
 };
 export type GetUsersMeCampaignsByCampaignIdApiResponse = /** status 200 OK */ {
   id: number;
@@ -1995,6 +2171,46 @@ export type GetUsersMeCampaignsByCampaignIdDevicesApiResponse =
   /** status 200 OK */ UserDevice[];
 export type GetUsersMeCampaignsByCampaignIdDevicesApiArg = {
   campaignId: string;
+};
+export type GetUsersMeCampaignsByCampaignIdFormsApiResponse =
+  /** status 200 OK */ (PreselectionFormQuestion & {
+    value?:
+      | number
+      | {
+          city?: string;
+          country?: string;
+        }
+      | number[]
+      | string;
+    validation?: {
+      regex: string;
+      error?: string;
+    };
+    id: number;
+  })[];
+export type GetUsersMeCampaignsByCampaignIdFormsApiArg = {
+  campaignId: string;
+};
+export type PostUsersMeCampaignsByCampaignIdFormsApiResponse =
+  /** status 200 OK */ void;
+export type PostUsersMeCampaignsByCampaignIdFormsApiArg = {
+  campaignId: string;
+  body: {
+    form?: {
+      value: {
+        id?: number | number[];
+        serialized?:
+          | string
+          | string[]
+          | {
+              city: string;
+              country: string;
+            };
+      };
+      question: number;
+    }[];
+    device?: number[];
+  };
 };
 export type PostUsersMeCampaignsByCampaignIdMediaApiResponse =
   /** status 200 OK */ {
@@ -2375,44 +2591,169 @@ export type GetUsersMeRankListApiResponse = /** status 200 OK */ {
   peers: RankingItem[];
 };
 export type GetUsersMeRankListApiArg = void;
-export type GetUsersMeCampaignsByCampaignIdFormsApiResponse =
-  /** status 200 OK */ (PreselectionFormQuestion & {
-    value?:
-      | number
-      | {
-          city?: string;
-          country?: string;
-        }
-      | number[]
-      | string;
-    validation?: {
-      regex: string;
-      error?: string;
+export type PostDossiersApiResponse =
+  /** status 201 Created */
+  | {
+      id: number;
+      message?: "HOOK_FAILED";
+    }
+  | /** status 206 Partial Content */ {
+      id?: number;
     };
-    id: number;
-  })[];
-export type GetUsersMeCampaignsByCampaignIdFormsApiArg = {
-  campaignId: string;
+export type PostDossiersApiArg = {
+  body: DossierCreationData & {
+    duplicate?: {
+      fields?: number;
+      useCases?: number;
+      mailMerges?: number;
+      pages?: number;
+      testers?: number;
+      campaign?: number;
+    };
+  };
 };
-export type PostUsersMeCampaignsByCampaignIdFormsApiResponse =
-  /** status 200 OK */ void;
-export type PostUsersMeCampaignsByCampaignIdFormsApiArg = {
-  campaignId: string;
+export type PutDossiersByCampaignApiResponse = /** status 200 OK */ {};
+export type PutDossiersByCampaignApiArg = {
+  /** A campaign id */
+  campaign: string;
+  dossierCreationData: DossierCreationData;
+};
+export type GetDossiersByCampaignApiResponse = /** status 200 OK */ {
+  id: number;
+  title: {
+    customer: string;
+    tester: string;
+  };
+  startDate: string;
+  endDate: string;
+  closeDate: string;
+  customer: {
+    id: number;
+    name: string;
+  };
+  project: {
+    id: number;
+    name: string;
+  };
+  testType: {
+    id: number;
+    name: string;
+  };
+  deviceList: {
+    id: number;
+    name: string;
+  }[];
+  csm: {
+    id: number;
+    name: string;
+  };
+  roles?: {
+    role?: {
+      id: number;
+      name: string;
+    };
+    user?: {
+      id: number;
+      name: string;
+      surname: string;
+    };
+  }[];
+  description?: string;
+  productLink?: string;
+  goal?: string;
+  outOfScope?: string;
+  deviceRequirements?: string;
+  target?: {
+    notes?: string;
+    size?: number;
+    cap?: number;
+  };
+  countries?: CountryCode[];
+  languages?: {
+    id: number;
+    name: string;
+  }[];
+  browsers?: {
+    id: number;
+    name: string;
+  }[];
+  productType?: {
+    id: number;
+    name: string;
+  };
+  phase: {
+    id: number;
+    name: string;
+  };
+  notes?: string;
+};
+export type GetDossiersByCampaignApiArg = {
+  /** A campaign id */
+  campaign: string;
+};
+export type GetCustomersByCustomerProjectsApiResponse = /** status 200 OK */ {
+  results: {
+    id: number;
+    name: string;
+  }[];
+};
+export type GetCustomersByCustomerProjectsApiArg = {
+  customer: string;
+};
+export type PostCustomersByCustomerProjectsApiResponse = /** status 200 OK */ {
+  id: number;
+  name: string;
+};
+export type PostCustomersByCustomerProjectsApiArg = {
+  customer: string;
   body: {
-    form?: {
-      value: {
-        id?: number | number[];
-        serialized?:
-          | string
-          | string[]
-          | {
-              city: string;
-              country: string;
-            };
-      };
-      question: number;
-    }[];
-    device?: number[];
+    name: string;
+  };
+};
+export type GetUsersByRoleByRoleApiResponse = /** status 200 OK */ {
+  results: {
+    id: number;
+    name: string;
+    surname: string;
+  }[];
+};
+export type GetUsersByRoleByRoleApiArg = {
+  role: "tester_lead" | "quality_leader" | "ux_researcher" | "assistants";
+};
+export type GetBrowsersApiResponse = /** status 200 OK */ {
+  results: {
+    id: number;
+    name: string;
+  }[];
+};
+export type GetBrowsersApiArg = void;
+export type GetProductTypesApiResponse = /** status 200 OK */ {
+  results: {
+    id: number;
+    name: string;
+  }[];
+};
+export type GetProductTypesApiArg = void;
+export type GetPhasesApiResponse = /** status 200 OK */ {
+  results: {
+    id: number;
+    name: string;
+    type: {
+      id: number;
+      name: string;
+    };
+  }[];
+};
+export type GetPhasesApiArg = void;
+export type PutDossiersByCampaignPhasesApiResponse = /** status 200 OK */ {
+  id: number;
+  name: string;
+};
+export type PutDossiersByCampaignPhasesApiArg = {
+  /** A campaign id */
+  campaign: string;
+  body: {
+    phase: number;
   };
 };
 export type Agreement = {
@@ -2490,8 +2831,13 @@ export type CampaignOptional = {
   ux_effort?: number;
   preview_link?: TranslatablePage;
   manual_link?: TranslatablePage;
-  bugform_link?: {} | TranslatablePage;
+  bugform_link?: boolean | TranslatablePage;
   applied?: boolean;
+  visibility?: {
+    freeSpots?: number;
+    totalSpots?: number;
+    type?: "available" | "unavailable" | "candidate";
+  };
 };
 export type CampaignType = {} | {};
 export type CampaignRequired = {
@@ -2511,6 +2857,8 @@ export type BugTag = {
   id: number;
   name: string;
 };
+export type Gender = "male" | "female" | "not-specified" | "other";
+export type ProspectStatus = "draft" | "confirmed" | "done";
 export type TaskOptional = {
   name?: string;
   content?: string;
@@ -2534,16 +2882,17 @@ export type PreselectionFormQuestion = {
   | {
       type: "multiselect" | "select" | "radio";
       options: string[];
+      invalidOptions?: string[];
     }
   | {
       type: string;
       options?: number[];
+      invalidOptions?: number[];
     }
   | {
       type: "gender" | "phone_number" | "address";
     }
 );
-export type ProspectStatus = "draft" | "confirmed" | "done";
 export type CustomUserFieldsType = "text" | "select" | "multiselect";
 export type CustomUserFieldsDataOption = {
   id: number;
@@ -2589,7 +2938,6 @@ export type AdditionalField = {
   text?: string;
   is_candidate?: boolean;
 };
-export type Gender = "male" | "female" | "not-specified" | "other";
 export type Certification = {
   id?: number;
   name: string;
@@ -2668,6 +3016,39 @@ export type RankingItem = {
   name: string;
   monthly_exp: number;
 };
+export type CountryCode = string;
+export type DossierCreationData = {
+  project: number;
+  testType: number;
+  title: {
+    customer: string;
+    tester?: string;
+  };
+  startDate: string;
+  endDate?: string;
+  closeDate?: string;
+  deviceList: number[];
+  csm?: number;
+  roles?: {
+    role: number;
+    user: number;
+  }[];
+  description?: string;
+  productLink?: string;
+  goal?: string;
+  outOfScope?: string;
+  deviceRequirements?: string;
+  target?: {
+    notes?: string;
+    size?: number;
+    cap?: number;
+  };
+  countries?: CountryCode[];
+  languages?: number[];
+  browsers?: number[];
+  productType?: number;
+  notes?: string;
+};
 export const {
   use$getQuery,
   useGetAgreementsQuery,
@@ -2678,42 +3059,46 @@ export const {
   usePostAuthenticateMutation,
   usePostCampaignsMutation,
   useGetCampaignsQuery,
-  useGetCampaignsOwnersQuery,
   useGetCampaignsByCampaignQuery,
   usePutCampaignsByCampaignMutation,
   useGetCampaignsByCampaignBugsQuery,
-  useGetCampaignsByCampaignGroupsQuery,
   usePostCampaignsByCampaignCandidatesMutation,
   useGetCampaignsByCampaignCandidatesQuery,
+  useGetCampaignsByCampaignClustersQuery,
+  useGetCampaignsByCampaignFormsQuery,
+  useGetCampaignsByCampaignGroupsQuery,
+  useGetCampaignsByCampaignObservationsQuery,
   useGetCampaignsByCampaignPayoutsQuery,
+  useGetCampaignsByCampaignProspectQuery,
+  usePutCampaignsByCampaignProspectMutation,
+  usePatchCampaignsByCampaignProspectMutation,
+  usePutCampaignsByCampaignProspectAndTesterIdMutation,
+  useGetCampaignsByCampaignStatsQuery,
   useGetCampaignsByCampaignTasksQuery,
   usePostCampaignsByCampaignTasksMutation,
   useGetCampaignsByCampaignTasksAndTaskQuery,
   usePutCampaignsByCampaignTasksAndTaskMutation,
   useGetCampaignsByCampaignUxQuery,
   usePatchCampaignsByCampaignUxMutation,
-  useGetCampaignsByCampaignClustersQuery,
-  useGetCampaignsByCampaignObservationsQuery,
   usePostCampaignsFormsMutation,
   useGetCampaignsFormsQuery,
   useGetCampaignsFormsByFormIdQuery,
   usePutCampaignsFormsByFormIdMutation,
-  useGetCampaignsByCampaignFormsQuery,
-  usePutCampaignsByCampaignProspectAndTesterIdMutation,
-  useGetCampaignsByCampaignProspectQuery,
-  usePutCampaignsByCampaignProspectMutation,
-  usePatchCampaignsByCampaignProspectMutation,
-  useGetCampaignsByCampaignStatsQuery,
+  useGetCampaignsOwnersQuery,
   useGetCampaignTypesQuery,
   useGetCertificationsQuery,
   useGetCountriesByCodeRegionQuery,
   useGetCustomersQuery,
+  usePostCustomersMutation,
   useGetCustomUserFieldsQuery,
   useGetDevicesByDeviceTypeModelsQuery,
   useGetDevicesByDeviceTypeOperatingSystemsQuery,
   useGetDevicesByDeviceTypeOsVersionsQuery,
   useGetEducationQuery,
   useGetEmploymentsQuery,
+  usePostJotformsByCampaignMutation,
+  useGetJotformsFormsQuery,
+  useGetJotformsFormsByFormIdQuestionsQuery,
   useGetLanguagesQuery,
   useGetLevelsQuery,
   usePostMediaMutation,
@@ -2739,6 +3124,8 @@ export const {
   useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery,
   usePostUsersMeCampaignsByCampaignIdBugsMutation,
   useGetUsersMeCampaignsByCampaignIdDevicesQuery,
+  useGetUsersMeCampaignsByCampaignIdFormsQuery,
+  usePostUsersMeCampaignsByCampaignIdFormsMutation,
   usePostUsersMeCampaignsByCampaignIdMediaMutation,
   usePostUsersMeCertificationsMutation,
   useDeleteUsersMeCertificationsByCertificationIdMutation,
@@ -2763,6 +3150,14 @@ export const {
   useGetUsersMePopupsByPopupQuery,
   useGetUsersMeRankQuery,
   useGetUsersMeRankListQuery,
-  useGetUsersMeCampaignsByCampaignIdFormsQuery,
-  usePostUsersMeCampaignsByCampaignIdFormsMutation,
+  usePostDossiersMutation,
+  usePutDossiersByCampaignMutation,
+  useGetDossiersByCampaignQuery,
+  useGetCustomersByCustomerProjectsQuery,
+  usePostCustomersByCustomerProjectsMutation,
+  useGetUsersByRoleByRoleQuery,
+  useGetBrowsersQuery,
+  useGetProductTypesQuery,
+  useGetPhasesQuery,
+  usePutDossiersByCampaignPhasesMutation,
 } = injectedRtkApi;

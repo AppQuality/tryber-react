@@ -39,11 +39,6 @@ export interface paths {
     /** Create a new Campaign if you have access to the creation */
     post: operations["post-campaigns"];
   };
-  "/campaigns/owners": {
-    /** Get all the owners of campaigns you have access to */
-    get: operations["get-campaigns-owners"];
-    parameters: {};
-  };
   "/campaigns/{campaign}": {
     /** Get the data of a Campaign if you have access to it */
     get: operations["get-campaigns-campaign"];
@@ -66,6 +61,35 @@ export interface paths {
       };
     };
   };
+  "/campaigns/{campaign}/candidates": {
+    get: operations["get-campaigns-campaign-candidates"];
+    /** The Tryber will be inserted as a candidate Tryber on a specific Campaign */
+    post: operations["post-campaigns-campaign-candidates"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+  };
+  "/campaigns/{campaign}/clusters": {
+    /** Get all clusters for  a specific campaign */
+    get: operations["get-campaigns-campaign-clusters"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+  };
+  "/campaigns/{campaign}/forms": {
+    get: operations["get-campaigns-campaign-forms"];
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+  };
   "/campaigns/{campaign}/groups": {
     /** Get all groups used in a Campaign if you have access to it */
     get: operations["get-campaigns-cid-groups"];
@@ -76,10 +100,9 @@ export interface paths {
       };
     };
   };
-  "/campaigns/{campaign}/candidates": {
-    get: operations["get-campaigns-campaign-candidates"];
-    /** The Tryber will be inserted as a candidate Tryber on a specific Campaign */
-    post: operations["post-campaigns-campaign-candidates"];
+  "/campaigns/{campaign}/observations": {
+    /** Get observations for a campaign */
+    get: operations["get-campaigns-campaign-observations"];
     parameters: {
       path: {
         /** A campaign id */
@@ -93,6 +116,35 @@ export interface paths {
       path: {
         /** A campaign id */
         campaign: components["parameters"]["campaign"];
+      };
+    };
+  };
+  "/campaigns/{campaign}/prospect": {
+    get: operations["get-campaigns-campaign-prospect"];
+    /** Make campaign perspective status done, and change exp points and tester payouts. */
+    put: operations["put-campaigns-campaign-prospect"];
+    patch: operations["patch-campaigns-campaign-prospect"];
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+  };
+  "/campaigns/{campaign}/prospect/{testerId}": {
+    put: operations["put-campaigns-campaign-prospect-testerId"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
+        testerId: components["parameters"]["testerId"];
+      };
+    };
+  };
+  "/campaigns/{campaign}/stats": {
+    get: operations["get-campaigns-campaign-stats"];
+    parameters: {
+      path: {
+        campaign: string;
       };
     };
   };
@@ -133,26 +185,6 @@ export interface paths {
       };
     };
   };
-  "/campaigns/{campaign}/clusters": {
-    /** Get all clusters for  a specific campaign */
-    get: operations["get-campaigns-campaign-clusters"];
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: string;
-      };
-    };
-  };
-  "/campaigns/{campaign}/observations": {
-    /** Get observations for a campaign */
-    get: operations["get-campaigns-campaign-observations"];
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: string;
-      };
-    };
-  };
   "/campaigns/forms": {
     get: operations["get-campaigns-forms"];
     post: operations["post-campaigns-forms"];
@@ -167,42 +199,10 @@ export interface paths {
       };
     };
   };
-  "/campaigns/{campaign}/forms": {
-    get: operations["get-campaigns-campaign-forms"];
-    parameters: {
-      path: {
-        campaign: string;
-      };
-    };
-  };
-  "/campaigns/{campaign}/prospect/{testerId}": {
-    put: operations["put-campaigns-campaign-prospect-testerId"];
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: components["parameters"]["campaign"];
-        testerId: components["parameters"]["testerId"];
-      };
-    };
-  };
-  "/campaigns/{campaign}/prospect": {
-    get: operations["get-campaigns-campaign-prospect"];
-    /** Make campaign perspective status done, and change exp points and tester payouts. */
-    put: operations["put-campaigns-campaign-prospect"];
-    patch: operations["patch-campaigns-campaign-prospect"];
-    parameters: {
-      path: {
-        campaign: string;
-      };
-    };
-  };
-  "/campaigns/{campaign}/stats": {
-    get: operations["get-campaigns-campaign-stats"];
-    parameters: {
-      path: {
-        campaign: string;
-      };
-    };
+  "/campaigns/owners": {
+    /** Get all the owners of campaigns you have access to */
+    get: operations["get-campaigns-owners"];
+    parameters: {};
   };
   "/campaignTypes": {
     get: operations["get-campaign-types"];
@@ -224,6 +224,7 @@ export interface paths {
   "/customers": {
     /** Get all the customers you have access to */
     get: operations["get-customers"];
+    post: operations["post-customers"];
     parameters: {};
   };
   "/custom_user_fields": {
@@ -264,6 +265,27 @@ export interface paths {
   "/employments": {
     /** Get all employments */
     get: operations["get-employments"];
+  };
+  "/jotforms/{campaign}": {
+    post: operations["post-jotforms-campaignId"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+  };
+  "/jotforms/forms": {
+    get: operations["get-jotforms"];
+    parameters: {};
+  };
+  "/jotforms/forms/{formId}/questions": {
+    get: operations["get-jotforms-forms-formId-questions"];
+    parameters: {
+      path: {
+        formId: string;
+      };
+    };
   };
   "/languages": {
     /** Get all languages */
@@ -317,6 +339,14 @@ export interface paths {
     get: operations["get-users"];
     /** Create a new user */
     post: operations["post-users"];
+  };
+  "/users/by-email/{email}": {
+    head: operations["head-users-by-email-email"];
+    parameters: {
+      path: {
+        email: string;
+      };
+    };
   };
   "/users/me": {
     /** Get your user data */
@@ -382,6 +412,15 @@ export interface paths {
   };
   "/users/me/campaigns/{campaignId}/devices": {
     get: operations["get-users-me-campaigns-campaignId-devices"];
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+  };
+  "/users/me/campaigns/{campaignId}/forms": {
+    get: operations["get-users-me-campaign-campaignId-forms"];
+    post: operations["post-users-me-campaigns-campaignId-forms"];
     parameters: {
       path: {
         campaignId: string;
@@ -502,12 +541,53 @@ export interface paths {
   "/users/me/rank/list": {
     get: operations["get-users-me-rank-list"];
   };
-  "/users/me/campaigns/{campaignId}/forms": {
-    get: operations["get-users-me-campaign-campaignId-forms"];
-    post: operations["post-users-me-campaigns-campaignId-forms"];
+  "/dossiers": {
+    post: operations["post-dossiers"];
+    parameters: {};
+  };
+  "/dossiers/{campaign}": {
+    get: operations["get-dossiers-campaign"];
+    put: operations["put-dossiers-campaign"];
     parameters: {
       path: {
-        campaignId: string;
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+  };
+  "/customers/{customer}/projects": {
+    get: operations["get-customers-customer-projects"];
+    post: operations["post-customers-customer-projects"];
+    parameters: {
+      path: {
+        customer: string;
+      };
+    };
+  };
+  "/users/by-role/{role}": {
+    get: operations["get-users-by-role-role"];
+    parameters: {
+      path: {
+        role: "tester_lead" | "quality_leader" | "ux_researcher" | "assistants";
+      };
+    };
+  };
+  "/browsers": {
+    get: operations["get-browsers"];
+  };
+  "/productTypes": {
+    get: operations["get-productTypes"];
+    parameters: {};
+  };
+  "/phases": {
+    get: operations["get-phases"];
+  };
+  "/dossiers/{campaign}/phases": {
+    put: operations["put-dossiers-campaign-phases"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
       };
     };
   };
@@ -622,6 +702,12 @@ export interface components {
       bugform_link?: boolean | components["schemas"]["TranslatablePage"];
       /** @description True if you applied on this Campaign */
       applied?: boolean;
+      visibility?: {
+        freeSpots?: number;
+        totalSpots?: number;
+        /** @enum {string} */
+        type?: "available" | "unavailable" | "candidate";
+      };
     };
     CampaignRequired: {
       name: string;
@@ -726,10 +812,12 @@ export interface components {
           /** @enum {string} */
           type: "multiselect" | "select" | "radio";
           options: string[];
+          invalidOptions?: string[];
         }
       | {
           type: string;
           options?: number[];
+          invalidOptions?: number[];
         }
       | {
           /** @enum {string} */
@@ -822,6 +910,43 @@ export interface components {
      * @enum {string}
      */
     ProspectStatus: "draft" | "confirmed" | "done";
+    /** CountryCode */
+    CountryCode: string;
+    DossierCreationData: {
+      project: number;
+      testType: number;
+      title: {
+        customer: string;
+        tester?: string;
+      };
+      /** Format: date-time */
+      startDate: string;
+      /** Format: date-time */
+      endDate?: string;
+      /** Format: date-time */
+      closeDate?: string;
+      deviceList: number[];
+      csm?: number;
+      roles?: {
+        role: number;
+        user: number;
+      }[];
+      description?: string;
+      productLink?: string;
+      goal?: string;
+      outOfScope?: string;
+      deviceRequirements?: string;
+      target?: {
+        notes?: string;
+        size?: number;
+        cap?: number;
+      };
+      countries?: components["schemas"]["CountryCode"][];
+      languages?: number[];
+      browsers?: number[];
+      productType?: number;
+      notes?: string;
+    };
   };
   responses: {
     /** A user */
@@ -839,6 +964,8 @@ export interface components {
           lastName?: string;
           token?: string;
           username?: string;
+          iat?: number;
+          exp?: number;
         };
       };
     };
@@ -908,6 +1035,7 @@ export interface components {
     search: string;
     testerId: string;
   };
+  requestBodies: {};
 }
 
 export interface operations {
@@ -1064,7 +1192,9 @@ export interface operations {
       /** Unauthorized */
       401: {
         content: {
-          "application/json": string;
+          "application/json": {
+            message?: string;
+          };
         };
       };
     };
@@ -1112,7 +1242,12 @@ export interface operations {
               /** @enum {string} */
               status?: "running" | "closed" | "incoming";
               /** @enum {string} */
-              visibility?: "admin" | "smallgroup" | "logged" | "public";
+              visibility?:
+                | "admin"
+                | "smallgroup"
+                | "logged"
+                | "public"
+                | "target";
               /** @enum {string} */
               resultType?: "bug" | "bugparade" | "no";
               csm?: {
@@ -1133,6 +1268,21 @@ export interface operations {
                 id?: number;
                 name: string;
               };
+              phase?: {
+                id: number;
+                name: string;
+              };
+              roles?: {
+                role: {
+                  id: number;
+                  name: string;
+                };
+                user: {
+                  id: number;
+                  name: string;
+                  surname: string;
+                };
+              }[];
             }[];
           } & components["schemas"]["PaginationData"];
         };
@@ -1157,24 +1307,6 @@ export interface operations {
       };
     };
   };
-  /** Get all the owners of campaigns you have access to */
-  "get-campaigns-owners": {
-    parameters: {};
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id: number;
-            name: string;
-            surname: string;
-          }[];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
   /** Get the data of a Campaign if you have access to it */
   "get-campaigns-campaign": {
     parameters: {
@@ -1192,6 +1324,7 @@ export interface operations {
             title: string;
             type: string;
             typeDescription: string;
+            preselectionFormId?: number;
           };
         };
       };
@@ -1280,28 +1413,6 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
-  /** Get all groups used in a Campaign if you have access to it */
-  "get-campaigns-cid-groups": {
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id: number;
-            name: string;
-          }[];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
   "get-campaigns-campaign-candidates": {
     parameters: {
       path: {
@@ -1319,6 +1430,14 @@ export interface operations {
         filterByInclude?: unknown;
         /** Key-value Array for item filtering */
         filterByExclude?: unknown;
+        /** Array with min and max */
+        filterByAge?: unknown;
+        /** Show accepted/candidates or both */
+        show?:
+          | "onlyAccepted"
+          | "onlyCandidates"
+          | "all"
+          | "candidatesAndExcluded";
       };
     };
     responses: {
@@ -1330,8 +1449,15 @@ export interface operations {
               id: number;
               name: string;
               surname: string;
+              gender: components["schemas"]["Gender"];
+              age: number;
               experience: number;
-              level: string;
+              businessCps: number;
+              businessCpsLastMonth: number;
+              levels: {
+                bugHunting: string;
+                metal: string;
+              };
               devices: {
                 manufacturer?: string;
                 model?: string;
@@ -1344,6 +1470,8 @@ export interface operations {
                 title?: string;
                 value?: string;
               }[];
+              /** @enum {string} */
+              status?: "candidate" | "excluded" | "selected";
             }[];
           } & components["schemas"]["PaginationData"];
         };
@@ -1403,260 +1531,6 @@ export interface operations {
       };
     };
   };
-  "get-campaigns-campaign-payouts": {
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: components["parameters"]["campaign"];
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            maxBonusBug: number;
-            completionRule: {
-              bugs?: number;
-              usecases?: number;
-            };
-            testSuccess: {
-              payout: number;
-              points: number;
-              message: string;
-            };
-            testFailure: {
-              payout: number;
-              points: number;
-              message: string;
-            };
-          };
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  /** Get all UseCases linked to a Campaign */
-  "get-campaigns-campaign-tasks": {
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: components["parameters"]["campaign"];
-      };
-    };
-    responses: {
-      /** A list of UseCase linked with the Campaign */
-      200: {
-        content: {
-          "application/json": (components["schemas"]["Task"] & {
-            id?: number;
-          })[];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  /** Create a new UseCase and link it to a Campaign */
-  "post-campaigns-campaign-tasks": {
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: components["parameters"]["campaign"];
-      };
-    };
-    responses: {
-      /** Created */
-      201: unknown;
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-    /** The data of the new UseCase to link to the Campaign */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["TaskOptional"];
-      };
-    };
-  };
-  /** Get the data of a UseCase in a Campaign */
-  "get-campaigns-campaign-tasks-task": {
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: components["parameters"]["campaign"];
-        /** A task id */
-        task: components["parameters"]["task"];
-      };
-    };
-    responses: {
-      /** A UseCase linked with the Campaign */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Task"];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  /** Edit a UseCase in a Campaign */
-  "put-campaigns-campaign-tasks-task": {
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: components["parameters"]["campaign"];
-        /** A task id */
-        task: components["parameters"]["task"];
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Task"];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-    /** The data to edit in the UseCase linked to the Campaign */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["TaskOptional"];
-      };
-    };
-  };
-  /** Get the data of a UseCase in a Campaign */
-  "get-campaigns-campaign-ux": {
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: string;
-      };
-    };
-    responses: {
-      /** A UseCase linked with the Campaign */
-      200: {
-        content: {
-          "application/json": {
-            /** @enum {string} */
-            status: "draft" | "published" | "draft-modified";
-            goal: string;
-            usersNumber: number;
-            insights?: {
-              id: number;
-              title: string;
-              severity: {
-                id: number;
-                name: string;
-              };
-              description: string;
-              clusters:
-                | "all"
-                | {
-                    id: number;
-                    name: string;
-                  }[];
-              videoParts: {
-                id: number;
-                start: number;
-                end: number;
-                mediaId: number;
-                url: string;
-                streamUrl: string;
-                description: string;
-                poster?: string;
-              }[];
-            }[];
-            sentiments: {
-              id: number;
-              value: number;
-              comment: string;
-              cluster: {
-                id: number;
-                name: string;
-              };
-            }[];
-            methodology: {
-              name: string;
-              /** @enum {string} */
-              type: "qualitative" | "quantitative" | "quali-quantitative";
-              description: string;
-            };
-            questions: {
-              id: number;
-              name: string;
-            }[];
-          };
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  "patch-campaigns-campaign-ux": {
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": { [key: string]: unknown };
-        };
-      };
-      403: components["responses"]["Authentication"];
-      404: components["responses"]["NotFound"];
-    };
-    requestBody: {
-      content: {
-        "application/json":
-          | {
-              goal: string;
-              usersNumber: number;
-              insights: {
-                id?: number;
-                title: string;
-                description: string;
-                severityId: number;
-                order: number;
-                clusterIds: number[] | "all";
-                videoParts: {
-                  id?: number;
-                  start: number;
-                  end: number;
-                  mediaId: number;
-                  description: string;
-                  order: number;
-                }[];
-              }[];
-              sentiments: {
-                id?: number;
-                clusterId: number;
-                value: number;
-                comment: string;
-              }[];
-              methodology: {
-                /** @enum {string} */
-                type: "qualitative" | "quantitative" | "quali-quantitative";
-                description: string;
-              };
-              questions: {
-                id?: number;
-                name: string;
-              }[];
-            }
-          | {
-              /** @enum {string} */
-              status: "publish";
-            };
-      };
-    };
-  };
   /** Get all clusters for  a specific campaign */
   "get-campaigns-campaign-clusters": {
     parameters: {
@@ -1675,6 +1549,49 @@ export interface operations {
               name: string;
             }[];
           };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "get-campaigns-campaign-forms": {
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            question: string;
+            shortName?: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Get all groups used in a Campaign if you have access to it */
+  "get-campaigns-cid-groups": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+          }[];
         };
       };
       403: components["responses"]["NotAuthorized"];
@@ -1722,165 +1639,11 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
-  "get-campaigns-forms": {
-    parameters: {
-      query: {
-        /** A comma separated list of fields which will be searched */
-        searchBy?: components["parameters"]["searchBy"];
-        /** The value to search for */
-        search?: components["parameters"]["search"];
-        /** Max items to retrieve */
-        limit?: components["parameters"]["limit"];
-        /** Items to skip for pagination */
-        start?: components["parameters"]["start"];
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            results: {
-              id: number;
-              name: string;
-              campaign?: number;
-            }[];
-            limit?: number;
-            start: number;
-            size: number;
-            total?: number;
-          };
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  "post-campaigns-forms": {
-    parameters: {};
-    responses: {
-      /** Created */
-      201: {
-        content: {
-          "application/json": {
-            id: number;
-            name: string;
-            campaign?: {
-              id: number;
-              name: string;
-            };
-            fields?: ({
-              id: number;
-            } & components["schemas"]["PreselectionFormQuestion"])[];
-          };
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-    requestBody: {
-      content: {
-        "application/json": {
-          name: string;
-          fields: components["schemas"]["PreselectionFormQuestion"][];
-          campaign?: number;
-        };
-      };
-    };
-  };
-  "get-campaigns-forms-formId": {
-    parameters: {
-      path: {
-        formId: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id: number;
-            /** @example My form */
-            name: string;
-            campaign?: {
-              id: number;
-              name: string;
-            };
-            fields: ({
-              id: number;
-            } & components["schemas"]["PreselectionFormQuestion"])[];
-          };
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  "put-campaigns-forms-formId": {
-    parameters: {
-      path: {
-        formId: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id: number;
-            name: string;
-            fields: ({
-              id: number;
-            } & components["schemas"]["PreselectionFormQuestion"])[];
-            campaign?: {
-              id: number;
-              name: string;
-            };
-          };
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-    requestBody: {
-      content: {
-        "application/json": {
-          name: string;
-          campaign?: number;
-          fields: ({
-            id?: number;
-          } & components["schemas"]["PreselectionFormQuestion"])[];
-        };
-      };
-    };
-  };
-  "get-campaigns-campaign-forms": {
-    parameters: {
-      path: {
-        campaign: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id: number;
-            question: string;
-            shortName?: string;
-          }[];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  "put-campaigns-campaign-prospect-testerId": {
+  "get-campaigns-campaign-payouts": {
     parameters: {
       path: {
         /** A campaign id */
         campaign: components["parameters"]["campaign"];
-        testerId: components["parameters"]["testerId"];
       };
     };
     responses: {
@@ -1888,39 +1651,26 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            payout: {
-              completion: number;
-              bugs: number;
-              refund: number;
-              extra: number;
+            maxBonusBug: number;
+            completionRule: {
+              bugs?: number;
+              usecases?: number;
             };
-            experience: {
-              completion: number;
-              extra: number;
+            testSuccess: {
+              payout: number;
+              points: number;
+              message: string;
             };
-            note: string;
-            completed: boolean;
+            testFailure: {
+              payout: number;
+              points: number;
+              message: string;
+            };
           };
         };
       };
-    };
-    requestBody: {
-      content: {
-        "application/json": {
-          payout: {
-            completion: number;
-            bugs: number;
-            refund: number;
-            extra: number;
-          };
-          experience: {
-            completion: number;
-            extra: number;
-          };
-          note: string;
-          completed: boolean;
-        };
-      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
     };
   };
   "get-campaigns-campaign-prospect": {
@@ -2048,6 +1798,54 @@ export interface operations {
       };
     };
   };
+  "put-campaigns-campaign-prospect-testerId": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
+        testerId: components["parameters"]["testerId"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            payout: {
+              completion: number;
+              bugs: number;
+              refund: number;
+              extra: number;
+            };
+            experience: {
+              completion: number;
+              extra: number;
+            };
+            note: string;
+            completed: boolean;
+          };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          payout: {
+            completion: number;
+            bugs: number;
+            refund: number;
+            extra: number;
+          };
+          experience: {
+            completion: number;
+            extra: number;
+          };
+          note: string;
+          completed: boolean;
+        };
+      };
+    };
+  };
   "get-campaigns-campaign-stats": {
     parameters: {
       path: {
@@ -2065,6 +1863,336 @@ export interface operations {
       };
     };
   };
+  /** Get all UseCases linked to a Campaign */
+  "get-campaigns-campaign-tasks": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
+      };
+    };
+    responses: {
+      /** A list of UseCase linked with the Campaign */
+      200: {
+        content: {
+          "application/json": (components["schemas"]["Task"] & {
+            id?: number;
+          })[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Create a new UseCase and link it to a Campaign */
+  "post-campaigns-campaign-tasks": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
+      };
+    };
+    responses: {
+      /** Created */
+      201: unknown;
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    /** The data of the new UseCase to link to the Campaign */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["TaskOptional"];
+      };
+    };
+  };
+  /** Get the data of a UseCase in a Campaign */
+  "get-campaigns-campaign-tasks-task": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
+        /** A task id */
+        task: components["parameters"]["task"];
+      };
+    };
+    responses: {
+      /** A UseCase linked with the Campaign */
+      200: {
+        content: {
+          "application/json": components["schemas"]["Task"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Edit a UseCase in a Campaign */
+  "put-campaigns-campaign-tasks-task": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
+        /** A task id */
+        task: components["parameters"]["task"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": components["schemas"]["Task"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    /** The data to edit in the UseCase linked to the Campaign */
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["TaskOptional"];
+      };
+    };
+  };
+  /** Get the data of a UseCase in a Campaign */
+  "get-campaigns-campaign-ux": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** A UseCase linked with the Campaign */
+      200: {
+        content: {
+          "application/json": {
+            /** @enum {string} */
+            status: "draft" | "published" | "draft-modified";
+            goal: string;
+            usersNumber: number;
+            sentiments: {
+              id: number;
+              value: number;
+              comment: string;
+              cluster: {
+                id: number;
+                name: string;
+              };
+            }[];
+            methodology: {
+              name: string;
+              /** @enum {string} */
+              type: "qualitative" | "quantitative" | "quali-quantitative";
+              description: string;
+            };
+            questions: {
+              id: number;
+              name: string;
+            }[];
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "patch-campaigns-campaign-ux": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": { [key: string]: unknown };
+        };
+      };
+      403: components["responses"]["Authentication"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json":
+          | {
+              goal: string;
+              usersNumber: number;
+              sentiments: {
+                id?: number;
+                clusterId: number;
+                value: number;
+                comment: string;
+              }[];
+              methodology: {
+                /** @enum {string} */
+                type: "qualitative" | "quantitative" | "quali-quantitative";
+                description: string;
+              };
+              questions: {
+                id?: number;
+                name: string;
+              }[];
+            }
+          | {
+              /** @enum {string} */
+              status: "publish";
+            };
+      };
+    };
+  };
+  "get-campaigns-forms": {
+    parameters: {
+      query: {
+        /** A comma separated list of fields which will be searched */
+        searchBy?: components["parameters"]["searchBy"];
+        /** The value to search for */
+        search?: components["parameters"]["search"];
+        /** Max items to retrieve */
+        limit?: components["parameters"]["limit"];
+        /** Items to skip for pagination */
+        start?: components["parameters"]["start"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results: {
+              id: number;
+              name: string;
+              campaign?: number;
+            }[];
+            limit?: number;
+            start: number;
+            size: number;
+            total?: number;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "post-campaigns-forms": {
+    parameters: {};
+    responses: {
+      /** Created */
+      201: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+            campaign?: {
+              id: number;
+              name: string;
+            };
+            fields?: ({
+              id: number;
+            } & components["schemas"]["PreselectionFormQuestion"])[];
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          name: string;
+          fields: components["schemas"]["PreselectionFormQuestion"][];
+          campaign?: number;
+          creationDate?: string;
+        };
+      };
+    };
+  };
+  "get-campaigns-forms-formId": {
+    parameters: {
+      path: {
+        formId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            /** @example My form */
+            name: string;
+            campaign?: {
+              id: number;
+              name: string;
+            };
+            fields: ({
+              id: number;
+            } & components["schemas"]["PreselectionFormQuestion"])[];
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "put-campaigns-forms-formId": {
+    parameters: {
+      path: {
+        formId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+            fields: ({
+              id: number;
+            } & components["schemas"]["PreselectionFormQuestion"])[];
+            campaign?: {
+              id: number;
+              name: string;
+            };
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          name: string;
+          campaign?: number;
+          fields: ({
+            id?: number;
+          } & components["schemas"]["PreselectionFormQuestion"])[];
+        };
+      };
+    };
+  };
+  /** Get all the owners of campaigns you have access to */
+  "get-campaigns-owners": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+            surname: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
   "get-campaign-types": {
     parameters: {};
     responses: {
@@ -2073,6 +2201,10 @@ export interface operations {
           "application/json": {
             id: number;
             name: string;
+            customRoles: {
+              roleId: number;
+              userIds: number[];
+            }[];
           }[];
         };
       };
@@ -2139,6 +2271,27 @@ export interface operations {
       403: components["responses"]["NotFound"];
     };
   };
+  "post-customers": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+          };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          name: string;
+        };
+      };
+    };
+  };
   "get-customUserFields": {
     parameters: {};
     responses: {
@@ -2201,8 +2354,9 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            id?: number;
-            name?: string;
+            id: number;
+            name: string;
+            type: string;
           }[];
         };
       };
@@ -2265,6 +2419,72 @@ export interface operations {
       };
       403: components["responses"]["NotAuthorized"];
       404: components["responses"]["NotFound"];
+    };
+  };
+  "post-jotforms-campaignId": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": { [key: string]: unknown };
+        };
+      };
+      /** Forbidden */
+      403: unknown;
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          formId: string;
+          testerIdColumn: string;
+        };
+      };
+    };
+  };
+  "get-jotforms": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: string;
+            name: string;
+            createdAt: string;
+          }[];
+        };
+      };
+      /** Forbidden */
+      403: unknown;
+    };
+  };
+  "get-jotforms-forms-formId-questions": {
+    parameters: {
+      path: {
+        formId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: string;
+            name: string;
+            title: string;
+            description?: string;
+            type: string;
+          }[];
+        };
+      };
+      /** Forbidden */
+      403: unknown;
     };
   };
   /** Get all languages */
@@ -2557,10 +2777,20 @@ export interface operations {
   /** Create a new user */
   "post-users": {
     responses: {
-      /** OK */
-      200: {
+      /** Created */
+      201: {
         content: {
-          "application/json": components["schemas"]["User"];
+          "application/json": {
+            id: number;
+          };
+        };
+      };
+      /** Precondition Failed */
+      412: {
+        content: {
+          "application/json": {
+            message?: string;
+          };
         };
       };
     };
@@ -2582,6 +2812,21 @@ export interface operations {
           referral?: string;
         };
       };
+    };
+  };
+  "head-users-by-email-email": {
+    parameters: {
+      path: {
+        email: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: unknown;
+      /** Bad Request */
+      400: unknown;
+      /** Not Found */
+      404: unknown;
     };
   };
   /** Get your user data */
@@ -2856,7 +3101,12 @@ export interface operations {
         /** How to order values (ASC, DESC) */
         order?: components["parameters"]["order"];
         /** The field for item order */
-        orderBy?: "name" | "start_date" | "end_date" | "close_date";
+        orderBy?:
+          | "name"
+          | "start_date"
+          | "end_date"
+          | "close_date"
+          | "visibility";
       };
     };
     responses: {
@@ -3043,6 +3293,70 @@ export interface operations {
       };
       403: components["responses"]["NotAuthorized"];
       404: components["responses"]["NotFound"];
+    };
+  };
+  "get-users-me-campaign-campaignId-forms": {
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": (components["schemas"]["PreselectionFormQuestion"] & {
+            value?:
+              | number
+              | {
+                  city?: string;
+                  country?: string;
+                }
+              | number[]
+              | string;
+            validation?: {
+              regex: string;
+              error?: string;
+            };
+            id: number;
+          })[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "post-users-me-campaigns-campaignId-forms": {
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: unknown;
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          form?: {
+            value: {
+              id?: number | number[];
+              serialized?:
+                | string
+                | string[]
+                | {
+                    city: string;
+                    country: string;
+                  };
+            };
+            question: number;
+          }[];
+          device?: number[];
+        };
+      };
     };
   };
   "post-users-me-campaigns-campaignId-media": {
@@ -3560,8 +3874,7 @@ export interface operations {
           };
         };
       };
-      /** Forbidden */
-      403: unknown;
+      403: components["responses"]["NotAuthorized"];
     };
     requestBody: {
       content: {
@@ -3779,66 +4092,289 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
-  "get-users-me-campaign-campaignId-forms": {
+  "post-dossiers": {
+    parameters: {};
+    responses: {
+      /** Created */
+      201: {
+        content: {
+          "application/json": {
+            id: number;
+            /** @enum {string} */
+            message?: "HOOK_FAILED";
+          };
+        };
+      };
+      /** Partial Content */
+      206: {
+        content: {
+          "application/json": {
+            id?: number;
+          };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DossierCreationData"] & {
+          duplicate?: {
+            fields?: number;
+            useCases?: number;
+            mailMerges?: number;
+            pages?: number;
+            testers?: number;
+            campaign?: number;
+          };
+        };
+      };
+    };
+  };
+  "get-dossiers-campaign": {
     parameters: {
       path: {
-        campaignId: string;
+        /** A campaign id */
+        campaign: string;
       };
     };
     responses: {
       /** OK */
       200: {
         content: {
-          "application/json": (components["schemas"]["PreselectionFormQuestion"] & {
-            value?:
-              | number
-              | {
-                  city?: string;
-                  country?: string;
-                }
-              | number[]
-              | string;
-            validation?: {
-              regex: string;
-              error?: string;
-            };
+          "application/json": {
             id: number;
-          })[];
+            title: {
+              customer: string;
+              tester: string;
+            };
+            /** Format: date-time */
+            startDate: string;
+            /** Format: date-time */
+            endDate: string;
+            /** Format: date-time */
+            closeDate: string;
+            customer: {
+              id: number;
+              name: string;
+            };
+            project: {
+              id: number;
+              name: string;
+            };
+            testType: {
+              id: number;
+              name: string;
+            };
+            deviceList: {
+              id: number;
+              name: string;
+            }[];
+            csm: {
+              id: number;
+              name: string;
+            };
+            roles?: {
+              role?: {
+                id: number;
+                name: string;
+              };
+              user?: {
+                id: number;
+                name: string;
+                surname: string;
+              };
+            }[];
+            description?: string;
+            productLink?: string;
+            goal?: string;
+            outOfScope?: string;
+            deviceRequirements?: string;
+            target?: {
+              notes?: string;
+              size?: number;
+              cap?: number;
+            };
+            countries?: components["schemas"]["CountryCode"][];
+            languages?: {
+              id: number;
+              name: string;
+            }[];
+            browsers?: {
+              id: number;
+              name: string;
+            }[];
+            productType?: {
+              id: number;
+              name: string;
+            };
+            phase: {
+              id: number;
+              name: string;
+            };
+            notes?: string;
+          };
         };
       };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
     };
   };
-  "post-users-me-campaigns-campaignId-forms": {
+  "put-dossiers-campaign": {
     parameters: {
       path: {
-        campaignId: string;
+        /** A campaign id */
+        campaign: string;
       };
     };
     responses: {
       /** OK */
-      200: unknown;
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
+      200: {
+        content: {
+          "application/json": { [key: string]: unknown };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DossierCreationData"];
+      };
+    };
+  };
+  "get-customers-customer-projects": {
+    parameters: {
+      path: {
+        customer: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results: {
+              id: number;
+              name: string;
+            }[];
+          };
+        };
+      };
+    };
+  };
+  "post-customers-customer-projects": {
+    parameters: {
+      path: {
+        customer: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+          };
+        };
+      };
     };
     requestBody: {
       content: {
         "application/json": {
-          form?: {
-            value: {
-              id?: number | number[];
-              serialized?:
-                | string
-                | string[]
-                | {
-                    city: string;
-                    country: string;
-                  };
-            };
-            question: number;
-          }[];
-          device?: number[];
+          name: string;
+        };
+      };
+    };
+  };
+  "get-users-by-role-role": {
+    parameters: {
+      path: {
+        role: "tester_lead" | "quality_leader" | "ux_researcher" | "assistants";
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results: {
+              id: number;
+              name: string;
+              surname: string;
+            }[];
+          };
+        };
+      };
+    };
+  };
+  "get-browsers": {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results: {
+              id: number;
+              name: string;
+            }[];
+          };
+        };
+      };
+    };
+  };
+  "get-productTypes": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results: {
+              id: number;
+              name: string;
+            }[];
+          };
+        };
+      };
+    };
+  };
+  "get-phases": {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results: {
+              id: number;
+              name: string;
+              type: {
+                id: number;
+                name: string;
+              };
+            }[];
+          };
+        };
+      };
+    };
+  };
+  "put-dossiers-campaign-phases": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+          };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          phase: number;
         };
       };
     };
