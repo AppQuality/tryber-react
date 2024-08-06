@@ -7,6 +7,18 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Columns from "./columns";
 import useCampaigns from "./useCampaigns";
+import styled from "styled-components";
+
+const CustomMobileTemplateTable = styled(Table)`
+  .table-card {
+    grid-template-areas:
+      "left overline"
+      "left title"
+      "left more"
+      "left cta";
+    grid-template-columns: 24px 1fr;
+  }
+`;
 
 const CampaignsTable = () => {
   const { t } = useTranslation();
@@ -31,7 +43,7 @@ const CampaignsTable = () => {
         columns={columns}
         label={t("Order By", { context: "Sort Table Select" })}
       />
-      <Table
+      <CustomMobileTemplateTable
         dataSource={campaigns || []}
         isLoading={isLoading}
         isStriped={true}
