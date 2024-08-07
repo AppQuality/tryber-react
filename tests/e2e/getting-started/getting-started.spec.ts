@@ -121,7 +121,11 @@ test.describe("The getting started page", () => {
     await termsAndConditions.click();
     const newPage = await pagePromise;
     await newPage.waitForLoadState();
-    expect(newPage.url()).toContain(i18n.t("/terms-and-conditions/"));
+    expect(newPage.url()).toContain(
+      i18n.t("/terms-and-conditions/", {
+        ns: "links",
+      })
+    );
   });
   test(`should display a link privacy policy`, async ({ page, i18n }) => {
     await expect(page.getByTestId("privacy-policy")).toBeVisible();
@@ -129,7 +133,7 @@ test.describe("The getting started page", () => {
       "Privacy Policy"
     );
   });
-  test(`if the user click the privacy policy link another tab is opened to https://www.iubenda.com/privacy-policy/7934311`, async ({
+  test(`if the user click the privacy policy link another tab is opened to /privacy-policy/`, async ({
     page,
     i18n,
     context,
@@ -141,7 +145,9 @@ test.describe("The getting started page", () => {
     const newPage = await pagePromise;
     await newPage.waitForLoadState();
     expect(newPage.url()).toContain(
-      i18n.t("https://www.iubenda.com/privacy-policy/7934311")
+      i18n.t("/privacy-policy/", {
+        ns: "links",
+      })
     );
   });
   test(`should display a link to ethical code`, async ({ page, i18n }) => {
