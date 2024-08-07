@@ -1,11 +1,11 @@
 {
-  "/ethical-code/": "/legal/ethical-code",
+  "/ethical-code/": "https://tryber.me/fr/legal/ethical-code",
   "/payment_conditions": "https://app.tryber.me/payment-conditions/",
-  "/terms-and-conditions/": "/legal/terms-and-conditions",
+  "/terms-and-conditions/": "https://tryber.me/fr/legal/terms-and-conditions",
   "Bug details help article": "https://app.tryber.me/bug-reporting-rules/",
   "Fiscal type help article": "https://app.tryber.me/it/per-saperne-di-piu-pagamenti-privacy/",
   "Ranking help article": "https://app.tryber.me/tryber-new-ranking-rules-2022-edition/",
   "Wallet help article": "https://app.tryber.me/wallet-how-does-it-work/",
-  "/privacy-policy/": "/legal/privacy-policy",
+  "/privacy-policy/": "https://tryber.me/fr/legal/privacy-policy",
   "tax id help article": "https://app.tryber.me/whats-tax-id-number/"
 }
