@@ -87,7 +87,14 @@ const useCampaigns = ({ page, order, orderBy }: CampaignsTableProps) => {
         title: dateFormatter(cp.dates.end),
       },
       availability: {
-        title: cp.visibility?.type || "",
+        title:
+          cp.visibility?.type === "available"
+            ? t(`Open for you! Apply now.`)
+            : cp.visibility?.type === "unavailable"
+            ? t(`Oops, this one's not available.`)
+            : cp.visibility?.type === "candidate"
+            ? t(`You're in the running. Fingers crossed!`)
+            : cp.visibility?.type,
         content: <AvailabilityIcon type={cp.visibility?.type || ""} />,
       },
       actions: {

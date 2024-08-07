@@ -24,7 +24,7 @@ module.exports = {
         // Check out https://github.com/acornjs/acorn/tree/master/acorn#interface for additional options
       },
     },
-    lngs: ["en", "it", "es"],
+    lngs: ["en", "it", "es", "fr"],
     ns: ["links", "translation"],
     defaultLng: "en",
     defaultNs: "translation",
