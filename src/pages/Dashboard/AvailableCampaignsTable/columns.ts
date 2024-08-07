@@ -44,6 +44,7 @@ const Columns = ({
       key: "availability",
       isSortable: false,
       maxWidth: "60px",
+      hideIndex: true,
       role: "left",
     },
     {
