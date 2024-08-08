@@ -1,11 +1,11 @@
 {
-  "/ethical-code/": "/ethical-code/",
+  "/ethical-code/": "https://tryber.me/it/legal/ethical-code",
   "/payment_conditions": "https://app.tryber.me/it/condizioni-di-pagamento/",
-  "/terms-and-conditions/": "/it/termini-e-condizioni/",
+  "/privacy-policy/": "https://tryber.me/it/legal/privacy-policy",
+  "/terms-and-conditions/": "https://tryber.me/it/legal/terms-and-conditions",
   "Bug details help article": "https://app.tryber.me/it/regole-di-scrittura-dei-bug/",
   "Fiscal type help article": "https://app.tryber.me/it/per-saperne-di-piu-pagamenti-privacy/",
   "Ranking help article": "https://app.tryber.me/it/regolamento-della-nuova-classifica-di-tryber-edizione-2022/",
   "Wallet help article": "https://app.tryber.me/it/portafoglio-come-funziona/",
-  "https://www.iubenda.com/privacy-policy/7934311": "https://www.iubenda.com/privacy-policy/7934311",
   "tax id help article": "https://app.tryber.me/it/cosa-e-il-codice-fiscale/"
 }
