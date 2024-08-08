@@ -28,23 +28,24 @@ const Columns = ({
       title: t("Start Date"),
       dataIndex: "startDate",
       key: "startDate",
-      isSortable: true,
+      isSortable: false,
       maxWidth: "120px",
-      onSort: (sorting: OrderType) => {
-        setOrder(sorting);
-        setOrderBy("start_date");
-      },
     },
     {
       title: t("End Date"),
       dataIndex: "endDate",
       key: "endDate",
-      isSortable: true,
+      isSortable: false,
       maxWidth: "120px",
-      onSort: (sorting: OrderType) => {
-        setOrder(sorting);
-        setOrderBy("end_date");
-      },
+    },
+    {
+      title: "",
+      dataIndex: "availability",
+      key: "availability",
+      isSortable: false,
+      maxWidth: "60px",
+      hideIndex: true,
+      role: "left",
     },
     {
       title: t("Action"),

@@ -2,7 +2,6 @@
   "...wait": "Chargement",
   "/discover-experience-points/": "/discover-experience-points/",
   "/faq/": "/faq/",
-  "/my-account/": "/my-account/",
   "/terms-and-conditions/": "/terms-and-conditions/",
   "/testing-school/": "/testing-school/",
   "<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>": {
@@ -349,6 +348,8 @@
   "Not available": "Non disponible",
   "Not specified": "Non spécifié",
   "Oh no!": "Oh non !",
+  "Oops, this one's not available.": "Oups, celle-ci est fermée.",
+  "Open for you! Apply now.": "Ouvert pour toi ! Postule maintenant.",
   "Operating System": "Système d'exploitation",
   "Operating System Version: <bold>{{version}}</bold>": "Version du système d'exploitation : <bold>{{version}}</bold>",
   "Operating System: <bold>{{platform}}</bold>": "Système d'exploitation : <bold>{{platform}}</bold>",
@@ -562,6 +563,7 @@
   "You need to select a zip code": "Vous devez sélectionner un code postal",
   "You need to set your two-factor authentication for this. Redirecting to the login page": "Vous devez configurer votre authentification à deux facteurs pour cela. Redirection vers la page de connexion",
   "You're a Tryber now": "Vous êtes maintenant Tryber",
+  "You're in the running. Fingers crossed!": "Tu es dans la course. On croise les doigts!",
   "Your Performance": "Votre performance",
   "Your current password is not correct": "Votre mot de passe actuel est incorrect",
   "Your data are safe with us. You can ask them anytime you need. Upon your request, we will provide you a copy of your personal data at the email associated to your Tester ID.": "Vos données sont en sécurité avec nous. Vous pouvez les demander à tout moment. Sur demande, nous vous fournirons une copie de vos données personnelles à l'adresse email associée à votre ID Tryber.",
@@ -620,12 +622,13 @@
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Voir les détails",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Télécharger le reçu",
   "available tags: <br>, <bold>": {
-    "SIGNUP_WELCOME_MESSAGE": "<strong>Bienvenue à bord !</strong><br />Nous vous avons envoyé un email de bienvenue à l'adresse que vous avez utilisée lors de l'inscription. Il est maintenant temps d'explorer l'univers TRYBER : choisissez parmi nos cours universitaires, postulez pour des campagnes de test et rejoignez notre communauté!",
+    "BUGFORM_REPLICABILTY_MODAL_TXT": "",
     "BUGFORM_SEVERITY_MODAL_TXT": "<bold>Sévérité du bug</bold><br>\n<br/>\nLa sévérité est une estimation de l'impact du problème sur l'utilisation du produit testé. Cette estimation est calculée en gardant à l'esprit à la fois le contexte où le problème se produit (sections principales ou secondaires de l'objet de la campagne) et les conditions dans lesquelles il a été trouvé par rapport à une utilisation moyenne. La sévérité ne doit jamais être influencée par l'évaluation de la reproductibilité : ce qui guide le choix est principalement l'impact sur l'utilisateur, le contexte (importance de la section) et la présence ou l'absence d'une solution de contournement.<br>\n<br>\n<b>BASSE</b><br>\nProblèmes ayant un impact minimal sur l'utilisation du produit. L'utilisateur peut continuer à utiliser et à tester le produit sans grandes difficultés. Souvent, il s'agit de bugs d'UTILISABILITÉ, de TYPO ou GRAPHIQUES.<br>\n<br>\n<b>MOYENNE</b><br>\nProblèmes ayant un impact limité sur l'utilisation du produit. L'utilisateur est encore capable de compléter le processus malgré quelques difficultés rencontrées. Cela peut être tout type de bug.<br>\n<br>\n<b>ÉLEVÉE</b><br>\nProblèmes ayant un impact significatif sur l'utilisation du produit. L'utilisateur les trouve principalement dans les sections principales et peut ne pas être capable de continuer à utiliser et à tester le produit comme prévu. Généralement, le type de bug est un DYSFONCTIONNEMENT, un CRASH, une PERFORMANCE ou une SÉCURITÉ.<br>\n<br>\n<b>CRITIQUE</b><br>\nProblèmes empêchant l'utilisateur de compléter les tâches principales, souvent entraînant un crash système. L'utilisateur est incapable par tous les moyens de compléter la tâche ou de continuer à utiliser le produit de test. Les types de bugs sont soit des DYSFONCTIONNEMENTS, soit des CRASH.<br>",
     "BUGFORM_TYPE_MODAL_TEXT": "<b>Type de bug</b><br>\n<br>\n<b>CRASH</b><br>\nProblèmes liés à des logiciels non réactifs et/ou plantés. L'utilisateur doit réinitialiser ou relancer le logiciel pour continuer à l'utiliser. Quelques exemples : applications se fermant de manière inattendue, chargements interminables, pages d'erreur 404.<br>\n<br>\n<b>GRAPHIQUE</b><br>\nProblèmes liés à l'aspect visuel du produit. Ils peuvent être des éléments qui se chevauchent, un contraste incorrect, des éléments incohérents, du texte ou des médias coupés ou flous, des éléments qui sont soit hors de l'écran soit partiellement non visibles/chevauchés.<br>\n<br>\n<b>PERFORMANCE</b><br>\nProblèmes strictement liés à la vitesse de chargement des contenus ou au temps de réalisation des processus/actions (ralentissement, latence, délais). En cas de chargement interminable (boucle), le type de bug correct est CRASH.<br>\n<br>\n<b>DYSFONCTIONNEMENT</b><br>\nProblèmes liés à un mauvais fonctionnement ou à une fonctionnalité non fonctionnelle du produit. Lorsque la fonctionnalité fonctionne, mais que le résultat est différent de ce à quoi l'utilisateur s'attendait, le type de bug est UTILISABILITÉ.<br>\n<br>\n<b>TYPO</b><br>\nProblèmes liés aux erreurs grammaticales telles que l'orthographe, la sémantique, le lexique, la syntaxe, les phrases interrompues (pas une interruption visuelle), les traductions incorrectes ou incomplètes, les phrases sans sens, le code de programmation visible.<br>\n<br>\n<b>AUTRE</b><br>\nProblèmes non listés dans les catégories précédentes.<br>\n<br>\n<b>SÉCURITÉ</b><br>\nProblèmes liés uniquement à la sécurité et à la confidentialité des données stockées. Cette catégorie inclut les sections avec des mots de passe en clair, l'absence d'expiration de session de connexion ou même la possibilité d'obtenir facilement les données d'autres utilisateurs par des attaques SQL injection ou XSS.<br>\n<br>\n<b>UTILISABILITÉ</b><br>\nProblèmes liés à l'utilisation du produit, rendant difficile pour l'utilisateur d'effectuer une certaine action ou tâche en raison de chemins longs, complexes, moins qu'idéaux ou non intuitifs. Cela se produit lorsque le fonctionnement réel est complètement différent des attentes des utilisateurs. Cette catégorie inclut également l'absence de vérifications sur les données saisies dans les formulaires ; les messages d'erreur n'incluant aucune explication du problème spécifique (erreur générique).",
     "PAYMENTS_MODAL_INVOICE_STEP_4_SUCCESS": "<bold>Nous y sommes (presque) !</bold><br />Nous vous avons envoyé un email à l'adresse de votre compte TRYBER.<br />Dans cet email, vous trouverez toutes les informations nécessaires pour créer votre facture, y compris l'adresse à laquelle vous devez la soumettre.",
     "__RANKING_PROGRESS_EMPATHY_STATE_YOU-ARE-LEGENDARY_MAX:100": "Boo-yah!✌ Vous êtes Légendaire et vous le resterez toujours !\nContinuez à gagner des points et restez en tête du classement.",
-    "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "Le ciel n'est pas la limite ! Vous allez devenir Légendaire le mois prochain :<br></br>c'est le niveau le plus élevé de TRYBER."
+    "__RANKING_PROGRESS_EMPATHY_STATE_YOU-WILL-BE-LEGENDARY_MAX:100": "Le ciel n'est pas la limite ! Vous allez devenir Légendaire le mois prochain :<br></br>c'est le niveau le plus élevé de TRYBER.",
+    "SIGNUP_WELCOME_MESSAGE": "<strong>Bienvenue à bord !</strong><br />Nous vous avons envoyé un email de bienvenue à l'adresse que vous avez utilisée lors de l'inscription. Il est maintenant temps d'explorer l'univers TRYBER : choisissez parmi nos cours universitaires, postulez pour des campagnes de test et rejoignez notre communauté!"
   },
   "available tags: <br>, <p>, <strong>, <title>": {
     "PAYMENTS_MODAL_INVOICE_STEP_3_GET_EMAIL": "<title>Avant de recevoir l'email</title>\n<p>\nVérifiez que tout est correct et confirmez ces détails : vous les retrouverez également dans l'email que nous vous enverrons après cette étape.\n</p>\n<p>\nTitulaire du compte : <strong>{{accountHolder}}</strong>\n</p>\n<p>\nIBAN : <strong>{{iban}}</strong>\n</p>\n<p>\nType fiscal : <strong>{{fiscalType}}</strong>\n</p>"
@@ -711,6 +714,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} téléchargé",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} téléchargés"
   },
+  "/my-account/": "/my-account/",
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS aide les entreprises à créer des expériences mémorables grâce à la puissance de la Communauté TRYBER. <unguess_link>Découvrez UNGUESS</unguess_link>"
   },
