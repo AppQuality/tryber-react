@@ -292,7 +292,11 @@ test.describe("The signup mail page second step", () => {
     await termsAndConditions.click();
     const newPage = await pagePromise;
     await newPage.waitForLoadState();
-    expect(newPage.url()).toContain(i18n.t("/terms-and-conditions/"));
+    expect(newPage.url()).toContain(
+      i18n.t("/terms-and-conditions/", {
+        ns: "links",
+      })
+    );
   });
   test("if the user click the privacy policy link another tab is opened to https://www.iubenda.com/privacy-policy/7934311", async ({
     context,
@@ -305,7 +309,11 @@ test.describe("The signup mail page second step", () => {
     const newPage = await pagePromise;
     await newPage.waitForLoadState();
     expect(newPage.url()).toContain(
-      i18n.t(i18n.t("https://www.iubenda.com/privacy-policy/7934311"))
+      i18n.t(
+        i18n.t("/privacy-policy/", {
+          ns: "links",
+        })
+      )
     );
   });
   test("if the user click the ethical code link another tab is opened to /ethical-code in the current language", async ({
