@@ -116,12 +116,9 @@ export default function GettingStarted() {
                   privacy_link: (
                     <a
                       data-qa="privacy-policy"
-                      href={t(
-                        "https://www.iubenda.com/privacy-policy/7934311",
-                        {
-                          ns: "links",
-                        }
-                      )}
+                      href={t("/privacy-policy/", {
+                        ns: "links",
+                      })}
                       target="_blank"
                       data-tracking="privacy-policy-link"
                     />
