@@ -22,7 +22,7 @@ const resources = {
   en: { translation: en, links: enLinks },
   it: { translation: it, links: itLinks },
   es: { translation: es, links: esLinks },
-  fr: { translation: fr, links: frLinks },
+  // fr: { translation: fr, links: frLinks },
 };
 
 export const i18nOptions: InitOptions = {
