@@ -35,7 +35,7 @@ export const i18nOptions: InitOptions = {
   returnEmptyString: false,
   nsSeparator: false,
   resources,
-  supportedLngs: ["it", "en", "es", "fr"],
+  supportedLngs: ["it", "en", "es"],
   fallbackLng: "en",
   keySeparator: ":::",
   interpolation: {
