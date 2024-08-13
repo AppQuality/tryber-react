@@ -41,7 +41,7 @@ if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
     sampleRate: 100,
   });
 }
-const base = "/:locale(en|it|es)?";
+const base = "/:locale(en|it|es|fr)?";
 
 function Page() {
   const { search } = useLocation();
@@ -155,6 +155,7 @@ function Page() {
                 />
               )}
             />
+
             <SentryRoute
               path={`${base}/it/i-miei-bug`}
               component={({ location }: { location: Location }) => (
@@ -192,7 +193,7 @@ function Page() {
               component={PreviewSelectionForm}
             />
             <SentryRoute
-              path={["/goodbye", "/it/goodbye", "/es/goodbye"]}
+              path={["/goodbye", "/it/goodbye", "/es/goodbye", "/fr/goodbye"]}
               exact
               component={GoodbyePage}
             />
@@ -204,6 +205,9 @@ function Page() {
             </SentryRoute>
             <SentryRoute path={"/es"} exact>
               <Redirect to="/es/my-dashboard" />
+            </SentryRoute>
+            <SentryRoute path={"/fr"} exact>
+              <Redirect to="/fr/my-dashboard" />
             </SentryRoute>
           </Switch>
         </Router>

@@ -129,7 +129,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
                   })}
                 />
                 <Datepicker
-                  key={field.value}
+                  key={field.name}
                   value={field.value}
                   id={"date"}
                   // maxDate={new Date()}
@@ -139,13 +139,14 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
                   })}
                   setText={t("Set")}
                   cancelText={t("Cancel")}
-                  onChange={(v: { value: Date }) =>
+                  onChange={(v: { value: Date }) => {
+                    if (isNaN(v.value.getTime())) return;
                     form.setFieldValue(
                       "date",
-                      v.value ? new Date(v.value) : new Date(),
+                      v.value ? v.value : new Date(),
                       true
-                    )
-                  }
+                    );
+                  }}
                 />
               </>
             )}
@@ -162,7 +163,7 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
                   })}
                 />
                 <Datepicker
-                  key={field.value}
+                  key={field.name}
                   value={field.value}
                   id={"time"}
                   locale={"it"}
@@ -172,13 +173,14 @@ export const BugDetails = ({ className }: BugDetailsProps) => {
                   })}
                   setText={t("Set")}
                   cancelText={t("Cancel")}
-                  onChange={(v: { value: Date }) =>
+                  onChange={(v: { value: Date }) => {
+                    if (isNaN(v.value.getTime())) return;
                     form.setFieldValue(
                       "time",
                       v.value ? new Date(v.value) : new Date(),
                       true
-                    )
-                  }
+                    );
+                  }}
                 />
               </>
             )}

@@ -2,7 +2,6 @@
   "...wait": "Un momento...",
   "/discover-experience-points/": "/it/come-funzionano-i-punti-esperienza/",
   "/faq/": "/it/domande-frequenti/",
-  "/my-account/": "/it/il-mio-account/",
   "/terms-and-conditions/": "/it/termini-e-condizioni/",
   "/testing-school/": "/it/universita-del-test/",
   "<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>": {
@@ -349,6 +348,8 @@
   "Not available": "Non disponibile",
   "Not specified": "Non specificato",
   "Oh no!": "Oh no!",
+  "Oops, this one's not available.": "Ops, questa non è disponibile.",
+  "Open for you! Apply now.": "Aperta per te! Candidati ora.",
   "Operating System": "SO",
   "Operating System Version: <bold>{{version}}</bold>": "Versione Sistema Operativo: <bold>{{version}}</bold>",
   "Operating System: <bold>{{platform}}</bold>": "Sistema Operativo: <bold>{{platform}}</bold>",
@@ -562,6 +563,7 @@
   "You need to select a zip code": "Devi selezionare un CAP",
   "You need to set your two-factor authentication for this. Redirecting to the login page": "È necessario impostare l'autenticazione a due fattori per questo. Reindirizzamento alla pagina di accesso",
   "You're a Tryber now": "Ora fai parte di TRYBER",
+  "You're in the running. Fingers crossed!": "Sei in lizza. Incrociamo le dita!",
   "Your Performance": "Le tue Statistiche",
   "Your current password is not correct": "La tua password attuale non è corretta",
   "Your data are safe with us. You can ask them anytime you need. Upon your request, we will provide you a copy of your personal data at the email associated to your Tester ID.": "I tuoi dati sono al sicuro con noi. Puoi richiederli ogni volta che ne hai bisogno. Su tua richiesta, ti forniremo una copia dei tuoi dati personali all'email associata al tuo Tryber ID",
@@ -711,6 +713,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "/my-account/": "/it/il-mio-account/",
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supporta le aziende nella creazione di esperienze memorabili grazie al potere della Community di TRYBER. <unguess_link>Scopri UNGUESS</unguess_link>"
   },

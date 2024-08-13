@@ -99,7 +99,9 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       text: t("Dashboard"),
     },
     {
-      url: t("/my-account/"),
+      url: `${
+        i18next.language === "en" ? "" : "/" + i18next.language
+      }/my-account/`,
       icon: <PersonFill />,
       active: route === "my-account",
       text: t("Profile"),

@@ -1,7 +1,6 @@
 import {
   Card,
   Container,
-  DatepickerGlobalStyle,
   Steps,
   Title,
 } from "@appquality/appquality-design-system";
@@ -31,7 +30,6 @@ const SignupForm = ({}) => {
       route={emailSignup}
       pageTitle={t("Signup for Tryber")}
     >
-      <DatepickerGlobalStyle />
       <Container className="aq-pb-3">
         <LangMenu
           className="aq-mt-3"

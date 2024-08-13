@@ -1,18 +1,26 @@
-import {
-  Pagination,
-  SortTableSelect,
-  Table,
-} from "@appquality/appquality-design-system";
+import { Pagination, Table } from "@appquality/appquality-design-system";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 import Columns from "./columns";
 import useCampaigns from "./useCampaigns";
+
+const CustomMobileTemplateTable = styled(Table)`
+  .table-card {
+    grid-template-areas:
+      "left overline"
+      "left title"
+      "left more"
+      "left cta";
+    grid-template-columns: 24px 1fr;
+  }
+`;
 
 const CampaignsTable = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(1);
   const defaultOrder = "ASC";
-  const defaultOrderby = "end_date";
+  const defaultOrderby = "visibility";
   const [order, setOrder] = useState<CampaignOrder>(defaultOrder);
   const [orderBy, setOrderBy] = useState<OrderBy>(defaultOrderby);
   const limit = 10;
@@ -25,13 +33,7 @@ const CampaignsTable = () => {
   const columns = Columns({ setOrder, setOrderBy });
   return (
     <>
-      <SortTableSelect
-        order={order || defaultOrder}
-        orderBy={orderBy || defaultOrderby}
-        columns={columns}
-        label={t("Order By", { context: "Sort Table Select" })}
-      />
-      <Table
+      <CustomMobileTemplateTable
         dataSource={campaigns || []}
         isLoading={isLoading}
         isStriped={true}

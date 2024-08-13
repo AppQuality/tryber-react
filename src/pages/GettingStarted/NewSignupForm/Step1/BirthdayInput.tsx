@@ -1,13 +1,12 @@
 import {
-  FormikField,
+  DateInput,
   ErrorMessage,
   FormGroup,
   FormLabel,
-  DateInput,
+  FormikField,
 } from "@appquality/appquality-design-system";
+import { isDate, isValid, parse } from "date-fns";
 import { FieldProps } from "formik";
-import { parse, isDate, isValid } from "date-fns";
-import i18n from "src/i18n";
 import { useTranslation } from "react-i18next";
 
 const BirthdayInput = () => {
@@ -20,7 +19,7 @@ const BirthdayInput = () => {
     let error;
     const parsedDate = isDate(value)
       ? value
-      : parse(value, "dd/MM/yyyy", new Date());
+      : parse(value, "yyyy-MM-dd", new Date());
 
     if (!isValid(parsedDate)) {
       error = t("SIGNUP_FORM:::Invalid date");
@@ -49,15 +48,6 @@ const BirthdayInput = () => {
             name={field.name}
             value={field.value}
             maxDate={maxDate}
-            i18n={{
-              locale: i18n.language,
-              dateFormat: "DD/MM/YYYY",
-              placeholder: "29/11/1991",
-              setText: t("Set"),
-              cancelText: t("Cancel"),
-              buttonTitle: t("Select your birth date"),
-            }}
-            onCancel={() => form.setFieldTouched(field.name)}
             onChange={(event) => {
               field.onChange(event.target.value);
               form.setFieldValue(field.name, event.target.value, true);
