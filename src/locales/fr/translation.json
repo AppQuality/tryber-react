@@ -3,7 +3,7 @@
   "/discover-experience-points/": "/discover-experience-points/",
   "/faq/": "/faq/",
   "/terms-and-conditions/": "/terms-and-conditions/",
-  "/testing-school/": "/testing-school/",
+  "/testing-school/": "/universite-de-test/",
   "<bold>0</bold> exp points to keep level. <bold>Great, you did it!</bold>": {
     "__RANKING_PROGRESS_HOLDLVL_REACHED_MAX: 70": "<bold>0</bold> points d'exp pour maintenir le niveau {{level}}. <bold>Bravo, vous l'avez fait !</bold>"
   },
