@@ -52,6 +52,12 @@ const useCampaigns = ({ page, order, orderBy }: CampaignsTableProps) => {
         return t("View");
       return t("Apply now");
     }
+    function getActionButtonType() {
+      if (previewLink === "#") return "link-hover";
+      if (cp.visibility?.type === "candidate" || isUnavailable())
+        return "link-hover";
+      return "link";
+    }
 
     return {
       key: cp.id ? cp.id : 0,
@@ -106,7 +112,7 @@ const useCampaigns = ({ page, order, orderBy }: CampaignsTableProps) => {
               disabled={previewLink === "#"}
               forwardedAs="a"
               href={previewLink}
-              kind="link-hover"
+              kind={getActionButtonType()}
               size="sm"
             >
               {getActionButtonText()}
