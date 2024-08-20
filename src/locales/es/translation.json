@@ -207,7 +207,7 @@
   "Current password": "Password actual",
   "DATE_OF_BIRTH": {
     "BitrhdayPicker": "Fecha de nacimiento",
-    "SignupFrom Step1": "Fecha de nacimiento (dd/mm/aaaa)"
+    "SignupFrom Step1": "Fecha de nacimiento"
   },
   "Dashboard": "Dashboard",
   "Date": "Fecha",
