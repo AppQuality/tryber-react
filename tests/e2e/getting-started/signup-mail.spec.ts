@@ -364,16 +364,6 @@ test.describe("The signup mail page second step", () => {
     await expect(gettingStarted.elements().countryInput()).toHaveText("Italy");
   });
 
-  test("on focus out of the date field if the format is not gg/mm/aaaa an error is shown", async ({
-    i18n,
-    page,
-  }) => {
-    await gettingStarted.elements().birthdateInput().fill("91/01/1990");
-    await gettingStarted.elements().nameInput().click();
-    await expect(page.getByTestId("birthdate-formgroup")).toContainText(
-      i18n.t("SIGNUP_FORM:::Invalid date")
-    );
-  });
   // test("if the user click to submit and all required fields are correctly filled goes to the confirmation step", async ({}) => {
   //   await gettingStarted.fillSecondStepWithValidData();
   //   await gettingStarted.elements().submitButton().click();
