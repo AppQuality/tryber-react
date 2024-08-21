@@ -359,7 +359,7 @@ test.describe("The signup mail page second step", () => {
     );
     await expect(gettingStarted.elements().birthdateInput()).toHaveAttribute(
       "value",
-      "01/01/1990"
+      "1990-01-01"
     );
     await expect(gettingStarted.elements().countryInput()).toHaveText("Italy");
   });

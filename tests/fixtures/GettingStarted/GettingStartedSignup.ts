@@ -80,7 +80,7 @@ export class GettingStartedSignup extends GettingStarted {
   async fillSecondStepWithValidData() {
     await this.fillNameWith("Test");
     await this.fillSurnameWith("User");
-    await this.fillBirthdateWith("01/01/1990");
+    await this.fillBirthdateWith("1990-01-01");
     await this.fillCountryWith("Italy");
     await this.elements().mailCheckbox().click();
   }
