@@ -15,7 +15,7 @@ const BirthdayPicker = ({
   const { t, i18n } = useTranslation();
   const now = new Date();
   const maxDate = new Date(
-    Date.UTC(now.getFullYear() - 18, now.getMonth(), now.getDate())
+    Date.UTC(now.getFullYear() - 16, now.getMonth(), now.getDate())
   );
 
   return (
