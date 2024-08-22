@@ -422,7 +422,7 @@
     "Password must contain at least an uppercase letter": "Le mot de passe doit contenir au moins une lettre majuscule",
     "Surname is required": "Entrez votre prénom : ce champ est obligatoire.",
     "You must accept to receive emails": "Vous devez accepter de recevoir des emails avant de vous inscrire à TRYBER.",
-    "You must be at least 18 years old": "TRYBER est réservé aux personnes de plus de 18 ans, du moins pour l'instant."
+    "You must be at least 18 years old": "TRYBER est réservé aux personnes de plus de 16 ans, du moins pour l'instant."
   },
   "SIGNUP_LOGIN_CTA": "Vous avez déjà un compte ? <login_link><strong>Connexion</strong></login_link>",
   "SIGNUP_STEP": {
