@@ -13,7 +13,7 @@ const BirthdayInput = () => {
   const { t } = useTranslation();
   const now = new Date();
   const maxDate = new Date(
-    Date.UTC(now.getFullYear() - 18, now.getMonth(), now.getDate())
+    Date.UTC(now.getFullYear() - 16, now.getMonth(), now.getDate())
   );
   function validateDateString(value: string) {
     let error;

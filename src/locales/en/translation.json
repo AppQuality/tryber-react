@@ -207,7 +207,7 @@
   "Current password": "Current password",
   "DATE_OF_BIRTH": {
     "BitrhdayPicker": "Date of birth",
-    "SignupFrom Step1": "Date of birth (dd/mm/yyyy)"
+    "SignupFrom Step1": "Date of birth"
   },
   "Dashboard": "Dashboard",
   "Date": "Date",
@@ -422,7 +422,7 @@
     "Password must contain at least an uppercase letter": "Password must contain at least an uppercase letter",
     "Surname is required": "Enter your surname: this field is required.",
     "You must accept to receive emails": "You must agree to receive emails before signing up for TRYBER.",
-    "You must be at least 18 years old": "TRYBER is dedicated to those over 18 years old, at least for now."
+    "You must be at least 18 years old": "TRYBER is dedicated to those over 16 years old, at least for now."
   },
   "SIGNUP_LOGIN_CTA": "Already have an account? <login_link><strong>Login</strong></login_link>",
   "SIGNUP_STEP": {
