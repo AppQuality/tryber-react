@@ -26,11 +26,6 @@ import PerformanceData from "./PerformanceData";
 import PopupContainer from "./PopupContainer";
 import { useFeaturesFlags } from "src/redux/features";
 
-const Debugger = () => {
-  const flags = useFeaturesFlags();
-  return <>{JSON.stringify(flags)}</>;
-};
-
 export default function Dashboard() {
   const { data: user, isLoading } = useGetUsersMeQuery({
     fields: "onboarding_completed",
@@ -42,6 +37,7 @@ export default function Dashboard() {
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { flags } = useFeaturesFlags();
 
   useEffect(() => {
     dispatch(fetchRankingSummary());
@@ -90,8 +86,6 @@ export default function Dashboard() {
         ) : null}
       </OutsideContainer>
       <BSGrid>
-        <Debugger />
-        {/** Json.stringify dei features */}
         <BSCol size="col-lg-9 ">
           <Card className="aq-mb-3" bodyClass="">
             <Tabs active="active">
@@ -138,13 +132,15 @@ export default function Dashboard() {
         </BSCol>
         <BSCol size="col-lg-3">
           <div className="stick-to-header-lg ">
-            <Card
-              className="aq-mb-3"
-              title={t("Your Performance")}
-              shadow={true}
-            >
-              <PerformanceData />
-            </Card>
+            {flags.includes("wallet") && (
+              <Card
+                className="aq-mb-3"
+                title={t("Your Performance")}
+                shadow={true}
+              >
+                <PerformanceData />
+              </Card>
+            )}
             {onboardingComplete ? (
               <Card shadow={true} className="aq-mb-3">
                 <Button
