@@ -3,14 +3,11 @@ import * as Sentry from "@sentry/react";
 import TagManager from "react-gtm-module";
 import { useTranslation } from "react-i18next";
 import { useGetUsersMeQuery } from "src/services/tryberApi";
-import { useAppDispatch } from "src/store";
 import { LangMenu } from "./LangMenu";
 import Loading from "./Loading";
 import { LoginCard } from "./LoginCard";
 import SiteHeader from "./SiteHeader";
 import getUnlocalizedUrl from "./getUnlocalizedUrl";
-import { setFeaturesFlags } from "src/redux/features";
-import { useEffect } from "react";
 
 const LoggedOnly = ({
   children,
@@ -29,13 +26,6 @@ const LoggedOnly = ({
   } = useGetUsersMeQuery({
     fields: "id,email,username,wp_user_id,role,surname",
   });
-  const dispatch = useAppDispatch();
-
-  const features = user?.surname === "pippo" ? [] : ["wallet"];
-
-  useEffect(() => {
-    dispatch(setFeaturesFlags(features));
-  }, [features]);
 
   if (isLoading) {
     return <Loading />;

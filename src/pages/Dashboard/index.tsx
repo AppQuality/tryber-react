@@ -91,6 +91,7 @@ export default function Dashboard() {
       </OutsideContainer>
       <BSGrid>
         <Debugger />
+        {/** Json.stringify dei features */}
         <BSCol size="col-lg-9 ">
           <Card className="aq-mb-3" bodyClass="">
             <Tabs active="active">

@@ -23,6 +23,7 @@ import { useGetUsersMeQuery } from "src/services/tryberApi";
 import wpApi from "src/utils/wpapi";
 import useWindowSize from "../../hooks/useWindowSize";
 import menuStore from "../../redux/menu";
+import { useFeaturesFlags } from "src/redux/features";
 
 export interface TesterSidebarProps {
   route?: string;
@@ -68,6 +69,16 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
 
   const { t } = useTranslation();
   const languages = Object.keys(i18next.services.resourceStore.data);
+
+  const { flags, isLoading } = useFeaturesFlags();
+
+  const windowWidth = useWindowSize()[0];
+
+  useEffect(() => {
+    if (windowWidth > maxMobileSize) close();
+  }, [windowWidth]);
+
+  if (isLoading) return null;
 
   TesterSidebarArgs.onLogout = () => {
     wpApi.logout();
@@ -115,14 +126,18 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
       text: t("Devices"),
       last: true,
     },
-    {
-      url: `${
-        i18next.language === "en" ? "" : "/" + i18next.language
-      }/payments/`,
-      icon: <Wallet2 />,
-      active: route === "payments",
-      text: t("Payments"),
-    },
+    ...(flags.includes("wallet")
+      ? [
+          {
+            url: `${
+              i18next.language === "en" ? "" : "/" + i18next.language
+            }/payments/`,
+            icon: <Wallet2 />,
+            active: route === "payments",
+            text: t("Payments"),
+          },
+        ]
+      : []),
     {
       url: `${
         i18next.language === "en" ? "" : "/" + i18next.language
@@ -181,12 +196,6 @@ const TesterSidebar = ({ route, children }: TesterSidebarProps) => {
   }
 
   TesterSidebarArgs.items[TesterSidebarArgs.items.length - 1].last = true;
-
-  const windowWidth = useWindowSize()[0];
-
-  useEffect(() => {
-    if (windowWidth > maxMobileSize) close();
-  }, [windowWidth]);
 
   return (
     <Sidebar
