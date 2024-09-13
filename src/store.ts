@@ -11,6 +11,7 @@ import previewSelectionFormReducer from "src/pages/PreviewSelectionForm/previewS
 import oldReducers from "src/redux/reducer";
 import { tryberApi } from "src/services/tryberApi/apiWithTags";
 import publicUserPageReducer from "./redux/publicUserPages";
+import features from "./redux/features";
 
 const rootReducer = combineReducers({
   ...oldReducers,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   userDevices: userDevicesReducer,
   [tryberApi.reducerPath]: tryberApi.reducer,
   publicUserPages: publicUserPageReducer,
+  features,
 });
 
 export function setupStore(preloadedState?: PreloadedState<RootState>) {

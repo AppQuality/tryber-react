@@ -24,6 +24,12 @@ import CompletedCampaignsTable from "./FinishedCampaignsTable";
 import OnboardingModal from "./OnboardingModal";
 import PerformanceData from "./PerformanceData";
 import PopupContainer from "./PopupContainer";
+import { useFeaturesFlags } from "src/redux/features";
+
+const Debugger = () => {
+  const flags = useFeaturesFlags();
+  return <>{JSON.stringify(flags)}</>;
+};
 
 export default function Dashboard() {
   const { data: user, isLoading } = useGetUsersMeQuery({
@@ -84,6 +90,7 @@ export default function Dashboard() {
         ) : null}
       </OutsideContainer>
       <BSGrid>
+        <Debugger />
         <BSCol size="col-lg-9 ">
           <Card className="aq-mb-3" bodyClass="">
             <Tabs active="active">
