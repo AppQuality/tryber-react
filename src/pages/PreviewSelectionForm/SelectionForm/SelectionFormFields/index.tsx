@@ -1,13 +1,13 @@
-import { SelectSelectionFormField } from "./SelectSelectionFormField";
-import { MultiSelectionFormField } from "./MultiSelectionFormField";
-import { TextSelectionFormField } from "src/pages/PreviewSelectionForm/SelectionForm/SelectionFormFields/TextSelectionFormField";
-import { RadioSelectionFormField } from "./RadioSelectionFormField";
-import { AddressFields } from "./AddressFields";
-import countries from "i18n-iso-countries";
 import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
-import { useAppSelector } from "src/store";
-import useNotAboveOption from "./useNotAboveOption";
+import countries from "i18n-iso-countries";
 import { useTranslation } from "react-i18next";
+import { TextSelectionFormField } from "src/pages/PreviewSelectionForm/SelectionForm/SelectionFormFields/TextSelectionFormField";
+import { useAppSelector } from "src/store";
+import { AddressFields } from "./AddressFields";
+import { MultiSelectionFormField } from "./MultiSelectionFormField";
+import { RadioSelectionFormField } from "./RadioSelectionFormField";
+import { SelectSelectionFormField } from "./SelectSelectionFormField";
+import useNotAboveOption from "./useNotAboveOption";
 
 interface SelectionFormFieldsProps {
   genderOptions: Option[];
@@ -57,7 +57,10 @@ export const SelectionFormFields = ({
   };
 
   const getCountryCode = (value?: any) => {
-    if ("country" in value) return countries.getAlpha2Code(value.country, "en");
+    if ("country" in value) {
+      const country = countries.getAlpha2Code(value.country, "en");
+      if (country) return country;
+    }
     return "";
   };
 
