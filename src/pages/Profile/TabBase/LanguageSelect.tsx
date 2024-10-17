@@ -7,7 +7,7 @@ import {
 import { FieldProps } from "formik";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import API from "src/utils/api";
+import { getAllLanguages } from "@appquality/languages";
 
 export const LanguageSelect = ({
   name,
@@ -20,10 +20,8 @@ export const LanguageSelect = ({
 
   useEffect(() => {
     const getLanguages = async () => {
-      const results = await API.languages();
-      setLanguages(
-        results.map((item) => ({ label: item.name, value: item.id.toString() }))
-      );
+      const results = getAllLanguages();
+      setLanguages(results.map((item) => ({ label: item, value: item })));
     };
     getLanguages();
   }, []);
