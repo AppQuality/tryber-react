@@ -1,5 +1,7 @@
 export default (
-  translatableLink: { en?: string; es?: string; it?: string } | undefined,
+  translatableLink:
+    | { en?: string; es?: string; it?: string; fr?: string }
+    | undefined,
   language: string
 ) => {
   if (typeof translatableLink === "undefined") {
@@ -13,6 +15,9 @@ export default (
   }
   if (language === "es" && translatableLink.es) {
     return translatableLink.es;
+  }
+  if (language === "fr" && translatableLink.fr) {
+    return translatableLink.fr;
   }
   return "#";
 };
