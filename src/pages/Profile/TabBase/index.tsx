@@ -60,9 +60,9 @@ const TabBase = () => {
     countryCode: countries.getAlpha2Code(user?.country || "Italy", "en"),
     city: user?.city || "",
     languages:
-      (user?.languages || [])?.map((l: any) => ({
-        label: l.name,
-        value: l.id.toString(),
+      user?.languages?.map((lang) => ({
+        label: lang.name || "",
+        value: lang.name || "",
       })) || [],
   };
   const validationSchema = {
@@ -103,11 +103,9 @@ const TabBase = () => {
       initialTouched={initialTouched}
       initialValues={initialUserValues}
       onSubmit={async (values, helpers) => {
-        let newLanguages: number[] = [];
+        let newLanguages: string[] = [];
         values.languages.forEach((val) => {
-          if (typeof val.value === "string") {
-            newLanguages.push(parseInt(val.value));
-          }
+          newLanguages.push(val.label);
         });
         const profileDataToSend: any = { ...values };
         if (profileDataToSend.email === user?.email) {
