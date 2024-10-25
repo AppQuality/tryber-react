@@ -110,7 +110,8 @@ const TabAdvanced = () => {
                   disabled={
                     !formikProps.isValid ||
                     formikProps.isValidating ||
-                    !formikProps.dirty
+                    !formikProps.dirty ||
+                    formikProps.isSubmitting
                   }
                 >
                   {t("Save")}
