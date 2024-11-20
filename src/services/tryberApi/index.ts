@@ -1464,34 +1464,8 @@ export type PutCampaignsByCampaignTasksAndTaskApiArg = {
 };
 export type GetCampaignsByCampaignUxApiResponse =
   /** status 200 A UseCase linked with the Campaign */ {
-    status: "draft" | "published" | "draft-modified";
     goal: string;
     usersNumber: number;
-    insights?: {
-      id: number;
-      title: string;
-      severity: {
-        id: number;
-        name: string;
-      };
-      description: string;
-      clusters:
-        | "all"
-        | {
-            id: number;
-            name: string;
-          }[];
-      videoParts: {
-        id: number;
-        start: number;
-        end: number;
-        mediaId: number;
-        url: string;
-        streamUrl: string;
-        description: string;
-        poster?: string;
-      }[];
-    }[];
     sentiments: {
       id: number;
       value: number;
@@ -1510,6 +1484,7 @@ export type GetCampaignsByCampaignUxApiResponse =
       id: number;
       name: string;
     }[];
+    visible: number;
   };
 export type GetCampaignsByCampaignUxApiArg = {
   /** A campaign id */
@@ -1519,44 +1494,25 @@ export type PatchCampaignsByCampaignUxApiResponse = /** status 200 OK */ {};
 export type PatchCampaignsByCampaignUxApiArg = {
   /** A campaign id */
   campaign: string;
-  body:
-    | {
-        goal: string;
-        usersNumber: number;
-        insights: {
-          id?: number;
-          title: string;
-          description: string;
-          severityId: number;
-          order: number;
-          clusterIds: number[] | "all";
-          videoParts: {
-            id?: number;
-            start: number;
-            end: number;
-            mediaId: number;
-            description: string;
-            order: number;
-          }[];
-        }[];
-        sentiments: {
-          id?: number;
-          clusterId: number;
-          value: number;
-          comment: string;
-        }[];
-        methodology: {
-          type: "qualitative" | "quantitative" | "quali-quantitative";
-          description: string;
-        };
-        questions: {
-          id?: number;
-          name: string;
-        }[];
-      }
-    | {
-        status: "publish";
-      };
+  body: {
+    goal?: string;
+    usersNumber?: number;
+    visible?: number;
+    methodology?: {
+      description: string;
+      type: string;
+    };
+    sentiments?: {
+      clusterId: number;
+      value: number;
+      comment: string;
+      id?: number;
+    }[];
+    questions?: {
+      name: string;
+      id?: number;
+    }[];
+  };
 };
 export type PostCampaignsFormsApiResponse = /** status 201 Created */ {
   id: number;
@@ -1899,7 +1855,6 @@ export type GetUsersMeApiResponse = /** status 200 OK */ {
     gross: Currency;
   };
   languages?: {
-    id?: number;
     name?: string;
   }[];
   onboarding_completed?: boolean;
@@ -2173,7 +2128,9 @@ export type GetUsersMeCampaignsByCampaignIdDevicesApiArg = {
   campaignId: string;
 };
 export type GetUsersMeCampaignsByCampaignIdFormsApiResponse =
-  /** status 200 OK */ (PreselectionFormQuestion & {
+  /** status 200 OK */ ({
+    question: string;
+    short_name?: string;
     value?:
       | number
       | {
@@ -2187,7 +2144,19 @@ export type GetUsersMeCampaignsByCampaignIdFormsApiResponse =
       error?: string;
     };
     id: number;
-  })[];
+  } & (
+    | {
+        type: PreselectionQuestionSimple;
+      }
+    | {
+        type: PreselectionQuestionMultiple;
+        options: string[];
+      }
+    | {
+        type: PreselectionQuestionCuf;
+        options?: number[];
+      }
+  ))[];
 export type GetUsersMeCampaignsByCampaignIdFormsApiArg = {
   campaignId: string;
 };
@@ -2412,20 +2381,18 @@ export type PutUsersMeFiscalApiArg = {
   };
 };
 export type PostUsersMeLanguagesApiResponse = /** status 201 Created */ {
-  id: string;
   name: string;
 };
 export type PostUsersMeLanguagesApiArg = {
   body: {
-    languageId?: number;
+    language_name?: string;
   };
 };
 export type PutUsersMeLanguagesApiResponse = /** status 200 OK */ {
-  id?: number;
   name?: string;
 }[];
 export type PutUsersMeLanguagesApiArg = {
-  body: number[];
+  body: string[];
 };
 export type DeleteUsersMeLanguagesByLanguageIdApiResponse =
   /** status 200 OK */ {
@@ -2670,7 +2637,6 @@ export type GetDossiersByCampaignApiResponse = /** status 200 OK */ {
   };
   countries?: CountryCode[];
   languages?: {
-    id: number;
     name: string;
   }[];
   browsers?: {
@@ -2872,25 +2838,33 @@ export type TaskRequired = {
   campaign_id: number;
 };
 export type Task = TaskOptional & TaskRequired;
+export type PreselectionQuestionSimple =
+  | "gender"
+  | "text"
+  | "phone_number"
+  | "address";
+export type PreselectionQuestionMultiple = "multiselect" | "select" | "radio";
+export type PreselectionQuestionCuf = string;
 export type PreselectionFormQuestion = {
   question: string;
   short_name?: string;
 } & (
   | {
-      type: "text";
+      type: PreselectionQuestionSimple;
     }
   | {
-      type: "multiselect" | "select" | "radio";
-      options: string[];
-      invalidOptions?: string[];
+      type: PreselectionQuestionMultiple;
+      options?: {
+        value: string;
+        isInvalid?: boolean;
+      }[];
     }
   | {
-      type: string;
-      options?: number[];
-      invalidOptions?: number[];
-    }
-  | {
-      type: "gender" | "phone_number" | "address";
+      type: PreselectionQuestionCuf;
+      options?: {
+        value: number;
+        isInvalid?: boolean;
+      }[];
     }
 );
 export type CustomUserFieldsType = "text" | "select" | "multiselect";
@@ -3044,7 +3018,7 @@ export type DossierCreationData = {
     cap?: number;
   };
   countries?: CountryCode[];
-  languages?: number[];
+  languages?: string[];
   browsers?: number[];
   productType?: number;
   notes?: string;
