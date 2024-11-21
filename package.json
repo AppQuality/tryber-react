@@ -5,7 +5,7 @@
   "dependencies": {
     "@appquality/appquality-design-system": "2.0.1",
     "@appquality/craft-blocks": "^0.1.27",
-    "@appquality/languages": "^1.4.3",
+    "@appquality/languages": "^1.4.5",
     "@datadog/browser-logs": "^3.4.1",
     "@reduxjs/toolkit": "^1.8.2",
     "@sentry/react": "^7.83.0",
