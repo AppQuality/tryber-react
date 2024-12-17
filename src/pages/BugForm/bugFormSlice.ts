@@ -3,7 +3,6 @@ import {
   PostUsersMeCampaignsByCampaignIdMediaApiResponse,
   tryberApi,
 } from "src/services/tryberApi";
-import { normalizeFileName } from "./normalizeFilename";
 
 // Define a type for the slice state
 interface BugFormState {
@@ -61,10 +60,7 @@ const bugFormSlice = createSlice({
       const { mediaList } = state;
       mediaList.forEach((media, i) => {
         files?.forEach((file) => {
-          if (
-            normalizeFileName(media.fileName) === file.name &&
-            requestId === media.uploadId
-          ) {
+          if (media.fileName === file.name && requestId === media.uploadId) {
             mediaList[i].status = "success";
             mediaList[i].uploadedFileUrl = file.path;
           }

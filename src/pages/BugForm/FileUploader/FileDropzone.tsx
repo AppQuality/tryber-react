@@ -7,7 +7,6 @@ import { appendMediaList } from "src/pages/BugForm/bugFormSlice";
 import { createFilesElementList } from "src/pages/BugForm/createFilesElementList";
 import useCampaignData from "src/pages/BugForm/useCampaignData";
 import { useTranslation } from "react-i18next";
-import { normalizeFileName } from "../normalizeFilename";
 
 export const FileDropzone = () => {
   const { t } = useTranslation();
@@ -36,8 +35,12 @@ export const FileDropzone = () => {
 
   const uploadMedia = async (files: File[]) => {
     files.forEach((f) => {
+      // Normalizes accented characters in the file name (e.g. à becomes a)
+      const normalizedFileName = f.name
+        .normalize("NFD")
+        .replace(/\p{Diacritic}/gu, "");
       const formData = new FormData();
-      formData.append("media", f, normalizeFileName(f.name));
+      formData.append("media", f, normalizedFileName);
       if (!campaign.data) return;
       const data = createMedia({
         campaignId: campaign.data.id.toString(),
