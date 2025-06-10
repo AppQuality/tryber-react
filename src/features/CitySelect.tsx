@@ -50,7 +50,11 @@ const CitySelect = ({
                   noOptionsMessage: () => t("Type to search your city"),
                 },
                 autocompletionRequest: {
-                  types: ["(cities)"],
+                  types: [
+                    "administrative_level_area_1",
+                    "administrative_level_area_2",
+                    "administrative_level_area_3",
+                  ],
                   componentRestrictions: { country: countryRestrictions || "" },
                 },
               }}
