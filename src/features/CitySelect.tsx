@@ -52,7 +52,7 @@ const CitySelect = ({
                 autocompletionRequest: {
                   types:
                     countryRestrictions === "IT"
-                      ? ["administrative_level_area_3"]
+                      ? ["administrative_area_level_3"]
                       : ["(cities)"],
                   componentRestrictions: { country: countryRestrictions || "" },
                 },
