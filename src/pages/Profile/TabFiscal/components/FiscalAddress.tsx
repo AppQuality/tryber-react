@@ -91,9 +91,14 @@ const FiscalAddress = () => {
               return;
             }
             const fields = place.address_components;
-            const city = fields.find(
-              (field) => field.types.indexOf("locality") >= 0
+            let city = fields.find(
+              (field) => field.types.indexOf("administrative_area_level_3") >= 0
             );
+            if (!city) {
+              city = fields.find(
+                (field) => field.types.indexOf("locality") >= 0
+              );
+            }
             const province = fields.find(
               (field) => field.types.indexOf("administrative_area_level_2") >= 0
             );
