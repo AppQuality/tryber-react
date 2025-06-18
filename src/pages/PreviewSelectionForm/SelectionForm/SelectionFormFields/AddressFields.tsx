@@ -4,10 +4,10 @@ import {
   SelectType,
 } from "@appquality/appquality-design-system";
 import { FieldProps } from "formik";
-import CountrySelect from "src/features/CountrySelect";
-import CitySelect from "src/features/CitySelect";
-import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import CitySelect from "src/features/CitySelect";
+import CountrySelect from "src/features/CountrySelect";
 
 interface AddressFieldsProps {
   label: string;
@@ -70,9 +70,15 @@ export const AddressFields = ({
                     return;
                   }
                   const fields = place.address_components;
-                  const city = fields.find(
-                    (field) => field.types.indexOf("locality") >= 0
+                  let city = fields.find(
+                    (field) =>
+                      field.types.indexOf("administrative_area_level_3") >= 0
                   );
+                  if (!city) {
+                    city = fields.find(
+                      (field) => field.types.indexOf("locality") >= 0
+                    );
+                  }
                   if (!city) {
                     form.setFieldError(
                       cityField,
