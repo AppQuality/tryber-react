@@ -78,7 +78,8 @@
     "@@Description for fiscal type@@": "<a>Cliquez ici</a> pour plus d'infos"
   },
   "Available tags : <devices_link> (Link to fiscal devices)": {
-    "_FORM_MESSAGES_ADD-DEVICES_": "Sélectionnez au moins un appareil compatible avec cette campagne. Avez-vous de nouveaux appareils ? Ajoutez-les <devices_link>ici</devices_link>."
+    "_FORM_MESSAGES_ADD-DEVICES_": "Sélectionnez au moins un appareil compatible avec cette campagne. Avez-vous de nouveaux appareils ? Ajoutez-les <devices_link>ici</devices_link>.",
+    "_FORM_MESSAGES_NO-DEVICES_": ""
   },
   "Available tags : <entry_test_link> (Link to entry test)": {
     "__RANKING_MODAL_MESSAGE_MAX: 250": "Vous n'avez pas encore monté de niveau : passez notre <entry_test_link>Test d'entrée</entry_test_link> pour gagner les premiers points d'expérience et atteindre le niveau Basique"
@@ -282,6 +283,7 @@
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Voici la liste de tous vos appareils. Assurez-vous de la tenir à jour pour augmenter vos chances d'être sélectionné pour d'autres projets.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Ici, vous ne pouvez changer que la version de votre système d'exploitation. Si vous souhaitez ajouter un autre appareil, cliquez sur \"Ajouter un appareil\"",
   "History": "Historique",
+  "Hooray! You have been selected for this campaign.": "",
   "How do experience points work?": "Comment fonctionnent les points d'expérience ?",
   "I agree to receive earning opportunity emails from AppQuality": "Je consens à recevoir des emails dédiés à la communauté TRYBER",
   "I don't receive testing campaigns": "Je ne reçois pas de campagnes",
@@ -348,6 +350,7 @@
   "Not available": "Non disponible",
   "Not specified": "Non spécifié",
   "Oh no!": "Oh non !",
+  "Oh no, It's too late! The subscription phase is closed now.": "",
   "Oops, this one's not available.": "Oups, celui-ci n'est pas disponible.",
   "Open for you! Apply now.": "Ouvert pour vous ! Postulez maintenant.",
   "Operating System": "Système d'exploitation",
@@ -371,6 +374,7 @@
   "PC Type: <bold>{{pc_type}}</bold>": "Type de PC : <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "Cette adresse email est déjà utilisée. Veuillez essayer avec une autre.",
   "Page %current% / %total%": "Page %current% / %total%",
+  "Page Preview": "",
   "Paid": "Payé",
   "Paid On": "Payé le",
   "Password": "Mot de passe",
@@ -488,6 +492,7 @@
   "Testing Campaigns are not clear and I'm not able to finished them": "Les campagnes ne sont pas claires et je ne peux pas les terminer",
   "Testing University": "Université Tryber",
   "The account holder name should contain latin character only": "Le nom du titulaire du compte ne doit contenir que des caractères latins",
+  "The campaign has reached its maximum capacity.": "",
   "The changes to your device were successfully saved": "Les modifications apportées à votre appareil ont été enregistrées avec succès",
   "The deletion of your account ({{testerId}}) <bold>will be irreversible</bold>.<br></br><br></br>You will not be able to continue earning money with us. <br></br>Are you sure you want to leave our community?": "La suppression de votre compte ({{testerId}}) <bold>sera irréversible</bold>.<br></br><br></br>Vous ne pourrez plus continuer à gagner de l'argent avec nous. <br></br>Êtes-vous sûr de vouloir quitter notre communauté ?",
   "The following informations are retrived from your fiscal profile and will be used to generate your receipt": "Les informations suivantes proviennent de votre profil fiscal : vous les trouverez dans le reçu de paiement.",
@@ -500,6 +505,7 @@
   "There are no new campaigns available at this time, please keep your profile and devices updated and look forward to new activities.": "Il n'y a pas de nouvelles campagnes disponibles pour le moment, veuillez maintenir votre profil et vos appareils à jour et attendez de nouvelles activités.",
   "There was an error": "Il y a eu une erreur",
   "There was an error adding this certification.": "Une erreur est survenue lors de l'ajout de cette certification.",
+  "There was an error in this campaign. Please contact us at support@tryber.me.": "",
   "There was an error removing your certification": "Une erreur est survenue lors de la suppression de votre certification",
   "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth": "Une erreur est survenue lors de la validation de votre numéro d'identification fiscale. Veuillez vérifier votre nom, prénom, sexe, date de naissance ou lieu de naissance",
   "This email is already in use.": "Cet email est déjà utilisé.",
@@ -534,11 +540,14 @@
   "View payments page": "Voir la page du portefeuille",
   "WELCOME_SIGNUP_MESSAGE": "<strong>Bienvenue à bord !</strong><br />Nous vous avons envoyé un email de bienvenue à l'adresse que vous avez utilisée lors de l'inscription. Il est maintenant temps d'explorer l'univers TRYBER : choisissez parmi nos cours universitaires, postulez pour des campagnes de test et rejoignez notre communauté !",
   "Wallet": "Portefeuille",
+  "We are currently reviewing applications and will notify you of any updates.": "",
+  "We are not accepting new applications at this time. Check back later if new spots open up!": "",
   "We couldn't find a city with that name, please search again": "Nous n'avons pas trouvé de ville avec ce nom, veuillez rechercher à nouveau",
   "We couldn't update your profile. Try again.": "Nous n'avons pas pu mettre à jour votre profil. Réessayez.",
   "We couldn't validate your tax id.": "Nous n'avons pas pu valider votre numéro d'identification fiscale.",
   "We got it!": "Nous l'avons !",
   "We successfully removed a device from your device list": "Nous avons supprimé avec succès un appareil de votre liste d'appareils",
+  "We will wait for you in the next campaigns, so keep an eye on your dashboard!": "",
   "We've received your request. You'll get an email in a few days.": "Nous avons reçu votre demande. Vous recevrez un email dans quelques jours.",
   "Welcome in AppQuality": "Bienvenue chez TRYBER",
   "What operating system am i using?": "Quel système d'exploitation est-ce que j'utilise ?",
@@ -554,6 +563,7 @@
   "You can't delete this device, you are using it in a campaign!": "Vous ne pouvez pas supprimer cet appareil, vous l'utilisez dans une campagne !",
   "You didn't change anything on your device": "Vous n'avez rien changé sur votre appareil",
   "You don't have any devices yet. Add one to participate in the tests!": "Vous n'avez pas encore d'appareils. Ajoutez-en un pour participer à la campagne !",
+  "You have already applied for this campaign.": "",
   "You have been selected for this campaign. The manual is coming soon, once ready you will find it here.": "Vous avez été sélectionné pour cette campagne. Le manuel arrive bientôt, une fois prêt, vous le trouverez ici.",
   "You need to fill in your tax profile data to receive your booty": "Vous devez remplir les données de votre profil fiscal pour recevoir votre butin",
   "You need to select a city": "Vous devez sélectionner une ville",
@@ -581,6 +591,7 @@
   "_FORM_GENERIC-ERROR_MESSAGES_": "Une erreur est survenue lors du chargement du formulaire. Réessayez",
   "_FORM_INPUT-SELECT_NOT-ABOVE_": "Aucune des options ci-dessus\n",
   "_FORM_LABEL_DEVICES_": "Appareils",
+  "_FORM_MESSAGES_NO-DEVICES_": "No compatible devices found",
   "_FORM_MESSAGE_ERROR-GENERIC_": "Une erreur est survenue lors de la soumission du formulaire. Réessayez.",
   "_FORM_PARAGRAPH_": "Entre vous et la campagne, il y a ce formulaire : remplissez-le dans tous ses champs pour avoir plus de chances d'être sélectionné. Nous enregistrerons ces données pour les futures campagnes.",
   "_FORM_SELECT_DEVICES_": "Sélectionnez un appareil",
@@ -638,6 +649,9 @@
   },
   "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
     "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>Ce que vous devez faire maintenant</title>\n<ul>\n<li>Choisissez le mode de paiement et vérifiez que votre type fiscal est correct</li>\n<li>Insérez vos informations personnelles et acceptez les conditions</li>\n<li>Envoyez votre demande de paiement</li>\n</ul>"
+  },
+  "available tags: <manualLink>": {
+    "_FORM_MESSAGES_ALREADY-SELECTED_": ""
   },
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "Nouveau sur TRYBER ? <signuplink><strong>Inscrivez-vous</strong></signuplink>"

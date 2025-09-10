@@ -5,25 +5,25 @@ import {
   Formik,
 } from "@appquality/appquality-design-system";
 import { FormikProps } from "formik";
-import * as yup from "yup";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
+import useGenderOptions from "src/features/UseGenderOptions";
+import { useMapFormDataToInitialValues } from "src/pages/PreviewSelectionForm/SelectionForm/mapFormDataToInitialValues";
+import { SelectionFormFields } from "src/pages/PreviewSelectionForm/SelectionForm/SelectionFormFields";
 import {
   CustomUserFieldsData,
   useGetCustomUserFieldsQuery,
   useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery,
   useGetUsersMeCampaignsByCampaignIdFormsQuery,
 } from "src/services/tryberApi";
-import { AvailableDevices } from "./SelectionFormFields/AvailableDevices";
-import { SelectionFormFields } from "src/pages/PreviewSelectionForm/SelectionForm/SelectionFormFields";
-import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "src/store";
+import styled from "styled-components";
+import * as yup from "yup";
 import { setCufList, setformData } from "../previewSelectionFormSlice";
 import SelectionFocusError from "./SelectionFocusError";
-import styled from "styled-components";
+import { AvailableDevices } from "./SelectionFormFields/AvailableDevices";
 import { useSubmitSelectionFormValues } from "./useSubmitSelectionFormValues";
-import { useMapFormDataToInitialValues } from "src/pages/PreviewSelectionForm/SelectionForm/mapFormDataToInitialValues";
-import useGenderOptions from "src/features/UseGenderOptions";
 
 const StyledError = styled.div`
   color: ${aqBootstrapTheme.colors.red800};
@@ -72,7 +72,6 @@ export const SelectionForm = () => {
   }, [form]);
 
   if (
-    form.error ||
     cuf.error ||
     (devices.error && "status" in devices.error && devices.error.status !== 404)
   )
@@ -106,6 +105,7 @@ export const SelectionForm = () => {
               size="block"
               disabled={
                 formikProps.isSubmitting ||
+                !!devices.error ||
                 cuf.isLoading ||
                 cuf.isFetching ||
                 form.isLoading ||

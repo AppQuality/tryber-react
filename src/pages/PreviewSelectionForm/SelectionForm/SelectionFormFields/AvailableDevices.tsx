@@ -1,6 +1,7 @@
 import {
   ErrorMessage,
   FieldProps,
+  FormLabel,
   Select,
   Text,
 } from "@appquality/appquality-design-system";
@@ -36,6 +37,39 @@ export const AvailableDevices = () => {
   }, [data]);
 
   if (isLoading) return <></>;
+
+  if (devices.length === 0)
+    return (
+      <>
+        <FormLabel
+          htmlFor=""
+          label={t("_FORM_LABEL_DEVICES_", { defaultValue: "Devices" })}
+        />
+        <Text>
+          <Text>
+            {t("_FORM_MESSAGES_NO-DEVICES_", {
+              defaultValue: "No compatible devices found",
+            })}
+          </Text>
+          <Trans
+            i18nKey={
+              "Available tags : <devices_link> (Link to fiscal devices):::_FORM_MESSAGES_NO-DEVICES_"
+            }
+            components={{
+              devices_link: (
+                <a
+                  href={localizedUrl(`/personal-equipment/`)}
+                  target="_blank"
+                />
+              ),
+            }}
+            defaults={
+              "Do you have an acceptable device not listed here? <devices_link>Add it to your profile.</devices_link>"
+            }
+          />
+        </Text>
+      </>
+    );
 
   return (
     <Field
