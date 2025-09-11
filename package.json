@@ -3,10 +3,11 @@
   "version": "0.2.1",
   "private": true,
   "dependencies": {
-    "@appquality/appquality-design-system": "2.0.1",
+    "@appquality/appquality-design-system": "2.0.6",
     "@appquality/craft-blocks": "^0.1.27",
     "@appquality/languages": "^1.4.5",
     "@datadog/browser-logs": "^3.4.1",
+    "@mui/material": "^7.3.2",
     "@reduxjs/toolkit": "^1.8.2",
     "@sentry/react": "^7.83.0",
     "date-fns": "^2.30.0",

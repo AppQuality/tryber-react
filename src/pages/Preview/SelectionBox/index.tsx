@@ -25,17 +25,17 @@ const SelectBox = () => {
   if (!data) {
     return <div>Loading...</div>;
   }
+  if (data.status === "selected")
+    return (
+      <AlreadySelected manualRoute={localizedUrl(`/campaigns/${id}/manual`)} />
+    );
+
   if (data.status === "applied" || data.status === "excluded")
     return <AlreadyApplied />;
 
   if (!isFuture(data.startDate)) return <SubscriptionClosed />;
 
   if (data.cap && data.cap.free <= 0) return <CapReached />;
-
-  if (data.status === "selected")
-    return (
-      <AlreadySelected manualRoute={localizedUrl(`/campaigns/${id}/manual`)} />
-    );
 
   if (data.status === "available") return <SelectionForm />;
 
