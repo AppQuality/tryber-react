@@ -4,7 +4,6 @@ import {
   Card,
   Editor,
 } from "@appquality/appquality-design-system";
-import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { PageTemplate } from "src/features/PageTemplate";
 import {
@@ -29,7 +28,6 @@ const StyledPageTemplate = styled.div`
 `;
 
 const Preview = () => {
-  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery(
     { campaignId: id },
@@ -79,7 +77,7 @@ const Preview = () => {
               <AcceptedDevices id={id} />
             </div>
             <div>
-              <SupportBox />
+              <SupportBox id={id} />
             </div>
           </BSCol>
         </BSGrid>

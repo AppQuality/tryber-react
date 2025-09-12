@@ -267,6 +267,7 @@
   },
   "For a secure password we recommend: Minimum 6  characters. An uppercase character. A numerical digit. A lowercase character.": "For a secure password we recommend: minimum 6  characters, an uppercase character, a numerical digit, a lowercase character.",
   "For tax reasons we are obliged to tie this choice to binary options only": "For tax reasons we are obliged to tie this choice to binary options only",
+  "For this Campaign you will be rewarded as follows:": "",
   "Gender": "Gender",
   "Gender option": {
     "Female": "Female",
@@ -375,6 +376,10 @@
     "minimum of 6 characters": "minimum of 6 characters"
   },
   "PAYMENTS_MODAL_STEP_4_ERROR": "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
+  "PAYOUT": "",
+  "PAYOUT_BOX_COMPLETE_BONUS_ALL_USECASES": "all",
+  "PAYOUT_BOX_COMPLETE_BONUS_AT_LEAST": "at least {{percent}}%",
+  "PAYOUT_BOX_COMPLETE_BONUS_WITH": " with",
   "PC": "",
   "PC Type: <bold>{{pc_type}}</bold>": "PC Type: <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "This email address is already in use. Please try with another one.",
@@ -609,6 +614,14 @@
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Total exp points",
   "__FISCAL_PROFILE_TAX_ID_DISCLAIMER": "Everytime you change any of your personal data, you will need to re-enter the Tax ID Number.",
   "__PAYMENT-METHOD-BANK": "Bank transfer",
+  "__PREVIEW_PAGE__ACCEPTED_DEVICES_ANY": "Any Device",
+  "__PREVIEW_PAGE__ACCEPTED_DEVICES_TITLE": "Accepted Devices",
+  "__PREVIEW_PAGE__ANY_QUESTIONS": "Any questions?",
+  "__PREVIEW_PAGE__CAMPAIGN_TYPE": "Campaign Type",
+  "__PREVIEW_PAGE__DROP_EMAIL": "Drop an email to TRYBER TEAM",
+  "__PREVIEW_PAGE__EXPERIENCE_POINTS": "Experience Points",
+  "__PREVIEW_PAGE__PAYOUT": "Payout",
+  "__PREVIEW_PAGE__TESTING_PHASE": "Testing Phase",
   "__RANKING_LEGEND_BASIC_SPEC_MAX: 35": "Your starting level",
   "__RANKING_LEGEND_EXP_NEXT": "exp",
   "__RANKING_LEGEND_HOLD_MAX: 15": "Exp points to hold the level",
@@ -640,6 +653,13 @@
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Your payment history is now empty. When you start requesting your payments, you will view them here.",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "View details",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Download receipt",
+  "available tags: <a></a>": {
+    "PAYOUT_BOX_PAYMENT_GUIDE": ""
+  },
+  "available tags: <b></b>": {
+    "PAYOUT_BOX_MAX_PAYOUT": "",
+    "PAYOUT_BOX_TOP_TESTER_BONUS": ""
+  },
   "available tags: <br>, <bold>": {
     "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Bug replicability</b><br>\n<br>\n<b>SOMETIMES</b><br>\nWith all conditions and processes being equal, the bug occurs sporadically/unpredictably, but it is always possible to reproduce it by making multiple attempts.<br>\n<br>\n<b>ALWAYS</b><br>\nWith all conditions and processes being equal, the bug occurs under the same conditions and processes, at each replication attempt. To be such, the bug must be successfully reproduced at least 3 out of 3 times.<br>\n<br>\n<b>ONCE</b><br>\nWith all conditions and processes being equal, the bug only occurred once and could not be replicated (at least 3 attempts needed).",
     "BUGFORM_SEVERITY_MODAL_TXT": "<bold>Bug severity</bold><br>\n<br/>\nSeverity is an estimate of the impact of the problem on the use of the tested product. This estimate is calculated by keeping in mind both the context where the problem occurs (primary or secondary sections of the core-business of the campaign object) and the conditions where it has been found compared to an average use. Severity must never be influenced by the assessment of replicability: what guides the choice is mainly the impact on the user, the context (importance of the section) and the presence or lack of a workaround.<br>\n<br>\n<b>LOW</b><br>\nIssues that have a minimal impact on the use of the product. The user is able to continue to use and test the product without great difficulties. Often these are USABILITY, TYPO or GRAPHIC bugs.<br>\n<br>\n<b>MEDIUM</b><br>\nIssues that have a limited impact on the use of the product. The user is still able to complete the process despite having encountered some difficulties. This can be any type of bug.<br>\n<br>\n<b>HIGH</b><br>\nIssues that have a significant impact in the use of the product. The user mainly finds them in the main sections and may not be able to continue using and testing the product as intended. Generally, the bug type is MALFUNCTION, CRASH, PERFORMANCE or SECURITY.<br>\n<br>\n<b>CRITICAL</b><br>\nIssues that prevent the user from completing the main tasks, often resulting in a system crash. The user is unable by any means to complete the task or continue using the test product. The bug types are either MALFUNCTION or CRASH bugs.<br>",

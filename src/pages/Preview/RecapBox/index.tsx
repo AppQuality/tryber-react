@@ -1,4 +1,5 @@
 import { Text, Title } from "@appquality/appquality-design-system";
+import { useTranslation } from "react-i18next";
 import {
   useGetUsersMeCampaignsByCampaignIdPayoutDataQuery,
   useGetUsersMeCampaignsByCampaignIdPreviewQuery,
@@ -54,6 +55,7 @@ const useCampaignData = (id: string) => {
 };
 
 const RecapBox = ({ id }: { id: string }) => {
+  const { t } = useTranslation();
   const theme = useTheme();
   const campaignData = useCampaignData(id);
   if (!campaignData) {
@@ -69,7 +71,7 @@ const RecapBox = ({ id }: { id: string }) => {
           </i>
         </div>
         <Title>{campaignData.type.name} </Title>
-        <Text>Campaign Type</Text>
+        <Text>{t("__PREVIEW_PAGE__CAMPAIGN_TYPE", "Campaign Type")}</Text>
       </div>
       <div>
         <div>
@@ -80,7 +82,7 @@ const RecapBox = ({ id }: { id: string }) => {
         <Title>
           {campaignData.startDate} - {campaignData.endDate}
         </Title>
-        <Text>Testing Phase</Text>
+        <Text>{t("__PREVIEW_PAGE__TESTING_PHASE", "Testing Phase")}</Text>
       </div>
       <div>
         <div>
@@ -91,8 +93,10 @@ const RecapBox = ({ id }: { id: string }) => {
             diamond
           </i>
         </div>
-        <Title>{campaignData.points}</Title>
-        <Text>Experience Points</Text>
+        <Title>{campaignData.points} pts.</Title>
+        <Text>
+          {t("__PREVIEW_PAGE__EXPERIENCE_POINTS", "Experience Points")}
+        </Text>
       </div>
       <div>
         <div>
@@ -106,7 +110,7 @@ const RecapBox = ({ id }: { id: string }) => {
         <Title>
           {campaignData.payout.min}€ - {campaignData.payout.max}€
         </Title>
-        <Text>Payout</Text>
+        <Text>{t("__PREVIEW_PAGE__PAYOUT", "Payout")}</Text>
       </div>
     </Wrapper>
   );

@@ -38,6 +38,7 @@ const CardTitle = ({ device }: { device: string }) => {
 };
 
 const AcceptedDevices = ({ id }: { id: string }) => {
+  const { t } = useTranslation();
   const { data } = useGetUsersMeCampaignsByCampaignIdQuery(
     { campaignId: id },
     { skip: !id }
@@ -50,13 +51,15 @@ const AcceptedDevices = ({ id }: { id: string }) => {
   return (
     <>
       <Title size="s" className="aq-mb-2">
-        Accepted Devices
+        {t("__PREVIEW_PAGE__ACCEPTED_DEVICES_TITLE", "Accepted Devices")}
       </Title>
       {Object.entries(data.acceptedDevices).map(([type, devices]) => (
         <div key={type}>
           <Card title={<CardTitle device={type} />} className="aq-mb-1">
             {devices === "all" ? (
-              <Text>All Devices</Text>
+              <Text>
+                {t("__PREVIEW_PAGE__ACCEPTED_DEVICES_ANY", "Any Device")}
+              </Text>
             ) : (
               <ul
                 style={{

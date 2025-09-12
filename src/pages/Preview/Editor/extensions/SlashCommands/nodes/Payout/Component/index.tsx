@@ -1,6 +1,6 @@
-import { Text } from "@appquality/appquality-design-system";
+import { Text, Title } from "@appquality/appquality-design-system";
 import { NodeViewWrapper } from "@tiptap/react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useGetUsersMeCampaignsByCampaignIdPayoutDataQuery } from "src/services/tryberApi";
 
@@ -15,11 +15,11 @@ const CompleteBonus = ({
 }) => {
   const { t } = useTranslation();
   return (
-    <>
-      <Text as="span">
-        <strong>€{campaign_complete_bonus_eur}</strong>
-      </Text>{" "}
-      {minimum_bugs > 0 || percent_usecases > 0 ? "with" : ""}
+    <Text>
+      <strong>{campaign_complete_bonus_eur}€</strong>{" "}
+      {minimum_bugs > 0 || percent_usecases > 0
+        ? t("PAYOUT_BOX_COMPLETE_BONUS_WITH", " with")
+        : ""}
       <ul style={{ listStyleType: "disc", paddingLeft: "20px", margin: 0 }}>
         {minimum_bugs > 0 && (
           <li>
@@ -33,17 +33,21 @@ const CompleteBonus = ({
             {t(" completion of {{percent}} of required activities", {
               percent:
                 percent_usecases === 100
-                  ? "all"
-                  : `at least ${percent_usecases}%`,
+                  ? t("PAYOUT_BOX_COMPLETE_BONUS_ALL_USECASES", "all")
+                  : t("PAYOUT_BOX_COMPLETE_BONUS_AT_LEAST", {
+                      defaultValue: "at least {{percent}}%",
+                      percent: percent_usecases,
+                    }),
             })}
           </li>
         )}
       </ul>
-    </>
+    </Text>
   );
 };
 
 export default function MyComponent() {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
 
   const { data } = useGetUsersMeCampaignsByCampaignIdPayoutDataQuery(
@@ -57,36 +61,60 @@ export default function MyComponent() {
 
   return (
     <NodeViewWrapper className="payout-node">
-      <h3>PAYOUT</h3>
-      <p>For this Campaign you will be rewarded as follows:</p>
-      <ul>
-        <li>
-          <CompleteBonus {...data} />
-        </li>
-        {data.payout_limit > 0 && (
+      <Title size="sm" className="aq-mb-2">
+        {t("PAYOUT")}
+      </Title>
+      <Text>
+        {t("For this Campaign you will be rewarded as follows:")}
+        <ul>
           <li>
-            <Text as="span">
-              <strong>+ max €{data.payout_limit}</strong>
-            </Text>{" "}
-            based on reported bugs and their severity
+            <CompleteBonus {...data} />
           </li>
-        )}
-        {data.top_tester_bonus > 0 && (
-          <li>
-            <Text as="span">
-              <strong>+ €{data.top_tester_bonus} </strong>
-            </Text>
-            for the TRYBER with the best performance
-          </li>
-        )}
-      </ul>
-      <p>
-        If you are in doubt about how payments work, please consult our{" "}
-        <a href="/wallet-how-does-it-work/" target="_blank" rel="noopener">
-          <u>Payment Guide</u>
-        </a>
-        .
-      </p>
+          {data.payout_limit > 0 && (
+            <li>
+              <Trans
+                i18nKey="available tags: <b></b>:::PAYOUT_BOX_MAX_PAYOUT"
+                components={{
+                  b: <strong />,
+                }}
+                values={{
+                  pay: data.payout_limit,
+                }}
+                defaults={`<b>+ max {{pay}}€</b> based on reported bugs and their severity`}
+              />
+            </li>
+          )}
+          {data.top_tester_bonus > 0 && (
+            <li>
+              <Trans
+                i18nKey="available tags: <b></b>:::PAYOUT_BOX_TOP_TESTER_BONUS"
+                components={{
+                  b: <strong />,
+                }}
+                values={{
+                  pay: data.top_tester_bonus,
+                }}
+                defaults={`<b>+ {{pay}}€</b> for the TRYBER with the best performance`}
+              />
+            </li>
+          )}
+        </ul>
+        <Trans
+          i18nKey="available tags: <a></a>:::PAYOUT_BOX_PAYMENT_GUIDE"
+          components={{
+            a: (
+              <a
+                href="/wallet-how-does-it-work/"
+                target="_blank"
+                rel="noopener"
+              />
+            ),
+          }}
+          defaults="
+        If you are in doubt about how payments work, please consult our
+        <a>Payment Guide</a>."
+        />
+      </Text>
     </NodeViewWrapper>
   );
 }
