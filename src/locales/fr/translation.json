@@ -1,4 +1,7 @@
 {
+  " completion of {{percent}} of required activities": "",
+  " minimum {{count}} bugs approved, for participation": "",
+  " minimum {{count}} bugs approved, for participation_plural": "",
   "...wait": "Chargement",
   "/discover-experience-points/": "/discover-experience-points/",
   "/faq/": "/faq/",

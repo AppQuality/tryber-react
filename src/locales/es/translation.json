@@ -1,4 +1,7 @@
 {
+  " completion of {{percent}} of required activities": "",
+  " minimum {{count}} bugs approved, for participation": "",
+  " minimum {{count}} bugs approved, for participation_plural": "",
   "...wait": "Cargando...",
   "/discover-experience-points/": "/es/puntos-de-experiencia-que-son/",
   "/faq/": "/es/faq-es/",

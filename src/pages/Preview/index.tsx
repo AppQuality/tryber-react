@@ -6,6 +6,8 @@ import {
   useGetUsersMeCampaignsByCampaignIdPreviewQuery,
   useGetUsersMeCampaignsByCampaignIdQuery,
 } from "src/services/tryberApi";
+import { SlashCommands } from "./Editor/extensions/SlashCommands";
+import { Payout } from "./Editor/extensions/SlashCommands/nodes/Payout";
 import SelectBox from "./SelectionBox";
 
 const Preview = () => {
@@ -33,7 +35,19 @@ const Preview = () => {
     >
       <BSGrid>
         <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
-          <Editor editable={false}>{data.content}</Editor>
+          <Editor
+            editorProps={{
+              handleDOMEvents: {
+                drop: (view, e) => {
+                  e.preventDefault();
+                },
+              },
+            }}
+            editable={false}
+            extensions={[Payout, SlashCommands]}
+          >
+            {data.content}
+          </Editor>
           <SelectBox />
         </BSCol>
         <BSCol size="col-lg-3"> </BSCol>

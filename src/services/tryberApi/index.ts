@@ -801,6 +801,14 @@ const injectedRtkApi = api.injectEndpoints({
         body: queryArg.body,
       }),
     }),
+    getUsersMeCampaignsByCampaignIdPayoutData: build.query<
+      GetUsersMeCampaignsByCampaignIdPayoutDataApiResponse,
+      GetUsersMeCampaignsByCampaignIdPayoutDataApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}/payout_data`,
+      }),
+    }),
     getUsersMeCampaignsByCampaignIdPreview: build.query<
       GetUsersMeCampaignsByCampaignIdPreviewApiResponse,
       GetUsersMeCampaignsByCampaignIdPreviewApiArg
@@ -2442,9 +2450,15 @@ export type GetUsersMeCampaignsByCampaignIdApiResponse = /** status 200 OK */ {
     invalid: string[];
     valid: string[];
   };
+  campaign_type: {
+    id: number;
+    name: string;
+  };
   devices?: ({
     id: number;
   } & UserDevice)[];
+  end_date: string;
+  goal: string;
   hasBugForm: boolean;
   id: number;
   language?: {
@@ -2582,6 +2596,28 @@ export type PostUsersMeCampaignsByCampaignIdMediaApiArg = {
   body: {
     media?: {} | string[];
   };
+};
+export type GetUsersMeCampaignsByCampaignIdPayoutDataApiResponse =
+  /** status 200 OK */ {
+    campaign_complete_bonus_eur: number;
+    campaign_pts: number;
+    critical_bug_payout: number;
+    high_bug_payout: number;
+    low_bug_payout: number;
+    medium_bug_payout: number;
+    minimum_bugs: number;
+    payout_limit: number;
+    percent_usecases: number;
+    point_multiplier_critical: number;
+    point_multiplier_high: number;
+    point_multiplier_low: number;
+    point_multiplier_medium: number;
+    point_multiplier_perfect: number;
+    point_multiplier_refused: number;
+    top_tester_bonus: number;
+  };
+export type GetUsersMeCampaignsByCampaignIdPayoutDataApiArg = {
+  campaignId: string;
 };
 export type GetUsersMeCampaignsByCampaignIdPreviewApiResponse =
   /** status 200 OK */ {
@@ -3383,6 +3419,7 @@ export const {
   useGetUsersMeCampaignsByCampaignIdFormsQuery,
   usePostUsersMeCampaignsByCampaignIdFormsMutation,
   usePostUsersMeCampaignsByCampaignIdMediaMutation,
+  useGetUsersMeCampaignsByCampaignIdPayoutDataQuery,
   useGetUsersMeCampaignsByCampaignIdPreviewQuery,
   useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery,
   usePostUsersMeCertificationsMutation,
