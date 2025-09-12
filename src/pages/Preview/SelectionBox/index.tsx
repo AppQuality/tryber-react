@@ -1,3 +1,4 @@
+import { Title } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useGetUsersMeCampaignsByCampaignIdPreviewQuery } from "src/services/tryberApi";
@@ -37,7 +38,15 @@ const SelectBox = () => {
 
   if (data.cap && data.cap.free <= 0) return <CapReached />;
 
-  if (data.status === "available") return <SelectionForm />;
+  if (data.status === "available")
+    return (
+      <>
+        <Title size="l" className="aq-mb-2">
+          Ready to start?
+        </Title>
+        <SelectionForm />
+      </>
+    );
 
   return (
     <>

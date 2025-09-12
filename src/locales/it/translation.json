@@ -201,6 +201,7 @@
   "Confirm email": "Conferma indirizzo email",
   "Confirm password": "Conferma la password",
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Collega Tryber a uno dei tuoi account, in questo modo sarà più facile accedere alla dashboard",
+  "Console": "",
   "Continue with Facebook": "Continua con Facebook",
   "Continue with LinkedIn": "Continua con LinkedIn",
   "Continue with email": "Continua con email",
@@ -374,10 +375,10 @@
     "minimum of 6 characters": "essere lunga almeno 6 caratteri"
   },
   "PAYMENTS_MODAL_STEP_4_ERROR": "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
+  "PC": "",
   "PC Type: <bold>{{pc_type}}</bold>": "Tipo PC: <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "Questo indirizzo email è già in uso, inseriscine un altro.",
   "Page %current% / %total%": "Pagina %current% / %total%",
-  "Page Preview": "",
   "Paid": "Pagato",
   "Paid On": "Pagato il",
   "Password": "Password",
@@ -464,6 +465,9 @@
   "Signup for Tryber": "Iscriviti a TRYBER",
   "Signup now": "Iscriviti ora",
   "Signup success": "Ya eres parte de TRYBER",
+  "Smart TV": "",
+  "Smartphone": "",
+  "Smartwatch": "",
   "Something went wrong": "È successo qualcosa",
   "Spoken languages": "Lingue parlate",
   "Start Date": "Inizio",
@@ -484,6 +488,7 @@
     "Success": "Successo",
     "Warning": "Avviso"
   },
+  "Tablet": "",
   "Take me to the dashboard": "Comincia l'avventura",
   "Take part in the Basic Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become an AppQuality world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community.": "Tutto parte da qui: solo quando avrai completato il Corso Base TRYBER ti inviteremo a partecipare alle campagne. In più guadagnerai 200 punti esperienza, avrai una panoramica del mondo di TRYBER, farai parte dei membri qualificati e riceverai una certificazione che potrai condividere su LinkedIn.",
   "Tax identification number": {
@@ -730,6 +735,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Page Preview": "",
   "/my-account/": "/it/il-mio-account/",
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supporta le aziende nella creazione di esperienze memorabili grazie al potere della Community di TRYBER. <unguess_link>Scopri UNGUESS</unguess_link>"

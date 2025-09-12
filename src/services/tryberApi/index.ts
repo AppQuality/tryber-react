@@ -2473,6 +2473,15 @@ export type GetUsersMeCampaignsByCampaignIdApiResponse = /** status 200 OK */ {
     name: string;
   }[];
   validFileExtensions: string[];
+  icon: string;
+  acceptedDevices: {
+    smartphone?: AvailableDevice[] | "all";
+    tablet?: AvailableDevice[] | "all";
+    pc?: AvailableDevice[] | "all";
+    console?: AvailableDevice[] | "all";
+    smartwatch?: AvailableDevice[] | "all";
+    smartTv?: AvailableDevice[] | "all";
+  };
 };
 export type GetUsersMeCampaignsByCampaignIdApiArg = {
   campaignId: string;
@@ -3296,6 +3305,9 @@ export type UserDevice = {
     version: string;
   };
   type: string;
+};
+export type AvailableDevice = {
+  name: string;
 };
 export type FiscalType =
   | "withholding"

@@ -201,6 +201,7 @@
   "Confirm email": "Confirmer l'email",
   "Confirm password": "Confirmer le mot de passe",
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Connectez Tryber à l'un de vos comptes, cela facilitera l'accès à votre tableau de bord",
+  "Console": "",
   "Continue with Facebook": "Continuer avec Facebook",
   "Continue with LinkedIn": "Continuer avec LinkedIn",
   "Continue with email": "Continuer avec l'email",
@@ -374,10 +375,10 @@
     "minimum of 6 characters": "minimum de 6 caractères"
   },
   "PAYMENTS_MODAL_STEP_4_ERROR": "Nous n'avons pas pu recevoir vos données. Peut-être s'agit-il d'un problème de connexion. Veuillez réessayer maintenant.",
+  "PC": "",
   "PC Type: <bold>{{pc_type}}</bold>": "Type de PC : <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "Cette adresse email est déjà utilisée. Veuillez essayer avec une autre.",
   "Page %current% / %total%": "Page %current% / %total%",
-  "Page Preview": "",
   "Paid": "Payé",
   "Paid On": "Payé le",
   "Password": "Mot de passe",
@@ -464,6 +465,9 @@
   "Signup for Tryber": "Inscrivez-vous à Tryber",
   "Signup now": "Inscrivez-vous maintenant",
   "Signup success": "Vous êtes maintenant un Tryber",
+  "Smart TV": "",
+  "Smartphone": "",
+  "Smartwatch": "",
   "Something went wrong": "Quelque chose a mal tourné",
   "Spoken languages": "Langues parlées",
   "Start Date": "Date de début",
@@ -484,6 +488,7 @@
     "Success": "Succès",
     "Warning": "Avertissement"
   },
+  "Tablet": "",
   "Take me to the dashboard": "Que l'aventure commence",
   "Take part in the Basic Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become an AppQuality world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community.": "Tout commence ici : ce n'est qu'après avoir complété le cours de base TRYBER que vous serez éligible pour les campagnes. Et ce n'est pas tout, vous gagnerez 200 points d'expérience, obtiendrez une vue d'ensemble du monde de TRYBER, ferez partie des membres qualifiés et recevrez une certification que vous pourrez partager sur LinkedIn.",
   "Tax identification number": {
@@ -730,6 +735,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} téléchargé",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} téléchargés"
   },
+  "Page Preview": "",
   "address": "adresse",
   "company": "société",
   "Home": "Accueil",
