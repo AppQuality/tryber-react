@@ -40,7 +40,7 @@ export const RadioSelectionFormField = ({
                 name={field.name}
                 value={o}
                 checked={field.value === o}
-                onChange={(v) => {
+                onChange={(v: any) => {
                   field.onChange(v);
                   form.setFieldValue(field.name, v);
                 }}

@@ -1,4 +1,7 @@
 {
+  " completion of {{percent}} of required activities": " achèvement de {{percent}} des activités requises",
+  " minimum {{count}} bugs approved, for participation": " minimum {{count}} bugs approuvés pour la participation",
+  " minimum {{count}} bugs approved, for participation_plural": " minimum {{count}} bugs approuvés pour la participation",
   "...wait": "Chargement",
   "/discover-experience-points/": "/discover-experience-points/",
   "/faq/": "/faq/",
@@ -78,7 +81,8 @@
     "@@Description for fiscal type@@": "<a>Cliquez ici</a> pour plus d'infos"
   },
   "Available tags : <devices_link> (Link to fiscal devices)": {
-    "_FORM_MESSAGES_ADD-DEVICES_": "Sélectionnez au moins un appareil compatible avec cette campagne. Avez-vous de nouveaux appareils ? Ajoutez-les <devices_link>ici</devices_link>."
+    "_FORM_MESSAGES_ADD-DEVICES_": "Sélectionnez au moins un appareil compatible avec cette campagne. Avez-vous de nouveaux appareils ? Ajoutez-les <devices_link>ici</devices_link>.",
+    "_FORM_MESSAGES_NO-DEVICES_": ""
   },
   "Available tags : <entry_test_link> (Link to entry test)": {
     "__RANKING_MODAL_MESSAGE_MAX: 250": "Vous n'avez pas encore monté de niveau : passez notre <entry_test_link>Test d'entrée</entry_test_link> pour gagner les premiers points d'expérience et atteindre le niveau Basique"
@@ -197,6 +201,7 @@
   "Confirm email": "Confirmer l'email",
   "Confirm password": "Confirmer le mot de passe",
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Connectez Tryber à l'un de vos comptes, cela facilitera l'accès à votre tableau de bord",
+  "Console": "Console",
   "Continue with Facebook": "Continuer avec Facebook",
   "Continue with LinkedIn": "Continuer avec LinkedIn",
   "Continue with email": "Continuer avec l'email",
@@ -262,6 +267,7 @@
   },
   "For a secure password we recommend: Minimum 6  characters. An uppercase character. A numerical digit. A lowercase character.": "Pour un mot de passe sécurisé, nous recommandons : au moins 6 caractères, une lettre majuscule, un chiffre, une lettre minuscule.",
   "For tax reasons we are obliged to tie this choice to binary options only": "Pour des raisons fiscales, nous sommes obligés de limiter ce choix à des options binaires uniquement",
+  "For this Campaign you will be rewarded as follows:": "Pour cette campagne, vous serez récompensé comme suit :",
   "Gender": "Genre",
   "Gender option": {
     "Female": "Femme",
@@ -282,6 +288,7 @@
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Voici la liste de tous vos appareils. Assurez-vous de la tenir à jour pour augmenter vos chances d'être sélectionné pour d'autres projets.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Ici, vous ne pouvez changer que la version de votre système d'exploitation. Si vous souhaitez ajouter un autre appareil, cliquez sur \"Ajouter un appareil\"",
   "History": "Historique",
+  "Hooray! You have been selected for this campaign.": "Hourra ! Vous avez été sélectionné pour cette campagne.",
   "How do experience points work?": "Comment fonctionnent les points d'expérience ?",
   "I agree to receive earning opportunity emails from AppQuality": "Je consens à recevoir des emails dédiés à la communauté TRYBER",
   "I don't receive testing campaigns": "Je ne reçois pas de campagnes",
@@ -348,6 +355,7 @@
   "Not available": "Non disponible",
   "Not specified": "Non spécifié",
   "Oh no!": "Oh non !",
+  "Oh no, It's too late! The subscription phase is closed now.": "Oh non, c'est trop tard ! La phase d'inscription est maintenant terminée.",
   "Oops, this one's not available.": "Oups, celui-ci n'est pas disponible.",
   "Open for you! Apply now.": "Ouvert pour vous ! Postulez maintenant.",
   "Operating System": "Système d'exploitation",
@@ -368,6 +376,11 @@
     "minimum of 6 characters": "minimum de 6 caractères"
   },
   "PAYMENTS_MODAL_STEP_4_ERROR": "Nous n'avons pas pu recevoir vos données. Peut-être s'agit-il d'un problème de connexion. Veuillez réessayer maintenant.",
+  "PAYOUT": "Payout",
+  "PAYOUT_BOX_COMPLETE_BONUS_ALL_USECASES": "tout",
+  "PAYOUT_BOX_COMPLETE_BONUS_AT_LEAST": "au moins {{percent}}%",
+  "PAYOUT_BOX_COMPLETE_BONUS_WITH": " avec",
+  "PC": "PC",
   "PC Type: <bold>{{pc_type}}</bold>": "Type de PC : <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "Cette adresse email est déjà utilisée. Veuillez essayer avec une autre.",
   "Page %current% / %total%": "Page %current% / %total%",
@@ -457,6 +470,9 @@
   "Signup for Tryber": "Inscrivez-vous à Tryber",
   "Signup now": "Inscrivez-vous maintenant",
   "Signup success": "Vous êtes maintenant un Tryber",
+  "Smart TV": "Smart TV",
+  "Smartphone": "Smartphone",
+  "Smartwatch": "Smartwatch",
   "Something went wrong": "Quelque chose a mal tourné",
   "Spoken languages": "Langues parlées",
   "Start Date": "Date de début",
@@ -477,6 +493,7 @@
     "Success": "Succès",
     "Warning": "Avertissement"
   },
+  "Tablet": "Tablette",
   "Take me to the dashboard": "Que l'aventure commence",
   "Take part in the Basic Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become an AppQuality world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community.": "Tout commence ici : ce n'est qu'après avoir complété le cours de base TRYBER que vous serez éligible pour les campagnes. Et ce n'est pas tout, vous gagnerez 200 points d'expérience, obtiendrez une vue d'ensemble du monde de TRYBER, ferez partie des membres qualifiés et recevrez une certification que vous pourrez partager sur LinkedIn.",
   "Tax identification number": {
@@ -488,6 +505,7 @@
   "Testing Campaigns are not clear and I'm not able to finished them": "Les campagnes ne sont pas claires et je ne peux pas les terminer",
   "Testing University": "Université Tryber",
   "The account holder name should contain latin character only": "Le nom du titulaire du compte ne doit contenir que des caractères latins",
+  "The campaign has reached its maximum capacity.": "La campagne a atteint sa capacité maximale.",
   "The changes to your device were successfully saved": "Les modifications apportées à votre appareil ont été enregistrées avec succès",
   "The deletion of your account ({{testerId}}) <bold>will be irreversible</bold>.<br></br><br></br>You will not be able to continue earning money with us. <br></br>Are you sure you want to leave our community?": "La suppression de votre compte ({{testerId}}) <bold>sera irréversible</bold>.<br></br><br></br>Vous ne pourrez plus continuer à gagner de l'argent avec nous. <br></br>Êtes-vous sûr de vouloir quitter notre communauté ?",
   "The following informations are retrived from your fiscal profile and will be used to generate your receipt": "Les informations suivantes proviennent de votre profil fiscal : vous les trouverez dans le reçu de paiement.",
@@ -500,6 +518,7 @@
   "There are no new campaigns available at this time, please keep your profile and devices updated and look forward to new activities.": "Il n'y a pas de nouvelles campagnes disponibles pour le moment, veuillez maintenir votre profil et vos appareils à jour et attendez de nouvelles activités.",
   "There was an error": "Il y a eu une erreur",
   "There was an error adding this certification.": "Une erreur est survenue lors de l'ajout de cette certification.",
+  "There was an error in this campaign. Please contact us at support@tryber.me.": "Une erreur est survenue dans cette campagne. Veuillez nous contacter à l'adresse support@tryber.me.",
   "There was an error removing your certification": "Une erreur est survenue lors de la suppression de votre certification",
   "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth": "Une erreur est survenue lors de la validation de votre numéro d'identification fiscale. Veuillez vérifier votre nom, prénom, sexe, date de naissance ou lieu de naissance",
   "This email is already in use.": "Cet email est déjà utilisé.",
@@ -534,11 +553,14 @@
   "View payments page": "Voir la page du portefeuille",
   "WELCOME_SIGNUP_MESSAGE": "<strong>Bienvenue à bord !</strong><br />Nous vous avons envoyé un email de bienvenue à l'adresse que vous avez utilisée lors de l'inscription. Il est maintenant temps d'explorer l'univers TRYBER : choisissez parmi nos cours universitaires, postulez pour des campagnes de test et rejoignez notre communauté !",
   "Wallet": "Portefeuille",
+  "We are currently reviewing applications and will notify you of any updates.": "Nous examinons actuellement les candidatures et vous informerons de toute mise à jour.",
+  "We are not accepting new applications at this time. Check back later if new spots open up!": "Nous n'acceptons pas de nouvelles candidatures pour le moment. Revenez plus tard si de nouvelles places se libèrent !",
   "We couldn't find a city with that name, please search again": "Nous n'avons pas trouvé de ville avec ce nom, veuillez rechercher à nouveau",
   "We couldn't update your profile. Try again.": "Nous n'avons pas pu mettre à jour votre profil. Réessayez.",
   "We couldn't validate your tax id.": "Nous n'avons pas pu valider votre numéro d'identification fiscale.",
   "We got it!": "Nous l'avons !",
   "We successfully removed a device from your device list": "Nous avons supprimé avec succès un appareil de votre liste d'appareils",
+  "We will wait for you in the next campaigns, so keep an eye on your dashboard!": "Nous vous attendrons dans les prochaines campagnes, alors gardez un œil sur votre tableau de bord !",
   "We've received your request. You'll get an email in a few days.": "Nous avons reçu votre demande. Vous recevrez un email dans quelques jours.",
   "Welcome in AppQuality": "Bienvenue chez TRYBER",
   "What operating system am i using?": "Quel système d'exploitation est-ce que j'utilise ?",
@@ -554,6 +576,7 @@
   "You can't delete this device, you are using it in a campaign!": "Vous ne pouvez pas supprimer cet appareil, vous l'utilisez dans une campagne !",
   "You didn't change anything on your device": "Vous n'avez rien changé sur votre appareil",
   "You don't have any devices yet. Add one to participate in the tests!": "Vous n'avez pas encore d'appareils. Ajoutez-en un pour participer à la campagne !",
+  "You have already applied for this campaign.": "Vous avez déjà postulé pour cette campagne.",
   "You have been selected for this campaign. The manual is coming soon, once ready you will find it here.": "Vous avez été sélectionné pour cette campagne. Le manuel arrive bientôt, une fois prêt, vous le trouverez ici.",
   "You need to fill in your tax profile data to receive your booty": "Vous devez remplir les données de votre profil fiscal pour recevoir votre butin",
   "You need to select a city": "Vous devez sélectionner une ville",
@@ -581,6 +604,7 @@
   "_FORM_GENERIC-ERROR_MESSAGES_": "Une erreur est survenue lors du chargement du formulaire. Réessayez",
   "_FORM_INPUT-SELECT_NOT-ABOVE_": "Aucune des options ci-dessus\n",
   "_FORM_LABEL_DEVICES_": "Appareils",
+  "_FORM_MESSAGES_NO-DEVICES_": "No compatible devices found",
   "_FORM_MESSAGE_ERROR-GENERIC_": "Une erreur est survenue lors de la soumission du formulaire. Réessayez.",
   "_FORM_PARAGRAPH_": "Entre vous et la campagne, il y a ce formulaire : remplissez-le dans tous ses champs pour avoir plus de chances d'être sélectionné. Nous enregistrerons ces données pour les futures campagnes.",
   "_FORM_SELECT_DEVICES_": "Sélectionnez un appareil",
@@ -590,6 +614,14 @@
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Points d'exp totaux",
   "__FISCAL_PROFILE_TAX_ID_DISCLAIMER": "Chaque fois que vous modifiez l'une de vos données personnelles, vous devez réintroduire le numéro d'identification fiscale.",
   "__PAYMENT-METHOD-BANK": "Virement bancaire",
+  "__PREVIEW_PAGE__ACCEPTED_DEVICES_ANY": "Tout appareil",
+  "__PREVIEW_PAGE__ACCEPTED_DEVICES_TITLE": "Appareils acceptés",
+  "__PREVIEW_PAGE__ANY_QUESTIONS": "Des questions?",
+  "__PREVIEW_PAGE__CAMPAIGN_TYPE": "Type de campagne",
+  "__PREVIEW_PAGE__DROP_EMAIL": "Envoyez un e-mail à l'équipe TRYBER",
+  "__PREVIEW_PAGE__EXPERIENCE_POINTS": "Points d'expérience",
+  "__PREVIEW_PAGE__PAYOUT": "Paiement",
+  "__PREVIEW_PAGE__TESTING_PHASE": "Phase de test",
   "__RANKING_LEGEND_BASIC_SPEC_MAX: 35": "Votre niveau de départ",
   "__RANKING_LEGEND_EXP_NEXT": "exp",
   "__RANKING_LEGEND_HOLD_MAX: 15": "Points d'exp pour maintenir le niveau",
@@ -621,6 +653,13 @@
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Votre historique de paiement est actuellement vide. Lorsque vous commencerez à demander vos paiements, vous les verrez ici.",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Voir les détails",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Télécharger le reçu",
+  "available tags: <a></a>": {
+    "PAYOUT_BOX_PAYMENT_GUIDE": "Si vous avez des doutes sur le fonctionnement des paiements, consultez le <a>guide de paiement</a>."
+  },
+  "available tags: <b></b>": {
+    "PAYOUT_BOX_MAX_PAYOUT": "<b>+ jusqu'à {{pay}} €</b> en fonction des bugs signalés et de leur gravité",
+    "PAYOUT_BOX_TOP_TESTER_BONUS": "<b>+ {{pay}} €</b> pour le TRYBER avec la meilleure performance"
+  },
   "available tags: <br>, <bold>": {
     "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Bug reproductibilité</b><br>\n<br>\n<b>PARFOIS</b><br>\nToutes conditions et processus étant égaux, le bug se produit de manière sporadique/imprévisible, mais il est toujours possible de le reproduire en faisant plusieurs tentatives.<br>\n<br>\n<b>TOUJOURS</b><br>\nToutes les conditions et tous les processus étant égaux, le bug se produit dans les mêmes conditions et les mêmes processus, à chaque tentative de reproductibilité. Pour être considéré comme tel, le bug doit être reproduit avec succès au moins 3 fois sur 3.<br>\n<br>\n<b>UNE FOIS</b><br>\nToutes conditions et processus étant égaux, le bug ne s'est produit qu'une seule fois et n'a pas pu être reproduit (au moins 3 tentatives ont été nécessaires).",
     "BUGFORM_SEVERITY_MODAL_TXT": "<bold>Sévérité du bug</bold><br>\n<br/>\nLa sévérité est une estimation de l'impact du problème sur l'utilisation du produit testé. Cette estimation est calculée en gardant à l'esprit à la fois le contexte où le problème se produit (sections principales ou secondaires de l'objet de la campagne) et les conditions dans lesquelles il a été trouvé par rapport à une utilisation moyenne. La sévérité ne doit jamais être influencée par l'évaluation de la reproductibilité : ce qui guide le choix est principalement l'impact sur l'utilisateur, le contexte (importance de la section) et la présence ou l'absence d'une solution de contournement.<br>\n<br>\n<b>BASSE</b><br>\nProblèmes ayant un impact minimal sur l'utilisation du produit. L'utilisateur peut continuer à utiliser et à tester le produit sans grandes difficultés. Souvent, il s'agit de bugs d'UTILISABILITÉ, de TYPO ou GRAPHIQUES.<br>\n<br>\n<b>MOYENNE</b><br>\nProblèmes ayant un impact limité sur l'utilisation du produit. L'utilisateur est encore capable de compléter le processus malgré quelques difficultés rencontrées. Cela peut être tout type de bug.<br>\n<br>\n<b>ÉLEVÉE</b><br>\nProblèmes ayant un impact significatif sur l'utilisation du produit. L'utilisateur les trouve principalement dans les sections principales et peut ne pas être capable de continuer à utiliser et à tester le produit comme prévu. Généralement, le type de bug est un DYSFONCTIONNEMENT, un CRASH, une PERFORMANCE ou une SÉCURITÉ.<br>\n<br>\n<b>CRITIQUE</b><br>\nProblèmes empêchant l'utilisateur de compléter les tâches principales, souvent entraînant un crash système. L'utilisateur est incapable par tous les moyens de compléter la tâche ou de continuer à utiliser le produit de test. Les types de bugs sont soit des DYSFONCTIONNEMENTS, soit des CRASH.<br>",
@@ -638,6 +677,9 @@
   },
   "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
     "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>Ce que vous devez faire maintenant</title>\n<ul>\n<li>Choisissez le mode de paiement et vérifiez que votre type fiscal est correct</li>\n<li>Insérez vos informations personnelles et acceptez les conditions</li>\n<li>Envoyez votre demande de paiement</li>\n</ul>"
+  },
+  "available tags: <manualLink>": {
+    "_FORM_MESSAGES_ALREADY-SELECTED_": "<manualLink>Consultez le Manuel !</manualLink> Vous y trouverez toutes les informations nécessaires pour compléter les tâches."
   },
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "Nouveau sur TRYBER ? <signuplink><strong>Inscrivez-vous</strong></signuplink>"
@@ -713,6 +755,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} téléchargé",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} téléchargés"
   },
+  "Page Preview": "Page Preview",
   "address": "adresse",
   "company": "société",
   "Home": "Accueil",

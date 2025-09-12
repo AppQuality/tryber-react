@@ -78,7 +78,7 @@ const GenericModal = () => {
           className="aq-mb-3"
           label={t("I get too many emails")}
           value="TOO_MANY_EMAILS"
-          onChange={(e) => {
+          onChange={(e: any) => {
             addRemoveDeletionReason(e.target.value, e.target.checked);
           }}
         />
@@ -86,7 +86,7 @@ const GenericModal = () => {
           className="aq-mb-3"
           label={t("I don't receive testing campaigns")}
           value="NO_CAMPAIGNS"
-          onChange={(e) => {
+          onChange={(e: any) => {
             addRemoveDeletionReason(e.target.value, e.target.checked);
           }}
         />
@@ -94,7 +94,7 @@ const GenericModal = () => {
           className="aq-mb-3"
           label={t("I signed up by mistake")}
           value="SIGNUP_BY_MISTAKE"
-          onChange={(e) => {
+          onChange={(e: any) => {
             addRemoveDeletionReason(e.target.value, e.target.checked);
           }}
         />
@@ -102,7 +102,7 @@ const GenericModal = () => {
           className="aq-mb-3"
           label={t("I don’t have enough time to take part in the campaigns")}
           value="NO_TIME"
-          onChange={(e) => {
+          onChange={(e: any) => {
             addRemoveDeletionReason(e.target.value, e.target.checked);
           }}
         />
@@ -112,7 +112,7 @@ const GenericModal = () => {
             "Testing Campaigns are not clear and I'm not able to finished them"
           )}
           value="CAMPAIGNS_NOT_CLEAR"
-          onChange={(e) => {
+          onChange={(e: any) => {
             addRemoveDeletionReason(e.target.value, e.target.checked);
           }}
         />
@@ -120,7 +120,7 @@ const GenericModal = () => {
           className="aq-mb-3"
           label={t("Other")}
           value="OTHER"
-          onChange={(e) => {
+          onChange={(e: any) => {
             addRemoveDeletionReason(e.target.value, e.target.checked);
           }}
         />

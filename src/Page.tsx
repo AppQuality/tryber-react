@@ -1,5 +1,5 @@
 import { datadogLogs } from "@datadog/browser-logs";
-import { Location, createBrowserHistory } from "history";
+import { createBrowserHistory, Location } from "history";
 import queryString from "query-string";
 import { useEffect } from "react";
 import { Redirect, Route, Router, Switch, useLocation } from "react-router-dom";
@@ -24,6 +24,7 @@ import {
   Wallet,
 } from "./pages";
 import BugForm from "./pages/BugForm";
+import Preview from "./pages/Preview";
 import SignupSuccess from "./pages/SignupSuccess";
 import ThankYouPage from "./pages/ThankYou";
 import VdpPage from "./pages/VDP";
@@ -191,6 +192,10 @@ function Page() {
             <SentryRoute
               path={`${base}/campaign/:id/preview-selection-form`}
               component={PreviewSelectionForm}
+            />
+            <SentryRoute
+              path={`${base}/campaigns/:id/preview`}
+              component={Preview}
             />
             <SentryRoute
               path={["/goodbye", "/it/goodbye", "/es/goodbye", "/fr/goodbye"]}

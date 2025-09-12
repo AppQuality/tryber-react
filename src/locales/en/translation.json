@@ -1,4 +1,7 @@
 {
+  " completion of {{percent}} of required activities": "",
+  " minimum {{count}} bugs approved, for participation": "",
+  " minimum {{count}} bugs approved, for participation_plural": "",
   "...wait": "Loading",
   "/discover-experience-points/": "/discover-experience-points/",
   "/faq/": "/faq/",
@@ -78,7 +81,8 @@
     "@@Description for fiscal type@@": "<a>Click here</a> for more info"
   },
   "Available tags : <devices_link> (Link to fiscal devices)": {
-    "_FORM_MESSAGES_ADD-DEVICES_": "Select at least one device compatible with this campaign. Do you have new devices? Add them <devices_link>here</devices_link>."
+    "_FORM_MESSAGES_ADD-DEVICES_": "Select at least one device compatible with this campaign. Do you have new devices? Add them <devices_link>here</devices_link>.",
+    "_FORM_MESSAGES_NO-DEVICES_": ""
   },
   "Available tags : <entry_test_link> (Link to entry test)": {
     "__RANKING_MODAL_MESSAGE_MAX: 250": "You haven't ranked up yet: complete our <entry_test_link>Entry Test</entry_test_link> to earn the first exp points and to reach the Basic level"
@@ -197,6 +201,7 @@
   "Confirm email": "Confirm email",
   "Confirm password": "Confirm password",
   "Connect AppQuality to one of your accounts, this will make it easier for you to access your dashboard": "Connect Tryber to one of your accounts, this will make it easier for you to access your dashboard",
+  "Console": "",
   "Continue with Facebook": "Continue with Facebook",
   "Continue with LinkedIn": "Continue with LinkedIn",
   "Continue with email": "Continue with email",
@@ -262,6 +267,7 @@
   },
   "For a secure password we recommend: Minimum 6  characters. An uppercase character. A numerical digit. A lowercase character.": "For a secure password we recommend: minimum 6  characters, an uppercase character, a numerical digit, a lowercase character.",
   "For tax reasons we are obliged to tie this choice to binary options only": "For tax reasons we are obliged to tie this choice to binary options only",
+  "For this Campaign you will be rewarded as follows:": "",
   "Gender": "Gender",
   "Gender option": {
     "Female": "Female",
@@ -282,6 +288,7 @@
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"",
   "History": "History",
+  "Hooray! You have been selected for this campaign.": "",
   "How do experience points work?": "How do experience points work?",
   "I agree to receive earning opportunity emails from AppQuality": "I agree to receive emails dedicated to the TRYBER community",
   "I don't receive testing campaigns": "I don't receive campaigns",
@@ -348,6 +355,7 @@
   "Not available": "Not available",
   "Not specified": "Not specified",
   "Oh no!": "Oh no!",
+  "Oh no, It's too late! The subscription phase is closed now.": "",
   "Oops, this one's not available.": "Oops, this one's not available.",
   "Open for you! Apply now.": "Open for you! Apply now.",
   "Operating System": "OS",
@@ -368,6 +376,11 @@
     "minimum of 6 characters": "minimum of 6 characters"
   },
   "PAYMENTS_MODAL_STEP_4_ERROR": "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
+  "PAYOUT": "",
+  "PAYOUT_BOX_COMPLETE_BONUS_ALL_USECASES": "all",
+  "PAYOUT_BOX_COMPLETE_BONUS_AT_LEAST": "at least {{percent}}%",
+  "PAYOUT_BOX_COMPLETE_BONUS_WITH": " with",
+  "PC": "",
   "PC Type: <bold>{{pc_type}}</bold>": "PC Type: <bold>{{pc_type}}</bold>",
   "PROFILE_EMAIL_ALREADY_EXISTS": "This email address is already in use. Please try with another one.",
   "Page %current% / %total%": "Page %current% / %total%",
@@ -457,6 +470,9 @@
   "Signup for Tryber": "Signup for Tryber",
   "Signup now": "Signup now",
   "Signup success": "You’re a Tryber now",
+  "Smart TV": "",
+  "Smartphone": "",
+  "Smartwatch": "",
   "Something went wrong": "Something went wrong",
   "Spoken languages": "Spoken languages",
   "Start Date": "Start Date",
@@ -477,6 +493,7 @@
     "Success": "Success",
     "Warning": "Warning"
   },
+  "Tablet": "",
   "Take me to the dashboard": "Let the adventure begin",
   "Take part in the Basic Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become an AppQuality world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community.": "Everything starts from here: only after completing the Basic TRYBER Course you will be eligible for the campaigns. And that is not all, you'll earn 200 experience points, get an overview of the world of TRYBER, be part of qualified members and receive a certification that you can share on LinkedIn. ",
   "Tax identification number": {
@@ -488,6 +505,7 @@
   "Testing Campaigns are not clear and I'm not able to finished them": "Campaigns are not clear and I'm not able to finished them",
   "Testing University": "Tryber University",
   "The account holder name should contain latin character only": "The account holder name should contain latin characters only",
+  "The campaign has reached its maximum capacity.": "",
   "The changes to your device were successfully saved": "The changes to your device were successfully saved",
   "The deletion of your account ({{testerId}}) <bold>will be irreversible</bold>.<br></br><br></br>You will not be able to continue earning money with us. <br></br>Are you sure you want to leave our community?": "The deletion of your account ({{testerId}}) <bold>will be irreversible</bold>.<br></br><br></br>You will not be able to continue earning money with us. <br></br>Are you sure you want to leave our community?",
   "The following informations are retrived from your fiscal profile and will be used to generate your receipt": "The following data come from your tax profile: you will find them in the payment receipt.",
@@ -500,6 +518,7 @@
   "There are no new campaigns available at this time, please keep your profile and devices updated and look forward to new activities.": "There are no new campaigns available at this time, please keep your profile and devices updated and look forward to new activities.",
   "There was an error": "There was an error",
   "There was an error adding this certification.": "There was an error adding this certification.",
+  "There was an error in this campaign. Please contact us at support@tryber.me.": "",
   "There was an error removing your certification": "There was an error removing your certification",
   "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth": "There was an error validating your tax id. Please check your name, surname, gender, date of birth or place of birth",
   "This email is already in use.": "This email is already in use.",
@@ -534,11 +553,14 @@
   "View payments page": "View wallet page",
   "WELCOME_SIGNUP_MESSAGE": "<strong>Welcome aboard!</strong><br />We have sent you a welcome email to the address you used in the sign up process.Now it’s time to explore the TRYBER universe: choose among our University courses, apply for test campaigns and join our community!",
   "Wallet": "Wallet",
+  "We are currently reviewing applications and will notify you of any updates.": "",
+  "We are not accepting new applications at this time. Check back later if new spots open up!": "",
   "We couldn't find a city with that name, please search again": "We couldn't find a city with that name, please search again",
   "We couldn't update your profile. Try again.": "We couldn't update your profile. Try again.",
   "We couldn't validate your tax id.": "We couldn't validate your tax id.",
   "We got it!": "We got it!",
   "We successfully removed a device from your device list": "We successfully removed a device from your device list",
+  "We will wait for you in the next campaigns, so keep an eye on your dashboard!": "",
   "We've received your request. You'll get an email in a few days.": "We've received your request. You'll get an email in a few days.",
   "Welcome in AppQuality": "Welcome to TRYBER",
   "What operating system am i using?": "What operating system am I using?",
@@ -554,6 +576,7 @@
   "You can't delete this device, you are using it in a campaign!": "You can't delete this device, you are using it in a campaign!",
   "You didn't change anything on your device": "You didn't change anything on your device",
   "You don't have any devices yet. Add one to participate in the tests!": "You don't have any devices yet. Add one to participate in the campaign!",
+  "You have already applied for this campaign.": "",
   "You have been selected for this campaign. The manual is coming soon, once ready you will find it here.": "You have been selected for this campaign. The manual is coming soon, once ready you will find it here.",
   "You need to fill in your tax profile data to receive your booty": "You need to fill in your tax profile data to receive your booty",
   "You need to select a city": "You need to select a city",
@@ -581,6 +604,7 @@
   "_FORM_GENERIC-ERROR_MESSAGES_": "An error occurred while loading the form. Try again",
   "_FORM_INPUT-SELECT_NOT-ABOVE_": "None of the above\n",
   "_FORM_LABEL_DEVICES_": "Devices",
+  "_FORM_MESSAGES_NO-DEVICES_": "No compatible devices found",
   "_FORM_MESSAGE_ERROR-GENERIC_": "An error occurred while submitting the form. Try again.",
   "_FORM_PARAGRAPH_": "Between you and the campaign there is this form: fill it in all its fields to have more selection possibilities. We will save this data for future campaigns.",
   "_FORM_SELECT_DEVICES_": "Select a device",
@@ -590,6 +614,14 @@
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Total exp points",
   "__FISCAL_PROFILE_TAX_ID_DISCLAIMER": "Everytime you change any of your personal data, you will need to re-enter the Tax ID Number.",
   "__PAYMENT-METHOD-BANK": "Bank transfer",
+  "__PREVIEW_PAGE__ACCEPTED_DEVICES_ANY": "Any Device",
+  "__PREVIEW_PAGE__ACCEPTED_DEVICES_TITLE": "Accepted Devices",
+  "__PREVIEW_PAGE__ANY_QUESTIONS": "Any questions?",
+  "__PREVIEW_PAGE__CAMPAIGN_TYPE": "Campaign Type",
+  "__PREVIEW_PAGE__DROP_EMAIL": "Drop an email to TRYBER TEAM",
+  "__PREVIEW_PAGE__EXPERIENCE_POINTS": "Experience Points",
+  "__PREVIEW_PAGE__PAYOUT": "Payout",
+  "__PREVIEW_PAGE__TESTING_PHASE": "Testing Phase",
   "__RANKING_LEGEND_BASIC_SPEC_MAX: 35": "Your starting level",
   "__RANKING_LEGEND_EXP_NEXT": "exp",
   "__RANKING_LEGEND_HOLD_MAX: 15": "Exp points to hold the level",
@@ -621,6 +653,13 @@
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Your payment history is now empty. When you start requesting your payments, you will view them here.",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "View details",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Download receipt",
+  "available tags: <a></a>": {
+    "PAYOUT_BOX_PAYMENT_GUIDE": ""
+  },
+  "available tags: <b></b>": {
+    "PAYOUT_BOX_MAX_PAYOUT": "",
+    "PAYOUT_BOX_TOP_TESTER_BONUS": ""
+  },
   "available tags: <br>, <bold>": {
     "BUGFORM_REPLICABILTY_MODAL_TXT": "<b>Bug replicability</b><br>\n<br>\n<b>SOMETIMES</b><br>\nWith all conditions and processes being equal, the bug occurs sporadically/unpredictably, but it is always possible to reproduce it by making multiple attempts.<br>\n<br>\n<b>ALWAYS</b><br>\nWith all conditions and processes being equal, the bug occurs under the same conditions and processes, at each replication attempt. To be such, the bug must be successfully reproduced at least 3 out of 3 times.<br>\n<br>\n<b>ONCE</b><br>\nWith all conditions and processes being equal, the bug only occurred once and could not be replicated (at least 3 attempts needed).",
     "BUGFORM_SEVERITY_MODAL_TXT": "<bold>Bug severity</bold><br>\n<br/>\nSeverity is an estimate of the impact of the problem on the use of the tested product. This estimate is calculated by keeping in mind both the context where the problem occurs (primary or secondary sections of the core-business of the campaign object) and the conditions where it has been found compared to an average use. Severity must never be influenced by the assessment of replicability: what guides the choice is mainly the impact on the user, the context (importance of the section) and the presence or lack of a workaround.<br>\n<br>\n<b>LOW</b><br>\nIssues that have a minimal impact on the use of the product. The user is able to continue to use and test the product without great difficulties. Often these are USABILITY, TYPO or GRAPHIC bugs.<br>\n<br>\n<b>MEDIUM</b><br>\nIssues that have a limited impact on the use of the product. The user is still able to complete the process despite having encountered some difficulties. This can be any type of bug.<br>\n<br>\n<b>HIGH</b><br>\nIssues that have a significant impact in the use of the product. The user mainly finds them in the main sections and may not be able to continue using and testing the product as intended. Generally, the bug type is MALFUNCTION, CRASH, PERFORMANCE or SECURITY.<br>\n<br>\n<b>CRITICAL</b><br>\nIssues that prevent the user from completing the main tasks, often resulting in a system crash. The user is unable by any means to complete the task or continue using the test product. The bug types are either MALFUNCTION or CRASH bugs.<br>",
@@ -638,6 +677,9 @@
   },
   "available tags: <br>, <p>, <strong>, <title>, <ul>, <li>": {
     "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>What you have to do now</title>\n<ul>\n<li>Choose the payment method and check that your fiscal type is correct</li>\n<li>Insert your personal information and accept the conditions</li>\n<li>Send your payment request</li>\n</ul>"
+  },
+  "available tags: <manualLink>": {
+    "_FORM_MESSAGES_ALREADY-SELECTED_": ""
   },
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "New to TRYBER? <signuplink><strong>Sign up</strong></signuplink>"
@@ -713,6 +755,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "Page Preview": "",
   "/my-account/": "/my-account/",
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {
     "__HOME_PARAGRAPH_UNGUESS MAX:120": "UNGUESS supports companies in creating memorable experiences thanks to the power of the TRYBER Community. <unguess_link>Discover UNGUESS</unguess_link>"
