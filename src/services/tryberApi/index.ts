@@ -259,6 +259,16 @@ const injectedRtkApi = api.injectEndpoints({
     >({
       query: (queryArg) => ({ url: `/campaigns/${queryArg.campaign}/payouts` }),
     }),
+    putCampaignsByCampaignPayouts: build.mutation<
+      PutCampaignsByCampaignPayoutsApiResponse,
+      PutCampaignsByCampaignPayoutsApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/payouts`,
+        method: "PUT",
+        body: queryArg.body,
+      }),
+    }),
     getCampaignsByCampaignProspect: build.query<
       GetCampaignsByCampaignProspectApiResponse,
       GetCampaignsByCampaignProspectApiArg
@@ -459,7 +469,7 @@ const injectedRtkApi = api.injectEndpoints({
       query: (queryArg) => ({
         url: `/dossiers/${queryArg.campaign}`,
         method: "PUT",
-        body: queryArg.dossierCreationData,
+        body: queryArg.body,
       }),
     }),
     getDossiersByCampaignAvailableTesters: build.query<
@@ -815,6 +825,14 @@ const injectedRtkApi = api.injectEndpoints({
     >({
       query: (queryArg) => ({
         url: `/users/me/campaigns/${queryArg.campaignId}/preview`,
+      }),
+    }),
+    getUsersMeCampaignsByCampaignIdTasks: build.query<
+      GetUsersMeCampaignsByCampaignIdTasksApiResponse,
+      GetUsersMeCampaignsByCampaignIdTasksApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}/tasks`,
       }),
     }),
     getUsersMeCampaignsByCampaignCompatibleDevices: build.query<
@@ -1578,6 +1596,46 @@ export type GetCampaignsByCampaignPayoutsApiArg = {
   /** A campaign id */
   campaign: string;
 };
+export type PutCampaignsByCampaignPayoutsApiResponse = /** status 200 OK */ {
+  campaign_complete_bonus_eur?: number;
+  campaign_pts?: number;
+  critical_bug_payout?: number;
+  high_bug_payout?: number;
+  low_bug_payout?: number;
+  medium_bug_payout?: number;
+  minimum_bugs?: number;
+  payout_limit?: number;
+  percent_usecases?: number;
+  point_multiplier_critical?: number;
+  point_multiplier_high?: number;
+  point_multiplier_low?: number;
+  point_multiplier_medium?: number;
+  point_multiplier_perfect?: number;
+  point_multiplier_refused?: number;
+  top_tester_bonus?: number;
+};
+export type PutCampaignsByCampaignPayoutsApiArg = {
+  /** A campaign id */
+  campaign: string;
+  body: {
+    campaign_complete_bonus_eur?: number;
+    campaign_pts?: number;
+    critical_bug_payout?: number;
+    high_bug_payout?: number;
+    low_bug_payout?: number;
+    medium_bug_payout?: number;
+    minimum_bugs?: number;
+    payout_limit?: number;
+    percent_usecases?: number;
+    point_multiplier_critical?: number;
+    point_multiplier_high?: number;
+    point_multiplier_low?: number;
+    point_multiplier_medium?: number;
+    point_multiplier_perfect?: number;
+    point_multiplier_refused?: number;
+    top_tester_bonus?: number;
+  };
+};
 export type GetCampaignsByCampaignProspectApiResponse = /** status 200 OK */ {
   items: {
     bugs: {
@@ -1892,6 +1950,8 @@ export type PostDossiersApiArg = {
     };
   } & {
     skipPagesAndTasks?: number;
+    autoApply?: number;
+    pageVersion?: "v1" | "v2";
   };
 };
 export type GetDossiersByCampaignApiResponse = /** status 200 OK */ {
@@ -1984,7 +2044,9 @@ export type PutDossiersByCampaignApiResponse = /** status 200 OK */ {};
 export type PutDossiersByCampaignApiArg = {
   /** A campaign id */
   campaign: string;
-  dossierCreationData: DossierCreationData;
+  body: DossierCreationData & {
+    autoApply?: number;
+  };
 };
 export type GetDossiersByCampaignAvailableTestersApiResponse =
   /** status 200 OK */ {
@@ -2437,6 +2499,14 @@ export type GetUsersMeCampaignsApiArg = {
   orderBy?: "name" | "start_date" | "end_date" | "close_date" | "visibility";
 };
 export type GetUsersMeCampaignsByCampaignIdApiResponse = /** status 200 OK */ {
+  acceptedDevices: {
+    console?: AvailableDevice[] | "all";
+    pc?: AvailableDevice[] | "all";
+    smartTv?: AvailableDevice[] | "all";
+    smartphone?: AvailableDevice[] | "all";
+    smartwatch?: AvailableDevice[] | "all";
+    tablet?: AvailableDevice[] | "all";
+  };
   additionalFields?: CampaignAdditionalField[];
   bugReplicability: {
     invalid: string[];
@@ -2451,6 +2521,7 @@ export type GetUsersMeCampaignsByCampaignIdApiResponse = /** status 200 OK */ {
     valid: string[];
   };
   campaign_type: {
+    icon: string;
     id: number;
     name: string;
   };
@@ -2473,15 +2544,6 @@ export type GetUsersMeCampaignsByCampaignIdApiResponse = /** status 200 OK */ {
     name: string;
   }[];
   validFileExtensions: string[];
-  icon: string;
-  acceptedDevices: {
-    smartphone?: AvailableDevice[] | "all";
-    tablet?: AvailableDevice[] | "all";
-    pc?: AvailableDevice[] | "all";
-    console?: AvailableDevice[] | "all";
-    smartwatch?: AvailableDevice[] | "all";
-    smartTv?: AvailableDevice[] | "all";
-  };
 };
 export type GetUsersMeCampaignsByCampaignIdApiArg = {
   campaignId: string;
@@ -2645,6 +2707,17 @@ export type GetUsersMeCampaignsByCampaignIdPreviewApiResponse =
     };
   };
 export type GetUsersMeCampaignsByCampaignIdPreviewApiArg = {
+  campaignId: string;
+};
+export type GetUsersMeCampaignsByCampaignIdTasksApiResponse =
+  /** status 200 OK */ {
+    content: string;
+    id: number;
+    is_required: number;
+    name: string;
+    status: "completed" | "pending";
+  }[];
+export type GetUsersMeCampaignsByCampaignIdTasksApiArg = {
   campaignId: string;
 };
 export type GetUsersMeCampaignsByCampaignCompatibleDevicesApiResponse =
@@ -3196,7 +3269,6 @@ export type DossierCreationData = {
   additionals?: ({
     showInStats?: boolean;
   } & CampaignAdditionalField)[];
-  autoApply?: boolean;
   browsers?: number[];
   bugTypes?: number[];
   closeDate?: string;
@@ -3288,6 +3360,9 @@ export type Bug = {
   status?: BugStatus;
   title?: string;
 };
+export type AvailableDevice = {
+  name: string;
+};
 export type UserDevice = {
   device:
     | {
@@ -3305,9 +3380,6 @@ export type UserDevice = {
     version: string;
   };
   type: string;
-};
-export type AvailableDevice = {
-  name: string;
 };
 export type FiscalType =
   | "withholding"
@@ -3365,6 +3437,7 @@ export const {
   useGetCampaignsByCampaignGroupsQuery,
   useGetCampaignsByCampaignObservationsQuery,
   useGetCampaignsByCampaignPayoutsQuery,
+  usePutCampaignsByCampaignPayoutsMutation,
   useGetCampaignsByCampaignProspectQuery,
   usePatchCampaignsByCampaignProspectMutation,
   usePutCampaignsByCampaignProspectMutation,
@@ -3433,6 +3506,7 @@ export const {
   usePostUsersMeCampaignsByCampaignIdMediaMutation,
   useGetUsersMeCampaignsByCampaignIdPayoutDataQuery,
   useGetUsersMeCampaignsByCampaignIdPreviewQuery,
+  useGetUsersMeCampaignsByCampaignIdTasksQuery,
   useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery,
   usePostUsersMeCertificationsMutation,
   useDeleteUsersMeCertificationsByCertificationIdMutation,

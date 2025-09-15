@@ -43,7 +43,10 @@ const useCampaignData = (id: string) => {
     startDate: formatDate(data.startDate),
     endDate: formatDate(data.endDate),
     points: payout.campaign_pts,
-    type: { name: campaign.campaign_type.name, icon: campaign.icon },
+    type: {
+      name: campaign.campaign_type.name,
+      icon: campaign.campaign_type.icon,
+    },
     payout: {
       min: payout.campaign_complete_bonus_eur,
       max:

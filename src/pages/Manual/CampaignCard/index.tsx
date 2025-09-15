@@ -46,7 +46,7 @@ const CampaignCard = ({ id }: { id: string }) => {
               className="material-icons"
               style={{ color: theme.colors.red400 }}
             >
-              {campaign.icon}
+              {campaign.campaign_type.icon}
             </i>
           </div>
           <Title size="xs">{campaign.campaign_type.name} </Title>
