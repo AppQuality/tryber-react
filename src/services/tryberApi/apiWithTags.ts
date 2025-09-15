@@ -43,6 +43,12 @@ tryberApi.enhanceEndpoints({
     postUsersMeCertifications: {
       invalidatesTags: ["UserCertifications"],
     },
+    postUsersMeCampaignsByCampaignIdTasksAndTaskId: {
+      invalidatesTags: ["UserTasks"],
+    },
+    getUsersMeCampaignsByCampaignIdTasks: {
+      providesTags: ["UserTasks"],
+    },
   },
 });
 

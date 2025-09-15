@@ -835,6 +835,16 @@ const injectedRtkApi = api.injectEndpoints({
         url: `/users/me/campaigns/${queryArg.campaignId}/tasks`,
       }),
     }),
+    postUsersMeCampaignsByCampaignIdTasksAndTaskId: build.mutation<
+      PostUsersMeCampaignsByCampaignIdTasksAndTaskIdApiResponse,
+      PostUsersMeCampaignsByCampaignIdTasksAndTaskIdApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}/tasks/${queryArg.taskId}`,
+        method: "POST",
+        body: queryArg.body,
+      }),
+    }),
     getUsersMeCampaignsByCampaignCompatibleDevices: build.query<
       GetUsersMeCampaignsByCampaignCompatibleDevicesApiResponse,
       GetUsersMeCampaignsByCampaignCompatibleDevicesApiArg
@@ -1949,9 +1959,9 @@ export type PostDossiersApiArg = {
       useCases?: number;
     };
   } & {
-    skipPagesAndTasks?: number;
     autoApply?: number;
     pageVersion?: "v1" | "v2";
+    skipPagesAndTasks?: number;
   };
 };
 export type GetDossiersByCampaignApiResponse = /** status 200 OK */ {
@@ -2719,6 +2729,16 @@ export type GetUsersMeCampaignsByCampaignIdTasksApiResponse =
   }[];
 export type GetUsersMeCampaignsByCampaignIdTasksApiArg = {
   campaignId: string;
+};
+export type PostUsersMeCampaignsByCampaignIdTasksAndTaskIdApiResponse =
+  /** status 200 OK */ string;
+export type PostUsersMeCampaignsByCampaignIdTasksAndTaskIdApiArg = {
+  /** the campaign id */
+  campaignId: string;
+  taskId: string;
+  body: {
+    status: "completed";
+  };
 };
 export type GetUsersMeCampaignsByCampaignCompatibleDevicesApiResponse =
   /** status 200 OK */ UserDevice[];
@@ -3507,6 +3527,7 @@ export const {
   useGetUsersMeCampaignsByCampaignIdPayoutDataQuery,
   useGetUsersMeCampaignsByCampaignIdPreviewQuery,
   useGetUsersMeCampaignsByCampaignIdTasksQuery,
+  usePostUsersMeCampaignsByCampaignIdTasksAndTaskIdMutation,
   useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery,
   usePostUsersMeCertificationsMutation,
   useDeleteUsersMeCertificationsByCertificationIdMutation,

@@ -331,6 +331,7 @@
   "Male": "Masculino",
   "Manufacturer": "Productor",
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Productor: <bold>{{manufacturer}}</bold>",
+  "Mark as completed": "",
   "Media field must have at least {{num}} items": {
     "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "Debes subir al menos {{num}} archivo para esta campaña",
     "BUGFORM_UPLOAD_ERROR_MINIMUMFILES_plural": "Debes subir al menos {{num}} archivos para esta campaña"
@@ -500,6 +501,7 @@
   "Tablet": "Tablet",
   "Take me to the dashboard": "Que empiece la aventura",
   "Take part in the Basic Course and earn 200 experience points, they will be essential to increase the chances to be selected for the campaigns. You'll become an AppQuality world expert and you will receive the Linkedin Certification to show that you are a qualified member of the Community.": "Todo comienza aquí: solo cuando hayas completado el Curso Básico TRYBER te invitaremos a partecipar en las campañas. Además, ganarás 200 puntos de experiencia, conocerás el mundo de TRYBER, te convertirás en un miembro cualificado y recibirás una certificación que podrás compartir en LinkedIn.",
+  "Task completed": "",
   "Tax identification number": {
     "Tax ID": "Número de identificación fiscal"
   },
