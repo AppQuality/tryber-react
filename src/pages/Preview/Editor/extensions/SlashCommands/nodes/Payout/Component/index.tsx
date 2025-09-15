@@ -1,5 +1,6 @@
 import { Text, Title } from "@appquality/appquality-design-system";
 import { NodeViewWrapper } from "@tiptap/react";
+import { Node as PMNode } from "prosemirror-model";
 import { Trans, useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useGetUsersMeCampaignsByCampaignIdPayoutDataQuery } from "src/services/tryberApi";
@@ -20,7 +21,7 @@ const CompleteBonus = ({
       {minimum_bugs > 0 || percent_usecases > 0
         ? t("PAYOUT_BOX_COMPLETE_BONUS_WITH", " with")
         : ""}
-      <ul style={{ listStyleType: "disc", paddingLeft: "20px", margin: 0 }}>
+      <ul style={{ listStyleType: "circle", paddingLeft: "20px", margin: 0 }}>
         {minimum_bugs > 0 && (
           <li>
             {t(" minimum {{count}} bugs approved, for participation", {
@@ -46,7 +47,7 @@ const CompleteBonus = ({
   );
 };
 
-export default function MyComponent() {
+export default function MyComponent({ node }: { node: PMNode }) {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
 
@@ -82,6 +83,46 @@ export default function MyComponent() {
                 }}
                 defaults={`<b>+ max {{pay}}€</b> based on reported bugs and their severity`}
               />
+              {node.attrs.expanded === 1 && (
+                <ul style={{ listStyleType: "circle", paddingLeft: "20px" }}>
+                  {data.critical_bug_payout && (
+                    <li>
+                      {t(
+                        "PAYOUT_BOX_MAX_PAYOUT_CRITICAL_BUG",
+                        "{{value}}€ for each approved Critical",
+                        { value: data.critical_bug_payout }
+                      )}
+                    </li>
+                  )}
+                  {data.high_bug_payout && (
+                    <li>
+                      {t(
+                        "PAYOUT_BOX_MAX_PAYOUT_HIGH_BUG",
+                        "{{value}}€ for each approved High",
+                        { value: data.high_bug_payout }
+                      )}
+                    </li>
+                  )}
+                  {data.medium_bug_payout && (
+                    <li>
+                      {t(
+                        "PAYOUT_BOX_MAX_PAYOUT_MEDIUM_BUG",
+                        "{{value}}€ for each approved Medium",
+                        { value: data.medium_bug_payout }
+                      )}
+                    </li>
+                  )}
+                  {data.low_bug_payout > 0 && (
+                    <li>
+                      {t(
+                        "PAYOUT_BOX_MAX_PAYOUT_LOW_BUG",
+                        "{{value}}€ for each approved Low",
+                        { value: data.low_bug_payout }
+                      )}
+                    </li>
+                  )}
+                </ul>
+              )}
             </li>
           )}
           {data.top_tester_bonus > 0 && (

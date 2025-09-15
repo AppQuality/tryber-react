@@ -24,6 +24,7 @@ import {
   Wallet,
 } from "./pages";
 import BugForm from "./pages/BugForm";
+import Manual from "./pages/Manual";
 import Preview from "./pages/Preview";
 import SignupSuccess from "./pages/SignupSuccess";
 import ThankYouPage from "./pages/ThankYou";
@@ -196,6 +197,10 @@ function Page() {
             <SentryRoute
               path={`${base}/campaigns/:id/preview`}
               component={Preview}
+            />
+            <SentryRoute
+              path={`${base}/campaigns/:id/manual`}
+              component={Manual}
             />
             <SentryRoute
               path={["/goodbye", "/it/goodbye", "/es/goodbye", "/fr/goodbye"]}

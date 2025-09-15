@@ -11,6 +11,7 @@ export type CrowdRoutes =
   | "login"
   | "my-dashboard"
   | "personal-equipment"
+  | `campaign/${number}/bugform/`
   | "my-bugs"
   | "experience-points"
   | "leaderboard"

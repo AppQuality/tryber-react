@@ -16,6 +16,13 @@ export const Payout = Node.create({
   atom: true, // behaves like a single unit
   selectable: true,
 
+  addAttributes() {
+    return {
+      expanded: {
+        default: 0,
+      },
+    };
+  },
   parseHTML() {
     return [{ tag: "payout" }];
   },
