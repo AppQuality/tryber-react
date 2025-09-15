@@ -25,7 +25,7 @@ const Wrapper = styled.div`
     font-size: 2em;
   }
 `;
-const RecapCard = ({ id }: { id: string }) => {
+const CampaignCard = ({ id }: { id: string }) => {
   const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery(
     { campaignId: id },
     { skip: !id }
@@ -84,4 +84,4 @@ const formatDate = (dateStr: string) => {
   }/${date.getDate()} @ ${date.getHours()}:${date.getMinutes()}`;
 };
 
-export { RecapCard };
+export { CampaignCard };

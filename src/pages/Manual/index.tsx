@@ -12,8 +12,10 @@ import {
   useGetUsersMeCampaignsByCampaignIdPreviewQuery,
   useGetUsersMeCampaignsByCampaignIdQuery,
 } from "src/services/tryberApi";
+import { BugCard } from "./BugCard";
+import { CampaignCard } from "./CampaignCard";
 import { PayoutRecap } from "./PayoutRecap";
-import { RecapCard } from "./RecapCard";
+import { SupportCard } from "./SupportCard";
 
 const Manual = () => {
   const { t } = useTranslation();
@@ -54,7 +56,9 @@ const Manual = () => {
           </Tabs>
         </BSCol>
         <BSCol size="col-lg-3 aq-order-0 aq-order-1-lg ">
-          <RecapCard id={id!} />
+          <SupportCard id={id!} />
+          <CampaignCard id={id!} />
+          <BugCard id={id!} />
         </BSCol>
       </BSGrid>
     </PageTemplate>
