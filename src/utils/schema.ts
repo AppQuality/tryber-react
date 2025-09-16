@@ -33,11 +33,45 @@ export interface paths {
     /** A request to login with your username and password */
     post: operations["post-authenticate"];
   };
+  "/browsers": {
+    get: operations["get-browsers"];
+  };
+  "/bugs/{bugId}/status": {
+    patch: operations["patch-bugs-bugId-status"];
+    parameters: {
+      path: {
+        bugId: string;
+      };
+    };
+  };
+  "/campaignTypes": {
+    get: operations["get-campaign-types"];
+    parameters: {};
+  };
   "/campaigns": {
     /** Get all the Campaigns you have access to */
     get: operations["get-campaigns"];
     /** Create a new Campaign if you have access to the creation */
     post: operations["post-campaigns"];
+  };
+  "/campaigns/forms": {
+    get: operations["get-campaigns-forms"];
+    post: operations["post-campaigns-forms"];
+    parameters: {};
+  };
+  "/campaigns/forms/{formId}": {
+    get: operations["get-campaigns-forms-formId"];
+    put: operations["put-campaigns-forms-formId"];
+    parameters: {
+      path: {
+        formId: string;
+      };
+    };
+  };
+  "/campaigns/owners": {
+    /** Get all the owners of campaigns you have access to */
+    get: operations["get-campaigns-owners"];
+    parameters: {};
   };
   "/campaigns/{campaign}": {
     /** Get the data of a Campaign if you have access to it */
@@ -58,6 +92,28 @@ export interface paths {
       path: {
         /** A campaign id */
         campaign: components["parameters"]["campaign"];
+      };
+    };
+  };
+  "/campaigns/{campaign}/bugs/{bugId}": {
+    /** Get single bug of a Campaign if you have access to it */
+    get: operations["get-campaigns-single-bug"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+        bugId: string;
+      };
+    };
+  };
+  "/campaigns/{campaign}/bugs/{bugId}/aiReview": {
+    /** Get ai review for a single bug of a Campaign if you have access to it */
+    get: operations["get-campaigns-single-bug-ai-review"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+        bugId: string;
       };
     };
   };
@@ -112,6 +168,7 @@ export interface paths {
   };
   "/campaigns/{campaign}/payouts": {
     get: operations["get-campaigns-campaign-payouts"];
+    put: operations["put-campaigns-campaign-payouts"];
     parameters: {
       path: {
         /** A campaign id */
@@ -185,29 +242,6 @@ export interface paths {
       };
     };
   };
-  "/campaigns/forms": {
-    get: operations["get-campaigns-forms"];
-    post: operations["post-campaigns-forms"];
-    parameters: {};
-  };
-  "/campaigns/forms/{formId}": {
-    get: operations["get-campaigns-forms-formId"];
-    put: operations["put-campaigns-forms-formId"];
-    parameters: {
-      path: {
-        formId: string;
-      };
-    };
-  };
-  "/campaigns/owners": {
-    /** Get all the owners of campaigns you have access to */
-    get: operations["get-campaigns-owners"];
-    parameters: {};
-  };
-  "/campaignTypes": {
-    get: operations["get-campaign-types"];
-    parameters: {};
-  };
   "/certifications": {
     /** Get all certificatio */
     get: operations["get-certifications"];
@@ -221,15 +255,24 @@ export interface paths {
       };
     };
   };
+  "/custom_user_fields": {
+    get: operations["get-customUserFields"];
+    parameters: {};
+  };
   "/customers": {
     /** Get all the customers you have access to */
     get: operations["get-customers"];
     post: operations["post-customers"];
     parameters: {};
   };
-  "/custom_user_fields": {
-    get: operations["get-customUserFields"];
-    parameters: {};
+  "/customers/{customer}/projects": {
+    get: operations["get-customers-customer-projects"];
+    post: operations["post-customers-customer-projects"];
+    parameters: {
+      path: {
+        customer: string;
+      };
+    };
   };
   "/devices/{device_type}/models": {
     /** Get all model of devices with theirs manufacturers */
@@ -258,6 +301,84 @@ export interface paths {
       };
     };
   };
+  "/dossiers": {
+    post: operations["post-dossiers"];
+    parameters: {};
+  };
+  "/dossiers/{campaign}": {
+    get: operations["get-dossiers-campaign"];
+    put: operations["put-dossiers-campaign"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+  };
+  "/dossiers/{campaign}/availableTesters": {
+    /**  */
+    get: operations["get-dossiers-campaign-availableTesters"];
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+  };
+  "/dossiers/{campaign}/manual": {
+    post: operations["post-dossiers-campaign-manual"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
+      };
+    };
+  };
+  "/dossiers/{campaign}/phases": {
+    put: operations["put-dossiers-campaign-phases"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+  };
+  "/dossiers/{campaign}/preview": {
+    post: operations["post-dossiers-campaign-preview"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
+      };
+    };
+  };
+  "/dossiers/{campaign}/quotations": {
+    post: operations["post-dossiers-campaign-quotations"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+  };
+  "/dossiers/{campaign}/quotations/{quote}": {
+    patch: operations["patch-dossiers-campaign-quotations-quote"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+        quote: string;
+      };
+    };
+  };
+  "/dossiers/{campaign}/quotesHistory": {
+    get: operations["get-dossiers-campaign-quotes-history"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+  };
   "/education": {
     /** Get all education levels */
     get: operations["get-education"];
@@ -265,15 +386,6 @@ export interface paths {
   "/employments": {
     /** Get all employments */
     get: operations["get-employments"];
-  };
-  "/jotforms/{campaign}": {
-    post: operations["post-jotforms-campaignId"];
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: string;
-      };
-    };
   };
   "/jotforms/forms": {
     get: operations["get-jotforms"];
@@ -284,6 +396,15 @@ export interface paths {
     parameters: {
       path: {
         formId: string;
+      };
+    };
+  };
+  "/jotforms/{campaign}": {
+    post: operations["post-jotforms-campaignId"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
       };
     };
   };
@@ -316,6 +437,9 @@ export interface paths {
       };
     };
   };
+  "/phases": {
+    get: operations["get-phases"];
+  };
   "/popups": {
     /** Retrieve all available popups for admin operations */
     get: operations["get-popups"];
@@ -334,6 +458,10 @@ export interface paths {
       };
     };
   };
+  "/productTypes": {
+    get: operations["get-productTypes"];
+    parameters: {};
+  };
   "/users": {
     /** Get all users you have access to */
     get: operations["get-users"];
@@ -345,6 +473,14 @@ export interface paths {
     parameters: {
       path: {
         email: string;
+      };
+    };
+  };
+  "/users/by-role/{role}": {
+    get: operations["get-users-by-role-role"];
+    parameters: {
+      path: {
+        role: "tester_lead" | "quality_leader" | "ux_researcher" | "assistants";
       };
     };
   };
@@ -391,15 +527,6 @@ export interface paths {
       };
     };
   };
-  "/users/me/campaigns/{campaign}/compatible_devices": {
-    get: operations["get-users-me-campaigns-campaignId-compatible-devices"];
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: string;
-      };
-    };
-  };
   "/users/me/campaigns/{campaignId}/bugs": {
     /** Send a user bug on a specific campaign */
     post: operations["post-users-me-campaigns-campaign-bugs"];
@@ -432,6 +559,49 @@ export interface paths {
     parameters: {
       path: {
         campaignId: string;
+      };
+    };
+  };
+  "/users/me/campaigns/{campaignId}/payout_data": {
+    get: operations["get-users-me-campaigns-cid-payout-data"];
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+  };
+  "/users/me/campaigns/{campaignId}/preview": {
+    get: operations["get-users-me-campaigns-cid-preview"];
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+  };
+  "/users/me/campaigns/{campaignId}/tasks": {
+    get: operations["get-users-me-campaign-campaignId-tasks"];
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+  };
+  "/users/me/campaigns/{campaignId}/tasks/{taskId}": {
+    post: operations["post-users-me-campaigns-campaign-tasks-task"];
+    parameters: {
+      path: {
+        /** the campaign id */
+        campaignId: string;
+        taskId: string;
+      };
+    };
+  };
+  "/users/me/campaigns/{campaign}/compatible_devices": {
+    get: operations["get-users-me-campaigns-campaignId-compatible-devices"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
       };
     };
   };
@@ -541,84 +711,38 @@ export interface paths {
   "/users/me/rank/list": {
     get: operations["get-users-me-rank-list"];
   };
-  "/dossiers": {
-    post: operations["post-dossiers"];
-    parameters: {};
-  };
-  "/dossiers/{campaign}": {
-    get: operations["get-dossiers-campaign"];
-    put: operations["put-dossiers-campaign"];
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: string;
-      };
-    };
-  };
-  "/customers/{customer}/projects": {
-    get: operations["get-customers-customer-projects"];
-    post: operations["post-customers-customer-projects"];
-    parameters: {
-      path: {
-        customer: string;
-      };
-    };
-  };
-  "/users/by-role/{role}": {
-    get: operations["get-users-by-role-role"];
-    parameters: {
-      path: {
-        role: "tester_lead" | "quality_leader" | "ux_researcher" | "assistants";
-      };
-    };
-  };
-  "/browsers": {
-    get: operations["get-browsers"];
-  };
-  "/productTypes": {
-    get: operations["get-productTypes"];
-    parameters: {};
-  };
-  "/phases": {
-    get: operations["get-phases"];
-  };
-  "/dossiers/{campaign}/phases": {
-    put: operations["put-dossiers-campaign-phases"];
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: string;
-      };
-    };
-  };
 }
 
 export interface components {
   schemas: {
     AdditionalField: {
       field_id: number;
-      name: string;
-      value: string;
-      text?: string;
       is_candidate?: boolean;
+      name: string;
+      text?: string;
+      value: string;
     };
     Agreement: {
+      expirationDate: string;
+      /** @default false */
+      isTokenBased?: boolean;
+      note?: string;
+      startDate: string;
       title: string;
       tokens: number;
       unitPrice: number;
-      startDate: string;
-      expirationDate: string;
-      note?: string;
-      /** @default false */
-      isTokenBased?: boolean;
+    };
+    /** AvailableDevice */
+    AvailableDevice: {
+      name: string;
     };
     /** Bug */
     Bug: {
-      severity?: components["schemas"]["BugSeverity"];
-      status?: components["schemas"]["BugStatus"];
       campaign?: components["schemas"]["CampaignOptional"] & {
         id?: number;
       };
+      severity?: components["schemas"]["BugSeverity"];
+      status?: components["schemas"]["BugStatus"];
       title?: string;
     };
     /** BugSeverity */
@@ -628,9 +752,9 @@ export interface components {
     };
     /** BugStatus */
     BugStatus: {
+      description?: string;
       id?: number;
       name?: string;
-      description?: string;
     };
     /** BugTag */
     BugTag: {
@@ -645,19 +769,19 @@ export interface components {
       components["schemas"]["CampaignRequired"];
     /** CampaignAdditionalField */
     CampaignAdditionalField: {
+      error: string;
       name: string;
       slug: string;
-      error: string;
     } & (
       | {
+          options: string[];
           /** @enum {string} */
           type: "select";
-          options: string[];
         }
       | {
+          regex: string;
           /** @enum {string} */
           type: "text";
-          regex: string;
         }
     );
     /** CampaignField */
@@ -665,43 +789,43 @@ export interface components {
       id?: number;
     };
     CampaignOptional: {
-      name?: string;
-      customer_title?: string;
-      internal_id?: string;
-      dates?: {
-        start?: string;
-        end?: string;
-        close?: string;
+      additionalFields?: components["schemas"]["CampaignField"][];
+      allowed?: {
+        bug_types?: components["schemas"]["BugType"][];
+        replicabilities?: components["schemas"]["Replicability"][];
+        severities?: components["schemas"]["BugSeverity"][];
       };
-      status?: boolean;
-      language?: string;
-      public?: boolean;
-      hasBugParade?: boolean;
+      /** @description True if you applied on this Campaign */
+      applied?: boolean;
+      /** @description If bugform is deactivated is a boolean else contains URLs to bugforms for each languages */
+      bugform_link?: boolean | components["schemas"]["TranslatablePage"];
+      /** @default 0 */
+      csm_effort?: number;
+      customerCanViewReviewing?: boolean;
+      customer_title?: string;
+      dates?: {
+        close?: string;
+        end?: string;
+        start?: string;
+      };
       devices?: {
         id?: string;
       }[];
+      hasBugParade?: boolean;
+      internal_id?: string;
+      language?: string;
+      manual_link?: components["schemas"]["TranslatablePage"];
       minNumberOfMedia?: number;
-      titleRule?: boolean;
-      allowed?: {
-        severities?: components["schemas"]["BugSeverity"][];
-        bug_types?: components["schemas"]["BugType"][];
-        replicabilities?: components["schemas"]["Replicability"][];
-      };
+      name?: string;
+      preview_link?: components["schemas"]["TranslatablePage"];
       projectManager?: components["schemas"]["User"];
-      customerCanViewReviewing?: boolean;
-      additionalFields?: components["schemas"]["CampaignField"][];
+      public?: boolean;
+      status?: boolean;
+      titleRule?: boolean;
       /** @default 0 */
       tokens?: number;
       /** @default 0 */
-      csm_effort?: number;
-      /** @default 0 */
       ux_effort?: number;
-      preview_link?: components["schemas"]["TranslatablePage"];
-      manual_link?: components["schemas"]["TranslatablePage"];
-      /** @description If bugform is deactivated is a boolean else contains URLs to bugforms for each languages */
-      bugform_link?: boolean | components["schemas"]["TranslatablePage"];
-      /** @description True if you applied on this Campaign */
-      applied?: boolean;
       visibility?: {
         freeSpots?: number;
         totalSpots?: number;
@@ -710,32 +834,39 @@ export interface components {
       };
     };
     CampaignRequired: {
-      name: string;
-      dates: {
-        start: string;
-        end: string;
-        close: string;
-      };
       campaign_type: components["schemas"]["CampaignType"];
+      dates: {
+        close: string;
+        end: string;
+        start: string;
+      };
+      name: string;
     };
     CampaignType: string | number;
     Certification: {
-      id?: number;
-      name: string;
-      area: string;
-      institute: string;
       /** Format: date */
       achievement_date: string;
+      area: string;
+      id?: number;
+      institute: string;
+      name: string;
+    };
+    /** CountryCode */
+    CountryCode: string;
+    /** Currency */
+    Currency: {
+      currency: string;
+      value: number;
     };
     /** CustomUserFieldsData */
     CustomUserFieldsData: {
-      id: number;
-      type: components["schemas"]["CustomUserFieldsType"];
-      placeholder?: components["schemas"]["TranslatablePage"];
       allow_other?: boolean;
-      name: components["schemas"]["TranslatablePage"];
       format?: string;
+      id: number;
+      name: components["schemas"]["TranslatablePage"];
       options?: components["schemas"]["CustomUserFieldsDataOption"][];
+      placeholder?: components["schemas"]["TranslatablePage"];
+      type: components["schemas"]["CustomUserFieldsType"];
     };
     /** CustomUserFieldsDataOption */
     CustomUserFieldsDataOption: {
@@ -747,10 +878,57 @@ export interface components {
      * @enum {string}
      */
     CustomUserFieldsType: "text" | "select" | "multiselect";
-    /** Currency */
-    Currency: {
-      value: number;
-      currency: string;
+    DossierCreationData: {
+      additionals?: ({
+        showInStats?: boolean;
+      } & components["schemas"]["CampaignAdditionalField"])[];
+      browsers?: number[];
+      bugTypes?: number[];
+      /** Format: date-time */
+      closeDate?: string;
+      countries?: components["schemas"]["CountryCode"][];
+      csm?: number;
+      description?: string;
+      deviceList: number[];
+      deviceRequirements?: string;
+      /** Format: date-time */
+      endDate?: string;
+      goal?: string;
+      languages?: string[];
+      notes?: string;
+      outOfScope?: string;
+      productLink?: string;
+      productType?: number;
+      project: number;
+      roles?: {
+        role: number;
+        user: number;
+      }[];
+      /** Format: date-time */
+      startDate: string;
+      target?: {
+        cap?: number;
+        genderQuote?: string;
+        notes?: string;
+        size?: number;
+      };
+      testType: number;
+      title: {
+        customer: string;
+        tester?: string;
+      };
+      visibilityCriteria?: {
+        ageRanges?: {
+          max: number;
+          min: number;
+        }[];
+        cuf?: {
+          cufId: number;
+          cufValueIds: number[];
+        }[];
+        gender?: number[];
+        provinces?: string[];
+      };
     };
     /** FiscalBirthCity */
     FiscalBirthCity:
@@ -772,19 +950,34 @@ export interface components {
       | "non-italian"
       | "vat"
       | "company";
+    /**
+     * Gender
+     * @enum {string}
+     */
+    Gender: "male" | "female" | "not-specified" | "other";
     /** LevelDefinition */
     LevelDefinition: {
+      hold?: number;
       id: number;
       name: string;
       reach?: number;
-      hold?: number;
     };
     /** MonthlyLevel */
     MonthlyLevel: {
       id: number;
       name: string;
     };
+    Olp: number[] | boolean;
+    /** PaginationData */
+    PaginationData: {
+      limit?: number;
+      size: number;
+      start: number;
+      total?: number;
+    };
     Popup: {
+      content?: string;
+      once?: boolean;
       profiles?:
         | number[]
         | (
@@ -794,11 +987,8 @@ export interface components {
             | "logged-in-year"
             | "not-logged-in-year"
           );
-      once?: boolean;
-      content?: string;
       title?: string;
     };
-    Olp: number[] | boolean;
     /** PreselectionFormQuestion */
     PreselectionFormQuestion: {
       question: string;
@@ -808,30 +998,47 @@ export interface components {
           type: components["schemas"]["PreselectionQuestionSimple"];
         }
       | {
-          type: components["schemas"]["PreselectionQuestionMultiple"];
           options?: {
-            value: string;
             isInvalid?: boolean;
+            value: string;
           }[];
+          type: components["schemas"]["PreselectionQuestionMultiple"];
         }
       | {
-          type: components["schemas"]["PreselectionQuestionCuf"];
           options?: {
-            value: number;
             isInvalid?: boolean;
+            value: number;
           }[];
+          type: components["schemas"]["PreselectionQuestionCuf"];
         }
     );
+    /** PreselectionQuestionCuf */
+    PreselectionQuestionCuf: string;
+    /**
+     * PreselectionQuestionMultiple
+     * @enum {string}
+     */
+    PreselectionQuestionMultiple: "multiselect" | "select" | "radio";
+    /**
+     * PreselectionQuestionSimple
+     * @enum {string}
+     */
+    PreselectionQuestionSimple: "gender" | "text" | "phone_number" | "address";
     /** Project */
     Project: {
       name?: string;
     };
+    /**
+     * ProspectStatus
+     * @enum {string}
+     */
+    ProspectStatus: "draft" | "confirmed" | "done";
     RankingItem: {
-      position: number;
-      image: string;
       id: number;
-      name: string;
+      image: string;
       monthly_exp: number;
+      name: string;
+      position: number;
     };
     /** Replicability */
     Replicability: {
@@ -841,164 +1048,69 @@ export interface components {
     Task: components["schemas"]["TaskOptional"] &
       components["schemas"]["TaskRequired"];
     TaskOptional: {
-      name?: string;
-      content?: string;
-      campaign_id?: number;
-      group?: number;
       allow_media?: boolean;
+      campaign_id?: number;
+      content?: string;
+      group?: number;
+      name?: string;
     };
     TaskRequired: {
-      name: string;
-      content: string;
       campaign_id: number;
+      content: string;
+      name: string;
     };
     /** TranslatablePage */
     TranslatablePage: {
       en?: string;
-      it?: string;
       es?: string;
+      it?: string;
     };
     /** User */
     User: {
-      username?: string;
-      name?: string;
-      surname?: string;
       /** Format: email */
       email?: string;
+      id?: number;
       /** Format: uri */
       image?: string;
-      id?: number;
-      wp_user_id?: number;
-      role?: string;
       is_verified?: boolean;
+      name?: string;
+      role?: string;
+      surname?: string;
+      username?: string;
+      wp_user_id?: number;
     };
     /** UserDevice */
     UserDevice: {
-      type: string;
-      id: number;
       device:
         | {
+            id?: number;
             manufacturer: string;
             model: string;
-            id?: number;
           }
         | {
             pc_type: string;
           };
+      id: number;
       operating_system: {
         id: number;
         platform: string;
         version: string;
       };
+      type: string;
     };
-    /**
-     * Gender
-     * @enum {string}
-     */
-    Gender: "male" | "female" | "not-specified" | "other";
-    /** PaginationData */
-    PaginationData: {
-      start: number;
-      limit?: number;
-      size: number;
-      total?: number;
-    };
-    /**
-     * ProspectStatus
-     * @enum {string}
-     */
-    ProspectStatus: "draft" | "confirmed" | "done";
-    /** CountryCode */
-    CountryCode: string;
-    DossierCreationData: {
-      project: number;
-      testType: number;
-      title: {
-        customer: string;
-        tester?: string;
-      };
-      /** Format: date-time */
-      startDate: string;
-      /** Format: date-time */
-      endDate?: string;
-      /** Format: date-time */
-      closeDate?: string;
-      deviceList: number[];
-      csm?: number;
-      roles?: {
-        role: number;
-        user: number;
-      }[];
-      description?: string;
-      productLink?: string;
-      goal?: string;
-      outOfScope?: string;
-      deviceRequirements?: string;
-      target?: {
-        notes?: string;
-        size?: number;
-        cap?: number;
-      };
-      countries?: components["schemas"]["CountryCode"][];
-      languages?: string[];
-      browsers?: number[];
-      productType?: number;
-      notes?: string;
-    };
-    /**
-     * PreselectionQuestionSimple
-     * @enum {string}
-     */
-    PreselectionQuestionSimple: "gender" | "text" | "phone_number" | "address";
-    /**
-     * PreselectionQuestionMultiple
-     * @enum {string}
-     */
-    PreselectionQuestionMultiple: "multiselect" | "select" | "radio";
-    /** PreselectionQuestionCuf */
-    PreselectionQuestionCuf: string;
   };
   responses: {
-    /** A user */
-    UserData: {
-      content: {
-        "application/json": components["schemas"]["User"];
-      };
-    };
     /** Authentication data. The token can be used to authenticate the protected requests */
     Authentication: {
       content: {
         "application/json": {
-          id?: number;
+          exp?: number;
           firstName?: string;
+          iat?: number;
+          id?: number;
           lastName?: string;
           token?: string;
           username?: string;
-          iat?: number;
-          exp?: number;
-        };
-      };
-    };
-    /** A single Campaigns with the Campaign id and Project data */
-    SingleCampaign: {
-      content: {
-        "application/json": components["schemas"]["Campaign"] & {
-          id: number;
-        } & {
-          project?: components["schemas"]["Project"] & {
-            id?: number;
-          };
-        };
-      };
-    };
-    /** An error due to the resource not existing */
-    NotFound: {
-      content: {
-        "application/json": {
-          element: string;
-          id: number;
-          message: string;
-          code?: string;
         };
       };
     };
@@ -1014,35 +1126,64 @@ export interface components {
     NotAuthorized: {
       content: {
         "application/json": {
-          message?: string;
           code?: string;
+          message?: string;
         };
+      };
+    };
+    /** An error due to the resource not existing */
+    NotFound: {
+      content: {
+        "application/json": {
+          code?: string;
+          element: string;
+          id: number;
+          message: string;
+        };
+      };
+    };
+    /** A single Campaigns with the Campaign id and Project data */
+    SingleCampaign: {
+      content: {
+        "application/json": components["schemas"]["Campaign"] & {
+          id: number;
+        } & {
+          project?: components["schemas"]["Project"] & {
+            id?: number;
+          };
+        };
+      };
+    };
+    /** A user */
+    UserData: {
+      content: {
+        "application/json": components["schemas"]["User"];
       };
     };
   };
   parameters: {
     /** @description A campaign id */
     campaign: string;
-    /** @description A task id */
-    task: string;
     /** @description A customer id */
     customer: string;
-    /** @description A project id */
-    project: string;
-    /** @description Max items to retrieve */
-    limit: number;
-    /** @description Items to skip for pagination */
-    start: number;
     /** @description Key-value Array for item filtering */
     filterBy: { [key: string]: unknown };
-    /** @description How to order values (ASC, DESC) */
-    order: "ASC" | "DESC";
+    /** @description Max items to retrieve */
+    limit: number;
     /** @description How to localize values */
     locale: "en" | "it";
-    /** @description A comma separated list of fields which will be searched */
-    searchBy: string;
+    /** @description How to order values (ASC, DESC) */
+    order: "ASC" | "DESC";
+    /** @description A project id */
+    project: string;
     /** @description The value to search for */
     search: string;
+    /** @description A comma separated list of fields which will be searched */
+    searchBy: string;
+    /** @description Items to skip for pagination */
+    start: number;
+    /** @description A task id */
+    task: string;
     testerId: string;
   };
   requestBodies: {};
@@ -1082,8 +1223,8 @@ export interface operations {
               id: number;
             } & components["schemas"]["Agreement"] & {
                 customer: {
-                  id: number;
                   company: string;
+                  id: number;
                 };
               })[];
           } & components["schemas"]["PaginationData"];
@@ -1131,8 +1272,8 @@ export interface operations {
             id: number;
           } & components["schemas"]["Agreement"] & {
               customer: {
-                id: number;
                 company: string;
+                id: number;
               };
             };
         };
@@ -1157,8 +1298,8 @@ export interface operations {
             id: number;
           } & components["schemas"]["Agreement"] & {
               customer: {
-                id: number;
                 company: string;
+                id: number;
               };
             };
         };
@@ -1212,8 +1353,68 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": {
-          username: string;
           password: string;
+          username: string;
+        };
+      };
+    };
+  };
+  "get-browsers": {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results: {
+              id: number;
+              name: string;
+            }[];
+          };
+        };
+      };
+    };
+  };
+  "patch-bugs-bugId-status": {
+    parameters: {
+      path: {
+        bugId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": { [key: string]: unknown };
+        };
+      };
+      /** Forbidden */
+      403: {
+        content: {
+          "application/json": { [key: string]: unknown };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          status_id: number;
+        };
+      };
+    };
+  };
+  "get-campaign-types": {
+    parameters: {};
+    responses: {
+      200: {
+        content: {
+          "application/json": {
+            customRoles: {
+              roleId: number;
+              userIds: number[];
+            }[];
+            id: number;
+            name: string;
+          }[];
         };
       };
     };
@@ -1244,22 +1445,6 @@ export interface operations {
         content: {
           "application/json": {
             items?: {
-              id?: number;
-              name?: string;
-              customerTitle?: string;
-              startDate?: string;
-              endDate?: string;
-              /** @enum {string} */
-              status?: "running" | "closed" | "incoming";
-              /** @enum {string} */
-              visibility?:
-                | "admin"
-                | "smallgroup"
-                | "logged"
-                | "public"
-                | "target";
-              /** @enum {string} */
-              resultType?: "bug" | "bugparade" | "no";
               csm?: {
                 id: number;
                 name: string;
@@ -1269,19 +1454,25 @@ export interface operations {
                 id?: number;
                 name: string;
               };
-              type?: {
+              customerTitle?: string;
+              endDate?: string;
+              id?: number;
+              name?: string;
+              phase?: {
+                id: number;
                 name: string;
-                /** @enum {string} */
-                area: "quality" | "experience";
               };
               project?: {
                 id?: number;
                 name: string;
               };
-              phase?: {
+              quote?: {
                 id: number;
-                name: string;
+                price: string;
+                status: string;
               };
+              /** @enum {string} */
+              resultType?: "bug" | "bugparade" | "no";
               roles?: {
                 role: {
                   id: number;
@@ -1293,6 +1484,21 @@ export interface operations {
                   surname: string;
                 };
               }[];
+              startDate?: string;
+              /** @enum {string} */
+              status?: "running" | "closed" | "incoming";
+              type?: {
+                /** @enum {string} */
+                area: "quality" | "experience";
+                name: string;
+              };
+              /** @enum {string} */
+              visibility?:
+                | "admin"
+                | "smallgroup"
+                | "logged"
+                | "public"
+                | "target";
             }[];
           } & components["schemas"]["PaginationData"];
         };
@@ -1317,6 +1523,157 @@ export interface operations {
       };
     };
   };
+  "get-campaigns-forms": {
+    parameters: {
+      query: {
+        /** A comma separated list of fields which will be searched */
+        searchBy?: components["parameters"]["searchBy"];
+        /** The value to search for */
+        search?: components["parameters"]["search"];
+        /** Max items to retrieve */
+        limit?: components["parameters"]["limit"];
+        /** Items to skip for pagination */
+        start?: components["parameters"]["start"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            limit?: number;
+            results: {
+              campaign?: number;
+              id: number;
+              name: string;
+            }[];
+            size: number;
+            start: number;
+            total?: number;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "post-campaigns-forms": {
+    parameters: {};
+    responses: {
+      /** Created */
+      201: {
+        content: {
+          "application/json": {
+            campaign?: {
+              id: number;
+              name: string;
+            };
+            fields?: ({
+              id: number;
+            } & components["schemas"]["PreselectionFormQuestion"])[];
+            id: number;
+            name: string;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          campaign?: number;
+          creationDate?: string;
+          fields: components["schemas"]["PreselectionFormQuestion"][];
+          name: string;
+        };
+      };
+    };
+  };
+  "get-campaigns-forms-formId": {
+    parameters: {
+      path: {
+        formId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            campaign?: {
+              id: number;
+              name: string;
+            };
+            fields: ({
+              id: number;
+            } & components["schemas"]["PreselectionFormQuestion"])[];
+            id: number;
+            /** @example My form */
+            name: string;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "put-campaigns-forms-formId": {
+    parameters: {
+      path: {
+        formId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            campaign?: {
+              id: number;
+              name: string;
+            };
+            fields: ({
+              id: number;
+            } & components["schemas"]["PreselectionFormQuestion"])[];
+            id: number;
+            name: string;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          campaign?: number;
+          fields: ({
+            id?: number;
+          } & components["schemas"]["PreselectionFormQuestion"])[];
+          name: string;
+        };
+      };
+    };
+  };
+  /** Get all the owners of campaigns you have access to */
+  "get-campaigns-owners": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+            surname: string;
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
   /** Get the data of a Campaign if you have access to it */
   "get-campaigns-campaign": {
     parameters: {
@@ -1331,10 +1688,14 @@ export interface operations {
         content: {
           "application/json": {
             id: number;
+            plan?: {
+              id: number;
+              name: string;
+            };
+            preselectionFormId?: number;
             title: string;
             type: string;
             typeDescription: string;
-            preselectionFormId?: number;
           };
         };
       };
@@ -1391,32 +1752,110 @@ export interface operations {
         content: {
           "application/json": {
             items: {
+              created: string;
+              /** @enum {string} */
+              duplication: "father" | "unique" | "duplicated";
               id: number;
-              title: string;
               internalId: string;
-              status: {
-                id: number;
-                name: string;
-              };
-              type: {
-                id: number;
-                name: string;
-              };
+              isFavourite: boolean;
               severity: {
                 id: number;
                 name: string;
               };
+              status: {
+                id: number;
+                name: string;
+              };
+              tags?: components["schemas"]["BugTag"][];
               tester: {
                 id: number;
               };
-              tags?: components["schemas"]["BugTag"][];
-              /** @enum {string} */
-              duplication: "father" | "unique" | "duplicated";
-              isFavourite: boolean;
-              created: string;
+              title: string;
+              type: {
+                id: number;
+                name: string;
+              };
               updated: string;
             }[];
           } & components["schemas"]["PaginationData"];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Get single bug of a Campaign if you have access to it */
+  "get-campaigns-single-bug": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+        bugId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            actual_result: string;
+            description: string;
+            expected_result: string;
+            id: number;
+            media: {
+              id: number;
+              type: string;
+              url: string;
+            }[];
+            note: string;
+            reason: string;
+            replicability: {
+              id: number;
+              name: string;
+            };
+            severity: components["schemas"]["BugSeverity"];
+            status: components["schemas"]["BugStatus"];
+            status_history: {
+              date: string;
+              reason: string;
+              status: string;
+            }[];
+            title: string;
+            type: {
+              id: number;
+              name: string;
+            };
+            usecase: {
+              description: string;
+              id: number;
+              title: string;
+            };
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  /** Get ai review for a single bug of a Campaign if you have access to it */
+  "get-campaigns-single-bug-ai-review": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+        bugId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            ai_notes?: string;
+            ai_reason: string;
+            ai_status: string;
+            score_percentage: number;
+          };
         };
       };
       403: components["responses"]["NotAuthorized"];
@@ -1456,25 +1895,24 @@ export interface operations {
         content: {
           "application/json": {
             results?: {
-              id: number;
-              name: string;
-              surname: string;
-              gender: components["schemas"]["Gender"];
               age: number;
-              experience: number;
               businessCps: number;
               businessCpsLastMonth: number;
-              levels: {
-                bugHunting: string;
-                metal: string;
-              };
               devices: {
+                id: number;
                 manufacturer?: string;
                 model?: string;
                 os: string;
                 osVersion: string;
-                id: number;
               }[];
+              experience: number;
+              gender: components["schemas"]["Gender"];
+              id: number;
+              levels: {
+                bugHunting: string;
+                metal: string;
+              };
+              name: string;
               questions?: {
                 id?: number;
                 title?: string;
@@ -1482,6 +1920,7 @@ export interface operations {
               }[];
               /** @enum {string} */
               status?: "candidate" | "excluded" | "selected";
+              surname: string;
             }[];
           } & components["schemas"]["PaginationData"];
         };
@@ -1504,9 +1943,9 @@ export interface operations {
         content: {
           "application/json": {
             results: {
-              tester_id: number;
-              device?: "any" | number;
               campaignId?: number;
+              device?: "any" | number;
+              tester_id: number;
             }[];
           };
         };
@@ -1515,12 +1954,12 @@ export interface operations {
       207: {
         content: {
           "application/json": {
-            results: {
-              tester_id: number;
-              device?: "any" | number;
-              campaignId?: number;
-            }[];
             invalidTesters?: number[];
+            results: {
+              campaignId?: number;
+              device?: "any" | number;
+              tester_id: number;
+            }[];
           };
         };
       };
@@ -1531,12 +1970,12 @@ export interface operations {
       content: {
         "application/json":
           | {
-              tester_id: number;
               device?: number | "random";
+              tester_id: number;
             }[]
           | {
-              tester_id: number;
               device?: number | "random";
+              tester_id: number;
             };
       };
     };
@@ -1625,22 +2064,22 @@ export interface operations {
         content: {
           "application/json": {
             items: {
-              id: number;
-              name: string;
-              time: number;
-              tester: {
-                id: number;
-                name: string;
-              };
               cluster: {
                 id: number;
                 name: string;
               };
+              id: number;
               media: {
                 id: number;
-                url: string;
                 streamUrl: string;
+                url: string;
               };
+              name: string;
+              tester: {
+                id: number;
+                name: string;
+              };
+              time: number;
             }[];
           };
         };
@@ -1661,26 +2100,84 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            maxBonusBug: number;
             completionRule: {
               bugs?: number;
               usecases?: number;
             };
-            testSuccess: {
-              payout: number;
-              points: number;
-              message: string;
-            };
+            maxBonusBug: number;
             testFailure: {
+              message: string;
               payout: number;
               points: number;
+            };
+            testSuccess: {
               message: string;
+              payout: number;
+              points: number;
             };
           };
         };
       };
       403: components["responses"]["NotAuthorized"];
       404: components["responses"]["NotFound"];
+    };
+  };
+  "put-campaigns-campaign-payouts": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            campaign_complete_bonus_eur?: number;
+            campaign_pts?: number;
+            critical_bug_payout?: number;
+            high_bug_payout?: number;
+            low_bug_payout?: number;
+            medium_bug_payout?: number;
+            minimum_bugs?: number;
+            payout_limit?: number;
+            percent_usecases?: number;
+            point_multiplier_critical?: number;
+            point_multiplier_high?: number;
+            point_multiplier_low?: number;
+            point_multiplier_medium?: number;
+            point_multiplier_perfect?: number;
+            point_multiplier_refused?: number;
+            top_tester_bonus?: number;
+          };
+        };
+      };
+      400: components["responses"]["MissingParameters"];
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          campaign_complete_bonus_eur?: number;
+          campaign_pts?: number;
+          critical_bug_payout?: number;
+          high_bug_payout?: number;
+          low_bug_payout?: number;
+          medium_bug_payout?: number;
+          minimum_bugs?: number;
+          payout_limit?: number;
+          percent_usecases?: number;
+          point_multiplier_critical?: number;
+          point_multiplier_high?: number;
+          point_multiplier_low?: number;
+          point_multiplier_medium?: number;
+          point_multiplier_perfect?: number;
+          point_multiplier_refused?: number;
+          top_tester_bonus?: number;
+        };
+      };
     };
   };
   "get-campaigns-campaign-prospect": {
@@ -1701,38 +2198,38 @@ export interface operations {
         content: {
           "application/json": {
             items: {
-              tester: {
-                id: number;
-                name: string;
-                surname: string;
-                group: number;
-              };
-              usecases: {
-                completed: number;
-                required: number;
-              };
               bugs: {
                 critical: number;
                 high: number;
-                medium: number;
                 low: number;
-              };
-              payout: {
-                completion: number;
-                bug: number;
-                refund: number;
-                extra: number;
+                medium: number;
               };
               experience: {
                 completion: number;
                 extra: number;
               };
-              note: string;
-              /** @enum {string} */
-              status: "pending" | "done";
-              weightedBugs: number;
               isCompleted: boolean;
               isTopTester: boolean;
+              note: string;
+              payout: {
+                bug: number;
+                completion: number;
+                extra: number;
+                refund: number;
+              };
+              /** @enum {string} */
+              status: "pending" | "done";
+              tester: {
+                group: number;
+                id: number;
+                name: string;
+                surname: string;
+              };
+              usecases: {
+                completed: number;
+                required: number;
+              };
+              weightedBugs: number;
             }[];
             status: components["schemas"]["ProspectStatus"];
           };
@@ -1762,24 +2259,24 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": {
-          status: components["schemas"]["ProspectStatus"];
           items: {
-            tester: {
-              id: number;
-            };
+            completed: boolean;
             experience: {
               completion: number;
               extra: number;
             };
+            note?: string;
             payout: {
-              completion: number;
               bug: number;
+              completion: number;
               extra: number;
               refund: number;
             };
-            note?: string;
-            completed: boolean;
+            tester: {
+              id: number;
+            };
           }[];
+          status: components["schemas"]["ProspectStatus"];
         };
       };
     };
@@ -1821,18 +2318,18 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            payout: {
-              completion: number;
-              bugs: number;
-              refund: number;
-              extra: number;
-            };
+            completed: boolean;
             experience: {
               completion: number;
               extra: number;
             };
             note: string;
-            completed: boolean;
+            payout: {
+              bugs: number;
+              completion: number;
+              extra: number;
+              refund: number;
+            };
           };
         };
       };
@@ -1840,18 +2337,18 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": {
-          payout: {
-            completion: number;
-            bugs: number;
-            refund: number;
-            extra: number;
-          };
+          completed: boolean;
           experience: {
             completion: number;
             extra: number;
           };
           note: string;
-          completed: boolean;
+          payout: {
+            bugs: number;
+            completion: number;
+            extra: number;
+            refund: number;
+          };
         };
       };
     };
@@ -1977,26 +2474,26 @@ export interface operations {
         content: {
           "application/json": {
             goal: string;
-            usersNumber: number;
-            sentiments: {
-              id: number;
-              value: number;
-              comment: string;
-              cluster: {
-                id: number;
-                name: string;
-              };
-            }[];
             methodology: {
+              description: string;
               name: string;
               /** @enum {string} */
               type: "qualitative" | "quantitative" | "quali-quantitative";
-              description: string;
             };
             questions: {
               id: number;
               name: string;
             }[];
+            sentiments: {
+              cluster: {
+                id: number;
+                name: string;
+              };
+              comment: string;
+              id: number;
+              value: number;
+            }[];
+            usersNumber: number;
             visible: number;
           };
         };
@@ -2026,190 +2523,22 @@ export interface operations {
       content: {
         "application/json": {
           goal?: string;
-          usersNumber?: number;
-          visible?: number;
           methodology?: {
             description: string;
             type: string;
           };
+          questions?: {
+            id?: number;
+            name: string;
+          }[];
           sentiments?: {
             clusterId: number;
-            value: number;
             comment: string;
             id?: number;
+            value: number;
           }[];
-          questions?: {
-            name: string;
-            id?: number;
-          }[];
-        };
-      };
-    };
-  };
-  "get-campaigns-forms": {
-    parameters: {
-      query: {
-        /** A comma separated list of fields which will be searched */
-        searchBy?: components["parameters"]["searchBy"];
-        /** The value to search for */
-        search?: components["parameters"]["search"];
-        /** Max items to retrieve */
-        limit?: components["parameters"]["limit"];
-        /** Items to skip for pagination */
-        start?: components["parameters"]["start"];
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            results: {
-              id: number;
-              name: string;
-              campaign?: number;
-            }[];
-            limit?: number;
-            start: number;
-            size: number;
-            total?: number;
-          };
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  "post-campaigns-forms": {
-    parameters: {};
-    responses: {
-      /** Created */
-      201: {
-        content: {
-          "application/json": {
-            id: number;
-            name: string;
-            campaign?: {
-              id: number;
-              name: string;
-            };
-            fields?: ({
-              id: number;
-            } & components["schemas"]["PreselectionFormQuestion"])[];
-          };
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-    requestBody: {
-      content: {
-        "application/json": {
-          name: string;
-          fields: components["schemas"]["PreselectionFormQuestion"][];
-          campaign?: number;
-          creationDate?: string;
-        };
-      };
-    };
-  };
-  "get-campaigns-forms-formId": {
-    parameters: {
-      path: {
-        formId: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id: number;
-            /** @example My form */
-            name: string;
-            campaign?: {
-              id: number;
-              name: string;
-            };
-            fields: ({
-              id: number;
-            } & components["schemas"]["PreselectionFormQuestion"])[];
-          };
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  "put-campaigns-forms-formId": {
-    parameters: {
-      path: {
-        formId: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id: number;
-            name: string;
-            fields: ({
-              id: number;
-            } & components["schemas"]["PreselectionFormQuestion"])[];
-            campaign?: {
-              id: number;
-              name: string;
-            };
-          };
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-    requestBody: {
-      content: {
-        "application/json": {
-          name: string;
-          campaign?: number;
-          fields: ({
-            id?: number;
-          } & components["schemas"]["PreselectionFormQuestion"])[];
-        };
-      };
-    };
-  };
-  /** Get all the owners of campaigns you have access to */
-  "get-campaigns-owners": {
-    parameters: {};
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id: number;
-            name: string;
-            surname: string;
-          }[];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
-    };
-  };
-  "get-campaign-types": {
-    parameters: {};
-    responses: {
-      200: {
-        content: {
-          "application/json": {
-            id: number;
-            name: string;
-            customRoles: {
-              roleId: number;
-              userIds: number[];
-            }[];
-          }[];
+          usersNumber?: number;
+          visible?: number;
         };
       };
     };
@@ -2227,10 +2556,10 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            id: number;
-            name: string;
             area: string;
+            id: number;
             institute: string;
+            name: string;
           }[];
         };
       };
@@ -2254,6 +2583,24 @@ export interface operations {
           "application/json": {
             name: string;
             value: string;
+          }[];
+        };
+      };
+    };
+  };
+  "get-customUserFields": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            fields?: components["schemas"]["CustomUserFieldsData"][];
+            group: {
+              description?: components["schemas"]["TranslatablePage"];
+              id: number;
+              name: components["schemas"]["TranslatablePage"];
+            };
           }[];
         };
       };
@@ -2296,20 +2643,47 @@ export interface operations {
       };
     };
   };
-  "get-customUserFields": {
-    parameters: {};
+  "get-customers-customer-projects": {
+    parameters: {
+      path: {
+        customer: string;
+      };
+    };
     responses: {
       /** OK */
       200: {
         content: {
           "application/json": {
-            group: {
+            results: {
               id: number;
-              name: components["schemas"]["TranslatablePage"];
-              description?: components["schemas"]["TranslatablePage"];
-            };
-            fields?: components["schemas"]["CustomUserFieldsData"][];
-          }[];
+              name: string;
+            }[];
+          };
+        };
+      };
+    };
+  };
+  "post-customers-customer-projects": {
+    parameters: {
+      path: {
+        customer: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+          };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          name: string;
         };
       };
     };
@@ -2393,6 +2767,352 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
+  "post-dossiers": {
+    parameters: {};
+    responses: {
+      /** Created */
+      201: {
+        content: {
+          "application/json": {
+            id: number;
+            /** @enum {string} */
+            message?: "HOOK_FAILED";
+          };
+        };
+      };
+      /** Partial Content */
+      206: {
+        content: {
+          "application/json": {
+            id?: number;
+          };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DossierCreationData"] & {
+          duplicate?: {
+            campaign?: number;
+            fields?: number;
+            mailMerges?: number;
+            pages?: number;
+            testers?: number;
+            useCases?: number;
+          };
+        } & {
+          autoApply?: number;
+          /** @enum {string} */
+          pageVersion?: "v1" | "v2";
+          /** @default 0 */
+          skipPagesAndTasks?: number;
+        };
+      };
+    };
+  };
+  "get-dossiers-campaign": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            autoApply: number;
+            browsers?: {
+              id: number;
+              name: string;
+            }[];
+            /** Format: date-time */
+            closeDate: string;
+            countries?: components["schemas"]["CountryCode"][];
+            csm: {
+              id: number;
+              name: string;
+            };
+            customer: {
+              id: number;
+              name: string;
+            };
+            description?: string;
+            deviceList: {
+              id: number;
+              name: string;
+            }[];
+            deviceRequirements?: string;
+            /** Format: date-time */
+            endDate: string;
+            goal?: string;
+            id: number;
+            languages?: {
+              name: string;
+            }[];
+            notes?: string;
+            outOfScope?: string;
+            phase: {
+              id: number;
+              name: string;
+            };
+            productLink?: string;
+            productType?: {
+              id: number;
+              name: string;
+            };
+            project: {
+              id: number;
+              name: string;
+            };
+            roles?: {
+              role?: {
+                id: number;
+                name: string;
+              };
+              user?: {
+                id: number;
+                name: string;
+                surname: string;
+              };
+            }[];
+            /** Format: date-time */
+            startDate: string;
+            target?: {
+              cap?: number;
+              genderQuote?: string;
+              notes?: string;
+              size?: number;
+            };
+            testType: {
+              id: number;
+              name: string;
+            };
+            title: {
+              customer: string;
+              tester: string;
+            };
+            visibilityCriteria?: {
+              ageRanges?: {
+                max: number;
+                min: number;
+              }[];
+              cuf?: {
+                cufId: number;
+                cufValueIds: number[];
+              }[];
+              gender?: number[];
+              province?: string[];
+            };
+          };
+        };
+      };
+    };
+  };
+  "put-dossiers-campaign": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": { [key: string]: unknown };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DossierCreationData"] & {
+          autoApply?: number;
+        };
+      };
+    };
+  };
+  /**  */
+  "get-dossiers-campaign-availableTesters": {
+    parameters: {
+      path: {
+        campaign: string;
+      };
+      query: {
+        refresh?: "1" | "0";
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            count: number;
+            /** Format: date-time */
+            lastUpdate: string;
+          };
+        };
+      };
+    };
+  };
+  "post-dossiers-campaign-manual": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": { [key: string]: unknown };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          importFrom: number;
+        };
+      };
+    };
+  };
+  "put-dossiers-campaign-phases": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            id: number;
+            name: string;
+          };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          phase: number;
+        };
+      };
+    };
+  };
+  "post-dossiers-campaign-preview": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": { [key: string]: unknown };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          importFrom: number;
+        };
+      };
+    };
+  };
+  "post-dossiers-campaign-quotations": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** Created */
+      201: {
+        content: {
+          "application/json": {
+            id?: number;
+          };
+        };
+      };
+      /** Not Found */
+      404: unknown;
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          notes?: string;
+          quote?: string;
+        };
+      };
+    };
+  };
+  "patch-dossiers-campaign-quotations-quote": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+        quote: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": { [key: string]: unknown };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          amount?: string;
+        };
+      };
+    };
+  };
+  "get-dossiers-campaign-quotes-history": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            items: {
+              campaign: {
+                id: number;
+                phase_id: number;
+                phase_name: string;
+                title: string;
+              };
+              quote: {
+                amount: string;
+                id: number;
+                /** @enum {string} */
+                status: "pending" | "proposed" | "approved" | "rejected";
+              };
+            }[];
+          };
+        };
+      };
+    };
+  };
   /** Get all education levels */
   "get-education": {
     responses: {
@@ -2425,6 +3145,46 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
+  "get-jotforms": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            createdAt: string;
+            id: string;
+            name: string;
+          }[];
+        };
+      };
+      /** Forbidden */
+      403: unknown;
+    };
+  };
+  "get-jotforms-forms-formId-questions": {
+    parameters: {
+      path: {
+        formId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            description?: string;
+            id: string;
+            name: string;
+            title: string;
+            type: string;
+          }[];
+        };
+      };
+      /** Forbidden */
+      403: unknown;
+    };
+  };
   "post-jotforms-campaignId": {
     parameters: {
       path: {
@@ -2449,46 +3209,6 @@ export interface operations {
           testerIdColumn: string;
         };
       };
-    };
-  };
-  "get-jotforms": {
-    parameters: {};
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id: string;
-            name: string;
-            createdAt: string;
-          }[];
-        };
-      };
-      /** Forbidden */
-      403: unknown;
-    };
-  };
-  "get-jotforms-forms-formId-questions": {
-    parameters: {
-      path: {
-        formId: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id: string;
-            name: string;
-            title: string;
-            description?: string;
-            type: string;
-          }[];
-        };
-      };
-      /** Forbidden */
-      403: unknown;
     };
   };
   /** Get all languages */
@@ -2530,13 +3250,13 @@ export interface operations {
       200: {
         content: {
           "application/json": {
+            failed?: {
+              errorCode: string;
+              name: string;
+            }[];
             files: {
               name: string;
               path: string;
-            }[];
-            failed?: {
-              name: string;
-              errorCode: string;
             }[];
           };
         };
@@ -2588,29 +3308,29 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            limit?: number;
-            size: number;
-            start: number;
-            total?: number;
             items: {
+              amount: {
+                currency: string;
+                value: number;
+              };
               /** @description The timestamp (GMT) of the request creation */
               created: string;
-              /** @description The timestamp (GMT) of the request last update */
-              updated: string;
+              error?: string;
               id: number;
-              amount: {
-                value: number;
-                currency: string;
-              };
-              /** @enum {string} */
-              type: "paypal" | "transferwise";
               tryber: {
                 id: number;
                 name: string;
                 surname: string;
               };
-              error?: string;
+              /** @enum {string} */
+              type: "paypal" | "transferwise";
+              /** @description The timestamp (GMT) of the request last update */
+              updated: string;
             }[];
+            limit?: number;
+            size: number;
+            start: number;
+            total?: number;
           };
         };
       };
@@ -2679,6 +3399,25 @@ export interface operations {
       200: unknown;
       403: components["responses"]["NotAuthorized"];
       404: components["responses"]["NotFound"];
+    };
+  };
+  "get-phases": {
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results: {
+              id: number;
+              name: string;
+              type: {
+                id: number;
+                name: string;
+              };
+            }[];
+          };
+        };
+      };
     };
   };
   /** Retrieve all available popups for admin operations */
@@ -2767,6 +3506,22 @@ export interface operations {
       };
     };
   };
+  "get-productTypes": {
+    parameters: {};
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results: {
+              id: number;
+              name: string;
+            }[];
+          };
+        };
+      };
+    };
+  };
   /** Get all users you have access to */
   "get-users": {
     responses: {
@@ -2801,19 +3556,19 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": {
-          name: string;
-          surname: string;
-          /** Format: email */
-          email: string;
-          password: string;
-          country: string;
           /** Format: date */
           birthDate: string;
+          country: string;
+          /** Format: email */
+          email: string;
+          name: string;
+          password: string;
           /**
            * @description A referral code (formatted as TESTER_ID-CAMPAIGN_ID)
            * @example 555-1234
            */
           referral?: string;
+          surname: string;
         };
       };
     };
@@ -2833,6 +3588,27 @@ export interface operations {
       404: unknown;
     };
   };
+  "get-users-by-role-role": {
+    parameters: {
+      path: {
+        role: "tester_lead" | "quality_leader" | "ux_researcher" | "assistants";
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            results: {
+              id: number;
+              name: string;
+              surname: string;
+            }[];
+          };
+        };
+      };
+    };
+  };
   /** Get your user data */
   "get-users-me": {
     parameters: {
@@ -2846,53 +3622,53 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            username?: string;
-            name?: string;
-            surname?: string;
-            /** Format: email */
-            email?: string;
-            image?: string;
-            id: number;
-            wp_user_id?: number;
-            role?: string;
-            is_verified?: boolean;
-            rank?: string;
-            total_exp_pts?: number;
-            booty?: {
-              net?: components["schemas"]["Currency"];
-              gross: components["schemas"]["Currency"];
-            };
-            pending_booty?: {
-              net?: components["schemas"]["Currency"];
-              gross: components["schemas"]["Currency"];
-            };
-            languages?: {
-              name?: string;
-            }[];
-            onboarding_completed?: boolean;
             additional?: components["schemas"]["AdditionalField"][];
-            gender?: components["schemas"]["Gender"];
+            approved_bugs?: number;
+            attended_cp?: number;
             /** Format: date */
             birthDate?: string;
-            phone?: string;
+            booty?: {
+              gross: components["schemas"]["Currency"];
+              net?: components["schemas"]["Currency"];
+            };
+            booty_threshold?: {
+              isOver: boolean;
+              value: number;
+            };
+            certifications?: components["schemas"]["Certification"][] | boolean;
+            city?: string;
+            completionPercent?: number;
+            country?: string;
             education?: {
               id: number;
               name: string;
             };
+            /** Format: email */
+            email?: string;
+            gender?: components["schemas"]["Gender"];
+            id: number;
+            image?: string;
+            is_verified?: boolean;
+            languages?: {
+              name?: string;
+            }[];
+            name?: string;
+            onboarding_completed?: boolean;
+            pending_booty?: {
+              gross: components["schemas"]["Currency"];
+              net?: components["schemas"]["Currency"];
+            };
+            phone?: string;
             profession?: {
               id: number;
               name: string;
             };
-            certifications?: components["schemas"]["Certification"][] | boolean;
-            completionPercent?: number;
-            country?: string;
-            city?: string;
-            attended_cp?: number;
-            approved_bugs?: number;
-            booty_threshold?: {
-              value: number;
-              isOver: boolean;
-            };
+            rank?: string;
+            role?: string;
+            surname?: string;
+            total_exp_pts?: number;
+            username?: string;
+            wp_user_id?: number;
           };
         };
       };
@@ -2911,10 +3687,10 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": {
-          name?: string;
-          surname?: string;
-          password?: string;
           email?: string;
+          name?: string;
+          password?: string;
+          surname?: string;
         };
       };
     };
@@ -2940,50 +3716,50 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            username?: string;
-            name?: string;
-            surname?: string;
-            email?: string;
-            image?: string;
-            id: number;
-            wp_user_id?: number;
-            role?: string;
-            is_verified?: boolean;
-            rank?: string;
-            total_exp_pts?: number;
+            additional?: components["schemas"]["AdditionalField"][];
+            approved_bugs?: number;
+            attended_cp?: number;
+            /** Format: date */
+            birthDate?: string;
             booty?: {
               gross: components["schemas"]["Currency"];
               net?: components["schemas"]["Currency"];
             };
-            pending_booty?: {
-              gross: components["schemas"]["Currency"];
-              net?: components["schemas"]["Currency"];
-            };
-            languages?: {
-              id?: number;
-              name?: string;
-            }[];
-            onboarding_completed?: boolean;
-            additional?: components["schemas"]["AdditionalField"][];
-            /** @enum {string} */
-            gender?: "male" | "female" | "not-specified" | "other";
-            /** Format: date */
-            birthDate?: string;
-            phone?: string;
+            certifications?: components["schemas"]["Certification"][] | boolean;
+            city?: string;
+            completionPercent?: number;
+            country?: string;
             education?: {
               id: number;
               name: string;
             };
+            email?: string;
+            /** @enum {string} */
+            gender?: "male" | "female" | "not-specified" | "other";
+            id: number;
+            image?: string;
+            is_verified?: boolean;
+            languages?: {
+              id?: number;
+              name?: string;
+            }[];
+            name?: string;
+            onboarding_completed?: boolean;
+            pending_booty?: {
+              gross: components["schemas"]["Currency"];
+              net?: components["schemas"]["Currency"];
+            };
+            phone?: string;
             profession?: {
               id: number;
               name: string;
             };
-            certifications?: components["schemas"]["Certification"][] | boolean;
-            completionPercent?: number;
-            country?: string;
-            city?: string;
-            attended_cp?: number;
-            approved_bugs?: number;
+            rank?: string;
+            role?: string;
+            surname?: string;
+            total_exp_pts?: number;
+            username?: string;
+            wp_user_id?: number;
           };
         };
       };
@@ -2994,21 +3770,21 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": {
-          name?: string;
+          birthDate?: string;
+          city?: string;
+          country?: string;
+          education?: number;
           /** Format: email */
           email?: string;
-          onboarding_completed?: boolean;
-          surname?: string;
           /** @enum {string} */
           gender?: "male" | "female" | "not-specified" | "other";
-          birthDate?: string;
-          phone?: string;
-          education?: number;
-          profession?: number;
-          country?: string;
-          city?: string;
-          password?: string;
+          name?: string;
           oldPassword?: string;
+          onboarding_completed?: boolean;
+          password?: string;
+          phone?: string;
+          profession?: number;
+          surname?: string;
         };
       };
     };
@@ -3037,12 +3813,12 @@ export interface operations {
       content: {
         "application/json":
           | {
-              value: string;
               is_candidate?: boolean;
+              value: string;
             }[]
           | {
-              value: string;
               is_candidate?: boolean;
+              value: string;
             };
       };
     };
@@ -3068,10 +3844,10 @@ export interface operations {
       200: {
         content: {
           "application/json": {
+            limit?: number;
             results: ({
               id: number;
             } & components["schemas"]["Bug"])[];
-            limit?: number;
             size?: number;
             start?: number;
             total?: number;
@@ -3117,10 +3893,10 @@ export interface operations {
       200: {
         content: {
           "application/json": {
+            limit?: number;
             results?: ({
               id: number;
             } & components["schemas"]["Campaign"])[];
-            limit?: number;
             size?: number;
             start?: number;
             total?: number;
@@ -3144,57 +3920,54 @@ export interface operations {
       200: {
         content: {
           "application/json": {
+            acceptedDevices: {
+              console?: components["schemas"]["AvailableDevice"][] | "all";
+              pc?: components["schemas"]["AvailableDevice"][] | "all";
+              smartTv?: components["schemas"]["AvailableDevice"][] | "all";
+              smartphone?: components["schemas"]["AvailableDevice"][] | "all";
+              smartwatch?: components["schemas"]["AvailableDevice"][] | "all";
+              tablet?: components["schemas"]["AvailableDevice"][] | "all";
+            };
+            additionalFields?: components["schemas"]["CampaignAdditionalField"][];
+            bugReplicability: {
+              invalid: string[];
+              valid: string[];
+            };
+            bugSeverity: {
+              invalid: string[];
+              valid: string[];
+            };
+            bugTypes: {
+              invalid: string[];
+              valid: string[];
+            };
+            campaign_type: {
+              icon: string;
+              id: number;
+              name: string;
+            };
+            devices?: ({
+              id: number;
+            } & components["schemas"]["UserDevice"])[];
+            end_date: string;
+            goal: string;
+            hasBugForm: boolean;
             id: number;
-            title: string;
             language?: {
               code: string;
               message: string;
             };
-            titleRule?: boolean;
             minimumMedia: number;
+            title: string;
+            titleRule?: boolean;
             useCases: {
               id: number;
               name: string;
             }[];
-            additionalFields?: components["schemas"]["CampaignAdditionalField"][];
-            bugTypes: {
-              valid: string[];
-              invalid: string[];
-            };
-            bugSeverity: {
-              valid: string[];
-              invalid: string[];
-            };
-            bugReplicability: {
-              valid: string[];
-              invalid: string[];
-            };
-            hasBugForm: boolean;
-            devices?: ({
-              id: number;
-            } & components["schemas"]["UserDevice"])[];
             validFileExtensions: string[];
           };
         };
       };
-    };
-  };
-  "get-users-me-campaigns-campaignId-compatible-devices": {
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["UserDevice"][];
-        };
-      };
-      403: components["responses"]["NotAuthorized"];
-      404: components["responses"]["NotFound"];
     };
   };
   /** Send a user bug on a specific campaign */
@@ -3210,37 +3983,28 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            id: number;
-            internalId?: string;
-            testerId: number;
-            title: string;
-            description: string;
-            /** @enum {string} */
-            status: "PENDING" | "APPROVED" | "REFUSED" | "NEED-REVIEW";
-            expected: string;
-            current: string;
-            /** @enum {string} */
-            severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
-            /** @enum {string} */
-            replicability: "ONCE" | "SOMETIMES" | "ALWAYS";
-            /** @enum {string} */
-            type:
-              | "CRASH"
-              | "GRAPHIC"
-              | "MALFUNCTION"
-              | "OTHER"
-              | "PERFORMANCE"
-              | "SECURITY"
-              | "TYPO"
-              | "USABILITY";
-            notes: string;
-            usecase: string;
-            device: components["schemas"]["UserDevice"];
-            media: string[];
             additional?: {
               slug: string;
               value: string;
             }[];
+            current: string;
+            description: string;
+            device: components["schemas"]["UserDevice"];
+            expected: string;
+            id: number;
+            internalId?: string;
+            media: string[];
+            notes: string;
+            /** @enum {string} */
+            replicability: "ONCE" | "SOMETIMES" | "ALWAYS";
+            /** @enum {string} */
+            severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+            /** @enum {string} */
+            status: "PENDING" | "APPROVED" | "REFUSED" | "NEED-REVIEW";
+            testerId: number;
+            title: string;
+            type: string;
+            usecase: string;
           };
         };
       };
@@ -3250,33 +4014,24 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": {
-          title: string;
-          description: string;
-          expected: string;
-          current: string;
-          /** @enum {string} */
-          severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
-          /** @enum {string} */
-          replicability: "ONCE" | "SOMETIMES" | "ALWAYS";
-          /** @enum {string} */
-          type:
-            | "CRASH"
-            | "GRAPHIC"
-            | "MALFUNCTION"
-            | "OTHER"
-            | "PERFORMANCE"
-            | "SECURITY"
-            | "TYPO"
-            | "USABILITY";
-          notes: string;
-          lastSeen: string;
-          usecase: number;
-          device: number;
-          media: string[];
           additional?: {
             slug: string;
             value: string;
           }[];
+          current: string;
+          description: string;
+          device: number;
+          expected: string;
+          lastSeen: string;
+          media: string[];
+          notes: string;
+          /** @enum {string} */
+          replicability: "ONCE" | "SOMETIMES" | "ALWAYS";
+          /** @enum {string} */
+          severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+          title: string;
+          type: string;
+          usecase: number;
         };
       };
     };
@@ -3309,8 +4064,13 @@ export interface operations {
       200: {
         content: {
           "application/json": ({
+            id: number;
             question: string;
             short_name?: string;
+            validation?: {
+              error?: string;
+              regex: string;
+            };
             value?:
               | number
               | {
@@ -3319,22 +4079,17 @@ export interface operations {
                 }
               | number[]
               | string;
-            validation?: {
-              regex: string;
-              error?: string;
-            };
-            id: number;
           } & (
             | {
                 type: components["schemas"]["PreselectionQuestionSimple"];
               }
             | {
-                type: components["schemas"]["PreselectionQuestionMultiple"];
                 options: string[];
+                type: components["schemas"]["PreselectionQuestionMultiple"];
               }
             | {
-                type: components["schemas"]["PreselectionQuestionCuf"];
                 options?: number[];
+                type: components["schemas"]["PreselectionQuestionCuf"];
               }
           ))[];
         };
@@ -3358,7 +4113,9 @@ export interface operations {
     requestBody: {
       content: {
         "application/json": {
+          device?: number[];
           form?: {
+            question: number;
             value: {
               id?: number | number[];
               serialized?:
@@ -3369,9 +4126,7 @@ export interface operations {
                     country: string;
                   };
             };
-            question: number;
           }[];
-          device?: number[];
         };
       };
     };
@@ -3387,17 +4142,17 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            files?: {
-              name: string;
-              path: string;
-            }[];
             failed?: {
-              name: string;
               /** @enum {string} */
               errorCode:
                 | "FILE_TOO_BIG"
                 | "INVALID_FILE_EXTENSION"
                 | "GENERIC_ERROR";
+              name: string;
+            }[];
+            files?: {
+              name: string;
+              path: string;
             }[];
           };
         };
@@ -3409,6 +4164,139 @@ export interface operations {
           media?: string | string[];
         };
       };
+    };
+  };
+  "get-users-me-campaigns-cid-payout-data": {
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            campaign_complete_bonus_eur: number;
+            campaign_pts: number;
+            critical_bug_payout: number;
+            high_bug_payout: number;
+            low_bug_payout: number;
+            medium_bug_payout: number;
+            minimum_bugs: number;
+            payout_limit: number;
+            percent_usecases: number;
+            point_multiplier_critical: number;
+            point_multiplier_high: number;
+            point_multiplier_low: number;
+            point_multiplier_medium: number;
+            point_multiplier_perfect: number;
+            point_multiplier_refused: number;
+            top_tester_bonus: number;
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "get-users-me-campaigns-cid-preview": {
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            campaignType: string;
+            cap?: {
+              free: number;
+              value: number;
+            };
+            content: string;
+            endDate: string;
+            /** @enum {undefined} */
+            selectionStatus?: "starting" | "excluded" | "ready" | "complete";
+            startDate: string;
+            /** @enum {string} */
+            status: "available" | "applied" | "excluded" | "selected";
+            tl?: {
+              email: string;
+              name: string;
+            };
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "get-users-me-campaign-campaignId-tasks": {
+    parameters: {
+      path: {
+        campaignId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            content: string;
+            id: number;
+            is_required: number;
+            name: string;
+            /** @enum {string} */
+            status: "completed" | "pending";
+          }[];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+  };
+  "post-users-me-campaigns-campaign-tasks-task": {
+    parameters: {
+      path: {
+        /** the campaign id */
+        campaignId: string;
+        taskId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: unknown;
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          /** @enum {undefined} */
+          status: "completed";
+        };
+      };
+    };
+  };
+  "get-users-me-campaigns-campaignId-compatible-devices": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": components["schemas"]["UserDevice"][];
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
     };
   };
   /** Add one certification to your profile */
@@ -3433,9 +4321,9 @@ export interface operations {
               certifications: boolean;
             }
           | {
-              certification_id: number;
               /** Format: date */
               achievement_date: string;
+              certification_id: number;
             };
       };
     };
@@ -3608,27 +4496,27 @@ export interface operations {
       200: {
         content: {
           "application/json": {
+            limit?: number;
             results: {
-              id: number;
               activity: {
                 id: number;
               };
+              amount: number;
               campaign: {
                 id: number;
                 title?: string;
               };
               /** Format: date */
               date: string;
-              amount: number;
+              id: number;
               note?: string;
             }[];
-            limit?: number;
             size?: number;
             start?: number;
-            /** @description The total number of experience entries */
-            total?: number;
             /** @description The total sum of experience */
             sum: number;
+            /** @description The total number of experience entries */
+            total?: number;
           };
         };
       };
@@ -3644,14 +4532,13 @@ export interface operations {
         content: {
           "application/json": {
             address: {
+              city: string;
+              cityCode: string;
               country: string;
               province: string;
-              city: string;
               street: string;
               streetNumber?: string;
-              cityCode: string;
             };
-            type: components["schemas"]["FiscalType"] | "internal";
             birthPlace: {
               city?: string;
               province?: string;
@@ -3661,6 +4548,7 @@ export interface operations {
             fiscalStatus: "Verified" | "Unverified";
             /** @enum {string} */
             gender: "male" | "female";
+            type: components["schemas"]["FiscalType"] | "internal";
           };
         };
       };
@@ -3676,14 +4564,13 @@ export interface operations {
         content: {
           "application/json": {
             address: {
+              city: string;
+              cityCode: string;
               country: string;
               province: string;
-              city: string;
               street: string;
               streetNumber?: string;
-              cityCode: string;
             };
-            type: components["schemas"]["FiscalType"];
             birthPlace?: {
               city?: string;
               province?: string;
@@ -3693,6 +4580,7 @@ export interface operations {
             fiscalStatus: "Verified" | "Unverified";
             /** @enum {string} */
             gender: "male" | "female";
+            type: components["schemas"]["FiscalType"];
           };
         };
       };
@@ -3702,18 +4590,18 @@ export interface operations {
       content: {
         "application/json": {
           address: {
+            city: string;
+            cityCode: string;
             country: string;
             province: string;
-            city: string;
             street: string;
             streetNumber: string;
-            cityCode: string;
           };
-          type: components["schemas"]["FiscalType"];
           birthPlace?: components["schemas"]["FiscalBirthCity"];
           fiscalId: string;
           /** @enum {string} */
           gender: "male" | "female";
+          type: components["schemas"]["FiscalType"];
         };
       };
     };
@@ -3726,14 +4614,13 @@ export interface operations {
         content: {
           "application/json": {
             address: {
+              city: string;
+              cityCode: string;
               country: string;
               province: string;
-              city: string;
               street: string;
               streetNumber?: string;
-              cityCode: string;
             };
-            type: components["schemas"]["FiscalType"];
             birthPlace?: {
               city?: string;
               province?: string;
@@ -3743,6 +4630,7 @@ export interface operations {
             fiscalStatus: "Verified" | "Unverified";
             /** @enum {string} */
             gender: "male" | "female";
+            type: components["schemas"]["FiscalType"];
           };
         };
       };
@@ -3752,18 +4640,18 @@ export interface operations {
       content: {
         "application/json": {
           address: {
+            city: string;
+            cityCode: string;
             country: string;
             province: string;
-            city: string;
             street: string;
             streetNumber: string;
-            cityCode: string;
           };
-          type: components["schemas"]["FiscalType"];
           birthPlace?: components["schemas"]["FiscalBirthCity"];
           fiscalId: string;
           /** @enum {string} */
           gender: "male" | "female";
+          type: components["schemas"]["FiscalType"];
         };
       };
     };
@@ -3848,25 +4736,25 @@ export interface operations {
       200: {
         content: {
           "application/json": {
+            limit?: number;
             results?: ({
               id: number;
             } & {
-              /** @enum {string} */
-              status: "paid" | "processing";
               amount: {
-                net: components["schemas"]["Currency"];
                 gross: components["schemas"]["Currency"];
+                net: components["schemas"]["Currency"];
               };
-              paidDate: string;
               method: {
+                note: string;
                 /** @enum {string} */
                 type: "paypal" | "iban";
-                note: string;
               };
+              paidDate: string;
               /** Format: uri-reference */
               receipt?: string;
+              /** @enum {string} */
+              status: "paid" | "processing";
             })[];
-            limit?: number;
             size: number;
             start: number;
             total?: number;
@@ -3884,8 +4772,8 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            id?: number;
             amount?: number;
+            id?: number;
           };
         };
       };
@@ -3896,15 +4784,15 @@ export interface operations {
         "application/json": {
           method:
             | {
+                email: string;
                 /** @enum {string} */
                 type: "paypal";
-                email: string;
               }
             | {
-                /** @enum {string} */
-                type: "iban";
                 accountHolderName: string;
                 iban: string;
+                /** @enum {string} */
+                type: "iban";
               };
         };
       };
@@ -3932,22 +4820,22 @@ export interface operations {
       200: {
         content: {
           "application/json": {
+            limit?: number;
             results: ({
               id: number;
             } & {
-              type: string;
+              activity: string;
               amount: {
-                net?: components["schemas"]["Currency"];
                 gross: components["schemas"]["Currency"];
+                net?: components["schemas"]["Currency"];
               };
               /** Format: date */
               date: string;
-              activity: string;
+              type: string;
             })[];
-            limit?: number;
             size: number;
-            total?: number;
             start: number;
+            total?: number;
           };
         };
       };
@@ -3980,19 +4868,19 @@ export interface operations {
       200: {
         content: {
           "application/json": {
+            limit?: number;
             results?: ({
               id: number;
             } & {
-              name: string;
+              activity: string;
               amount: {
-                net?: components["schemas"]["Currency"];
                 gross: components["schemas"]["Currency"];
+                net?: components["schemas"]["Currency"];
               };
               /** Format: date */
               attributionDate: string;
-              activity: string;
+              name: string;
             })[];
-            limit?: number;
             size: number;
             start: number;
             total?: number;
@@ -4039,10 +4927,10 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            id?: number;
-            title?: string;
             content?: string;
+            id?: number;
             once?: boolean;
+            title?: string;
           }[];
         };
       };
@@ -4075,17 +4963,17 @@ export interface operations {
         content: {
           "application/json": {
             level: components["schemas"]["MonthlyLevel"];
-            previousLevel: components["schemas"]["MonthlyLevel"];
-            rank: number;
             points: number;
+            previousLevel: components["schemas"]["MonthlyLevel"];
             prospect: {
               level: components["schemas"]["MonthlyLevel"];
               maintenance?: number;
               next?: {
-                points: number;
                 level: components["schemas"]["MonthlyLevel"];
+                points: number;
               };
             };
+            rank: number;
           };
         };
       };
@@ -4098,299 +4986,13 @@ export interface operations {
       200: {
         content: {
           "application/json": {
-            tops: components["schemas"]["RankingItem"][];
             peers: components["schemas"]["RankingItem"][];
+            tops: components["schemas"]["RankingItem"][];
           };
         };
       };
       403: components["responses"]["NotAuthorized"];
       404: components["responses"]["NotFound"];
-    };
-  };
-  "post-dossiers": {
-    parameters: {};
-    responses: {
-      /** Created */
-      201: {
-        content: {
-          "application/json": {
-            id: number;
-            /** @enum {string} */
-            message?: "HOOK_FAILED";
-          };
-        };
-      };
-      /** Partial Content */
-      206: {
-        content: {
-          "application/json": {
-            id?: number;
-          };
-        };
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["DossierCreationData"] & {
-          duplicate?: {
-            fields?: number;
-            useCases?: number;
-            mailMerges?: number;
-            pages?: number;
-            testers?: number;
-            campaign?: number;
-          };
-        };
-      };
-    };
-  };
-  "get-dossiers-campaign": {
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id: number;
-            title: {
-              customer: string;
-              tester: string;
-            };
-            /** Format: date-time */
-            startDate: string;
-            /** Format: date-time */
-            endDate: string;
-            /** Format: date-time */
-            closeDate: string;
-            customer: {
-              id: number;
-              name: string;
-            };
-            project: {
-              id: number;
-              name: string;
-            };
-            testType: {
-              id: number;
-              name: string;
-            };
-            deviceList: {
-              id: number;
-              name: string;
-            }[];
-            csm: {
-              id: number;
-              name: string;
-            };
-            roles?: {
-              role?: {
-                id: number;
-                name: string;
-              };
-              user?: {
-                id: number;
-                name: string;
-                surname: string;
-              };
-            }[];
-            description?: string;
-            productLink?: string;
-            goal?: string;
-            outOfScope?: string;
-            deviceRequirements?: string;
-            target?: {
-              notes?: string;
-              size?: number;
-              cap?: number;
-            };
-            countries?: components["schemas"]["CountryCode"][];
-            languages?: {
-              name: string;
-            }[];
-            browsers?: {
-              id: number;
-              name: string;
-            }[];
-            productType?: {
-              id: number;
-              name: string;
-            };
-            phase: {
-              id: number;
-              name: string;
-            };
-            notes?: string;
-          };
-        };
-      };
-    };
-  };
-  "put-dossiers-campaign": {
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": { [key: string]: unknown };
-        };
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["DossierCreationData"];
-      };
-    };
-  };
-  "get-customers-customer-projects": {
-    parameters: {
-      path: {
-        customer: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            results: {
-              id: number;
-              name: string;
-            }[];
-          };
-        };
-      };
-    };
-  };
-  "post-customers-customer-projects": {
-    parameters: {
-      path: {
-        customer: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id: number;
-            name: string;
-          };
-        };
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": {
-          name: string;
-        };
-      };
-    };
-  };
-  "get-users-by-role-role": {
-    parameters: {
-      path: {
-        role: "tester_lead" | "quality_leader" | "ux_researcher" | "assistants";
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            results: {
-              id: number;
-              name: string;
-              surname: string;
-            }[];
-          };
-        };
-      };
-    };
-  };
-  "get-browsers": {
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            results: {
-              id: number;
-              name: string;
-            }[];
-          };
-        };
-      };
-    };
-  };
-  "get-productTypes": {
-    parameters: {};
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            results: {
-              id: number;
-              name: string;
-            }[];
-          };
-        };
-      };
-    };
-  };
-  "get-phases": {
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            results: {
-              id: number;
-              name: string;
-              type: {
-                id: number;
-                name: string;
-              };
-            }[];
-          };
-        };
-      };
-    };
-  };
-  "put-dossiers-campaign-phases": {
-    parameters: {
-      path: {
-        /** A campaign id */
-        campaign: string;
-      };
-    };
-    responses: {
-      /** OK */
-      200: {
-        content: {
-          "application/json": {
-            id: number;
-            name: string;
-          };
-        };
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": {
-          phase: number;
-        };
-      };
     };
   };
 }
