@@ -2709,6 +2709,7 @@ export type GetUsersMeCampaignsByCampaignIdPreviewApiResponse =
     };
     content: string;
     endDate: string;
+    selectionStatus?: "starting" | "excluded" | "ready" | "complete";
     startDate: string;
     status: "available" | "applied" | "excluded" | "selected";
     tl?: {
