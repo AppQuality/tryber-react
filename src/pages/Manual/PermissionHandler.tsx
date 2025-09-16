@@ -18,7 +18,7 @@ const PermissionHandler = ({ id }: { id: string }) => {
     return <div>You do not have permission to access this campaign.</div>;
   }
 
-  if (true || selectionStatus === "starting") {
+  if (selectionStatus === "starting") {
     return <AcceptContract id={id} />;
   }
 
