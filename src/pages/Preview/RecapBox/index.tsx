@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import {
   useGetUsersMeCampaignsByCampaignIdPayoutDataQuery,
   useGetUsersMeCampaignsByCampaignIdPreviewQuery,
-  useGetUsersMeCampaignsByCampaignIdQuery,
 } from "src/services/tryberApi";
 import { styled, useTheme } from "styled-components";
 
@@ -22,10 +21,6 @@ const Wrapper = styled.div`
 `;
 
 const useCampaignData = (id: string) => {
-  const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery(
-    { campaignId: id },
-    { skip: !id }
-  );
   const { data } = useGetUsersMeCampaignsByCampaignIdPreviewQuery(
     { campaignId: id },
     { skip: !id }
@@ -35,7 +30,7 @@ const useCampaignData = (id: string) => {
     { skip: !id }
   );
 
-  if (!data || !campaign || !payout) {
+  if (!data || !payout) {
     return null;
   }
 
@@ -44,8 +39,8 @@ const useCampaignData = (id: string) => {
     endDate: formatDate(data.endDate),
     points: payout.campaign_pts,
     type: {
-      name: campaign.campaign_type.name,
-      icon: campaign.campaign_type.icon,
+      name: data.type.name,
+      icon: data.type.icon,
     },
     payout: {
       min: payout.campaign_complete_bonus_eur,

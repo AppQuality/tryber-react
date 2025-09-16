@@ -8,7 +8,7 @@ import {
   Tv,
 } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
-import { useGetUsersMeCampaignsByCampaignIdQuery } from "src/services/tryberApi";
+import { useGetUsersMeCampaignsByCampaignIdPreviewQuery } from "src/services/tryberApi";
 import styled, { useTheme } from "styled-components";
 
 const CardTitleWrapper = styled.div`
@@ -39,7 +39,7 @@ const CardTitle = ({ device }: { device: string }) => {
 
 const AcceptedDevices = ({ id }: { id: string }) => {
   const { t } = useTranslation();
-  const { data } = useGetUsersMeCampaignsByCampaignIdQuery(
+  const { data } = useGetUsersMeCampaignsByCampaignIdPreviewQuery(
     { campaignId: id },
     { skip: !id }
   );
