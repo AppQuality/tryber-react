@@ -16,7 +16,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
 
-  > div {
+  > div,
+  .title_row {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,6 +33,7 @@ const CampaignCard = ({ id }: { id: string }) => {
   );
   const { t } = useTranslation();
   const theme = useTheme();
+  const formatDate = useFormatDate();
 
   if (!campaign) {
     return <div>Loading...</div>;
@@ -41,7 +43,17 @@ const CampaignCard = ({ id }: { id: string }) => {
     <Card className="aq-mb-4">
       <Wrapper>
         <div>
-          <div>
+          <div
+            className="title_row"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <Title size="xs">
+              {t("__MANUAL_PAGE__CAMPAIGN_TYPE", "Campaign Type")}
+            </Title>
             <i
               className="material-icons"
               style={{ color: theme.colors.red400 }}
@@ -49,11 +61,11 @@ const CampaignCard = ({ id }: { id: string }) => {
               {campaign.campaign_type.icon}
             </i>
           </div>
-          <Title size="xs">{campaign.campaign_type.name} </Title>
-          <Text>{t("__MANUAL_PAGE__CAMPAIGN_TYPE", "Campaign Type")}</Text>
+          <Text>{campaign.campaign_type.name} </Text>
         </div>
         <div>
-          <div>
+          <div className="title_row">
+            <Title size="xs">{t("__MANUAL_PAGE__END_DATE", "Deadline")}</Title>
             <i
               className="material-icons"
               style={{ color: theme.colors.green400 }}
@@ -61,8 +73,7 @@ const CampaignCard = ({ id }: { id: string }) => {
               flag
             </i>
           </div>
-          <Title size="xs">{formatDate(campaign.end_date)}</Title>
-          <Text>{t("__MANUAL_PAGE__END_DATE", "Deadline")}</Text>
+          <Text>{formatDate(campaign.end_date)}</Text>
         </div>
       </Wrapper>
       <Separator />
@@ -72,16 +83,21 @@ const CampaignCard = ({ id }: { id: string }) => {
   );
 };
 
-/**
- * Format a date string to a more readable format.
- * @param dateStr - The date string to format.
- * @returns The formatted date string in "MM/DD HH:MM" format.
- */
-const formatDate = (dateStr: string) => {
-  const date = new Date(dateStr);
-  return `${
-    date.getMonth() + 1
-  }/${date.getDate()} @ ${date.getHours()}:${date.getMinutes()}`;
+const useFormatDate = () => {
+  const { i18n } = useTranslation();
+  return (dateStr: string) => {
+    const date = new Date(dateStr);
+    const formatted = new Intl.DateTimeFormat(i18n.language, {
+      day: "2-digit",
+      month: "long",
+    }).format(date);
+    return (
+      <div style={{ textAlign: "center" }}>
+        <Text>{`${formatted}`}</Text>
+        <Text small>{`h ${date.getHours()}:${date.getMinutes()}`}</Text>
+      </div>
+    );
+  };
 };
 
 export { CampaignCard };
