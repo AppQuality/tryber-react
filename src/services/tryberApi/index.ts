@@ -2509,14 +2509,6 @@ export type GetUsersMeCampaignsApiArg = {
   orderBy?: "name" | "start_date" | "end_date" | "close_date" | "visibility";
 };
 export type GetUsersMeCampaignsByCampaignIdApiResponse = /** status 200 OK */ {
-  acceptedDevices: {
-    console?: AvailableDevice[] | "all";
-    pc?: AvailableDevice[] | "all";
-    smartTv?: AvailableDevice[] | "all";
-    smartphone?: AvailableDevice[] | "all";
-    smartwatch?: AvailableDevice[] | "all";
-    tablet?: AvailableDevice[] | "all";
-  };
   additionalFields?: CampaignAdditionalField[];
   bugReplicability: {
     invalid: string[];
@@ -2702,17 +2694,30 @@ export type GetUsersMeCampaignsByCampaignIdPayoutDataApiArg = {
 };
 export type GetUsersMeCampaignsByCampaignIdPreviewApiResponse =
   /** status 200 OK */ {
-    campaignType: string;
+    acceptedDevices: {
+      console?: AvailableDevice[] | "all";
+      pc?: AvailableDevice[] | "all";
+      smartTv?: AvailableDevice[] | "all";
+      smartphone?: AvailableDevice[] | "all";
+      smartwatch?: AvailableDevice[] | "all";
+      tablet?: AvailableDevice[] | "all";
+    };
     cap?: {
       free: number;
       value: number;
     };
     content: string;
     endDate: string;
+    selectionStatus?: "starting" | "excluded" | "ready" | "complete";
     startDate: string;
     status: "available" | "applied" | "excluded" | "selected";
+    title: string;
     tl?: {
       email: string;
+      name: string;
+    };
+    type: {
+      icon: string;
       name: string;
     };
   };
@@ -3380,9 +3385,6 @@ export type Bug = {
   status?: BugStatus;
   title?: string;
 };
-export type AvailableDevice = {
-  name: string;
-};
 export type UserDevice = {
   device:
     | {
@@ -3400,6 +3402,9 @@ export type UserDevice = {
     version: string;
   };
   type: string;
+};
+export type AvailableDevice = {
+  name: string;
 };
 export type FiscalType =
   | "withholding"

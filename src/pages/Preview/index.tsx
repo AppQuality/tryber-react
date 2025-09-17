@@ -6,10 +6,7 @@ import {
 } from "@appquality/appquality-design-system";
 import { useParams } from "react-router-dom";
 import { PageTemplate } from "src/features/PageTemplate";
-import {
-  useGetUsersMeCampaignsByCampaignIdPreviewQuery,
-  useGetUsersMeCampaignsByCampaignIdQuery,
-} from "src/services/tryberApi";
+import { useGetUsersMeCampaignsByCampaignIdPreviewQuery } from "src/services/tryberApi";
 import { styled } from "styled-components";
 import AcceptedDevices from "./AcceptedDevices";
 import pattern from "./assets/tryber_pattern.svg";
@@ -29,24 +26,20 @@ const StyledPageTemplate = styled.div`
 
 const Preview = () => {
   const { id } = useParams<{ id: string }>();
-  const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery(
-    { campaignId: id },
-    { skip: !id }
-  );
   const { data } = useGetUsersMeCampaignsByCampaignIdPreviewQuery(
     { campaignId: id },
     { skip: !id }
   );
 
-  if (!data || !campaign) {
+  if (!data) {
     return <div>Loading...</div>;
   }
 
   return (
     <StyledPageTemplate>
       <PageTemplate
-        title={campaign.title}
-        heading={`CP${campaign.id} - ${campaign.campaign_type.name}`}
+        title={data.title}
+        heading={`CP${id} - ${data.type.name}`}
         route={`campaigns/${id}/preview`}
         shouldBeLoggedIn
       >
