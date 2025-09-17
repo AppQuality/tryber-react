@@ -627,6 +627,7 @@
   "__MANUAL_PAGE_MAXIMUM_PAYOUT": "El pago máximo desbloqueable es €{{value}}.",
   "__MANUAL_PAGE_PAYOUT_INFO": "",
   "__MANUAL_PAGE__CAMPAIGN_TYPE": "Campaign Type",
+  "__MANUAL_PAGE__DEVICE_CARD_TITLE": "You were selected with this device",
   "__MANUAL_PAGE__END_DATE": "Deadline",
   "__MANUAL_SUPPORT_CARD_BUTTON": "Contacta con el TRYBER TEAM",
   "__MANUAL_SUPPORT_CARD_TITLE": "¿Necesitar ayuda?",

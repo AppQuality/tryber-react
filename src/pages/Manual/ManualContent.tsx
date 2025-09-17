@@ -13,6 +13,7 @@ import {
 } from "src/services/tryberApi";
 import { BugCard } from "./BugCard";
 import { CampaignCard } from "./CampaignCard";
+import { DeviceCard } from "./DeviceCard";
 import { PayoutRecap } from "./PayoutRecap";
 import { SupportCard } from "./SupportCard";
 import { UseCases } from "./UseCases";
@@ -64,6 +65,7 @@ const ManualContent = ({ id }: { id: string }) => {
         <BSCol size="col-lg-3 aq-order-0 aq-order-1-lg ">
           <SupportCard id={id!} />
           <CampaignCard id={id!} />
+          <DeviceCard id={id!} />
           <BugCard id={id!} />
         </BSCol>
       </BSGrid>
