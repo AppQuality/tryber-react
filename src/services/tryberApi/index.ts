@@ -149,6 +149,16 @@ const injectedRtkApi = api.injectEndpoints({
     >({
       query: () => ({ url: `/campaigns/owners` }),
     }),
+    patchCampaignsByCampaignIdVisibility: build.mutation<
+      PatchCampaignsByCampaignIdVisibilityApiResponse,
+      PatchCampaignsByCampaignIdVisibilityApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaignId}/visibility`,
+        method: "PATCH",
+        body: queryArg.body,
+      }),
+    }),
     getCampaignsByCampaign: build.query<
       GetCampaignsByCampaignApiResponse,
       GetCampaignsByCampaignApiArg
@@ -269,6 +279,16 @@ const injectedRtkApi = api.injectEndpoints({
         body: queryArg.body,
       }),
     }),
+    postCampaignsByCampaignPreview: build.mutation<
+      PostCampaignsByCampaignPreviewApiResponse,
+      PostCampaignsByCampaignPreviewApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/campaigns/${queryArg.campaign}/preview`,
+        method: "POST",
+        body: queryArg.body,
+      }),
+    }),
     getCampaignsByCampaignProspect: build.query<
       GetCampaignsByCampaignProspectApiResponse,
       GetCampaignsByCampaignProspectApiArg
@@ -330,7 +350,7 @@ const injectedRtkApi = api.injectEndpoints({
       query: (queryArg) => ({
         url: `/campaigns/${queryArg.campaign}/tasks`,
         method: "POST",
-        body: queryArg.taskOptional,
+        body: queryArg.body,
       }),
     }),
     getCampaignsByCampaignTasksAndTask: build.query<
@@ -1331,6 +1351,14 @@ export type GetCampaignsOwnersApiResponse = /** status 200 OK */ {
   surname: string;
 }[];
 export type GetCampaignsOwnersApiArg = void;
+export type PatchCampaignsByCampaignIdVisibilityApiResponse =
+  /** status 200 OK */ string;
+export type PatchCampaignsByCampaignIdVisibilityApiArg = {
+  campaignId: string;
+  body: {
+    type: "internal" | "target";
+  };
+};
 export type GetCampaignsByCampaignApiResponse = /** status 200 OK */ {
   id: number;
   plan?: {
@@ -1646,6 +1674,13 @@ export type PutCampaignsByCampaignPayoutsApiArg = {
     top_tester_bonus?: number;
   };
 };
+export type PostCampaignsByCampaignPreviewApiResponse = /** status 200 OK */ {};
+export type PostCampaignsByCampaignPreviewApiArg = {
+  campaign: string;
+  body: {
+    content: string;
+  };
+};
 export type GetCampaignsByCampaignProspectApiResponse = /** status 200 OK */ {
   items: {
     bugs: {
@@ -1769,12 +1804,22 @@ export type GetCampaignsByCampaignTasksApiArg = {
   campaign: string;
 };
 export type PostCampaignsByCampaignTasksApiResponse =
-  /** status 201 Created */ void;
+  /** status 201 Created */ {
+    id: number;
+    title: string;
+    content: string;
+  };
 export type PostCampaignsByCampaignTasksApiArg = {
   /** A campaign id */
   campaign: string;
   /** The data of the new UseCase to link to the Campaign */
-  taskOptional: TaskOptional;
+  body: {
+    title: string;
+    content: string;
+    is_required: number;
+    position?: number;
+    prefix?: string;
+  };
 };
 export type GetCampaignsByCampaignTasksAndTaskApiResponse =
   /** status 200 A UseCase linked with the Campaign */ Task;
@@ -3450,6 +3495,7 @@ export const {
   useGetCampaignsFormsByFormIdQuery,
   usePutCampaignsFormsByFormIdMutation,
   useGetCampaignsOwnersQuery,
+  usePatchCampaignsByCampaignIdVisibilityMutation,
   useGetCampaignsByCampaignQuery,
   usePutCampaignsByCampaignMutation,
   useGetCampaignsByCampaignBugsQuery,
@@ -3463,6 +3509,7 @@ export const {
   useGetCampaignsByCampaignObservationsQuery,
   useGetCampaignsByCampaignPayoutsQuery,
   usePutCampaignsByCampaignPayoutsMutation,
+  usePostCampaignsByCampaignPreviewMutation,
   useGetCampaignsByCampaignProspectQuery,
   usePatchCampaignsByCampaignProspectMutation,
   usePutCampaignsByCampaignProspectMutation,
