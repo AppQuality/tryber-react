@@ -637,6 +637,9 @@
   "__MANUAL_TAB_TITLE_INFO": "Info",
   "__MANUAL_TAB_TITLE_USECASE": "Manuale",
   "__PAYMENT-METHOD-BANK": "Bonifico bancario",
+  "__PREVIEW_HOW_TO_APPLY": "APPLICATION",
+  "__PREVIEW_HOW_TO_APPLY_PRESELECTION_STEP": "Fill in the pre-selection form;",
+  "__PREVIEW_METHODOLOGY_TITLE": "METHODOLOGY ",
   "__PREVIEW_PAGE__ACCEPTED_DEVICES_ANY": "Qualsiasi dispositivo",
   "__PREVIEW_PAGE__ACCEPTED_DEVICES_TITLE": "Dispositivi accettati",
   "__PREVIEW_PAGE__ANY_QUESTIONS": "Qualsiasi domanda?",
@@ -707,6 +710,7 @@
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "Prima volta su TRYBER? <signuplink><strong>Registrati</strong></signuplink>"
   },
+  "bug_verification_description": "",
   "bugform usecase select option": {
     "Not a specific usecase": "Nessuno di questi casi d'uso"
   },
@@ -740,6 +744,7 @@
   "give your best to keep level {{level}}": {
     "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Stai retrocedendo: dai il tuo meglio per continuare a essere {{level}}"
   },
+  "how_to_apply_description": "",
   "https://www.iubenda.com/privacy-policy/7934311": "https://www.iubenda.com/privacy-policy/7934311",
   "last month ({{lastMonth}})": {
     "__RANKING_LAST_MONTH_MAX:25": "Ultimo mese ({{lastMonth}})"

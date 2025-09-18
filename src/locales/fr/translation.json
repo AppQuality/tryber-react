@@ -637,6 +637,9 @@
   "__MANUAL_TAB_TITLE_INFO": "Info",
   "__MANUAL_TAB_TITLE_USECASE": "Manuel",
   "__PAYMENT-METHOD-BANK": "Virement bancaire",
+  "__PREVIEW_HOW_TO_APPLY": "APPLICATION",
+  "__PREVIEW_HOW_TO_APPLY_PRESELECTION_STEP": "Fill in the pre-selection form;",
+  "__PREVIEW_METHODOLOGY_TITLE": "METHODOLOGY ",
   "__PREVIEW_PAGE__ACCEPTED_DEVICES_ANY": "Tout appareil",
   "__PREVIEW_PAGE__ACCEPTED_DEVICES_TITLE": "Appareils acceptés",
   "__PREVIEW_PAGE__ANY_QUESTIONS": "Des questions?",
@@ -707,6 +710,7 @@
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "Nouveau sur TRYBER ? <signuplink><strong>Inscrivez-vous</strong></signuplink>"
   },
+  "bug_verification_description": "",
   "bugform usecase select option": {
     "Not a specific usecase": "Aucun de ces cas d'usage"
   },
@@ -740,6 +744,7 @@
   "give your best to keep level {{level}}": {
     "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Vous êtes en train de perdre un niveau : donnez le meilleur de vous-même et luttez pour {{level}}"
   },
+  "how_to_apply_description": "",
   "https://www.iubenda.com/privacy-policy/7934311": "https://www.iubenda.com/privacy-policy/7934311",
   "last month ({{lastMonth}})": {
     "__RANKING_LAST_MONTH_MAX:25": "Le mois dernier ({{lastMonth}})"

@@ -637,6 +637,9 @@
   "__MANUAL_TAB_TITLE_INFO": "Info",
   "__MANUAL_TAB_TITLE_USECASE": "Manual",
   "__PAYMENT-METHOD-BANK": "Transferencia bancaria",
+  "__PREVIEW_HOW_TO_APPLY": "APPLICATION",
+  "__PREVIEW_HOW_TO_APPLY_PRESELECTION_STEP": "Fill in the pre-selection form;",
+  "__PREVIEW_METHODOLOGY_TITLE": "METHODOLOGY ",
   "__PREVIEW_PAGE__ACCEPTED_DEVICES_ANY": "Cualquier dispositivo",
   "__PREVIEW_PAGE__ACCEPTED_DEVICES_TITLE": "Dispositivos aceptados",
   "__PREVIEW_PAGE__ANY_QUESTIONS": "¿Alguna pregunta?",
@@ -707,6 +710,7 @@
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "¿Primera vez aquí? <signuplink><strong>Regístrate</strong></signuplink>"
   },
+  "bug_verification_description": "",
   "bugform usecase select option": {
     "Not a specific usecase": "Ninguno de esos casos de uso"
   },
@@ -740,6 +744,7 @@
   "give your best to keep level {{level}}": {
     "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Estás bajando de nivel: haz lo posible para seguir siendo {{level}}"
   },
+  "how_to_apply_description": "",
   "https://www.iubenda.com/privacy-policy/7934311": "\nhttps://www.iubenda.com/privacy-policy/7934311",
   "last month ({{lastMonth}})": {
     "__RANKING_LAST_MONTH_MAX:25": "Último mes ({{lastMonth}})"

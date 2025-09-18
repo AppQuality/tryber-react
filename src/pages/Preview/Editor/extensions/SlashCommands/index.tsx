@@ -22,6 +22,14 @@ export const SlashCommands = Extension.create({
               title: "Payout",
               onSelect: () => editor.commands.insertPayout(),
             },
+            {
+              title: "Campaign Type Description",
+              onSelect: () => editor.commands.insertBugTypeDescription(),
+            },
+            {
+              title: "How to Apply",
+              onSelect: () => editor.commands.insertHowToApply(),
+            },
           ];
           return all.filter((i) =>
             i.title.toLowerCase().includes(query.toLowerCase())

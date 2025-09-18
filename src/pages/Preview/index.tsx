@@ -11,6 +11,8 @@ import { styled } from "styled-components";
 import AcceptedDevices from "./AcceptedDevices";
 import pattern from "./assets/tryber_pattern.svg";
 import { SlashCommands } from "./Editor/extensions/SlashCommands";
+import { BugTypeDescription } from "./Editor/extensions/SlashCommands/nodes/BugTypeDescription";
+import { HowToApply } from "./Editor/extensions/SlashCommands/nodes/HowToApply";
 import { Payout } from "./Editor/extensions/SlashCommands/nodes/Payout";
 import RecapBox from "./RecapBox";
 import SelectBox from "./SelectionBox";
@@ -58,7 +60,12 @@ const Preview = () => {
                   },
                 }}
                 editable={false}
-                extensions={[Payout, SlashCommands]}
+                extensions={[
+                  BugTypeDescription,
+                  Payout,
+                  HowToApply,
+                  SlashCommands,
+                ]}
               >
                 {data.content}
               </Editor>

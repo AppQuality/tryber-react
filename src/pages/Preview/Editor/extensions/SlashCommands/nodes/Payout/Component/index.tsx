@@ -62,100 +62,102 @@ export default function MyComponent({ node }: { node: PMNode }) {
 
   return (
     <NodeViewWrapper className="payout-node">
-      <Title size="sm" className="aq-mb-2">
-        {t("PAYOUT")}
-      </Title>
-      <Text>
-        {t("For this Campaign you will be rewarded as follows:")}
-        <ul>
-          <li>
-            <CompleteBonus {...data} />
-          </li>
-          {data.payout_limit > 0 && (
+      <div className="aq-mb-3">
+        <Title size="sm" className="aq-mb-2">
+          {t("PAYOUT")}
+        </Title>
+        <Text>
+          {t("For this Campaign you will be rewarded as follows:")}
+          <ul>
             <li>
-              <Trans
-                i18nKey="available tags: <b></b>:::PAYOUT_BOX_MAX_PAYOUT"
-                components={{
-                  b: <strong />,
-                }}
-                values={{
-                  pay: data.payout_limit,
-                }}
-                defaults={`<b>+ max {{pay}}€</b> based on reported bugs and their severity`}
-              />
-              {node.attrs.expanded === 1 && (
-                <ul style={{ listStyleType: "circle", paddingLeft: "20px" }}>
-                  {data.critical_bug_payout && (
-                    <li>
-                      {t(
-                        "PAYOUT_BOX_MAX_PAYOUT_CRITICAL_BUG",
-                        "{{value}}€ for each approved Critical",
-                        { value: data.critical_bug_payout }
-                      )}
-                    </li>
-                  )}
-                  {data.high_bug_payout && (
-                    <li>
-                      {t(
-                        "PAYOUT_BOX_MAX_PAYOUT_HIGH_BUG",
-                        "{{value}}€ for each approved High",
-                        { value: data.high_bug_payout }
-                      )}
-                    </li>
-                  )}
-                  {data.medium_bug_payout && (
-                    <li>
-                      {t(
-                        "PAYOUT_BOX_MAX_PAYOUT_MEDIUM_BUG",
-                        "{{value}}€ for each approved Medium",
-                        { value: data.medium_bug_payout }
-                      )}
-                    </li>
-                  )}
-                  {data.low_bug_payout > 0 && (
-                    <li>
-                      {t(
-                        "PAYOUT_BOX_MAX_PAYOUT_LOW_BUG",
-                        "{{value}}€ for each approved Low",
-                        { value: data.low_bug_payout }
-                      )}
-                    </li>
-                  )}
-                </ul>
-              )}
+              <CompleteBonus {...data} />
             </li>
-          )}
-          {data.top_tester_bonus > 0 && (
-            <li>
-              <Trans
-                i18nKey="available tags: <b></b>:::PAYOUT_BOX_TOP_TESTER_BONUS"
-                components={{
-                  b: <strong />,
-                }}
-                values={{
-                  pay: data.top_tester_bonus,
-                }}
-                defaults={`<b>+ {{pay}}€</b> for the TRYBER with the best performance`}
-              />
-            </li>
-          )}
-        </ul>
-        <Trans
-          i18nKey="available tags: <a></a>:::PAYOUT_BOX_PAYMENT_GUIDE"
-          components={{
-            a: (
-              <a
-                href="/wallet-how-does-it-work/"
-                target="_blank"
-                rel="noopener"
-              />
-            ),
-          }}
-          defaults="
+            {data.payout_limit > 0 && (
+              <li>
+                <Trans
+                  i18nKey="available tags: <b></b>:::PAYOUT_BOX_MAX_PAYOUT"
+                  components={{
+                    b: <strong />,
+                  }}
+                  values={{
+                    pay: data.payout_limit,
+                  }}
+                  defaults={`<b>+ max {{pay}}€</b> based on reported bugs and their severity`}
+                />
+                {node.attrs.expanded === 1 && (
+                  <ul style={{ listStyleType: "circle", paddingLeft: "20px" }}>
+                    {data.critical_bug_payout && (
+                      <li>
+                        {t(
+                          "PAYOUT_BOX_MAX_PAYOUT_CRITICAL_BUG",
+                          "{{value}}€ for each approved Critical",
+                          { value: data.critical_bug_payout }
+                        )}
+                      </li>
+                    )}
+                    {data.high_bug_payout && (
+                      <li>
+                        {t(
+                          "PAYOUT_BOX_MAX_PAYOUT_HIGH_BUG",
+                          "{{value}}€ for each approved High",
+                          { value: data.high_bug_payout }
+                        )}
+                      </li>
+                    )}
+                    {data.medium_bug_payout && (
+                      <li>
+                        {t(
+                          "PAYOUT_BOX_MAX_PAYOUT_MEDIUM_BUG",
+                          "{{value}}€ for each approved Medium",
+                          { value: data.medium_bug_payout }
+                        )}
+                      </li>
+                    )}
+                    {data.low_bug_payout > 0 && (
+                      <li>
+                        {t(
+                          "PAYOUT_BOX_MAX_PAYOUT_LOW_BUG",
+                          "{{value}}€ for each approved Low",
+                          { value: data.low_bug_payout }
+                        )}
+                      </li>
+                    )}
+                  </ul>
+                )}
+              </li>
+            )}
+            {data.top_tester_bonus > 0 && (
+              <li>
+                <Trans
+                  i18nKey="available tags: <b></b>:::PAYOUT_BOX_TOP_TESTER_BONUS"
+                  components={{
+                    b: <strong />,
+                  }}
+                  values={{
+                    pay: data.top_tester_bonus,
+                  }}
+                  defaults={`<b>+ {{pay}}€</b> for the TRYBER with the best performance`}
+                />
+              </li>
+            )}
+          </ul>
+          <Trans
+            i18nKey="available tags: <a></a>:::PAYOUT_BOX_PAYMENT_GUIDE"
+            components={{
+              a: (
+                <a
+                  href="/wallet-how-does-it-work/"
+                  target="_blank"
+                  rel="noopener"
+                />
+              ),
+            }}
+            defaults="
         If you are in doubt about how payments work, please consult our
         <a>Payment Guide</a>."
-        />
-      </Text>
+          />
+        </Text>
+      </div>
     </NodeViewWrapper>
   );
 }
