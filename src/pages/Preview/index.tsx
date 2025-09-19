@@ -42,7 +42,7 @@ const Preview = () => {
       <PageTemplate
         title={data.title}
         heading={`CP${id} - ${data.type.name}`}
-        route={`campaigns/${id}/preview`}
+        route={`campaigns/${id}/preview/`}
         shouldBeLoggedIn
       >
         <Card shadow className="aq-my-4">

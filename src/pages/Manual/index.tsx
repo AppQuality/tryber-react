@@ -32,7 +32,7 @@ const Manual = () => {
     <PageTemplate
       title={campaign?.title}
       heading={`CP${campaign?.id} - ${campaign?.campaign_type?.name}`}
-      route={`campaigns/${id}/manual`}
+      route={`campaigns/${id}/manual/`}
       shouldBeLoggedIn
     >
       <PermissionHandler id={id!} />

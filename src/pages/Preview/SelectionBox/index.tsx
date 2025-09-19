@@ -28,7 +28,7 @@ const SelectBox = () => {
   }
   if (data.status === "selected")
     return (
-      <AlreadySelected manualRoute={localizedUrl(`/campaigns/${id}/manual`)} />
+      <AlreadySelected manualRoute={localizedUrl(`/campaigns/${id}/manual/`)} />
     );
 
   if (data.status === "applied" || data.status === "excluded")

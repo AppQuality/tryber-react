@@ -9,7 +9,7 @@ const NoAccess = () => {
   return (
     <PageTemplate
       title={t("You do not have access to this campaign")}
-      route={`campaigns/${id}/manual`}
+      route={`campaigns/${id}/manual/`}
       shouldBeLoggedIn
     >
       <Text>
