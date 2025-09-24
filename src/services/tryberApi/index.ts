@@ -1805,20 +1805,24 @@ export type GetCampaignsByCampaignTasksApiArg = {
 };
 export type PostCampaignsByCampaignTasksApiResponse =
   /** status 201 Created */ {
+    content: string;
     id: number;
     title: string;
-    content: string;
   };
 export type PostCampaignsByCampaignTasksApiArg = {
   /** A campaign id */
   campaign: string;
   /** The data of the new UseCase to link to the Campaign */
   body: {
-    title: string;
     content: string;
     is_required: number;
     position?: number;
     prefix?: string;
+    title: string;
+    upload?: {
+      language: string;
+      policy: "optimize" | "allow";
+    };
   };
 };
 export type GetCampaignsByCampaignTasksAndTaskApiResponse =
@@ -2005,6 +2009,8 @@ export type PostDossiersApiArg = {
     };
   } & {
     autoApply?: number;
+    bugLanguage?: BugLang;
+    hasBugParade?: number;
     pageVersion?: "v1" | "v2";
     skipPagesAndTasks?: number;
   };
@@ -2101,6 +2107,8 @@ export type PutDossiersByCampaignApiArg = {
   campaign: string;
   body: DossierCreationData & {
     autoApply?: number;
+    bugLanguage?: BugLang | boolean;
+    hasBugParade?: number;
   };
 };
 export type GetDossiersByCampaignAvailableTestersApiResponse =
@@ -2578,6 +2586,7 @@ export type GetUsersMeCampaignsByCampaignIdApiResponse = /** status 200 OK */ {
   end_date: string;
   goal: string;
   hasBugForm: boolean;
+  hasBugParade: number;
   id: number;
   language?: {
     code: string;
@@ -2771,6 +2780,7 @@ export type GetUsersMeCampaignsByCampaignIdPreviewApiArg = {
 };
 export type GetUsersMeCampaignsByCampaignIdTasksApiResponse =
   /** status 200 OK */ {
+    can_upload_media: boolean;
     content: string;
     id: number;
     is_required: number;
@@ -3384,6 +3394,7 @@ export type DossierCreationData = {
     provinces?: string[];
   };
 };
+export type BugLang = "IT" | "GB" | "ES" | "FR" | "DE";
 export type LevelDefinition = {
   hold?: number;
   id: number;
