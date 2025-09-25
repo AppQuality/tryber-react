@@ -9,6 +9,7 @@ import {
   usePostUsersMeCampaignsByCampaignIdTasksAndTaskIdMutation,
 } from "src/services/tryberApi";
 import { styled } from "styled-components";
+import { MediaDropzone } from "./MediaDropzone";
 
 const Todo = styled.span`
   font-size: 0.6rem;
@@ -47,6 +48,14 @@ const UseCases = ({ id }: { id: string }) => {
             >
               <div className="aq-mb-3">
                 <Editor editable={false}>{task.content}</Editor>
+                {task.can_upload_media && (
+                  <div className="aq-mt-2 ">
+                    <MediaDropzone
+                      taskId={task.id.toString()}
+                      campaignId={id}
+                    />
+                  </div>
+                )}
               </div>
               <Button
                 kind="success"

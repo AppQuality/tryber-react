@@ -49,6 +49,12 @@ tryberApi.enhanceEndpoints({
     getUsersMeCampaignsByCampaignIdTasks: {
       providesTags: ["UserTasks"],
     },
+    postUsersMeCampaignsByCampaignIdTasksAndTaskIdMedia: {
+      invalidatesTags: ["UserTaskMedia"],
+    },
+    getUsersMeCampaignsByCampaignIdTasksAndTaskIdMedia: {
+      providesTags: ["UserTaskMedia"],
+    },
   },
 });
 

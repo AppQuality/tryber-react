@@ -865,6 +865,24 @@ const injectedRtkApi = api.injectEndpoints({
         body: queryArg.body,
       }),
     }),
+    postUsersMeCampaignsByCampaignIdTasksAndTaskIdMedia: build.mutation<
+      PostUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaApiResponse,
+      PostUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}/tasks/${queryArg.taskId}/media`,
+        method: "POST",
+        body: queryArg.body,
+      }),
+    }),
+    getUsersMeCampaignsByCampaignIdTasksAndTaskIdMedia: build.query<
+      GetUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaApiResponse,
+      GetUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/users/me/campaigns/${queryArg.campaignId}/tasks/${queryArg.taskId}/media`,
+      }),
+    }),
     getUsersMeCampaignsByCampaignCompatibleDevices: build.query<
       GetUsersMeCampaignsByCampaignCompatibleDevicesApiResponse,
       GetUsersMeCampaignsByCampaignCompatibleDevicesApiArg
@@ -2800,6 +2818,36 @@ export type PostUsersMeCampaignsByCampaignIdTasksAndTaskIdApiArg = {
     status: "completed";
   };
 };
+export type PostUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaApiResponse =
+  /** status 200 OK */ {
+    failed?: {
+      errorCode: "FILE_TOO_BIG" | "INVALID_FILE_EXTENSION" | "GENERIC_ERROR";
+      name: string;
+    }[];
+    files?: {
+      name: string;
+      path: string;
+    }[];
+  };
+export type PostUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaApiArg = {
+  campaignId: string;
+  taskId: string;
+  body: {
+    media?: {} | string[];
+  };
+};
+export type GetUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaApiResponse =
+  /** status 200 OK */ {
+    items: {
+      id: number;
+      location: string;
+      name: string;
+    }[];
+  };
+export type GetUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaApiArg = {
+  campaignId: string;
+  taskId: string;
+};
 export type GetUsersMeCampaignsByCampaignCompatibleDevicesApiResponse =
   /** status 200 OK */ UserDevice[];
 export type GetUsersMeCampaignsByCampaignCompatibleDevicesApiArg = {
@@ -3591,6 +3639,8 @@ export const {
   useGetUsersMeCampaignsByCampaignIdPreviewQuery,
   useGetUsersMeCampaignsByCampaignIdTasksQuery,
   usePostUsersMeCampaignsByCampaignIdTasksAndTaskIdMutation,
+  usePostUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaMutation,
+  useGetUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaQuery,
   useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery,
   usePostUsersMeCertificationsMutation,
   useDeleteUsersMeCertificationsByCertificationIdMutation,

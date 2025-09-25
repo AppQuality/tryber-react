@@ -51,6 +51,7 @@ export const api = createApi({
     "UserCertifications",
     "UserTasks",
     "User",
+    "UserTaskMedia",
   ],
   endpoints: () => ({}), // auto generated npm run generate-api
 });
