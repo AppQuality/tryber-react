@@ -883,6 +883,16 @@ const injectedRtkApi = api.injectEndpoints({
         url: `/users/me/campaigns/${queryArg.campaignId}/tasks/${queryArg.taskId}/media`,
       }),
     }),
+    deleteUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaMediaId:
+      build.mutation<
+        DeleteUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaMediaIdApiResponse,
+        DeleteUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaMediaIdApiArg
+      >({
+        query: (queryArg) => ({
+          url: `/users/me/campaigns/${queryArg.campaignId}/tasks/${queryArg.taskId}/media/${queryArg.mediaId}`,
+          method: "DELETE",
+        }),
+      }),
     getUsersMeCampaignsByCampaignCompatibleDevices: build.query<
       GetUsersMeCampaignsByCampaignCompatibleDevicesApiResponse,
       GetUsersMeCampaignsByCampaignCompatibleDevicesApiArg
@@ -2848,6 +2858,14 @@ export type GetUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaApiArg = {
   campaignId: string;
   taskId: string;
 };
+export type DeleteUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaMediaIdApiResponse =
+  /** status 200 OK */ {};
+export type DeleteUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaMediaIdApiArg =
+  {
+    campaignId: string;
+    taskId: string;
+    mediaId: string;
+  };
 export type GetUsersMeCampaignsByCampaignCompatibleDevicesApiResponse =
   /** status 200 OK */ UserDevice[];
 export type GetUsersMeCampaignsByCampaignCompatibleDevicesApiArg = {
@@ -3641,6 +3659,7 @@ export const {
   usePostUsersMeCampaignsByCampaignIdTasksAndTaskIdMutation,
   usePostUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaMutation,
   useGetUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaQuery,
+  useDeleteUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaMediaIdMutation,
   useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery,
   usePostUsersMeCertificationsMutation,
   useDeleteUsersMeCertificationsByCertificationIdMutation,

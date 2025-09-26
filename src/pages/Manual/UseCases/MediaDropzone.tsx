@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { FileCard } from "src/pages/BugForm/FileUploader/FileCard/FileCard";
 import { addMessage } from "src/redux/siteWideMessages/actionCreators";
 import {
-  useDeleteMediaMutation,
+  useDeleteUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaMediaIdMutation,
   useGetUsersMeCampaignsByCampaignIdQuery,
   useGetUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaQuery,
   usePostUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaMutation,
@@ -32,7 +32,8 @@ export const MediaDropzone = ({
     campaignId: campaignId,
   });
   const { mediaList } = useAppSelector((state) => state.mediaList);
-  const [deleteMedia] = useDeleteMediaMutation();
+  const [deleteMedia] =
+    useDeleteUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaMediaIdMutation();
 
   const onDelete = async (fileElement: {
     id: string;
@@ -40,7 +41,11 @@ export const MediaDropzone = ({
   }) => {
     if (fileElement.status === "success") {
       try {
-        await deleteMedia({ body: { url: fileElement.id } }).unwrap();
+        await deleteMedia({
+          campaignId,
+          taskId,
+          mediaId: fileElement.id,
+        }).unwrap();
       } catch (e) {
         dispatch(
           addMessage(
