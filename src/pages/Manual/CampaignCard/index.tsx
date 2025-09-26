@@ -27,10 +27,9 @@ const Wrapper = styled.div`
   }
 `;
 const CampaignCard = ({ id }: { id: string }) => {
-  const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery(
-    { campaignId: id },
-    { skip: !id }
-  );
+  const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery({
+    campaignId: id,
+  });
   const { t } = useTranslation();
   const theme = useTheme();
   const formatDate = useFormatDate();

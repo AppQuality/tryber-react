@@ -1,24 +1,16 @@
-import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { PageTemplate } from "src/features/PageTemplate";
-import {
-  useGetUsersMeCampaignsByCampaignIdPreviewQuery,
-  useGetUsersMeCampaignsByCampaignIdQuery,
-} from "src/services/tryberApi";
+import { useGetUsersMeCampaignsByCampaignIdPreviewQuery } from "src/services/tryberApi";
 import { NoAccess } from "./NoAccess";
 import PermissionHandler from "./PermissionHandler";
 
 const Manual = () => {
   const { id } = useParams<{ id: string }>();
-  const { t } = useTranslation();
-  const { data: campaign, isLoading: isLoadingCampaign } =
-    useGetUsersMeCampaignsByCampaignIdQuery({ campaignId: id }, { skip: !id });
-  const { data, isLoading } = useGetUsersMeCampaignsByCampaignIdPreviewQuery(
-    { campaignId: id },
-    { skip: !id }
-  );
+  const { data, isLoading } = useGetUsersMeCampaignsByCampaignIdPreviewQuery({
+    campaignId: id,
+  });
 
-  if (isLoading || isLoadingCampaign) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
@@ -30,8 +22,8 @@ const Manual = () => {
 
   return (
     <PageTemplate
-      title={campaign?.title}
-      heading={`CP${campaign?.id} - ${campaign?.campaign_type?.name}`}
+      title={data.title}
+      heading={`CP${id} - ${data.type.name}`}
       route={`campaigns/${id}/manual/`}
       shouldBeLoggedIn
     >

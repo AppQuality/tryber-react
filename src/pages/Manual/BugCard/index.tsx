@@ -88,10 +88,9 @@ const useGetBugsCountByStatus = ({ id }: { id: string }) => {
 const BugCard = ({ id }: { id: string }) => {
   const { t } = useTranslation();
   const theme = useTheme();
-  const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery(
-    { campaignId: id },
-    { skip: !id }
-  );
+  const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery({
+    campaignId: id,
+  });
   const { approved, refused, needReview, pending } = useGetBugsCountByStatus({
     id,
   });

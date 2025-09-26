@@ -20,10 +20,9 @@ import { UseCases } from "./UseCases";
 
 const ManualContent = ({ id }: { id: string }) => {
   const { t } = useTranslation();
-  const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery(
-    { campaignId: id },
-    { skip: !id }
-  );
+  const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery({
+    campaignId: id,
+  });
   const { data } = useGetUsersMeCampaignsByCampaignIdPreviewQuery(
     { campaignId: id },
     { skip: !id }

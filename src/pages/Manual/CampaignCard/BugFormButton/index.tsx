@@ -18,10 +18,9 @@ const BugFormLink = ({
   campaignId: string;
 }) => {
   const { id } = useParams<{ id: string }>();
-  const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery(
-    { campaignId: campaignId },
-    { skip: !campaignId }
-  );
+  const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery({
+    campaignId: campaignId,
+  });
   const localizedBugFormUrl = useLocalizeRoute(
     `campaign/${Number(id)}/bugform/`
   );
