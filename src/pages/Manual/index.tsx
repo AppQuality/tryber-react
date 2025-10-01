@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { PageTemplate } from "src/features/PageTemplate";
 import { useGetUsersMeCampaignsByCampaignIdPreviewQuery } from "src/services/tryberApi";
+import { CampaignNotStarted } from "./CampaignNotStarted";
 import { NoAccess } from "./NoAccess";
 import PermissionHandler from "./PermissionHandler";
 
@@ -18,6 +19,10 @@ const Manual = () => {
 
   if (!selectionStatus || selectionStatus === "excluded") {
     return <NoAccess />;
+  }
+
+  if (new Date(data.startDate) <= new Date()) {
+    return <CampaignNotStarted startAt={data.startDate} />;
   }
 
   return (

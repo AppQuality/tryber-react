@@ -180,6 +180,7 @@
   },
   "Campaign": "Campaña",
   "Campaign Completion": "Finalización de Campaña",
+  "Campaign not started yet": "",
   "Cancel": "Cancelar",
   "Certification": "Certificación",
   "Certification is a required field.": "La certificación es un campo obligatorio",
@@ -520,6 +521,7 @@
     "__RANKING_RECAP_DESCRIPTION_": "Gana los exp points necesarios para no retroceder, mantener y/o subir de nivel. El nivel que alcances antes de {{lastDayMonth}} {{currentMonth}} se actualizará el mes siguiente."
   },
   "The manual is coming soon!": "¡El manual viene pronto!",
+  "The manual is not ready yet, the activity will start on {{startAt}}, you can refresh this page to view the final manual and the activities to be carried out.": "",
   "The password must be at least 6 characters long, contain an uppercase letter, a lowercase letter and a number.": "La password debe contener al menos 6 caracteres, una letra mayúscula, una letra minúscula y un número.",
   "There are currently no completed campaigns. You can relax, finish the active ones or apply in the new available campaigns!": "No hay campañas completadas actualmente. Relájate, termina las campañas activas o ¡Aplica a las nuevas!",
   "There are no new campaigns available at this time, please keep your profile and devices updated and look forward to new activities.": "Por el momento no hay nuevas campañas disponibles, por favor mantenga su perfil y dispositivos actualizados y espere nuevas actividades.",
@@ -775,6 +777,7 @@
   "try again to login": "Intenta iniciar sesión de nuevo.",
   "wait...": "espere...",
   "you must accept terms and conditions": "Debes aceptar los términos y condiciones",
+  "{{date}} at {{time}}": "",
   "{{days}} days left to give your best!": {
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "¡Todavía tienes {{days}} día para dar lo mejor de ti!",
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "¡Todavía tienes {{days}} días para dar lo mejor de ti!"
