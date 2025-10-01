@@ -744,7 +744,7 @@
   "give your best to keep level {{level}}": {
     "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "You're leveling down: try your best and fight for {{level}}"
   },
-  "how_to_apply_description": "",
+  "how_to_apply_description": "To participate in this campaign<br /><ol><preselectionFormItem/><li>Choose the device you wish to participate with;</li><li>Click on Apply to this Campaign to submit your application.</li></ol><br />If you are selected, you will receive all the information and instructions necessary to start the campaign.",
   "https://www.iubenda.com/privacy-policy/7934311": "https://www.iubenda.com/privacy-policy/7934311",
   "last month ({{lastMonth}})": {
     "__RANKING_LAST_MONTH_MAX:25": "Last month ({{lastMonth}})"
