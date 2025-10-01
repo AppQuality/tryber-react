@@ -69,9 +69,11 @@ export default function MyComponent({ node }: { node: PMNode }) {
         <Text>
           {t("For this Campaign you will be rewarded as follows:")}
           <ul>
-            <li>
-              <CompleteBonus {...data} />
-            </li>
+            {data.campaign_complete_bonus_eur > 0 && (
+              <li>
+                <CompleteBonus {...data} />
+              </li>
+            )}
             {data.payout_limit > 0 && (
               <li>
                 <Trans
