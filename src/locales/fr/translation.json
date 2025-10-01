@@ -628,7 +628,7 @@
   "__MANUAL_BUG_CARD_REFUSED": "REFUSED",
   "__MANUAL_BUG_CARD_TITLE": "Bugs found",
   "__MANUAL_PAGE_MAXIMUM_PAYOUT": "Le paiement maximum déblocable est de {{value}}€",
-  "__MANUAL_PAGE_PAYOUT_INFO": "",
+  "__MANUAL_PAGE_PAYOUT_INFO": "Si vous avez des doutes, consultez notre <faq_link>FAQ</faq_link>, où vous trouverez les réponses aux questions les plus fréquentes.",
   "__MANUAL_PAGE__CAMPAIGN_TYPE": "Campaign Type",
   "__MANUAL_PAGE__DEVICE_CARD_TITLE": "You were selected with this device",
   "__MANUAL_PAGE__END_DATE": "Deadline",
@@ -744,7 +744,7 @@
   "give your best to keep level {{level}}": {
     "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Vous êtes en train de perdre un niveau : donnez le meilleur de vous-même et luttez pour {{level}}"
   },
-  "how_to_apply_description": "",
+  "how_to_apply_description": "Pour participer à cette campagne<br /><ol><preselectionFormItem/><li>Choisissez l’appareil avec lequel vous souhaitez participer ;</li><li>Cliquez sur Postuler à cette campagne pour envoyer votre candidature.</li></ol><br />Si vous êtes sélectionné, vous recevrez toutes les informations et instructions nécessaires pour commencer la campagne.",
   "https://www.iubenda.com/privacy-policy/7934311": "https://www.iubenda.com/privacy-policy/7934311",
   "last month ({{lastMonth}})": {
     "__RANKING_LAST_MONTH_MAX:25": "Le mois dernier ({{lastMonth}})"

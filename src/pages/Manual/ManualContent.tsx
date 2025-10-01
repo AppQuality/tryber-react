@@ -45,7 +45,6 @@ const ManualContent = ({ id }: { id: string }) => {
               title={t("__MANUAL_TAB_TITLE_INFO", "Info")}
             >
               <div className="aq-py-4">
-                <Text className="aq-mb-2">{campaign.goal}</Text>
                 <PayoutRecap id={id} />
               </div>
             </Tab>

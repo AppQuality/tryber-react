@@ -379,7 +379,7 @@
   },
   "PAYMENTS_MODAL_STEP_4_ERROR": "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
   "PAYOUT": "Payout",
-  "PAYOUT_BOX_COMPLETE_BONUS_ALL_USECASES": "tutti",
+  "PAYOUT_BOX_COMPLETE_BONUS_ALL_USECASES": "100%",
   "PAYOUT_BOX_COMPLETE_BONUS_AT_LEAST": "almeno {{percent}}%",
   "PAYOUT_BOX_COMPLETE_BONUS_WITH": " con",
   "PAYOUT_BOX_MAX_PAYOUT_CRITICAL_BUG": "{{value}}€ per ogni Critical approvato",
@@ -744,7 +744,7 @@
   "give your best to keep level {{level}}": {
     "__RANKING_PROGRESS_MESSAGE_UNDER_MAX:70": "Stai retrocedendo: dai il tuo meglio per continuare a essere {{level}}"
   },
-  "how_to_apply_description": "",
+  "how_to_apply_description": "Per partecipare a questa campagna<br /><ol><preselectionFormItem/><li>Scegli il dispositivo con cui desideri partecipare;</li><li>Clicca su Candidati a questa campagna per inviare la tua candidatura.</li></ol><br />Se sarai selezionato, riceverai tutte le informazioni e istruzioni necessarie per iniziare la campagna.",
   "https://www.iubenda.com/privacy-policy/7934311": "https://www.iubenda.com/privacy-policy/7934311",
   "last month ({{lastMonth}})": {
     "__RANKING_LAST_MONTH_MAX:25": "Ultimo mese ({{lastMonth}})"
