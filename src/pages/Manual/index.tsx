@@ -21,7 +21,7 @@ const Manual = () => {
     return <NoAccess />;
   }
 
-  if (new Date(data.startDate) <= new Date()) {
+  if (selectionStatus === "not-started") {
     return <CampaignNotStarted startAt={data.startDate} />;
   }
 
