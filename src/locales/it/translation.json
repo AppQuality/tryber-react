@@ -379,7 +379,7 @@
   },
   "PAYMENTS_MODAL_STEP_4_ERROR": "We were not able to receive your data. Maybe it was a connection problem. Please try again now.",
   "PAYOUT": "Payout",
-  "PAYOUT_BOX_COMPLETE_BONUS_ALL_USECASES": "tutti",
+  "PAYOUT_BOX_COMPLETE_BONUS_ALL_USECASES": "100%",
   "PAYOUT_BOX_COMPLETE_BONUS_AT_LEAST": "almeno {{percent}}%",
   "PAYOUT_BOX_COMPLETE_BONUS_WITH": " con",
   "PAYOUT_BOX_MAX_PAYOUT_CRITICAL_BUG": "{{value}}€ per ogni Critical approvato",
