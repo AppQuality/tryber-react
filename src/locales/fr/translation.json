@@ -628,7 +628,7 @@
   "__MANUAL_BUG_CARD_REFUSED": "REFUSED",
   "__MANUAL_BUG_CARD_TITLE": "Bugs found",
   "__MANUAL_PAGE_MAXIMUM_PAYOUT": "Le paiement maximum déblocable est de {{value}}€",
-  "__MANUAL_PAGE_PAYOUT_INFO": "",
+  "__MANUAL_PAGE_PAYOUT_INFO": "Si vous avez des doutes, consultez notre <faq_link>FAQ</faq_link>, où vous trouverez les réponses aux questions les plus fréquentes.",
   "__MANUAL_PAGE__CAMPAIGN_TYPE": "Campaign Type",
   "__MANUAL_PAGE__DEVICE_CARD_TITLE": "You were selected with this device",
   "__MANUAL_PAGE__END_DATE": "Deadline",

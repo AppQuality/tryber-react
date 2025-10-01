@@ -628,7 +628,7 @@
   "__MANUAL_BUG_CARD_REFUSED": "REFUSED",
   "__MANUAL_BUG_CARD_TITLE": "Bugs found",
   "__MANUAL_PAGE_MAXIMUM_PAYOUT": "The maximum unlockable payout is €{{value}}.",
-  "__MANUAL_PAGE_PAYOUT_INFO": "",
+  "__MANUAL_PAGE_PAYOUT_INFO": "If you have any questions, check our <faq_link>FAQ</faq_link>, where you will find answers to the most common questions.",
   "__MANUAL_PAGE__CAMPAIGN_TYPE": "Campaign Type",
   "__MANUAL_PAGE__DEVICE_CARD_TITLE": "You were selected with this device",
   "__MANUAL_PAGE__END_DATE": "Deadline",
