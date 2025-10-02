@@ -180,7 +180,7 @@
   },
   "Campaign": "Campagna",
   "Campaign Completion": "Completamento campagna",
-  "Campaign not started yet": "",
+  "Campaign not started yet": "Campagna non ancora iniziata",
   "Cancel": "Annulla",
   "Certification": "Certificazione",
   "Certification is a required field.": "La certificazione è un campo obbligatorio",
@@ -521,7 +521,7 @@
     "__RANKING_RECAP_DESCRIPTION_": "Guadagna gli exp points necessari per non retrocedere, mantenere il tuo livello e avanzare a quello successivo. Il livello che raggiungi entro {{lastDayMonth}} {{currentMonth}} sarà aggiornato il mese successivo."
   },
   "The manual is coming soon!": "Il manuale è in arrivo!",
-  "The manual is not ready yet, the activity will start on {{startAt}}, you can refresh this page to view the final manual and the activities to be carried out.": "",
+  "The manual is not ready yet, the activity will start on {{startAt}}, you can refresh this page to view the final manual and the activities to be carried out.": "Il manuale non è ancora pronto, l’attività inizierà il {{startAt}}, puoi aggiornare questa pagina per visualizzare il manuale finale e le attività da svolgere.",
   "The password must be at least 6 characters long, contain an uppercase letter, a lowercase letter and a number.": "La password deve essere lunga almeno 6 caratteri, contenere una lettera maiuscola, una lettera minuscola e un numero.",
   "There are currently no completed campaigns. You can relax, finish the active ones or apply in the new available campaigns!": "Al momento non ci sono Campagne terminate. Puoi rilassarti, terminare quelle attive oppure candidarti nelle nuove Campagne disponibili!",
   "There are no new campaigns available at this time, please keep your profile and devices updated and look forward to new activities.": "Non ci sono nuove Campagne disponibili al momento, mantieni il tuo profilo e i tuoi dispositivi aggiornati e resta in attesa di nuove attività.",
@@ -681,6 +681,7 @@
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Per ora non hai ancora richiesto un pagamento. Quando inizierai a richiederne, compariranno qui.",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Vedi dettagli",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Scarica ricevuta",
+  "at_time": "{{date}} alle {{time}}",
   "available tags: <a></a>": {
     "PAYOUT_BOX_PAYMENT_GUIDE": "Se hai dubbi su come funzionano i pagamenti, consulta la <a>guida ai pagamenti</a>."
   },
@@ -777,7 +778,6 @@
   "try again to login": "Riprova ad accedere.",
   "wait...": "attendi...",
   "you must accept terms and conditions": "Accetta le condizioni per continuare",
-  "{{date}} at {{time}}": "",
   "{{days}} days left to give your best!": {
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "Hai ancora {{days}} giorno per dare del tuo meglio!",
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "Hai ancora {{days}} giorni per dare del tuo meglio!"

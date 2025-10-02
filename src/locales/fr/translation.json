@@ -180,7 +180,7 @@
   },
   "Campaign": "Campagne",
   "Campaign Completion": "Achèvement de la campagne",
-  "Campaign not started yet": "",
+  "Campaign not started yet": "Campagne pas encore commencée",
   "Cancel": "Annuler",
   "Certification": "Certification",
   "Certification is a required field.": "La certification est un champ obligatoire.",
@@ -521,7 +521,7 @@
     "__RANKING_RECAP_DESCRIPTION_": "Gagnez les points d'expérience nécessaires pour ne pas perdre de niveau, pour maintenir votre niveau et pour monter de niveau. Le niveau que vous atteindrez d'ici le {{lastDayMonth}} de {{currentMonth}} sera mis à jour le mois suivant."
   },
   "The manual is coming soon!": "Le manuel arrive bientôt !",
-  "The manual is not ready yet, the activity will start on {{startAt}}, you can refresh this page to view the final manual and the activities to be carried out.": "",
+  "The manual is not ready yet, the activity will start on {{startAt}}, you can refresh this page to view the final manual and the activities to be carried out.": "Le manuel n’est pas encore prêt, l’activité commencera le {{startAt}}, vous pouvez actualiser cette page pour voir le manuel final et les activités à réaliser.",
   "The password must be at least 6 characters long, contain an uppercase letter, a lowercase letter and a number.": "Le mot de passe doit comporter au moins 6 caractères, contenir une lettre majuscule, une lettre minuscule et un chiffre.",
   "There are currently no completed campaigns. You can relax, finish the active ones or apply in the new available campaigns!": "Il n'y a actuellement aucune campagne terminée. Vous pouvez terminer celles en cours ou postuler aux nouvelles campagnes disponibles, ou simplement vous détendre !",
   "There are no new campaigns available at this time, please keep your profile and devices updated and look forward to new activities.": "Il n'y a pas de nouvelles campagnes disponibles pour le moment, veuillez maintenir votre profil et vos appareils à jour et attendez de nouvelles activités.",
@@ -681,6 +681,7 @@
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Votre historique de paiement est actuellement vide. Lorsque vous commencerez à demander vos paiements, vous les verrez ici.",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Voir les détails",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Télécharger le reçu",
+  "at_time": "{{date}} à {{time}}",
   "available tags: <a></a>": {
     "PAYOUT_BOX_PAYMENT_GUIDE": "Si vous avez des doutes sur le fonctionnement des paiements, consultez le <a>guide de paiement</a>."
   },
@@ -777,7 +778,6 @@
   "try again to login": "Essayez de vous reconnecter.",
   "wait...": "attendez...",
   "you must accept terms and conditions": "Vous devez accepter les termes et conditions",
-  "{{date}} at {{time}}": "",
   "{{days}} days left to give your best!": {
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50": "Il vous reste {{days}} jour pour donner le meilleur de vous-même !",
     "__RANKING_PROGRESS_COUNTDOWN_MAX: 50_plural": "Il vous reste {{days}} jours pour donner le meilleur de vous-même !"
@@ -786,6 +786,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} téléchargé",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} téléchargés"
   },
+  "{{date}} {{at_time}} {{time}}": "",
   "Page Preview": "Page Preview",
   "address": "adresse",
   "company": "société",

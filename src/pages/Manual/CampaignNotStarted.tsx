@@ -39,7 +39,7 @@ const useFormatDate = () => {
       hour: "2-digit",
       minute: "2-digit",
     }).format(dateObject);
-    return t("{{date}} at {{time}}", { date, time });
+    return t(`at_time`, { date, time });
   };
 };
 
