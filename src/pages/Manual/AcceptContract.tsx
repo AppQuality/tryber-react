@@ -1,4 +1,5 @@
 import { Button, Text, Title } from "@appquality/appquality-design-system";
+import { useTranslation } from "react-i18next";
 import WPAPI from "src/utils/wpapi";
 import { styled } from "styled-components";
 
@@ -13,10 +14,11 @@ const Wrapper = styled.div`
 `;
 
 const AcceptContract = ({ id }: { id: string }) => {
+  const { t } = useTranslation();
   return (
     <Wrapper>
-      <Title size="xl">Abbiamo bisogno di te!</Title>
-      <Title>Pronto? Inizia la Campagna</Title>
+      <Title size="xl">{t("__MANUAL_ACCEPT_CONTRACT_TITLE")}</Title>
+      <Title>{t("__MANUAL_ACCEPT_CONTRACT_SUBTITLE")}</Title>
       <Button
         flat
         kind="secondary"

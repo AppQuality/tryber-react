@@ -624,6 +624,8 @@
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-MENSILI_MAX: 25": "Points d'exp mensuels",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Points d'exp totaux",
   "__FISCAL_PROFILE_TAX_ID_DISCLAIMER": "Chaque fois que vous modifiez l'une de vos données personnelles, vous devez réintroduire le numéro d'identification fiscale.",
+  "__MANUAL_ACCEPT_CONTRACT_SUBTITLE": "Nous avons besoin de vous !",
+  "__MANUAL_ACCEPT_CONTRACT_TITLE": "Prêt ? Commençons !",
   "__MANUAL_BUG_CARD_APPROVED": "APPROVED",
   "__MANUAL_BUG_CARD_NEED_REVIEW": "NEED REVIEW",
   "__MANUAL_BUG_CARD_PENDING": "PENDING",

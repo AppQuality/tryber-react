@@ -624,6 +624,8 @@
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-MENSILI_MAX: 25": "Exp points mensili",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Exp points totali",
   "__FISCAL_PROFILE_TAX_ID_DISCLAIMER": "Quando cambierai qualsiasi tuo dato personale, dovrai inserire nuovamente il codice fiscale.",
+  "__MANUAL_ACCEPT_CONTRACT_SUBTITLE": "Abbiamo bisogno di te!",
+  "__MANUAL_ACCEPT_CONTRACT_TITLE": "Pronto? Inizia la Campagna",
   "__MANUAL_BUG_CARD_APPROVED": "APPROVED",
   "__MANUAL_BUG_CARD_NEED_REVIEW": "NEED REVIEW",
   "__MANUAL_BUG_CARD_PENDING": "PENDING",
