@@ -43,6 +43,21 @@ tryberApi.enhanceEndpoints({
     postUsersMeCertifications: {
       invalidatesTags: ["UserCertifications"],
     },
+    postUsersMeCampaignsByCampaignIdTasksAndTaskId: {
+      invalidatesTags: ["UserTasks"],
+    },
+    getUsersMeCampaignsByCampaignIdTasks: {
+      providesTags: ["UserTasks"],
+    },
+    postUsersMeCampaignsByCampaignIdTasksAndTaskIdMedia: {
+      invalidatesTags: ["UserTaskMedia"],
+    },
+    getUsersMeCampaignsByCampaignIdTasksAndTaskIdMedia: {
+      providesTags: ["UserTaskMedia"],
+    },
+    deleteUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaMediaId: {
+      invalidatesTags: ["UserTaskMedia"],
+    },
   },
 });
 

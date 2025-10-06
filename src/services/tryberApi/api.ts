@@ -49,7 +49,9 @@ export const api = createApi({
     "UserPendingBooty",
     "UserBootyThreshold",
     "UserCertifications",
+    "UserTasks",
     "User",
+    "UserTaskMedia",
   ],
   endpoints: () => ({}), // auto generated npm run generate-api
 });

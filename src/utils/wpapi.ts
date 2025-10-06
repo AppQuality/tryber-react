@@ -128,6 +128,30 @@ const WPAPI = {
       throw e;
     }
   },
+  startCampaign: async (campaignId: string) => {
+    try {
+      const data = await fetch(
+        `${process.env.REACT_APP_CROWD_WP_URL}/wp-admin/admin-ajax.php`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: queryString.stringify({
+            action: "start_tester_activities",
+            cp_id: campaignId,
+          }),
+        }
+      );
+      const res = await data.json();
+      if (res.success) {
+        return res.data;
+      }
+      throw new Error(res.data.error);
+    } catch (e) {
+      throw e;
+    }
+  },
 };
 
 export default WPAPI;

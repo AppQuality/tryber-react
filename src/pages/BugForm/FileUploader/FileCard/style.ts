@@ -104,7 +104,6 @@ export const StyledFileCard = styled.div`
           }
         }
         .file-card-right {
-          width: 15%;
           svg {
             width: 18px;
             height: 18px;
