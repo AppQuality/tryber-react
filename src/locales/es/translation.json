@@ -715,7 +715,7 @@
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "¿Primera vez aquí? <signuplink><strong>Regístrate</strong></signuplink>"
   },
-  "bug_verification_description": "",
+  "bug_verification_description": "La metodología utilizada para esta campaña es Bug Hunting. Para obtener una guía completa sobre cómo realizar la prueba correctamente, abre el <guide_link>artículo dedicado.</guide_link>",
   "bugform usecase select option": {
     "Not a specific usecase": "Ninguno de esos casos de uso"
   },
@@ -778,6 +778,7 @@
   "or you can": "o bien",
   "redirecting": "redireccionando",
   "try again to login": "Intenta iniciar sesión de nuevo.",
+  "usability_test_description": "La metodología utilizada para esta campaña es el Thinking Aloud. Para una guía completa sobre cómo realizar correctamente la prueba, abre el <guide_link>artículo dedicado.</guide_link>",
   "wait...": "espere...",
   "you must accept terms and conditions": "Debes aceptar los términos y condiciones",
   "{{days}} days left to give your best!": {

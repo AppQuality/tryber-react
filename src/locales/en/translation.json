@@ -715,7 +715,7 @@
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "New to TRYBER? <signuplink><strong>Sign up</strong></signuplink>"
   },
-  "bug_verification_description": "",
+  "bug_verification_description": "The methodology used for this campaign is Bug Hunting. For a complete guide on how to perform the test correctly open the <guide_link>dedicated article.</guide_link>",
   "bugform usecase select option": {
     "Not a specific usecase": "None of these use cases"
   },
@@ -778,6 +778,7 @@
   "or you can": "or you can",
   "redirecting": "redirecting",
   "try again to login": "Try again to login.",
+  "usability_test_description": "The methodology used for this campaign is Thinking Aloud. For a complete guide on how to perform the test correctly open the <guide_link>dedicated article.</guide_link>",
   "wait...": "wait...",
   "you must accept terms and conditions": "You need to accept terms and conditions",
   "{{days}} days left to give your best!": {

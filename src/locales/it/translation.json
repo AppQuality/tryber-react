@@ -715,7 +715,7 @@
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "Prima volta su TRYBER? <signuplink><strong>Registrati</strong></signuplink>"
   },
-  "bug_verification_description": "",
+  "bug_verification_description": "La metodologia utilizzata per questa campagna è Bug Hunting. Per ottenere una guida completa su come eseguire correttamente il test, apri l'<guide_link>articolo dedicato</guide_link>.",
   "bugform usecase select option": {
     "Not a specific usecase": "Nessuno di questi casi d'uso"
   },
@@ -778,6 +778,7 @@
   "or you can": "Oppure",
   "redirecting": "reindirizzamento",
   "try again to login": "Riprova ad accedere.",
+  "usability_test_description": "La metodologia utilizzata per questa campagna è il Thinking Aloud. Per una guida completa su come eseguire correttamente il test, apri l'<guide_link>articolo dedicato</guide_link>.     ",
   "wait...": "attendi...",
   "you must accept terms and conditions": "Accetta le condizioni per continuare",
   "{{days}} days left to give your best!": {
