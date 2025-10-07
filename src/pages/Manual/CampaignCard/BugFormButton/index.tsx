@@ -17,6 +17,7 @@ const BugFormLink = ({
   children: React.ReactNode;
   campaignId: string;
 }) => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery({
     campaignId: campaignId,
@@ -37,13 +38,14 @@ const BugFormLink = ({
   return (
     <a href={localizedBugParadeUrl}>
       <Button size="block" kind="secondary">
-        Report a Bug
+        {t("__MANUAL_PAGE__BUG_PARADE_BUTTON_UPLOAD", "Report a Bug")}
       </Button>
     </a>
   );
 };
 
 const BugFormButton = () => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const { data: campaign } = useGetUsersMeCampaignsByCampaignIdQuery(
     { campaignId: id },
@@ -60,7 +62,7 @@ const BugFormButton = () => {
   return (
     <BugFormLink campaignId={id!}>
       <Button size="block" kind="secondary">
-        Report a Bug
+        {t("__MANUAL_PAGE__BUTTON_UPLOAD", "Report a Bug")}
       </Button>
     </BugFormLink>
   );
