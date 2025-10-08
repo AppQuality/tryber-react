@@ -1,10 +1,4 @@
-import {
-  BSCol,
-  BSGrid,
-  Tab,
-  Tabs,
-  Text,
-} from "@appquality/appquality-design-system";
+import { BSCol, BSGrid, Tab, Tabs } from "@appquality/appquality-design-system";
 import { useTranslation } from "react-i18next";
 import {
   useGetUsersMeCampaignsByCampaignIdPreviewQuery,
