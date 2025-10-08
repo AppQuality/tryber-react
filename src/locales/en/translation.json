@@ -1,7 +1,7 @@
 {
   " completion of {{percent}} of required activities": "",
-  " minimum {{count}} bugs approved, for participation": "",
-  " minimum {{count}} bugs approved, for participation_plural": "",
+  " minimum {{count}} bugs approved, for participation": " minimum {{count}} approved bug to participate",
+  " minimum {{count}} bugs approved, for participation_plural": " minimum {{count}} approved bug to participate",
   "...wait": "Loading",
   "/discover-experience-points/": "/discover-experience-points/",
   "/faq/": "/faq/",
