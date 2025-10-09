@@ -1,7 +1,7 @@
 {
   " completion of {{percent}} of required activities": "",
-  " minimum {{count}} bugs approved, for participation": "",
-  " minimum {{count}} bugs approved, for participation_plural": "",
+  " minimum {{count}} bugs approved, for participation": " minimum {{count}} approved bug to participate",
+  " minimum {{count}} bugs approved, for participation_plural": " minimum {{count}} approved bug to participate",
   "...wait": "Loading",
   "/discover-experience-points/": "/discover-experience-points/",
   "/faq/": "/faq/",
@@ -620,6 +620,7 @@
   "_FORM_PARAGRAPH_": "Between you and the campaign there is this form: fill it in all its fields to have more selection possibilities. We will save this data for future campaigns.",
   "_FORM_SELECT_DEVICES_": "Select a device",
   "_FORM_TITLE_": "The time has come: apply now",
+  "_PAGE_PREVIEW__BUG_PARADE_ACTIVE": "The Bug Parade is active.",
   "__CARD_RECAP_DASHBOARD_CTA_MAX: 30": "Check ranking",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-MENSILI_MAX: 25": "Monthly exp points",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Total exp points",
@@ -633,6 +634,8 @@
   "__MANUAL_BUG_CARD_TITLE": "Bugs found",
   "__MANUAL_PAGE_MAXIMUM_PAYOUT": "The maximum unlockable payout is €{{value}}.",
   "__MANUAL_PAGE_PAYOUT_INFO": "If you have any questions, check our <faq_link>FAQ</faq_link>, where you will find answers to the most common questions.",
+  "__MANUAL_PAGE__BUG_PARADE_BUTTON_UPLOAD": "Report a Bug",
+  "__MANUAL_PAGE__BUTTON_UPLOAD": "Report a Bug",
   "__MANUAL_PAGE__CAMPAIGN_TYPE": "Campaign Type",
   "__MANUAL_PAGE__DEVICE_CARD_TITLE": "You were selected with this device",
   "__MANUAL_PAGE__END_DATE": "Deadline",
@@ -715,7 +718,7 @@
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "New to TRYBER? <signuplink><strong>Sign up</strong></signuplink>"
   },
-  "bug_verification_description": "",
+  "bug_verification_description": "The methodology used for this campaign is Bug Hunting. For a complete guide on how to perform the test correctly open the <guide_link>dedicated article.</guide_link>",
   "bugform usecase select option": {
     "Not a specific usecase": "None of these use cases"
   },
@@ -778,6 +781,7 @@
   "or you can": "or you can",
   "redirecting": "redirecting",
   "try again to login": "Try again to login.",
+  "usability_test_description": "The methodology used for this campaign is Thinking Aloud. For a complete guide on how to perform the test correctly open the <guide_link>dedicated article.</guide_link>",
   "wait...": "wait...",
   "you must accept terms and conditions": "You need to accept terms and conditions",
   "{{days}} days left to give your best!": {
@@ -788,6 +792,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "Report a Bug": "",
   "Page Preview": "",
   "/my-account/": "/my-account/",
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {

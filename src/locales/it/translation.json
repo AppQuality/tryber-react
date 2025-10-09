@@ -1,6 +1,6 @@
 {
   " completion of {{percent}} of required activities": " completamento del {{percent}} delle attività richieste",
-  " minimum {{count}} bugs approved, for participation": " minimo {{count}} bug approvati, per aver partecipato",
+  " minimum {{count}} bugs approved, for participation": " minimo {{count}} bug approvato, per aver partecipato",
   " minimum {{count}} bugs approved, for participation_plural": " minimo {{count}} bug approvati, per aver partecipato",
   "...wait": "Un momento...",
   "/discover-experience-points/": "/it/come-funzionano-i-punti-esperienza/",
@@ -620,22 +620,25 @@
   "_FORM_PARAGRAPH_": "Seleziona i dispositivi compatibili, compila la form e candidati. Alcuni campi del tuo profilo saranno aggiornati con le informazioni nuove che aggiungerai nel form.",
   "_FORM_SELECT_DEVICES_": "Seleziona un dispositivo",
   "_FORM_TITLE_": "È il tuo momento, candidati ora",
+  "_PAGE_PREVIEW__BUG_PARADE_ACTIVE": "La Bug Parade è attiva.",
   "__CARD_RECAP_DASHBOARD_CTA_MAX: 30": "Vedi tutta la classifica",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-MENSILI_MAX: 25": "Exp points mensili",
   "__CARD_RECAP_DASHBOARD_LABEL_PUNTI-TOTALI_MAX: 25": "Exp points totali",
   "__FISCAL_PROFILE_TAX_ID_DISCLAIMER": "Quando cambierai qualsiasi tuo dato personale, dovrai inserire nuovamente il codice fiscale.",
   "__MANUAL_ACCEPT_CONTRACT_SUBTITLE": "Abbiamo bisogno di te!",
   "__MANUAL_ACCEPT_CONTRACT_TITLE": "Pronto? Inizia la Campagna",
-  "__MANUAL_BUG_CARD_APPROVED": "APPROVED",
-  "__MANUAL_BUG_CARD_NEED_REVIEW": "NEED REVIEW",
-  "__MANUAL_BUG_CARD_PENDING": "PENDING",
-  "__MANUAL_BUG_CARD_REFUSED": "REFUSED",
-  "__MANUAL_BUG_CARD_TITLE": "Bugs found",
+  "__MANUAL_BUG_CARD_APPROVED": "APPROVATI",
+  "__MANUAL_BUG_CARD_NEED_REVIEW": "DA RIVEDERE",
+  "__MANUAL_BUG_CARD_PENDING": "IN ATTESA",
+  "__MANUAL_BUG_CARD_REFUSED": "RIFIUTATI",
+  "__MANUAL_BUG_CARD_TITLE": "Bug caricati",
   "__MANUAL_PAGE_MAXIMUM_PAYOUT": "Il pagamento massimo sbloccabile è di €{{value}}.",
   "__MANUAL_PAGE_PAYOUT_INFO": "Se hai dubbi, consulta le nostre <faq_link>FAQ</faq_link>, dove troverai le risposte alle domande più comuni",
-  "__MANUAL_PAGE__CAMPAIGN_TYPE": "Campaign Type",
-  "__MANUAL_PAGE__DEVICE_CARD_TITLE": "You were selected with this device",
-  "__MANUAL_PAGE__END_DATE": "Deadline",
+  "__MANUAL_PAGE__BUG_PARADE_BUTTON_UPLOAD": "Carica un Bug",
+  "__MANUAL_PAGE__BUTTON_UPLOAD": "Carica un Bug",
+  "__MANUAL_PAGE__CAMPAIGN_TYPE": "Tipo di Campagna",
+  "__MANUAL_PAGE__DEVICE_CARD_TITLE": "Sei stato selezionato con questo dispositivo",
+  "__MANUAL_PAGE__END_DATE": "Fine Campagna",
   "__MANUAL_SUPPORT_CARD_BUTTON": "Contatta il TRYBER TEAM",
   "__MANUAL_SUPPORT_CARD_TITLE": "Serve aiuto?",
   "__MANUAL_TAB_TITLE_INFO": "Info",
@@ -715,7 +718,7 @@
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "Prima volta su TRYBER? <signuplink><strong>Registrati</strong></signuplink>"
   },
-  "bug_verification_description": "",
+  "bug_verification_description": "La metodologia utilizzata per questa campagna è Bug Hunting. Per ottenere una guida completa su come eseguire correttamente il test, apri l'<guide_link>articolo dedicato</guide_link>.",
   "bugform usecase select option": {
     "Not a specific usecase": "Nessuno di questi casi d'uso"
   },
@@ -778,6 +781,7 @@
   "or you can": "Oppure",
   "redirecting": "reindirizzamento",
   "try again to login": "Riprova ad accedere.",
+  "usability_test_description": "La metodologia utilizzata per questa campagna è il Thinking Aloud. Per una guida completa su come eseguire correttamente il test, apri l'<guide_link>articolo dedicato</guide_link>.     ",
   "wait...": "attendi...",
   "you must accept terms and conditions": "Accetta le condizioni per continuare",
   "{{days}} days left to give your best!": {
@@ -788,6 +792,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "Report a Bug": "Carica un Bug",
   "Page Preview": "Pagina di preview",
   "/my-account/": "/it/il-mio-account/",
   "Available tags : <unguess_link> (Link to unguess), <line_break>": {

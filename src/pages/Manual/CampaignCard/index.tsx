@@ -90,10 +90,15 @@ const useFormatDate = () => {
       day: "2-digit",
       month: "long",
     }).format(date);
+    const formattedTime = new Intl.DateTimeFormat(i18n.language, {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    }).format(date);
     return (
       <div style={{ textAlign: "center" }}>
         <Text>{`${formatted}`}</Text>
-        <Text small>{`h ${date.getHours()}:${date.getMinutes()}`}</Text>
+        <Text small>{`h ${formattedTime}`}</Text>
       </div>
     );
   };
