@@ -26,6 +26,7 @@ export const useDescription = (id: string) => {
   if (!typeName) return "";
 
   switch (typeName) {
+    case "Exploratory Testing":
     case "Explorative Testing":
     case "Bug verification":
       return (
