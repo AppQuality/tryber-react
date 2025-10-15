@@ -713,7 +713,7 @@
     "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>Ce que vous devez faire maintenant</title>\n<ul>\n<li>Choisissez le mode de paiement et vérifiez que votre type fiscal est correct</li>\n<li>Insérez vos informations personnelles et acceptez les conditions</li>\n<li>Envoyez votre demande de paiement</li>\n</ul>"
   },
   "available tags: <manualLink>": {
-    "_FORM_MESSAGES_ALREADY-SELECTED_": "<manualLink>Consultez le Manuel !</manualLink> Vous y trouverez toutes les informations nécessaires pour compléter les tâches."
+    "_FORM_MESSAGES_ALREADY-SELECTED_": "Dans le manuel, vous trouverez toutes les informations dont vous avez besoin pour accomplir les tâches.<manualLink>Allez au Manuel !</manualLink>"
   },
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "Nouveau sur TRYBER ? <signuplink><strong>Inscrivez-vous</strong></signuplink>"

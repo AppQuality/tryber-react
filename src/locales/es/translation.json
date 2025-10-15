@@ -713,7 +713,7 @@
     "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>Siguiente paso</title>\n<ul>\n<li>Elige el método de pago y comprueba si tu régimen fiscal es correcto</li>\n<li>Introduce los datos y acepta las condiciones de pago </li>\n<li>Envía tu solicitud</li>\n</ul>"
   },
   "available tags: <manualLink>": {
-    "_FORM_MESSAGES_ALREADY-SELECTED_": "<manualLink>Ir al Manual!</manualLink> Allí encontrarás toda la información que necesitas para completar las tareas."
+    "_FORM_MESSAGES_ALREADY-SELECTED_": "En el Manual encontrarás toda la información que necesitas para completar las tareas.<manualLink>¡Ve al Manual!</manualLink>"
   },
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "¿Primera vez aquí? <signuplink><strong>Regístrate</strong></signuplink>"

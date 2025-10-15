@@ -50,7 +50,7 @@ const Preview = () => {
         </Card>
         <BSGrid>
           <BSCol size="col-lg-9 aq-order-1 aq-order-0-lg ">
-            <div className="aq-mb-4">
+            <Card className="aq-mb-4">
               <Editor
                 editorProps={{
                   handleDOMEvents: {
@@ -69,7 +69,7 @@ const Preview = () => {
               >
                 {data.content}
               </Editor>
-            </div>
+            </Card>
             <SelectBox />
           </BSCol>
           <BSCol size="col-lg-3">
