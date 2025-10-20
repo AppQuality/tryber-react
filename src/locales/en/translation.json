@@ -545,6 +545,8 @@
   "Try again.": "Try again.",
   "Type": "Type",
   "Type to search your city": "Type to search your city",
+  "USECASE_MEDIA_DROPZONE_MISSING_PARAMS": "Missing campaign or task information.",
+  "USECASE_MEDIA_DROPZONE_TITLE": "Uploading media",
   "Update your device list": "Update your device list",
   "Upload a minimum number of {{num}} files": {
     "BUGFORM_UPLOAD_TXT": "Upload at least {{num}} media",
