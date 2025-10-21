@@ -546,7 +546,6 @@
   "Type": "Tipo",
   "Type to search your city": "Digita per cercare la tua città",
   "USECASE_MEDIA_DROPZONE_MISSING_PARAMS": "Informazioni mancanti su task o campagna",
-  "USECASE_MEDIA_DROPZONE_TITLE": "Upload dei media",
   "Update your device list": "Aggiorna la tua lista dispositivi",
   "Upload a minimum number of {{num}} files": {
     "BUGFORM_UPLOAD_TXT": "Carica almeno {{num}} file",
@@ -794,6 +793,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} caricato",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} caricati"
   },
+  "USECASE_MEDIA_DROPZONE_TITLE": "Upload dei media",
   "Report a Bug": "Carica un Bug",
   "Page Preview": "Pagina di preview",
   "/my-account/": "/it/il-mio-account/",

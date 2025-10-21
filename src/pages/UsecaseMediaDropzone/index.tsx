@@ -48,29 +48,15 @@ const FileDropzonePage = () => {
 
   if (!campaignId || !taskId) {
     return (
-      <Wrapper>
-        <InnerCard>
-          <Text className="aq-text-danger" as="p">
-            {t("USECASE_MEDIA_DROPZONE_MISSING_PARAMS", {
-              defaultValue: "Missing campaign or task information.",
-            })}
-          </Text>
-        </InnerCard>
-      </Wrapper>
+      <Text className="aq-text-danger" as="p">
+        {t("USECASE_MEDIA_DROPZONE_MISSING_PARAMS", {
+          defaultValue: "Missing campaign or task information.",
+        })}
+      </Text>
     );
   }
 
-  return (
-    <Wrapper>
-      <InnerCard
-        title={t("USECASE_MEDIA_DROPZONE_TITLE", {
-          defaultValue: "Uploading media",
-        })}
-      >
-        <UsecaseMediaDropzone taskId={taskId} campaignId={campaignId} />
-      </InnerCard>
-    </Wrapper>
-  );
+  return <UsecaseMediaDropzone taskId={taskId} campaignId={campaignId} />;
 };
 
 export default FileDropzonePage;
