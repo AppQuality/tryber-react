@@ -793,7 +793,6 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
-  "USECASE_MEDIA_DROPZONE_TITLE": "Uploading media",
   "Report a Bug": "",
   "Page Preview": "",
   "/my-account/": "/my-account/",

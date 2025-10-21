@@ -793,7 +793,6 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
-  "USECASE_MEDIA_DROPZONE_TITLE": "Subiendo medios",
   "Report a Bug": "",
   "Page Preview": "Page Preview",
   "/my-account/": "/perfil/",

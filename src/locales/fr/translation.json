@@ -793,7 +793,6 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} téléchargé",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} téléchargés"
   },
-  "USECASE_MEDIA_DROPZONE_TITLE": "Téléchargement des médias",
   "Report a Bug": "",
   "{{date}} {{at_time}} {{time}}": "",
   "Page Preview": "Page Preview",
