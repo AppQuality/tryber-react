@@ -221,7 +221,7 @@ function Page() {
               <Redirect to="/fr/my-dashboard" />
             </SentryRoute>
             <SentryRoute
-              path={`${base}/campaign/:id/file-dropzone`}
+              path={`${base}/campaign/:id/file-dropzone/:taskId`}
               component={FileDropzonePage}
             />
           </Switch>
