@@ -21,9 +21,13 @@ import { useAppDispatch } from "src/redux/provider";
 import { updatePagination } from "src/redux/wallet/actionCreator";
 import { openPaymentDetailsModal } from "src/redux/wallet/actions/openPaymentDetailsModal";
 import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
-import { useGetUsersMePaymentsQuery } from "src/services/tryberApi";
+import {
+  useGetUsersMePaymentsQuery,
+  useGetUsersMePendingBootyQuery,
+} from "src/services/tryberApi";
 import styled from "styled-components";
 import useTabFragment from "src/pages/Wallet/WalletTabFragment";
+import { expiredTabColumns } from "./expiredTabColumns";
 
 const ActionsCell = styled.div`
   display: flex;
@@ -102,7 +106,11 @@ export const WalletTable = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
+  const [expiredColumns, setExpiredColumns] = useState<TableType.Column[]>([]);
+
   const [rows, setRows] = useState<TableType.Row[]>([]);
+  const [expiredRows, setExpiredRows] = useState<TableType.Row[]>([]);
+
   const { activeTab, setActiveTab } = useTabFragment();
 
   const { requestsList } = useSelector(
@@ -116,10 +124,15 @@ export const WalletTable = () => {
     order,
     orderBy,
   });
+
+  const { data: expiredBootyData, isLoading: isExpiredBootyLoading } =
+    useGetUsersMePendingBootyQuery({ filterBy: { isExpired: 0 } });
   // initial requests
   useEffect(() => {
     const cols = walletColumns(dispatch, t);
     setcolumns(cols);
+    const expiredCols = expiredTabColumns(dispatch, t);
+    setExpiredColumns(expiredCols);
   }, []);
   // update datasource for the table
   useEffect(() => {
@@ -226,6 +239,21 @@ export const WalletTable = () => {
       );
     }
   }, [data]);
+
+  /* useEffect(() => {
+    if (typeof expiredBootyData?.results !== "undefined") {
+      setExpiredRows(
+        expiredBootyData.results.map((req) => {
+          return {
+          activity: req.activity,
+            amount: req.amount.gross.value,
+            attributionDate: req.attributionDate,
+            name: req.name, 
+          };
+        })
+      );
+    }
+  }, [data]); */
   const changePagination = (newPage: number) => {
     const newStart = limit * (newPage - 1);
     dispatch(updatePagination(newStart));
@@ -271,14 +299,14 @@ export const WalletTable = () => {
             <SortTableSelect
               order={order}
               orderBy={orderBy}
-              columns={columns}
+              columns={expiredColumns}
               label={t("Order By", { context: "Sort Table Select" })}
             />
           )}
           <Table
             className="aq-mb-3 wallet-table"
-            dataSource={rows}
-            columns={columns}
+            dataSource={expiredRows}
+            columns={expiredColumns}
             orderBy={orderBy}
             order={order}
             isLoading={isLoading}
