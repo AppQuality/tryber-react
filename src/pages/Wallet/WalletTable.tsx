@@ -1,8 +1,10 @@
 import {
   Pagination,
   SortTableSelect,
+  Tab,
   Table,
   TableType,
+  Tabs,
 } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -21,6 +23,7 @@ import { openPaymentDetailsModal } from "src/redux/wallet/actions/openPaymentDet
 import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
 import { useGetUsersMePaymentsQuery } from "src/services/tryberApi";
 import styled from "styled-components";
+import useTabFragment from "src/pages/Wallet/WalletTabFragment";
 
 const ActionsCell = styled.div`
   display: flex;
@@ -100,6 +103,7 @@ export const WalletTable = () => {
   const dispatch = useAppDispatch();
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
   const [rows, setRows] = useState<TableType.Row[]>([]);
+  const { activeTab, setActiveTab } = useTabFragment();
 
   const { requestsList } = useSelector(
     (state: GeneralState) => state.wallet,
@@ -228,27 +232,64 @@ export const WalletTable = () => {
   };
   return (
     <>
-      {columns.length > 0 && (
-        <SortTableSelect
-          order={order}
-          orderBy={orderBy}
-          columns={columns}
-          label={t("Order By", { context: "Sort Table Select" })}
-        />
-      )}
-      <Table
-        className="aq-mb-3 wallet-table"
-        dataSource={rows}
-        columns={columns}
-        orderBy={orderBy}
-        order={order}
-        isLoading={isLoading}
-        isStriped
-        i18n={{
-          loading: t("...wait"),
-          empty: t("__WALLET_HOME-EMPTY_STATE_MAX: 105"),
-        }}
-      />
+      <Tabs active={activeTab} setActive={setActiveTab}>
+        <Tab
+          id="history"
+          title={
+            <span className="aq-mx-3-lg">{t("__WALLET_HISTORY_TAB")}</span>
+          }
+        >
+          {columns.length > 0 && (
+            <SortTableSelect
+              order={order}
+              orderBy={orderBy}
+              columns={columns}
+              label={t("Order By", { context: "Sort Table Select" })}
+            />
+          )}
+          <Table
+            className="aq-mb-3 wallet-table"
+            dataSource={rows}
+            columns={columns}
+            orderBy={orderBy}
+            order={order}
+            isLoading={isLoading}
+            isStriped
+            i18n={{
+              loading: t("...wait"),
+              empty: t("__WALLET_HOME-EMPTY_STATE_MAX: 105"),
+            }}
+          />
+        </Tab>
+        <Tab
+          id="expired"
+          title={
+            <span className="aq-mx-3-lg">{t("__WALLET_EXPIRED_TAB")}</span>
+          }
+        >
+          {columns.length > 0 && (
+            <SortTableSelect
+              order={order}
+              orderBy={orderBy}
+              columns={columns}
+              label={t("Order By", { context: "Sort Table Select" })}
+            />
+          )}
+          <Table
+            className="aq-mb-3 wallet-table"
+            dataSource={rows}
+            columns={columns}
+            orderBy={orderBy}
+            order={order}
+            isLoading={isLoading}
+            isStriped
+            i18n={{
+              loading: t("...wait"),
+              empty: t("__WALLET_HOME-EMPTY_STATE_MAX: 105"),
+            }}
+          />
+        </Tab>
+      </Tabs>
       <Pagination
         className="aq-pt-3"
         onPageChange={changePagination}
