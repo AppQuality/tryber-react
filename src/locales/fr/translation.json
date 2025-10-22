@@ -216,6 +216,7 @@
     "SignupFrom Step1": "Date de naissance"
   },
   "Dashboard": "Tableau de bord",
+  "Data attribuzione": "",
   "Date": "Date",
   "Delete": "Supprimer",
   "Delete account": "Supprimer le compte",
@@ -244,6 +245,7 @@
   "Employment": "Emploi",
   "End Date": "Date de fin",
   "Experience Points": "Points d'expérience",
+  "Expired On": "",
   "Extra Award": "Récompense supplémentaire",
   "FAQ": "FAQ",
   "Facebook": "Facebook",
@@ -538,10 +540,12 @@
   "This is an invalid format. Should be formatted as +11000000000 or 0011000000000": "Ce format est invalide. Il doit être formaté comme +11000000000 ou 0011000000000",
   "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!": "Ceci est votre tableau de bord personnel. D'ici, vous pouvez consulter vos statistiques, surveiller l'avancement de votre travail et trouver de nouvelles campagnes pour lesquelles postuler. Amusez-vous bien !",
   "This value is invalid, you need to select a city with a province": "Cette valeur est invalide, vous devez sélectionner une ville avec une province",
+  "Tipo attività": "",
   "Title": "Titre",
   "Top 3 | level {{level}}": {
     "__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25": "Top 3 | niveau {{level}}"
   },
+  "Tot. lordo": "",
   "Try again.": "Réessayez.",
   "Type": "Type",
   "Type to search your city": "Tapez pour rechercher votre ville",
