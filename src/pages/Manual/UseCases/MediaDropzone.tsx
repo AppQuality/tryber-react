@@ -152,6 +152,7 @@ export const MediaDropzone = ({
                 fileType: "",
                 mimeType: "",
                 status: m.status,
+                errorCode: m.errorCode,
               }}
               onDelete={() =>
                 m.status !== "uploading"
