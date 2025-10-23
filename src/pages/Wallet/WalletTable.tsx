@@ -320,6 +320,7 @@ export const WalletTable = () => {
         </Tab>
         <Tab
           id="expired"
+          disabled={expiredRows.length === 0}
           title={
             <span className="aq-mx-3-lg">{t("__WALLET_EXPIRED_TAB")}</span>
           }
