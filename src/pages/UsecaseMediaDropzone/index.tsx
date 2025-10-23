@@ -13,7 +13,7 @@ import styled from "styled-components";
 */
 
 const StyledPageTemplate = styled.div`
-  background-color: ${aqBootstrapTheme.colors.gray50};
+  background-color: ${aqBootstrapTheme.colors.white};
   }
 `;
 
