@@ -14,14 +14,14 @@ export const api = createApi({
           return;
         }
         // iterate over nested objects
-        if (typeof value === "object") {
-          Object.entries(params[key]).forEach(([key, value]) => {
-            if (typeof value === "string") {
-              urlps.set(`filterBy[${key}]`, value);
-            }
-          });
-          return;
-        }
+       if (key === "filterBy" && value && typeof value === "object") {
+      Object.entries(value as Record<string, unknown>).forEach(([fk, fv]) => {
+         if (fv != null) {
+           urlps.set(`filterBy[${fk}]`, String(fv));
+         }
+      });
+      return;
+    }
         // or just set url param
         urlps.set(key, value);
       });
