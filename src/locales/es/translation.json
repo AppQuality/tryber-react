@@ -689,6 +689,7 @@
   "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Gestiona el pago",
   "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Tu monedero",
   "__WALLET_EXPIRED_TAB": "Ingresos caducados",
+  "__WALLET_EXPIRED_TAB-DESCRIPTION": "Lista de ingresos caducados, para los cuales han pasado más de 12 meses y ya no es posible solicitar el pago",
   "__WALLET_HISTORY_TAB": "Historial de pagos",
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Aún no has solicitado ningun pago. Cuando lo harás, podrás ver tus pagos aquí.",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Ver detalles",

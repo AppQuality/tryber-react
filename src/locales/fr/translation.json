@@ -689,6 +689,7 @@
   "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Gérez votre paiement",
   "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Votre portefeuille",
   "__WALLET_EXPIRED_TAB": "Butin expiré",
+  "__WALLET_EXPIRED_TAB-DESCRIPTION": "Liste du butin expiré, pour lequel plus de 12 mois se sont écoulés et il n’est plus possible de demander le paiement",
   "__WALLET_HISTORY_TAB": "Historique des paiements",
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Votre historique de paiement est actuellement vide. Lorsque vous commencerez à demander vos paiements, vous les verrez ici.",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Voir les détails",

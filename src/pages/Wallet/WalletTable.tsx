@@ -5,9 +5,10 @@ import {
   Table,
   TableType,
   Tabs,
+  Text,
 } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import detailsIcon from "src/pages/Wallet/assets/details.svg";
 import detailsHoverIcon from "src/pages/Wallet/assets/detailsHover.svg";
@@ -331,6 +332,11 @@ export const WalletTable = () => {
               label={t("Order By", { context: "Sort Table Select" })}
             />
           )}
+          <br />
+          <Text className="aq-mt-2" small>
+            <Trans i18nKey={"__WALLET_EXPIRED_TAB-DESCRIPTION"} />
+          </Text>
+          <br />
           <Table
             className="aq-mb-3 wallet-table"
             dataSource={expiredRows}

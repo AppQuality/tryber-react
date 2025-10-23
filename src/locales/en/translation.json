@@ -689,6 +689,7 @@
   "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Manage your payment",
   "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Your wallet",
   "__WALLET_EXPIRED_TAB": "Expired booties",
+  "__WALLET_EXPIRED_TAB-DESCRIPTION": "List of expired booty, for which more than 12 months have passed and it is no longer possible to request payment",
   "__WALLET_HISTORY_TAB": "Payment history",
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Your payment history is now empty. When you start requesting your payments, you will view them here.",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "View details",

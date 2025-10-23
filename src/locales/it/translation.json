@@ -689,6 +689,7 @@
   "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Gestisci il pagamento",
   "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Il tuo portafoglio",
   "__WALLET_EXPIRED_TAB": "Guadagni scaduti",
+  "__WALLET_EXPIRED_TAB-DESCRIPTION": "Elenco dei guadagni scaduti, per i quali sono trascorsi più di 12 mesi e non è più possibile richiedere il pagamento",
   "__WALLET_HISTORY_TAB": "Cronologia pagamenti",
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Per ora non hai ancora richiesto un pagamento. Quando inizierai a richiederne, compariranno qui.",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Vedi dettagli",
