@@ -1082,6 +1082,7 @@ const injectedRtkApi = api.injectEndpoints({
           limit: queryArg.limit,
           orderBy: queryArg.orderBy,
           order: queryArg.order,
+          filterBy: queryArg.filterBy,
         },
       }),
     }),
@@ -2038,6 +2039,7 @@ export type PostDossiersApiArg = {
   } & {
     autoApply?: number;
     bugLanguage?: BugLang;
+    hasBugForm?: number;
     hasBugParade?: number;
     pageVersion?: "v1" | "v2";
     skipPagesAndTasks?: number;
@@ -3190,6 +3192,8 @@ export type GetUsersMePendingBootyApiArg = {
     | "activity";
   /** How to order values (ASC, DESC) */
   order?: "ASC" | "DESC";
+  /** Key-value Array for item filtering */
+  filterBy?: object;
 };
 export type GetUsersMePermissionsApiResponse = /** status 200 OK */ {
   appq_bug?: Olp;

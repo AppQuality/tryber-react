@@ -126,7 +126,7 @@ export const WalletTable = () => {
   });
 
   const { data: expiredBootyData, isLoading: isExpiredBootyLoading } =
-    useGetUsersMePendingBootyQuery({ filterBy: { isExpired: 0 } });
+    useGetUsersMePendingBootyQuery({ filterBy: { isExpired: 1 } });
   // initial requests
   useEffect(() => {
     const cols = walletColumns(dispatch, t);
@@ -240,20 +240,48 @@ export const WalletTable = () => {
     }
   }, [data]);
 
-  /* useEffect(() => {
+  useEffect(() => {
     if (typeof expiredBootyData?.results !== "undefined") {
       setExpiredRows(
         expiredBootyData.results.map((req) => {
+          const attributionDate = new Date(req.attributionDate);
+          const expiredDate = new Date(attributionDate);
+          expiredDate.setMonth(expiredDate.getMonth() + 12);
           return {
-          activity: req.activity,
-            amount: req.amount.gross.value,
-            attributionDate: req.attributionDate,
-            name: req.name, 
+            key: req.id,
+            activityName: {
+              title: req.name,
+              content: <span>{req.name}</span>,
+            },
+            activityType: {
+              title: req.activity,
+              content: <span>{req.activity}</span>,
+            },
+            attributionDate: {
+              title: req.attributionDate,
+              content: <span>{req.attributionDate}</span>,
+            },
+            gross: {
+              title: "€ " + req.amount?.gross?.value,
+              content: (
+                <span>
+                  {req.amount?.gross?.currency &&
+                  req.amount?.gross?.currency in currencyTable
+                    ? currencyTable[req.amount?.gross?.currency]
+                    : req.amount?.gross?.currency}{" "}
+                  {req.amount?.gross?.value?.toFixed(2)}
+                </span>
+              ),
+            },
+            expiredDate: {
+              title: expiredDate.toISOString().split("T")[0],
+              content: <span>{expiredDate.toLocaleDateString()}</span>,
+            },
           };
         })
       );
     }
-  }, [data]); */
+  }, [expiredBootyData]);
   const changePagination = (newPage: number) => {
     const newStart = limit * (newPage - 1);
     dispatch(updatePagination(newStart));

@@ -53,6 +53,9 @@ export const BootyDetailsModal = () => {
     if (typeof results !== "undefined") {
       setRows(
         results?.map((r) => {
+          const attributionDate = new Date(r.attributionDate);
+          const expiredDate = new Date(attributionDate);
+          expiredDate.setMonth(expiredDate.getMonth() + 12);
           const formattedAmount = `${
             r.amount.net?.currency && r.amount.net?.currency in currencyTable
               ? currencyTable[r.amount.net?.currency]
@@ -100,6 +103,10 @@ export const BootyDetailsModal = () => {
                   <b>{formattedAmountGross}</b>
                 </Text>
               ),
+            },
+            expirationDate: {
+              title: expiredDate.toISOString().split("T")[0],
+              content: <span>{expiredDate.toLocaleDateString()}</span>,
             },
           };
         })
