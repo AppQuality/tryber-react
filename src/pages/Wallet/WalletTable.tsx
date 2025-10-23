@@ -127,7 +127,9 @@ export const WalletTable = () => {
   });
 
   const { data: expiredBootyData, isLoading: isExpiredBootyLoading } =
-    useGetUsersMePendingBootyQuery({ filterBy: { isExpired: 1 } });
+    useGetUsersMePendingBootyQuery({
+      filterBy: { isExpired: 1 },
+    });
   // initial requests
   useEffect(() => {
     const cols = walletColumns(dispatch, t);
