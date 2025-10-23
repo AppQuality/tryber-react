@@ -1,4 +1,4 @@
-import { Text } from "@appquality/appquality-design-system";
+import { aqBootstrapTheme, Text } from "@appquality/appquality-design-system";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
@@ -6,10 +6,19 @@ import { useParams } from "react-router-dom";
 import { MediaDropzone as UsecaseMediaDropzone } from "src/pages/Manual/UseCases/MediaDropzone";
 import { setMediaList } from "src/pages/Manual/UseCases/mediaSlice";
 import { useAppDispatch } from "src/store";
+import styled from "styled-components";
 
 /*
 /campaign/<campaignId>/file-dropzone/<taskId> 
 */
+
+const StyledPageTemplate = styled.div`
+  background-color: ${aqBootstrapTheme.colors.gray50};
+  .preview-selection-form {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+`;
 
 const FileDropzonePage = () => {
   const { t } = useTranslation();
@@ -39,7 +48,11 @@ const FileDropzonePage = () => {
     );
   }
 
-  return <UsecaseMediaDropzone taskId={taskId} campaignId={campaignId} />;
+  return (
+    <StyledPageTemplate>
+      <UsecaseMediaDropzone taskId={taskId} campaignId={campaignId} />
+    </StyledPageTemplate>
+  );
 };
 
 export default FileDropzonePage;
