@@ -14,9 +14,6 @@ import styled from "styled-components";
 
 const StyledPageTemplate = styled.div`
   background-color: ${aqBootstrapTheme.colors.gray50};
-  .preview-selection-form {
-    max-width: 100%;
-    padding: 0 16px;
   }
 `;
 
