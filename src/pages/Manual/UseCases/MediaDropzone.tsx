@@ -18,10 +18,11 @@ const StyledFileGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 32%);
   gap: 10px;
+  margin-top: 10px;
   margin-bottom: 10px;
 
   @media (max-width: ${(p) => p.theme.grid.breakpoints.md}) {
-    grid-template-columns: 1fr;
+    display: block;
   }
 `;
 
@@ -100,6 +101,25 @@ export const MediaDropzone = ({
 
   return (
     <>
+      <Dropzone
+        description={t("BUGFORM_UPLOAD_DRAGDROP_TXT", {
+          defaultValue: "Click here to upload your files or drag and drop!",
+        })}
+        accept={campaign?.validFileExtensions}
+        disabled={false}
+        onAccepted={(acceptedFiles) => uploadMedia(acceptedFiles)}
+        onRejected={(fileRejections) => {
+          const newFileList: File[] = [];
+          fileRejections.forEach((f) => newFileList.push(f.file));
+          const elements = createFilesElementList({
+            files: newFileList,
+            status: "failed",
+            taskId,
+          });
+          dispatch(appendMediaList(elements));
+        }}
+        danger={false}
+      />
       <StyledFileGrid>
         {media?.items.map((m) => (
           <FileCard
@@ -144,25 +164,6 @@ export const MediaDropzone = ({
             />
           ))}
       </StyledFileGrid>
-      <Dropzone
-        description={t("BUGFORM_UPLOAD_DRAGDROP_TXT", {
-          defaultValue: "Click here to upload your files or drag and drop!",
-        })}
-        accept={campaign?.validFileExtensions}
-        disabled={false}
-        onAccepted={(acceptedFiles) => uploadMedia(acceptedFiles)}
-        onRejected={(fileRejections) => {
-          const newFileList: File[] = [];
-          fileRejections.forEach((f) => newFileList.push(f.file));
-          const elements = createFilesElementList({
-            files: newFileList,
-            status: "failed",
-            taskId,
-          });
-          dispatch(appendMediaList(elements));
-        }}
-        danger={false}
-      />
     </>
   );
 };
