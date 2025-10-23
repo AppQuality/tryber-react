@@ -8,20 +8,20 @@ export const expiredTabColumns = (
 ): Column[] => {
   return [
     {
-      title: "Nome attività",
+      title: t("Activity name"),
       dataIndex: "activityName",
       key: "activityName",
       maxWidth: "max-content",
     },
     {
-      title: t("Tipo attività"),
+      title: t("Activity"),
       dataIndex: "activityType",
       key: "activityType",
       role: "overline",
       hideIndex: true,
     },
     {
-      title: t("Data attribuzione"),
+      title: t("Attribution date"),
       dataIndex: "attributionDate",
       key: "attributionDate",
       isSortable: true,
@@ -30,7 +30,7 @@ export const expiredTabColumns = (
       },
     },
     {
-      title: t("Tot. lordo"),
+      title: t("Gross total"),
       dataIndex: "gross",
       key: "gross",
       isSortable: true,

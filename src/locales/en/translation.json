@@ -76,6 +76,7 @@
   "Approved bugs": "Approved bugs",
   "Area is a required field.": "Area is a required field.",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Enter your details in the Profile section: they are important to be selected for suitable campaign and to request the payments.",
+  "Attribution date": "Attribution date",
   "Available booty": "Available booty",
   "Available tags \n<a> - Link to help article for fiscal type": {
     "@@Description for fiscal type@@": "<a>Click here</a> for more info"
@@ -216,7 +217,6 @@
     "SignupFrom Step1": "Date of birth"
   },
   "Dashboard": "Dashboard",
-  "Data attribuzione": "",
   "Date": "Date",
   "Delete": "Delete",
   "Delete account": "Delete account",
@@ -288,6 +288,7 @@
   },
   "Gross": "Gross",
   "Gross amount": "Gross amount",
+  "Gross total": "Gross total",
   "Have fun!": "Don't forget to have a good time!",
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"",
@@ -541,12 +542,10 @@
   "This is an invalid format. Should be formatted as +11000000000 or 0011000000000": "This is an invalid format. Should be formatted as +11000000000 or 0011000000000",
   "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!": "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!",
   "This value is invalid, you need to select a city with a province": "This value is invalid, you need to select a city with a province",
-  "Tipo attività": "",
   "Title": "Title",
   "Top 3 | level {{level}}": {
     "__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25": "Top 3 | {{level}} level"
   },
-  "Tot. lordo": "",
   "Try again.": "Try again.",
   "Type": "Type",
   "Type to search your city": "Type to search your city",
@@ -688,8 +687,8 @@
   "__WALLET_CARD-REQUEST_DISCLAIMER-PROCESSING MAX: 150": "You can request only one payment at a time: you alreay have a payment in process, this may take up to 20 working days.",
   "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Manage your payment",
   "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Your wallet",
-  "__WALLET_EXPIRED_TAB": "",
-  "__WALLET_HISTORY_TAB": "",
+  "__WALLET_EXPIRED_TAB": "Expired booties",
+  "__WALLET_HISTORY_TAB": "Payment history",
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Your payment history is now empty. When you start requesting your payments, you will view them here.",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "View details",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Download receipt",
@@ -799,6 +798,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} uploaded",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} uploaded"
   },
+  "Tipo attività": "",
   "Report a Bug": "",
   "Page Preview": "",
   "/my-account/": "/my-account/",

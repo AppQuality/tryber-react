@@ -76,6 +76,7 @@
   "Approved bugs": "Bugs aprobados",
   "Area is a required field.": "El área / La esfera es un campo obligatorio",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Añade todos tus datos en la sección Perfil: los necesitaremos para seleccionarte cuando haya una campaña adecuada y para que puedas solicitar los pagos.",
+  "Attribution date": "Fecha de atribución",
   "Available booty": "Saldo Disponible",
   "Available tags \n<a> - Link to help article for fiscal type": {
     "@@Description for fiscal type@@": "<a>Haga clic aquí</a> para obtener más información"
@@ -216,7 +217,6 @@
     "SignupFrom Step1": "Fecha de nacimiento"
   },
   "Dashboard": "Dashboard",
-  "Data attribuzione": "",
   "Date": "Fecha",
   "Delete": "Eliminar",
   "Delete account": "Elímina account",
@@ -288,6 +288,7 @@
   },
   "Gross": "Bruto",
   "Gross amount": "Cantidad bruta",
+  "Gross total": "Total bruto",
   "Have fun!": "¡No te olvides de pasarlo bien!",
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Aquí está la lista de todos tus dispositivos. Asegúrete de mantenerla actualizada para aumentar tus posibilidades de ser seleccionado para proyectos futuros.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Aquí solo puedes cambiar la versión de tu sistema operativo. Si deseas agregar otro dispositivo, haga clic en \"Agregar dispositivo\"",
@@ -541,12 +542,10 @@
   "This is an invalid format. Should be formatted as +11000000000 or 0011000000000": "Este es un formato no válido. Tiene que ser formateado como +11000000000 o 0011000000000",
   "This is your personal dashboard. From here you can check out your stats, keep an eye on the progress of your work and find new campaigns to apply for. Have fun!": "Este es tu dashboard personal. Desde aquí puedes consultar tus estadísticas, el  progreso de tu trabajo y encontrar nuevas Campañas a las que postularte. ¡Diviértete!",
   "This value is invalid, you need to select a city with a province": "Este valor no es válido, es necesario seleccionar una ciudad con una provincia",
-  "Tipo attività": "",
   "Title": "Título",
   "Top 3 | level {{level}}": {
     "__RANKING_TITLE_LABEL_TOP_LEVEL_MAX: 25": "Top 3 | Nivel {{level}}"
   },
-  "Tot. lordo": "",
   "Try again.": "Inténtelo de nuevo.",
   "Type": "Tipo",
   "Type to search your city": "Escriba para buscar tu ciudad",
@@ -688,8 +687,8 @@
   "__WALLET_CARD-REQUEST_DISCLAIMER-PROCESSING MAX: 150": "Solo puedes solicitar un pago a la vez: ya tienes una solicitud pendiente, ésta puede tardar hasta 20 días laborables.",
   "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Gestiona el pago",
   "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Tu monedero",
-  "__WALLET_EXPIRED_TAB": "",
-  "__WALLET_HISTORY_TAB": "",
+  "__WALLET_EXPIRED_TAB": "Ingresos caducados",
+  "__WALLET_HISTORY_TAB": "Historial de pagos",
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Aún no has solicitado ningun pago. Cuando lo harás, podrás ver tus pagos aquí.",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Ver detalles",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Descargar recibo",
@@ -799,6 +798,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} subido",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} subidos"
   },
+  "Tipo attività": "",
   "Report a Bug": "",
   "Page Preview": "Page Preview",
   "/my-account/": "/perfil/",
