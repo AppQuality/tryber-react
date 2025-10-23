@@ -14,7 +14,7 @@ import styled from "styled-components";
 
 const StyledPageTemplate = styled.div`
   background-color: ${aqBootstrapTheme.colors.white};
-  }
+  min-height: 100vh;
 `;
 
 const FileDropzonePage = () => {
