@@ -677,6 +677,7 @@
   "__RANKING_TITLE_LABEL_POSITION_MAX: 15": "Position",
   "__RANKING_TITLE_WELCOM_MAX: 20": "Classement",
   "__SELECT_DEFAULT_NO_OPTION": "Aucune option",
+  "__WALLET_CARD-EXPIRATION_DISCLAIMER": "Notez bien: chaque butin est valable pendant 12 mois.",
   "__WALLET_CARD-GUIDES_CTA MAX: 20": "Lisez nos guides",
   "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Découvrez comment nous gérons vos demandes de paiement.",
   "__WALLET_CARD-GUIDES_TITLE MAX: 35": "Des questions sur le processus de paiement ?",
