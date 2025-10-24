@@ -1,11 +1,14 @@
 import {
   Pagination,
   SortTableSelect,
+  Tab,
   Table,
   TableType,
+  Tabs,
+  Text,
 } from "@appquality/appquality-design-system";
 import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { shallowEqual, useSelector } from "react-redux";
 import detailsIcon from "src/pages/Wallet/assets/details.svg";
 import detailsHoverIcon from "src/pages/Wallet/assets/detailsHover.svg";
@@ -15,12 +18,19 @@ import pdfDisabledIcon from "src/pages/Wallet/assets/pdfDisabled.svg";
 import pdfHoverIcon from "src/pages/Wallet/assets/pdfHover.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { walletColumns } from "src/pages/Wallet/columns";
+import useTabFragment from "src/pages/Wallet/WalletTabFragment";
 import { useAppDispatch } from "src/redux/provider";
 import { updatePagination } from "src/redux/wallet/actionCreator";
 import { openPaymentDetailsModal } from "src/redux/wallet/actions/openPaymentDetailsModal";
 import { currencyTable, getPaidDate } from "src/redux/wallet/utils";
-import { useGetUsersMePaymentsQuery } from "src/services/tryberApi";
+import {
+  useGetUsersMePaymentsQuery,
+  useGetUsersMePendingBootyQuery,
+} from "src/services/tryberApi";
 import styled from "styled-components";
+import ExpiredAttributionTable, {
+  ExpiredAttributionTablePagination,
+} from "./ExpiredAttributionTable";
 
 const ActionsCell = styled.div`
   display: flex;
@@ -99,7 +109,12 @@ export const WalletTable = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
+  const expirationTableLimit = 10;
+  const [expirationTableStart, setExpirationTableStart] = useState(0);
+
   const [rows, setRows] = useState<TableType.Row[]>([]);
+
+  const { activeTab, setActiveTab } = useTabFragment();
 
   const { requestsList } = useSelector(
     (state: GeneralState) => state.wallet,
@@ -112,6 +127,11 @@ export const WalletTable = () => {
     order,
     orderBy,
   });
+
+  const { data: expiredBootyData, isLoading: isExpiredBootyLoading } =
+    useGetUsersMePendingBootyQuery({
+      filterBy: { isExpired: 1 },
+    });
   // initial requests
   useEffect(() => {
     const cols = walletColumns(dispatch, t);
@@ -222,44 +242,82 @@ export const WalletTable = () => {
       );
     }
   }, [data]);
+
   const changePagination = (newPage: number) => {
     const newStart = limit * (newPage - 1);
     dispatch(updatePagination(newStart));
   };
   return (
     <>
-      {columns.length > 0 && (
-        <SortTableSelect
-          order={order}
-          orderBy={orderBy}
-          columns={columns}
-          label={t("Order By", { context: "Sort Table Select" })}
-        />
-      )}
-      <Table
-        className="aq-mb-3 wallet-table"
-        dataSource={rows}
-        columns={columns}
-        orderBy={orderBy}
-        order={order}
-        isLoading={isLoading}
-        isStriped
-        i18n={{
-          loading: t("...wait"),
-          empty: t("__WALLET_HOME-EMPTY_STATE_MAX: 105"),
-        }}
-      />
-      <Pagination
-        className="aq-pt-3"
-        onPageChange={changePagination}
-        current={start / limit + 1}
-        maxPages={Math.ceil((data?.total || 0) / limit)}
-        mobileText={(current, total) =>
-          t(`Page %current% / %total%`)
-            .replace("%current%", current.toString())
-            .replace("%total%", total ? total.toString() : "0")
-        }
-      />
+      <Tabs active={activeTab} setActive={setActiveTab}>
+        <Tab
+          id="history"
+          title={
+            <span className="aq-mx-3-lg">{t("__WALLET_HISTORY_TAB")}</span>
+          }
+        >
+          {columns.length > 0 && (
+            <SortTableSelect
+              order={order}
+              orderBy={orderBy}
+              columns={columns}
+              label={t("Order By", { context: "Sort Table Select" })}
+            />
+          )}
+          <Table
+            className="aq-mb-3 wallet-table"
+            dataSource={rows}
+            columns={columns}
+            orderBy={orderBy}
+            order={order}
+            isLoading={isLoading}
+            isStriped
+            i18n={{
+              loading: t("...wait"),
+              empty: t("__WALLET_HOME-EMPTY_STATE_MAX: 105"),
+            }}
+          />
+          <Pagination
+            className="aq-pt-3"
+            onPageChange={changePagination}
+            current={start / limit + 1}
+            maxPages={Math.ceil((data?.total || 0) / limit)}
+            mobileText={(current, total) =>
+              t(`Page %current% / %total%`)
+                .replace("%current%", current.toString())
+                .replace("%total%", total ? total.toString() : "0")
+            }
+          />
+        </Tab>
+        <Tab
+          id="expired"
+          disabled={expiredBootyData?.size === 0 || isExpiredBootyLoading}
+          title={
+            <span className="aq-mx-3-lg">{t("__WALLET_EXPIRED_TAB")}</span>
+          }
+        >
+          <br />
+          <Text className="aq-mt-2" small>
+            <Trans i18nKey={"__WALLET_EXPIRED_TAB-DESCRIPTION"} />
+          </Text>
+          <br />
+          <ExpiredAttributionTable
+            className="aq-mb-3"
+            start={expirationTableStart}
+            limit={expirationTableLimit}
+          />
+          <ExpiredAttributionTablePagination
+            className="aq-pt-3"
+            changePagination={(page: number) => {
+              const newStart = expirationTableLimit * (page - 1);
+              setExpirationTableStart(newStart);
+            }}
+            start={expirationTableStart}
+            limit={expirationTableLimit}
+            maxPages={Math.ceil((data?.total || 0) / expirationTableLimit)}
+          />
+        </Tab>
+      </Tabs>
     </>
   );
 };
