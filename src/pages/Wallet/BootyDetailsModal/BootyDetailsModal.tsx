@@ -40,6 +40,9 @@ export const BootyDetailsModal = () => {
     start,
     order,
     orderBy,
+    filterBy: {
+      isExpired: 0,
+    },
   });
 
   const { results, total } = data || {};
