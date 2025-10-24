@@ -549,6 +549,7 @@
   "Try again.": "Réessayez.",
   "Type": "Type",
   "Type to search your city": "Tapez pour rechercher votre ville",
+  "USECASE_MEDIA_DROPZONE_MISSING_PARAMS": "Informations de campagne ou de tâche manquantes.",
   "Update your device list": "Mettez à jour votre liste d'appareils",
   "Upload a minimum number of {{num}} files": {
     "BUGFORM_UPLOAD_TXT": "Téléchargez au moins {{num}} médias",

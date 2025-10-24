@@ -9,9 +9,22 @@ import {
   usePostUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaMutation,
 } from "src/services/tryberApi";
 import { useAppDispatch, useAppSelector } from "src/store";
+import styled from "styled-components";
 import { createFilesElementList } from "./createFilesElementList";
 import { appendMediaList, removeElementFromMedialist } from "./mediaSlice";
 import { normalizeFileName } from "./normalizeFileName";
+
+const StyledFileGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 32%);
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  @media (max-width: ${(p) => p.theme.grid.breakpoints.md}) {
+    display: block;
+  }
+`;
 
 export const MediaDropzone = ({
   taskId,
@@ -88,14 +101,26 @@ export const MediaDropzone = ({
 
   return (
     <>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, 32%)",
-          gap: "10px",
-          marginBottom: "10px",
+      <Dropzone
+        description={t("BUGFORM_UPLOAD_DRAGDROP_TXT", {
+          defaultValue: "Click here to upload your files or drag and drop!",
+        })}
+        accept={campaign?.validFileExtensions}
+        disabled={false}
+        onAccepted={(acceptedFiles) => uploadMedia(acceptedFiles)}
+        onRejected={(fileRejections) => {
+          const newFileList: File[] = [];
+          fileRejections.forEach((f) => newFileList.push(f.file));
+          const elements = createFilesElementList({
+            files: newFileList,
+            status: "failed",
+            taskId,
+          });
+          dispatch(appendMediaList(elements));
         }}
-      >
+        danger={false}
+      />
+      <StyledFileGrid>
         {media?.items.map((m) => (
           <FileCard
             key={m.id}
@@ -127,6 +152,7 @@ export const MediaDropzone = ({
                 fileType: "",
                 mimeType: "",
                 status: m.status,
+                errorCode: m.errorCode,
               }}
               onDelete={() =>
                 m.status !== "uploading"
@@ -138,26 +164,7 @@ export const MediaDropzone = ({
               }
             />
           ))}
-      </div>
-      <Dropzone
-        description={t("BUGFORM_UPLOAD_DRAGDROP_TXT", {
-          defaultValue: "Click here to upload your files or drag and drop!",
-        })}
-        accept={campaign?.validFileExtensions}
-        disabled={false}
-        onAccepted={(acceptedFiles) => uploadMedia(acceptedFiles)}
-        onRejected={(fileRejections) => {
-          const newFileList: File[] = [];
-          fileRejections.forEach((f) => newFileList.push(f.file));
-          const elements = createFilesElementList({
-            files: newFileList,
-            status: "failed",
-            taskId,
-          });
-          dispatch(appendMediaList(elements));
-        }}
-        danger={false}
-      />
+      </StyledFileGrid>
     </>
   );
 };
