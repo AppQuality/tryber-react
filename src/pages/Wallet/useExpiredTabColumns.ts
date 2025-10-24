@@ -1,16 +1,14 @@
 import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
-import { TFunction } from "react-i18next";
-import { updateSortingOptions } from "src/redux/wallet/actionCreator";
+import { useTranslation } from "react-i18next";
 
-export const expiredTabColumns = (
-  dispatch: AppDispatch,
-  t: TFunction<"translation">
-): Column[] => {
+export const useExpiredTabColumns = (): Column[] => {
+  const { t } = useTranslation();
   return [
     {
       title: t("Activity name"),
       dataIndex: "activityName",
       key: "activityName",
+      isSortable: false,
       maxWidth: "max-content",
     },
     {
@@ -18,34 +16,26 @@ export const expiredTabColumns = (
       dataIndex: "activityType",
       key: "activityType",
       role: "overline",
+      isSortable: false,
       hideIndex: true,
     },
     {
       title: t("Attribution date"),
       dataIndex: "attributionDate",
       key: "attributionDate",
-      isSortable: true,
-      onSort: (newOrder) => {
-       // dispatch(updateSortingOptions(newOrder, "attributionDate"));
-      },
+      isSortable: false,
     },
     {
       title: t("Gross total"),
       dataIndex: "gross",
       key: "gross",
-      isSortable: true,
-      onSort: (newOrder) => {
-        dispatch(updateSortingOptions(newOrder, "gross"));
-      },
+      isSortable: false,
     },
     {
       title: t("Expired On"),
       dataIndex: "expiredDate",
       key: "expiredDate",
-      isSortable: true,
-      onSort: (newOrder: OrderType) => {
-      //  dispatch(updateSortingOptions(newOrder, "expiredDate"));
-      },
+      isSortable: false,
     },
   ];
 };

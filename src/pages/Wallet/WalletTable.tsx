@@ -18,6 +18,7 @@ import pdfDisabledIcon from "src/pages/Wallet/assets/pdfDisabled.svg";
 import pdfHoverIcon from "src/pages/Wallet/assets/pdfHover.svg";
 import twIcon from "src/pages/Wallet/assets/transferwise.svg";
 import { walletColumns } from "src/pages/Wallet/columns";
+import useTabFragment from "src/pages/Wallet/WalletTabFragment";
 import { useAppDispatch } from "src/redux/provider";
 import { updatePagination } from "src/redux/wallet/actionCreator";
 import { openPaymentDetailsModal } from "src/redux/wallet/actions/openPaymentDetailsModal";
@@ -27,8 +28,9 @@ import {
   useGetUsersMePendingBootyQuery,
 } from "src/services/tryberApi";
 import styled from "styled-components";
-import useTabFragment from "src/pages/Wallet/WalletTabFragment";
-import { expiredTabColumns } from "./expiredTabColumns";
+import ExpiredAttributionTable, {
+  ExpiredAttributionTablePagination,
+} from "./ExpiredAttributionTable";
 
 const ActionsCell = styled.div`
   display: flex;
@@ -107,10 +109,10 @@ export const WalletTable = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [columns, setcolumns] = useState<TableType.Column[]>([]);
-  const [expiredColumns, setExpiredColumns] = useState<TableType.Column[]>([]);
+  const expirationTableLimit = 10;
+  const [expirationTableStart, setExpirationTableStart] = useState(0);
 
   const [rows, setRows] = useState<TableType.Row[]>([]);
-  const [expiredRows, setExpiredRows] = useState<TableType.Row[]>([]);
 
   const { activeTab, setActiveTab } = useTabFragment();
 
@@ -134,8 +136,6 @@ export const WalletTable = () => {
   useEffect(() => {
     const cols = walletColumns(dispatch, t);
     setcolumns(cols);
-    const expiredCols = expiredTabColumns(dispatch, t);
-    setExpiredColumns(expiredCols);
   }, []);
   // update datasource for the table
   useEffect(() => {
@@ -243,48 +243,6 @@ export const WalletTable = () => {
     }
   }, [data]);
 
-  useEffect(() => {
-    if (typeof expiredBootyData?.results !== "undefined") {
-      setExpiredRows(
-        expiredBootyData.results.map((req) => {
-          const attributionDate = new Date(req.attributionDate);
-          const expiredDate = new Date(attributionDate);
-          expiredDate.setMonth(expiredDate.getMonth() + 12);
-          return {
-            key: req.id,
-            activityName: {
-              title: req.name,
-              content: <span>{req.name}</span>,
-            },
-            activityType: {
-              title: req.activity,
-              content: <span>{req.activity}</span>,
-            },
-            attributionDate: {
-              title: req.attributionDate,
-              content: <span>{req.attributionDate}</span>,
-            },
-            gross: {
-              title: "€ " + req.amount?.gross?.value,
-              content: (
-                <span>
-                  {req.amount?.gross?.currency &&
-                  req.amount?.gross?.currency in currencyTable
-                    ? currencyTable[req.amount?.gross?.currency]
-                    : req.amount?.gross?.currency}{" "}
-                  {req.amount?.gross?.value?.toFixed(2)}
-                </span>
-              ),
-            },
-            expiredDate: {
-              title: expiredDate.toISOString().split("T")[0],
-              content: <span>{expiredDate.toLocaleDateString()}</span>,
-            },
-          };
-        })
-      );
-    }
-  }, [expiredBootyData]);
   const changePagination = (newPage: number) => {
     const newStart = limit * (newPage - 1);
     dispatch(updatePagination(newStart));
@@ -319,53 +277,47 @@ export const WalletTable = () => {
               empty: t("__WALLET_HOME-EMPTY_STATE_MAX: 105"),
             }}
           />
+          <Pagination
+            className="aq-pt-3"
+            onPageChange={changePagination}
+            current={start / limit + 1}
+            maxPages={Math.ceil((data?.total || 0) / limit)}
+            mobileText={(current, total) =>
+              t(`Page %current% / %total%`)
+                .replace("%current%", current.toString())
+                .replace("%total%", total ? total.toString() : "0")
+            }
+          />
         </Tab>
         <Tab
           id="expired"
-          disabled={expiredRows.length === 0 && !isExpiredBootyLoading}
+          disabled={expiredBootyData?.size === 0 || isExpiredBootyLoading}
           title={
             <span className="aq-mx-3-lg">{t("__WALLET_EXPIRED_TAB")}</span>
           }
         >
-          {columns.length > 0 && (
-            <SortTableSelect
-              order={order}
-              orderBy={orderBy}
-              columns={expiredColumns}
-              label={t("Order By", { context: "Sort Table Select" })}
-            />
-          )}
           <br />
           <Text className="aq-mt-2" small>
             <Trans i18nKey={"__WALLET_EXPIRED_TAB-DESCRIPTION"} />
           </Text>
           <br />
-          <Table
-            className="aq-mb-3 wallet-table"
-            dataSource={expiredRows}
-            columns={expiredColumns}
-            orderBy={orderBy}
-            order={order}
-            isLoading={isLoading}
-            isStriped
-            i18n={{
-              loading: t("...wait"),
-              empty: t("__WALLET_HOME-EMPTY_STATE_MAX: 105"),
+          <ExpiredAttributionTable
+            className="aq-mb-3"
+            start={expirationTableStart}
+            limit={expirationTableLimit}
+          />
+          <ExpiredAttributionTablePagination
+            className="aq-pt-3"
+            changePagination={(page: number) => {
+              const newStart = expirationTableLimit * (page - 1);
+              setExpirationTableStart(newStart);
             }}
+            start={expirationTableStart}
+            limit={expirationTableLimit}
+            maxPages={Math.ceil((data?.total || 0) / expirationTableLimit)}
           />
         </Tab>
       </Tabs>
-      <Pagination
-        className="aq-pt-3"
-        onPageChange={changePagination}
-        current={start / limit + 1}
-        maxPages={Math.ceil((data?.total || 0) / limit)}
-        mobileText={(current, total) =>
-          t(`Page %current% / %total%`)
-            .replace("%current%", current.toString())
-            .replace("%total%", total ? total.toString() : "0")
-        }
-      />
     </>
   );
 };
