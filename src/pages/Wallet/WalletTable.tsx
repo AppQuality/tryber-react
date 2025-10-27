@@ -289,34 +289,35 @@ export const WalletTable = () => {
             }
           />
         </Tab>
-        <Tab
-          id="expired"
-          disabled={expiredBootyData?.size === 0 || isExpiredBootyLoading}
-          title={
-            <span className="aq-mx-3-lg">{t("__WALLET_EXPIRED_TAB")}</span>
-          }
-        >
-          <br />
-          <Text className="aq-mt-2" small>
-            <Trans i18nKey={"__WALLET_EXPIRED_TAB-DESCRIPTION"} />
-          </Text>
-          <br />
-          <ExpiredAttributionTable
-            className="aq-mb-3"
-            start={expirationTableStart}
-            limit={expirationTableLimit}
-          />
-          <ExpiredAttributionTablePagination
-            className="aq-pt-3"
-            changePagination={(page: number) => {
-              const newStart = expirationTableLimit * (page - 1);
-              setExpirationTableStart(newStart);
-            }}
-            start={expirationTableStart}
-            limit={expirationTableLimit}
-            maxPages={Math.ceil((data?.total || 0) / expirationTableLimit)}
-          />
-        </Tab>
+        {expiredBootyData && expiredBootyData?.size > 0 && (
+          <Tab
+            id="expired"
+            title={
+              <span className="aq-mx-3-lg">{t("__WALLET_EXPIRED_TAB")}</span>
+            }
+          >
+            <br />
+            <Text className="aq-mt-2" small>
+              <Trans i18nKey={"__WALLET_EXPIRED_TAB-DESCRIPTION"} />
+            </Text>
+            <br />
+            <ExpiredAttributionTable
+              className="aq-mb-3"
+              start={expirationTableStart}
+              limit={expirationTableLimit}
+            />
+            <ExpiredAttributionTablePagination
+              className="aq-pt-3"
+              changePagination={(page: number) => {
+                const newStart = expirationTableLimit * (page - 1);
+                setExpirationTableStart(newStart);
+              }}
+              start={expirationTableStart}
+              limit={expirationTableLimit}
+              maxPages={Math.ceil((data?.total || 0) / expirationTableLimit)}
+            />
+          </Tab>
+        )}
       </Tabs>
     </>
   );
