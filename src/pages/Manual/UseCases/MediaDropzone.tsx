@@ -77,6 +77,18 @@ export const MediaDropzone = ({
 
   const uploadMedia = async (files: File[]) => {
     files.forEach((f) => {
+      if (f.type && !f.type.includes("image/") && !f.type.includes("video/")) {
+        dispatch(
+          appendMediaList(
+            createFilesElementList({
+              files: [f],
+              status: "failed",
+              taskId,
+            })
+          )
+        );
+        return;
+      }
       const formData = new FormData();
       formData.append("media", f, normalizeFileName(f.name));
       if (!campaign) return;
