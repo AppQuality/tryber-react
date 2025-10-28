@@ -2859,6 +2859,7 @@ export type GetUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaApiResponse =
       id: number;
       location: string;
       name: string;
+      mimetype?: string;
     }[];
   };
 export type GetUsersMeCampaignsByCampaignIdTasksAndTaskIdMediaApiArg = {
