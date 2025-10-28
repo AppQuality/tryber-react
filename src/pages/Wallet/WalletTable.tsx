@@ -132,6 +132,7 @@ export const WalletTable = () => {
     useGetUsersMePendingBootyQuery({
       filterBy: { isExpired: 1 },
     });
+
   // initial requests
   useEffect(() => {
     const cols = walletColumns(dispatch, t);
@@ -291,7 +292,7 @@ export const WalletTable = () => {
         </Tab>
         <Tab
           id="expired"
-          disabled={expiredBootyData?.size === 0 || isExpiredBootyLoading}
+          disabled={isExpiredBootyLoading || !expiredBootyData}
           title={
             <span className="aq-mx-3-lg">{t("__WALLET_EXPIRED_TAB")}</span>
           }
