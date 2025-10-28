@@ -1,5 +1,5 @@
 import { Button, Modal, ModalBody } from "@appquality/appquality-design-system";
-import { ChatLeftDots } from "react-bootstrap-icons";
+import { Headset } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
 import { useGetUsersMeQuery } from "src/services/tryberApi";
 import styled from "styled-components";
@@ -27,7 +27,7 @@ export const FeedbackModal = ({
       <ModalBody>
         <iframe
           title="Feedback form"
-          src={`https://form.jotform.com/213364740407351?testerId=T${user?.id}&email=${user?.email}`}
+          src={`https://form.jotform.com/251940919244057?testerId=T${user?.id}&email=${user?.email}`}
           style={iFrameStyle}
         />
       </ModalBody>
@@ -43,7 +43,7 @@ export const FeedbackButton = ({
   return (
     <StyledButton onClick={handleClick}>
       <Button kind="secondary" className="feedback-icon">
-        <ChatLeftDots />
+        <Headset />
       </Button>
     </StyledButton>
   );
@@ -73,6 +73,6 @@ const StyledButton = styled.div`
     transition: all 0.25s ease;
     width: 48px;
     height: 48px;
-    line-height: 56px;
+    line-height: 52px;
   }
 `;
