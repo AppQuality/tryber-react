@@ -28,7 +28,11 @@ const useExpiredRows = ({ start, limit }: { start: number; limit: number }) => {
         },
         attributionDate: {
           title: req.attributionDate,
-          content: <span>{req.attributionDate}</span>,
+          content: (
+            <span>
+              {new Date(req.attributionDate).toLocaleDateString("it-IT")}
+            </span>
+          ),
         },
         gross: {
           title: "€ " + req.amount?.gross?.value,
@@ -44,7 +48,7 @@ const useExpiredRows = ({ start, limit }: { start: number; limit: number }) => {
         },
         expiredDate: {
           title: expiredDate.toISOString().split("T")[0],
-          content: <span>{expiredDate.toLocaleDateString()}</span>,
+          content: <span>{expiredDate.toLocaleDateString("it-IT")}</span>,
         },
       };
     }),
