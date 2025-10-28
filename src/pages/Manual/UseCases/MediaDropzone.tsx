@@ -98,7 +98,6 @@ export const MediaDropzone = ({
       );
     });
   };
-
   return (
     <>
       <Dropzone
@@ -128,8 +127,9 @@ export const MediaDropzone = ({
             fileElement={{
               id: m.id.toString(),
               fileName: m.name,
-              fileType: "",
-              mimeType: "",
+              previewUrl: m.location ?? "",
+              fileType: m.mimetype?.split("/")[0] ?? "",
+              mimeType: m.mimetype ?? "",
               status: "success",
             }}
             onDelete={() =>
@@ -146,7 +146,15 @@ export const MediaDropzone = ({
             <FileCard
               key={m.id}
               className="file-list-card"
-              fileElement={m}
+              fileElement={{
+                id: m.id.toString(),
+                fileName: m.fileName,
+                previewUrl: m.previewUrl ?? "",
+                fileType: m.fileType,
+                mimeType: m.mimeType,
+                status: m.status,
+                errorCode: m.errorCode,
+              }}
               onDelete={() =>
                 m.status !== "uploading"
                   ? onDelete({
