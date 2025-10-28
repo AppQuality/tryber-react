@@ -77,18 +77,6 @@ export const MediaDropzone = ({
 
   const uploadMedia = async (files: File[]) => {
     files.forEach((f) => {
-      if (f.type && !f.type.includes("image/") && !f.type.includes("video/")) {
-        dispatch(
-          appendMediaList(
-            createFilesElementList({
-              files: [f],
-              status: "failed",
-              taskId,
-            })
-          )
-        );
-        return;
-      }
       const formData = new FormData();
       formData.append("media", f, normalizeFileName(f.name));
       if (!campaign) return;
@@ -158,14 +146,7 @@ export const MediaDropzone = ({
             <FileCard
               key={m.id}
               className="file-list-card"
-              fileElement={{
-                id: m.id.toString(),
-                fileName: m.fileName,
-                fileType: "",
-                mimeType: "",
-                status: m.status,
-                errorCode: m.errorCode,
-              }}
+              fileElement={m}
               onDelete={() =>
                 m.status !== "uploading"
                   ? onDelete({
