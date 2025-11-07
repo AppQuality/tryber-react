@@ -183,6 +183,10 @@ export const WalletManagment = () => {
       <Text className="aq-mt-2" small>
         {getInfoText()}
       </Text>
+
+      <Text className="aq-mt-2" small>
+        <Trans i18nKey={"__WALLET_CARD-EXPIRATION_DISCLAIMER"} />
+      </Text>
     </Card>
   );
 };

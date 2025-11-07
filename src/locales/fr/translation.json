@@ -76,6 +76,7 @@
   "Approved bugs": "Bugs approuvés",
   "Area is a required field.": "Le domaine est un champ obligatoire.",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Indiquez vos coordonnées dans la section Profil : elles sont importantes pour être sélectionné pour des campagnes adaptées et pour demander les paiements.",
+  "Attribution date": "Date d'attribution",
   "Available booty": "Butin disponible",
   "Available tags \n<a> - Link to help article for fiscal type": {
     "@@Description for fiscal type@@": "<a>Cliquez ici</a> pour plus d'infos"
@@ -244,6 +245,8 @@
   "Employment": "Emploi",
   "End Date": "Date de fin",
   "Experience Points": "Points d'expérience",
+  "Expiration date": "",
+  "Expired On": "Expiré le",
   "Extra Award": "Récompense supplémentaire",
   "FAQ": "FAQ",
   "Facebook": "Facebook",
@@ -285,6 +288,7 @@
   },
   "Gross": "Brut",
   "Gross amount": "Montant brut",
+  "Gross total": "Total brut",
   "Have fun!": "N'oubliez pas de vous amuser !",
   "Here is the list of your all devices. Make sure to keep it updated in order to boost your chances to be selected for further projects.": "Voici la liste de tous vos appareils. Assurez-vous de la tenir à jour pour augmenter vos chances d'être sélectionné pour d'autres projets.",
   "Here you can only change the version of your operating system. If you want to add another device click on \"Add device\"": "Ici, vous ne pouvez changer que la version de votre système d'exploitation. Si vous souhaitez ajouter un autre appareil, cliquez sur \"Ajouter un appareil\"",
@@ -545,6 +549,7 @@
   "Try again.": "Réessayez.",
   "Type": "Type",
   "Type to search your city": "Tapez pour rechercher votre ville",
+  "USECASE_MEDIA_DROPZONE_MISSING_PARAMS": "Informations de campagne ou de tâche manquantes.",
   "Update your device list": "Mettez à jour votre liste d'appareils",
   "Upload a minimum number of {{num}} files": {
     "BUGFORM_UPLOAD_TXT": "Téléchargez au moins {{num}} médias",
@@ -673,6 +678,7 @@
   "__RANKING_TITLE_LABEL_POSITION_MAX: 15": "Position",
   "__RANKING_TITLE_WELCOM_MAX: 20": "Classement",
   "__SELECT_DEFAULT_NO_OPTION": "Aucune option",
+  "__WALLET_CARD-EXPIRATION_DISCLAIMER": "Notez bien: chaque butin est valable pendant 12 mois.",
   "__WALLET_CARD-GUIDES_CTA MAX: 20": "Lisez nos guides",
   "__WALLET_CARD-GUIDES_PARAGRAPH MAX: 60": "Découvrez comment nous gérons vos demandes de paiement.",
   "__WALLET_CARD-GUIDES_TITLE MAX: 35": "Des questions sur le processus de paiement ?",
@@ -683,6 +689,9 @@
   "__WALLET_CARD-REQUEST_DISCLAIMER-PROCESSING MAX: 150": "Vous ne pouvez demander qu'un paiement à la fois : vous avez déjà un paiement en cours, cela peut prendre jusqu'à 20 jours ouvrables.",
   "__WALLET_CARD-REQUEST_TITLE MAX: 40": "Gérez votre paiement",
   "__WALLET_CARD-YOUR_WALLET_MAX: 15": "Votre portefeuille",
+  "__WALLET_EXPIRED_TAB": "Butin expiré",
+  "__WALLET_EXPIRED_TAB-DESCRIPTION": "Liste du butin expiré, pour lequel plus de 12 mois se sont écoulés et il n’est plus possible de demander le paiement",
+  "__WALLET_HISTORY_TAB": "Historique des paiements",
   "__WALLET_HOME-EMPTY_STATE_MAX: 105": "Votre historique de paiement est actuellement vide. Lorsque vous commencerez à demander vos paiements, vous les verrez ici.",
   "__WALLET_TABLE-HEADER_CTA-ICON-DETAILS MAX:": "Voir les détails",
   "__WALLET_TABLE-HEADER_CTA-ICON-PDF MAX:": "Télécharger le reçu",
@@ -713,7 +722,7 @@
     "PAYMENTS_MODAL_AUTOMATIC_STEP_1_RECAP": "<title>Ce que vous devez faire maintenant</title>\n<ul>\n<li>Choisissez le mode de paiement et vérifiez que votre type fiscal est correct</li>\n<li>Insérez vos informations personnelles et acceptez les conditions</li>\n<li>Envoyez votre demande de paiement</li>\n</ul>"
   },
   "available tags: <manualLink>": {
-    "_FORM_MESSAGES_ALREADY-SELECTED_": "<manualLink>Consultez le Manuel !</manualLink> Vous y trouverez toutes les informations nécessaires pour compléter les tâches."
+    "_FORM_MESSAGES_ALREADY-SELECTED_": "Dans le manuel, vous trouverez toutes les informations dont vous avez besoin pour accomplir les tâches.<manualLink>Allez au Manuel !</manualLink>"
   },
   "available tags: <strong>, <signuplink>": {
     "LOGIN_SIGNUP_LINK": "Nouveau sur TRYBER ? <signuplink><strong>Inscrivez-vous</strong></signuplink>"
@@ -792,6 +801,7 @@
     "BUGFORM_UPLOAD_PROGRESS": "{{num}} téléchargé",
     "BUGFORM_UPLOAD_PROGRESS_plural": "{{num}} téléchargés"
   },
+  "Tipo attività": "",
   "Report a Bug": "",
   "{{date}} {{at_time}} {{time}}": "",
   "Page Preview": "Page Preview",

@@ -26,6 +26,7 @@ import {
 import BugForm from "./pages/BugForm";
 import Manual from "./pages/Manual";
 import Preview from "./pages/Preview";
+import FileDropzonePage from "./pages/UsecaseMediaDropzone";
 import SignupSuccess from "./pages/SignupSuccess";
 import ThankYouPage from "./pages/ThankYou";
 import VdpPage from "./pages/VDP";
@@ -219,6 +220,10 @@ function Page() {
             <SentryRoute path={"/fr"} exact>
               <Redirect to="/fr/my-dashboard" />
             </SentryRoute>
+            <SentryRoute
+              path={`${base}/campaign/:id/file-dropzone/:taskId`}
+              component={FileDropzonePage}
+            />
           </Switch>
         </Router>
       </div>

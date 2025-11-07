@@ -50,5 +50,11 @@ export const bootyDetailsColumns = (
         dispatch(updateBootyDetailsSortingOptions(newOrder, "gross"));
       },
     },
+    {
+      title: t("Expiration date"),
+      dataIndex: "expirationDate",
+      key: "expirationDate",
+      hideIndex: true,
+    },
   ];
 };
