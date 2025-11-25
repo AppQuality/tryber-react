@@ -131,6 +131,8 @@ export const WalletTable = () => {
   const { data: expiredBootyData, isLoading: isExpiredBootyLoading } =
     useGetUsersMePendingBootyQuery({
       filterBy: { isExpired: 1 },
+      limit: expirationTableLimit,
+      start: expirationTableStart,
     });
 
   // initial requests
@@ -315,7 +317,9 @@ export const WalletTable = () => {
             }}
             start={expirationTableStart}
             limit={expirationTableLimit}
-            maxPages={Math.ceil((data?.total || 0) / expirationTableLimit)}
+            maxPages={Math.ceil(
+              (expiredBootyData?.total || 0) / expirationTableLimit
+            )}
           />
         </Tab>
       </Tabs>
