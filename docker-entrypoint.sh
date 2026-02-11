@@ -21,10 +21,9 @@ do
         varvalue=$(printf '%s\n' "$line" | sed -e 's/^[^=]*=//')
     fi
     # Read value of current variable if exists as Environment variable
-    value=$(printf '%s\n' "${!varname}")
-    # Otherwise use value from .env file
-    if [ -z $value ]; then
-        value=${varvalue}
+    value=$(printenv "$varname")
+    if [ -z "$value" ]; then
+        value=$varvalue
     fi
 
     # Append configuration property to JS file
