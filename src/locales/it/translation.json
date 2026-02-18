@@ -76,6 +76,12 @@
   "Approved bugs": "Bug approvati",
   "Area is a required field.": "L'area è un campo obbligatorio",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Inserisci tutti i tuoi dati nella sezione Profilo: servirà a noi per selezionarti quando c'è una campagna adatta e a te per richiedere il pagamento.",
+  "At least one image is required": {
+    "BUGFORM_UPLOAD_ERROR_IMAGEREQUIRED": "At least one image is required"
+  },
+  "At least one video is required": {
+    "BUGFORM_UPLOAD_ERROR_VIDEOREQUIRED": "At least one video is required"
+  },
   "Attribution date": "Data di attribuzione",
   "Available booty": "Guadagni disponibili",
   "Available tags \n<a> - Link to help article for fiscal type": {
@@ -554,6 +560,9 @@
   "Upload a minimum number of {{num}} files": {
     "BUGFORM_UPLOAD_TXT": "Carica almeno {{num}} file",
     "BUGFORM_UPLOAD_TXT_plural": "Carica almeno {{num}} file"
+  },
+  "Upload at least {{num}} files, including one video and one image (both are required)": {
+    "BUGFORM_UPLOAD_TXT_VIDEO_IMAGE": ""
   },
   "Uploaded Bugs": "Bug caricati",
   "User mail validation": {

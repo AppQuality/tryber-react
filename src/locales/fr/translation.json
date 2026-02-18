@@ -76,6 +76,12 @@
   "Approved bugs": "Bugs approuvés",
   "Area is a required field.": "Le domaine est un champ obligatoire.",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Indiquez vos coordonnées dans la section Profil : elles sont importantes pour être sélectionné pour des campagnes adaptées et pour demander les paiements.",
+  "At least one image is required": {
+    "BUGFORM_UPLOAD_ERROR_IMAGEREQUIRED": "At least one image is required"
+  },
+  "At least one video is required": {
+    "BUGFORM_UPLOAD_ERROR_VIDEOREQUIRED": "At least one video is required"
+  },
   "Attribution date": "Date d'attribution",
   "Available booty": "Butin disponible",
   "Available tags \n<a> - Link to help article for fiscal type": {
@@ -554,6 +560,9 @@
   "Upload a minimum number of {{num}} files": {
     "BUGFORM_UPLOAD_TXT": "Téléchargez au moins {{num}} médias",
     "BUGFORM_UPLOAD_TXT_plural": "Téléchargez au moins {{num}} médias"
+  },
+  "Upload at least {{num}} files, including one video and one image (both are required)": {
+    "BUGFORM_UPLOAD_TXT_VIDEO_IMAGE": ""
   },
   "Uploaded Bugs": "Bugs téléchargés",
   "User mail validation": {

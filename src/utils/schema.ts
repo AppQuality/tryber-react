@@ -146,6 +146,14 @@ export interface paths {
       };
     };
   };
+  "/campaigns/{campaign}/finance/attachments": {
+    post: operations["post-campaigns-campaign-finance-attachments"];
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+  };
   "/campaigns/{campaign}/forms": {
     get: operations["get-campaigns-campaign-forms"];
     parameters: {
@@ -281,6 +289,14 @@ export interface paths {
     post: operations["post-customers"];
     parameters: {};
   };
+  "/customers/{customerId}/agreements": {
+    get: operations["get-customers-customerId-agreements"];
+    parameters: {
+      path: {
+        customerId: string;
+      };
+    };
+  };
   "/customers/{customer}/projects": {
     get: operations["get-customers-customer-projects"];
     post: operations["post-customers-customer-projects"];
@@ -331,12 +347,39 @@ export interface paths {
       };
     };
   };
+  "/dossiers/{campaign}/agreements": {
+    get: operations["get-dossiers-campaign-agreements"];
+    put: operations["put-dossiers-campaign-agreements"];
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+  };
   "/dossiers/{campaign}/availableTesters": {
     /**  */
     get: operations["get-dossiers-campaign-availableTesters"];
     parameters: {
       path: {
         campaign: string;
+      };
+    };
+  };
+  "/dossiers/{campaign}/costs": {
+    get: operations["get-dossiers-campaign-costs"];
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+  };
+  "/dossiers/{campaign}/humanResources": {
+    get: operations["get-dossiers-campaign-humanResources"];
+    put: operations["put-dossiers-campaign-humanResources"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
       };
     };
   };
@@ -724,6 +767,9 @@ export interface paths {
     get: operations["get-users-me-pending-booty"];
     parameters: {};
   };
+  "/dossiers/rates": {
+    get: operations["get-dossiers-rates"];
+  };
   "/users/me/permissions": {
     /** Return all user permissions */
     get: operations["get-users-me-permissions"];
@@ -748,6 +794,46 @@ export interface paths {
   };
   "/users/me/rank/list": {
     get: operations["get-users-me-rank-list"];
+  };
+  "/campaigns/{campaign}/tasks/{usecase}/survey/jotform": {
+    post: operations["post-campaigns-campaign-tasks-usecase-survey-jotform"];
+    parameters: {
+      path: {
+        campaign: string;
+        usecase: string;
+      };
+    };
+  };
+  "/campaigns/{campaign}/finance/supplier": {
+    /** Get all finance suppliers */
+    get: operations["get-campaigns-campaign-finance-supplier"];
+    post: operations["post-campaigns-campaign-finance-supplier"];
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+  };
+  "/campaigns/{campaign}/finance/type": {
+    get: operations["get-campaigns-campaign-finance-type"];
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+  };
+  "/campaigns/{campaign}/finance/otherCosts": {
+    get: operations["get-campaigns-campaign-finance-otherCosts"];
+    /** Create a new campaign cost */
+    post: operations["post-campaigns-campaign-finance-otherCosts"];
+    delete: operations["delete-campaigns-campaign-finance-otherCosts"];
+    patch: operations["patch-campaigns-campaign-finance-otherCosts"];
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
   };
 }
 
@@ -1824,6 +1910,8 @@ export interface operations {
               id: number;
               internalId: string;
               isFavourite: boolean;
+              /** @enum {string} */
+              reviewerType?: "ai" | "human";
               severity: {
                 id: number;
                 name: string;
@@ -2068,6 +2156,41 @@ export interface operations {
       };
       403: components["responses"]["NotAuthorized"];
       404: components["responses"]["NotFound"];
+    };
+  };
+  "post-campaigns-campaign-finance-attachments": {
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            attachments?: {
+              url: string;
+              name: string;
+              mime_type: string;
+            }[];
+            failed?: {
+              name: string;
+              path: string;
+            }[];
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      /** Internal Server Error */
+      500: unknown;
+    };
+    requestBody: {
+      content: {
+        "multipart/form-data": {
+          attachment?: string | string[];
+        };
+      };
     };
   };
   "get-campaigns-campaign-forms": {
@@ -2753,6 +2876,35 @@ export interface operations {
       };
     };
   };
+  "get-customers-customerId-agreements": {
+    parameters: {
+      path: {
+        customerId: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            items: {
+              id: number;
+              name: string;
+              remainingTokens: number;
+              totalTokens: number;
+              value: number;
+            }[];
+          };
+        };
+      };
+      /** Bad Request */
+      400: unknown;
+      403: components["responses"]["Authentication"];
+      404: components["responses"]["NotFound"];
+      /** Internal Server Error */
+      500: unknown;
+    };
+  };
   "get-customers-customer-projects": {
     parameters: {
       path: {
@@ -2912,6 +3064,8 @@ export interface operations {
           };
         } & {
           autoApply?: number;
+          /** @default 0 */
+          autoApprove?: number;
           bugLanguage?: components["schemas"]["BugLang"];
           hasBugForm?: number;
           hasBugParade?: number;
@@ -2919,6 +3073,14 @@ export interface operations {
           pageVersion?: "v1" | "v2";
           /** @default 0 */
           skipPagesAndTasks?: number;
+        } & {
+          /**
+           * @default 0
+           * @enum {undefined}
+           */
+          notify_everyone?: 0 | 1;
+          /** @example 1 */
+          ux_notify?: number;
         };
       };
     };
@@ -2936,6 +3098,8 @@ export interface operations {
         content: {
           "application/json": {
             autoApply: number;
+            /** @default 0 */
+            autoApprove: number;
             browsers?: {
               id: number;
               name: string;
@@ -2957,6 +3121,8 @@ export interface operations {
               name: string;
             }[];
             deviceRequirements?: string;
+            /** @default false */
+            hasPlan?: boolean;
             /** Format: date-time */
             endDate: string;
             goal?: string;
@@ -3042,8 +3208,58 @@ export interface operations {
       content: {
         "application/json": components["schemas"]["DossierCreationData"] & {
           autoApply?: number;
+          /** @default 0 */
+          autoApprove?: number;
           bugLanguage?: components["schemas"]["BugLang"] | boolean;
           hasBugParade?: number;
+        };
+      };
+    };
+  };
+  "get-dossiers-campaign-agreements": {
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            agreement?: {
+              id?: number;
+              name?: string;
+              remainingTokens?: number;
+              totalTokens?: number;
+              value?: number;
+            };
+            tokens?: number;
+          };
+        };
+      };
+    };
+  };
+  "put-dossiers-campaign-agreements": {
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: unknown;
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+      /** Internal Server Error */
+      500: unknown;
+    };
+    /** Updates tokens_usage in campaign and updates the link between cp_id and agreementId */
+    requestBody: {
+      content: {
+        "application/json": {
+          agreementId: number;
+          tokens: number;
         };
       };
     };
@@ -3068,6 +3284,81 @@ export interface operations {
             lastUpdate: string;
           };
         };
+      };
+    };
+  };
+  "get-dossiers-campaign-costs": {
+    parameters: {
+      path: {
+        campaign: string;
+      };
+      query: {
+        /** Key-value Array for item filtering */
+        filterBy?: components["parameters"]["filterBy"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            totalCost?: number;
+          };
+        };
+      };
+    };
+  };
+  "get-dossiers-campaign-humanResources": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            items?: {
+              assignee?: {
+                id?: number;
+              };
+              days?: number;
+              id?: number;
+              rate?: {
+                id?: number;
+                value?: number;
+              };
+            }[];
+          };
+        };
+      };
+    };
+  };
+  "put-dossiers-campaign-humanResources": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: components["parameters"]["campaign"];
+      };
+    };
+    responses: {
+      /** OK */
+      200: unknown;
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+      /** Internal Server Error */
+      500: unknown;
+    };
+    /** Overwrites the data for the given campaign in the campaign_human_resources table */
+    requestBody: {
+      content: {
+        "application/json": {
+          assignee: number;
+          days: number;
+          rate: number;
+        }[];
       };
     };
   };
@@ -4036,6 +4327,8 @@ export interface operations {
         content: {
           "application/json": {
             additionalFields?: components["schemas"]["CampaignAdditionalField"][];
+            /** @default 0 */
+            autoApprove: number;
             bugReplicability: {
               invalid: string[];
               valid: string[];
@@ -4423,8 +4716,8 @@ export interface operations {
             items: {
               id: number;
               location: string;
-              name: string;
               mimetype?: string;
+              name: string;
             }[];
           };
         };
@@ -5101,6 +5394,27 @@ export interface operations {
       404: components["responses"]["NotFound"];
     };
   };
+  "get-dossiers-rates": {
+    responses: {
+      200: {
+        content: {
+          "application/json": {
+            items: {
+              id: number;
+              name: string;
+              rate: number;
+            }[];
+          };
+        };
+      };
+      403: components["responses"]["Authentication"];
+      404: components["responses"]["NotFound"];
+      /** Not Acceptable */
+      406: unknown;
+      /** Internal Server Error */
+      500: unknown;
+    };
+  };
   /** Return all user permissions */
   "get-users-me-permissions": {
     parameters: {};
@@ -5203,6 +5517,261 @@ export interface operations {
       };
       403: components["responses"]["NotAuthorized"];
       404: components["responses"]["NotFound"];
+    };
+  };
+  "post-campaigns-campaign-tasks-usecase-survey-jotform": {
+    parameters: {
+      path: {
+        campaign: string;
+        usecase: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": { [key: string]: unknown };
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          jotformId: string;
+          testerQuestionId: string;
+        };
+      };
+    };
+  };
+  /** Get all finance suppliers */
+  "get-campaigns-campaign-finance-supplier": {
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            items: {
+              name: string;
+              created_at?: string;
+              created_by?: number;
+              id: number;
+            }[];
+          };
+        };
+      };
+      /** Bad Request */
+      400: unknown;
+      /** Forbidden */
+      403: unknown;
+      /** Internal Server Error */
+      500: unknown;
+    };
+  };
+  "post-campaigns-campaign-finance-supplier": {
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+    responses: {
+      /** Created */
+      201: {
+        content: {
+          "application/json": {
+            supplier_id: number;
+          };
+        };
+      };
+      /** Bad Request */
+      400: unknown;
+      /** Forbidden */
+      403: unknown;
+      /** Internal Server Error */
+      500: unknown;
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          name: string;
+        };
+      };
+    };
+  };
+  "get-campaigns-campaign-finance-type": {
+    parameters: {
+      path: {
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            items: {
+              name: string;
+              id: number;
+            }[];
+          };
+        };
+      };
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+      /** Internal Server Error */
+      500: unknown;
+    };
+  };
+  "get-campaigns-campaign-finance-otherCosts": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            items: {
+              cost_id: number;
+              type: {
+                name: string;
+                id: number;
+              };
+              supplier: {
+                name: string;
+                id: number;
+              };
+              description: string;
+              attachments: {
+                id: number;
+                url: string;
+                mimetype: string;
+                presigned_url: string;
+              }[];
+              cost: number;
+            }[];
+          };
+        };
+      };
+      /** Forbidden */
+      403: unknown;
+      /** Not Found */
+      404: unknown;
+      /** Internal Server Error */
+      500: unknown;
+    };
+  };
+  /** Create a new campaign cost */
+  "post-campaigns-campaign-finance-otherCosts": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** Created */
+      201: unknown;
+      /** Bad Request */
+      400: unknown;
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+      /** Internal Server Error */
+      500: unknown;
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          description: string;
+          type_id: number;
+          supplier_id: number;
+          cost: number;
+          attachments: {
+            url: string;
+            mime_type: string;
+          }[];
+        }[];
+      };
+    };
+  };
+  "delete-campaigns-campaign-finance-otherCosts": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: unknown;
+      /** Bad Request */
+      400: unknown;
+      403: components["responses"]["NotAuthorized"];
+      404: components["responses"]["NotFound"];
+      /** Internal Server Error */
+      500: unknown;
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          cost_id: number;
+        };
+      };
+    };
+  };
+  "patch-campaigns-campaign-finance-otherCosts": {
+    parameters: {
+      path: {
+        /** A campaign id */
+        campaign: string;
+      };
+    };
+    responses: {
+      /** OK */
+      200: {
+        content: {
+          "application/json": {
+            description: string;
+            type: string;
+            cost_id: number;
+            supplier: string;
+            cost: number;
+            attachments: {
+              url: string;
+              mime_type: string;
+            }[];
+          }[];
+        };
+      };
+      /** Bad Request */
+      400: unknown;
+      /** Forbidden */
+      403: unknown;
+      404: components["responses"]["NotFound"];
+      /** Internal Server Error */
+      500: unknown;
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          description: string;
+          type_id: number;
+          supplier_id: number;
+          cost: number;
+          attachments: {
+            url: string;
+            mime_type: string;
+          }[];
+          cost_id: number;
+        }[];
+      };
     };
   };
 }
