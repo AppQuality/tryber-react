@@ -1,0 +1,44 @@
+{
+  "id": 123,
+  "title": "My AI campaign",
+  "minimumMedia": 1,
+  "autoApprove": 1,
+  "useCases": [
+    {
+      "id": 0,
+      "name": "Not a specific Use Case"
+    }
+  ],
+  "bugTypes": {
+    "valid": ["CRASH", "TYPO"],
+    "invalid": []
+  },
+  "bugSeverity": {
+    "valid": ["LOW", "MEDIUM"],
+    "invalid": []
+  },
+  "bugReplicability": {
+    "valid": ["ALWAYS", "SOMETIMES"],
+    "invalid": []
+  },
+  "hasBugForm": true,
+  "hasBugParade": 0,
+  "devices": [
+    {
+      "id": 1,
+      "type": "PC",
+      "device": {
+        "pc_type": "Desktop"
+      },
+      "operating_system": {
+        "id": 781,
+        "platform": "MacOS",
+        "version": "Mac OS X 10.15"
+      }
+    }
+  ],
+  "validFileExtensions": ["jpg", "png", "mov", "mp4"],
+  "campaign_type": { "id": 1, "name": "Bug Hunting", "icon": "bug-report" },
+  "end_date": "01-01-2030",
+  "goal": "A beautiful goal"
+}
