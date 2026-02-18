@@ -24,20 +24,31 @@ export const FileUploader = () => {
   const { data } = useCampaignData();
   const { t } = useTranslation();
 
+  const needsVideoAndImage =
+    data?.autoApprove === 1 && (data?.minimumMedia || 0) > 1;
+
   return (
     <Card
       title={t("BUGFORM_UPLOAD_TITLE", { defaultValue: "Uploading media" })}
     >
       <Text className="aq-text-primaryVariant">
-        <Trans
-          i18nKey="Upload a minimum number of {{num}} files:::BUGFORM_UPLOAD_TXT"
-          values={{
-            num: data?.minimumMedia || 0,
-          }}
-          tOptions={{ count: data?.minimumMedia }}
-          count={data?.minimumMedia}
-          defaults={"Upload a minimum number of {{num}} files"}
-        />
+        {needsVideoAndImage ? (
+          <Trans
+            i18nKey="Upload at least {{num}} files, including one video and one image (both are required):::BUGFORM_UPLOAD_TXT_VIDEO_IMAGE"
+            values={{ num: data?.minimumMedia || 0 }}
+            defaults="Upload at least {{num}} files, including one video and one image (both are required)"
+          />
+        ) : (
+          <Trans
+            i18nKey="Upload a minimum number of {{num}} files:::BUGFORM_UPLOAD_TXT"
+            values={{
+              num: data?.minimumMedia || 0,
+            }}
+            tOptions={{ count: data?.minimumMedia }}
+            count={data?.minimumMedia}
+            defaults={"Upload a minimum number of {{num}} files"}
+          />
+        )}
       </Text>
       <StyledFilesTypes className="aq-mb-3">
         <FileType className="file-type-margin" type="image" />
