@@ -39,15 +39,11 @@ export const FileUploader = () => {
             defaults="Upload at least {{num}} files, including one video and one image (both are required)"
           />
         ) : (
-          <Trans
-            i18nKey="Upload a minimum number of {{num}} files:::BUGFORM_UPLOAD_TXT"
-            values={{
-              num: data?.minimumMedia || 0,
-            }}
-            tOptions={{ count: data?.minimumMedia }}
-            count={data?.minimumMedia}
-            defaults={"Upload a minimum number of {{num}} files"}
-          />
+          t("Upload a minimum number of {{num}} files:::BUGFORM_UPLOAD_TXT", {
+            defaultValue: "Upload at least {{num}} media",
+            num: data?.minimumMedia || 0,
+            count: data?.minimumMedia,
+          })
         )}
       </Text>
       <StyledFilesTypes className="aq-mb-3">

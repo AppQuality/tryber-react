@@ -344,7 +344,7 @@
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Fabricant : <bold>{{manufacturer}}</bold>",
   "Mark as completed": "",
   "Media field must have at least {{num}} items": {
-    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "Vous devez télécharger au moins {{num}} médias pour cette campagne",
+    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "Vous devez télécharger au moins {{num}} média pour cette campagne",
     "BUGFORM_UPLOAD_ERROR_MINIMUMFILES_plural": "Vous devez télécharger au moins {{num}} médias pour cette campagne"
   },
   "Messages for you": "Messages pour vous",
@@ -558,7 +558,7 @@
   "USECASE_MEDIA_DROPZONE_MISSING_PARAMS": "Informations de campagne ou de tâche manquantes.",
   "Update your device list": "Mettez à jour votre liste d'appareils",
   "Upload a minimum number of {{num}} files": {
-    "BUGFORM_UPLOAD_TXT": "Téléchargez au moins {{num}} médias",
+    "BUGFORM_UPLOAD_TXT": "Téléchargez au moins {{num}} média",
     "BUGFORM_UPLOAD_TXT_plural": "Téléchargez au moins {{num}} médias"
   },
   "Upload at least {{num}} files, including one video and one image (both are required)": {
