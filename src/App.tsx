@@ -16,6 +16,11 @@ import Page from "./Page";
 
 import isStagingEnvironment from "./features/isStagingEnvironment";
 
+const store = setupStore();
+if (process.env.NODE_ENV !== "production") {
+  (window as any).__store = store;
+}
+
 if (process.env.REACT_APP_GTM_ID) {
   TagManager.initialize({
     gtmId: process.env.REACT_APP_GTM_ID,
@@ -31,7 +36,7 @@ if (process.env.REACT_APP_GTM_ID) {
 function App() {
   const { t } = useTranslation();
   return (
-    <Provider store={setupStore()}>
+    <Provider store={store}>
       <ThemeProvider theme={aqBootstrapTheme}>
         <GlobalStyle />
         <Helmet>
