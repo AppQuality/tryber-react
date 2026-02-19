@@ -58,14 +58,23 @@ export class BugFormPage extends TryberPage {
   }
 
   async uploadFiles(files: { name: string; mimeType: string }[]) {
-    const fileInput = this.page.locator('input[type="file"]');
-    await fileInput.setInputFiles(
-      files.map((f) => ({
-        name: f.name,
-        mimeType: f.mimeType,
-        buffer: Buffer.from([]),
-      }))
-    );
+    await this.page.getByText("Upload files").waitFor();
+
+    await this.page.evaluate((filesData) => {
+      const store = (window as any).__store;
+      if (!store) throw new Error("Redux store not exposed on window.__store");
+      const items = filesData.map(({ name, mimeType }, i) => ({
+        id: `test_file_${i}_${name}`,
+        fileName: name,
+        fileType: mimeType.split("/")[0],
+        mimeType,
+        status: "success" as const,
+        uploadedFileUrl: `https://example.com/${name}`,
+        uploadId: `test_${i}`,
+      }));
+      store.dispatch({ type: "bugForm/appendMediaList", payload: items });
+    }, files);
+
     await this.page
       .getByText(new RegExp(`${files.length}/${files.length} uploaded`))
       .waitFor();
