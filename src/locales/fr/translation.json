@@ -77,10 +77,10 @@
   "Area is a required field.": "Le domaine est un champ obligatoire.",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Indiquez vos coordonnées dans la section Profil : elles sont importantes pour être sélectionné pour des campagnes adaptées et pour demander les paiements.",
   "At least one image is required": {
-    "BUGFORM_UPLOAD_ERROR_IMAGEREQUIRED": "At least one image is required"
+    "BUGFORM_UPLOAD_ERROR_IMAGEREQUIRED": "Au moins une image est requise"
   },
   "At least one video is required": {
-    "BUGFORM_UPLOAD_ERROR_VIDEOREQUIRED": "At least one video is required"
+    "BUGFORM_UPLOAD_ERROR_VIDEOREQUIRED": "Au moins une vidéo est requise"
   },
   "Attribution date": "Date d'attribution",
   "Available booty": "Butin disponible",
@@ -562,7 +562,7 @@
     "BUGFORM_UPLOAD_TXT_plural": "Téléchargez au moins {{num}} médias"
   },
   "Upload at least {{num}} files, including one video and one image (both are required)": {
-    "BUGFORM_UPLOAD_TXT_VIDEO_IMAGE": ""
+    "BUGFORM_UPLOAD_TXT_VIDEO_IMAGE": "Téléchargez au moins {{num}} fichiers, dont une vidéo et une image (les deux sont obligatoires)"
   },
   "Uploaded Bugs": "Bugs téléchargés",
   "User mail validation": {

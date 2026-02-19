@@ -77,10 +77,10 @@
   "Area is a required field.": "L'area è un campo obbligatorio",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Inserisci tutti i tuoi dati nella sezione Profilo: servirà a noi per selezionarti quando c'è una campagna adatta e a te per richiedere il pagamento.",
   "At least one image is required": {
-    "BUGFORM_UPLOAD_ERROR_IMAGEREQUIRED": "At least one image is required"
+    "BUGFORM_UPLOAD_ERROR_IMAGEREQUIRED": "È richiesta almeno un'immagine"
   },
   "At least one video is required": {
-    "BUGFORM_UPLOAD_ERROR_VIDEOREQUIRED": "At least one video is required"
+    "BUGFORM_UPLOAD_ERROR_VIDEOREQUIRED": "È richiesto almeno un video"
   },
   "Attribution date": "Data di attribuzione",
   "Available booty": "Guadagni disponibili",
@@ -562,7 +562,7 @@
     "BUGFORM_UPLOAD_TXT_plural": "Carica almeno {{num}} file"
   },
   "Upload at least {{num}} files, including one video and one image (both are required)": {
-    "BUGFORM_UPLOAD_TXT_VIDEO_IMAGE": ""
+    "BUGFORM_UPLOAD_TXT_VIDEO_IMAGE": "Carica almeno {{num}} file, inclusi un video e un'immagine (entrambi obbligatori)"
   },
   "Uploaded Bugs": "Bug caricati",
   "User mail validation": {
