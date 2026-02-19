@@ -356,6 +356,7 @@ test.describe("Payment request", () => {
       test.describe("Manual Payment request modal fourth step", () => {
         let count = 0;
         test.beforeEach(async ({ page }) => {
+          count = 0;
           await walletPage.postUsersMePayments();
           await walletPage.requestPayment();
           await expect(page.getByTestId("payment-modal-next")).toBeVisible();
