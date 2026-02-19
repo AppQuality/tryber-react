@@ -36,4 +36,38 @@ export class BugFormPage extends TryberPage {
   async visit() {
     await this.page.goto(`/campaign/${this.campaignId}/bugform`);
   }
+
+  async mockMediaUpload() {
+    await this.page.route(
+      `*/**/api/users/me/campaigns/${this.campaignId}/media`,
+      async (route) => {
+        const body = route.request().postDataBuffer();
+        const text = body?.toString("latin1") || "";
+        const match = text.match(/filename="([^"]+)"/);
+        const filename = match ? match[1] : "file.jpg";
+        await route.fulfill({
+          json: {
+            files: [
+              { name: filename, path: `https://example.com/${filename}` },
+            ],
+            failed: [],
+          },
+        });
+      }
+    );
+  }
+
+  async uploadFiles(files: { name: string; mimeType: string }[]) {
+    const fileInput = this.page.locator('input[type="file"]');
+    await fileInput.setInputFiles(
+      files.map((f) => ({
+        name: f.name,
+        mimeType: f.mimeType,
+        buffer: Buffer.from([]),
+      }))
+    );
+    await this.page
+      .getByText(new RegExp(`${files.length}/${files.length} uploaded`))
+      .waitFor();
+  }
 }
