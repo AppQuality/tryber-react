@@ -76,6 +76,12 @@
   "Approved bugs": "Bugs approuvés",
   "Area is a required field.": "Le domaine est un champ obligatoire.",
   "As first step to be done, complete your profile with authentic and real data. This is the only way to be selected for the Campaigns and get your reward.": "Indiquez vos coordonnées dans la section Profil : elles sont importantes pour être sélectionné pour des campagnes adaptées et pour demander les paiements.",
+  "At least one image is required": {
+    "BUGFORM_UPLOAD_ERROR_IMAGEREQUIRED": "Au moins une image est requise"
+  },
+  "At least one video is required": {
+    "BUGFORM_UPLOAD_ERROR_VIDEOREQUIRED": "Au moins une vidéo est requise"
+  },
   "Attribution date": "Date d'attribution",
   "Available booty": "Butin disponible",
   "Available tags \n<a> - Link to help article for fiscal type": {
@@ -338,7 +344,7 @@
   "Manufacturer: <bold>{{manufacturer}}</bold>": "Fabricant : <bold>{{manufacturer}}</bold>",
   "Mark as completed": "",
   "Media field must have at least {{num}} items": {
-    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "Vous devez télécharger au moins {{num}} médias pour cette campagne",
+    "BUGFORM_UPLOAD_ERROR_MINIMUMFILES": "Vous devez télécharger au moins {{num}} média pour cette campagne",
     "BUGFORM_UPLOAD_ERROR_MINIMUMFILES_plural": "Vous devez télécharger au moins {{num}} médias pour cette campagne"
   },
   "Messages for you": "Messages pour vous",
@@ -552,8 +558,11 @@
   "USECASE_MEDIA_DROPZONE_MISSING_PARAMS": "Informations de campagne ou de tâche manquantes.",
   "Update your device list": "Mettez à jour votre liste d'appareils",
   "Upload a minimum number of {{num}} files": {
-    "BUGFORM_UPLOAD_TXT": "Téléchargez au moins {{num}} médias",
+    "BUGFORM_UPLOAD_TXT": "Téléchargez au moins {{num}} média",
     "BUGFORM_UPLOAD_TXT_plural": "Téléchargez au moins {{num}} médias"
+  },
+  "Upload at least {{num}} files, including one video and one image (both are required)": {
+    "BUGFORM_UPLOAD_TXT_VIDEO_IMAGE": "Téléchargez au moins {{num}} fichiers, dont une vidéo et une image (les deux sont obligatoires)"
   },
   "Uploaded Bugs": "Bugs téléchargés",
   "User mail validation": {
