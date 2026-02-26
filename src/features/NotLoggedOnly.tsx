@@ -1,7 +1,6 @@
 import TagManager from "react-gtm-module";
 import { useHistory } from "react-router-dom";
 
-import * as Sentry from "@sentry/react";
 import { useGetUsersMeQuery } from "src/services/tryberApi";
 import { useAppSelector } from "src/store";
 import Loading from "./Loading";
@@ -32,13 +31,6 @@ const NotLoggedOnly = ({
     return <Loading />;
   }
   if (user && redirect && !isPublicUser) {
-    Sentry.setUser({
-      id: user?.id ?? 0,
-      email: user?.email ?? "unknown",
-      username: user?.username ?? "unknown",
-      wp_user_id: user?.wp_user_id ?? 0,
-      role: user?.role ?? "unknown",
-    });
     history.push(redirect.url);
   }
   TagManager.dataLayer({
