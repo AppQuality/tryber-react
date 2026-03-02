@@ -17,7 +17,7 @@ test.describe("Net and gross columns in wallet table", () => {
   test("Should show columns net and gross in wallet table", async ({
     page,
   }) => {
-    const walletTable = page.locator(".wallet-table");
+    const walletTable = page.locator(".wallet-table").first();
     await expect(walletTable.locator(".thead")).toHaveCount(numberOfColumns);
     await expect(walletTable.locator(".thead")).toContainText([
       /^ID$/,
@@ -31,7 +31,7 @@ test.describe("Net and gross columns in wallet table", () => {
   });
 
   test("Should show net and gross values in wallet table", async ({ page }) => {
-    const walletTable = page.locator(".wallet-table");
+    const walletTable = page.locator(".wallet-table").first();
     const {
       results,
     } = require("../../api/users/me/payments/_get/200_multiple-pages.json");
@@ -49,7 +49,7 @@ test.describe("Net and gross columns in wallet table", () => {
   test("Should show a non empty table in the payment detail modal", async ({
     page,
   }) => {
-    const walletTable = page.locator(".wallet-table");
+    const walletTable = page.locator(".wallet-table").first();
     const allCells = walletTable.locator(".tbody.cell");
     for (const [index, cell] of (await allCells.all()).entries()) {
       if (index + 1 === numberOfColumns * 2) {
@@ -71,7 +71,7 @@ test.describe("Net and gross columns in wallet table", () => {
   });
 
   test("Should show empty state if no payments", async ({ page }) => {
-    const walletTable = page.locator(".wallet-table");
+    const walletTable = page.locator(".wallet-table").first();
     const allCells = walletTable.locator(".tbody.cell");
     for (const [index, cell] of (await allCells.all()).entries()) {
       if (index + 1 === numberOfColumns * 3) {

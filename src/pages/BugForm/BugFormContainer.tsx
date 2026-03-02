@@ -94,6 +94,9 @@ export const BugFormContainer = () => {
     );
   }
 
+  const needsVideoAndImage =
+    data?.autoApprove === 1 && (data?.minimumMedia || 0) > 1;
+
   const validationSchema = {
     title: yup.string().required(t("This is a required field")),
     severity: yup.string().required(t("This is a required field")),
@@ -115,17 +118,45 @@ export const BugFormContainer = () => {
       .required(t("BUGFORM_BUGDTLS_TYPE_ERROR", "This is a required field")),
     expected: yup.string().required(t("This is a required field")),
     current: yup.string().required(t("This is a required field")),
-    media: yup.array().min(
-      data?.minimumMedia || 0,
-      t(
-        "Media field must have at least {{num}} items:::BUGFORM_UPLOAD_ERROR_MINIMUMFILES",
-        {
-          defaultValue: "Media field must have at least {{num}} items",
-          num: data?.minimumMedia || 0,
-          count: data?.minimumMedia,
+    media: yup
+      .array()
+      .min(
+        data?.minimumMedia || 0,
+        t(
+          "Media field must have at least {{num}} items:::BUGFORM_UPLOAD_ERROR_MINIMUMFILES",
+          {
+            defaultValue: "Media field must have at least {{num}} items",
+            num: data?.minimumMedia || 0,
+            count: data?.minimumMedia,
+          }
+        )
+      )
+      .test(
+        "has-video",
+        t(
+          "At least one video is required:::BUGFORM_UPLOAD_ERROR_VIDEOREQUIRED",
+          { defaultValue: "At least one video is required" }
+        ),
+        () => {
+          if (!needsVideoAndImage) return true;
+          return mediaList.some(
+            (m) => m.status === "success" && m.fileType === "video"
+          );
         }
       )
-    ),
+      .test(
+        "has-image",
+        t(
+          "At least one image is required:::BUGFORM_UPLOAD_ERROR_IMAGEREQUIRED",
+          { defaultValue: "At least one image is required" }
+        ),
+        () => {
+          if (!needsVideoAndImage) return true;
+          return mediaList.some(
+            (m) => m.status === "success" && m.fileType === "image"
+          );
+        }
+      ),
     additional: yup.object(),
   };
   if (data.titleRule) {
