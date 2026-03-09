@@ -5,9 +5,7 @@ import { useEffect } from "react";
 import { Redirect, Route, Router, Switch, useLocation } from "react-router-dom";
 import "./i18n";
 
-import * as Sentry from "@sentry/react";
 import GenericModal from "./features/GenericModal";
-import SentryWrapper from "./features/SentryWrapper";
 import SiteWideMessages from "./features/SiteWideMessages";
 import {
   Dashboard,
@@ -32,8 +30,6 @@ import ThankYouPage from "./pages/ThankYou";
 import VdpPage from "./pages/VDP";
 import referralStore from "./redux/referral";
 
-// Create Custom Sentry Route component
-const SentryRoute = Sentry.withSentryRouting(Route);
 const history = createBrowserHistory();
 
 if (process.env.REACT_APP_DATADOG_CLIENT_TOKEN) {
@@ -58,176 +54,156 @@ function Page() {
   }, []);
 
   return (
-    <SentryWrapper history={history}>
-      <div aria-live="polite">
-        <SiteWideMessages />
-        <GenericModal />
-        <Router history={history}>
-          <Switch>
-            <SentryRoute
-              path={`${base}/getting-started/signup`}
-              component={Signup}
-            />
-            <SentryRoute
-              path={`${base}/getting-started/confirmation`}
-              component={SignupSuccess}
-            />
-            <SentryRoute
-              path={`${base}/getting-started`}
-              component={GettingStarted}
-            />
-            <SentryRoute path={`/it/getting-started-2`}>
-              <Redirect to="/it/getting-started" />
-            </SentryRoute>
+    <div aria-live="polite">
+      <SiteWideMessages />
+      <GenericModal />
+      <Router history={history}>
+        <Switch>
+          <Route path={`${base}/getting-started/signup`} component={Signup} />
+          <Route
+            path={`${base}/getting-started/confirmation`}
+            component={SignupSuccess}
+          />
+          <Route path={`${base}/getting-started`} component={GettingStarted} />
+          <Route path={`/it/getting-started-2`}>
+            <Redirect to="/it/getting-started" />
+          </Route>
 
-            <SentryRoute path={`${base}/login`} component={Login} />
+          <Route path={`${base}/login`} component={Login} />
 
-            <SentryRoute
-              path={`*/login`}
-              component={({ location }: { location: Location }) => (
-                <Redirect
-                  to={{
-                    ...location,
-                    pathname: `/login`,
-                  }}
-                />
-              )}
-            />
+          <Route
+            path={`*/login`}
+            component={({ location }: { location: Location }) => (
+              <Redirect
+                to={{
+                  ...location,
+                  pathname: `/login`,
+                }}
+              />
+            )}
+          />
 
-            <SentryRoute path={`${base}/my-dashboard`} component={Dashboard} />
+          <Route path={`${base}/my-dashboard`} component={Dashboard} />
 
-            <SentryRoute
-              path={`${base}/personal-equipment`}
-              component={Devices}
-            />
-            <SentryRoute
-              path={`/it/i-miei-device`}
-              component={({ location }: { location: Location }) => (
-                <Redirect
-                  to={{
-                    ...location,
-                    pathname: "/it/personal-equipment",
-                  }}
-                />
-              )}
-            />
-            <SentryRoute
-              path={`/es/dispositivos`}
-              component={({ location }: { location: Location }) => (
-                <Redirect
-                  to={{
-                    ...location,
-                    pathname: "/es/personal-equipment",
-                  }}
-                />
-              )}
-            />
+          <Route path={`${base}/personal-equipment`} component={Devices} />
+          <Route
+            path={`/it/i-miei-device`}
+            component={({ location }: { location: Location }) => (
+              <Redirect
+                to={{
+                  ...location,
+                  pathname: "/it/personal-equipment",
+                }}
+              />
+            )}
+          />
+          <Route
+            path={`/es/dispositivos`}
+            component={({ location }: { location: Location }) => (
+              <Redirect
+                to={{
+                  ...location,
+                  pathname: "/es/personal-equipment",
+                }}
+              />
+            )}
+          />
 
-            <SentryRoute path={`/it/la-mia-dashboard`}>
-              <Redirect to="/it/my-dashboard" />
-            </SentryRoute>
-            <SentryRoute path={`/es/tablero`}>
-              <Redirect to="/es/my-dashboard" />
-            </SentryRoute>
+          <Route path={`/it/la-mia-dashboard`}>
+            <Redirect to="/it/my-dashboard" />
+          </Route>
+          <Route path={`/es/tablero`}>
+            <Redirect to="/es/my-dashboard" />
+          </Route>
 
-            <SentryRoute path={`${base}/my-bugs`} component={MyBugs} />
-            <SentryRoute path={`${base}/vdp/:id/:token`} component={VdpPage} />
-            <SentryRoute
-              path={`${base}/experience-points`}
-              component={ExperiencePoints}
-            />
-            <SentryRoute
-              path={`${base}/it/punti-esperienza`}
-              component={({ location }: { location: Location }) => (
-                <Redirect
-                  to={{
-                    ...location,
-                    pathname: "/it/experience-points",
-                  }}
-                />
-              )}
-            />
-            <SentryRoute
-              path={`${base}/es/puntos-de-experiencia`}
-              component={({ location }: { location: Location }) => (
-                <Redirect
-                  to={{
-                    ...location,
-                    pathname: "/es/experience-points",
-                  }}
-                />
-              )}
-            />
+          <Route path={`${base}/my-bugs`} component={MyBugs} />
+          <Route path={`${base}/vdp/:id/:token`} component={VdpPage} />
+          <Route
+            path={`${base}/experience-points`}
+            component={ExperiencePoints}
+          />
+          <Route
+            path={`${base}/it/punti-esperienza`}
+            component={({ location }: { location: Location }) => (
+              <Redirect
+                to={{
+                  ...location,
+                  pathname: "/it/experience-points",
+                }}
+              />
+            )}
+          />
+          <Route
+            path={`${base}/es/puntos-de-experiencia`}
+            component={({ location }: { location: Location }) => (
+              <Redirect
+                to={{
+                  ...location,
+                  pathname: "/es/experience-points",
+                }}
+              />
+            )}
+          />
 
-            <SentryRoute
-              path={`${base}/it/i-miei-bug`}
-              component={({ location }: { location: Location }) => (
-                <Redirect
-                  to={{
-                    ...location,
-                    pathname: "/it/my-bugs",
-                  }}
-                />
-              )}
-            />
-            <SentryRoute
-              path={`${base}/es/errores-cargados`}
-              component={({ location }: { location: Location }) => (
-                <Redirect
-                  to={{
-                    ...location,
-                    pathname: "/es/my-bugs",
-                  }}
-                />
-              )}
-            />
+          <Route
+            path={`${base}/it/i-miei-bug`}
+            component={({ location }: { location: Location }) => (
+              <Redirect
+                to={{
+                  ...location,
+                  pathname: "/it/my-bugs",
+                }}
+              />
+            )}
+          />
+          <Route
+            path={`${base}/es/errores-cargados`}
+            component={({ location }: { location: Location }) => (
+              <Redirect
+                to={{
+                  ...location,
+                  pathname: "/es/my-bugs",
+                }}
+              />
+            )}
+          />
 
-            <SentryRoute path={`${base}/my-account`} component={Profile} />
-            <SentryRoute path={`${base}/payments`} component={Wallet} />
-            <SentryRoute path={`${base}/leaderboard`} component={Ranking} />
-            <SentryRoute
-              path={`${base}/campaign/:id/bugform`}
-              component={BugForm}
-            />
-            <SentryRoute path={`${base}/thank-you`} component={ThankYouPage} />
-            {/* TODO Temporary route */}
-            <SentryRoute
-              path={`${base}/campaign/:id/preview-selection-form`}
-              component={PreviewSelectionForm}
-            />
-            <SentryRoute
-              path={`${base}/campaigns/:id/preview`}
-              component={Preview}
-            />
-            <SentryRoute
-              path={`${base}/campaigns/:id/manual`}
-              component={Manual}
-            />
-            <SentryRoute
-              path={["/goodbye", "/it/goodbye", "/es/goodbye", "/fr/goodbye"]}
-              exact
-              component={GoodbyePage}
-            />
-            <SentryRoute path={"/"} exact>
-              <Redirect to="/my-dashboard" />
-            </SentryRoute>
-            <SentryRoute path={"/it"} exact>
-              <Redirect to="/it/my-dashboard" />
-            </SentryRoute>
-            <SentryRoute path={"/es"} exact>
-              <Redirect to="/es/my-dashboard" />
-            </SentryRoute>
-            <SentryRoute path={"/fr"} exact>
-              <Redirect to="/fr/my-dashboard" />
-            </SentryRoute>
-            <SentryRoute
-              path={`${base}/campaign/:id/file-dropzone/:taskId`}
-              component={FileDropzonePage}
-            />
-          </Switch>
-        </Router>
-      </div>
-    </SentryWrapper>
+          <Route path={`${base}/my-account`} component={Profile} />
+          <Route path={`${base}/payments`} component={Wallet} />
+          <Route path={`${base}/leaderboard`} component={Ranking} />
+          <Route path={`${base}/campaign/:id/bugform`} component={BugForm} />
+          <Route path={`${base}/thank-you`} component={ThankYouPage} />
+          {/* TODO Temporary route */}
+          <Route
+            path={`${base}/campaign/:id/preview-selection-form`}
+            component={PreviewSelectionForm}
+          />
+          <Route path={`${base}/campaigns/:id/preview`} component={Preview} />
+          <Route path={`${base}/campaigns/:id/manual`} component={Manual} />
+          <Route
+            path={["/goodbye", "/it/goodbye", "/es/goodbye", "/fr/goodbye"]}
+            exact
+            component={GoodbyePage}
+          />
+          <Route path={"/"} exact>
+            <Redirect to="/my-dashboard" />
+          </Route>
+          <Route path={"/it"} exact>
+            <Redirect to="/it/my-dashboard" />
+          </Route>
+          <Route path={"/es"} exact>
+            <Redirect to="/es/my-dashboard" />
+          </Route>
+          <Route path={"/fr"} exact>
+            <Redirect to="/fr/my-dashboard" />
+          </Route>
+          <Route
+            path={`${base}/campaign/:id/file-dropzone/:taskId`}
+            component={FileDropzonePage}
+          />
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
