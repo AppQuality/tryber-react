@@ -1,7 +1,7 @@
-import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
 import { TFunction } from "react-i18next";
-
 import { updateDetailsSortingOptions } from "../../../redux/wallet/actionCreator";
+
+type Column = any;
 
 export const paymentDetailsColumns = (
   dispatch: AppDispatch,
@@ -16,7 +16,7 @@ export const paymentDetailsColumns = (
       role: "title",
       isSortable: true,
       hideIndex: true,
-      onSort: (newOrder) => {
+      onSort: (newOrder: "ASC" | "DESC") => {
         dispatch(updateDetailsSortingOptions(newOrder, "activity"));
       },
     },
@@ -25,7 +25,7 @@ export const paymentDetailsColumns = (
       dataIndex: "type",
       key: "type",
       isSortable: true,
-      onSort: (newOrder) => {
+      onSort: (newOrder: "ASC" | "DESC") => {
         dispatch(updateDetailsSortingOptions(newOrder, "type"));
       },
     },
@@ -34,7 +34,7 @@ export const paymentDetailsColumns = (
       dataIndex: "date",
       key: "date",
       isSortable: true,
-      onSort: (newOrder) => {
+      onSort: (newOrder: "ASC" | "DESC") => {
         dispatch(updateDetailsSortingOptions(newOrder, "date"));
       },
     },
@@ -45,7 +45,7 @@ export const paymentDetailsColumns = (
       key: "gross",
       hideIndex: true,
       isSortable: true,
-      onSort: (newOrder) => {
+      onSort: (newOrder: "ASC" | "DESC") => {
         dispatch(updateDetailsSortingOptions(newOrder, "gross"));
       },
     },

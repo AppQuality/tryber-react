@@ -6,9 +6,9 @@ import { Text } from "@appquality/appquality-design-system";
 import { usePostUsersMePaymentsMutation } from "src/services/tryberApi";
 import * as yup from "yup";
 
-export const FormWrapper: React.FunctionComponent<PaymentModalFormProps> = ({
-  children,
-}) => {
+export const FormWrapper: React.FunctionComponent<
+  PaymentModalFormProps & { children: React.ReactNode }
+> = ({ children }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [postUsersMePayments] = usePostUsersMePaymentsMutation();

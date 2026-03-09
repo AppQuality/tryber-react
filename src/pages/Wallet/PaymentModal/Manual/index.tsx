@@ -24,58 +24,60 @@ const Manual = () => {
   );
   return (
     <FormWrapper>
-      {(formikProps: FormikProps<PaymentFormType>) => {
-        const { step } = formikProps.values;
-        const closeModal = () => {
-          formikProps.resetForm();
-          dispatch(setPaymentModalOpen(false));
-        };
-        return (
-          <form
-            onSubmit={formikProps.handleSubmit}
-            onReset={formikProps.handleReset}
-          >
-            <Modal
-              isOpen={isPaymentModalOpen}
-              onClose={closeModal}
-              title={t("Request a payment")}
-              footer={
-                step < 3 && (
-                  <Footer
-                    completedSteps={completedSteps}
-                    setCompletedSteps={setCompletedSteps}
-                  />
-                )
-              }
+      <>
+        {(formikProps: FormikProps<PaymentFormType>) => {
+          const { step } = formikProps.values;
+          const closeModal = () => {
+            formikProps.resetForm();
+            dispatch(setPaymentModalOpen(false));
+          };
+          return (
+            <form
+              onSubmit={formikProps.handleSubmit}
+              onReset={formikProps.handleReset}
             >
-              <ModalBody>
-                {step < 3 && (
-                  <Steps current={step} className="aq-mb-3">
-                    <Steps.Step
-                      isCompleted={completedSteps[0]}
-                      title={t("MODAL_PAYMENT_STEP_TITLE:::Start here")}
+              <Modal
+                isOpen={isPaymentModalOpen}
+                onClose={closeModal}
+                title={t("Request a payment")}
+                footer={
+                  step < 3 && (
+                    <Footer
+                      completedSteps={completedSteps}
+                      setCompletedSteps={setCompletedSteps}
                     />
-                    <Steps.Step
-                      isCompleted={completedSteps[1]}
-                      title={t("MODAL_PAYMENT_STEP_TITLE:::Insert details")}
-                    />
-                    <Steps.Step
-                      isCompleted={completedSteps[2]}
-                      title={t("MODAL_PAYMENT_STEP_TITLE:::Get email")}
-                    />
-                  </Steps>
-                )}
-                <div className="aq-pt-3" data-qa="manual-payment-modal">
-                  {step === 0 && <Step0FiscalProfileRecap />}
-                  {step === 1 && <Step1Iban />}
-                  {step === 2 && <Step2PaymentRequestRecap />}
-                  {step === 3 && <Step3Success />}
-                </div>
-              </ModalBody>
-            </Modal>
-          </form>
-        );
-      }}
+                  )
+                }
+              >
+                <ModalBody>
+                  {step < 3 && (
+                    <Steps current={step} className="aq-mb-3">
+                      <Steps.Step
+                        isCompleted={completedSteps[0]}
+                        title={t("MODAL_PAYMENT_STEP_TITLE:::Start here")}
+                      />
+                      <Steps.Step
+                        isCompleted={completedSteps[1]}
+                        title={t("MODAL_PAYMENT_STEP_TITLE:::Insert details")}
+                      />
+                      <Steps.Step
+                        isCompleted={completedSteps[2]}
+                        title={t("MODAL_PAYMENT_STEP_TITLE:::Get email")}
+                      />
+                    </Steps>
+                  )}
+                  <div className="aq-pt-3" data-qa="manual-payment-modal">
+                    {step === 0 && <Step0FiscalProfileRecap />}
+                    {step === 1 && <Step1Iban />}
+                    {step === 2 && <Step2PaymentRequestRecap />}
+                    {step === 3 && <Step3Success />}
+                  </div>
+                </ModalBody>
+              </Modal>
+            </form>
+          );
+        }}
+      </>
     </FormWrapper>
   );
 };

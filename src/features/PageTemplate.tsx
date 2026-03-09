@@ -34,7 +34,9 @@ const ContentTemplate = ({
   );
 };
 
-export const OutsideContainer: FC = ({ children }) => {
+export const OutsideContainer: FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return <>{children}</>;
 };
 
@@ -48,6 +50,7 @@ export const PageTemplate: FC<
     showSidebar?: boolean;
     containerClass?: string;
     route: string;
+    children?: React.ReactNode;
   } & (
     | {
         shouldBeLoggedIn: true;

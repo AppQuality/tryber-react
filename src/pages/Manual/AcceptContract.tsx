@@ -18,7 +18,7 @@ const AcceptContract = ({ id }: { id: string }) => {
   return (
     <Wrapper>
       <Title size="xl">{t("__MANUAL_ACCEPT_CONTRACT_TITLE")}</Title>
-      <Title>{t("__MANUAL_ACCEPT_CONTRACT_SUBTITLE")}</Title>
+      <Title size="ms">{t("__MANUAL_ACCEPT_CONTRACT_SUBTITLE")}</Title>
       <Button
         flat
         kind="secondary"

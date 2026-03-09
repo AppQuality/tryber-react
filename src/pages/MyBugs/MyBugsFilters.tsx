@@ -16,9 +16,9 @@ interface MyBugsFiltersProps extends SortTableSelectProps<BugsOrderByType> {
   campaigns: SelectType.Option[];
   severities: SelectType.Option[];
   status: SelectType.Option[];
-  selectedCampaign?: SelectType.Option;
-  selectedSeverity?: SelectType.Option;
-  selectedStatus?: SelectType.Option;
+  selectedCampaign?: any;
+  selectedSeverity?: any;
+  selectedStatus?: any;
 }
 
 const MyBugsFilters = ({

@@ -1,6 +1,7 @@
-import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
 import { TFunction } from "react-i18next";
 import { updateMybugsSortingOptions } from "../../redux/myBugs/actionCreator";
+
+type Column = any;
 
 export const MyBugsColumns = (
   dispatch: AppDispatch,
@@ -12,7 +13,7 @@ export const MyBugsColumns = (
       dataIndex: "id",
       key: "id",
       isSortable: true,
-      onSort: (newOrder) =>
+      onSort: (newOrder: "ASC" | "DESC") =>
         dispatch(updateMybugsSortingOptions(newOrder, "id")),
       role: "overline",
     },
@@ -21,7 +22,7 @@ export const MyBugsColumns = (
       dataIndex: "title",
       key: "title",
       isSortable: true,
-      onSort: (newOrder) =>
+      onSort: (newOrder: "ASC" | "DESC") =>
         dispatch(updateMybugsSortingOptions(newOrder, "title")),
       role: "title",
       hideIndex: true,

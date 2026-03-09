@@ -72,7 +72,9 @@ const useCampaigns = ({ page, order, orderBy }: CampaignsTableProps) => {
       },
       type: {
         content: (
-          <TableCell available={!isUnavailable()}>{cp.campaign_type}</TableCell>
+          <TableCell available={!isUnavailable()}>
+            {String(cp.campaign_type)}
+          </TableCell>
         ),
         title: cp.campaign_type.toString(),
       },

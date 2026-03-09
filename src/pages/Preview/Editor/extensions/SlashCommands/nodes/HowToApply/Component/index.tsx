@@ -18,7 +18,7 @@ export default function MyComponent({ node }: { node: PMNode }) {
 
   return (
     <NodeViewWrapper className="how-to-apply-node">
-      <Title className="aq-mb-2">
+      <Title size="xl" className="aq-mb-2">
         {t("__PREVIEW_HOW_TO_APPLY", "APPLICATION")}
       </Title>
       <Text>

@@ -71,9 +71,11 @@ export const NewCertificationModal = () => {
         close();
       }}
     >
-      {(formikProps: FormikProps<CertificationFields>) => {
-        return <NewCertificationModalForm values={formikProps.values} />;
-      }}
+      <>
+        {(formikProps: FormikProps<CertificationFields>) => {
+          return <NewCertificationModalForm values={formikProps.values} />;
+        }}
+      </>
     </Formik>
   );
 };

@@ -1,7 +1,8 @@
-import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch } from "src/store";
 import { updateExperiencePointsSortingOptions } from "../../redux/experiencePoints/actionCreator";
+
+type Column = any;
 
 export const useExperiencePointsColumns = (): Column[] => {
   const { t } = useTranslation("translation");
@@ -12,7 +13,7 @@ export const useExperiencePointsColumns = (): Column[] => {
       dataIndex: "amount",
       key: "amount",
       isSortable: true,
-      onSort: (newOrder) =>
+      onSort: (newOrder: "ASC" | "DESC") =>
         dispatch(updateExperiencePointsSortingOptions(newOrder, "amount")),
       role: "cta",
       hideIndex: true,
@@ -22,7 +23,7 @@ export const useExperiencePointsColumns = (): Column[] => {
       dataIndex: "date",
       key: "date",
       isSortable: true,
-      onSort: (newOrder) =>
+      onSort: (newOrder: "ASC" | "DESC") =>
         dispatch(updateExperiencePointsSortingOptions(newOrder, "date")),
       role: "overline",
       hideIndex: true,

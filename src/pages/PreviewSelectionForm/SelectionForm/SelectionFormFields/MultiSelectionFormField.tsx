@@ -3,10 +3,11 @@ import {
   FormGroup,
   Select,
 } from "@appquality/appquality-design-system";
-import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import { Field, FieldProps } from "formik";
 import { useTranslation } from "react-i18next";
 import useNotAboveOption from "./useNotAboveOption";
+
+type Option = any;
 
 interface MultiSelectionFormFieldProps {
   name: string;

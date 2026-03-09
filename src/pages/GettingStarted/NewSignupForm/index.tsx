@@ -48,28 +48,30 @@ const SignupForm = ({}) => {
           </Title>
           <Card data-qa="tryber-mail-signup">
             <FormProvider>
-              {(formikProps: FormikProps<SignupFormType>) => {
-                const { step } = formikProps.values;
-                return (
-                  <>
-                    <Steps
-                      current={step}
-                      className="aq-mb-3"
-                      data-qa="signup-stepper"
-                    >
-                      <Steps.Step
-                        title={t("SIGNUP_STEP_TITLE:::Account info")}
-                        isCompleted={step > 0}
-                      />
-                      <Steps.Step
-                        title={t("SIGNUP_STEP_TITLE:::Personal info")}
-                      />
-                    </Steps>
-                    {step === 0 && <Step0 />}
-                    {step === 1 && <Step1 />}
-                  </>
-                );
-              }}
+              <>
+                {(formikProps: FormikProps<SignupFormType>) => {
+                  const { step } = formikProps.values;
+                  return (
+                    <>
+                      <Steps
+                        current={step}
+                        className="aq-mb-3"
+                        data-qa="signup-stepper"
+                      >
+                        <Steps.Step
+                          title={t("SIGNUP_STEP_TITLE:::Account info")}
+                          isCompleted={step > 0}
+                        />
+                        <Steps.Step
+                          title={t("SIGNUP_STEP_TITLE:::Personal info")}
+                        />
+                      </Steps>
+                      {step === 0 && <Step0 />}
+                      {step === 1 && <Step1 />}
+                    </>
+                  );
+                }}
+              </>
             </FormProvider>
           </Card>
         </Wrapper>
