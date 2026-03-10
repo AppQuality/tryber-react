@@ -1,6 +1,7 @@
-import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
 import { TFunction } from "react-i18next";
 import { updateBootyDetailsSortingOptions } from "../../../redux/wallet/actionCreator";
+
+type Column = any;
 
 export const bootyDetailsColumns = (
   dispatch: AppDispatch,
@@ -15,7 +16,7 @@ export const bootyDetailsColumns = (
       role: "title",
       hideIndex: true,
       isSortable: true,
-      onSort: (newOrder) => {
+      onSort: (newOrder: "ASC" | "DESC") => {
         dispatch(updateBootyDetailsSortingOptions(newOrder, "activityName"));
       },
     },
@@ -26,7 +27,7 @@ export const bootyDetailsColumns = (
       maxWidth: "10em",
       hideIndex: true,
       isSortable: true,
-      onSort: (newOrder) => {
+      onSort: (newOrder: "ASC" | "DESC") => {
         dispatch(updateBootyDetailsSortingOptions(newOrder, "activity"));
       },
     },
@@ -35,7 +36,7 @@ export const bootyDetailsColumns = (
       dataIndex: "attributionDate",
       key: "attributionDate",
       isSortable: true,
-      onSort: (newOrder) => {
+      onSort: (newOrder: "ASC" | "DESC") => {
         dispatch(updateBootyDetailsSortingOptions(newOrder, "attributionDate"));
       },
     },
@@ -46,7 +47,7 @@ export const bootyDetailsColumns = (
       isSortable: true,
       role: "cta",
       hideIndex: true,
-      onSort: (newOrder) => {
+      onSort: (newOrder: "ASC" | "DESC") => {
         dispatch(updateBootyDetailsSortingOptions(newOrder, "gross"));
       },
     },

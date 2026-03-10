@@ -1,8 +1,6 @@
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
-import { BaseProps } from "@appquality/appquality-design-system/dist/shared/_types";
-
 const StyledMenu = styled.nav`
   color: ${(props) => props.theme.palette.primary};
   min-height: 24px;
@@ -29,11 +27,12 @@ const StyledMenu = styled.nav`
   }
 `;
 
-interface LangMenuProps extends BaseProps {
+interface LangMenuProps {
   itLink: string;
   enLink: string;
   esLink: string;
   frLink?: string;
+  className?: string;
 }
 
 export const LangMenu = ({

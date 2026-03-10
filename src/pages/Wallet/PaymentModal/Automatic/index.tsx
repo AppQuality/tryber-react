@@ -23,59 +23,61 @@ const Automatic = () => {
 
   return (
     <FormWrapper>
-      {(formikProps: FormikProps<PaymentFormType>) => {
-        const { step } = formikProps.values;
-        const closeModal = () => {
-          formikProps.resetForm();
-          setCompletedSteps([false, false, false]);
-          dispatch(setPaymentModalOpen(false));
-        };
-        return (
-          <form
-            onSubmit={formikProps.handleSubmit}
-            onReset={formikProps.handleReset}
-          >
-            <Modal
-              isOpen={isPaymentModalOpen}
-              onClose={closeModal}
-              title={t("Request a payment")}
-              footer={
-                step <= 2 && (
-                  <Footer
-                    completedSteps={completedSteps}
-                    setCompletedSteps={setCompletedSteps}
-                  />
-                )
-              }
+      <>
+        {(formikProps: FormikProps<PaymentFormType>) => {
+          const { step } = formikProps.values;
+          const closeModal = () => {
+            formikProps.resetForm();
+            setCompletedSteps([false, false, false]);
+            dispatch(setPaymentModalOpen(false));
+          };
+          return (
+            <form
+              onSubmit={formikProps.handleSubmit}
+              onReset={formikProps.handleReset}
             >
-              <ModalBody>
-                {step <= 2 && (
-                  <Steps current={step} className="aq-mb-3">
-                    <Steps.Step
-                      isCompleted={completedSteps[0]}
-                      title={t("MODAL_PAYMENT_STEP_TITLE:::Start here")}
+              <Modal
+                isOpen={isPaymentModalOpen}
+                onClose={closeModal}
+                title={t("Request a payment")}
+                footer={
+                  step <= 2 && (
+                    <Footer
+                      completedSteps={completedSteps}
+                      setCompletedSteps={setCompletedSteps}
                     />
-                    <Steps.Step
-                      isCompleted={completedSteps[1]}
-                      title={t("MODAL_PAYMENT_STEP_TITLE:::Insert details")}
-                    />
-                    <Steps.Step
-                      isCompleted={completedSteps[2]}
-                      title={t("MODAL_PAYMENT_STEP_TITLE:::Confirm")}
-                    />
-                  </Steps>
-                )}
-                <div className="aq-pt-3" data-qa="automatic-payment-modal">
-                  {step === 0 && <Step0Method />}
-                  {step === 1 && <Step1Data />}
-                  {step === 2 && <Step2Recap />}
-                  {step === 3 && <Step3Feedback />}
-                </div>
-              </ModalBody>
-            </Modal>
-          </form>
-        );
-      }}
+                  )
+                }
+              >
+                <ModalBody>
+                  {step <= 2 && (
+                    <Steps current={step} className="aq-mb-3">
+                      <Steps.Step
+                        isCompleted={completedSteps[0]}
+                        title={t("MODAL_PAYMENT_STEP_TITLE:::Start here")}
+                      />
+                      <Steps.Step
+                        isCompleted={completedSteps[1]}
+                        title={t("MODAL_PAYMENT_STEP_TITLE:::Insert details")}
+                      />
+                      <Steps.Step
+                        isCompleted={completedSteps[2]}
+                        title={t("MODAL_PAYMENT_STEP_TITLE:::Confirm")}
+                      />
+                    </Steps>
+                  )}
+                  <div className="aq-pt-3" data-qa="automatic-payment-modal">
+                    {step === 0 && <Step0Method />}
+                    {step === 1 && <Step1Data />}
+                    {step === 2 && <Step2Recap />}
+                    {step === 3 && <Step3Feedback />}
+                  </div>
+                </ModalBody>
+              </Modal>
+            </form>
+          );
+        }}
+      </>
     </FormWrapper>
   );
 };

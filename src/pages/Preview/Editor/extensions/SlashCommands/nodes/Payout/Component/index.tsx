@@ -63,7 +63,7 @@ export default function MyComponent({ node }: { node: PMNode }) {
   return (
     <NodeViewWrapper className="payout-node">
       <div className="aq-mb-3">
-        <Title size="sm" className="aq-mb-2">
+        <Title size="s" className="aq-mb-2">
           {t("PAYOUT")}
         </Title>
         <Text>

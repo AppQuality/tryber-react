@@ -68,7 +68,7 @@ const RecapBox = ({ id }: { id: string }) => {
             {campaignData.type.icon}
           </i>
         </div>
-        <Title>{campaignData.type.name} </Title>
+        <Title size="ms">{campaignData.type.name} </Title>
         <Text>{t("__PREVIEW_PAGE__CAMPAIGN_TYPE", "Campaign Type")}</Text>
       </div>
       <div>
@@ -77,7 +77,7 @@ const RecapBox = ({ id }: { id: string }) => {
             calendar_month
           </i>
         </div>
-        <Title>
+        <Title size="ms">
           {campaignData.startDate} - {campaignData.endDate}
         </Title>
         <Text>{t("__PREVIEW_PAGE__TESTING_PHASE", "Testing Phase")}</Text>
@@ -91,7 +91,7 @@ const RecapBox = ({ id }: { id: string }) => {
             diamond
           </i>
         </div>
-        <Title>{campaignData.points} pts.</Title>
+        <Title size="ms">{campaignData.points} pts.</Title>
         <Text>
           {t("__PREVIEW_PAGE__EXPERIENCE_POINTS", "Experience Points")}
         </Text>
@@ -105,7 +105,7 @@ const RecapBox = ({ id }: { id: string }) => {
             payments
           </i>
         </div>
-        <Title>
+        <Title size="ms">
           {campaignData.payout.min}€ - {campaignData.payout.max}€
         </Title>
         <Text>{t("__PREVIEW_PAGE__PAYOUT", "Payout")}</Text>

@@ -104,7 +104,7 @@ const TabBase = () => {
       initialValues={initialUserValues}
       onSubmit={async (values, helpers) => {
         let newLanguages: string[] = [];
-        values.languages.forEach((val) => {
+        values.languages.forEach((val: any) => {
           newLanguages.push(val.label);
         });
         const profileDataToSend: any = { ...values };

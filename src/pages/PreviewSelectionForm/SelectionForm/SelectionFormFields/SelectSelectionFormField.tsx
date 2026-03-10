@@ -5,7 +5,8 @@ import {
 } from "@appquality/appquality-design-system";
 import { Field, FieldProps } from "formik";
 import { useTranslation } from "react-i18next";
-import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
+
+type Option = any;
 
 interface SelectSelectionFormFieldProps {
   name: string;

@@ -3,6 +3,10 @@ import { useTranslation } from "react-i18next";
 import { useGetUsersMeCampaignsByCampaignIdPreviewQuery } from "src/services/tryberApi";
 import { styled } from "styled-components";
 
+const StyledCard = styled(Card)`
+  text-align: center;
+`;
+
 const MailLink = styled.a`
   display: flex;
   align-items: center;
@@ -25,7 +29,7 @@ const SupportBox = ({ id }: { id: string }) => {
   }
 
   return (
-    <Card style={{ textAlign: "center" }}>
+    <StyledCard>
       <Title size="s" className="aq-mb-2">
         {t("__PREVIEW_PAGE__ANY_QUESTIONS", "Any questions?")}
       </Title>
@@ -39,7 +43,7 @@ const SupportBox = ({ id }: { id: string }) => {
           {t("__PREVIEW_PAGE__DROP_EMAIL", "Drop an email to TRYBER TEAM")}
         </span>
       </MailLink>
-    </Card>
+    </StyledCard>
   );
 };
 

@@ -1,6 +1,7 @@
-import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
 import { TFunction } from "react-i18next";
 import { updateSortingOptions } from "src/redux/wallet/actionCreator";
+
+type Column = any;
 
 export const walletColumns = (
   dispatch: AppDispatch,
@@ -25,7 +26,7 @@ export const walletColumns = (
       dataIndex: "gross",
       key: "gross",
       isSortable: true,
-      onSort: (newOrder) => {
+      onSort: (newOrder: "ASC" | "DESC") => {
         dispatch(updateSortingOptions(newOrder, "gross"));
       },
     },
@@ -34,7 +35,7 @@ export const walletColumns = (
       dataIndex: "net",
       key: "net",
       isSortable: true,
-      onSort: (newOrder) => {
+      onSort: (newOrder: "ASC" | "DESC") => {
         dispatch(updateSortingOptions(newOrder, "net"));
       },
     },

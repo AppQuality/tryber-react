@@ -16,7 +16,7 @@ const MethodologyWrapper = ({
   const { t } = useTranslation();
   return (
     <div className="aq-mb-3">
-      <Title className="aq-mb-2">
+      <Title size="xl" className="aq-mb-2">
         {t("__PREVIEW_METHODOLOGY_TITLE", "METHODOLOGY ")}
       </Title>
       {children}

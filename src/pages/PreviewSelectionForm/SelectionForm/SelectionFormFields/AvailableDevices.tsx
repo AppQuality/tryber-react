@@ -5,13 +5,14 @@ import {
   Select,
   Text,
 } from "@appquality/appquality-design-system";
-import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import { Field } from "formik";
 import { useEffect, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useGetUsersMeCampaignsByCampaignCompatibleDevicesQuery } from "src/services/tryberApi";
 import localizedUrl from "src/utils/localizedUrl";
+
+type Option = any;
 
 export const AvailableDevices = () => {
   const { t } = useTranslation();

@@ -1,9 +1,8 @@
 import { Text } from "@appquality/appquality-design-system";
-import { BaseProps } from "@appquality/appquality-design-system/dist/shared/_types";
 import React from "react";
 import styled from "styled-components";
 
-interface PerformanceRowProps extends BaseProps {
+interface PerformanceRowProps {
   item: {
     icon: React.ReactNode;
     text: React.ReactNode;
@@ -11,6 +10,7 @@ interface PerformanceRowProps extends BaseProps {
     link?: string;
     booty?: React.ReactNode;
   };
+  className?: string;
 }
 
 const StatisticComponent = ({ item, className }: PerformanceRowProps) => {

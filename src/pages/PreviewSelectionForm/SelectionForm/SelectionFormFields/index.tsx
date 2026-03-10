@@ -1,4 +1,3 @@
-import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import countries from "i18n-iso-countries";
 import { useTranslation } from "react-i18next";
 import { TextSelectionFormField } from "src/pages/PreviewSelectionForm/SelectionForm/SelectionFormFields/TextSelectionFormField";
@@ -8,6 +7,8 @@ import { MultiSelectionFormField } from "./MultiSelectionFormField";
 import { RadioSelectionFormField } from "./RadioSelectionFormField";
 import { SelectSelectionFormField } from "./SelectSelectionFormField";
 import useNotAboveOption from "./useNotAboveOption";
+
+type Option = any;
 
 interface SelectionFormFieldsProps {
   genderOptions: Option[];

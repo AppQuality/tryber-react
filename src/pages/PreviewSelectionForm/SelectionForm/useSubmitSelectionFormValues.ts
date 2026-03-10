@@ -1,5 +1,4 @@
 import { FormikHelpers } from "formik";
-import { Option } from "@appquality/appquality-design-system/dist/stories/select/_types";
 import {
   PostUsersMeCampaignsByCampaignIdFormsApiArg,
   usePostUsersMeCampaignsByCampaignIdFormsMutation,
@@ -7,6 +6,8 @@ import {
 import useGenderOptions from "src/features/UseGenderOptions";
 import { useAppDispatch } from "src/store";
 import { setShowSubmitError } from "../previewSelectionFormSlice";
+
+type Option = any;
 
 export const useSubmitSelectionFormValues = (campaignId: string) => {
   const dispatch = useAppDispatch();

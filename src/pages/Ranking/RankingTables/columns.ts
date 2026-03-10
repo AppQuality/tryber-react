@@ -1,5 +1,6 @@
-import { Column } from "@appquality/appquality-design-system/dist/stories/table/_types";
 import { TFunction } from "react-i18next";
+
+type Column = any;
 
 export const RankingColumns = (t: TFunction<"translation">): Column[] => {
   return [
